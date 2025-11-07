@@ -17,13 +17,13 @@ SSG = {
 	religion_definition = mahayana
 }
 
-SYG = {
-	color = map_SYG
-	color2 = rgb { 16 41 202 }
+# SYG = {
+# 	color = map_SYG
+# 	color2 = rgb { 16 41 202 }
 
-	culture_definition = korean_culture
-	religion_definition = mahayana
-}
+# 	culture_definition = korean_culture
+# 	religion_definition = mahayana
+# }
 
 TMN = {
 	color = map_TMN
@@ -1164,8 +1164,15 @@ MNG = {	#Míng
 	color2 = rgb { 179 128 104 }
 	culture_definition = jianghuai_culture
 	religion_definition = sanjiao
-	is_historic = yes	#Released during the Crisis events
+	#Released during the Crisis events
 }
+QNG = {    #Qing
+    color = map_QNG            
+    color2 = rgb { 16 41 202 }
+    culture_definition = jurchen_culture 
+    religion_definition = sanjiao  #                      
+}
+
 CSO = {	#Song
 	color = map_CSO
 	color2 = rgb { 153 51 51 }
@@ -2842,4 +2849,13 @@ DDI = { #Dai
 
 	culture_definition = dai_culture
 	religion_definition = satsana_phi
+}
+
+WSG = { #Wu Sangui's Guan Ning Regime
+    color = rgb { 210 160 60 }
+    color2 = rgb { 110 80 30 }
+
+    culture_definition = jilu_culture
+    religion_definition = sanjiao
+    # is_historic = yes
 }
