@@ -25,14 +25,15 @@ countries = {
 				# hebei_area ─ 大名、邯郸、怀庆等卫所区
 				fuyang shexian_cizhou wuan
 				yuancheng baima_daming nanle neihuang weixian xunxian
-				guangping qinghe guangzong handan yongnian mingshui quzhou
+				guangping  handan yongnian  quzhou
 				henei jiyuan mengxian wuzhi wenxian xiuwu
 				puyang changyuan dongming qingfeng
 				jixian huixian qizhou xinxiang
 				anyang linzhou linzhang tangyin
 
-				zhending fuping gaocheng yuanshi_zhending huolu gucheng_zhending lingshou pingshan_zhending jingxing wuji
+				zhending fuping  yuanshi_zhending huolu  lingshou pingshan_zhending jingxing 
 
+				
 
 				# henan_area ─ 洛阳、开封与南阳等豫中腹地
 				wanqiu dancheng xiangcheng shangshui nandun xihua
@@ -96,7 +97,7 @@ countries = {
 				huayuan fuping_xian sanyuan tongguan_tongchuan
 
 				# gansu_area ─ 甘州、肃州与青海河西走廊西段
-				shandan  #qilianshan1 qilian
+				shandan qilian #qilianshan1 
 				ganzhou hongshui liyuan 
 				# shazhou anding_suzhou dangcheng 
 				#kuyu_shazhou guazhou niuquanzi yangguan mazongshan hala_nur
@@ -131,7 +132,7 @@ countries = {
 				# hubei_area ─ 鄂中水陆要冲
 				zhongxiang fengle shipai fushui jingshan
 				anlu xiaogan yingcheng yunmeng
-				zigui xingshan xinhua_guizhou badong jingshan_mountains
+				zigui xingshan  jingshan_mountains
 				hanyang hanchuan
 				changlin dangyang shayang
 				jiangling gongan songzi qianjiang jianli shishou zhijiang
@@ -262,6 +263,8 @@ countries = {
 			include = "asia_advanced_tribe"
 			government = {
 				type = monarchy
+				ruler = qng_1644_fulin
+				ruler_term = { character = qng_1644_fulin start_date = 1644.4.17 }
 				heir_selection = cognatic_primogeniture
 			}
 			court_language = northern_mandarin_dialect
@@ -301,6 +304,10 @@ countries = {
 				yixian_yizhou ansu laishui mancheng
 				pingji ningjin_zhaozhou lincheng longping_zhaozhou zanhuang
 
+				qinghe guangzong mingshui
+
+				gaocheng gucheng_zhending wuji
+				
 				# shandong_area ─ 济南兖州与运河、黄河平原
 				bohai zhanhua lijin wudi
 				chuqiu chengwu dingtao jiyin
@@ -442,11 +449,11 @@ countries = {
 				gaoan shanggao xinchang_yifeng
 				yichun fenyi wanzai pingxiang
 
-				# taiwan_area ─ 台湾诸社
-				amis paiwan takbanuao truku nanhudashan yushan
-				basai kavalan ketagalan kulun pakuali squliq
-				siraya ishbukun lloa makatao rukai takitudu tsou
-				papora arikun babuza mayrinax seediq taokas xueshan
+				# # taiwan_area ─ 台湾诸社
+				# amis paiwan takbanuao truku nanhudashan yushan
+				# basai kavalan ketagalan kulun pakuali squliq
+				# siraya ishbukun lloa makatao rukai takitudu tsou
+				# papora arikun babuza mayrinax seediq taokas xueshan
 
 				# haibei_hainan_area ─ 海南岛与合浦沿海
 				maoming xinyi_gaozhou dianbai baoning
@@ -605,7 +612,9 @@ countries = {
 			include = "expl_silk_road_east"
 			government = {
 				type = monarchy
+				ruler = mng_1644_youjian
 				heir_selection = cognatic_primogeniture #
+				ruler_term = { character = mng_1644_youjian start_date = 1644.4.17 }
 			}
 			court_language = southern_mandarin_dialect
 			country_rank = rank_empire
@@ -619,9 +628,9 @@ countries = {
 			own_control_core = {
 				# 四川盆地（`west_china_region`）
 				# chuandong_area ─ 重庆江东与夔州路径
-
 				fengjie daning_kuizhou kaizhou   wushan jianshi yunyang dabashan1 wushan_mountains
-
+				# hubeo_area			
+				xinhua_guizhou badong
 				
 
 			}
@@ -631,6 +640,8 @@ countries = {
 			include = "expl_silk_road_east"
 			government = {
 				type = monarchy
+				ruler = cxi_1644_xianzhong
+				ruler_term = { character = cxi_1644_xianzhong start_date = 1644.4.17 }
 				heir_selection = cognatic_primogeniture
 			}
 			court_language = shu_language
@@ -649,6 +660,8 @@ countries = {
 			include = "chinese_monarchy"
 			government = {
 				type = monarchy
+				ruler = wsg_1644_sangui
+				ruler_term = { character = wsg_1644_sangui start_date = 1644.4.17 }
 				heir_selection = cognatic_primogeniture
 			}
 			discover_areas = { liaodong_area }
