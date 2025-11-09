@@ -1,23 +1,34 @@
-on_game_start = {
+﻿on_game_start = {
 	effect = {
+		# 为大顺创建起始军队
 		c:CSH = {
 			if = {
 				limit = { NOT = { has_variable = csh_1644_dashun_start_army_spawned } }
 				trigger_event_silently = csh_1644_army.1
 			}
 		}
+		# 清朝，创建旗军并安排统一战争事件
 		c:QNG = {
+			# 生成旗军
 			if = {
 				limit = { NOT = { has_variable = qng_1644_banner_cavalry_spawned } }
-				trigger_event_silently = qng_1644_banner_army.1
+				trigger_event_silently = qng_1644_banner_army.1 
+			}
+			# 安排统一战争事件
+			if = {
+				limit = { NOT = { has_variable = qng_1644_unification_war_scheduled } }
+				trigger_event_silently = qng_1644_unification.1 
+				set_variable = { name = qng_1644_unification_war_scheduled value = 1 }
 			}
 		}
+		# 吴三桂创建起始军队
 		c:WSG = {
 			if = {
 				limit = { NOT = { has_variable = wsg_1644_start_army_spawned } }
 				trigger_event_silently = wsg_1644_army.1
 			}
 		}
+		# 川西政权（CXI）创建起始军队
 		c:CXI = {
 			if = {
 				limit = { NOT = { has_variable = cxi_1644_start_army_spawned } }

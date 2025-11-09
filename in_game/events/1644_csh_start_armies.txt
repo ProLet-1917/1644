@@ -1,4 +1,4 @@
-namespace = csh_1644_army
+﻿namespace = csh_1644_army
 
 csh_1644_army.1 = {
 	type = country_event
@@ -24,7 +24,7 @@ csh_1644_army.1 = {
 						}
 					}
 					while = {
-						count = 2
+						count = 10
 						create_sub_unit_with_owner = {
 							type = a_age_4_reformation_cavalry
 							owner = root
@@ -33,7 +33,7 @@ csh_1644_army.1 = {
 						}
 					}
 					while = {
-						count = 1
+						count = 5
 						create_sub_unit_with_owner = {
 							type = a_age_4_reformation_artillery
 							owner = root
@@ -57,7 +57,7 @@ csh_1644_army.1 = {
 						}
 					}
 					while = {
-						count = 1
+						count = 5
 						create_sub_unit_with_owner = {
 							type = a_age_4_reformation_cavalry
 							owner = root
@@ -66,27 +66,13 @@ csh_1644_army.1 = {
 						}
 					}
 					while = {
-						count = 1
+						count = 2
 						create_sub_unit_with_owner = {
 							type = a_age_4_reformation_artillery
 							owner = root
 							origin = this
 							experience = 50
 						}
-					}
-				}
-			}
-
-			every_army = {
-				limit = {
-					is_land_army = yes
-					owner = root
-				}
-				every_sub_unit = {
-					add_subunit_morale = {
-						value = subunit_morale
-						divide = subunit_morale_percentage
-						subtract = subunit_morale
 					}
 				}
 			}

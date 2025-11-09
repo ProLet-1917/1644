@@ -1,0 +1,55 @@
+﻿namespace = qng_1644_banner_army
+
+qng_1644_banner_army.1 = {
+	type = country_event
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { tag = QNG }
+
+			set_variable = { name = qng_1644_banner_cavalry_spawned value = 1 }
+
+			location:shenyang ?= {
+				if = {
+					limit = { owner = root }
+					while = {
+						count = 50
+						create_sub_unit_with_owner = {
+							type = a_banner_cavalry
+							owner = root
+							origin = this
+							experience = 100
+						}
+					}
+                    while = {
+                        count = 5
+                        create_sub_unit_with_owner = {
+                            type = a_age_4_reformation_artillery
+                            owner = root
+                            origin = this
+                            experience = 100
+                        }
+                    }
+                    while = {
+                        count = 20
+                        create_sub_unit_with_owner = {
+                            type = a_age_4_reformation_infantry
+                            owner = root
+                            origin = this
+                            experience = 100
+                        }
+                    }
+				}
+			}
+
+
+			force_recalc_country_active_status = root
+		}
+	}
+
+	option = {
+		name = qng_1644_banner_army.1.a
+	}
+}

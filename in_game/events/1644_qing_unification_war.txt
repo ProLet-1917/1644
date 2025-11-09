@@ -1,0 +1,66 @@
+﻿namespace = qng_1644_unification
+
+qng_1644_unification.1 = {
+	type = country_event
+
+	title = qng_1644_unification.1.t
+	desc = qng_1644_unification.1.d
+
+	immediate = {
+		if = {
+			limit = { tag = QNG }
+			c:CSH ?= {
+				save_scope_as = target_csh
+				if = {
+					limit = {
+						exists = this
+						is_subject = no
+						ROOT = {
+							NOT = { is_at_war_with = this }
+							NOT = { has_truce_with = this }
+						}
+					}
+					ROOT = {
+						add_casus_belli = {
+							target = scope:target_csh
+							type = casus_belli:cb_chinese_unification
+						}
+						declare_war_with_cb = {
+							target = scope:target_csh
+							type = casus_belli:cb_chinese_unification
+						}
+						custom_tooltip = qng_1644_unification_gain_cb_tt
+					}
+				}
+			}
+			c:MNG ?= {
+				save_scope_as = target_mng
+				if = {
+					limit = {
+						exists = this
+						is_subject = no
+						ROOT = {
+							NOT = { is_at_war_with = this }
+							NOT = { has_truce_with = this }
+						}
+					}
+					ROOT = {
+						add_casus_belli = {
+							target = scope:target_mng
+							type = casus_belli:cb_chinese_unification
+						}
+						declare_war_with_cb = {
+							target = scope:target_mng
+							type = casus_belli:cb_chinese_unification
+						}
+						custom_tooltip = qng_1644_unification_gain_cb_tt
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = qng_1644_unification.1.a
+	}
+}

@@ -1,4 +1,4 @@
-namespace = wsg_1644_army
+﻿namespace = wsg_1644_army
 
 wsg_1644_army.1 = {
 	type = country_event
@@ -44,19 +44,7 @@ wsg_1644_army.1 = {
 				}
 			}
 
-			every_army = {
-				limit = {
-					is_land_army = yes
-					owner = root
-				}
-				every_sub_unit = {
-					add_subunit_morale = {
-						value = subunit_morale
-						divide = subunit_morale_percentage
-						subtract = subunit_morale
-					}
-				}
-			}
+
 
 			force_recalc_country_active_status = root
 		}

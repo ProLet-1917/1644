@@ -1,4 +1,4 @@
-namespace = cxi_1644_army
+﻿namespace = cxi_1644_army
 
 cxi_1644_army.1 = {
 	type = country_event
@@ -10,6 +10,18 @@ cxi_1644_army.1 = {
 			limit = { tag = CXI }
 
 			set_variable = { name = cxi_1644_start_army_spawned value = 1 }
+
+			character:chi_li_dingguo ?= {
+				if = {
+					limit = { NOT = { country = root } }
+					move_country = root
+				}
+				save_scope_as = cxi_start_commander
+			}
+			if = {
+				limit = { NOT = { exists = scope:cxi_start_commander } }
+				ruler = { save_scope_as = cxi_start_commander }
+			}
 
 			location:badong ?= {
 				if = {
@@ -41,22 +53,20 @@ cxi_1644_army.1 = {
 							experience = 50
 						}
 					}
-				}
-			}
-
-			every_army = {
-				limit = {
-					is_land_army = yes
-					owner = root
-				}
-				every_sub_unit = {
-					add_subunit_morale = {
-						value = subunit_morale
-						divide = subunit_morale_percentage
-						subtract = subunit_morale
+					if = {
+						limit = { exists = scope:cxi_start_commander }
+						random_unit_in_location = {
+							limit = {
+								owner = root
+								unit_has_leader = no
+							}
+							set_as_commander = scope:cxi_start_commander
+						}
 					}
 				}
 			}
+
+
 
 			force_recalc_country_active_status = root
 		}
