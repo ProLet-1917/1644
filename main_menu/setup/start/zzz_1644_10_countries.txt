@@ -95,6 +95,7 @@ countries = {
 				xicheng hanyin ningshan pingli shiquan xunyang ziyang_xingan goupingguan
 				yangzhou xixiang yangyuan foping
 				huayuan fuping_xian sanyuan tongguan_tongchuan
+			
 
 				# gansu_area ─ 甘州、肃州与青海河西走廊西段
 				shandan qilian qilianshan1 
@@ -121,7 +122,7 @@ countries = {
 
 				# longyou_area ─ 陇右三辅与渭源河谷
 				longxi_gongchang dingxi fuqiang huizhou_gongchang ningyuan_gongchang tongwei zhangxian qinlingshan3
-				hezhou guide jishi dingqiang
+				hezhou guide jishi 
 				huizhou chengzhou xihe_huizhou liangdang lidian
 				jiezhou baimaguan wenxian_gongchang
 				didao kangu lanzhou lutang weiyuan_lintao qinlingshan6
@@ -149,6 +150,9 @@ countries = {
 			include = "expl_silk_road_west"
 			include = "expl_silk_road_center"
 			include = "expl_silk_road_east"
+
+			# 示例：为大顺设定开局科技等级
+			starting_technology_level = 10
 
 			government = {
 				type = monarchy
@@ -270,7 +274,7 @@ countries = {
 			court_language = northern_mandarin_dialect
 			country_rank = rank_empire
 			capital = shenyang
-			flag = "QNG"
+			flag = "CHI"
 			country_name = "QNG"
 		}
 
@@ -614,12 +618,12 @@ countries = {
 				type = monarchy
 				ruler = chi_zhu_youjian
 				heir_selection = cognatic_primogeniture #
-				ruler_term = { character = chi_zhu_youjian start_date = 1644.4.17 }
+				ruler_term = { character = chi_zhu_youjian start_date = 1628.1.17 }
 			}
 			court_language = southern_mandarin_dialect
 			country_rank = rank_empire
 			capital = dadu
-			flag = "MNG"
+			flag = "CHI_Ming_characters"
 			country_name = "MNG"
 		}
 
