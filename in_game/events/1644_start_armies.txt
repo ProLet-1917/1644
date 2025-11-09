@@ -1,0 +1,101 @@
+namespace = csh_1644_army
+
+csh_1644_army.1 = {
+	type = country_event
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { tag = CSH }
+
+			set_variable = { name = csh_1644_dashun_start_army_spawned value = 1 }
+
+			location:xuande ?= {
+				if = {
+					limit = { owner = root }
+					while = {
+						count = 10
+						create_sub_unit_with_owner = {
+							type = a_age_4_reformation_infantry
+							owner = root
+							origin = this
+							experience = 50
+						}
+					}
+					while = {
+						count = 2
+						create_sub_unit_with_owner = {
+							type = a_age_4_reformation_cavalry
+							owner = root
+							origin = this
+							experience = 50
+						}
+					}
+					while = {
+						count = 1
+						create_sub_unit_with_owner = {
+							type = a_age_4_reformation_artillery
+							owner = root
+							origin = this
+							experience = 50
+						}
+					}
+				}
+			}
+
+			location:guangping ?= {
+				if = {
+					limit = { owner = root }
+					while = {
+						count = 10
+						create_sub_unit_with_owner = {
+							type = a_age_4_reformation_infantry
+							owner = root
+							origin = this
+							experience = 50
+						}
+					}
+					while = {
+						count = 1
+						create_sub_unit_with_owner = {
+							type = a_age_4_reformation_cavalry
+							owner = root
+							origin = this
+							experience = 50
+						}
+					}
+					while = {
+						count = 1
+						create_sub_unit_with_owner = {
+							type = a_age_4_reformation_artillery
+							owner = root
+							origin = this
+							experience = 50
+						}
+					}
+				}
+			}
+
+			every_army = {
+				limit = {
+					is_land_army = yes
+					owner = root
+				}
+				every_sub_unit = {
+					add_subunit_morale = {
+						value = subunit_morale
+						divide = subunit_morale_percentage
+						subtract = subunit_morale
+					}
+				}
+			}
+
+			force_recalc_country_active_status = root
+		}
+	}
+
+	option = {
+		name = csh_1644_army.1.a
+	}
+}

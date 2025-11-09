@@ -1,0 +1,67 @@
+CSH = { # 大顺
+	pattern = "pattern_solid.dds"
+	color1 = "blue"
+
+
+	colored_emblem = {
+		texture = "ce_border_orle_thin.dds"
+		color1 = red
+	}
+		colored_emblem = {
+		texture = "ce_roundel.dds"
+		color1 = "white"
+		instance = { position = { 0.5 0.5 } scale = { 0.8 0.8 } }
+	}
+colored_emblem = {
+	texture = "ce_shun_character.dds"
+	color1 = "black"
+	instance = { position = { 0.5 0.5 } scale = { 0.6 0.6 } }
+}
+	
+}
+
+CXI = { # 大西
+	pattern = "pattern_solid.dds"
+	color1 = hsv360 	{	188	90	42	}
+	color2 = "white_secondary"
+	color3 = "black_secondary"
+
+	colored_emblem = {
+		texture = "ce_border_fringe.dds"
+		color1 = color2
+		color2 = color2
+	}
+	colored_emblem = {
+		texture = "ce_chinese_white_tiger_shield.dds"
+		color1 = color2
+		color2 = color2
+		color3 = color1
+		instance = { position = { 0.5 0.5 } scale = { 0.6 0.6 } }
+	}	
+
+}
+
+WSG = { # 吴三桂关宁政权
+	pattern = "pattern_solid.dds"
+	color1 = hsv360 	{	35	70	85	}
+	color2 = "red_scarlet"
+	color3 = "white_secondary"
+
+	colored_emblem = {
+		texture = "ce_border_orle_thin.dds"
+		color1 = color2
+		color2 = color2
+	}
+	colored_emblem = {
+		texture = "ce_roundel.dds"
+		color1 = color3
+		color2 = color3
+		instance = { position = { 0.5 0.5 } scale = { 0.36 0.36 } }
+	}
+	colored_emblem = {
+		texture = "ce_star_06.dds"
+		color1 = color2
+		color2 = color2
+		instance = { position = { 0.5 0.5 } scale = { 0.28 0.28 } }
+	}
+}

@@ -1,0 +1,28 @@
+on_game_start = {
+	effect = {
+		c:CSH = {
+			if = {
+				limit = { NOT = { has_variable = csh_1644_dashun_start_army_spawned } }
+				trigger_event_silently = csh_1644_army.1
+			}
+		}
+		c:QNG = {
+			if = {
+				limit = { NOT = { has_variable = qng_1644_banner_cavalry_spawned } }
+				trigger_event_silently = qng_1644_banner_army.1
+			}
+		}
+		c:WSG = {
+			if = {
+				limit = { NOT = { has_variable = wsg_1644_start_army_spawned } }
+				trigger_event_silently = wsg_1644_army.1
+			}
+		}
+		c:CXI = {
+			if = {
+				limit = { NOT = { has_variable = cxi_1644_start_army_spawned } }
+				trigger_event_silently = cxi_1644_army.1
+			}
+		}
+	}
+}

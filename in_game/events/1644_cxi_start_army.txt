@@ -1,0 +1,59 @@
+namespace = cxi_1644_army
+
+cxi_1644_army.1 = {
+	type = country_event
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { tag = CXI }
+
+			set_variable = { name = cxi_1644_start_army_spawned value = 1 }
+
+			location:badong ?= {
+				if = {
+					limit = { owner = root }
+					while = {
+						count = 10
+						create_sub_unit_with_owner = {
+							type = a_age_4_reformation_infantry
+							owner = root
+							origin = this
+							experience = 50
+						}
+					}
+					while = {
+						count = 2
+						create_sub_unit_with_owner = {
+							type = a_age_4_reformation_cavalry
+							owner = root
+							origin = this
+							experience = 50
+						}
+					}
+				}
+			}
+
+			every_army = {
+				limit = {
+					is_land_army = yes
+					owner = root
+				}
+				every_sub_unit = {
+					add_subunit_morale = {
+						value = subunit_morale
+						divide = subunit_morale_percentage
+						subtract = subunit_morale
+					}
+				}
+			}
+
+			force_recalc_country_active_status = root
+		}
+	}
+
+	option = {
+		name = cxi_1644_army.1.a
+	}
+}
