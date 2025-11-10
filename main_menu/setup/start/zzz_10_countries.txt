@@ -159,18 +159,23 @@ countries = {
 				type = monarchy
 				ruler = chi_li_zicheng
 				heir_selection = cognatic_primogeniture
-				ruler_term = { character = chi_li_zicheng start_date = 1643.4.1 }
+				ruler_term = { character = chi_li_zicheng start_date = 1643.3.8 }
 			}
 			accepted_cultures = {
 				jilu_culture
 				qin_culture
 				jin_culture
+				zhongyuan_culture
+				chu_culture
+			}
+			tolerated_cultures = {
+				yan_culture
+				jilu_culture
 				jianghuai_culture
-				liang_culture
 				huaihai_culture
 				tongtai_culture
-				chu_culture
 				changde_culture
+				liang_culture
 			}
 			court_language = northern_mandarin_dialect
 
@@ -269,8 +274,34 @@ countries = {
 			government = {
 				type = monarchy
 				ruler = chi_shunzhi
-				ruler_term = { character = chi_shunzhi start_date = 1644.4.17 }
+				ruler_term = {
+					character = chi_nurhachi
+					start_date = 1616.2.17
+					end_date = 1626.9.30
+				}
+				ruler_term = {
+					character = chi_huang_taiji
+					start_date = 1626.10.1
+					end_date = 1643.9.21
+				}
+				ruler_term = {
+					character = chi_shunzhi
+					start_date = 1643.10.8
+					# end_date = 1661.2.5
+				}
 				heir_selection = cognatic_primogeniture
+			}
+			accepted_cultures = {
+				jurchen_culture
+				solon_culture
+				evenk_culture
+				mongolian_culture
+				
+			}
+			tolerated_cultures = {
+				liaodong_culture
+				yan_culture
+				monguor_culture
 			}
 			court_language = northern_mandarin_dialect
 			country_rank = rank_empire
@@ -619,7 +650,122 @@ countries = {
 				type = monarchy
 				ruler = chi_zhu_youjian
 				heir_selection = cognatic_primogeniture #
-				ruler_term = { character = chi_zhu_youjian start_date = 1628.1.17 }
+				ruler_term = {
+					character = chi_zhu_yuanzhang
+					start_date = 1368.1.23
+					end_date = 1398.6.24
+				}
+				ruler_term = {
+					character = chi_zhu_yunwen
+					start_date = 1398.6.30
+					end_date = 1402.7.13
+				}
+				ruler_term = {
+					character = chi_zhu_di
+					start_date = 1402.7.17
+					end_date = 1424.8.12
+				}
+				ruler_term = {
+					character = chi_zhu_gaochi
+					start_date = 1424.9.7
+					end_date = 1425.5.29
+				}
+				ruler_term = {
+					character = chi_zhu_zhanji
+					start_date = 1425.6.12
+					end_date = 1435.1.31
+				}
+				ruler_term = {
+					character = chi_zhu_qizhen
+					start_date = 1435.2.7
+					end_date = 1449.9.1
+				}
+				ruler_term = {
+					character = chi_zhu_qiyu
+					start_date = 1449.9.6
+					end_date = 1457.2.14
+				}
+				ruler_term = {
+					character = chi_zhu_qizhen
+					start_date = 1457.2.14
+					end_date = 1464.2.23
+				}
+				ruler_term = {
+					character = chi_zhu_jianshen
+					start_date = 1464.2.28
+					end_date = 1487.9.9
+				}
+				ruler_term = {
+					character = chi_zhu_youcheng
+					start_date = 1487.9.18
+					end_date = 1505.6.8
+				}
+				ruler_term = {
+					character = chi_zhu_houzhao
+					start_date = 1505.6.19
+					end_date = 1521.4.20
+				}
+				ruler_term = {
+					character = chi_zhu_houcong
+					start_date = 1521.5.27
+					end_date = 1567.1.23
+				}
+				ruler_term = {
+					character = chi_zhu_zaihou
+					start_date = 1567.2.4
+					end_date = 1572.7.5
+				}
+				ruler_term = {
+					character = chi_zhu_yijun
+					start_date = 1572.8.19
+					end_date = 1620.8.18
+				}
+				ruler_term = {
+					character = chi_zhu_changluo
+					start_date = 1620.8.28
+					end_date = 1620.9.26
+				}
+				ruler_term = {
+					character = chi_zhu_youjiao
+					start_date = 1620.10.1
+					end_date = 1627.9.30
+				}
+				ruler_term = {
+					character = chi_zhu_youjian
+					start_date = 1627.10.2
+					end_date = 1644.4.25
+				}
+			}
+			accepted_cultures = {
+				yan_culture
+				jilu_culture
+				zhongyuan_culture
+				jianghuai_culture
+				wu_culture
+				yue_wu_culture
+				tunxi_culture
+				chu_culture
+				xinxiang_culture
+				laoxiang_culture
+				gan_culture
+				kejia_culture
+				yuehai_culture
+				jianning_culture
+				shu_culture
+				liaodong_culture
+			}
+			tolerated_cultures = {
+				
+				huaihai_culture
+				tongtai_culture
+				changde_culture
+				zhuang_culture
+				yao_china_culture
+				hmong_culture
+				mongolian_culture
+				jurchen_culture
+				nashi_culture
+				rma_culture
 			}
 			court_language = southern_mandarin_dialect
 			country_rank = rank_empire
@@ -646,7 +792,11 @@ countries = {
 			government = {
 				type = monarchy
 				ruler = chi_zhang_xianzhong
-				ruler_term = { character = chi_zhang_xianzhong start_date = 1643.1.1 }
+				ruler_term = {
+					character = chi_zhang_xianzhong
+					start_date = 1644.1.1
+					end_date = 1647.1.27
+				}
 				heir_selection = cognatic_primogeniture
 			}
 			court_language = shu_language
@@ -658,6 +808,7 @@ countries = {
 
 		#关宁军政权 - WSG
 		WSG = {
+			type = army
 			own_control_core = {
 				# liaodong_area ─ 关宁防线核心
 				ningyuan_jinzhou qiantun
@@ -666,7 +817,7 @@ countries = {
 			government = {
 				type = monarchy
 				ruler = chi_wu_san_gui
-				ruler_term = { character = chi_wu_san_gui start_date = 1644.4.17 }
+				ruler_term = { character = chi_wu_san_gui start_date = 1644.4.10 }
 				heir_selection = cognatic_primogeniture
 			}
 			court_language = northern_mandarin_dialect

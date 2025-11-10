@@ -9,6 +9,18 @@ qng_1644_banner_army.1 = {
 
 			set_variable = { name = qng_1644_banner_cavalry_spawned value = 1 }
 
+			character:chi_dorgon ?= {
+				if = {
+					limit = { NOT = { country = root } }
+					move_country = root
+				}
+				save_scope_as = qng_start_commander
+			}
+			if = {
+				limit = { NOT = { exists = scope:qng_start_commander } }
+				ruler = { save_scope_as = qng_start_commander }
+			}
+
 			location:shenyang ?= {
 				if = {
 					limit = { owner = root }
@@ -24,7 +36,7 @@ qng_1644_banner_army.1 = {
                     while = {
                         count = 5
                         create_sub_unit_with_owner = {
-                            type = a_age_4_reformation_artillery
+                            type = a_red_cannon
                             owner = root
                             origin = this
                             experience = 100
@@ -39,6 +51,16 @@ qng_1644_banner_army.1 = {
                             experience = 100
                         }
                     }
+					if = {
+						limit = { exists = scope:qng_start_commander }
+						random_unit_in_location = {
+							limit = {
+								owner = root
+								unit_has_leader = no
+							}
+							set_as_commander = scope:qng_start_commander
+						}
+					}
 				}
 			}
 

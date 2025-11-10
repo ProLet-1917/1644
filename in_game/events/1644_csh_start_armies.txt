@@ -9,6 +9,30 @@ csh_1644_army.1 = {
 
 			set_variable = { name = csh_1644_dashun_start_army_spawned value = 1 }
 
+			character:chi_li_zicheng ?= {
+				if = {
+					limit = { NOT = { country = root } }
+					move_country = root
+				}
+				save_scope_as = csh_start_commander_1
+			}
+			if = {
+				limit = { NOT = { exists = scope:csh_start_commander_1 } }
+				ruler = { save_scope_as = csh_start_commander_1 }
+			}
+			character:chi_liu_fangliang ?= {
+				if = {
+					limit = { NOT = { country = root } }
+					move_country = root
+				}
+				save_scope_as = csh_start_commander_2
+			}
+			if = {
+				limit = { NOT = { exists = scope:csh_start_commander_2 } }
+				ruler = { save_scope_as = csh_start_commander_2 }
+			}
+
+
 			location:xuande ?= {
 				if = {
 					limit = { owner = root }
@@ -33,10 +57,20 @@ csh_1644_army.1 = {
 					while = {
 						count = 5
 						create_sub_unit_with_owner = {
-							type = a_age_4_reformation_artillery
+							type = a_red_cannon
 							owner = root
 							origin = this
 							experience = 50
+						}
+					}
+					if = {
+						limit = { exists = scope:csh_start_commander_1 }
+						random_unit_in_location = {
+							limit = {
+								owner = root
+								unit_has_leader = no
+							}
+							set_as_commander = scope:csh_start_commander_1
 						}
 					}
 				}
@@ -55,7 +89,7 @@ csh_1644_army.1 = {
 						}
 					}
 					while = {
-						count = 5
+						count = 10
 						create_sub_unit_with_owner = {
 							type = a_age_4_reformation_cavalry
 							owner = root
@@ -66,10 +100,20 @@ csh_1644_army.1 = {
 					while = {
 						count = 2
 						create_sub_unit_with_owner = {
-							type = a_age_4_reformation_artillery
+							type = a_red_cannon
 							owner = root
 							origin = this
 							experience = 50
+						}
+					}
+					if = {
+						limit = { exists = scope:csh_start_commander_2 }
+						random_unit_in_location = {
+							limit = {
+								owner = root
+								unit_has_leader = no
+							}
+							set_as_commander = scope:csh_start_commander_2
 						}
 					}
 				}
