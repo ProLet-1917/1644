@@ -24,8 +24,9 @@ qng_1644_banner_army.1 = {
 			location:shenyang ?= {
 				if = {
 					limit = { owner = root }
+					# 满蒙八旗主力骑兵：80 * 300 = 24000 人
 					while = {
-						count = 50
+						count = 80
 						create_sub_unit_with_owner = {
 							type = a_banner_cavalry
 							owner = root
@@ -33,24 +34,26 @@ qng_1644_banner_army.1 = {
 							experience = 100
 						}
 					}
-                    while = {
-                        count = 5
-                        create_sub_unit_with_owner = {
-                            type = a_red_cannon
-                            owner = root
-                            origin = this
-                            experience = 100
-                        }
-                    }
-                    while = {
-                        count = 20
-                        create_sub_unit_with_owner = {
-                            type = a_age_4_reformation_infantry
-                            owner = root
-                            origin = this
-                            experience = 100
-                        }
-                    }
+					# 红夷炮随军：16 门 * 40 人 ≈ 640 人（含炮手与辎重）
+					while = {
+						count = 16
+						create_sub_unit_with_owner = {
+							type = a_red_cannon
+							owner = root
+							origin = this
+							experience = 100
+						}
+					}
+					# 汉军步兵与旗丁：55 * 1000 = 55000 人
+					while = {
+						count = 55
+						create_sub_unit_with_owner = {
+							type = a_age_4_reformation_infantry
+							owner = root
+							origin = this
+							experience = 100
+						}
+					}
 					if = {
 						limit = { exists = scope:qng_start_commander }
 						random_unit_in_location = {

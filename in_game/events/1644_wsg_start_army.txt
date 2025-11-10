@@ -12,8 +12,9 @@ wsg_1644_army.1 = {
 			location:ningyuan_jinzhou ?= {
 				if = {
 					limit = { owner = root }
+					# 宁远前锋步军：25 * 1000 = 25000 人
 					while = {
-						count = 10
+						count = 25
 						create_sub_unit_with_owner = {
 							type = a_age_4_reformation_infantry
 							owner = root
@@ -21,8 +22,9 @@ wsg_1644_army.1 = {
 							experience = 90
 						}
 					}
+					# 关宁铁骑与精骑：35 * 300 = 10500 人
 					while = {
-						count = 10
+						count = 35
 						create_sub_unit_with_owner = {
 							type = a_age_4_reformation_cavalry
 							owner = root
@@ -30,8 +32,9 @@ wsg_1644_army.1 = {
 							experience = 90
 						}
 					}
+					# 红夷炮：12 门 * 40 人 ≈ 480 人
 					while = {
-						count = 10
+						count = 12
 						create_sub_unit_with_owner = {
 							type = a_red_cannon
 							owner = root

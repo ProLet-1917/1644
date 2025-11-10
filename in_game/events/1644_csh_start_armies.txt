@@ -9,6 +9,7 @@ csh_1644_army.1 = {
 
 			set_variable = { name = csh_1644_dashun_start_army_spawned value = 1 }
 
+			# 北路主帅：李自成（中、后营主力）
 			character:chi_li_zicheng ?= {
 				if = {
 					limit = { NOT = { country = root } }
@@ -20,6 +21,7 @@ csh_1644_army.1 = {
 				limit = { NOT = { exists = scope:csh_start_commander_1 } }
 				ruler = { save_scope_as = csh_start_commander_1 }
 			}
+			# 南路主帅：刘芳亮（左营）
 			character:chi_liu_fangliang ?= {
 				if = {
 					limit = { NOT = { country = root } }
@@ -36,8 +38,9 @@ csh_1644_army.1 = {
 			location:xuande ?= {
 				if = {
 					limit = { owner = root }
+					# 北路（李自成）步兵主力：50 * 1000 = 50000 人
 					while = {
-						count = 10
+						count = 50
 						create_sub_unit_with_owner = {
 							type = a_age_4_reformation_infantry
 							owner = root
@@ -45,8 +48,9 @@ csh_1644_army.1 = {
 							experience = 50
 						}
 					}
+					# 北路（李自成）骑兵：20 * 300 = 6000 人
 					while = {
-						count = 10
+						count = 20
 						create_sub_unit_with_owner = {
 							type = a_age_4_reformation_cavalry
 							owner = root
@@ -54,6 +58,7 @@ csh_1644_army.1 = {
 							experience = 50
 						}
 					}
+					# 北路（李自成）红夷炮：5 门 * 40 人 ≈ 200 人
 					while = {
 						count = 5
 						create_sub_unit_with_owner = {
@@ -79,8 +84,9 @@ csh_1644_army.1 = {
 			location:guangping ?= {
 				if = {
 					limit = { owner = root }
+					# 南路（刘芳亮）步兵：25 * 1000 = 25000 人
 					while = {
-						count = 10
+						count = 25
 						create_sub_unit_with_owner = {
 							type = a_age_4_reformation_infantry
 							owner = root
@@ -88,8 +94,9 @@ csh_1644_army.1 = {
 							experience = 50
 						}
 					}
+					# 南路（刘芳亮）骑兵：12 * 300 = 3600 人
 					while = {
-						count = 10
+						count = 12
 						create_sub_unit_with_owner = {
 							type = a_age_4_reformation_cavalry
 							owner = root
@@ -98,7 +105,8 @@ csh_1644_army.1 = {
 						}
 					}
 					while = {
-						count = 2
+						# 南路（刘芳亮）红夷炮：3 门 * 40 人 ≈ 120 人
+						count = 3
 						create_sub_unit_with_owner = {
 							type = a_red_cannon
 							owner = root

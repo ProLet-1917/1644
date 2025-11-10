@@ -24,8 +24,9 @@ cxi_1644_army.1 = {
 			location:badong ?= {
 				if = {
 					limit = { owner = root }
+					# 西川步军骨干：8 * 1000 = 8000 人
 					while = {
-						count = 10
+						count = 8
 						create_sub_unit_with_owner = {
 							type = a_age_4_reformation_infantry
 							owner = root
@@ -33,6 +34,7 @@ cxi_1644_army.1 = {
 							experience = 50
 						}
 					}
+					# 川军骑兵：2 * 300 = 600 人（保持规模）
 					while = {
 						count = 2
 						create_sub_unit_with_owner = {
@@ -42,6 +44,7 @@ cxi_1644_army.1 = {
 							experience = 50
 						}
 					}
+					# 红夷炮：1 门 * 40 人 ≈ 40 人（保持规模）
 					while = {
 						count = 1
 						create_sub_unit_with_owner = {
