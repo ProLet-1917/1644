@@ -168,7 +168,7 @@ NCountry = {
 
 	LEVY_RECOVERY_MONTHS = 300
 	
-	LEVY_RECRUIT_THRESHOLD	= 0.50
+	LEVY_RECRUIT_THRESHOLD	= 1.1		# 1644模组：禁用征召兵（阈值高于 1 使其永不满足）
 
 	ESTATE_LEVY_SATISFACTION_THRESHOLD = 0.25
 	
@@ -242,15 +242,15 @@ NMercenary = {
 	MERCENARY_DEFAULT_DURATION_IN_MONTHS = 24
 	MERCENARY_CONTRACT_ALERT_MONTHS = 3
 	MERCENARY_MANPOWER_REPLENISH_TIME_MONTHS = 240 # how many months to fully restock mercs in an area
-	MERCENARY_ARMY_UNIT_MAX_SIZE = 150
-	MERCENARY_NAVY_UNIT_MAX_SIZE = 25
+	MERCENARY_ARMY_UNIT_MAX_SIZE = 1	# 1644模组：禁用陆军雇佣兵
+	MERCENARY_NAVY_UNIT_MAX_SIZE = 1	# 1644模组：禁用海军雇佣兵
 	MERCENARY_PRISONER_MONTHLY_MAINTENANCE_MULTIPLIER = 0.25
 	MERCENARY_PRISONER_MAX_MORALE = 0.6
 	MERCENARY_SUBUNITS_AVAILABLE_PER_ADM_POINT = 0.25 #leaders with better adm can lead bigger armies
-	MERCENARY_LEADER_BASE_PRICE = 50
+	MERCENARY_LEADER_BASE_PRICE = 99999999
 	MERCENARY_LEADER_ABILITY_WEIGHT = 50 #multiplied by an exponential number in range 0..8 based on char ability (so better ones are a lot more expensive than worse ones, less difference between lower ability characters)
-	MERCENARY_LEADER_CULTURE_OPINION_MULTIPLIER = -0.07 #same or friendly culture leaders will work for less for you
-	MERCENARY_LEADER_RELIGION_OPINION_MULTIPLIER = -0.07 #same or friendly religion leaders will work for less for you
+	MERCENARY_LEADER_CULTURE_OPINION_MULTIPLIER = 0.99 #same or friendly culture leaders will work for less for you
+	MERCENARY_LEADER_RELIGION_OPINION_MULTIPLIER = 0.99 #same or friendly religion leaders will work for less for you
 	MERCENARY_LEADER_DISTANCE_MULTIPLIER = 0.0005 # Mileage allowance, paid by employer. Must be nice.
 }
 

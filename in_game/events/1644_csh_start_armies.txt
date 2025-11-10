@@ -3,6 +3,11 @@
 csh_1644_army.1 = {
 	type = country_event
 
+	# 描述：李自成大顺军开局两路兵力配置。
+	# 北路（李自成）兵力：步营 32,000、火器营 14,000、骑营 4,000；
+	# 南路（刘芳亮）兵力：步营 16,000、火器营 7,000、骑营 2,000。
+	# 指挥官：character:chi_li_zicheng 与 character:chi_liu_fangliang 分别统领两路部队。
+
 	immediate = {
 		if = {
 			limit = { tag = CSH }
@@ -38,11 +43,20 @@ csh_1644_army.1 = {
 			location:xuande ?= {
 				if = {
 					limit = { owner = root }
-					# 北路（李自成）步兵主力：50 * 1000 = 50000 人
+					# 北路（李自成）步兵主力：50 * 1000 = 50000 人（长枪为主）
 					while = {
-						count = 50
+						count = 32
 						create_sub_unit_with_owner = {
-							type = a_age_4_reformation_infantry
+							type = a_1644_chinese_pikemen
+							owner = root
+							origin = this
+							experience = 50
+						}
+					}
+					while = {
+						count = 18
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_musketeers
 							owner = root
 							origin = this
 							experience = 50
@@ -52,7 +66,7 @@ csh_1644_army.1 = {
 					while = {
 						count = 20
 						create_sub_unit_with_owner = {
-							type = a_age_4_reformation_cavalry
+							type = a_1644_chinese_cavalry
 							owner = root
 							origin = this
 							experience = 50
@@ -84,11 +98,20 @@ csh_1644_army.1 = {
 			location:guangping ?= {
 				if = {
 					limit = { owner = root }
-					# 南路（刘芳亮）步兵：25 * 1000 = 25000 人
+					# 南路（刘芳亮）步兵：25 * 1000 = 25000 人（长枪占多数）
 					while = {
-						count = 25
+						count = 16
 						create_sub_unit_with_owner = {
-							type = a_age_4_reformation_infantry
+							type = a_1644_chinese_pikemen
+							owner = root
+							origin = this
+							experience = 50
+						}
+					}
+					while = {
+						count = 9
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_musketeers
 							owner = root
 							origin = this
 							experience = 50
@@ -98,7 +121,7 @@ csh_1644_army.1 = {
 					while = {
 						count = 12
 						create_sub_unit_with_owner = {
-							type = a_age_4_reformation_cavalry
+							type = a_1644_chinese_cavalry
 							owner = root
 							origin = this
 							experience = 50

@@ -1,0 +1,27 @@
+﻿namespace = cleanup_1644
+
+cleanup_1644.1 = {
+	type = country_event
+
+	trigger = {
+		OR = {
+			tag = QNG
+			tag = CSH
+			tag = WSG
+			tag = CXI
+			tag = MNG
+		}
+	}
+
+	immediate = {
+		every_character = {
+			limit = {
+				is_mercenary_leader = yes
+			}
+			banish_character = yes
+		}
+	}
+
+	option = { name = OK }
+}
+

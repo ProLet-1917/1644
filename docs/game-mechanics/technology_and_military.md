@@ -106,7 +106,7 @@ a_footmen = {
 ```1:18:in_game/common/unit_types/1644_sample_units.txt
 csh_banner_guard = {
     category = army_infantry
-    copy_from = a_age_4_reformation_infantry
+    copy_from = a_arquebusiers
 
     # 仅大顺可招募
     country_potential = { tag = CSH }

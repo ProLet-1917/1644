@@ -3,18 +3,25 @@
 qng_1644_banner_army.1 = {
 	type = country_event
 
+	# 描述：清初旗军开局部队，迁移多尔衮或以君主为统领。
+	# 兵力构成：八旗骑兵约 24,000（80 骑营）、红夷炮约 3,200（8 炮营）、步营约 35,000（35 步营）、火器营约 15,000（15 火器营）。
+	# 指挥官：优先让 character:chi_dorgon 归国并担任主力部队统帅，若不存在则使用统治者。
+
 	immediate = {
 		if = {
 			limit = { tag = QNG }
 
 			set_variable = { name = qng_1644_banner_cavalry_spawned value = 1 }
 
-			character:chi_dorgon ?= {
-				if = {
-					limit = { NOT = { country = root } }
-					move_country = root
+			if = {
+				limit = { exists = character:chi_dorgon }
+				character:chi_dorgon = {
+					if = {
+						limit = { NOT = { is_in_country = root } }
+						move_country = root
+					}
+					save_scope_as = qng_start_commander
 				}
-				save_scope_as = qng_start_commander
 			}
 			if = {
 				limit = { NOT = { exists = scope:qng_start_commander } }
@@ -44,11 +51,29 @@ qng_1644_banner_army.1 = {
 							experience = 100
 						}
 					}
-					# 汉军步兵与旗丁：55 * 1000 = 55000 人
+					# 汉军步兵与旗丁：55 * 1000 = 55000 人（35 长枪、15 火器、5 骑兵）
 					while = {
-						count = 55
+						count = 35
 						create_sub_unit_with_owner = {
-							type = a_age_4_reformation_infantry
+							type = a_1644_chinese_pikemen
+							owner = root
+							origin = this
+							experience = 100
+						}
+					}
+					while = {
+						count = 15
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_musketeers
+							owner = root
+							origin = this
+							experience = 100
+						}
+					}
+					while = {
+						count = 5
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_cavalry
 							owner = root
 							origin = this
 							experience = 100

@@ -1,5 +1,12 @@
 ﻿on_game_start = {
 	effect = {
+		# 清除默认佣兵队长（仅针对主要国家）
+		c:QNG = { trigger_event_silently = cleanup_1644.1 }
+		c:CSH = { trigger_event_silently = cleanup_1644.1 }
+		c:WSG = { trigger_event_silently = cleanup_1644.1 }
+		c:CXI = { trigger_event_silently = cleanup_1644.1 }
+		c:MNG = { trigger_event_silently = cleanup_1644.1 }
+
 		# 为大顺创建起始军队
 		c:CSH = {
 			if = {
@@ -28,7 +35,7 @@
 				trigger_event_silently = wsg_1644_army.1
 			}
 		}
-		# 川西政权（CXI）创建起始军队
+		# 大西政权（CXI）创建起始军队
 		c:CXI = {
 			if = {
 				limit = { NOT = { has_variable = cxi_1644_start_army_spawned } }

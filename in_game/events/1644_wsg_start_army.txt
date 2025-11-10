@@ -3,6 +3,10 @@
 wsg_1644_army.1 = {
 	type = country_event
 
+	# 描述：吴三桂关宁铁骑开局部队。
+	# 兵力构成：步营 14,000、火器营 7,000、关宁铁骑 4,000。
+	# 指挥官：默认由吴三桂统领现役军；本事件仅负责部队生成，不另行迁移武将。
+
 	immediate = {
 		if = {
 			limit = { tag = WSG }
@@ -12,26 +16,35 @@ wsg_1644_army.1 = {
 			location:ningyuan_jinzhou ?= {
 				if = {
 					limit = { owner = root }
-					# 宁远前锋步军：25 * 1000 = 25000 人
+					# 宁远前锋步军：25 * 1000 = 25000 人（14 长枪、7 火器、4 骑兵）
 					while = {
-						count = 25
+						count = 15
 						create_sub_unit_with_owner = {
-							type = a_age_4_reformation_infantry
+							type = a_1644_chinese_pikemen
 							owner = root
 							origin = this
 							experience = 90
 						}
 					}
-					# 关宁铁骑与精骑：35 * 300 = 10500 人
 					while = {
-						count = 35
+						count = 7
 						create_sub_unit_with_owner = {
-							type = a_age_4_reformation_cavalry
+							type = a_1644_chinese_musketeers
 							owner = root
 							origin = this
 							experience = 90
 						}
 					}
+					while = {
+						count = 30
+						create_sub_unit_with_owner = {
+							type = a_1644_guanning_cavalry
+							owner = root
+							origin = this
+							experience = 95
+						}
+					}
+			
 					# 红夷炮：6 营（2 门/营）≈ 12 门 ≈ 600 人
 					while = {
 						count = 6

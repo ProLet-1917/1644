@@ -3,6 +3,10 @@
 cxi_1644_army.1 = {
 	type = country_event
 
+	# 描述：川西李定国部开局守军。
+	# 兵力构成：步营 4,000、火器营 3,000、骑营 1,000、红夷炮 300。
+	# 指挥官：character:chi_li_dingguo 优先回归统领；若缺失则由统治者代替。
+
 	immediate = {
 		if = {
 			limit = { tag = CXI }
@@ -24,21 +28,30 @@ cxi_1644_army.1 = {
 			location:badong ?= {
 				if = {
 					limit = { owner = root }
-					# 西川步军骨干：8 * 1000 = 8000 人
+					# 西川步军骨干：8 * 1000 = 8000 人（长枪略多于火铳）
 					while = {
-						count = 8
+						count = 5
 						create_sub_unit_with_owner = {
-							type = a_age_4_reformation_infantry
+							type = a_1644_chinese_pikemen
 							owner = root
 							origin = this
 							experience = 50
 						}
 					}
-					# 川军骑兵：2 * 300 = 600 人（保持规模）
 					while = {
-						count = 2
+						count = 3
 						create_sub_unit_with_owner = {
-							type = a_age_4_reformation_cavalry
+							type = a_1644_chinese_musketeers
+							owner = root
+							origin = this
+							experience = 50
+						}
+					}
+					# 西营骑兵：4 * 300 = 1200 人（保持规模）
+					while = {
+						count = 4
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_cavalry
 							owner = root
 							origin = this
 							experience = 50
