@@ -65,3 +65,23 @@ WSG = { # 吴三桂关宁政权
 		instance = { position = { 0.5 0.5 } scale = { 0.28 0.28 } }
 	}
 }
+CHI_Ming_characters = { # China - Ming characters modern attribution
+	pattern = "pattern_solid.dds"
+	color1 = "orange"
+	color2 = "red"
+	color3 = "black"
+	color4 = "white"
+
+	colored_emblem = {
+		texture = "ce_frame_circle.dds"
+		color1 = color4
+		color2 = color4
+		instance = { position = { 0.5 0.5 } scale = { 0.55 0.55 } }				
+	}
+	colored_emblem = {
+		texture = "ce_ming.dds"
+		color1 = color3
+		color2 = color3
+		instance = { position = { 0.5 0.5 } scale = { 0.55 0.55 } }		
+	}			
+}
