@@ -1,0 +1,21 @@
+recruitment_law = {
+	law_category = military
+	yingbing_system_policy = {
+		potential = {
+			OR = {
+				tag = MNG
+				tag = CSH
+				tag = WSG
+				tag = CXI
+			}
+		}
+		country_modifier = {
+			global_levy_size_modifier = -0.99
+		}
+		estate_preferences = {
+			crown_estate
+			peasants_estate
+		}
+		years = 2
+	}
+}
