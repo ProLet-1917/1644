@@ -3,6 +3,17 @@
 cleanup_1644.1 = {
 	type = country_event
 
+	dynamic_historical_event = {
+		tag = QNG
+		tag = CSH
+		tag = WSG
+		tag = CXI
+		tag = MNG
+		from = 1644.1.1
+		to = 9999.1.1
+		monthly_chance = 100
+	}
+
 	trigger = {
 		OR = {
 			tag = QNG
@@ -18,7 +29,7 @@ cleanup_1644.1 = {
 			limit = {
 				is_mercenary_leader = yes
 			}
-			banish_character = yes
+			kill_character = this
 		}
 	}
 
