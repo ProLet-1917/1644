@@ -1,0 +1,85 @@
+# MERCENARY
+# Override: disable mercenary availability filters for 1644 mod
+# root is the mercenary
+
+mercenary_has_customer = {
+	scope = mercenary
+	tag = mercenary
+	group = 1
+	exclusive_group = yes
+	trigger = {
+		always = no
+	}
+}
+
+mercenary_has_no_customer = {
+	scope = mercenary
+	tag = mercenary
+	group = 1
+	exclusive_group = yes
+	trigger = {
+		always = no
+	}
+}
+
+mercenary_has_owner = {
+	scope = mercenary
+	tag = mercenary
+	group = 2
+	exclusive_group = yes
+	trigger = {
+		always = no
+	}
+}
+
+mercenary_has_no_owner = {
+	scope = mercenary
+	tag = mercenary
+	group = 2
+	exclusive_group = yes
+	trigger = {
+		always = no
+	}
+}
+
+owned_mercenary = {
+	scope = mercenary
+	tag = mercenary
+	group = 3
+	exclusive_group = yes
+	trigger = {
+		always = no
+	}
+}
+
+not_owned_mercenary = {
+	scope = mercenary
+	tag = mercenary
+	group = 3
+	exclusive_group = yes
+	trigger = {
+		always = no
+	}
+}
+
+hired_mercenary = {
+	scope = mercenary
+	tag = mercenary
+	group = 4
+	exclusive_group = yes
+	trigger = {
+		always = no
+	}
+}
+
+not_hired_mercenary = {
+	scope = mercenary
+	tag = mercenary
+	group = 4
+	exclusive_group = yes
+	trigger = {
+		always = no
+	}
+}
+
+
