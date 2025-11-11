@@ -21,10 +21,7 @@
 				limit = { NOT = { has_variable = qng_1644_banner_cavalry_spawned } }
 				trigger_event_silently = qng_1644_banner_army.1 
 			}
-			if = {
-				limit = { tag = QNG date = 1644.5.9 }
-				country_event = { id = qng_1644_unification.1 }
-			}
+			trigger_event_silently = qng_1644_unification.2 
 		}
 		# 吴三桂创建起始军队
 		c:WSG = {
