@@ -56,8 +56,6 @@
 		flavor_bra_dynasty.1200 #Hohenzollern event for the Emperor if they have BB as subject
 		flavor_bra_dynasty.2 #Get rid of a modifier which serves no longer a purpose to BB
 
-		# 1644 mod: monthly mercenary cleanup for key factions
-		cleanup_1644.1
 	}
 }
 
@@ -250,21 +248,6 @@ on_fraticide_underage_succession_waiting = {
 		else = {
 			trigger_event_silently = succession.5
 		}
-	}
-}
-
-zzz_cleanup_1644_monthly = {
-	trigger = {
-		OR = {
-			tag = QNG
-			tag = CSH
-			tag = WSG
-			tag = CXI
-		}
-	}
-
-	effect = {
-		trigger_event_silently = cleanup_1644.1
 	}
 }
 
