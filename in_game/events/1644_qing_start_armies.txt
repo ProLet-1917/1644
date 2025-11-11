@@ -16,10 +16,6 @@ qng_1644_banner_army.1 = {
 			if = {
 				limit = { exists = character:chi_dorgon }
 				character:chi_dorgon = {
-					if = {
-						limit = { NOT = { is_in_country = root } }
-						move_country = root
-					}
 					save_scope_as = qng_start_commander
 				}
 			}

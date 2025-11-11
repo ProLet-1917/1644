@@ -1,51 +1,41 @@
 ﻿namespace = csh_1644_army
-
 csh_1644_army.1 = {
 	type = country_event
-
 	# 描述：李自成大顺军开局两路兵力配置。
 	# 北路（李自成）兵力：步营 32,000、火器营 14,000、骑营 4,000；
 	# 南路（刘芳亮）兵力：步营 16,000、火器营 7,000、骑营 2,000。
 	# 指挥官：character:chi_li_zicheng 与 character:chi_liu_fangliang 分别统领两路部队。
-
 	immediate = {
 		if = {
-			limit = { tag = CSH }
-
-			set_variable = { name = csh_1644_dashun_start_army_spawned value = 1 }
-
-			# 北路主帅：李自成（中、后营主力）
-			character:chi_li_zicheng ?= {
-				if = {
-					limit = { NOT = { country = root } }
-					move_country = root
-				}
-				save_scope_as = csh_start_commander_1
+			limit = {
+				tag = CSH
 			}
+			set_variable = {
+				name = csh_1644_dashun_start_army_spawned
+				value = 1
+			}
+			# 北路主帅：李自成
 			if = {
-				limit = { NOT = { exists = scope:csh_start_commander_1 } }
-				ruler = { save_scope_as = csh_start_commander_1 }
-			}
-			# 南路主帅：刘芳亮（左营）
-			character:chi_liu_fangliang ?= {
-				if = {
-					limit = { NOT = { country = root } }
-					move_country = root
+				limit = { exists = character:chi_li_zicheng }
+				character:chi_li_zicheng = {
+					save_scope_as = csh_start_commander_1
 				}
-				save_scope_as = csh_start_commander_2
 			}
+			# 南路主帅：刘芳亮
 			if = {
-				limit = { NOT = { exists = scope:csh_start_commander_2 } }
-				ruler = { save_scope_as = csh_start_commander_2 }
+				limit = { exists = character:chi_liu_fangliang }
+				character:chi_liu_fangliang = {
+					save_scope_as = csh_start_commander_2
+				}
 			}
-
-
 			location:xuande ?= {
 				if = {
-					limit = { owner = root }
-					# 北路（李自成）步兵主力：50 * 1000 = 50000 人（长枪为主）
+					limit = {
+						owner = root
+					}
+					# 北路（李自成）步兵主力：40 * 1000 = 40000 人
 					while = {
-						count = 32
+						count = 25
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_pikemen
 							owner = root
@@ -54,7 +44,7 @@ csh_1644_army.1 = {
 						}
 					}
 					while = {
-						count = 18
+						count = 15
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_musketeers
 							owner = root
@@ -62,7 +52,7 @@ csh_1644_army.1 = {
 							experience = 50
 						}
 					}
-					# 北路（李自成）骑兵：20 * 300 = 6000 人
+					# 北路（李自成）骑兵：30 * 300 = 9000 人
 					while = {
 						count = 20
 						create_sub_unit_with_owner = {
@@ -83,7 +73,9 @@ csh_1644_army.1 = {
 						}
 					}
 					if = {
-						limit = { exists = scope:csh_start_commander_1 }
+						limit = {
+							exists = scope:csh_start_commander_1
+						}
 						random_unit_in_location = {
 							limit = {
 								owner = root
@@ -94,13 +86,14 @@ csh_1644_army.1 = {
 					}
 				}
 			}
-
 			location:guangping ?= {
 				if = {
-					limit = { owner = root }
-					# 南路（刘芳亮）步兵：25 * 1000 = 25000 人（长枪占多数）
+					limit = {
+						owner = root
+					}
+					# 南路（刘芳亮）步兵：20 * 1000 = 20000 人
 					while = {
-						count = 16
+						count = 10
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_pikemen
 							owner = root
@@ -109,7 +102,7 @@ csh_1644_army.1 = {
 						}
 					}
 					while = {
-						count = 9
+						count = 10
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_musketeers
 							owner = root
@@ -117,9 +110,9 @@ csh_1644_army.1 = {
 							experience = 50
 						}
 					}
-					# 南路（刘芳亮）骑兵：12 * 300 = 3600 人
+					# 南路（刘芳亮）骑兵：15 * 300 = 4500 人
 					while = {
-						count = 12
+						count = 15
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_cavalry
 							owner = root
@@ -138,7 +131,9 @@ csh_1644_army.1 = {
 						}
 					}
 					if = {
-						limit = { exists = scope:csh_start_commander_2 }
+						limit = {
+							exists = scope:csh_start_commander_2
+						}
 						random_unit_in_location = {
 							limit = {
 								owner = root
@@ -149,11 +144,9 @@ csh_1644_army.1 = {
 					}
 				}
 			}
-
 			force_recalc_country_active_status = root
 		}
 	}
-
 	option = {
 		name = csh_1644_army.1.a
 	}

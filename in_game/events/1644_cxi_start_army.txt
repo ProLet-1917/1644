@@ -14,10 +14,7 @@ cxi_1644_army.1 = {
 			set_variable = { name = cxi_1644_start_army_spawned value = 1 }
 
 			character:chi_li_dingguo ?= {
-				if = {
-					limit = { NOT = { country = root } }
-					move_country = root
-				}
+
 				save_scope_as = cxi_start_commander
 			}
 			if = {
@@ -28,33 +25,33 @@ cxi_1644_army.1 = {
 			location:badong ?= {
 				if = {
 					limit = { owner = root }
-					# 西川步军骨干：8 * 1000 = 8000 人（长枪略多于火铳）
+					# 西步军：9000 人
 					while = {
 						count = 5
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_pikemen
 							owner = root
 							origin = this
-							experience = 50
+							experience = 80
 						}
 					}
 					while = {
-						count = 3
+						count = 5
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_musketeers
 							owner = root
 							origin = this
-							experience = 50
+							experience = 80
 						}
 					}
-					# 西营骑兵：4 * 300 = 1200 人（保持规模）
+					# 西营骑兵：5 * 300 = 1500 人
 					while = {
-						count = 4
+						count = 5
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_cavalry
 							owner = root
 							origin = this
-							experience = 50
+							experience = 80
 						}
 					}
 					# 红夷炮：1 营（2 门/营）≈ 2 门 ≈ 100 人
@@ -64,7 +61,7 @@ cxi_1644_army.1 = {
 							type = a_red_cannon
 							owner = root
 							origin = this
-							experience = 50
+							experience = 80
 						}
 					}
 					if = {

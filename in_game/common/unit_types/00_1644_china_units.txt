@@ -2,30 +2,33 @@
 
 a_1644_chinese_pikemen = {
 	category = army_infantry
-	copy_from = a_pikemen
-	buildable = no
+	copy_from = a_age_4_reformation_infantry
+	buildable = yes
 
-	# 长枪牌兵：以冷兵器为主，适应山海关与内地战场
+	# 步营 1000人
+	max_strength = 1.0
+
 	morale_damage_taken = -0.03
 	strength_damage_done = 0.03
 
 	country_potential = {
-		OR = { tag = QNG tag = CSH tag = WSG tag = CXI }
+		OR = { tag = QNG tag = CSH tag = WSG tag = CXI tag = MNG }
 	}
 	gfx_tags = { pike_tag medium_tag }
 }
 
 a_1644_chinese_musketeers = {
 	category = army_infantry
-	copy_from = a_arquebusiers
-	buildable = no
+	copy_from = a_age_4_reformation_infantry
+	buildable = yes
 
-	# 火器营：配备火绳枪或红衣火炮护卫的火枪队，火力强大
+	# 火器营
+	max_strength = 1.0
 	morale_damage_done = 0.05
 	strength_damage_taken = -0.05
 
 	country_potential = {
-		OR = { tag = QNG tag = CSH tag = WSG tag = CXI }
+		OR = { tag = QNG tag = CSH tag = WSG tag = CXI tag = MNG }
 	}
 	gfx_tags = { musket_tag medium_tag }
 }
@@ -38,6 +41,7 @@ a_red_cannon = {
 
 	# 一营 100 人（2 门炮 + 支援）
 	max_strength = 0.1
+	
 	supply_weight = 0.5
 	food_consumption_per_strength = 1
 	food_storage_per_strength = 0.5
@@ -51,7 +55,7 @@ a_red_cannon = {
 a_1644_chinese_cavalry = {
 	category = army_cavalry
 	copy_from = a_age_4_reformation_cavalry
-	buildable = no
+	buildable = yes
 
 	# 强化冲击与速度，适应东北平原与山海关地形
 	initiative = 1
@@ -60,7 +64,7 @@ a_1644_chinese_cavalry = {
 	impact = { flatland = 0.05 hills = 0.03 wetlands = -0.05 mountains = -0.1 }
 
 	country_potential = {
-		OR = { tag = QNG tag = WSG tag = CSH }
+		OR = { tag = QNG tag = WSG tag = CSH tag = MNG }
 	}
 	gfx_tags = { medium_tag }
 }
@@ -69,15 +73,15 @@ a_1644_chinese_cavalry = {
 a_1644_guanning_cavalry = {
 	category = army_cavalry
 	copy_from = a_age_4_reformation_cavalry
-	buildable = no
+	buildable = yes
 
 	initiative = 1
 	morale_damage_done = 0.06
 	strength_damage_done = 0.05
 	morale_damage_taken = -0.03
-	impact = { flatland = 0.08 hills = 0.04 wetlands = -0.08 mountains = -0.15 }
+	impact = { flatland = 0.1 hills = 0.05 }
 
 	country_potential = { tag = WSG }
-	gfx_tags = { heavy_tag }
+	gfx_tags = { medium_tag }
 }
 
