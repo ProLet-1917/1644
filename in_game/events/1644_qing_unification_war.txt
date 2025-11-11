@@ -1,12 +1,22 @@
 ﻿namespace = qng_1644_unification
 
-qng_1644_unification.1 = {
+qng_1644_unification.1 = {#紫气东来
 	type = country_event
-
+	dynamic_historical_event = {#事实上是static
+ 		tag = QNG
+ 		from = 1644.5.9
+ 		to = 1644.6.9
+ 		monthly_chance = 100	# Monthly chance that this event will fire (10 = 10% chance)
+ 	}
 	title = qng_1644_unification.1.t
 	desc = qng_1644_unification.1.d
-
+	historical_info = qng_1644_unification.1.hi
 	immediate = {
+	}
+
+	option = { #入关
+		name = qng_1644_unification.1.a
+		historical_option = yes
 		if = {
 			limit = { tag = QNG }
 			c:CSH ?= {
@@ -59,8 +69,12 @@ qng_1644_unification.1 = {
 			}
 		}
 	}
-
-	option = {
-		name = qng_1644_unification.1.a
+	option = { #不入关
+		name = qng_1644_unification.1.b
+		ai_chance = {
+			factor = 0.1
+		}
+		add_stability = stability_severe_bonus
+		add_governmentpower = government_power_severe_bonus
 	}
 }
