@@ -2,7 +2,8 @@
 
 cleanup_1644.1 = {
 	type = country_event
-
+	fire_only_once = no
+	hidden = yes
 	dynamic_historical_event = {
 		tag = QNG
 		tag = CSH
@@ -10,7 +11,7 @@ cleanup_1644.1 = {
 		tag = CXI
 		tag = MNG
 		from = 1644.1.1
-		to = 9999.1.1
+		to = 1836.12.31
 		monthly_chance = 100
 	}
 
@@ -29,8 +30,8 @@ cleanup_1644.1 = {
 			limit = {
 				is_mercenary_leader = yes
 			}
-			kill_character = this
-		}
+			kill_character_silently = this
+	}
 	}
 
 	option = { name = OK }
