@@ -18,25 +18,27 @@ csh_1644_unification.1 = { #进京赶考
 	option = { #暂缓进京
 		name = csh_1644_unification.1.b
 		custom_tooltip = csh_1644_unification.1.tt2
-		rtr_add_cores_to_province = { province = binzhou_province	tag = CSH }
-		rtr_add_cores_to_province = { province = caozhou_province	tag = CSH }
-		rtr_add_cores_to_province = { province = dongchang_province	tag = CSH }
-		rtr_add_cores_to_province = { province = dongping_province	tag = CSH }
-		rtr_add_cores_to_province = { province = gaotang_province	tag = CSH }
-		rtr_add_cores_to_province = { province = jinan_province		tag = CSH }
-		rtr_add_cores_to_province = { province = jining_province	tag = CSH }
-		rtr_add_cores_to_province = { province = linqing_province	tag = CSH }
-		rtr_add_cores_to_province = { province = puzhou_province	tag = CSH }
-		rtr_add_cores_to_province = { province = shanzhou_province	tag = CSH }
-		rtr_add_cores_to_province = { province = taian_province		tag = CSH }
-		rtr_add_cores_to_province = { province = tengzhou_province	tag = CSH }
-		rtr_add_cores_to_province = { province = wuding_province	tag = CSH }
-		rtr_add_cores_to_province = { province = yanzhou_province	tag = CSH }
-		rtr_add_cores_to_province = { province = laizhou_province	tag = CSH }
-		rtr_add_cores_to_province = { province = qingzhou_province	tag = CSH }
 		c:MNG = {
 			every_owned_location = {
-				limit = { has_core_of = CSH }    
+				limit = { 
+					province = xuzhou_province or
+					province = qingzhou_province or
+					province = laizhou_province or
+					province = yanzhou_province or
+					province = wuding_province or
+					province = tengzhou_province or
+					province = taian_province or
+					province = shanzhou_province or
+					province = puzhou_province or
+					province = linqing_province or
+					province = jining_province or
+					province = jinan_province or
+					province = gaotang_province or
+					province = dongping_province or
+					province = dongchang_province or
+					province = caozhou_province or
+					province = binzhou_province
+				}    
 				change_location_owner = CSH      
 				change_control = control_radical_bonus
 		}
@@ -47,3 +49,4 @@ csh_1644_unification.2 = { #天翻地覆
 	option = {
 	}
 }
+
