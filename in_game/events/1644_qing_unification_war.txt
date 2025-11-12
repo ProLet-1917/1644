@@ -1,11 +1,26 @@
 ﻿namespace = qng_1644_unification
 
+# qng_1644_unification.2 = {
+# 	type = country_event
+# 	is_triggered_only = yes
+# 	hidden = yes
+# 	immediate = {
+# 		trigger_event_silently = {
+# 			id = qng_1644_unification.1
+# 			days = 23
+# 		}
+# 	}
+# }
+
+
 qng_1644_unification.1 = { #紫气东来
 	type = country_event
-	is_trigger_only = yes
+
 	title = qng_1644_unification.1.title
 	desc = qng_1644_unification.1.desc
 	historical_info = qng_1644_unification.1.historical_info
+
+
 	immediate = {
 	}
 
@@ -74,14 +89,4 @@ qng_1644_unification.1 = { #紫气东来
 	}
 }
 
-qng_1644_unification.2 = {
-	type = country_event
-	is_triggered_only = yes
-	hidden = yes
-	immediate = {
-		trigger_event_silently = {
-			id = qng_1644_unification.1
-			days = 23
-		}
-	}
-}
+

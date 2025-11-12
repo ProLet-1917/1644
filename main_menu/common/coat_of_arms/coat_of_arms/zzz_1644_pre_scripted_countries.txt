@@ -1,3 +1,65 @@
+﻿# colors = {
+#	todo_purple = rgb { 1 0 1 }
+#	
+#	# Base colors
+#	white = 				hsv360 	{	0		0		92	} 	# rgb { 235 235 235 }
+#	yellow = 			hsv360 	{	42	80	85	}	# rgb { 217 165  43 }
+#	black = 				hsv360 	{	0		0		15	} 	# rgb {  38  38  38 }
+#	blue = 				hsv360 	{	216	78	48	} 	# rgb {  27  65 122 }
+#	green =				hsv360 	{	97	75	40	} 	# rgb {  55 102  26 }
+#	red = 					hsv360 	{	358 	85	52	}	# rgb { 133  20  24 }
+#	purple =				hsv360 	{	320	75	50	} 	# rgb { 128  32  96 }
+#	
+#	# Other colors
+#	grey = 				hsv360 	{	20	0		70	} 	# rgb { 178 178 178 }
+#	grey_dark = 		hsv360 	{	20	0		35	} 	# rgb {  89  89  89 }
+#	green_light =		hsv360 	{	97	60	50	} 	# rgb {  80 128  51 }
+#	red_mid = 			hsv360 	{	358 	78	55	}	# rgb { 140  31  35 }
+#	red_light = 		hsv360 	{	358 	72	64	}	# rgb { 163  46  50 }
+#	red_dark = 		hsv360 	{	358 	80	36	}	# rgb {  92  18  21 }
+#	tyrian = 				hsv360 	{	335	80	40	}	# rgb { 102  20  54 }
+#	peach = 				hsv360 	{	30	40	90	} 	# rgb { 230 184 138 }
+#	yellow_light = 	hsv360 	{	42	75	90	}			# rgb { 230 178  57 }
+#	yellow_mid = 	hsv360 	{	42	80	75	}		# rgb { 191 145  38 }
+#	yellow_dark = 	hsv360 	{	42	65	70	}		# rgb { 178 144  62 }
+#	saffron = 			hsv360 	{	32	75	75	}	# rgb { 191 124  48 }
+#	saffron_mid = 	hsv360 	{	32	85	70	}	# rgb { 178 108  27 }
+#	orange = 			hsv360 	{	23	100	70	}	# rgb { 178  68   0 }
+#	beige = 				hsv360 	{	30	0		20	} 		# rgb {  51  51  51 }
+#	maroon = 			hsv360 	{	358 	70	35	}	# rgb {  89  27  29 }
+#	brown = 			hsv360 	{	26	70	25	} 	# rgb {  64  38  19 }
+#	brown_light = 	hsv360 	{	26 	70	50	} 		# rgb { 128  77  38 }
+#	blue_light =		hsv360 	{	216	65	60	} 	# rgb {  54  93 153 }
+#	blue_mid =			hsv360 	{	216	70	55	} 	# rgb {  42  81 140 }
+#	blue_dark = 		hsv360 	{	210	100	35	}	# rgb {   0  45  89 }
+#	purple_mid =		hsv360 	{	320	60	42	}	# rgb { 107  43  86 }
+#	pearl = 				hsv360 	{	160	2		80	} 	# rgb { 200 204 203 }
+#	cream = 				hsv360 	{	42	8		95	} 	# rgb { 242 236 223 }
+#	ivory = 				hsv360 	{	60	8		95	} 	# rgb { 242 242 223 }
+#	cyan = 				hsv360 	{	195	65	60	}	# rgb {  54 128 153 }
+#	
+#	white_secondary = 	hsv360 	{	0		0	90	} 	# rgb { 230 230 230 }
+#	black_secondary = 	hsv360 	{	0		0		18	}	# rgb {  46  46  46 }
+#	red_secondary = 		hsv360 	{	358 	75	60	}	# rgb { 153  38  42 }
+#	blue_secondary = 		hsv360 	{	216	75	52	} 	# rgb {  33  73 133 }
+#	green_secondary = 	hsv360 	{	97	70	45	}	# rgb {  65 115  34 }
+#	
+#	# Aboriginals
+#	clay = 					hsv360 	{	25	75	50	}	# rgb { 128  72  32 }
+#	brick =  				hsv360 	{	10	60	35	}	# rgb {  89  45  36 }
+#	blue_gray = 		hsv360 	{	209	51	42	} 	# rgb {  52  81 107 }
+#	brown_dark = 	hsv360 	{	0		15	20	} 		# rgb {  51  43  43 }
+#	
+#	# Japan	
+#	indigo = 				hsv360 	{	232	64	32	}		# ai, rgb {  29  36  82 }
+#	indigo_green = 		hsv360 	{	189	50	30	}		# japanese indigo, rgb {  38  71  76 }
+#	blue_sky = 				hsv360 	{	200	80	50	}		# hanada, rgb {  25  93 128 }
+#	green_pine = 		hsv360 	{	130	70	35	}		# midori, rgb {  27  89  37 }
+#	brown_tea = 			hsv360 	{	24	45	33	} 		# kobicha, rgb {  84  61  46 }
+#	red_scarlet = 			hsv360 	{	08 	82	60	}  		# japanese red-orange, rgb { 153  44  28 }
+#	yellow_pale = 		hsv360 	{	45	65	85	}	# rgb { 217 182  76 }
+#}
+
 CSH = { # 大顺
 	pattern = "pattern_solid.dds"
 	color1 = "blue"
@@ -67,7 +129,7 @@ WSG = { # 吴三桂关宁政权
 }
 CHI_Ming_characters = { # China - Ming characters modern attribution
 	pattern = "pattern_solid.dds"
-	color1 = "orange"
+	color1 = rgb { 180  68   50 }
 	color2 = "red"
 	color3 = "black"
 	color4 = "white"
