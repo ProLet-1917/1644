@@ -1,50 +1,50 @@
-# Tinto Talks #85 模组开发笔�?
+﻿# Tinto Talks #85 模组开发笔�?
 
-> 来源�?https://www.bilibili.com/opus/1126589983540379656>
+> 来源�?https://www.bilibili.com/opus/1126589983540379656>
 
-## 局势（Situation）脚本入�?
+## 局势（Situation）脚本入�?
 
-- �?`common/situations` 下创建新文件（示例：`rise_of_ulm.txt`），定义局势基础结构与本地化键值�?
-- 通过添加 `triggers`、`effects` 与提示文本（tooltips）让局势在游戏中有明确的触发条件与反馈�?
-- 为局势准备专属地图模式：�?`common/script_values` 中定义可复用的距离计算脚本值，然后在局势文件中引用以控制颜色渲染�?
-- �?`common/scriptable_hints` 中创建提示项，结合局�?UI 的提示按钮，为玩家提供动态说明�?
-- GUI 方面�?`gui/panels/situation` 目录创建同名 `.gui` 文件，覆�?`situation_panel_main_content` 等模块自定义界面布局�?
-- 通过 `situation_header_left` 等挂点加入自定义计数器或图标，实时展示局势进度�?
+- �?`common/situations` 下创建新文件（示例：`rise_of_ulm.txt`），定义局势基础结构与本地化键值�?
+- 通过添加 `triggers`、`effects` 与提示文本（tooltips）让局势在游戏中有明确的触发条件与反馈�?
+- 为局势准备专属地图模式：�?`common/script_values` 中定义可复用的距离计算脚本值，然后在局势文件中引用以控制颜色渲染�?
+- �?`common/scriptable_hints` 中创建提示项，结合局�?UI 的提示按钮，为玩家提供动态说明�?
+- GUI 方面�?`gui/panels/situation` 目录创建同名 `.gui` 文件，覆�?`situation_panel_main_content` 等模块自定义界面布局�?
+- 通过 `situation_header_left` 等挂点加入自定义计数器或图标，实时展示局势进度�?
 
-## 通用行动（Generic Actions�?
+## 通用行动（Generic Actions�?
 
-- �?`common/generic_actions` 中添加局势配套行动，定义 `select_trigger` 等交互逻辑，让玩家选择目标省份或角色�?
-- 行动参数与任务、外交、内阁行动语法相似，可直接复用已有逻辑�?
-- 需要时将行动加�?AI 专用列表，确保性能并限�?AI 使用范围�?
+- �?`common/generic_actions` 中添加局势配套行动，定义 `select_trigger` 等交互逻辑，让玩家选择目标省份或角色�?
+- 行动参数与任务、外交、内阁行动语法相似，可直接复用已有逻辑�?
+- 需要时将行动加�?AI 专用列表，确保性能并限�?AI 使用范围�?
 
-## 文件夹结构与校验和影�?
+## 文件夹结构与校验和影�?
 
-- 文章展示�?`common` �?`main_menu/common` 两套目录，强调模组需要分别覆盖主菜单与游戏内资源�?
-- 会影响多人联机与成就校验和（checksum）的目录包括：`common`、`events`、`map_data`、`gui`、`localization`、`setup`。修改这些目录会导致非原版校验和�?
+- 文章展示�?`common` �?`main_menu/common` 两套目录，强调模组需要分别覆盖主菜单与游戏内资源�?
+- 会影响多人联机与成就校验和（checksum）的目录包括：`common`、`events`、`map_data`、`gui`、`localization`、`setup`。修改这些目录会导致非原版校验和�?
 
-## 数据库条目模式（Database Entry Modes�?
+## 数据库条目模式（Database Entry Modes�?
 
-- EU5 引入数据库模式解决覆盖冲突问题，适用于大多数“数据库”对象�?
-- 常用模式�?
+- EU5 引入数据库模式解决覆盖冲突问题，适用于大多数“数据库”对象�?
+- 常用模式�?
   - `INJECT:key` / `TRY_INJECT:key`
   - `REPLACE:key` / `TRY_REPLACE:key`
   - `REPLACE_OR_CREATE:key = { }`
   - `INJECT_OR_CREATE:key = { }`
-- 示例：在 `main_menu/common/modifier_type_definitions` 中定义模组修正，然后注入�?`in_game/common/auto_modifiers` 的原版修正�?
+- 示例：在 `main_menu/common/modifier_type_definitions` 中定义模组修正，然后注入�?`in_game/common/auto_modifiers` 的原版修正�?
 
-## 当前限制（发布前版本�?
+## 当前限制（发布前版本�?
 
-- 自定义起始日期暂不支持，需要脚本层面构建动态开局�?
-- `on_actions` �?`setup` 文件尚不支持数据库模式；需采用追加式脚本�?
-- 地图编辑器已提供但硬件要求高�?
+- 自定义起始日期暂不支持，需要脚本层面构建动态开局�?
+- `on_actions` �?`setup` 文件尚不支持数据库模式；需采用追加式脚本�?
+- 地图编辑器已提供但硬件要求高�?
 
 ## 模组团队案例要点
 
-- **Extended Timeline**：通过数据库与脚本生成任意日期开局，逐步导入 EU4 数据再细化�?
-- **Imperium Universalis**：重制旧大陆大地图，并制作详细家谱示例�?
-- **Europa Expanded**：设计再征服运动、低地叛乱等新的局势与任务包，强调自定义任务系统�?
-- **Voltaire's Nightmare 3**：专注高密度地图与新增文化、宗教、法律，利用 EU5 的人口与组织机制�?
-- **After The End**：把后末日美洲移植到 EU5，利用新宗教、人口与政府系统呈现多元文明�?
+- **Extended Timeline**：通过数据库与脚本生成任意日期开局，逐步导入 EU4 数据再细化�?
+- **Imperium Universalis**：重制旧大陆大地图，并制作详细家谱示例�?
+- **Europa Expanded**：设计再征服运动、低地叛乱等新的局势与任务包，强调自定义任务系统�?
+- **Voltaire's Nightmare 3**：专注高密度地图与新增文化、宗教、法律，利用 EU5 的人口与组织机制�?
+- **After The End**：把后末日美洲移植到 EU5，利用新宗教、人口与政府系统呈现多元文明�?
 
 ## 交流渠道
 

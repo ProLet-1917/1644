@@ -1,4 +1,4 @@
-namespace = csh_1644_unification
+﻿namespace = csh_1644_unification
 csh_1644_unification.1 = { #进京赶考
 	type = country_event
 	title = csh_1644_unification.1.title
@@ -9,43 +9,43 @@ csh_1644_unification.1 = { #进京赶考
 		name = csh_1644_unification.1.a
 		historical_option = yes
 		custom_tooltip = csh_1644_unification.1.tt1
-		trigger_event_silently = {
-			id = csh_1644_unification.2
-			days = 7
-		}
+		# trigger_event_silently = {
+		# 	id = csh_1644_unification.2
+		# 	days = 7
+		# }
 	}
 	option = { #暂缓进京
 		name = csh_1644_unification.1.b
 		custom_tooltip = csh_1644_unification.1.tt2
-		c:MNG = {
-			every_owned_location = {
-				limit = { 
-					province = xuzhou_province or
-					province = qingzhou_province or
-					province = laizhou_province or
-					province = yanzhou_province or
-					province = wuding_province or
-					province = tengzhou_province or
-					province = taian_province or
-					province = shanzhou_province or
-					province = puzhou_province or
-					province = linqing_province or
-					province = jining_province or
-					province = jinan_province or
-					province = gaotang_province or
-					province = dongping_province or
-					province = dongchang_province or
-					province = caozhou_province or
-					province = binzhou_province
-				}    
-				change_location_owner = CSH      
-				change_control = control_radical_bonus
-		}
-}
+		# c:MNG = {
+		# 	every_owned_location = {
+		# 		limit = { 
+		# 			province = xuzhou_province or
+		# 			province = qingzhou_province or
+		# 			province = laizhou_province or
+		# 			province = yanzhou_province or
+		# 			province = wuding_province or
+		# 			province = tengzhou_province or
+		# 			province = taian_province or
+		# 			province = shanzhou_province or
+		# 			province = puzhou_province or
+		# 			province = linqing_province or
+		# 			province = jining_province or
+		# 			province = jinan_province or
+		# 			province = gaotang_province or
+		# 			province = dongping_province or
+		# 			province = dongchang_province or
+		# 			province = caozhou_province or
+		# 			province = binzhou_province
+		# 		}    
+		# 		change_location_owner = CSH      
+		# 		change_control = control_radical_bonus
+		# 	}	
+		# }
 	}
 }
-csh_1644_unification.2 = { #天翻地覆
-	option = {
-	}
-}
+# csh_1644_unification.2 = { #天翻地覆
+# 	option = {
+# 	}
+# }
 
