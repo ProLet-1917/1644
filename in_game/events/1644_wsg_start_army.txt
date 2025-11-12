@@ -1,11 +1,12 @@
-﻿namespace = wsg_1644_army
+﻿namespace = wsg_1644_start_army
 
-wsg_1644_army.1 = {
+wsg_1644_start_army.1 = {
 	type = country_event
-
-	# 描述：吴三桂关宁铁骑开局部队。
+	title = wsg_1644_start_army.1.title
+	desc = wsg_1644_start_army.1.desc
+	historical_info = wsg_1644_start_army.1
+	
 	# 兵力构成：步营 14,000、火器营 7,000、关宁铁骑 4,000。
-	# 指挥官：默认由吴三桂统领现役军；本事件仅负责部队生成，不另行迁移武将。
 
 	immediate = {
 		if = {
@@ -65,6 +66,6 @@ wsg_1644_army.1 = {
 	}
 
 	option = {
-		name = wsg_1644_army.1.a
+		name = wsg_1644_start_army.1.a
 	}
 }
