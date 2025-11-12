@@ -9,6 +9,7 @@ csh_1644_unification.1 = { #进京赶考
 	option = { #立即进京
 		name = csh_1644_unification.1.a
 		historical_option = yes
+		custom_tooltip = csh_1644_unification.1.tt1
 		trigger_event_silently = {
 			id = csh_1644_unification.2
 			days = 7
@@ -16,8 +17,33 @@ csh_1644_unification.1 = { #进京赶考
 	}
 	option = { #暂缓进京
 		name = csh_1644_unification.1.b
-		
+		custom_tooltip = csh_1644_unification.1.tt2
+		rtr_add_cores_to_province = { province = binzhou_province	tag = CSH }
+		rtr_add_cores_to_province = { province = caozhou_province	tag = CSH }
+		rtr_add_cores_to_province = { province = dongchang_province	tag = CSH }
+		rtr_add_cores_to_province = { province = dongping_province	tag = CSH }
+		rtr_add_cores_to_province = { province = gaotang_province	tag = CSH }
+		rtr_add_cores_to_province = { province = jinan_province		tag = CSH }
+		rtr_add_cores_to_province = { province = jining_province	tag = CSH }
+		rtr_add_cores_to_province = { province = linqing_province	tag = CSH }
+		rtr_add_cores_to_province = { province = puzhou_province	tag = CSH }
+		rtr_add_cores_to_province = { province = shanzhou_province	tag = CSH }
+		rtr_add_cores_to_province = { province = taian_province		tag = CSH }
+		rtr_add_cores_to_province = { province = tengzhou_province	tag = CSH }
+		rtr_add_cores_to_province = { province = wuding_province	tag = CSH }
+		rtr_add_cores_to_province = { province = yanzhou_province	tag = CSH }
+		rtr_add_cores_to_province = { province = laizhou_province	tag = CSH }
+		rtr_add_cores_to_province = { province = qingzhou_province	tag = CSH }
+		c:MNG = {
+			every_owned_location = {
+				limit = { has_core_of = CSH }    
+				change_location_owner = CSH      
+				change_control = control_radical_bonus
+		}
+}
 	}
 }
-csh_1644_unification.2 = { #地覆天翻
+csh_1644_unification.2 = { #天翻地覆
+	option = {
+	}
 }
