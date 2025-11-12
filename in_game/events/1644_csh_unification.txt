@@ -1,0 +1,23 @@
+namespace = csh_1644_unification
+csh_1644_unification.1 = { #进京赶考
+	type = country_event
+	title = csh_1644_unification.1.title
+	desc = csh_1644_unification.1.desc
+	historical_info = csh_1644_unification.1.historical_info
+	is_trigger_only = yes
+
+	option = { #立即进京
+		name = csh_1644_unification.1.a
+		historical_option = yes
+		trigger_event_silently = {
+			id = csh_1644_unification.2
+			days = 7
+		}
+	}
+	option = { #暂缓进京
+		name = csh_1644_unification.1.b
+		
+	}
+}
+csh_1644_unification.2 = { #地覆天翻
+}
