@@ -6,6 +6,8 @@ add_utf8_bom.py
 
 用法：
     python tools/add_utf8_bom.py path/to/file1 path/to/file2 ...
+    # 或者直接在目标目录内执行（无参数时默认处理当前工作目录）
+    python tools/add_utf8_bom.py
 
 脚本会：
     - 逐个读取目标文件的字节流；
@@ -74,15 +76,18 @@ def iter_target_files(paths: list[str]) -> tuple[list[Path], list[Path]]:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="为文件补齐 UTF-8 BOM。")
+    parser = argparse.ArgumentParser(
+        description="为文件补齐 UTF-8 BOM（缺省处理当前工作目录）。"
+    )
     parser.add_argument(
         "files",
-        nargs="+",
-        help="需要处理的文件路径。",
+        nargs="*",
+        help="需要处理的文件路径，留空则处理当前工作目录。",
     )
     args = parser.parse_args(argv)
 
-    targets, missing = iter_target_files(args.files)
+    input_paths = args.files or ["."]
+    targets, missing = iter_target_files(input_paths)
 
     seen: set[Path] = set()
     changed: list[Path] = []
