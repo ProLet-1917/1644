@@ -109,11 +109,13 @@ csh_1644_unification.1 = { #进京赶考
 	option = { #暂缓进京
 		name = csh_1644_unification.1.b
 		custom_tooltip = csh_1644_unification.1.tt2
-		every_in_list = {
-			list = list_of_shandong_csh
-			limit = { owner = MNG }
-			change_location_owner = c:CSH
-			change_control = control_radical_bonus
+		show_as_tooltip = {
+			every_in_list = {
+				list = list_of_shandong_csh
+				limit = { owner = c:MNG }
+				change_location_owner = c:CSH
+				change_control = control_radical_bonus
+			}
 		}
 	}
 }
@@ -122,6 +124,7 @@ csh_1644_unification.2 = { #天翻地覆
 	option = {
 	}
 }
+
 
 
 
