@@ -25,7 +25,10 @@
 				limit = { NOT = { has_variable = qng_1644_banner_cavalry_spawned } }
 				trigger_event_silently = qng_1644_banner_army.1 
 			}
-			trigger_event_silently = qng_1644_unification.2 
+			trigger_event_silently = {
+				id = qng_1644_unification.1
+				days = 23
+			}
 		}
 		# 吴三桂创建起始军队
 		c:WSG = {
@@ -34,7 +37,7 @@
 				trigger_event_silently = wsg_1644_start_army.1
 			}
 		}
-		# 大明昌平唐通营
+		# 大明昌平镇 唐通
 		c:MNG = {
 			if = {
 				limit = { NOT = { has_variable = mng_1644_changping_garrison_spawned } }

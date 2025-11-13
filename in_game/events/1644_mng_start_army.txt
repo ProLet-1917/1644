@@ -1,13 +1,14 @@
-namespace = mng_1644_start_army
+﻿namespace = mng_1644_start_army
 
 mng_1644_start_army.1 = {
 	type = country_event
+
 	title = mng_1644_start_army.1.title
 	desc = mng_1644_start_army.1.desc
 	historical_info = mng_1644_start_army.1.historical_info
-	# 描述：大明昌平驻防唐通营开局部队。
+
+	# 描述：大明昌平镇 唐通 开局部队。
 	# 兵力构成：步营 5,000、火器营 3,000；总计 8,000 人。
-	# 指挥官：优先指派唐通统领昌平兵。
 
 	immediate = {
 		if = {
@@ -49,7 +50,7 @@ mng_1644_start_army.1 = {
 					while = {
 						count = 2
 						create_sub_unit_with_owner = {
-							type = a_1644_guanning_cavalry
+							type = a_1644_chinese_cavalry
 							owner = root
 							origin = this
 							experience = 60
