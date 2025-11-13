@@ -178,6 +178,15 @@ countries = {
 			capital = jingzhao
 			flag = "CSH"
 			country_name = "CSH"
+
+			currency_data = {
+				gold = 2000 #国库
+				stability = 40 #稳定度
+				prestige = 50 #声望
+				government_power = 40 #正统性
+				war_exhaustion = 0 #战争疲劳
+				army_tradition = 20 #军队传统
+			}
 		}
 
 		#大清 - QNG
@@ -778,9 +787,10 @@ countries = {
 
 		#大西 - CXI
 		CXI = {
+			type = army
 			own_control_core = {
 				# 四川盆地（`west_china_region`）
-				# chuandong_area ─ 重庆江东与夔州路径
+				# chuandong_area ─ 夔州
 				fengjie daning_kuizhou kaizhou   wushan jianshi yunyang  
 				# hubeo_area			
 				xinhua_guizhou badong
