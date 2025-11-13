@@ -146,22 +146,15 @@ countries = {
 
 
 			}
-			include = "chinese_monarchy"
-			include = "expl_silk_road_west"
-			include = "expl_silk_road_center"
-			include = "expl_silk_road_east"
 
-			# 示例：为大顺设定开局科技等级
-			starting_technology_level = 4
+			include = "zzz_csh"
 
 			government = {
 				type = monarchy
 				ruler = chi_li_zicheng
 				heir_selection = cognatic_primogeniture
 				ruler_term = { character = chi_li_zicheng start_date = 1643.3.8 }
-				laws = {
-					medieval_levy_law = broken_weisuo
-				}
+
 			}
 			accepted_cultures = {
 				jilu_culture
@@ -271,7 +264,6 @@ countries = {
 				fengzhou yinshan hebin zhenwu ningbian yunnei dongsheng wuchuan
 
 			}
-			include = "expl_manchurian_tribe"
 			include = "asia_advanced_tribe"
 			government = {
 				type = monarchy
@@ -291,7 +283,7 @@ countries = {
 					start_date = 1643.10.8
 					# end_date = 1661.2.5
 				}
-				heir_selection = cognatic_primogeniture
+				
 			}
 			accepted_cultures = {
 				solon_culture
@@ -600,7 +592,7 @@ countries = {
 				
 				# chuanxi_area ─ 川西
 				langzhong cangxi nanbu
-				huacheng zengkou nanjiang tongjiang dabashan2
+				huacheng zengkou nanjiang tongjiang 
 				chengdu pixian shuangliu xindu jintang
 				liujiang huaying linshui qujiang_guangan yuechi dazhu
 				miangu jiachuan zhaohua
@@ -644,10 +636,7 @@ countries = {
 				linjiang dianjiang fengdu shizhu
 				wanzhou liangshan
 			}
-			include = "chinese_monarchy"
-			include = "expl_silk_road_west"
-			include = "expl_silk_road_center"
-			include = "expl_silk_road_east"
+			include = "zzz_mng"
 			government = {
 				type = monarchy
 				ruler = chi_zhu_youjian
