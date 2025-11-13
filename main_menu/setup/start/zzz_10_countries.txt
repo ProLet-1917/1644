@@ -797,10 +797,7 @@ countries = {
 				
 
 			}
-			include = "chinese_monarchy"
-			include = "expl_silk_road_west"
-			include = "expl_silk_road_center"
-			include = "expl_silk_road_east"
+			include = "zzz_csh"
 			government = {
 				type = monarchy
 				ruler = chi_zhang_xianzhong
@@ -810,8 +807,11 @@ countries = {
 					#end_date = 1647.1.27
 				}
 				heir_selection = cognatic_primogeniture
+				laws = {
+					medieval_levy_law = broken_weisuo
+				}
 			}
-			court_language = shu_language
+			court_language = northern_mandarin_dialect
 			country_rank = rank_kingdom
 			capital = badong
 			flag = "CXI"
@@ -825,7 +825,7 @@ countries = {
 				# liaodong_area ─ 关宁防线核心
 				ningyuan_jinzhou qiantun
 			}
-			include = "chinese_monarchy"
+			include = "zzz_mng"
 			government = {
 				type = monarchy
 				ruler = chi_wu_san_gui
