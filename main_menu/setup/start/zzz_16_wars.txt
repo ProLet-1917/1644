@@ -21,28 +21,37 @@ war_manager = {
 			country = CSH
 			request = { reason = Instigator }
 		}
+	}
+
+
+	war = {
+		war_name = {
+			name = "CXI_CONQUEST_OF_SICHUAN"
+			ordinal = 1
+			first = { name = "CXI" }
+			second = { name = "MNG" }
+		}
+
+		take_province = {
+			type = conquer_province
+			casus_belli = cb_conquer_province
+			location = chengdu
+		}
+
+		start_date = 1644.1.1
+		action = 1644.4.18
+
 		attacker = {
-				country = CXI
-				request = { reason = Instigator }
-			}
+			country = CXI
+			request = { reason = Instigator }
+		}
+
+		defender = {
+			country = MNG
+			request = { reason = Target }
 		}
 	}
-	# war = {
-	# 	war_name = {
-	# 		name = "LATE_MING_PEASANT_OFFENSIVE"
-	# 		ordinal = 1
-	# 		first = { name = "MNG" }
-	# 	}
-	# 	start_date = 1643.1.1
-	# 	action = 1644.4.18
+}
 
-	# 	defender = {
-	# 		country = MNG
-	# 		request = { reason = Target }
-	# 	}
-	# 	attacker = {
-	# 		country = CXI
-	# 		request = { reason = Instigator }
-	# 	}
-	# }
+
 
