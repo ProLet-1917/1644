@@ -86,6 +86,11 @@ scripted_effect shandong_csh_list_add1 = {
 			add_to_list = list_of_shandong_csh
 		}
 	}
+	province_definition:dezhou_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
 }
 
 
@@ -123,16 +128,140 @@ csh_1644_unification.1 = { #进京赶考
 				list = list_of_shandong_csh
 				limit = { owner = c:MNG }
 				change_location_owner = c:CSH
-				change_control = control_radical_bonus
+				change_control = control_mild_bonus
 			}
 		}
 	}
 }
 
-csh_1644_unification.2 = { #天翻地覆
-	option = {
+scripted_effect shandong_csh_list_add2 = {
+	province_definition:anzhou_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:baoding_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:dingzhou_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:hejian_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:jingzhou_beizhili_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:jizhou_zhending_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:qizhou_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:qingzhou_beizhili_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:shenzhou_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:shunde_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:yizhou_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:zhaozhou_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:zhending_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:bazhou_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:changping_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:jizhou_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:luanzhou_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:shuntian_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:tongzhou_beizhili_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:yongping_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
+	}
+	province_definition:guangping_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_shandong_csh
+		}
 	}
 }
+
+csh_1644_unification.2 = { #天翻地覆
+	type = country_event
+	title = csh_1644_unification.2.title
+	desc = csh_1644_unification.2.desc
+	historical_info = csh_1644_unification.2.historical_info
+	immediate = {
+		shandong_csh_list_add1 = yes
+		shandong_csh_list_add2 = yes
+		every_in_list = {
+			list = list_of_shandong_csh
+			limit = { owner = c:MNG }
+			change_location_owner = c:CSH
+			change_control = control_mild_bonus
+		}
+	}
+	option = {
+		name = csh_1644_unification.2.a
+	}
+}
+
 
 
 
