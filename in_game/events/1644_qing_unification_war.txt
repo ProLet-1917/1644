@@ -1,12 +1,32 @@
 ﻿namespace = qng_1644_unification
 
-qng_1644_unification.1 = {
+# qng_1644_unification.2 = {
+# 	type = country_event
+# 	is_triggered_only = yes
+# 	hidden = yes
+# 	immediate = {
+# 		trigger_event_silently = {
+# 			id = qng_1644_unification.1
+# 			days = 23
+# 		}
+# 	}
+# }
+
+
+qng_1644_unification.1 = { #紫气东来
 	type = country_event
 
-	title = qng_1644_unification.1.t
-	desc = qng_1644_unification.1.d
+	title = qng_1644_unification.1.title
+	desc = qng_1644_unification.1.desc
+	historical_info = qng_1644_unification.1.historical_info
+
 
 	immediate = {
+	}
+
+	option = { #入关
+		name = qng_1644_unification.1.a
+		historical_option = yes
 		if = {
 			limit = { tag = QNG }
 			c:CSH ?= {
@@ -59,8 +79,14 @@ qng_1644_unification.1 = {
 			}
 		}
 	}
-
-	option = {
-		name = qng_1644_unification.1.a
+	option = { #不入关
+		name = qng_1644_unification.1.b
+		ai_chance = {
+			factor = 0.1
+		}
+		add_stability = stability_severe_bonus
+		add_government_power = government_power_mild_bonus
 	}
 }
+
+

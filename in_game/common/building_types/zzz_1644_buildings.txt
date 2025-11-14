@@ -1,0 +1,39 @@
+﻿REPLACE:repaired_great_wall_of_china = {
+	is_foreign = no
+	pop_type = soldiers
+	max_levels = 1
+	
+	obsolete = ruined_great_wall_of_china
+	employment_size = great_wall_of_china_employment
+	category = defense_category
+	
+	
+	rural_settlement = yes
+	town = yes
+	city = yes
+	build_time = huge_unique_build_time
+
+
+	# country_potential = {
+	# 	tag = CHI
+	# }
+	allow = {
+			# has_building = building_type:ruined_great_wall_of_china #1644剧本是修好的
+			is_historical_route_of_great_wall = yes
+	}
+
+	expensive = yes
+	possible_production_methods = {
+		repaired_great_wall_of_china_maintenance
+	}
+	construction_demand = repaired_great_wall_of_china_construction
+
+	modifier = {
+		local_garrison_size = 0.2
+	}
+	
+	raw_modifier = {
+		fort_level = 1
+		propagating_zone_of_control = yes
+	}
+}

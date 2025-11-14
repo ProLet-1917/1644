@@ -1,0 +1,88 @@
+﻿# 1644 模组：自定义兵种（中国战场，仅两种）
+
+a_1644_chinese_pikemen = {
+	category = army_infantry
+	copy_from = a_age_4_reformation_infantry
+	buildable = yes
+
+	# 步营 1000人
+	max_strength = 1.0
+
+	morale_damage_taken = -0.03
+	strength_damage_done = 0.03
+
+	country_potential = {
+		OR = { tag = QNG tag = CSH tag = WSG tag = CXI tag = MNG }
+	}
+	gfx_tags = { pike_tag medium_tag }
+}
+
+a_1644_chinese_musketeers = {
+	category = army_infantry
+	copy_from = a_age_4_reformation_infantry
+	buildable = yes
+
+	# 火器营
+	max_strength = 1.0
+	morale_damage_done = 0.05
+	strength_damage_taken = -0.05
+
+	country_potential = {
+		OR = { tag = QNG tag = CSH tag = WSG tag = CXI tag = MNG }
+	}
+	gfx_tags = { musket_tag medium_tag }
+}
+
+# 红衣大炮：统一在此处重定义（每营约 100 人，对应 2 门火炮）
+REPLACE:a_red_cannon = {
+	category = army_artillery
+	copy_from = a_age_4_reformation_artillery
+	buildable = no
+
+	# 一营 100 人（2 门炮 + 支援）
+	max_strength = 0.1
+	
+	supply_weight = 0.5
+	food_consumption_per_strength = 1
+	food_storage_per_strength = 0.5
+	initiative = 1
+	morale_damage_done = 0.05
+
+	gfx_tags = { heavy_tag }
+}
+
+# 骑营
+a_1644_chinese_cavalry = {
+	category = army_cavalry
+	copy_from = a_age_4_reformation_cavalry
+	buildable = yes
+
+	# 强化冲击与速度，适应东北平原与山海关地形
+	initiative = 1
+	strength_damage_done = 0.04
+	morale_damage_done = 0.03
+	impact = { flatland = 0.05 hills = 0.03 wetlands = -0.05 mountains = -0.1 }
+
+	country_potential = {
+		OR = { tag = QNG tag = WSG tag = CSH tag = MNG }
+	}
+	gfx_tags = { medium_tag }
+}
+
+# 关宁铁骑
+a_1644_guanning_cavalry = {
+	category = army_cavalry
+	copy_from = a_age_4_reformation_cavalry
+	buildable = yes
+	
+	max_strength = 0.3
+	initiative = 1
+	morale_damage_done = 0.06
+	strength_damage_done = 0.05
+	morale_damage_taken = -0.03
+	impact = { flatland = 0.1 hills = 0.05 }
+
+	country_potential = { tag = WSG }
+	gfx_tags = { medium_tag }
+}
+

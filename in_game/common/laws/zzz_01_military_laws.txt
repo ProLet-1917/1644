@@ -1,0 +1,21 @@
+﻿INJECT:medieval_levy_law = {
+	broken_weisuo = {
+		potential = {
+			OR = {
+				tag = MNG
+				tag = CSH
+				tag = WSG
+				tag = CXI
+			}
+		}
+		country_modifier = {
+			global_levy_size_modifier = -0.7
+			army_maintenance_cost = -0.5
+		}
+		estate_preferences = {
+			crown_estate
+			peasants_estate
+		}
+		years = 2
+	}
+}
