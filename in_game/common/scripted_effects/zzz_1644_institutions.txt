@@ -1,0 +1,104 @@
+﻿# 1644 开局思潮设置脚本效果
+# 使用方法：在 on_game_start 或其他事件中调用
+# 例如：c:MNG = { give_all_early_institutions = yes }
+# 注意：思潮进度达到100%后，国家会自动拥抱该思潮
+
+# 给国家所有省份设置封建主义思潮
+give_feudalism_to_country = {
+	every_owned_location = {
+		change_institution_progress = {
+			type = institution:feudalism
+			value = 100
+		}
+	}
+}
+
+# 给国家所有省份设置法治思潮
+give_legalism_to_country = {
+	every_owned_location = {
+		change_institution_progress = {
+			type = institution:legalism
+			value = 100
+		}
+	}
+}
+
+# 给国家所有省份设置任人唯贤思潮
+give_meritocracy_to_country = {
+	every_owned_location = {
+		change_institution_progress = {
+			type = institution:meritocracy
+			value = 100
+		}
+	}
+}
+
+# 给国家所有省份设置多个思潮
+give_all_early_institutions = {
+	every_owned_location = {
+		change_institution_progress = {
+			type = institution:feudalism
+			value = 100
+		}
+		change_institution_progress = {
+			type = institution:legalism
+			value = 100
+		}
+		change_institution_progress = {
+			type = institution:meritocracy
+			value = 100
+		}
+	}
+}
+
+give_renaissance_institutions = {
+	every_owned_location = {
+		change_institution_progress = {
+			type = institution:renaissance
+			value = 100
+		}
+		change_institution_progress = {
+			type = institution:banking
+			value = 100
+		}
+		change_institution_progress = {
+			type = institution:professional_armies
+			value = 100
+		}
+	}
+}
+
+give_discovery_institutions = {
+	every_owned_location = {
+		change_institution_progress = {
+			type = institution:new_world
+			value = 100
+		}
+		change_institution_progress = {
+			type = institution:printing_press
+			value = 100
+		}
+		change_institution_progress = {
+			type = institution:pike_and_shot
+			value = 100
+		}
+	}
+}
+
+give_reformation_institutions = {
+	every_owned_location = {
+		change_institution_progress = {
+			type = institution:confessionalism
+			value = 100
+		}
+		change_institution_progress = {
+			type = institution:global_trade
+			value = 100
+		}
+		change_institution_progress = {
+			type = institution:artillery_institution
+			value = 100
+		}
+	}
+}
+
