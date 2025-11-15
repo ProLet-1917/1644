@@ -1,0 +1,1166 @@
+﻿################################
+## Basic Buildings
+################################
+
+#REPLACE:cathedral_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = cathedral
+#	requires = city_building_advance
+
+#	ai_weight = { add = 3 }
+#}
+
+#REPLACE:medical_school_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = medical_school
+#}
+
+#REPLACE:construction_center_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = construction_center
+#	requires = basic_financial_instruments
+#}
+
+
+################################
+## Economy Buildings
+################################
+#REPLACE:mint_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = minting_office
+#}
+
+#REPLACE:counting_house_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = counting_house
+#	requires = standardized_coins
+#	ai_weight = { add = 100 }
+#}
+
+
+#REPLACE:merchants_quarters_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = merchants_quarters
+#	requires = basic_financial_instruments
+
+#	ai_weight = { add = 50 }
+#}
+
+
+#REPLACE:grand_marketplace_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = grand_marketplace
+#}
+
+
+
+#REPLACE:commerce_center_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = commerce_center
+#}
+
+
+
+#REPLACE:port_authority_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = port_authority
+#	requires = maritime_advance_age_4
+#}
+
+
+
+###############################
+## Production buildings
+###############################
+##Tier 1:
+
+#REPLACE:porcelain_kiln_advance = {
+#	age = age_1_traditions
+	
+	
+#	unlock_building = porcelain_guild
+	
+#	requires = talented_traders
+#}
+
+
+#REPLACE:lacquerware_guild_advance = {
+#	age = age_1_traditions
+	
+	
+#	unlock_building = lacquerware_guild
+	
+#	requires = ledgers_double_checking
+#}
+
+#REPLACE:scriptorium_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = scriptorium
+	
+#	requires = written_alphabet
+#}
+
+#REPLACE:paper_guild_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = paper_guild
+	
+#	requires = scriptorium_advance
+#}
+
+
+#REPLACE:gun_smith_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = gun_smith
+	
+#	requires = gunpowder_advance
+#}
+
+
+##not a building, but need building..
+#REPLACE:unlock_handgonners_advance = {
+#	age = age_1_traditions
+#	unlock_unit = a_handgonners
+	
+#	requires = gun_smith_advance
+#	ai_weight = { add = 20 }
+#}
+
+
+#REPLACE:cannon_maker_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = cannon_maker
+	
+#	requires = gun_smith_advance
+#	ai_weight = { add = 1.5 }
+#}
+
+#REPLACE:slave_center_advance = {
+#	age = age_1_traditions
+#	unlock_building = slave_center
+#	requires = gun_smith_advance
+#}
+
+
+
+##############################
+## Workshops
+## Mostly Reformation, but some Discovery
+##############################
+
+#REPLACE:weapon_workshop_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = weapon_workshop
+	
+#	requires = lumber_improvements_discovery
+#}
+
+#REPLACE:naval_supplies_workshop_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = naval_supplies_workshop
+	
+#	requires = lumber_improvements_discovery
+#}
+
+
+
+
+#REPLACE:paper_workshop_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = paper_workshop
+	
+#	requires = print_culture
+#}
+
+#REPLACE:printing_press_shop_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = printing_press_shop
+	
+#	requires = paper_workshop_advance
+#}
+
+
+#REPLACE:beer_workshop_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = beer_workshop
+	
+#	requires = bole_smelting
+#}
+
+#REPLACE:saltpeter_workshop_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = saltpeter_workshop
+	
+#	requires = slitting_mills
+#}
+
+#REPLACE:distillers_workshop_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = distillers_workshop
+	
+#	requires = pop_promotion_speed_age_4
+#}
+
+#REPLACE:tanning_workshop_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = tanning_workshop
+	
+#	requires = spy_construction_reformation
+#}
+
+#REPLACE:cloth_workshop_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = cloth_workshop
+	
+#	requires = tanning_workshop_advance
+#}
+
+#REPLACE:fine_cloth_workshop_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = fine_cloth_workshop
+	
+#	requires = cloth_workshop_advance
+#}
+
+#REPLACE:tools_workshop_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = tools_workshop
+	
+#	requires = bole_smelting
+#}
+
+#REPLACE:pottery_workshop_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = pottery_workshop
+	
+#	requires = slitting_mills
+#}
+
+#REPLACE:glass_workshop_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = glass_workshop
+	
+#	requires = pottery_workshop_advance
+#}
+
+#REPLACE:dyes_workshop_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = dyes_workshop
+	
+#	requires = global_trade_routes_advance
+#}
+
+#REPLACE:furniture_workshop_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = furniture_workshop
+	
+#	requires = merchant_power_from_maritime_reformation_advance
+#}
+
+#REPLACE:cannon_workshop_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = cannon_workshop
+	
+#	requires = flintlock_gun
+#}
+
+#REPLACE:guns_workshop_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = guns_workshop
+	
+#	requires = assault_ability_reformation
+#}
+
+
+
+##############################
+##Manufactories:
+## Absolutism!
+##############################
+
+
+
+#REPLACE:naval_supplies_manufactory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = naval_supplies_manufactory
+	
+#}
+
+#REPLACE:firearms_manufactory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = firearms_manufactory
+	
+#}
+
+
+
+#REPLACE:cloth_manufactory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = cloth_manufactory
+	
+#}
+
+#REPLACE:printing_manufactory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = printing_manufactory
+	
+#}
+
+
+#REPLACE:putrefaction_works_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = putrefaction_works
+	
+#}
+
+#REPLACE:fine_cloth_manufactory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = fine_cloth_manufactory
+	
+#	requires = cloth_manufactory_advance
+#}
+
+#REPLACE:perfumery_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = perfumery
+	
+#}
+
+#REPLACE:glassworks_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = glassworks
+	
+#}
+
+#REPLACE:dyesworks_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = dyesworks
+	
+#}
+
+#REPLACE:porcelain_manufactor_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = porcelain_manufactory
+	
+#}
+
+#REPLACE:tannery_manufactory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = tannery_manufactory
+	
+#}
+
+#REPLACE:pottery_manufactory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = pottery_manufactory
+	
+#}
+
+#REPLACE:furniture_manufactory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = furniture_manufactory
+	
+#}
+
+
+#REPLACE:distiller_manufactory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = distiller_manufactory
+	
+#}
+
+#REPLACE:brewery_manufactory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = brewery_manufactory
+	
+#}
+
+#REPLACE:winery_manufactory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = winery_manufactory
+	
+#}
+
+
+#REPLACE:lacquerware_manufactory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = lacquerware_manufactory
+	
+#	requires = pottery_manufactory_advance	
+#}
+
+
+#REPLACE:iron_foundry_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = iron_foundry
+	
+#}
+
+
+#REPLACE:weapon_manufactory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = weapon_manufactory
+	
+#	requires = iron_foundry_advance
+#}
+
+#REPLACE:cannon_foundry_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = cannon_foundry
+	
+#	requires = iron_foundry_advance
+#}
+
+#REPLACE:paper_manufactory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = paper_manufactory
+	
+#	requires = printing_manufactory_advance
+#}
+
+###############################
+##Mills
+## Revolutions!
+###############################
+ 
+#REPLACE:printing_mill_advance = {
+#	age = age_1_traditions
+#	unlock_building = printing_mill
+#}
+
+ 
+#REPLACE:paper_mill_advance = {
+#	age = age_1_traditions
+#	unlock_building = paper_mill
+#	requires = printing_mill_advance
+#}
+
+#REPLACE:putrefaction_mill_advance = {
+#	age = age_1_traditions
+#	unlock_building = putrefaction_mill
+#}
+
+#REPLACE:tannery_mill_advance = {
+#	age = age_1_traditions
+#	unlock_building = tannery_mill
+#}
+
+
+#REPLACE:naval_supplies_mill_advance = {
+#	age = age_1_traditions
+#	unlock_building = naval_supplies_mill
+#	requires = tannery_mill_advance
+#}
+
+
+#REPLACE:brewery_mill_advance = {
+#	age = age_1_traditions
+#	unlock_building = brewery_mill
+#}
+
+#REPLACE:distiller_mill_advance = {
+#	age = age_1_traditions
+#	unlock_building = distiller_mill
+#}
+
+#REPLACE:iron_mill_advance = {
+#	age = age_1_traditions
+#	unlock_building = iron_mill
+#}
+
+
+#REPLACE:textile_mill_advance = {
+#	age = age_1_traditions
+#	unlock_building = textile_mill
+#}
+
+#REPLACE:fine_cloth_mill_advance = {
+#	age = age_1_traditions
+#	unlock_building = fine_cloth_mill
+#	requires = textile_mill_advance
+#}
+
+#REPLACE:steel_mill_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = steel_mill
+	
+#}
+
+#REPLACE:pottery_mill_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = pottery_mill
+	
+#}
+
+#REPLACE:glass_mill_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = glass_mill
+	
+#	requires = pottery_mill_advance	
+#}
+
+#REPLACE:dyes_mill_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = dyes_mill
+#}
+
+
+#REPLACE:furniture_mill_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = furniture_mill
+	
+#	requires = pottery_mill_advance	
+#}
+
+
+#REPLACE:weapon_factory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = weapon_factory
+	
+#}
+
+
+#REPLACE:firearms_factory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = firearms_factory
+	
+#	requires = weapon_factory_advance
+#}
+
+#REPLACE:gun_factory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = cannons_factory
+	
+#	requires = weapon_factory_advance
+#}
+
+
+
+###############################
+## Soldier type buildings
+###############################
+#REPLACE:armory_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = armory
+	
+#	requires = drill_army_advance
+#	ai_weight = { add = 2000 }
+#}
+
+#REPLACE:training_fields_advance = {
+#	age = age_1_traditions
+#	requires = matchlock_gun
+	
+	
+#	unlock_building = training_fields
+#}
+
+#REPLACE:barracks_advance = {
+#	age = age_1_traditions
+#	requires = assault_ability_reformation
+	
+#	unlock_building = barracks
+#}
+
+#REPLACE:regimental_camp_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = regimental_camp
+#}
+
+
+#REPLACE:conscription_center_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = conscription_center
+#}
+
+
+
+###############################
+## Port Buildings
+###############################
+#REPLACE:dock_advance = {
+#	age = age_1_traditions
+	
+#	requires = merchants_and_trade
+	
+#	unlock_building = dock
+
+#	ai_weight = {
+#		if = {
+#			limit = {
+#				has_ports = yes
+#			}
+#			add = {
+#				value = 100
+#				multiply = num_of_ports
+#				divide = num_locations
+#			}
+#		}
+#	}
+	
+#	ai_preference_tags = {
+#		exploration
+#	}
+#}
+
+#REPLACE:protected_harbor_advance = {
+#	age = age_1_traditions
+	
+#	requires = dock_advance
+	
+#	ai_weight = {
+#		if = {
+#			limit = {
+#				has_ports = yes
+#			}
+#			add = {
+#				value = 100
+#				multiply = num_of_ports
+#				divide = num_locations
+#			}
+#		}
+#	}
+
+#	unlock_building = protected_harbor
+
+#}
+
+#REPLACE:dry_dock_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = dry_dock
+
+#	ai_weight = {
+#		if = {
+#			limit = {
+#				has_ports = yes
+#			}
+#			add = {
+#				value = 100
+#				multiply = num_of_ports
+#				divide = num_locations
+#			}
+#		}
+#	}
+	
+#	ai_preference_tags = {
+#		exploration
+#	}
+#}
+
+#REPLACE:shipyard_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = shipyard
+
+#	ai_weight = {
+#		if = {
+#			limit = {
+#				has_ports = yes
+#			}
+#			add = {
+#				value = 100
+#				multiply = num_of_ports
+#				divide = num_locations
+#			}
+#		}
+#	}
+	
+#	ai_preference_tags = {
+#		exploration
+#	}
+#}
+
+#REPLACE:grand_shipyard_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = grand_shipyard
+
+#	ai_weight = {
+#		if = {
+#			limit = {
+#				has_ports = yes
+#			}
+#			add = {
+#				value = 100
+#				multiply = num_of_ports
+#				divide = num_locations
+#			}
+#		}
+#	}
+	
+#	ai_preference_tags = {
+#		exploration
+#	}
+#}
+
+#REPLACE:naval_base_advance = {
+#	age = age_1_traditions
+	
+#	unlock_building = naval_base
+
+#	ai_weight = {
+#		if = {
+#			limit = {
+#				has_ports = yes
+#			}
+#			add = {
+#				value = 100
+#				multiply = num_of_ports
+#				divide = num_locations
+#			}
+#		}
+#	}
+	
+#	ai_preference_tags = {
+#		exploration
+#	}
+#}
+
+
+
+###############################
+## Coastal Fort Buildings
+###############################
+
+#REPLACE:coastal_fort_advance = {
+#	age = age_1_traditions
+	
+#	requires = supply_depot_advance_age_2_renaissance
+	
+#	ai_weight = {
+#		if = {
+#			limit = {
+#				has_ports = yes
+#			}
+#			add = {
+#				value = 50
+#				multiply = num_of_ports
+#				divide = num_locations
+#			}
+#		}
+#	}
+
+#	unlock_building = coastal_fort
+#}
+
+#REPLACE:naval_battery_advance = {
+#	age = age_1_traditions
+	
+#	ai_weight = {
+#		if = {
+#			limit = {
+#				has_ports = yes
+#			}
+#			add = {
+#				value = 50
+#				multiply = num_of_ports
+#				divide = num_locations
+#			}
+#		}
+#	}
+
+#	unlock_building = naval_battery
+#}
+
+
+
+###############################
+## Fort Buildings
+###############################
+#REPLACE:castle_advance = {
+#	age = age_1_traditions
+	
+#	requires = feudalism_advance
+	
+#	unlock_building = castle
+#	starting_technology_level = 3
+#}
+
+#REPLACE:bastion_advance = {
+#	age = age_1_traditions
+	
+#	requires = regiment_reinforcement_speed_reformation
+	
+#	unlock_building = bastion
+#}
+
+#REPLACE:star_fort_advance = {
+#	age = age_1_traditions
+
+#	unlock_building = star_fort
+#}
+
+#REPLACE:fortress_advance = {
+#	age = age_1_traditions
+#	unlock_building = fortress
+#}
+
+
+
+
+###############################
+## Cultural Buildings
+###############################
+#REPLACE:library_advance = {
+#	age = age_1_traditions
+	
+#	requires = scriptorium_advance
+	
+#	unlock_building = library
+#}
+
+#REPLACE:confucian_school_advance = {
+#	age = age_1_traditions
+	
+#	requires = scriptorium_advance
+	
+#	unlock_building = confucian_school
+#}
+
+#REPLACE:confucian_academy_advance = {
+#	age = age_1_traditions
+	
+#	requires = government_size_renaissance
+	
+	
+#	unlock_building = confucian_academy
+#}
+
+#REPLACE:university_advance = {
+#	age = age_1_traditions
+	
+#	requires = government_size_renaissance
+	
+#	unlock_building = university
+#	unlock_law = education_elites_law
+
+#	ai_weight = { add = 1 }
+#}
+
+#REPLACE:opera_house_advance = {
+#	age = age_1_traditions
+
+#	unlock_building = opera_house
+#}
+
+#REPLACE:theater_advance = {
+#	age = age_1_traditions
+#	requires = patron_of_art
+#	unlock_building = theater
+#}
+
+
+####################################
+## Capital Buildings
+####################################
+#REPLACE:royal_court_advance = {
+#	age = age_1_traditions
+	
+#	requires = castle_advance
+	
+#	unlock_building = royal_court
+#}
+
+#REPLACE:republican_assembly_advance = {
+#	age = age_1_traditions
+	
+#	requires = castle_advance
+	
+#	unlock_building = republican_assembly
+#}
+
+#REPLACE:order_headquarters_advance = {
+#	age = age_1_traditions
+	
+#	requires = castle_advance
+	
+#	unlock_building = order_headquarters
+#}
+
+
+#REPLACE:weapon_guild_advance = {
+#	age = age_1_traditions
+	
+#	requires = mining_law_advance
+#	unlock_building = weapon_guild
+#}
+
+#REPLACE:chancery_advance = {
+#	age = age_1_traditions
+	
+#	requires = codified_laws
+	
+	
+#	unlock_building = chancery
+#}
+
+#REPLACE:art_school_advance = {
+#	age = age_1_traditions
+
+#	requires = patron_of_art
+	
+#	unlock_building = art_school
+#}
+
+#REPLACE:admiralty_advance = {
+#	age = age_1_traditions
+	
+	
+#	unlock_building = admiralty
+#}
+
+#REPLACE:war_college_advance = {
+#	age = age_1_traditions
+	
+	
+#	unlock_building = war_college
+#}
+
+#REPLACE:tax_assessor_advance = {
+#	age = age_1_traditions
+	
+	
+#	unlock_building = tax_assessor
+#}
+
+
+#REPLACE:supreme_court_advance = {
+#	age = age_1_traditions
+	
+#	requires = gov_reform_reformation_a
+	
+#	unlock_building = supreme_court
+#}
+
+
+#REPLACE:arts_academy_advance = {
+#	age = age_1_traditions
+	
+#	requires = pop_promotion_speed_age_3
+	
+#	unlock_building = arts_academy
+#}
+
+
+####################################
+## Market Buildings
+####################################
+#REPLACE:entrepot_advance = {
+#	age = age_1_traditions
+	
+#	requires = trade_range_advance_age_2
+	
+#	unlock_building = entrepot
+
+#	ai_weight = { 
+#		if = {
+#			limit = {
+#				has_markets = yes
+#			}
+
+#			add = 250
+#		}
+#	}
+#}
+
+#REPLACE:trading_hub_advance = {
+#	age = age_1_traditions
+	
+#	requires = naval_ambitions
+	
+#	ai_weight = { 
+#		if = {
+#			limit = {
+#				has_markets = yes
+#			}
+
+#			add = 250
+#		}
+#	}
+
+#	unlock_building = trading_hub
+#}
+
+#REPLACE:customs_house_advance = {
+#	age = age_1_traditions
+	
+#	requires = development_of_maritime_law
+	
+#	unlock_building = customs_house
+#}
+
+#REPLACE:stock_exchange_advance = {
+#	age = age_1_traditions
+	
+	
+#	unlock_building = stock_exchange
+#}
+
+
+#REPLACE:clearing_house_advance = {
+#	age = age_1_traditions
+	
+	
+#	unlock_building = clearing_house
+#}
+
+
+####################################
+## Government Buildings
+####################################
+
+#REPLACE:lieutenancy_advance = {
+#	age = age_1_traditions
+
+	
+#	requires = feudalism_advance
+	
+#	unlock_building = lieutenancy
+#}
+
+#REPLACE:viceroyalty_advance = {
+#	age = age_1_traditions
+
+	
+#	requires = global_trade_advance
+	
+#	unlock_building = viceroyalty
+#}
+
+#REPLACE:house_of_parliament_advance = {
+#	age = age_1_traditions
+
+#	unlock_building = house_of_parliament
+#}
+
+## Unique Religious Buildings
+
+
+#REPLACE:fortress_church_advance = {
+#	age = age_1_traditions
+#	requires = castle_advance
+#	unlock_building = fortress_church
+#	allow_children = no
+#}LACE:customs_house_advance = {
+#	age = age_1_traditions
+	
+#	requires = development_of_maritime_law
+	
+#	unlock_building = customs_house
+#}
+
+#REPLACE:stock_exchange_advance = {
+#	age = age_1_traditions
+	
+	
+#	unlock_building = stock_exchange
+#}
+
+
+#REPLACE:clearing_house_advance = {
+#	age = age_1_traditions
+	
+	
+#	unlock_building = clearing_house
+#}
+
+
+####################################
+## Government Buildings
+####################################
+
+#REPLACE:lieutenancy_advance = {
+#	age = age_1_traditions
+
+	
+#	requires = feudalism_advance
+	
+#	unlock_building = lieutenancy
+#}
+
+#REPLACE:viceroyalty_advance = {
+#	age = age_1_traditions
+
+	
+#	requires = global_trade_advance
+	
+#	unlock_building = viceroyalty
+#}
+
+#REPLACE:house_of_parliament_advance = {
+#	age = age_1_traditions
+
+#	unlock_building = house_of_parliament
+#}
+
+## Unique Religious Buildings
+
+
+#REPLACE:fortress_church_advance = {
+#	age = age_1_traditions
+#	requires = castle_advance
+#	unlock_building = fortress_church
+#	allow_children = no
+#}

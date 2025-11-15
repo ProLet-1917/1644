@@ -1,0 +1,492 @@
+﻿########################
+### Infantry
+########################
+
+##REPLACE:unlock_footmen_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_footmen
+##	unlock_levy = levy_a_footmen
+##	unlock_policy = aristocratic_court_policy
+	
+##	requires = iron_working
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_footmen)"
+##	}
+##}
+
+##REPLACE:unlock_archers_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_archers
+
+	
+##	requires = unlock_footmen_advance	
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_archers)"
+##	}
+##}
+
+##REPLACE:unlock_feudal_levy_advance = {
+##	age = age_1_traditions
+##	unlock_levy = levy_a_feudal_levy
+	
+##	requires = feudalism_advance
+##}
+
+##REPLACE:unlock_men_at_arms_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_men_at_arms
+##	unlock_levy = levy_a_men_at_arms
+	
+##	requires = armory_advance
+	
+##	allow = {
+##		any_market_present_in_country = { 
+##			OR = {
+##				is_produced_in_market = goods:tools 
+##				is_traded_in_market = goods:tools 
+##			} 
+##		} 
+##	}
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_men_at_arms)"
+##	}
+##}
+
+
+##REPLACE:unlock_crossbowmen_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_crossbowmen
+	
+##	requires = armory_advance
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_crossbowmen)"
+##	}
+##}
+
+
+##REPLACE:unlock_reformed_crusader_knights_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_late_crusader_knights
+##	unlock_levy = levy_late_crusader_knights
+
+##	requires = regiment_reinforcement_speed_renaissance
+
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_late_crusader_knights)"
+##	}
+##}
+
+##REPLACE:unlock_peasant_levy_advance = {
+##	age = age_1_traditions
+##	unlock_levy = levy_a_peasant_levy
+	
+##	requires = medieval_military
+##}
+
+
+##REPLACE:unlock_halberdiers_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_halberdiers
+	
+##	requires = training_fields_advance
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_halberdiers)"
+##	}
+##}
+
+##REPLACE:unlock_early_arquebusiers_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_early_arquebusiers
+	
+##	requires = matchlock_gun
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_early_arquebusiers)"
+##	}
+##}
+
+##REPLACE:unlock_matchlock_levy = {
+##	age = age_1_traditions
+##	unlock_levy = levy_a_matchlock_levy
+	
+##	requires = unlock_early_arquebusiers_advance
+##}
+
+
+
+##REPLACE:unlock_arquebusiers_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_arquebusiers
+	
+##	requires = flintlock_gun
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_arquebusiers)"
+##	}
+##}
+
+##REPLACE:unlock_pikemen_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_pikemen
+	
+##	requires = barracks_advance
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_pikemen)"
+##	}
+##}
+
+
+##REPLACE:unlock_flintlock_levy = {
+##	age = age_1_traditions
+##	unlock_levy = levy_a_flintlock_levy
+	
+##	requires = unlock_arquebusiers_advance
+##}
+
+##REPLACE:unlock_hunters_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_hunters
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_hunters)"
+##	}
+	
+##}
+
+##REPLACE:unlock_musketeers_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_musketeers
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_musketeers)"
+##	}
+	
+##	requires = unlock_hunters_advance
+##}
+
+##REPLACE:militiamen_advance = {
+##	age = age_1_traditions
+##	unlock_levy = levy_a_militiamen
+	
+##	requires = unlock_musketeers_advance
+##}
+
+##REPLACE:unlock_sharpshooters_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_sharpshooters
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_sharpshooters)"
+##	}
+
+##}
+
+##REPLACE:unlock_fusiliers_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_fusiliers
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_fusiliers)"
+##	}
+
+##	requires = conscription_center_advance
+##}
+
+
+##REPLACE:conscription_advance = {
+##	age = age_1_traditions
+##	unlock_levy = levy_conscripts
+	
+##	requires = unlock_fusiliers_advance
+##}
+
+
+########################
+### Cavalry
+########################
+
+##REPLACE:unlock_horsemen_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_horsemen
+	
+##	requires = horse_riding_advance
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_horsemen)"
+##	}
+##}
+
+##REPLACE:unlock_armored_horsemen_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_armored_horsemen
+	
+##	allow = {
+##		any_market_present_in_country = { 
+##			OR = {
+##				is_produced_in_market = goods:tools 
+##				is_traded_in_market = goods:tools 
+##			}
+##		}
+##	}
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_armored_horsemen)"
+##	}
+
+##	requires = unlock_horsemen_advance
+	
+##}
+
+##REPLACE:unlock_cavalry_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_cavalrymen
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_cavalrymen)"
+##	}
+
+##	requires = correct_box_advance_renaissance
+##}
+
+##REPLACE:unlock_heavy_cavalry_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_heavy_cavalrymen
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_heavy_cavalrymen)"
+##	}
+
+##	requires = unlock_cavalry_advance
+##}
+
+
+##REPLACE:unlock_lancers_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_lancers
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_lancers)"
+##	}
+
+##	requires = training_fields_advance
+##}
+
+
+
+##REPLACE:unlock_light_lancers_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_light_lancers
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_light_lancers)"
+##	}
+
+##	requires = training_fields_advance
+##}
+
+
+##REPLACE:unlock_pistoleers_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_pistoleers
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_pistoleers)"
+##	}
+
+##	requires = flintlock_gun
+##}
+
+##REPLACE:unlock_heavy_lancers_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_heavy_lancers
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_heavy_lancers)"
+##	}
+
+##	requires = barracks_advance
+##}
+
+
+
+
+##REPLACE:unlock_hussars_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_hussars
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_hussars)"
+##	}
+
+##	requires = regimental_camp_advance
+##}
+
+##REPLACE:unlock_gallop_cavalry_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_gallop_cavalry
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_gallop_cavalry)"
+##	}
+
+##	requires = regimental_camp_advance
+##}
+
+##REPLACE:unlock_light_dragoons_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_light_dragoons
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_light_dragoons)"
+##	}
+
+##	requires = conscription_center_advance
+##}
+
+
+
+
+
+##REPLACE:unlock_cuirassiers_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_cuirassiers
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_cuirassiers)"
+##	}
+
+##	requires = unlock_light_dragoons_advance
+##}
+
+
+
+########################
+### Artillery
+########################
+##REPLACE:unlock_houfnice_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_houfnice
+	
+##	requires = cannon_maker_advance
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_houfnice)"
+##	}
+##}
+
+
+##REPLACE:unlock_falconet_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_falconet
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_falconet)"
+##	}
+
+##	requires = training_fields_advance
+##}
+
+##REPLACE:unlock_chambered_cannon_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_chambered_cannon
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_chambered_cannon)"
+##	}
+
+##	requires = assault_ability_reformation
+##}
+
+
+##REPLACE:unlock_royal_mortar_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_royal_mortar
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_royal_mortar)"
+##	}
+
+##	requires = regimental_camp_advance
+##}
+
+##REPLACE:unlock_flying_battery_advance = {
+##	age = age_1_traditions
+##	unlock_unit = a_flying_battery
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_flying_battery)"
+##	}
+
+##}
+
+
+
+########################
+### Auxiliary
+########################
+##REPLACE:unlock_supply_carts = {
+##	age = age_1_traditions
+##	unlock_unit = a_supply_carts
+	
+##	requires = supply_depot_advance_age_2_renaissance
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_supply_carts)"
+##	}
+##}
+
+
+
+
+##REPLACE:unlock_supply_convoy = {
+##	age = age_1_traditions
+##	unlock_unit = a_supply_convoy
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_supply_convoy)"
+##	}
+
+##	requires = training_fields_advance
+##}
+
+##REPLACE:unlock_baggage_train = {
+##	age = age_1_traditions
+##	unlock_unit = a_baggage_train
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_baggage_train)"
+##	}
+
+##	requires = recruitment_improvements_reformation
+##}
+
+
+##REPLACE:unlock_wagon_train = {
+##	age = age_1_traditions
+##	unlock_unit = a_wagon_train
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_wagon_train)"
+##	}
+
+##}
+
+##REPLACE:unlock_logistics_corps = {
+##	age = age_1_traditions
+##	unlock_unit = a_logistics_corps
+	
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(a_logistics_corps)"
+##	}
+	
+##}
+
+
+

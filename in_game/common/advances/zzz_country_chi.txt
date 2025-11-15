@@ -1,0 +1,226 @@
+﻿# 中国国家传统科技树 - 三条分支结构（政治、军事、外交）
+
+# ============================================
+# 第一层 - 共同源头
+# ============================================
+REPLACE:confucian_influences = {
+	age = age_1_traditions
+	depth = 0
+	country_cabinet_efficiency = 0.05
+	head_of_cabinet_promotion_cost_modifier = -0.33
+}
+
+# ============================================
+# 政治线（Administrative）
+# ============================================
+# 第二层 - 政治线起点
+REPLACE:lijia_system = {
+	age = age_1_traditions
+	global_distance_from_capital_cost_modifier = -0.05
+	requires = confucian_influences
+}
+
+# 第三层
+REPLACE:yulin_tuce = {
+	age = age_1_traditions
+	tax_income_efficiency = medium_tax_income_efficiency_bonus
+	global_monthly_food_modifier = 0.05
+	requires = lijia_system
+}
+
+# 第四层
+REPLACE:zhongshu_sheng = {
+	age = age_1_traditions
+	government_reform_slots = 1
+	requires = yulin_tuce
+}
+
+# 第五层
+REPLACE:grand_coordinators = {
+	age = age_1_traditions
+	government_size = 1
+	requires = zhongshu_sheng
+}
+
+# 第六层
+REPLACE:the_censorate = {
+	age = age_1_traditions
+	global_crown_estate_power = 0.1
+	requires = grand_coordinators
+}
+
+# 第七层
+REPLACE:reform_the_grand_secretariat = {
+	age = age_1_traditions
+	legislative_efficiency = 0.1
+	requires = the_censorate
+}
+
+# 第八层
+REPLACE:great_tax_reform = {
+	age = age_1_traditions
+	global_estate_max_tax = 0.1
+	requires = reform_the_grand_secretariat
+}
+
+# 第九层
+REPLACE:junji_chu = {
+	age = age_1_traditions
+	country_cabinet_efficiency = 0.1
+	requires = great_tax_reform
+}
+
+# 第十层 - 政治线终点
+REPLACE:salt_monopoly = {
+	age = age_1_traditions
+	global_salt_output_modifier = 0.2
+	requires = junji_chu
+}
+
+# ============================================
+# 军事线（Military）
+# ============================================
+# 第二层 - 军事线起点
+REPLACE:weisuo_system = {
+	age = age_1_traditions
+	global_manpower_modifier = 0.1
+	army_maintenance_cost = -0.05
+	requires = confucian_influences
+}
+
+# 第三层
+REPLACE:tu_bing = {
+	age = age_1_traditions
+	army_auxiliary_build_cost_modifier = -0.2
+	requires = weisuo_system
+}
+
+# 第四层
+REPLACE:grand_military_parades = {
+	age = age_1_traditions
+	monthly_army_tradition = 0.05
+	requires = tu_bing
+}
+
+# 第五层
+REPLACE:the_red_cannon = {
+	age = age_1_traditions
+	unlock_unit = a_red_cannon
+	requires = grand_military_parades
+}
+
+# 第六层
+REPLACE:nine_garrisons_of_the_great_wall = {
+	age = age_1_traditions
+	global_defensive = 0.20
+	requires = the_red_cannon
+}
+
+# 第七层
+REPLACE:green_standard_army = {
+	age = age_1_traditions
+	global_garrison_size_modifier = 0.2
+	army_infantry_reinforce_cost_modifier = -0.1
+	requires = nine_garrisons_of_the_great_wall
+}
+
+# 第八层 - 军事线终点
+REPLACE:ten_great_campaigns = {
+	age = age_1_traditions
+	global_separatism = -0.05
+	global_war_score_cost = -0.05
+	requires = green_standard_army
+}
+
+# ============================================
+# 外交线（Diplomatic）
+# ============================================
+# 第二层 - 外交线起点
+REPLACE:tributary_system = {
+	age = age_1_traditions
+	subject_loyalty = 10
+	requires = confucian_influences
+}
+
+# 第三层
+REPLACE:tusi_titles = {
+	age = age_1_traditions
+	pop_join_rebel_threshold = -0.03
+	requires = tributary_system
+}
+
+# 第四层
+REPLACE:monuments_to_greatness = {
+	age = age_1_traditions
+	diplomatic_reputation = 2
+	requires = tusi_titles
+}
+
+# 第五层 - 外交线终点
+REPLACE:successors_of_genghis_khan = {
+	age = age_1_traditions
+	monthly_legitimacy = 0.1
+	requires = monuments_to_greatness
+}
+
+# ============================================
+# 经济/文化线（Economic/Cultural）- 从政治线分支
+# ============================================
+# 从政治线的盐业垄断分支
+REPLACE:silver_standard = {
+	age = age_1_traditions
+	global_silver_output_modifier = 0.15
+	requires = salt_monopoly
+}
+
+# 从银本位分支
+REPLACE:extensive_canal_works = {
+	age = age_1_traditions
+	global_rural_build_buildings_cost = -0.025
+	global_monthly_prosperity = 0.001
+	requires = silver_standard
+}
+
+# 从大运河分支
+REPLACE:the_tea_trade = {
+	age = age_1_traditions
+	global_tea_output_modifier = 0.2
+	requires = extensive_canal_works
+}
+
+# 从茶叶贸易分支
+REPLACE:jingdezhen_porcelain = {
+	age = age_1_traditions
+	global_porcelain_output_modifier = 0.1
+	cultural_influence_modifier = 0.15
+	requires = the_tea_trade
+}
+
+# 从景德镇瓷器分支
+REPLACE:sanxitang = {
+	age = age_1_traditions
+	skill_of_new_artists = 0.05
+	requires = jingdezhen_porcelain
+}
+
+# 从三希堂分支
+REPLACE:baihua = {
+	age = age_1_traditions
+	global_max_literacy = 5
+	requires = sanxitang
+}
+
+# 从白话分支
+REPLACE:zaju = {
+	age = age_1_traditions
+	cultural_influence_modifier = 0.1
+	num_possible_artists = 1
+	requires = baihua
+}
+
+# 从杂剧分支 - 文化线终点
+REPLACE:woodblock_printing = {
+	age = age_1_traditions
+	monthly_prestige = 0.1
+	requires = zaju
+}

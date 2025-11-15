@@ -1,0 +1,85 @@
+﻿# 晚明时代 (1644) - Late Ming Age
+# 这个时代反映了1644年晚明王朝的政治危机、财政困难、军事危机和社会动荡
+
+REPLACE:age_1_traditions = {
+	year = 1		# 设置为1，使晚明时代在游戏开始时立即生效
+	price_stability = 0.05		# 价格稳定性较低，反映经济动荡
+	max_price = 6				# 允许更高的价格波动，反映通货膨胀和财政危机
+	
+	# 晚明时代特色修正
+	modifier = {
+		# 政治危机：缺乏控制对战争分数的影响更大（反映中央权威衰落）
+		lack_of_control_impact_on_warscore = -0.5
+		
+		# 财政困难：维护成本增加
+		levy_maintenance_modifier = 0.5		# 军队维护成本增加，反映财政困难
+		merchant_maintenance_cost = 0.25	# 商人维护成本增加
+		
+		# 军事危机：军队效率下降，但规模可能增大（反映军队腐败但数量庞大）
+		expected_army_size_modifier = 2.0	# 军队规模增大（但质量下降）
+		levy_combat_efficiency = -0.3		# 战斗效率下降，反映军队腐败
+		
+		# 社会动荡：整合速度下降，反映社会不稳定
+		global_integration_speed_modifier = -0.25
+		
+		# 政治不稳定：撤销特权成本增加，反映政治僵局
+		revoke_privilege_cost_modifier = 0.5
+		
+		# 文化传统：文化传统增长放缓，但仍有一定基础
+		cultural_tradition_modifier = -0.1
+		
+		# 外交能力：外交能力下降，反映国际地位衰落
+		diplomatic_capacity_modifier = -0.15
+		
+		# 海军：海军规模大幅下降，反映海防衰落
+		global_navy_levy_size_modifier = -1.5
+		
+		# 对抗性：宗教和文化对抗性增强，反映社会分裂
+		antagonism_religion_influence = 0.15
+		antagonism_culture_influence = 0.2
+		antagonism_government_type_influence = 0.15
+		
+		# 战争分数成本：战争分数成本增加
+		global_war_score_cost = 0.1
+		
+		# 附庸忠诚度：附庸忠诚度下降，反映中央控制力减弱
+		subject_loyalty = -15
+	}
+	
+	# 战争分数：从战斗获得的战争分数减少，反映战争效率下降（必须在modifier块外）
+	war_score_from_battles = -0.3
+	
+	# 佣兵：佣兵可用性降低（反映财政困难）
+	mercenaries = -0.3
+	
+	# 效率：整体效率较低，反映系统性问题
+	efficiency = 0.3
+	
+	# 胜利卡片：使用第4个胜利卡片（与绝对主义时代相同）
+	victory_card = 4
+	
+	# 允许霸权：允许出现霸权国家（反映权力真空）
+	hegemons_allowed = yes
+	
+	# AI特权设置：反映政治危机，各阶层特权设置较为混乱
+	max_ai_privilege_per_estate = {
+		nobles_estate = 6			# 贵族特权较多，但不如之前稳定
+		clergy_estate = 6			# 教士特权
+		burghers_estate = 7			# 市民特权（商业阶层仍有一定影响力）
+		peasants_estate = 4			# 农民特权（农民起义压力）
+		dhimmi_estate = 5
+		tribes_estate = 4
+		cossacks_estate = 4
+	}
+	
+	min_ai_privilege_per_estate = {
+		nobles_estate = 3			# 最低特权要求降低，反映政治不稳定
+		clergy_estate = 3
+		burghers_estate = 5
+		peasants_estate = 2			# 农民最低特权增加，反映农民起义压力
+		dhimmi_estate = 2
+		tribes_estate = 1
+		cossacks_estate = 1
+	}
+}
+

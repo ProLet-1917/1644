@@ -1,0 +1,2192 @@
+﻿### starting_technology_level is only relevant in age of traditions, where advances with higher value than the countries value starts as unresearched
+
+###Written Alphabet
+##REPLACE:written_alphabet = {
+##	age = age_1_traditions
+##	icon = abacus_advance
+##	depth = 0
+##	research_cost = 2.0
+	
+	
+##	global_max_literacy = 5
+##	global_monthly_literacy = 0.01
+	
+##	starting_technology_level = 2
+	
+##}
+
+##REPLACE:cultural_traditions_law_advance = {
+##	age = age_1_traditions
+##	requires = written_alphabet
+##	unlock_law = cultural_traditions_law
+##	starting_technology_level = 2
+##}
+
+##REPLACE:cultural_acceptance_advance = {
+##	age = age_1_traditions
+##	icon = cultural_acceptance_advance
+##	cultures_capacity = 1
+##	starting_technology_level = 3
+##	requires = cultural_traditions_law_advance
+##}
+
+##REPLACE:mapmaking = {
+##	age = age_1_traditions
+##	icon = maritime_advance_age_4
+##	requires = written_alphabet
+	
+##	research_cost = 1.0
+##	may_explore = yes
+##	unlock_law = immigration_law
+##}
+
+##REPLACE:colonies = {
+##	age = age_1_traditions
+##	icon = colonies
+##	requires = mapmaking
+	
+##	research_cost = 1.0
+##	can_colonize = yes
+##}
+
+##REPLACE:codified_laws = {
+##	age = age_1_traditions
+##	icon = scholasticism
+	
+##	requires = written_alphabet
+	
+##	research_cost = 2.0
+##	has_codified_laws = yes
+##	allow_council_parliament = yes
+	
+##	starting_technology_level = 2
+##}
+
+##REPLACE:distribution_of_power_advance = {
+##	age = age_1_traditions
+##	unlock_law = distribution_of_power_law
+
+##	requires = codified_laws
+##}
+
+##REPLACE:subjects_advance = {
+##	age = age_1_traditions
+##	icon = diplomatic_influence
+##	research_cost = 2.5
+	
+##	allow_subjects = yes
+##	unlock_subject_type = vassal
+	
+##	requires = codified_laws
+##}
+
+##REPLACE:taxation_advance = {
+##	age = age_1_traditions
+##	icon = genoese_banking_traditions
+##	research_cost = 2.5
+##	enable_taxation = yes
+##	has_stability_investment = yes
+	
+	
+##	requires = codified_laws
+##}
+
+##REPLACE:state_administration_advance = {
+##	age = age_1_traditions
+##	research_cost = 2.5
+##	unlock_law = administrative_system
+	
+##	requires = taxation_advance
+
+##}
+
+#######################################
+### Legalism
+#######################################
+##REPLACE:legalism_advance = {
+##	age = age_1_traditions
+##	icon = legalism_advance
+		
+##	stability_cost = -0.1
+	
+##	requires = codified_laws
+	
+##}
+
+
+##REPLACE:medieval_administration = {
+##	age = age_1_traditions
+##	icon = scholasticism
+
+##	requires = legalism_advance
+
+##	government_reform_slots = 1
+##}
+
+##REPLACE:pest_house_advance = {
+##	age = age_1_traditions
+##	requires = medieval_administration
+##	unlock_building = pest_house
+##}
+
+##REPLACE:banking_country_traditions = {
+##	age = age_1_traditions
+##	icon = banking_advance
+	
+	
+##	unlock_country_interaction = take_over_loan
+##	minting_income_factor = 0.10
+##	total_loan_capacity_modifier = 0.5 
+		
+##	requires = medieval_administration
+	
+##}
+
+##REPLACE:hospital_advance = {
+##	age = age_1_traditions
+##	requires = pest_house_advance
+##	unlock_building = hospital
+##}
+
+###Agriculture
+##REPLACE:agriculture_advance = {
+##	age = age_1_traditions
+##	research_cost = 2.0
+##	can_extract_wheat = yes
+##	can_extract_maize = yes
+##	can_extract_potato = yes
+##	can_extract_rice = yes
+##	can_extract_millet = yes
+##	can_extract_legumes = yes
+
+##	depth = 0
+	
+##	starting_technology_level = 1
+##}
+
+##REPLACE:windmills_advance = {
+##	age = age_1_traditions
+##	unlock_building = windmill
+##	requires = agriculture_advance
+##}
+
+##REPLACE:alchemy_advance = {
+##	age = age_1_traditions
+##	icon = alchemy_advance
+##	requires = windmills_advance
+
+##	global_life_expectancy = 3
+##	global_disease_resistance = 0.05
+	
+##	starting_technology_level = 3
+##}
+
+##REPLACE:apothecary_advance = {
+##	age = age_1_traditions
+##	requires = alchemy_advance
+	
+##	unlock_building = apothecary
+##}
+
+##REPLACE:city_building_advance = {
+##	age = age_1_traditions
+##	icon = city_building_advance
+##	research_cost = 2.0
+##	can_build_cities = yes
+
+##	requires = agriculture_advance
+##}
+
+
+
+##REPLACE:ranching = {
+##	age = age_1_traditions
+##	icon = finest_of_horses
+##	starting_technology_level = 1
+##	requires = windmills_advance
+	
+##	allow = { 
+##		OR = {
+##						capital ?= { continent = continent:europe }
+##			capital ?= { continent = continent:asia }
+##			capital ?= { sub_continent = sub_continent:north_africa }
+##			capital ?= { sub_continent = sub_continent:west_africa }
+			
+##			capital ?= {
+##				market ?= { 
+##					OR = {
+##						is_produced_in_market = goods:horses 
+##						is_traded_in_market = goods:horses 
+##					}
+##				} 
+##			}
+##		}
+##	}
+##	can_extract_horses = yes
+##}
+
+##REPLACE:horse_riding_advance = {
+##	age = age_1_traditions
+##	research_cost = 2.0
+##	requires = ranching
+
+##	unlock_levy = levy_noble_cavalry
+##	unlock_levy = levy_tribal_cavalry
+
+	
+##	starting_technology_level = 1
+##}
+
+#######################################
+### Feudalism
+#######################################
+
+##REPLACE:feudalism_advance = {
+##	age = age_1_traditions
+##	icon = feudalism_advance
+
+##	unlock_subject_type = fiefdom
+##	unlock_government_reform = feudal_nobility
+##	unlock_government_reform = margraviate
+##	requires = horse_riding_advance
+	
+##	global_nobles_max_literacy = 20
+##	allow_estate_parliament = yes
+##	military_tactics = 1.0
+	
+##}
+
+##REPLACE:trade_caravans = {
+##	age = age_1_traditions
+##	icon = trade_caravans
+##	research_cost = 2.0
+
+##	requires = horse_riding_advance
+	
+##	trade_land_movement_cost_modifier = -0.33
+
+##	starting_technology_level = 1
+##}
+
+###Mining
+##REPLACE:mining_advance = {
+##	age = age_1_traditions
+##	icon = efficient_mining
+
+##	starting_technology_level = 1
+##	depth = 0
+##	research_cost = 2.0
+##	can_extract_stone = yes
+##	can_extract_marble = yes
+##}
+
+##REPLACE:metallurgy = {
+##	age = age_1_traditions
+	
+##	requires = mining_advance
+##	research_cost = 2.0
+	
+##	unlock_building = tools_guild
+
+##}
+
+##REPLACE:mining_law_advance = {
+##	age = age_1_traditions
+##	icon = laws
+##	requires = mining_advance
+##	starting_technology_level = 1
+
+##	unlock_law = mining_law
+##}
+
+##REPLACE:bronze_working = {
+##	age = age_1_traditions
+##	icon = serbian_mining
+##	requires = metallurgy
+##	research_cost = 2.0
+	
+##	can_extract_copper = yes
+##	can_extract_tin = yes
+##	can_extract_lead = yes
+
+##}
+
+##REPLACE:iron_working = {
+##	icon = efficient_mining
+##	age = age_1_traditions
+##	requires = metallurgy
+##	research_cost = 2.0
+##	starting_technology_level = 1
+	
+##	can_extract_coal = yes
+##	can_extract_iron = yes
+##	unlock_building = bog_iron_smelter
+##}
+
+##REPLACE:local_smelters_advance = {
+##	age = age_1_traditions
+##	requires = iron_working
+##	unlock_building = local_smelters
+##}
+
+##REPLACE:advanced_mining = {
+##	age = age_1_traditions
+##	icon = serbian_mining
+##	requires = iron_working
+##	research_cost = 2.0
+	
+##	can_extract_saltpeter = yes
+##	can_extract_alum = yes
+
+##}
+
+##REPLACE:fine_metals_mining = {
+##	age = age_1_traditions
+##	requires = bronze_working
+##	research_cost = 2.0
+	
+##	can_extract_goods_gold = yes
+##	can_extract_silver = yes
+##	can_extract_mercury = yes
+##}
+
+##REPLACE:faster_levy_recruitment = {
+##	age = age_1_traditions
+##	icon = offensive_army
+##	requires = iron_working
+
+##	global_levy_recruitment_speed_modifier = 0.2
+##}
+
+###Shipbuilding
+##REPLACE:ship_building_advance = {
+##	age = age_1_traditions
+##	icon = ship_building_advance
+##	research_cost = 2.0
+	
+##	ship_build_speed = 0.1
+##	depth = 0
+	
+##	starting_technology_level = 2
+##}
+
+##REPLACE:trade_advance_age_of_trad = {
+##	age = age_1_traditions
+##	icon = merchant_power_from_maritime_reformation_advance
+	
+##	requires = ship_building_advance
+	
+##	trade_efficiency = small_trade_efficiency_bonus
+	
+##	starting_technology_level = 3
+##}
+
+
+
+##REPLACE:more_merchants_age_of_trad = {
+##	age = age_1_traditions
+##	icon = merchants_and_trade
+	
+##	requires = trade_advance_age_of_trad
+	
+##	global_merchant_capacity_modifier = 0.05
+	
+##	starting_technology_level = 3
+##}
+##REPLACE:slave_raid_advance = {
+##	age = age_1_traditions
+##	icon = slavery_before_death
+
+##	allow_privateers_slave_raid = yes
+##	can_hire_privateers = yes
+	
+##	requires = trade_advance_age_of_trad
+##}
+
+###Organized Religion
+##REPLACE:organized_religion = {
+##	age = age_1_traditions
+	
+##	global_clergy_city_desired_pop = 0.05
+##	global_clergy_max_literacy = 5
+
+##	depth = 0
+##	starting_technology_level = 4
+	
+##}
+##REPLACE:scholasticism = {
+##	age = age_1_traditions
+##	icon = scholasticism
+##	requires = organized_religion
+	
+##	global_institution_growth_modifier = 0.20
+
+##	ai_weight = { add = 2 }
+##}
+
+##REPLACE:guilds = {
+##	age = age_1_traditions
+##	icon = guilds
+##	requires = organized_religion
+
+##	global_burghers_city_desired_pop = 0.1
+##	global_burghers_max_literacy = 5
+##}
+
+##REPLACE:peasant_connections_advance = {
+##	age = age_1_traditions
+##	icon = road_building
+
+##	requires = guilds
+
+##	food_purchase_cost = -0.1
+##}
+
+##REPLACE:construction_speed_traditions = {
+##	age = age_1_traditions
+##	icon = legalism_advance
+
+##	requires = peasant_connections_advance
+##	global_construction_speed = 0.05
+##}
+
+##REPLACE:diplomatic_capacity_traditions = {
+##	age = age_1_traditions
+##	icon = diplomatic_influence
+
+##	requires = guilds
+##	diplomatic_capacity_modifier = 0.2
+##}
+
+##REPLACE:rural_rgo_traditions = {
+##	age = age_1_traditions
+##	icon = laws
+
+##	requires = peasant_connections_advance
+##	global_max_rgo_size_modifier_in_rural = 0.1
+##}
+
+
+
+#######################################
+### Meritocracy
+#######################################
+
+##REPLACE:meritocracy_advance = {
+##	age = age_1_traditions
+##	icon = meritocracy
+		
+##	country_cabinet_efficiency = 0.05
+	
+##	depth = 0
+
+
+##}
+
+##REPLACE:educated_bureaucrats = {
+##	age = age_1_traditions
+##	icon = scholasticism
+##	requires = meritocracy_advance
+
+##	global_monthly_literacy = 0.01
+##}
+
+##REPLACE:efficient_bureaucracy = {
+##	age = age_1_traditions
+##	icon = scholasticism
+##	requires = educated_bureaucrats
+
+##	legislative_efficiency = 0.05
+##}
+
+##REPLACE:right_to_rule = {
+##	age = age_1_traditions
+##	icon = renaissance_advance
+##	requires = efficient_bureaucracy
+
+##	num_possible_artists = 1
+##}
+
+##REPLACE:smooth_administration = {
+##	age = age_1_traditions
+##	icon = smooth_administration
+##	requires = right_to_rule
+
+##	stability_cost = -0.05
+##}
+
+##REPLACE:efficient_logistics = {
+##	age = age_1_traditions
+##	icon = road_building
+##	requires = efficient_bureaucracy
+
+##	build_gravel_road_cost_modifier = -0.05
+##}
+
+##REPLACE:province_governors = {
+##	age = age_1_traditions
+##	icon = glorious_arms
+##	requires = efficient_logistics
+
+##	global_integration_speed_modifier = 0.02
+##}
+
+##REPLACE:appointed_chain_of_command = {
+##	age = age_1_traditions
+##	icon = glorious_arms
+##	requires = efficient_logistics
+	
+##	levy_combat_efficiency_modifier = 0.1
+##}
+
+##REPLACE:temporary_appointments = {
+##	age = age_1_traditions
+##	icon = genoese_banking_traditions
+##	requires = efficient_bureaucracy
+	
+##	set_cabinet_member_cost_modifier = -0.1
+##	replace_cabinet_member_cost_modifier = -0.1
+##}
+
+##REPLACE:non_inheritable_offices = {
+##	age = age_1_traditions
+##	icon = improve_relation_impact_renaissance
+##	requires = temporary_appointments
+
+##	estate_power_from_cabinet = -0.1
+##}
+
+##REPLACE:abacus_advance = {
+##	age = age_1_traditions
+##	icon = abacus_advance
+##	requires = meritocracy_advance
+
+##	tax_income_efficiency = small_tax_income_efficiency_bonus
+##}
+
+##REPLACE:power_projection_advance_1 = {
+##	age = age_1_traditions
+##	icon = crown_power_advance_renaissance
+##	requires = abacus_advance
+##	power_projection = 10
+##}
+
+
+##REPLACE:ledgers_double_checking = {
+##	age = age_1_traditions
+##	icon = court_accounting
+##	requires = abacus_advance
+
+##	estate_enrichment = -0.05
+##}
+
+##REPLACE:talented_traders = {
+##	age = age_1_traditions
+##	icon = merchants_and_trade
+##	requires = abacus_advance
+
+##	trade_efficiency = small_trade_efficiency_bonus
+##}
+
+##REPLACE:government_sanctioned_celebrations = {
+##	age = age_1_traditions
+##	icon = grand_banquets
+##	requires = educated_bureaucrats
+
+##	cultural_tradition_modifier = 0.1
+##}
+
+######################################
+### Renaissance
+#######################################
+##REPLACE:renaissance_advance = {
+##	age = age_1_traditions
+##	icon = renaissance_advance
+	
+##	cultural_influence = 0.05
+
+##	depth = 1
+	
+##}
+
+##REPLACE:patron_of_art = {
+##	age = age_1_traditions
+
+##	requires = renaissance_advance
+
+##	has_cultural_maintenance = yes
+##	num_possible_artists = 1
+##}
+
+##REPLACE:renaissance_sculptures = {
+##	icon = renaissance_advance
+##	age = age_1_traditions
+
+##	requires = patron_of_art
+
+##	global_stone_output_modifier = 0.1
+##}
+
+##REPLACE:renaissance_thought = {
+##	age = age_1_traditions
+	
+##	government_reform_slots = 1
+##	requires = renaissance_advance
+##}
+
+##REPLACE:government_size_renaissance = {
+##	age = age_1_traditions
+	
+##	government_size = 1
+	
+##	requires = renaissance_thought
+##	ai_weight = { add = 2 }
+##}
+
+##REPLACE:chancery_records = {
+##	age = age_1_traditions
+##	icon = smooth_administration
+##	chancery_cap_level = 1
+##	requires = government_size_renaissance
+##	allow_children = no
+##}
+
+##REPLACE:crown_power_advance_renaissance = {
+##	age = age_1_traditions
+##	icon = crown_power_advance_renaissance
+
+##	global_crown_estate_power = 0.10
+##	ai_weight = { add = 2 }
+##	requires = government_size_renaissance
+##}
+
+##REPLACE:renaissance_court = {
+##	age = age_1_traditions
+##	icon = scholasticism
+
+##	cultural_influence_modifier = 0.10
+##	cultural_tradition_modifier = 0.10
+
+##	requires = crown_power_advance_renaissance
+##}
+
+##REPLACE:power_projection_advance_2 = {
+##	age = age_1_traditions
+
+##	requires = renaissance_court
+
+##	power_projection = 5
+##}
+
+
+##REPLACE:anatomy_advance = {
+##	age = age_1_traditions
+##	global_life_expectancy = 3
+##	global_disease_resistance = 0.05
+
+##	requires = power_projection_advance_2
+##}
+
+##REPLACE:vibrant_court_advance = {
+##	age = age_1_traditions
+##	icon = cultural_acceptance_advance
+##	cultures_capacity = 1
+##	requires = renaissance_court
+##	ai_weight = { add = 2 }
+##}
+
+
+
+#######################################
+### Banking
+#######################################
+
+
+##REPLACE:banking_advance = {
+##	age = age_1_traditions
+##	icon = banking_advance
+		
+##	bank_interest = -0.02
+	
+##	total_loan_capacity_modifier = 0.5
+
+##	depth = 1
+
+##}
+
+##REPLACE:merchants_and_trade = {
+##	age = age_1_traditions
+##	icon = global_trade_routes_advance
+	
+##	requires = banking_advance
+	
+##	naval_range = 250
+##	trade_range = 250
+##	colonial_range = 250
+	
+##	ai_preference_tags = {
+##		exploration
+##	}
+##}
+
+##REPLACE:standardized_coins = {
+##	age = age_1_traditions
+##	icon = standardized_coins
+	
+##	minting_inflation_threshold = 0.01
+	
+##	ai_weight = { add = 1 }
+	
+##	requires = banking_advance
+##}
+
+##REPLACE:pop_promotion_speed_age_2 = {
+##	age = age_1_traditions
+##	icon = improved_foraging
+
+##	requires = standardized_coins
+	
+##	global_pop_promotion_speed_modifier = 0.1
+##}
+
+##REPLACE:trade_range_advance_age_2 = {
+##	age = age_1_traditions
+##	icon = zmw_merchant_taxes
+
+##	requires = standardized_coins
+	
+##	trade_range	= 250
+##}
+
+##REPLACE:rudimentary_coastal_ship_repair = {
+##	age = age_1_traditions
+##	icon = rudimentary_coastal_ship_repair
+
+##	requires = merchants_and_trade
+
+##	ship_repair_at_sea = 0.05
+##	ship_repair_at_sea_to_max_strength = 0.3
+##}
+
+##REPLACE:maritime_advance_age_2 = {
+##	age = age_1_traditions
+##	icon = maritime_advance_age_2
+	
+##	requires = trade_range_advance_age_2
+	
+##	global_maritime_presence_modifier = 0.1
+##}
+
+##REPLACE:diplomatic_range_age_1 = {
+##	age = age_1_traditions
+##	icon = diplomatic_range_age_1
+	
+##	requires = merchants_and_trade
+	
+##	diplomatic_range_modifier = 0.33
+##}
+
+##REPLACE:spy_construction_renaissance = {
+##	age = age_1_traditions
+
+##	requires = pop_promotion_speed_age_2
+
+##	spy_network_construction = 0.1
+##}
+
+##REPLACE:rebellion_support = {
+##	icon = zakah
+##	age = age_1_traditions
+##	requires = spy_construction_renaissance
+	
+##	unlock_diplomacy = { supportrebels }
+##}
+
+##REPLACE:route_to_the_indies_advance = {
+##	age = age_1_traditions
+	
+##	requires = merchants_and_trade
+
+##	exploration_preparation_time_modifier = -0.1
+
+##}
+
+##REPLACE:pound_lock_canals_advance = {
+##	age = age_1_traditions
+	
+##	requires = maritime_advance_age_2
+
+##	starting_technology_level = 3
+##	unlock_building = pound_lock_canal_infrastructure
+##}
+
+#################################
+### Professional Armies
+#################################
+##REPLACE:professional_armies_advance = {
+##	age = age_1_traditions
+##	icon = professional_armies_advance
+			
+##	army_maintenance_cost = -0.10
+
+##	depth = 1
+
+##}
+
+##REPLACE:gunpowder_advance = {
+##	age = age_1_traditions
+##	icon = gunpowder_advance
+			
+##	military_tactics = 0.25
+		
+##	requires = professional_armies_advance
+##}
+
+##REPLACE:recruitment_improvements_renaissance = {
+##	age = age_1_traditions
+##	icon = recruitment_improvements_renaissance
+
+##	requires = professional_armies_advance	
+
+##	regiment_recruit_speed = 0.2
+##}
+
+##REPLACE:drill_army_advance = {
+##	age = age_1_traditions
+##	icon = drill_army_advance
+	
+##	unlock_ability = drill_army
+	
+##	requires = recruitment_improvements_renaissance
+##}
+
+##REPLACE:regiment_reinforcement_speed_renaissance = {
+##	age = age_1_traditions
+##	icon = regiment_reinforcement_speed_renaissance
+
+##	requires = recruitment_improvements_renaissance
+
+##	regiment_reinforcement_speed = 0.1
+##}
+
+
+##REPLACE:supply_depot_advance_age_2_renaissance = {
+##	age = age_1_traditions
+			
+##	supply_depot_capacity = 25
+		
+##	requires = regiment_reinforcement_speed_renaissance
+##}
+
+##REPLACE:correct_box_advance_renaissance = {
+##	age = age_1_traditions
+			
+##	correct_box_chance = 0.1
+		
+##	requires = gunpowder_advance
+##}
+
+#############################
+### The always allow tree
+################################
+##REPLACE:renaissance_development = {
+##	age = age_1_traditions
+##	icon = offensive_army
+	
+##	embrace_institution_cost_modifier = -0.10
+##	revoke_privilege_cost_modifier = -0.05
+
+##	depth = 1
+##}
+
+
+##REPLACE:improve_relation_impact_renaissance = {
+##	age = age_1_traditions
+##	icon = court_accounting
+
+##	requires = renaissance_development
+	
+##	improve_relation_impact = 0.10
+
+##	ai_weight = {
+##		if = {
+##			limit = {
+##				root = {
+##					subjects_relative_power > 0.25
+##				}
+##			}
+##			add = 1
+##		}
+##	}
+##}
+
+##REPLACE:late_feudal_relations = {
+##	age = age_1_traditions
+##	icon = late_feudal_relations
+
+##	requires = improve_relation_impact_renaissance
+	
+##	subject_loyalty = 10
+
+##	ai_weight = {
+##		if = {
+##			limit = {
+##				root = {
+##					subjects_relative_power > 0.25
+##				}
+##			}
+##			add = 1
+##		}
+##	}
+##}
+
+##REPLACE:medieval_military = {
+##	age = age_1_traditions
+##	land_morale = 0.25
+	
+##	requires = late_feudal_relations
+##}
+
+##REPLACE:naval_morale_advance_1 = {
+##	age = age_1_traditions
+	
+##	naval_morale = 0.25
+
+##	requires = late_feudal_relations
+##}
+	
+	
+##REPLACE:renaissance_subject_opinions_advance = {	
+##	age = age_1_traditions
+
+##	requires = late_feudal_relations
+
+##	subject_opinions = 10
+
+##	ai_weight = {
+##		if = {
+##			limit = {
+##				root = {
+##					subjects_relative_power > 0.25
+##				}
+##			}
+##			add = 1
+##		}
+##	}
+##}
+
+
+
+
+##REPLACE:grant_privilege_cost_modifier_renaissance_advance = {
+##	age = age_1_traditions
+##	requires = renaissance_development
+
+##	grant_privilege_cost_modifier = -0.1
+##}
+
+##REPLACE:rgo_size_advance_renaissance = {
+##	age = age_1_traditions
+
+##	requires = grant_privilege_cost_modifier_renaissance_advance
+	
+##	global_max_rgo_size_modifier = 0.10
+##}
+
+##REPLACE:food_advance_renaissance = {
+##	age = age_1_traditions
+##	icon = expanded_supply_trains
+
+##	requires = rgo_size_advance_renaissance
+	
+##	global_monthly_food_modifier = 0.10
+##}
+
+##REPLACE:war_no_cb_cost_modifier_renaissance_advance = {
+##	age = age_1_traditions
+##	icon = expansionism
+##	requires = grant_privilege_cost_modifier_renaissance_advance
+
+##	war_no_cb_cost_modifier = -0.1
+##}
+
+
+
+##REPLACE:global_nobles_max_literacy_advance = {
+##	age = age_1_traditions
+##	requires = renaissance_subject_opinions_advance
+
+##	global_nobles_max_literacy = 10
+##}
+
+##REPLACE:global_burghers_max_literacy_advance = {
+##	age = age_1_traditions
+##	requires = food_advance_renaissance
+
+##	global_burghers_max_literacy = 10
+##}
+
+
+##REPLACE:global_clergy_max_literacy_advance = {
+##	age = age_1_traditions
+##	requires = food_advance_renaissance
+
+##	global_clergy_max_literacy = 10
+##}
+
+
+##REPLACE:land_morale_recovery_renaissance_advance = {
+##	icon = offensive_army
+##	age = age_1_traditions
+	
+##	land_morale_recovery = 0.01
+	
+##	requires = medieval_military
+##}
+
+
+##REPLACE:merchant_power_from_maritime_renaissance_advance = {
+##	age = age_1_traditions
+##	icon = global_trade_routes_advance
+	
+##	merchant_power_from_maritime = 0.025
+	
+##	requires = global_burghers_max_literacy_advance
+##}
+
+
+
+##REPLACE:renaissance_urbanisation = {
+##	age = age_1_traditions
+##	requires = food_advance_renaissance
+
+
+##	global_max_rgo_size_modifier_in_non_rural = 0.1
+##}
+
+
+##REPLACE:renaissance_city_rights = {
+##	icon = religious_toleration
+##	age = age_1_traditions
+##	requires = renaissance_urbanisation
+	
+##	city_upgrade_cost_modifier = -0.1
+##	town_upgrade_cost_modifier = -0.1
+##}
+
+
+##REPLACE:blockade_tactics = {
+##	age = age_1_traditions
+##	requires = naval_morale_advance_1
+	
+##	blockade_efficiency = 0.1
+##}
+
+##REPLACE:recovery_efforts = {
+##	icon = offensive_army
+##	age = age_1_traditions
+	
+##	requires = blockade_tactics
+
+
+##	global_devastation_recovery = 0.005
+##}
+
+
+
+##REPLACE:naval_initiative_ren = {
+##	age = age_1_traditions
+##	icon = ship_building_advance
+	
+##	requires = blockade_tactics
+	
+##	navy_initiative = 0.2
+##}
+
+
+##REPLACE:army_initiative_ren = {
+##	icon = professional_armies_advance
+##	age = age_1_traditions
+	
+##	requires = land_morale_recovery_renaissance_advance
+	
+##	army_initiative = 0.2
+##}
+
+
+##REPLACE:law_making_renaissance = {
+##	age = age_1_traditions
+	
+##	requires = recovery_efforts
+	
+##	change_policy_cost_modifier = -0.05
+##}
+
+##REPLACE:subject_integration = {
+##	icon = glorious_arms
+##	age = age_1_traditions
+	
+##	requires = renaissance_subject_opinions_advance
+	
+##	diplomatic_annexation_cost = -0.1
+##}
+
+##REPLACE:rgo_construction_ren = {
+##	age = age_1_traditions
+##	icon = efficient_mining
+	
+##	requires = law_making_renaissance
+	
+##	global_rgo_build_time = -0.1
+##}
+
+##REPLACE:naval_repair_ren = {
+##	icon = rudimentary_coastal_ship_repair
+##	age = age_1_traditions
+	
+##	requires = naval_initiative_ren
+	
+##	navy_repair_cost = -0.05
+##}
+
+##REPLACE:construction_speed_renaissance = {
+##	icon = efficient_mining
+##	age = age_1_traditions
+##	global_construction_speed = 0.1
+##	requires = rgo_construction_ren
+##}
+	
+
+#######################################
+### New World
+#######################################
+##REPLACE:new_world_advance = {
+##	age = age_1_traditions
+	
+##	depth = 1
+	
+##	exploration_preparation_time_modifier = -0.05
+##	colonial_range = 600
+##	diplomatic_range_modifier = 0.10
+
+##	ai_preference_tags = {
+##		exploration
+##	}
+##}
+
+##REPLACE:explorer_commisions_advance = {
+##	age = age_1_traditions
+##	icon = safe_exploration_techniques_advance
+##	requires = new_world_advance
+##	can_recruit_explorer = yes
+##	ai_preference_tags = {
+##		exploration
+##	}
+##}
+
+
+##REPLACE:open_sea_exploration = {
+##	age = age_1_traditions
+##	icon = maritime_advance_age_4
+##	requires = explorer_commisions_advance
+##	allow_open_sea_exploration = yes
+##	colonial_range = 1500
+##	ai_preference_tags = {
+##		exploration
+##	}
+##}
+
+
+##REPLACE:repair_at_sea_aod = {
+##	age = age_1_traditions
+##	icon = rudimentary_coastal_ship_repair
+
+##	requires = explorer_commisions_advance
+
+##	ship_repair_at_sea_to_max_strength = 0.1
+##}
+
+##REPLACE:merchant_power_from_maritime_discovery_advance = {
+##	age = age_1_traditions
+##	icon = merchant_power_from_maritime_reformation_advance
+	
+##	merchant_power_from_maritime = 0.025
+	
+##	requires = open_sea_exploration
+
+##}
+##REPLACE:maritime_decay_advance_disc = {
+##	icon = letters_of_marque
+##	age = age_1_traditions
+	
+##	requires = merchant_power_from_maritime_discovery_advance
+##	global_maritime_presence_decay = -0.001
+##}
+
+
+
+##REPLACE:rgo_logistics_discovery = {
+##	icon = efficient_mining
+##	age = age_1_traditions
+	
+##	requires = repair_at_sea_aod
+
+##	raw_material_in_province_impact = 0.025
+##}
+
+
+
+##REPLACE:colonial_charters = {
+##	age = age_1_traditions
+##	icon = colonies
+
+##	requires = new_world_advance
+##	colonial_migration_size_modifier = 0.5
+##	create_colonial_charter_cost_modifier = -0.2
+##	colonial_maintenance_cost = -0.2
+
+##	ai_preference_tags = {
+##		exploration
+##	}
+##}
+
+
+##REPLACE:colonial_policy_advance = {
+##	age = age_1_traditions
+##	requires = colonial_charters
+	
+##	unlock_law = colonial_policy
+##}
+
+
+##REPLACE:maritime_advance_age_3 = {
+##	age = age_1_traditions
+##	icon = maritime_advance_age_4
+	
+##	requires = colonial_charters
+	
+##	global_maritime_presence_modifier = 0.1
+##}
+
+##REPLACE:trade_range_advance_age_3 = {
+##	age = age_1_traditions
+##	icon = ship_building_advance
+##	requires = maritime_advance_age_3
+	
+##	trade_range	= 250
+##}
+
+
+##REPLACE:coastal_trade_routes_advance = {
+##	age = age_1_traditions
+##	icon = safe_exploration_techniques_advance
+	
+##	requires = maritime_advance_age_3
+	
+##	sea_cost_on_distance_from_capital_when_maritime = -0.5
+##}
+
+
+
+
+##REPLACE:ship_building_techniques_discovery = {
+##	age = age_1_traditions
+##	icon = rudimentary_coastal_ship_repair
+	
+##	requires = merchant_power_from_maritime_discovery_advance
+
+##	ship_build_speed = 0.2
+
+##}
+
+##REPLACE:port_cost_distance_from_capital_advance = {
+##	icon = global_trade_routes_advance
+##	age = age_1_traditions
+##	requires = ship_building_techniques_discovery
+	
+##	port_cost_distance_from_capital = -5
+##}
+
+
+
+##REPLACE:exploration_maintenance_advance = {
+##	age = age_1_traditions
+##	icon = maritime_advance_age_4
+	
+##	requires = maritime_advance_age_3
+##	exploration_maintenance_cost = -0.1
+##	ai_preference_tags = {
+##		exploration
+##	}
+##}
+
+
+
+##REPLACE:native_policy_advance = {
+##	age = age_1_traditions
+##	requires = open_sea_exploration
+
+##	unlock_law = native_policy
+##}
+
+##REPLACE:beat_to_windward_advance = {
+##	age = age_1_traditions
+##	icon = new_world_advance
+	
+##	requires = new_world_advance
+
+##	exploration_mission_speed = 0.1
+##	ai_preference_tags = {
+##		exploration
+##	}
+##}
+
+##REPLACE:green_vitriol = {
+##	age = age_1_traditions
+##	icon = new_world_advance
+	
+##	requires = rgo_logistics_discovery
+
+##	global_alum_output_modifier = 0.1
+##}
+
+
+
+##REPLACE:plantation_buildings_advance = {
+##	age = age_1_traditions
+
+##	requires = colonial_charters
+##	unlock_building = sugar_plantation
+##	unlock_building = tobacco_plantation
+##	unlock_building = cotton_plantation
+
+##	ai_preference_tags = {
+##		exploration
+##	}
+##}
+
+
+##REPLACE:naval_ambitions = {
+##	age = age_1_traditions
+##	icon = safe_exploration_techniques_advance
+	
+##	requires = colonial_charters
+##	naval_range = 250
+
+##	ai_preference_tags = {
+##		exploration
+##	}
+##}
+
+
+##REPLACE:diplomatic_range_age_2 = {
+##	age = age_1_traditions
+##	icon = diplomatic_range_age_1
+##	requires = naval_ambitions
+##	diplomatic_range_modifier = 0.33
+##}
+
+
+##REPLACE:new_world_crops = {
+##	age = age_1_traditions
+##	icon = expanded_supply_trains
+	
+##	requires = colonial_charters
+##	global_monthly_food_modifier = 0.10
+##}
+
+##REPLACE:pop_promotion_speed_age_3 = {
+##	age = age_1_traditions
+##	icon = cultural_acceptance_advance
+
+##	requires = plantation_buildings_advance
+	
+##	global_pop_promotion_speed_modifier = 0.1
+##}
+
+##REPLACE:blast_furnace = {
+##	age = age_1_traditions
+##	icon = serbian_mining
+	
+##	requires = pop_promotion_speed_age_3
+	
+##	global_iron_output_modifier = 0.75
+##}
+
+##REPLACE:saiger_process_discovery = {
+##	age = age_1_traditions
+##	icon = serbian_mining
+	
+##	global_silver_output_modifier = 0.2
+##	global_lead_output_modifier = 0.2
+
+##	requires = blast_furnace
+##}
+
+##REPLACE:new_currency_demands = {
+##	icon = debt_and_loans
+##	age = age_1_traditions
+	
+##	global_copper_output_modifier = 0.25
+##	global_tin_output_modifier = 0.1
+
+##	requires = blast_furnace
+##}
+
+##REPLACE:rgo_size_advance_discovery = {
+##	age = age_1_traditions
+##	icon = efficient_mining
+	
+##	global_max_rgo_size_modifier = 0.10
+
+##	requires = trade_range_advance_age_3
+##}
+
+##REPLACE:surgery_advance = {
+##	age = age_1_traditions
+##	icon = alchemy_advance
+
+##	global_life_expectancy = 3
+##	global_disease_resistance = 0.05
+
+##	requires = rgo_size_advance_discovery
+##}
+
+##REPLACE:patio_process_advance = {
+##	age = age_1_traditions
+
+##	unlock_building = mercury_patio
+	
+##	requires = surgery_advance
+##}
+
+##REPLACE:construction_speed_discovery = {
+##	icon = rudimentary_coastal_ship_repair
+##	age = age_1_traditions
+##	global_construction_speed = 0.1
+
+##	requires = rgo_size_advance_discovery
+##}
+
+
+#######################################
+### Printing Press
+#######################################
+
+##REPLACE:printing_press_advance = {
+##	age = age_1_traditions
+##	icon = printing_press_advance
+		
+##	global_max_literacy = 10
+
+##	depth = 1
+##}
+
+##REPLACE:spy_construction_discovery = {
+##	age = age_1_traditions
+##	icon = efficient_spies
+##	requires = printing_press_advance
+
+##	spy_network_construction = 0.1
+##}
+
+##REPLACE:diplomatic_training = {
+##	age = age_1_traditions
+##	icon = scholasticism
+	
+##	monthly_diplomats = 0.1
+	
+##	requires = spy_construction_discovery
+##}
+
+##REPLACE:formalized_relations = {
+##	age = age_1_traditions
+##	icon = diplomatic_range_age_1
+	
+##	diplomatic_capacity = 1
+	
+##	requires = printing_press_advance
+##}
+
+##REPLACE:faceting = {
+##	age = age_1_traditions
+##	icon = improve_relation_impact_renaissance
+	
+##	global_jewelry_output_modifier = 0.1
+	
+##	requires = formalized_relations
+##}
+
+
+##REPLACE:print_culture = {
+##	icon = printing_press_advance
+##	age = age_1_traditions
+	
+##	requires =  formalized_relations
+	
+##	global_institution_growth_modifier = 0.20
+##}
+
+
+##REPLACE:artists_advance_discovery = {
+##	age = age_1_traditions
+##	icon = renaissance_advance
+##	requires = faceting
+##	skill_of_new_artists = 0.1
+##}
+
+##REPLACE:improved_book_binding = {
+##	age = age_1_traditions
+##	icon = scholasticism
+##	requires = print_culture
+##	global_books_output_modifier = 0.25
+##}
+
+##REPLACE:lumber_improvements_discovery = {
+##	icon = lumber_improvements_absolutism
+##	age = age_1_traditions
+##	requires = improved_book_binding
+##	global_lumber_output_modifier = 0.25
+##}
+
+
+##REPLACE:regulate_court_procedures = {
+##	age = age_1_traditions
+##	icon = genoese_banking_traditions
+##	court_spending_cost = -0.01
+	
+##	requires = artists_advance_discovery
+##}
+
+##REPLACE:crown_power_advance_discovery = {
+##	age = age_1_traditions
+##	icon = crown_power_advance_renaissance
+##	global_crown_estate_power = 0.10
+	
+##	requires = regulate_court_procedures
+##}
+
+##REPLACE:government_size_discovery = {
+##	icon = government_size
+##	age = age_1_traditions
+	
+##	government_size = 1
+
+##	requires = crown_power_advance_discovery
+##}
+
+##REPLACE:trade_through_owned_disc_advance = {
+##	icon = colonies
+##	age = age_1_traditions
+##	global_trade_through_owned_territory_cost_modifier = -0.1
+##}
+
+##REPLACE:lazaretto_advance = {
+##	age = age_1_traditions
+##	unlock_building = lazaretto
+
+##	requires = trade_through_owned_disc_advance
+
+##}
+
+##REPLACE:naval_morale_advance_2 = {
+##	age = age_1_traditions
+##	icon = global_trade_routes_advance
+
+##	requires = lazaretto_advance
+	
+##	naval_morale = 0.25
+##}
+
+##REPLACE:basic_financial_instruments = {
+##	age = age_1_traditions
+##	icon = smooth_administration
+##	global_merchant_power = 0.2
+
+##	requires = lazaretto_advance
+##}
+
+##REPLACE:hire_artist_cost_modifier_advance_disc = {
+##	icon = cultural_ties_culture
+##	age = age_1_traditions
+##	hire_artist_cost_modifier = -0.05
+
+##	requires = basic_financial_instruments
+##}
+
+##REPLACE:gov_reform_discovery_a = {
+##	icon = government_size
+##	age = age_1_traditions
+##	government_reform_slots = 1
+
+##	requires = hire_artist_cost_modifier_advance_disc
+##}
+
+
+##REPLACE:rural_rgo_disc_advance = {
+##	icon = efficient_mining
+##	age = age_1_traditions
+##	global_max_rgo_size_modifier_in_rural = 0.2
+
+##	requires = basic_financial_instruments
+##}
+
+
+##REPLACE:power_projection_advance_4 = {
+##	age = age_1_traditions
+##	icon = crown_power_advance_renaissance
+##	power_projection = 5
+
+##	requires = government_size_discovery
+##}
+
+#######################################
+### Pike and Shot
+#######################################
+##REPLACE:pike_and_shot_advance = {
+##	age = age_1_traditions
+##	icon = pike_and_shot_advance
+		
+##	land_morale = 0.25
+##	depth = 1
+
+##}
+
+##REPLACE:matchlock_gun = {
+##	icon = supply_depot_advance_age_3_discovery
+##	age = age_1_traditions
+##	requires = pike_and_shot_advance
+	
+##	global_fur_output_modifier = 0.1
+##	global_wild_game_output_modifier = 0.1
+##}
+
+
+
+##REPLACE:supply_depot_advance_age_3_discovery = {
+##	age = age_1_traditions
+##	icon = global_supply_limit_modifier_advance_5
+			
+##	supply_depot_capacity = 25
+		
+##	requires = pike_and_shot_advance
+##}
+
+##REPLACE:regiment_reinforcement_speed_discovery = {
+##	age = age_1_traditions
+##	icon = glorious_arms
+
+##	requires = supply_depot_advance_age_3_discovery
+##	regiment_reinforcement_speed = 0.1
+##}
+
+
+##REPLACE:correct_box_advance_discovery = {
+##	age = age_1_traditions
+##	icon = expansionism
+			
+##	correct_box_chance = 0.1
+		
+##	requires = matchlock_gun
+##}
+
+##REPLACE:pike_square = {
+##	age = age_1_traditions
+##	icon = drill_army_advance
+	
+##	requires = matchlock_gun
+	
+##	military_tactics = 0.25
+##}
+
+
+
+##REPLACE:supply_lines = {
+##	icon = maritime_advance_age_2
+##	age = age_1_traditions
+	
+##	requires = pike_square
+##	army_logistics_distance = 25
+##}
+
+
+##REPLACE:land_morale_attrition_cost_advance = {
+##	icon = defensive_army_attrition
+##	age = age_1_traditions
+##	requires = supply_lines
+	
+##	land_morale_attrition_cost = -0.002
+##}
+
+
+##REPLACE:linked_armies_advance = {
+##	age = age_1_traditions
+##	icon = expansionism
+	
+##	requires = land_morale_attrition_cost_advance
+	
+##	movement_speed_when_attached_to_another_unit = -0.1
+##}
+
+
+##REPLACE:land_morale_movement_cost_advance_disc = {
+##	icon = expansionism
+##	age = age_1_traditions
+	
+	
+##	requires = linked_armies_advance
+	
+##	land_morale_movement_cost = -0.0001
+##}
+
+#################################
+### Confessionalism
+#################################
+
+##REPLACE:confessionalism_advance = {
+##	icon = pop_promotion_speed_age_4
+##	age = age_1_traditions
+		
+##	global_pop_conversion_speed = 0.01
+
+##	depth = 1
+	
+##}
+
+##REPLACE:power_projection_advance_3 = {
+##	age = age_1_traditions
+##	icon = glorious_arms
+##	power_projection = 5
+
+##	requires = confessionalism_advance
+##}
+
+##REPLACE:gov_reform_reformation_a = {
+##	icon = government_size
+##	age = age_1_traditions
+	
+##	government_reform_slots = 1
+
+##	requires = power_projection_advance_3
+##}
+
+##REPLACE:crown_power_advance_reformation = {
+##	age = age_1_traditions
+##	icon = crown_power_advance_renaissance
+##	global_crown_estate_power = 0.10
+	
+##	requires = gov_reform_reformation_a
+##}
+##REPLACE:confessional_court = {
+##	age = age_1_traditions
+##	icon = court_accounting
+##	court_spending_cost = -0.005
+##	global_pop_conversion_speed_modifier = 0.1
+	
+##	requires = power_projection_advance_3
+##}
+
+##REPLACE:artists_advance_reformations = {
+##	age = age_1_traditions
+##	icon = renaissance_advance
+##	requires = confessional_court
+##	skill_of_new_artists = 0.1
+##}
+
+
+##REPLACE:war_score_reformations_advance = {
+##	age = age_1_traditions
+##	icon = diplomatic_influence
+##	requires = confessional_court
+
+##	global_war_score_cost = -0.05
+##}
+
+
+##REPLACE:reformation_subject_opinions_advance = {
+	
+##	age = age_1_traditions
+##	icon = diplomatic_range_age_1
+##	requires = artists_advance_reformations
+##	subject_opinions = 10
+##}
+
+##REPLACE:early_modern_administation = {
+##	age = age_1_traditions
+	
+##	government_size = 1
+
+##	requires = reformation_subject_opinions_advance
+##}
+
+##REPLACE:pharmacology_advance = {
+##	age = age_1_traditions
+
+##	global_life_expectancy = 3
+##	global_disease_resistance = 0.05
+
+##	requires = war_score_reformations_advance
+##}
+
+##REPLACE:pan_amalgamation_advance = {
+##	age = age_1_traditions
+	
+##	mercury_patio_max_level = 1
+##	global_mercury_output_modifier = 0.1
+
+##	requires = pharmacology_advance
+##}
+
+##REPLACE:naval_morale_advance_3 = {
+##	age = age_1_traditions
+##	icon = global_trade_routes_advance
+	
+##	naval_morale = 0.25
+
+##	requires = pharmacology_advance
+##}
+
+##REPLACE:road_advance_1 = {
+##	age = age_1_traditions
+##	requires = naval_morale_advance_3
+
+##	global_road_building_time = -0.2
+##	build_gravel_road_cost_modifier = -0.1
+##	build_paved_road_cost_modifier = -0.1
+##}
+
+##REPLACE:construction_speed_reformation = {
+##	icon = rudimentary_coastal_ship_repair
+##	age = age_1_traditions
+##	global_construction_speed = 0.1
+
+##	requires = road_advance_1
+##}
+
+##REPLACE:lumber_improvements_reformation = {
+##	icon = rudimentary_coastal_ship_repair
+##	age = age_1_traditions
+##	requires = construction_speed_reformation
+##	global_lumber_output_modifier = 0.25
+##}
+
+#################################
+### Global Trade
+#################################
+
+##REPLACE:global_trade_advance = {
+##	age = age_1_traditions
+		
+##	merchant_maintenance_cost = -0.10
+##	depth = 1
+##}
+
+##REPLACE:merchant_power_from_maritime_reformation_advance = {
+##	age = age_1_traditions
+	
+##	merchant_power_from_maritime = 0.025
+	
+##	requires = global_trade_advance
+
+##}
+
+##REPLACE:bole_smelting = {
+##	age = age_1_traditions
+	
+##	requires = global_trade_advance
+	
+##	global_lead_output_modifier = 1.0
+##}
+
+##REPLACE:slitting_mills = {
+##	age = age_1_traditions
+	
+##	requires = bole_smelting
+	
+##	global_iron_output_modifier = 0.66
+##}
+
+##REPLACE:maritime_advance_age_4 = {
+##	age = age_1_traditions
+##	icon = safe_exploration_techniques_advance
+	
+##	requires = merchant_power_from_maritime_reformation_advance
+	
+##	global_maritime_presence_modifier = 0.1
+##}
+
+##REPLACE:global_trade_routes_advance = {
+##	age = age_1_traditions
+	
+##	requires = maritime_advance_age_4
+	
+##	sea_cost_on_distance_from_capital = -10
+##}
+
+##REPLACE:pop_promotion_speed_age_4 = {
+##	age = age_1_traditions
+
+##	requires = slitting_mills
+	
+##	global_pop_promotion_speed_modifier = 0.1
+##}
+
+##REPLACE:leader_recruit_cost_advance = {
+##	age = age_1_traditions
+
+##	requires = pop_promotion_speed_age_4
+	
+##	train_general_cost_modifier = -0.1
+##	train_admiral_cost_modifier = -0.1
+##}
+
+##REPLACE:letters_of_marque = {
+##	age = age_1_traditions
+##	requires = global_trade_routes_advance
+	
+##	can_hire_privateers = yes
+##	hire_privateer_cost_modifier = -0.1
+##}
+
+##REPLACE:sturdy_privateers = {
+##	age = age_1_traditions
+##	icon = letters_of_marque
+##	requires = letters_of_marque
+##	privateer_durability = 0.20
+##}
+
+##REPLACE:safe_exploration_techniques_advance = {
+##	age = age_1_traditions
+##	icon = maritime_advance_age_4
+##	requires = sturdy_privateers
+	
+##	exploration_preparation_time_modifier = -0.05
+##	exploration_mission_speed = 0.05
+##}
+
+##REPLACE:imperial_ambitions = {
+##	age = age_1_traditions
+##	requires = leader_recruit_cost_advance
+	
+##	rank_empire_upgrade_cost_modifier = -0.25
+##}
+
+##REPLACE:spy_construction_reformation = {
+##	age = age_1_traditions
+##	icon = efficient_spies
+##	requires = imperial_ambitions
+
+##	spy_network_construction = 0.1
+##}
+
+##REPLACE:trade_companies_advance = {
+##	age = age_1_traditions
+##	icon = expanded_supply_trains
+##	unlock_subject_type = trade_company
+##	unlock_building = trade_company_headquarters
+##	unlock_building = trade_company_governance
+##	unlock_building = trade_company_garrison
+##	unlock_building = trade_company_harbor
+##	unlock_building = trade_company_local_venture
+##	unlock_building = trade_company_foreign_influence
+
+##	requires = safe_exploration_techniques_advance
+##}
+
+##REPLACE:chartered_companies = {
+##	age = age_1_traditions
+##	icon = merchant_power_from_maritime_reformation_advance
+	
+##	requires = safe_exploration_techniques_advance
+	
+##	trade_range = 200
+##	colonial_range = 1000
+
+##	unlock_casus_belli = cb_exploration
+##}
+
+##REPLACE:development_of_maritime_law = {
+##	age = age_1_traditions
+	
+##	requires = chartered_companies
+	
+##	merchant_maintenance_cost = -0.1
+##}
+
+##REPLACE:diplomatic_range_age_3 = {
+##	icon = diplomatic_range_age_1
+##	age = age_1_traditions
+	
+##	requires = development_of_maritime_law
+	
+##	diplomatic_range_modifier = 0.25
+##}
+
+##REPLACE:trade_envoys = {
+##	age = age_1_traditions
+##	icon = diplomatic_range_age_1
+	
+##	requires = development_of_maritime_law
+	
+##	trade_range_modifier = 0.25
+##}
+
+##REPLACE:shared_products_procedures = {
+##	age = age_1_traditions
+##	icon = zmw_merchant_taxes
+	
+##	global_alum_output_modifier = 0.1
+
+##	requires = slitting_mills
+##}
+
+##REPLACE:riches_of_foreign_coasts = {
+##	age = age_1_traditions
+##	icon = zmw_merchant_taxes
+	
+##	global_pearls_output_modifier = 0.2
+
+##	requires = shared_products_procedures
+##}
+
+##REPLACE:foreign_mining_techniques = {
+##	age = age_1_traditions
+##	icon = efficient_mining
+	
+##	global_gems_output_modifier = 0.2
+
+##	requires = slitting_mills
+##}
+
+##REPLACE:subject_income_reformation_advance = {
+##	age = age_1_traditions
+##	subject_income_modifier = 0.05
+
+##	requires = foreign_mining_techniques
+##}
+
+##REPLACE:rgo_size_advance_reformation = {
+##	age = age_1_traditions
+##	icon = efficient_mining
+	
+##	global_max_rgo_size_modifier = 0.10
+
+##	requires = subject_income_reformation_advance
+##}
+
+##REPLACE:food_advance_reformation = {
+##	age = age_1_traditions
+##	icon = expanded_supply_trains
+	
+##	global_monthly_food_modifier = 0.10
+
+##	requires = subject_income_reformation_advance
+##}
+
+##REPLACE:scientific_experimentation = {
+##	age = age_1_traditions
+##	icon = alchemy_advance
+	
+##	global_institution_growth_modifier = 0.20
+
+##	requires = rgo_size_advance_reformation
+##}
+
+##REPLACE:military_administration = {
+##	icon = expanded_supply_trains
+##	age = age_1_traditions
+	
+##	food_consumption_modifier = -0.1
+
+##	requires = food_advance_reformation
+##}
+
+##REPLACE:spanish_square = {
+##	age = age_1_traditions
+	
+##	military_tactics = 0.25
+
+##	requires = scientific_experimentation
+##}
+
+
+#################################
+### Artillery Institution
+#################################
+##REPLACE:artillery_institution_advance = {
+##	age = age_1_traditions
+		
+##	artillery_bonus_vs_fort = 1
+##	depth = 1
+
+##}
+
+##REPLACE:flintlock_gun = {
+##	age = age_1_traditions
+##	requires = artillery_institution_advance
+	
+##	global_fur_output_modifier = 0.2
+##	global_wild_game_output_modifier = 0.2
+##}
+
+##REPLACE:correct_box_advance_reformation = {
+##	age = age_1_traditions
+##	icon = expansionism
+			
+##	correct_box_chance = 0.1
+		
+##	requires = flintlock_gun
+##}
+
+
+##REPLACE:assault_ability_reformation = {
+##	age = age_1_traditions
+##	icon = artillery_institution_advance
+##	requires = artillery_institution_advance
+##	assault_ability = 0.1
+##}
+
+
+##REPLACE:regiment_reinforcement_speed_reformation = {
+##	age = age_1_traditions
+##	icon = regiment_reinforcement_speed_renaissance
+
+##	requires = assault_ability_reformation
+##	regiment_reinforcement_speed = 0.1
+##}
+
+
+##REPLACE:recruitment_improvements_reformation = {
+##	age = age_1_traditions
+##	icon = recruitment_improvements_renaissance
+##	requires = regiment_reinforcement_speed_reformation
+
+##	regiment_recruit_speed = 0.2
+##}
+
+
+##REPLACE:supply_depot_advance_age_4_reformation = {
+##	age = age_1_traditions
+##	icon = zmw_merchant_taxes
+			
+##	supply_depot_capacity = 25
+		
+##	requires = correct_box_advance_reformation
+##}
+
+##REPLACE:mercenaries_reformation_advance = {
+##	age = age_1_traditions
+##	icon = regimental_system
+	
+##	global_mercenaries_modifier = 0.20
+##	requires = supply_depot_advance_age_4_reformation
+##}
+
+##REPLACE:maurician_infantry = {
+##	age = age_1_traditions
+##	icon = offensive_army
+	
+##	land_morale = 0.25
+
+##	requires = assault_ability_reformation
+##}

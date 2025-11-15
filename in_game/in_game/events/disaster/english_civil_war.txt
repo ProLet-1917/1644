@@ -1,0 +1,701 @@
+﻿namespace = english_civil_war
+
+#English Civil War related Events
+
+english_civil_war.250 = {
+	type = country_event
+	category = disaster_event
+	title = english_civil_war.250.title
+	desc = english_civil_war.250.desc
+	historical_info = english_civil_war.250.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1630.1.1
+		to = 1640.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		location:huntingdon = { top_owner = root }
+	}
+
+	immediate = {
+		location:huntingdon = {
+			save_scope_as = target_location
+		}
+		create_character = {
+			first_name = name_oliver
+			last_name = Cromwell
+			estate = estate_type:burghers_estate
+			adm = { 65 95 }
+			dip = { 65 95 }
+			mil = { 65 95 }
+			birth_date = 1599.4.25
+			birth_location = location:huntingdon
+			religion = location:huntingdon.dominant_religion
+			trait_category = general
+			save_scope_as = target_character
+			set_variable = eng_oliver_cromwell_script
+		}
+
+	}
+
+	option = {
+		name = english_civil_war.250.a
+
+		add_stability = stability_ultimate_penalty
+		add_government_power = government_power_ultimate_penalty
+		custom_tooltip = {
+			text = more_likely_to_fire_disaster_tt
+			set_variable = {
+				name = english_civil_war_chance_variable
+				years = 50
+			}
+		}
+	}
+}
+
+english_civil_war.251 = {
+	image = "gfx/interface/illustrations/disaster/english_civil_war.dds"
+	type = country_event
+	category = disaster_event
+	title = english_civil_war.251.title
+	desc = english_civil_war.251.desc
+	historical_info = english_civil_war.251.historical_info
+	immediate = {
+		ruler_or_regent = { save_scope_as = target_character_1 }
+		set_variable = {
+			name = size_of_english_cw_rebels_variable
+			value = {
+				add = societal_value:outward_vs_inward
+				multiply = -0.1
+				min = 5
+			}
+		}
+		create_rebel = {
+			category = pretender
+			name = parliamentarist_rebels
+			save_scope_as = english_civil_war_rebels_scope
+		}
+		ordered_character = {
+			limit = {
+				is_adult = yes
+				is_ruler = no
+				is_regent = no
+				is_heir = no
+			}
+			order_by = {
+				value = total_abilities
+				if = {
+					limit = { has_variable = eng_oliver_cromwell_script }
+					multiply = 1.5
+				}
+			}
+			max = 1
+			save_scope_as = target_character_2
+			root = {
+				set_variable = {
+					name = pretender_rebel_character
+					value = prev
+				}
+			}
+			change_character_allegiance = scope:english_civil_war_rebels_scope
+		}
+		ordered_province = {
+			limit = {
+				region = root.capital.region
+				NOT = {
+					any_location_in_province = { is_capital = yes }
+				}
+				population > 0
+			}
+			order_by = {
+				value = {
+					add = population
+					if = {
+						limit = { province_satisfaction > 0.1 }
+						divide = province_satisfaction
+					}
+					else = { divide = 0.1 }
+				}
+			}
+			max = var:size_of_english_cw_rebels_variable
+			hidden_effect = {
+				every_location_in_province = {
+					change_control = control_mild_penalty
+					every_pop = {
+						limit = {
+							owner = root
+						}
+						add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+						change_pop_allegiance = scope:english_civil_war_rebels_scope
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = english_civil_war.251.a
+
+		custom_tooltip = provinces_will_align_with_rebels_tt
+	}
+}
+
+english_civil_war.252 = {
+	type = country_event
+	category = disaster_event
+	title = english_civil_war.252.title
+	desc = english_civil_war.252.desc
+
+	image = "gfx/interface/illustrations/disaster/court_and_country.dds"
+
+	immediate = {
+		ruler_or_regent = { save_scope_as = target_character }
+	}
+
+	option = {
+		name = english_civil_war.252.a
+
+		if = {
+			limit = {
+				NOT = { government_type = government_type:republic }
+			}
+			change_government_type = government_type:republic
+		}
+		unlock_government_reform_effect = {
+			type = the_protectorate
+		}
+		change_societal_value = {
+			type = absolutism_vs_liberalism
+			value = societal_value_huge_move_to_right
+		}
+		add_country_modifier = {
+			modifier = parliamentarists_victorious_modifier
+			years = 20
+			mode = replace
+		}
+		if = {
+			limit = { has_variable = english_civil_war_lost_variable }
+			add_stability = stability_ultimate_penalty
+		}
+		else = { add_stability = stability_extreme_bonus }
+	}
+}
+
+english_civil_war.253 = {
+	type = country_event
+	category = disaster_event
+	title = english_civil_war.253.title
+	desc = english_civil_war.253.desc
+
+	image = "gfx/interface/illustrations/disaster/court_and_country.dds"
+
+	immediate = {
+		ruler_or_regent = { save_scope_as = target_character }
+	}
+
+	option = {
+		name = english_civil_war.253.a
+
+		change_societal_value = {
+			type = absolutism_vs_liberalism
+			value = societal_value_huge_move_to_left
+		}
+		if = {
+			limit = { has_variable = english_civil_war_lost_variable }
+			add_stability = stability_ultimate_penalty
+		}
+		else = { add_stability = stability_extreme_bonus }
+
+	}
+}
+
+english_civil_war.254 = {
+	type = country_event
+	category = disaster_event
+	title = english_civil_war.254.title
+	desc = english_civil_war.254.desc
+	image = "gfx/interface/illustrations/disaster/court_and_country.dds"
+	immediate = {
+		ruler_or_regent = { save_scope_as = target_character }
+		scope:target.ruler_or_regent = {
+			save_scope_as = target_character_2
+		}
+		scope:target = {	#COMMENT Rebels must have a decent fighting chance
+			add_gold = {
+				value = root.monthly_income_total
+				multiply = 12
+			}
+			add_manpower = {
+				value = root.monthly_manpower
+				multiply = 36
+			}
+			#COMMENT Maybe some troops in their capital ?
+			set_variable = rebel_side_in_ecw_variable
+		}
+	}
+
+	option = {
+		name = english_civil_war.254.a
+		historical_option = yes
+		hidden_effect = {
+			scope:target = {
+				set_variable = chosen_parliamentarist_country_variable
+			}
+		}
+		change_player = scope:target
+	}
+
+	option = {
+		name = english_civil_war.254.b
+
+		custom_tooltip = continue_playing_as_root_tt
+		hidden_effect = {
+			set_variable = chosen_royalist_country_variable
+		}
+	}
+
+	after = {
+		scope:target ?= {
+			trigger_event_silently = {
+				id = english_civil_war.256
+				days = 10
+			}
+		}
+	}
+}
+
+#Pulse Events
+
+english_civil_war.255 = { #Province Sides with Parliamentarists
+	type = country_event
+	category = disaster_event
+	title = english_civil_war.255.title
+	desc = english_civil_war.255.desc
+	image = "gfx/interface/illustrations/disaster/court_and_country.dds"
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	trigger = {
+		in_civil_war = no
+		any_province = {
+			NOT = { root.capital.province = this }
+			sub_continent = sub_continent:western_europe
+			any_location_in_province = {
+				NOT = { has_variable = recently_joined_rebellion_variable }
+				is_capital = no
+			}
+		}
+		any_rebel = { rebel_name_key = parliamentarist_rebels }
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:peasants
+  background = pop_type:peasants }
+		random_rebel = {
+			limit = { rebel_name_key = parliamentarist_rebels }
+			save_scope_as = english_civil_war_rebels_scope
+		}
+		ordered_province = {
+			limit = {
+				NOT = { root.capital.province = this }
+				sub_continent = sub_continent:western_europe
+				NOT = {
+					any_location_in_province = { has_variable = recently_joined_rebellion_variable }
+				}
+			}
+			order_by = {
+				value = province_satisfaction
+				multiply = -1
+				if = {
+					limit = { province_average_control = 0 }
+					divide = 0.1
+				}
+				else = { divide = province_average_control }
+			}
+			max = 1
+			save_scope_as = target_province
+			province_capital = { save_scope_as = target_location }
+		}
+		ruler_or_regent ?= { save_scope_as = target_character }
+		var:pretender_rebel_character = {
+			save_scope_as = target_character_2
+		}
+	}
+
+	option = {
+		name = english_civil_war.255.a
+
+		custom_tooltip = every_location_loses_scaling_sat_and_joins_rebel_tt
+		hidden_effect = {
+			scope:target_province = {
+				every_location_in_province = {
+					every_pop = {
+						limit = {
+							owner = root
+						}
+						add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+						change_pop_allegiance = scope:english_civil_war_rebels_scope
+					}
+					set_variable = {
+						name = recently_joined_rebellion_variable
+						value = yes
+						days = 365
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				scope:english_civil_war_rebels_scope = {
+					rebel_progress > 0.2
+				}
+			}
+			scope:english_civil_war_rebels_scope = {
+				add_rebel_progress = {
+					value = scope:english_civil_war_rebels_scope.rebel_progress
+					divide = 20
+				}
+			}
+		}
+		else = { add_stability = stability_mild_penalty }
+		scope:target_location = { change_control = control_severe_penalty }
+	}
+}
+
+english_civil_war.256 = { #New Model Army
+	type = country_event
+	category = disaster_event
+	title = english_civil_war.256.title
+	desc = english_civil_war.256.desc
+	fire_only_once = yes
+	image = "gfx/interface/illustrations/disaster/court_and_country.dds"
+
+	immediate = {
+		ruler_or_regent = { save_scope_as = target_character_1 }
+		if = {
+			limit = { owns = location:whitby }
+			location:whitby = {
+				save_scope_as = target_location
+			}
+		}
+		else = {
+			capital = {
+				save_scope_as = target_location
+			}
+		}
+		if = {
+			limit = {
+				current_year > 1637
+				current_year < 1675
+			}
+			create_character = {
+				first_name = name_thomas
+				dynasty = dynasty:fairfax_dynasty
+				birth_location = scope:target_location
+				estate = estate_type:nobles_estate
+				birth_date = 1612.1.17
+				adm = 84
+				dip = 81
+				mil = 88
+				create_in_limbo = yes
+				save_scope_as = target_character_2
+				create_in_limbo = yes
+			}
+		}
+		else = {
+			create_character = {
+				dynasty = dynasty:fairfax_dynasty
+				birth_location = scope:target_location
+				estate = estate_type:nobles_estate
+				adm = { 50 85 }
+				dip = { 50 80 }
+				mil = { 60 95 }
+				age = 30
+				create_in_limbo = yes
+				save_scope_as = target_character_2
+				create_in_limbo = yes
+			}
+		}
+	}
+
+	option = {
+		name = english_civil_war.256.a
+		set_parliament_location = capital
+		set_parliament_active = yes
+		set_parliament_issue = parliament_issue:new_model_army_pi
+
+		scope:target_character_2 = {
+			hidden_effect = { move_country = root }
+			add_random_trait_from_category = general
+		}
+	}
+	option = {
+		name = english_civil_war.256.b
+
+		custom_tooltip = {
+			text = target_character_2_goes_away_tt
+			kill_character_silently = scope:target_character_2
+		}
+		add_stability = stability_mild_bonus
+		custom_tooltip = {
+			text = pi_will_be_available_for_10_years_tt
+			set_variable = {
+				name = allow_new_model_army_pi_variable
+				years = 10
+			}
+		}
+	}
+}
+
+english_civil_war.257 = {	#Area Rebels
+	type = country_event
+	category = disaster_event
+	title = english_civil_war.257.title
+	desc = english_civil_war.257.desc
+	image = "gfx/interface/illustrations/disaster/court_and_country.dds"
+	trigger = {
+		region:great_britain_region = {
+			any_area_in_region = {
+				percent >= 0.5
+				any_province_in_area = {
+					owner ?= root
+					NOT = { has_variable = had_revolt_ecw_variable }
+					NOT = {
+						any_location_in_province = {  is_capital = yes }
+					}
+				}
+			}
+		}
+		any_rebel = {
+			rebel_name_key = parliamentarist_rebels
+			rebel_progress > 0
+			rebel_progress < 0.9
+		}
+	}
+
+	immediate = {
+		random_rebel = {
+			limit = { rebel_name_key = parliamentarist_rebels }
+			save_scope_as = english_civil_war_rebels_scope
+		}
+		ruler_or_regent = { save_scope_as = target_character_1 }
+		region:great_britain_region = {
+			random_area_in_region = {
+				limit = {
+					any_province_in_area = {
+						owner ?= root
+						NOT = { has_variable = had_revolt_ecw_variable }
+						NOT = {
+							any_location_in_province = {  is_capital = yes }
+						}
+					}
+				}
+				save_scope_as = target_area
+			}
+		}
+		scope:target_area = {
+			ordered_province_in_area = {
+				order_by = population
+				max = 1
+				check_range_bounds = no
+				save_scope_as = target_province
+				set_variable = {
+					name = had_revolt_ecw_variable
+					years = 10
+				}
+			}
+		}
+	}
+
+	option = {
+		name = english_civil_war.257.a
+
+		custom_tooltip = {
+			text = pops_in_target_area_lose_90_sat_and_join_parliamentarists_tt
+			scope:target_area = {
+				every_location_in_area = {
+					limit = { owner ?= root }
+					every_pop = {
+						limit = {
+							owner = root
+						}
+						add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+						change_pop_allegiance = scope:english_civil_war_rebels_scope
+					}
+				}
+			}
+		}
+		change_societal_value = {
+			type = absolutism_vs_liberalism
+			value = societal_value_move_to_left
+		}
+	}
+	option = {
+		name = english_civil_war.257.b
+
+		change_gold_effect = { scale = -12 }
+		add_government_power = government_power_extreme_penalty
+		custom_tooltip = {
+			text = target_area_suffers_33_control_penalty_tt
+			scope:target_area = {
+				every_location_in_area = {
+					limit = { owner ?= root }
+					change_control = control_extreme_penalty
+				}
+			}
+		}
+	}
+}
+
+english_civil_war.258 = {
+	type = country_event
+	category = disaster_event
+	title = english_civil_war.258.title
+	desc = english_civil_war.258.desc
+	image = "gfx/interface/illustrations/disaster/court_and_country.dds"
+	trigger = {
+		any_subject = {
+			NOT = { has_variable = recently_had_subject_ecw_event_variable }
+			OR = {
+				country_type = location
+				country_type = army
+				country_type = navy
+			}
+			OR = {
+				capital.region = root.capital.region
+				capital.sub_continent = root.capital.sub_continent
+			}
+		}
+	}
+
+	immediate = {
+		random_rebel = {
+			limit = { rebel_name_key = parliamentarist_rebels }
+			save_scope_as = english_civil_war_rebels_scope
+		}
+		ruler_or_regent = { save_scope_as = target_character_1 }
+		ordered_subject = {
+			limit = {
+				NOT = { has_variable = recently_had_subject_ecw_event_variable }
+			}
+			order_by = {
+				value = total_population
+				if = {
+					limit = { subject_loyalty > 0 }
+					divide = subject_loyalty
+				}
+				else = { divide = 0.1 }
+			}
+			max = 1
+			save_scope_as = target_subject
+			ruler_or_regent = { save_scope_as = target_character_2 }
+			set_variable = {
+				name = recently_had_subject_ecw_event_variable
+				years = 3
+			}
+		}
+		save_scope_as = target_overlord
+	}
+	option = {
+		name = english_civil_war.258.a
+
+		custom_tooltip = target_subject_will_appreciate_this_tt
+		if = {
+			limit = {
+				has_country_modifier = fewer_demands_from_subjects_modifier
+			}
+			add_country_modifier = {
+				modifier = fewer_demands_from_subjects_modifier
+				years = 1
+				mode = add_and_extend
+			}
+		}
+		else = {
+			add_country_modifier = {
+				modifier = fewer_demands_from_subjects_modifier
+				years = 5
+				mode = add_and_extend
+			}
+		}
+		change_gold_effect = { scale = -3 }
+		scope:target_subject = {
+			add_gold = {
+				value = root.monthly_income_total
+				multiply = 3
+			}
+			trigger_event_non_silently = english_civil_war.259
+		}
+	}
+	option = {
+		name = english_civil_war.258.b
+
+		scope:target_subject = {
+			show_as_tooltip = { add_liberty_desire = liberty_desire_severe_plus }
+			trigger_event_non_silently = english_civil_war.260
+		}
+	}
+}
+
+english_civil_war.259 = {
+	type = country_event
+	category = disaster_event
+	title = english_civil_war.259.title
+	desc = english_civil_war.259.desc
+	image = "gfx/interface/illustrations/disaster/court_and_country.dds"
+
+	option = {
+		name = english_civil_war.259.a
+
+		show_as_tooltip = {
+			add_gold = {
+				value = scope:target_overlord.monthly_income_total
+				multiply = 3
+			}
+		}
+		add_government_power = government_power_mild_bonus
+
+	}
+}
+
+english_civil_war.260 = {
+	type = country_event
+	category = disaster_event
+	title = english_civil_war.260.title
+	desc = english_civil_war.260.desc
+	image = "gfx/interface/illustrations/disaster/court_and_country.dds"
+
+	option = {
+		name = english_civil_war.260.a
+
+		add_liberty_desire = liberty_desire_severe_plus
+		add_government_power = government_power_extreme_penalty
+	}
+}
+
+english_civil_war.261 = {
+	type = country_event
+	category = disaster_event
+	title = english_civil_war.261.title
+	desc = english_civil_war.261.desc
+	image = "gfx/interface/illustrations/disaster/court_and_country.dds"
+	immediate = {
+		random_rebel = {
+			limit = { rebel_name_key = parliamentarist_rebels }
+			save_scope_as = english_civil_war_rebels_scope
+		}
+	}
+
+	option = {
+		name = english_civil_war.261.a
+
+		scope:english_civil_war_rebels_scope = {
+			add_rebel_progress = 0.1
+		}
+	}
+}

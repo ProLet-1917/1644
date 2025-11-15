@@ -49,6 +49,11 @@
 				limit = { NOT = { has_variable = cxi_1644_start_army_spawned } }
 				trigger_event_silently = cxi_1644_start_army.1
 			}
+			# 添加自动征服modifier（在与MNG的战争中占领即吞并）
+			add_country_modifier = {
+				modifier = cxi_auto_conquer_modifier
+				years = -1
+			}
 		}
 	}
 }

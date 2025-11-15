@@ -1,0 +1,408 @@
+﻿########################
+### Heavy Ship
+########################
+##REPLACE:unlock_early_carrack_advance = {
+##	age = age_1_traditions
+
+##	requires = dock_advance
+##	unlock_unit = n_early_carrack
+
+##	ai_preference_tags = {
+##		exploration
+##	}
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_early_carrack)"
+##	}
+##}
+
+##REPLACE:unlock_carrack_advance = {
+##	age = age_1_traditions
+
+##	unlock_unit = n_carrack
+
+##	ai_preference_tags = {
+##		exploration
+##	}
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_carrack)"
+##	}
+##}
+
+##REPLACE:unlock_galleon_advance = {
+##	age = age_1_traditions
+
+##	unlock_unit = n_galleon
+
+##	ai_preference_tags = {
+##		exploration
+##	}
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_galleon)"
+##	}
+##}
+
+##REPLACE:unlock_twodecker_advance = {
+##	age = age_1_traditions
+
+##	unlock_unit = n_twodecker
+
+##	ai_preference_tags = {
+##		exploration
+##	}
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_twodecker)"
+##	}
+##}
+
+##REPLACE:unlock_threedecker_advance = {
+##	age = age_1_traditions
+
+##	unlock_unit = n_threedecker
+
+##	ai_preference_tags = {
+##		exploration
+##	}
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_threedecker)"
+##	}
+##}
+
+##REPLACE:unlock_ship_of_the_line_advance = {
+##	age = age_1_traditions
+
+##	unlock_unit = n_ship_of_the_line
+
+##	requires = unlock_threedecker_advance
+
+##	ai_preference_tags = {
+##		exploration
+##	}
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_ship_of_the_line)"
+##	}
+##}
+
+##REPLACE:unlock_war_galleon = {
+##	age = age_1_traditions
+
+
+##	unlock_unit = n_war_galleon
+
+##	requires = unlock_galleon_advance
+
+##	ai_preference_tags = {
+##		exploration
+##	}
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_war_galleon)"
+##	}
+##}
+
+##REPLACE:unlock_baochuan = {
+##	age = age_1_traditions
+
+
+##	unlock_unit = n_baochuan
+
+##	ai_preference_tags = {
+##		exploration
+##	}
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_baochuan)"
+##	}
+##}
+
+
+########################
+### Light Ship
+########################
+
+##REPLACE:unlock_barque_advance = {
+##	age = age_1_traditions
+
+##	unlock_unit = n_barque
+##	requires = dock_advance
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_barque)"
+##	}
+##}
+
+##REPLACE:unlock_caravel_advance = {
+##	age = age_1_traditions
+
+##	unlock_unit = n_caravel
+
+##	requires = open_sea_exploration
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_caravel)"
+##	}
+##}
+
+##REPLACE:unlock_pinnace_advance = {
+##	age = age_1_traditions
+
+##	unlock_unit = n_pinnace
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_pinnace)"
+##	}
+##}
+
+##REPLACE:unlock_frigate_advance = {
+##	age = age_1_traditions
+
+##	unlock_unit = n_frigate
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_frigate)"
+##	}
+##}
+
+##REPLACE:unlock_heavy_frigate_advance = {
+##	age = age_1_traditions
+
+##	unlock_unit = n_heavy_frigate
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_heavy_frigate)"
+##	}
+##}
+
+##REPLACE:unlock_bomb_ketch = {
+##	age = age_1_traditions
+
+##	unlock_unit = n_bomb_ketch
+
+##	requires = unlock_heavy_frigate_advance
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_bomb_ketch)"
+##	}
+##}
+
+##REPLACE:unlock_dhow = {
+##	age = age_1_traditions
+
+
+##	unlock_unit = n_dhow
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_dhow)"
+##	}
+##}
+
+
+
+
+########################
+### Galley
+########################
+##REPLACE:unlock_traditional_galley_advance = {
+##	age = age_1_traditions
+
+##	starting_technology_level = 2
+##	requires = ship_building_advance
+
+##	unlock_unit = n_traditional_galley
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_traditional_galley)"
+##	}
+##}
+
+##REPLACE:unlock_m_galley_advance = {
+##	age = age_1_traditions
+
+##	unlock_unit = n_mediterrannean_galley
+##	requires = naval_morale_advance_1
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_mediterrannean_galley)"
+##	}
+##}
+
+##REPLACE:unlock_war_galley_advance = {
+##	age = age_1_traditions
+
+##	requires = port_cost_distance_from_capital_advance
+##	unlock_unit = n_war_galley
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_war_galley)"
+##	}
+##}
+
+##REPLACE:unlock_galleass_advance = {
+##	age = age_1_traditions
+##	unlock_unit = n_galleass
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_galleass)"
+##	}
+##}
+
+##REPLACE:unlock_xebec_advance = {
+##	age = age_1_traditions
+
+##	unlock_unit = n_xebec
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_xebec)"
+##	}
+##}
+
+
+##REPLACE:italian_galleass = {
+##	age = age_1_traditions
+##	unlock_unit = n_italian_galleass
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_italian_galleass)"
+##	}
+##}
+
+##REPLACE:unlock_archipelago_frigate = {
+##	age = age_1_traditions
+
+
+##	unlock_unit = n_archipelago_frigate
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_archipelago_frigate)"
+##	}
+##}
+
+
+##REPLACE:unlock_cakradonya = {
+##	age = age_1_traditions
+
+
+##	unlock_unit = n_cakradonya
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_cakradonya)"
+##	}
+##}
+
+##REPLACE:unlock_galiot = {
+##	age = age_1_traditions
+
+
+##	unlock_unit = n_galiot
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_galiot)"
+##	}
+##}
+
+##REPLACE:unlock_sekibune = {
+##	age = age_1_traditions
+
+
+##	unlock_unit = n_sekibune
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_sekibune)"
+##	}
+##}
+
+##REPLACE:unlock_atakebune = {
+##	age = age_1_traditions
+
+
+##	unlock_unit = n_atakebune
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_atakebune)"
+##	}
+##}
+
+##REPLACE:unlock_long_fada = {
+##	age = age_1_traditions
+
+##	requires = ship_building_advance
+##	allow_children = no
+
+##	unlock_unit = n_long_fada
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_long_fada)"
+##	}
+##}
+
+
+########################
+### Transports
+########################
+##REPLACE:unlock_cog_advance = {
+##	age = age_1_traditions 
+
+##	requires = unlock_traditional_galley_advance
+##	starting_technology_level = 3
+
+##	unlock_unit = n_cog
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_cog)"
+##	}
+##}
+##REPLACE:unlock_hulk_advance = {
+##	age = age_1_traditions
+
+##	requires = trade_range_advance_age_2
+
+##	unlock_unit = n_hulk
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_hulk)"
+##	}
+##}
+##REPLACE:unlock_flute_advance = {
+##	age = age_1_traditions
+
+##	unlock_unit = n_flute
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_flute)"
+##	}
+##}
+
+##REPLACE:unlock_brig_advance = {
+##	age = age_1_traditions
+
+##	unlock_unit = n_brig
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_brig)"
+##	}
+##}
+
+##REPLACE:unlock_merchantman_advance = {
+##	age = age_1_traditions
+
+##	unlock_unit = n_merchantman
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_merchantman)"
+##	}
+##}
+
+##REPLACE:unlock_eastindiaman_advance = {
+##	age = age_1_traditions
+
+##	unlock_unit = n_eastindiaman
+
+##	ai_weight = { 
+##		add = "ai_unlock_unit_score(n_eastindiaman)"
+##	}
+##}
+
