@@ -17,6 +17,7 @@
 				id = csh_1644_unification.1
 				days = 1
 			}
+			give_renaissance_institutions = yes
 		}
 		# 清朝，创建旗军并安排统一战争事件(已移动到事件trigger中)
 		c:QNG = {
@@ -26,6 +27,12 @@
 				trigger_event_silently = qng_1644_banner_army.1 
 			}
 			trigger_event_silently = { id = qng_1644_unification.1 days = 23 }
+			give_renaissance_institutions = yes
+			# 添加中国内战自动征服modifier（在战争中占领即吞并）
+			add_country_modifier = {
+				modifier = 1644_china_auto_conquest
+				years = 5
+			}
 		}
 		# 吴三桂创建起始军队
 		c:WSG = {
@@ -33,6 +40,7 @@
 				limit = { NOT = { has_variable = wsg_1644_start_army_spawned } }
 				trigger_event_silently = wsg_1644_start_army.1
 			}
+			give_renaissance_institutions = yes
 		}
 		# 大明昌平镇 唐通
 		c:MNG = {
@@ -51,9 +59,11 @@
 			}
 			# 添加自动征服modifier（在与MNG的战争中占领即吞并）
 			add_country_modifier = {
-				modifier = cxi_auto_conquer_modifier
-				years = -1
+				modifier = 1644_china_auto_conquest
+				years = 3
 			}
+			give_renaissance_institutions = yes
 		}
+		
 	}
 }

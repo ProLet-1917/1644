@@ -1,20 +1,41 @@
 ﻿# 1644 模组：自定义兵种（中国战场，仅两种）
-
+# 
+# 所有可能的补给物品（construction_demand / maintenance_demand）：
+#   firearms      - 火器
+#   weaponry      - 武器
+#   leather       - 皮革
+#   lumber        - 木材
+#   tools         - 工具
+#   cloth         - 布料
+#   horses        - 马匹
+#   cannons       - 大炮
+#   copper        - 铜
+#   tin           - 锡
+#   elephants     - 大象
+#   jewelry       - 珠宝
+#   paper         - 纸张
+#   medicaments   - 药品
+#   salt          - 盐
 a_1644_chinese_pikemen = {
 	category = army_infantry
 	copy_from = a_age_4_reformation_infantry
 	buildable = yes
 
-	# 步营 1000人
+	# 步营 1000人（晚明战兵）
 	max_strength = 1.0
+	
+	#补给与征募需求（引用原版模板，避免解析异常）
+	maintenance_demand = pikemen_maintenance
+	construction_demand = pikemen_construction
 
-	morale_damage_taken = -0.03
-	strength_damage_done = 0.03
+	# # 定位：晚明战兵，火器配备不足，整体素质弱于专业火器营
+	# # 略微降低输出与士气，作为廉价主力
+
 
 	country_potential = {
-		OR = { tag = QNG tag = CSH tag = WSG tag = CXI tag = MNG }
+		OR = { tag = QNG tag = CSH tag = WSG tag = CXI tag = MNG tag = CXI}
 	}
-	gfx_tags = { pike_tag medium_tag }
+	gfx_tags = { pike_tag }
 }
 
 a_1644_chinese_musketeers = {
@@ -22,10 +43,16 @@ a_1644_chinese_musketeers = {
 	copy_from = a_age_4_reformation_infantry
 	buildable = yes
 
-	# 火器营
-	max_strength = 1.0
-	morale_damage_done = 0.05
-	strength_damage_taken = -0.05
+	# 火器营（孙元化登州火器）
+	max_strength = 2.0
+	
+	# 补给与征募需求（引用原版模板，避免解析异常）
+	maintenance_demand = infantry_maintenance
+	construction_demand = infantry_construction
+	#提高输出并略微提升士气
+	morale_damage_done = 0.08
+	strength_damage_done = 0.08
+	morale_damage_taken = -0.08
 
 	country_potential = {
 		OR = { tag = QNG tag = CSH tag = WSG tag = CXI tag = MNG }
@@ -33,11 +60,11 @@ a_1644_chinese_musketeers = {
 	gfx_tags = { musket_tag medium_tag }
 }
 
-# 红衣大炮：统一在此处重定义（每营约 100 人，对应 2 门火炮）
+# 红衣大炮：重定义（每营约 100 人，对应 2 门火炮）
 REPLACE:a_red_cannon = {
 	category = army_artillery
 	copy_from = a_age_4_reformation_artillery
-	buildable = no
+	buildable = yes
 
 	# 一营 100 人（2 门炮 + 支援）
 	max_strength = 0.1
@@ -64,7 +91,7 @@ a_1644_chinese_cavalry = {
 	impact = { flatland = 0.05 hills = 0.03 wetlands = -0.05 mountains = -0.1 }
 
 	country_potential = {
-		OR = { tag = QNG tag = WSG tag = CSH tag = MNG }
+		OR = { tag = QNG tag = WSG tag = CSH tag = MNG tag = CXI}
 	}
 	gfx_tags = { medium_tag }
 }

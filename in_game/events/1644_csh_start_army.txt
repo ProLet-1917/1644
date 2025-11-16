@@ -48,8 +48,18 @@ csh_1644_start_army.1 = {
 							experience = 50
 						}
 					}
+					# 以步营补足原移除的火器营编制：+15
 					while = {
 						count = 15
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_pikemen
+							owner = root
+							origin = this
+							experience = 50
+						}
+					}
+					while = {
+						count = 0
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_musketeers
 							owner = root
@@ -106,8 +116,18 @@ csh_1644_start_army.1 = {
 							experience = 50
 						}
 					}
+					# 以步营补足原移除的火器营编制：+10
 					while = {
 						count = 10
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_pikemen
+							owner = root
+							origin = this
+							experience = 50
+						}
+					}
+					while = {
+						count = 0
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_musketeers
 							owner = root
