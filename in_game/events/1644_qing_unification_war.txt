@@ -1,5 +1,4 @@
 ﻿namespace = qng_1644_unification
-
 # qng_1644_unification.2 = {
 # 	type = country_event
 # 	is_triggered_only = yes
@@ -11,24 +10,29 @@
 # 		}
 # 	}
 # }
-
-
-qng_1644_unification.1 = { #紫气东来
+qng_1644_unification.1 = {
+	#紫气东来
 	type = country_event
-
 	title = qng_1644_unification.1.title
 	desc = qng_1644_unification.1.desc
 	historical_info = qng_1644_unification.1.historical_info
-
-
 	immediate = {
 	}
-
-	option = { #入关
+	option = {
+		#入关
 		name = qng_1644_unification.1.a
 		historical_option = yes
 		if = {
-			limit = { tag = QNG }
+			limit = {
+				tag = QNG
+			}
+			c:QNG = {
+				# 入关决议：再给一次短期自动征服（防止玩家错过开局 buff）
+				add_country_modifier = {
+					modifier = 1644_china_auto_conquest
+					years = 1
+				}
+			}
 			c:CSH ?= {
 				save_scope_as = target_csh
 				if = {
@@ -79,7 +83,8 @@ qng_1644_unification.1 = { #紫气东来
 			}
 		}
 	}
-	option = { #不入关
+	option = {
+		#不入关
 		name = qng_1644_unification.1.b
 		ai_chance = {
 			factor = 0.1
@@ -88,5 +93,3 @@ qng_1644_unification.1 = { #紫气东来
 		add_government_power = government_power_mild_bonus
 	}
 }
-
-

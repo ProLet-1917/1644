@@ -1,226 +1,189 @@
-﻿# 中国国家传统科技树 - 三条分支结构（政治、军事、外交）
+﻿# 中国国家传统科技树 - 1644开局简化版
+# 前四个时代的中国专属科技效果已合并为5个开局自动解锁科技
+# 原版通用科技通过 starting_technology_level = 4 自动解锁，无需手动处理
 
 # ============================================
-# 第一层 - 共同源头
+# 前四个时代合并科技 - 开局自动解锁
 # ============================================
-REPLACE:confucian_influences = {
+
+# 明清行政遗产 - 合并前四个时代所有政治线效果
+ming_administrative_heritage = {
 	age = age_1_traditions
 	depth = 0
-	country_cabinet_efficiency = 0.05
+	starting_technology_level = 1
+	
+	country_cabinet_efficiency = 0.15
 	head_of_cabinet_promotion_cost_modifier = -0.33
-}
-
-# ============================================
-# 政治线（Administrative）
-# ============================================
-# 第二层 - 政治线起点
-REPLACE:lijia_system = {
-	age = age_1_traditions
-	global_distance_from_capital_cost_modifier = -0.05
-	requires = confucian_influences
-}
-
-# 第三层
-REPLACE:yulin_tuce = {
-	age = age_1_traditions
-	tax_income_efficiency = medium_tax_income_efficiency_bonus
-	global_monthly_food_modifier = 0.05
-	requires = lijia_system
-}
-
-# 第四层
-REPLACE:zhongshu_sheng = {
-	age = age_1_traditions
 	government_reform_slots = 1
-	requires = yulin_tuce
-}
-
-# 第五层
-REPLACE:grand_coordinators = {
-	age = age_1_traditions
 	government_size = 1
-	requires = zhongshu_sheng
-}
-
-# 第六层
-REPLACE:the_censorate = {
-	age = age_1_traditions
+	global_distance_from_capital_cost_modifier = -0.05
+	tax_income_efficiency = medium_tax_income_efficiency_bonus
 	global_crown_estate_power = 0.1
-	requires = grand_coordinators
-}
-
-# 第七层
-REPLACE:reform_the_grand_secretariat = {
-	age = age_1_traditions
 	legislative_efficiency = 0.1
-	requires = the_censorate
-}
-
-# 第八层
-REPLACE:great_tax_reform = {
-	age = age_1_traditions
 	global_estate_max_tax = 0.1
-	requires = reform_the_grand_secretariat
+	
+	# 解锁行政法律与机制
+	unlock_law = cultural_traditions_law
+	unlock_law = immigration_law
+	unlock_law = distribution_of_power_law
+	unlock_law = administrative_system
+	unlock_law = mining_law
+	
+	# 解锁附庸类型
+	unlock_subject_type = vassal
+	unlock_subject_type = fiefdom
+	
+	# 解锁基本机制
+	has_codified_laws = yes
+	allow_council_parliament = yes
+	enable_taxation = yes
+	has_stability_investment = yes
 }
 
-# 第九层
-REPLACE:junji_chu = {
+ming_military_heritage = {
 	age = age_1_traditions
-	country_cabinet_efficiency = 0.1
-	requires = great_tax_reform
-}
-
-# 第十层 - 政治线终点
-REPLACE:salt_monopoly = {
-	age = age_1_traditions
-	global_salt_output_modifier = 0.2
-	requires = junji_chu
-}
-
-# ============================================
-# 军事线（Military）
-# ============================================
-# 第二层 - 军事线起点
-REPLACE:weisuo_system = {
-	age = age_1_traditions
+	depth = 0
+	starting_technology_level = 1
+	
 	global_manpower_modifier = 0.1
 	army_maintenance_cost = -0.05
-	requires = confucian_influences
-}
-
-# 第三层
-REPLACE:tu_bing = {
-	age = age_1_traditions
 	army_auxiliary_build_cost_modifier = -0.2
-	requires = weisuo_system
-}
-
-# 第四层
-REPLACE:grand_military_parades = {
-	age = age_1_traditions
 	monthly_army_tradition = 0.05
-	requires = tu_bing
-}
-
-# 第五层
-REPLACE:the_red_cannon = {
-	age = age_1_traditions
-	unlock_unit = a_red_cannon
-	requires = grand_military_parades
-}
-
-# 第六层
-REPLACE:nine_garrisons_of_the_great_wall = {
-	age = age_1_traditions
 	global_defensive = 0.20
-	requires = the_red_cannon
-}
-
-# 第七层
-REPLACE:green_standard_army = {
-	age = age_1_traditions
 	global_garrison_size_modifier = 0.2
 	army_infantry_reinforce_cost_modifier = -0.1
-	requires = nine_garrisons_of_the_great_wall
-}
-
-# 第八层 - 军事线终点
-REPLACE:ten_great_campaigns = {
-	age = age_1_traditions
 	global_separatism = -0.05
 	global_war_score_cost = -0.05
-	requires = green_standard_army
+	
+	# 解锁中国战场自定义兵种：步营、骑营
+	unlock_unit = a_1644_chinese_pikemen
+	unlock_unit = a_1644_chinese_cavalry
+	
+	# 保留红夷大炮
+	unlock_unit = a_red_cannon
 }
 
-# ============================================
-# 外交线（Diplomatic）
-# ============================================
-# 第二层 - 外交线起点
-REPLACE:tributary_system = {
+# 明清经济遗产 - 合并前四个时代所有经济线效果
+ming_economic_heritage = {
 	age = age_1_traditions
-	subject_loyalty = 10
-	requires = confucian_influences
-}
-
-# 第三层
-REPLACE:tusi_titles = {
-	age = age_1_traditions
-	pop_join_rebel_threshold = -0.03
-	requires = tributary_system
-}
-
-# 第四层
-REPLACE:monuments_to_greatness = {
-	age = age_1_traditions
-	diplomatic_reputation = 2
-	requires = tusi_titles
-}
-
-# 第五层 - 外交线终点
-REPLACE:successors_of_genghis_khan = {
-	age = age_1_traditions
-	monthly_legitimacy = 0.1
-	requires = monuments_to_greatness
-}
-
-# ============================================
-# 经济/文化线（Economic/Cultural）- 从政治线分支
-# ============================================
-# 从政治线的盐业垄断分支
-REPLACE:silver_standard = {
-	age = age_1_traditions
-	global_silver_output_modifier = 0.15
-	requires = salt_monopoly
-}
-
-# 从银本位分支
-REPLACE:extensive_canal_works = {
-	age = age_1_traditions
+	depth = 0
+	starting_technology_level = 1
+	
+	global_monthly_food_modifier = 0.05
 	global_rural_build_buildings_cost = -0.025
 	global_monthly_prosperity = 0.001
-	requires = silver_standard
-}
-
-# 从大运河分支
-REPLACE:the_tea_trade = {
-	age = age_1_traditions
 	global_tea_output_modifier = 0.2
-	requires = extensive_canal_works
-}
-
-# 从茶叶贸易分支
-REPLACE:jingdezhen_porcelain = {
-	age = age_1_traditions
+	global_salt_output_modifier = 0.2
+	global_silver_output_modifier = 0.15
 	global_porcelain_output_modifier = 0.1
-	cultural_influence_modifier = 0.15
-	requires = the_tea_trade
+	
+	# 经济循环核心建筑：手工业行会 + 作坊 + 制造业
+	# 行会 / 基础生产
+	unlock_building = porcelain_guild
+	unlock_building = paper_guild
+	unlock_building = weapon_guild
+	unlock_building = lacquerware_guild
+	unlock_building = scriptorium
+	
+	# 作坊（中期加工）
+	unlock_building = weapon_workshop
+	unlock_building = naval_supplies_workshop
+	unlock_building = paper_workshop
+	unlock_building = cloth_workshop
+	unlock_building = fine_cloth_workshop
+	unlock_building = tools_workshop
+	unlock_building = pottery_workshop
+	unlock_building = glass_workshop
+	unlock_building = dyes_workshop
+	unlock_building = furniture_workshop
+	unlock_building = cannon_workshop
+	unlock_building = guns_workshop
+	unlock_building = tanning_workshop
+	unlock_building = beer_workshop
+	unlock_building = saltpeter_workshop
+	unlock_building = distillers_workshop
+	unlock_building = printing_press_shop
+	
+	# 制造业（后期高端生产）
+	unlock_building = firearms_manufactory
+	unlock_building = cloth_manufactory
+	unlock_building = fine_cloth_manufactory
+	unlock_building = printing_manufactory
+	unlock_building = porcelain_manufactory
+	unlock_building = iron_foundry
+	unlock_building = weapon_manufactory
+	unlock_building = cannon_foundry
+	unlock_building = naval_supplies_manufactory
+	unlock_building = tannery_manufactory
+	unlock_building = pottery_manufactory
+	unlock_building = furniture_manufactory
+	unlock_building = distiller_manufactory
+	unlock_building = brewery_manufactory
+	unlock_building = winery_manufactory
+	unlock_building = lacquerware_manufactory
+	unlock_building = paper_manufactory
+	unlock_building = putrefaction_works
+	
+	# 经济基础设施
+	unlock_building = counting_house
+	unlock_building = merchants_quarters
+	unlock_building = port_authority
+	
+	# 农业与资源
+	unlock_building = windmill
+	unlock_building = apothecary
+	unlock_building = pest_house
+	unlock_building = hospital
 }
 
-# 从景德镇瓷器分支
-REPLACE:sanxitang = {
+# 明清文化遗产 - 合并前四个时代所有文化线效果
+ming_cultural_heritage = {
 	age = age_1_traditions
-	skill_of_new_artists = 0.05
-	requires = jingdezhen_porcelain
-}
-
-# 从三希堂分支
-REPLACE:baihua = {
-	age = age_1_traditions
+	depth = 0
+	starting_technology_level = 1
+	
 	global_max_literacy = 5
-	requires = sanxitang
-}
-
-# 从白话分支
-REPLACE:zaju = {
-	age = age_1_traditions
-	cultural_influence_modifier = 0.1
+	cultural_influence_modifier = 0.25
 	num_possible_artists = 1
-	requires = baihua
+	skill_of_new_artists = 0.05
+	monthly_prestige = 0.1
+	
+	# 文化与教育建筑
+	unlock_building = confucian_school
+	unlock_building = confucian_academy
+	unlock_building = library
+	unlock_building = university
+	unlock_building = opera_house
+	unlock_building = theater
+	
+	# 解锁教育法律
+	unlock_law = education_elites_law
 }
 
-# 从杂剧分支 - 文化线终点
-REPLACE:woodblock_printing = {
+# 明清外交遗产 - 合并前四个时代所有外交线效果
+ming_diplomatic_heritage = {
 	age = age_1_traditions
-	monthly_prestige = 0.1
-	requires = zaju
+	depth = 0
+	starting_technology_level = 1
+	
+	subject_loyalty = 10
+	pop_join_rebel_threshold = -0.03
+	diplomatic_reputation = 2
+	monthly_legitimacy = 0.1
+	
+	# 解锁附庸类型与殖民机制
+	unlock_subject_type = trade_company
+	unlock_subject_type = march
+	allow_subjects = yes
+	
+	# 解锁殖民与探索机制
+	can_colonize = yes
+	may_explore = yes
+	
+	# 解锁宣战理由
+	unlock_casus_belli = cb_exploration
+	
+	# 解锁殖民法律
+	unlock_law = colonial_policy
+	unlock_law = native_policy
 }
