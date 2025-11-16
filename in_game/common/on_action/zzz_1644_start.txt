@@ -15,9 +15,13 @@
 			}
 			trigger_event_silently = {
 				id = csh_1644_unification.1
-				days = 1
+				days = 5
 			}
-			give_renaissance_institutions = yes
+			add_country_modifier = {
+				modifier = 1644_china_auto_conquest
+				years = 5
+			}
+			give_all_1644_institutions = yes
 		}
 		# 清朝，创建旗军并安排统一战争事件(已移动到事件trigger中)
 		c:QNG = {
@@ -27,7 +31,7 @@
 				trigger_event_silently = qng_1644_banner_army.1 
 			}
 			trigger_event_silently = { id = qng_1644_unification.1 days = 23 }
-			give_renaissance_institutions = yes
+			give_all_1644_institutions = yes
 			# 添加中国内战自动征服modifier（在战争中占领即吞并）
 			add_country_modifier = {
 				modifier = 1644_china_auto_conquest
@@ -40,7 +44,7 @@
 				limit = { NOT = { has_variable = wsg_1644_start_army_spawned } }
 				trigger_event_silently = wsg_1644_start_army.1
 			}
-			give_renaissance_institutions = yes
+			give_all_1644_institutions = yes
 		}
 		# 大明昌平镇 唐通
 		c:MNG = {
@@ -49,7 +53,7 @@
 				trigger_event_silently = mng_1644_start_army.1
 			}
 			# 1644：开局直接拥抱文艺复兴三件套（文艺复兴/银行业/职业军队）
-			give_renaissance_institutions = yes
+			give_all_1644_institutions = yes
 		}
 		# 大西政权（CXI）创建起始军队
 		c:CXI = {
@@ -57,12 +61,12 @@
 				limit = { NOT = { has_variable = cxi_1644_start_army_spawned } }
 				trigger_event_silently = cxi_1644_start_army.1
 			}
-			# 添加自动征服modifier（在与MNG的战争中占领即吞并）
+			# 添加自动征服modifier（在战争中占领即吞并）
 			add_country_modifier = {
 				modifier = 1644_china_auto_conquest
 				years = 3
 			}
-			give_renaissance_institutions = yes
+			give_all_1644_institutions = yes
 		}
 		
 	}

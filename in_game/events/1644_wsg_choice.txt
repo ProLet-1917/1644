@@ -1,0 +1,127 @@
+﻿namespace = wsg_1644_choice
+
+wsg_1644_choice.1 = {
+	type = country_event
+	# 由其他事件调用触发，无需 is_triggered_only
+
+	title = wsg_1644_choice.1.title
+	desc = wsg_1644_choice.1.desc
+	historical_info = wsg_1644_choice.1.historical_info
+
+	trigger = {
+		tag = WSG
+		NOT = { has_variable = wsg_1644_chosen_side }
+	}
+
+	option = {
+		# 投奔清廷
+		
+		name = wsg_1644_choice.1.a
+		ai_chance = { factor = 0.6 }
+		set_variable = wsg_1644_chosen_side
+		custom_tooltip = wsg_1644_choice_join_qng_tt
+		hidden_effect = {
+			c:QNG ?= {
+				save_scope_as = wsg_qng
+			}
+			if = {
+				limit = { exists = scope:wsg_qng }
+				make_subject_of = { target = scope:wsg_qng type = subject_type:vassal }
+				# 成为附庸后，稍作延迟再处理加入宗主战争（便于关系生效）
+				ROOT = { trigger_event_silently = { id = wsg_1644_choice.100 days = 2 } }
+			}
+		}
+		historical_option = yes
+	}
+	option = {
+		# 归顺李自成
+		name = wsg_1644_choice.1.b
+		ai_chance = { factor = 0.3 }
+		set_variable = wsg_1644_chosen_side
+		custom_tooltip = wsg_1644_choice_join_csh_tt
+		hidden_effect = {
+			c:CSH ?= {
+				save_scope_as = wsg_csh
+			}
+			if = {
+				limit = { exists = scope:wsg_csh }
+				make_subject_of = { target = scope:wsg_csh type = subject_type:vassal }
+			}
+		}
+	}
+	option = {
+		# 忠于大明
+		name = wsg_1644_choice.1.c
+		ai_chance = { factor = 0.1 }
+		set_variable = wsg_1644_chosen_side
+		custom_tooltip = wsg_1644_choice_join_mng_tt
+		hidden_effect = {
+			c:MNG ?= {
+				save_scope_as = wsg_mng
+			}
+			if = {
+				limit = { exists = scope:wsg_mng }
+				make_subject_of = { target = scope:wsg_mng type = subject_type:vassal }
+			}
+		}
+	}
+}
+
+### 成为附庸后，尝试加入宗主的现役战争（最小实现，带调试变量）
+wsg_1644_choice.100 = {
+	type = country_event
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		# ROOT = WSG
+		set_variable = { name = wsg_debug_has_overlord value = 0 }
+		set_variable = { name = wsg_debug_war_count value = 0 }
+		set_variable = { name = wsg_debug_joined_as_attacker value = 0 }
+		set_variable = { name = wsg_debug_joined_as_defender value = 0 }
+		set_variable = { name = wsg_debug_no_relevant_war value = 0 }
+
+		overlord ?= {
+			# this = 宗主
+			save_scope_as = wsg_overlord
+			ROOT = { set_variable = { name = wsg_debug_has_overlord value = 1 } }
+
+			# 统计宗主当前所有战争，并尝试把 WSG 拉入与 CSH/MNG 的战争
+			every_current_war = {
+				save_scope_as = wsg_oberlord_current_war
+				# 计数
+				ROOT = { change_variable = { name = wsg_debug_war_count add = 1 } }
+
+				if = {
+					limit = {
+						attacker_leader = scope:wsg_overlord
+						any_defender = { OR = { this = c:CSH this = c:MNG } }
+					}
+					ROOT = {
+						join_war_as_attacker = { war = scope:wsg_oberlord_current_war }
+						set_variable = { name = wsg_debug_joined_as_attacker value = 1 }
+					}
+				}
+				else_if = {
+					limit = {
+						defender_leader = scope:wsg_overlord
+						any_attacker = { OR = { this = c:CSH this = c:MNG } }
+					}
+					ROOT = {
+						join_war_as_defender = { war = scope:wsg_oberlord_current_war }
+						set_variable = { name = wsg_debug_joined_as_defender value = 1 }
+					}
+				}
+			}
+		}
+
+		# 如果没有任何相关战争被处理，打一个标记用于调试
+		if = {
+			limit = {
+				NOT = { has_variable = wsg_debug_joined_as_attacker }
+				NOT = { has_variable = wsg_debug_joined_as_defender }
+			}
+			set_variable = { name = wsg_debug_no_relevant_war value = 1 }
+		}
+	}
+}

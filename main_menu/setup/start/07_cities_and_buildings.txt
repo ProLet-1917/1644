@@ -629,6 +629,9 @@ locations={
 	guancheng_zhengzhou = { rank = city town_setup = chinese_city }
 	zichuan = { rank = city town_setup = chinese_city }
 
+	xuande = { rank = city town_setup = chinese_city } #宣府
+	nanzheng = { rank = city town_setup = chinese_city } #南郑
+
 	shipai = { rank = town town_setup = chinese_town }
 	huaining = { rank = town town_setup = chinese_town }
 	dingxing = { rank = town town_setup = chinese_town }
@@ -721,7 +724,7 @@ locations={
 	jiaxing = { rank = town town_setup = chinese_town }
 	fugu = { rank = town town_setup = chinese_town }
 	wenxian_gongchang = { rank = town town_setup = chinese_town }
-	licheng = { rank = town town_setup = chinese_town }
+	licheng = { rank = city town_setup = chinese_city } #济南
 	suining_jing = { rank = town town_setup = chinese_town }
 	shayang = { rank = town town_setup = chinese_town }
 	jingning = { rank = town town_setup = chinese_town }
@@ -883,8 +886,14 @@ locations={
 	#Mongolia and Manchuria
 	karakorum = { rank = town town_setup = chinese_town }
 	liaoyang = { rank = city town_setup = chinese_city }
-	ilan_hala = { rank = town 	town_setup = jurchen_town }
-
+	ilan_hala = { rank = city town_setup = chinese_city }
+	shenyang = { rank = city town_setup = chinese_city }
+	hetu_ala = { rank = town town_setup = jurchern_town }
+	#辽西
+	ningyuan_jinzhou = { rank = town town_setup = chinese_coastal_town }
+	qiantun = { rank = town town_setup = chinese_coastal_town }
+	funing = { rank = town town_setup = chinese_coastal_town }
+	penglai = { rank = town town_setup = chinese_coastal_town }
 	#Southeast Asia
 	ayodhya = { rank = town town_setup = south_east_asia_port_town }
 	lopburi = { rank = town town_setup = south_east_asia_town }
@@ -3376,23 +3385,23 @@ building_manager = {
 	clan_shipyards = { tag = ODA level = 1 location = nyuu }
 	
 	#Manchuria
-	jurchen_barracks = { tag = DNG level = 1 location = donggo }
-	jurchen_barracks = { tag = HNE level = 1 location = shenyang }
-	jurchen_barracks = { tag = SSH level = 1 location = qinhe }
-	jurchen_barracks = { tag = HDA level = 1 location = kaiyuan_jurchen }
-	jurchen_barracks = { tag = YEH level = 1 location = yehe }
-	jurchen_barracks = { tag = ULA level = 1 location = girin_ula }
-	jurchen_barracks = { tag = HOI level = 1 location = huifacheng }
-	jurchen_barracks = { tag = NEY level = 1 location = sunggari }
-	jurchen_barracks = { tag = JUS level = 1 location = juxeri }
-	jurchen_barracks = { tag = HJN level = 1 location = heoryeong }
-	jurchen_barracks = { tag = YAL level = 1 location = linjiang_jurchen }
-	jurchen_barracks = { tag = WGG level = 1 location = wanggika }
-	jurchen_barracks = { tag = JEC level = 1 location = hetu_ala }
-	jurchen_barracks = { tag = ODO level = 1 location = chosan }
-	jurchen_barracks = { tag = HUL level = 1 location = ganggye }
-	jurchen_barracks = { tag = URY level = 1 location = hamheung }
-	jurchen_barracks = { tag = MAO level = 1 location = gyeongseong }
+	jurchen_barracks = { tag = QNG level = 1 location = donggo }
+	jurchen_barracks = { tag = QNG level = 1 location = shenyang }
+	jurchen_barracks = { tag = QNG level = 1 location = qinhe }
+	jurchen_barracks = { tag = QNG level = 1 location = kaiyuan_jurchen }
+	jurchen_barracks = { tag = QNG level = 1 location = yehe }
+	jurchen_barracks = { tag = QNG level = 1 location = girin_ula }
+	jurchen_barracks = { tag = QNG level = 1 location = huifacheng }
+	jurchen_barracks = { tag = QNG level = 1 location = sunggari }
+	jurchen_barracks = { tag = QNG level = 1 location = juxeri }
+	jurchen_barracks = { tag = QNG level = 1 location = heoryeong }
+	jurchen_barracks = { tag = QNG level = 1 location = linjiang_jurchen }
+	jurchen_barracks = { tag = QNG level = 1 location = wanggika }
+	jurchen_barracks = { tag = QNG level = 1 location = hetu_ala }
+	jurchen_barracks = { tag = QNG level = 1 location = chosan }
+	jurchen_barracks = { tag = QNG level = 1 location = ganggye }
+	jurchen_barracks = { tag = QNG level = 1 location = hamheung }
+	jurchen_barracks = { tag = QNG level = 1 location = gyeongseong }
 
 	#Peel Towers
 	peel_towers = { tag = SCO level = 1 location = dunbar}

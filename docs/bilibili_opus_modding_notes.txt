@@ -32,6 +32,16 @@
   - `INJECT_OR_CREATE:key = { }`
 - 示例：在 `main_menu/common/modifier_type_definitions` 中定义模组修正，然后注入�?`in_game/common/auto_modifiers` 的原版修正�?
 
+### CursorRules（项目约定）
+- 实测：`in_game/common/situations` 支持数据库模式（INJECT/REPLACE）。优先使用 REPLACE 精准覆写单个局势键，避免整目录 `replace_path`。
+- 禁用原版“黑死病 / 日本战国”局势的最小示例（建议放置在加载顺序更后的文件中）：
+  - `REPLACE:black_death = { can_start = { always = no } visible = { always = no } }`
+  - `REPLACE:sengoku = { can_start = { always = no } visible = { always = no } }`
+- 兼容性与回退：
+  - 若未来版本变动导致 `situations` 暂不支持数据库模式，可回退到“同名键后载覆盖”方案（`black_death = { ... }` / `sengoku = { ... }`）。
+- 仍然不支持数据库模式的目录（以当前版本为准）：
+  - `on_actions`、`setup`（保持追加式/同名覆盖策略）。
+
 ## 当前限制（发布前版本�?
 
 - 自定义起始日期暂不支持，需要脚本层面构建动态开局�?

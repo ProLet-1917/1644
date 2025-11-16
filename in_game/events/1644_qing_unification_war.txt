@@ -26,11 +26,17 @@ qng_1644_unification.1 = {
 			limit = {
 				tag = QNG
 			}
-			c:QNG = {
-				# 入关决议：再给一次短期自动征服（防止玩家错过开局 buff）
-				add_country_modifier = {
-					modifier = 1644_china_auto_conquest
-					years = 1
+
+			# 吴三桂抉择（清军入关后触发）
+			c:WSG ?= {
+				if = {
+					limit = {
+						exists = this
+						NOT = { has_variable = wsg_1644_chosen_side }
+					}
+					trigger_event_non_silently = {
+						id = wsg_1644_choice.1
+					}
 				}
 			}
 			c:CSH ?= {
@@ -54,6 +60,7 @@ qng_1644_unification.1 = {
 							type = casus_belli:cb_chinese_unification
 						}
 						custom_tooltip = qng_1644_unification_gain_cb_tt
+
 					}
 				}
 			}
@@ -78,6 +85,7 @@ qng_1644_unification.1 = {
 							type = casus_belli:cb_chinese_unification
 						}
 						custom_tooltip = qng_1644_unification_gain_cb_tt
+					
 					}
 				}
 			}
