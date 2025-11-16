@@ -17,9 +17,9 @@ wsg_1644_start_army.1 = {
 			location:ningyuan_jinzhou ?= {
 				if = {
 					limit = { owner = root }
-					# 宁远前锋步军：25 * 1000 = 25000 人（14 长枪、7 火器、4 骑兵）
+					# 宁远步军：20 * 1000 = 20000 人
 					while = {
-						count = 15
+						count = 10
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_pikemen
 							owner = root
@@ -37,7 +37,7 @@ wsg_1644_start_army.1 = {
 						}
 					}
 					while = {
-						count = 30
+						count = 20
 						create_sub_unit_with_owner = {
 							type = a_1644_guanning_cavalry
 							owner = root

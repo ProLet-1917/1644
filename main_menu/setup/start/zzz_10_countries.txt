@@ -97,7 +97,7 @@ countries = {
 			
 
 				# gansu_area ─ 甘州、肃州与青海河西走廊西段
-				shandan qilian 
+				shandan  
 				ganzhou hongshui liyuan 
 				# shazhou anding_suzhou dangcheng 
 				#kuyu_shazhou guazhou niuquanzi yangguan mazongshan hala_nur
@@ -161,6 +161,8 @@ countries = {
 				qin_culture
 				jin_culture
 				chu_culture
+				yan_culture
+				liaodong_culture
 			}
 			tolerated_cultures = {
 				yan_culture
@@ -751,7 +753,6 @@ countries = {
 				yan_culture
 				jilu_culture
 				zhongyuan_culture
-				jianghuai_culture
 				wu_culture
 				yue_wu_culture
 				tunxi_culture
@@ -764,6 +765,8 @@ countries = {
 				jianning_culture
 				shu_culture
 				liaodong_culture
+				qin_culture
+				jin_culture
 			}
 			tolerated_cultures = {
 				
@@ -821,7 +824,6 @@ countries = {
 				stability = 30 #稳定度
 				prestige = 50 #声望
 				government_power = 40 #正统性
-				war_exhaustion = -10 #战争疲劳
 				army_tradition = 30 #军队传统
 			}
 		}
@@ -846,8 +848,17 @@ countries = {
 			court_language = northern_mandarin_dialect
 			country_rank = rank_duchy
 			capital = ningyuan_jinzhou
+			accepted_cultures = {
+				yan_culture
+			}
 			flag = "WSG"
 			country_name = "WSG"
+			currency_data = {
+				gold = 1000 #国库
+				stability = 80 #稳定度
+				army_tradition = 100 #军队传统
+
+			}
 		}
 #JOSEON
 		JOE = {

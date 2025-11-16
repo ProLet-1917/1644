@@ -16,12 +16,7 @@ mng_1644_start_army.1 = {
 
 			set_variable = { name = mng_1644_changping_garrison_spawned value = 1 }
 
-			if = {
-				limit = { exists = character:chi_tang_tong }
-				character:chi_tang_tong = {
-					save_scope_as = mng_changping_commander
-				}
-			}
+			# 昌平指挥官直接判存并赋予
 
 			location:changping ?= {
 				if = {
@@ -68,13 +63,45 @@ mng_1644_start_army.1 = {
 					}
 
 					if = {
-						limit = { exists = scope:mng_changping_commander }
+						limit = { exists = character:chi_tang_tong }
 						random_unit_in_location = {
 							limit = {
 								owner = root
 								unit_has_leader = no
 							}
-							set_as_commander = scope:mng_changping_commander
+							set_as_commander = character:chi_tang_tong
+						}
+					}
+				}
+			}
+
+			# 江夏驻军：左良玉 10000 人
+			set_variable = { name = mng_1644_jiangxia_zuo_liangyu_spawned value = 1 }
+
+			# 江夏指挥官直接判存并赋予
+
+			location:jiangxia ?= {
+				if = {
+					limit = { owner = root }
+					# 步营：10 * 1000 = 10000 人
+					while = {
+						count = 10
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_pikemen
+							owner = root
+							origin = this
+							experience = 50
+						}
+					}
+
+					if = {
+						limit = { exists = character:chi_zuo_liangyu }
+						random_unit_in_location = {
+							limit = {
+								owner = root
+								unit_has_leader = no
+							}
+							set_as_commander = character:chi_zuo_liangyu
 						}
 					}
 				}

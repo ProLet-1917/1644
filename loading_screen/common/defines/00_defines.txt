@@ -247,7 +247,7 @@ NMercenary = {
 	MERCENARY_PRISONER_MONTHLY_MAINTENANCE_MULTIPLIER = 0.25
 	MERCENARY_PRISONER_MAX_MORALE = 0.6
 	MERCENARY_SUBUNITS_AVAILABLE_PER_ADM_POINT = 0.25 #leaders with better adm can lead bigger armies
-	MERCENARY_LEADER_BASE_PRICE = 99999999
+	MERCENARY_LEADER_BASE_PRICE = 1000
 	MERCENARY_LEADER_ABILITY_WEIGHT = 50 #multiplied by an exponential number in range 0..8 based on char ability (so better ones are a lot more expensive than worse ones, less difference between lower ability characters)
 	MERCENARY_LEADER_CULTURE_OPINION_MULTIPLIER = 0.99 #same or friendly culture leaders will work for less for you
 	MERCENARY_LEADER_RELIGION_OPINION_MULTIPLIER = 0.99 #same or friendly religion leaders will work for less for you
@@ -386,10 +386,10 @@ NCombat = {
 	PRESTIGE_FROM_LAND = 0.5
 	PRESTIGE_FROM_NAVAL = 0.5
 
-	
-	DAYS_PER_SIEGE_PHASE = 30
-	MIN_DAYS_PER_SIEGE_PHASE = 7
-	DAYS_PER_SIEGE_PHASE_WITHOUT_FORT = 15
+	# 加快攻城
+	DAYS_PER_SIEGE_PHASE = 10 #原30天
+	MIN_DAYS_PER_SIEGE_PHASE = 7 #原7天
+	DAYS_PER_SIEGE_PHASE_WITHOUT_FORT = 7 #原15天
 	SIEGE_DISEASE_IMPACT = 0.05
 	SIEGE_MAX_FORT_LIMIT_BONUS = 8
 	SIEGE_REGIMENTS_FOR_ARTILLERY = 3
