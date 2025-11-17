@@ -1,0 +1,126 @@
+﻿building_name,building_level,obsolete,method_name,inputs,output_good,output_amount,source_file
+beer_workshop,workshop,brewery,wheat_beer_workshop_maintenance,"lumber:0.25, tools:0.1, wheat:1.0",beer,1.1,production_beer.txt
+beer_workshop,workshop,brewery,millet_beer_workshop_maintenance,"lumber:0.25, millet:1.0, tools:0.1",beer,1.1,production_beer.txt
+beer_workshop,workshop,brewery,fruit_beer_workshop_maintenance,"fruit:1.0, lumber:0.2, tools:0.1",beer,1.1,production_beer.txt
+beer_workshop,workshop,brewery,maize_beer_workshop_maintenance,"maize:1.3, pottery:0.3",beer,1.1,production_beer.txt
+beer_workshop,workshop,brewery,bavarian_beer_workshop_maintenance,"lumber:0.2, tools:0.1, wheat:1.1",beer,1.3,production_beer.txt
+beer_workshop,workshop,brewery,honey_beer_workshop_maintenance,"beeswax:0.25, lumber:0.2, millet:0.5, tools:0.1",beer,1.1,production_beer.txt
+brewery_manufactory,manufactory,beer_workshop,brewery_manufactory_maintenance,"lumber:0.3, tools:0.15, wheat:2.0",beer,2.0,production_beer.txt
+brewery_mill,mill,brewery_manufactory,brewery_mill_maintenance,"lumber:0.4, tools:0.2, wheat:3.5",beer,4.0,production_beer.txt
+scriptorium,guild,,scriptorium_maintenance,"dyes:0.1, lumber:0.2, paper:0.3",books,0.3,production_books.txt
+printing_press_shop,workshop,scriptorium,printing_press_maintenance,"lead:0.25, lumber:0.4, paper:1.0, tools:0.2",books,1.0,production_books.txt
+printing_manufactory,manufactory,printing_press_shop,printing_manufactory_maintenance,"lead:0.4, lumber:0.5, paper:2.0, tools:0.5",books,2.0,production_books.txt
+printing_mill,mill,printing_manufactory,printing_mill_maintenance,"lead:0.5, lumber:1.0, paper:3.5, tools:1.0",books,4.0,production_books.txt
+cannon_workshop,workshop,cannon_maker,cannon_workshop_bronze_maintenance,"copper:0.8, tin:0.2, tools:0.1",cannons,1.1,production_cannons.txt
+cannon_workshop,workshop,cannon_maker,cannon_workshop_iron_maintenance,"iron:0.9, tools:0.1",cannons,1.1,production_cannons.txt
+cannon_workshop,workshop,cannon_maker,cannon_workshop_ammunition_stone_maintenance,"saltpeter:0.1, stone:0.1",cannons,0.1,production_cannons.txt
+cannon_workshop,workshop,cannon_maker,cannon_workshop_ammunition_lead_maintenance,"lead:0.1, saltpeter:0.1",cannons,0.15,production_cannons.txt
+cannon_workshop,workshop,cannon_maker,cannon_workshop_ammunition_iron_maintenance,"iron:0.12, saltpeter:0.1",cannons,0.2,production_cannons.txt
+cannon_foundry,manufactory,cannon_workshop,cannon_foundry_maintenance,"copper:0.5, lead:0.3, saltpeter:0.5, tin:0.25, tools:0.4",cannons,2.0,production_cannons.txt
+cannons_factory,manufactory,cannon_foundry,gun_factory_maintenance,"lead:0.3, saltpeter:0.5, steel:1.5",cannons,4.0,production_cannons.txt
+cloth_workshop,workshop,cloth_guild,cotton_cloth_workshop_maintenance,cotton:0.8,cloth,1.1,production_cloth.txt
+cloth_workshop,workshop,cloth_guild,wool_cloth_workshop_maintenance,wool:1.0,cloth,1.1,production_cloth.txt
+cloth_workshop,workshop,cloth_guild,fiber_crops_cloth_workshop_maintenance,fiber_crops:1.0,cloth,0.9,production_cloth.txt
+cloth_manufactory,manufactory,cloth_workshop,wool_cloth_manufactory_maintenance,"dyes:0.11, wool:1.2",cloth,2.0,production_cloth.txt
+cloth_manufactory,manufactory,cloth_workshop,cotton_cloth_manufactory_maintenance,"cotton:1.0, dyes:0.11",cloth,2.0,production_cloth.txt
+cloth_manufactory,manufactory,cloth_workshop,fiber_crops_cloth_manufactory_maintenance,"dyes:0.05, fiber_crops:1.8",cloth,2.0,production_cloth.txt
+textile_mill,mill,cloth_manufactory,cotton_mill_maintenance,"cotton:1.5, dyes:0.2",cloth,3.0,production_cloth.txt
+textile_mill,mill,cloth_manufactory,wool_mill_maintenance,"dyes:0.2, wool:1.5",cloth,2.5,production_cloth.txt
+textile_mill,mill,cloth_manufactory,fiber_crops_mill_maintenance,"dyes:0.2, fiber_crops:2.0",cloth,2.5,production_cloth.txt
+dyes_workshop,workshop,dyes_guild,dyes_workshop_maintenance,"alum:0.05, lumber:0.6",dyes,0.4,production_dyes.txt
+dyesworks,manufactory,dyes_workshop,dyesworks_maintenance,"alum:0.25, lumber:2.6",dyes,2.0,production_dyes.txt
+dyes_mill,mill,dyesworks,dyesmill_maintenance,"alum:0.3, lumber:6.0",dyes,4.0,production_dyes.txt
+fine_cloth_workshop,workshop,fine_cloth_guild,fine_cloth_workshop_maintenance,cloth:0.8,fine_cloth,0.6,production_fine_cloth.txt
+fine_cloth_workshop,workshop,fine_cloth_guild,wool_weavers_workshop_maintenance,wool:1.0,fine_cloth,0.6,production_fine_cloth.txt
+fine_cloth_workshop,workshop,fine_cloth_guild,silk_weavers_workshop_maintenance,silk:0.8,fine_cloth,0.8,production_fine_cloth.txt
+fine_cloth_workshop,workshop,fine_cloth_guild,spanish_cloth_workshop_maintenance,wool:0.8,fine_cloth,0.6,production_fine_cloth.txt
+fine_cloth_workshop,workshop,fine_cloth_guild,base_fine_cloth_workshop_maintenance,dyes:0.14,fine_cloth,0.12,production_fine_cloth.txt
+fine_cloth_workshop,workshop,fine_cloth_guild,alum_fine_cloth_workshop_maintenance,"alum:0.05, dyes:0.26",fine_cloth,0.25,production_fine_cloth.txt
+fine_cloth_manufactory,manufactory,fine_cloth_workshop,silk_cloth_manufactory_maintenance,silk:1.8,fine_cloth,2.0,production_fine_cloth.txt
+fine_cloth_manufactory,manufactory,fine_cloth_workshop,fine_cloth_manufactory_maintenance,cloth:2.4,fine_cloth,2.0,production_fine_cloth.txt
+fine_cloth_manufactory,manufactory,fine_cloth_workshop,base_cloth_manufactory_maintenance,dyes:0.25,fine_cloth,0.2,production_fine_cloth.txt
+fine_cloth_manufactory,manufactory,fine_cloth_workshop,alum_fine_cloth_manufactory_maintenance,"alum:0.1, dyes:0.4",fine_cloth,0.4,production_fine_cloth.txt
+fine_cloth_mill,mill,fine_cloth_manufactory,fine_cloth_mill_maintenance,"cloth:3.7, dyes:0.25",fine_cloth,4.0,production_fine_cloth.txt
+fine_cloth_mill,mill,fine_cloth_manufactory,silk_cloth_mill_maintenance,"dyes:0.25, silk:2.8",fine_cloth,4.0,production_fine_cloth.txt
+gun_smith,guild,hand_cannon_guild,guns_guild_lumber_maintenance,"iron:0.045, lumber:0.15, tools:0.02",firearms,0.15,production_firearms.txt
+gun_smith,guild,hand_cannon_guild,guns_guild_bronze_maintenance,"copper:0.5, tin:0.1, tools:0.3",firearms,1.0,production_firearms.txt
+gun_smith,guild,hand_cannon_guild,guns_guild_iron_maintenance,"iron:0.5, tools:0.3",firearms,1.0,production_firearms.txt
+gun_smith,guild,hand_cannon_guild,guns_guild_ammunition_lead_maintenance,"lead:0.1, saltpeter:0.1",firearms,0.16,production_firearms.txt
+gun_smith,guild,hand_cannon_guild,guns_guild_ammunition_iron_maintenance,"iron:0.1, saltpeter:0.1",firearms,0.2,production_firearms.txt
+guns_workshop,workshop,gun_smith,guns_workshop_bronze_maintenance,"copper:0.4, tin:0.08, tools:0.25",firearms,1.1,production_firearms.txt
+guns_workshop,workshop,gun_smith,guns_workshop_iron_maintenance,"iron:0.4, tools:0.25",firearms,1.0,production_firearms.txt
+guns_workshop,workshop,gun_smith,guns_workshop_ammunition_lead_maintenance,"lead:0.1, saltpeter:0.1",firearms,0.2,production_firearms.txt
+guns_workshop,workshop,gun_smith,guns_workshop_ammunition_iron_maintenance,"iron:0.1, saltpeter:0.1",firearms,0.25,production_firearms.txt
+firearms_manufactory,manufactory,guns_workshop,firearms_manufactory_maintenance,"coal:0.3, iron:0.8, lead:0.1, lumber:0.3, saltpeter:0.2",firearms,2.0,production_firearms.txt
+firearms_factory,mill,firearms_manufactory,firearms_factory_maintenance,"lead:0.3, saltpeter:0.5, steel:1.0",firearms,4.0,production_firearms.txt
+furniture_guild,guild,,furniture_maintenance,"dyes:0.15, lumber:1.0, tools:0.15",furniture,1.0,production_furniture.txt
+furniture_workshop,workshop,furniture_guild,furniture_workshop_maintenance,"dyes:0.12, lumber:1.0, tools:0.12",furniture,1.1,production_furniture.txt
+furniture_manufactory,manufactory,furniture_workshop,furniture_manufactory_maintenance,"dyes:0.2, lumber:1.8, tools:0.2",furniture,2.0,production_furniture.txt
+furniture_mill,mill,furniture_manufactory,furniture_mill_maintenance,"dyes:0.35, lumber:3.0, tools:0.35",furniture,4.0,production_furniture.txt
+glass_guild,guild,,glass_guild_maintenance,"lumber:0.1, sand:1.0, tools:0.2",glass,0.75,production_glass.txt
+glass_guild,guild,,metal_glass_guild_maintenance,"alum:0.02, lead:0.04, lumber:0.15, sand:1.0, tools:0.2",glass,1.0,production_glass.txt
+glass_workshop,workshop,glass_guild,metal_glass_workshop_maintenance,"alum:0.02, lead:0.04, lumber:0.15, sand:1.0, tools:0.2",glass,1.1,production_glass.txt
+glassworks,manufactory,glass_workshop,glassworks_maintenance,"alum:0.02, coal:0.2, lumber:0.2, sand:2.0, stone:0.1, tools:0.3",glass,2.0,production_glass.txt
+glass_mill,mill,glassworks,glassmill_maintenance,"alum:0.05, coal:0.3, lumber:0.2, sand:3.0, stone:0.1, tools:0.5",glass,4.0,production_glass.txt
+lacquerware_manufactory,manufactory,lacquerware_guild,lacquerware_manufactory_maintenance,"dyes:0.8, lumber:2.0, tools:0.2",lacquerware,2.0,production_lacquerware.txt
+tanning_workshop,workshop,tannery,leather_livestock_workshop_maintenance,"livestock:0.9, sand:0.7, tools:0.15",leather,1.1,production_leather.txt
+tanning_workshop,workshop,tannery,leather_wildgame_workshop_maintenance,"sand:0.7, tools:0.15, wild_game:1.4",leather,1.1,production_leather.txt
+tannery_manufactory,manufactory,tanning_workshop,leather_manufactory_maintenance,"livestock:1.5, sand:1.5, tools:0.2",leather,2.0,production_leather.txt
+tannery_manufactory,manufactory,tanning_workshop,tannery_manufactory_maintenance,"sand:1.5, tools:0.2, wild_game:2.1",leather,2.0,production_leather.txt
+tannery_mill,mill,tannery_manufactory,leather_mill_maintenance,"livestock:3.0, sand:2.5, tools:0.3",leather,4.0,production_leather.txt
+tannery_mill,mill,tannery_manufactory,tannery_mill_maintenance,"sand:2.5, tools:0.3, wild_game:5.0",leather,4.0,production_leather.txt
+distillers_workshop,workshop,distillers_guild,sugar_liquor_workshop_maintenance,"glass:0.1, pottery:0.1, sugar:0.6",liquor,1.1,production_liquor.txt
+distillers_workshop,workshop,distillers_guild,rice_liquor_workshop_maintenance,"glass:0.1, pottery:0.1, rice:1.75",liquor,1.1,production_liquor.txt
+distillers_workshop,workshop,distillers_guild,potato_liquor_workshop_maintenance,"glass:0.1, potato:1.75, pottery:0.1",liquor,1.1,production_liquor.txt
+distillers_workshop,workshop,distillers_guild,wheat_liquor_workshop_maintenance,"glass:0.1, pottery:0.1, wheat:1.75",liquor,1.1,production_liquor.txt
+distillers_workshop,workshop,distillers_guild,beer_liquor_workshop_maintenance,"beer:0.85, glass:0.1, pottery:0.1",liquor,1.1,production_liquor.txt
+distillers_workshop,workshop,distillers_guild,wine_liquor_workshop_maintenance,"glass:0.1, pottery:0.1, wine:0.85",liquor,1.1,production_liquor.txt
+distiller_manufactory,manufactory,distillers_workshop,sugar_distillery_maintenance,"glass:0.2, pottery:0.1, sugar:1.0",liquor,2.0,production_liquor.txt
+distiller_manufactory,manufactory,distillers_workshop,rice_distillery_maintenance,"glass:0.2, pottery:0.1, rice:3.0",liquor,2.0,production_liquor.txt
+distiller_manufactory,manufactory,distillers_workshop,potato_distillery_maintenance,"glass:0.2, potato:3.0, pottery:0.1",liquor,2.0,production_liquor.txt
+distiller_manufactory,manufactory,distillers_workshop,wheat_distillery_maintenance,"glass:0.2, pottery:0.1, wheat:3.0",liquor,2.0,production_liquor.txt
+distiller_manufactory,manufactory,distillers_workshop,scottish_whisky_distillery_maintenance,"glass:0.2, millet:3.0, pottery:0.1",liquor,2.0,production_liquor.txt
+distiller_mill,mill,distiller_manufactory,sugar_distillery_mill_maintenance,"glass:0.4, pottery:0.1, sugar:1.8",liquor,4.0,production_liquor.txt
+distiller_mill,mill,distiller_manufactory,rice_distillery_mill_maintenance,"glass:0.4, pottery:0.1, rice:4.1",liquor,4.0,production_liquor.txt
+distiller_mill,mill,distiller_manufactory,potato_distillery_mill_maintenance,"glass:0.4, potato:4.25, pottery:0.1",liquor,4.0,production_liquor.txt
+distiller_mill,mill,distiller_manufactory,wheat_distillery_mill_maintenance,"glass:0.4, pottery:0.1, wheat:4.25",liquor,4.0,production_liquor.txt
+distiller_mill,mill,distiller_manufactory,scottish_whisky_distillery_mill_maintenance,"glass:0.4, millet:4.0, pottery:0.1",liquor,4.0,production_liquor.txt
+naval_supplies_workshop,workshop,naval_supplies_guild,naval_supplies_workshop_maintenance,"copper:0.1, fiber_crops:0.4, lumber:0.1, tar:0.5, tin:0.02",naval_supplies,1.1,production_naval_supplies.txt
+naval_supplies_manufactory,manufactory,naval_supplies_workshop,naval_supplies_manufactory_maintenance,"copper:0.2, fiber_crops:0.6, lumber:0.6, tar:0.6, tin:0.04",naval_supplies,2.0,production_naval_supplies.txt
+naval_supplies_mill,mill,naval_supplies_manufactory,naval_supplies_mill_maintenance,"copper:0.3, fiber_crops:1.2, lumber:1.2, tar:1.2, tin:0.06",naval_supplies,4.0,production_naval_supplies.txt
+paper_workshop,workshop,paper_guild,paper_workshop_fiber_pulp_maintenance,fiber_crops:0.65,paper,1.0,production_paper.txt
+paper_workshop,workshop,paper_guild,paper_workshop_cloth_maintenance,"cloth:0.45, lumber:0.1",paper,1.1,production_paper.txt
+paper_manufactory,manufactory,paper_workshop,paper_manufactory_maintenance,"cloth:0.2, fiber_crops:0.8, lumber:0.2",paper,2.0,production_paper.txt
+paper_mill,mill,paper_manufactory,paper_mill_maintenance,"cloth:0.1, fiber_crops:1.0",paper,2.0,production_paper.txt
+paper_mill,mill,paper_manufactory,paper_wood_pulp_maintenance,lumber:3.0,paper,4.5,production_paper.txt
+porcelain_manufactory,manufactory,porcelain_guild,porcelain_manufactory_maintenance,"clay:4.0, coal:0.5, tools:0.25",porcelain,2.0,production_porcelain.txt
+pottery_guild,guild,,pottery_maintenance,"clay:1.0, lumber:0.12, tools:0.05",pottery,1.0,production_pottery.txt
+pottery_workshop,workshop,pottery_guild,pottery_w_maintenance,"clay:1.0, lumber:0.1, tools:0.05",pottery,1.1,production_pottery.txt
+pottery_manufactory,manufactory,pottery_workshop,pottery_manufactory_maintenance,"clay:1.0, lumber:0.15, tools:0.1",pottery,1.5,production_pottery.txt
+pottery_mill,mill,pottery_manufactory,pottery_mill_maintenance,"clay:2.25, lumber:0.2, tools:0.1",pottery,3.25,production_pottery.txt
+tools_guild,guild,,metalwork_guild_maintenance,iron:0.75,tools,1.0,production_tools.txt
+tools_guild,guild,,stone_tools_guild_maintenance,stone:0.7,tools,0.25,production_tools.txt
+tools_guild,guild,,bronze_tools_guild_maintenance,"copper:0.5, tin:0.04",tools,0.6,production_tools.txt
+tools_workshop,workshop,tools_guild,metalwork_workshop_maintenance,iron:0.8,tools,1.1,production_tools.txt
+iron_foundry,manufactory,tools_workshop,iron_foundry_maintenance,"coal:0.25, iron:1.0",tools,2.0,production_tools.txt
+iron_mill,mill,iron_foundry,iron_mill_maintenance,"coal:0.5, iron:2.0",tools,4.0,production_tools.txt
+weapon_guild,guild,,pre_columbian_weapon_smith_maintenance,"lumber:0.07, stone:1.0",weaponry,0.4,production_weapons.txt
+weapon_guild,guild,,weapon_smith_maintenance,"coal:0.3, lumber:0.25, tools:0.5",weaponry,1.0,production_weapons.txt
+weapon_guild,guild,,weapon_guild_obsidian_maintenance,"gems:0.1, lumber:0.12, stone:0.5",weaponry,0.4,production_weapons.txt
+weapon_workshop,workshop,weapon_guild,weapon_workshop_maintenance,"coal:0.3, iron:0.25, lumber:0.3, tools:0.2",weaponry,1.1,production_weapons.txt
+weapon_manufactory,manufactory,weapon_workshop,weapon_manufactory_maintenance,"coal:0.5, iron:0.4, lumber:0.5, tools:0.4",weaponry,2.0,production_weapons.txt
+weapon_factory,mill,weapon_manufactory,weapon_factory_maintenance,"coal:0.3, lumber:0.3, steel:1.0",weaponry,4.0,production_weapons.txt
+winery,guild,,fruit_winery_maintenance,"fruit:1.25, lumber:0.17, tools:0.1",wine,1.0,production_wine.txt
+winery,guild,,rice_winery_maintenance,"lumber:0.16, rice:1.25, tools:0.1",wine,1.0,production_wine.txt
+winery,guild,,honey_winery_maintenance,"beeswax:0.6, lumber:0.2, tools:0.1",wine,1.0,production_wine.txt
+winery_manufactory,manufactory,winery,fruit_winery_manufactory_maintenance,"fruit:1.9, lumber:0.4, tools:0.2",wine,2.0,production_wine.txt
+winery_manufactory,manufactory,winery,rice_winery_manufactory_maintenance,"lumber:0.4, rice:1.9, tools:0.2",wine,2.0,production_wine.txt
+winery_manufactory,manufactory,winery,honey_winery_manufactory_maintenance,"beeswax:1.0, lumber:0.4, tools:0.2",wine,2.0,production_wine.txt
+jewelry_guild,guild,,gold_base,goods_gold:0.4,jewelry,1.0,pure_one_level_productions.txt
+jewelry_guild,guild,,silver_base,silver:0.5,jewelry,1.0,pure_one_level_productions.txt
+jewelry_guild,guild,,ivory_enhancement,ivory:0.1,jewelry,0.1,pure_one_level_productions.txt
+jewelry_guild,guild,,amber_enhancement,amber:0.1,jewelry,0.1,pure_one_level_productions.txt
+jewelry_guild,guild,,gems_enhancement,gems:0.1,jewelry,0.1,pure_one_level_productions.txt
+jewelry_guild,guild,,pearls_enhancement,pearls:0.1,jewelry,0.1,pure_one_level_productions.txt
+steel_mill,mill,,steel_mill_maintenance,"coal:2.0, iron:2.0",steel,4.0,pure_one_level_productions.txt
+perfumery,manufactory,,perfumery_maintenance,"liquor:0.2, pepper:0.25",incense,1.0,pure_one_level_productions.txt

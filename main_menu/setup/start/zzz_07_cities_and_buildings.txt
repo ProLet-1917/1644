@@ -5,9 +5,10 @@ locations = {
 	ganzhou = { rank = city town_setup = chinese_town_mil } #甘州 - 九边重镇（甘肃镇）
 	suzhou_gansu = { rank = city town_setup = chinese_city_mil } #肃州 - 九边重镇（甘肃镇）
 	ningxia = { rank = city town_setup = chinese_city_mil } #宁夏 - 九边重镇
-	xuande = { rank = city town_setup = chinese_town_mil } #宣府 - 九边重镇
+	xuande = { rank = city town_setup = chinese_city_mil } #宣府 - 九边重镇
 	lanzhou = { rank = city town_setup = chinese_city_mil } #兰州 - 九边重镇（甘肃镇）
-	changping = { rank = city town_setup = chinese_town_mil } #昌平 - 蓟州镇（居庸关）
+
+	yanqing = { rank = town town_setup = chinese_town_mil } #延庆- 居庸关
 	suide = { rank = town town_setup = chinese_town_mil } #绥德 - 延绥镇
 	ningyuan_jinzhou = { rank = town town_setup = chinese_town_mil } #宁远 - 山海关/关宁防线（辽东镇）
 
@@ -302,14 +303,76 @@ locations = {
 	hetu_ala = { rank = town town_setup = jurchern_town }
 	#辽西
 	qiantun = { rank = town town_setup = chinese_coastal_town }
-	funing = { rank = town town_setup = chinese_coastal_town }
+	funing = { rank = town town_setup = chinese_town_mil }
 	penglai = { rank = town town_setup = chinese_coastal_town }
+
+	changping = { rank = town town_setup = chinese_town }
 }
+
 
 building_manager ={
 	#China
 	royal_court = { tag = MNG level = 10 location = dadu }
 	chi_missionary_building = { tag = MNG level = 1 location = dadu } #Catholic mission in Khanbaliq
+	
+	# ========== 大都（北京）经济建筑 ==========
+	marketplace = { tag = MNG level = 5 location = dadu } # 商业中心
+	winery = { tag = MNG level = 4 location = dadu } # 农业发展
+	porcelain_guild = { tag = MNG level = 4 location = dadu } # 瓷器产业
+	distillers_guild = { tag = MNG level = 3 location = dadu } # 蒸馏酒业
+	fine_cloth_guild = { tag = MNG level = 5 location = dadu } # 丝绸产业
+	cloth_guild = { tag = MNG level = 4 location = dadu } # 纺织业
+	paper_guild = { tag = MNG level = 4 location = dadu } # 造纸业
+	pottery_guild = { tag = MNG level = 4 location = dadu } # 陶瓷产业
+	furniture_guild = { tag = MNG level = 3 location = dadu } # 手工业
+	glass_guild = { tag = MNG level = 3 location = dadu } # 玻璃制造
+	jewelry_guild = { tag = MNG level = 3 location = dadu } # 珠宝工艺
+	tannery = { tag = MNG level = 3 location = dadu } # 皮革加工
+	granary = { tag = MNG level = 5 location = dadu } # 粮食储备
+	brewery = { tag = MNG level = 3 location = dadu } # 酿酒业
+	tools_guild = { tag = MNG level = 4 location = dadu } # 工具制造
+	scriptorium = { tag = MNG level = 4 location = dadu } # 文化教育
+	lacquerware_guild = { tag = MNG level = 3 location = dadu } # 漆器工艺
+	mason = { tag = MNG level = 4 location = dadu } # 建筑技术
+	zhixian = { tag = MNG level = 5 location = dadu } # 行政管理
+	
+	# ========== 南京（应天府）经济建筑 ==========
+	# 基础经济建筑（最高3级）
+	marketplace = { tag = MNG level = 3 location = shangyuan } # 商业中心
+	winery = { tag = MNG level = 3 location = shangyuan } # 农业发展
+	porcelain_guild = { tag = MNG level = 3 location = shangyuan } # 瓷器产业
+	distillers_guild = { tag = MNG level = 2 location = shangyuan } # 蒸馏酒业
+	fine_cloth_guild = { tag = MNG level = 3 location = shangyuan } # 丝绸产业（江南特色）
+	cloth_guild = { tag = MNG level = 3 location = shangyuan } # 纺织业（江南特色）
+	paper_guild = { tag = MNG level = 3 location = shangyuan } # 造纸业
+	pottery_guild = { tag = MNG level = 3 location = shangyuan } # 陶瓷产业
+	furniture_guild = { tag = MNG level = 2 location = shangyuan } # 手工业
+	tannery = { tag = MNG level = 2 location = shangyuan } # 皮革加工
+	granary = { tag = MNG level = 3 location = shangyuan } # 粮食储备
+	brewery = { tag = MNG level = 2 location = shangyuan } # 酿酒业
+	tools_guild = { tag = MNG level = 3 location = shangyuan } # 工具制造
+	scriptorium = { tag = MNG level = 3 location = shangyuan } # 文化教育
+	mason = { tag = MNG level = 3 location = shangyuan } # 建筑技术
+	zhixian = { tag = MNG level = 3 location = shangyuan } # 行政管理
+	
+	# 高级生产建筑（17世纪，生产相同内容但等级更高）
+	glass_workshop = { tag = MNG level = 2 location = shangyuan } # 玻璃工坊（glass_guild的高级版本）
+	lacquerware_workshop = { tag = MNG level = 2 location = shangyuan } # 漆器工场（lacquerware_guild的高级版本）
+	jewelry_workshop = { tag = MNG level = 2 location = shangyuan } # 珠宝工艺（保留，无高级版本）
+	
+	# 高级贸易建筑（17世纪商业中心）
+	merchants_quarters = { tag = MNG level = 1 location = shangyuan } # 商人区（高级市场）
+	trading_hub = { tag = MNG level = 1 location = shangyuan } # 贸易中心
+	customs_house = { tag = MNG level = 1 location = shangyuan } # 海关（商业管理）
+	market_warehouse = { tag = MNG level = 2 location = shangyuan } # 市场仓库（仓储）
+	stock_exchange = { tag = MNG level = 1 location = shangyuan } # 证券交易所（金融中心）
+	
+	# 高级文化建筑（17世纪先进设施）
+	university = { tag = MNG level = 1 location = shangyuan } # 大学（江南文化中心）
+	library = { tag = MNG level = 1 location = shangyuan } # 图书馆
+	confucian_academy = { tag = MNG level = 1 location = shangyuan } # 书院（儒家学院）
+	printing_press_shop = { tag = MNG level = 1 location = shangyuan } # 印刷所（17世纪印刷业）
+	arts_academy = { tag = MNG level = 1 location = shangyuan } # 艺术学院（江南文化）
 	
 	#Old great wall of China（分配到实际控制国家）
 	# 大顺（CSH）北线与陇右段
@@ -343,6 +406,15 @@ building_manager ={
 
 	repaired_great_wall_of_china = { tag = MNG level = 1 location = longqing }
 	repaired_great_wall_of_china = { tag = MNG level = 1 location = miyun }
+	repaired_great_wall_of_china = { tag = MNG level = 1 location = funing }
+	repaired_great_wall_of_china = { tag = MNG level = 1 location = huairou }
+	# repaired_great_wall_of_china = { tag = MNG level = 1 location = luanyang }
+	# repaired_great_wall_of_china = { tag = MNG level = 1 location = qianan }
+	# repaired_great_wall_of_china = { tag = MNG level = 1 location = banbishan }
+	# repaired_great_wall_of_china = { tag = MNG level = 1 location = sanchakou }
+	# repaired_great_wall_of_china = { tag = MNG level = 1 location = longwangmiao }
+	repaired_great_wall_of_china = { tag = MNG level = 1 location = yunzhou }
+
 
 	# 大清（QNG）辽东与塞北段
 	# repaired_great_wall_of_china = { tag = QNG level = 1 location = hebin }

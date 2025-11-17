@@ -1,0 +1,108 @@
+﻿# EU5 国家定义模板
+# 文件位置：main_menu/setup/start/xxx_countries.txt
+TAG = {
+	# 基础设置
+	color = rgb{16 41 202} #地图颜色
+
+	color2 = rgb{16 41 202} #兵种颜色
+    
+    #描述类别 - military（军事）- diplomatic（外交） - economic（经济） - administrative（行政）
+	description_category = military 
+
+	difficulty = 3 #难度，1-5
+
+	is_historic = no #预设国家no,生成或释放国家yes
+
+    culture_definition = culture_name #主流文化
+    religion_definition = religion_name  #主流宗教   
+}
+
+TAG = {
+	# 核心省份：完全整合，税收正常，无整合度衰减，叛乱风险低
+	own_control_core = {
+		province1
+		province2
+	}
+	# 整合省份：已整合，文化可能被接受，税收正常
+	own_control_integrated = {
+		province3
+	}
+	# 征服省份：有整合度系统，影响税收产出，影响人口满意度
+	own_control_conquered = {
+		province4
+	}
+
+    court_language = language_name
+	# 国家等级
+	country_rank = rank_empire	# rank_empire, rank_kingdom, rank_duchy, rank_county
+	# 首都
+	capital = province_id
+	# 旗帜和国家名称
+	flag = "TAG"
+	country_name = "TAG"
+
+	# 开局数据（可选）
+	currency_data = {
+		gold = 8000 #开局金币
+		stability = 40 #开局稳定度
+		prestige = 50 #开局威望
+		government_power = 40 #开局正统性
+		war_exhaustion = 0 #开局战争疲劳
+		army_tradition = 20 #开局军队传统   
+	}
+
+	# 包含的模板文件（可选）
+	include = "template_name"
+	# 政府设置
+	government = {
+		type = monarchy		# monarchy, republic, theocracy, army
+		ruler = character_id #当前统治者
+		# 继承方式
+		heir_selection = cognatic_primogeniture
+		# 统治者任期（可选）
+		ruler_term = {
+			character = character_id #统治者
+			start_date = 1644.1.1 #登基日期
+			end_date = 1644.12.31 #结束日期
+            regnal_number = 1 #几世
+		}
+		# 政府价值观左右（可选）
+		aristocracy_vs_plutocracy = 10
+		centralization_vs_decentralization = -30
+		traditionalist_vs_innovative = -20
+		spiritualist_vs_humanist = 0
+		serfdom_vs_free_subjects = 30
+		mercantilism_vs_free_trade = -80
+		belligerent_vs_conciliatory = -50
+		quality_vs_quantity = 20
+		offensive_vs_defensive = -50
+		land_vs_naval = 0
+		capital_economy_vs_traditional_economy = 80
+		individualism_vs_communalism = 20
+		outward_vs_inward = 25
+		# 议会（可选）
+		parliament = {
+			parliament_type = council
+		}
+		# 改革（可选）
+		reforms = {
+			reform_name
+		}
+		# 法律（可选）
+		laws = {
+			law_name = policy_name
+		}
+		# 特权（可选）
+		privilege = {
+			privilege_name
+		}
+	}
+	# 文化设置
+	accepted_cultures = {
+		culture_name
+	}
+	tolerated_cultures = {
+		culture_name
+	}
+
+}
