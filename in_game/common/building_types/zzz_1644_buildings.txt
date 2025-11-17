@@ -15,7 +15,12 @@
 
 	allow = {
 			# has_building = building_type:ruined_great_wall_of_china #1644剧本是修好的
-			is_historical_route_of_great_wall = yes
+			# is_historical_route_of_great_wall = yes
+			OR ={
+				tag = MNG
+				tag = QNG
+				tag = CSH
+			}
 	}
 
 	expensive = yes
