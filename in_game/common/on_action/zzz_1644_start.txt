@@ -7,6 +7,13 @@
 		c:CXI = { trigger_event_silently = cleanup_1644.1 }
 		c:MNG = { trigger_event_silently = cleanup_1644.1 }
 
+		#设置所有前四个时代的思潮
+		c:QNG = { give_all_1644_institutions = yes }
+		c:CSH = { give_all_1644_institutions = yes }
+		c:WSG = { give_all_1644_institutions = yes }
+		c:CXI = { give_all_1644_institutions = yes }
+		c:MNG = { give_all_1644_institutions = yes }
+
 		# 为大顺创建起始军队
 		c:CSH = {
 			if = {
@@ -21,10 +28,6 @@
 				modifier = 1644_china_auto_conquest
 				years = 5
 			}
-		}
-		# 为大顺设置所有1644思潮
-		c:CSH = {
-			give_all_1644_institutions = yes
 		}
 		# 清朝，创建旗军并安排统一战争事件(已移动到事件trigger中)
 		c:QNG = {
@@ -47,7 +50,6 @@
 				limit = { NOT = { has_variable = wsg_1644_start_army_spawned } }
 				trigger_event_silently = wsg_1644_start_army.1
 			}
-			give_all_1644_institutions = yes
 		}
 		# 大明昌平镇 唐通
 		c:MNG = {
@@ -55,7 +57,6 @@
 				limit = { NOT = { has_variable = mng_1644_changping_garrison_spawned } }
 				trigger_event_silently = mng_1644_start_army.1
 			}
-			give_all_1644_institutions = yes
 		}
 		# 大西政权（CXI）创建起始军队
 		c:CXI = {
@@ -68,7 +69,6 @@
 				modifier = 1644_china_auto_conquest
 				years = 3
 			}
-			give_all_1644_institutions = yes
 		}
 		
 	}
