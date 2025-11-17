@@ -47,54 +47,77 @@ subject_join_overlord_wars = {
 # 使用方法：在附属国成为附庸后调用，可指定敌方国家
 # 例如：ROOT = { subject_join_overlord_wars_against_csh_mng = yes }
 subject_join_overlord_wars_against_csh_mng = {
+	# 初始化调试变量
+	set_variable = { name = wsg_debug_has_overlord value = 0 }
+	set_variable = { name = wsg_debug_war_count value = 0 }
+	set_variable = { name = wsg_debug_joined_as_attacker value = 0 }
+	set_variable = { name = wsg_debug_joined_as_defender value = 0 }
+	set_variable = { name = wsg_debug_no_relevant_war value = 0 }
+	
 	overlord ?= {
 		# 保存宗主为作用域
 		save_scope_as = subject_overlord
+		ROOT = { set_variable = { name = wsg_debug_has_overlord value = 1 } }
 		
-		# 遍历宗主的所有当前战争
-		every_current_war = {
-			save_scope_as = overlord_war
-			
-			if = {
-				limit = {
-					attacker_leader = scope:subject_overlord
-					# 检查是否有CSH或MNG在防守方
-					any_defender = {
-						OR = {
-							this = c:CSH
-							this = c:MNG
+		# 在宗主作用域内遍历所有当前战争
+		scope:subject_overlord = {
+			every_current_war = {
+				ROOT = { change_variable = { name = wsg_debug_war_count add = 1 } }
+				save_scope_as = overlord_war
+				
+				if = {
+					limit = {
+						attacker_leader = scope:subject_overlord
+						# 检查是否有CSH或MNG在防守方
+						any_defender = {
+							OR = {
+								this = c:CSH
+								this = c:MNG
+							}
+						}
+						# 确保附属国还没有加入这场战争
+						NOT = {
+							any_attacker = { this = ROOT }
+							any_defender = { this = ROOT }
 						}
 					}
-					# 确保附属国还没有加入这场战争
-					NOT = {
-						any_attacker = { this = ROOT }
-						any_defender = { this = ROOT }
+					ROOT = {
+						join_war_as_attacker = { war = scope:overlord_war }
+						set_variable = { name = wsg_debug_joined_as_attacker value = 1 }
 					}
 				}
-				ROOT = {
-					join_war_as_attacker = { war = scope:overlord_war }
-				}
-			}
-			else_if = {
-				limit = {
-					defender_leader = scope:subject_overlord
-					# 检查是否有CSH或MNG在攻击方
-					any_attacker = {
-						OR = {
-							this = c:CSH
-							this = c:MNG
+				else_if = {
+					limit = {
+						defender_leader = scope:subject_overlord
+						# 检查是否有CSH或MNG在攻击方
+						any_attacker = {
+							OR = {
+								this = c:CSH
+								this = c:MNG
+							}
+						}
+						# 确保附属国还没有加入这场战争
+						NOT = {
+							any_attacker = { this = ROOT }
+							any_defender = { this = ROOT }
 						}
 					}
-					# 确保附属国还没有加入这场战争
-					NOT = {
-						any_attacker = { this = ROOT }
-						any_defender = { this = ROOT }
+					ROOT = {
+						join_war_as_defender = { war = scope:overlord_war }
+						set_variable = { name = wsg_debug_joined_as_defender value = 1 }
 					}
-				}
-				ROOT = {
-					join_war_as_defender = { war = scope:overlord_war }
 				}
 			}
 		}
 	}
+	
+	# 如果没有任何相关战争被处理，打一个标记用于调试
+	if = {
+		limit = {
+			check_variable = { name = wsg_debug_joined_as_attacker value = 0 }
+			check_variable = { name = wsg_debug_joined_as_defender value = 0 }
+		}
+		set_variable = { name = wsg_debug_no_relevant_war value = 1 }
+	}
 }
+
