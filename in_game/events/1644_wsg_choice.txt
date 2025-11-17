@@ -67,61 +67,16 @@ wsg_1644_choice.1 = {
 	}
 }
 
-### 成为附庸后，尝试加入宗主的现役战争（最小实现，带调试变量）
+# 注意：通用事件应在独立的事件文件中定义，并设置命名空间
+# 这里仅作为示例保留注释，实际使用请参考通用事件文件
+
+### WSG专用：成为附庸后，加入宗主与CSH/MNG的战争
 wsg_1644_choice.100 = {
 	type = country_event
 	hidden = yes
-	is_triggered_only = yes
 
 	immediate = {
-		# ROOT = WSG
-		set_variable = { name = wsg_debug_has_overlord value = 0 }
-		set_variable = { name = wsg_debug_war_count value = 0 }
-		set_variable = { name = wsg_debug_joined_as_attacker value = 0 }
-		set_variable = { name = wsg_debug_joined_as_defender value = 0 }
-		set_variable = { name = wsg_debug_no_relevant_war value = 0 }
-
-		overlord ?= {
-			# this = 宗主
-			save_scope_as = wsg_overlord
-			ROOT = { set_variable = { name = wsg_debug_has_overlord value = 1 } }
-
-			# 统计宗主当前所有战争，并尝试把 WSG 拉入与 CSH/MNG 的战争
-			every_current_war = {
-				save_scope_as = wsg_oberlord_current_war
-				# 计数
-				ROOT = { change_variable = { name = wsg_debug_war_count add = 1 } }
-
-				if = {
-					limit = {
-						attacker_leader = scope:wsg_overlord
-						any_defender = { OR = { this = c:CSH this = c:MNG } }
-					}
-					ROOT = {
-						join_war_as_attacker = { war = scope:wsg_oberlord_current_war }
-						set_variable = { name = wsg_debug_joined_as_attacker value = 1 }
-					}
-				}
-				else_if = {
-					limit = {
-						defender_leader = scope:wsg_overlord
-						any_attacker = { OR = { this = c:CSH this = c:MNG } }
-					}
-					ROOT = {
-						join_war_as_defender = { war = scope:wsg_oberlord_current_war }
-						set_variable = { name = wsg_debug_joined_as_defender value = 1 }
-					}
-				}
-			}
-		}
-
-		# 如果没有任何相关战争被处理，打一个标记用于调试
-		if = {
-			limit = {
-				NOT = { has_variable = wsg_debug_joined_as_attacker }
-				NOT = { has_variable = wsg_debug_joined_as_defender }
-			}
-			set_variable = { name = wsg_debug_no_relevant_war value = 1 }
-		}
+		# 使用脚本效果：让附属国加入宗主与CSH/MNG的战争
+		subject_join_overlord_wars_against_csh_mng = yes
 	}
 }
