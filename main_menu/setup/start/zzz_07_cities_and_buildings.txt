@@ -311,64 +311,37 @@ locations = {
 
 
 building_manager ={
-	#China
-	royal_court = { tag = MNG level = 10 location = dadu }
+	#China	
+	# ========== 大都（北京）建筑 ==========
+	marketplace = { tag = MNG level = 3 location = dadu } # 商业中心
+	library = { tag = MNG level = 1 location = dadu } # 图书馆
+	royal_court = { tag = MNG level = 1 location = dadu }
 	chi_missionary_building = { tag = MNG level = 1 location = dadu } #Catholic mission in Khanbaliq
-	
-	# ========== 大都（北京）经济建筑 ==========
-	marketplace = { tag = MNG level = 5 location = dadu } # 商业中心
-	winery = { tag = MNG level = 4 location = dadu } # 农业发展
-	porcelain_guild = { tag = MNG level = 4 location = dadu } # 瓷器产业
+
+	porcelain_guild = { tag = MNG level = 3 location = dadu } # 瓷器产业
 	distillers_guild = { tag = MNG level = 3 location = dadu } # 蒸馏酒业
-	fine_cloth_guild = { tag = MNG level = 5 location = dadu } # 丝绸产业
-	cloth_guild = { tag = MNG level = 4 location = dadu } # 纺织业
-	paper_guild = { tag = MNG level = 4 location = dadu } # 造纸业
-	pottery_guild = { tag = MNG level = 4 location = dadu } # 陶瓷产业
+	fine_cloth_guild = { tag = MNG level = 3 location = dadu } # 丝绸产业
+	cloth_guild = { tag = MNG level = 3 location = dadu } # 纺织业
+	paper_guild = { tag = MNG level = 3 location = dadu } # 造纸业
+	pottery_guild = { tag = MNG level = 3 location = dadu } # 陶瓷产业
 	furniture_guild = { tag = MNG level = 3 location = dadu } # 手工业
 	glass_guild = { tag = MNG level = 3 location = dadu } # 玻璃制造
 	jewelry_guild = { tag = MNG level = 3 location = dadu } # 珠宝工艺
 	tannery = { tag = MNG level = 3 location = dadu } # 皮革加工
-	granary = { tag = MNG level = 5 location = dadu } # 粮食储备
-	brewery = { tag = MNG level = 3 location = dadu } # 酿酒业
+	granary = { tag = MNG level = 3 location = dadu } # 粮食储备
+
 	tools_guild = { tag = MNG level = 4 location = dadu } # 工具制造
-	scriptorium = { tag = MNG level = 4 location = dadu } # 文化教育
+	scriptorium = { tag = MNG level = 3 location = dadu } # 文化教育
 	lacquerware_guild = { tag = MNG level = 3 location = dadu } # 漆器工艺
-	mason = { tag = MNG level = 4 location = dadu } # 建筑技术
-	zhixian = { tag = MNG level = 5 location = dadu } # 行政管理
+	mason = { tag = MNG level = 3 location = dadu } # 建筑技术
+	confucian_academy = { tag = MNG level = 1 location = shangyuan } # 书院（儒家学院）
+	printing_press_shop = { tag = MNG level = 1 location = shangyuan } # 印刷所（17世纪印刷业）
+	arts_academy = { tag = MNG level = 1 location = shangyuan } # 艺术学院（江南文化）
+
+	#========== 南京（应天府）建筑 ==========
+
+	zhixian = { tag = MNG level = 4  location = shangyuan } # 行政管理
 	
-	# ========== 南京（应天府）经济建筑 ==========
-	# 基础经济建筑（最高3级）
-	marketplace = { tag = MNG level = 3 location = shangyuan } # 商业中心
-	winery = { tag = MNG level = 3 location = shangyuan } # 农业发展
-	porcelain_guild = { tag = MNG level = 3 location = shangyuan } # 瓷器产业
-	distillers_guild = { tag = MNG level = 2 location = shangyuan } # 蒸馏酒业
-	fine_cloth_guild = { tag = MNG level = 3 location = shangyuan } # 丝绸产业（江南特色）
-	cloth_guild = { tag = MNG level = 3 location = shangyuan } # 纺织业（江南特色）
-	paper_guild = { tag = MNG level = 3 location = shangyuan } # 造纸业
-	pottery_guild = { tag = MNG level = 3 location = shangyuan } # 陶瓷产业
-	furniture_guild = { tag = MNG level = 2 location = shangyuan } # 手工业
-	tannery = { tag = MNG level = 2 location = shangyuan } # 皮革加工
-	granary = { tag = MNG level = 3 location = shangyuan } # 粮食储备
-	brewery = { tag = MNG level = 2 location = shangyuan } # 酿酒业
-	tools_guild = { tag = MNG level = 3 location = shangyuan } # 工具制造
-	scriptorium = { tag = MNG level = 3 location = shangyuan } # 文化教育
-	mason = { tag = MNG level = 3 location = shangyuan } # 建筑技术
-	zhixian = { tag = MNG level = 3 location = shangyuan } # 行政管理
-	
-	# 高级生产建筑（17世纪，生产相同内容但等级更高）
-	glass_workshop = { tag = MNG level = 2 location = shangyuan } # 玻璃工坊（glass_guild的高级版本）
-	lacquerware_workshop = { tag = MNG level = 2 location = shangyuan } # 漆器工场（lacquerware_guild的高级版本）
-	jewelry_workshop = { tag = MNG level = 2 location = shangyuan } # 珠宝工艺（保留，无高级版本）
-	
-	# 高级贸易建筑（17世纪商业中心）
-	merchants_quarters = { tag = MNG level = 1 location = shangyuan } # 商人区（高级市场）
-	trading_hub = { tag = MNG level = 1 location = shangyuan } # 贸易中心
-	customs_house = { tag = MNG level = 1 location = shangyuan } # 海关（商业管理）
-	market_warehouse = { tag = MNG level = 2 location = shangyuan } # 市场仓库（仓储）
-	stock_exchange = { tag = MNG level = 1 location = shangyuan } # 证券交易所（金融中心）
-	
-	# 高级文化建筑（17世纪先进设施）
-	university = { tag = MNG level = 1 location = shangyuan } # 大学（江南文化中心）
 	library = { tag = MNG level = 1 location = shangyuan } # 图书馆
 	confucian_academy = { tag = MNG level = 1 location = shangyuan } # 书院（儒家学院）
 	printing_press_shop = { tag = MNG level = 1 location = shangyuan } # 印刷所（17世纪印刷业）
@@ -454,37 +427,35 @@ building_manager ={
 	stockade = { tag = MNG level = 1 location = qingchuan }
 	stockade = { tag = MNG level = 1 location = yandao }
 
-	# 大清（QNG）
-	stockade = { tag = QNG level = 1 location = boduna }
-	stockade = { tag = QNG level = 1 location = malong }
-	stockade = { tag = QNG level = 1 location = gorlos }
-	stockade = { tag = QNG level = 1 location = xinkai }
-	stockade = { tag = QNG level = 1 location = huncun }
+	# # 大清（QNG）
+	# stockade = { tag = QNG level = 1 location = boduna }
+	# stockade = { tag = QNG level = 1 location = malong }
+	# stockade = { tag = QNG level = 1 location = gorlos }
+	# stockade = { tag = QNG level = 1 location = xinkai }
+	# stockade = { tag = QNG level = 1 location = huncun }
 
 	# 火器与火炮工坊
 
 	guns_workshop = { tag = CSH level = 2 location = jingzhao }
 	cannon_workshop = { tag = CSH level = 1 location = jingzhao }
-	guns_workshop = { tag = CSH level = 3 location = datong_datong }
-	cannon_workshop = { tag = CSH level = 1 location = datong_datong }
 
 
-	guns_workshop = { tag = MNG level = 4 location = dadu }
-	cannon_workshop = { tag = MNG level = 3 location = dadu }
+	guns_workshop = { tag = MNG level = 2 location = dadu }
+	cannon_workshop = { tag = MNG level = 1 location = dadu }
 	
 	guns_workshop = { tag = MNG level = 3 location = guangzhou }
-	cannon_workshop = { tag = MNG level = 5 location = guangzhou }
+	cannon_workshop = { tag = MNG level = 3 location = guangzhou }
 
 	guns_workshop = { tag = WSG level = 2 location = ningyuan_jinzhou }
 	cannon_workshop = { tag = WSG level = 1 location = ningyuan_jinzhou }
 
 
-	guns_workshop = { tag = QNG level = 3 location = liaoyang }
-	cannon_workshop = { tag = QNG level = 2 location = liaoyang }
+	guns_workshop = { tag = QNG level = 2 location = liaoyang }
+	cannon_workshop = { tag = QNG level = 1 location = liaoyang }
 
 	#关宁
-	provincial_garrison = { tag = WSG level = 10 location = ningyuan_jinzhou }
-	provincial_garrison = { tag = QNG level = 10 location = qiantun }
+	provincial_garrison = { tag = WSG level = 1 location = ningyuan_jinzhou }
+	provincial_garrison = { tag = QNG level = 1 location = qiantun }
 	castle = { tag = WSG level = 1 location = ningyuan_jinzhou }
 	castle = { tag = QNG level = 1 location = qiantun }
 	stockade = { tag = WSG level = 1 location = ningyuan_jinzhou }
