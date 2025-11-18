@@ -1,0 +1,16 @@
+﻿REPLACE:chi_peasant_empire_reform = {
+	potential = {
+		has_unlocked_government_reform_trigger = { type = chi_peasant_empire_reform }
+	}
+
+	country_modifier = {
+		government_reform_slots = 1
+		amount_looted_modifier = -0.1
+		peasants_estate_levy_size = 0.25
+		peasants_estate_target_satisfaction = small_permanent_target_satisfaction
+		nobles_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+	}
+
+	years = 3
+}
+
