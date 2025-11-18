@@ -266,6 +266,25 @@ csh_1644_unification.2 = { #天翻地覆
 			change_location_owner = c:CSH
 			change_control = control_mild_bonus
 		}
+		# 大顺夺取北京后成为天朝领袖
+		if = {
+			limit = {
+				exists = international_organization:middle_kingdom
+			}
+			# 如果大顺还不是成员，先加入组织
+			if = {
+				limit = {
+					NOT = { is_member_of_international_organization = international_organization:middle_kingdom }
+				}
+				international_organization:middle_kingdom = {
+					add_country_to_international_organization = root
+				}
+			}
+			# 设置大顺为天朝领袖
+			international_organization:middle_kingdom = {
+				set_leader_country = root
+			}
+		}
 	}
 	option = {
 		name = csh_1644_unification.2.a

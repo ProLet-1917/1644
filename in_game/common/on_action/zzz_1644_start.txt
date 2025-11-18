@@ -13,6 +13,12 @@
 		c:WSG = { give_all_1644_institutions = yes }
 		c:CXI = { give_all_1644_institutions = yes }
 		c:MNG = { give_all_1644_institutions = yes }
+		#设置自动征服
+		c:QNG = { add_country_modifier = { modifier = 1644_china_auto_conquest years = 10 } }
+		c:CSH = { add_country_modifier = { modifier = 1644_china_auto_conquest years = 10 } }
+		c:WSG = { add_country_modifier = { modifier = 1644_china_auto_conquest years = 10 } }
+		c:CXI = { add_country_modifier = { modifier = 1644_china_auto_conquest years = 10 } }
+		c:MNG = { add_country_modifier = { modifier = 1644_china_auto_conquest years = 10 } }
 
 		# 为大顺创建起始军队
 		c:CSH = {
@@ -23,10 +29,6 @@
 			trigger_event_silently = {
 				id = csh_1644_unification.1
 				days = 5
-			}
-			add_country_modifier = {
-				modifier = 1644_china_auto_conquest
-				years = 5
 			}
 			# 解锁"庶民的王朝"改革触发器
 			unlock_government_reform_effect = {
@@ -42,11 +44,7 @@
 			}
 			trigger_event_silently = { id = qng_1644_unification.1 days = 23 }
 			give_all_1644_institutions = yes
-			# 添加中国内战自动征服modifier（在战争中占领即吞并）
-			add_country_modifier = {
-				modifier = 1644_china_auto_conquest
-				years = 5
-			}
+
 		}
 		# 吴三桂创建起始军队
 		c:WSG = {
@@ -67,11 +65,6 @@
 			if = {
 				limit = { NOT = { has_variable = cxi_1644_start_army_spawned } }
 				trigger_event_silently = cxi_1644_start_army.1
-			}
-			# 添加自动征服modifier（在战争中占领即吞并）
-			add_country_modifier = {
-				modifier = 1644_china_auto_conquest
-				years = 3
 			}
 		}
 		
