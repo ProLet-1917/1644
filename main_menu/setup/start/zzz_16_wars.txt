@@ -1,12 +1,20 @@
 war_manager = {
-	civil_war = {
+	war = {
 		war_name = {
 			name = "LATE_MING_PEASANT_WARS"
 			ordinal = 1
-			first = { name = "MNG" }
-
+			first = { name = "CSH" }
+			second = { name = "MNG" }
 		}
-		start_date = 1627.1.1
+
+
+		take_province = {
+			type = take_capital
+			casus_belli = cb_claim_mandate_of_heaven
+			location = dadu
+		}
+
+		start_date = 1643.1.1
 		action = 1644.4.18
 
 		defender = {
@@ -46,6 +54,7 @@ war_manager = {
 			request = { reason = Target }
 		}
 	}
+
 }
 
 
