@@ -400,13 +400,11 @@ countries = {
 	##British Isles
 	ENG = { # England
 		own_control_core = {
-			berwick appleby hythe alnwick barnstaple bedford dunstable birmingham boston bosworth shoreham lewes bristol buckingham bury glossop cambridge canterbury carlisle rochester cheltenham chelmsford chesterfield chichester chippenham cockermouth colchester kettering coventry cirencester derby dorchester dover exeter gloucester grimsby guildford reigate harrow hastings hedingham hertford hexham hull huntingdon ipswich kendal grantham penrith kidderminster leeds leicester lincoln london loughborough lowestoft lynn daventry newark newcastle northampton norwich nottingham oxford ely plymouth bideford bampton okehampton poole portsmouth amesbury lymington retford rutland salisbury southampton prittlewell kingston stafford stoke stratford trowbridge taunton wells barking weymouth shaftesbury wight winchester windsor worcester yarmouth york scarborough tamworth bedale richmond whitby bridlington selby pontefract skipton wakefield louth thetford fakenham reading tonbridge minehead portishead bath henley royston aylesbury wycombe lavenham abingdon st_albans banbury walden spalding woking morpeth billingham norton ripon doncaster egremont basingstoke
-			# Earldom of Chester
-			#chester macclesfield nantwich
+			berwick appleby hythe alnwick barnstaple bedford dunstable birmingham boston bosworth shoreham lewes buckingham bury glossop cambridge canterbury carlisle rochester cheltenham chelmsford chesterfield chichester chippenham cockermouth colchester kettering coventry cirencester derby dorchester dover exeter grimsby guildford reigate harrow hastings hedingham hexham hull huntingdon ipswich kendal grantham penrith kidderminster leeds leicester lincoln london loughborough lowestoft lynn daventry newark newcastle northampton norwich nottingham oxford ely bideford bampton okehampton poole portsmouth amesbury lymington retford rutland salisbury southampton prittlewell kingston stafford stoke stratford trowbridge taunton wells barking weymouth shaftesbury wight winchester windsor worcester yarmouth york scarborough tamworth bedale richmond whitby bridlington selby pontefract skipton wakefield louth thetford fakenham reading tonbridge minehead portishead bath henley royston aylesbury wycombe lavenham abingdon banbury walden spalding woking morpeth billingham norton ripon doncaster egremont basingstoke
 			# cornwall
 			launceston truro bodmin
 			# English towns on the Welsh March
-			shrewsbury hereford
+			hereford
 			#from DHM
 			durham darlington stockton
 			#from CET
@@ -414,7 +412,7 @@ countries = {
 			#from LAN
 			lancaster blackburn liverpool preston manchester
 			#below from Wales
-			aberystwyth anglesey cardigan carnarvon harlech conwy carmarthen penllyn radnor
+			aberystwyth anglesey cardigan carnarvon harlech conwy penllyn radnor
 			#from LAN
 			monmouth kidwelly
 			#from CHE
@@ -452,6 +450,150 @@ countries = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 			ruler = eng_edward_iii
+
+			ruler_term = {	 character = eng_alfred_the_great start_date = 886.1.1 end_date = 899.10.26 regnal_number = 0	}
+			ruler_term = {	 character = eng_edward_the_elder start_date = 899.10.26 end_date = 924.7.17 regnal_number = 0	}
+			ruler_term = {	 character = eng_athelstan_the_glorious start_date = 924.7.17 end_date = 939.10.27 regnal_number = 0	}
+			ruler_term = {	 character = eng_edmund_the_magnificent start_date = 939.10.27 end_date = 946.5.26 regnal_number = 0	}
+			ruler_term = {	 character = eng_eadred start_date = 946.5.26 end_date = 955.11.23 regnal_number = 0	}
+			ruler_term = {	 character = eng_eadwig start_date = 955.11.23 end_date = 959.10.1 regnal_number = 0	}
+			ruler_term = {	 character = eng_edgar_the_peaceful start_date = 959.10.1 end_date = 975.7.8 regnal_number = 0	}
+			ruler_term = {	 character = eng_edward_the_martyr start_date = 975.7.8 end_date = 978.3.18 regnal_number = 0	}
+			ruler_term = {	 character = eng_ethelred_the_unready start_date = 978.3.18 end_date = 1013.12.25 regnal_number = 0	}
+
+			ruler_term = {	 character = eng_sweyn_forkbeard start_date = 1013.12.25 end_date = 1014.2.3 regnal_number = 0	}
+
+			ruler_term = {	 character = eng_ethelred_the_unready start_date = 1014.2.3 end_date = 1016.4.23 regnal_number = 0	}
+
+			ruler_term = { character = eng_edmund_ironside start_date = 1016.4.23 end_date = 1016.10.18 regnal_number = 0 }
+			ruler_term = {
+				character = eng_edmund_ironside start_date = 1016.10.18 end_date = 1016.11.30 regnal_number = 0
+				character = eng_cnut_the_great start_date = 1016.10.18 end_date = 1016.11.30 regnal_number = 0
+			}
+
+			ruler_term = { character = eng_cnut_the_great start_date = 1016.11.30 end_date = 1035.11.12 regnal_number = 0 }
+			ruler_term = { character = eng_harold_harefoot start_date = 1035.11.12 end_date = 1040.3.17 regnal_number = 0 }
+
+			ruler_term = { character = eng_harthacnute start_date = 1040.3.17 end_date = 1042.5.8 regnal_number = 0 }
+			ruler_term = {
+				character = eng_harthacnute start_date = 1042.5.8 end_date = 1042.6.8 regnal_number = 0
+				character = eng_edward_the_confessor start_date = 1042.5.8 end_date = 1042.6.8 regnal_number = 0
+			}
+
+			ruler_term = { character = eng_edward_the_confessor start_date = 1042.6.8 end_date = 1066.1.5 regnal_number = 0 }
+
+			ruler_term = {	 character = eng_harold_godwinson start_date = 1066.1.6 end_date = 1066.10.14 regnal_number = 0	}
+
+			# regnal numbering usually starts with the Norman Invasion
+			ruler_term = {	 character = eng_william_the_conquerer start_date = 1066.12.25 end_date = 1087.9.9 regnal_number = 1	}
+			ruler_term = {	 character = eng_william_ii_rufus start_date = 1087.9.26 end_date = 1100.7.2 regnal_number = 2	}
+			ruler_term = {	 character = eng_henry_i start_date = 1100.7.5 end_date = 1135.12.1 regnal_number = 1	}
+
+			ruler_term = {	 character = eng_stephen_i start_date = 1135.12.22 end_date = 1154.10.25 regnal_number = 1	}
+
+			ruler_term = {	 character = eng_henry_ii_curtmantle start_date = 1154.12.19 end_date = 1189.7.6 regnal_number = 2	}
+			ruler_term = {	 character = eng_richard_i_lionheart start_date = 1189.9.3 end_date = 1199.4.6 regnal_number = 1	}
+			ruler_term = {	 character = eng_john_lackland start_date = 1199.5.27 end_date = 1216.10.19 regnal_number = 1	}
+
+			ruler_term = {	 character = eng_henry_iii start_date = 1216.10.28 end_date = 1272.11.16 regnal_number = 3	}
+			ruler_term = {	 character = eng_edward_i start_date = 1272.11.20 end_date = 1307.7.8 regnal_number = 1	}
+			ruler_term = {	 character = eng_edward_ii start_date = 1307.7.8 end_date = 1327.1.20 regnal_number = 2	}
+			ruler_term = {	 character = eng_edward_iii start_date = 1327.1.25 regnal_number = 3 }
+
+			regnal_numbers = {
+				name_william = 2
+				name_henry = 3
+				name_stephen = 1
+				name_richard = 2
+				name_john = 1
+				name_edward = 3
+			}
+
+			reforms = {
+				magna_carta_reform
+			}
+			privilege = {
+				#nobles
+				auxilium_et_consilium
+				nobles_land_rights
+				noble_marriage_rights
+				noble_fortification_licenses
+				manorial_courts
+
+				#burghers
+				formal_guilds
+				market_fairs
+
+				#clergy
+				clergy_literacy_rights
+				clergy_enforced_unity
+
+				#peasants
+				peasants_yeomanry
+				access_to_royal_and_ecclesiastical_courts
+			}
+			laws = {
+				distribution_of_power_law = dop_law_english_parliament
+				language_of_pleading = language_of_pleading_court
+				legal_code_law = common_law_policy
+				medieval_levy_law = longbow_competitions
+				feudal_de_jure_law = by_tradition
+				marriage_law = monogamous_marriage
+				heir_religion_law = heir_same_religion
+			}
+
+			centralization_vs_decentralization = 30
+			aristocracy_vs_plutocracy = -60
+			serfdom_vs_free_subjects = -10
+			traditionalist_vs_innovative = -40
+			spiritualist_vs_humanist = -50
+			mercantilism_vs_free_trade = -25
+			offensive_vs_defensive = 0
+			land_vs_naval = 0
+			quality_vs_quantity = -20
+			belligerent_vs_conciliatory = -25
+
+			capital_economy_vs_traditional_economy = 30
+			individualism_vs_communalism = -25
+			outward_vs_inward = -60
+
+
+		}
+
+		accepted_cultures = {
+			northumbrian
+		}
+		tolerated_cultures = { cornish welsh }
+
+		court_language = norman_dialect
+		country_rank = rank_kingdom
+		capital = london
+
+		include = "expl_western_europe"
+
+		ai_advance_preference_tags = {
+			exploration = 5
+		}
+	}
+	
+	COE = { # Commonwealth of England
+		own_control_core = {
+			#home_counties_area
+			london harrow kingston reigate guildford woking southampton portsmouth winchester wight basingstoke dover canterbury rochester hythe tonbridge shoreham lewes hastings chichester dunstable bedford oxford henley windsor buckingham aylesbury wycombe
+			#east_anglia_area
+			norwich lynn yarmouth thetford fakenham colchester chelmsford prittlewell hedingham walden barking ipswich bury lowestoft lavenham cambridge ely huntingdon royston
+			#other main provinces
+			shrewsbury hertford st_albans coventry birmingham stratford northampton daventry kettering leicester loughborough bosworth rutland kidderminster stafford stoke tamworth derby glossop chesterfield chester macclesfield nantwich lancaster blackburn liverpool preston manchester pennines_01 pennines_02 leeds wakefield doncaster pennines_04 pennines_05 pennines_06
+			#enclaves
+			bristol gloucester plymouth carmarthen
+		}
+
+		include = "catholic_monarchy"
+
+		starting_technology_level = 3
+		government = {
+			type = republic
+			heir_selection = oligarchic_elective
 
 			ruler_term = {	 character = eng_alfred_the_great start_date = 886.1.1 end_date = 899.10.26 regnal_number = 0	}
 			ruler_term = {	 character = eng_edward_the_elder start_date = 899.10.26 end_date = 924.7.17 regnal_number = 0	}
