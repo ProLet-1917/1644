@@ -731,15 +731,63 @@ countries = {
 			cork fermoy kinsale youghal dublin fingal wicklow glendalough wicklow_mountains carrickmacross armagh oriel dundalk drogheda downpatrick iveagh newtownards carrickfergus belfast ballymena ballycastle dunluce lough_neagh derry coleraine magherafelt donegal kilmacrennan inishowen raphoe kildare naas athy dunamase daingean dungannon navan
 		}
 		
-		own_conquered = {
-			#leinster_area
-			dublin fingal wicklow glendalough wicklow_mountains trim kells mullingar longford ardagh ballymore tullamore navan wexford new_ross ferns carlow kildare naas athy dunamase daingean kilkenny cullahill
-			#ulster_area
-			carrickfergus belfast ballymena ballycastle dunluce lough_neagh downpatrick iveagh newtownards dungannon strabane clogher enniskillen belcoo lough_erne derry coleraine magherafelt donegal kilmacrennan inishowen raphoe monaghan carrickmacross armagh oriel dundalk drogheda
-			#connaught_area
-			galway clifden athenry tuam kilconnell lough_corrib lough_derg roscommon castlereagh sligo athlone skreen lough_ree dromahair leitrim killeshandra cavan killycolly castlebar burrishoole erris ballaghaderreen lough_mask lough_conn
-			#munster_area
-			cork fermoy kinsale youghal killarney carbery kilbrittain muskerry dunhallow tralee dingle limerick killmallock adare castleconnell ennis bunratty moyarta tipperary nenagh clonmel cashel roscrea moycarn waterford dungarvan carrickbeg
+		our_cores_conquered_by_others = {
+			trim kells mullingar longford ardagh ballymore tullamore wexford new_ross ferns carlow kilkenny cullahill strabane clogher enniskillen belcoo lough_erne monaghan galway clifden athenry tuam kilconnell lough_corrib lough_derg roscommon castlereagh sligo athlone skreen lough_ree dromahair leitrim killeshandra cavan killycolly castlebar burrishoole erris ballaghaderreen lough_mask lough_conn killarney carbery kilbrittain muskerry dunhallow tralee dingle limerick killmallock adare castleconnell ennis bunratty moyarta tipperary nenagh clonmel cashel roscrea moycarn waterford dungarvan carrickbeg
+		}
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+
+			quality_vs_quantity = 25
+			offensive_vs_defensive = 75
+
+			parliament = {
+				parliament_type = estate_parliament
+			}
+
+			privilege = {
+				noble_fortification_licenses
+			}
+			laws = {
+				distribution_of_power_law = dop_law_english_parliament
+				language_of_pleading = language_of_pleading_court
+				medieval_levy_law = longbow_competitions
+				feudal_de_jure_law = by_tradition
+			}
+			reforms = {
+				magna_carta_reform
+			}
+
+			ruler_term = {	 character = eng_john_lackland start_date = 1177.1.1 end_date = 1216.10.19 regnal_number = 1	} # became Lord of Ireland before being King of England
+			ruler_term = {	 character = eng_henry_iii start_date = 1216.10.28 end_date = 1272.11.16 regnal_number = 3	}
+			ruler_term = {	 character = eng_edward_i start_date = 1272.11.20 end_date = 1307.7.8 regnal_number = 1	}
+			ruler_term = {	 character = eng_edward_ii start_date = 1307.7.8 end_date = 1327.1.20 regnal_number = 2	}
+			ruler_term = {	 character = eng_edward_iii start_date = 1327.1.25 regnal_number = 3 }
+
+			# same numbering as England
+			regnal_numbers = {
+				name_william = 2
+				name_henry = 3
+				name_stephen = 1
+				name_richard = 2
+				name_john = 1
+				name_edward = 3
+			}
+		}
+		include = "catholic_monarchy_english_lordship"
+		capital = dublin
+		accepted_cultures = { anglo_irish }
+		tolerated_cultures = { irish }
+	}
+	
+	IRE = { # Irish Confederate
+		own_control_core = {
+		trim kells mullingar longford ardagh ballymore tullamore wexford new_ross ferns carlow kilkenny cullahill strabane clogher enniskillen belcoo lough_erne monaghan galway clifden athenry tuam kilconnell lough_corrib lough_derg roscommon castlereagh sligo athlone skreen lough_ree dromahair leitrim killeshandra cavan killycolly castlebar burrishoole erris ballaghaderreen lough_mask lough_conn killarney carbery kilbrittain muskerry dunhallow tralee dingle limerick killmallock adare castleconnell ennis bunratty moyarta tipperary nenagh clonmel cashel roscrea moycarn waterford dungarvan carrickbeg
+		}
+		
+		our_cores_conquered_by_others = {
+		cork fermoy kinsale youghal dublin fingal wicklow glendalough wicklow_mountains carrickmacross armagh oriel dundalk drogheda downpatrick iveagh newtownards carrickfergus belfast ballymena ballycastle dunluce lough_neagh derry coleraine magherafelt donegal kilmacrennan inishowen raphoe kildare naas athy dunamase daingean dungannon navan
 		}
 
 		government = {
