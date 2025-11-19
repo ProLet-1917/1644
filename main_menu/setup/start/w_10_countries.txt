@@ -1,0 +1,544 @@
+#======Made by Lvtoumao======
+current_age = age_1_traditions #Should be Age 4
+countries = {
+	countries = {
+
+#Lowland
+	HOL = { #Holland #aka Netherland
+		own_control_core = {
+			the_hague leiden rotterdam amsterdam alkmaar dordrecht geertruidenberg hoorn
+			utrecht amersfoort oldenzaal zwolle deventer kampen assen coevorden meppel
+			leeuwarden sloten harlingen stavoren groningen appingedam wedde
+			zutphen doetinchem
+			middelburg
+			cuijk maastricht
+			arnhem nijmegen tiel harderwijk apeldoorn
+			bergen_zoom breda hertogenbosch helmond weert
+			wolvega
+			lingen
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy"
+		include = "german_principality"
+		government = {
+			ruler = hol_frederik_hendrik_van_oranje
+
+			ruler_term = { character = frederik_hendrik_van_oranje start_date = 1644.1.1 regnal_number = 1 }
+
+			regnal_numbers = {
+
+			}
+
+			aristocracy_vs_plutocracy = 20
+			serfdom_vs_free_subjects = 20
+			mercantilism_vs_free_trade = 30
+			land_vs_naval = 20
+			capital_economy_vs_traditional_economy = -10
+			individualism_vs_communalism = -20
+			outward_vs_inward = 0
+
+			reforms = {
+				feudal_nobility
+			}
+		}
+		country_rank = rank_duchy
+		capital = amsterdam
+
+		tolerated_cultures = {
+			frisian
+		}
+	}
+
+	BUR = { #Burgundy #Puppet of Spain
+		own_control_core = {
+			geldern roermond venlo brussels nivelles leuven mechelen antwerp turnhout eindhoven
+			cassel dunkirk oudenaarde ypres veurne lille douai tournai
+			arras bapaume bethune hesdin lens saint_omer saint_pol
+			ostend bruges hulst ghent sint_niklaas aalst kortriik
+			valenciennes namur
+			ath chimay enghien maubeuge mons
+			limbourg
+			luxembourg arlon bastogne bitburg la_roche orchimont neufchateau_luxembourg st_vith thionville vianden
+			montmedy
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy"
+		government = {
+
+		}
+		capital = mons
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			 low_franconian
+		}
+	}
+
+	CAM = { #Cambrésis
+		own_control_core = {
+			cambrai
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+		capital = cambrai
+		government = {
+			ruler = cam_joseph_de_bergaigne
+
+			ruler_term = { character = cam_joseph_de_bergaigne start_date = 1644.1.1 regnal_number = 1 }
+
+			regnal_numbers = {
+
+			}
+
+			reforms = {
+				prince_bishopric_reform
+			}
+
+			spiritualist_vs_humanist = -70
+			aristocracy_vs_plutocracy = -20
+			land_vs_naval = -20
+
+			laws = {
+				mining_law = nobles_mining_law
+			}
+		}
+		country_rank = rank_county
+	}
+
+	LIE = { #Liege #PU with Cologne
+		own_control_core = {
+			liege dinant walcourt hasselt bree borgloon stavelot
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_bishopric_no_coast"
+		government = {
+
+			ruler = kol_ferdinand_von_wittelsbach
+
+			reforms = {
+				prince_bishopric_reform
+			}
+
+			spiritualist_vs_humanist = -70
+			aristocracy_vs_plutocracy = -20
+			land_vs_naval = -20
+		}
+
+		tolerated_cultures = {
+			champenais
+		}
+
+		country_rank = rank_duchy
+		capital = liege
+	}
+
+	BLL = { #Bouillon
+		own_control_core = {
+			bouillon
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		government = {
+			ruler = bll_frederic_maurice_de_la_tour
+
+			ruler_term = { character = bll_frederic_maurice_de_la_tour start_date = 1644.1.1 regnal_number = 1 }
+
+		}
+
+		tolerated_cultures = {
+			champenais
+		}
+
+		country_rank = rank_county
+		capital = bouillon
+	}
+
+
+#Germany
+	FRI = { #Frisia
+		own_control_core = {
+			leer emden aurich jever
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy"
+		capital = emden
+		government = {
+			ruler = fri_ulrich_cirksena
+
+			ruler_term = { character = fri_ulrich_cirksena start_date = 1644.1.1 regnal_number = 2 }
+
+
+			reforms = {
+				frisian_freedom_reform
+			}
+			aristocracy_vs_plutocracy = 20
+			serfdom_vs_free_subjects = 20
+			mercantilism_vs_free_trade = 30
+			land_vs_naval = 20
+			capital_economy_vs_traditional_economy = -10
+			individualism_vs_communalism = -20
+			outward_vs_inward = 0
+		}
+
+		tolerated_cultures = {
+			westphalian
+		}
+
+		country_rank = rank_county
+	}
+
+	BNT = {	#Bentheim
+		own_control_core = {
+			bentheim
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+			ruler = bnt_philipp_konrad_von_gotterswick
+
+			ruler_term = {	 character = bnt_philipp_konrad_von_gotterswick start_date = 1644.1.1 regnal_number = 1	}
+
+
+			regnal_numbers = {
+
+			}
+		}
+
+		tolerated_cultures = {
+		}
+
+		country_rank = rank_county
+		capital = bentheim
+	}
+
+	MUN = {	#Münster #PU with Cologne
+		own_control_core = {
+			munster ahaus warendorf horstmar meppen vechta aschendorf rheine dulmen
+			cloppenburg friesoythe
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+
+		government = {
+
+			ruler = kol_ferdinand_von_wittelsbach
+
+			reforms = {
+				prince_bishopric_reform
+			}
+		}
+
+		tolerated_cultures = {
+		}
+
+		country_rank = rank_county
+		capital = munster
+	}
+
+	TCK = {	#Tecklenburg
+		own_control_core = {
+			tecklenburg 
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = tck_moritz_von_gotterswick
+			ruler_term = {	character = tck_moritz_von_gotterswick start_date = 1644.1.1 regnal_number = 1	}
+		}
+		tolerated_cultures = {
+			lower_saxon
+		}
+		country_rank = rank_county
+		capital = tecklenburg
+	}
+
+	OSN = {	#Osnabrück
+		own_control_core = {
+			osnabruck bersenbruck
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+
+		government = {
+			ruler = osn_franz_wilhelm_von_wittelsbach
+
+			reforms = {
+				prince_bishopric_reform
+			}
+		}
+		country_rank = rank_county
+		capital = osnabruck
+	}
+
+	BRA = {	#Brandenburg #Poland have "czaplinek walcz czlopa"
+		own_control_core = {
+			brandenburg berlin teltow potsdam freienwalde herzfelde templin
+			chojna soltyn
+			stendal osterburg salzwedel gardelegen
+			wittenberge pritzwalk treuenbrietzen
+			angermunde prenzlau
+			torzym swidwin choszczno drawsko santok gorzow
+			kleve wesel mors hamm altena bochum soest bielefeld
+			ruppin havelberg wittstock
+			lebus beeskow
+		}
+
+		own_control_integrated = {
+
+		}
+
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+			ruler = bra_friedrich_wilhelm_von_hohenzollern
+
+			ruler_term = { character = bra_friedrich_wilhelm_von_hohenzollern start_date = 1644.1.1 regnal_number = 1 }
+
+			regnal_numbers = {
+
+			}
+
+			reforms = {
+				margraviate
+			}
+
+			centralization_vs_decentralization = 60
+			spiritualist_vs_humanist = -20
+			aristocracy_vs_plutocracy = -60
+			land_vs_naval = -20
+			outward_vs_inward = 0
+		}
+
+		tolerated_cultures = {
+			markish
+			#brandenburgish
+			polabian
+			eastern_pomeranian
+		}
+
+		country_rank = rank_duchy
+		capital = berlin
+		dynasty = Hohenzollern_dynasty
+	}
+
+	UPA = {	#Nordgau
+		own_control_core = {
+			heinsberg bergheim duren monchengladbach
+			dusseldorf remscheid siegburg solingen schleiden
+			amberg eschenbach neumarkt roding sulzbach #Oberpfalz
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = upa_wolfgang_wilhelm_von_wittelsbach
+			ruler_term = {	 character = upa_wolfgang_wilhelm_von_wittelsbach start_date = 1644.1.1 regnal_number = 1 }
+		}
+		tolerated_cultures = {
+			ripuarian_franconian
+		}
+		country_rank = rank_duchy
+		capital = amberg
+	}
+
+	KOL = {	#Cologne
+		own_control_core = {
+			cologne ahrweiler neuss attendorn brilon recklinghausen
+			bonn 
+			arnsberg meschede
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+		country_rank = rank_duchy
+		government = {
+			ruler = kol_ferdinand_von_wittelsbach
+		}
+
+		accepted_cultures = {
+			westphalian
+			angrian
+		}
+
+		capital = cologne
+	}
+
+	AAC = {	#Aachen
+		own_control_core = {
+			aachen
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_free_city_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = aac_karl_lugwig_ansembourg
+		}
+
+		tolerated_cultures = {
+			low_franconian
+		}
+
+		country_rank = rank_county
+		capital = aachen
+	}
+
+	TRI = {	#Trier
+		own_control_core = {
+			trier wittlich
+			mayen coblenz saarburg
+			prum daun cochem
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+		country_rank = rank_duchy
+		government = {
+			ruler = tri_philipp_von_sottern
+		}
+
+		tolerated_cultures = {
+			rhine_franconian
+			ripuarian_franconian
+		}
+
+		capital = trier
+	}
+
+	SPO = {	#Sponheim
+		own_control_core = {
+			kreuznach birkenfeld castellaun
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = spo_georg_wilhelm_von_wittelsbach
+			ruler_term = {	character = spo_georg_wilhelm_von_wittelsbach  start_date = 1644.1.1 regnal_number = 1	}
+
+			regnal_numbers = {
+
+			}
+		}
+		tolerated_cultures = {
+			moselle_franconian
+		}
+		country_rank = rank_county
+		capital = kreuznach
+	}
+
+	SAA = { #Saarbrücken
+		own_control_core = {
+			saarbrucken
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = saa_gustav_von_nassau
+
+			ruler_term = {	character = saa_gustav_von_nassau start_date = 1644.1.1 regnal_number = 1	}
+
+			regnal_numbers = {
+
+			}
+		}
+
+		tolerated_cultures = {
+			moselle_franconian
+		}
+
+		country_rank = rank_county
+		capital = saarbrucken
+	}
+
+	DTM = { #Dortmund
+		own_control_core = {
+			dortmund
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = dtm_benno_haase
+		}
+		country_rank = rank_county
+		capital = dortmund
+	}
+
+	ESS = {	#Essen
+		own_control_core = {
+			essen
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = ess_hugo_preutaeus
+			heir_selection = abbess_elective_female
+
+			reforms = {
+				abbey_reform
+			}
+			laws = {
+				heir_religion_law = heir_special_succession
+			}
+		}
+		country_rank = rank_county
+		capital = essen
+	}
+
+
+}
+}
