@@ -1,4 +1,4 @@
-current_age = age_1_traditions
+#current_age = age_1_traditions
 # 以下是省份控制和核心类型的简要注释：
 # own_control_core        # 本国完全控制的核心省份
 # own_control_integrated  # 本国已整合省份
@@ -397,7 +397,8 @@ countries = {
 			color = map_ASK
 		}
 #------------------------ Western Europe by Syayan1 ----------------------------
-	ENG = { # Englanmd
+	##British Isles
+	ENG = { # England
 		own_control_core = {
 			appleby hythe alnwick barnstaple bedford dunstable birmingham boston bosworth shoreham lewes bristol buckingham bury glossop cambridge canterbury carlisle rochester cheltenham chelmsford chesterfield chichester chippenham cockermouth colchester kettering coventry cirencester derby dorchester dover exeter gloucester grimsby guildford reigate harrow hastings hedingham hertford hexham hull huntingdon ipswich kendal grantham penrith kidderminster leeds leicester lincoln london loughborough lowestoft lynn daventry newark newcastle northampton norwich nottingham oxford ely plymouth bideford bampton okehampton poole portsmouth amesbury lymington retford rutland salisbury southampton prittlewell kingston stafford stoke stratford trowbridge taunton wells barking weymouth shaftesbury wight winchester windsor worcester yarmouth york scarborough tamworth bedale richmond whitby bridlington selby pontefract skipton wakefield louth thetford fakenham reading tonbridge minehead portishead bath henley royston aylesbury wycombe lavenham abingdon st_albans banbury walden spalding woking morpeth billingham norton ripon doncaster egremont basingstoke
 			# Earldom of Chester
@@ -410,6 +411,32 @@ countries = {
 			chester macclesfield nantwich
 			#from LAN
 			lancaster blackburn liverpool preston manchester
+			#below from Wales
+			aberystwyth anglesey cardigan carnarvon harlech conwy carmarthen penllyn radnor
+			#from LAN
+			monmouth kidwelly
+			#from CHE
+			flint
+			#from GWR
+			swansea
+			#from GMG
+			cardiff caerphilly neath
+			#from MAC
+			adnor builth newport wigmore ludlow
+			#from AUD
+			llangollen oswestry
+			#from BRO
+			brecknock
+			#from POS
+			machynlleth montgomery
+			#from EWY
+			ewyas
+			#from CMS
+			fishguard
+			#from PMB
+			pembroke
+			#from DEN
+			denbigh
 		}
 		own_control_integrated = {
 			# Earldom of Chester
@@ -555,67 +582,6 @@ countries = {
 		}
 	}
 
-	WLS = { # Wales
-		own_control_core = {
-			# Principality of Wales
-			aberystwyth anglesey cardigan carnarvon harlech conwy carmarthen penllyn radnor
-			#from LAN
-			monmouth kidwelly
-			#from CHE
-			flint
-			#from GWR
-			swansea
-			#from GMG
-			cardiff caerphilly neath
-			#from MAC
-			adnor builth newport wigmore ludlow
-			#from AUD
-			llangollen oswestry
-			#from BRO
-			brecknock
-			#from POS
-			machynlleth montgomery
-			#from EWY
-			ewyas
-			#from CMS
-			fishguard
-			#from PMB
-			pembroke
-			#from DEN
-			denbigh
-		}
-
-		include = "catholic_monarchy_english_lordship"
-
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-
-			aristocracy_vs_plutocracy = -60
-			quality_vs_quantity = 25
-			offensive_vs_defensive = 75
-
-			laws = {
-				distribution_of_power_law = dop_law_english_parliament
-				language_of_pleading = language_of_pleading_court
-				feudal_de_jure_law = by_tradition
-				medieval_levy_law = longbow_competitions
-			}
-			reforms = {
-				magna_carta_reform
-				iron_ring_reform
-			}
-			privilege = {
-				noble_fortification_licenses
-				peasants_yeomanry
-			}
-			ruler = eng_edward_iii
-		}
-		country_rank = rank_duchy
-		capital = carnarvon
-		accepted_cultures = { welsh }
-	}
-	
 	SCO = { # Scotland
 		own_control_core = {
 			glasgow paisley dumbarton aberdeen dunbar banff dunfermline st_andrews dundee buchan mar inverurie stonehaven clackmannan aberfeldy irvine
@@ -778,22 +744,16 @@ countries = {
 	
 	PLE = { # The Pale
 		own_control_core = {
-			# the pale proper
-			dublin navan fingal drogheda dundalk
-			
-			waterford wexford new_ross  
+			#leinster_area
+			dublin fingal wicklow glendalough wicklow_mountains trim kells mullingar longford ardagh ballymore tullamore navan wexford new_ross ferns carlow kildare naas athy dunamase daingean kilkenny cullahill
+			#ulster_area
+			carrickfergus belfast ballymena ballycastle dunluce lough_neagh downpatrick iveagh newtownards dungannon strabane clogher enniskillen belcoo lough_erne derry coleraine magherafelt donegal kilmacrennan inishowen raphoe monaghan carrickmacross armagh oriel dundalk drogheda
+			#connaught_area
+			galway clifden athenry tuam kilconnell lough_corrib lough_derg roscommon castlereagh sligo athlone skreen lough_ree dromahair leitrim killeshandra cavan killycolly castlebar burrishoole erris ballaghaderreen lough_mask lough_conn
+			#munster_area
+			cork fermoy kinsale youghal killarney carbery kilbrittain muskerry dunhallow tralee dingle limerick killmallock adare castleconnell ennis bunratty moyarta tipperary nenagh clonmel cashel roscrea moycarn waterford dungarvan carrickbeg
 		}
-		own_control_integrated = {
-			limerick cork
-		}
-		own_control_conquered = {
-			# lordship of meath
-			 trim kells  ballymore
-			 # kilkenny frontier
-			  carlow kilkenny
-			 mullingar
-			 wicklow
-		}
+
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
@@ -840,6 +800,7 @@ countries = {
 		tolerated_cultures = { irish }
 	}
 	
+	##Iberia
 	CAS = {
 		own_control_core = {
 			avila adrada arevalo las_navas oropesa villatoro
@@ -870,9 +831,7 @@ countries = {
 			sevilla arcos_de_la_frontera cadiz carmona constantina ecija jerez_de_la_frontera medina_sidonia moron olvera osuna sanlucar tarifa
 			huelva almonaster_la_real aracena aroche ayamonte coria_del_rio niebla puebla_de_guzman sanlucar_la_mayor
 			bilbao anana durango onate salvatierra san_sebastian tolosa valmaseda vitoria
-		}
-
-		our_cores_conquered_by_others = {
+			#from ARA
 			jumilla
 		}
 
@@ -1061,15 +1020,16 @@ countries = {
 			castellon_de_la_plana ares_del_maestre llucena morella peniscola
 			jativa alcoy alicante denia elche orihuela
 			valencia gandia ayora bunol chelva lliria
+			#Catalonia
+			perpignan prades puigcerda lagoon_of_salses south_eastern_pyrenees andorra_la_vella central_pyrenees south_western_pyrenees3
+			#Balearic
+			palma ciudadela_de_menorca ibiza manacor pollensa
 		}
 
 		own_control_integrated = {
-			jumilla
-		}
-
-		own_control_conquered = {
+			#Sardinia
 			cagliari tratalias villa_di_chiesa isili muravera seddori tortoli orosei terranova_pausania posada tempiopausania
-			sassari
+			sassari oristano ales sorgono terralba gennargentu_mountains alghero bosa castelsardo macomer bitti ozieri thiesi
 		}
 
 		our_cores_conquered_by_others = {
@@ -1213,7 +1173,6 @@ countries = {
 		capital = granada
 	}
 
-	#Navarre
 	NAV = {
 		own_control_core = {
 			pamplona elizondo estella olite roncesvalles sanguesa tudela viana laguardia
@@ -1327,41 +1286,40 @@ countries = {
 
 	}
 #------------------------ Middle Europe by 帅得被人砍 ----------------------------
-HES = { # 黑森
-	# 核心省份：完全整合，税收正常，无整合度衰减，叛乱风险低
-	own_control_core = {
-		marburg   frankenberg  ziegenhain alsfeld melsungen kassel eschwege rotenburg hersfeld
-	}
-	# 整合省份：已整合，文化可能被接受，税收正常
-	own_control_integrated = {}
-	# 征服省份：有整合度系统，影响税收产出，影响人口满意度
-	own_control_conquered = {}
+	HES = { # 黑森
+		# 核心省份：完全整合，税收正常，无整合度衰减，叛乱风险低
+		own_control_core = {
+			marburg   frankenberg  ziegenhain alsfeld melsungen kassel eschwege rotenburg hersfeld
+		}
+		# 整合省份：已整合，文化可能被接受，税收正常
+		own_control_integrated = {}
+		# 征服省份：有整合度系统，影响税收产出，影响人口满意度
+		own_control_conquered = {}
 
-    court_language = language_name
-	# 国家等级
-	country_rank = duchy	# 公国
-	# 首都
-	capital = kassel
-	# 旗帜和国家名称
-	flag= "HES"
-	country_name = "HES"
+		court_language = language_name
+		# 国家等级
+		country_rank = duchy	# 公国
+		# 首都
+		capital = kassel
+		# 旗帜和国家名称
+		flag= "HES"
+		country_name = "HES"
 
-	# 包含的模板文件（可选）
-	include = "template_name"
-	# 政府设置
-	government = {
-		type = monarchy		# monarchy, republic, theocracy, army
-		ruler = random
-		# 继承方式
-	}
-	# 文化设置
-	accepted_cultures = {
-		culture_name
-	}
-	tolerated_cultures = {
-		culture_name
-	}
+		# 包含的模板文件（可选）
+		include = "template_name"
+		# 政府设置
+		government = {
+			type = monarchy		# monarchy, republic, theocracy, army
+			ruler = random
+			# 继承方式
+		}
+		# 文化设置
+		accepted_cultures = {
+			culture_name
+		}
+		tolerated_cultures = {
+			culture_name
+		}
 
-}
 	}
 }
