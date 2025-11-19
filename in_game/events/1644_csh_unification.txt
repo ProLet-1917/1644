@@ -110,6 +110,10 @@ csh_1644_unification.1 = { #进京赶考
 		 	id = csh_1644_unification.2
 		 	days = 7
 		}
+		trigger_event_silently = {
+		 	id = csh_1644_unification.3
+		 	days = 7
+		}
 	}
 	option = { #暂缓进京
 		name = csh_1644_unification.1.b
@@ -291,6 +295,15 @@ csh_1644_unification.2 = { #天翻地覆
 	}
 }
 
+csh_1644_unification.3 = { #二王三恪
+	type = country_event
+	title = csh_1644_unification.3.title
+	desc = csh_1644_unification.3.desc
+	historical_info = csh_1644_unification.3.historical_info
+	option = {
+		name = csh_1644_unification.3.a
+	}
+}
 
 
 
