@@ -47,21 +47,21 @@ qng_1644_banner_army.1 = {
 							type = a_red_cannon
 							owner = root
 							origin = this
-							experience = 100
+							experience = 90
 						}
 					}
-					# 汉军步兵与旗丁：55 * 1000 = 55000 人（35 长枪、15 火器、5 骑兵）
+					# 步兵：35 * 1000 = 35000 人
 					while = {
 						count = 35
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_pikemen
 							owner = root
 							origin = this
-							experience = 100
+							experience = 90
 						}
 					}
 					while = {
-						count = 5
+						count = 3
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_musketeers
 							owner = root
@@ -75,7 +75,7 @@ qng_1644_banner_army.1 = {
 							type = a_1644_chinese_cavalry
 							owner = root
 							origin = this
-							experience = 100
+							experience = 70
 						}
 					}
 					if = {

@@ -37,7 +37,7 @@
 # 1644模组：降低县衙纸张需求
 REPLACE:zhixian = {
 	is_foreign = no
-	max_levels = 1
+	max_levels = 4
 	pop_type = nobles
 	
 	employment_size = minor_noble_employment
@@ -58,11 +58,11 @@ REPLACE:zhixian = {
 	}
 	
 	unique_production_methods = {
-		zhixian_maintenance = {
-			paper = 0.2  
-			weaponry = 0.2
-			tools = 0.2
-			fine_cloth = 0.1
+		zhixian_1644_maintenance = {
+			paper = 0.25
+			weaponry = 0.1
+			tools = 0.05
+			fine_cloth = 0.05
 			category = building_maintenance
 		}
 	}
@@ -71,12 +71,10 @@ REPLACE:zhixian = {
 
 	modifier = {
 		local_max_control = 0.25  # 控制力上限提升（原版0.10，提升至0.3）
-		local_monthly_control = 0.01  # 控制力增长速度提升
-		local_distance_from_capital_cost_modifier = -0.25
+		local_monthly_control = 0.01  # 每月+1%控制力
 		local_proximity_source = 20
 		local_monthly_development_modifier = 0.025  # 发展度增长提升
 		local_nobles_estate_power = 0.25
-		local_unrest = -0.25
 	}
 }
 

@@ -33,7 +33,7 @@ a_1644_chinese_pikemen = {
 
 
 	country_potential = {
-		OR = { tag = QNG tag = CSH tag = WSG tag = CXI tag = MNG tag = CXI}
+		OR = { tag = QNG tag = CSH tag = WSG tag = CXI tag = MNG }
 	}
 	gfx_tags = { pike_tag }
 }
@@ -67,14 +67,27 @@ REPLACE:a_red_cannon = {
 	buildable = yes
 
 	# 一营 100 人（2 门炮 + 支援）
-	max_strength = 0.1
-	
-	supply_weight = 0.5
-	food_consumption_per_strength = 1
-	food_storage_per_strength = 0.5
+	max_strength = 0.15
 	initiative = 1
-	morale_damage_done = 0.05
+	morale_damage_done = 0.1
 
+	country_potential = {
+		OR = { tag = QNG tag = CSH tag = WSG tag = CXI tag = MNG }
+	}
+	gfx_tags = { heavy_tag }
+}
+#八旗骑兵
+REPLACE:a_banner_cavalry = {
+	category = army_cavalry
+	copy_from = a_age_4_reformation_cavalry
+	buildable = yes
+	
+	max_strength = 0.3
+	initiative = 3
+	morale_damage_done = 0.1
+	strength_damage_done = 0.1
+	morale_damage_taken = -0.1
+	country_potential = { tag = QNG }
 	gfx_tags = { heavy_tag }
 }
 
@@ -84,11 +97,6 @@ a_1644_chinese_cavalry = {
 	copy_from = a_age_4_reformation_cavalry
 	buildable = yes
 
-	# 强化冲击与速度，适应东北平原与山海关地形
-	initiative = 1
-	strength_damage_done = 0.04
-	morale_damage_done = 0.03
-	impact = { flatland = 0.05 hills = 0.03 wetlands = -0.05 mountains = -0.1 }
 
 	country_potential = {
 		OR = { tag = QNG tag = WSG tag = CSH tag = MNG tag = CXI}
@@ -104,9 +112,9 @@ a_1644_guanning_cavalry = {
 	
 	max_strength = 0.3
 	initiative = 1
-	morale_damage_done = 0.06
+	morale_damage_done = 0.05
 	strength_damage_done = 0.05
-	morale_damage_taken = -0.03
+	morale_damage_taken = -0.05
 	impact = { flatland = 0.1 hills = 0.05 }
 
 	country_potential = { tag = WSG }
