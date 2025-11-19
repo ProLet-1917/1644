@@ -400,9 +400,11 @@ countries = {
 	##British Isles
 	ENG = { # England
 		own_control_core = {
-			appleby hythe alnwick barnstaple bedford dunstable birmingham boston bosworth shoreham lewes bristol buckingham bury glossop cambridge canterbury carlisle rochester cheltenham chelmsford chesterfield chichester chippenham cockermouth colchester kettering coventry cirencester derby dorchester dover exeter gloucester grimsby guildford reigate harrow hastings hedingham hertford hexham hull huntingdon ipswich kendal grantham penrith kidderminster leeds leicester lincoln london loughborough lowestoft lynn daventry newark newcastle northampton norwich nottingham oxford ely plymouth bideford bampton okehampton poole portsmouth amesbury lymington retford rutland salisbury southampton prittlewell kingston stafford stoke stratford trowbridge taunton wells barking weymouth shaftesbury wight winchester windsor worcester yarmouth york scarborough tamworth bedale richmond whitby bridlington selby pontefract skipton wakefield louth thetford fakenham reading tonbridge minehead portishead bath henley royston aylesbury wycombe lavenham abingdon st_albans banbury walden spalding woking morpeth billingham norton ripon doncaster egremont basingstoke
+			berwick appleby hythe alnwick barnstaple bedford dunstable birmingham boston bosworth shoreham lewes bristol buckingham bury glossop cambridge canterbury carlisle rochester cheltenham chelmsford chesterfield chichester chippenham cockermouth colchester kettering coventry cirencester derby dorchester dover exeter gloucester grimsby guildford reigate harrow hastings hedingham hertford hexham hull huntingdon ipswich kendal grantham penrith kidderminster leeds leicester lincoln london loughborough lowestoft lynn daventry newark newcastle northampton norwich nottingham oxford ely plymouth bideford bampton okehampton poole portsmouth amesbury lymington retford rutland salisbury southampton prittlewell kingston stafford stoke stratford trowbridge taunton wells barking weymouth shaftesbury wight winchester windsor worcester yarmouth york scarborough tamworth bedale richmond whitby bridlington selby pontefract skipton wakefield louth thetford fakenham reading tonbridge minehead portishead bath henley royston aylesbury wycombe lavenham abingdon st_albans banbury walden spalding woking morpeth billingham norton ripon doncaster egremont basingstoke
 			# Earldom of Chester
 			#chester macclesfield nantwich
+			# cornwall
+			launceston truro bodmin
 			# English towns on the Welsh March
 			shrewsbury hereford
 			#from DHM
@@ -439,14 +441,8 @@ countries = {
 			denbigh
 		}
 		own_control_integrated = {
-			# Earldom of Chester
-			# cornwall
-			launceston truro bodmin
-			# channel
+			#channel
 			jersey
-		}
-		own_control_conquered = {
-			berwick
 		}
 
 		include = "catholic_monarchy"
@@ -584,7 +580,7 @@ countries = {
 
 	SCO = { # Scotland
 		own_control_core = {
-			glasgow paisley dumbarton aberdeen dunbar banff dunfermline st_andrews dundee buchan mar inverurie stonehaven clackmannan aberfeldy irvine
+			thurso glasgow paisley dumbarton aberdeen dunbar banff dunfermline st_andrews dundee buchan mar inverurie stonehaven clackmannan aberfeldy irvine
 			oban inverary cowal forfar arbroath arran selkirk scone
 			dornoch durness tongue
 			#from ROS
@@ -595,18 +591,6 @@ countries = {
 			uist lewis mull islay harris ardtornish kintyre skye
 			#from SBL
 			kirkcudbright kenmure stranraer ayr perth edinburgh stirling roxburgh linlithgow duns dumfries lanark strathearn cupar
-		}
-		own_control_conquered = {
-			thurso
-		}
-
-		our_cores_conquered_by_others = {
-			berwick
-			perth kirkcudbright kenmure stranraer
-			edinburgh stirling roxburgh dumfries lanark ayr
-			strathearn cupar
-			#ross
-			dingwall gairloch ullapool
 		}
 
 		include = "expl_northern_europe"
