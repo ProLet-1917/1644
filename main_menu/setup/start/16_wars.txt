@@ -1,6 +1,38 @@
 war_manager = {
 	civil_war = {
 		war_name = {
+			name = "ENGLISH_CIVIL_WAR"
+			ordinal = 1
+			first = {
+				name = "PLE"
+			}
+		}
+		
+		start_date = 1642.8.1
+		action = 1644.4.17
+		attacker = {
+			country = COE
+			request = {
+				reason = Instigator
+			}
+		}
+		defender = {
+			country = ENG
+			request = {
+				reason = Target
+			}
+		}
+		defender = {
+			country = PLE
+			request = {
+				caller = ENG
+				reason = Subject
+			}
+		}
+	}
+	
+	civil_war = {
+		war_name = {
 			name = "IRISH_REBELLION_1641"
 			ordinal = 1
 			first = {
