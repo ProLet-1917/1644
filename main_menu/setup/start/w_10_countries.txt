@@ -17,6 +17,10 @@ countries = {
 			wolvega
 			lingen
 			bruges
+<<<<<<< Updated upstream
+=======
+			orange
+>>>>>>> Stashed changes
 		}
 
 		starting_technology_level = 3
@@ -82,7 +86,11 @@ countries = {
 		}
 	}
 
+<<<<<<< Updated upstream
 	CAM = { #CambrÃ©sis
+=======
+	CAM = { #Cambr¨¦sis
+>>>>>>> Stashed changes
 		own_control_core = {
 			cambrai
 		}
@@ -169,7 +177,11 @@ countries = {
 	}
 
 
+<<<<<<< Updated upstream
 #Germany
+=======
+	#Germany
+>>>>>>> Stashed changes
 	FRI = { #Frisia
 		own_control_core = {
 			leer emden aurich jever
@@ -232,7 +244,225 @@ countries = {
 		capital = bentheim
 	}
 
+<<<<<<< Updated upstream
 	MUN = {	#MÃ¼nster #PU with Cologne
+=======
+	FCB = { #Franche-Comt¨¦ Spainish Burgundy
+		own_control_core = {
+			gray vesoul dole
+			pontarlier poligny orgelet ornans baume montbozon
+			luxeuil salins_les_bains
+			charolles
+			saint_claude
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		government = {
+
+			centralization_vs_decentralization = 30
+			aristocracy_vs_plutocracy = -35
+			serfdom_vs_free_subjects = 35
+			traditionalist_vs_innovative = 25
+			spiritualist_vs_humanist = -50
+			mercantilism_vs_free_trade = 45
+			offensive_vs_defensive = -90
+			land_vs_naval = -60
+			quality_vs_quantity = -30
+			belligerent_vs_conciliatory = -20
+			capital_economy_vs_traditional_economy = 70
+			individualism_vs_communalism = -20
+			outward_vs_inward = -20
+
+		}
+
+		tolerated_cultures = {
+			arpitan
+		}
+
+		capital = dole
+		country_rank = rank_county
+	}
+
+	BSC = { #Besancon (Free City)
+		own_control_core = {
+			besancon
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+
+			laws = {
+				mining_law = burghers_mining_law
+			}
+		}
+		country_rank = rank_county
+		capital = besancon
+	}
+
+	MTB = { #Montbeliard
+		own_control_core = {
+			montbeliard
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = mtb_leopold_frederic_von_wurttemberg
+
+			ruler_term = { character = mtb_leopold_frederic_von_wurttemberg start_date = 1644.1.1 regnal_number = 1 }
+
+			regnal_numbers = {
+
+			}
+		}
+
+		country_rank = rank_county
+		capital = montbeliard
+		dynasty = ivree_dynasty
+	}
+
+
+	UPA = {	#Nordgau
+		own_control_core = {
+			heinsberg bergheim duren monchengladbach
+			dusseldorf remscheid siegburg solingen schleiden
+			amberg eschenbach neumarkt roding sulzbach #Oberpfalz
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = upa_wolfgang_wilhelm_von_wittelsbach
+			ruler_term = {	 character = upa_wolfgang_wilhelm_von_wittelsbach start_date = 1644.1.1 regnal_number = 1 }
+
+		}
+		tolerated_cultures = {
+			ripuarian_franconian
+		}
+		country_rank = rank_duchy
+		capital = amberg
+	}
+
+	NEU = {	#Neuchatel
+		own_control_core = {
+			neuchatel
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		include = "swiss_monarchy"
+		government = {
+			ruler = neu_henri_de_dunois
+
+			ruler_term = { character = neu_henri_de_dunois start_date = 1644.1.1 regnal_number = 2 }
+
+			laws = {
+				mining_law = nobles_mining_law
+			}
+		}
+
+		tolerated_cultures = {
+			high_alemannic
+		}
+
+		country_rank = rank_county
+		capital = neuchatel
+	}
+
+	GNV = { #Geneve
+		own_control_core = {
+			geneve 
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "catholic_german_republic_no_coast"
+		government = {
+			ruler = random
+
+			laws = {
+				mining_law = burghers_mining_law
+			}
+		}
+
+		country_rank = rank_county
+		capital = geneve
+	}
+
+	SAV = { #Savoy - France own bourg_en_bresse belley gex vienne bage thoire and vercelli biella from Milan,Mantua own casale
+		own_control_core = {
+			chambery saint_jean_de_maurienne annecy la_roche_sur_foron
+			moutiers evian
+			pinerolo susa turin 
+			carmagnola saluzzo
+			cuneo faucigny sallanches
+			asti ceva mondovi alba chieri vercelli biella ivrea lanzo acqui
+			aosta chatillonaos morgex nice puget_theniers
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "catholic_monarchy"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = sav_carlo_emanuele_di_savoy
+
+			ruler_term = { character = sav_carlo_emanuele_di_savoy start_date = 1644.1.1 regnal_number = 2 }
+
+			regnal_numbers = {
+
+			}
+		}
+
+		tolerated_cultures = {
+			piedmontese
+		}
+
+		country_rank = rank_duchy
+		capital = turin
+	}
+
+
+	KOL = {	#Cologne
+		own_control_core = {
+			cologne ahrweiler neuss attendorn brilon recklinghausen
+			bonn 
+			arnsberg meschede
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+		country_rank = rank_duchy
+		capital = cologne
+		government = {
+			ruler = kol_ferdinand_von_wittelsbach
+
+			ruler_term = { character = kol_ferdinand_von_wittelsbach start_date = 1644.1.1 }
+
+		}
+	}
+
+	MUN = {	#M¨¹nster PU with Cologne
+>>>>>>> Stashed changes
 		own_control_core = {
 			munster ahaus warendorf horstmar meppen vechta aschendorf rheine dulmen
 			cloppenburg friesoythe
@@ -253,6 +483,7 @@ countries = {
 		}
 
 		tolerated_cultures = {
+<<<<<<< Updated upstream
 		}
 
 		country_rank = rank_county
@@ -401,6 +632,13 @@ countries = {
 		}
 
 		capital = cologne
+=======
+			ripuarian_franconian
+		}
+
+		country_rank = rank_duchy
+		capital = munster
+>>>>>>> Stashed changes
 	}
 
 	AAC = {	#Aachen
@@ -474,7 +712,11 @@ countries = {
 		capital = kreuznach
 	}
 
+<<<<<<< Updated upstream
 	SAA = { #SaarbrÃ¼cken
+=======
+	SAA = { #Saarbr¨¹cken
+>>>>>>> Stashed changes
 		own_control_core = {
 			saarbrucken
 		}
@@ -543,6 +785,321 @@ countries = {
 		capital = essen
 	}
 
+<<<<<<< Updated upstream
+=======
+	TCK = {	#Tecklenburg
+		own_control_core = {
+			tecklenburg 
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = tck_moritz_von_gotterswick
+
+			ruler_term = {	 character = tck_moritz_von_gotterswick start_date = 1644.1.1 regnal_number = 1	}
+		}
+
+		tolerated_cultures = {
+
+		}
+		country_rank = rank_county
+		capital = tecklenburg
+	}
+
+	OSN = {	#Osnabr¨¹ck
+		own_control_core = {
+			osnabruck bersenbruck
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+
+		government = {
+			ruler = osn_franz_wilhelm_von_wittelsbach
+
+			reforms = {
+				prince_bishopric_reform
+			}
+		}
+		country_rank = rank_county
+		capital = osnabruck
+	}
+
+	BRA = {	#Brandenburg Poland have "czaplinek walcz czlopa"
+		own_control_core = {
+			brandenburg berlin teltow potsdam freienwalde herzfelde templin
+			chojna soltyn
+			stendal osterburg salzwedel gardelegen
+			wittenberge pritzwalk treuenbrietzen
+			angermunde prenzlau
+			torzym swidwin choszczno drawsko santok gorzow
+			kleve wesel mors hamm altena bochum soest bielefeld
+			ruppin havelberg wittstock
+			lebus beeskow
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+			ruler = bra_friedrich_wilhelm_von_hohenzollern
+
+			ruler_term = { character = bra_friedrich_wilhelm_von_hohenzollern start_date = 1644.1.1 regnal_number = 1 }
+
+			regnal_numbers = {
+
+			}
+
+			reforms = {
+				margraviate
+			}
+
+			centralization_vs_decentralization = 60
+			spiritualist_vs_humanist = -20
+			aristocracy_vs_plutocracy = -60
+			land_vs_naval = -20
+			outward_vs_inward = 0
+		}
+
+		tolerated_cultures = {
+			markish
+			#brandenburgish
+			polabian
+			eastern_pomeranian
+		}
+
+		country_rank = rank_duchy
+		capital = berlin
+		dynasty = Hohenzollern_dynasty
+	}
+
+	LOR = { #Lorrain - vassal of France
+		own_control_core = {
+			neufchateau_des_vosges
+			mirecourt nancy saint_die
+			wallerfangen merzig
+			darney arches
+			luneville morhange sarreguemines
+			sarrebourg saarwerden bitche pirmasens epinal etain longwy saint_mihiel saint_avold
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		country_rank = rank_duchy
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = lor_charles_de_vaudemont
+
+			ruler_term = { character = lor_charles_de_vaudemont start_date = 1644.1.1 regnal_number = 4 }
+
+			regnal_numbers = {
+
+			}
+		}
+
+		tolerated_cultures = {
+			rhine_franconian
+			moselle_franconian
+		}
+
+		capital = nancy
+	}
+
+	SLM = { #Salm
+		own_control_core = {
+			salm
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+			regnal_numbers = {
+				name_henry = 6
+			}
+			ruler = slm_ludwig_ii_salm
+
+			laws = {
+				mining_law = nobles_mining_law
+			}
+		}
+
+		country_rank = rank_county
+		capital = salm
+		dynasty = salm_dynasty
+	}
+
+	BRN = {	#Bern
+		own_control_core = {
+			bern interlaken fribourg burgdorf_emmental thun
+			frutigen saanen yverdon_les_bains nyon montreux monthey
+			lausanne aarau 
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		include = "swiss_republic"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = bern
+	}
+
+	GRY = {  # Gruy¨¨re (Actually is Fribourg)
+		own_control_core = {
+			gruyere
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "expl_northern_europe"
+		include = "swiss_monarchy"
+		government = {
+			ruler = gry_berchtold_von_kyburg
+
+			ruler_term = { character = gry_berchtold_von_kyburg start_date = 1644.1.1 regnal_number = 3 }
+
+			regnal_numbers = {
+
+			}
+		}
+		tolerated_cultures = {
+			arpitan
+		}
+		country_rank = rank_county
+		capital = gruyere
+	}
+
+	ZWE = {	#Zweibrucken
+		own_control_core = {
+			zweibrucken simmern 
+			lichtenberg_veldenz
+			meisenheim
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = zwe_friedich_von_wittelsbach
+			ruler_term = {	character = zwe_friedich_von_wittelsbach start_date = 1644.1.1 regnal_number = 1	}
+
+			regnal_numbers = {
+
+			}
+		}
+		country_rank = rank_county
+		capital = zweibrucken
+		dynasty = wittelsbach_dynasty
+	}
+
+	PAL = {	#The Palatinate PU with Bavaria
+		own_control_core = {
+			heidelberg sinsheim germersheim neustadt_an_der_haardt oppenheim kaiserslautern
+			landau_rhineland
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		capital = heidelberg
+		dynasty = wittelsbach_dynasty
+		government = {
+
+		}
+
+		accepted_cultures = {
+			upper_palatine
+			east_franconian
+		}
+
+		country_rank = rank_county
+
+	}
+
+	LNN = {	#Leiningen
+		own_control_core = {
+			leiningen
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = lnn_emicho_von_saarbrucken
+			ruler_term = {	character = lnn_emicho_von_saarbrucken start_date = 1644.1.1 regnal_number = 11	}
+
+			regnal_numbers = {
+
+			}
+		}
+		tolerated_cultures = {
+
+		}
+		country_rank = rank_county
+		capital = leiningen
+		dynasty = saarbrucken_dynasty
+	}
+
+	SPY = {	#Speyer
+		own_control_core = {
+			speyer
+		}
+
+		starting_technology_level = 3
+		capital = speyer
+		include = "expl_western_europe"
+		include = "catholic_free_city_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+
+		country_rank = rank_county
+	}
+
+	WRM = {	#Worms
+		own_control_core = {
+			worms
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = worms
+	}
+
+
+
+>>>>>>> Stashed changes
 
 }
 }
