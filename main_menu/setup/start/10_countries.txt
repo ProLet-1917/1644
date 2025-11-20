@@ -534,7 +534,7 @@ countries = {
 			#east_anglia_area
 			norwich lynn yarmouth thetford fakenham colchester chelmsford prittlewell hedingham walden barking ipswich bury lowestoft lavenham cambridge ely huntingdon royston
 			#other main provinces
-			shrewsbury hertford st_albans coventry birmingham stratford northampton daventry kettering leicester loughborough bosworth rutland kidderminster stafford stoke tamworth derby glossop chesterfield chester macclesfield nantwich lancaster blackburn liverpool preston manchester pennines_01 pennines_02 leeds wakefield doncaster pennines_04 pennines_05 pennines_06
+			shrewsbury hertford st_albans coventry birmingham stratford northampton daventry kettering leicester loughborough bosworth rutland kidderminster stafford stoke tamworth derby glossop chesterfield chester macclesfield nantwich lancaster blackburn liverpool preston manchester leeds wakefield doncaster
 			#enclaves
 			bristol gloucester plymouth carmarthen
 		}
@@ -732,7 +732,7 @@ countries = {
 	
 	PLE = { # The Pale
 		own_control_core = {
-			cork fermoy kinsale youghal dublin fingal wicklow glendalough wicklow_mountains carrickmacross armagh oriel dundalk drogheda downpatrick iveagh newtownards carrickfergus belfast ballymena ballycastle dunluce lough_neagh derry coleraine magherafelt donegal kilmacrennan inishowen raphoe kildare naas athy dunamase daingean dungannon navan
+			cork fermoy kinsale youghal dublin fingal wicklow glendalough carrickmacross armagh oriel dundalk drogheda downpatrick iveagh newtownards carrickfergus belfast ballymena ballycastle dunluce lough_neagh derry coleraine magherafelt donegal kilmacrennan inishowen raphoe kildare naas athy dunamase daingean dungannon navan
 		}
 		
 		our_cores_conquered_by_others = {
@@ -789,7 +789,7 @@ countries = {
 		}
 		
 		our_cores_conquered_by_others = {
-		cork fermoy kinsale youghal dublin fingal wicklow glendalough wicklow_mountains carrickmacross armagh oriel dundalk drogheda downpatrick iveagh newtownards carrickfergus belfast ballymena ballycastle dunluce lough_neagh derry coleraine magherafelt donegal kilmacrennan inishowen raphoe kildare naas athy dunamase daingean dungannon navan
+		cork fermoy kinsale youghal dublin fingal wicklow glendalough carrickmacross armagh oriel dundalk drogheda downpatrick iveagh newtownards carrickfergus belfast ballymena ballycastle dunluce lough_neagh derry coleraine magherafelt donegal kilmacrennan inishowen raphoe kildare naas athy dunamase daingean dungannon navan
 		}
 
 		government = {
@@ -1058,7 +1058,7 @@ countries = {
 			jativa alcoy alicante denia elche orihuela
 			valencia gandia ayora bunol chelva lliria
 			#Catalonia
-			perpignan prades puigcerda lagoon_of_salses south_eastern_pyrenees andorra_la_vella central_pyrenees south_western_pyrenees3
+			perpignan prades puigcerda lagoon_of_salses
 			#Balearic
 			palma ciudadela_de_menorca ibiza manacor pollensa
 		}
@@ -1066,7 +1066,7 @@ countries = {
 		own_control_integrated = {
 			#Sardinia
 			cagliari tratalias villa_di_chiesa isili muravera seddori tortoli orosei terranova_pausania posada tempiopausania
-			sassari oristano ales sorgono terralba gennargentu_mountains alghero bosa castelsardo macomer bitti ozieri thiesi
+			sassari oristano ales sorgono terralba alghero bosa castelsardo macomer bitti ozieri thiesi
 		}
 
 		our_cores_conquered_by_others = {
@@ -1322,41 +1322,370 @@ countries = {
 		dynasty = de_evreux_dynasty
 
 	}
-#------------------------ Middle Europe by 帅得被人砍 ----------------------------
-	HES = { # 黑森
-		# 核心省份：完全整合，税收正常，无整合度衰减，叛乱风险低
+	
+	ANR = {
 		own_control_core = {
-			marburg   frankenberg  ziegenhain alsfeld melsungen kassel eschwege rotenburg hersfeld
+			andorra_la_vella
 		}
-		# 整合省份：已整合，文化可能被接受，税收正常
-		own_control_integrated = {}
-		# 征服省份：有整合度系统，影响税收产出，影响人口满意度
-		own_control_conquered = {}
 
-		court_language = language_name
-		# 国家等级
-		country_rank = duchy	# 公国
-		# 首都
-		capital = kassel
-		# 旗帜和国家名称
-		flag= "HES"
-		country_name = "HES"
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "catholic_bishopric_no_coast"
 
-		# 包含的模板文件（可选）
-		include = "template_name"
-		# 政府设置
 		government = {
-			type = monarchy		# monarchy, republic, theocracy, army
-			ruler = random
-			# 继承方式
+			type = theocracy
 		}
-		# 文化设置
-		accepted_cultures = {
-			culture_name
+		capital = andorra_la_vella
+		country_rank = rank_duchy
+	}
+	
+	##French Region
+	FRA = {
+		own_control_core = {
+			angers bauge beaupreau chateau_gontier le_lude loudun passavant saumur
+			mayenne laval sainte_suzanne villaines
+			le_mans beaumont_au_maine chateau_du_loir sable st_calais
+			mortagne alluyes belleme senonches
+
+			clermont allegre brioude riom thiers vic_le_comte vodable
+			bourbon huriel jaligny molins montlucon st_gerand vichy
+			chambon herment montaigut tour_auvergne
+			aurillac mauriac saint_flour
+
+			chaumont choiseul grancey la_mothe_en_bassigny langres vaucouleurs
+			meaux broyes chateau_thierry nogent_sur_seine provins
+			troyes brienne villemaur
+			vitry_en_pertois joinville bar_sur_aube rosnay
+			reims chalons_champagne epernay menehould vertus
+			rethel chateau_porcien grandpre mouzon
+			sens bar_sur_seine joigny saint_florentin tonnerre
+
+			auch lectoure lisle_jourdain mirande nogaro
+			pau oloron orthez tarbes
+			muret aspet saint_lizier saint_gaudens
+			dax aire labrit mimizan mont_de_marsan tartas tosse lagoon_of_sanguinet
+			bayonne mauleon saint_jean_pied_de_port
+
+			agen marmande montflanquin
+			bazas belin condom nerac sauveterre_de_guyenne
+			bordeaux benauges castelnau_de_medoc la_teste_de_buch lesparre_medoc libourne hourtin_carcans_lake
+			perigueux bergerac limeuil riberac sarlat
+			cahors figeac gourdon montauban
+			rodez entraigues millau peyrusse st_affrique villefranche
+
+			beauvais chaumont_vexin clermont_en_beauvaisis crepy senlis
+			nemours brie_comte_robert melun
+			paris corbeil mantes monfort_lamaury montmorency
+			soissons braine coucy laon noyon roucy
+
+			castres albi lautrec
+			foix pamiers mirepoix
+			chateauneuf_de_randon florac mende peyre massif_central
+			narbonne agde beziers lodeve saint_pons lagoon_of_bages_sigean
+			nimes french_ales melgueil montpellier st_ambroix uzes
+			carcassonne fenouillet limoux
+			toulouse castelnaudary lavaur verdun_sur_garonne villemur
+			viviers chalancon le_puy montlaur privas tournon
+
+			limoges aixe nontron segur st_leonard thiviers
+			gueret aubusson bellac bourganeuf brosse charroux rochechouart
+			turenne tulle ussel ventadour
+
+			bourg_en_bresse belley gex bage thoire
+			beaujeu perreux trevoux villars
+			lyon feurs montbrison riverie roanne saint_etienne
+
+			caen bayeux domfront falaise pont_douilly vire
+			fecamp arques aumale longueville tancarville
+			coutances cherbourg avranches jersey mortain st_sauveur
+			evreux alencon argentan bernay harcourt laigle
+			rouen gisors lisieux louviers pont_audemer
+
+			chateauroux boussac issoudun lignieres
+			blois chateaudun romorantin st_aignan vendome
+			chartres auneau dreux etampes
+			bourges gien sancerre sancoins vierzon
+			orleans beaugency montargis sully vitry_aux_loges
+			tours amboise chatillon_sur_indre chinon loches
+
+			amiens breteuil corbie
+			abbeville calais boulogne_sur_mer montreuil
+			guise hirson marle ribemont
+			saint_quentin nesle peronne
+
+			angouleme cognac chabanais
+			thouars beauvoir fontenay la_roche_sur_yon mauleon_poitou montaigu parthenay talmont
+			poitiers aulnay chatellerault lusignan montmorillon niort
+			saintes montendre la_rochelle oleron royan st_jean_dangely rochefort jonzac
+			
+			valence condorcet die vienne
 		}
-		tolerated_cultures = {
-			culture_name
+		
+		include = "catholic_monarchy_english_lordship"
+		government = {
+			type = monarchy
+			laws = {
+				feudal_de_jure_law = by_tradition
+				legal_code_law = civil_law_policy
+			}
+		}
+		capital = paris
+		country_rank = rank_kingdom
+	}
+	
+	PRO = {
+		own_control_core = {
+			aix_en_provence arles brignoles marseille toulon tarascon
+			apt barcelonnette forcalquier sisteron
+			barjols castellane digne draguignan frejus grasse
+			cuneo
+		}
+		our_cores_conquered_by_others = {
+			avignon
 		}
 
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "catholic_monarchy"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+		}
+
+		tolerated_cultures = {
+			vivaro_alpine
+		}
+
+		capital = marseille
+		country_rank = rank_county
 	}
+	
+	DAU = {
+		own_control_core = {
+			grenoble gap briancon pragelato
+			romans la_mure saint_marceilin 
+			mevouillon villars 
+			la_tour_du_pin 
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+		}
+
+		tolerated_cultures = {
+			vivaro_alpine
+			auvergnat
+		}
+
+		country_rank = rank_county
+		capital = grenoble
+	}
+	
+	ORL = {
+		own_control_core = {
+			orleans chartres blois beaugency chateaudun romorantin st_aignan
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			reforms = {
+				french_ducal_vassal_reform
+			}
+		}
+
+		accepted_cultures = {
+			french
+		}
+		country_rank = rank_duchy
+		capital = orleans
+	}
+	
+	BRI = {
+		own_control_core = {
+			brest carhaix chateaulin chatelaudren le_faou quimper quimperle saint_brieuc st_pol_de_leon treguier
+			nantes blain chateaubriant guerande machecoul
+			rennes dol fougeres monfort_sur_meu saint_malo vitre
+			vannes hennebont josselin ploermel redon rohan
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy"
+		government = {
+			centralization_vs_decentralization = 30
+			aristocracy_vs_plutocracy = -35
+			serfdom_vs_free_subjects = -35
+			traditionalist_vs_innovative = 10
+			spiritualist_vs_humanist = -50
+			mercantilism_vs_free_trade = 45
+			offensive_vs_defensive = 30
+			land_vs_naval = 30
+			quality_vs_quantity = 20
+			belligerent_vs_conciliatory = 10
+			capital_economy_vs_traditional_economy = 75
+			individualism_vs_communalism = -50
+			outward_vs_inward = -10
+			reforms = {
+				french_ducal_vassal_reform
+			}
+
+		}
+		court_language = angevin_dialect
+		capital = vannes
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			breton
+			poitevin
+		}
+	}
+	
+	AUV = {
+		own_control_core = {
+			vic_le_comte
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast_no_censor"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			reforms = {
+				french_appanage_reform
+			}
+		}
+		capital = vic_le_comte
+	}
+	
+	BOU = {
+		own_control_core = {
+			bourbon molins huriel montlucon vichy
+			jaligny st_gerand
+			# own_control_integrated, but culture accepted
+			clermont_en_beauvaisis #C. Clermont-en-Beauvaisis
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			reforms = {
+				french_appanage_reform
+			}
+		}
+
+		tolerated_cultures = {
+			limousin
+			picard
+		}
+
+		country_rank = rank_duchy
+		capital = bourbon
+	}
+	
+	BRR = {
+		own_control_core = {
+			oloron orthez pau #Vic. of Béarn
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+
+			reforms = {
+				french_ducal_vassal_reform
+			}
+		}
+
+		capital = pau
+	}
+	
+	FOI = {
+		own_control_core = {
+			foix pamiers
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			reforms = {
+				french_ducal_vassal_reform
+			}
+		}
+
+		tolerated_cultures = {
+			gascon
+		}
+
+		capital = foix
+	}
+	
+	POI = {
+		own_control_core = {
+			parthenay
+		}
+		include = "catholic_monarchy_english_lordship"
+		government = {
+			type = monarchy
+			laws = {
+				feudal_de_jure_law = by_tradition
+				legal_code_law = civil_law_policy
+			}
+		}
+		capital = parthenay
+		country_rank = rank_county
+	}
+	
+	BUR = {
+		own_control_core = {
+			auxerre aignay arnay avallon chatillon_sur_seine semur_en_auxois
+			autun macon montcenis semur_en_brionnais
+			dijon auxonne beaune chalon_sur_saone louhans
+			nevers cercy chateau_chinon donzy montreuillon st_pierre_de_moutier
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		government = {
+			centralization_vs_decentralization = 30
+			aristocracy_vs_plutocracy = -35
+			serfdom_vs_free_subjects = 35
+			traditionalist_vs_innovative = 25
+			spiritualist_vs_humanist = -50
+			mercantilism_vs_free_trade = 45
+			offensive_vs_defensive = -90
+			land_vs_naval = -60
+			quality_vs_quantity = -30
+			belligerent_vs_conciliatory = -20
+			capital_economy_vs_traditional_economy = 70
+			individualism_vs_communalism = -20
+			outward_vs_inward = -20
+
+			reforms = {
+				french_appanage_reform
+			}
+		}
+
+		tolerated_cultures = {
+			arpitan
+		}
+
+		capital = dijon
+		country_rank = rank_duchy
+	}
+}
 }
