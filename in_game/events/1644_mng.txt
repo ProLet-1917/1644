@@ -15,68 +15,72 @@ mng_1644.1 = { #南迁之议
 		name = mng_1644.1.a  #坚守
     	custom_tooltip = mng_1644.1.tt1
 		set_variable = { name = mng_move_to_nanjing value = 0 }
+		character:chi_tang_tong = { move_country = c:CSH }
     	if = {
-			limit = { tag = CSH }
+			limit = { tag = MNG }
 
 			set_variable = { name = mng_1644_changping_garrison_spawned value = 1 }
 
 			# 昌平指挥官直接判存并赋予
 
 			location:changping ?= {
-				if = {
-					limit = { owner = root }
-					# 步营：5 * 1000 = 5000 人
-					while = {
-						count = 5
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_pikemen
-							owner = root
-							origin = this
-							experience = 60
-						}
-					}
-					# 以步营补足原移除的火器营编制：+3
-					while = {
-						count = 3
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_pikemen
-							owner = root
-							origin = this
-							experience = 60
-						}
-					}
-					# 火器营：3 * 1000 = 3000 人
-					while = {
-						count = 0
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_musketeers
-							owner = root
-							origin = this
-							experience = 60
-						}
-					}
-					# 骑营：3 * 300 = 900 人
-					while = {
-						count = 2
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_cavalry
-							owner = root
-							origin = this
-							experience = 60
-						}
-					}
+   				if = { 
+       				# 步营：5
+       				while = {
+            			count = 5
+           				create_sub_unit_with_owner = {
+                			type = a_1644_chinese_pikemen
+                			owner = c:CSH
+                			origin = this
+                			experience = 60
+            			}
+        			}
 
-					if = {
-						limit = { exists = character:chi_tang_tong }
-						random_unit_in_location = {
-							limit = {
-								owner = root
-								unit_has_leader = no
-							}
-							set_as_commander = character:chi_tang_tong
-						}
-					}
-				}
+        			# 额外步营：3
+        			while = {
+            			count = 3
+            			create_sub_unit_with_owner = {
+                			type = a_1644_chinese_pikemen
+                			owner = c:CSH
+                			origin = this
+                			experience = 60
+            			}
+        			}
+
+        			# 火器营：0（保持原样）
+        			while = {
+            			count = 0
+            			create_sub_unit_with_owner = {
+                			type = a_1644_chinese_musketeers
+                			owner = c:CSH
+                			origin = this
+                			experience = 60
+            			}
+        			}
+
+        			# 骑营：2
+        			while = {
+            			count = 2
+            			create_sub_unit_with_owner = {
+                			type = a_1644_chinese_cavalry
+                			owner = c:CSH
+                			origin = this
+                			experience = 60
+            			}
+        			}
+
+        			# 给部队派将领
+        			if = {
+            			limit = { exists = character:chi_tang_tong }
+            			random_unit_in_location = {
+                			limit = {
+                    			owner = c:CSH
+                    			unit_has_leader = no
+                			}
+                			set_as_commander = character:chi_tang_tong
+            			}
+        			}
+    			}
 			}
 			force_recalc_country_active_status = root
 		}
