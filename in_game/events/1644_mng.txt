@@ -11,11 +11,11 @@ mng_1644.1 = { #南迁之议
 	}
 
 	option = {
-    historical_option = yes
+    	historical_option = yes
 		name = mng_1644.1.a  #坚守
-    custom_tooltip = mng_1644.1.tt1
-    if = {
-			limit = { tag = MNG }
+    	custom_tooltip = mng_1644.1.tt1
+    	if = {
+			limit = { tag = CSH }
 
 			set_variable = { name = mng_1644_changping_garrison_spawned value = 1 }
 
@@ -91,7 +91,7 @@ mng_1644.1 = { #南迁之议
 
 			# 昌平指挥官直接判存并赋予
 
-			location:shangyuan ?= {
+			location:dadu ?= {
 				if = {
 					limit = { owner = root }
 					# 步营：5 * 1000 = 5000 人
