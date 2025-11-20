@@ -1,2 +1,152 @@
 namespace = mng_1644
 
+mng_1644.1 = { #南迁之议
+	type = country_event
+	title = mng_1644.1.title
+	desc = mng_1644.1.desc
+	historical_info = mng_1644.1.historical_info
+
+	immediate = {
+		
+	}
+
+	option = {
+    historical_option = yes
+		name = mng_1644.1.a  #坚守
+    custom_tooltip = mng_1644.1.tt1
+    if = {
+			limit = { tag = MNG }
+
+			set_variable = { name = mng_1644_changping_garrison_spawned value = 1 }
+
+			# 昌平指挥官直接判存并赋予
+
+			location:changping ?= {
+				if = {
+					limit = { owner = root }
+					# 步营：5 * 1000 = 5000 人
+					while = {
+						count = 5
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_pikemen
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+					# 以步营补足原移除的火器营编制：+3
+					while = {
+						count = 3
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_pikemen
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+					# 火器营：3 * 1000 = 3000 人
+					while = {
+						count = 0
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_musketeers
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+					# 骑营：3 * 300 = 900 人
+					while = {
+						count = 2
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_cavalry
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+
+					if = {
+						limit = { exists = character:chi_tang_tong }
+						random_unit_in_location = {
+							limit = {
+								owner = root
+								unit_has_leader = no
+							}
+							set_as_commander = character:chi_tang_tong
+						}
+					}
+				}
+			}
+			force_recalc_country_active_status = root
+		}
+	}
+  option = {
+    name = mng_1644.2.a  #南渡
+    custom_tooltip = mng_1644.1.tt2
+    set_capital = location:shangyuan
+    if = {
+			limit = { tag = MNG }
+
+			set_variable = { name = mng_1644_changping_garrison_spawned value = 1 }
+
+			# 昌平指挥官直接判存并赋予
+
+			location:shangyuan ?= {
+				if = {
+					limit = { owner = root }
+					# 步营：5 * 1000 = 5000 人
+					while = {
+						count = 5
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_pikemen
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+					# 以步营补足原移除的火器营编制：+3
+					while = {
+						count = 3
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_pikemen
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+					# 火器营：3 * 1000 = 3000 人
+					while = {
+						count = 0
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_musketeers
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+					# 骑营：3 * 300 = 900 人
+					while = {
+						count = 2
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_cavalry
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+
+					if = {
+						limit = { exists = character:chi_tang_tong }
+						random_unit_in_location = {
+							limit = {
+								owner = root
+								unit_has_leader = no
+							}
+							set_as_commander = character:chi_tang_tong
+						}
+					}
+				}
+			}
+			force_recalc_country_active_status = root
+		}
+}
