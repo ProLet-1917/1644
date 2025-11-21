@@ -53,7 +53,11 @@ countries = {
 		}
 	}
 
+<<<<<<< Updated upstream
 	BUR = { #Burgundy #Puppet of Spain #Have Problem
+=======
+	PUL = { #Spain Lowland
+>>>>>>> Stashed changes
 		own_control_core = {
 			geldern roermond venlo brussels nivelles leuven mechelen antwerp turnhout eindhoven
 			cassel dunkirk oudenaarde ypres veurne lille douai tournai
@@ -83,7 +87,11 @@ countries = {
 		}
 	}
 
+<<<<<<< Updated upstream
 	CAM = { #Cambr¨¦sis
+=======
+	CAM = { #Cambr  sis
+>>>>>>> Stashed changes
 		own_control_core = {
 			cambrai
 		}
@@ -233,7 +241,11 @@ countries = {
 		capital = bentheim
 	}
 
+<<<<<<< Updated upstream
 	FCB = { #Franche-Comt¨¦ Spainish Burgundy
+=======
+	FCB = { #Franche-Comt   Spainish Burgundy
+>>>>>>> Stashed changes
 		own_control_core = {
 			gray vesoul dole
 			pontarlier poligny orgelet ornans baume montbozon
@@ -447,7 +459,11 @@ countries = {
 		}
 	}
 
+<<<<<<< Updated upstream
 	MUN = {	#M¨¹nster PU with Cologne
+=======
+	MUN = {	#M  nster PU with Cologne
+>>>>>>> Stashed changes
 		own_control_core = {
 			munster ahaus warendorf horstmar meppen vechta aschendorf rheine dulmen
 			cloppenburg friesoythe
@@ -546,7 +562,11 @@ countries = {
 		capital = kreuznach
 	}
 
+<<<<<<< Updated upstream
 	SAA = { #Saarbr¨¹cken
+=======
+	SAA = { #Saarbr  cken
+>>>>>>> Stashed changes
 		own_control_core = {
 			saarbrucken
 		}
@@ -639,7 +659,11 @@ countries = {
 		capital = tecklenburg
 	}
 
+<<<<<<< Updated upstream
 	OSN = {	#Osnabr¨¹ck
+=======
+	OSN = {	#Osnabr  ck
+>>>>>>> Stashed changes
 		own_control_core = {
 			osnabruck bersenbruck
 		}
@@ -718,6 +742,10 @@ countries = {
 			darney arches
 			luneville morhange sarreguemines
 			sarrebourg saarwerden bitche pirmasens epinal etain longwy saint_mihiel saint_avold
+<<<<<<< Updated upstream
+=======
+			ligny bar_le_duc
+>>>>>>> Stashed changes
 		}
 
 		starting_technology_level = 3
@@ -789,7 +817,11 @@ countries = {
 		capital = bern
 	}
 
+<<<<<<< Updated upstream
 	GRY = {  # Gruy¨¨re (Actually is Fribourg)
+=======
+	GRY = {  # Gruy  re (Actually is Fribourg)
+>>>>>>> Stashed changes
 		own_control_core = {
 			gruyere
 		}
@@ -925,7 +957,176 @@ countries = {
 		capital = worms
 	}
 
+<<<<<<< Updated upstream
 
+=======
+	WIE = {  # Wied
+		own_control_core = {
+			wied
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "expl_northern_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "german_principality"
+		government = { ruler = random }
+		tolerated_cultures = {
+			rhine_franconian
+		}
+		country_rank = rank_county
+		capital = wied
+	}
+
+	SYN = {	#Sayn
+		own_control_core = {
+			altenkirchen gummersbach
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = syn_ernestine_von_sponheim
+			ruler_term = {	character = syn_ernestine_von_sponheim start_date = 1644.1.1 regnal_number = 1	}
+
+			regnal_numbers = {
+
+			}
+		}
+
+		tolerated_cultures = {
+			ripuarian_franconian
+		}
+
+		country_rank = rank_county
+		capital = altenkirchen
+	}
+
+	BAS = {	#Basel
+		own_control_core = {
+			basel bienne delemont
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+		include = "swiss_theocracy"
+		country_rank = rank_county
+		capital = basel
+		government = {
+			ruler = bas_jean_henri_von_ostein
+
+			reforms = {
+				prince_bishopric_reform
+			}
+		}
+
+		tolerated_cultures = {
+			franc_comtois
+		}
+
+	}
+
+	SLT = {	#Solothurn
+		own_control_core = {
+			solothurn
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		include = "swiss_republic"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = solothurn
+	}
+
+	TIR = {	#Tirol
+		own_control_core = {
+			schwaz innsbruck
+			imst reutte landeck
+			merano sterzing villandro bolzano silandro
+			brixen lienz bruneck kufstein bregenz feldkirch bludenz wertingen hohenberg freiburg
+			belfort ferrette waldshut
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+			ruler = tir_ferdinand_karl_von_habsburg
+			regnal_numbers = {
+
+			}
+			ruler_term = { character = tir_ferdinand_karl_von_habsburg start_date = 1644.1.1 regnal_number = 1 }
+		}
+
+		tolerated_cultures = {
+			danube_bavarian
+			romansh
+		}
+
+		country_rank = rank_county
+		capital = innsbruck
+	}
+
+	BXN = {	#Brixen
+		own_control_core = {
+			bled
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+
+			reforms = {
+				prince_bishopric_reform
+			}
+
+		}
+
+		tolerated_cultures = {
+			slovene
+		}
+
+		country_rank = rank_county
+		capital = brixen
+	}
+
+	MBZ = { #Bregenz Ruler Hugo IV von Werdenberg
+		own_control_core = {
+			immenstadt
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		capital = immenstadt
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			romansh
+		}
+
+		country_rank = rank_county
+	}
+>>>>>>> Stashed changes
 
 
 }
