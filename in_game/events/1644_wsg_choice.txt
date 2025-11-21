@@ -19,6 +19,7 @@ wsg_1644_choice.1 = { #史实：崇祯不南迁，李自成进京，选择降清
 	option = {
 		# 投奔清廷
 		name = wsg_1644_choice.1.a
+		historical_option = yes
 		ai_chance = { factor = 0.6 }
 		set_variable = wsg_1644_chosen_side
 		custom_tooltip = wsg_1644_choice_join_qng_tt
@@ -77,6 +78,8 @@ wsg_1644_choice.2 = { #是否听令入关
 	is_trigger_only = yes
 	option = { #入关
 		name = wsg_1644_choice.2.a
+		custom_tooltip = wsg_1644_choice.2.tt1
+		historical_option = yes
 		location:ningyuan = {
 			limit = { owner = c:WSG }
 			change_location_owner = c:QNG
@@ -85,6 +88,7 @@ wsg_1644_choice.2 = { #是否听令入关
 	}
 	option = { #不入关
 		name = wsg_1644_choice.2.b
+		custom_tooltip = wsg_1644_choice.2.tt2
 		set_variable = { name = wsg_goto_beijing value = 0 }
 	}
 }
@@ -93,7 +97,6 @@ wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州
 	type = country_event
 	title = wsg_1644_choice.3.title
 	desc = wsg_1644_choice.3.desc
-	historical_info = wsg_1644_choice.2.historical_info
 	is_trigger_only = yes
 	option = { #降顺
 		name = wsg_1644_choice.3.a
@@ -104,6 +107,9 @@ wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州
 	option = { #南渡登州
 		name = wsg_1644_choice.3.c
 	}
+	#option = { #固守
+	#	name = wsg_1644_choice.3.d
+	#}
 }
 
 # 注意：通用事件应在独立的事件文件中定义，并设置命名空间
