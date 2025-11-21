@@ -60,6 +60,12 @@
 				trigger_event_silently = mng_1644.1
 			}
 		}
+		c:WSG = {
+			if = {
+				limit = { NOT = { has_variable = wsg_goto_beijing } }
+				trigger_event_silently = wsg_1644_choice.2
+			}
+		}
 		# 大西政权（CXI）创建起始军队
 		c:CXI = {
 			if = {

@@ -285,6 +285,14 @@ csh_1644_unification.2 = { #天翻地覆
 				}
 			}
 		}
+		c:WSG = { #没有南迁的情况下吴三桂选择
+			if = {
+				limit = {
+					check_variable = { name = mng_move_to_nanjing value = 0}
+				}
+				trigger_event_silently = wsg_1644_choice.1
+			}
+		}
 		# 大顺夺取北京后成为天朝领袖
 		if = {
 			limit = {
