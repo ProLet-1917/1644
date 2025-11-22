@@ -1,4 +1,5 @@
 war_manager = {
+	##War of Three Kingdoms
 	civil_war = {
 		war_name = {
 			name = "ENGLISH_CIVIL_WAR"
@@ -11,13 +12,13 @@ war_manager = {
 		start_date = 1642.8.1
 		action = 1644.4.17
 		attacker = {
-			country = COE
+			country = ENG
 			request = {
 				reason = Instigator
 			}
 		}
 		defender = {
-			country = ENG
+			country = ROE
 			request = {
 				reason = Target
 			}
@@ -25,7 +26,7 @@ war_manager = {
 		defender = {
 			country = PLE
 			request = {
-				caller = ENG
+				caller = ROE
 				reason = Subject
 			}
 		}
@@ -55,9 +56,55 @@ war_manager = {
 			}
 		}
 		defender = {
-			country = ENG
+			country = ROE
 			request = {
 				caller = PLE
+				reason = Subject
+			}
+		}
+	}
+	
+	##Iberian Independence Wars
+	war = {
+		war_name = {
+			name = "FRANCO_SPANISH_WAR"
+			ordinal = 1
+			first = {
+				name = "FRA"
+			}
+		}
+		
+		take_province = {
+			type = conquer_province
+			SPAus_belli = cb_conquer_province
+			location = arras
+		}
+		
+		start_date = 1635.5.19
+		action = 1644.4.17
+		attacker = {
+			country = FRA
+			request = {
+				reason = Instigator
+			}
+		}
+		attacker = {
+			country = CAT
+			request = {
+				caller = FRA
+				reason = Subject
+			}
+		}
+		defender = {
+			country = SPA
+			request = {
+				reason = Target
+			}
+		}
+		defender = {
+			country = ARA
+			request = {
+				caller = SPA
 				reason = Subject
 			}
 		}
