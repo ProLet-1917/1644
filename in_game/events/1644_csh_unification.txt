@@ -270,6 +270,30 @@ csh_1644_unification.2 = { #天翻地覆
 			change_location_owner = c:CSH
 			change_control = control_mild_bonus
 		}
+		set_capital = location:dadu
+		c:MNG = {
+			if = {
+				limit = {
+					check_variable = { name = mng_move_to_nanjing value = 0 }
+				}
+				trigger_event_silently = {
+		 			id = mng_1644.2 #甲申之难
+				}
+			}
+			else = {
+				trigger_event_silently = {
+		 			id = mng_1644.3 #北都沦陷
+				}
+			}
+		}
+		c:WSG = { #没有南迁的情况下吴三桂选择
+			if = {
+				limit = {
+					check_variable = { name = mng_move_to_nanjing value = 0}
+				}
+				trigger_event_silently = wsg_1644_choice.1
+			}
+		}
 		# 大顺夺取北京后成为天朝领袖
 		if = {
 			limit = {
@@ -305,6 +329,7 @@ csh_1644_unification.3 = { #二王三恪
 		character:chi_zhu_cilang = { move_country = c:CSH }
 	}
 }
+
 
 
 
