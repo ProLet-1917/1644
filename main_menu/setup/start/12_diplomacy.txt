@@ -1,24 +1,25 @@
 diplomacy_manager = {
     ##British Isles
-    dependency = { first = ENG second = WLS subject_type = dominion start_date = 1283.1.1 }
-    dependency = { first = ENG second = PLE subject_type = dominion }
-	dependency = { first = ENG second = MNN subject_type = dominion }
+    dependency = { first = ROE second = PLE subject_type = fiefdom }
+	dependency = { first = ROE second = MNN subject_type = dominion }
 
 	##Iberia
-    dependency = { first = CAS second = GRA subject_type = dominion }
+    dependency = { first = SPA second = ARA subject_type = fiefdom }
+	dependency = { first = SPA second = NAV subject_type = fiefdom }
+	dependency = { first = SPA second = GRA subject_type = dominion }
 	
 	##France
-	#Appanages
 	dependency = { first = FRA second = ORL subject_type = appanage }
-	
-	#Dominions
+	dependency = { first = FRA second = BRR subject_type = fiefdom }
+	dependency = { first = FRA second = FOI subject_type = fiefdom }
+	dependency = { first = FRA second = BNV subject_type = fiefdom }
+	dependency = { first = FRA second = DOC subject_type = dominion }
     dependency = { first = FRA second = PRO subject_type = dominion }
 	dependency = { first = FRA second = DAU subject_type = dominion }
 	dependency = { first = FRA second = BRI subject_type = dominion }
 	dependency = { first = FRA second = AUV subject_type = dominion }
 	dependency = { first = FRA second = BOU subject_type = dominion }
-	dependency = { first = FRA second = BRR subject_type = dominion }
-	dependency = { first = FRA second = FOI subject_type = dominion }
 	dependency = { first = FRA second = POI subject_type = dominion }
 	dependency = { first = FRA second = BUR subject_type = dominion }
+	dependency = { first = FRA second = CAT subject_type = vassal }
 }

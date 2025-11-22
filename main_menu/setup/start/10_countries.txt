@@ -397,8 +397,8 @@ countries = {
 			color = map_ASK
 		}
 #------------------------ Western Europe by Syayan1 ----------------------------
-	##British Isles
-	ENG = { # England
+###British Isles
+	ROE = { # Royalist England
 		own_control_core = {
 			berwick appleby hythe alnwick barnstaple bedford dunstable birmingham boston bosworth shoreham lewes buckingham bury glossop cambridge canterbury carlisle rochester cheltenham chelmsford chesterfield chichester chippenham cockermouth colchester kettering coventry cirencester derby dorchester dover exeter grimsby guildford reigate harrow hastings hedingham hexham hull huntingdon ipswich kendal grantham penrith kidderminster leeds leicester lincoln london loughborough lowestoft lynn daventry newark newcastle northampton norwich nottingham oxford ely bideford bampton okehampton poole portsmouth amesbury lymington retford rutland salisbury southampton prittlewell kingston stafford stoke stratford trowbridge taunton wells barking weymouth shaftesbury wight winchester windsor worcester yarmouth york scarborough tamworth bedale richmond whitby bridlington selby pontefract skipton wakefield louth thetford fakenham reading tonbridge minehead portishead bath henley royston aylesbury wycombe lavenham abingdon banbury walden spalding woking morpeth billingham norton ripon doncaster egremont basingstoke
 			# cornwall
@@ -527,7 +527,7 @@ countries = {
 		}
 	}
 	
-	COE = { # Commonwealth of England
+	ENG = { # Commonwealth of England
 		own_control_core = {
 			#home_counties_area
 			london harrow kingston reigate guildford woking southampton portsmouth winchester wight basingstoke dover canterbury rochester hythe tonbridge shoreham lewes hastings chichester dunstable bedford oxford henley windsor buckingham aylesbury wycombe
@@ -544,7 +544,7 @@ countries = {
 		starting_technology_level = 3
 		government = {
 			type = republic
-			ruler = coe_robert_devereux
+			ruler = eng_robert_devereux
 			heir_selection = oligarchic_elective
 
 			regnal_numbers = {
@@ -837,8 +837,8 @@ countries = {
 		tolerated_cultures = { irish }
 	}
 	
-	##Iberia
-	CAS = {
+###Iberia
+	SPA = {
 		own_control_core = {
 			avila adrada arevalo las_navas oropesa villatoro
 			burgos aranda_de_duero briviesca castrojeriz lerma logrono miranda_de_ebro najera sto_domingo_silos villadiego villarcayo
@@ -882,37 +882,6 @@ countries = {
 
 		government = {
 			ruler = cas_alfonso_xi_burgundy
-			heir = cas_pedro_i_burgundy
-
-			ruler_term = { character = cas_sancho_ii_jimena start_date = 1065.12.27 end_date = 1072.10.7 regnal_number = 2 }
-			ruler_term = { character = lon_alfonso_vi_jimena start_date = 1072.10.7 end_date = 1109.7.1 regnal_number = 6 }
-			ruler_term = { character = lon_urraca_i_jimena start_date = 1109.7.1 end_date = 1126.3.8 regnal_number = 1 }
-
-			ruler_term = { character = cas_alfonso_vii_burgundy start_date = 1126.3.8 end_date = 1157.8.21 regnal_number = 7 }
-			ruler_term = { character = cas_sancho_iii_burgundy start_date = 1157.8.21 end_date = 1158.8.31 regnal_number = 3 }
-			ruler_term = { character = cas_alfonso_viii_burgundy start_date = 1158.8.31 end_date = 1214.10.6 regnal_number = 8 }
-			ruler_term = { character = cas_enrique_i_burgundy start_date = 1214.10.6 end_date = 1217.6.6 regnal_number = 1 }
-			ruler_term = { character = cas_berenguela_i_burgundy start_date = 1217.6.6 end_date = 1217.7.1 regnal_number = 1 }
-			ruler_term = { character = cas_fernando_iii_burgundy start_date = 1217.7.1 end_date = 1252.5.30 regnal_number = 3 }
-			ruler_term = { character = cas_alfonso_x_burgundy start_date = 1252.5.30 end_date = 1284.4.4 regnal_number = 10 }
-			ruler_term = { character = cas_sancho_iv_burgundy start_date = 1284.4.4 end_date = 1295.4.25 regnal_number = 4 }
-			ruler_term = { character = cas_fernando_iv_burgundy start_date = 1295.4.25 end_date = 1312.9.7 regnal_number = 4 }
-			ruler_term = { character = cas_alfonso_xi_burgundy start_date = 1312.9.7 regnal_number = 11 }
-
-			regnal_numbers = {
-				name_pelagius = 1
-				name_alphonse = 11
-				name_froila = 2
-				name_aurelius = 1
-				name_ramiro = 3
-				name_ordono = 4
-				name_garcia = 2
-				name_sancho = 4
-				name_ferdinand = 4
-				name_urraca = 1
-				name_henry = 1
-				name_berengaria = 1
-			}
 
 			reforms = {
 				crown_castile_reform
@@ -952,7 +921,7 @@ countries = {
 			exploration = 5
 		}
 
-		accepted_cultures = { 
+		accepted_cultures = {
 			leonese
 			galician			
 			basque
@@ -984,24 +953,6 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = cas_alfonso_xi_burgundy
-			heir = cas_pedro_i_burgundy
-
-			ruler_term = { character = lon_ramiro_ii_leon start_date = 926.2.12 end_date = 931.11.6 regnal_number = 0 }
-
-			ruler_term = { character = por_afonso_i_portugal start_date = 1143.10.5 end_date = 1185.12.6 regnal_number = 1 }
-			ruler_term = { character = por_sancho_i_portugal start_date = 1185.12.6 end_date = 1211.3.26 regnal_number = 1 }
-			ruler_term = { character = por_afonso_ii_portugal start_date = 1211.3.26 end_date = 1223.3.25 regnal_number = 2 }
-			ruler_term = { character = por_sancho_ii_portugal start_date = 1223.3.25 end_date = 1247.12.4 regnal_number = 2 }
-			ruler_term = { character = por_afonso_iii_portugal start_date = 1247.12.4 end_date = 1279.2.16 regnal_number = 3 }
-			ruler_term = { character = por_dinis_i_portugal start_date = 1279.2.16 end_date = 1325.1.7 regnal_number = 1 }
-			ruler_term = { character = por_afonso_iv_portugal start_date = 1325.1.7 regnal_number = 4 }
-
-			regnal_numbers = {
-				name_alphonse = 4
-				name_sancho = 2
-				name_dennis = 1
-			}
 
 			reforms = {
 				portuguese_monarchy_reform
@@ -1063,15 +1014,8 @@ countries = {
 			palma ciudadela_de_menorca ibiza manacor pollensa
 		}
 
-		own_control_integrated = {
-			#Sardinia
-			cagliari tratalias villa_di_chiesa isili muravera seddori tortoli orosei terranova_pausania posada tempiopausania
-			sassari oristano ales sorgono terralba alghero bosa castelsardo macomer bitti ozieri thiesi
-		}
-
 		our_cores_conquered_by_others = {
-			puigcerda prades montpellier perpignan
-			palma ciudadela_de_menorca ibiza manacor pollensa #Majorca
+			barcelona sitges terrassa villafranca_del_penedes girona besalu castellon_ampurias ripoll sant_feliu tarragona flix lleida montblanc tarrega tortosa vic berga cardona cervera manresa perpignan prades puigcerda lagoon_of_salses seu_durgell agramunt balaguer talarn vielha
 		}
 
 		starting_technology_level = 3
@@ -1086,32 +1030,6 @@ countries = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 			ruler = cas_alfonso_xi_burgundy
-			heir = cas_pedro_i_burgundy
-
-			ruler_term = { character = ara_ramiro_i_aragon start_date = 1035.10.18 end_date = 1063.5.8 regnal_number = 1 }
-			ruler_term = { character = ara_sancho_i_aragon start_date = 1063.5.8 end_date = 1094.6.4 regnal_number = 1 }
-			ruler_term = { character = ara_pedro_i_aragon start_date = 1094.6.4 end_date = 1104.12.28 regnal_number = 1 }
-			ruler_term = { character = ara_alfonso_i_aragon start_date = 1104.12.28 end_date = 1134.9.7 regnal_number = 1 }
-			ruler_term = { character = ara_ramiro_ii_aragon start_date = 1134.9.29 end_date = 1157.8.16 regnal_number = 2 }
-			ruler_term = { character = ara_petronila_i_aragon start_date = 1157.8.16 end_date = 1164.7.18 regnal_number = 1 }
-
-			ruler_term = { character = ara_alfons_ii_arago start_date = 1164.7.18 end_date = 1196.4.25 regnal_number = 2 }
-			ruler_term = { character = ara_pere_ii_arago start_date = 1196.4.25 end_date = 1213.9.13 regnal_number = 2 }
-			ruler_term = { character = ara_jacme_i_arago start_date = 1213.9.13 end_date = 1276.7.27 regnal_number = 1 }
-			ruler_term = { character = ara_pere_iii_arago start_date = 1276.7.27 end_date = 1285.11.11 regnal_number = 3 }
-			ruler_term = { character = ara_alfons_iii_arago start_date = 1285.11.11 end_date = 1291.6.18 regnal_number = 3 }
-			ruler_term = { character = ara_jaume_ii_arago start_date = 1291.6.18 end_date = 1327.11.2 regnal_number = 2 }
-			ruler_term = { character = ara_alfonso_iv_arago start_date = 1327.11.2 end_date = 1336.1.24 regnal_number = 4 }
-			ruler_term = { character = ara_peter_iv_arago start_date = 1336.1.24 regnal_number = 4 }
-
-			regnal_numbers = {
-				name_ramiro = 2
-				name_sancho = 1
-				name_peter = 4
-				name_alphonse = 4
-				name_petronilla = 1
-				name_james = 2
-			}
 
 			reforms = {
 				crown_aragon_reform
@@ -1137,7 +1055,7 @@ countries = {
 
 		court_language = catalan_dialect
 		country_rank = rank_kingdom
-		capital = barcelona
+		capital = valencia
 		accepted_cultures = { aragonese }
 		tolerated_cultures = {
 			andalusi
@@ -1156,10 +1074,6 @@ countries = {
 			ronda algeciras gibraltar marbella
 		}
 
-		our_cores_conquered_by_others = {
-			olvera
-		}
-
 		starting_technology_level = 3
 		include = "expl_muslim_mediterranean"
 		include = "expl_silk_road_west"
@@ -1170,25 +1084,6 @@ countries = {
 
 		government = {
 			ruler = gra_yusuf_i_nasrid
-
-			ruler_term = { character = gra_muhammad_i_nasrid start_date = 1238.5.1 end_date = 1273.1.20 regnal_number = 1 }
-			ruler_term = { character = gra_muhammad_ii_nasrid start_date = 1273.1.20 end_date = 1302.1.20 regnal_number = 2 }
-			ruler_term = {
-				character = gra_muhammad_ii_nasrid start_date = 1302.1.20 end_date = 1302.4.7 regnal_number = 2
-				character = gra_muhammad_iii_nasrid start_date = 1302.1.20 end_date = 1302.4.7 regnal_number = 3
-			}
-			ruler_term = { character = gra_muhammad_iii_nasrid start_date = 1302.4.7 end_date = 1309.3.14 regnal_number = 3 }
-			ruler_term = { character = gra_nasr_i_nasrid start_date = 1309.3.14 end_date = 1314.2.8 regnal_number = 1 }
-			ruler_term = { character = gra_ismail_i_nasrid start_date = 1314.2.8 end_date = 1325.7.8 regnal_number = 1 }
-			ruler_term = { character = gra_muhammad_iv_nasrid start_date = 1325.7.8 end_date = 1333.8.25 regnal_number = 4 }
-			ruler_term = { character = gra_yusuf_i_nasrid start_date = 1333.8.25 regnal_number = 1 }
-
-			regnal_numbers = {
-				name_muhammad = 4
-				name_nasr = 1
-				name_ishmael = 1
-				name_joseph = 1
-			}
 
 			reforms = {
 				the_jewel_of_alandalus_reform
@@ -1229,63 +1124,6 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = cas_alfonso_xi_burgundy
-			heir = cas_pedro_i_burgundy
-
-			ruler_term = { character = nav_inigo_arista start_date = 815.1.1 end_date = 851.1.1 regnal_number = 1 }
-			ruler_term = { character = nav_garcia_iniguez start_date = 851.1.1 end_date = 882.1.1 regnal_number = 0 }
-			ruler_term = { character = nav_fortun_garces start_date = 882.1.1 end_date = 905.1.1 regnal_number = 1 }
-
-			ruler_term = { character = nav_sancho_i_jimena start_date = 905.1.1 end_date = 925.12.10 regnal_number = 1 }
-			ruler_term = { character = nav_garcia_i_jimena start_date = 925.12.10 end_date = 970.2.22 regnal_number = 1 }
-			ruler_term = { character = nav_sancho_ii_jimena start_date = 970.2.22 end_date = 994.12.1 regnal_number = 2 }
-			ruler_term = { character = nav_garcia_ii_jimena start_date = 994.12.1 end_date = 999.12.8 regnal_number = 2 }
-			ruler_term = { character = nav_sancho_iii_jimena start_date = 999.12.18 end_date = 1035.10.18 regnal_number = 3 }
-			ruler_term = { character = nav_garcia_iii_jimena start_date = 1035.10.18 end_date = 1054.9.1 regnal_number = 3 }
-			ruler_term = { character = nav_sancho_iv_jimena start_date = 1054.9.1 end_date = 1076.6.4 regnal_number = 4 }
-			ruler_term = { character = ara_sancho_i_aragon start_date = 1076.6.4 end_date = 1094.6.4 regnal_number = 5 }
-			ruler_term = { character = ara_pedro_i_aragon start_date = 1094.6.4 end_date = 1104.12.28 regnal_number = 1 }
-			ruler_term = { character = ara_alfonso_i_aragon start_date = 1104.12.28 end_date = 1134.9.7 regnal_number = 1 }
-			ruler_term = { character = nav_garcia_iv_jimena start_date = 1134.9.7 end_date = 1150.11.21 regnal_number = 4 }
-			ruler_term = { character = nav_sancho_vi_jimena start_date = 1150.11.21 end_date = 1194.6.27 regnal_number = 6 }
-			ruler_term = { character = nav_sancho_vii_jimena start_date = 1194.6.27 end_date = 1234.2.12 regnal_number = 7 }
-
-			ruler_term = {
-				character = nav_sancho_vii_jimena start_date = 1234.2.12 end_date = 1234.4.7 regnal_number = 7
-				character = nav_thibault_i_blois start_date = 1234.2.12 end_date = 1234.4.7 regnal_number = 1
-			}
-
-			ruler_term = { character = nav_thibault_i_blois start_date = 1234.4.7 end_date = 1253.7.8 regnal_number = 1 }
-			ruler_term = { character = nav_thibault_ii_blois start_date = 1253.7.8 end_date = 1270.12.4 regnal_number = 2 }
-			ruler_term = { character = nav_henri_i_blois start_date = 1270.12.4 end_date = 1274.7.22 regnal_number = 1 }
-			ruler_term = { character = fra_jeanne_i_blois start_date = 1274.7.22 end_date = 1284.8.16 regnal_number = 1 }
-			ruler_term = {
-				character = fra_jeanne_i_blois start_date = 1284.8.16 end_date = 1305.4.2 regnal_number = 1
-				character = fra_philippe_iv_capet start_date = 1284.8.16 end_date = 1305.4.2 regnal_number = 1 #Marital Co-Ruler
-			}
-
-			ruler_term = { character = fra_louis_x_capet start_date = 1305.4.2 end_date = 1316.6.5 regnal_number = 1 }
-			ruler_term = { character = fra_jean_i_capet start_date = 1316.11.15 end_date = 1316.11.20 regnal_number = 1 }
-			ruler_term = { character = fra_philippe_v_capet start_date = 1316.11.20 end_date = 1322.1.3 regnal_number = 2 }
-			ruler_term = { character = fra_charles_iv_capet start_date = 1322.1.3 end_date = 1328.2.1 regnal_number = 1 }
-			ruler_term = { character = nav_jeanne_ii_capet start_date = 1328.2.1 regnal_number = 2 }
-			#ruler_term = { character = nav_philip_iii_evreux start_date = 1328.2.1 regnal_number = 3 } # Marital Co-Ruler
-
-			regnal_numbers = {
-				name_inigo = 1
-				name_garcia = 5
-				name_fortunius = 1
-				name_sancho = 7
-				name_peter = 1
-				name_alphonse = 1
-				name_theobald = 2
-				name_henry = 1
-				name_joanna = 2
-				name_philip = 3
-				name_louis = 1
-				name_john = 1
-				name_charles = 1
-			}
 
 			reforms = {
 				pyrenean_fueros_reform
@@ -1320,7 +1158,22 @@ countries = {
 		country_rank = rank_kingdom
 		capital = pamplona
 		dynasty = de_evreux_dynasty
+	}
+	
+	CAT = {
+		own_control_core = {
+			barcelona sitges terrassa villafranca_del_penedes girona besalu castellon_ampurias ripoll sant_feliu tarragona flix lleida montblanc tarrega tortosa vic berga cardona cervera manresa perpignan prades puigcerda lagoon_of_salses seu_durgell agramunt balaguer talarn vielha
+		}
 
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "catholic_bishopric_no_coast"
+
+		government = {
+			type = monarchy
+		}
+		capital = barcelona
+		country_rank = rank_county
 	}
 	
 	ANR = {
@@ -1339,7 +1192,7 @@ countries = {
 		country_rank = rank_duchy
 	}
 	
-	##French Region
+###French Region
 	FRA = {
 		own_control_core = {
 			angers bauge beaupreau chateau_gontier le_lude loudun passavant saumur
@@ -1380,7 +1233,7 @@ countries = {
 
 			castres albi lautrec
 			foix pamiers mirepoix
-			chateauneuf_de_randon florac mende peyre massif_central
+			chateauneuf_de_randon florac mende peyre
 			narbonne agde beziers lodeve saint_pons lagoon_of_bages_sigean
 			nimes french_ales melgueil montpellier st_ambroix uzes
 			carcassonne fenouillet limoux
@@ -1419,6 +1272,7 @@ countries = {
 			saintes montendre la_rochelle oleron royan st_jean_dangely rochefort jonzac
 			
 			valence condorcet die vienne
+			metz fresnes verdun clermont_en_argonne toul vic_sur_seille
 		}
 		
 		include = "catholic_monarchy_english_lordship"
@@ -1686,6 +1540,38 @@ countries = {
 
 		capital = dijon
 		country_rank = rank_duchy
+	}
+	
+	DOC = {
+		own_control_core = {
+			castres albi lautrec mirepoix narbonne agde beziers lodeve saint_pons lagoon_of_bages_sigean nimes french_ales melgueil montpellier st_ambroix uzes carcassonne fenouillet limoux toulouse castelnaudary lavaur verdun_sur_garonne villemur
+		}
+		include = "catholic_monarchy_english_lordship"
+		government = {
+			type = monarchy
+			laws = {
+				feudal_de_jure_law = by_tradition
+				legal_code_law = civil_law_policy
+			}
+		}
+		capital = narbonne
+		country_rank = rank_duchy
+	}
+	
+	BNV = {
+		own_control_core = {
+			mauleon saint_jean_pied_de_port
+		}
+		include = "catholic_monarchy_english_lordship"
+		government = {
+			type = monarchy
+			laws = {
+				feudal_de_jure_law = by_tradition
+				legal_code_law = civil_law_policy
+			}
+		}
+		capital = saint_jean_pied_de_port
+		country_rank = rank_kingdom
 	}
 }
 }

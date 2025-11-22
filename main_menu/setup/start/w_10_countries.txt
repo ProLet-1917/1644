@@ -322,6 +322,7 @@ countries = {
 			heinsberg bergheim duren monchengladbach
 			dusseldorf remscheid siegburg solingen schleiden
 			amberg eschenbach neumarkt roding sulzbach #Oberpfalz
+			tirschenreuth cham
 		}
 
 		starting_technology_level = 3
@@ -671,6 +672,8 @@ countries = {
 			kleve wesel mors hamm altena bochum soest bielefeld
 			ruppin havelberg wittstock
 			lebus beeskow
+			cottbus
+			sulechow krosno_odrzanskie
 		}
 
 		starting_technology_level = 3
@@ -1019,8 +1022,9 @@ countries = {
 			schwaz innsbruck
 			imst reutte landeck
 			merano sterzing villandro bolzano silandro
-			brixen lienz bruneck kufstein bregenz feldkirch bludenz wertingen hohenberg freiburg
+			lienz bruneck kufstein bregenz feldkirch bludenz wertingen hohenberg freiburg
 			belfort ferrette waldshut
+			kitzbuhel
 		}
 
 		starting_technology_level = 3
@@ -1047,7 +1051,7 @@ countries = {
 
 	BXN = {	#Brixen
 		own_control_core = {
-			bled
+			brixen  bled
 		}
 
 		starting_technology_level = 3
@@ -1092,6 +1096,304 @@ countries = {
 
 		country_rank = rank_county
 	}
+
+	TNT = { #Trento
+		own_control_core = {
+			cavalese cles trento
+		}
+
+		own_control_integrated = {
+			riva 
+		}
+
+		government = {
+
+			ruler = tnt_carlo_emanuele_madruzzo
+
+			regnal_numbers = {
+
+			}
+		}
+
+		tolerated_cultures = {
+			ladin
+		}
+
+		include = "catholic_bishopric_no_coast"
+		capital = trento
+		include = "expl_mediterranean"
+	}
+
+	SLZ = {	#Salzburg
+		own_control_core = {
+			salzburg hallein st_johann saalfelden tamsweg friesach
+			bischofshofen zell_am_see mittersill laufen muhldorf
+			zell_am_ziller
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+		country_rank = rank_duchy
+		capital = salzburg
+		government = {
+			ruler = slz_paris_von_lodron
+
+			reforms = {
+				prince_bishopric_reform
+			}
+		}
+
+		tolerated_cultures = {
+			southern_bavarian
+			slovene
+		}
+
+	}
+
+	HAB = {	#Austria
+		own_control_core = {
+			vienna amstetten austria_baden bruck_leitha ganserndorf hollabrunn horn korneuburg krems lilienfeld scheibbs melk mistelbach pitten tulln waidhofen_an_der_thaya wiener_neustadt zwettl st_polten #Duchy of Lower Austria
+			klagenfurt st_veit steinfeld volkermarkt #Duchy of Carinthia
+			ljubljana kranj novo_mesto postojna #Duchy of Carniola
+			graz feldbach furstenfeld judenburg kapfenberg leoben liezen maribor murau murzzuschlag rottenmann schladming slovenj_gradec voitsberg weiz #Duchy of Styria
+			linz bad_ischl freistadt gmunden kirchdorf perg rohrbach st_georgen steyr wels ptuj leibnitz #Duchy of Upper Austria
+			feldkirchen winklern spittal hermagor 
+			celje lasko trieste gorizia tolmin aquileia ilirska_bistrica rijeka
+
+			#Bohemia
+			prague slany rakovnik zatec tepla loket cheb tachov domazlice
+			klatovy plzen jachymov most husinec usti_nad_labem decin
+			litomerice beroun turnov frydlant prachen krumlov pisek
+			budejovice j_hradec benesov mlada_boleslav kourim kutna_hora
+			bechyne jicin podebrady caslav nachod nemecky_brod
+			chrudim hradec_kralove klodzko litomysl trebon
+
+			#Moravia
+			olomouc prostejov zabreh sumperk
+			brno pernstejn hodonin vyskov
+			znojmo bitov dacice jihlava
+			hradiste vizovice prerov pribor
+
+			swidnica kamienna_gora rychbach ziebice #niemcza 
+			glogow szprotawa kozuchow zielona_gora jawor boleslawiec
+			olesnica milicz namyslow sycow trzebnica
+			grodkow nysa niemodlin sroda_slaska wroclaw #brzeg olawa
+			opole lubliniec olesno prudnik strzelce_opolskie #kluczbork 
+			bytom kozle pszczyna raciborz siewierz toszek #tesin bielsko
+			opava fryvaldov glubczyce hlucin krnov
+		}
+
+		own_control_integrated = {
+			#kyburg #County of Kyburg
+			#bonndorf villingen waldshut #Landgraviate of Breisgau
+			#krumbach gunzburg wertingen #Margraviate of Burgau
+			#ensisheim #Lordship of Upper Alsace
+			#waldsee saulgau #Lordship of Waldsee
+		}
+
+		own_control_conquered = {
+			#aarau baden_im_aargau #County of Lenzburg
+			#frauenfeld #Lordship of Thurgau
+			#wolhusen #Lordship of Wolhusen
+			#schaffhausen
+			#fribourg
+			#glarus
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "german_principality"
+		government = {
+
+			ruler = hab_ferdinand_iii_von_habsburg
+			consort = frt_johanna_pfirt
+
+			ruler_term = { character = hab_ferdinand_iii_von_habsburg start_date = 1644.1.1 regnal_number = 3 }
+
+
+			regnal_numbers = {
+
+			}
+
+			#societal values
+			serfdom_vs_free_subjects = -60
+			offensive_vs_defensive = -30
+			land_vs_naval = -80
+			belligerent_vs_conciliatory = -40
+			outward_vs_inward = -50
+		}
+
+		tolerated_cultures = {
+			rhine_alemannic
+			southern_bavarian
+			slovene
+		}
+
+		country_rank = rank_duchy
+		dynasty = habsburg_dynasty
+		capital = vienna
+	}
+	BAM = {	#Bamberg
+		own_control_core = {
+			bamberg wolfsberg 
+			villach kronach lichtenfels schesslitz
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+
+		capital = bamberg
+		government = {
+			ruler = bam_melchior_otto_voit
+
+			reforms = {
+				prince_bishopric_reform
+			}
+		}
+
+		tolerated_cultures = {
+			danube_bavarian
+			southern_bavarian
+		}
+
+		country_rank = rank_county
+	}
+
+	MEI = { #Saxony WIP
+		own_control_core = {
+			meissen sayda freiberg dresden
+			pirna annaburg
+			bautzen gorlitz hoyerswerda rothenburg_oberlausitz marienstern
+			plauen zittau guben lubben luckau calau zossen spremberg
+			zagan zary
+			wittenberg schweinitz bitterfeld torgau liebenwerda
+			weissenfels zwickau rochlitz grimma delitzsch
+			leipzig chemnitz #altenburg
+			freyburg merseburg beichlingen langensalza
+			glauchau naumburg wurzen
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = mei_johann_georg_i_von_wettin
+
+			ruler_term = {	character = mei_johann_georg_i_von_wettin start_date = 1644.1.1 regnal_number = 1	}
+
+			reforms = {
+				margraviate
+			}
+
+			laws = {
+				feudal_de_jure_law = by_tradition
+			}
+
+			offensive_vs_defensive = 10
+			belligerent_vs_conciliatory = 0
+			outward_vs_inward = 0
+
+
+		}
+
+		country_rank = rank_duchy
+		capital = dresden
+		dynasty = wettin_dynasty
+		tolerated_cultures = {
+			sorbian
+		}
+	}
+
+	BAY = { #Bayreuth
+	 	own_control_core = {
+			wunsiedel bayreuth
+			kulmbach
+			forchheim pegnitz hof
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+			ruler = bay_christian_von_hohenzollern
+
+			ruler_term = { character = bay_christian_von_hohenzollern start_date = 1644.1.1 regnal_number = 1 }
+
+			regnal_numbers = {
+				name_frederick = 4
+				name_conrad = 1
+				name_john = 2
+			}
+		}
+
+		tolerated_cultures = {
+			upper_palatine
+		}
+
+		country_rank = rank_county
+		capital = ansbach
+		dynasty = hohenzollern_dynasty
+	}
+
+	FRE = {	#Freising
+		own_control_core = {
+			freising
+			waidhofen skofja_loka 
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+		capital = freising
+		government = {
+			ruler = random
+
+			reforms = {
+				prince_bishopric_reform
+			}
+		}
+
+		tolerated_cultures = {
+			southern_bavarian
+			slovene
+		}
+
+		country_rank = rank_county
+
+	}
+
+	PSS = {	#Passau
+		own_control_core = {
+			passau
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+		capital = passau
+		government = {
+			ruler = pss_leopold_wilhelm_von_habsburg
+
+			reforms = {
+				prince_bishopric_reform
+			}
+		}
+
+		country_rank = rank_county
+	}
+
+
 
 
 }

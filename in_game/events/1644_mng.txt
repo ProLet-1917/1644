@@ -18,11 +18,6 @@ mng_1644.1 = { #南迁之议
 		character:chi_tang_tong = { move_country = c:CSH }
     	if = {
 			limit = { tag = MNG }
-
-			set_variable = { name = mng_1644_changping_garrison_spawned value = 1 }
-
-			# 昌平指挥官直接判存并赋予
-
 			location:changping ?= {
    				if = { 
        				# 步营：5
@@ -90,13 +85,11 @@ mng_1644.1 = { #南迁之议
     	custom_tooltip = mng_1644.1.tt2
     	set_capital = location:shangyuan
 		set_variable = { name = mng_move_to_nanjing value = 1 }
+		c:WSG = {
+			trigger_event_silently = wsg_1644_choice.3
+		}
     	if = {
 			limit = { tag = MNG }
-
-			set_variable = { name = mng_1644_changping_garrison_spawned value = 1 }
-
-			# 昌平指挥官直接判存并赋予
-
 			location:dadu ?= {
 				if = {
 					limit = { owner = root }
@@ -155,4 +148,27 @@ mng_1644.1 = { #南迁之议
 			}
 			force_recalc_country_active_status = root
 		}
+	}
+}
+
+mng_1644.2 = { #甲申之难
+	type = country_event
+	title = mng_1644.2.title
+	desc = mng_1644.2.desc
+	historical_info = mng_1644.2.historical_info
+	option = {
+		name = mng_1644.2.a
+    	custom_tooltip = mng_1644.2.tt1
+	}
+}
+
+mng_1644.3 = { #北都沦陷
+	type = country_event
+	title = mng_1644.3.title
+	desc = mng_1644.3.desc
+	historical_info = mng_1644.3.historical_info
+	option = {
+		name = mng_1644.3.a
+    	custom_tooltip = mng_1644.3.tt1
+	}
 }
