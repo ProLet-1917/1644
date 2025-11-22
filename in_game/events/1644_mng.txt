@@ -85,6 +85,9 @@ mng_1644.1 = { #南迁之议
     	custom_tooltip = mng_1644.1.tt2
     	set_capital = location:shangyuan
 		set_variable = { name = mng_move_to_nanjing value = 1 }
+		c:WSG = {
+			trigger_event_silently = wsg_1644_choice.3
+		}
     	if = {
 			limit = { tag = MNG }
 			location:dadu ?= {
