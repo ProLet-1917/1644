@@ -34,7 +34,6 @@ wsg_1644_choice.1 = { #史实：崇祯不南迁，李自成进京，选择降清
 				ROOT = { trigger_event_silently = { id = wsg_1644_choice.100 days = 2 } }
 			}
 		}
-		historical_option = yes
 	}
 	option = {
 		# 归顺李自成
@@ -100,16 +99,42 @@ wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州
 	is_trigger_only = yes
 	option = { #降顺
 		name = wsg_1644_choice.3.a
+		ai_chance = { factor = 0.3 }
+		set_variable = wsg_1644_chosen_side
+		hidden_effect = {
+			c:CSH ?= {
+				save_scope_as = wsg_csh
+			}
+			if = {
+				limit = { exists = scope:wsg_csh }
+				make_subject_of = { target = scope:wsg_csh type = subject_type:vassal }
+			}
+		}
 	}
 	option = { #降清
 		name = wsg_1644_choice.3.b
+		ai_chance = { factor = 0.3 }
+		set_variable = wsg_1644_chosen_side
+		hidden_effect = {
+			c:QNG ?= {
+				save_scope_as = wsg_qng
+			}
+			if = {
+				limit = { exists = scope:wsg_qng }
+				make_subject_of = { target = scope:wsg_qng type = subject_type:vassal }
+				# 成为附庸后，稍作延迟再处理加入宗主战争（便于关系生效）
+				ROOT = { trigger_event_silently = { id = wsg_1644_choice.100 days = 2 } }
+			}
+		}
 	}
 	option = { #南渡登州
 		name = wsg_1644_choice.3.c
+		ai_chance = { factor = 0.2 }
 	}
-	#option = { #固守
-	#	name = wsg_1644_choice.3.d
-	#}
+	option = { #固守
+		name = wsg_1644_choice.3.d
+		ai_chance = { factor = 0.2 }
+	}
 }
 
 # 注意：通用事件应在独立的事件文件中定义，并设置命名空间
