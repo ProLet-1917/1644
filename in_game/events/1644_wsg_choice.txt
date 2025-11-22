@@ -21,7 +21,10 @@ wsg_1644_choice.1 = { #史实：崇祯不南迁，李自成进京，选择降清
 		name = wsg_1644_choice.1.a
 		historical_option = yes
 		ai_chance = { factor = 0.6 }
-		set_variable = wsg_1644_chosen_side
+		set_variable = {
+			name = wsg_1644_chosen_side
+			value = 1
+		} 
 		custom_tooltip = wsg_1644_choice_join_qng_tt
 		hidden_effect = {
 			c:QNG ?= {
@@ -39,7 +42,10 @@ wsg_1644_choice.1 = { #史实：崇祯不南迁，李自成进京，选择降清
 		# 归顺李自成
 		name = wsg_1644_choice.1.b
 		ai_chance = { factor = 0.3 }
-		set_variable = wsg_1644_chosen_side
+		set_variable = {
+			name = wsg_1644_chosen_side
+			value = 2
+		} 
 		custom_tooltip = wsg_1644_choice_join_csh_tt
 		hidden_effect = {
 			c:CSH ?= {
@@ -115,8 +121,19 @@ wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州、固守
 	option = { #降顺
 		name = wsg_1644_choice.3.a
 		ai_chance = { factor = 0.3 }
-		set_variable = wsg_1644_chosen_side
+		set_variable = {
+			name = wsg_1644_chosen_side
+			value = 2
+		} 
 		hidden_effect = {
+			if = {
+				limit = {
+					has_variable = wsg_goto_beijing
+				}
+				location:funing = {
+					change_location_owner = c:WSG
+				}
+			}
 			c:CSH ?= {
 				save_scope_as = wsg_csh
 			}
@@ -129,8 +146,19 @@ wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州、固守
 	option = { #降清
 		name = wsg_1644_choice.3.b
 		ai_chance = { factor = 0.3 }
-		set_variable = wsg_1644_chosen_side
+		set_variable = {
+			name = wsg_1644_chosen_side
+			value = 1
+		} 
 		hidden_effect = {
+			if = {
+				limit = {
+					has_variable = wsg_goto_beijing
+				}
+				location:funing = {
+					change_location_owner = c:WSG
+				}
+			}
 			c:QNG ?= {
 				save_scope_as = wsg_qng
 			}
@@ -148,6 +176,10 @@ wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州、固守
 			has_variable = wsg_goto_beijing
 		}
 		ai_chance = { factor = 0.2 }
+		set_variable = {
+			name = wsg_1644_chosen_side
+			value = 3
+		} 
 		every_in_list = {
 			list = list_of_dongjiang
 			limit = { owner = c:MNG }
@@ -161,6 +193,10 @@ wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州、固守
 			NOT = { has_variable = wsg_goto_beijing }
 		}
 		ai_chance = { factor = 0.2 }
+		set_variable = {
+			name = wsg_1644_chosen_side
+			value = 3
+		} 
 	}
 }
 
