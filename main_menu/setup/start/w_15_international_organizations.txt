@@ -1,0 +1,98 @@
+international_organization_manager = {
+	#################################################################
+	# 				Unique International Organizations				#
+	#################################################################
+
+	#################################################################
+	# 				Holy Roman Empire								#
+	#################################################################
+	add_international_organization = {
+		type = hre
+		creation_date = 962.2.2
+
+		map_color = hsv360 { 40 50 70 }
+
+		members = { 
+			#Germany
+			FRI BNT MUN TCK OSN BRA KOL UPA AAC TRI SPO SAA DTM ESS NEU MTB BSC FCB ZWE PAL LNN SPY WRM WIE SYN TIR BXN MBZ TNT SLZ HAB BAM MEI BAY FRE PSS LGC TES STE MKL SWR WRN LUB HPL LBB HTR SLV LEU REG AUG UBV BRC EIC WEI NUR ANS ROT RVA UBL KNZ WDB BIB MEM KMP OET WUR BEU ULM HOH FUR ELL DNB OFB ALS SCF HAG LIC CFC MUR MUL BDE 
+
+			#Netherland
+			HOL PUL CAM LIE BLL
+
+			#Swiss
+			GNV BRN GRY 
+
+			#Lorrain
+			LOR SLM BAS SLT
+		 }
+		leader = HAB
+		regions = { south_german_region }
+		areas = { 
+			#North Germany
+			brabant_area friesland_area holland_area wallonia_area holstein_area brandenburg_area rhineland_area
+			hesse_area westphalia_area lower_saxony_area upper_saxony_area mecklenburg_area
+			#France
+			alsace_area franche_comte_area 
+			#Poland
+			silesia_area
+		}
+		provinces = { 
+			#Burgundy
+			bresse_province
+			#Lorraine
+			pays_messin_province pays_nancy_province sarregueminois_province verdunois_province vosges_province
+			#Pomerania
+			schwerin_province vorpommern_province stettin_province koslin_province pyritz_province stolp_province
+			#Slovenia
+			lower_styria_province lower_carniola_province upper_carniola_province 
+		}
+		locations = { 
+
+		}
+		emperor = { HAB }
+		elector = { 
+			BRA MEI PAL HAB
+		}
+		archbishop_elector = {
+			KOL TIR
+		}
+		free_city = {
+
+		}
+		imperial_peasant_republic = {
+
+		}
+		imperial_prelate = { 
+
+		}
+		imperial_prince = {
+			#Germany
+			FRI BNT MUN TCK OSN UPA AAC TRI SPO SAA DTM ESS NEU MTB BSC FCB ZWE LNN SPY WRM WIE SYN BXN MBZ TNT SLZ HAB BAM BAY FRE PSS LGC TES STE MKL SWR WRN LUB HPL LBB HTR SLV LEU REG AUG UBV BRC EIC WEI NUR ANS ROT RVA UBL KNZ WDB BIB MEM KMP OET WUR BEU ULM HOH FUR ELL DNB OFB ALS SCF HAG LIC CFC MUR MUL BDE 
+
+			#Netherland
+			HOL PUL CAM LIE BLL
+
+			#Swiss
+			GNV BRN GRY 
+
+			#Lorrain
+			LOR SLM BAS SLT
+		}
+		
+		laws = {
+			hre_religion_catholic
+			only_imperial_religion_policy
+			golden_bull_policy
+			no_monetary_contribution
+		}
+
+
+		}
+		ruler_term = { character = hab_ferdinand_iii_von_habsburg start_date = 1644.1.1 regnal_number = 4 }
+
+
+		variables = { 
+			imperial_authority = 5
+		}
+	}
+}
