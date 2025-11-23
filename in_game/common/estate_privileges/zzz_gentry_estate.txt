@@ -16,12 +16,12 @@ gentry_examination_patronage = {
 
 	# 国家修正效果
 	country_modifier = {
-		# 大幅提升士绅阶层目标满意度
-		gentry_estate_target_satisfaction = large_privilege_target_satisfaction
-		# 提升士绅阶层权力
-		global_gentry_estate_power = 0.35
-		# 降低士绅阶层最高税率（更难征税）
-		gentry_estate_max_tax = -0.1
+		# 大幅提升目标满意度
+		global_estate_target_satisfaction = large_privilege_target_satisfaction
+		# 提升阶层权力
+		global_estate_power = 0.35
+		# 降低最高税率（更难征税）
+		global_estate_max_tax = -0.1
 		# 提升立法效率
 		legislative_efficiency = 0.05
 		# 提升税收效率
@@ -30,8 +30,8 @@ gentry_examination_patronage = {
 
 	# 撤销特权时的效果
 	on_revoke = {
-		# 士绅阶层目标满意度降低（惩罚）
-		gentry_estate_target_satisfaction = medium_privilege_target_satisfaction_penalty
+		# 目标满意度降低（惩罚）
+		global_estate_target_satisfaction = medium_privilege_target_satisfaction_penalty
 	}
 }
 
@@ -48,19 +48,10 @@ gentry_militia_patronage = {
 	allow = {}
 
 	country_modifier = {
-		# 提升士绅阶层目标满意度
-		gentry_estate_target_satisfaction = medium_privilege_target_satisfaction
-		# 提升士绅阶层征兵规模（可以组织更多军队）
-		gentry_estate_levy_size = 0.1
-		# 允许士绅领导军队
-		gentry_estate_allowed_leading_military = yes
-		# 提升士绅阶层权力
-		global_gentry_estate_power = 0.25
-	}
-
-	on_revoke = {
-		# 撤销时征兵规模下降
-		gentry_estate_levy_size = -0.05
+		# 提升目标满意度
+		global_estate_target_satisfaction = medium_privilege_target_satisfaction
+		# 提升阶层权力
+		global_estate_power = 0.25
 	}
 }
 
@@ -77,12 +68,12 @@ gentry_cultural_wardens = {
 	allow = {}
 
 	country_modifier = {
-		# 提升士绅阶层目标满意度
-		gentry_estate_target_satisfaction = medium_privilege_target_satisfaction
+		# 提升目标满意度
+		global_estate_target_satisfaction = medium_privilege_target_satisfaction
 		# 提升文化影响力
 		cultural_influence = 0.1
-		# 提升士绅阶层权力
-		global_gentry_estate_power = 0.25
+		# 提升阶层权力
+		global_estate_power = 0.25
 		# 提升人口转化速度（更快同化）
 		global_pop_conversion_speed_modifier = 1
 		# 社会价值观向传统主义移动

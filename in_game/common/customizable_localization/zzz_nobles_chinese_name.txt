@@ -1,0 +1,22 @@
+﻿# 贵族（nobles）在中国文化组中的名称本地化
+# 让 nobles 在中国显示为"士绅"
+
+nobles = {
+	# 本地化类型：国家级别
+	type = country
+
+	# 中国文化组显示为"士绅"
+	text = {
+		localization_key = nobles_shishen
+		trigger = {
+			culture = { has_culture_group = culture_group:chinese_group }
+		}
+	}
+
+	# 默认名称（其他情况使用原版的"贵族"）
+	text = {
+		localization_key = nobles
+		fallback = yes
+	}
+}
+

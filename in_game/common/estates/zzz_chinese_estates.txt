@@ -38,28 +38,24 @@ gentry_estate = {
 
 	# 强势加成：当士绅阶层权力高于阈值时提供的国家修正
 	high_power = {
-		# 士绅阶层最高税率降低（更难征税）
-		gentry_estate_max_tax = -0.2
-		# 允许士绅进入内阁
-		gentry_estate_allowed_in_cabinet = yes
-		# 允许士绅领导军队
-		gentry_estate_allowed_leading_military = yes
+		# 最高税率降低（更难征税）
+		global_estate_max_tax = -0.2
 		# 立法效率大幅提升
 		legislative_efficiency = 0.5
 		# 税收效率大幅提升
 		tax_income_efficiency = 0.4
 		# 社会价值观向传统主义移动
 		monthly_towards_traditionalist = societal_value_minor_monthly_move
-		# 士绅阶层权力进一步增加（正反馈）
-		global_gentry_estate_power = 0.2
+		# 阶层权力进一步增加（正反馈）
+		global_estate_power = 0.2
 	}
 
 	# 弱势惩罚：当士绅阶层权力低于阈值时的国家惩罚
 	low_power = {
-		# 士绅阶层目标满意度降低
-		gentry_estate_target_satisfaction = medium_privilege_target_satisfaction_penalty
-		# 士绅阶层最高税率提高（更容易征税）
-		gentry_estate_max_tax = 0.2
+		# 目标满意度降低
+		global_estate_target_satisfaction = medium_privilege_target_satisfaction_penalty
+		# 最高税率提高（更容易征税）
+		global_estate_max_tax = 0.2
 		# 立法效率下降
 		legislative_efficiency = -0.25
 		# 税收效率下降

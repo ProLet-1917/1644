@@ -1,0 +1,11 @@
+﻿# 贵族（nobles）的中国变体
+# 在中国文化组中，nobles 关联到 gentry_estate（士绅阶层）
+# 注意：pop type override 可能不支持条件判断，这里只是添加 gentry_estate 关联
+# 实际的条件判断应该在游戏运行时通过其他机制处理
+
+nobles = {
+	# 添加士绅阶层关联（中国文化组）
+	gentry_estate = {
+		culture = { has_culture_group = culture_group:chinese_group }
+	}
+}
