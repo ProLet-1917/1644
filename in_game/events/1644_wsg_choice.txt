@@ -37,6 +37,10 @@ wsg_1644_choice.1 = { #史实：崇祯不南迁，李自成进京，选择降清
 				ROOT = { trigger_event_silently = { id = wsg_1644_choice.100 days = 2 } }
 			}
 		}
+		trigger_event_silently = {
+			id = csh_1644_unification.5
+			days = 15
+		}
 	}
 	option = {
 		# 归顺李自成
@@ -297,6 +301,16 @@ wsg_1644_choice.4 = { #崇祯不南迁、李自成不进京、清朝入关后：
 	option = { #忠诚
 		name = wsg_1644_choice.4.c
 		ai_chance = { factor = 0.5 }
+	}
+}
+
+wsg_1644_choice.5 = {#山海关之战
+	type = country_event
+	title = wsg_1644_choice.5.title
+	desc = wsg_1644_choice.5.desc
+	historical_info = wsg_1644_choice.5.historical_info
+	option = {
+		name = wsg_1644_choice.5.a
 	}
 }
 

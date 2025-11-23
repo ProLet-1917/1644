@@ -361,6 +361,36 @@ csh_1644_unification.4 = { #吴三桂、唐通迎主
 	}
 }
 
+csh_1644_unification.5 = { #吴三桂反叛
+	type = country_event
+	title = csh_1644_unification.5.title
+	desc = csh_1644_unification.5.desc
+	historical_info = csh_1644_unification.5.historical_info
+	immediate = {
+		trigger_event_silently = {
+			id = csh_1644_unification.6
+			days = 12
+		}
+	}
+	option = {
+		name = csh_1644_unification.5.a
+	}
+}
+
+csh_1644_unification.6 = { #山海关之战
+	type = country_event
+	title = csh_1644_unification.6.title
+	desc = csh_1644_unification.6.desc
+	historical_info = csh_1644_unification.6.historical_info
+	immediate = {
+		c:WSG = { trigger_event_silently = wsg_1644_choice.5 }
+		c:QNG = { trigger_event_silently = qng_1644_unification.4 }
+	}
+	option = {
+		name = csh_1644_unification.6.a
+	}
+}
+
 
 
 
