@@ -1,3 +1,4 @@
+#------------------------ Regions done by Syayan ----------------------------
 #current_age = age_1_traditions
 # 以下是省份控制和核心类型的简要注释：
 # own_control_core        # 本国完全控制的核心省份
@@ -13,390 +14,341 @@
 # our_cores_conquered_by_others # 我方核心被他国占领
 countries = {
 	countries = {
-
-		#Japan
-	JAP = {
-			own_control_core = {
-				inaka
-				hanawa
-				hiraka_aomori
-				shimokita
-				kamikita
-				nukanobu
-				kazuno
-				kuji
-				iwate
-				shimohei
-				kitahei
-				kamihei
-				shiwa
-				hienuki
-				esashi
-				waga
-				isawa
-				iwai
-				kesen
-				motoyoshi
-				oshika
-				tome
-				kurihara
-				kami
-				kurokawa
-				miyagi
-				natori
-				hiyama
-				hinai
-				akita
-				toshima
-				yamamoto
-				yuri
-				kamiura
-				yuza
-				murayama
-				tagawa
-				kitamogami
-				minamimogami
-				nishiokitama
-				higashiokitama
-				uda_mutsu
-				katta
-				namekata
-				shineha
-				naraha
-				iwaki
-				kikuta
-				takano
-				shirakawa
-				tamura
-				date_loc
-				shinobu
-				adachi
-				yama_jap
-				kawanuma
-				oonuma
-				kitaaizu
-				minamiaizu
-				iwase
-				asaka
-				iwafune
-				nutari
-				nishikanbara
-				higashikanbara
-				koshi
-				kariwa
-				minamiuonuma
-				kitauonuma
-				higashikubiki
-				nishikubiki
-				kamo
-				sawata
-				niikawa
-				nei
-				tonami
-				imizu
-				noto_jap
-				fugeshi
-				suzu
-				kaga
-				nomi
-				sakai_echizen
-				nakaoono
-				imadate
-				nyuu
-				tsuruga
-				onyuu
-				nasu
-				shioya
-				kawachi
-				haga
-				tsuga
-				ashikaga_loc
-				tone
-				seta
-				nitta
-				gunma
-				usui
-				kanra
-				agatsuma
-				saku
-				takai
-				minochi
-				sarashina
-				azumi
-				chiisagata
-				suwa
-				tsukama
-				kiso
-				kamiina
-				shimoina
-				yoshiki
-				kamioono
-				mashita
-				ena
-				minokamo
-				gujou
-				mugi
-				toki
-				katagata
-				ikeda
-				fuwa_mino
-				azai
-				echi
-				gamou
-				kouka
-				kurita
-				takashima
-				taga
-				kuji_kanto
-				naka
-				ibaraki
-				kashima
-				niihari
-				tsukuba
-				katori
-				chiba
-				katsushika
-				souma
-				musa
-				isumi
-				awa
-				makuda
-				ichihara
-				saitama
-				adachi_kanto
-				toshima_kanto
-				tachibana
-				tama
-				chichibu
-				hiki
-				hanzawa
-				kamakura
-				ashigara
-				aikou
-				tsuru
-				yamanashi
-				yatsushiro
-				koma_kai
-				tagata
-				kamo_izu
-				suntou
-				fuji
-				ihara
-				abe
-				shida
-				kitou
-				shuuchi
-				toyoda
-				fuchi
-				hoi
-				shitara
-				kamo_mikawa
-				hekikai
-				aichi
-				niwa
-				nakajima
-				mie
-				suzuka
-				ichishi
-				watarai
-				taki
-				shima
-				kitamuro
-				iga
-				yoshino
-				takaichi
-				nara
-				kuse
-				kyoto
-				izumi
-				osaka
-				kawabe
-				muko
-				kuwada
-				funai
-				ikaruga
-				hikami
-				kasa
-				yosa
-				keta_tajima
-				yabu
-				futakata
-				houmi
-				takakusa
-				kume_houki
-				aimi
-				hino
-				ou
-				oki
-				izumo
-				iishi
-				nita
-				nima
-				oochi
-				naka_iwami
-				mino
-				kanoashi
-				akashi
-				taka
-				shikama
-				akou
-				shisou
-				wake
-				joutou
-				tsudaka
-				kume
-				mashima
-				tomata
-				aita
-				asakuchi
-				katou_bicchuu
-				kaya
-				aka
-				ashida
-				sera
-				miyoshi
-				eso
-				nuka
-				kameshi
-				toyota
-				saeki
-				yamagata
-				takata
-				aki
-				kuga
-				kumage
-				tsuno
-				saba
-				yoshiki_suou
-				asa
-				toyoura
-				ootsu
-				abu
-				higashimuro
-				minamimuro
-				nishimuro
-				hidaka
-				kaisou
-				naga
-				mitoyo
-				aya
-				miki
-				awaji
-				nakata
-				awa_shikoku
-				naka_shikoku
-				kaifu
-				mima
-				miyoshi_shikoku
-				nii
-				ochi
-				iyo
-				ukena
-				kita_shikoku
-				uwa
-				aki_shikoku
-				kami_shikoku
-				nagaoka
-				tosa
-				agawa
-				takaoka
-				hata
-				kamiagata
-				shimoagata
-				onga
-				mikasa
-				asakura
-				hakata
-				saga
-				higashimatsuura
-				kishima
-				takaki
-				nishisonogi
-				higashisonogi
-				nishimatsuura
-				minamimatsuura
-				mii
-				kamitsuma
-				nakatsu
-				mike
-				usa
-				kunisaki
-				hayami
-				ooita
-				amabe
-				oono_bungo
-				naoiri
-				kusu
-				hita
-				aso
-				koushi
-				tamana
-				akita_kumamoto
-				mashiki
-				yatsushiro_higo
-				amakusa
-				kuma
-				ashikita
-				higashiusuki
-				nishiusuki
-				koyu
-				naka_hyuuga
-				nishimorokata
-				kitamorokata
-				miyazaki
-				minamimorokata
-				soo
-				kimotsuki
-				oosumi
-				kuwabara
-				hishikari
-				gomu
-				kumage_oosumi
-				satsuma
-				kagoshima
-				ibusuki
-				izumi_satsuma
-			}
-			include = "japanese_clan"
-			government = {
-				ruler_term = {
-					character = jap_ashikaga_takauji
-					start_date = 1336.9.20
-					regnal_number = 1
-				}
-				ruler = jap_ashikaga_takauji
-				reforms = {
-					shogunate
-				}
-				laws = {
-					censorship = limited_censorship
-					maritime_law = protect_trade_routes
-					piracy_law = anti_piracy_policy
-				}
-			}
-			variables = {
-				data = {
-					{
-						flag = "supports_northern_court"
-						data = {
-							type = boolean
-							identity = 1
-						}
-					}
-				}
-			}
-			accepted_cultures = {
-				tougoku_culture
-				touhoku_culture
-				kyushu_culture
-			}
-			country_rank = rank_empire
-			capital = kyoto
-			flag = "ASK"
-			country_name = "ASK"
-			color = map_ASK
+###Japan
+	JAP = { #Shogunate
+		own_control_core = {
+			inaka hanawa hiraka_aomori shimokita kamikita
+			nukanobu kazuno kuji iwate shimohei
+			kitahei kamihei shiwa hienuki esashi
+			waga isawa iwai kesen motoyoshi
+			oshika tome kurihara kami kurokawa
+			miyagi natori hiyama hinai akita
+			toshima yamamoto yuri kamiura yuza
+			murayama tagawa kitamogami minamimogami nishiokitama
+			higashiokitama uda_mutsu katta namekata shineha
+			naraha iwaki kikuta takano shirakawa
+			tamura date_loc shinobu adachi yama_jap
+			kawanuma oonuma kitaaizu minamiaizu iwase
+			asaka iwafune nutari nishikanbara higashikanbara
+			koshi kariwa minamiuonuma kitauonuma higashikubiki
+			nishikubiki kamo sawata niikawa nei
+			tonami imizu noto_jap fugeshi suzu
+			kaga nomi sakai_echizen nakaoono imadate
+			nyuu tsuruga onyuu nasu shioya
+			kawachi haga tsuga ashikaga_loc tone
+			seta nitta gunma usui kanra
+			agatsuma saku takai minochi sarashina
+			azumi chiisagata suwa tsukama kiso
+			kamiina shimoina yoshiki kamioono mashita
+			ena minokamo gujou mugi toki
+			katagata ikeda fuwa_mino azai echi
+			gamou kouka kurita takashima taga
+			kuji_kanto naka ibaraki kashima niihari
+			tsukuba katori chiba katsushika souma
+			musa isumi awa makuda ichihara
+			saitama adachi_kanto toshima_kanto tachibana tama
+			chichibu hiki hanzawa kamakura ashigara
+			aikou tsuru yamanashi yatsushiro koma_kai
+			tagata kamo_izu suntou fuji ihara
+			abe shida kitou shuuchi toyoda
+			fuchi hoi shitara kamo_mikawa hekikai
+			aichi niwa nakajima mie suzuka
+			ichishi watarai taki shima kitamuro
+			iga yoshino takaichi nara kuse
+			kyoto izumi osaka kawabe muko
+			kuwada funai ikaruga hikami kasa
+			yosa keta_tajima yabu futakata houmi
+			takakusa kume_houki aimi hino ou
+			oki izumo iishi nita nima
+			oochi naka_iwami mino kanoashi akashi
+			taka shikama akou shisou wake
+			joutou tsudaka kume mashima tomata
+			aita asakuchi katou_bicchuu kaya aka
+			ashida sera miyoshi eso nuka
+			kameshi toyota saeki yamagata takata
+			aki kuga kumage tsuno saba
+			yoshiki_suou asa toyoura ootsu abu
+			higashimuro minamimuro nishimuro hidaka kaisou
+			naga mitoyo aya miki awaji
+			nakata awa_shikoku naka_shikoku kaifu mima
+			miyoshi_shikoku nii ochi iyo ukena
+			kita_shikoku uwa aki_shikoku kami_shikoku nagaoka
+			tosa agawa takaoka hata kamiagata
+			shimoagata onga mikasa asakura hakata
+			saga higashimatsuura kishima takaki nishisonogi
+			higashisonogi nishimatsuura minamimatsuura mii kamitsuma
+			nakatsu mike usa kunisaki hayami
+			ooita amabe oono_bungo naoiri kusu
+			hita aso koushi tamana akita_kumamoto
+			mashiki yatsushiro_higo amakusa kuma ashikita
+			higashiusuki nishiusuki koyu naka_hyuuga nishimorokata
+			kitamorokata miyazaki minamimorokata soo kimotsuki
+			oosumi kuwabara hishikari gomu kumage_oosumi
+			satsuma kagoshima ibusuki izumi_satsuma	
 		}
-#------------------------ Western Europe by Syayan1 ----------------------------
+		include = "japanese_clan"
+		government = {
+			reforms = {
+				shogunate
+			}
+			laws = {
+				censorship = limited_censorship
+				maritime_law = protect_trade_routes
+				piracy_law = anti_piracy_policy
+			}
+		}
+		accepted_cultures = {
+			tougoku_culture
+			touhoku_culture
+			kyushu_culture
+		}
+		country_rank = rank_empire
+		capital = toshima_kanto
+		starting_technology_level = 4
+	}
+	
+	##Tohoku
+	ANU = {
+		type = pop
+
+		add_pops_from_locations = {
+			fukushima kamiiso kameda hiyama_hokkaido kayabe nishi
+			yamakoshi futoro setana shimamaki suttsu isoya iwanai furubira yoichi
+			abuta shiraoi chitose yuufutsu
+			sapporo ishikari yuubari sorachi atsuta uryuu nakakamikawa
+			saru niikappu shizunai urakawa samani
+			hiroo toubui kasai tokachi minamikamikawa katou minaminakagawa
+			shiranuka kushiro akan_loc akkeshi kawakami_hokkaido minamiabashiri ashoro
+			nemuro notsuke shibetsu hanasaki
+			shari abashiri tokoro monbetsu esashi_hokkaido souya rishiri
+			teshio kitanakagawa kitakamikawa tomamae rumoi
+			kunashiri etorofu furubetsu shana shibetoro uruppu shimushiru onnekotan paramushiru shumushu
+			guohuo boluohe kushunkotan nayoro
+		}
+
+		discovered_regions = {
+			japan_region
+		}
+
+
+		starting_technology_level = 1
+		include = "asia_tribe"
+		government = {
+			ruler = random
+		}
+	}
+	
+	MTU = { #Matsumae
+		own_control_core = {
+			fukushima
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = fukushima
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	HRO = { #Hirosaki
+		own_control_core = {
+			inaka hanawa hiraka_aomori
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = hanawa
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	MRO = { #Morioka
+		own_control_core = {
+			shimokita kamikita nukanobu kazuno
+			iwate kuji shimohei kitahei kamihei shiwa hienuki esashi waga isawa
+			kesen
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = iwate
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	AKA = { #Akita
+		own_control_core = {
+			kamiura hiyama hinai akita toshima yamamoto
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = akita
+		country_rank = rank_duchy
+		starting_technology_level = 4
+	}
+	
+	KMD = { #Kameda
+		own_control_core = {
+			yuri
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = yuri
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	HNJ = { #Honjo
+		own_control_core = {
+			yuza
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = yuza
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	SHI = { #Shinjo
+		own_control_core = {
+			murayama
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = murayama
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	SDA = { #Sendai
+		own_control_core = {
+			miyagi motoyoshi oshika tome kurihara kami kurokawa natori
+			uda_mutsu katta iwai
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = miyagi
+		country_rank = rank_kingdom
+		starting_technology_level = 4
+	}
+	
+	KMI = { #Kaminoyama
+		own_control_core = {
+			minamimogami
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = minamimogami
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	YON = { #Yonezawa
+		own_control_core = {
+			nishiokitama higashiokitama shinobu date_loc
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = higashiokitama
+		country_rank = rank_duchy
+		starting_technology_level = 4
+	}
+	
+	AIZ = { #Aizu
+		own_control_core = {
+			yama_jap kawanuma oonuma kitaaizu minamiaizu
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = higashiokitama
+		country_rank = rank_duchy
+		starting_technology_level = 4
+	}
+	
+	NIH = { #Nihonmatsu
+		own_control_core = {
+			iwase adachi asaka
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = adachi
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	SMN = { #Souma-Nakamura
+		own_control_core = {
+			namekata shineha
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = namekata
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	HAR = { #Miharu
+		own_control_core = {
+			tamura
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = tamura
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	SRK = { #Shirakawa
+		own_control_core = {
+			shirakawa
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = shirakawa
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	TAG = { #Tanagura
+		own_control_core = {
+			takano
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = takano
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+
 ###British Isles
 	ROE = { # Royalist England
 		own_control_core = {
@@ -445,7 +397,7 @@ countries = {
 
 		include = "catholic_monarchy"
 
-		starting_technology_level = 3
+		starting_technology_level = 5
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
@@ -550,7 +502,7 @@ countries = {
 
 		include = "catholic_monarchy"
 
-		starting_technology_level = 3
+		starting_technology_level = 5
 		government = {
 			type = republic
 			ruler = eng_robert_devereux
@@ -649,7 +601,7 @@ countries = {
 		}
 		
 		include = "expl_northern_europe"
-		starting_technology_level = 3
+		starting_technology_level = 5
 		include = "catholic_monarchy"
 		government = {
 			type = monarchy
@@ -740,6 +692,7 @@ countries = {
 
 		tolerated_cultures = { english }
 		country_rank = rank_county
+		starting_technology_level = 4
 	}
 	
 	PLE = { # The Pale
@@ -793,6 +746,7 @@ countries = {
 		capital = dublin
 		accepted_cultures = { anglo_irish }
 		tolerated_cultures = { irish }
+		starting_technology_level = 4
 	}
 	
 	IRE = { # Irish Confederate
@@ -847,6 +801,7 @@ countries = {
 		capital = dublin
 		accepted_cultures = { anglo_irish }
 		tolerated_cultures = { irish }
+		starting_technology_level = 4
 	}
 	
 ###Iberia
@@ -941,6 +896,7 @@ countries = {
 		tolerated_cultures = { 
 			sephardi
 		}
+		starting_technology_level = 5
 		
 	}
 
@@ -1007,6 +963,7 @@ countries = {
 		ai_advance_preference_tags = {
 			exploration = 5
 		}
+		starting_technology_level = 5
 	}
 	
 	ARA = {
@@ -1075,6 +1032,7 @@ countries = {
 			gascon
 			castilian
 		}
+		starting_technology_level = 5
 	}
 	
 	GRA = {
@@ -1113,8 +1071,8 @@ countries = {
 		tolerated_cultures = {
 			sephardi
 		}
-
 		capital = granada
+		starting_technology_level = 4
 	}
 
 	NAV = {
@@ -1170,6 +1128,7 @@ countries = {
 		country_rank = rank_kingdom
 		capital = pamplona
 		dynasty = de_evreux_dynasty
+		starting_technology_level = 4
 	}
 	
 	CAT = {
@@ -1186,6 +1145,7 @@ countries = {
 		}
 		capital = barcelona
 		country_rank = rank_county
+		starting_technology_level = 4
 	}
 	
 	ANR = {
@@ -1202,6 +1162,7 @@ countries = {
 		}
 		capital = andorra_la_vella
 		country_rank = rank_duchy
+		starting_technology_level = 4
 	}
 	
 ###French Region
@@ -1301,6 +1262,7 @@ countries = {
 		}
 		capital = paris
 		country_rank = rank_kingdom
+		starting_technology_level = 5
 	}
 	
 	PRO = {
@@ -1328,6 +1290,7 @@ countries = {
 
 		capital = marseille
 		country_rank = rank_county
+		starting_technology_level = 5
 	}
 	
 	DAU = {
@@ -1353,6 +1316,7 @@ countries = {
 
 		country_rank = rank_county
 		capital = grenoble
+		starting_technology_level = 5
 	}
 	
 	ORL = {
@@ -1376,6 +1340,7 @@ countries = {
 		}
 		country_rank = rank_duchy
 		capital = orleans
+		starting_technology_level = 5
 	}
 	
 	BRI = {
@@ -1416,6 +1381,7 @@ countries = {
 			breton
 			poitevin
 		}
+		starting_technology_level = 5
 	}
 	
 	AUV = {
@@ -1433,6 +1399,7 @@ countries = {
 			}
 		}
 		capital = vic_le_comte
+		starting_technology_level = 5
 	}
 	
 	BOU = {
@@ -1460,6 +1427,7 @@ countries = {
 
 		country_rank = rank_duchy
 		capital = bourbon
+		starting_technology_level = 5
 	}
 	
 	BRR = {
@@ -1479,6 +1447,7 @@ countries = {
 		}
 
 		capital = pau
+		starting_technology_level = 5
 	}
 	
 	FOI = {
@@ -1501,6 +1470,7 @@ countries = {
 		}
 
 		capital = foix
+		starting_technology_level = 5
 	}
 	
 	POI = {
@@ -1517,6 +1487,7 @@ countries = {
 		}
 		capital = parthenay
 		country_rank = rank_county
+		starting_technology_level = 5
 	}
 	
 	BUR = {
@@ -1556,6 +1527,7 @@ countries = {
 
 		capital = dijon
 		country_rank = rank_duchy
+		starting_technology_level = 5
 	}
 	
 	DOC = {
@@ -1572,6 +1544,7 @@ countries = {
 		}
 		capital = narbonne
 		country_rank = rank_duchy
+		starting_technology_level = 5
 	}
 	
 	BNV = {
@@ -1588,6 +1561,7 @@ countries = {
 		}
 		capital = saint_jean_pied_de_port
 		country_rank = rank_kingdom
+		starting_technology_level = 5
 	}
 
 ###Spanish Italy
@@ -1603,6 +1577,7 @@ countries = {
 		}
 		capital = naples
 		country_rank = rank_kingdom
+		starting_technology_level = 4
 	}
 	
 	SIC = {
@@ -1614,6 +1589,7 @@ countries = {
 		}
 		capital = palermo
 		country_rank = rank_kingdom
+		starting_technology_level = 4
 	}
 	
 	SAR = {
@@ -1625,6 +1601,7 @@ countries = {
 		}
 		capital = cagliari
 		country_rank = rank_kingdom
+		starting_technology_level = 4
 	}
 	
 ###Scandinavia
@@ -1656,6 +1633,7 @@ countries = {
 		}
 		capital = stockholm
 		country_rank = rank_kingdom
+		starting_technology_level = 5
 	}
 	
 	FIN = {
@@ -1672,6 +1650,7 @@ countries = {
 		}
 		capital = abo
 		country_rank = rank_duchy
+		starting_technology_level = 5
 	}
 	
 	NOR = {
@@ -1688,6 +1667,7 @@ countries = {
 		}
 		capital = oslo
 		country_rank = rank_kingdom
+		starting_technology_level = 5
 	}
 	
 	DAN = {
@@ -1700,7 +1680,115 @@ countries = {
 		}
 		capital = kobenhavn
 		country_rank = rank_kingdom
+		starting_technology_level = 5
 	}
-	
+
+###Iroquoi Tribes
+	#Mohawk/Kanien'kehaka
+	KKA = {
+
+		own_control_core = {
+			canajoharie teionontatatie oneonta schenectady saratoga ticonderoga kawenote oronia tsiietsenhtha oskennonton itekiatonhniarikon
+		}
+
+		starting_technology_level = 1
+		include = "haudenosaunee_tribe"
+		include = "expl_amerindian_east_coast"
+		government = {
+			ruler = random
+		}
+		capital = canajoharie
+
+		currency_data = {
+			gold = 100
+			stability = 33
+			tribal_cohesion = 90
+		}
+	}
+
+	#Oneida/Onyotaaka
+	ONY = {
+
+		own_control_core = {
+			onenioteke oneniote teiehonwahkhkwatha niiohehsane oswegatchie nikahionhwakowa
+		}
+
+		starting_technology_level = 1
+		include = "haudenosaunee_tribe"
+		include = "expl_amerindian_east_coast"
+		government = {
+			ruler = random
+		}
+		capital = onenioteke
+
+		currency_data = {
+			gold = 100
+			stability = 33
+			tribal_cohesion = 90
+		}
+	}
+	#Onondaga/Onondagega
+	ONO = {
+
+		own_control_core = {
+		tsikahiotsisto otsiningo oswego
+		}
+
+		starting_technology_level = 1
+		include = "expl_amerindian_east_coast"
+		include = "haudenosaunee_tribe"
+		government = {
+			ruler = random
+		}
+		capital = tsikahiotsisto
+
+		currency_data = {
+			gold = 100
+			stability = 33
+			tribal_cohesion = 90
+		}
+	}
+	#Cayuga/Gayogohono
+	GYO = {
+
+		own_control_core = {
+		skaniatares assorodus gahato
+		}
+
+		starting_technology_level = 1
+		include = "expl_amerindian_east_coast"
+		include = "haudenosaunee_tribe"
+		government = {
+			ruler = random
+		}
+		capital = skaniatares
+
+		currency_data = {
+			gold = 100
+			stability = 33
+			tribal_cohesion = 90
+		}
+	}
+	#Seneca/Onondowaga
+	ONN = {
+
+		own_control_core = {
+		canadaigua geneseo tsonentsiio irondequoit
+		}
+
+		starting_technology_level = 1
+		include = "haudenosaunee_tribe"
+		include = "expl_amerindian_east_coast"
+		government = {
+			ruler = random
+		}
+		capital = canadaigua
+
+		currency_data = {
+			gold = 100
+			stability = 33
+			tribal_cohesion = 90
+		}
+	}
 }
 }
