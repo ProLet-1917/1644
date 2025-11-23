@@ -635,7 +635,9 @@ countries = {
 			#from SBL
 			kirkcudbright kenmure stranraer ayr perth edinburgh stirling roxburgh linlithgow duns dumfries lanark strathearn cupar
 		}
-
+		own_control_conquered = {
+			orkney shetland
+		}
 		include = "expl_northern_europe"
 		starting_technology_level = 3
 		include = "catholic_monarchy"
@@ -1573,5 +1575,114 @@ countries = {
 		capital = saint_jean_pied_de_port
 		country_rank = rank_kingdom
 	}
+
+###Spanish Italy
+	NAP = {
+		own_control_core = {
+			naples caserta gaeta nola piedimonte sora venafro salerno campagna salacon vallo avellino ariano benevento santangelo
+			chieti lanciano vasto aquila atri celano cittaducale csantangelo sulmona teramo lake_fucine bojano isernia larino trivento
+			bari altamura andria barletta monopoli foggia bovino lucera manfredonia rotondo sansevero lake_varano lecce brindisi francavilla gallipoliita martinafr taranto
+			potenza acerenza lagonegro matera melfi montepeloso santarcangelo catanzaro cotrone gerace monteleone nicastro palmi reggiocal cosenza cassano castrovillari scalea paola rossano
+		}
+		government = {
+			type = monarchy
+		}
+		capital = naples
+		country_rank = rank_kingdom
+	}
+	
+	SIC = {
+		own_control_core = {
+			messina catania mistretta nicosiasic patti piazza mount_etna mount_stromboli girgenti bivona caltanisetta cefalu sciacca termini palermo corleone mazara salemi trapani pantelleria lampedusa syracuse caltagirone malta modica noto terranovasic
+		}
+		government = {
+			type = monarchy
+		}
+		capital = palermo
+		country_rank = rank_kingdom
+	}
+	
+	SAR = {
+		own_control_core = {
+			oristano ales sorgono terralba cagliari tratalias villa_di_chiesa isili muravera seddori tortoli terranova_pausania orosei posada tempiopausania sassari alghero bosa castelsardo macomer bitti ozieri thiesi
+		}
+		government = {
+			type = monarchy
+		}
+		capital = cagliari
+		country_rank = rank_kingdom
+	}
+	
+###Scandinavia
+	SWE = {
+		own_control_core = {
+			linkoping soderkoping norrkoping alvastra vadstena vattern kalmar tjust sevede handbord kinda jonkoping oland skara hjo tiveden vartofta utlandet lodose ekholm falkoping allingsas bogesund lidkoping skene vaxjo vallsjo vetlanda albo konga uppvidinge ljungby trollaborg waestbo slite visby hoborg dalaborg amal vedbo
+			stockholm norrtalje enkoping uppsala kastelholm tierp heby nykoping kolmarden strangnas oppunda sodertalje malaren hjalmaren_lake arboga vasteras nora sala skinskatteberg linde grythyttan orebro riseberga goksholm varnum tingvalla nas nordmark gillberg farnebo fryksdal josse vanern avesta falun leksand grange malung mora hedemora orsa soderbarke stora_tuna floda siljan gefle hedesunda hamrange ockelbo
+			hudiksvall alfta soderala hogdal havero selanger
+			harnosand solatunum ramsele sjalevad anundsjo grundsunda
+			asele lycksele arvidsjaur volgsjo stensele tarna ortrask
+			umea vindeln skelleftea tornea bygdea pitea lulea ranea gratesk hienatiemi branna byske bodebyn alvsby pajala
+			akkajaur arjeplog silbojock sorsele
+			storavan uddjaur socksjock jokkmokk kvikkjock porjus gellivaara sarek
+			nikkaluokta torne_trask vastenjaure akkajaure abisko raunala 
+			korpilombo juckasjarvi
+			#Baltic Territories
+			korela kurkijoki konevets joensuu sordavala vartsila ilomantsi lieksa juuka salmi loimola mohko suojarvi yanis_jarvi lake_orivesi lake_suoyarvi lake_otradnoye hoytiainen pielinen viinijarvi koitere nurmes
+			oreshek lisino markovo martyshkino neva toksovo 
+			koporye ivangorod khotchino moloskovitsa soikino yama
+			valjala kuressaare tallinn narva padise paide rakvere rapla toolse vasknarva cesis aluksne gulbene rauna valmiera vilaka jekabpils kraslava makonkalns pietalava rezekne lake_lubans lake_razna parnu karksi poltsamaa saarde suure_jaani viljandi lake_vorts hapsal kaina lihula st_martin daugavpils aizkraukle selpils riga koknese limbazi salaspils sigulda straupe tartu valka vastseliina vonnu
+		}
+
+		government = {
+			type = monarchy
+		}
+		capital = stockholm
+		country_rank = rank_kingdom
+	}
+	
+	FIN = {
+		own_control_core = {
+			korsholm koppo pedersore storkyro karleby kaustby lappo vora abo nystad poytis sauvo helsinge ekenas sjundea porvoo liljendal ikalis raumo bjorneborg hvittis sastmola birkala sastamala orivesi nasisalki hollola lohja tavastehus janakkala forssa itis jyvaskyla jamsa saarijarvi viitasaari laukas sysma paijanne jaasjarvi mikkeli olofsborg heinola kangasniemi ristiina joroinen kuopio idensalmi rautavaara savonranta pihlajavesi haukivesi puula kyyvesi kymi_fi vyborg villmanstrand veckelax elimaki vederlax valkeasaari kyyrola beryozovskoye heinjoki jaskis pyhajarvi puruvesi saima
+			paltamo kajana sotkamo kuhmo suomussalmi kuusamo
+			salla kemijarvi korvala oulujarvi yli_kitka muojarvi
+			enare sodankyla savukoski ivalo utsjoki enare_trask
+			simo uleaborg brahestad utajarvi siikalatva taivalkoski kuivaniemi ranua pudasjarvi posio
+			mourionska kiemi rovaniemi kittila nunnanen enontakis kasivarren
+		}
+		government = {
+			type = monarchy
+		}
+		capital = abo
+		country_rank = rank_duchy
+	}
+	
+	NOR = {
+		own_control_core = {
+			idre konghalla uddevalla stromstad hornborg borg halden moss trogstad tonsberg skien sande grenland stavanger ryfylke suledal haugalandet jaeren flekkefjord sirudal otredal lindesnes oddernes oyestad sondeled amli kongsberg ringerike hallingdal numedal sigdal bragernes bergen fana kvinnherad ullensvang moster eidfjord nordhordland voss eid stryn sunnfjord sogndal aurland vik laerdal oslo ski eidsvoll vardal lillehammer valdres otta imsdalen hedmarksvidda hamar kongsvinger elverum glommadal trysil amot tynset mjosa
+			nidaros roros stjordal oppdal orkdal skaun storen holtalen meraker alvdal levanger namdal orland snasa lierne steinkjer molde fosna sunndal rauma sunnmore borgund stordal tofte troms trondenes senja bardodalen raisa hammerdal offerdal berg froso ragunda sveg hede oviken storsjon bodo birndal hattfjelldal rana alstahaug gildeskal steigen langenes lofotr hamaroy ofoti kautokeino varanger vardo deatnu porsanger karasjok hammerfest alta kirkenes lebesby
+		}
+		own_control_conquered = {
+			holar husavik akureyri blonduos torshofn vopnafjordur egilsstadir seydisfjordur reydarfjordur holmur kirkjubaejar borgarnes olavsvik isafjordur hvamstangi skalholt selfoss keflavik reikjavik thingvellir hvolsvollur vattnajokull icelandic_highlands eyjafjallajokull
+			torshavn
+		}
+		government = {
+			type = monarchy
+		}
+		capital = oslo
+		country_rank = rank_kingdom
+	}
+	
+	DAN = {
+		own_control_core = {
+			ribe haderslev aabenraa tonder randers viborg aalborg ars limfjorden bolling ringkobing holstebro_lundenes varde kolding aarhus grindsted silkeborg kalo thisted skagen hjorring roskilde ringsted kalundborg helsingor hammershus kobenhavn slagelse vordingborg odense navskov falster assens svendborg
+			helsingborg lund malmo gladsax osby asbo varberg laholm halmstad kungsbacka ronneby bregne solvesborg
+		}
+		government = {
+			type = monarchy
+		}
+		capital = kobenhavn
+		country_rank = rank_kingdom
+	}
+	
 }
 }

@@ -14,7 +14,6 @@ mng_1644.1 = { #南迁之议
     	historical_option = yes
 		name = mng_1644.1.a  #坚守
     	custom_tooltip = mng_1644.1.tt1
-		set_variable = { name = mng_move_to_nanjing value = 0 }
 		character:chi_tang_tong = { move_country = c:CSH }
     	if = {
 			limit = { tag = MNG }
@@ -80,12 +79,14 @@ mng_1644.1 = { #南迁之议
 			force_recalc_country_active_status = root
 		}
 	}
-
   	option = {
     	name = mng_1644.1.b  #南渡
     	custom_tooltip = mng_1644.1.tt2
     	set_capital = location:shangyuan
-		set_variable = { name = mng_move_to_nanjing value = 1 }
+		set_variable = mng_move_to_nanjing 
+		c:WSG = {
+			trigger_event_silently = wsg_1644_choice.3
+		}
     	if = {
 			limit = { tag = MNG }
 			location:dadu ?= {
