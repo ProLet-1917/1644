@@ -323,6 +323,8 @@ countries = {
 			dusseldorf remscheid siegburg solingen schleiden
 			amberg eschenbach neumarkt roding sulzbach #Oberpfalz
 			tirschenreuth cham
+			beilngries
+			dillingen
 		}
 
 		starting_technology_level = 3
@@ -640,7 +642,7 @@ countries = {
 		capital = tecklenburg
 	}
 
-	OSN = {	#Osnabr  ck
+	OSN = {	#Osnabrck
 		own_control_core = {
 			osnabruck bersenbruck
 		}
@@ -857,7 +859,8 @@ countries = {
 		capital = heidelberg
 		dynasty = wittelsbach_dynasty
 		government = {
-
+			ruler = ubv_maximilian_von_wittelsbach
+			heir = ubv_ferdinand_maria_von_wittelsbach			
 		}
 
 		accepted_cultures = {
@@ -1024,7 +1027,8 @@ countries = {
 			merano sterzing villandro bolzano silandro
 			lienz bruneck kufstein bregenz feldkirch bludenz wertingen hohenberg freiburg
 			belfort ferrette waldshut
-			kitzbuhel
+			kitzbuhel horb villingen stockach ensisheim
+			krumbach gunzburg erbach_swabia
 		}
 
 		starting_technology_level = 3
@@ -1099,7 +1103,7 @@ countries = {
 
 	TNT = { #Trento
 		own_control_core = {
-			cavalese cles trento
+			cavalese cles trento rovereto
 		}
 
 		own_control_integrated = {
@@ -1346,7 +1350,7 @@ countries = {
 
 	FRE = {	#Freising
 		own_control_core = {
-			freising
+			freising garmisch
 			waidhofen skofja_loka 
 		}
 
@@ -1393,7 +1397,1120 @@ countries = {
 		country_rank = rank_county
 	}
 
+	LGC = { #Legnica
+		own_control_core = {
+			legnica zlotoryja #Duchy of Legnica
+			wolow
+			olawa brzeg niemcza kluczbork
+		}
 
+		starting_technology_level = 3
+		include = "expl_eastern_europe"
+		include = "eastern_european_catholic_monarchy_no_coast"
+		include = "eastern_european_catholic"
+		country_rank = rank_duchy
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = lgc_jerzy_rudolf_piast
+			ruler_term = {	character = lgc_jerzy_rudolf_piast start_date = 1644.1.1 regnal_number = 1	}
+
+			regnal_numbers = {
+				name_henry = 5
+				name_boleslav = 3
+			}
+		}
+
+		tolerated_cultures = {
+			german_silesian
+		}
+
+		capital = legnica
+		dynasty = piast_dynasty
+	}
+
+	TES = {	#Tesin
+		own_control_core = {
+			tesin bielsko #Duchy of Cieszyn
+		}
+		starting_technology_level = 3
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		country_rank = rank_duchy
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+
+			ruler = tes_elzbieta_lukrecja_piast
+			ruler_term = {	character = tes_elzbieta_lukrecja_piast start_date = 1644.1.1 	}
+
+			regnal_numbers = {
+				Miszko = 1
+				Kazimir = 1
+			}
+		}
+
+		tolerated_cultures = {
+			german_silesian
+			moravian
+		}
+
+		capital = tesin
+		dynasty = piast_dynasty
+	}
+
+	STE = {	#Pomerania #PU with Sweden
+		own_control_core = {
+			stettin ueckermunde kamien nowogard goleniow
+			stralsund ribnitz grimmen rugen swinousjcie wolgast anklam demmin
+			koszalin bialogard gryfia_gora kolobrzeg swidwin resko bobolice nowoszczecin
+			slupsk lebork bytow miastko slawno lebsko_lake
+			pyrzyce szadzko gryfow
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		country_rank = rank_duchy
+		government = {
+
+			ruler = swe_kristina_vasa
+
+			regnal_numbers = {
+				Barnim = 1
+			}
+		}
+
+		tolerated_cultures = {
+			eastern_pomeranian
+			polabian
+			western_pomeranian
+		}
+
+		capital = stettin
+		dynasty = gryf_dynasty
+	}
+
+	MKL = { #Mecklenburg
+		own_control_core = {
+			hagenow grevesmuhlen wismar doberan grabow butzow
+			parchim
+		}
+
+		starting_technology_level = 3
+		include = "catholic_monarchy"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = mkl_adolf_friedrich_mecklenburg
+
+			ruler_term = { character = mkl_adolf_friedrich_mecklenburg start_date = 1644.1.1 regnal_number = 1 }
+
+			regnal_numbers = {
+				name_pribislav = 2
+				name_nicholas = 3
+				name_henry.name_borwin = 3
+				name_john = 3
+				name_henry = 2
+				name_albert = 2
+			}
+		}
+
+		tolerated_cultures = {
+			polabian
+		}
+
+		country_rank = rank_county
+		capital = wismar
+		dynasty = mecklenburg_dynasty
+	}
+
+	SWR = { #Schwerin #PU with Mecklenburg
+		own_control_core = {
+			schwerin
+		}
+
+		starting_technology_level = 3
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = mkl_adolf_friedrich_mecklenburg
+
+			regnal_numbers = {
+				Helmold = 3
+				name_henry = 3
+			}
+		}
+
+		tolerated_cultures = {
+			polabian
+		}
+
+		capital = schwerin
+		dynasty = schwerin_dynasty
+	}
+
+	WRN = { #Waren
+		own_control_core = {
+			gustrow malchin waren neubrandenburg strelitz malchow
+			rostock
+			ratzeburg
+		}
+
+		starting_technology_level = 3
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+		
+			ruler = gsw_gustav_adolf_von_mecklenburg
+
+			regnal_numbers = {
+				name_nicholas = 2
+				name_bernard = 1
+				name_henry = 2
+				name_john = 2
+			}
+		}
+
+		tolerated_cultures = {
+			polabian
+		}
+
+		country_rank = rank_county
+		capital = waren
+		dynasty = mecklenburg_dynasty
+	}
+
+	LUB = {	#Lübeck
+		own_control_core = {
+			lubeck
+		}
+
+		starting_technology_level = 3
+
+		capital = lubeck
+		include = "catholic_free_city"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			polabian
+		}
+
+		country_rank = rank_county
+
+	}
+
+	HPL = { #Holstein-Plön
+		own_control_core = {
+			kiel heiligenhafen plon
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = hpl_friedrich_von_oldenburg
+
+			ruler_term = { character = hpl_friedrich_von_oldenburg start_date = 1314.6.7 regnal_number = 3 }
+
+			regnal_numbers = {
+				name_gerard = 4
+				name_john = 3
+				name_adolf = 6
+			}
+		}
+
+		tolerated_cultures = {
+			polabian
+		}
+
+		country_rank = rank_county
+		capital = kiel
+		dynasty = schauenburg_dynasty
+	}
+
+	LBB = {	#Lübeck Bishopry
+		own_control_core = {
+			eutin
+		}
+
+		starting_technology_level = 3
+		government = {
+			ruler = lbb_johann_x_von_oldenburg
+		}
+
+		capital = eutin
+		include = "catholic_bishopric"
+		include = "expl_northern_europe"
+
+		tolerated_cultures = {
+			polabian
+		}
+
+		country_rank = rank_county
+	}
+
+	HTR = { #Holstein #PU with Denmark
+		own_control_core = {
+			heide steinburg rendsburg stormarn segeberg pinneberg
+			haderslev flensburg
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = random
+
+			regnal_numbers = {
+				name_gerard = 3
+				name_henry = 1
+				name_adolf = 7
+			}
+		}
+
+		country_rank = rank_county
+		capital = heide
+		dynasty = schauenburg_dynasty
+	}
+
+	SLV = { #Slesvig #Puppet of Denmark
+		own_control_core = {
+			aabenraa tonder
+			slesvig eckernforde amrum_island_wasteland husum
+		}
+		own_control_integrated = {
+
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy"
+		include = "expl_northern_europe"
+		government = {
+
+			ruler = slv_ernst_gunther_von_oldernburg
+
+			ruler_term = {	character = slv_ernst_gunther_von_oldernburg start_date = 1644.1.1 regnal_number = 1 }
+
+			regnal_numbers = {
+				name_olaf = 1
+				name_canute = 2
+				name_magnus = 1
+				name_valdemar = 5
+				name_boris = 1
+				name_christopher = 1
+				name_eric = 2
+				name_abel = 1
+				name_gerard = 1
+			}
+
+		}
+
+		tolerated_cultures = {
+			danish
+		}
+
+		country_rank = rank_duchy
+		capital = slesvig
+		dynasty = oldernburg_dynasty
+	}
+
+	LEU = {	#Leuchtenberg
+		own_control_core = {
+			leuchtenberg
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "german_principality"
+		government = {
+			regnal_numbers = {
+				name_ulrick = 1
+			}
+			reforms = {
+				landgraviate
+			}
+			ruler = leu_maximilian_adam_von_leuchtenberg
+			ruler_term = {	 character = leu_maximilian_adam_von_leuchtenberg start_date = 1644.1.1 regnal_number = 1 }
+		}
+
+		tolerated_cultures = {
+			east_franconian
+		}
+
+		country_rank = rank_county
+		capital = leuchtenberg
+		dynasty = leuchtenberg_dynasty
+	}
+
+	REG = {	#Regensburg
+		own_control_core = {
+			regensburg
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_free_city_no_coast"
+		include = "expl_northern_europe"
+		capital = regensburg
+		government = {
+			ruler = random
+		}
+
+		country_rank = rank_county
+	}
+
+	AUG = {	#Augsburg
+		own_control_core = {
+			augsburg sonthofen
+		}
+
+		starting_technology_level = 3
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_free_city_no_coast"
+		include = "expl_northern_europe"
+		capital = augsburg
+		government = {
+			ruler = random
+		}
+
+		country_rank = rank_county
+
+		tolerated_cultures = {
+			high_alemannic
+		}
+
+		country_rank = rank_county
+	}
+
+	UBV = {	#Bavaria
+		own_control_core = {
+			munich ebersberg tolz andechs weilheim schongau landsberg indersdorf wasserburg parsberg
+			pfaffenhofen friedberg ingolstadt neuburg_an_der_donau burglengenfeld
+			landshut scharding ried braunau traunstein griesbach kelheim eggenfelden
+			landau straubing bavaria_regen burghausen
+			erding rosenheim mallersdorf rottenburg
+			grafenau miesbach
+			illereichen
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		country_rank = rank_duchy
+		government = {
+			ruler = ubv_maximilian_von_wittelsbach
+			heir = ubv_ferdinand_maria_von_wittelsbach
+
+			ruler_term = { character = ubv_maximilian_von_wittelsbach start_date = 1597.1.1 regnal_number = 1 }
+
+			regnal_numbers = {
+				name_stephen = 1
+				name_henry = 14
+				name_otto = 4
+				name_louis = 4
+				name_rudolf = 1
+				name_leopold = 1
+				name_welf = 2
+				name_conrad = 2
+				name_berthold = 1
+				name_everard = 1
+				name_arnulf = 1
+				name_leopold = 1
+			}
+
+			laws = {
+				royal_court_customs_law = itinerant_court_policy
+			}
+		}
+
+		tolerated_cultures = {
+			swabian
+			upper_palatine
+		}
+
+		capital = munich
+		dynasty = wittelsbach_dynasty
+	}
+
+	BRC = {	#Berchtesgaden
+		own_control_core = {
+			berchtesgaden
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			regnal_numbers = {
+				name_henry = 4
+				name_adolf = 1
+			}
+			reforms = {
+				prince_bishopric_reform
+			}
+			ruler = brc_adolf_i
+		}
+
+		country_rank = rank_county
+		capital = berchtesgaden
+	}
+
+	EIC = {	#Eichstaett
+		own_control_core = {
+			eichstatt
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = eic_marquard_zu_castell
+		}
+
+		tolerated_cultures = {
+			danube_bavarian
+		}
+
+		country_rank = rank_county
+		capital = eichstatt
+	}
+
+	WEI = {	#Weissenburg
+		own_control_core = {
+			weissenburg
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+		tolerated_cultures = {
+			danube_bavarian
+		}
+
+		country_rank = rank_county
+		capital = weissenburg
+	}
+
+	NUR = {	#Nuremberg
+		own_control_core = {
+			nuremberg
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+		tolerated_cultures = {
+			danube_bavarian
+		}
+		country_rank = rank_county
+		capital = nuremberg
+	}
+
+	ANS = {	#Ansbach
+		own_control_core = {
+			ansbach neustadt schwabach
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+			ruler = ans_albrecht_von_hohenzollern
+
+			ruler_term = { character = ans_albrecht_von_hohenzollern start_date = 1644.1.1 regnal_number = 3 }
+
+			regnal_numbers = {
+				name_frederick = 4
+				name_conrad = 1
+				name_john = 2
+			}
+		}
+
+		tolerated_cultures = {
+			upper_palatine
+		}
+
+		country_rank = rank_county
+		capital = ansbach
+		dynasty = hohenzollern_dynasty
+	}
+
+	ROT = {	#Rothenburg
+		own_control_core = {
+			rothenburg
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = rothenburg
+	}
+
+	RVA = { #Ravensburg
+		own_control_core = {
+			ravensburg
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			swabian
+		}
+
+		country_rank = rank_county
+		capital = ravensburg
+	}
+
+	UBL = { #Überlingen
+		own_control_core = {
+			uberlingen
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			swabian
+		}
+
+		country_rank = rank_county
+		capital = uberlingen
+	}
+
+	KNZ = {	#Konstanz
+		own_control_core = {
+			konstanz
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_free_city_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			swabian
+		}
+
+		country_rank = rank_county
+		capital = konstanz
+	}
+
+	WDB = { #Waldburg
+		own_control_core = {
+			waldburg saulgau
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			swabian
+		}
+
+		country_rank = rank_county
+		capital = waldburg
+	}
+
+	BIB = { #Biberach
+		own_control_core = {
+			biberach
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = biberach
+	}
+
+	MEM = {	#Memmingen
+		own_control_core = {
+			memmingen
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_free_city_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = memmingen
+	}
+
+	KMP = {	#Kempten
+		own_control_core = {
+			kempten
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = kempten
+	}
+
+	OET = {	#Oettingen
+		own_control_core = {
+			oettingen
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+			regnal_numbers = {
+				name_louis = 4
+			}
+			ruler = oet_ernst_i_von_oettingen
+		}
+
+		tolerated_cultures = {
+			east_franconian
+			rhine_franconian
+		}
+
+		country_rank = rank_county
+		capital = oettingen
+		dynasty = oettingen_dynasty
+	}
+
+	WUR = {	#Württemberg
+		own_control_core = {
+			stuttgart goppingen sigmaringen welzheim backnang urach nagold riedlingen oberndorf calw
+			vaihingen heidenheim tubingen
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+			regnal_numbers = {
+				name_ulrick = 2
+				name_everard = 7
+			}
+			ruler = wur_everard_vii_wurttemberg
+		}
+
+		tolerated_cultures = {
+			rhine_franconian
+		}
+
+		country_rank = rank_duchy
+		capital = stuttgart
+		dynasty = wurttemberg_dynasty
+	}
+
+	BEU = {	#Beuren
+		own_control_core = {
+			oberdorf
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = oberdorf
+	}
+
+	ULM = {	#Ulm
+		own_control_core = {
+			ulm helfenstein
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_free_city_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = ulm
+	}
+
+	HOH = {  # Hohenzollern (South Germany)
+		own_control_core = {
+			balingen
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "expl_northern_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "german_principality"
+		government = {
+
+			ruler = hoh_friedrich_v_von_hohenzollern
+
+			ruler_term = { character = hoh_friedrich_v_von_hohenzollern start_date = 1644.1.1 regnal_number = 5 }
+
+			regnal_numbers = {
+				name_burchard = 2
+				name_friedrich = 5
+				name_godfrey = 1
+			}
+		}
+
+		
+		country_rank = rank_county
+		capital = balingen
+	}
+
+	FUR = {  # Fürstenberg
+		own_control_core = {
+			furstenberg waldsee bonndorf
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "expl_northern_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "german_principality"
+		government = { ruler = random }
+		country_rank = rank_county
+		capital = furstenberg
+	}
+
+	ELL = {  # Ellwangen
+		own_control_core = {
+			ellwangen
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "expl_northern_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "german_principality"
+		government = { ruler = random }
+		country_rank = rank_county
+		capital = ellwangen
+	}
+
+	DNB = {	#Dinkelsbühl
+		own_control_core = {
+			dinkelsbuhl
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			swabian
+		}
+
+		country_rank = rank_county
+		capital = dinkelsbuhl
+	}
+
+	OFB = { #Offenburg
+		own_control_core = {
+			offenburg
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = offenburg
+	}
+
+	ALS = { #Strasbourg
+		own_control_core = {
+			zabern oberkirch benfeld strasbourg
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = pss_leopold_wilhelm_von_habsburg
+
+			ruler_term = { character = pss_leopold_wilhelm_von_habsburg start_date = 1644.1.1 regnal_number = 1 }
+
+			reforms = {
+				prince_bishopric_reform
+			}
+
+			regnal_numbers = {
+				name_amando = 1
+				#Justinus = 1
+				#Maximinus = 1
+				name_valentine = 1
+				#Solarius = 1
+				#Arbogast = 1
+				name_ansoald = 1
+				#Biulfus = 1
+				name_magnus = 1
+				name_aldus = 1
+				#Garoinus = 1
+				#Landbertus = 1
+				#Rotharius = 1
+				#Rodobaldus = 1
+				#Magnebertus = 1
+				#Lobiolus = 1
+				#Gundoaldus = 1
+				#Udo = 4
+				#Widegern = 1
+				#Wandalfried = 1
+				#Heddo = 1
+				#Ailidulf = 1
+				#Remigius = 1
+				#Rachio = 1
+				#Erlehard = 1
+				#Adalog = 1
+				name_bernard = 1
+				#Rathold = 1
+				name_reginar = 1
+				name_waleram = 1
+				name_hubert = 1
+				name_godfrey = 1
+				#Richwin = 1
+				#Ruthard = 1
+				#Erkanbald = 1
+				#Wilderod = 1
+				#Alawich = 2
+				name_werner = 2
+				name_william = 1
+				#Wizelin = 1
+				name_theobald = 1
+				name_otto = 1
+				name_baldwin = 1
+				name_conon = 1
+				name_bruno = 2
+				name_everard = 1
+				#name_gebhard = 1
+				name_burchard = 1
+				name_rudolf = 1
+				name_conrad = 3
+				name_henry = 4
+				name_berthold = 2
+				name_walter = 1
+				name_frederick = 1
+				name_john = 1
+			}
+		}
+
+		tolerated_cultures = {
+			high_alemannic
+		}
+
+		country_rank = rank_county
+		capital = strasbourg
+	}
+
+	SCF = { #Schaffhausen
+		own_control_core = {
+			schaffhausen
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			swabian
+		}
+
+		country_rank = rank_county
+		capital = schaffhausen
+	}
+
+	HAG = {  # Haguenau
+		own_control_core = {
+			haguenau
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "expl_northern_europe"
+		include = "catholic_german_republic_no_coast"
+		government = { ruler = random }
+		country_rank = rank_county
+		capital = haguenau
+	}
+
+	LIC = {  # Lichtenberg (South Germany)
+		own_control_core = {
+			lichtenberg
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "expl_northern_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "german_principality"
+		government = {
+			ruler = lic_feiedrich_casimir_von_lichtenberg
+
+			ruler_term = { character = lic_feiedrich_casimir_von_lichtenberg start_date = 1644.1.1 regnal_number = 1 }
+
+			regnal_numbers = {
+				name_louis = 2
+				name_henry = 2
+				name_john = 2
+			}
+		}
+		country_rank = rank_county
+		capital = lichtenberg
+	}
+
+	CFC = {  # Colmar
+		own_control_core = {
+			colmar
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "expl_northern_europe"
+		include = "catholic_german_republic_no_coast"
+		government = { ruler = random }
+		country_rank = rank_county
+		capital = colmar
+	}
+
+	MUR = {  # Murbach
+		own_control_core = {
+			murbach
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "expl_northern_europe"
+		include = "catholic_german_bishopric_no_coast"
+		government = { ruler = random }
+		country_rank = rank_county
+		capital = murbach
+	}
+
+	MUL = {  # Mulhouse
+		own_control_core = {
+			mulhouse
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "expl_northern_europe"
+		include = "catholic_german_republic_no_coast"
+		government = { ruler = random }
+		country_rank = rank_county
+		capital = mulhouse
+	}
+
+	BDE = {	#Baden
+		own_control_core = {
+			baden durlach hachberg mullheim 
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+			regnal_numbers = {
+				name_herman = 9
+				name_frederick = 2
+			}
+			ruler = bde_wilhelm_i_von_zahringen
+			ruler_term = {	 character = bde_wilhelm_i_von_zahringen start_date = 1644.1.1 regnal_number = 1 }
+
+
+			reforms = {
+				margraviate
+			}
+		}
+
+		tolerated_cultures = {
+			rhine_alemannic
+		}
+
+		country_rank = rank_county
+		capital = baden
+		dynasty = zahringen_dynasty
+	}
 
 
 }
