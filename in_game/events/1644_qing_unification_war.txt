@@ -26,16 +26,18 @@ qng_1644_unification.1 = {
 			limit = {
 				tag = QNG
 			}
-
-			# 吴三桂抉择（清军入关后触发）
+			# 吴三桂抉择（触发要求：李自成不进京、崇祯不南迁）
 			c:WSG ?= {
 				if = {
 					limit = {
 						exists = this
 						NOT = { has_variable = wsg_1644_chosen_side }
+						NOT = { c:CSH = { has_variable = csh_attack_beijing } }
+						NOT = { c:MNG = { has_variable = mng_move_to_nanjing } }
 					}
 					trigger_event_non_silently = {
-						id = wsg_1644_choice.1
+						id = wsg_1644_choice.4
+						days = 5
 					}
 				}
 			}
@@ -56,7 +58,11 @@ qng_1644_unification.1 = {
 							type = casus_belli:cb_claim_mandate_of_heaven
 						}
 						if = { 
-							limit = { capital = location:dadu }
+							limit = { 
+								scope:target_csh = {
+									capital = location:dadu
+								}
+							}
 							declare_war_with_cb = {
 								target = scope:target_csh
 								type = casus_belli:cb_claim_mandate_of_heaven
@@ -64,10 +70,9 @@ qng_1644_unification.1 = {
 							}
 						}
 						custom_tooltip = qng_1644_unification_gain_cb_tt
-
 					}
 				}
-			}
+		}
 			c:MNG ?= {
 				save_scope_as = target_mng
 				if = {
@@ -85,7 +90,11 @@ qng_1644_unification.1 = {
 							type = casus_belli:cb_claim_mandate_of_heaven
 						}
 						if = { 
-							limit = { capital = location:dadu }
+							limit = {
+								scope:target_mng = {
+									capital = location:dadu
+								}
+							}
 							declare_war_with_cb = {
 								target = scope:target_mng
 								type = casus_belli:cb_claim_mandate_of_heaven
