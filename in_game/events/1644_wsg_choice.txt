@@ -147,7 +147,7 @@ wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州、固守
 				}
 				trigger_event_silently = {
 					id = csh_1644_unification.4 #吴三桂、唐通献土
-					days = 7
+					days = 15
 				}
 			}
 		}
@@ -194,6 +194,19 @@ wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州、固守
 			limit = { owner = c:MNG }
 			change_location_owner = c:WSG
 			change_control = control_ultimate_bonus
+		}
+		set_capital = penglai
+		location:qiantun = {
+			change_location_owner = c:QNG
+			change_control = control_mild_bonus
+		}
+		create_character = {
+			first_name = name_fei
+			last_name = name_huang2
+			age = 35              
+			culture = liaodong 
+			religion = sanjiao
+			tag = WSG
 		}
 	}
 	option = { #固守
@@ -276,7 +289,7 @@ wsg_1644_choice.4 = { #崇祯不南迁、李自成不进京、清朝入关后：
 				}
 				trigger_event_silently = {
 					id = csh_1644_unification.4 #吴三桂、唐通献土
-					days = 7
+					days = 15
 				}
 			}
 		}
