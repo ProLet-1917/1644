@@ -1,0 +1,143 @@
+﻿# 中国士绅阶层定义
+# 士绅阶层（gentry_estate）代表中国传统的科举仕绅与地方精英
+# 他们通过科举考试获得地位，掌管地方事务、荐举贤人、守护礼乐传统
+
+gentry_estate = {
+	# 界面颜色，使用与贵族相同的颜色方案
+	color = pop_nobles
+	
+	# 每个士绅人口提供的权力
+	power_per_pop = 10
+	
+	# 每个士绅人口提供的税收基数
+	tax_per_pop = 100
+	
+	# 与其他阶层的外交倾向：稍微倾向于联盟而非对抗
+	rival = -0.01
+	alliance = 0.01
+
+	# 叛乱时使用的语言
+	revolt_court_language = court_language
+	
+	# 士绅角色可能拥有家族（有时）
+	characters_have_dynasty = sometimes
+	
+	# 可以生成雇佣兵领袖
+	can_generate_mercenary_leaders = no
+	
+	# 可以提供贷款（银行功能）
+	bank = yes
+
+	# 满意度加成：当满意度高于阈值时提供的国家修正
+	satisfaction = {
+		# 立法效率提升
+		legislative_efficiency = 0.25
+		# 税收效率提升
+		tax_income_efficiency = 0.15
+	}
+
+	# 强势加成：当士绅阶层权力高于阈值时提供的国家修正
+	high_power = {
+		# 士绅阶层最高税率降低（更难征税）
+		gentry_estate_max_tax = -0.2
+		# 允许士绅进入内阁
+		gentry_estate_allowed_in_cabinet = yes
+		# 允许士绅领导军队
+		gentry_estate_allowed_leading_military = yes
+		# 立法效率大幅提升
+		legislative_efficiency = 0.5
+		# 税收效率大幅提升
+		tax_income_efficiency = 0.4
+		# 社会价值观向传统主义移动
+		monthly_towards_traditionalist = societal_value_minor_monthly_move
+		# 士绅阶层权力进一步增加（正反馈）
+		global_gentry_estate_power = 0.2
+	}
+
+	# 弱势惩罚：当士绅阶层权力低于阈值时的国家惩罚
+	low_power = {
+		# 士绅阶层目标满意度降低
+		gentry_estate_target_satisfaction = medium_privilege_target_satisfaction_penalty
+		# 士绅阶层最高税率提高（更容易征税）
+		gentry_estate_max_tax = 0.2
+		# 立法效率下降
+		legislative_efficiency = -0.25
+		# 税收效率下降
+		tax_income_efficiency = -0.25
+		# 社会价值观向中央集权移动
+		monthly_towards_centralization = societal_value_minor_monthly_move
+	}
+
+	# 基础权力修正：无论权力高低都会提供的修正
+	power = {
+		# 贸易效率提升
+		trade_efficiency = medium_trade_efficiency_bonus
+		# 立法效率提升
+		legislative_efficiency = 0.1
+	}
+
+	# 与其他国家士绅阶层的外交意见计算
+	opinion = {
+		# 基础意见：基于两国关系
+		add = {
+			desc = "ESTATE_OPINION_BASE"
+			value = "opinion(scope:target)"
+			multiply = 0.05
+		}
+
+		# 基于目标国家士绅阶层权力的意见修正
+		add = {
+			desc = "ESTATE_OPINION_TARGET_GENTRY_POWER"
+			value = "scope:target.estate_power(estate_type:gentry_estate)"
+			subtract = 0.2
+			multiply = 5
+		}
+
+		# 如果两国都是中国文化组，意见+5
+		if = {
+			limit = {
+				culture = { has_culture_group = culture_group:chinese_group }
+				scope:target = { culture = { has_culture_group = culture_group:chinese_group } }
+			}
+			add = {
+				desc = "ESTATE_OPINION_SAME_CULTURE_GROUP"
+				value = 5
+			}
+		}
+
+		# 如果两国都是儒家宗教，意见+5
+		if = {
+			limit = {
+				religion.group = religion_group:confucian
+				scope:target = { religion.group = religion_group:confucian }
+			}
+			add = {
+				desc = "ESTATE_OPINION_CONFUCIAN"
+				value = 5
+			}
+		}
+
+		# 如果两国使用相同语言，意见+2
+		if = {
+			limit = {
+				culture.language = scope:target.culture.language
+			}
+			add = {
+				desc = "ESTATE_OPINION_COMMON_LANGUAGE"
+				value = 2
+			}
+		}
+
+		# 如果两国是邻国，意见-3（竞争关系）
+		if = {
+			limit = {
+				is_neighbor_of = scope:target
+			}
+			add = {
+				desc = "ESTATE_OPINION_NEIGHBOR"
+				value = -3
+			}
+		}
+	}
+}
+

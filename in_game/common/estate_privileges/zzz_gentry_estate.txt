@@ -1,0 +1,97 @@
+﻿# 士绅阶层特权定义
+# 这些特权可以通过政策、事件或改革解锁，给予士绅阶层特殊能力
+
+# 科举资助特权
+# 资助区域考试场所，给予士绅对人才选拔的独占影响力
+gentry_examination_patronage = {
+	estate = gentry_estate
+
+	# 解锁条件：仅限中国文化组国家
+	potential = {
+		culture = { has_culture_group = culture_group:chinese_group }
+	}
+
+	# 激活条件（空表示无限制）
+	allow = {}
+
+	# 国家修正效果
+	country_modifier = {
+		# 大幅提升士绅阶层目标满意度
+		gentry_estate_target_satisfaction = large_privilege_target_satisfaction
+		# 提升士绅阶层权力
+		global_gentry_estate_power = 0.35
+		# 降低士绅阶层最高税率（更难征税）
+		gentry_estate_max_tax = -0.1
+		# 提升立法效率
+		legislative_efficiency = 0.05
+		# 提升税收效率
+		tax_income_efficiency = 0.05
+	}
+
+	# 撤销特权时的效果
+	on_revoke = {
+		# 士绅阶层目标满意度降低（惩罚）
+		gentry_estate_target_satisfaction = medium_privilege_target_satisfaction_penalty
+	}
+}
+
+# 乡勇支持特权
+# 允许士绅组织地方武装，掌握地方防务
+gentry_militia_patronage = {
+	estate = gentry_estate
+
+	# 解锁条件：仅限中国文化组国家
+	potential = {
+		culture = { has_culture_group = culture_group:chinese_group }
+	}
+
+	allow = {}
+
+	country_modifier = {
+		# 提升士绅阶层目标满意度
+		gentry_estate_target_satisfaction = medium_privilege_target_satisfaction
+		# 提升士绅阶层征兵规模（可以组织更多军队）
+		gentry_estate_levy_size = 0.1
+		# 允许士绅领导军队
+		gentry_estate_allowed_leading_military = yes
+		# 提升士绅阶层权力
+		global_gentry_estate_power = 0.25
+	}
+
+	on_revoke = {
+		# 撤销时征兵规模下降
+		gentry_estate_levy_size = -0.05
+	}
+}
+
+# 文教守望特权
+# 将礼仪、学校和宗祠交由士绅管理，巩固其文化中心地位
+gentry_cultural_wardens = {
+	estate = gentry_estate
+
+	# 解锁条件：仅限中国文化组国家
+	potential = {
+		culture = { has_culture_group = culture_group:chinese_group }
+	}
+
+	allow = {}
+
+	country_modifier = {
+		# 提升士绅阶层目标满意度
+		gentry_estate_target_satisfaction = medium_privilege_target_satisfaction
+		# 提升文化影响力
+		cultural_influence = 0.1
+		# 提升士绅阶层权力
+		global_gentry_estate_power = 0.25
+		# 提升人口转化速度（更快同化）
+		global_pop_conversion_speed_modifier = 1
+		# 社会价值观向传统主义移动
+		monthly_towards_traditionalist = societal_value_minor_monthly_move
+	}
+
+	on_revoke = {
+		# 撤销时文化影响力下降
+		cultural_influence = -0.05
+	}
+}
+

@@ -1,0 +1,49 @@
+﻿# 士绅阶层相关法律与政策
+# 这些法律允许玩家调整士绅阶层在国家中的地位和影响力
+
+gentry_rights_laws = {
+	# 法律类别：属于阶层（estates）类别
+	law_category = estates
+
+	# 士绅资助政策
+	# 通过资助科举和授予特权来加强士绅阶层的地位
+	gentry_patronage_policy = {
+		# 解锁条件：仅限中国文化组国家
+		potential = {
+			culture = { has_culture_group = culture_group:chinese_group }
+		}
+		
+		# 国家修正效果
+		country_modifier = {
+			# 永久提升士绅阶层目标满意度
+			gentry_estate_target_satisfaction = medium_permanent_target_satisfaction
+			# 提升士绅阶层权力
+			global_gentry_estate_power = 0.25
+			# 允许士绅进入内阁
+			gentry_estate_allowed_in_cabinet = yes
+		}
+		
+		# 偏好此政策的阶层（士绅阶层会支持此政策）
+		estate_preferences = {
+			gentry_estate
+		}
+		
+		# 激活政策时解锁的士绅特权
+		on_activate = {
+			unlock_estate_privilege_effect = { type = gentry_examination_patronage }
+			unlock_estate_privilege_effect = { type = gentry_militia_patronage }
+			unlock_estate_privilege_effect = { type = gentry_cultural_wardens }
+		}
+		
+		# 停用政策时锁定已解锁的士绅特权
+		on_deactivate = {
+			lock_estate_privilege_effect = { type = gentry_examination_patronage }
+			lock_estate_privilege_effect = { type = gentry_militia_patronage }
+			lock_estate_privilege_effect = { type = gentry_cultural_wardens }
+		}
+		
+		# 政策生效持续时间（年）
+		years = 2
+	}
+}
+

@@ -1,0 +1,14 @@
+﻿# 士绅阶层静态修正器定义
+# 定义士绅阶层相关的游戏机制修正器，用于UI显示和游戏逻辑
+
+# 士绅阶层税收影响修正器
+# 当对士绅阶层征税时，会根据税率影响其目标满意度
+gentry_estate_tax_impact = {
+    # 游戏数据类型：国家级别修正器
+    game_data = {
+        category = country
+    }
+    # 效果：根据税率降低士绅阶层目标满意度（税率越高，满意度下降越多）
+    gentry_estate_target_satisfaction = -1
+}
+

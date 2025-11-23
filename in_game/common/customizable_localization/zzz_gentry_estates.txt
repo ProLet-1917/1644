@@ -1,0 +1,22 @@
+﻿# 士绅阶层名称本地化
+# 根据不同文化条件显示不同的士绅阶层名称
+
+gentry_estate = {
+	# 本地化类型：国家级别
+	type = country
+
+	# 中文文化显示为"士绅"
+	text = {
+		localization_key = gentry_estate_shizhen
+		trigger = {
+			culture = culture:han_culture
+		}
+	}
+
+	# 默认名称（其他情况使用通用名称）
+	text = {
+		localization_key = gentry_estate
+		fallback = yes
+	}
+}
+
