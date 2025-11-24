@@ -402,11 +402,12 @@ countries = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 			ruler = eng_charles_i_stuart
+			heir = eng_charles_ii_stuart
 			
 			ruler_term = { character = eng_james_i_stuart start_date = 1603.3.24 end_date = 1625.3.27 regnal_number = 1 }
 			
 			regnal_numbers = {
-				name_james = 1
+				name_james = 2
 				names_charles = 1
 				names_mary = 2
 				name_william = 3
@@ -606,17 +607,16 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-
-			#PU with ENG
 			ruler = eng_charles_i_stuart
+			heir = eng_charles_ii_stuart
 			
-			ruler_term = { character = eng_james_i_stuart start_date = 1567.7.24 end_date = 1625.3.27 regnal_number = 6 }
+			ruler_term = { character = eng_james_i_stuart start_date = 1603.3.24 end_date = 1625.3.27 regnal_number = 1 }
 			
 			regnal_numbers = {
-				name_james = 6
+				name_james = 7
 				names_charles = 1
 				names_mary = 2
-				name_william = 2
+				name_william = 3
 			}
 			privilege = {
 				#nobles
@@ -684,10 +684,19 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler_term = { character = eng_william_montague start_date = 1333.8.9 regnal_number = 1 }
-			ruler = eng_william_montague
+			ruler = eng_charles_i_stuart
+			heir = eng_charles_ii_stuart
+			
+			ruler_term = { character = eng_james_i_stuart start_date = 1603.3.24 end_date = 1625.3.27 regnal_number = 1 }
+			
+			regnal_numbers = {
+				name_james = 2
+				names_charles = 1
+				names_mary = 2
+				name_william = 3
+			}
 		}
-		country_rank = rank_kingdom
+		country_rank = rank_county
 		capital = mann
 
 		tolerated_cultures = { english }
@@ -707,6 +716,17 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
+			ruler = eng_charles_i_stuart
+			heir = eng_charles_ii_stuart
+			
+			ruler_term = { character = eng_james_i_stuart start_date = 1603.3.24 end_date = 1625.3.27 regnal_number = 1 }
+			
+			regnal_numbers = {
+				name_james = 2
+				names_charles = 1
+				names_mary = 2
+				name_william = 3
+			}
 
 			quality_vs_quantity = 25
 			offensive_vs_defensive = 75
@@ -726,20 +746,6 @@ countries = {
 			}
 			reforms = {
 				magna_carta_reform
-			}
-
-			ruler_term = {	 character = eng_john_lackland start_date = 1177.1.1 end_date = 1216.10.19 regnal_number = 1	} # became Lord of Ireland before being King of England
-			ruler_term = {	 character = eng_henry_iii start_date = 1216.10.28 end_date = 1272.11.16 regnal_number = 3	}
-			ruler_term = {	 character = eng_edward_i start_date = 1272.11.20 end_date = 1307.7.8 regnal_number = 1	}
-			ruler_term = {	 character = eng_edward_ii start_date = 1307.7.8 end_date = 1327.1.20 regnal_number = 2	}
-			ruler_term = {	 character = eng_edward_iii start_date = 1327.1.25 regnal_number = 3 }
-
-			# same numbering as England
-			regnal_numbers = {
-				name_james = 1
-				names_charles = 1
-				names_mary = 2
-				name_william = 3
 			}
 		}
 		include = "catholic_monarchy_english_lordship"
@@ -781,20 +787,6 @@ countries = {
 			}
 			reforms = {
 				magna_carta_reform
-			}
-
-			ruler_term = {	 character = eng_john_lackland start_date = 1177.1.1 end_date = 1216.10.19 regnal_number = 1	} # became Lord of Ireland before being King of England
-			ruler_term = {	 character = eng_henry_iii start_date = 1216.10.28 end_date = 1272.11.16 regnal_number = 3	}
-			ruler_term = {	 character = eng_edward_i start_date = 1272.11.20 end_date = 1307.7.8 regnal_number = 1	}
-			ruler_term = {	 character = eng_edward_ii start_date = 1307.7.8 end_date = 1327.1.20 regnal_number = 2	}
-			ruler_term = {	 character = eng_edward_iii start_date = 1327.1.25 regnal_number = 3 }
-
-			# same numbering as England
-			regnal_numbers = {
-				name_james = 1
-				names_charles = 1
-				names_mary = 2
-				name_william = 3
 			}
 		}
 		include = "catholic_monarchy_english_lordship"
@@ -848,8 +840,21 @@ countries = {
 		include = "iberian_monarchy_no_auxilium"
 
 		government = {
-			ruler = cas_alfonso_xi_burgundy
-
+			type = monarchy
+			ruler = spa_philip_iv_habsburg
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
+			regnal_numbers = {
+				name_philip = 4
+				names_charles = 2
+			}
+			
 			reforms = {
 				crown_castile_reform
 				feudal_nobility
@@ -921,6 +926,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
+			ruler = por_john_iv_braganza
+			heir = por_afonso_vi_braganza
 
 			reforms = {
 				portuguese_monarchy_reform
@@ -997,8 +1004,19 @@ countries = {
 
 		government = {
 			type = monarchy
+			ruler = spa_philip_iv_habsburg
 			heir_selection = cognatic_primogeniture
-			ruler = cas_alfonso_xi_burgundy
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
+			regnal_numbers = {
+				name_philip = 4
+				names_charles = 2
+			}
 
 			reforms = {
 				crown_aragon_reform
@@ -1053,7 +1071,20 @@ countries = {
 		include = "muslim_monarchy_no_abrahamic_dhimmi"
 
 		government = {
-			ruler = gra_yusuf_i_nasrid
+			type = monarchy
+			ruler = spa_philip_iv_habsburg
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
+			regnal_numbers = {
+				name_philip = 4
+				names_charles = 2
+			}
 
 			reforms = {
 				the_jewel_of_alandalus_reform
@@ -1093,7 +1124,19 @@ countries = {
 
 		government = {
 			type = monarchy
+			ruler = spa_philip_iv_habsburg
 			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
+			regnal_numbers = {
+				name_philip = 4
+				names_charles = 2
+			}
 
 			reforms = {
 				pyrenean_fueros_reform
@@ -1162,6 +1205,85 @@ countries = {
 		}
 		capital = andorra_la_vella
 		country_rank = rank_duchy
+		starting_technology_level = 4
+	}
+	
+###Spanish Italy
+	NAP = {
+		own_control_core = {
+			naples caserta gaeta nola piedimonte sora venafro salerno campagna salacon vallo avellino ariano benevento santangelo
+			chieti lanciano vasto aquila atri celano cittaducale csantangelo sulmona teramo lake_fucine bojano isernia larino trivento
+			bari altamura andria barletta monopoli foggia bovino lucera manfredonia rotondo sansevero lake_varano lecce brindisi francavilla gallipoliita martinafr taranto
+			potenza acerenza lagonegro matera melfi montepeloso santarcangelo catanzaro cotrone gerace monteleone nicastro palmi reggiocal cosenza cassano castrovillari scalea paola rossano
+		}
+		government = {
+			type = monarchy
+			ruler = spa_philip_iv_habsburg
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
+			regnal_numbers = {
+				name_philip = 4
+				names_charles = 2
+			}
+		}
+		capital = naples
+		country_rank = rank_kingdom
+		starting_technology_level = 4
+	}
+	
+	SIC = {
+		own_control_core = {
+			messina catania mistretta nicosiasic patti piazza mount_etna mount_stromboli girgenti bivona caltanisetta cefalu sciacca termini palermo corleone mazara salemi trapani pantelleria lampedusa syracuse caltagirone malta modica noto terranovasic
+		}
+		government = {
+			type = monarchy
+			ruler = spa_philip_iv_habsburg
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
+			regnal_numbers = {
+				name_philip = 4
+				names_charles = 2
+			}
+		}
+		capital = palermo
+		country_rank = rank_kingdom
+		starting_technology_level = 4
+	}
+	
+	SAR = {
+		own_control_core = {
+			oristano ales sorgono terralba cagliari tratalias villa_di_chiesa isili muravera seddori tortoli terranova_pausania orosei posada tempiopausania sassari alghero bosa castelsardo macomer bitti ozieri thiesi
+		}
+		government = {
+			type = monarchy
+			ruler = spa_philip_iv_habsburg
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
+			regnal_numbers = {
+				name_philip = 4
+				names_charles = 2
+			}
+		}
+		capital = cagliari
+		country_rank = rank_kingdom
 		starting_technology_level = 4
 	}
 	
@@ -1255,6 +1377,17 @@ countries = {
 		
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
+			
 			laws = {
 				feudal_de_jure_law = by_tradition
 				legal_code_law = civil_law_policy
@@ -1263,6 +1396,12 @@ countries = {
 		capital = paris
 		country_rank = rank_kingdom
 		starting_technology_level = 5
+		discovered_regions = {
+			france_region 
+		}
+		discovered_continents = {
+			europe 
+		}
 	}
 	
 	PRO = {
@@ -1281,7 +1420,11 @@ countries = {
 		include = "catholic_monarchy"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
 			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
 		}
 
 		tolerated_cultures = {
@@ -1306,7 +1449,11 @@ countries = {
 		include = "catholic_monarchy_no_coast"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
 			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
 		}
 
 		tolerated_cultures = {
@@ -1330,6 +1477,14 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
+			#Gaston Duke of Orleans
+			ruler = fra_gaston_orleans_bourbon
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
+			
 			reforms = {
 				french_ducal_vassal_reform
 			}
@@ -1355,6 +1510,17 @@ countries = {
 		include = "expl_western_europe"
 		include = "catholic_monarchy"
 		government = {
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
+			
 			centralization_vs_decentralization = 30
 			aristocracy_vs_plutocracy = -35
 			serfdom_vs_free_subjects = -35
@@ -1393,7 +1559,16 @@ countries = {
 		include = "catholic_monarchy_no_coast_no_censor"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
 			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
 			reforms = {
 				french_appanage_reform
 			}
@@ -1414,7 +1589,16 @@ countries = {
 		include = "catholic_monarchy_no_coast"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
 			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
 			reforms = {
 				french_appanage_reform
 			}
@@ -1439,7 +1623,16 @@ countries = {
 		include = "catholic_monarchy_no_coast"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
 			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
 
 			reforms = {
 				french_ducal_vassal_reform
@@ -1459,7 +1652,16 @@ countries = {
 		include = "catholic_monarchy_no_coast"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
 			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
 			reforms = {
 				french_ducal_vassal_reform
 			}
@@ -1480,6 +1682,16 @@ countries = {
 		include = "catholic_monarchy_english_lordship"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
 			laws = {
 				feudal_de_jure_law = by_tradition
 				legal_code_law = civil_law_policy
@@ -1502,6 +1714,16 @@ countries = {
 		include = "expl_western_europe"
 		include = "catholic_monarchy_no_coast"
 		government = {
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
 			centralization_vs_decentralization = 30
 			aristocracy_vs_plutocracy = -35
 			serfdom_vs_free_subjects = 35
@@ -1537,6 +1759,16 @@ countries = {
 		include = "catholic_monarchy_english_lordship"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
 			laws = {
 				feudal_de_jure_law = by_tradition
 				legal_code_law = civil_law_policy
@@ -1554,6 +1786,16 @@ countries = {
 		include = "catholic_monarchy_english_lordship"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
 			laws = {
 				feudal_de_jure_law = by_tradition
 				legal_code_law = civil_law_policy
@@ -1562,46 +1804,6 @@ countries = {
 		capital = saint_jean_pied_de_port
 		country_rank = rank_kingdom
 		starting_technology_level = 5
-	}
-
-###Spanish Italy
-	NAP = {
-		own_control_core = {
-			naples caserta gaeta nola piedimonte sora venafro salerno campagna salacon vallo avellino ariano benevento santangelo
-			chieti lanciano vasto aquila atri celano cittaducale csantangelo sulmona teramo lake_fucine bojano isernia larino trivento
-			bari altamura andria barletta monopoli foggia bovino lucera manfredonia rotondo sansevero lake_varano lecce brindisi francavilla gallipoliita martinafr taranto
-			potenza acerenza lagonegro matera melfi montepeloso santarcangelo catanzaro cotrone gerace monteleone nicastro palmi reggiocal cosenza cassano castrovillari scalea paola rossano
-		}
-		government = {
-			type = monarchy
-		}
-		capital = naples
-		country_rank = rank_kingdom
-		starting_technology_level = 4
-	}
-	
-	SIC = {
-		own_control_core = {
-			messina catania mistretta nicosiasic patti piazza mount_etna mount_stromboli girgenti bivona caltanisetta cefalu sciacca termini palermo corleone mazara salemi trapani pantelleria lampedusa syracuse caltagirone malta modica noto terranovasic
-		}
-		government = {
-			type = monarchy
-		}
-		capital = palermo
-		country_rank = rank_kingdom
-		starting_technology_level = 4
-	}
-	
-	SAR = {
-		own_control_core = {
-			oristano ales sorgono terralba cagliari tratalias villa_di_chiesa isili muravera seddori tortoli terranova_pausania orosei posada tempiopausania sassari alghero bosa castelsardo macomer bitti ozieri thiesi
-		}
-		government = {
-			type = monarchy
-		}
-		capital = cagliari
-		country_rank = rank_kingdom
-		starting_technology_level = 4
 	}
 	
 ###Scandinavia
@@ -1630,6 +1832,7 @@ countries = {
 
 		government = {
 			type = monarchy
+			ruler = swe_christina_vasa
 		}
 		capital = stockholm
 		country_rank = rank_kingdom
@@ -1647,6 +1850,7 @@ countries = {
 		}
 		government = {
 			type = monarchy
+			ruler = swe_christina_vasa
 		}
 		capital = abo
 		country_rank = rank_duchy
@@ -1664,6 +1868,7 @@ countries = {
 		}
 		government = {
 			type = monarchy
+			ruler = dan_christian_iv_oldenburg
 		}
 		capital = oslo
 		country_rank = rank_kingdom
@@ -1677,6 +1882,7 @@ countries = {
 		}
 		government = {
 			type = monarchy
+			ruler = dan_christian_iv_oldenburg
 		}
 		capital = kobenhavn
 		country_rank = rank_kingdom
