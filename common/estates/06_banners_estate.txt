@@ -1,0 +1,45 @@
+﻿banners_estate = {
+	color = rgb { 255 215 0 } # 金黄色
+	power_per_pop = 50 # 旗人影响力较高
+	tax_per_pop = 0    # 旗人免税
+	rival = -0.1
+	alliance = 0.1
+	
+	can_generate_mercenary_leaders = yes
+	bank = no 
+
+	revolt_court_language = court_language
+	characters_have_dynasty = always # 旗人皆有姓氏
+
+	# 满意度修正
+	satisfaction = {
+		land_maintenance_cost = -0.1 # 军队维护费降低
+		reinforcement_speed = 0.20   # 补员速度加快（八旗动员体制）
+        
+	}
+	
+	# 高影响力修正 (>25%)
+	high_power = {
+		land_morale_modifier = 0.10      # 陆军士气
+		manpower_recovery_speed = 0.25   # 人力恢复速度
+		levy_combat_efficiency_modifier = 0.1 # 征召兵/旗兵战力
+		
+		# 负面：行政与税收代价
+		global_tax_modifier = -0.1       # 全局税收减少（圈地与免税）
+	}
+	
+	# 低影响力修正 (<25%)
+	low_power = {
+		land_morale_modifier = -0.1     # 士气低落
+		global_unrest = 2               # 旗人生计问题导致不安
+	}
+	
+	opinion = {
+		add = {
+			desc = "ESTATE_OPINION_BASE"
+			value = "opinion(scope:target)"
+			multiply = 0.05
+		}
+	}
+}
+

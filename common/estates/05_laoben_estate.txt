@@ -1,0 +1,68 @@
+﻿laoben_estate = {
+	color = rgb { 180 140 60 } # 阶层颜色：土黄色/深赭色
+	power_per_pop = 25 # 每个属于该阶层的人口提供的影响力基础值
+	tax_per_pop = 0    # 该阶层人口不提供基础税收（模拟老营不纳税）
+	rival = -0.05      # 宿敌修正：影响力越高，维持宿敌的“外交容量”成本越低（鼓励树敌）
+	alliance = 0.05    # 盟友修正：影响力越高，维持盟友的“外交容量”成本越高（排外/外交阻碍）
+
+	can_generate_mercenary_leaders = yes # 允许产生雇佣兵领袖
+	bank = no # 不提供银行功能
+
+	revolt_court_language = court_language # 叛乱时使用宫廷语言
+	characters_have_dynasty = sometimes # 角色有时会有王朝名（代表新晋贵族化）
+
+	# 满意度修正 (Satisfaction)
+	# 计算公式：修正值 * (当前满意度 - 50%)
+	# 例如：如果满意度是 100% (1.0)，则获得完整 0.5 倍的加成；如果是 50%，则无加成。
+	satisfaction = {
+		levy_combat_efficiency_modifier = 0.15 # 征召兵战斗效率
+		monthly_war_exhaustion = -0.05         # 月度厌战度减少
+	}
+	
+	# 高影响力修正 (High Power)
+	# 触发条件：阶层影响力 > 25% (LOW_POWER_THRESHOLD)
+	# 计算公式：修正值 * (当前影响力 - 25%)
+	# 这里的数值不是直接加成，而是系数。影响力越高，加成/惩罚越强。
+	high_power = {
+		land_morale_modifier = 0.15      # 陆军士气
+		global_manpower_modifier = 0.25  # 全局人力
+		amount_looted_modifier = 2.5    # 掠夺收益（追赃助饷）
+	}
+	
+	
+	# 低影响力修正 (Low Power)
+	# 触发条件：阶层影响力 < 25% (LOW_POWER_THRESHOLD)
+	# 计算公式：修正值 * (25% - 当前影响力)
+	# 影响力越低，惩罚越重。
+	low_power = {
+		land_morale_modifier = -0.15     # 陆军士气降低
+		amount_looted_modifier = 1.0     # 掠夺收益（追赃助饷）
+		stability_cost = 0.25            # 稳定度花费增加
+	}
+	
+	# 阶层意见 (Opinion) - 影响该阶层对其他国家的看法
+	opinion = {
+		add = {
+			desc = "ESTATE_OPINION_BASE"
+			value = "opinion(scope:target)"
+			multiply = 0.05
+		}
+
+		# 痛恨贵族/士绅阶层
+		add = {
+			desc = "ESTATE_OPINION_TARGET_N_ESTATE_POWER"
+			value = "scope:target.estate_power(estate_type:nobles_estate)"
+			multiply = -5 # 负倍率 = 对方贵族影响力越高，老营越厌恶该国
+		}
+		
+		if = {
+			limit = {
+				is_neighbor_of = scope:target
+			}	
+			add = {
+				desc = "ESTATE_OPINION_NEIGHBOR"
+				value = -10 # 攻击性邻居：对邻国默认有负面看法
+			}
+		}
+	}
+}

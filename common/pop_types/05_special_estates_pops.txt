@@ -1,0 +1,108 @@
+﻿nobles = {
+	# 特殊阶层覆盖 (优先级高)
+	laoben_estate = { tag = CSH } # 大顺老营
+	banners_estate = { 
+		OR = { culture = jurchen_culture culture = manchu_culture } # 假设 manchu_culture 可能存在或作为兼容
+		tag = QNG 
+	}
+	
+	# 原版逻辑 (Vanilla Logic) - 必须保留以防破坏其他国家
+	dhimmi_estate = { is_dhimmi = yes }
+	tribes_estate = { is_gaelic_clans = yes }
+	nobles_estate = {}
+
+	color = pop_nobles
+	
+	editor = 0.05
+	
+	assimilation_conversion_factor = 0.05
+
+	pop_food_consumption = 20.0
+
+	city_graphics = 1.0
+	
+	
+	promotion_factor = 0.1
+	
+	upper = yes
+	has_cap = yes
+	
+	literacy_impact = {
+		local_cultural_tradition = 0.2
+		local_monthly_control = 0.01
+	}
+
+	#ai_local_pop_cap_desire = { value = 0 } #root = location
+
+}
+
+
+soldiers = {
+	# 特殊阶层覆盖
+	laoben_estate = { tag = CSH } # 大顺老营
+	banners_estate = { 
+		OR = { culture = jurchen_culture culture = manchu_culture }
+		tag = QNG 
+	}
+
+	# 原版逻辑
+	dhimmi_estate = { is_dhimmi = yes }
+	tribes_estate = { is_gaelic_clans = yes }
+	peasants_estate = {} # 原版士兵默认归属于农民阶层(Peasants Estate)
+	
+	color = pop_soldiers
+	
+	editor = 1.0
+	
+	assimilation_conversion_factor = 0.5
+	
+	pop_food_consumption = 5.0
+
+	city_graphics = 0.05
+	
+	promotion_factor = 1.0
+	
+	migration_factor = 0.05
+	
+	has_cap = yes
+	
+	
+	literacy_impact = {
+		local_defensive = 0.1
+		local_manpower_modifier = 0.1
+	}
+}
+
+tribesmen = {
+	# 特殊阶层覆盖
+	banners_estate = { 
+		OR = { culture = jurchen_culture culture = manchu_culture }
+		tag = QNG 
+	}
+
+	# 原版逻辑
+	cossacks_estate = { is_cossacks = yes }
+	tribes_estate = {}
+	
+	color = pop_tribes
+	
+	promote_to = peasants
+	
+	pop_food_consumption = 0.0
+	
+	grow = yes
+	
+	tribal_rules = yes	#can have special promotion factors
+	
+	assimilation_conversion_factor = 0.0
+	
+	pop_percentage_impact = {
+		local_distance_from_capital_cost_modifier = 0.5
+	}
+	literacy_impact = {
+		local_tribal_promotion = 0.5
+	}
+
+	city_graphics = 0.01
+}
+

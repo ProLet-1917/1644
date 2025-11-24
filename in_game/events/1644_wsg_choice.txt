@@ -9,7 +9,7 @@ wsg_1644_choice.1 = { #史实：崇祯不南迁，李自成进京，选择降清
 	immediate = {
 		if = {
 			limit = {
-				check_variable = { name = wsg_goto_beijing value = 1 }
+				has_variable = wsg_goto_beijing
 			}
 			location:funing = {
 				change_location_owner = c:WSG
@@ -83,20 +83,35 @@ wsg_1644_choice.2 = { #是否听令入关
 			limit = { owner = c:WSG }
 			change_location_owner = c:QNG
 		}
-		set_variable = { name = wsg_goto_beijing value = 1 }
+		set_variable = wsg_goto_beijing 
 	}
 	option = { #不入关
 		name = wsg_1644_choice.2.b
 		custom_tooltip = wsg_1644_choice.2.tt2
-		set_variable = { name = wsg_goto_beijing value = 0 }
 	}
 }
 
-wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州
+scripted_effect dongjiang_list_add = { #东江镇黄蜚
+	province_definition:dengzhou_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_dongjiang
+		}
+	}
+	province_definition:ninghai_province = {
+		every_location_in_province_definition = {
+			add_to_list = list_of_dongjiang
+		}
+	}
+}
+
+wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州、固守
 	type = country_event
 	title = wsg_1644_choice.3.title
 	desc = wsg_1644_choice.3.desc
 	is_trigger_only = yes
+	immediate = {
+		dongjiang_list_add = yes
+	}
 	option = { #降顺
 		name = wsg_1644_choice.3.a
 		ai_chance = { factor = 0.3 }
@@ -129,10 +144,22 @@ wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州
 	}
 	option = { #南渡登州
 		name = wsg_1644_choice.3.c
+		trigger = {
+			has_variable = wsg_goto_beijing
+		}
 		ai_chance = { factor = 0.2 }
+		every_in_list = {
+			list = list_of_dongjiang
+			limit = { owner = c:MNG }
+			change_location_owner = c:WSG
+			change_control = control_ultimate_bonus
+		}
 	}
 	option = { #固守
 		name = wsg_1644_choice.3.d
+		trigger = {
+			NOT = { has_variable = wsg_goto_beijing }
+		}
 		ai_chance = { factor = 0.2 }
 	}
 }
