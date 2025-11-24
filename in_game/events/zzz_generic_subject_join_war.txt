@@ -1,18 +1,1 @@
-﻿namespace = generic_subject_join_war
-
-# 通用：附属国加入宗主战争的触发事件
-# 使用方法：在附属国成为附庸后，延迟调用此事件
-# 例如：ROOT = { trigger_event_silently = { id = generic_subject_join_war.1 days = 2 } }
-generic_subject_join_war.1 = {
-	type = country_event
-	hidden = yes
-	title = ""
-
-	immediate = {
-		# 使用脚本效果：让附属国加入宗主的所有战争
-		subject_join_overlord_wars = yes
-	}
-}
-
-
-
+﻿
