@@ -1477,7 +1477,7 @@ countries = {
 		country_rank = rank_duchy
 		government = {
 
-			ruler = swe_kristina_vasa
+			ruler = swe_christina_vasa
 
 			regnal_numbers = {
 				Barnim = 1
@@ -2533,7 +2533,7 @@ countries = {
 		own_control_core = {
 			mainz aschaffenburg miltenberg buchen tauberbischofsheim
 			hofgeismar bensheim offenbach
-			erfurt
+			erfurt duderstadt
 		}
 		starting_technology_level = 3
 		include = "expl_western_europe"
@@ -3079,6 +3079,7 @@ countries = {
 		own_control_core = {
 			magdeburg juterbog jerichow burg wolmirstedt
 			haldensleben calbe halle_an_der_saale belzig
+			helmstedt halberstadt
 		}
 
 		starting_technology_level = 3
@@ -3100,7 +3101,7 @@ countries = {
 
 	ANH = {	#Anhalt
 		own_control_core = {
-			zerbst bernburg
+			zerbst bernburg quedlinburg
 		}
 
 		starting_technology_level = 3
@@ -3139,6 +3140,701 @@ countries = {
 		}
 		country_rank = rank_county
 		capital = muhlhausen
+	}
+
+	MFE = {	#Mansfeld
+		own_control_core = {
+			eisleben
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = mfe_bruno_von_querfurt
+			heir = mfe_franz_maximilian_von_querfurt 
+
+			regnal_numbers = {
+				name_bernard = 3
+			}
+		}
+
+		country_rank = rank_county
+		capital = eisleben
+		dynasty = mansfeld_dynasty
+	}
+
+	
+	SHS = {	#Sondershausen
+		own_control_core = {
+			sondershausen
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = random #Ludwig Gunther I von Schwarzburg? - 63 yrs old
+
+			regnal_numbers = {
+				name_henry = 5
+			}
+		}
+
+		country_rank = rank_county
+		capital = sondershausen
+	}
+
+	NHS = {	#Nordhausen
+		own_control_core = {
+			nordhausen
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = nordhausen
+	}
+
+	LUN = {	#Lüneburg
+		own_control_core = {
+			luneburg celle winsen harburg ebstorf isenhagen winsen_aller fallingbostel
+			dannenberg #County of Danneberg
+			luchow #County of Lüchow
+			uelzen #Amt of Bodenteich
+			diepholz
+			einbeck gifhorn meinersen
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		country_rank = rank_duchy
+		government = {
+
+			ruler = lun_friedrich_von_welf
+			heir = lun_christian_ludwig_von_welf
+
+			ruler_term = {
+				character = lun_friedrich_von_welf start_date = 1644.1.1 regnal_number = 1
+			}
+
+			regnal_numbers = {
+				name_william = 2
+				name_otto = 3
+				name_albert = 1
+				name_john = 1
+			}
+		}
+
+		tolerated_cultures = {
+			angrian
+			polabian
+		}
+
+		capital = luneburg
+		dynasty = welfen_dynasty
+	}
+
+	LPP = {	#Lippe
+		own_control_core = {
+			lippstadt detmold
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = lpp_simon_philipp_lippe
+			ruler_term = {	 character = lpp_simon_philipp_lippe start_date = 1644.1.1 regnal_number = 3	}
+
+			regnal_numbers = {
+				name_bernard = 4
+				name_simeon = 2
+				name_herman = 2
+			}
+		}
+
+		tolerated_cultures = {
+		}
+
+		country_rank = rank_county
+		capital = lippstadt
+		dynasty = lippe_dynasty
+	}
+
+	BRE = {	#Bremen
+		own_control_core = {
+			stade neuhaus gestenthorpe osterholz achim bremervorde zeven ritzebuttel
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_bishopric"
+		include = "expl_northern_europe"
+		country_rank = rank_duchy
+		government = {
+			ruler = bre_friedrich_von_oldenburg
+		}
+
+		tolerated_cultures = {
+			frisian
+		}
+
+		capital = bremervorde
+	}
+
+	VRD = {	#Verden
+		own_control_core = {
+			verden soltau
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = bre_friedrich_von_oldenburg
+			
+			reforms = {
+				prince_bishopric_reform
+			}
+		}
+		country_rank = rank_county
+		capital = verden
+	}
+
+	BRM = {	#Free Imperial Bremen City
+		own_control_core = {
+			bremen
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "expl_northern_europe"
+		include = "catholic_free_city"
+		country_rank = rank_county
+		capital = bremen
+		government = {
+			ruler = random
+		}
+	}
+
+	OLD = {	#Oldenburg
+		own_control_core = {
+			oldenburg elsfleth
+			delmenhorst
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = old_anton_gunther_oldenburg
+
+			ruler_term = {	character = old_anton_gunther_oldenburg start_date = 1644.1.1 regnal_number = 1	}
+
+			regnal_numbers = {
+				name_christian = 4
+				name_john = 3
+				name_otto = 2
+				Moritz = 1
+				Egilmar = 2
+			}
+		}
+
+		tolerated_cultures = {
+			frisian
+		}
+
+		country_rank = rank_county
+		capital = oldenburg
+		dynasty = oldenburg_dynasty
+	}
+
+	MDN = {	#Minden
+		own_control_core = {
+			minden
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+			ruler = lun_christian_ludwig_von_welf
+
+			ruler_term = { character = lun_christian_ludwig_von_welf start_date = 1644.1.1 regnal_number = 1 }
+			
+		}
+		country_rank = rank_county
+		capital = minden
+	}
+
+	PDB = {	#Paderborn
+		own_control_core = {
+			paderborn buren warburg
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = kol_ferdinand_von_wittelsbach
+
+			reforms = {
+				prince_bishopric_reform
+			}
+		}
+
+		tolerated_cultures = {
+			rhine_franconian
+		}
+
+		country_rank = rank_county
+		capital = paderborn
+	}
+
+	RBG = {  # Rietberg (North Germany)
+		own_control_core = {
+			rietberg
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "expl_northern_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "german_principality"
+		government = {
+			ruler = random #Johann IV Cirkensa? - 26 yrs old
+
+			regnal_numbers = {
+				name_henry = 1
+				name_frederick = 1
+				name_conrad = 1
+			}
+		}
+		tolerated_cultures = {
+		}
+		country_rank = rank_county
+		capital = rietberg
+	}
+
+	GOS = {	#Goslar
+		own_control_core = {
+			goslar
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = goslar
+	}
+
+	NIE = {	#Nienburg
+		own_control_core = {
+			nienburg hoya hanover hamelin neustadt_am_rubenberge
+			gottingen burgdorf
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = lun_christian_ludwig_von_welf
+
+			ruler_term = {
+				character = lun_christian_ludwig_von_welf start_date = 1644.1.1 regnal_number = 1
+			}
+
+			regnal_numbers = {
+				name_henry = 3
+				name_gerard = 3
+				name_otto = 2
+				name_john = 2
+				name_albert = 1
+			}
+		}
+		country_rank = rank_county
+		capital = nienburg
+		dynasty = welfen_dynasty
+	}
+
+	HOX = {	#Corvey
+		own_control_core = {
+			hoxter
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_abbey"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = hoxter
+	}
+
+	BBG = {	#Blankenburg
+		own_control_core = {
+			blankenburg wolfenbuttel brunswick buckeburg herzberg holzminden gandersheim
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+
+			ruler = bbg_rudolf_august_von_welf
+			ruler_term = {	character = bbg_rudolf_august_von_welf start_date = 1644.1.1 regnal_number = 3	}
+
+			regnal_numbers = {
+				name_ulrick = 3
+				name_albert = 2
+				name_gunther = 20
+				name_henry = 6
+			}
+		}
+
+		tolerated_cultures = {
+		}
+
+		country_rank = rank_county
+		capital = blankenburg
+		dynasty = welfen_dynasty
+	}
+
+	WGO = {  # Wernigerode
+		own_control_core = {
+			wernigerode
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "expl_northern_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "german_principality"
+		government = {
+			ruler = random
+
+			regnal_numbers = {
+				name_albert = 5
+				name_conrad = 4
+				name_gebhard = 1
+				name_burchard = 1
+			}
+		}
+		country_rank = rank_county
+		capital = wernigerode
+	}
+
+	HDH = {	#Hildesheim
+		own_control_core = {
+			hildesheim alfeld
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_bishopric_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = kol_ferdinand_von_wittelsbach
+			
+			regnal_numbers = {
+				name_otto = 2
+				name_henry = 3
+			}
+			reforms = {
+				prince_bishopric_reform
+			}
+		}
+
+		tolerated_cultures = {
+			angrian
+		}
+
+		country_rank = rank_county
+		capital = hildesheim
+	}
+
+	LAU = {	#Saxe-Lauenburg
+		own_control_core = {
+			lauenburg
+		}
+
+		starting_technology_level = 3
+		include = "catholic_monarchy_no_coast"
+		include = "expl_northern_europe"
+		include = "german_principality"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+
+			ruler = lau_julius_heinrich_askanier
+			ruler_term = {	character = lau_julius_heinrich_askanier start_date = 1644.1.1 regnal_number = 1	}
+
+			regnal_numbers = {
+				name_john = 2
+				name_albert = 4
+				name_eric = 1
+			}
+		}
+
+		tolerated_cultures = {
+			polabian
+			western_pomeranian
+		}
+
+		country_rank = rank_duchy
+		capital = lauenburg
+		dynasty = askanier_dynasty
+	}
+
+	LCU = {	#Lucerne
+		own_control_core = {
+			lucerne wolhusen baden_im_aargau
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		include = "swiss_republic"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = lucerne
+	}
+
+	ZUR = {	#Zurich
+		own_control_core = {
+			zurich kyburg
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		include = "swiss_republic"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = zurich
+	}
+
+	STG = {	#St. Gallen
+		own_control_core = {
+			st_gallen frauenfeld
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = st_gallen
+	}
+
+	TGG = {  # Toggenburg
+		own_control_core = {
+			toggenburg davos
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+			ruler = random
+		}
+		tolerated_cultures = {
+			romansh
+		}
+		country_rank = rank_county
+		capital = toggenburg
+
+	}
+
+	WER = {	#Werdenberg
+		own_control_core = {
+			werdenberg bludenz
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		government = {
+
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			romansh
+		}
+
+		country_rank = rank_county
+		capital = werdenberg
+	}
+
+	BLM = {  # Belmont (Switzerland)
+		own_control_core = {
+			ilanz chur davos disentis
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "expl_northern_europe"
+		include = "swiss_republic"
+		government = { ruler = random }
+		tolerated_cultures = {
+			romansh
+		}
+		country_rank = rank_county
+		capital = ilanz
+	}
+
+	SYZ = {	#Schwyz
+		own_control_core = {
+			schwyz
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		include = "swiss_republic"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = schwyz
+	}
+
+	OBW = {	#Obwalden
+		own_control_core = {
+			sarnen
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		include = "swiss_republic"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = sarnen
+	}
+
+	SIT = {	#Sion / Sitten
+		own_control_core = {
+			sion brig martigny altdorf
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_german_republic_no_coast"
+		include = "expl_northern_europe"
+		include = "swiss_republic"
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			high_alemannic
+		}
+		country_rank = rank_county
+		capital = sion
+
+	}
+
+	MSO = {  # Mesocco
+		own_control_core = {
+			bellinzona locarno mesocco lugano
+		}
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "expl_northern_europe"
+		include = "swiss_republic"
+		government = {
+			ruler = random
+
+			laws = {
+				mining_law = burghers_mining_law
+			}
+		}		country_rank = rank_county
+		capital = mesocco
+	}
+
+
+	BCH = {	#Bishopric of Chur
+		own_control_core = {
+			tresivio zuoz tarasp bormio chiavenna
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "expl_northern_europe"
+		include = "swiss_republic"
+		capital = zuoz
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			romansh
+		}
+
+		country_rank = rank_county
+	}
+
+	GLR = {	#Glarus
+		own_control_core = {
+			glarus
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "expl_northern_europe"
+		include = "swiss_republic"
+		government = {
+			ruler = random
+		}
+		country_rank = rank_county
+		capital = glarus
 	}
 
 }

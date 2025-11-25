@@ -27,7 +27,7 @@ countries = {
 			murayama tagawa kitamogami minamimogami nishiokitama
 			higashiokitama uda_mutsu katta namekata shineha
 			naraha iwaki kikuta takano shirakawa
-			tamura date_loc shinobu adachi yama_jap
+			tamura shinobu adachi yama_jap
 			kawanuma oonuma kitaaizu minamiaizu iwase
 			asaka iwafune nutari nishikanbara higashikanbara
 			koshi kariwa minamiuonuma kitauonuma higashikubiki
@@ -35,7 +35,7 @@ countries = {
 			tonami imizu noto_jap fugeshi suzu
 			kaga nomi sakai_echizen nakaoono imadate
 			nyuu tsuruga onyuu nasu shioya
-			kawachi haga tsuga ashikaga_loc tone
+			kawachi haga tsuga tone
 			seta nitta gunma usui kanra
 			agatsuma saku takai minochi sarashina
 			azumi chiisagata suwa tsukama kiso
@@ -402,11 +402,12 @@ countries = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 			ruler = eng_charles_i_stuart
+			heir = eng_charles_ii_stuart
 			
 			ruler_term = { character = eng_james_i_stuart start_date = 1603.3.24 end_date = 1625.3.27 regnal_number = 1 }
 			
 			regnal_numbers = {
-				name_james = 1
+				name_james = 2
 				names_charles = 1
 				names_mary = 2
 				name_william = 3
@@ -489,15 +490,6 @@ countries = {
 			shrewsbury hertford st_albans coventry birmingham stratford northampton daventry kettering leicester loughborough bosworth rutland kidderminster stafford stoke tamworth derby glossop chesterfield chester macclesfield nantwich lancaster blackburn liverpool preston manchester leeds wakefield doncaster
 			#enclaves
 			bristol gloucester plymouth carmarthen
-		}
-		
-		own_control_colony = {
-			#New England
-			wicocomico werowocomoco rappahannock nentego patuxent wicomico chicamacomico matapeake accomac
-			quinnipiac rippowam saukiog siccanemos nehantuck
-			patuxet assonet nauset nantucket seekonk sagadahoc casco kennebunk squamscott naumkeag shawmut
-			#Newfoundland
-			cape_race cape_spear bacalhieu placentia mollyhuajeck mekwiskajk
 		}
 
 		include = "catholic_monarchy"
@@ -606,17 +598,16 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-
-			#PU with ENG
 			ruler = eng_charles_i_stuart
+			heir = eng_charles_ii_stuart
 			
-			ruler_term = { character = eng_james_i_stuart start_date = 1567.7.24 end_date = 1625.3.27 regnal_number = 6 }
+			ruler_term = { character = eng_james_i_stuart start_date = 1603.3.24 end_date = 1625.3.27 regnal_number = 1 }
 			
 			regnal_numbers = {
-				name_james = 6
+				name_james = 7
 				names_charles = 1
 				names_mary = 2
-				name_william = 2
+				name_william = 3
 			}
 			privilege = {
 				#nobles
@@ -684,10 +675,19 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler_term = { character = eng_william_montague start_date = 1333.8.9 regnal_number = 1 }
-			ruler = eng_william_montague
+			ruler = eng_charles_i_stuart
+			heir = eng_charles_ii_stuart
+			
+			ruler_term = { character = eng_james_i_stuart start_date = 1603.3.24 end_date = 1625.3.27 regnal_number = 1 }
+			
+			regnal_numbers = {
+				name_james = 2
+				names_charles = 1
+				names_mary = 2
+				name_william = 3
+			}
 		}
-		country_rank = rank_kingdom
+		country_rank = rank_county
 		capital = mann
 
 		tolerated_cultures = { english }
@@ -707,6 +707,17 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
+			ruler = eng_charles_i_stuart
+			heir = eng_charles_ii_stuart
+			
+			ruler_term = { character = eng_james_i_stuart start_date = 1603.3.24 end_date = 1625.3.27 regnal_number = 1 }
+			
+			regnal_numbers = {
+				name_james = 2
+				names_charles = 1
+				names_mary = 2
+				name_william = 3
+			}
 
 			quality_vs_quantity = 25
 			offensive_vs_defensive = 75
@@ -726,20 +737,6 @@ countries = {
 			}
 			reforms = {
 				magna_carta_reform
-			}
-
-			ruler_term = {	 character = eng_john_lackland start_date = 1177.1.1 end_date = 1216.10.19 regnal_number = 1	} # became Lord of Ireland before being King of England
-			ruler_term = {	 character = eng_henry_iii start_date = 1216.10.28 end_date = 1272.11.16 regnal_number = 3	}
-			ruler_term = {	 character = eng_edward_i start_date = 1272.11.20 end_date = 1307.7.8 regnal_number = 1	}
-			ruler_term = {	 character = eng_edward_ii start_date = 1307.7.8 end_date = 1327.1.20 regnal_number = 2	}
-			ruler_term = {	 character = eng_edward_iii start_date = 1327.1.25 regnal_number = 3 }
-
-			# same numbering as England
-			regnal_numbers = {
-				name_james = 1
-				names_charles = 1
-				names_mary = 2
-				name_william = 3
 			}
 		}
 		include = "catholic_monarchy_english_lordship"
@@ -781,20 +778,6 @@ countries = {
 			}
 			reforms = {
 				magna_carta_reform
-			}
-
-			ruler_term = {	 character = eng_john_lackland start_date = 1177.1.1 end_date = 1216.10.19 regnal_number = 1	} # became Lord of Ireland before being King of England
-			ruler_term = {	 character = eng_henry_iii start_date = 1216.10.28 end_date = 1272.11.16 regnal_number = 3	}
-			ruler_term = {	 character = eng_edward_i start_date = 1272.11.20 end_date = 1307.7.8 regnal_number = 1	}
-			ruler_term = {	 character = eng_edward_ii start_date = 1307.7.8 end_date = 1327.1.20 regnal_number = 2	}
-			ruler_term = {	 character = eng_edward_iii start_date = 1327.1.25 regnal_number = 3 }
-
-			# same numbering as England
-			regnal_numbers = {
-				name_james = 1
-				names_charles = 1
-				names_mary = 2
-				name_william = 3
 			}
 		}
 		include = "catholic_monarchy_english_lordship"
@@ -848,8 +831,21 @@ countries = {
 		include = "iberian_monarchy_no_auxilium"
 
 		government = {
-			ruler = cas_alfonso_xi_burgundy
-
+			type = monarchy
+			ruler = spa_philip_iv_habsburg
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
+			regnal_numbers = {
+				name_philip = 4
+				names_charles = 2
+			}
+			
 			reforms = {
 				crown_castile_reform
 				feudal_nobility
@@ -921,6 +917,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
+			ruler = por_john_iv_braganza
+			heir = por_afonso_vi_braganza
 
 			reforms = {
 				portuguese_monarchy_reform
@@ -997,8 +995,19 @@ countries = {
 
 		government = {
 			type = monarchy
+			ruler = spa_philip_iv_habsburg
 			heir_selection = cognatic_primogeniture
-			ruler = cas_alfonso_xi_burgundy
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
+			regnal_numbers = {
+				name_philip = 4
+				names_charles = 2
+			}
 
 			reforms = {
 				crown_aragon_reform
@@ -1053,7 +1062,20 @@ countries = {
 		include = "muslim_monarchy_no_abrahamic_dhimmi"
 
 		government = {
-			ruler = gra_yusuf_i_nasrid
+			type = monarchy
+			ruler = spa_philip_iv_habsburg
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
+			regnal_numbers = {
+				name_philip = 4
+				names_charles = 2
+			}
 
 			reforms = {
 				the_jewel_of_alandalus_reform
@@ -1093,7 +1115,19 @@ countries = {
 
 		government = {
 			type = monarchy
+			ruler = spa_philip_iv_habsburg
 			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
+			regnal_numbers = {
+				name_philip = 4
+				names_charles = 2
+			}
 
 			reforms = {
 				pyrenean_fueros_reform
@@ -1165,6 +1199,85 @@ countries = {
 		starting_technology_level = 4
 	}
 	
+###Spanish Italy
+	NAP = {
+		own_control_core = {
+			naples caserta gaeta nola piedimonte sora venafro salerno campagna salacon vallo avellino ariano benevento santangelo
+			chieti lanciano vasto aquila atri celano cittaducale csantangelo sulmona teramo lake_fucine bojano isernia larino trivento
+			bari altamura andria barletta monopoli foggia bovino lucera manfredonia rotondo sansevero lake_varano lecce brindisi francavilla gallipoliita martinafr taranto
+			potenza acerenza lagonegro matera melfi montepeloso santarcangelo catanzaro cotrone gerace monteleone nicastro palmi reggiocal cosenza cassano castrovillari scalea paola rossano
+		}
+		government = {
+			type = monarchy
+			ruler = spa_philip_iv_habsburg
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
+			regnal_numbers = {
+				name_philip = 4
+				names_charles = 2
+			}
+		}
+		capital = naples
+		country_rank = rank_kingdom
+		starting_technology_level = 4
+	}
+	
+	SIC = {
+		own_control_core = {
+			messina catania mistretta nicosiasic patti piazza mount_etna mount_stromboli girgenti bivona caltanisetta cefalu sciacca termini palermo corleone mazara salemi trapani pantelleria lampedusa syracuse caltagirone malta modica noto terranovasic
+		}
+		government = {
+			type = monarchy
+			ruler = spa_philip_iv_habsburg
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
+			regnal_numbers = {
+				name_philip = 4
+				names_charles = 2
+			}
+		}
+		capital = palermo
+		country_rank = rank_kingdom
+		starting_technology_level = 4
+	}
+	
+	SAR = {
+		own_control_core = {
+			oristano ales sorgono terralba cagliari tratalias villa_di_chiesa isili muravera seddori tortoli terranova_pausania orosei posada tempiopausania sassari alghero bosa castelsardo macomer bitti ozieri thiesi
+		}
+		government = {
+			type = monarchy
+			ruler = spa_philip_iv_habsburg
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
+			regnal_numbers = {
+				name_philip = 4
+				names_charles = 2
+			}
+		}
+		capital = cagliari
+		country_rank = rank_kingdom
+		starting_technology_level = 4
+	}
+	
 ###French Region
 	FRA = {
 		own_control_core = {
@@ -1194,7 +1307,7 @@ countries = {
 
 			agen marmande montflanquin
 			bazas belin condom nerac sauveterre_de_guyenne
-			bordeaux benauges castelnau_de_medoc la_teste_de_buch lesparre_medoc libourne hourtin_carcans_lake
+			bordeaux benauges castelnau_de_medoc la_teste_de_buch lesparre_medoc libourne
 			perigueux bergerac limeuil riberac sarlat
 			cahors figeac gourdon montauban
 			rodez entraigues millau peyrusse st_affrique villefranche
@@ -1248,13 +1361,19 @@ countries = {
 			metz fresnes verdun clermont_en_argonne toul vic_sur_seille
 		}
 		
-		own_control_colony = {
-			eimastukwek epwikek kutapuskuj upsukdaskooch belle_isle wipetikil naskwotchu mekapisk long_range_mountains
-			ekwentondie wolinak andawaohie wachilmezi kikonteku stadacona etchemin ahwendoe ondaonnentakwi menahkwesk nmejuaqnek
-		}
-		
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
+			
 			laws = {
 				feudal_de_jure_law = by_tradition
 				legal_code_law = civil_law_policy
@@ -1263,6 +1382,9 @@ countries = {
 		capital = paris
 		country_rank = rank_kingdom
 		starting_technology_level = 5
+		discovered_regions = {
+			france_region 
+		}
 	}
 	
 	PRO = {
@@ -1281,7 +1403,11 @@ countries = {
 		include = "catholic_monarchy"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
 			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
 		}
 
 		tolerated_cultures = {
@@ -1306,7 +1432,11 @@ countries = {
 		include = "catholic_monarchy_no_coast"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
 			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
 		}
 
 		tolerated_cultures = {
@@ -1330,6 +1460,14 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
+			#Gaston Duke of Orleans
+			ruler = fra_gaston_orleans_bourbon
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
+			
 			reforms = {
 				french_ducal_vassal_reform
 			}
@@ -1355,6 +1493,17 @@ countries = {
 		include = "expl_western_europe"
 		include = "catholic_monarchy"
 		government = {
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
+			
 			centralization_vs_decentralization = 30
 			aristocracy_vs_plutocracy = -35
 			serfdom_vs_free_subjects = -35
@@ -1393,7 +1542,16 @@ countries = {
 		include = "catholic_monarchy_no_coast_no_censor"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
 			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
 			reforms = {
 				french_appanage_reform
 			}
@@ -1414,7 +1572,16 @@ countries = {
 		include = "catholic_monarchy_no_coast"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
 			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
 			reforms = {
 				french_appanage_reform
 			}
@@ -1439,7 +1606,16 @@ countries = {
 		include = "catholic_monarchy_no_coast"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
 			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
 
 			reforms = {
 				french_ducal_vassal_reform
@@ -1459,7 +1635,16 @@ countries = {
 		include = "catholic_monarchy_no_coast"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
 			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
 			reforms = {
 				french_ducal_vassal_reform
 			}
@@ -1480,6 +1665,16 @@ countries = {
 		include = "catholic_monarchy_english_lordship"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
 			laws = {
 				feudal_de_jure_law = by_tradition
 				legal_code_law = civil_law_policy
@@ -1502,6 +1697,16 @@ countries = {
 		include = "expl_western_europe"
 		include = "catholic_monarchy_no_coast"
 		government = {
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
 			centralization_vs_decentralization = 30
 			aristocracy_vs_plutocracy = -35
 			serfdom_vs_free_subjects = 35
@@ -1537,6 +1742,16 @@ countries = {
 		include = "catholic_monarchy_english_lordship"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
 			laws = {
 				feudal_de_jure_law = by_tradition
 				legal_code_law = civil_law_policy
@@ -1554,6 +1769,16 @@ countries = {
 		include = "catholic_monarchy_english_lordship"
 		government = {
 			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
 			laws = {
 				feudal_de_jure_law = by_tradition
 				legal_code_law = civil_law_policy
@@ -1563,52 +1788,12 @@ countries = {
 		country_rank = rank_kingdom
 		starting_technology_level = 5
 	}
-
-###Spanish Italy
-	NAP = {
-		own_control_core = {
-			naples caserta gaeta nola piedimonte sora venafro salerno campagna salacon vallo avellino ariano benevento santangelo
-			chieti lanciano vasto aquila atri celano cittaducale csantangelo sulmona teramo lake_fucine bojano isernia larino trivento
-			bari altamura andria barletta monopoli foggia bovino lucera manfredonia rotondo sansevero lake_varano lecce brindisi francavilla gallipoliita martinafr taranto
-			potenza acerenza lagonegro matera melfi montepeloso santarcangelo catanzaro cotrone gerace monteleone nicastro palmi reggiocal cosenza cassano castrovillari scalea paola rossano
-		}
-		government = {
-			type = monarchy
-		}
-		capital = naples
-		country_rank = rank_kingdom
-		starting_technology_level = 4
-	}
-	
-	SIC = {
-		own_control_core = {
-			messina catania mistretta nicosiasic patti piazza mount_etna mount_stromboli girgenti bivona caltanisetta cefalu sciacca termini palermo corleone mazara salemi trapani pantelleria lampedusa syracuse caltagirone malta modica noto terranovasic
-		}
-		government = {
-			type = monarchy
-		}
-		capital = palermo
-		country_rank = rank_kingdom
-		starting_technology_level = 4
-	}
-	
-	SAR = {
-		own_control_core = {
-			oristano ales sorgono terralba cagliari tratalias villa_di_chiesa isili muravera seddori tortoli terranova_pausania orosei posada tempiopausania sassari alghero bosa castelsardo macomer bitti ozieri thiesi
-		}
-		government = {
-			type = monarchy
-		}
-		capital = cagliari
-		country_rank = rank_kingdom
-		starting_technology_level = 4
-	}
 	
 ###Scandinavia
 	SWE = {
 		own_control_core = {
 			linkoping soderkoping norrkoping alvastra vadstena vattern kalmar tjust sevede handbord kinda jonkoping oland skara hjo tiveden vartofta utlandet lodose ekholm falkoping allingsas bogesund lidkoping skene vaxjo vallsjo vetlanda albo konga uppvidinge ljungby trollaborg waestbo slite visby hoborg dalaborg amal vedbo
-			stockholm norrtalje enkoping uppsala kastelholm tierp heby nykoping kolmarden strangnas oppunda sodertalje malaren hjalmaren_lake arboga vasteras nora sala skinskatteberg linde grythyttan orebro riseberga goksholm varnum tingvalla nas nordmark gillberg farnebo fryksdal josse vanern avesta falun leksand grange malung mora hedemora orsa soderbarke stora_tuna floda siljan gefle hedesunda hamrange ockelbo
+			stockholm norrtalje enkoping uppsala kastelholm tierp heby nykoping kolmarden strangnas oppunda sodertalje malaren arboga vasteras nora sala skinskatteberg linde grythyttan orebro riseberga goksholm varnum tingvalla nas nordmark gillberg farnebo fryksdal josse vanern avesta falun leksand grange malung mora hedemora orsa soderbarke stora_tuna floda siljan gefle hedesunda hamrange ockelbo
 			hudiksvall alfta soderala hogdal havero selanger
 			harnosand solatunum ramsele sjalevad anundsjo grundsunda
 			asele lycksele arvidsjaur volgsjo stensele tarna ortrask
@@ -1630,6 +1815,7 @@ countries = {
 
 		government = {
 			type = monarchy
+			ruler = swe_christina_vasa
 		}
 		capital = stockholm
 		country_rank = rank_kingdom
@@ -1647,6 +1833,7 @@ countries = {
 		}
 		government = {
 			type = monarchy
+			ruler = swe_christina_vasa
 		}
 		capital = abo
 		country_rank = rank_duchy
@@ -1664,6 +1851,7 @@ countries = {
 		}
 		government = {
 			type = monarchy
+			ruler = dan_christian_iv_oldenburg
 		}
 		capital = oslo
 		country_rank = rank_kingdom
@@ -1677,8 +1865,170 @@ countries = {
 		}
 		government = {
 			type = monarchy
+			ruler = dan_christian_iv_oldenburg
 		}
 		capital = kobenhavn
+		country_rank = rank_kingdom
+		starting_technology_level = 5
+	}
+
+###European Colonial Nations
+	NEN = { #New England
+		own_control_core = {
+			weyanock kiskiack wicocomico werowocomoco rappahannock nentego patuxent wicomico chicamacomico matapeake accomac
+			quinnipiac rippowam saukiog siccanemos nehantuck
+			patuxet assonet nauset nantucket seekonk sagadahoc casco kennebunk squamscott naumkeag shawmut
+			#Newfoundland
+			cape_race cape_spear bacalhieu placentia mollyhuajeck mekwiskajk
+		}
+		government = {
+			type = republic
+			ruler = random
+		}
+		capital = weyanock
+		country_rank = rank_duchy
+		starting_technology_level = 5
+	}
+	
+	NFR = { #New France
+		own_control_core = {
+			eimastukwek epwikek kutapuskuj upsukdaskooch belle_isle wipetikil naskwotchu mekapisk
+			ekwentondie wolinak andawaohie wachilmezi kikonteku stadacona etchemin ahwendoe ondaonnentakwi menahkwesk nmejuaqnek
+		}
+		government = {
+			type = republic
+			ruler = random
+		}
+		capital = ahwendoe
+		country_rank = rank_duchy
+		starting_technology_level = 5
+	}
+	
+	NSP = { #New Spain
+		own_control_core = {
+			#Mesoamerica
+			xaltocan tehotihuacan culhuacan tetzcoco apan tenochtitlan tlacopan azcapotzalco chalco 
+			xochimilco axochiapan cuauhnahuac 
+			quauhquechollan huaxtepec itzocan amaticoztitlan tlapan ometepec oapan jicayan zacatepec 
+			yohualtepec huajuapan silacayoapam chiautla cuauhteopan tlazcozauhtitlan yopitzinco tixtla 
+			chilapa tecoanapa cihuatlan tecpan ixtapan zacatollan teotepec tlapacoya pachyohcan atocpan 
+			zempoala tollantzinco axocopan zimapan ixmiquilpan cadereyta tecozautla tututepec coatlan 
+			cuauhtolco tonameca manialtepec comitlan juchatengo nube_flan tehuantepec zanatepec chimalapan 
+			guiigu_yudxi huamelula juxtlahuaca tlachquiauhco poctlan tillantonco amoltepec teozacualco 
+			jaltepec yucucui coixtlahuacan yucundaa yucundeq yodzocahi nochixtlan sosola ixtlan zaachila 
+			miahuatlan totolapan mictlan yautepec tlacolula teotitlan ixcatlan oxitlan xicaltepec cuicatlan 
+			tochtepec mixtlan tozlan tlacotlalpan cosamaloapan iztachacalapan ozumacin 
+			atepec cuauhcuetzpaltepec chinantlan tesechoacan cuetlaxtlan xamapan nopiloa teutila puctlan 
+			otatitlan coatlicamac suchilapan atitlan choapan xochiapa coatzacoalco atzaccan acayucan 
+			texistepec tonala_coatzacoalco cuauhtochco ahuilizapan otlaquiquixtla zongolica cempoala 
+			itzcalpan xicochimalco quiahuiztlan tizatlan tepeticpac ocotelolco quiahuixtlan huexotzinco 
+			cholollan xicotepec zacatlan tetela ixtacamaxtitlan tepeyahualco tepeyacac 
+			tecalco tecamachalco tehuacan tepexi tlatlauquitepec nauhtlan tuzapan 
+			papantla tlapacoyan cuyuxquihui xalapa xalacinco mizantla teziutlan tuxpan teayotlan pantepec 
+			taximaroa tzitacuaro zinapecuaro guayangareo tiripetio tacambaro tzintzuntzan cuitzeo 
+			churumekua tuzantla caracuaro puruaran huandacareo acambaro maravatio yuririapundaro zacapu 
+			xacona zula_michoacan tlazazalca angamacutiro xilotlan erongaricuaro patzcuaro 
+			aguacana uruapan tinguindin tancitaro coliman tlacalahuastla caxitlan coahuayana chucutitlan 
+			apatzingan teloloapan ajuchitlan cutzamala tepecoacuilco tetellan zompanco 
+			oztoman tlachco temascaltepec zacazonapan malinalco tlalpujahua tollohcan ixtlahuaca ninil 
+			teotenanco mixquiahuala tollan cuauhtitlan xilotepec ixtachichimecapan 
+			kerhiretarhu tetzapotitlan huayacocotla tutotepec metztitlan jalpan tziuhcoac oxtlipan copuz 
+			cocomacan mo_o_ti pechichitane xiriquitzio nat_tha_hi penlamu uza pame otomi 
+			tanchaycha tangamanga hnahnu huaxcama ozuluama panuco tamtoc quechula ocosingo lakam_tun 
+			tenamitl zinacantan pochutla tila tonala_chiapas napinaica jaltenango huehuetan 
+			chimalapa_jungle baak cupilco zahuatan tatahuitalpan mayapan mani hocabail sotuta maxcanu 
+			hunucma tho motul dzilam titsimin chichen_itza tases kalotmul zaci kaan_peech calkini edzna 
+			hochob dzibilnocac chakan_putum tixchel xicallanco itzamkanac nadzcaan chactemal 
+			colha nohmul chakanbakan xpuhil dzibanche bakhalal chacchoben tixmul xpaicheil telantunich ekab 
+			labcah zama coba chakan_yucatan jootsuuk tlayolan tochpan tlamazolan sayula cuzallapa amollan 
+			cocollan cutzalan tomatlan xihutla zihuatlan melahuacan revillagigedo_islands cuauhchinanco 
+			tlalpan amaxacotlan cuautla autlan tenamaxtlan ameca huitzquilic etzatlan tala_mx ahuacatlan 
+			tzapotzingo hostoticpac hostotipaquillo xalisco magdalenas aztatlan sentispac tonala tlaxomulco 
+			chapallan acatic ixtlahuacan coinan mextiacan mitic metzquititlan xalostotitlan 
+			tepactitlan yahualican cuzalapa
+			
+			#Central America
+			noh_peten namaan yax_mutal pachan wak_kabnal
+			ceibal ixtutz pusilha campin tzoite paliac
+			tzunuun altun_ha lamanai xunantunich uxwitza
+			acasaguastlan chiquimula cuauhtemallan guazacapan itzalku
+			
+			xelahuh kakol_kiej itzcuintlan atitlan_guatemala
+			
+			jolom_konob zapaluta tzunun_kaab otzoya chinabajul pismachi
+			
+			chama seacal kajyub nito toquegua
+			
+			talanga tecohtzincalpan comayagua maniani
+			tencoa ocotepec opoa cururu shalatenan
+			chinda naco yoro ticamaya
+			choluteca nacaome texiguat xoxonal
+			pech sico olanchito ollalko papayeca
+			usulutan chalchuapa metapan kuskatan cojutepeque nonualco
+			gotera queiquin
+			kukra tawahka prinzus boas bawika silam yuskus ku panamahkas
+			
+			matagalpa rama ulwas xiotenko ukutal xalapan danli
+			
+			nagarando nequecheri diria cuauhcapolca tezoatega guaxenicos sutiapan
+			
+			karawala awastara ahuya_yari
+			orosi bocto nekokiaw garabito uxarraci
+			coctu boruca quepos pacaca
+			burica chiriqui huista
+			veragua caribaro terbi dererri tariaca kabeka
+			
+			#Aridoamerica
+			yenecamu guaycura monqui cadegomo mti_pa
+			guadalupe_island cochimi nakipa koleeu akwaala kumeyaay salada_lagoon
+			kwapa north_hia_ced_oodham south_hia_ced_oodham huhuhla xiica_hai_iic_coii koklolodi tohono_oodham himuris
+			tahejoc comcaac cucurpe xiica_xnaai_iic_coii pitic ures aconchi aritpa
+			yoreme huatabampo chinipas makurawe cosihuiriachi
+			matape guaimas soyopa sahuaripa batuco oposura papigochic babicora corodehuachi
+			sinaloa baborigame badiraguato ahome cerocahui gonogochi
+			culiacan quetzalla piaxtla mazatlan tamazula otaez topia tayoltita
+			chiametlan maloya guarisamey acaponeta nayarit mezquital nilapohuana odam canatlan
+			atanagunypacam tamaulipeco maratine coospacam magueyes hualahuises galeana pilon
+			pantlan tula mante ypoa
+			ma_tehua_llan guanchenis mazatlpilli mazatepec guachichil miopacoas
+			coneto papanton cuencame alamamas irritila
+			tepehuan inde guanacevi papasquiaro
+			mapimi sisimbles osatayogliglas cacalotito
+			julime tu_e_dine_de baopapas babonoyaba guajoquilla mesquite guiaquitas nonoava cocoyome coyame sainapuchi yoli jae_aaya
+			alazapa cuanales masacuajulam gualeguas tilijais guazapayogliglas huajuco
+			chisos espopolames gueiquesales muruam chichitames cauitaome yeme
+			east_hanos west_hanos manso hue_hue_ri_gi_ta tehua suma namiquipa xicahua
+			tlacuitlapan yamanquex zain tepecan yuac nochistlan xochipillan teulinchan xochitepec huaxtla sauzas guaxaban xiconaque cuxtaque
+			
+			#Florida
+			mayaca utina itaraholata
+			jororo acuera surruque ho_bay
+			mayaimi ais guacata tequesta guarungube
+			tequemapo okeechobee caloosahatchee uriparacoxi lake_okeechobee
+			potano vicela uqueten
+			tocaste guazoco mocozo ozita
+			anhayca azile
+
+			#Caribbean
+			yateras bayaquitiri mayari guantanamo baracoa sagua barajagua
+			bayamo macaca jiguani cueiba maguanes bani_cuba lora cayaguayo
+			south_camaguey camaguey mabuya guaimaro
+			cubanacan east_cubanacan magon ornofay guamuhaya east_sabaneque central_sabaneque sabana
+			habana batanabo guanimar marien_cuba siguanea guaniguanico guanamacabibes macoriges west_sabaneneque hanabana jagua
+			maynoa yaguabo aguacadiba guaygata anaya oristan kaiman
+			
+			bavaro yuma mona_island hicayagua cayacoa yamasa boya
+			maguana jarabacoa cibao azua bani banique cordrilla_central
+			yaqui magorix bohio moca samana cubao ciguayo cotui
+			marien iguamuco guahaba tortuga baynoa
+			jaragua cayguani baoruco guanabo cahay guacayakima haniguayagua yaquimo yaguana
+			guaynabo guaraca guaynia guama arasibo ayamaco
+		}
+		government = {
+			type = republic
+			ruler = random
+		}
+		capital = Tenochtitlan
 		country_rank = rank_kingdom
 		starting_technology_level = 5
 	}
@@ -1789,6 +2139,156 @@ countries = {
 			stability = 33
 			tribal_cohesion = 90
 		}
+	}
+
+###noboy expects random India
+	MUG = {
+		own_control_core = {
+			awadh akbarpur kishi sultanpur_uttar_pradesh
+			bahraich balrampur gonda shravasti tulsipur
+			khairabad bhurwara biswan firuzabad_bahraich kherigarh
+			lucknow bilgram hardoi ibrahimabad pali_uttar_pradesh
+			manikpur bhadohi mungra raebareli unnao
+			amber_loc
+			
+			arrah ballia buxar jaund rohtas sasaram
+			azamgarh andar chillupar rudrapur sonepur_bihar thawe
+			bettiah makwanpur mehsi ramnagar_bihar sheohar simraungadh
+			gorakhpur bansi basti binayakpur kushinagar lumbini
+			varanasi chunar ghazipur jaunpur mau_jaunpur kantit
+
+			bareilly nahil pilibhit shahjahanpur
+			budaun gunnaur sambhal shahabad_uttar_pradesh
+			shishgarh chandpur_uttar_pradesh nagina seohara
+
+			alwar narnaul bharatpur
+			prayag kara asni korra shankargah
+			etawah kanauj sargadwari makanpur
+			agra mathura jalesar_doab kol dholpur chandwar
+			mirat hapur jansath baran saharanpur piran_i_kaliyar
+			delhi gurgaon rohtak panipat jind
+			sirhind sadhaura samana_india thanesar kaithal karnal
+
+			hajner sunam raikot faridkot bathinda firozpur muktsar
+			hisar sarsuti dadri hansi
+			jalandhar rahon bajwara milwat kapurthala
+			lahore sultanwind fatehabad batala kalanaur gugera kasur virkgarh sialkot eminabad pasrur
+			chiniot kamalia talwandi jaranwala jhang pindi_bhattian shorkot dijkot
+			multan mailsi chichawatni dipalpur pakpattan karur_punjab jalalpur_pirwala tulamba
+			nawakot bijnot derawar channan_pir kot_marot uch mir_garh_qila dunga_bunga chishtian khairpur aror
+			dajal dera_ghazi_khan dera_ismail_khan kot_addu sitpur karor bhakkar mankera harrand mithankot omerkot
+			jammu udamphur kathua kishtwar pangi paddar chamba_india barmaur keylong koksar bhimber kohtali
+			gujrat busal bhera lalian shahpur sillanwali
+			dinkot isakhel bannu akora hangu khost tank thal_daman
+			peshawar lalpur mardan kohat attock
+			chakwal dina khewra khushab pindi_gheb rawalpindi sangni
+			zhob duki rakni lorelai kahan daraban wana urgun
+
+			chitral mulkhow mastuj yarkhun urtsun
+			parun asadabad_kunar hajiabad
+			kalam_swat dir timergara bajaur malakand
+			agror sherwan behali dasu kandia jijial tangir baligram
+			gilgit astore bunji chilas punial ishkoman phander yasin
+			altit nagar misgar passu hindu_kush8
+			srinagar pulawama baramulla ganderbal kupwara banihal rasyal rajouri poonch rawalakot udabhanda marwah sharda
+
+			bishnupur bankura barabhum chandrakona hijli madaran raipur_bengal tamluk
+			bogra birampur goraghat rangpur_bengal shahjadpur
+			devkot barbakaabad pandua_adina siliguri tajpur
+			gaur godagari naogaon pabna rampur_boalla
+			khalifatabad barguna chandrawip fathabad kotalipara qasba shahbazpur
+			khulna east_sundarban husaynabad jaynagar kulpi west_sundarban
+			mymensingh atiya belabo kapasia muktagacha tarakanda
+			nadia chandrabad jessore jhenaidah maheshpur pipli sreepur
+			pandua baragram bardhaman dubrajpur ilambazar satgaon
+			sonargaon bikrampur chandpur kobirhat kumilla savar
+			sylhet khaliajuri khaspur patharkandi rajnagar shaharpara
+			agartala baniachang chandrapur kailashahar laskarpur pilak rangamati
+
+			hazaribagh chai gobindpur katrasgarh shergarh urda
+			palamau chatra tarhasi untari
+			ranchi ichagarh kharsawan khukhragarh porahat
+
+			bhagalpur gidhaur hajipur khagaria monghyr samastipur
+			darbhanga janakpur_nepal jhanjharpur madhubani siraha sitamarhi
+			dumka deoghar jangipur mandar_parvat rajmahal teliagarhi
+			patna bihar_sharif deo gaya narhat rajgir roh
+			purnia alamganj bihariganj katihar kosi saharsa
+
+			puri kataka harishpur jajnagar bhadrak balasore jalesar ratnagiri kanthi
+			ganjam asika kalingapattanam parlakimidi kalinganagara brahmapur kulada
+			nilagiri baripada chaibasa ghatsila rairangpur
+			nandapur rayagada kotagad jajjaldeypur kalahandinagara kotpad raighar khariar patna_garjat gunupur balangir saintala belkhandi bissam_cuttack kasipur nowrangapur
+			dhenkanal baud khurda narsinghpur bhuban udayagiri_kotagad athmallik angul pal_lahara nayagarh kunjabangarh phulbani
+			keonjhar khiching ghasipura jyotipur ghatgaon
+			sambalpur samasingha sonepur redhakhol basna paikmal bargarh debagarh kuchinda
+			rabkob sundergarh raigadh bonaigarh birugarh jashpur_nagar sitapur badamgarh upar_ghat mainpat
+
+			ambikapur ramkola ramgiri garhwa sonhat janakpur
+
+			ujjain mandsaur rampura bhanpura agar indore dhar ratlam jabhua
+			sironj bhilsa bhopal sehore sarangpur maksi raisin chanderi guna
+			mandu maheshwar khategaon handia khandwa mandleshwar bijagarh alirajpur
+			thalner burhanpur asirgarh gawilgarh illichpur nandurbar sultanpur laling dharangaon pachora
+
+			dongartal bandhugara chhaparagarh balaghat wairagarh katol devgarh
+			basim kalam kelapur panar amravati akola mehkar sindkedh
+			ballarpur aheri bhadrachalam gadchiroli bramhapuri
+			bastar barasuru kondagaon paralkot kanker dantewada jagdalpur
+			kherla hoshangabad chauragarh bhojpur tendukheda
+			garha mandla ghansor nainpur ramgad amarkantak
+			ratnapura sarangarh kashigarh sakti chaiturgarh tummana kenda kawardha nawagarh pendra
+			tilda raipur durg dhamtari rajim sripura khairagarh nandgram ambagarh bemetara deori
+			bandogarh sohagpur beohari ramnagar rewa nagod mauganj madwas sidhi agori vijaygarh
+			deogarh sugaur ujargarh singorgarh murwara damoh lalitpur
+			orchha kundar tehri irij chhatarpur panna rahatgarh khajuraho mahoba bhatta
+			konch kalpi rath banda chitrakuta jhansi kalinjar
+
+			nagahrada chavand salumbar amet chittor bhilwara phulia mandalgarh
+			dungarpur banswara kanthal
+			sirohi jalor chandravati siwana nadol
+			gwalior bhind datia narwar sipri sheopur sabalgarh khaniadhana
+			kota bundi mangrol gagraun aklera shahabad
+			sambhar dausa bayana karauli malpura ranthambore ajmer
+			bhatnir anupgarh suratgarh rawatsar sidhmukh taranagar churu sui pugal udasar sardarshahar
+			jaisalmer ludrava ramgar pokhran
+			mandore osian phalvardhika khed pali bahadamer kiradu gudamalani kurki
+			sikar manoharpur jhunjhunu kolasar
+			merta nagaur makrana kolayat
+
+			dhrangadhra limbdi ranpur
+			sihor palitana lathi
+			nagnes dwarka bhanvad gondal morvi
+			chhaya junagarh somnath diu amreli
+			lakhpat kapilkot lakhiyarvira kantha
+
+			rander broach baroda nandod
+			danduka dholka ashaval khambat modasa
+			patan deodar radhanpur palanpur idar
+			baria champaner mohan astamba_dongar
+
+			kashmore shadodkot shikarpur jhatpat sukkur paat
+			vingur nagarparkar chor umarkot wanga_bazar agham_kot islamkot
+			thatta sonda manora muhammad_tur laribandar ahmad_khan kotri naserpur hala ranikot
+			rohri dubbi ghotki kot_lalu kandiaro islamgarh rajabar moro_sindh sehwan mansura
+			siwi dhadar gandava lahri bab_kot jhal dera_bugti mithri sui_pakistan
+			
+			dhubri kokrajhar bijni barpeta hajo guwahati goalpara dura
+			
+			kabul alishang chak gandamak jalalabad logar kohi_safi
+			ghazni gardez muqur nawah wazakhwa zarghun_shahr karor_2
+			
+			surat dang mayuragiri salagiri chandor udgir bir dahrur qandhar ahmednagar daulatabad jalna nander pathri
+			sirpur manikdrug mahur nirmal chennur adilabad asifabad yegaladapa kaulas balkonda sukhma malkangiri mahagaon
+		}
+
+		government = {
+			type = monarchy
+			ruler = random
+		}
+		capital = delhi
+		country_rank = empire
+		starting_technology_level = 5
 	}
 }
 }
