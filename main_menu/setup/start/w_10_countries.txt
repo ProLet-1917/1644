@@ -394,41 +394,6 @@ countries = {
 		capital = geneve
 	}
 
-	SAV = { #Savoy - France own bourg_en_bresse belley gex vienne bage thoire and vercelli biella from Milan,Mantua own casale
-		own_control_core = {
-			chambery saint_jean_de_maurienne annecy la_roche_sur_foron
-			moutiers evian
-			pinerolo susa turin 
-			carmagnola saluzzo
-			cuneo faucigny sallanches
-			asti ceva mondovi alba chieri vercelli biella ivrea lanzo acqui
-			aosta chatillonaos morgex nice puget_theniers
-		}
-
-		starting_technology_level = 3
-		include = "expl_mediterranean"
-		include = "catholic_monarchy"
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-			ruler = sav_carlo_emanuele_di_savoy
-
-			ruler_term = { character = sav_carlo_emanuele_di_savoy start_date = 1644.1.1 regnal_number = 2 }
-
-			regnal_numbers = {
-
-			}
-		}
-
-		tolerated_cultures = {
-			piedmontese
-		}
-
-		country_rank = rank_duchy
-		capital = turin
-	}
-
-
 	KOL = {	#Cologne
 		own_control_core = {
 			cologne ahrweiler neuss attendorn brilon recklinghausen
@@ -1187,6 +1152,8 @@ countries = {
 			opole lubliniec olesno prudnik strzelce_opolskie #kluczbork 
 			bytom kozle pszczyna raciborz siewierz toszek #tesin bielsko
 			opava fryvaldov glubczyce hlucin krnov
+
+			metlika kocevje
 		}
 
 		own_control_integrated = {
@@ -1213,7 +1180,7 @@ countries = {
 		government = {
 
 			ruler = hab_ferdinand_iii_von_habsburg
-			consort = frt_johanna_pfirt
+			heir = hab_leopold_von_habsburg
 
 			ruler_term = { character = hab_ferdinand_iii_von_habsburg start_date = 1644.1.1 regnal_number = 3 }
 
@@ -3215,6 +3182,7 @@ countries = {
 			uelzen #Amt of Bodenteich
 			diepholz
 			einbeck gifhorn meinersen
+			ballenstedt
 		}
 
 		starting_technology_level = 3
@@ -3837,5 +3805,729 @@ countries = {
 		capital = glarus
 	}
 
+#Italy
+
+
+	#Venice https://en.wikipedia.org/wiki/Venice
+	VEN = {
+		own_control_core = {
+			venice mestre treviso castelfranco ceneda chioggia conegliano
+			cividale gemona tolmezzo pordenone spilimbergo udine
+			belluno pieve feltre verona legnago peschiera
+			padova este monselice vicenza bassano schio
+			brescia asola palazzolo salo_ita breno nozza
+			bergamo cortenuova clusone zogno
+		}
+
+		own_control_integrated = {
+			pola buzet pazin rovinj krk pag zadar sibenik split brac kotor corfu leukas cephalonia zakynthos kythira mykonos
+		}
+
+		include = "expl_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "catholic_republic"
+		country_rank = rank_duchy
+		government = {
+			type = republic
+			heir_selection = lottery_election
+
+			ruler = ven_francesco_erizzo
+
+			laws = {
+				republican_foundation_law = republicanism_policy
+				heir_religion_law = heir_same_religion
+			}
+			reforms = {
+				council_of_forty
+				council_of_ten
+				merchant_republic
+			}
+
+			privilege = {
+				#nobles
+				elaborate_court_ceremonies
+				libro_d_oro
+				zontas
+				avogadoria_de_comun
+
+				#burghers
+				libro_d_argento
+				land_of_commerce
+				sponsor_maritime_contracts
+				shipwright_contracts
+				market_fairs
+			}
+
+			centralization_vs_decentralization = 25
+			aristocracy_vs_plutocracy = 40
+			serfdom_vs_free_subjects = 10
+			traditionalist_vs_innovative = 30
+			spiritualist_vs_humanist = 80
+			mercantilism_vs_free_trade = -40
+			offensive_vs_defensive = 40
+			land_vs_naval = 60
+			quality_vs_quantity = -20
+			belligerent_vs_conciliatory = -20
+
+			capital_economy_vs_traditional_economy = -80
+			individualism_vs_communalism = -40
+			outward_vs_inward = -60
+		}
+
+		capital = venice
+		dynasty = badoer_dynasty
+		dynasty = baseggio_dynasty
+		dynasty = contarini_dynasty
+		dynasty = cornaro_dynasty
+		dynasty = dandolo_dynasty
+		dynasty = dolfin_dynasty
+		dynasty = falier_dynasty
+		dynasty = giustiniani_dynasty
+		dynasty = gradenigo_dynasty
+		dynasty = morosini_dynasty
+		dynasty = michiel_dynasty
+		dynasty = polani_dynasty
+		dynasty = sanudo_dynasty
+		dynasty = venier_dynasty
+		dynasty = celsi_dynasty
+
+		tolerated_cultures = { dalmatian }
+
+
+		#variables = {
+		#	data = {
+		#		{
+		#			flag = "year_of_start_of_libro_d_oro"
+		#			data = {
+		#				type = value
+		#				identity = 133700000
+		#			}
+		#		}
+		#	}
+		#}
+		#https://www.researchgate.net/publication/269643384_The_Venetian_Money_Market_Banks_Panics_and_the_Public_Debt_1200-1500
+		#https://www.jstor.org/stable/1882461
+		currency_data = {
+			gold = 220
+		}
+	}
+
+	SAV = { #Savoy - France own bourg_en_bresse belley gex vienne bage thoire and vercelli biella from Milan,Mantua own casale
+		own_control_core = {
+			chambery saint_jean_de_maurienne annecy la_roche_sur_foron
+			moutiers evian
+			pinerolo susa turin 
+			carmagnola saluzzo
+			cuneo faucigny sallanches
+			asti ceva mondovi alba chieri vercelli biella ivrea lanzo acqui
+			aosta chatillonaos morgex nice puget_theniers
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "catholic_monarchy"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = sav_carlo_emanuele_di_savoy
+
+			ruler_term = { character = sav_carlo_emanuele_di_savoy start_date = 1644.1.1 regnal_number = 2 }
+
+			regnal_numbers = {
+
+			}
+		}
+
+		tolerated_cultures = {
+			piedmontese
+		}
+
+		country_rank = rank_duchy
+		capital = turin
+	}
+
+	MLO = { #Milan
+		own_control_core = {
+			milano legnano rho varese monza lecco treviglio como novara arona domodossola varallo
+			pavia lomello voghera cremona casalmaggiore soncino lodi alessandria novi rovegno tortona
+		}
+
+		own_control_conquered = {
+
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "catholic_monarchy_no_coast"
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+
+			ruler = spa_philip_iv_habsburg
+
+			regnal_numbers = {
+				name_albert = 1
+				name_hubert = 2
+				name_hugh = 1
+				name_albert.name_azzo = 2
+				name_fulk = 1
+				name_obizzo = 1
+			}
+
+			reforms = { dynastic_signoria_reform }
+
+			centralization_vs_decentralization = 80
+			aristocracy_vs_plutocracy = -50
+			serfdom_vs_free_subjects = -40
+			traditionalist_vs_innovative = 20
+			spiritualist_vs_humanist = -25
+			mercantilism_vs_free_trade = -60
+			offensive_vs_defensive = 30
+			land_vs_naval = -10
+			quality_vs_quantity = -10
+			belligerent_vs_conciliatory = -30
+			capital_economy_vs_traditional_economy = -20
+			individualism_vs_communalism = -20
+			outward_vs_inward = -20
+
+			privilege = {
+				#Noble Privileges
+				nobles_land_rights
+				noble_fortification_licenses
+				visconti_city_states
+
+				#Clergy Privileges
+				clergy_literacy_rights
+				clergy_enforced_unity
+
+				#Burgher Privileges
+				trade_monopolies
+
+				#Commoner Privileges
+			}
+
+			laws = {
+				legal_code_law = civil_law_policy
+				marriage_law = monogamous_marriage
+				heir_religion_law = heir_same_religion
+			}
+		}
+
+		tolerated_cultures = {
+			emilian
+		}
+
+		country_rank = rank_duchy
+		capital = milano
+	}
+
+	MAN = { #Mantova
+		own_control_core = {
+			goito mantova ostiglia
+			casale
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "catholic_republic_no_coast"
+		government = {
+			type = republic
+			heir_selection = podesta_elective
+
+			reforms = {
+				signoria_reform
+			}
+
+			ruler = man_carlo_gonzaga
+
+		}
+
+		tolerated_cultures = {
+			lombard
+		}
+
+		capital = mantova
+		dynasty = gonzaga_dynasty
+	}
+
+	PAR = { #Parma
+		own_control_core = {
+			berceto parma sandonnino
+			piacenza bardi bobbio fiorenzuola
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "catholic_republic_no_coast"
+		government = {
+			type = republic
+			heir_selection = podesta_elective
+
+			reforms = {
+				signoria_reform
+			}
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			italki
+		}
+
+		country_rank = rank_county
+		capital = parma
+	}
+
+	MOD = { #Modna
+		own_control_core = {
+			modena frassinoro nonantola mirandola
+			reggioem canossa guastalla
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "catholic_republic_not_present"
+		government = {
+			type = republic
+			heir_selection = podesta_elective
+
+			reforms = {
+				signoria_reform
+			}
+			ruler = random
+		}
+		capital = modena
+	}
+
+	PAP = { #Papal State
+		own_control_core = {
+			 rome terracina velletri anagni palestrina sabina tivoli bracciano civitavecchia corneto orte orvietano viterbo
+			ancona ascolipiceno camerino fabriano fermo macerata perugia cittacastello marsciano ancona ascolipiceno camerino fabriano fermo macerata
+			urbino gubbio montefeltro pesaro rimini cesena faenza imola modigliana ravenna ferrara argenta comacchio ficarolo rovigo
+			spoleto assisi narni rieti todi bologna medicina vergato
+			avignon #France
+		}
+
+		include = "catholic_bishopric"
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		discovered_regions = {
+			ethiopia_region
+			nubia_region
+		}
+		country_rank = rank_kingdom
+		government = {
+
+			ruler = pap_urbanus_viii
+
+			regnal_numbers = {
+				name_adrian = 5
+				name_agapetus = 2
+				name_alexander = 4
+				name_anastasius = 4
+				name_benedict = 12
+				name_boniface = 8
+				name_callisto = 2
+				name_celestine = 5
+				name_clement = 5
+				name_damasus = 2
+				name_eugene = 3
+				name_felix = 4
+				name_formosus = 1
+				name_gelasius = 2
+				name_gregory = 10
+				name_honorius = 4
+				name_innocent = 5
+				name_john = 22
+				name_julius = 1
+				name_lando = 1
+				name_leon = 9
+				name_lucius = 3
+				name_marinus = 2
+				name_martin = 4
+				name_nicholas = 4
+				name_paschal = 2
+				name_paul = 1
+				name_pius = 1
+				name_roman = 1
+				name_sergius = 4
+				name_silvester = 3
+				name_sixtus = 3
+				name_stephen = 9
+				name_theodore = 2
+				name_urban = 4
+				name_valentine = 1
+				name_victor = 3
+			}
+
+			laws = {
+				theocratic_leadership = the_papacy
+				heir_religion_law = heir_special_succession
+			}
+			heir_selection = papal_election
+
+			privilege = {
+				#Nobles
+				feudal_mercenary_contracts
+				monetary_fiefs
+				powerful_italian_families
+				#Clergy
+				clerical_advisory_council
+				embellish_great_works_of_faith
+				liturgical_mural_art
+				clergy_religious_state
+				religious_diplomats
+				clergy_strengthen_faith
+				french_cardinals
+				#Burghers
+				urban_development_grants
+				cardinal_lead_guilds
+				#Peasants
+				no_labor_sunday
+			}
+			reforms = {
+				papacy_reform
+			}
+
+			centralization_vs_decentralization = 80
+			traditionalist_vs_innovative = -40
+			spiritualist_vs_humanist = -99
+			aristocracy_vs_plutocracy = -50
+			serfdom_vs_free_subjects = -60
+			mercantilism_vs_free_trade = -60
+			belligerent_vs_conciliatory = 20
+			quality_vs_quantity = -20
+			offensive_vs_defensive = 20
+			land_vs_naval = 33
+			capital_economy_vs_traditional_economy = 60
+			individualism_vs_communalism = 40
+			outward_vs_inward = -60
+
+		}
+
+		tolerated_cultures = {
+			provencal
+			neapolitan
+		}
+
+		court_language = latin_language
+		capital = rome
+
+		is_valid_for_release = no
+	}
+
+	GEN = { #Genoa
+		own_control_core = {
+			genoa lavagna sarzana albenga cairo_montenotte finalborgo savona ventimiglia
+			bastia aleria calvi corte ajaccio bonifacio sartene vico
+		}
+		own_control_integrated = {
+
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "catholic_republic"
+		country_rank = rank_duchy
+		government = {
+			type = republic
+			heir_selection = diarchic_election
+
+			ruler = gen_giovanni_lercari
+
+			laws = {
+				republican_foundation_law = republicanism_policy
+			}
+			reforms = {
+				diarchy_republic
+				compagna_communis
+			}
+
+
+			centralization_vs_decentralization = 25
+			aristocracy_vs_plutocracy = 25
+			serfdom_vs_free_subjects = -20
+			traditionalist_vs_innovative = 35
+			spiritualist_vs_humanist = 10
+			mercantilism_vs_free_trade = -40
+			offensive_vs_defensive = 50
+			land_vs_naval = 65
+			quality_vs_quantity = -20
+			belligerent_vs_conciliatory = 0
+			capital_economy_vs_traditional_economy = -60
+			individualism_vs_communalism = -20
+			outward_vs_inward = -70
+
+
+		}
+
+		tolerated_cultures = {
+			corsican
+		}
+
+		capital = genoa
+	}
+
+	LUC = { #Lucca
+		own_control_core = {
+			lucca massa pescia fosdinovo
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "catholic_republic"
+		government = {
+			type = republic
+			heir_selection = podesta_elective
+
+			reforms = {
+				signoria_reform
+			}
+
+			ruler = random
+
+			regnal_numbers = {
+				name_boniface = 2
+				name_albert = 1
+				name_rayner = 1
+				name_castro = 1
+				name_henry = 1
+			}
+		}
+
+		tolerated_cultures = {
+			venetian
+		}
+
+		country_rank = rank_county
+		capital = lucca
+	}
+
+	FLO = { #Florence
+		own_control_core = {
+			florence mangona poggibonsi prato sanlorenzo pistoia arezzo cortona sansepolcro siena chiusi montalcino
+			pisa livorno pontedera volterra grosseto massamar pitigliano
+		}
+
+		own_control_conquered = {
+			
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "catholic_monarchy"
+
+		government = {
+
+			ruler = flo_ferdinando_medici
+		}
+
+		capital = florence
+
+		tolerated_cultures = {
+			emilian
+		}
+
+	}
+
+	PIO = {
+		own_control_core = {
+			piombino
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "catholic_republic_not_present"
+		government = {
+			type = republic
+			heir_selection = podesta_elective
+
+			reforms = {
+				signoria_reform
+			}
+			ruler = random
+		}
+		capital = piombino
+	}
+
+#Hungary
+
+	HUN = {	#Hungary
+		own_control_core = {
+			bratislava hlohovec holic nitra prievidza samorin trnava
+			trencin povazska_bystrica zilina oravsky_podzamok turciansky_svaty_martin liptovsky_mikulas
+			hont banska_bystrica kremnica krupina stary_tekov zvolen
+			balassagyarmat gemer podmuran rimavska_sobota roznava salgotarjan #nograd 
+			levoca bardejov gonc kosice lubica presov turna zemplin beregovo humenne mukachevo satoraljaujhely uzhorod velikyi_bereznyi
+			szatmar syvlyush nagyecsed carei nagyboszormeny szabolcs varda nagykallo 
+			sopron gyor kapuvar magyarovar tata papa vasvar kormend olsnica szombathely zalavar cakovec nagykanizsa zalaegerszeg
+			zagreb karlovac sisak slunj varazdin bjelovar koprivnica #petrinja
+			senj crikvenica kaseg otocac
+			kutina komarom
+		}
+
+		own_control_integrated = {
+
+		}
+
+		starting_technology_level = 3
+		include = "expl_eastern_europe"
+		include = "eastern_european_catholic_monarchy_no_auxilium_no_coast"
+		include = "eastern_european_catholic"
+		government = {
+
+			ruler = hab_ferdinand_iii_von_habsburg
+
+			ruler_term = { character = hab_ferdinand_iii_von_habsburg start_date = 1644.1.1 regnal_number = 3 }
+ 
+			regnal_numbers = {
+				name_bela = 4
+				name_stephen = 5
+				name_vladislav = 4
+				name_andrew = 3
+				name_charles = 1
+			}
+			laws = {
+				legal_code_law = civil_law_policy
+				marriage_law = monogamous_marriage
+				heir_religion_law = heir_same_religion
+				precious_metal_distribution_law = gold_export_ban
+			}
+			reforms = {
+				autocracy
+			}
+			privilege = {
+				#nobles
+				monetary_fiefs
+				nobles_land_rights
+				noble_marriage_rights
+				noble_fortification_licenses
+
+				#clergy
+				clergy_literacy_rights
+				clergy_enforced_unity
+			}
+
+			centralization_vs_decentralization = 50
+			traditionalist_vs_innovative = -25
+			spiritualist_vs_humanist = -50
+			quality_vs_quantity = 33
+			capital_economy_vs_traditional_economy = 95
+			individualism_vs_communalism = 30
+			aristocracy_vs_plutocracy = -70
+			serfdom_vs_free_subjects = -60
+			land_vs_naval = -70
+			belligerent_vs_conciliatory = 20
+			outward_vs_inward = -20
+			mercantilism_vs_free_trade = -70
+			offensive_vs_defensive = 35
+		}
+		capital = bratislava
+		dynasty = habsburg_dynasty
+		country_rank = rank_kingdom
+		court_language = latin_language
+
+		tolerated_cultures = {
+			croatian
+			cuman_culture
+			german_carpathian
+			german_transylvanian
+			slovak
+			szekely_culture
+			transylvanian
+			serbian
+			rusyn_culture
+		}
+	}
+
+#Balkan
+
+	RAG = {
+		own_control_core = {
+			dubrovnik slano
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "catholic_republic"
+		government = {
+			type = republic
+			heir_selection = lottery_election
+
+			ruler = random
+
+			reforms = {
+				merchant_republic
+			}
+
+
+			laws = {
+				republican_foundation_law = republicanism_policy
+				heir_religion_law = heir_same_religion
+			}
+
+			centralization_vs_decentralization = 25
+			aristocracy_vs_plutocracy = 40
+			serfdom_vs_free_subjects = 10
+			traditionalist_vs_innovative = 30
+			spiritualist_vs_humanist = 80
+			mercantilism_vs_free_trade = -40
+			offensive_vs_defensive = 40
+			land_vs_naval = 60
+			quality_vs_quantity = -20
+			belligerent_vs_conciliatory = -20
+			capital_economy_vs_traditional_economy = -80
+			individualism_vs_communalism = -40
+			outward_vs_inward = -60
+
+		}
+
+		capital = dubrovnik
+
+		tolerated_cultures = { venetian }
+	}
 }
 }
