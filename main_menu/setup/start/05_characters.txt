@@ -2,7 +2,7 @@
 
 character_db={
 
-	##British
+###British
 	#ENG and SCO
 	eng_james_i_stuart = {
 		first_name = { name = name_james }
@@ -30,6 +30,36 @@ character_db={
 		tag = SCO
 	}
 	
+	eng_charles_ii_stuart = {
+		first_name = { name = name_charles }
+		culture = english
+		religion = catholic # 生前は国教会だが死の床で改宗。MOD上は明示的に catholic とする方が扱いやすい
+		estate = nobles_estate
+		adm = 55 # 統治: 行政再建はほどほど。財政・官僚制改革は限定的
+		dip = 80 # 外交: 熟練。バランス外交と交渉力に優れた評価が一般的
+		mil = 40 # 軍事: 戦争指導の実績は弱い。軍事的才能は低め
+		father = eng_charles_i_stuart
+		birth_date = 1630.5.29
+		birth = london
+		dynasty = stuart_dynasty
+		tag = ENG
+	}
+	
+	eng_james_ii_stuart = {
+		first_name = { name = name_james }
+		culture = english
+		religion = catholic
+		estate = nobles_estate
+		adm = 50 # 行政: 海軍拡張や官僚制整備に一定の実績
+		dip = 45 # 外交: 対仏接近で国内外の反発を招き評価は低い
+		mil = 70 # 軍事: 海軍・軍事知識は高水準。現場指揮経験も豊富
+		father = eng_charles_i_stuart
+		birth_date = 1633.10.14
+		birth = london
+		dynasty = stuart_dynasty
+		tag = ENG
+	}
+	
 	eng_robert_devereux = {
 		first_name = { name = name_robert }
 		culture = english
@@ -42,7 +72,7 @@ character_db={
 		tag = ENG
 	}
 	
-	#IRE
+	#Ireland
 	ire_felim_oneill = {
 		first_name = { name = name_felim }
 		culture = irish
@@ -54,6 +84,230 @@ character_db={
 		dynasty = oneill_dynasty
 		tag = IRE
 	}
+
+###Iberia
+	#Spain
+	spa_philip_i_habsburg = {
+		first_name = { name = name_philip }
+		culture = low_franconian
+		religion = catholic
+		estate = nobles_estate
+		adm = 35
+		dip = 60
+		mil = 45
+		birth_date = 1478.7.22
+		birth = bruges
+		death_date = 1506.9.25
+		dynasty = spanish_habsburg_dynasty
+		tag = SPA
+	}
+	
+	spa_charles_i_habsburg = {
+		first_name = { name = name_charles }
+		culture = low_franconian
+		religion = catholic
+		estate = nobles_estate
+		adm = 70 # 広域統治と制度改革の実績は高評価
+		dip = 65 # 欧州全域での複合外交は強み
+		mil = 75 # パヴィアなど軍事実績は明確
+		birth_date = 1500.2.24
+		birth = ghent
+		father = spa_philip_i_habsburg
+		death_date = 1558.9.21
+		dynasty = spanish_habsburg_dynasty
+		tag = SPA
+	}
+	
+	spa_philip_ii_habsburg = {
+		first_name = { name = name_philip }
+		culture = castilian
+		religion = catholic
+		estate = nobles_estate
+		adm = 85 # 中央集権化と行政能力は極めて高い評価
+		dip = 55 # 対外政策は硬直的で評価は割れる
+		mil = 50 # 戦略判断は平均的。指揮経験は無い
+		birth_date = 1527.5.21
+		birth = valladolid
+		father = spa_charles_i_habsburg
+		death_date = 1598.9.13
+		dynasty = spanish_habsburg_dynasty
+		tag = SPA
+	}
+	
+	spa_philip_iii_habsburg = {
+		first_name = { name = name_philip }
+		culture = castilian
+		religion = catholic
+		estate = nobles_estate
+		adm = 45	# 有能な側近に依存。統治手腕は低評価
+		dip = 60	# 外交姿勢は穏健で協調的。三十年戦争前期の調整も可
+		mil = 30	# 軍事的関与は乏しい
+		birth_date = 1578.4.14
+		birth = madrid
+		father = spa_philip_ii_habsburg
+		death_date = 1621.3.31
+		dynasty = spanish_habsburg_dynasty
+		tag = SPA
+	}
+
+	spa_philip_iv_habsburg = {
+		first_name = { name = name_philip }
+		culture = castilian
+		religion = catholic
+		estate = nobles_estate
+		adm = 55	# 対応力に限界はあるが行政は前代より安定
+		dip = 50	# 対外硬直で戦争長期化。評価は中程度
+		mil = 40	# 戦略判断は弱いが軍事知識は一定
+		birth_date = 1605.4.8
+		birth = valladolid
+		father = spa_philip_iii_habsburg
+		dynasty = spanish_habsburg_dynasty
+		tag = SPA
+	}
+
+	#Portugal
+	por_john_iv_braganza = {
+		first_name = { name = name_john }
+		culture = portuguese
+		religion = catholic
+		estate = nobles_estate
+		adm = 60	# 統治: 独立戦争期の行政手腕は一定評価
+		dip = 65	# 外交: オランダ・スペインとの独立交渉に成功
+		mil = 55	# 軍事: ポルトガル独立戦争で指導力を発揮
+		birth_date = 1604.3.19
+		birth = lisbon
+		dynasty = braganza_dynasty
+		tag = POR
+	}
+
+	por_afonso_vi_braganza = {
+		first_name = { name = name_afonso }
+		culture = portuguese
+		religion = catholic
+		estate = nobles_estate
+		adm = 40	# 統治: 幼少期から統治能力は低評価
+		dip = 35	# 外交: ほとんど政治判断能力なし
+		mil = 30	# 軍事: 指導力は限定的、摂政に依存
+		birth_date = 1643.8.21
+		birth = lisbon
+		father = por_john_iv_braganza
+		dynasty = braganza_dynasty
+		tag = POR
+	}
+
+###France
+	fra_henry_iv_bourbon = {
+		first_name = { name = name_henry }
+		culture = french
+		religion = catholic
+		estate = nobles_estate
+		adm = 80
+		dip = 75
+		mil = 70
+		birth_date = 1553.12.13
+		birth = pau
+		death_date = 1610.5.14
+		dynasty = bourbon_dynasty
+		tag = FRA
+	}
+	
+	fra_louis_xiii_bourbon = {
+		first_name = { name = name_louis }
+		culture = french
+		religion = catholic
+		estate = nobles_estate
+		adm = 65	# 行政: 中央集権化の基盤を確立
+		dip = 55	# 外交: 実務はリシュリュー主導
+		mil = 60	# 軍事: 三十年戦争期の軍事基盤を整備
+		birth_date = 1601.9.27
+		birth = fontainebleau
+		father = fra_henry_iv_bourbon
+		death_date = 1643.5.14
+		dynasty = bourbon_dynasty
+		tag = FRA
+	}
+	
+	fra_gaston_orleans_bourbon = {
+		first_name = { name = name_gaston }
+		culture = french
+		religion = catholic
+		estate = nobles_estate
+		adm = 50	# 統治: 自身の領地統治は普通だが国政への影響力は限定的
+		dip = 55	# 外交: 王弟として交渉に関与するが成果は限定的
+		mil = 45	# 軍事: 軍事行動に関与するも指揮力は平均的
+		birth_date = 1608.4.24
+		birth = paris
+		father = fra_henry_iv_bourbon
+		dynasty = bourbon_dynasty
+		tag = FRA
+	}
+
+	fra_louis_xiv_bourbon = {
+		first_name = { name = name_louis }
+		culture = french
+		religion = catholic
+		estate = nobles_estate
+		adm = 85	# 行政集中と制度整備で高評価
+		dip = 70	# 欧州外交主導。ただし硬直も目立つ
+		mil = 80	# 戦争政策と軍制改革で評価高い
+		birth_date = 1638.9.5
+		birth = saint_germain_en_laye
+		father = fra_louis_xiii_bourbon
+		dynasty = bourbon_dynasty
+		tag = FRA
+	}
+
+###Scandinavia
+	#DAN-NOR
+	dan_christian_iv_oldenburg = {
+		first_name = { name = name_christian }
+		culture = danish
+		religion = lutheran
+		estate = nobles_estate
+		adm = 70	# 統治: 経済振興と都市開発で高評価
+		dip = 60	# 外交: 北欧・神聖ローマ帝国での均衡外交を実施
+		mil = 65	# 軍事: 直接指揮経験あり、軍事行動で活躍
+		birth_date = 1577.4.12
+		birth = helsingor
+		dynasty = oldenburg_dynasty
+		tag = DAN
+	}
+
+	
+	#SWE
+	swe_gustav_ii_vasa = {
+		first_name = { name = name_gustav }
+		culture = swedish
+		religion = lutheran
+		estate = nobles_estate
+		adm = 70	# 統治: 内政改革で国家基盤を強化
+		dip = 60	# 外交: 北欧・ドイツでの戦略的交渉に優れる
+		mil = 90	# 軍事: 三十年戦争での戦術・指揮で極めて高評価
+		birth_date = 1594.12.9
+		birth = stockholm
+		death_date = 1632.11.6
+		dynasty = vasa_dynasty
+		tag = SWE
+	}
+	
+	swe_christina_vasa = {
+		first_name = { name = name_christina }
+		female = yes
+		culture = swedish
+		religion = lutheran
+		estate = nobles_estate
+		adm = 60	# 統治: 内政は安定させるも実務は側近に依存
+		dip = 55	# 外交: 対外調整は可能だが強力ではない
+		mil = 40	# 軍事: 戦争指導経験はほぼなし
+		birth_date = 1626.12.18
+		birth = stockholm
+		father = swe_gustav_ii_vasa
+		dynasty = vasa_dynasty
+		tag = SWE
+	}
+
+
+
 	
 ###Vanilla
 	swe_birger_jarl = {

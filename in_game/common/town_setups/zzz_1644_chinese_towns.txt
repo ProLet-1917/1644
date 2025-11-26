@@ -1,148 +1,182 @@
-﻿# 1644 模组：覆写原版中国城镇配置
-# 反映300年经济发展（1337-1644），增加建筑数量以体现17世纪经济水平
+﻿# 1644 Scenario - Chinese Town Setups
+# Adjusted for Late Ming Dynasty economy and military structure
+
+# =============================================================================
+# GENERIC CHINESE TOWN (一般市镇)
+# =============================================================================
 REPLACE:chinese_town = {
-	#集镇 - 1644年经济增强
-	temple = 1	# 寺庙
-	marketplace = 1	# 市场
-	mason = 1	# 石匠：石料/砖块
-	porcelain_guild = 1	# 瓷器行会：瓷器
-	lacquerware_guild = 1	# 漆器行会：漆器
-	furniture_guild = 1	# 家具行会：家具
-	cloth_guild = 3	# 布料行会：布料
-	paper_guild = 1	# 造纸行会：纸张
-	tannery = 3	# 制革厂：皮革
-	granary = 1	# 粮仓
-	weapon_guild = 1	# 武器行会：武器
-	brewery = 1	# 酿酒厂：啤酒
-	tools_guild = 3	# 工具行会：工具
-	zhixian = 1	# 知县
+	# --- 行政与宗教 ---
+	temple = 1
+	
+	# --- 基础设施与商业 ---
+	marketplace = 1		# 基础商业
+	granary = 1			# 基础粮食储备
+	construction_center = 1 # 新增：基础建设能力
+	
+	# --- 工业与手工业 (行会级别) ---
+	# 纺织业
+	cloth_guild = 3		# 基础：纺织（等级提升）
+	
+	# 轻工业
+	pottery_guild = 1	# 基础：陶瓷
+	furniture_guild = 1	# 基础：手工业
+	paper_guild = 1		# 基础：造纸
+	tannery = 1			# 基础：皮革加工
+	
+	# 重工业与资源
+	winery = 1			# 基础：农业加工
+	mason = 1			# 基础：建筑材料
+	
+	# --- 军事防御 ---
 	provincial_garrison = 1	# 卫所
 }
 
-REPLACE:chinese_coastal_town = {
-	# 沿海集镇 - 1644年贸易增强
-	temple = 1	# 寺庙
-	marketplace = 1	# 市场
-	mason = 1	# 石匠：石料/砖块
-	porcelain_guild = 1	# 瓷器行会：瓷器
-	lacquerware_guild = 1	# 漆器行会：漆器
-	furniture_guild = 1	# 家具行会：家具
-	cloth_guild = 3	# 布料行会：布料
-	paper_guild = 1	# 造纸行会：纸张
-	tannery = 3	# 制革厂：皮革
-	granary = 1	# 粮仓
-	weapon_guild = 1	# 武器行会：武器
-	brewery = 1	# 酿酒厂：啤酒
-	tools_guild = 3	# 工具行会：工具
-	naval_supplies_guild = 1	# 海军物资行会：海军物资
-	zhixian = 1	# 知县
-	provincial_garrison = 1	# 卫所
-}
-
+# =============================================================================
+# GENERIC CHINESE CITY (一般城市/府城)
+# =============================================================================
 REPLACE:chinese_city = {
+	# --- 行政与宗教 ---
+	zhixian = 2		# 行政管理
+	scriptorium = 1		# 文化教育 (书院)
+	temple = 1
 	
-	distillers_workshop = 1	# 蒸馏酒工坊：蒸馏酒
-	marketplace = 3	# 市场
-	weapon_workshop = 3	# 武器工坊：武器
-	mason = 1	# 石匠：石料/砖块
-	porcelain_manufactory = 1	# 瓷器工场：瓷器
-	lacquerware_manufactory = 1	# 漆器工场：漆器
-	furniture_workshop = 1	# 家具工坊：家具
-	paper_workshop = 3	# 造纸工坊：纸张
-	fine_cloth_workshop = 1	# 精细布料工坊：精细布料/丝绸
-	cloth_workshop = 3	# 布料工坊：布料
-
-	tannery = 3	# 制革厂：皮革
-	granary = 3	# 粮仓
-	castle = 1	# 城堡
-
-	tools_workshop = 3	# 工具工坊：工具
-	scriptorium = 1	# 抄写室：书籍
+	# --- 基础设施与商业 ---
+	marketplace = 3		# 大幅增加：区域贸易中心
+	granary = 3			# 增加：粮食储备
+	construction_center = 2 # 新增：加强建设能力 (吸纳劳工)
 	
-	zhixian = 2	# 知县
-
+	# --- 工业与手工业 (工坊级别) ---
+	# 纺织业 (支柱产业)
+	cloth_workshop = 3		# 增加：纺织业
+	fine_cloth_workshop = 1	# 增加：丝绸出口
+	
+	# 轻工业
+	porcelain_workshop = 1	# 增加：瓷器出口
+	pottery_workshop = 1	# 增加：陶瓷产业
+	paper_workshop = 3		# 增加：造纸与出版
+	furniture_workshop = 1	# 增加：手工业
+	lacquerware_workshop = 1 # 增加：漆器工艺
+	distillers_workshop = 1	# 增加：蒸馏酒业
+	tannery = 3				# 增加：皮革加工
+	
+	# 重工业与工具
+	tools_workshop = 3		# 增加：工具制造
+	weapon_workshop = 3		# 增加：军事装备
+	guns_workshop = 1		# 新增：火器工坊 (晚明特征)
+	mason = 1				# 增加：建筑技术
+	
+	# --- 军事防御 ---
+	castle = 1				# 城墙
 	provincial_garrison = 1	# 卫所
-	guns_workshop = 1	# 火器工坊：火器
 }
 
+# =============================================================================
+# CHINESE COASTAL CITY (沿海城市/通商口岸)
+# =============================================================================
 REPLACE:chinese_coastal_city = {
-	# 沿海城市 - 1644年贸易中心
-	temple = 1	# 寺庙
-
+	# --- 行政与宗教 ---
+	zhixian = 2
+	scriptorium = 1
+	temple = 1
 	
-	distillers_workshop = 1	# 蒸馏酒工坊：蒸馏酒
-	marketplace = 3	# 市场
-	weapon_workshop = 3	# 武器工坊：武器
-	mason = 1	# 石匠：石料/砖块
-	porcelain_manufactory = 1	# 瓷器工场：瓷器
-	lacquerware_manufactory = 1	# 漆器工场：漆器
-	furniture_workshop = 1	# 家具工坊：家具
-	paper_workshop = 3	# 造纸工坊：纸张
-	fine_cloth_workshop = 1	# 精细布料工坊：精细布料/丝绸
-	cloth_workshop = 3	# 布料工坊：布料
-
-	tannery = 3	# 制革厂：皮革
-	granary = 3	# 粮仓
-	castle = 1	# 城堡
-
-	tools_workshop = 3	# 工具工坊：工具
-	scriptorium = 1	# 抄写室：书籍
+	# --- 基础设施与商业 ---
+	marketplace = 3		# 国际贸易中心
+	granary = 3
+	construction_center = 2 # 加强建设能力
+	wharf = 1			# 增加：港口设施 (区别于内陆城市)
 	
-	zhixian = 2	# 知县
-
-	provincial_garrison = 1	# 卫所
-	guns_workshop = 1	# 火器工坊：火器
-
-	wharf = 1	# 码头
-	naval_supplies_workshop = 1	# 海军物资工坊：海军物资
-
+	# --- 工业与手工业 ---
+	# 纺织业
+	cloth_workshop = 3
+	fine_cloth_workshop = 1	# 丝绸出口
+	
+	# 轻工业
+	porcelain_workshop = 1
+	pottery_workshop = 1
+	paper_workshop = 3
+	furniture_workshop = 1
+	lacquerware_workshop = 1
+	distillers_workshop = 1
+	tannery = 3
+	
+	# 重工业与军工
+	tools_workshop = 3
+	weapon_workshop = 3
+	guns_workshop = 1
+	naval_supplies_workshop = 1	# 新增：海军物资 (沿海特征)
+	mason = 1
+	
+	# --- 军事防御 ---
+	castle = 1
+	provincial_garrison = 1
 }
 
+# =============================================================================
+# CHINESE MILITARY TOWN (九边重镇/卫所治所)
+# =============================================================================
 chinese_town_mil = {
-	# 军事化集镇 - 1644年边塞重镇（如宣府）
-	temple = 1	# 寺庙
-	winery = 1	# 酒庄：葡萄酒
-	marketplace = 1	# 市场
-	mason = 1	# 石匠：石料/砖块
-	porcelain_guild = 1	# 瓷器行会：瓷器
-	lacquerware_guild = 1	# 漆器行会：漆器
-	furniture_guild = 1	# 家具行会：家具
-	cloth_guild = 3	# 布料行会：布料
-	paper_guild = 3	# 造纸行会：纸张
-	tannery = 3	# 制革厂：皮革
-	granary = 1	# 粮仓
-	weapon_guild = 3	# 武器行会：武器
-	tools_guild = 3	# 工具行会：工具
-	zhixian = 1	# 知县
-	castle = 1	# 城堡
-	# stockade = 1  # 营垒
-	provincial_garrison = 1	# 卫所
-	guns_workshop = 1	# 火器工坊：火器
+	# --- 行政与宗教 ---
+	zhixian = 2			# 军事行政合一
+	temple = 1
+	
+	# --- 基础设施与商业 ---
+	marketplace = 1		# 军市
+	granary = 1
+	construction_center = 1 # 基础建设 (修缮堡垒)
+	
+	# --- 工业与手工业 ---
+	# 军需产业优先
+	weapon_guild = 3	# 大幅增加：军事装备制造
+	tools_guild = 3		# 增加：工具制造
+	tannery = 3			# 增加：皮革加工 (甲胄)
+	
+	# 民用产业 (基础)
+	cloth_guild = 3		# 军服
+	paper_guild = 3
+	pottery_guild = 1
+	furniture_guild = 1
+	winery = 1
+	mason = 1			# 防御工事材料
+	guns_workshop = 1	# 新增：火器工坊
+	
+	# --- 军事防御 ---
+	castle = 1			# 城堡防御
+	# stockade = 1		# 营垒 (可选)
+	provincial_garrison = 1	# 大幅增加：卫所驻军
 }
 
+# =============================================================================
+# CHINESE MILITARY CITY (军事重镇/督抚驻地)
+# =============================================================================
 chinese_city_mil = {
-	temple = 1	# 寺庙
-	distillers_workshop = 2	# 蒸馏酒工坊：蒸馏酒
-	marketplace = 2	# 市场
-	weapon_workshop = 5	# 武器工坊：武器
-	mason = 1	# 石匠：石料/砖块
-	porcelain_manufactory = 1	# 瓷器工场：瓷器
-	lacquerware_manufactory = 1	# 漆器工场：漆器
-	furniture_workshop = 1	# 家具工坊：家具
-	paper_workshop = 3	# 造纸工坊：纸张
-
-	cloth_workshop = 4	# 布料工坊：布料
-	tannery = 4	# 制革厂：皮革
-	granary = 3	# 粮仓
-	castle = 1	# 城堡
-	stockade = 1	# 营垒
-
-	tools_workshop = 3	# 工具工坊：工具
-	scriptorium = 1	# 抄写室：书籍
+	# --- 行政与宗教 ---
+	zhixian = 2
+	scriptorium = 1
+	temple = 1
 	
-	zhixian = 2	# 知县
-
-	provincial_garrison = 1	# 卫所
-	guns_workshop = 2	# 火器工坊：火器
-	cannon_workshop = 1	# 火炮工坊：火炮
+	# --- 基础设施与商业 ---
+	marketplace = 2		# 互市/军市
+	granary = 3			# 战略储备
+	construction_center = 2 # 加强建设 (城防工程)
+	
+	# --- 工业与手工业 ---
+	# 军需产业核心
+	weapon_workshop = 5	# 极高：军事装备中心
+	guns_workshop = 1	# 火器中心
+	tannery = 4			# 皮革中心
+	tools_workshop = 3	# 工具中心
+	
+	# 民用产业
+	cloth_workshop = 4
+	paper_workshop = 3
+	pottery_workshop = 1
+	furniture_workshop = 1
+	lacquerware_workshop = 1
+	distillers_workshop = 2
+	mason = 1
+	
+	# --- 军事防御 ---
+	castle = 1
+	stockade = 1		# 额外防御设施
+	provincial_garrison = 1
 }
