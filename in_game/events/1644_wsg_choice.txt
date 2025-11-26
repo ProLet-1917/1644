@@ -37,9 +37,17 @@ wsg_1644_choice.1 = { #史实：崇祯不南迁，李自成进京，选择降清
 				ROOT = { trigger_event_silently = { id = wsg_1644_choice.100 days = 2 } }
 			}
 		}
-		trigger_event_silently = {
-			id = csh_1644_unification.5
-			days = 15
+		c:CSH = {
+			trigger_event_silently = {
+				id = csh_1644_unification.5
+				days = 15
+			}
+		}
+		c:QNG = {
+			trigger_event_silently = {
+				id = qng_1644_unification.5
+				days = 20
+			}
 		}
 	}
 	option = {
@@ -183,6 +191,12 @@ wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州、固守
 				# 成为附庸后，稍作延迟再处理加入宗主战争（便于关系生效）
 				ROOT = { trigger_event_silently = { id = wsg_1644_choice.100 days = 2 } }
 			}
+			c:QNG = {
+				trigger_event_silently = {
+					id = qng_1644_unification.5
+					days = 20
+				}
+			}
 		}
 	}
 	option = { #南渡登州
@@ -260,6 +274,12 @@ wsg_1644_choice.4 = { #崇祯不南迁、李自成不进京、清朝入关后：
 				make_subject_of = { target = scope:wsg_qng type = subject_type:vassal }
 				# 成为附庸后，稍作延迟再处理加入宗主战争（便于关系生效）
 				ROOT = { trigger_event_silently = { id = wsg_1644_choice.100 days = 2 } }
+			}
+			c:QNG = {
+				trigger_event_silently = {
+					id = qng_1644_unification.5
+					days = 20
+				}
 			}
 		}
 	}
