@@ -1,0 +1,35 @@
+﻿# 中国士绅（gentry）特殊机制
+# 基于中国文化组自动应用的修正
+# 注意：暂时移除复杂的缩放机制，先确保基本功能正常
+
+# 士绅文化影响机制
+chinese_gentry_cultural_impact = {
+	category = country
+	type = country
+	
+	# 仅限中国文化组国家
+	potential_trigger = {
+		culture = { has_culture_group = culture_group:chinese_group }
+	}
+	
+	# 修正效果：士绅维护传统文化，提升文化影响力
+	cultural_influence = 0.1
+	legislative_efficiency = 0.1
+}
+
+# 士绅科举制度机制
+chinese_gentry_examination_system = {
+	category = country
+	type = country
+	
+	# 仅限中国文化组国家且拥有科举特权
+	potential_trigger = {
+		culture = { has_culture_group = culture_group:chinese_group }
+		has_estate_privilege = estate_privilege:gentry_examination_patronage
+	}
+	
+	# 修正效果：科举制度提升人才选拔效率
+	legislative_efficiency = 0.1
+	tax_income_efficiency = 0.05
+	country_cabinet_efficiency = 0.05
+}
