@@ -1,0 +1,64 @@
+﻿starting_technology_level = 3
+
+court_language = latin_language
+
+government = {
+	type = theocracy
+	heir_selection = bishopric_elective
+	
+	centralization_vs_decentralization = 50
+	traditionalist_vs_innovative = -40
+	spiritualist_vs_humanist = -90
+	aristocracy_vs_plutocracy = -50
+	serfdom_vs_free_subjects = -10
+	mercantilism_vs_free_trade = -10
+	belligerent_vs_conciliatory = 50
+	quality_vs_quantity = -20
+	offensive_vs_defensive = 40
+	land_vs_naval = -20
+	capital_economy_vs_traditional_economy = 70
+	individualism_vs_communalism = 30
+	outward_vs_inward = 20
+	parliament = {
+		parliament_type = estate_parliament
+	}
+	
+	privilege = {
+		#nobles
+		nobles_land_rights
+		noble_leaders_only
+		noble_fortification_licenses
+
+		#clergy
+		clergy_literacy_rights
+		clergy_enforced_unity
+		clergy_strengthen_faith
+		clergy_powerful_dioceses
+		clerical_advisory_council
+
+		#burghers
+		market_fairs
+		formal_guilds
+		building_roads_rights
+		
+		#Commoners
+		allow_hunting
+		partial_yield
+		no_labor_sunday
+	}
+	laws = {
+		theocratic_leadership = clerical_state
+		holy_mission_law = internal_mission_policy
+		divine_cause_law = pursuit_of_knowledge_policy
+		administrative_system = central_councils
+		cultural_traditions_law = civil_society
+		marriage_law = celibacy
+		heir_religion_law = heir_special_succession
+		legal_code_law = civil_law_policy
+		language_of_pleading = language_of_pleading_court
+		distribution_of_power_law = dop_favor_the_clergy
+		immigration_law = open_borders_law
+		mining_law = nobles_mining_law
+	}
+}
+

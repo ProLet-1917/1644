@@ -1,0 +1,62 @@
+﻿starting_technology_level = 2
+
+government = {
+	type = tribe
+
+	aristocracy_vs_plutocracy = -90
+	centralization_vs_decentralization = 75
+	traditionalist_vs_innovative = -95
+	spiritualist_vs_humanist = -75
+	serfdom_vs_free_subjects = 65
+	mercantilism_vs_free_trade = 30
+	belligerent_vs_conciliatory = -20
+	quality_vs_quantity = -10
+	offensive_vs_defensive = -20
+	land_vs_naval = -95
+	capital_economy_vs_traditional_economy = 95
+	individualism_vs_communalism = 80
+	outward_vs_inward = 25
+	sinicized_vs_unsinicized = 25
+	parliament = {
+		parliament_type = assembly
+	}
+
+	laws = {
+		censorship = no_censorship
+		tribal_legal_basis_law = strong_community_customs_policy
+		tribal_organization_law = jurchen_council
+		tribal_religious_values_law = lip_service_policy
+		education_masses_law = oral_tradition_education
+		marriage_law = polygyny
+		heir_religion_law = heir_any_religion
+		distribution_of_power_law = dop_favor_the_ruler
+		immigration_law = open_borders_law
+		mining_law = nobles_mining_law
+	}
+	reforms = {
+		haixi_jurchen_reform
+	}
+
+	privilege = {
+		#nobles
+		share_of_the_spoils
+		tribal_host
+		tribal_autonomy
+		nobles_land_rights
+		noble_marriage_rights
+
+		#clergy
+		clerical_advisory_council
+		clergy_enforced_unity
+		clergy_strengthen_faith
+				
+		#peasants
+		allow_hunting
+		peasants_allowed_weapons_privilege
+		peasants_free_peasantry
+		peasant_owns_their_food
+		
+		tribes_tribal_levies
+		tribes_allow_gatherings
+	}
+}

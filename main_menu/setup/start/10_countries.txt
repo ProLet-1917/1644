@@ -14,341 +14,6 @@
 # our_cores_conquered_by_others # 我方核心被他国占领
 countries = {
 	countries = {
-###Japan
-	JAP = { #Shogunate
-		own_control_core = {
-			inaka hanawa hiraka_aomori shimokita kamikita
-			nukanobu kazuno kuji iwate shimohei
-			kitahei kamihei shiwa hienuki esashi
-			waga isawa iwai kesen motoyoshi
-			oshika tome kurihara kami kurokawa
-			miyagi natori hiyama hinai akita
-			toshima yamamoto yuri kamiura yuza
-			murayama tagawa kitamogami minamimogami nishiokitama
-			higashiokitama uda_mutsu katta namekata shineha
-			naraha iwaki kikuta takano shirakawa
-			tamura shinobu adachi yama_jap
-			kawanuma oonuma kitaaizu minamiaizu iwase
-			asaka iwafune nutari nishikanbara higashikanbara
-			koshi kariwa minamiuonuma kitauonuma higashikubiki
-			nishikubiki kamo sawata niikawa nei
-			tonami imizu noto_jap fugeshi suzu
-			kaga nomi sakai_echizen nakaoono imadate
-			nyuu tsuruga onyuu nasu shioya
-			kawachi haga tsuga tone
-			seta nitta gunma usui kanra
-			agatsuma saku takai minochi sarashina
-			azumi chiisagata suwa tsukama kiso
-			kamiina shimoina yoshiki kamioono mashita
-			ena minokamo gujou mugi toki
-			katagata ikeda fuwa_mino azai echi
-			gamou kouka kurita takashima taga
-			kuji_kanto naka ibaraki kashima niihari
-			tsukuba katori chiba katsushika souma
-			musa isumi awa makuda ichihara
-			saitama adachi_kanto toshima_kanto tachibana tama
-			chichibu hiki hanzawa kamakura ashigara
-			aikou tsuru yamanashi yatsushiro koma_kai
-			tagata kamo_izu suntou fuji ihara
-			abe shida kitou shuuchi toyoda
-			fuchi hoi shitara kamo_mikawa hekikai
-			aichi niwa nakajima mie suzuka
-			ichishi watarai taki shima kitamuro
-			iga yoshino takaichi nara kuse
-			kyoto izumi osaka kawabe muko
-			kuwada funai ikaruga hikami kasa
-			yosa keta_tajima yabu futakata houmi
-			takakusa kume_houki aimi hino ou
-			oki izumo iishi nita nima
-			oochi naka_iwami mino kanoashi akashi
-			taka shikama akou shisou wake
-			joutou tsudaka kume mashima tomata
-			aita asakuchi katou_bicchuu kaya aka
-			ashida sera miyoshi eso nuka
-			kameshi toyota saeki yamagata takata
-			aki kuga kumage tsuno saba
-			yoshiki_suou asa toyoura ootsu abu
-			higashimuro minamimuro nishimuro hidaka kaisou
-			naga mitoyo aya miki awaji
-			nakata awa_shikoku naka_shikoku kaifu mima
-			miyoshi_shikoku nii ochi iyo ukena
-			kita_shikoku uwa aki_shikoku kami_shikoku nagaoka
-			tosa agawa takaoka hata kamiagata
-			shimoagata onga mikasa asakura hakata
-			saga higashimatsuura kishima takaki nishisonogi
-			higashisonogi nishimatsuura minamimatsuura mii kamitsuma
-			nakatsu mike usa kunisaki hayami
-			ooita amabe oono_bungo naoiri kusu
-			hita aso koushi tamana akita_kumamoto
-			mashiki yatsushiro_higo amakusa kuma ashikita
-			higashiusuki nishiusuki koyu naka_hyuuga nishimorokata
-			kitamorokata miyazaki minamimorokata soo kimotsuki
-			oosumi kuwabara hishikari gomu kumage_oosumi
-			satsuma kagoshima ibusuki izumi_satsuma	
-		}
-		include = "japanese_clan"
-		government = {
-			reforms = {
-				shogunate
-			}
-			laws = {
-				censorship = limited_censorship
-				maritime_law = protect_trade_routes
-				piracy_law = anti_piracy_policy
-			}
-		}
-		accepted_cultures = {
-			tougoku_culture
-			touhoku_culture
-			kyushu_culture
-		}
-		country_rank = rank_empire
-		capital = toshima_kanto
-		starting_technology_level = 4
-	}
-	
-	##Tohoku
-	ANU = {
-		type = pop
-
-		add_pops_from_locations = {
-			fukushima kamiiso kameda hiyama_hokkaido kayabe nishi
-			yamakoshi futoro setana shimamaki suttsu isoya iwanai furubira yoichi
-			abuta shiraoi chitose yuufutsu
-			sapporo ishikari yuubari sorachi atsuta uryuu nakakamikawa
-			saru niikappu shizunai urakawa samani
-			hiroo toubui kasai tokachi minamikamikawa katou minaminakagawa
-			shiranuka kushiro akan_loc akkeshi kawakami_hokkaido minamiabashiri ashoro
-			nemuro notsuke shibetsu hanasaki
-			shari abashiri tokoro monbetsu esashi_hokkaido souya rishiri
-			teshio kitanakagawa kitakamikawa tomamae rumoi
-			kunashiri etorofu furubetsu shana shibetoro uruppu shimushiru onnekotan paramushiru shumushu
-			guohuo boluohe kushunkotan nayoro
-		}
-
-		discovered_regions = {
-			japan_region
-		}
-
-
-		starting_technology_level = 1
-		include = "asia_tribe"
-		government = {
-			ruler = random
-		}
-	}
-	
-	MTU = { #Matsumae
-		own_control_core = {
-			fukushima
-		}
-		include = "japanese_clan"
-		government = {
-			type = monarchy
-		}
-		capital = fukushima
-		country_rank = rank_county
-		starting_technology_level = 4
-	}
-	
-	HRO = { #Hirosaki
-		own_control_core = {
-			inaka hanawa hiraka_aomori
-		}
-		include = "japanese_clan"
-		government = {
-			type = monarchy
-		}
-		capital = hanawa
-		country_rank = rank_county
-		starting_technology_level = 4
-	}
-	
-	MRO = { #Morioka
-		own_control_core = {
-			shimokita kamikita nukanobu kazuno
-			iwate kuji shimohei kitahei kamihei shiwa hienuki esashi waga isawa
-			kesen
-		}
-		include = "japanese_clan"
-		government = {
-			type = monarchy
-		}
-		capital = iwate
-		country_rank = rank_county
-		starting_technology_level = 4
-	}
-	
-	AKA = { #Akita
-		own_control_core = {
-			kamiura hiyama hinai akita toshima yamamoto
-		}
-		include = "japanese_clan"
-		government = {
-			type = monarchy
-		}
-		capital = akita
-		country_rank = rank_duchy
-		starting_technology_level = 4
-	}
-	
-	KMD = { #Kameda
-		own_control_core = {
-			yuri
-		}
-		include = "japanese_clan"
-		government = {
-			type = monarchy
-		}
-		capital = yuri
-		country_rank = rank_county
-		starting_technology_level = 4
-	}
-	
-	HNJ = { #Honjo
-		own_control_core = {
-			yuza
-		}
-		include = "japanese_clan"
-		government = {
-			type = monarchy
-		}
-		capital = yuza
-		country_rank = rank_county
-		starting_technology_level = 4
-	}
-	
-	SHI = { #Shinjo
-		own_control_core = {
-			murayama
-		}
-		include = "japanese_clan"
-		government = {
-			type = monarchy
-		}
-		capital = murayama
-		country_rank = rank_county
-		starting_technology_level = 4
-	}
-	
-	SDA = { #Sendai
-		own_control_core = {
-			miyagi motoyoshi oshika tome kurihara kami kurokawa natori
-			uda_mutsu katta iwai
-		}
-		include = "japanese_clan"
-		government = {
-			type = monarchy
-		}
-		capital = miyagi
-		country_rank = rank_kingdom
-		starting_technology_level = 4
-	}
-	
-	KMI = { #Kaminoyama
-		own_control_core = {
-			minamimogami
-		}
-		include = "japanese_clan"
-		government = {
-			type = monarchy
-		}
-		capital = minamimogami
-		country_rank = rank_county
-		starting_technology_level = 4
-	}
-	
-	YON = { #Yonezawa
-		own_control_core = {
-			nishiokitama higashiokitama shinobu date_loc
-		}
-		include = "japanese_clan"
-		government = {
-			type = monarchy
-		}
-		capital = higashiokitama
-		country_rank = rank_duchy
-		starting_technology_level = 4
-	}
-	
-	AIZ = { #Aizu
-		own_control_core = {
-			yama_jap kawanuma oonuma kitaaizu minamiaizu
-		}
-		include = "japanese_clan"
-		government = {
-			type = monarchy
-		}
-		capital = higashiokitama
-		country_rank = rank_duchy
-		starting_technology_level = 4
-	}
-	
-	NIH = { #Nihonmatsu
-		own_control_core = {
-			iwase adachi asaka
-		}
-		include = "japanese_clan"
-		government = {
-			type = monarchy
-		}
-		capital = adachi
-		country_rank = rank_county
-		starting_technology_level = 4
-	}
-	
-	SMN = { #Souma-Nakamura
-		own_control_core = {
-			namekata shineha
-		}
-		include = "japanese_clan"
-		government = {
-			type = monarchy
-		}
-		capital = namekata
-		country_rank = rank_county
-		starting_technology_level = 4
-	}
-	
-	HAR = { #Miharu
-		own_control_core = {
-			tamura
-		}
-		include = "japanese_clan"
-		government = {
-			type = monarchy
-		}
-		capital = tamura
-		country_rank = rank_county
-		starting_technology_level = 4
-	}
-	
-	SRK = { #Shirakawa
-		own_control_core = {
-			shirakawa
-		}
-		include = "japanese_clan"
-		government = {
-			type = monarchy
-		}
-		capital = shirakawa
-		country_rank = rank_county
-		starting_technology_level = 4
-	}
-	
-	TAG = { #Tanagura
-		own_control_core = {
-			takano
-		}
-		include = "japanese_clan"
-		government = {
-			type = monarchy
-		}
-		capital = takano
-		country_rank = rank_county
-		starting_technology_level = 4
-	}
-
 ###British Isles
 	ROE = { # Royalist England
 		own_control_core = {
@@ -491,7 +156,11 @@ countries = {
 			#enclaves
 			bristol gloucester plymouth carmarthen
 		}
-
+		
+		own_colony = {
+			bermuda liamuiga ichirouganaim wadadli
+		}
+		
 		include = "catholic_monarchy"
 
 		starting_technology_level = 5
@@ -1361,6 +1030,10 @@ countries = {
 			metz fresnes verdun clermont_en_argonne toul vic_sur_seille
 		}
 		
+		own_colony = {
+			cayenne carucairi iguanacaera hewanorra
+		}
+		
 		government = {
 			type = monarchy
 			ruler = fra_louis_xiv_bourbon
@@ -1993,11 +1666,6 @@ countries = {
 			ma_tehua_llan guanchenis mazatlpilli mazatepec guachichil miopacoas
 			coneto papanton cuencame alamamas irritila
 			tepehuan inde guanacevi papasquiaro
-			mapimi sisimbles osatayogliglas cacalotito
-			julime tu_e_dine_de baopapas babonoyaba guajoquilla mesquite guiaquitas nonoava cocoyome coyame sainapuchi yoli jae_aaya
-			alazapa cuanales masacuajulam gualeguas tilijais guazapayogliglas huajuco
-			chisos espopolames gueiquesales muruam chichitames cauitaome yeme
-			east_hanos west_hanos manso hue_hue_ri_gi_ta tehua suma namiquipa xicahua
 			tlacuitlapan yamanquex zain tepecan yuac nochistlan xochipillan teulinchan xochitepec huaxtla sauzas guaxaban xiconaque cuxtaque
 			
 			#Florida
@@ -2024,12 +1692,175 @@ countries = {
 			jaragua cayguani baoruco guanabo cahay guacayakima haniguayagua yaquimo yaguana
 			guaynabo guaraca guaynia guama arasibo ayamaco
 		}
+		
+		own_control_conquered = {
+			east_hanos west_hanos manso hue_hue_ri_gi_ta tehua suma namiquipa xicahua
+			julime tu_e_dine_de baopapas babonoyaba guajoquilla mesquite guiaquitas nonoava cocoyome coyame sainapuchi yoli jae_aaya
+			mapimi sisimbles osatayogliglas cacalotito
+			alazapa cuanales masacuajulam gualeguas tilijais guazapayogliglas huajuco
+			chisos espopolames gueiquesales muruam chichitames cauitaome yeme
+		}
+		
 		government = {
 			type = republic
 			ruler = random
 		}
 		capital = Tenochtitlan
 		country_rank = rank_kingdom
+		starting_technology_level = 5
+	}
+	
+	VOP = { #Viceroyalty of Peru
+		own_control_core = {
+			#Panama
+			tauraba parita nata escoria chiru esquegua panama careta pocorosa comogre chochama cubiga chepo chuchures
+			
+			#Colombia
+			chayrama teyuna yaharo upar sicarate ariguani curumanao
+			mompoj norosi tamalameque mahates calamari mocana kamach zarate
+			necocli upper_sinu zenues sinu sincel one
+			iscuande narino tumaco tapaje hatunllacta inga patia
+			caly buga caloto micay timbiqui yauto munchique
+			vijes sonso gorrones tahamies cauroma umbra otun tulua
+			baudo choco quibdo gioro tatama noanama tado_colombia novita
+			acanti curiche kuna murri catios bojaya amaga xundabe ebejico
+			ichitki suchiimma marakaaya perija catatumbo jauregui
+			chitagaes kukuta babichas yukpa
+			coro paraguana tucanca chama_venezuela arapuey mukas cabimas capatarida
+			mayaba noris sotachiro yolombo nechi pantagoras cocorna guarzo aburra
+			simiti macaregua tora camacota hacaritamas duitama boiaca
+			aragua tirgua cura caracas batey onoto
+			
+			#Andes
+			hatunqulla ichuna chucuito contornasa pomata
+			guancavilca manta guayaquil daule yaguachi puna chacayacu machala yazne
+			caran baba jama atacames pailon babahuyu
+			quito waranka panzaleo imbaguarbak tsachila mindu otavalo kayambi tacunga hambatus liribamba
+			alausi hatun_kanar shabalula cangochamba malacatos calvas pukamuru
+			kofan quijos siona napo kichwa puyu sangay macas yaguarzongo
+			tumbes chira nariguala nunura xllang ayahuacas guayacundo apurlec huancapampa
+			pakatnamu sana farfan chan_chan chao huacatambo manchan huarmey ocro paramonga guamanmayo
+			chancay chiprac collique cantamarca rimaq huarochiri ishma chilca huarco naupahuasi incahuasi
+			chuqlluqucha chinchay puka_tampu ica cahuachi acari incawasi chullac pukiupukio
+			yauca atico caraveli ucuna camana quilca yanque aruni
+			arequipa churajon tampo puquina chaucalana tacna kileqollo
+			arica tarapaca huantajaya iki_iki tocopilla ckara_ama
+			tulor antofagasta paposo tatal chanaral cobija atacama_salt_pan punta_negra_salt_pan
+			oma_sacopo angastaco tastil salta jujuy tilcara paya
+			watungasta pipanaco aconquija shincal yukkuman kilmes tolombon lule pipanaco_salt_pan
+			guandacol talampaya polco cuyo tamberias fiambalao pissis ischigualasto jachal pivn_man_antu angualasto rio_salado_salt_marsh colorado_salt_marsh
+			chepes ulapes michilingue saleta nogolma uco uspallata huanacache guentota jaurua millcayac ullum sankancete zonda quines
+			qupayapu kellollampu huasco elki limari millapel liwen
+			inka_llaqta ayopaya paititi yungas guanay kallawaya caupolican sarkajpa yurakar
+			pomabamba huacareta tomina takopaya yamparaez samaipata chuwi mizque sachchaa_mukku arque incarraqay
+			aqush yaino huari rapayan chavin japallan huacrachuco manchac
+			garu wanuco_marka chiquia kotosh atash ichugan pumpu gochacalla
+			andaymarca pashas tumshukaiko waricoto choquerecuay kasha_tampu quillahuaca willcahuain
+			ingapirca llampqui tarmatambo tunanmarca hatun_xauxa pumaruri
+			wari_willka willka_ulo tampu_machay churkampa tayaccasa llacsapallanca
+			allpas wari_peru pariahuanca pampahuaylla choccalpata paqwayranra
+			sondor auccapana challwanqa millcca tukri_apu_apu willkawaman soras huaman_karpa caniche seqse_qaqa
+			yanahuara cotapampa antabamba tucssa sara_sara
+			raqchi sausaya kanamarca achachiwa uyo_uyo pampa
+			oruro ayaviri pukara macaya pumanota puncune wankani titimani iskanwaya
+			machaqa axawiri achacachi viacha tiwanaku calamarca chuqiyapu
+			kori_bara_karaa_ancas callapa ayo_ayo sicasica curahuara matarjawira sura
+			aullagas karanka uru carangas isluga llica uyuni loa lipi hatun_killaka coipasa_salt_pan uyuni_salt_pan
+			charka colquechaca ccantumarcani thumilki oronckota chake tupiza payacullo camataqui
+			toara cochinoca omaguacas puma susques lickanantay antofalla kolla pedernales_salt_pan
+			chumbivilcas maukallaqta waqrapukara pikillaqta qusqu pisaq paucartambo urupampa quillarumiyoc
+			yanatile yunca ullantaytampu picchu willka_pampa
+			ilucan chetilla huambos chumuch congona kuelap huamanpata olan
+			illapa kaxa_marca tantaricuy chimu llucho markahuamachuco pirca_pirca huallumarca
+			awajun bagua utkhupampa namballe ingatambo karajia huancachaca
+			moyobamba lamas yurimagua chatuza cocamas kachi rupharupha
+			may_ushin kakataibo ashaninka panatahuas yanesha chanchacc nomatsigenga
+			isabela_island santiago_islands santa_cruz_islands
+			aconca_hue qillu_uta waykuche meli_pillan rangkawe kolchawwe kuruko mawlen cauquen pikumche uthan_uthatun chillan perquilauquen puchacay biobio
+			lafkenmapu lelbunmapu wenteche inapiremapu pebuenmapu
+			pikunwijimapu caurakawin ancud quiquilhue quellon piren
+			juan_fernandez_islands
+		}
+		
+		own_control_conquered = {
+			#Chaco
+			kabishi kuruminaka paikoneka saraveka otuke koraveka
+			bia_mbya mbia guarayo cayuvava yuracare
+			nemby kyyindy akaray kaarendy canindeyu takuru_puku ycuamandiyu ayvu_pora
+			pai_tavytera kuarepoti curuguaty kaaguy_jehasapa yguazu tsiripa ygana
+			enlhet enxet guana nenlhet enenlhet tefeyak aseptiketiheylhets ipholhhelhlhup
+			eexiwa uechamitogosode eampepaigosode tunupegosode yshyr
+			totobiegosode gaaigosode amomegosode ijnapuigosode
+			chishamnee yita tavashay lumnanas tapiete yalve_sanga
+			sheulec dapiguemlec lanagashec tacshic pitlaxa wichi wiznay
+			niyaj eben_ezer shichaam alpu
+			qom_caia nonot_daxinic aim_mocoylek lalek_cotaa qar_ka_la
+			quisquisacate kata_kuna chipion karendo
+			raxalaa ongamira qompi qollaxalec rukahe yaaucaniga nakaigetergehe
+			moqoit tilala romang
+			ichukanai gualamba ashca kuska ayllu_yacuchiri auqajikuna patay
+			matara ocol chinipi sinipi qom_toba atoj_wasin ashca_caycu
+			macaclita noguinet auleta siton naure sumampa asingasta gualas chine
+			caminigas mogas chupilta
+			mepenes taragui agaes avaes payubre yapeyu itapua uruguay
+			cuareim pairindi mandisobi
+			saipuru muyupampa tarija weenhayek mrubicha
+			evuevi sucuriu piquiri camapua ytykyra
+			mebengokre aquidauana
+			kadiweu piripucu terena nioac
+			dawande balotipone parecis haliti ikuiapa guato otuques
+			paranaiba porekry opaye ofaie taquarucu anhandui
+			kaiowa kaiwa chiripa maracaju
+		}
+		
+		government = {
+			type = republic
+			ruler = random
+		}
+		capital = rimaq
+		country_rank = rank_duchy
+		starting_technology_level = 5
+	}
+	
+	VOB = { #Viceroyalty of Brazil
+		own_control_core = {
+			marapanim tupinamba samauma mairi kaapor kururupu tapuitapera
+			jiribatuba tupiniquim hahahae 
+			pataxo nac_nanuk tapuy jucuru caravelas vicosa
+			aimore kiri_kere malalis coutins
+			guaitaca jose_calcado itapemirim guarapiri itaparica nandu
+			tamoio cunhambebe
+			iguape cananeia marataiama gohayo sao_sebastiao
+			kapiwary ararayu_aba nheteroia mage y_uasu goana_para ita_kua_y
+			itaperuna guaitaka sao_fidelis cantagalo mokaie nova_friburgo
+			coropo praiba_sul tampruns piray ita_atiaia
+			aruja mogi_das_cruzes sao_roque jerubatuba parnaiba piratininga
+			sorocaba
+			lapa ponta_grossa curitiba bocaiuva_do_sul palmeira_brasil sao_jose_pinhais parnanguara
+			karai_yo xokleng itapocu itajai mafra
+			kariio apytere tubarao sambaqui iaguarauna
+			curitibanos lages sao_joaquim urubici
+			cruz_alta palmeira nandeva lagoa_vermelha passo_fundo vacaria
+			jeguakava ibicui ibirapuita cacequi ibaje inhandui
+			carijo piratinin piratini jaguarao cangucu chuy
+			icabaqua tupancireta umbu cacapava vacacai
+			tapes patos jacui sao_leopoldo san_antonio_patrulha arroio
+			harrua araicuahita yi hum arachan guenoa ita_cuara ybiti yacegua
+			apiai
+			sao_luis_do_paraitinga lorena guaratingueta taubate paraibuna jacarei
+			charrua ombu yaros
+		}
+		
+		own_conquered = {
+			upaon_acu miritiba tapuios igaracu jenipaboacu tremembe anace tapeba pitaguari payaku
+			monxoro kaaysara potiguara paraiba caxanga yapuata karapoto kariri arakaiu sauipe
+		}
+		government = {
+			type = republic
+			ruler = random
+		}
+		capital = gohayo
+		country_rank = rank_duchy
 		starting_technology_level = 5
 	}
 

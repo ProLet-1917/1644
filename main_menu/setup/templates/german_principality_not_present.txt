@@ -1,0 +1,38 @@
+﻿government = {
+	type = monarchy
+	heir_selection = partition_inheritance
+
+	#Societal Values
+	centralization_vs_decentralization = 60
+	traditionalist_vs_innovative = -30
+	spiritualist_vs_humanist = -50
+	aristocracy_vs_plutocracy = -60
+	serfdom_vs_free_subjects = -10
+	mercantilism_vs_free_trade = 10
+	belligerent_vs_conciliatory = -10
+	quality_vs_quantity = -20
+	offensive_vs_defensive = -10
+	capital_economy_vs_traditional_economy = 50
+	individualism_vs_communalism = 30
+	outward_vs_inward = -30
+	parliament = {
+		parliament_type = estate_parliament
+	}
+
+	#Estate Privileges
+	privilege = {
+		#nobles
+		right_to_inherit
+		#Burghers
+		burghers_land_rights
+
+	}
+
+	laws = {
+		marriage_law = monogamous_marriage
+		heir_religion_law = heir_same_religion
+		immigration_law = open_borders_law
+		mining_law = german_mining_law
+	}
+}
+

@@ -1,0 +1,56 @@
+﻿starting_technology_level = 0
+government = {
+	type = tribe
+	heir_selection = ritual_selection
+	
+	centralization_vs_decentralization = 80
+	traditionalist_vs_innovative = -90
+	spiritualist_vs_humanist = -90
+	aristocracy_vs_plutocracy = -80
+	serfdom_vs_free_subjects = 50
+	mercantilism_vs_free_trade = 0
+	belligerent_vs_conciliatory = 100
+	quality_vs_quantity = -75
+	offensive_vs_defensive = 0
+	land_vs_naval = 60
+	capital_economy_vs_traditional_economy = 100
+	individualism_vs_communalism = 86
+	outward_vs_inward = 60
+	parliament = {
+		parliament_type = assembly
+	}
+
+	#Estate Privileges
+	privilege = {
+		#nobles
+		nobles_land_rights
+		noble_serfdom_rights
+		banal_lordship
+		noble_marriage_rights
+		noble_leaders_only
+		primacy_of_nobility
+		nobility_council
+
+		mita_system
+	
+		#clergy
+		clergy_strengthen_faith
+		clergy_enforced_unity
+
+		#burghers
+		market_fairs
+		building_roads_rights
+
+		#peasants
+		peasants_free_peasantry
+		peasants_fewer_levies
+		
+		tribes_tribal_levies
+		tribes_allow_gatherings
+	}
+	laws = {
+		marriage_law = polygyny
+		heir_religion_law = heir_same_religion
+	}
+}
+
