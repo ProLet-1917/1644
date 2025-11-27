@@ -1,41 +1,201 @@
 ﻿namespace = qng_1644_unification
-# qng_1644_unification.2 = {
-# 	type = country_event
-# 	is_triggered_only = yes
-# 	hidden = yes
-# 	immediate = {
-# 		trigger_event_silently = {
-# 			id = qng_1644_unification.1
-# 			days = 23
-# 		}
-# 	}
-# }
+
 qng_1644_unification.1 = {
+	type = country_event
+	hidden = yes
+	immediate = {
+		if = {
+			limit = { 
+				NOT = {	has_variable = qng_invasion }
+			}
+			trigger_event_silently = qng_1644_unification.3
+		}
+	}
+	option = {
+
+	}
+}
+
+qng_1644_unification.2 = { #吴三桂献关
+ 	type = country_event
+	title = qng_1644_unification.2.title
+	desc = qng_1644_unification.2.desc
+ 	is_triggered_only = yes
+ 	immediate = {
+ 		set_variable = qng_invasion
+ 	}
+	option = {
+		#入主中原
+		name = qng_1644_unification.2.a
+		if = {
+			limit = {
+				tag = QNG
+			}
+			c:CSH ?= {
+				save_scope_as = target_csh
+				if = {
+					limit = {
+						exists = this
+						is_subject = no
+						# ROOT = {
+						# 	NOT = { is_at_war_with = this }
+						# 	NOT = { has_truce_with = this }
+						# }
+					}
+					ROOT = {
+						add_casus_belli = {
+							target = scope:target_csh
+							type = casus_belli:cb_claim_mandate_of_heaven
+						}
+						if = { 
+							limit = { 
+								scope:target_csh = {
+									capital = location:dadu
+								}
+							}
+							declare_war_with_cb = {
+								target = scope:target_csh
+								type = casus_belli:cb_claim_mandate_of_heaven
+								war_name = "QNG_MANCHU_INVASION"
+							}
+						}
+						custom_tooltip = qng_1644_unification_gain_cb_tt
+					}
+				}
+			}
+			c:MNG ?= {
+				save_scope_as = target_mng
+				if = {
+					limit = {
+						exists = this
+						is_subject = no
+						# ROOT = {
+						# 	NOT = { is_at_war_with = this }
+						# 	NOT = { has_truce_with = this }
+						# }
+					}
+					ROOT = {
+						add_casus_belli = {
+							target = scope:target_mng
+							type = casus_belli:cb_claim_mandate_of_heaven
+						}
+						if = { 
+							limit = {
+								scope:target_mng = {
+									capital = location:dadu
+								}
+							}
+							declare_war_with_cb = {
+								target = scope:target_mng
+								type = casus_belli:cb_claim_mandate_of_heaven
+								war_name = "QNG_MANCHU_INVASION"
+							}
+						}
+						custom_tooltip = qng_1644_unification_gain_cb_tt
+					
+					}
+				}
+			}
+		}
+	}
+	option = {
+		#继续抄掠
+		name = qng_1644_unification.2.b
+		ai_chance = {
+			factor = 0.1
+		}
+		if = {
+			limit = {
+				tag = QNG
+			}
+			c:CSH ?= {
+				save_scope_as = target_csh
+				if = {
+					limit = {
+						exists = this
+						is_subject = no
+						# ROOT = {
+						# 	NOT = { is_at_war_with = this }
+						# 	NOT = { has_truce_with = this }
+						# }
+					}
+					ROOT = {
+						add_casus_belli = {
+							target = scope:target_csh
+							type = casus_belli:cb_claim_mandate_of_heaven
+						}
+						if = { 
+							declare_war_with_cb = {
+								target = scope:target_csh
+								type = casus_belli:cb_claim_mandate_of_heaven
+								war_name = "QNG_MANCHU_INVASION"
+							}
+						}
+						custom_tooltip = qng_1644_unification_gain_cb_tt
+					}
+				}
+			}
+			c:MNG ?= {
+				save_scope_as = target_mng
+				if = {
+					limit = {
+						exists = this
+						is_subject = no
+						# ROOT = {
+						# 	NOT = { is_at_war_with = this }
+						# 	NOT = { has_truce_with = this }
+						# }
+					}
+					ROOT = {
+						add_casus_belli = {
+							target = scope:target_mng
+							type = casus_belli:cb_claim_mandate_of_heaven
+						}
+						if = { 
+							declare_war_with_cb = {
+								target = scope:target_mng
+								type = casus_belli:cb_claim_mandate_of_heaven
+								war_name = "QNG_MANCHU_INVASION"
+							}
+						}
+						custom_tooltip = qng_1644_unification_gain_cb_tt
+					
+					}
+				}
+			}
+		}
+	}
+}
+
+qng_1644_unification.3 = {
 	#紫气东来
 	type = country_event
-	title = qng_1644_unification.1.title
-	desc = qng_1644_unification.1.desc
-	historical_info = qng_1644_unification.1.historical_info
+	title = qng_1644_unification.3.title
+	desc = qng_1644_unification.3.desc
+	historical_info = qng_1644_unification.3.historical_info
 	immediate = {
+		set_variable = qng_invasion
 	}
 	option = {
 		#入关
-		name = qng_1644_unification.1.a
+		name = qng_1644_unification.3.a
 		historical_option = yes
 		if = {
 			limit = {
 				tag = QNG
 			}
-
-			# 吴三桂抉择（清军入关后触发）
+			# 吴三桂抉择（触发要求：李自成不进京、崇祯不南迁）
 			c:WSG ?= {
 				if = {
 					limit = {
 						exists = this
 						NOT = { has_variable = wsg_1644_chosen_side }
+						NOT = { c:CSH = { has_variable = csh_attack_beijing } }
+						NOT = { c:MNG = { has_variable = mng_move_to_nanjing } }
 					}
 					trigger_event_non_silently = {
-						id = wsg_1644_choice.1
+						id = wsg_1644_choice.4
+						days = 5
 					}
 				}
 			}
@@ -55,13 +215,19 @@ qng_1644_unification.1 = {
 							target = scope:target_csh
 							type = casus_belli:cb_chinese_unification
 						}
-						declare_war_with_cb = {
-							target = scope:target_csh
-							type = casus_belli:cb_chinese_unification
-							# war_name = "QNG_MANCHU_INVASION"
-						}
-						custom_tooltip = qng_1644_unification_gain_cb_tt
-
+						if = { 
+							limit = { 
+								scope:target_csh = {
+									owns = location:dadu
+								}
+							}
+						  declare_war_with_cb = {
+							  target = scope:target_csh
+							  type = casus_belli:cb_chinese_unification
+							  # war_name = "QNG_MANCHU_INVASION"
+						  }
+             }
+						 custom_tooltip = qng_1644_unification_gain_cb_tt
 					}
 				}
 			}
@@ -81,13 +247,19 @@ qng_1644_unification.1 = {
 							target = scope:target_mng
 							type = casus_belli:cb_chinese_unification
 						}
-						declare_war_with_cb = {
-							target = scope:target_mng
-							type = casus_belli:cb_chinese_unification
-							# war_name = "QNG_MANCHU_INVASION"
-						}
+						if = { 
+							limit = {
+								scope:target_mng = {
+									owns = location:dadu
+								}
+							}
+						  declare_war_with_cb = {
+							  target = scope:target_mng
+							  type = casus_belli:cb_chinese_unification
+							  # war_name = "QNG_MANCHU_INVASION"
+						  }
+             }
 						custom_tooltip = qng_1644_unification_gain_cb_tt
-					
 					}
 				}
 			}
@@ -95,11 +267,31 @@ qng_1644_unification.1 = {
 	}
 	option = {
 		#不入关
-		name = qng_1644_unification.1.b
+		name = qng_1644_unification.3.b
 		ai_chance = {
 			factor = 0.1
 		}
 		add_stability = stability_severe_bonus
 		add_government_power = government_power_mild_bonus
+	}
+}
+
+qng_1644_unification.4 = { #山海关之战
+	type = country_event
+	title = qng_1644_unification.4.title
+	desc = qng_1644_unification.4.desc
+	historical_info = qng_1644_unification.4.historical_info
+	option = {
+		name = qng_1644_unification.4.a
+	}
+}
+
+qng_1644_unification.5 = { #吴三桂降清
+	type = country_event
+	title = qng_1644_unification.5.title
+	desc = qng_1644_unification.5.desc
+	historical_info = qng_1644_unification.5.historical_info
+	option = {
+		name = qng_1644_unification.5.a
 	}
 }
