@@ -14,6 +14,1284 @@
 # our_cores_conquered_by_others # 我方核心被他国占领
 countries = {
 	countries = {
+###Japan
+	JAP = { #Shogunate
+		own_control_core = {
+			inaka hanawa hiraka_aomori shimokita kamikita
+			nukanobu kazuno kuji iwate shimohei
+			kitahei kamihei shiwa hienuki esashi
+			waga isawa iwai kesen motoyoshi
+			oshika tome kurihara kami kurokawa
+			miyagi natori hiyama hinai akita
+			toshima yamamoto yuri kamiura yuza
+			murayama tagawa kitamogami minamimogami nishiokitama
+			higashiokitama uda_mutsu katta namekata shineha
+			naraha iwaki kikuta takano shirakawa
+			tamura shinobu adachi yama_jap
+			kawanuma oonuma kitaaizu minamiaizu iwase
+			asaka iwafune nutari nishikanbara higashikanbara
+			koshi kariwa minamiuonuma kitauonuma higashikubiki
+			nishikubiki kamo sawata niikawa nei
+			tonami imizu noto_jap fugeshi suzu
+			kaga nomi sakai_echizen nakaoono imadate
+			nyuu tsuruga onyuu nasu shioya
+			kawachi haga tsuga tone
+			seta nitta gunma usui kanra
+			agatsuma saku takai minochi sarashina
+			azumi chiisagata suwa tsukama kiso
+			kamiina shimoina yoshiki kamioono mashita
+			ena minokamo gujou mugi toki
+			katagata ikeda fuwa_mino azai echi
+			gamou kouka kurita takashima taga
+			kuji_kanto naka ibaraki kashima niihari
+			tsukuba katori chiba katsushika souma
+			musa isumi awa makuda ichihara
+			saitama adachi_kanto toshima_kanto tachibana tama
+			chichibu hiki hanzawa kamakura ashigara
+			aikou tsuru yamanashi yatsushiro koma_kai
+			tagata kamo_izu suntou fuji ihara
+			abe shida kitou shuuchi toyoda
+			fuchi hoi shitara kamo_mikawa hekikai
+			aichi niwa nakajima mie suzuka
+			ichishi watarai taki shima kitamuro
+			iga yoshino takaichi nara kuse
+			kyoto izumi osaka kawabe muko
+			kuwada funai ikaruga hikami kasa
+			yosa keta_tajima yabu futakata houmi
+			takakusa kume_houki aimi hino ou
+			oki izumo iishi nita nima
+			oochi naka_iwami mino kanoashi akashi
+			taka shikama akou shisou wake
+			joutou tsudaka kume mashima tomata
+			aita asakuchi katou_bicchuu kaya aka
+			ashida sera miyoshi eso nuka
+			kameshi toyota saeki yamagata takata
+			aki kuga kumage tsuno saba
+			yoshiki_suou asa toyoura ootsu abu
+			higashimuro minamimuro nishimuro hidaka kaisou
+			naga mitoyo aya miki awaji
+			nakata awa_shikoku naka_shikoku kaifu mima
+			miyoshi_shikoku nii ochi iyo ukena
+			kita_shikoku uwa aki_shikoku kami_shikoku nagaoka
+			tosa agawa takaoka hata kamiagata
+			shimoagata onga mikasa asakura hakata
+			saga higashimatsuura kishima takaki nishisonogi
+			higashisonogi nishimatsuura minamimatsuura mii kamitsuma
+			nakatsu mike usa kunisaki hayami
+			ooita amabe oono_bungo naoiri kusu
+			hita aso koushi tamana akita_kumamoto
+			mashiki yatsushiro_higo amakusa kuma ashikita
+			higashiusuki nishiusuki koyu naka_hyuuga nishimorokata
+			kitamorokata miyazaki minamimorokata soo kimotsuki
+			oosumi kuwabara hishikari gomu kumage_oosumi
+			satsuma kagoshima ibusuki izumi_satsuma	
+		}
+		include = "japanese_clan"
+		government = {
+			reforms = {
+				shogunate
+			}
+			laws = {
+				censorship = limited_censorship
+				maritime_law = protect_trade_routes
+				piracy_law = anti_piracy_policy
+			}
+		}
+		accepted_cultures = {
+			tougoku_culture
+			touhoku_culture
+			kyushu_culture
+		}
+		country_rank = rank_empire
+		capital = toshima_kanto
+		starting_technology_level = 4
+	}
+	
+	##Touhoku
+	ANU = {
+		type = pop
+
+		add_pops_from_locations = {
+			fukushima kamiiso kameda hiyama_hokkaido kayabe nishi
+			yamakoshi futoro setana shimamaki suttsu isoya iwanai furubira yoichi
+			abuta shiraoi chitose yuufutsu
+			sapporo ishikari yuubari sorachi atsuta uryuu nakakamikawa
+			saru niikappu shizunai urakawa samani
+			hiroo toubui kasai tokachi minamikamikawa katou minaminakagawa
+			shiranuka kushiro akan_loc akkeshi kawakami_hokkaido minamiabashiri ashoro
+			nemuro notsuke shibetsu hanasaki
+			shari abashiri tokoro monbetsu esashi_hokkaido souya rishiri
+			teshio kitanakagawa kitakamikawa tomamae rumoi
+			kunashiri etorofu furubetsu shana shibetoro uruppu shimushiru onnekotan paramushiru shumushu
+			guohuo boluohe kushunkotan nayoro
+		}
+
+		discovered_regions = {
+			japan_region
+		}
+
+
+		starting_technology_level = 1
+		include = "asia_tribe"
+		government = {
+			ruler = random
+		}
+	}
+	
+	MTU = { #Matsumae
+		own_control_core = {
+			fukushima
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = fukushima
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	HRO = { #Hirosaki
+		own_control_core = {
+			inaka hanawa hiraka_aomori
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = hanawa
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	MRO = { #Morioka
+		own_control_core = {
+			shimokita kamikita nukanobu kazuno
+			iwate kuji shimohei kitahei kamihei shiwa hienuki esashi waga isawa
+			kesen
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = iwate
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	AKA = { #Akita
+		own_control_core = {
+			kamiura hiyama hinai akita toshima yamamoto
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = akita
+		country_rank = rank_duchy
+		starting_technology_level = 4
+	}
+	
+	KMD = { #Kameda
+		own_control_core = {
+			yuri
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = yuri
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	HNJ = { #Honjo
+		own_control_core = {
+			yuza
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = yuza
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	SHI = { #Shinjo
+		own_control_core = {
+			murayama
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = murayama
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	SDA = { #Sendai
+		own_control_core = {
+			miyagi motoyoshi oshika tome kurihara kami kurokawa natori
+			uda_mutsu katta iwai
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = miyagi
+		country_rank = rank_kingdom
+		starting_technology_level = 4
+	}
+	
+	KMI = { #Kaminoyama
+		own_control_core = {
+			minamimogami
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = minamimogami
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	YON = { #Yonezawa
+		own_control_core = {
+			nishiokitama higashiokitama shinobu date_loc
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = higashiokitama
+		country_rank = rank_duchy
+		starting_technology_level = 4
+	}
+	
+	AIZ = { #Aizu
+		own_control_core = {
+			yama_jap kawanuma oonuma kitaaizu minamiaizu
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = higashiokitama
+		country_rank = rank_duchy
+		starting_technology_level = 4
+	}
+	
+	NIH = { #Nihonmatsu
+		own_control_core = {
+			iwase adachi asaka
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = adachi
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	SMN = { #Souma-Nakamura
+		own_control_core = {
+			namekata shineha
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = namekata
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	KMI = { #Kaminoyama
+		own_control_core = {
+			minamimogami
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = minamimogami
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	YON = { #Yonezawa
+		own_control_core = {
+			nishiokitama higashiokitama shinobu date_loc
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = higashiokitama
+		country_rank = rank_duchy
+		starting_technology_level = 4
+	}
+	
+	AIZ = { #Aizu
+		own_control_core = {
+			yama_jap kawanuma oonuma kitaaizu minamiaizu
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = higashiokitama
+		country_rank = rank_duchy
+		starting_technology_level = 4
+	}
+	
+	NIH = { #Nihonmatsu
+		own_control_core = {
+			iwase adachi asaka
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = adachi
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	SMN = { #Souma-Nakamura
+		own_control_core = {
+			namekata shineha
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = namekata
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	HAR = { #Miharu
+		own_control_core = {
+			tamura
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = tamura
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	SRK = { #Shirakawa
+		own_control_core = {
+			shirakawa
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = shirakawa
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	TAG = { #Tanagura
+		own_control_core = {
+			takano
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = takano
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+
+	##Kinkiku
+	JIC = { #Kuge
+		own_control_core = {
+			kyoto
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kyoto  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_empire
+		}
+
+	UMY = { #Udamatsuyama
+		own_control_core = {
+			takaichi
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = takaichi  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	TOB = { #Toba
+		own_control_core = {
+			shima
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = shima  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	KSU = { #Kishū
+		own_control_core = {
+			kaisou naga hidaka nishimuro higashimuro minamimuro kitamuro taki watarai
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kaisou  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_kingdom
+		}
+
+	KBE = { #Kōbe
+		own_control_core = {
+			suzuka
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = suzuka  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	ATU = { #Anotsu
+		own_control_core = {
+			ichishi iga nara
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = ichishi  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}
+
+	NSJ = { #Nishōji
+		own_control_core = {
+			gamou
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = gamou  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	AKO = { #Asō
+		own_control_core = {
+			akou
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = akou  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	HYS = { #Hayashida
+		own_control_core = {
+			shikama
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = shikama  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	SIS = { #Shisō
+		own_control_core = {
+			shisou
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = shisou  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	AOK = { #Asada
+		own_control_core = {
+			muko
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = muko  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	TYK = { #Toyooka
+		own_control_core = {
+			keta_tajima __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = keta_tajima  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	IZS = { #Izushi
+		own_control_core = {
+			yabu __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = yabu  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	TNB = { #Tangotanabe
+		own_control_core = {
+			kasa __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kasa  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	MDU = { #Miyadu
+		own_control_core = {
+			yosa __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = yosa  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	FKY = { #Fukuchiyama
+		own_control_core = {
+			ikaruga __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = ikaruga  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+
+	NKB = { #Tanbakaibara
+		own_control_core = {
+			hikami __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = hikami  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	YME = { #Yamake
+		own_control_core = {
+			funai __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = funai  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	SNB = { #Sonobe
+		own_control_core = {
+			kuwada __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kuwada  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	##Shikoku
+	HCU = { #Tokushima
+		own_control_core = {
+			nakata awa_shikoku naka_shikoku kaifu mima miyoshi_shikoku awaji __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = nakata  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy
+		}
+
+	YUC = { #Tosa
+		own_control_core = {
+			tosa agawa takaoka hata kami_shikoku aki_shikoku nagaoka __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = tosa  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy
+		}
+
+	UWJ = { #Uwajima
+		own_control_core = {
+			uwa __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = uwa  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	ODZ = { #Ōdu
+		own_control_core = {
+			kita_shikoku ukena __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kita_shikoku  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	##Chuubu
+	MEK = { #Kaga
+		own_control_core = {
+			kaga nomi noto_jap fugeshi suzu tonami imizu nei niikawa takashima __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kaga  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_kingdom
+		}
+	
+	KNR = { #Hidatakayama
+		own_control_core = {
+			kamioono mashita yoshiki __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kamioono  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	GJO = { #Gujō
+		own_control_core = {
+			gujou __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = gujou  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	OWR = { #Owari
+		own_control_core = {
+			aichi niwa nakajima mugi minokamo toki ena   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = aichi  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_kingdom
+		}
+
+	SNX = { #Matsushiro
+		own_control_core = {
+			sarashina minochi   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = sarashina  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	SGV = { #Ueda
+		own_control_core = {
+			chiisagata   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = chiisagata  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	SZA = { #Suzaka
+		own_control_core = {
+			takai   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = takai  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	ZOG = { #Shibata
+		own_control_core = {
+			nutari   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = nutari  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	##Kanto
+	MTV = { #Mito
+		own_control_core = {
+			ibaraki niihari haga naka kuji_kanto taga   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = ibaraki  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_kingdom
+		}
+
+	KRY = { #Karasuyama
+		own_control_core = {
+			shioya   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = shioya  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	KRB = { #Kurobane
+		own_control_core = {
+			nasu   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = nasu  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	OBX = { #Obata
+		own_control_core = {
+			kanra usui   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kanra  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+	
+	##Chuugoku
+	CYY = { #Chōshū
+		own_control_core = {
+			abu ootsu toyoura asa yoshiki_suou saba tsuno kumage kuga    __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = abu  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_kingdom
+		}
+
+	TUW = { #Tsuwano
+		own_control_core = {
+			kanoashi    __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kanoashi  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+
+	HMW = { #Hamada
+		own_control_core = {
+			mino    __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = mino  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+
+	HLS = { #Hiroshima
+		own_control_core = {
+			saeki aki takata yamagata toyota sera miyoshi eso nuka     __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = saeki  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}
+
+	NWE = { #Niwase
+		own_control_core = {
+			asakuchi     __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = asakuchi  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+
+	AMV = { #Ashimori
+		own_control_core = {
+			kaya     __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kaya  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+
+	VYM = { #Okayama
+		own_control_core = {
+			joutou tsudaka wake     __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = joutou  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}
+
+	XTY = { #Tsuyama
+		own_control_core = {
+			mashima aita kume tomata     __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = mashima  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}
+
+	TTI = { #Tottori
+		own_control_core = {
+			houmi takakusa kume_houki aimi hino     __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = houmi  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}
+	
+	##Kyushu
+	STM = { #Satsuma
+		own_control_core = {
+			kagoshima izumi_satsuma satsuma ibusuki hishikari kuwabara soo kimotsuki oosumi gomu kumage_oosumi nishimorokata minamimorokata 				kitamorokata naka_hyuuga     __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kagoshima  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_kingdom 
+		}
+	
+	STM = { #Satsuma
+		own_control_core = {
+			kagoshima izumi_satsuma satsuma ibusuki hishikari kuwabara soo kimotsuki oosumi gomu kumage_oosumi nishimorokata minamimorokata 				kitamorokata naka_hyuuga     __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kagoshima  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_kingdom 
+		}
+	
+	OBI = { #Obi
+		own_control_core = {
+			    miyazaki __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = miyazaki  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	TKB = { #Takanabe
+		own_control_core = {
+			    koyu __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = koyu  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+	
+	HIY = { #Hitoyoshi
+		own_control_core = {
+			    kuma __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kuma  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+	
+	NBK = { #Nobeoka
+		own_control_core = {
+			    higashiusuki __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = higashiusuki  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+
+	QMM = { #Kumamoto
+		own_control_core = {
+			    akita_kumamoto tamana koushi aso mashiki yatsushiro_higo ashikita  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = akita_kumamoto  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}	
+
+	SGQ = { #Saga
+		own_control_core = {
+			    saga kishima takaki  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = saga  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}
+
+	OOR = { #Ōmura
+		own_control_core = {
+			higashisonogi nishisonogi  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = higashisonogi  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+
+	FQE = { #Fukue
+		own_control_core = {
+			minamimatsuura  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = minamimatsuura  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+
+	QRT = { #Karatsu
+		own_control_core = {
+			higashimatsuura amakusa  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = higashimatsuura  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+
+	HRV = { #Hirado
+		own_control_core = {
+			nishimatsuura  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = nishimatsuura  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+		
+	ZSM = { #Tsushima
+		own_control_core = {
+			shimoagata kamiagata  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = shimoagata  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	FOK = { #Fukuoka
+		own_control_core = {
+			hakata mikasa onga asakura  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = hakata  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}	
+
+	YGW = { #Yanagawa
+		own_control_core = {
+			mii  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = mii  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	QRM = { #Yanagawa
+		own_control_core = {
+			kamitsuma  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kamitsuma  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}	
+
+	QMR = { #Mori
+		own_control_core = {
+			kusu  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kusu  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	FNA = { #Funai
+		own_control_core = {
+			naoiri  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = naoiri  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	OQA = { #Oka
+		own_control_core = {
+			oono_bungo  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = oono_bungo  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	VSQ = { #Usuki
+		own_control_core = {
+			ooita  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = ooita  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	SYQ = { #Saiki
+		own_control_core = {
+			amabe  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = amabe  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	HYJ = { #Hiji
+		own_control_core = {
+			hayami  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = hayami  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	##Ryukyu
+	RYY = { #Ryūkyū
+		own_control_core = {
+			oozato urasoe nakijin tokunoshima amami_ooshima iriomote ishigaki miyakojima     __
+		}
+		government = {
+			type = monarchy
+		}
+		capital = oozato  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_kingdom 
+		}
+
 ###British Isles
 	ROE = { # Royalist England
 		own_control_core = {
