@@ -313,9 +313,11 @@ wsg_1644_choice.4 = { #崇祯不南迁、李自成不进京、清朝入关后：
 				limit = {
 					NOT = { c:CSH = { has_variable = csh_attack_beijing } }
 				}
-				trigger_event_silently = {
-					id = csh_1644_unification.4 #吴三桂、唐通献土
-					days = 15
+				c:CSH = {
+					trigger_event_silently = {
+						id = csh_1644_unification.4 #吴三桂、唐通献土
+						days = 15
+					}
 				}
 			}
 		}
