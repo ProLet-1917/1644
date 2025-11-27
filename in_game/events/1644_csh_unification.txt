@@ -106,6 +106,7 @@ csh_1644_unification.1 = { #进京赶考
 		name = csh_1644_unification.1.a
 		historical_option = yes
 		custom_tooltip = csh_1644_unification.1.tt1
+		set_variable = csh_attack_beijing
 		trigger_event_silently = {
 		 	id = csh_1644_unification.2
 		 	days = 7
@@ -262,7 +263,12 @@ csh_1644_unification.2 = { #天翻地覆
 	desc = csh_1644_unification.2.desc
 	historical_info = csh_1644_unification.2.historical_info
 	immediate = {
-		shandong_csh_list_add1 = yes
+		if = {
+			limit = {
+				has_variable = csh_attack_beijing
+			}
+			shandong_csh_list_add1 = yes
+		}
 		shandong_csh_list_add2 = yes
 		every_in_list = {
 			list = list_of_shandong_csh
@@ -286,12 +292,17 @@ csh_1644_unification.2 = { #天翻地覆
 				}
 			}
 		}
-		c:WSG = { #没有南迁的情况下吴三桂选择
+		c:WSG = { #没有南迁且不是吴三桂迎主的情况下吴三桂选择
 			if = {
 				limit = {
-					NOT = { has_variable = mng_move_to_nanjing }
+					c:MNG = { NOT = { has_variable = mng_move_to_nanjing } }
+					NOT = { has_variable = wsg_1644_chosen_side }
+					c:CSH = { has_variable = csh_attack_beijing }
 				}
-				trigger_event_silently = wsg_1644_choice.1
+				trigger_event_silently = {
+					id = wsg_1644_choice.1
+					days = 6
+				}
 			}
 		}
 		# 大顺夺取北京后成为天朝领袖
@@ -327,6 +338,56 @@ csh_1644_unification.3 = { #二王三恪
 	option = {
 		name = csh_1644_unification.3.a
 		character:chi_zhu_cilang = { move_country = c:CSH }
+	}
+}
+
+csh_1644_unification.4 = { #吴三桂、唐通迎主
+	type = country_event
+	title = csh_1644_unification.4.title
+	desc = csh_1644_unification.4.desc
+	historical_info = csh_1644_unification.4.historical_info
+	immediate = {
+		trigger_event_silently = {
+		 	id = csh_1644_unification.2
+		 	days = 6
+		}
+		trigger_event_silently = {
+		 	id = csh_1644_unification.3
+		 	days = 6
+		}
+	}
+	option = {
+		name = csh_1644_unification.4.a
+	}
+}
+
+csh_1644_unification.5 = { #吴三桂反叛
+	type = country_event
+	title = csh_1644_unification.5.title
+	desc = csh_1644_unification.5.desc
+	historical_info = csh_1644_unification.5.historical_info
+	immediate = {
+		trigger_event_silently = {
+			id = csh_1644_unification.6
+			days = 12
+		}
+	}
+	option = {
+		name = csh_1644_unification.5.a
+	}
+}
+
+csh_1644_unification.6 = { #山海关之战
+	type = country_event
+	title = csh_1644_unification.6.title
+	desc = csh_1644_unification.6.desc
+	historical_info = csh_1644_unification.6.historical_info
+	immediate = {
+		c:WSG = { trigger_event_silently = wsg_1644_choice.5 }
+		c:QNG = { trigger_event_silently = qng_1644_unification.4 }
+	}
+	option = {
+		name = csh_1644_unification.6.a
 	}
 }
 

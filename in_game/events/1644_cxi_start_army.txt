@@ -29,7 +29,7 @@ cxi_1644_start_army.1 = {
 					limit = { owner = root }
 					# 西步军：8000 人
 					while = {
-						count = 5
+						count = 3
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_pikemen
 							owner = root
@@ -47,15 +47,7 @@ cxi_1644_start_army.1 = {
 							experience = 80
 						}
 					}
-					while = {
-						count = 0
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_musketeers
-							owner = root
-							origin = this
-							experience = 80
-						}
-					}
+
 					# 西营骑兵：5 * 300 = 1500 人
 					while = {
 						count = 5
