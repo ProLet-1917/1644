@@ -1,0 +1,61 @@
+﻿government = {
+	type = tribe
+	heir_selection = tribal_oldest_male
+	
+	centralization_vs_decentralization = 80
+	traditionalist_vs_innovative = -50
+	spiritualist_vs_humanist = -20
+	aristocracy_vs_plutocracy = -80
+	serfdom_vs_free_subjects = 50
+	mercantilism_vs_free_trade = 50
+	belligerent_vs_conciliatory = -40
+	quality_vs_quantity = 50
+	offensive_vs_defensive = 50
+	land_vs_naval = -100
+	capital_economy_vs_traditional_economy = 100
+	individualism_vs_communalism = 80
+	outward_vs_inward = 50
+	parliament = {
+		parliament_type = assembly
+	}
+
+	privilege = {
+		#nobles
+		nobles_land_rights
+		noble_marriage_rights
+		noble_leaders_only
+	
+		#clergy
+		clergy_literacy_rights
+		clergy_enforced_unity
+		clergy_strengthen_faith
+
+		#Burghers
+		trade_monopolies
+		market_fairs
+		formal_guilds
+		building_roads_rights
+
+		#Commoners
+		allow_hunting
+		communal_lands
+		
+		tribes_tribal_levies
+		tribes_allow_gatherings
+	}
+
+	laws = {
+		censorship = no_censorship
+		tribal_legal_basis_law = strong_community_customs_policy
+		tribal_organization_law = clan_council_policy
+		tribal_religious_values_law = lip_service_policy
+		education_masses_law = oral_tradition_education
+		marriage_law = monogamous_marriage
+		heir_religion_law = heir_any_religion
+		distribution_of_power_law = dop_favor_the_ruler
+		immigration_law = open_borders_law
+		mining_law = nobles_mining_law
+		legal_code_law = sharia_law_policy
+	}
+}
+

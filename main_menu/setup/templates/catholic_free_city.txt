@@ -1,0 +1,62 @@
+﻿starting_technology_level = 3
+government = {
+	type = republic
+	heir_selection = oligarchic_elective
+	
+	centralization_vs_decentralization = -20
+	traditionalist_vs_innovative = 30
+	spiritualist_vs_humanist = 20
+	aristocracy_vs_plutocracy = 40
+	serfdom_vs_free_subjects = 40
+	mercantilism_vs_free_trade = 50
+	belligerent_vs_conciliatory = 30
+	quality_vs_quantity = -20
+	offensive_vs_defensive = 30
+	capital_economy_vs_traditional_economy = 20
+	individualism_vs_communalism = -10
+	outward_vs_inward = -30
+	parliament = {
+		parliament_type = estate_parliament
+	}
+	
+	privilege = {
+		#nobles
+		feudal_mercenary_contracts
+		noble_fortification_licenses
+
+		#clergy
+		clergy_literacy_rights
+		clerical_advisory_council
+
+		# burghers
+		formal_guilds
+		trade_monopolies
+		control_over_monetary_policy
+		building_rights
+		commercial_advisory_council
+		market_fairs
+		magdeburg_rights
+		urban_development_grants
+		land_of_commerce
+
+		#peasants
+		peasants_allowed_weapons_privilege
+		peasants_free_peasantry
+		allow_hunting
+	}
+	laws = {
+		censorship = limited_censorship
+		republican_foundation_law = republicanism_policy
+		education_masses_law = basic_religious_education
+		administrative_system = central_councils
+		cultural_traditions_law = civil_society
+		marriage_law = monogamous_marriage
+		heir_religion_law = heir_same_religion
+		legal_code_law = civil_law_policy
+		maritime_law = protect_trade_routes
+		piracy_law = anti_piracy_policy
+		distribution_of_power_law = dop_traditional_distribution_of_power
+		immigration_law = open_borders_law
+		mining_law = german_mining_law
+	}
+}

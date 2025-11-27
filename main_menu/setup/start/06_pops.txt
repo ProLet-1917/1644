@@ -39443,10 +39443,28 @@ shijiu_lake = {
 # 	define_pop = {	type = peasants	size = 16.657	culture = han_culture	religion = sunni }
 # }
 shangyuan = {
-	define_pop = { type = nobles size = 5.00 culture = han_culture religion = sanjiao }      # 贵族：士大夫/世家
-	define_pop = { type = clergy size = 25.00 culture = han_culture religion = sanjiao }       # 僧侣
-	define_pop = { type = burghers size = 100.00 culture = han_culture religion = sanjiao }    # 市民
-	define_pop = { type = peasants size = 370.00 culture = han_culture religion = sanjiao }    # 农民
+	# 总人口 50万 (size 1.00 = 1000人)
+	
+	# 贵族：6% (3万人) - 勋戚、官僚
+	define_pop = { type = nobles size = 30.00 culture = han_culture religion = sanjiao }
+	
+	# 教士：0.5% (2500人) - 职业宗教人士
+	define_pop = { type = clergy size = 2.50 culture = han_culture religion = sanjiao }
+	
+	# 市民：10% (5万人) - 机户、商贾、行会师傅 (中产阶级)
+	define_pop = { type = burghers size = 50.00 culture = han_culture religion = sanjiao }
+	
+	# 劳工：31% (15.5万人) - 机工、雇工、苦力 (早期工人阶级)
+	define_pop = { type = laborers size = 155.00 culture = han_culture religion = sanjiao }
+	
+	# 士兵：5% (2.5万人) - 京营
+	define_pop = { type = soldiers size = 25.00 culture = han_culture religion = sanjiao }
+	
+	# 奴隶：5% (2.5万人) - 家奴
+	define_pop = { type = slaves size = 25.00 culture = han_culture religion = sanjiao }
+	
+	# 农民：42.5% (21.25万人) - 城郊农户
+	define_pop = { type = peasants size = 212.50 culture = han_culture religion = sanjiao }
 } 
 # suzhou = {
 # 	define_pop = { type = nobles size = 0.600 culture = han_culture religion = sanjiao }        
@@ -39461,6 +39479,12 @@ shangyuan = {
 # 	define_pop = { type = peasants size = 9.860 culture = han_culture religion = sanjiao }       
 # }
 
+shangyuan = {
+	define_pop = { type = nobles size = 10.0 culture = han_culture religion = sanjiao }
+	define_pop = { type = burghers size = 122.5 culture = han_culture religion = sanjiao }
+	define_pop = { type = peasants size = 307.5 culture = han_culture religion = sanjiao }
+	define_pop = { type = clergy size = 2.5 culture = han_culture religion = sanjiao }
+} 
 
 jiangning = {
 	define_pop = {	type = clergy	size = 0.004	culture = han_culture	religion = sanjiao }
@@ -46165,10 +46189,10 @@ laoting = {
 	define_pop = {	type = peasants	size = 19.279	culture = han_culture	religion = sanjiao }
 }
 dadu = {
-	define_pop = {	type = clergy	size = 0.200	culture = han_culture	religion = sanjiao }
-	define_pop = {	type = burghers	size = 6.012	culture = han_culture	religion = sanjiao }
-	define_pop = {	type = peasants	size = 780.0	culture = han_culture	religion = sanjiao }
-	define_pop = {	type = peasants	size = 4.110	culture = han_culture	religion = sunni }
+	define_pop = { type = nobles size = 14.0 culture = han_culture religion = sanjiao }
+	define_pop = { type = burghers size = 168.0 culture = han_culture religion = sanjiao }
+	define_pop = { type = peasants size = 536.0 culture = han_culture religion = sanjiao }
+	define_pop = { type = clergy size = 4.0 culture = han_culture religion = sanjiao }
 }
 fangshan = {
 	define_pop = {	type = clergy	size = 0.004	culture = han_culture	religion = sanjiao }

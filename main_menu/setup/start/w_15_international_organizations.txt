@@ -1,0 +1,96 @@
+international_organization_manager = {
+	#################################################################
+	# 				Unique International Organizations				#
+	#################################################################
+
+	#################################################################
+	# 				Holy Roman Empire								#
+	#################################################################
+	add_international_organization = {
+		type = hre
+		creation_date = 962.2.2
+
+		map_color = hsv360 { 40 50 70 }
+
+		members = { 
+			#Germany
+			FRI BNT MUN TCK OSN BRA KOL UPA AAC TRI SPO SAA DTM ESS NEU MTB BSC FCB ZWE PAL LNN SPY WRM WIE SYN TIR BXN MBZ TNT SLZ HAB BAM MEI BAY FRE PSS LGC TES STE MKL SWR WRN LUB HPL LBB HTR SLV LEU REG AUG UBV BRC EIC WEI NUR ANS ROT RVA UBL KNZ WDB BIB MEM KMP OET WUR BEU ULM HOH FUR ELL DNB OFB ALS SCF HAG LIC CFC MUR MUL BDE HBR MAI NSW FRN ERB MSB SWH TEU UFF KTZ HNA BUD WTZ WBG FLD HES WDE ENS QUB THU WTG HAM MAG ANH MLH MFE SHS NHS LUN LPP VRD BRE BRM OLD MDN PDB RBG GOS NIE HOX BBG WGO HDH LAU LCU ZUR STG TGG WER BLM SYZ OBW SIT MSO BCH GLR
+
+			#Netherland
+			HOL PUL CAM LIE BLL
+
+			#Swiss
+			GNV BRN GRY 
+
+			#Lorrain
+			LOR SLM BAS SLT
+		 }
+		leader = HAB
+		regions = { south_german_region }
+		areas = { 
+			#North Germany
+			brabant_area friesland_area holland_area wallonia_area holstein_area brandenburg_area rhineland_area
+			hesse_area westphalia_area lower_saxony_area upper_saxony_area mecklenburg_area
+			#France
+			alsace_area franche_comte_area 
+			#Poland
+			silesia_area
+		}
+		provinces = { 
+			#Burgundy
+			bresse_province
+			#Lorraine
+			pays_messin_province pays_nancy_province sarregueminois_province verdunois_province vosges_province
+			#Pomerania
+			schwerin_province vorpommern_province stettin_province koslin_province pyritz_province stolp_province
+			#Slovenia
+			lower_styria_province lower_carniola_province upper_carniola_province 
+		}
+		locations = { 
+
+		}
+		emperor = { HAB }
+		elector = { 
+			BRA MEI PAL HAB
+		}
+		archbishop_elector = {
+			KOL TRI MAI 
+		}
+		free_city = {
+			FRN WTZ HAM BRM GOS LUB DTM AAC WRM SPY CFC MUL KNZ RVA KMP MEM OET NUR ROT REG
+		}
+		imperial_peasant_republic = {
+
+		}
+		imperial_prelate = { 
+			WBG FLD MAG VRD BRE PDB HDH
+		}
+		imperial_prince = {
+			#Germany
+			FRI BNT MUN TCK OSN UPA TRI SPO SAA ESS NEU MTB BSC FCB ZWE LNN WIE SYN BXN MBZ TNT SLZ HAB BAM BAY FRE PSS LGC TES STE MKL SWR WRN HPL LBB HTR SLV LEU AUG UBV BRC EIC WEI ANS UBL WDB BIB WUR BEU ULM HOH FUR ELL DNB OFB ALS SCF HAG LIC MUR BDE HBR NSW ERB MSB SWH UFF KTZ HNA BUD HES WDE ENS QUB THU WTG ANH MLH MFE SHS NHS LUN LPP OLD MDN RBG NIE HOX BBG WGO LAU LCU ZUR STG TGG WER BLM SYZ OBW SIT MSO BCH GLR
+
+			#Netherland
+			HOL PUL CAM LIE BLL
+
+			#Swiss
+			GNV BRN GRY 
+
+			#Lorrain
+			LOR SLM BAS SLT
+		}
+		
+		laws = {
+			hre_religion_catholic
+			only_imperial_religion_policy
+			golden_bull_policy
+			no_monetary_contribution
+		}
+
+		ruler_term = { character = hab_ferdinand_iii_von_habsburg start_date = 1644.1.1 regnal_number = 4 }
+
+
+		variables = { 
+			imperial_authority = 5
+		}
+	}
+}
