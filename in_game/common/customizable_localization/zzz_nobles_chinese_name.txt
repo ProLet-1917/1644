@@ -1,0 +1,13 @@
+﻿# 士绅（nobles_estate）在中国文化组中的名称本地化
+# 让贵族阶层在中国显示为"士绅"
+# 使用 INJECT 语法注入到原版的 nobles_estate 定义中
+INJECT:nobles_estate = {
+	# 中国文化组显示为"士绅"
+	INJECT:text = {
+		localization_key = nobles_estate_shishen
+		trigger = {
+			culture = culture:han_culture
+		}
+	}
+}
+
