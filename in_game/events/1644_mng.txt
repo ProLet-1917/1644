@@ -85,7 +85,10 @@ mng_1644.1 = { #南迁之议
     	set_capital = location:shangyuan
 		set_variable = mng_move_to_nanjing 
 		c:WSG = {
-			trigger_event_silently = wsg_1644_choice.3
+			trigger_event_silently = {
+				id = wsg_1644_choice.3
+				days = 6
+			}
 		}
     	if = {
 			limit = { tag = MNG }
