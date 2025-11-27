@@ -7,14 +7,18 @@ international_organization_manager = {
 		creation_date = 1644.1.1
 		
 		# 1644年天朝组织成员设置
-		# 如果大明（MNG）还存在，则作为天朝皇帝
-		# 大顺（CSH）和大清（QNG）不在组织中，需要通过统一战争来争夺天朝地位
 		members = {
-			# 如果MNG存在，MNG作为天朝皇帝（代表南明的合法性）
-			# 如果MNG已灭亡，则组织处于无主状态，等待统一者
+			# 如果MNG存在，MNG作为天朝皇帝
 			MNG
-			# 其他传统朝贡国和附庸（如果存在）
-			# 可以根据需要添加其他成员，如朝鲜、越南等
+			# 大顺作为挑战者
+			CSH
+			# 其他传统朝贡国和附庸
+		}
+		
+		# 赋予大顺挑战者身份
+		special_status = {
+			type = celestial_challenger
+			country = CSH
 		}
 		
 		# 天朝控制的核心区域
@@ -44,7 +48,6 @@ international_organization_manager = {
 		}
 		
 		# 如果MNG存在，设置为天朝皇帝
-		# 如果MNG不存在，则组织无主，等待统一者
 		leader = MNG
 		
 		# 天朝权威度初始值（1644年时天朝权威较低）

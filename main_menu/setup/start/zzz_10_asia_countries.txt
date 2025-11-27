@@ -181,7 +181,7 @@ countries = {
 				changde_culture
 				liang_culture
 			}
-			court_language = northern_mandarin_dialect
+			court_language = mandarin_language
 
 			country_rank = rank_empire
 
@@ -295,6 +295,10 @@ countries = {
 			government = {
 				type = monarchy
 				ruler = chi_shunzhi
+				regency = nobles_estate_regency
+				active_regent = chi_dorgon
+				start_regency_date = 1643.10.8
+
 				ruler_term = {
 					character = chi_nurhachi
 					start_date = 1616.2.17
@@ -324,7 +328,7 @@ countries = {
 				monguor_culture
 			}
 			currency_data = {
-				gold = 50000 #国库 先给花不完的钱
+				gold = 100000 #国库 先给花不完的钱
 				stability = 60 #稳定度
 				prestige = 50 #声望
 				government_power = 80 #正统性
@@ -796,7 +800,7 @@ countries = {
 				nashi_culture
 				rma_culture
 			}
-			court_language = southern_mandarin_dialect
+			court_language = mandarin_language
 			country_rank = rank_empire
 			capital = dadu
 			flag = "CHI_Ming_characters"
@@ -829,7 +833,7 @@ countries = {
 					medieval_levy_law = broken_weisuo
 				}
 			}
-			court_language = northern_mandarin_dialect
+			court_language = mandarin_language
 			country_rank = rank_kingdom
 			capital = fengjie
 			flag = "CXI"
@@ -860,8 +864,8 @@ countries = {
 					medieval_levy_law = broken_weisuo
 				}
 			}
-			court_language = northern_mandarin_dialect
-			country_rank = rank_duchy
+			court_language = mandarin_language
+			country_rank = rank_county
 			capital = ningyuan_jinzhou
 			accepted_cultures = {
 				yan_culture

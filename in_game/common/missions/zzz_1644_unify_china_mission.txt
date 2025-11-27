@@ -1,0 +1,282 @@
+﻿unify_china_1644 = {
+	icon = generic_conquer_province
+	repeatable = no
+	player_playstyle = military
+
+	visible = {
+		game_has_missions_enabled = yes
+		OR = {
+			tag = MNG
+			tag = QNG
+			tag = CSH
+		}
+		exists = international_organization:middle_kingdom
+	}
+
+	enabled = {
+		OR = {
+			tag = MNG
+			tag = QNG
+			tag = CSH
+		}
+		exists = international_organization:middle_kingdom
+	}
+
+	chance = 10000
+
+	on_start = {
+		# 初始化变量，用于跟踪对手状态
+	}
+
+	on_completion = {
+		# Mission完成后的效果
+	}
+
+	on_abort = {
+		# Mission取消时的清理
+	}
+
+	###########################################
+	# 任务1: 控制华北核心地区
+	###########################################
+
+	mission_control_north_china = {
+		icon = expansionism
+		enabled = {
+			# 控制北京（dadu）
+			location:dadu = {
+				owner = root
+			}
+			# 控制河北地区的主要省份
+			area:hebei_area = {
+				any_location_in_area = {
+					owner = root
+
+				}
+			}
+			# 控制山东地区
+			area:shandong_area = {
+				any_location_in_area = {
+					owner = root
+
+				}
+			}
+		}
+
+		duration = 0
+
+		on_completion = {
+			# 获得对对手的宣称
+			if = {
+				limit = {
+					tag = MNG
+					OR = {
+						exists = c:QNG
+						exists = c:CSH
+					}
+				}
+				if = {
+					limit = { exists = c:QNG }
+					add_casus_belli = {
+						target = c:QNG
+						type = casus_belli:cb_claim_mandate_of_heaven
+					}
+				}
+				if = {
+					limit = { exists = c:CSH }
+					add_casus_belli = {
+						target = c:CSH
+						type = casus_belli:cb_claim_mandate_of_heaven
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = QNG
+					OR = {
+						exists = c:MNG
+						exists = c:CSH
+					}
+				}
+				if = {
+					limit = { exists = c:MNG }
+					add_casus_belli = {
+						target = c:MNG
+						type = casus_belli:cb_claim_mandate_of_heaven
+					}
+				}
+				if = {
+					limit = { exists = c:CSH }
+					add_casus_belli = {
+						target = c:CSH
+						type = casus_belli:cb_claim_mandate_of_heaven
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = CSH
+					OR = {
+						exists = c:MNG
+						exists = c:QNG
+					}
+				}
+				if = {
+					limit = { exists = c:MNG }
+					add_casus_belli = {
+						target = c:MNG
+						type = casus_belli:cb_claim_mandate_of_heaven
+					}
+				}
+				if = {
+					limit = { exists = c:QNG }
+					add_casus_belli = {
+						target = c:QNG
+						type = casus_belli:cb_claim_mandate_of_heaven
+					}
+				}
+			}
+			add_prestige = prestige_mild_bonus
+		}
+	}
+
+	###########################################
+	# 任务2: 控制江南
+	###########################################
+
+	mission_control_jiangnan = {
+		icon = global_trade_routes_advance
+		requires = { mission_control_north_china }
+		enabled = {
+			# 控制江南地区
+			area:jiangnan_area = {
+				any_location_in_area = {
+					owner = root
+
+				}
+			}
+			# 控制南京（如果存在）
+			OR = {
+				NOT = { exists = location:nanjing }
+				location:nanjing = {
+					owner = root
+
+				}
+			}
+		}
+
+		duration = 0
+
+		on_completion = {
+			# 经济加成
+			add_country_modifier = {
+				modifier = jiangnan_wealth_modifier
+				years = 10
+				mode = replace
+			}
+		}
+	}
+
+	###########################################
+	# 任务3: 统一中国（最终任务）
+	###########################################
+
+	mission_unify_china_final = {
+		icon = correct_box_advance_renaissance
+		final = yes
+		requires = { mission_control_jiangnan }
+		enabled = {
+			# 控制所有中国核心地区
+			region:north_china_region = {
+				any_location_in_region = {
+					owner = root
+
+				}
+			}
+			region:south_china_region = {
+				any_location_in_region = {
+					owner = root
+
+				}
+			}
+			# 确保所有对手都被击败（除了自己）
+			AND = {
+				# 如果自己是MNG，检查QNG和CSH
+				OR = {
+					tag = MNG
+					AND = {
+						OR = {
+							NOT = { exists = c:QNG }
+							c:QNG = { is_subject_of = root }
+						}
+						OR = {
+							NOT = { exists = c:CSH }
+							c:CSH = { is_subject_of = root }
+						}
+					}
+				}
+				# 如果自己是QNG，检查MNG和CSH
+				OR = {
+					tag = QNG
+					AND = {
+						OR = {
+							NOT = { exists = c:MNG }
+							c:MNG = { is_subject_of = root }
+						}
+						OR = {
+							NOT = { exists = c:CSH }
+							c:CSH = { is_subject_of = root }
+						}
+					}
+				}
+				# 如果自己是CSH，检查MNG和QNG
+				OR = {
+					tag = CSH
+					AND = {
+						OR = {
+							NOT = { exists = c:MNG }
+							c:MNG = { is_subject_of = root }
+						}
+						OR = {
+							NOT = { exists = c:QNG }
+							c:QNG = { is_subject_of = root }
+						}
+					}
+				}
+			}
+		}
+
+		duration = 0
+
+		on_completion = {
+			# 成为天朝领袖
+			if = {
+				limit = {
+					exists = international_organization:middle_kingdom
+					NOT = { is_leader_of_international_organization = international_organization:middle_kingdom }
+				}
+				# 如果还不是成员，先加入
+				if = {
+					limit = {
+						NOT = { is_member_of_international_organization = international_organization:middle_kingdom }
+					}
+					international_organization:middle_kingdom = {
+						add_country_to_international_organization = root
+					}
+				}
+				# 设置为领袖
+				international_organization:middle_kingdom = {
+					set_leader_country = root
+				}
+			}
+			# 永久国家修正
+			add_country_modifier = {
+				modifier = unified_china_modifier
+				years = -1
+			}
+			# 额外奖励
+			add_prestige = prestige_severe_bonus
+			add_stability = stability_moderate_bonus
+		}
+	}
+}
