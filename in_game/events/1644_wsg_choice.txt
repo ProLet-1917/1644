@@ -21,7 +21,10 @@ wsg_1644_choice.1 = { #史实：崇祯不南迁，李自成进京，选择降清
 		name = wsg_1644_choice.1.a
 		historical_option = yes
 		ai_chance = { factor = 0.6 }
-		set_variable = wsg_1644_chosen_side
+		set_variable = {
+			name = wsg_1644_chosen_side
+			value = 1
+		} 
 		custom_tooltip = wsg_1644_choice_join_qng_tt
 		hidden_effect = {
 			c:QNG ?= {
@@ -34,12 +37,27 @@ wsg_1644_choice.1 = { #史实：崇祯不南迁，李自成进京，选择降清
 				ROOT = { trigger_event_silently = { id = wsg_1644_choice.100 days = 2 } }
 			}
 		}
+		c:CSH = {
+			trigger_event_silently = {
+				id = csh_1644_unification.5
+				days = 15
+			}
+		}
+		c:QNG = {
+			trigger_event_silently = {
+				id = qng_1644_unification.5
+				days = 20
+			}
+		}
 	}
 	option = {
 		# 归顺李自成
 		name = wsg_1644_choice.1.b
 		ai_chance = { factor = 0.3 }
-		set_variable = wsg_1644_chosen_side
+		set_variable = {
+			name = wsg_1644_chosen_side
+			value = 2
+		} 
 		custom_tooltip = wsg_1644_choice_join_csh_tt
 		hidden_effect = {
 			c:CSH ?= {
@@ -115,8 +133,19 @@ wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州、固守
 	option = { #降顺
 		name = wsg_1644_choice.3.a
 		ai_chance = { factor = 0.3 }
-		set_variable = wsg_1644_chosen_side
+		set_variable = {
+			name = wsg_1644_chosen_side
+			value = 2
+		} 
 		hidden_effect = {
+			if = {
+				limit = {
+					has_variable = wsg_goto_beijing
+				}
+				location:funing = {
+					change_location_owner = c:WSG
+				}
+			}
 			c:CSH ?= {
 				save_scope_as = wsg_csh
 			}
@@ -124,13 +153,35 @@ wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州、固守
 				limit = { exists = scope:wsg_csh }
 				make_subject_of = { target = scope:wsg_csh type = subject_type:vassal }
 			}
+			if = {
+				limit = {
+					NOT = { c:CSH = { has_variable = csh_attack_beijing } }
+				}
+				c:CSH = {
+					trigger_event_silently = {
+						id = csh_1644_unification.4 #吴三桂、唐通献土
+						days = 15
+					}
+				}
+			}
 		}
 	}
 	option = { #降清
 		name = wsg_1644_choice.3.b
 		ai_chance = { factor = 0.3 }
-		set_variable = wsg_1644_chosen_side
+		set_variable = {
+			name = wsg_1644_chosen_side
+			value = 1
+		} 
 		hidden_effect = {
+			if = {
+				limit = {
+					has_variable = wsg_goto_beijing
+				}
+				location:funing = {
+					change_location_owner = c:WSG
+				}
+			}
 			c:QNG ?= {
 				save_scope_as = wsg_qng
 			}
@@ -140,6 +191,12 @@ wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州、固守
 				# 成为附庸后，稍作延迟再处理加入宗主战争（便于关系生效）
 				ROOT = { trigger_event_silently = { id = wsg_1644_choice.100 days = 2 } }
 			}
+			c:QNG = {
+				trigger_event_silently = {
+					id = qng_1644_unification.5
+					days = 20
+				}
+			}
 		}
 	}
 	option = { #南渡登州
@@ -148,11 +205,28 @@ wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州、固守
 			has_variable = wsg_goto_beijing
 		}
 		ai_chance = { factor = 0.2 }
+		set_variable = {
+			name = wsg_1644_chosen_side
+			value = 3
+		} 
 		every_in_list = {
 			list = list_of_dongjiang
 			limit = { owner = c:MNG }
 			change_location_owner = c:WSG
 			change_control = control_ultimate_bonus
+		}
+		set_capital = location:penglai
+		location:qiantun = {
+			change_location_owner = c:QNG
+			change_control = control_mild_bonus
+		}
+		create_character = {
+			first_name = name_fei
+			last_name = name_huang2
+			age = 35              
+			culture = liaodong 
+			religion = sanjiao
+			tag = WSG
 		}
 	}
 	option = { #固守
@@ -161,6 +235,106 @@ wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州、固守
 			NOT = { has_variable = wsg_goto_beijing }
 		}
 		ai_chance = { factor = 0.2 }
+		set_variable = {
+			name = wsg_1644_chosen_side
+			value = 3
+		} 
+	}
+}
+
+wsg_1644_choice.4 = { #崇祯不南迁、李自成不进京、清朝入关后：降清、降顺、忠诚
+	type = country_event
+	title = wsg_1644_choice.4.title
+	desc = wsg_1644_choice.4.desc
+	is_trigger_only = yes
+	immediate = {
+		
+	}
+	option = { #降清
+		name = wsg_1644_choice.4.a
+		ai_chance = { factor = 0.5 }
+		set_variable = {
+			name = wsg_1644_chosen_side
+			value = 1
+		} 
+		hidden_effect = {
+			if = {
+				limit = {
+					has_variable = wsg_goto_beijing
+				}
+				location:funing = {
+					change_location_owner = c:WSG
+				}
+			}
+			c:QNG ?= {
+				save_scope_as = wsg_qng
+			}
+			if = {
+				limit = { exists = scope:wsg_qng }
+				make_subject_of = { target = scope:wsg_qng type = subject_type:vassal }
+				# 成为附庸后，稍作延迟再处理加入宗主战争（便于关系生效）
+				ROOT = { trigger_event_silently = { id = wsg_1644_choice.100 days = 2 } }
+			}
+			c:QNG = {
+				trigger_event_silently = {
+					id = qng_1644_unification.5
+					days = 20
+				}
+			}
+		}
+	}
+	option = { #降顺
+		name = wsg_1644_choice.4.b
+		ai_chance = { factor = 0.5 }
+		trigger = {
+			has_variable = wsg_goto_beijing
+		}
+		set_variable = {
+			name = wsg_1644_chosen_side
+			value = 2
+		} 
+		hidden_effect = {
+			if = {
+				limit = {
+					has_variable = wsg_goto_beijing
+				}
+				location:funing = {
+					change_location_owner = c:WSG
+				}
+			}
+			c:CSH ?= {
+				save_scope_as = wsg_csh
+			}
+			if = {
+				limit = { exists = scope:wsg_csh }
+				make_subject_of = { target = scope:wsg_csh type = subject_type:vassal }
+			}
+			if = {
+				limit = {
+					NOT = { c:CSH = { has_variable = csh_attack_beijing } }
+				}
+				c:CSH = {
+					trigger_event_silently = {
+						id = csh_1644_unification.4 #吴三桂、唐通献土
+						days = 15
+					}
+				}
+			}
+		}
+	}
+	option = { #忠诚
+		name = wsg_1644_choice.4.c
+		ai_chance = { factor = 0.5 }
+	}
+}
+
+wsg_1644_choice.5 = {#山海关之战
+	type = country_event
+	title = wsg_1644_choice.5.title
+	desc = wsg_1644_choice.5.desc
+	historical_info = wsg_1644_choice.5.historical_info
+	option = {
+		name = wsg_1644_choice.5.a
 	}
 }
 
