@@ -485,9 +485,9 @@ countries = {
 				luyang qianyang_yuanzhou mayang
 
 				#hubei_area
-				jiangxia wuchang jinkou tongcheng_wuchang puqi chongyang xianning jiayu
-				huanggang qichun luotian huangan huangpi huangmei macheng qishui guangji
-				yongxing_xingguo daye tongshan
+				
+				
+				
 				fangling banqiao baokang baihekou bomoping zhushan zhuxi fengxi
 				yun wudang huanglong shangjin yunxi
 
@@ -850,7 +850,7 @@ countries = {
 				# liaodong_area ─ 关宁防线核心
 				ningyuan_jinzhou qiantun
 			}
-			include = "zzz_mng"
+			include = "zzz_cn_military_gvn"
 			government = {
 				type = monarchy
 				ruler = chi_wu_san_gui
@@ -865,6 +865,7 @@ countries = {
 			capital = ningyuan_jinzhou
 			accepted_cultures = {
 				yan_culture
+				liaodong_culture
 			}
 			flag = "WSG"
 			country_name = "WSG"
@@ -1078,7 +1079,44 @@ countries = {
 			flag = "KOR"
 			country_name = "JOE"
 		}
+		ZLY = {#左良玉世镇武昌
+			own_control_core = {
+				#武昌府
+				jiangxia wuchang jinkou tongcheng_wuchang puqi chongyang xianning jiayu
+				#兴国州
+				yongxing_xingguo daye tongshan
+				#黄州府
+				huanggang qichun luotian huangan huangpi huangmei macheng qishui guangji
+			}
+			capital = jiangxia
+			government = {
+				type = monarchy
+				ruler = chi_zuo_liangyu
+				ruler_term = { character = chi_zuo_liangyu start_date = 1644.4.10 }
+				heir_selection = cognatic_primogeniture
+				laws = {
+					medieval_levy_law = broken_weisuo
+				}
+			}
+			court_language = northern_mandarin_dialect
+			country_rank = rank_duchy
+			include = "zzz_cn_military_gvn"
+			accepted_cultures = {
+				jilu_culture
+				jin_culture
+				liaodong_culture
+				zhongyuan_culture
+				chu_culture
+			}
+			flag = "CHI_Ming_characters"
+			country_name = "ZLY"
+			currency_data = {
+				gold = 500 #国库
+				stability = 30 #稳定度
+				army_tradition = 100 #军队传统
 
+			}
+		}
 
 	}
 }
