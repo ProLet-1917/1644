@@ -1080,6 +1080,7 @@ countries = {
 			country_name = "JOE"
 		}
 		ZLY = {#左良玉世镇武昌
+			type = army
 			own_control_core = {
 				#武昌府
 				jiangxia wuchang jinkou tongcheng_wuchang puqi chongyang xianning jiayu
@@ -1118,6 +1119,7 @@ countries = {
 			}
 		}
 		CGJ = {#兴平伯高杰
+			type = army
 			own_control_core = {
 				xuzhou dangshan fengxian xiaoxian peixian #徐州
 				suzhou_fengyang guzhen lingbi linhuan #宿州
@@ -1151,6 +1153,7 @@ countries = {
 			}
 		}
 		LZQ = {#东平伯刘泽清
+			type = army
 			own_control_core = {
 				shanyang_huaian andong_huaian qinghe_huaian yancheng funing_huaian taoyuan_huaian #淮安府
 			}
@@ -1181,6 +1184,7 @@ countries = {
 			}
 		}
 		LLZ = {#广昌伯刘良佐
+			type = army
 			own_control_core = {
 				shouchun shuihu xiacai #寿州
 				luan huoqiu huoshan mabu shucheng yuexi yingshan_luan #六安州
@@ -1212,6 +1216,7 @@ countries = {
 			}
 		}
 		HDG = {#靖南伯黄得功
+			type = army
 			own_control_core = {
 				hefei chaoxian liangxian lujiang_luzhou #庐州府
 				quanjiao laian qingliu_chuzhou #滁州
@@ -1243,6 +1248,7 @@ countries = {
 			}
 		}
 		CJX = {#姜瓖
+			type = army
 			own_control_core = {
 				jincheng shanyin zhongling shenwu shanyang_yingzhou #应州&朔州
 				datong_datong xuanning huairen tiancheng baideng yulin_datong yunchuan #大同府
@@ -1270,6 +1276,134 @@ countries = {
 				gold = 100 #国库
 				stability = 60 #稳定度
 				army_tradition = 100 #军队传统
+
+			}
+		}
+		SES = { #格根车臣 Setsen
+			type = army
+			own_control_core = {
+				khalkh tamsabulag buir_nuur #khalkh
+				sangiin_dalai menen bayan_tumen bars_khot bayantsagaan
+				tsagaan baruun_tar_nuur lower_ulz upper_ulz yakhi zyyn_tar_nuur lake_yakhi lake_zuun_tooroi #torey_province
+				avraga kherlen rahsaan_khad uguumur undurkhaan #kerulen_province
+				onon balj baldan_bereeven kyra #upper_onon_province
+				tavan_tolgoi matad sharga_uul sumtiin zara_uul #dariganga_province
+				bishreit ikh_narttin_chuluu
+			}
+			capital = kherlen
+			include = "eurasian_horde_china"
+			government = {
+				ruler = chi_tsakhar_soloi
+				ruler_term = { character = chi_tsakhar_soloi start_date = 1600.4.10 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = mongolian_language
+			country_rank = rank_duchy
+			accepted_cultures = {
+				mongolian_culture
+			}
+			flag = "YUA"
+			country_name = "SES"
+			currency_data = {
+				gold = 100 #国库
+				stability = 60 #稳定度
+				army_tradition = 40 #军队传统
+
+			}
+		}
+		TSH = { #土谢图 Tüsheet
+			type = army
+			own_control_core = {
+				dalay doloodyn_gobi saikhandulaan ulaanbadrakh #sharangad_province
+				del_khad galbyn_gobi khatanbulag oiyin_korken ooshiyn_gobi zhavklant_khairkhan #eastern_gobi_province
+				choyrin_datsan bayan gazrin_chuluu takhilyn ulziit #choyr_province
+				ulaan bogd khadat ukhaa_khudag #ulaan_province
+				urga kedun khar_bukhyn kharuukh manzushir tuul khan_khentii1 #tuul_province
+				amarbayas_galang bornuur eroo #kharaa_province
+				baibalyk alyanbulag kharkhul tarvagatai #selenga_province
+				karakorum khar_balgas orkhon tsetserleg #orkhon_province
+				ongiin_khiid gimpil_darjaalan shaazan_khot shaazan_tolgoi suriig #ongiin_province
+				baidrag boontsagaan khangal  orog tuin lake_boontsagaan lake_orog khangain_mountains khasagt_khairkhan
+				zavkhan
+				zagzuugiin_balgas chuluutyn ider lake_sangiin_dalai lake_terkhiin_tsagaan
+			}
+			capital = urga
+			include = "eurasian_horde_china"
+			government = {
+				ruler = chi_tushet_gombodorz
+				ruler_term = { character = chi_tushet_gombodorz start_date = 1610.4.10 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = mongolian_language
+			country_rank = rank_duchy
+			accepted_cultures = {
+				mongolian_culture
+			}
+			flag = "YUA"
+			country_name = "TSH"
+			currency_data = {
+				gold = 100 #国库
+				stability = 60 #稳定度
+				army_tradition = 40 #军队传统
+
+			}
+		}
+		ZSG = { #札萨克图 Zasagt
+			type = army
+			own_control_core = {
+				naran biger khalzan_shireg
+				uliastai ogomoor teel targavatai_mountains
+				altan_gadas delger_moron
+				otegu_qulan bugat chikhan_agui tevsh_uul tsagaan_agui tsogt gobi_altay #gobi_altai_province
+				ulaamgom dzaigil erzin tes turuum lake_uureg lake_uvs #tes_province
+				khovd achit_nuur haerhhana huysiyn khurgan tahiltyn_khotgot tsagaan_usun lake_achit lake_dayan lake_durgun lake_khar lake_khar_us lake_khoton lake_khurgan lake_markakol lake_tolbo altay_mountains mongol_altay #khovd_province
+				ulaagchiin airag_nuur hunguy khyargas_nuur telmen lake_airag lake_bayan lake_khyargas lake_oigon lake_telmen lake_ulaagchiin_khar lake_uvsiin_khar_us #khyargas_province
+				uliastai ogomoor teel targavatai_mountains
+			}
+			capital = khovd
+			include = "eurasian_horde_china"
+			government = {
+				ruler = chi_jasagh_subaday
+				ruler_term = { character = chi_jasagh_subaday start_date = 1596.4.10 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = mongolian_language
+			country_rank = rank_duchy
+			accepted_cultures = {
+				mongolian_culture
+			}
+			flag = "YUA"
+			country_name = "ZSG"
+			currency_data = {
+				gold = 100 #国库
+				stability = 60 #稳定度
+				army_tradition = 40 #军队传统
+
+			}
+		}
+		ZUN = { #准噶尔 Dzungar 
+			type = army
+			own_control_core = {
+				
+			}
+			capital = 
+			include = "eurasian_horde_china"
+			government = {
+				ruler = chi_erdeni_batur
+				ruler_term = { character = chi_erdeni_batur start_date = 1634.4.10 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = mongolian_language
+			country_rank = rank_kingdom
+			accepted_cultures = {
+				oirat_culture
+			}
+			flag = "YUA"
+			country_name = "ZUN"
+			currency_data = {
+				gold = 200 #国库
+				stability = 60 #稳定度
+				army_tradition = 80 #军队传统
 
 			}
 		}
