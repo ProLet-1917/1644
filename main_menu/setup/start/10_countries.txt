@@ -1768,6 +1768,10 @@ countries = {
 			#from ARA
 			jumilla
 		}
+		
+		own_control_integrated = {
+			asilah ceuta melilla teguise maxorata tamaraceite hipalan tedote aguere
+		}
 
 		starting_technology_level = 3
 		include = "expl_mediterranean"
@@ -1851,6 +1855,10 @@ countries = {
 			lisbon alcacer_do_sal alcobaca chao_de_couce figueira leiria santarem setubal tomar torres_novas torres_vedras
 			porto aguiar barcelos braga guimaraes montalegre valenca viana_do_castelo
 			braganca chaves macedo miranda_de_i_douro mirandela moncorvo vila_real
+		}
+		
+		own_control_integrated = {
+			tangier ponta_delgada santa_maria angra horta santa_cruz_flores funchal
 		}
 
 		starting_technology_level = 3
@@ -2310,6 +2318,8 @@ countries = {
 		
 		own_colony = {
 			cayenne carucairi iguanacaera hewanorra
+			marien iguamuco guahaba tortuga baynoa
+			jaragua guanabo cahay guacayakima haniguayagua yaquimo yaguana
 		}
 		
 		government = {
@@ -2822,6 +2832,62 @@ countries = {
 		country_rank = rank_kingdom
 		starting_technology_level = 5
 	}
+	
+###Northwest Africa
+MOR = { #Morocco
+		own_control_core = {
+			tetouan basra_al_hamra larache taunat
+			badis tizgane amergo al_mazamma
+			ras_kebdana ghassasa temsamane tabarida
+			ksar_el_kebir tazroute ouezzane
+			fez meknes la_mamora sale azrou volubilis tefelfelt baht
+			anfa azemmour bejaad thagia rabat settat mrirah
+			asfi mazaghan tit boulaouane miatbir aguz
+			tednest ait_daoud tafedna mogador
+			marrakesh aghmat tinmel naffis hanimmei tamdegost
+			taroudant tidsi tiout tiznit massa_MOR tafraout ifni noul_lamta agadir
+			bzou demnate azilal
+			tadla khenifra chichaoua
+			guercif ameskour terrest tezerghe namalata taza sefrou
+			jarawah_abu_al_aysh oujda
+			jerada taourirt debdou echemmaia sidi_bennour
+			nedroma tegeget kalaat_sraghna midelt
+			aouint_yghomane afso ifrane
+			#additions
+			tamdoult assa beni_sabih foum_zguid igiliz taghjijt tata_MOR tiout tissint tizounine
+			ouarzazate agdez ait_benhaddou skoura tagmadert taznakht
+			ijilmasa boumalne_dades er_rich ksar_es_souk tazzarine todgha
+			tabelbala
+			laayoune smara tantan tindouf
+			idjil dakhla al_kuwayra aousserd bojador
+			sijilmasa taghaza taoudenni araouane
+		}
+
+		country_rank = rank_kingdom
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			masmuda
+			zenati
+			sanhaja
+			andalusi
+			mustaarabi
+		}
+
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		capital = fez
+		
+		discovered_regions = {
+			maghreb_region sahel_region guinea_region
+			iberia_region egypt_region
+		}
+	}
 
 ###European Colonial Nations
 	NEN = { #New England
@@ -2962,12 +3028,10 @@ countries = {
 			cubanacan east_cubanacan magon ornofay guamuhaya east_sabaneque central_sabaneque sabana
 			habana batanabo guanimar marien_cuba siguanea guaniguanico guanamacabibes macoriges west_sabaneneque hanabana jagua
 			maynoa yaguabo aguacadiba guaygata anaya oristan kaiman
-			
+			cayguani baoruco
 			bavaro yuma mona_island hicayagua cayacoa yamasa boya
 			maguana jarabacoa cibao azua bani banique cordrilla_central
 			yaqui magorix bohio moca samana cubao ciguayo cotui
-			marien iguamuco guahaba tortuga baynoa
-			jaragua cayguani baoruco guanabo cahay guacayakima haniguayagua yaquimo yaguana
 			guaynabo guaraca guaynia guama arasibo ayamaco
 		}
 		
