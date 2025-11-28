@@ -415,7 +415,7 @@ countries = {
 				# huaidong_area ─ 淮东
 				gaoyou xinghua baoying
 				qushan banpu gaoqiao ganyu shuyang
-				shanyang_huaian andong_huaian qinghe_huaian yancheng funing_huaian taoyuan_huaian
+				
 				xiapi suining_pizhou suqian xinyi
 				hailing xixi rugao
 				jinghai_tongzhou juegang haimen
@@ -423,17 +423,17 @@ countries = {
 
 				# huaixi_area ─ 淮西
 				huaining qianshan susong taihu tongcheng_anqing wangjiang zongyang
-				 chengfu mengcheng
-				qingliu_chuzhou zhaoxin quanjiao laian
+				 
+				 zhaoxin 
 				zhongli dingyuan_fengyang huaiyuan
 				hezhou_he hanshan wuwei
-				luan huoqiu huoshan mabu shucheng yuexi yingshan_luan
-				hefei chaoxian liangxian lujiang_luzhou
-				shouchun shuihu xiacai
-				hongxian linhuai tianchang wuhe xuyi
-				suzhou_fengyang guzhen lingbi linhuan
+				
+				
+				
+				
+				
 				yingzhou yingshui yingshang shenqiu taihe
-				xuzhou dangshan fengxian xiaoxian peixian #徐州
+				
 
 
 				# zhejiang_area ─ 浙东浙西郡县
@@ -1117,7 +1117,131 @@ countries = {
 
 			}
 		}
+		CGJ = {#兴平伯高杰
+			own_control_core = {
+				xuzhou dangshan fengxian xiaoxian peixian #徐州
+				suzhou_fengyang guzhen lingbi linhuan #宿州
+				chengfu mengcheng #亳州
+				hongxian linhuai tianchang wuhe xuyi #泗州
+			}
+			capital = xuzhou
+			government = {
+				type = monarchy
+				ruler = chi_gao_jie
+				ruler_term = { character = chi_gao_jie start_date = 1644.4.10 }
+				heir_selection = cognatic_primogeniture
+				laws = {
+					medieval_levy_law = broken_weisuo
+				}
+			}
+			court_language = northern_mandarin_dialect
+			country_rank = rank_duchy
+			include = "zzz_cn_military_gvn"
+			accepted_cultures = {
+				jin_culture
+				zhongyuan_culture
+			}
+			flag = "CHI_Ming_characters"
+			country_name = "CGJ"
+			currency_data = {
+				gold = 100 #国库
+				stability = 30 #稳定度
+				army_tradition = 100 #军队传统
 
+			}
+		}
+		LZQ = {#东平伯刘泽清
+			own_control_core = {
+				shanyang_huaian andong_huaian qinghe_huaian yancheng funing_huaian taoyuan_huaian #淮安府
+			}
+			capital = shanyang_huaian
+			government = {
+				type = monarchy
+				ruler = chi_liu_zeqing
+				ruler_term = { character = chi_liu_zeqing start_date = 1644.4.10 }
+				heir_selection = cognatic_primogeniture
+				laws = {
+					medieval_levy_law = broken_weisuo
+				}
+			}
+			court_language = northern_mandarin_dialect
+			country_rank = rank_duchy
+			include = "zzz_cn_military_gvn"
+			accepted_cultures = {
+				jilu_culture
+				liaodong_culture
+			}
+			flag = "CHI_Ming_characters"
+			country_name = "ZLY"
+			currency_data = {
+				gold = 50 #国库
+				stability = 30 #稳定度
+				army_tradition = 60 #军队传统
+
+			}
+		}
+		LLZ = {#广昌伯刘良佐
+			own_control_core = {
+				shouchun shuihu xiacai #寿州
+				luan huoqiu huoshan mabu shucheng yuexi yingshan_luan #六安州
+			}
+			capital = shouchun
+			government = {
+				type = monarchy
+				ruler = chi_liu_liangzuo
+				ruler_term = { character = chi_liu_liangzuo start_date = 1644.4.10 }
+				heir_selection = cognatic_primogeniture
+				laws = {
+					medieval_levy_law = broken_weisuo
+				}
+			}
+			court_language = northern_mandarin_dialect
+			country_rank = rank_duchy
+			include = "zzz_cn_military_gvn"
+			accepted_cultures = {
+				yan_culture
+				jianghuai_culture
+			}
+			flag = "CHI_Ming_characters"
+			country_name = "ZLY"
+			currency_data = {
+				gold = 50 #国库
+				stability = 30 #稳定度
+				army_tradition = 60 #军队传统
+
+			}
+		}
+		HDG = {#靖南伯黄得功
+			own_control_core = {
+				hefei chaoxian liangxian lujiang_luzhou #庐州府
+				quanjiao laian qingliu_chuzhou #滁州
+			}
+			capital = hefei
+			government = {
+				type = monarchy
+				ruler = chi_huang_degong
+				ruler_term = { character = chi_huang_degong start_date = 1644.4.10 }
+				heir_selection = cognatic_primogeniture
+				laws = {
+					medieval_levy_law = broken_weisuo
+				}
+			}
+			court_language = northern_mandarin_dialect
+			country_rank = rank_kingdom
+			include = "zzz_cn_military_gvn"
+			accepted_cultures = {
+				liaodong_culture
+				jianghuai_culture
+			}
+			flag = "CHI_Ming_characters"
+			country_name = "ZLY"
+			currency_data = {
+				gold = 100 #国库
+				stability = 30 #稳定度
+				army_tradition = 60 #军队传统
+
+			}
+		}
 	}
 }
 
