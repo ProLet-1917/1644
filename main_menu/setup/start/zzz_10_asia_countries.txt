@@ -56,8 +56,8 @@ countries = {
 
 
 				# datong_area ─ 大同、河套与朔方屏障
-				datong_datong xuanning huairen tiancheng baideng yulin_datong yunchuan
-				jincheng shanyin zhongling shenwu shanyang_yingzhou
+				
+				
 				lingxian_shanxi guangling hunyuan feihu lingqiu
 
 				# shanxi_area ─ 晋阳、潞安与汾河流域
@@ -1099,7 +1099,7 @@ countries = {
 				}
 			}
 			court_language = northern_mandarin_dialect
-			country_rank = rank_duchy
+			country_rank = rank_kingdom
 			include = "zzz_cn_military_gvn"
 			accepted_cultures = {
 				jilu_culture
@@ -1172,7 +1172,7 @@ countries = {
 				liaodong_culture
 			}
 			flag = "CHI_Ming_characters"
-			country_name = "ZLY"
+			country_name = "LZQ"
 			currency_data = {
 				gold = 50 #国库
 				stability = 30 #稳定度
@@ -1203,7 +1203,7 @@ countries = {
 				jianghuai_culture
 			}
 			flag = "CHI_Ming_characters"
-			country_name = "ZLY"
+			country_name = "LLZ"
 			currency_data = {
 				gold = 50 #国库
 				stability = 30 #稳定度
@@ -1234,11 +1234,42 @@ countries = {
 				jianghuai_culture
 			}
 			flag = "CHI_Ming_characters"
-			country_name = "ZLY"
+			country_name = "HDG"
 			currency_data = {
 				gold = 100 #国库
 				stability = 30 #稳定度
 				army_tradition = 60 #军队传统
+
+			}
+		}
+		CJX = {#姜瓖
+			own_control_core = {
+				jincheng shanyin zhongling shenwu shanyang_yingzhou #应州&朔州
+				datong_datong xuanning huairen tiancheng baideng yulin_datong yunchuan #大同府
+			}
+			capital = datong_datong
+			government = {
+				type = monarchy
+				ruler = chi_jiang_xiang
+				ruler_term = { character = chi_jiang_xiang start_date = 1644.4.10 }
+				heir_selection = cognatic_primogeniture
+				laws = {
+					medieval_levy_law = broken_weisuo
+				}
+			}
+			court_language = northern_mandarin_dialect
+			country_rank = rank_duchy
+			include = "zzz_cn_military_gvn"
+			accepted_cultures = {
+				yan_culture
+				jin_culture
+			}
+			flag = "CHI_Ming_characters"
+			country_name = "CJX"
+			currency_data = {
+				gold = 100 #国库
+				stability = 60 #稳定度
+				army_tradition = 100 #军队传统
 
 			}
 		}
