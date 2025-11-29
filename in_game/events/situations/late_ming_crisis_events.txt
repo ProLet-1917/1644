@@ -1,0 +1,271 @@
+﻿namespace = late_ming_crisis
+
+# -----------------------------------------------------------------------------
+# 1. 启动事件 (Start Event)
+# -----------------------------------------------------------------------------
+late_ming_crisis.1 = {
+	type = country_event
+	title = "late_ming_crisis.1.t"
+	desc = "late_ming_crisis.1.desc"
+	
+	option = {
+		name = "late_ming_crisis.1.a"
+		# 初始化效果
+	}
+}
+
+# -----------------------------------------------------------------------------
+# 2. 月度随机事件分发 (Monthly Pulse)
+# -----------------------------------------------------------------------------
+late_ming_crisis.100 = {
+	type = country_event
+	hidden = yes
+	
+	trigger = {
+		situation:late_ming_crisis = { is_active = yes }
+	}
+	
+	immediate = {
+		if = {
+			limit = { tag = QNG }
+			random_list = {
+				10 = { trigger_event = late_ming_crisis.10 } # Dorgon
+				10 = { trigger_event = late_ming_crisis.11 } # Recruit
+				80 = {}
+			}
+		}
+		else_if = {
+			limit = { tag = MNG }
+			random_list = {
+				10 = { trigger_event = late_ming_crisis.20 } # Lianxiang
+				10 = { trigger_event = late_ming_crisis.21 } # Qinwang
+				10 = { trigger_event = late_ming_crisis.22 } # Zuijizhao
+				70 = {}
+			}
+		}
+		else_if = {
+			limit = { OR = { tag = CSH tag = CXI } }
+			random_list = {
+				10 = { trigger_event = late_ming_crisis.30 } # Eat Rich
+				10 = { trigger_event = late_ming_crisis.31 } # No Tax
+				80 = {}
+			}
+		}
+		else_if = {
+			limit = { tag = WSG }
+			random_list = {
+				10 = { trigger_event = late_ming_crisis.40 } # Wait
+				90 = {}
+			}
+		}
+	}
+}
+
+# -----------------------------------------------------------------------------
+# 3. 大清事件 (Qing Events)
+# -----------------------------------------------------------------------------
+# 多尔衮的摄政
+late_ming_crisis.10 = {
+	type = country_event
+	title = "late_ming_crisis.10.t"
+	desc = "late_ming_crisis.10.desc"
+	
+	option = {
+		name = "late_ming_crisis.10.a" # 消耗行政换士气
+		add_adm_power = -50
+		add_country_modifier = {
+			name = qng_eight_banners
+			years = 5
+		}
+	}
+	option = {
+		name = "late_ming_crisis.10.b" # 暂缓
+		add_prestige = 5
+	}
+}
+
+# 招降纳叛
+late_ming_crisis.11 = {
+	type = country_event
+	title = "late_ming_crisis.11.t"
+	desc = "late_ming_crisis.11.desc"
+	
+	option = {
+		name = "late_ming_crisis.11.a" # 增加外交关系
+		add_dip_power = -50
+		add_diplomatic_relations = 1
+	}
+}
+
+# -----------------------------------------------------------------------------
+# 4. 大明事件 (Ming Events)
+# -----------------------------------------------------------------------------
+# 征收练饷
+late_ming_crisis.20 = {
+	type = country_event
+	title = "late_ming_crisis.20.t"
+	desc = "late_ming_crisis.20.desc"
+	
+	option = {
+		name = "late_ming_crisis.20.a" # 征收
+		add_treasury = 500
+		add_manpower = 10000
+		add_country_modifier = {
+			name = mng_internal_collapse
+			years = 5
+		}
+	}
+	option = {
+		name = "late_ming_crisis.20.b" # 拒绝
+		add_stability = 5
+	}
+}
+
+# 勤王诏书
+late_ming_crisis.21 = {
+	type = country_event
+	title = "late_ming_crisis.21.t"
+	desc = "late_ming_crisis.21.desc"
+	
+	option = {
+		name = "late_ming_crisis.21.a" # 召唤吴三桂
+		c:WSG = {
+			add_opinion = {
+				who = root
+				modifier = opinion_friendly
+				value = 50
+			}
+		}
+		add_country_modifier = {
+			name = mng_desperate_defense
+			years = 5
+		}
+	}
+}
+
+# 罪己诏
+late_ming_crisis.22 = {
+	type = country_event
+	title = "late_ming_crisis.22.t"
+	desc = "late_ming_crisis.22.desc"
+	
+	option = {
+		name = "late_ming_crisis.22.a"
+		add_prestige = -20
+		add_stability = 10
+	}
+}
+
+# -----------------------------------------------------------------------------
+# 5. 顺/西事件 (Rebel Events)
+# -----------------------------------------------------------------------------
+# 吃大户
+late_ming_crisis.30 = {
+	type = country_event
+	title = "late_ming_crisis.30.t"
+	desc = "late_ming_crisis.30.desc"
+	
+	option = {
+		name = "late_ming_crisis.30.a"
+		add_treasury = 1000
+		capital = {
+			change_development = -5
+		}
+	}
+}
+
+# 闯王来了不纳粮
+late_ming_crisis.31 = {
+	type = country_event
+	title = "late_ming_crisis.31.t"
+	desc = "late_ming_crisis.31.desc"
+	
+	option = {
+		name = "late_ming_crisis.31.a"
+		add_country_modifier = {
+			name = rebel_fervor
+			years = 5
+		}
+		add_country_modifier = {
+			name = peasant_support
+			years = 10
+		}
+	}
+}
+
+# -----------------------------------------------------------------------------
+# 6. 吴三桂事件 (WSG Events)
+# -----------------------------------------------------------------------------
+# 待价而沽
+late_ming_crisis.40 = {
+	type = country_event
+	title = "late_ming_crisis.40.t"
+	desc = "late_ming_crisis.40.desc"
+	
+	option = {
+		name = "late_ming_crisis.40.a"
+		add_country_modifier = {
+			name = wsg_strategic_leverage
+			years = 2
+		}
+	}
+}
+
+# -----------------------------------------------------------------------------
+# 7. 历史节点: 北京陷落与吴三桂抉择
+# -----------------------------------------------------------------------------
+# 触发条件：北京被非明势力占领 (在 on_monthly 或 on_action 中检查，这里简化为事件触发)
+# 假设通过 on_siege_won 触发，或者月度检查
+late_ming_crisis.1000 = {
+	type = country_event
+	title = "late_ming_crisis.1000.t" # 北京陷落
+	desc = "late_ming_crisis.1000.desc"
+	
+	trigger = {
+		tag = MNG
+		NOT = { owns = location:dadu }
+	}
+	
+	option = {
+		name = "late_ming_crisis.1000.a"
+		# 崇祯自缢逻辑
+		kill_ruler = yes
+		# 触发吴三桂事件
+		c:WSG = { trigger_event = late_ming_crisis.1001 }
+	}
+}
+
+# 吴三桂的抉择 (冲冠一怒)
+late_ming_crisis.1001 = {
+	type = country_event
+	title = "late_ming_crisis.1001.t"
+	desc = "late_ming_crisis.1001.desc"
+	
+	# 选项A: 降清
+	option = {
+		name = "late_ming_crisis.1001.a"
+		c:QNG = {
+			add_opinion = { who = root value = 100 }
+			create_alliance = root
+			# 给予军事通行权等
+		}
+		add_country_modifier = {
+			name = guan_ning_cavalry
+			years = 10
+		}
+	}
+	
+	# 选项B: 降顺
+	option = {
+		name = "late_ming_crisis.1001.b"
+		c:CSH = {
+			create_alliance = root
+		}
+	}
+	
+	# 选项C: 自立
+	option = {
+		name = "late_ming_crisis.1001.c"
+		add_prestige = 10
+	}
+}

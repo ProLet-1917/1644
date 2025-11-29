@@ -1,0 +1,41 @@
+﻿celestial_challenger = {
+	priority = 10
+
+	auto_bestowal_trigger = {
+		always = no
+	}
+
+	can_bestow_trigger = {
+		# 只能通过脚本给予
+		always = no
+	}
+
+	auto_rescind_trigger = {
+		NOT = { 
+			is_member_of_international_organization = scope:recipient 
+		}
+		# 如果成为了领袖，则失去挑战者身份
+		is_leader_of_international_organization = scope:recipient
+	}
+
+	modifier = {
+		# 挑战者的修正：军队士气、威望等
+		land_morale_modifier = 0.1
+		prestige = 1
+		diplomatic_upkeep = 1
+		# 降低天朝权威
+		monthly_celestial_authority_impact = -0.1
+	}
+
+	leader_modifier = {
+		# 对领袖的负面影响
+		monthly_celestial_authority = -0.5
+		diplomatic_reputation = -2
+	}
+
+	max_countries = 1
+	can_be_invited = no
+	
+	map_color = rgb { 255 0 0 } # 红色显示挑战者
+}
+
