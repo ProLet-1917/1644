@@ -1,4 +1,3 @@
-#------------------------ Regions done by Syayan ----------------------------
 #current_age = age_1_traditions
 # 以下是省份控制和核心类型的简要注释：
 # own_control_core        # 本国完全控制的核心省份
@@ -1290,8 +1289,9 @@ countries = {
 		capital = oozato  # Capital
 		starting_technology_level = 4  
 		country_rank = rank_kingdom 
-		}
+	}
 
+#------------------------ Regions done by Syayan ----------------------------
 ###British Isles
 	ROE = { # Royalist England
 		own_control_core = {
@@ -1337,8 +1337,6 @@ countries = {
 			#channel
 			jersey
 		}
-
-		include = "catholic_monarchy"
 
 		starting_technology_level = 5
 		government = {
@@ -1416,11 +1414,11 @@ countries = {
 		country_rank = rank_kingdom
 		capital = london
 
-		include = "expl_western_europe"
-
 		ai_advance_preference_tags = {
 			exploration = 5
 		}
+		
+		include = "expl_western_europe"
 	}
 	
 	ENG = { # Commonwealth of England
@@ -1617,8 +1615,8 @@ countries = {
 		own_control_core = {
 			mann
 		}
-		include = "catholic_monarchy_english_lordship"
-		include = "expl_northern_europe"
+
+		include = "expl_western_europe"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
@@ -1686,7 +1684,7 @@ countries = {
 				magna_carta_reform
 			}
 		}
-		include = "catholic_monarchy_english_lordship"
+		include = "expl_western_europe"
 		capital = dublin
 		accepted_cultures = { anglo_irish }
 		tolerated_cultures = { irish }
@@ -1727,7 +1725,7 @@ countries = {
 				magna_carta_reform
 			}
 		}
-		include = "catholic_monarchy_english_lordship"
+		include = "expl_western_europe"
 		capital = dublin
 		accepted_cultures = { anglo_irish }
 		tolerated_cultures = { irish }
@@ -1787,13 +1785,8 @@ countries = {
 		}
 
 		starting_technology_level = 3
-		include = "expl_mediterranean"
-		include = "expl_silk_road_west"
-		include = "expl_silk_road_center"
-		include = "expl_silk_road_east"
-		include = "expl_indian_trade_route"
-		include = "iberian_monarchy_no_auxilium"
-
+		include = "expl_western_europe"
+		
 		government = {
 			type = monarchy
 			ruler = spa_philip_iv_habsburg
@@ -1878,12 +1871,7 @@ countries = {
 		}
 
 		starting_technology_level = 3
-		include = "expl_mediterranean"
-		include = "expl_silk_road_west"
-		include = "expl_silk_road_center"
-		include = "expl_silk_road_east"
-		include = "expl_indian_trade_route"
-		include = "iberian_monarchy"
+		include = "expl_western_europe"
 
 		government = {
 			type = monarchy
@@ -1957,12 +1945,7 @@ countries = {
 		}
 
 		starting_technology_level = 3
-		include = "expl_mediterranean"
-		include = "expl_silk_road_west"
-		include = "expl_silk_road_center"
-		include = "expl_silk_road_east"
-		include = "expl_indian_trade_route"
-		include = "iberian_monarchy"
+		include = "expl_western_europe"
 
 		government = {
 			type = monarchy
@@ -2025,12 +2008,7 @@ countries = {
 		}
 
 		starting_technology_level = 3
-		include = "expl_muslim_mediterranean"
-		include = "expl_silk_road_west"
-		include = "expl_silk_road_center"
-		include = "expl_silk_road_east"
-		include = "expl_indian_trade_route"
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "expl_western_europe"
 
 		government = {
 			type = monarchy
@@ -2078,12 +2056,8 @@ countries = {
 		}
 
 		starting_technology_level = 3
-
-		include = "iberian_monarchy_no_coast"
-		include = "expl_mediterranean"
-		include = "expl_silk_road_west"
-		include = "expl_silk_road_center"
-
+		include = "expl_western_europe"
+		
 		government = {
 			type = monarchy
 			ruler = spa_philip_iv_habsburg
@@ -2142,8 +2116,7 @@ countries = {
 		}
 
 		starting_technology_level = 3
-		include = "expl_mediterranean"
-		include = "catholic_bishopric_no_coast"
+		include = "expl_western_europe"
 
 		government = {
 			type = monarchy
@@ -2159,8 +2132,7 @@ countries = {
 		}
 
 		starting_technology_level = 3
-		include = "expl_mediterranean"
-		include = "catholic_bishopric_no_coast"
+		include = "expl_western_europe"
 
 		government = {
 			type = theocracy
@@ -2197,6 +2169,7 @@ countries = {
 		capital = naples
 		country_rank = rank_kingdom
 		starting_technology_level = 4
+		include = "expl_western_europe"
 	}
 	
 	SIC = {
@@ -2222,6 +2195,7 @@ countries = {
 		capital = palermo
 		country_rank = rank_kingdom
 		starting_technology_level = 4
+		include = "expl_western_europe"
 	}
 	
 	SAR = {
@@ -2247,6 +2221,7 @@ countries = {
 		capital = cagliari
 		country_rank = rank_kingdom
 		starting_technology_level = 4
+		include = "expl_western_europe"
 	}
 	
 ###French Region
@@ -2362,9 +2337,7 @@ countries = {
 		capital = paris
 		country_rank = rank_kingdom
 		starting_technology_level = 5
-		discovered_regions = {
-			france_region 
-		}
+		include = "expl_western_europe"
 	}
 	
 	PRO = {
@@ -2379,8 +2352,7 @@ countries = {
 		}
 
 		starting_technology_level = 3
-		include = "expl_mediterranean"
-		include = "catholic_monarchy"
+		include = "expl_western_europe"
 		government = {
 			type = monarchy
 			ruler = fra_louis_xiv_bourbon
@@ -2409,7 +2381,6 @@ countries = {
 
 		starting_technology_level = 3
 		include = "expl_western_europe"
-		include = "catholic_monarchy_no_coast"
 		government = {
 			type = monarchy
 			ruler = fra_louis_xiv_bourbon
@@ -2436,7 +2407,6 @@ countries = {
 
 		starting_technology_level = 3
 		include = "expl_western_europe"
-		include = "catholic_monarchy_no_coast"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
@@ -2471,7 +2441,6 @@ countries = {
 
 		starting_technology_level = 3
 		include = "expl_western_europe"
-		include = "catholic_monarchy"
 		government = {
 			ruler = fra_louis_xiv_bourbon
 			heir_selection = cognatic_primogeniture
@@ -2519,7 +2488,6 @@ countries = {
 		}
 		starting_technology_level = 3
 		include = "expl_western_europe"
-		include = "catholic_monarchy_no_coast_no_censor"
 		government = {
 			type = monarchy
 			ruler = fra_louis_xiv_bourbon
@@ -2549,7 +2517,6 @@ countries = {
 		}
 		starting_technology_level = 3
 		include = "expl_western_europe"
-		include = "catholic_monarchy_no_coast"
 		government = {
 			type = monarchy
 			ruler = fra_louis_xiv_bourbon
@@ -2583,7 +2550,6 @@ countries = {
 		}
 		starting_technology_level = 3
 		include = "expl_western_europe"
-		include = "catholic_monarchy_no_coast"
 		government = {
 			type = monarchy
 			ruler = fra_louis_xiv_bourbon
@@ -2612,7 +2578,6 @@ countries = {
 		}
 		starting_technology_level = 3
 		include = "expl_western_europe"
-		include = "catholic_monarchy_no_coast"
 		government = {
 			type = monarchy
 			ruler = fra_louis_xiv_bourbon
@@ -2642,7 +2607,7 @@ countries = {
 		own_control_core = {
 			parthenay
 		}
-		include = "catholic_monarchy_english_lordship"
+		include = "expl_western_europe"
 		government = {
 			type = monarchy
 			ruler = fra_louis_xiv_bourbon
@@ -2675,7 +2640,6 @@ countries = {
 
 		starting_technology_level = 3
 		include = "expl_western_europe"
-		include = "catholic_monarchy_no_coast"
 		government = {
 			ruler = fra_louis_xiv_bourbon
 			heir_selection = cognatic_primogeniture
@@ -2719,7 +2683,7 @@ countries = {
 		own_control_core = {
 			castres albi lautrec mirepoix narbonne agde beziers lodeve saint_pons lagoon_of_bages_sigean nimes french_ales melgueil montpellier st_ambroix uzes carcassonne fenouillet limoux toulouse castelnaudary lavaur verdun_sur_garonne villemur
 		}
-		include = "catholic_monarchy_english_lordship"
+		include = "expl_western_europe"
 		government = {
 			type = monarchy
 			ruler = fra_louis_xiv_bourbon
@@ -2746,7 +2710,7 @@ countries = {
 		own_control_core = {
 			mauleon saint_jean_pied_de_port
 		}
-		include = "catholic_monarchy_english_lordship"
+		include = "expl_western_europe"
 		government = {
 			type = monarchy
 			ruler = fra_louis_xiv_bourbon
@@ -2800,6 +2764,7 @@ countries = {
 		capital = stockholm
 		country_rank = rank_kingdom
 		starting_technology_level = 5
+		include = "expl_western_europe"
 	}
 	
 	FIN = {
@@ -2818,6 +2783,7 @@ countries = {
 		capital = abo
 		country_rank = rank_duchy
 		starting_technology_level = 5
+		include = "expl_western_europe"
 	}
 	
 	NOR = {
@@ -2836,6 +2802,7 @@ countries = {
 		capital = oslo
 		country_rank = rank_kingdom
 		starting_technology_level = 5
+		include = "expl_western_europe"
 	}
 	
 	DAN = {
@@ -2850,62 +2817,7 @@ countries = {
 		capital = kobenhavn
 		country_rank = rank_kingdom
 		starting_technology_level = 5
-	}
-	
-###Northwest Africa
-MOR = { #Morocco
-		own_control_core = {
-			tetouan basra_al_hamra larache taunat
-			badis tizgane amergo al_mazamma
-			ras_kebdana ghassasa temsamane tabarida
-			ksar_el_kebir tazroute ouezzane
-			fez meknes la_mamora sale azrou volubilis tefelfelt baht
-			anfa azemmour bejaad thagia rabat settat mrirah
-			asfi mazaghan tit boulaouane miatbir aguz
-			tednest ait_daoud tafedna mogador
-			marrakesh aghmat tinmel naffis hanimmei tamdegost
-			taroudant tidsi tiout tiznit massa_MOR tafraout ifni noul_lamta agadir
-			bzou demnate azilal
-			tadla khenifra chichaoua
-			guercif ameskour terrest tezerghe namalata taza sefrou
-			jarawah_abu_al_aysh oujda
-			jerada taourirt debdou echemmaia sidi_bennour
-			nedroma tegeget kalaat_sraghna midelt
-			aouint_yghomane afso ifrane
-			#additions
-			tamdoult assa beni_sabih foum_zguid igiliz taghjijt tata_MOR tiout tissint tizounine
-			ouarzazate agdez ait_benhaddou skoura tagmadert taznakht
-			ijilmasa boumalne_dades er_rich ksar_es_souk tazzarine todgha
-			tabelbala
-			laayoune smara tantan tindouf
-			idjil dakhla al_kuwayra aousserd bojador
-			sijilmasa taghaza taoudenni araouane
-		}
-
-		country_rank = rank_kingdom
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-			ruler = random
-		}
-
-		tolerated_cultures = {
-			masmuda
-			zenati
-			sanhaja
-			andalusi
-			mustaarabi
-		}
-
-		religious_school = maliki_school
-		government = { mysticism_vs_jurisprudence = -5 }
-
-		capital = fez
-		
-		discovered_regions = {
-			maghreb_region sahel_region guinea_region
-			iberia_region egypt_region
-		}
+		include = "expl_western_europe"
 	}
 
 ###European Colonial Nations
@@ -2920,6 +2832,7 @@ MOR = { #Morocco
 		capital = sunda_kelapa
 		country_rank = rank_kingdom
 		starting_technology_level = 5
+		include = "expl_western_europe"
 	}
 	
 	NEN = { #New England
@@ -2937,6 +2850,7 @@ MOR = { #Morocco
 		capital = weyanock
 		country_rank = rank_duchy
 		starting_technology_level = 5
+		include = "expl_western_europe"
 	}
 	
 	NFR = { #New France
@@ -2951,6 +2865,7 @@ MOR = { #Morocco
 		capital = ahwendoe
 		country_rank = rank_duchy
 		starting_technology_level = 5
+		include = "expl_western_europe"
 	}
 	
 	NSP = { #New Spain
@@ -3102,6 +3017,7 @@ MOR = { #Morocco
 		capital = Tenochtitlan
 		country_rank = rank_kingdom
 		starting_technology_level = 5
+		include = "expl_western_europe"
 	}
 	
 	VOP = { #Viceroyalty of Peru
@@ -3214,6 +3130,7 @@ MOR = { #Morocco
 		capital = rimaq
 		country_rank = rank_duchy
 		starting_technology_level = 5
+		include = "expl_western_europe"
 	}
 	
 	VOB = { #Viceroyalty of Brazil
@@ -3256,6 +3173,7 @@ MOR = { #Morocco
 		capital = gohayo
 		country_rank = rank_duchy
 		starting_technology_level = 5
+		include = "expl_western_europe"
 	}
 
 ###Iroquoi Tribes
@@ -3898,6 +3816,62 @@ MOR = { #Morocco
 		capital = delhi
 		country_rank = empire
 		starting_technology_level = 5
+	}
+	
+###Northwest Africa
+	MOR = { #Morocco
+		own_control_core = {
+			tetouan basra_al_hamra larache taunat
+			badis tizgane amergo al_mazamma
+			ras_kebdana ghassasa temsamane tabarida
+			ksar_el_kebir tazroute ouezzane
+			fez meknes la_mamora sale azrou volubilis tefelfelt baht
+			anfa azemmour bejaad thagia rabat settat mrirah
+			asfi mazaghan tit boulaouane miatbir aguz
+			tednest ait_daoud tafedna mogador
+			marrakesh aghmat tinmel naffis hanimmei tamdegost
+			taroudant tidsi tiout tiznit massa_MOR tafraout ifni noul_lamta agadir
+			bzou demnate azilal
+			tadla khenifra chichaoua
+			guercif ameskour terrest tezerghe namalata taza sefrou
+			jarawah_abu_al_aysh oujda
+			jerada taourirt debdou echemmaia sidi_bennour
+			nedroma tegeget kalaat_sraghna midelt
+			aouint_yghomane afso ifrane
+			#additions
+			tamdoult assa beni_sabih foum_zguid igiliz taghjijt tata_MOR tiout tissint tizounine
+			ouarzazate agdez ait_benhaddou skoura tagmadert taznakht
+			ijilmasa boumalne_dades er_rich ksar_es_souk tazzarine todgha
+			tabelbala
+			laayoune smara tantan tindouf
+			idjil dakhla al_kuwayra aousserd bojador
+			sijilmasa taghaza taoudenni araouane
+		}
+
+		country_rank = rank_kingdom
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			masmuda
+			zenati
+			sanhaja
+			andalusi
+			mustaarabi
+		}
+
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		capital = fez
+		
+		discovered_regions = {
+			maghreb_region sahel_region guinea_region
+			iberia_region egypt_region
+		}
 	}
 }
 }
