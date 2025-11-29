@@ -1772,6 +1772,19 @@ countries = {
 		own_control_integrated = {
 			asilah ceuta melilla teguise maxorata tamaraceite hipalan tedote aguere
 		}
+		
+		own_colony = {
+			#East Indies
+			bula hitu huamual latu nunusaku sahulau saparua werinama seram_mountains
+			ternate daratan jailolo loloda moro wasilei
+			tidore gane maba_celebes misool waigeo weda
+			wamesa moskona sougb hatam meyah
+			arandai maybrat abun moi maden
+			irarutu kaimana buruwai sumuri baham
+			iresim yaur roon
+			gresi kwerba bauzi kwesten nisa waropen
+			yapen biak
+		}
 
 		starting_technology_level = 3
 		include = "expl_mediterranean"
@@ -1858,7 +1871,10 @@ countries = {
 		}
 		
 		own_control_integrated = {
+			#Africa
 			tangier ponta_delgada santa_maria angra horta santa_cruz_flores funchal
+			#East Indies
+			goa laran balibo lifau likusaen nunkolo tutuala sikka larantuka
 		}
 
 		starting_technology_level = 3
@@ -2893,6 +2909,19 @@ MOR = { #Morocco
 	}
 
 ###European Colonial Nations
+	VOC = { #Dutch East India Company
+		own_control_core = {
+			sunda_kelapa sombai kupang malacca temasek siraya lloa makatao lamakera
+		}
+		government = {
+			type = republic
+			ruler = random
+		}
+		capital = sunda_kelapa
+		country_rank = rank_kingdom
+		starting_technology_level = 5
+	}
+	
 	NEN = { #New England
 		own_control_core = {
 			weyanock kiskiack wicocomico werowocomoco rappahannock nentego patuxent wicomico chicamacomico matapeake accomac
@@ -2956,7 +2985,7 @@ MOR = { #Morocco
 			cocomacan mo_o_ti pechichitane xiriquitzio nat_tha_hi penlamu uza pame otomi 
 			tanchaycha tangamanga hnahnu huaxcama ozuluama panuco tamtoc quechula ocosingo lakam_tun 
 			tenamitl zinacantan pochutla tila tonala_chiapas napinaica jaltenango huehuetan 
-			chimalapa_jungle baak cupilco zahuatan tatahuitalpan mayapan mani hocabail sotuta maxcanu 
+			baak cupilco zahuatan tatahuitalpan mayapan mani hocabail sotuta maxcanu 
 			hunucma tho motul dzilam titsimin chichen_itza tases kalotmul zaci kaan_peech calkini edzna 
 			hochob dzibilnocac chakan_putum tixchel xicallanco itzamkanac nadzcaan chactemal 
 			colha nohmul chakanbakan xpuhil dzibanche bakhalal chacchoben tixmul xpaicheil telantunich ekab 
@@ -3044,6 +3073,26 @@ MOR = { #Morocco
 			mapimi sisimbles osatayogliglas cacalotito
 			alazapa cuanales masacuajulam gualeguas tilijais guazapayogliglas huajuco
 			chisos espopolames gueiquesales muruam chichitames cauitaome yeme
+		}
+		
+		own_colony = {
+			#Palehilippines
+			balbalan mallig tobog kiyyangan
+			ibalong binawangan daet naga_bikol sawangan vidak
+			tondo maynila kainta bay kalilayan kumintang mulanay pakil tayabas pulilu binangonan
+			aparr babuyan_islands batanes pudtol lal_lo gattaran tubigarao
+			mamburao basud kalapang mangarin
+			taytay busuanga
+			pantabangan baler bayambang magalo botolan hubek pulilan
+			agno agoo binalatongan bolinao kandong tagudin bigan malukkit
+			bolo ajanas camarag casiguran maddela
+			binalbagan bago_negros ilog tanjay
+			singhapala bool kangdaya talibon
+			masbate malindig matandang_nayon parpagoha
+			irong_irong aklan batan araut malandog
+			borongan basey catarman makarato tinago
+			kankabatok pangasugan limasawa mairete
+			panaon dapitan sindangan aparri
 		}
 		
 		government = {
@@ -3317,6 +3366,390 @@ MOR = { #Morocco
 		}
 	}
 
+###Southeast Asian Islands
+	ATJ = { #Aceh
+		own_control_core = {
+			barren_island north_andaman nicobar car_nicobar south_andaman
+			barus natal panyabungan sibolga sionomhudon sorkam
+			deli asahan karo kota_rentang pakpak perbaungan silou
+			bandar_aceh linge pasai peureulak semerlanga sigli tamiang
+			pannai bahal balige bilah kota_pinang kualuh tanjung_balai
+			daya calang gayo_lues meulaboh singkil susoh tapaktuan
+			inderapura padang pariaman simeulue
+		}
+		
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+		capital = bandar_aceh
+		country_rank = rank_duchy
+		starting_technology_level = 3
+	}
+	
+	BEI = { #Brunei
+		own_control_core = {
+			berune api_api padas pegalan hulu_limbang hulu_padas trusan
+			kudat hulu_labuk kota_marudu sandakan sibumbong mapun sugut
+			tutong baram barulo hulu_baram niah tinjar
+			rejang baleh balui belaga katibas plieran
+			igan julau mukah sarikei tatau
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+		country_rank = rank_kingdom
+
+		accepted_cultures = {
+			dusun_culture
+		}
+
+		tolerated_cultures = {
+			murut_culture
+			kayan_culture
+		}
+
+		capital = berune
+	}
+	
+	INR = { #Indragiri
+		own_control_core = {
+			rengat baru kuantan_riau peranap talang_mamak
+			kuala_kampar
+		}
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			minangkabau_culture
+		}
+
+		capital = rengat
+		starting_technology_level = 3
+	}
+	
+	PLB = { #Palembang
+		own_control_core = {
+			palembang bumi_ayu komering lematang lubai pesagi prabumulih
+			buluranriding lebonghitam lumpur
+			hulu_musi musi_hilir
+			bengkulu manna topos
+			menggala gunung_sugih hulu_mesuji kotabumi mesuji tiyuh_tuha
+			lampung kalianda krui liwa_lampung palas_pasemah sukadana_lampung
+			kota_kapur badau koba pangkalpinang
+			lalan tenggulang perbatasan leko musi tingkip lakitan bingin mukomuko
+		}
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			lampung_culture
+			rejang_culture
+			orang_rimba_culture
+		}
+
+		capital = palembang
+		starting_technology_level = 3
+	}
+	
+	LNK = { #Landak
+		own_control_core = {
+			ngabang
+		}
+		
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = ngabang
+		starting_technology_level = 3
+	}
+
+	SMB = { #Sambas
+		own_control_core = {
+			sambas hulu_sambas mandor mempawah monterado
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			malay_culture
+		}
+
+		capital = sambas
+	}	
+	
+	SBU = { #Selimbau
+		own_control_core = {
+			selimbau jongkong
+		}
+
+		starting_technology_level = 3
+		
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = selimbau
+	}
+
+	SLA = { #Silat
+		own_control_core = {
+			silat bunut
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			iban_culture
+		}
+
+		capital = silat
+	}
+
+	KKG = { #Kutai Kartanegara
+		own_control_core = {
+			kutai_lama jembayan
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = kutai_lama
+	}
+	
+	BLI = { #Bali
+		own_control_core = {
+			samprangan melara julah
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+		country_rank = rank_kingdom
+		capital = samprangan
+	}
+	
+	SLP = { #Selaparang
+		own_control_core = {
+			sasak lombok
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = sasak
+	}
+	
+	BIM = { #Bima
+		own_control_core = {
+			bima
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = bima
+	}
+	
+	BTN = { #Buton
+		own_control_core = {
+			butung
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = butung
+	}
+	
+	KNW = { #Konawe
+		own_control_core = {
+			unaaha andolo kendari sambandete
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			bungku_culture
+		}
+
+		capital = unaaha
+	}
+	
+	BAI = { #Banggai
+		own_control_core = {
+			banggai gori_gori bulakan lingketeng
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			saluan_culture
+		}
+
+		capital = banggai
+	}
+	
+	BLN = { #Bolaang
+		own_control_core = {
+			belang solimandungan amurang
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			minahasan_culture
+		}
+
+		capital = belang
+	}
+	
+	BAC = { #Bacan
+		own_control_core = {
+			amassing
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = amassing
+	}
+	
+	TER = { #Ternate
+		own_control_core = {
+			ternate
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = ternate
+	}
+
+	TID = { #Tidore
+		own_control_core = {
+			tidore
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = tidore
+	}
+	
+	BTU = { #Butuan
+		own_control_core = {
+			butuan cantilan langan cabadbaran surigao talacogon hingoog
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+			
+			reforms = {
+				mandala_system	
+			}
+		}
+
+		tolerated_cultures = {
+			manobo_culture
+			surigaonon_culture
+		}
+
+		capital = butuan
+	}
+	
 ###noboy expects random India
 	MUG = {
 		own_control_core = {
