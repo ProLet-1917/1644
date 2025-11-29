@@ -1355,9 +1355,9 @@ countries = {
 				uliastai ogomoor teel targavatai_mountains
 				altan_gadas delger_moron
 				otegu_qulan bugat chikhan_agui tevsh_uul tsagaan_agui tsogt gobi_altay #gobi_altai_province
-				ulaamgom dzaigil erzin tes turuum lake_uureg lake_uvs #tes_province
-				khovd achit_nuur haerhhana huysiyn khurgan tahiltyn_khotgot tsagaan_usun lake_achit lake_dayan lake_durgun lake_khar lake_khar_us lake_khoton lake_khurgan lake_markakol lake_tolbo altay_mountains mongol_altay #khovd_province
-				ulaagchiin airag_nuur hunguy khyargas_nuur telmen lake_airag lake_bayan lake_khyargas lake_oigon lake_telmen lake_ulaagchiin_khar lake_uvsiin_khar_us #khyargas_province
+				dzaigil erzin lake_uureg lake_uvs #tes_province
+				haerhhana huysiyn tahiltyn_khotgot  #khovd_province
+				ulaagchiin airag_nuur hunguy telmen lake_airag lake_bayan lake_khyargas lake_oigon lake_telmen lake_ulaagchiin_khar lake_uvsiin_khar_us #khyargas_province
 				uliastai ogomoor teel targavatai_mountains
 			}
 			capital = khovd
@@ -1384,24 +1384,119 @@ countries = {
 		ZUN = { #准噶尔 Dzungar 
 			type = army
 			own_control_core = {
-				
+				turuum ulaamgom tes
+				khovd achit_nuur tsagaan_usun khurgan lake_achit lake_dayan lake_durgun lake_khar lake_khar_us lake_khoton lake_khurgan lake_markakol lake_tolbo altay_mountains mongol_altay
+				khyargas_nuur
+				altayskoye onguday ust_koksa smolenskoye mayma biysk teletskoye #altayskoye_province
+				zmeinogorsk shemonayevskoye oskemen ust_kalmanka altay_forest_wasteland_1 #zmeinogorsk_province
+				sarybulak zhanaarka arkat kaynar_atbai takhir #sarybulak_province
+				bakanas ashchyozek dagandely koksala sayak #bakanas_province
+				kurchum kandysu zaysan kokpekty shar zyryan #kurchum_province
+				kayalyk ayagoz dungene lepsy sagabuyen tansyk tekeli #kayalyk_province
+				targabatay dahra_sasykkol emin ilanbalyk koktuma toli alakol_lake koshkarkol_lake sasykkol_lake balruq targabatay_mountains #emin_province
+				bortala jing kuytun urghtbulaq usu_xinjiang ebi_lake sayram_lake borohoro1 alatau #bortala_province
+				almaliq gulja narat nilka tokkuztara borohoro2 tian_shan6 wusun #almaliq_province
+				ilibalyk charyn chundzha kegen koktal lavar shelek #ilibalyk_province
+				yulduz
+				karamergen shengeldy boyauli
+				hoboksar gonganbao manas utbulaq zhekdeliq manas_lake gurbantunggut saur #gurbantunggut_province
+				atanuul bodonch bulgan burqin chinggil jeminay kara_irtysh ulungur lake_jili lake_ulungur atas_bogd #altay_province
 			}
 			capital = 
 			include = "eurasian_horde_china"
+			discovered_regions = {
+				persia_region
+				caucasus_region
+				anatolia_region
+				ural_region
+			}
 			government = {
 				ruler = chi_erdeni_batur
-				ruler_term = { character = chi_erdeni_batur start_date = 1634.4.10 }
+				ruler_term = { character = chi_erdeni_batur start_date = 1634.1.1 }
 				heir_selection = cognatic_primogeniture
 			}
 			court_language = mongolian_language
 			country_rank = rank_kingdom
 			accepted_cultures = {
 				oirat_culture
+				mongolian_culture
 			}
 			flag = "YUA"
 			country_name = "ZUN"
 			currency_data = {
 				gold = 200 #国库
+				stability = 60 #稳定度
+				army_tradition = 80 #军队传统
+
+			}
+		}
+		QKH = { #青海厄鲁特 Qinghai_Khoshuud
+			type = army
+			own_control_core = {
+				chabcha buha caka dulan dungkar_amdo guolimu qardam sanjiaocheng kunlun5 qilianshan4 caka_lake qinghai_lake #amdo_province
+				amnye_machen
+				zeku quge sailahai
+				dsun chogyar_khar gashun tsaidam nalinggele
+				#达木八旗 
+				nakchu barom rongpo #nakchukha_province
+				tsora taklung damzhung
+			}
+			capital = 
+			include = "eurasian_horde_china"
+			discovered_regions = {
+				south_china_region
+				hindustan_region
+				bengal_region
+			}
+			government = {
+				ruler = chi_gusikhan
+				ruler_term = { character = chi_gusikhan start_date = 1637.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = mongolian_language
+			country_rank = rank_kingdom
+			accepted_cultures = {
+				oirat_culture
+				mongolian_culture
+			}
+			flag = "YUA"
+			country_name = "QKH"
+			currency_data = {
+				gold = 400 #国库
+				stability = 60 #稳定度
+				army_tradition = 80 #军队传统
+
+			}
+		}
+		HSD = { #和硕特 Khoshuud
+			type = army
+			own_control_core = {
+				yangjibaliq kutubi ulan_us qanbalik urumqi borohoro3 #yangjibaliq_province
+				beshbalik dunla guchung mori yuanhu bodga_shan #beshbalik_province
+				barkul altayn_ovor_gobi naomao santokhe zuun_garyn_gobi barkol_mountains #barkul_province
+			}
+			capital = 
+			include = "eurasian_horde_china"
+			discovered_regions = {
+				south_china_region
+				hindustan_region
+				bengal_region
+			}
+			government = {
+				ruler = chi_ochirtukhan
+				ruler_term = { character = chi_ochirtukhan start_date = 1637.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = mongolian_language
+			country_rank = rank_duchy
+			accepted_cultures = {
+				oirat_culture
+				mongolian_culture
+			}
+			flag = "YUA"
+			country_name = "HSD"
+			currency_data = {
+				gold = 400 #国库
 				stability = 60 #稳定度
 				army_tradition = 80 #军队传统
 
