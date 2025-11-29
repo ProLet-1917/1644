@@ -1,0 +1,153 @@
+﻿late_ming_crisis = {
+	monthly_spawn_chance = monthly_spawn_chance_unique
+
+	# 1. 触发条件
+	can_start = {
+		current_year >= 1644
+		exists = c:MNG
+		c:MNG = { owns = location:dadu }
+		OR = {
+			c:MNG = { stability < 50 }
+			c:MNG = { current_celestial_authority < 50 } # Assuming this trigger exists for Mandate
+			c:MNG = { is_at_war_with = c:QNG }
+			c:MNG = { is_at_war_with = c:CSH }
+		}
+	}
+
+	# 2. 结束条件
+	can_end = {
+		OR = {
+			NOT = { exists = c:MNG }
+			AND = {
+				exists = c:MNG
+				c:MNG = {
+					stability > 50
+					owns = location:dadu
+					NOT = { is_at_war = yes }
+				}
+			}
+			AND = {
+				exists = c:QNG
+				c:QNG = {
+					owns = location:dadu
+					stability > 50
+				}
+			}
+			AND = {
+				exists = c:CSH
+				c:CSH = {
+					owns = location:dadu
+					stability > 50
+				}
+			}
+		}
+	}
+
+	# 3. 可见性
+	visible = {
+		OR = {
+			tag = MNG
+			tag = QNG
+			tag = CSH
+			tag = CXI
+			tag = WSG
+		}
+	}
+
+	# 4. 启动效果
+	on_start = {
+		every_country = {
+			limit = {
+				OR = {
+					tag = MNG
+					tag = QNG
+					tag = CSH
+					tag = CXI
+					tag = WSG
+				}
+			}
+			trigger_event_non_silently = late_ming_crisis.1
+		}
+		# 初始化变量
+		set_global_variable = {
+			name = ming_collapse_progress
+			value = 0
+		}
+	}
+
+	# 5. 月度逻辑
+	on_monthly = {
+		# 随机事件逻辑，通过事件文件处理
+		# 这里可以调用一个统一的脉冲事件
+		random_list = {
+			10 = { # 10% 概率触发随机事件
+				every_country = {
+					limit = {
+						OR = {
+							tag = MNG
+							tag = QNG
+							tag = CSH
+							tag = CXI
+							tag = WSG
+						}
+					}
+					trigger_event_non_silently = late_ming_crisis.100 # Generic monthly pulse event
+				}
+			}
+			90 = {}
+		}
+	}
+
+	# 6. 地图模式
+	map_color = {
+		if = {
+			limit = { has_owner = yes owner = { tag = MNG } }
+			value = MNG
+		}
+		else_if = {
+			limit = { has_owner = yes owner = { tag = QNG } }
+			value = QNG
+		}
+		else_if = {
+			limit = { has_owner = yes owner = { tag = CSH } }
+			value = CSH
+		}
+		else_if = {
+			limit = { has_owner = yes owner = { tag = CXI } }
+			value = CXI
+		}
+		else_if = {
+			limit = { has_owner = yes owner = { tag = WSG } }
+			value = WSG
+		}
+		else = {
+			value = define:NMapColors|DEFAULT_COLOR
+		}
+	}
+	
+	legend_key = { 
+		desc = "MNG"
+		color = MNG
+		require_color_on_map = yes
+	}
+	legend_key = { 
+		desc = "QNG"
+		color = QNG
+		require_color_on_map = yes
+	}
+	legend_key = { 
+		desc = "CSH"
+		color = CSH
+		require_color_on_map = yes
+	}
+	legend_key = { 
+		desc = "CXI"
+		color = CXI
+		require_color_on_map = yes
+	}
+	legend_key = { 
+		desc = "WSG"
+		color = WSG
+		require_color_on_map = yes
+	}
+}
