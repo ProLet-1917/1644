@@ -1434,7 +1434,7 @@ countries = {
 			bristol gloucester plymouth carmarthen
 		}
 		
-		own_colony = {
+		own_control_colony = {
 			bermuda liamuiga ichirouganaim wadadli
 		}
 		
@@ -1772,7 +1772,7 @@ countries = {
 			asilah ceuta melilla teguise maxorata tamaraceite hipalan tedote aguere
 		}
 		
-		own_colony = {
+		own_control_colony = {
 			#East Indies
 			bula hitu huamual latu nunusaku sahulau saparua werinama seram_mountains
 			ternate daratan jailolo loloda moro wasilei
@@ -1870,7 +1870,15 @@ countries = {
 			#East Indies
 			goa laran balibo lifau likusaen nunkolo tutuala sikka larantuka
 		}
-
+		
+		own_control_colony = {
+			#Africa
+			anomansah cabo_corso winneba accra akropong cacheu santo_antao sao_nicolao boa_vista santiago fogo sao_tome mbegela mombasa malindi
+			cuama chiveve chupanga sofala chindre cheringoma sena mopeia quelimane macuze bajone moma chamo maputo inhambane
+			#East Indies
+			goa laran balibo lifau likusaen nunkolo tutuala sikka larantuka
+		}
+		
 		starting_technology_level = 3
 		include = "expl_western_europe"
 
@@ -2287,7 +2295,7 @@ countries = {
 
 			caen bayeux domfront falaise pont_douilly vire
 			fecamp arques aumale longueville tancarville
-			coutances cherbourg avranches jersey mortain st_sauveur
+			coutances cherbourg avranches mortain st_sauveur
 			evreux alencon argentan bernay harcourt laigle
 			rouen gisors lisieux louviers pont_audemer
 
@@ -2312,7 +2320,7 @@ countries = {
 			metz fresnes verdun clermont_en_argonne toul vic_sur_seille
 		}
 		
-		own_colony = {
+		own_control_colony = {
 			cayenne carucairi iguanacaera hewanorra
 <<<<<<< HEAD
 			marien iguamuco guahaba tortuga baynoa
@@ -3015,7 +3023,7 @@ countries = {
 			chisos espopolames gueiquesales muruam chichitames cauitaome yeme
 		}
 		
-		own_colony = {
+		own_control_colony = {
 			#Palehilippines
 			balbalan mallig tobog kiyyangan
 			ibalong binawangan daet naga_bikol sawangan vidak
@@ -3312,7 +3320,6 @@ countries = {
 ###Southeast Asian Islands
 	ATJ = { #Aceh
 		own_control_core = {
-			barren_island north_andaman nicobar car_nicobar south_andaman
 			barus natal panyabungan sibolga sionomhudon sorkam
 			deli asahan karo kota_rentang pakpak perbaungan silou
 			bandar_aceh linge pasai peureulak semerlanga sigli tamiang
@@ -3412,12 +3419,9 @@ countries = {
 			banjar banua_lawas martapura muara_bahan nagara_borneo pelaihari tanjungpuri
 			kuripan hulu_kahayan hulu_kapuas kahayan kapuas rungan
 			kotawaringin_lama air_hitam bulik hulu_jelai hulu_lamandau jelai
-			pontianak kubu sanggau sekadau sekayam tayan
-			sepauk hulu_melawai kayan_melawai pinoh sintang
 			mendawai hulu_mendawai kahayan_hilir katingan sabangau samba
 			bangkalan_borneo cantung pagatan sigam
 			sampit arut cempaga hulu_mentaya hulu_seruyan kumai seruyan
-			sukadana hulu_pawan kendawangan pesaguan tanjungpura teluk_melano
 			karau barito hulu_barito lahei laung teweh
 		}
 
@@ -3433,7 +3437,55 @@ countries = {
 
 		capital = banjar
 		starting_technology_level = 3
-		country_rank = kingdom
+		country_rank = rank_kingdom
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	SUK = { #Sukadana
+		own_control_core = {
+			pontianak kubu tayan
+			sukadana hulu_pawan kendawangan pesaguan tanjungpura teluk_melano
+		}
+
+		government = {
+			type = republic
+			ruler = random
+		}
+
+		capital = sukadana
+		starting_technology_level = 3
+		country_rank = rank_duchy
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	MIN = { #Maguindanao
+		own_control_core = {
+			malabang himologan initao sumilao tukuran
+			kuta_watu buluan buayan kabacan kalalaw kalamansig minduso silae tboli
+			tagloc ata_mindanao makar caraga dibabawon kalagan mansaka sarangani
+			samboangan sibugay siocon
+			cateel bislig
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+			
+			reforms = {
+				mandala_system	
+			}
+		}
+
+		tolerated_cultures = {
+			manobo_culture
+			surigaonon_culture
+		}
+
+		capital = kuta_watu
+		country_rank = rank_duchy
 		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
@@ -3461,7 +3513,7 @@ countries = {
 
 		capital = mataram
 		starting_technology_level = 3
-		country_rank = kingdom
+		country_rank = rank_kingdom
 		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
@@ -3483,7 +3535,7 @@ countries = {
 
 		capital = banten
 		starting_technology_level = 3
-		country_rank = duchy
+		country_rank = rank_duchy
 		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
@@ -3512,7 +3564,7 @@ countries = {
 
 		capital = johor_lama
 		starting_technology_level = 3
-		country_rank = kingdom
+		country_rank = rank_kingdom
 		
 		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
@@ -3563,7 +3615,7 @@ countries = {
 
 		capital = palembang
 		starting_technology_level = 3
-		country_rank = kingdom
+		country_rank = rank_kingdom
 		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
@@ -3658,7 +3710,7 @@ countries = {
 		}
 
 		capital = kutai_lama
-		country_rank = duchy
+		country_rank = rank_duchy
 		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
@@ -4016,7 +4068,7 @@ countries = {
 			ruler = random
 		}
 		capital = delhi
-		country_rank = empire
+		country_rank = rank_empire
 		starting_technology_level = 5
 		include = "expl_india_muslim"
 		include = "expl_indian_trade_route"
