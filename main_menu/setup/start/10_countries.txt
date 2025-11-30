@@ -1289,6 +1289,7 @@ countries = {
 		capital = oozato  # Capital
 		starting_technology_level = 4  
 		country_rank = rank_kingdom 
+		include = "expl_indonesia"
 	}
 
 #------------------------ Regions done by Syayan ----------------------------
@@ -1533,7 +1534,7 @@ countries = {
 			#from SBL
 			kirkcudbright kenmure stranraer ayr perth edinburgh stirling roxburgh linlithgow duns dumfries lanark strathearn cupar
 		}
-		own_control_conquered = {
+		own_control_integrated = {
 			orkney shetland
 		}
 		
@@ -2112,7 +2113,11 @@ countries = {
 	
 	CAT = {
 		own_control_core = {
-			barcelona sitges terrassa villafranca_del_penedes girona besalu castellon_ampurias ripoll sant_feliu tarragona flix lleida montblanc tarrega tortosa vic berga cardona cervera manresa perpignan prades puigcerda lagoon_of_salses seu_durgell agramunt balaguer talarn vielha
+			barcelona sitges terrassa villafranca_del_penedes girona besalu castellon_ampurias ripoll sant_feliu vic berga cardona cervera manresa perpignan prades puigcerda lagoon_of_salses seu_durgell agramunt balaguer talarn vielha
+		}
+		
+		own_conquered = {
+			tarragona flix lleida montblanc tarrega tortosa
 		}
 
 		starting_technology_level = 3
@@ -2753,7 +2758,7 @@ countries = {
 			valjala kuressaare tallinn narva padise paide rakvere rapla toolse vasknarva cesis aluksne gulbene rauna valmiera parnu karksi poltsamaa saarde suure_jaani viljandi lake_vorts hapsal kaina lihula st_martin riga koknese limbazi salaspils sigulda straupe tartu valka vastseliina vonnu
 		}
 		
-		own_control_conquered = {
+		own_control_integrated = {
 			minguannan tappahanna shackamaxon tetamekanch
 		}
 
@@ -2791,7 +2796,7 @@ countries = {
 			idre konghalla uddevalla stromstad hornborg borg halden moss trogstad tonsberg skien sande grenland stavanger ryfylke suledal haugalandet jaeren flekkefjord sirudal otredal lindesnes oddernes oyestad sondeled amli kongsberg ringerike hallingdal numedal sigdal bragernes bergen fana kvinnherad ullensvang moster eidfjord nordhordland voss eid stryn sunnfjord sogndal aurland vik laerdal oslo ski eidsvoll vardal lillehammer valdres otta imsdalen hedmarksvidda hamar kongsvinger elverum glommadal trysil amot tynset mjosa
 			nidaros roros stjordal oppdal orkdal skaun storen holtalen meraker alvdal levanger namdal orland snasa lierne steinkjer molde fosna sunndal rauma sunnmore borgund stordal tofte troms trondenes senja bardodalen raisa hammerdal offerdal berg froso ragunda sveg hede oviken storsjon bodo birndal hattfjelldal rana alstahaug gildeskal steigen langenes lofotr hamaroy ofoti kautokeino varanger vardo deatnu porsanger karasjok hammerfest alta kirkenes lebesby flesberg
 		}
-		own_control_conquered = {
+		own_control_integrated = {
 			holar husavik akureyri blonduos torshofn vopnafjordur egilsstadir seydisfjordur reydarfjordur holmur kirkjubaejar borgarnes olavsvik isafjordur hvamstangi skalholt selfoss keflavik reikjavik thingvellir hvolsvollur vattnajokull icelandic_highlands eyjafjallajokull
 			torshavn
 		}
@@ -2830,6 +2835,26 @@ countries = {
 			ruler = random
 		}
 		capital = sunda_kelapa
+		country_rank = rank_kingdom
+		starting_technology_level = 5
+		include = "expl_western_europe"
+	}
+	
+	WIC = { #Dutch West India Company
+		own_control_core = {
+			#New Netherlands
+			manhattan tappan nochpeem massapequa poughkeepsie ponkhockie kitchawanc
+			#Brazil
+			upaon_acu miritiba tapuios igaracu jenipaboacu tremembe anace tapeba pitaguari payaku
+			monxoro kaaysara potiguara paraiba caxanga yapuata karapoto kariri arakaiu sauipe
+			#Guyana
+			essequibo demerara berbice
+		}
+		government = {
+			type = republic
+			ruler = random
+		}
+		capital = demerara #placeholder before adding Africa
 		country_rank = rank_kingdom
 		starting_technology_level = 5
 		include = "expl_western_europe"
@@ -3304,6 +3329,7 @@ countries = {
 		capital = bandar_aceh
 		country_rank = rank_duchy
 		starting_technology_level = 3
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
 	BEI = { #Brunei
@@ -3334,6 +3360,7 @@ countries = {
 		}
 
 		capital = berune
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
 	INR = { #Indragiri
@@ -3354,6 +3381,7 @@ countries = {
 
 		capital = rengat
 		starting_technology_level = 3
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
 	PLB = { #Palembang
@@ -3382,6 +3410,7 @@ countries = {
 
 		capital = palembang
 		starting_technology_level = 3
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
 	LNK = { #Landak
@@ -3397,6 +3426,7 @@ countries = {
 
 		capital = ngabang
 		starting_technology_level = 3
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 
 	SMB = { #Sambas
@@ -3417,6 +3447,7 @@ countries = {
 		}
 
 		capital = sambas
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}	
 	
 	SBU = { #Selimbau
@@ -3433,6 +3464,7 @@ countries = {
 		}
 
 		capital = selimbau
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 
 	SLA = { #Silat
@@ -3453,6 +3485,7 @@ countries = {
 		}
 
 		capital = silat
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 
 	KKG = { #Kutai Kartanegara
@@ -3469,6 +3502,7 @@ countries = {
 		}
 
 		capital = kutai_lama
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
 	BLI = { #Bali
@@ -3485,6 +3519,7 @@ countries = {
 		}
 		country_rank = rank_kingdom
 		capital = samprangan
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
 	SLP = { #Selaparang
@@ -3501,6 +3536,7 @@ countries = {
 		}
 
 		capital = sasak
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
 	BIM = { #Bima
@@ -3517,6 +3553,7 @@ countries = {
 		}
 
 		capital = bima
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
 	BTN = { #Buton
@@ -3533,6 +3570,7 @@ countries = {
 		}
 
 		capital = butung
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
 	KNW = { #Konawe
@@ -3553,6 +3591,7 @@ countries = {
 		}
 
 		capital = unaaha
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
 	BAI = { #Banggai
@@ -3573,6 +3612,7 @@ countries = {
 		}
 
 		capital = banggai
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
 	BLN = { #Bolaang
@@ -3593,6 +3633,7 @@ countries = {
 		}
 
 		capital = belang
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
 	BAC = { #Bacan
@@ -3609,6 +3650,7 @@ countries = {
 		}
 
 		capital = amassing
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
 	TER = { #Ternate
@@ -3625,6 +3667,7 @@ countries = {
 		}
 
 		capital = ternate
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 
 	TID = { #Tidore
@@ -3641,6 +3684,7 @@ countries = {
 		}
 
 		capital = tidore
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
 	BTU = { #Butuan
@@ -3666,6 +3710,7 @@ countries = {
 		}
 
 		capital = butuan
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
 ###noboy expects random India
@@ -3816,6 +3861,8 @@ countries = {
 		capital = delhi
 		country_rank = empire
 		starting_technology_level = 5
+		include = "expl_india_muslim"
+		include = "expl_indian_trade_route"
 	}
 	
 ###Northwest Africa
@@ -3868,10 +3915,7 @@ countries = {
 
 		capital = fez
 		
-		discovered_regions = {
-			maghreb_region sahel_region guinea_region
-			iberia_region egypt_region
-		}
+		include = "expl_muslim_mediterranean"
 	}
 }
 }
