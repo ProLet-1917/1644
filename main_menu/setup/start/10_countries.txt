@@ -3327,7 +3327,7 @@ countries = {
 			ruler = random
 		}
 		capital = bandar_aceh
-		country_rank = rank_duchy
+		country_rank = rank_kingdom
 		starting_technology_level = 3
 		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
@@ -3339,6 +3339,7 @@ countries = {
 			tutong baram barulo hulu_baram niah tinjar
 			rejang baleh balui belaga katibas plieran
 			igan julau mukah sarikei tatau
+			santubong samarahan saribas sebuyau tandang_sari
 		}
 
 		starting_technology_level = 3
@@ -3360,6 +3361,159 @@ countries = {
 		}
 
 		capital = berune
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	MKS = { #Makassar
+		own_control_core = {
+			banggai bulakan gori_gori lingketeng una_una
+			bone bantayan buki tanahjampea cenrana tosora
+			bungku kendari mori_celebes sambandete unaaha
+			butung tukangbesi_islands andolo kolumba taubonto
+			donggala kulawi loree parigi pendau poso sigi
+			gorontalo atinggola boalemo guamonial paguat toli_toli tomini sulawesi
+			gowa barru bungi sengkae sidenreng tinco
+			mamudju balanipa kalumpang kurri_kurri managalang toraja
+			manado amurang belang karatung_island karakaralong_islands solimandungan sangihe_islands tabukan
+			palopo luwu malangke malili matano
+			kinabatangan hulu_kinabatangan hulu_segama kuamut lahad_datu lokan
+			tarakan hulu_sembakung sebuku sesayap tawau tong_talun
+			sambaliung kayan kelay segah sungai_lati tanjung_palas
+			sepinang
+			maimbung bongao lamitan 
+			balabak aborlan babuyan
+			paser hulu_paser tuyuk
+			bara_buru kayeli obi sanana taliabu tifu
+			banda_island kobroor ohoi_ewur trangan wokam
+			babar bungabali damar leti sangliat_dol wetar yamdena
+			banta_island_wasteland mamboro sabu sumba sumbawa taliwang waingapo
+			bajo_flores cibal ngada
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+		country_rank = rank_kingdom
+
+		accepted_cultures = {
+			dusun_culture
+		}
+
+		capital = sengkae
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	BNJ = { #Banjar
+		own_control_core = {
+			banjar banua_lawas martapura muara_bahan nagara_borneo pelaihari tanjungpuri
+			kuripan hulu_kahayan hulu_kapuas kahayan kapuas rungan
+			kotawaringin_lama air_hitam bulik hulu_jelai hulu_lamandau jelai
+			pontianak kubu sanggau sekadau sekayam tayan
+			sepauk hulu_melawai kayan_melawai pinoh sintang
+			mendawai hulu_mendawai kahayan_hilir katingan sabangau samba
+			bangkalan_borneo cantung pagatan sigam
+			sampit arut cempaga hulu_mentaya hulu_seruyan kumai seruyan
+			sukadana hulu_pawan kendawangan pesaguan tanjungpura teluk_melano
+			karau barito hulu_barito lahei laung teweh
+		}
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			minangkabau_culture
+		}
+
+		capital = banjar
+		starting_technology_level = 3
+		country_rank = kingdom
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	MTM = { #Mataram
+		own_control_core = {
+			christmas_island
+			cirebon cibuaya cimanuk sindangkasih sumedang tegal wangung
+			demak jepara pandansalas pati pekalongan semarang
+			kawali cibadak kandangwesi pangandaran
+			mataram bagaluhan borobudur dieng pacitan purwalingga
+			pajang daha jagaraga matahun tulungagung wengker
+			surabaya bangkalan bawean gresik kangean sugeneb tuban_java
+			trowulan bajrajinaparamitapura balambangan lumajang malang pakembangan sadeng			
+		}
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			minangkabau_culture
+		}
+
+		capital = mataram
+		starting_technology_level = 3
+		country_rank = kingdom
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	BAN = { #Banten
+		own_control_core = {
+			banten cianjur pakuan pangguyangan pulasari
+			lampung kalianda krui liwa_lampung palas_pasemah sukadana_lampung
+		}
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			minangkabau_culture
+		}
+
+		capital = banten
+		starting_technology_level = 3
+		country_rank = duchy
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	JOH = { #Johor
+		own_control_core = {
+			gelanggi johor_lama muar rantau_panjang
+			pahang bera jerantut kuala_lipis kuantan kajang
+			tanjungpinang anambas_islands daik natuna_islands subi_islands
+			pangkalan_kerinci gunung_sahilan kampar pelalawan singingi
+			siak bengkalis buantan dumai sakai_riau senapelan
+			bagansiapipi kubu_rokan kunto rokan tambusai tanah_putih
+			pagaruyung inderapura padang pariaman pasaman solok sontang
+			jambi batang_tembesi berbak muara_sabak rantau_benar tungkal
+			dharmasraya batang_tabir batang_tebo karang_brahi sungai_penuh sungai_jujuhan tembesi
+		}
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			minangkabau_culture
+		}
+
+		capital = johor_lama
+		starting_technology_level = 3
+		country_rank = kingdom
+		
 		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
@@ -3391,7 +3545,6 @@ countries = {
 			hulu_musi musi_hilir
 			bengkulu manna topos
 			menggala gunung_sugih hulu_mesuji kotabumi mesuji tiyuh_tuha
-			lampung kalianda krui liwa_lampung palas_pasemah sukadana_lampung
 			kota_kapur badau koba pangkalpinang
 			lalan tenggulang perbatasan leko musi tingkip lakitan bingin mukomuko
 		}
@@ -3410,6 +3563,7 @@ countries = {
 
 		capital = palembang
 		starting_technology_level = 3
+		country_rank = kingdom
 		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
@@ -3490,7 +3644,9 @@ countries = {
 
 	KKG = { #Kutai Kartanegara
 		own_control_core = {
-			kutai_lama jembayan
+			kutai_lama jembayan julau_kutai kedang_pahu tenggarong tuyuk
+			muarakaman belayan hulu_mahakam hulu_telen kelinjau mahakam telen
+			karangan bengalon sandaran sepinang sangata
 		}
 
 		starting_technology_level = 3
@@ -3502,6 +3658,7 @@ countries = {
 		}
 
 		capital = kutai_lama
+		country_rank = duchy
 		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
@@ -3541,7 +3698,7 @@ countries = {
 	
 	BIM = { #Bima
 		own_control_core = {
-			bima
+			bima dompu
 		}
 
 		starting_technology_level = 3
@@ -3558,7 +3715,7 @@ countries = {
 	
 	BTN = { #Buton
 		own_control_core = {
-			butung
+			butung kalisusu kotano_muna
 		}
 
 		starting_technology_level = 3
@@ -3575,7 +3732,7 @@ countries = {
 	
 	KNW = { #Konawe
 		own_control_core = {
-			unaaha andolo kendari sambandete
+			unaaha andolo kendari
 		}
 
 		starting_technology_level = 3
@@ -3596,7 +3753,7 @@ countries = {
 	
 	BAI = { #Banggai
 		own_control_core = {
-			banggai gori_gori bulakan lingketeng
+			banggai gori_gori bulakan lingketeng tojo
 		}
 
 		starting_technology_level = 3
@@ -3714,7 +3871,7 @@ countries = {
 	}
 	
 ###noboy expects random India
-	MUG = {
+	MUG = { #Mughal
 		own_control_core = {
 			awadh akbarpur kishi sultanpur_uttar_pradesh
 			bahraich balrampur gonda shravasti tulsipur
