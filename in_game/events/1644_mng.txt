@@ -40,18 +40,6 @@ mng_1644.1 = { #南迁之议
                 			experience = 60
             			}
         			}
-
-        			# 火器营：0（保持原样）
-        			while = {
-            			count = 0
-            			create_sub_unit_with_owner = {
-                			type = a_1644_chinese_musketeers
-                			owner = c:CSH
-                			origin = this
-                			experience = 60
-            			}
-        			}
-
         			# 骑营：2
         			while = {
             			count = 2
@@ -105,7 +93,6 @@ mng_1644.1 = { #南迁之议
 							experience = 60
 						}
 					}
-					# 以步营补足原移除的火器营编制：+3
 					while = {
 						count = 3
 						create_sub_unit_with_owner = {
@@ -115,17 +102,7 @@ mng_1644.1 = { #南迁之议
 							experience = 60
 						}
 					}
-					# 火器营：3 * 1000 = 3000 人
-					while = {
-						count = 0
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_musketeers
-							owner = root
-							origin = this
-							experience = 60
-						}
-					}
-					# 骑营：3 * 300 = 900 人
+					# 骑营：2 营 600 人
 					while = {
 						count = 2
 						create_sub_unit_with_owner = {

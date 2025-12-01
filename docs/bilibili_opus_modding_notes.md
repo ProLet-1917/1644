@@ -4,7 +4,7 @@
 
 ## 局势（Situation）脚本入�?
 
-- �?`common/situations` 下创建新文件（示例：`rise_of_ulm.txt`），定义局势基础结构与本地化键值�?
+common/situations` 下创建新文件（示例：`rise_of_ulm.txt`），定义局势基础结构与本地化键值�?
 - 通过添加 `triggers`、`effects` 与提示文本（tooltips）让局势在游戏中有明确的触发条件与反馈�?
 - 为局势准备专属地图模式：�?`common/script_values` 中定义可复用的距离计算脚本值，然后在局势文件中引用以控制颜色渲染�?
 - �?`common/scriptable_hints` 中创建提示项，结合局�?UI 的提示按钮，为玩家提供动态说明�?
