@@ -14,3 +14,21 @@
 	years = 3
 }
 
+# 八旗改革 - 仅限大清
+qng_banner_reform = {
+	major = yes
+	unique = yes
+	potential = {
+		has_or_had_tag = QNG
+	}
+	allow = {
+		has_unlocked_government_reform_trigger = { type = qng_banner_reform }
+	}
+	country_modifier = {
+		levy_combat_efficiency_modifier = 1.0  # +100% 征召兵战斗力
+		land_morale_modifier = 0.10            # 陆军士气 +10%
+		manpower_recovery_speed = 0.25         # 人力恢复速度 +25%
+	}
+	years = 0  # 永久改革
+}
+
