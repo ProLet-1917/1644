@@ -1434,7 +1434,7 @@ countries = {
 			bristol gloucester plymouth carmarthen
 		}
 		
-		own_colony = {
+		own_control_colony = {
 			bermuda liamuiga ichirouganaim wadadli
 		}
 		
@@ -1770,10 +1770,9 @@ countries = {
 		
 		own_control_integrated = {
 			asilah ceuta melilla teguise maxorata tamaraceite hipalan tedote aguere
-			oran
 		}
 		
-		own_colony = {
+		own_control_colony = {
 			#East Indies
 			bula hitu huamual latu nunusaku sahulau saparua werinama seram_mountains
 			ternate daratan jailolo loloda moro wasilei
@@ -1869,11 +1868,18 @@ countries = {
 			#Africa
 			tangier ponta_delgada santa_maria angra horta santa_cruz_flores funchal
 			#East Indies
-			goa laran balibo lifau likusaen nunkolo tutuala sikka larantuka
+			laran balibo lifau likusaen nunkolo tutuala sikka larantuka
 			#Oman
 			masqat saham
+			#India
+			goa kotte galle
 		}
-
+		own_control_colony = {
+			#Africa
+			anomansah cabo_corso winneba accra akropong cacheu santo_antao sao_nicolao boa_vista santiago fogo sao_tome mbegela mombasa malindi
+			cuama chiveve chupanga sofala chindre cheringoma sena mopeia quelimane macuze bajone moma chamo maputo inhambane
+		}
+		
 		starting_technology_level = 3
 		include = "expl_western_europe"
 
@@ -2290,7 +2296,7 @@ countries = {
 
 			caen bayeux domfront falaise pont_douilly vire
 			fecamp arques aumale longueville tancarville
-			coutances cherbourg avranches jersey mortain st_sauveur
+			coutances cherbourg avranches mortain st_sauveur
 			evreux alencon argentan bernay harcourt laigle
 			rouen gisors lisieux louviers pont_audemer
 
@@ -2315,7 +2321,7 @@ countries = {
 			metz fresnes verdun clermont_en_argonne toul vic_sur_seille
 		}
 		
-		own_colony = {
+		own_control_colony = {
 			cayenne carucairi iguanacaera hewanorra
 <<<<<<< HEAD
 			marien iguamuco guahaba tortuga baynoa
@@ -3018,7 +3024,7 @@ countries = {
 			chisos espopolames gueiquesales muruam chichitames cauitaome yeme
 		}
 		
-		own_colony = {
+		own_control_colony = {
 			#Palehilippines
 			balbalan mallig tobog kiyyangan
 			ibalong binawangan daet naga_bikol sawangan vidak
@@ -3315,7 +3321,6 @@ countries = {
 ###Southeast Asian Islands
 	ATJ = { #Aceh
 		own_control_core = {
-			barren_island north_andaman nicobar car_nicobar south_andaman
 			barus natal panyabungan sibolga sionomhudon sorkam
 			deli asahan karo kota_rentang pakpak perbaungan silou
 			bandar_aceh linge pasai peureulak semerlanga sigli tamiang
@@ -3415,12 +3420,9 @@ countries = {
 			banjar banua_lawas martapura muara_bahan nagara_borneo pelaihari tanjungpuri
 			kuripan hulu_kahayan hulu_kapuas kahayan kapuas rungan
 			kotawaringin_lama air_hitam bulik hulu_jelai hulu_lamandau jelai
-			pontianak kubu sanggau sekadau sekayam tayan
-			sepauk hulu_melawai kayan_melawai pinoh sintang
 			mendawai hulu_mendawai kahayan_hilir katingan sabangau samba
 			bangkalan_borneo cantung pagatan sigam
 			sampit arut cempaga hulu_mentaya hulu_seruyan kumai seruyan
-			sukadana hulu_pawan kendawangan pesaguan tanjungpura teluk_melano
 			karau barito hulu_barito lahei laung teweh
 		}
 
@@ -3436,7 +3438,55 @@ countries = {
 
 		capital = banjar
 		starting_technology_level = 3
-		country_rank = kingdom
+		country_rank = rank_kingdom
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	SUK = { #Sukadana
+		own_control_core = {
+			pontianak kubu tayan
+			sukadana hulu_pawan kendawangan pesaguan tanjungpura teluk_melano
+		}
+
+		government = {
+			type = republic
+			ruler = random
+		}
+
+		capital = sukadana
+		starting_technology_level = 3
+		country_rank = rank_duchy
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	MIN = { #Maguindanao
+		own_control_core = {
+			malabang himologan initao sumilao tukuran
+			kuta_watu buluan buayan kabacan kalalaw kalamansig minduso silae tboli
+			tagloc ata_mindanao makar caraga dibabawon kalagan mansaka sarangani
+			samboangan sibugay siocon
+			cateel bislig
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+			
+			reforms = {
+				mandala_system	
+			}
+		}
+
+		tolerated_cultures = {
+			manobo_culture
+			surigaonon_culture
+		}
+
+		capital = kuta_watu
+		country_rank = rank_duchy
 		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
@@ -3464,7 +3514,7 @@ countries = {
 
 		capital = mataram
 		starting_technology_level = 3
-		country_rank = kingdom
+		country_rank = rank_kingdom
 		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
@@ -3486,7 +3536,7 @@ countries = {
 
 		capital = banten
 		starting_technology_level = 3
-		country_rank = duchy
+		country_rank = rank_duchy
 		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
@@ -3515,7 +3565,7 @@ countries = {
 
 		capital = johor_lama
 		starting_technology_level = 3
-		country_rank = kingdom
+		country_rank = rank_kingdom
 		
 		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
@@ -3566,7 +3616,7 @@ countries = {
 
 		capital = palembang
 		starting_technology_level = 3
-		country_rank = kingdom
+		country_rank = rank_kingdom
 		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
@@ -3661,7 +3711,7 @@ countries = {
 		}
 
 		capital = kutai_lama
-		country_rank = duchy
+		country_rank = rank_duchy
 		include = "expl_indonesia" include = "expl_indonesian_trade_route"
 	}
 	
@@ -3881,7 +3931,6 @@ countries = {
 			khairabad bhurwara biswan firuzabad_bahraich kherigarh
 			lucknow bilgram hardoi ibrahimabad pali_uttar_pradesh
 			manikpur bhadohi mungra raebareli unnao
-			amber_loc
 			
 			arrah ballia buxar jaund rohtas sasaram
 			azamgarh andar chillupar rudrapur sonepur_bihar thawe
@@ -3907,7 +3956,6 @@ countries = {
 			lahore sultanwind fatehabad batala kalanaur gugera kasur virkgarh sialkot eminabad pasrur
 			chiniot kamalia talwandi jaranwala jhang pindi_bhattian shorkot dijkot
 			multan mailsi chichawatni dipalpur pakpattan karur_punjab jalalpur_pirwala tulamba
-			nawakot bijnot derawar channan_pir kot_marot uch mir_garh_qila dunga_bunga chishtian khairpur aror
 			dajal dera_ghazi_khan dera_ismail_khan kot_addu sitpur karor bhakkar mankera harrand mithankot omerkot
 			jammu udamphur kathua kishtwar pangi paddar chamba_india barmaur keylong koksar bhimber kohtali
 			gujrat busal bhera lalian shahpur sillanwali
@@ -3916,7 +3964,6 @@ countries = {
 			chakwal dina khewra khushab pindi_gheb rawalpindi sangni
 			zhob duki rakni lorelai kahan daraban wana urgun
 
-			chitral mulkhow mastuj yarkhun urtsun
 			parun asadabad_kunar hajiabad
 			kalam_swat dir timergara bajaur malakand
 			agror sherwan behali dasu kandia jijial tangir baligram
@@ -3935,11 +3982,11 @@ countries = {
 			pandua baragram bardhaman dubrajpur ilambazar satgaon
 			sonargaon bikrampur chandpur kobirhat kumilla savar
 			sylhet khaliajuri khaspur patharkandi rajnagar shaharpara
-			agartala baniachang chandrapur kailashahar laskarpur pilak rangamati
+			baniachang
 
 			hazaribagh chai gobindpur katrasgarh shergarh urda
 			palamau chatra tarhasi untari
-			ranchi ichagarh kharsawan khukhragarh porahat
+			ranchi ichagarh kharsawan
 
 			bhagalpur gidhaur hajipur khagaria monghyr samastipur
 			darbhanga janakpur_nepal jhanjharpur madhubani siraha sitamarhi
@@ -3949,14 +3996,11 @@ countries = {
 
 			puri kataka harishpur jajnagar bhadrak balasore jalesar ratnagiri kanthi
 			ganjam asika kalingapattanam parlakimidi kalinganagara brahmapur kulada
-			nilagiri baripada chaibasa ghatsila rairangpur
-			nandapur rayagada kotagad jajjaldeypur kalahandinagara kotpad raighar khariar patna_garjat gunupur balangir saintala belkhandi bissam_cuttack kasipur nowrangapur
-			dhenkanal baud khurda narsinghpur bhuban udayagiri_kotagad athmallik angul pal_lahara nayagarh kunjabangarh phulbani
-			keonjhar khiching ghasipura jyotipur ghatgaon
-			sambalpur samasingha sonepur redhakhol basna paikmal bargarh debagarh kuchinda
-			rabkob sundergarh raigadh bonaigarh birugarh jashpur_nagar sitapur badamgarh upar_ghat mainpat
-
-			ambikapur ramkola ramgiri garhwa sonhat janakpur
+			chaibasa ghatsila 
+			khariar patna_garjat balangir saintala 
+			dhenkanal khurda narsinghpur bhuban angul pal_lahara nayagarh
+			basna paikmal
+			rabkob sundergarh raigadh  jashpur_nagar sitapur upar_ghat
 
 			ujjain mandsaur rampura bhanpura agar indore dhar ratlam jabhua
 			sironj bhilsa bhopal sehore sarangpur maksi raisin chanderi guna
@@ -3966,26 +4010,20 @@ countries = {
 			dongartal bandhugara chhaparagarh balaghat wairagarh katol devgarh
 			basim kalam kelapur panar amravati akola mehkar sindkedh
 			ballarpur aheri bhadrachalam gadchiroli bramhapuri
-			bastar barasuru kondagaon paralkot kanker dantewada jagdalpur
-			kherla hoshangabad chauragarh bhojpur tendukheda
+			kherla hoshangabad bhojpur 
+			lalitpur deogarh bhilsa sugaur
 			garha mandla ghansor nainpur ramgad amarkantak
 			ratnapura sarangarh kashigarh sakti chaiturgarh tummana kenda kawardha nawagarh pendra
 			tilda raipur durg dhamtari rajim sripura khairagarh nandgram ambagarh bemetara deori
 			bandogarh sohagpur beohari ramnagar rewa nagod mauganj madwas sidhi agori vijaygarh
-			deogarh sugaur ujargarh singorgarh murwara damoh lalitpur
-			orchha kundar tehri irij chhatarpur panna rahatgarh khajuraho mahoba bhatta
-			konch kalpi rath banda chitrakuta jhansi kalinjar
+			tehri irij chhatarpur mahoba 
+			konch kalpi rath banda chitrakuta kalinjar
 
-			nagahrada chavand salumbar amet chittor bhilwara phulia mandalgarh
 			dungarpur banswara kanthal
-			sirohi jalor chandravati siwana nadol
+			sirohi
 			gwalior bhind datia narwar sipri sheopur sabalgarh khaniadhana
 			kota bundi mangrol gagraun aklera shahabad
-			sambhar dausa bayana karauli malpura ranthambore ajmer
-			bhatnir anupgarh suratgarh rawatsar sidhmukh taranagar churu sui pugal udasar sardarshahar
-			jaisalmer ludrava ramgar pokhran
-			mandore osian phalvardhika khed pali bahadamer kiradu gudamalani kurki
-			sikar manoharpur jhunjhunu kolasar
+			bayana karauli ranthambore
 			merta nagaur makrana kolayat
 
 			dhrangadhra limbdi ranpur
@@ -3996,7 +4034,7 @@ countries = {
 
 			rander broach baroda nandod
 			danduka dholka ashaval khambat modasa
-			patan deodar radhanpur palanpur idar
+			patan deodar radhanpur palanpur
 			baria champaner mohan astamba_dongar
 
 			kashmore shadodkot shikarpur jhatpat sukkur paat
@@ -4011,7 +4049,12 @@ countries = {
 			ghazni gardez muqur nawah wazakhwa zarghun_shahr karor_2
 			
 			surat dang mayuragiri salagiri chandor udgir bir dahrur qandhar ahmednagar daulatabad jalna nander pathri
-			sirpur manikdrug mahur nirmal chennur adilabad asifabad yegaladapa kaulas balkonda sukhma malkangiri mahagaon
+			sirpur manikdrug mahur nirmal chennur adilabad asifabad yegaladapa balkonda sukhma mahagaon
+
+			dharampur nasik jawhar sinnar daman
+			janjira chaul kalyan bombay bassein
+			singarh raigarh pune junnar chakan
+			sholhapur naldrug ausa parenda chambargonda
 		}
 
 		government = {
@@ -4019,7 +4062,7 @@ countries = {
 			ruler = random
 		}
 		capital = delhi
-		country_rank = empire
+		country_rank = rank_empire
 		starting_technology_level = 5
 		include = "expl_india_muslim"
 		include = "expl_indian_trade_route"

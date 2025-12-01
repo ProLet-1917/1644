@@ -8860,6 +8860,1186 @@ countries = {
 		}
 	}
 
+#India
+
+	GDA = { #Godara kingdom in Jangladesh
+		#Bikaner
+		own_control_core = {
+			bhatnir anupgarh suratgarh rawatsar sidhmukh taranagar churu sui pugal udasar sardarshahar
+		}
+
+		capital = sui
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		government = {
+			ruler = gda_karan_singh_rathore
+
+			reforms = {
+				
+			}
+		}
+		tolerated_cultures = {
+			marwari
+			shekhawati
+		 }
+	}
+
+	JSL = { #Jaisalmer
+		own_control_core = {
+			jaisalmer ludrava ramgar pokhran
+		}
+
+		capital = jaisalmer
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		government = {
+			ruler = jsl_manohar_das_yadava_bhati
+
+			reforms = {
+				
+			}
+		}
+		tolerated_cultures = {
+			marwari
+			shekhawati
+		 }
+	}
+
+	BAW = { #Bahawalpur
+		own_control_core = {
+			nawakot bijnot derawar channan_pir kot_marot uch mir_garh_qila dunga_bunga chishtian khairpur aror
+		}
+
+		capital = uch
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		government = {
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+		tolerated_cultures = {
+
+		 }
+	}
+
+	JOD = { #Jodhpur
+
+		own_control_core = {
+			merta nagaur makrana kolayat
+			mandore osian phalvardhika khed pali bahadamer kiradu gudamalani kurki
+			jalor chandravati siwana nadol
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		capital = gudamalani
+		government = {
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+
+		tolerated_cultures = { gujarati }
+	}
+
+	IDR = { #Idar
+		own_control_core = {
+			idar
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		capital = idar
+		government = {
+
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+	}
+
+	MEW = { #Mewar
+		own_control_core = {
+			nagahrada chavand salumbar amet chittor bhilwara phulia mandalgarh
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		capital = chittor #Or Nagahrada
+		government = {
+			ruler = mew_jagar_singh_sisodia
+
+			reforms = {
+				
+			}
+		}
+
+		tolerated_cultures = { bhil }
+	}
+
+	DHU = { #Jaipur
+		own_control_core = {
+			amber_loc malpura dausa sambhar ajmer
+			manoharpur sikar kolasar jhunjhunu
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		capital = amber_loc
+		government = {
+
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+
+		tolerated_cultures = { shekhawati }
+	}
+
+	BND = { #Orchha
+		own_control_core = {
+			orchha jhansi kundar 
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		capital = orchha
+		government = {
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+
+		tolerated_cultures = { bagheli }
+	}
+
+	BGK = { #Baghelas
+		own_control_core = {
+			 rahatgarh khajuraho
+			panna bhatta
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		capital = bandogarh
+		government = {
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+
+		tolerated_cultures = {
+			bundeli
+			gond
+		 }
+	}
+
+	GHR = { #Garha-Mandla
+		own_control_core = {
+			garha mandla amarkantak ghansor ramgad nainpur chauragarh tendukheda murwara
+			damoh singorgarh ujargarh 
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = garha
+		government = {
+			ruler = ghr_vasudev_rajgond
+			#(exact reign unknown, his preddecessor was Jagannatha and his successor Madan Singh).
+			#Ruler was a Rajput but the kingdom was majority Gond.
+			#Under later Gond rulers this kingdom is eventually dominant in the region for a while.
+			laws = {
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = {
+			bagheli
+			bundeli
+		 }
+	}
+
+	RKS = { #Raksel
+		own_control_core = {
+			ambikapur ramkola ramgiri garhwa sonhat janakpur
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+
+		tolerated_cultures = {
+			chhattisgarhi
+			bagheli
+		}
+
+		capital = ambikapur
+		government = {
+			ruler = random
+		}
+	}
+
+	KKR = { #Khokhra
+		own_control_core = {
+			khukhragarh porahat birugarh badamgarh
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+
+		tolerated_cultures = {
+			kurukh_culture
+			munda_culture
+		}
+
+		capital = khukhragarh
+		government = {
+			ruler = random
+		}
+	}
+
+	PTN = {	#Patna
+		own_control_core = {
+			sambalpur samasingha sonepur redhakhol bargarh debagarh kuchinda
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = patna_garjat
+		government = {
+
+			ruler = random
+
+			laws = {
+				administrative_system = feudal_administration
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = { chhattisgarhi }
+	}
+
+	KJA = { #Keonjhar_State
+		own_control_core = {
+			keonjhar khiching ghasipura jyotipur ghatgaon
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = keonjhar
+		government = {
+			ruler = random 
+
+			laws = {
+				administrative_system = feudal_administration
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = {
+			ho_culture
+			orissan
+		}
+	}
+
+	BNA = { #Bonai_State
+		own_control_core = {
+			bonaigarh
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = bonaigarh
+		government = {
+			ruler = random 
+
+			laws = {
+				administrative_system = feudal_administration
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = {
+			kurukh_culture
+			orissan
+		}
+	}
+
+	MJU = { #Mayurbhanj_State
+		own_control_core = {
+			nilagiri baripada rairangpur
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = baripada
+		government = {
+			ruler = random 
+			#There are supposed to have been 31 rulers before 1660, but their names are unknown.
+
+			laws = {
+				administrative_system = feudal_administration
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = {
+			santal_culture
+			orissan
+		}
+	}
+
+	BST = { #Bastar_State
+		own_control_core = {
+			dantewada barasuru sukhma rekapalle bastar kondagaon jagdalpur
+		}
+
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = bastar
+		government = {
+			ruler = bst_pratap_deo_bhanja
+			laws = {
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = {
+			gond
+			halbi
+			telugu
+		}
+	}
+
+	JPO = { #Jeypore_Estate
+		own_control_core = {
+			nandapur kotpad rayagada kotagad gunupur malkangiri nilakamberu bissam_cuttack kasipur nowrangapur
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = nandapur
+		government = {
+			ruler = random 
+
+			laws = {
+				administrative_system = feudal_administration
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = {
+			khond_culture
+			gond
+		}
+	}
+
+	KLH = { #Kalahandi
+		own_control_core = {
+			jajjaldeypur kalahandinagara raighar belkhandi
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = kalahandinagara
+		government = {
+			ruler = random
+
+			laws = {
+				administrative_system = feudal_administration
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = {
+			khond_culture
+		}
+
+	}
+
+	KNK = { #Kanker_State
+		own_control_core = {
+			kanker paralkot
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = kanker
+		government = {
+			ruler = random 
+			laws = {
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = { gond }
+	}
+
+	BAD = {	#Baudh_State
+		own_control_core = {
+			baud athmallik phulbani udayagiri_kotagad
+			kunjabangarh
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = baud
+		government = {
+			ruler = random.
+
+			laws = {
+				administrative_system = feudal_administration
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+	}
+
+	#Bhutan-Nepal
+	TWI = { #Twipra
+		own_control_core = {
+			rangamati agartala chandrapur kailashahar pilak laskarpur
+			karpus_mahal
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+
+		tolerated_cultures = {
+			chakma_culture
+		}
+
+		capital = rangamati
+		government = {
+			ruler = random
+			laws = { medieval_levy_law = paik_system }
+		}
+	}
+
+	LUR = { #Laur
+		own_control_core = {
+			 chisobibra jaintiapur lyngngam nabagram ruga sohra sutnga
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		court_language = sanskrit_language
+
+		tolerated_cultures = {
+			khasi_culture
+			garo_culture
+		}
+
+		capital = nabagram
+		government = {
+			ruler = random
+		}
+	}
+
+	AHO = { #Ahom
+		own_control_core = {
+			charaideo charagua namrup noadihang
+			konwargaon lakhimpur
+			itanagar nakshaparvat
+			morangi dergaon
+			durjaya rowta tezpur bordowa malinithan dibrugarh bengmara gomsi sadiya tengapani
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_animist_monarchy"
+		government = {
+			ruler = random
+			laws = { medieval_levy_law = paik_system }
+		}
+
+		tolerated_cultures = {
+			tiwa_culture tani_culture karbi_culture
+		}
+
+		capital = charaideo
+	}
+
+	LMN = { #Lho Mon
+		own_control_core = {
+			paro daga jabar_goemba punakha thimpu wangdue
+			zhemgang trongsa bumthang zhongkar lhuntsi tawang trasigang
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_animist_monarchy"
+
+		capital = paro
+		government = {
+			ruler = random
+		}
+	}
+
+	SKK = { #Sikkim
+		own_control_core = {
+			yuksom dalingkot gangtok tsunthang
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_animist_monarchy"
+
+		capital = yuksom
+		government = {
+			ruler = random
+		}
+	}
+
+	LWA = { #Limbuwan
+		own_control_core = {
+			vijayapur phakphok taplejung
+			chainpur ranibas dudhakunda halesi okhaldhunga dolakha sunkoshi ramechhap sindhuli rajanari
+			chaudandi 
+		}
+
+		own_control_integrated = {
+
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+
+		tolerated_cultures = {
+			kamarupi
+		}
+
+		capital = vijayapur
+		government = {
+			ruler = random
+
+			laws = {
+				medieval_levy_law = peasant_levies
+			}
+		}
+	}
+
+	KTU = { #Kathmandu
+		own_control_core = {
+			kathmandu dhading gorkha lamjung nuwakot upardang
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			tamang_culture
+		}
+
+		capital = kathmandu
+	}
+
+	KHS = { #Khasa
+		own_control_core = {
+			sinja bajura dullu jumla kharpunath yanal_densa
+			jagatipur chaughera dolpo malneta musikot pyuthan salianah
+			pokhara gulmi takam tanahun tansen
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+
+		tolerated_cultures = {
+			magar_culture
+			newar_culture
+			tharu_culture
+		}
+
+		capital = sinja
+		government = {
+			ruler = random
+		}
+	}
+
+	DTI = { #Doti
+		own_control_core = {
+			dipayal acham ajayameru bajhang kailali kanchapur
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+
+		tolerated_cultures = {
+			khas_culture
+			tharu_culture
+		}
+
+		capital = dipayal
+		government = {
+			ruler = random
+		}
+	}
+
+	KMN = { #Kumaon
+		own_control_core = {
+			champavati almora askot baijnath dwarahat kashipur nainital rudrapur_kumaon
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		court_language = sanskrit_language
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			garhwali
+			dehlavi
+		}
+
+		capital = champavati
+	}
+
+	GWL = { #Garhwal
+		own_control_core = {
+			chandpur_garhi badrinath devprayag gangadvara srinagar_garhwal thalisain uttarkashi
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		court_language = sanskrit_language
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			dehlavi
+		}
+
+		capital = chandpur_garhi
+	}
+
+	SRM = { #Nahan
+		own_control_core = {
+			kalsi nahan
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+
+		tolerated_cultures = {
+			kangri
+		}
+
+		capital = kalsi
+		government = {
+			ruler = random
+		}
+	}
+
+	JBL = { #Jubbal
+		own_control_core = {
+			soonpur hanol
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+
+		capital = soonpur
+		government = {
+			ruler = random
+		}
+	}
+
+	SKT = { #Suket
+		own_control_core = {
+			suket mandi sarahan kahlur naggar bajaura
+		}
+
+		capital = suket
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		government = {
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+
+		tolerated_cultures = { kumaoni }
+	}
+
+	KGR = { #Kangra
+		own_control_core = {
+			nagarkot palampur kutlehar nagarkot nurpur pathankot
+		}
+
+		capital = nagarkot
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		government = {
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+	}
+
+	KMA = { #Kamata
+		own_control_core = {
+			jalpaiguri birpara kamatapur koch_bihar panchagarh
+		}
+
+		own_control_integrated = {
+
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			bodo_culture
+			rabha_culture
+		}
+
+		capital = koch_bihar
+	}
+
+#South India
+	DEC = { #Deccan
+		own_control_core = {
+			bidar yedagiri gulbarga kalyani sagar talikota bagalkot bijapur manyakheta chitapur bhalki kembhavi sindagi basavana_bagewadi badami
+			savantvadi rajapur dabhol sangamesvara
+			pratapgarh satara karad kolhapur aundh jath miraj athani
+			ajara mudhol belgaum londa khanapur gokak raybag
+			raichur mudgal anegandi koppal hubli darwar bankapura devadurga kundgol sonda_karnataka gadag
+			kaulas adoni
+			parangipettai pondicherry madras maduranthakam arcot
+			vellore kanchipuram gingee padaividu tiruvannamalai
+			tirupati cuddapah medanapalle kangundi gurramkonda pottapi
+			kadiri penukonda gandikota chittoor pakala anantapur rayachoti
+			palasamudram dharmavaram vempalle
+			pavagada
+			doni gutti kurnool srisailam nandyal ahobalam udayagiri porumamilla dhone s_nallamalla
+			vijayanagar bellari rayadurga haveri puvina_padangile
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		government = {
+			ruler = random
+		}
+
+		capital = bijapur
+
+	}
+
+	GCO = { #Galconda
+		own_control_core = {
+			golconda koilkonda rachakonda devarakonda panugallu anumagallu amrabad nalgonda gadwal ghampur makhtal tandur kohir undrugonda
+			warangal palampet ramagiri vemulawada medak bhongir molangur korutla adlur tupran mangapet parkal
+			khammamet kalluru kondapalli wazirabad kothagudem nuzvid
+			visakhapatnam vizianagaram pithapuram tuni rampa bobbili madugula
+			rajamahendry pallakolu masulipatnam ellur peddapalli
+			adanki markapur motupalli 
+			kondavidu macherla cumbum vinukonda guntur kanigiri
+			pazhaverkadu durgarazpatnam nellore kavali kandakura gudur kalahasti
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		capital = golconda
+		government = {
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+
+	}
+
+	ALU = { #Keladi Nayaka
+		own_control_core = {
+			honnavara bhatkal karwar madgaon
+			karkala mangalore udupi kasaragod uppinangady
+			kannur wayanad thalassery
+		}
+		own_control_integrated = {
+
+		}
+
+		include = "indian_hindu_monarchy_jain"
+		capital = 
+		government = {
+			ruler = random 
+
+			reforms = {
+				
+			}
+
+			laws = {
+				administrative_system = feudal_administration
+			}
+
+			#Societal Values
+			land_vs_naval = 50
+		}
+
+		tolerated_cultures = {
+			malayali
+		 }
+	}
+
+	MYS = { #Mysore
+		own_control_core = {
+			mysore shravanabelagola seringapatam srigangapatna mankunda sathyagala
+			ummatur belur dvarasamudra haleri hassan_karnataka kadur narsipur nanjanagud
+			bangalore kolar manyapura nandagiri devanahalli hoskote ballalapura
+			magadi sira chitradurga uchangidurga tumkur hanagal aimangala
+			sringeri bednur ikkeri basavapattana shimoga
+		}
+
+		country_rank = rank_kingdom
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		capital = mysore
+		government = {
+
+			regnal_numbers = {
+				name_nripa_kama = 2
+				name_vinayaditya = 1
+				name_ereyanga = 1
+				name_vishnuvardhana = 1
+				name_vira.name_narasimha = 2
+				name_vira.name_someshwara = 1
+				name_narasimha = 3
+				name_vira.name_ballala = 3
+			}
+			ruler = hsl_kempa_deva_wodeyar
+
+			reforms = {
+				nayankara_system
+			}
+
+			laws = {
+				administrative_system = poligar_system_policy
+			}
+		}
+
+		tolerated_cultures = {
+			tamil
+			telugu
+			kodaga
+		 }
+	}
+
+	#MAB - Madurai Sultanate
+	MAB = {
+		own_control_core = {
+			kayal tirunelveli tenkasi kayattar sankaranayinarkoil
+			madurai ramesvaram vembar thoothukudi thondi aruppukkottai virudhunagar devakottai adams_bridge
+			puddokothai nagapattinam tiruccirapalli thanjavur srirangam jayankondam pennadam
+			karaikal pattukkottai perambalur tirukoilur kallakurichi
+			salem dharmapuri krishnagiri sendamangalam jagadevipalayam denkanikottai pennagaram biligiriranga
+			erode coimbatore dharapuram karur dindigul kambam batlagundu
+			satyamanagalam palani tiruppur bhavani 
+		}
+		own_control_conquered = {
+
+		}
+
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		include = "indian_muslim_monarchy_no_censor"
+		court_language = persian_language
+
+		country_rank = rank_kingdom
+		capital = madurai
+		government = {
+
+			ruler = mab_tirumala_nayaka
+
+			reforms = {
+				taluqdar_nobility
+				indian_sultanate_reform
+			}
+
+			#Societal Values
+			land_vs_naval = 50
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		tolerated_cultures = {
+			tamil
+		}
+
+	}
+
+	ZMR = { #Kozhikode
+		own_control_core = {
+			malapuram kozhikode ponnani angadippuram
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy"
+		capital = kozhikode
+		government = {
+			ruler = random 
+
+
+			reforms = {
+				
+			}
+
+			#Societal Values
+			land_vs_naval = 50
+		}
+	}
+
+	KDU = { #Kodungallur
+		own_control_core = {
+			kodungallur thrissur palghat
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy"
+		capital = kodungallur
+		government = {
+			ruler = random #Unknown
+
+			reforms = {
+				
+			}
+
+			#Societal Values
+			land_vs_naval = 50
+		}
+	}
+
+	PDU = { #Kingdom_of_Cochin
+		own_control_core = {
+			prakkad manikandapuram karikkode kochi edappaly
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy"
+		capital = kochi
+		government = {
+			ruler = random 
+
+
+			reforms = {
+				
+			}
+
+			#Societal Values
+			land_vs_naval = 50
+		}
+	}
+
+	VND = { #Venad
+		own_control_core = {
+			thiruvananthapuram kollam kanyakumari pandalam kottarakkara
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy"
+		capital = kollam
+		government = {
+			ruler = random 
+
+			reforms = {
+				
+			}
+
+			#Societal Values
+			land_vs_naval = 50
+		}
+
+		tolerated_cultures = { tamil }
+	}
+
+	DGL = { #Maldives
+		own_control_core = {
+			male_atoll addu_atoll nilandhe_atoll thiladhunmathi_atoll
+		}
+
+		include = "indian_muslim_monarchy_no_dharmic_dhimmi"
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+		government = {
+			ruler = random
+
+			#Societal Values
+			land_vs_naval = 50
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		country_rank = rank_kingdom
+		capital = male_atoll
+	}
+
+	JFN = { #Jaffna
+		own_control_core = {
+			jaffna mullaitivu trincomalee vavuniya mahatittha medawachchiya
+			madakalapu digavapi salavata yapavu kurunegala negombo anuradhapura
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy"
+		capital = jaffna
+		government = {
+			ruler = random
+
+			reforms = {
+				
+			}
+
+			#Societal Values
+			land_vs_naval = 50
+		}
+
+		tolerated_cultures = { sinhalese }
+	}
+
+	DBD = { #Kandy
+		own_control_core = {
+			polonnaruva hatthigiripura sitavaka devanagara hambantota tissamaharama badulla gampola ratnapura_LKA kandy
+		}
+
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy"
+		capital = kandy
+		government = {
+			ruler = random
+
+			#Societal Values
+			land_vs_naval = 50
+
+			laws = {
+				marriage_law = monogamous_marriage
+				heir_religion_law = heir_same_religion
+				administrative_system = feudal_administration
+			}
+		}
+
+		tolerated_cultures = {
+			vedda
+			tamil
+		}
+
+	}
+
+	ARK = { #Arakan
+		own_control_core = {
+			launggyet
+			akyab ann gwa maungdaw minbya mrauk_u ramree talak_burma taungup thandwe weithali
+			chittagong chakaria kaptai ramu sitakunda
+		}
+
+		include = "south_east_asia_monarchy"
+		government = {
+			ruler = random
+			laws = {
+				education_masses_law = uneducated_masses_education
+			}
+		}
+
+		tolerated_cultures = {
+			chakma_culture
+		}
+
+		capital = launggyet
+	}
+
+#Kashimir/Kalat
+	CTR = { #Chitral
+		own_control_core = {
+			chitral mulkhow yarkhun mastuj yarkhun
+		}
+
+		capital = chitral
+
+		include = "expl_india_muslim"
+		include = "india_limited_muslim_monarchy"
+		government = {
+			ruler = random
+
+			laws = {
+				sharia_law = hanafi_policy
+			}
+		}
+
+		tolerated_cultures = { chitrali }
+		religious_school = hanafi_school
+		government = { mysticism_vs_jurisprudence = -15 }
+		
+	}
+
+	KLA = { #Kalat
+		own_control_core = {
+			surab kalat mastung nushki kharan besima washuk nagh
+			khuzdar awaran jhao mashkai nal
+			bela hinglaj lakhsar ormara sonamiani wadh
+			zik 
+		}
+
+		include = "expl_middle_east"
+		starting_technology_level = 0
+		include = "muslim_tribe_no_coast"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = hanafi_policy
+			}
+		}
+
+		religious_school = hanafi_school
+		government = { mysticism_vs_jurisprudence = -15 }
+		
+		capital = kalat
+		dynasty = mirwari_dynasty
+		court_language = persian_language
+	}
 
 }
 }
