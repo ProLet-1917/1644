@@ -1431,6 +1431,7 @@ countries = {
 				amnye_machen
 				zeku quge sailahai
 				dsun chogyal_khar gashun tsaidam nalinggele
+				lungkya madoi bayan_har darlag kunlun qumarleb
 				#达木八旗 
 				nakchu barom rongpo #nakchukha_province
 				tsora taklung damzhung
@@ -1806,7 +1807,7 @@ countries = {
 		}
 		MYA = { #孟养 Mongyang
 			own_control_core = {
-				mongyang monhyin katha phakant zalon_taung htamanthi thaungdut tamu 
+				mongyang monhyin katha phakant zalon_taung htamanthi thaungdut tamu minsin
 			}
 			include = "south_east_asia_monarchy_no_coast"
 			capital = monhyin
@@ -1903,6 +1904,10 @@ countries = {
 				karasahr kumux bosten bosten_lake kuruktag #karasahr_province
 				turpan lukchun pichan qocho toksun #turpan_province
 				hami nazhi geziyandun #hami_province
+				zarafshan sarikol akto kizilsu koshoy_korgon naryn chon_naryn cholok_kaiyn
+				ketmen_tobe jumgal kochkor barskoon san_tash balychy
+				uzkand jalalabad_fergana arslanbob gulcha
+				dashahai loulan bailongdui 
 			}
 			capital = yarkand
 			include = "eurasian_horde_no_coast_no_pleading"
@@ -1919,6 +1924,7 @@ countries = {
 				western_india_region
 				west_china_region
 				mongolia_region
+				xinjiang_region
 			}
 			government = {
 				ruler = chg_abdulah
@@ -1936,6 +1942,42 @@ countries = {
 				gold = 100 #国库
 				stability = 60 #稳定度
 				army_tradition = 60 #军队传统
+			}
+		}
+		LGT = { #林葱土司
+			own_control_core = {
+				dzagyal khana lab serkar
+			}
+			our_cores_conquered_by_others = {
+				longtang gegong mangge sershul
+			}
+			include = "limited_east_asia_monarchy"
+			tolerated_cultures = {
+				amdowa_culture
+			}
+			capital = longtang
+			government = {
+				ruler = random
+			}
+		}
+		NCN = { #囊谦土司
+			own_control_core = {
+				nangchen chodrak gechak jang_tana pelme zurmang_namgyaltse
+			}
+			include = "east_asia_monarchy_no_coast"
+			capital = nangchen
+			government = {
+				ruler = random
+			}
+		}
+		NBH = { #霍尔
+			own_control_core = {
+				biru pembar riwoche samda shopando sok tengchen yangdzong
+			}
+			include = "asia_advanced_no_pagan_tribe"
+			capital = biru
+			government = {
+				ruler = random
 			}
 		}
 	}
