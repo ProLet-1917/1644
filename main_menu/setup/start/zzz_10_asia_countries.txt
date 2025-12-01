@@ -1495,6 +1495,152 @@ countries = {
 
 			}
 		}
+		CBG = { #高平莫氏 Cao Bằng Nhà Mạc
+			own_control_core = {
+				qyang_uyen bac_thai_nguyen
+			}
+			capital = qyang_uyen
+			include = "vietnamese_champa_monarchy"
+			government = {
+				ruler = vtm_mo4_jingwan
+				ruler_term = { character = vtm_mo4_jingwan start_date = 1638.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = vietnamese_language
+			country_rank = rank_kingdom
+			accepted_cultures = {
+				vietnamese_culture
+				muong_culture
+			}
+			flag = "DAI"
+			country_name = "CBG"
+			currency_data = {
+				gold = 50 #国库
+				stability = 80 #稳定度
+				army_tradition = 20 #军队传统
+
+			}
+		}
+		TTQ = { #宣光武氏 Trấn Tuyên Quang Chúa Bầu
+			own_control_core = {
+				tuyen_quang bao_lac binh_lam binh_nguyen dai_man thu_vat
+			}
+			capital = tuyen_quang
+			include = "vietnamese_champa_monarchy"
+			government = {
+				ruler = vtm_wu3_gongde2
+				ruler_term = { character = vtm_wu3_gongde2 start_date = 1623.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = vietnamese_language
+			country_rank = rank_duchy
+			accepted_cultures = {
+				vietnamese_culture
+				muong_culture
+			}
+			flag = "DAI"
+			country_name = "TTQ"
+			currency_data = {
+				gold = 50 #国库
+				stability = 80 #稳定度
+				army_tradition = 20 #军队传统
+
+			}
+		}
+		TRH = { #郑主 Chúa Trịnh
+			own_control_core = {
+				thang_long tam_dai thai_binh thien_quan #升龙
+				quy_hoa lai_chau thuy_vi van_ban fan_si_mountains2 fan_si_mountains3 #归和
+				nam_sach hong_chau khoai_chau vu_ninh #南策
+				anbang quang_yen van_don #海东
+				thai_nguyen cam_hoa tuyen_hoa vo_nhai #太原
+				lang_son lang_giang loc_chau that_nguyen van_kiep #谅山
+				thien_truong bo_hai_khau trang_an #天长
+				da_giang mang_viet muong son_la #牛吼
+				thuan_chau muong_cha #州院
+				muong_luan
+				thanh_hoa co_dang nga_lac khet_theu quan_da_chau #清化
+				dien_chau quy_chau quynh_lam #演州
+				hoan_chau ky_son mat_chau #驩州
+				nghe_ann chi_la nhat_nam tho_hoang #乂安
+
+			}
+			capital = thang_long
+			include = "vietnamese_champa_monarchy"
+			government = {
+				ruler = vtm_zheng_zhuang1
+				ruler_term = { character = vtm_zheng_zhuang1 start_date = 1623.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = vietnamese_language
+			country_rank = rank_kingdom
+			accepted_cultures = {
+				vietnamese_culture
+				muong_culture
+			}
+			flag = "DAI"
+			country_name = "TRH"
+			currency_data = {
+				gold = 100 #国库
+				stability = 40 #稳定度
+				army_tradition = 20 #军队传统
+
+			}
+		}
+		QNQ = { #阮主 Quảng Nam Quốc Chúa Nguyễn
+			own_control_core = {
+				amarendrapura phon_nha visnupura vrddha_ratnapura annamese_range5 #顺化
+				indrapura dien_ban simhapura #广南
+				vijaya amaravati bong_son ha_va_nguon #广义
+				aryaru #绥和
+			}
+			capital = visnupura #顺化
+			include = "vietnamese_champa_monarchy"
+			government = {
+				ruler = vtm_ruan_fulan2
+				ruler_term = { character = vtm_ruan_fulan2 start_date = 1635.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = vietnamese_language
+			country_rank = rank_duchy
+			accepted_cultures = {
+				vietnamese_culture
+				muong_culture
+			}
+			flag = "DAI"
+			country_name = "QNQ"
+			currency_data = {
+				gold = 100 #国库
+				stability = 80 #稳定度
+				army_tradition = 20 #军队传统
+
+			}
+		}
+		CHA = { #占城 Chăm Pa
+			own_control_core = {
+				panduranga bal_cattinon camp_po_thit chan_bo kampong_sraka_trey 
+				kauthara cat_tien di_dinh
+			}
+			capital = panduranga
+			include = "vietnamese_champa_monarchy"
+			government = {
+				ruler = cha_po_rome
+				ruler_term = { character = cha_po_rome start_date = 1627.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = cham_language
+			country_rank = rank_kingdom
+			accepted_cultures = {
+				cham_culture
+			}
+			flag = "DAI"
+			country_name = "CHA"
+			currency_data = {
+				gold = 50 #国库
+				stability = 80 #稳定度
+				army_tradition = 20 #军队传统
+			}
+		}
 	}
 }
 
