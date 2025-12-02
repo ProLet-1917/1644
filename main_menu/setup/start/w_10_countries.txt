@@ -32,6 +32,7 @@ countries = {
 		include = "catholic_monarchy"
 		include = "german_principality"
 		government = {
+			type = republic
 			ruler = hol_frederik_hendrik_van_oranje
 
 			ruler_term = { character = frederik_hendrik_van_oranje start_date = 1644.1.1 regnal_number = 1 }
@@ -4539,7 +4540,7 @@ countries = {
 
 #Poland - Lithuania Commonwealth
 
-	POL = {	#Poland
+	PLC = {	#Poland
 		own_control_core = {
 			#Lesser Poland
 			krakow chrzanow ksiaz_wielki proszowice
@@ -8377,20 +8378,20 @@ countries = {
 			bronnitsa gruzino veliky_porog valday pribuzh izboishchi pashozero tervenichi megra voznesenye ostrechiny andomsky_pogost
 			kinerma pryazha sellinkyla karhumagi puatane saarijoki sumsky_posad unezhma vygozero maloshuyka
 			chelmuzhi vodlozero shalskii rakitnya mikshino bernovo yezsk lyuban
-			#Principality of Volokolansk
-			yoniveem innurmin nuvuqaq kytryn yanrakynnot sigheneg guvrel nutepylmyn enmyl_yn nunligran keniergyn ervykynnot 
-			valkall_an rykuul ugolnye nyerpicha konchalyt gytgomkyvamm tadlyeoan unazigmit
-			anadyr_trail krasnyano tavayveem v_enyn tumanskaya y_lkytveem gacgatagyn
-			mejnypilgyn vatyrkan vukvylgayat machevna tyulene achaivayam apuka pakhachi khalino tilichiki talovka manily kamenskoie oklan paren gizhiga 
-			skrytaya kichiga karaga ivashka karagin kuyul parapolsky rekinniki podkagernoye lesnaya 
-			kuukucyn keelivtyn otrozhny kagyrgyn ujvyn yeropol
-			palana voyampolka tigil sedanka kovran 
-			uka_town shiveluch klyuchi kamchatsk malka
-			ostrov_beringa milkovo achava oktyabr_skii pauzhetka kurile_lake 
-			kozyrevsk krutogorovskiy sobolevo kirovskiy khayryuzovo
-			amguema iultin vankarem ryrkaypiy polyarny yakan valkaran 
-			chirovoye vulvyveyem ekityki palyavaam ichuveem peekin yanranay apapelgino valkumey rytkuchi chaun elgygytgyn 
-			elgygytgyn_lake ayon nutel_gyrgym pucheveyem raucha lelyuveyem
+			##Principality of Volokolansk
+			#yoniveem innurmin nuvuqaq kytryn yanrakynnot sigheneg guvrel nutepylmyn enmyl_yn nunligran keniergyn ervykynnot 
+			#valkall_an rykuul ugolnye nyerpicha konchalyt gytgomkyvamm tadlyeoan unazigmit
+			#krasnyano tavayveem v_enyn tumanskaya y_lkytveem gacgatagyn
+			#mejnypilgyn vatyrkan vukvylgayat machevna tyulene achaivayam apuka pakhachi khalino tilichiki talovka manily kamenskoie oklan paren gizhiga 
+			#skrytaya kichiga karaga ivashka karagin kuyul parapolsky rekinniki podkagernoye lesnaya 
+			#kuukucyn keelivtyn otrozhny kagyrgyn ujvyn yeropol
+			#palana voyampolka tigil sedanka kovran 
+			#uka_town shiveluch klyuchi kamchatsk malka
+			#ostrov_beringa milkovo achava oktyabr_skii pauzhetka kurile_lake 
+			#kozyrevsk krutogorovskiy sobolevo kirovskiy khayryuzovo
+			#amguema iultin vankarem ryrkaypiy polyarny yakan valkaran 
+			#chirovoye vulvyveyem ekityki palyavaam ichuveem peekin yanranay apapelgino valkumey rytkuchi chaun elgygytgyn 
+			#elgygytgyn_lake ayon nutel_gyrgym pucheveyem raucha lelyuveyem
 
 
 
@@ -8400,9 +8401,12 @@ countries = {
 			tavdinsky_sloboda yurginskoye vikulovo yendyr bardak kharom_vosh kartauzh 
 			chumyak yendra belogorye karymkary nazym sukhorukova landytuv un_zhallor kazym sumgut_vosh vezhakary kaltysyany ayyugan
 
-			irkutsk slyudyanka cheremkhovo zalari
-			ust_kut reka_tuba nikolsky_pogost irkutsk_kazachinskoye zhigalovo bayanday kachug balagansk baikal osinsky
-
+			#irkutsk slyudyanka cheremkhovo zalari bayanday kachug osinsky #Syayan fixes
+			ust_kut reka_tuba nikolsky_pogost irkutsk_kazachinskoye zhigalovo balagansk baikal 
+			djee argi dep kupuri mulmuga tok
+			gilyuy bryante mogot tukuringra tynda urkan
+			yakesa amazar emuer mohe ollo urka
+			
 			surgut sykhtymlor trom_yegan bolshoy_balyk yugranskaya_ob irtysh megion bolshoy_yugan upper_ob
 			kargasok vasyugan kolpashevo tara znamenskoye ust_ishim shish muromtsevo
 
@@ -8439,7 +8443,7 @@ countries = {
 			kezhma upper_angara lower_angara educhanka yarkino manzaya boguchany chunoyar aban
 
 			syuldyukar kuchugunnur delinde batyr olguydakh syrgan emyakhsin
-			khakhsyk alymdya morkoka tangkhay ulakhan_vava aikhal udachny kharyyalakh zhilinda ebelyakh saskylakh yunyung_khaya anabar uele udya puur_trail
+			khakhsyk alymdya morkoka tangkhay ulakhan_vava aikhal udachny kharyyalakh zhilinda ebelyakh saskylakh yunyung_khaya anabar uele udya
 
 			kiya yeruda teya tis_reka sulomay kuzmovka
 			vangash enashimo kardakan vel_mo bryanka ika_nepa bur_nepa tokma icheda chambeta sekili 
@@ -8447,38 +8451,14 @@ countries = {
 
 			macha tinnaya patom nyuya lensk chamcha nakhara khamra
 			witym chuya peledui vitim alysardakh yukte  uel_tympychan tupuchikan dulis_ma moshi ichera
-			dyrashnichikha makarikha yerema os_kino chona_trail markhaya_trail irelyakh zarya tegelspit dyunkun ulegir kuchaky siyene
+			dyrashnichikha makarikha yerema os_kino irelyakh zarya tegelspit dyunkun ulegir kuchaky siyene
 
-			khamakar inarigda yukta ilimpeya kudepyapka ekonda turu tunguska_trail6 tunguska_trail5 vilyuy_trail
-			nidym uchami tutonchany nimde erachimo munduyskoye_lake
+			khamakar inarigda yukta ilimpeya kudepyapka ekonda turu
+			nidym uchami tutonchany nimde erachimo
 
-
-			yoniveem innurmin nuvuqaq kytryn yanrakynnot sigheneg chauchu_trail1 guvrel 
-			nutepylmyn enmyl_yn nunligran keniergyn ervykynnot 
-			valkall_an rykuul ugolnye nyerpicha konchalyt gytgomkyvamm tadlyeoan unazigmit 
-			anadyr_trail krasnyano tavayveem v_enyn tumanskaya y_lkytveem gacgatagyn 
-
-			mejnypilgyn vatyrkan vukvylgayat machevna tyulene 
-			achaivayam apuka pakhachi khalino tilichiki 
-			talovka manily kamenskoie oklan paren gizhiga
-			skrytaya kichiga karaga ivashka karagin
-			kuyul parapolsky rekinniki podkagernoye lesnaya
-			kuukucyn keelivtyn otrozhny kagyrgyn ujvyn yeropol
-
-			palana voyampolka tigil sedanka kovran
-			uka_town shiveluch klyuchi kamchatsk malka 
-			ostrov_beringa  milkovo achava oktyabr_skii pauzhetka
-			kozyrevsk krutogorovskiy sobolevo kirovskiy khayryuzovo 
-
-			amguema iultin vankarem ryrkaypiy polyarny yakan valkaran 
-			chirovoye vulvyveyem ekityki palyavaam ichuveem
-			peekin yanranay apapelgino valkumey rytkuchi
-			chaun chuvan1 elgygytgyn chuvan2 chuvan3 
-			ayon nutel_gyrgym pucheveyem raucha lelyuveyem anjuj_river
-
-			ypalgyn vstrechny keperveem orlovka aliskerovo ilirnej 
-			chivitkino evenksk kushka merenga omchikan buksunda
-			anyuysk dve_viski cerskey ambarchik mikhalkino nizhnekolymsk  ozero_chokudakh ozero_nerpinchye
+			#ypalgyn vstrechny keperveem orlovka aliskerovo ilirnej 
+			#chivitkino evenksk kushka merenga omchikan buksunda
+			#anyuysk dve_viski cerskey ambarchik mikhalkino nizhnekolymsk  ozero_chokudakh ozero_nerpinchye
 			yermolovo timkino kolymskoie omoloon achaka xalima kolyma_river
 			shabash berezovka lobuya srednekolymsk sededema urodan  ozero_xalima ozero_talgyn
 
@@ -8488,17 +8468,17 @@ countries = {
 			oyuuhardaax argaxtaax kelyuyekyan andryushkino aly_kyuyel ozero_unarba
 			xatingnaax nalimsk dyryn_ebe kal_gatana sylgy_ytar ulakh ozero_keppetekh ozero_balyma
 			ebeex olooko_kuol ynakh succun kholongsolokh sybaatayy ozero_chonduya ozero_pavylon ozero_ulakh_ulyong
-			suoyungu ocuogun khargytyr kurung_yuryakh suturuoxa tuyandina khachimcher soyangi_trail ozero_kalgyn ozero_suturuaka ozero_ozhogino
+			suoyungu ocuogun khargytyr kurung_yuryakh suturuoxa tuyandina khachimcher ozero_kalgyn ozero_suturuaka ozero_ozhogino
 			shestakova kien_kuol abyy esteriktyaax syagannaax kebergene 
 
-			solomoydokh nagaradalaax kulun_olbut cibagalaax xonuu soboloox indigiir_trail orgulaax_trail 
-			tala_kyuyel ziryanka utaya ugolney nelemney glukharinyi kolyma_trail
-			burkand_ya kontrand_ya delyankir artyk pobeda ust_nera 
-			kulu tokichan orotuk kadykchan neksikan burkhaia iagodnoie
-			tala kupka myakit debin orotukan buiunda seymchan
+			solomoydokh nagaradalaax kulun_olbut cibagalaax xonuu soboloox 
+			#tala_kyuyel ziryanka utaya ugolney nelemney glukharinyi
+			pobeda ust_nera #burkand_ya kontrand_ya delyankir artyk 
+			#kulu tokichan orotuk kadykchan neksikan burkhaia iagodnoie
+			#tala kupka myakit debin orotukan buiunda seymchan
 
-			takhtoyamsk brokhovo yamsk atargan magadan palatka tauisk 
-			madaun atka bakhapcha chalbukhan omchug omchak moi_urusta kolyma_highlands
+			#takhtoyamsk brokhovo yamsk atargan magadan palatka tauisk 
+			#madaun atka bakhapcha chalbukhan omchug omchak moi_urusta kolyma_highlands
 			tenut oimiakon kuydusun agayakan kyubeme razvika 
 			ketanda ogonok yugorenok ust_ynykchan eldikan tumul
 			ushki okam ul_ya arka enken ayan aimchan
@@ -8521,11 +8501,11 @@ countries = {
 			tyokhtyur charang kenkeme ulakhan_an toyon_ary tit_ary yedey ebya yert tongulakh
 			buotama talalakh tuolba tuorbchany olekma kudu_kyuyol balagannakh marxa sanyyakhtakh malykhan tuobuya mekimbya keyikte
 
-			alii kustur sakkyryr tenki machakh zhargalakh dulgalakh dulgalaax_trail
+			alii kustur sakkyryr tenki machakh zhargalakh dulgalakh
 			bala sysy_meyite sartang barylas echiy suordakh nyuele
 			topolinoe kyulyunken nalyachchyya nelgese sentachan derbeke chyliga
 			ust_charky tokuma boronuk yuttyakh batagai taala cheriumche
-			udamik tompo menkyule uyana barayy tukulan yana_plateau
+			udamik tompo menkyule uyana barayy tukulan
 
 			uolbut zharkhan daban tegen yunkyur kysyl_yuryuyya
 			tonguo alagadyan chayygda kyundyade arangastakh kempendyai namana
@@ -8534,11 +8514,11 @@ countries = {
 			ygyatta bysyttakh khati yerkyutey iyesyak khannya orotko ot_kyuyel sokurdakh tumat tenkeli chaydakh 
 			buor_yuryakh chondon_tundra ozero_sytygan_lake ozero_kubuy_lake ozero_orotko_lake ozero_laydy_kyuyel_lake 
 			altaikha oymyakon berelekh baky uyandi yrgychen kurannakh
- 			uyandina_trail salylyk selennyakh nemkuchen khabzhylakh chondon ukyulyakh yarok ol_de_trail 
+ 			salylyk selennyakh nemkuchen khabzhylakh chondon ukyulyakh yarok 
 			kuogastakh kazachye kular ust_kuiga spirka kel_tegey khayyr 
 			bestyakh bakhanay jigansk kystatyam 
 			ulakhan_kyuel_lake tiksi kengdey chekurovka kyusyur siktyakh molodo zharzhan 
-			olenyok taymylyr noyuo sklad kelimyar khorbusuonka reka_pur uolya_trail 
+			olenyok taymylyr noyuo sklad kelimyar khorbusuonka reka_pur 
 			kele arylakh segyan_kyuyol batamay sangar kuturga omoloy dyagaryn urasalakh namy tyul_gyar kuolay naiba
 
 			enurmino_point inchoun_coast diomede_sea mechigmenskiy_zaliv achchen_bay medvezh_ye_bay1 medvezh_ye_bay2 
@@ -8600,6 +8580,10 @@ countries = {
 			sloviansk adalaga barvinkove
 			lysychansk
 	 	}
+		
+		own_control_integrated = {
+			
+		}
 
 		starting_technology_level = 3
 		include = "russian_principality_no_coast"
@@ -9641,8 +9625,8 @@ countries = {
 			ajara mudhol belgaum londa khanapur gokak raybag
 			raichur mudgal anegandi koppal hubli darwar bankapura devadurga kundgol sonda_karnataka gadag
 			kaulas adoni
-			parangipettai pondicherry madras maduranthakam arcot
-			vellore kanchipuram gingee padaividu tiruvannamalai
+			#parangipettai pondicherry madras maduranthakam arcot
+			#vellore kanchipuram gingee padaividu tiruvannamalai
 			tirupati cuddapah medanapalle kangundi gurramkonda pottapi
 			kadiri penukonda gandikota chittoor pakala anantapur rayachoti
 			palasamudram dharmavaram vempalle
@@ -10040,7 +10024,26 @@ countries = {
 		dynasty = mirwari_dynasty
 		court_language = persian_language
 	}
-
+	
+	VIJ = {
+		own_control_core = {
+			parangipettai pondicherry madras maduranthakam arcot
+			vellore kanchipuram gingee padaividu tiruvannamalai
+		}
+		
+		capital = kanchipuram
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy"
+		
+		government = {
+			type = monarchy
+			ruler = random 
+			heir_selection = cognatic_primogeniture
+		}
+		
+		country_rank = rank_kingdom
+		starting_technology_level = 3
+	}
 }
 }
 
