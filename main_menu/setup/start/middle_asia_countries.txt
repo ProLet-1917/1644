@@ -153,10 +153,10 @@ countries = {
                 army_tradition = 55 #军队传统
             }
         }
-        HVT = { #卡尔梅克/土尔扈特 Kalmyk/Turhūt
+        MYK = { #卡尔梅克/土尔扈特 Kalmyk/Turhūt
             own_control_core = {
                 kalmyk karatobe shyngyrlau aksay_pointic zhympity terekti
-                ryn ushtagan kisikkamys kulagin saryadyn talowski inder_lake
+                ryn ushtagan kisikkamys kulagin saryadyn talowski
                 khosheutovo krasny_yar ganyushkino
                 bolkhuny mikhaylovka_pontic rechnoye bokey botkul zhanybek
                 piterka krasny_kut_pontic mokrous savinka rovnoye pokrovsk baronsk
@@ -176,8 +176,8 @@ countries = {
             include = "eurasian_horde_china"
             capital = kalmyk
             government = {
-                ruler = hvt_kho_orluk
-                ruler_term = { character = hvt_kho_orluk start_date = 1600.1.1 }
+                ruler myk_kho_orluk
+                ruler_term = { character = myk_kho_orluk start_date = 1600.1.1 }
                 heir_selection = cognatic_primogeniture
             }
             court_language = mongolic_language
@@ -186,7 +186,7 @@ countries = {
                 oirat_culture
             }
             flag = "YUA"
-            country_name = "HVT"
+            country_name = "MYK"
             currency_data = {
                 gold = 200 #国库
                 stability = 55 #稳定度
