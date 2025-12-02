@@ -1,0 +1,323 @@
+﻿#============Made by Lvtoumao============
+netherland_independent = { #Not support fo HOL exist but it shouldnt happen
+
+	monthly_spawn_chance = monthly_spawn_chance_unique
+
+	can_start = {
+		OR = {
+			country_exists = c:NED
+			country_exists = c:HOL
+		}
+		country_exists = c:SPA
+		current_year > 1568
+		current_year < 1700
+	}
+
+	can_end = {
+		OR = {
+			OR = {
+				current_year > 1700
+				NOT = { 
+					OR = {
+						country_exists = c:NED
+						country_exists = c:HOL
+					}
+				}
+				NOT = { 	country_exists = c:SPA }
+			}
+			#situation:war_of_religions = { #It ended in 1648
+			#	situation_is_active = no
+			#	situation_has_ended = yes
+			#}
+		}
+	}
+
+	visible = {
+		OR = {
+			exists = c:NED
+			exists = c:HOL
+		}
+		OR = {
+			this = c:NED
+			this = c:HOL
+			this = c:SPA
+			knows_country = c:NED
+			knows_country = c:HOL
+		}
+		capital ?= { sub_continent = sub_continent:western_europe }
+	}
+
+	on_start = {
+		if = {
+			limit = {
+				exists = c:NED
+			}
+			c:NED = {
+				#trigger_event_sliently = netherland_independent.1 #Rise Up!
+			}
+		}
+
+		if = {
+			limit = {
+				exists = c:HOL
+			}
+			c:HOL = {
+				#trigger_event_sliently = netherland_independent.1 #Rise Up!
+			}
+		}
+		c:SPA = {
+			#trigger_event_sliently = netherland_independent.2 #Prepare Army!
+		}
+	}
+
+	on_monthly = {
+
+	}
+
+	on_ended = {	
+		if = {
+			limit = {
+				OR = {
+					NOT = { country_exists = c:NED }
+					NOT = { country_exists = c:HOL }
+				}
+			}
+			every_country  = {
+				#trigger_event_sliently = netherland_independent.3 #Independent Failed!
+			}
+		}
+		else = {
+			every_country  = {
+				#trigger_event_sliently = netherland_independent.4 #Peaceful End!
+			}
+		}
+	}
+
+	tooltip = {
+		if = {
+			limit = { owner ?= c:NED }
+			custom_tooltip = this_is_netherland_tt
+		}
+		else_if = {
+			limit = { owner ?= c:SPA }
+			custom_tooltip = this_is_spain_tt
+		}
+		else_if = {
+			limit = {
+				owner ?= {
+					AND = {
+						is_subject_or_below_of = c:NED
+						subject_loyalty >= 50
+					}
+				}
+			}
+			custom_tooltip = loyal_member_of_the_netherland_side_tt
+		}
+		else_if = {
+			limit = {
+				owner ?= {
+					AND = {
+						is_subject_or_below_of = c:NED
+						is_disloyal_subject = yes
+					}
+				}
+			}
+			custom_tooltip = disloyal_member_of_the_netherland_side_tt
+		}
+		else_if = {
+			limit = {
+				owner ?= {
+					AND = {
+						is_subject_or_below_of = c:SPA
+						subject_loyalty >= 50
+					}
+				}
+			}
+			custom_tooltip = loyal_member_of_the_spain_side_tt
+		}
+		else_if = {
+			limit = {
+				owner ?= {
+					AND = {
+						is_subject_or_below_of = c:SPA
+						is_disloyal_subject = yes
+					}
+				}
+			}
+			custom_tooltip = disloyal_member_of_the_spain_side_tt
+		}
+		else_if = {
+			limit = {
+				owner ?= { 
+					is_allied_with = { target =  c:SPA }
+					NOT = { is_allied_with = { target =  c:NED }}
+				}
+			}
+			custom_tooltip = this_is_ally_of_spain_tt
+		}
+		else_if = {
+			limit = {
+				owner ?= { 
+					is_allied_with = { target =  c:NED }
+					NOT = { is_allied_with = { target =  c:SPA }}
+				}
+			}
+			custom_tooltip = this_is_ally_of_netherland_tt
+		}
+		else_if = {
+			limit = {
+				owner ?= { 
+					is_allied_with = { target = c:NED }
+					is_allied_with = { target = c:SPA }
+				}
+			}
+			custom_tooltip = this_is_ally_of_both_tt
+		}
+		else_if = {
+			limit = {
+				has_owner = yes
+				NOT = {
+					OR = {
+						owner ?= NED
+						#owner ?= HOL
+						owner ?= SPA
+						owner ?= {
+							is_subject_or_below_of = c:NED
+						}
+						#owner ?= {
+						#	is_subject_or_below_of = c:HOL
+						#}
+						owner ?= {
+							is_subject_or_below_of = c:SPA
+						}
+					}
+				}
+				OR = {
+					area = area:friesland_area
+					area = area:holland_area
+					area = area:brabant_area
+					area = area:wallonia_area
+					area = area:flanders_area
+				}
+			}
+			custom_tooltip = this_is_a_lowland_nation_tt
+		}
+	}
+
+	map_color = {
+		if = {
+			limit = {
+				owner ?= c:NED
+			}
+			value = rgb { 85 175 169 }
+		}
+		#else_if = {
+		#	limit = {
+		#		owner ?= c:HOL
+		#	}
+		#	value = rgb { 85 175 169 }
+		#}
+		else_if = {
+			limit = {
+				owner ?= c:SPA
+			}
+			value = rgb { 181 154 46 }
+		}
+		else_if = {
+			limit = {
+				has_owner = yes
+				NOT = {
+					OR = {
+						owner ?= NED
+						#owner ?= HOL
+						owner ?= SPA
+						owner ?= {
+							is_subject_or_below_of = c:NED
+						}
+						#owner ?= {
+						#	is_subject_or_below_of = c:HOL
+						#}
+						owner ?= {
+							is_subject_or_below_of = c:SPA
+						}
+					}
+				}
+				OR = {
+					area = area:friesland_area
+					area = area:holland_area
+					area = area:brabant_area
+					area = area:wallonia_area
+					area = area:flanders_area
+				}
+			}
+			value = rgb { 225 235 218 }
+		}
+		else_if = {
+			limit = {
+				owner ?= {
+					is_subject_or_below_of = c:NED
+					subject_loyalty > 50
+				}
+			}
+			value = rgb { 85 175 169 }
+		}
+		else_if = {
+			limit = {
+				owner ?= {
+					is_subject_or_below_of = c:HOL
+					subject_loyalty > 50
+				}
+			}
+			value = rgb { 85 175 169 }
+		}
+		else_if = {
+			limit = {
+				owner ?= {
+					is_subject_or_below_of = c:SPA
+					subject_loyalty > 50
+				}
+			}
+			value = rgb { 181 154 46 }
+		}
+		else_if = {
+			value = define:NMapColors|DEFAULT_COLOR
+		}
+	}
+
+	secondary_map_color = {
+		if = {
+			limit = {
+				owner ?= { is_subject_or_below_of = c:NED }
+			}
+			value = rgb { 85 175 169 }
+		}
+		else_if = {
+			limit = {
+				owner ?= { 
+					is_allied_with = { target =  c:NED }
+					NOT = { 
+						is_allied_with = { target =  c:SPA }
+					}
+				}
+			}
+			value = rgb { 85 175 169 }
+		}
+		else_if = {
+			limit = {
+				owner ?= { is_subject_or_below_of = c:SPA }
+			}
+			value = rgb { 181 154 46 }
+		}
+		else_if = {
+			limit = {
+				owner ?= { 
+					is_allied_with = { target =  c:SPA }
+					NOT = { 
+						is_allied_with = { target =  c:NED }
+					}
+				}
+			}
+			value = rgb { 181 154 46 }
+		}
+	}
+}

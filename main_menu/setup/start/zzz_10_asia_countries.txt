@@ -56,8 +56,8 @@ countries = {
 
 
 				# datong_area ─ 大同、河套与朔方屏障
-				datong_datong xuanning huairen tiancheng baideng yulin_datong yunchuan
-				jincheng shanyin zhongling shenwu shanyang_yingzhou
+				
+				
 				lingxian_shanxi guangling hunyuan feihu lingqiu
 
 				# shanxi_area ─ 晋阳、潞安与汾河流域
@@ -419,7 +419,7 @@ countries = {
 				# huaidong_area ─ 淮东
 				gaoyou xinghua baoying
 				qushan banpu gaoqiao ganyu shuyang
-				shanyang_huaian andong_huaian qinghe_huaian yancheng funing_huaian taoyuan_huaian
+				
 				xiapi suining_pizhou suqian xinyi
 				hailing xixi rugao
 				jinghai_tongzhou juegang haimen
@@ -427,17 +427,17 @@ countries = {
 
 				# huaixi_area ─ 淮西
 				huaining qianshan susong taihu tongcheng_anqing wangjiang zongyang
-				 chengfu mengcheng
-				qingliu_chuzhou zhaoxin quanjiao laian
+				 
+				 zhaoxin 
 				zhongli dingyuan_fengyang huaiyuan
 				hezhou_he hanshan wuwei
-				luan huoqiu huoshan mabu shucheng yuexi yingshan_luan
-				hefei chaoxian liangxian lujiang_luzhou
-				shouchun shuihu xiacai
-				hongxian linhuai tianchang wuhe xuyi
-				suzhou_fengyang guzhen lingbi linhuan
+				
+				
+				
+				
+				
 				yingzhou yingshui yingshang shenqiu taihe
-				xuzhou dangshan fengxian xiaoxian peixian #徐州
+				
 
 
 				# zhejiang_area ─ 浙东浙西郡县
@@ -489,9 +489,9 @@ countries = {
 				luyang qianyang_yuanzhou mayang
 
 				#hubei_area
-				jiangxia wuchang jinkou tongcheng_wuchang puqi chongyang xianning jiayu
-				huanggang qichun luotian huangan huangpi huangmei macheng qishui guangji
-				yongxing_xingguo daye tongshan
+				
+				
+				
 				fangling banqiao baokang baihekou bomoping zhushan zhuxi fengxi
 				yun wudang huanglong shangjin yunxi
 
@@ -854,7 +854,7 @@ countries = {
 				# liaodong_area ─ 关宁防线核心
 				ningyuan_jinzhou qiantun
 			}
-			include = "zzz_mng"
+			include = "zzz_cn_military_gvn"
 			government = {
 				type = monarchy
 				ruler = chi_wu_san_gui
@@ -869,6 +869,7 @@ countries = {
 			capital = ningyuan_jinzhou
 			accepted_cultures = {
 				yan_culture
+				liaodong_culture
 			}
 			flag = "WSG"
 			country_name = "WSG"
@@ -1082,8 +1083,908 @@ countries = {
 			flag = "KOR"
 			country_name = "JOE"
 		}
+		ZLY = {#左良玉世镇武昌
+			type = army
+			own_control_core = {
+				#武昌府
+				jiangxia wuchang jinkou tongcheng_wuchang puqi chongyang xianning jiayu
+				#兴国州
+				yongxing_xingguo daye tongshan
+				#黄州府
+				huanggang qichun luotian huangan huangpi huangmei macheng qishui guangji
+			}
+			capital = jiangxia
+			government = {
+				type = monarchy
+				ruler = chi_zuo_liangyu
+				ruler_term = { character = chi_zuo_liangyu start_date = 1644.4.10 }
+				heir_selection = cognatic_primogeniture
+				laws = {
+					medieval_levy_law = broken_weisuo
+				}
+			}
+			court_language = northern_mandarin_dialect
+			country_rank = rank_kingdom
+			include = "zzz_cn_military_gvn"
+			accepted_cultures = {
+				jilu_culture
+				jin_culture
+				liaodong_culture
+				zhongyuan_culture
+				chu_culture
+			}
+			flag = "CHI_Ming_characters"
+			country_name = "ZLY"
+			currency_data = {
+				gold = 500 #国库
+				stability = 30 #稳定度
+				army_tradition = 100 #军队传统
 
+			}
+		}
+		CGJ = {#兴平伯高杰
+			type = army
+			own_control_core = {
+				xuzhou dangshan fengxian xiaoxian peixian #徐州
+				suzhou_fengyang guzhen lingbi linhuan #宿州
+				chengfu mengcheng #亳州
+				hongxian linhuai tianchang wuhe xuyi #泗州
+			}
+			capital = xuzhou
+			government = {
+				type = monarchy
+				ruler = chi_gao_jie
+				ruler_term = { character = chi_gao_jie start_date = 1644.4.10 }
+				heir_selection = cognatic_primogeniture
+				laws = {
+					medieval_levy_law = broken_weisuo
+				}
+			}
+			court_language = northern_mandarin_dialect
+			country_rank = rank_duchy
+			include = "zzz_cn_military_gvn"
+			accepted_cultures = {
+				jin_culture
+				zhongyuan_culture
+			}
+			flag = "CHI_Ming_characters"
+			country_name = "CGJ"
+			currency_data = {
+				gold = 100 #国库
+				stability = 30 #稳定度
+				army_tradition = 100 #军队传统
 
+			}
+		}
+		LZQ = {#东平伯刘泽清
+			type = army
+			own_control_core = {
+				shanyang_huaian andong_huaian qinghe_huaian yancheng funing_huaian taoyuan_huaian #淮安府
+			}
+			capital = shanyang_huaian
+			government = {
+				type = monarchy
+				ruler = chi_liu_zeqing
+				ruler_term = { character = chi_liu_zeqing start_date = 1644.4.10 }
+				heir_selection = cognatic_primogeniture
+				laws = {
+					medieval_levy_law = broken_weisuo
+				}
+			}
+			court_language = northern_mandarin_dialect
+			country_rank = rank_duchy
+			include = "zzz_cn_military_gvn"
+			accepted_cultures = {
+				jilu_culture
+				liaodong_culture
+			}
+			flag = "CHI_Ming_characters"
+			country_name = "LZQ"
+			currency_data = {
+				gold = 50 #国库
+				stability = 30 #稳定度
+				army_tradition = 60 #军队传统
+
+			}
+		}
+		LLZ = {#广昌伯刘良佐
+			type = army
+			own_control_core = {
+				shouchun shuihu xiacai #寿州
+				luan huoqiu huoshan mabu shucheng yuexi yingshan_luan #六安州
+			}
+			capital = shouchun
+			government = {
+				type = monarchy
+				ruler = chi_liu_liangzuo
+				ruler_term = { character = chi_liu_liangzuo start_date = 1644.4.10 }
+				heir_selection = cognatic_primogeniture
+				laws = {
+					medieval_levy_law = broken_weisuo
+				}
+			}
+			court_language = northern_mandarin_dialect
+			country_rank = rank_duchy
+			include = "zzz_cn_military_gvn"
+			accepted_cultures = {
+				yan_culture
+				jianghuai_culture
+			}
+			flag = "CHI_Ming_characters"
+			country_name = "LLZ"
+			currency_data = {
+				gold = 50 #国库
+				stability = 30 #稳定度
+				army_tradition = 60 #军队传统
+
+			}
+		}
+		HDG = {#靖南伯黄得功
+			type = army
+			own_control_core = {
+				hefei chaoxian liangxian lujiang_luzhou #庐州府
+				quanjiao laian qingliu_chuzhou #滁州
+			}
+			capital = hefei
+			government = {
+				type = monarchy
+				ruler = chi_huang_degong
+				ruler_term = { character = chi_huang_degong start_date = 1644.4.10 }
+				heir_selection = cognatic_primogeniture
+				laws = {
+					medieval_levy_law = broken_weisuo
+				}
+			}
+			court_language = northern_mandarin_dialect
+			country_rank = rank_kingdom
+			include = "zzz_cn_military_gvn"
+			accepted_cultures = {
+				liaodong_culture
+				jianghuai_culture
+			}
+			flag = "CHI_Ming_characters"
+			country_name = "HDG"
+			currency_data = {
+				gold = 100 #国库
+				stability = 30 #稳定度
+				army_tradition = 60 #军队传统
+
+			}
+		}
+		CJX = {#姜瓖
+			type = army
+			own_control_core = {
+				jincheng shanyin zhongling shenwu shanyang_yingzhou #应州&朔州
+				datong_datong xuanning huairen tiancheng baideng yulin_datong yunchuan #大同府
+			}
+			capital = datong_datong
+			government = {
+				type = monarchy
+				ruler = chi_jiang_xiang
+				ruler_term = { character = chi_jiang_xiang start_date = 1644.4.10 }
+				heir_selection = cognatic_primogeniture
+				laws = {
+					medieval_levy_law = broken_weisuo
+				}
+			}
+			court_language = northern_mandarin_dialect
+			country_rank = rank_duchy
+			include = "zzz_cn_military_gvn"
+			accepted_cultures = {
+				yan_culture
+				jin_culture
+			}
+			flag = "CHI_Ming_characters"
+			country_name = "CJX"
+			currency_data = {
+				gold = 100 #国库
+				stability = 60 #稳定度
+				army_tradition = 100 #军队传统
+
+			}
+		}
+		SES = { #格根车臣 Setsen
+			own_control_core = {
+				khalkh tamsabulag buir_nuur #khalkh
+				sangiin_dalai menen bayan_tumen bars_khot bayantsagaan
+				tsagaan baruun_tar_nuur lower_ulz upper_ulz yakhi zyyn_tar_nuur lake_yakhi lake_zuun_tooroi #torey_province
+				avraga kherlen rahsaan_khad uguumur undurkhaan #kerulen_province
+				onon balj baldan_bereeven kyra #upper_onon_province
+				tavan_tolgoi matad sharga_uul sumtiin zara_uul #dariganga_province
+				bishreit ikh_narttin_chuluu
+			}
+			capital = kherlen
+			include = "eurasian_horde_china"
+			government = {
+				ruler = chi_tsakhar_soloi
+				ruler_term = { character = chi_tsakhar_soloi start_date = 1600.4.10 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = mongolian_language
+			country_rank = rank_duchy
+			accepted_cultures = {
+				mongolian_culture
+			}
+			flag = "YUA"
+			country_name = "SES"
+			currency_data = {
+				gold = 100 #国库
+				stability = 60 #稳定度
+				army_tradition = 40 #军队传统
+
+			}
+		}
+		TSH = { #土谢图 Tüsheet
+			own_control_core = {
+				dalay doloodyn_gobi saikhandulaan ulaanbadrakh #sharangad_province
+				del_khad galbyn_gobi khatanbulag oiyin_korken ooshiyn_gobi zhavklant_khairkhan #eastern_gobi_province
+				choyrin_datsan bayan gazrin_chuluu takhilyn ulziit #choyr_province
+				ulaan bogd khadat ukhaa_khudag #ulaan_province
+				urga kedun khar_bukhyn kharuukh manzushir tuul khan_khentii1 #tuul_province
+				amarbayas_galang bornuur eroo #kharaa_province
+				baibalyk alyanbulag kharkhul tarvagatai #selenga_province
+				karakorum khar_balgas orkhon tsetserleg #orkhon_province
+				ongiin_khiid gimpil_darjaalan shaazan_khot shaazan_tolgoi suriig #ongiin_province
+				baidrag boontsagaan khangal  orog tuin lake_boontsagaan lake_orog khangain_mountains khasagt_khairkhan
+				zavkhan
+				zagzuugiin_balgas chuluutyn ider lake_sangiin_dalai lake_terkhiin_tsagaan
+			}
+			capital = urga
+			include = "eurasian_horde_china"
+			government = {
+				ruler = chi_tushet_gombodorz
+				ruler_term = { character = chi_tushet_gombodorz start_date = 1610.4.10 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = mongolian_language
+			country_rank = rank_duchy
+			accepted_cultures = {
+				mongolian_culture
+			}
+			flag = "YUA"
+			country_name = "TSH"
+			currency_data = {
+				gold = 100 #国库
+				stability = 60 #稳定度
+				army_tradition = 40 #军队传统
+
+			}
+		}
+		ZSG = { #札萨克图 Zasagt
+			own_control_core = {
+				naran biger khalzan_shireg
+				altan_gadas delger_moron
+				otegu_qulan bugat chikhan_agui tevsh_uul tsagaan_agui tsogt gobi_altay #gobi_altai_province
+				dzaigil erzin lake_uureg lake_uvs #tes_province
+				haerhhana huysiyn tahiltyn_khotgot  #khovd_province
+				ulaagchiin airag_nuur hunguy telmen lake_airag lake_bayan lake_khyargas lake_oigon lake_telmen lake_ulaagchiin_khar lake_uvsiin_khar_us #khyargas_province
+				uliastai ogomoor teel targavatai_mountains
+			}
+			capital = uliastai
+			include = "eurasian_horde_china"
+			government = {
+				ruler = chi_jasagh_subaday
+				ruler_term = { character = chi_jasagh_subaday start_date = 1596.4.10 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = mongolian_language
+			country_rank = rank_duchy
+			accepted_cultures = {
+				mongolian_culture
+			}
+			flag = "YUA"
+			country_name = "ZSG"
+			currency_data = {
+				gold = 100 #国库
+				stability = 60 #稳定度
+				army_tradition = 40 #军队传统
+
+			}
+		}
+		ZUN = { #准噶尔 Dzungar 
+			own_control_core = {
+				turuum ulaamgom tes
+				khovd achit_nuur tsagaan_usun khurgan lake_achit lake_dayan lake_durgun lake_khar lake_khar_us lake_khoton lake_khurgan lake_markakol lake_tolbo altay_mountains mongol_altay
+				khyargas_nuur
+				altayskoye onguday ust_koksa smolenskoye mayma biysk teletskoye #altayskoye_province
+				zmeinogorsk shemonayevskoye oskemen ust_kalmanka altay_forest_wasteland_1 #zmeinogorsk_province
+				sarybulak zhanaarka arkat kaynar_atbai takhir #sarybulak_province
+				bakanas ashchyozek dagandely koksala sayak #bakanas_province
+				kurchum kandysu zaysan kokpekty shar zyryan #kurchum_province
+				kayalyk ayagoz dungene lepsy sagabuyen tansyk tekeli #kayalyk_province
+				targabatay dahra_sasykkol emin ilanbalyk koktuma toli alakol_lake koshkarkol_lake sasykkol_lake balruq targabatay_mountains #emin_province
+				bortala jing kuytun urghtbulaq usu_xinjiang ebi_lake sayram_lake borohoro1 alatau #bortala_province
+				almaliq gulja narat nilka tokkuztara borohoro2 tian_shan6 wusun #almaliq_province
+				ilibalyk charyn chundzha kegen koktal lavar shelek #ilibalyk_province
+				yulduz
+				karamergen shengeldy boyauli
+				hoboksar gonganbao manas utbulaq zhekdeliq manas_lake gurbantunggut saur #gurbantunggut_province
+				atanuul bodonch bulgan burqin chinggil jeminay kara_irtysh ulungur lake_jili lake_ulungur atas_bogd #altay_province
+			}
+			capital = hoboksar
+			include = "eurasian_horde_china"
+			discovered_regions = {
+				persia_region
+				caucasus_region
+				anatolia_region
+				ural_region
+			}
+			government = {
+				ruler = chi_erdeni_batur
+				ruler_term = { character = chi_erdeni_batur start_date = 1634.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = mongolian_language
+			country_rank = rank_kingdom
+			accepted_cultures = {
+				oirat_culture
+				mongolian_culture
+			}
+			flag = "YUA"
+			country_name = "ZUN"
+			currency_data = {
+				gold = 200 #国库
+				stability = 60 #稳定度
+				army_tradition = 80 #军队传统
+
+			}
+		}
+		QKH = { #青海厄鲁特 Qinghai_Khoshuud
+			own_control_core = {
+				chabcha buha caka dulan dungkar_amdo guolimu qardam sanjiaocheng kunlun5 qilianshan4 caka_lake qinghai_lake #amdo_province
+				amnye_machen
+				zeku quge sailahai
+				dsun chogyal_khar gashun tsaidam nalinggele
+				lungkya madoi bayan_har darlag kunlun qumarleb
+				#达木八旗 
+				nakchu barom rongpo #nakchukha_province
+				tsora taklung damzhung
+			}
+			capital = chabcha
+			include = "eurasian_horde_china"
+			discovered_regions = {
+				south_china_region
+				hindustan_region
+				bengal_region
+			}
+			government = {
+				ruler = chi_gusikhan
+				ruler_term = { character = chi_gusikhan start_date = 1637.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = mongolian_language
+			country_rank = rank_kingdom
+			accepted_cultures = {
+				oirat_culture
+				mongolian_culture
+			}
+			flag = "YUA"
+			country_name = "QKH"
+			currency_data = {
+				gold = 400 #国库
+				stability = 60 #稳定度
+				army_tradition = 80 #军队传统
+
+			}
+		}
+		HSD = { #和硕特 Khoshuud
+			own_control_core = {
+				yangjibaliq kutubi ulan_us qanbalik urumqi borohoro3 #yangjibaliq_province
+				beshbalik dunla guchung mori yuanhu bodga_shan #beshbalik_province
+				barkul altayn_ovor_gobi naomao santokhe zuun_garyn_gobi barkol_mountains #barkul_province
+			}
+			capital = beshbalik
+			include = "eurasian_horde_china"
+			discovered_regions = {
+				south_china_region
+				hindustan_region
+				bengal_region
+			}
+			government = {
+				ruler = chi_ochirtukhan
+				ruler_term = { character = chi_ochirtukhan start_date = 1637.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = mongolian_language
+			country_rank = rank_duchy
+			accepted_cultures = {
+				oirat_culture
+				mongolian_culture
+			}
+			flag = "YUA"
+			country_name = "HSD"
+			currency_data = {
+				gold = 400 #国库
+				stability = 60 #稳定度
+				army_tradition = 80 #军队传统
+
+			}
+		}
+		CBG = { #高平莫氏 Cao Bằng Nhà Mạc
+			own_control_core = {
+				quang_uyen bac_thai_nguyen
+			}
+			capital = quang_uyen
+			include = "vietnamese_champa_monarchy"
+			government = {
+				ruler = vtm_mo4_jingwan
+				ruler_term = { character = vtm_mo4_jingwan start_date = 1638.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = vietnamese_language
+			country_rank = rank_kingdom
+			accepted_cultures = {
+				vietnamese_culture
+				muong_culture
+			}
+			flag = "DAI"
+			country_name = "CBG"
+			currency_data = {
+				gold = 50 #国库
+				stability = 80 #稳定度
+				army_tradition = 20 #军队传统
+
+			}
+		}
+		TTQ = { #宣光武氏 Trấn Tuyên Quang Chúa Bầu
+			own_control_core = {
+				tuyen_quang bao_lac binh_lam binh_nguyen dai_man thu_vat
+			}
+			capital = tuyen_quang
+			include = "vietnamese_champa_monarchy"
+			government = {
+				ruler = vtm_wu3_gongde2
+				ruler_term = { character = vtm_wu3_gongde2 start_date = 1623.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = vietnamese_language
+			country_rank = rank_duchy
+			accepted_cultures = {
+				vietnamese_culture
+				muong_culture
+			}
+			flag = "DAI"
+			country_name = "TTQ"
+			currency_data = {
+				gold = 50 #国库
+				stability = 80 #稳定度
+				army_tradition = 20 #军队传统
+
+			}
+		}
+		TRH = { #郑主 Chúa Trịnh
+			own_control_core = {
+				thang_long tam_dai thai_binh thien_quan #升龙
+				quy_hoa lai_chau thuy_vi van_ban fan_si_mountains2 fan_si_mountains3 #归和
+				nam_sach hong_chau khoai_chau vu_ninh #南策
+				anbang quang_yen van_don #海东
+				thai_nguyen cam_hoa tuyen_hoa vo_nhai #太原
+				lang_son lang_giang loc_chau that_nguyen van_kiep #谅山
+				thien_truong bo_hai_khau trang_an #天长
+				da_giang mang_viet muong son_la #牛吼
+				thuan_chau muong_cha #州院
+				muong_luan
+				thanh_hoa co_dang nga_lac khet_theu quan_da_chau #清化
+				dien_chau quy_chau quynh_lam #演州
+				hoan_chau ky_son mat_chau #驩州
+				nghe_ann chi_la nhat_nam tho_hoang #乂安
+
+			}
+			capital = thang_long
+			include = "vietnamese_champa_monarchy"
+			government = {
+				ruler = vtm_zheng_zhuang1
+				ruler_term = { character = vtm_zheng_zhuang1 start_date = 1623.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = vietnamese_language
+			country_rank = rank_kingdom
+			accepted_cultures = {
+				vietnamese_culture
+				muong_culture
+			}
+			flag = "DAI"
+			country_name = "TRH"
+			currency_data = {
+				gold = 100 #国库
+				stability = 40 #稳定度
+				army_tradition = 20 #军队传统
+
+			}
+		}
+		QNQ = { #阮主 Quảng Nam Quốc Chúa Nguyễn
+			own_control_core = {
+				amarendrapura phon_nha visnupura vrddha_ratnapura annamese_range5 #顺化
+				indrapura dien_ban simhapura #广南
+				vijaya amaravati bong_son ha_va_nguon #广义
+				aryaru #绥和
+			}
+			capital = visnupura #顺化
+			include = "vietnamese_champa_monarchy"
+			government = {
+				ruler = vtm_ruan_fulan2
+				ruler_term = { character = vtm_ruan_fulan2 start_date = 1635.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = vietnamese_language
+			country_rank = rank_duchy
+			accepted_cultures = {
+				vietnamese_culture
+				muong_culture
+			}
+			flag = "DAI"
+			country_name = "QNQ"
+			currency_data = {
+				gold = 100 #国库
+				stability = 80 #稳定度
+				army_tradition = 20 #军队传统
+
+			}
+		}
+		CHA = { #占城 Chăm Pa
+			own_control_core = {
+				panduranga bal_cattinon camp_po_thit chan_bo kampong_sraka_trey 
+				kauthara cat_tien di_dinh
+			}
+			capital = panduranga
+			include = "vietnamese_champa_monarchy"
+			government = {
+				ruler = cha_po_rome
+				ruler_term = { character = cha_po_rome start_date = 1627.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = cham_language
+			country_rank = rank_kingdom
+			accepted_cultures = {
+				cham_culture
+			}
+			flag = "DAI"
+			country_name = "CHA"
+			currency_data = {
+				gold = 50 #国库
+				stability = 80 #稳定度
+				army_tradition = 20 #军队传统
+			}
+		}
+		TNG = { #东吁 Taungoo
+			own_control_core = {
+				pinya htilin kanna kyaukse laungshe lewe magway mindon mingin myede 
+				ngape nwamethin nyaungyan pagan pakokku pindale pinle pyinmana sagu 
+				salay salin saw talok taungdwingyi thayet wetwin
+				sagaing amyint butalin dhipaesyin moksobo myedu ngasingu takawng
+				mongmit mabein namhkan manmaw shwegu wuntho htigyaing
+				hsipaw kyaukme lawksawk monglong taunggyi yawnghwe
+				kale mongkawng myitkyina
+				pyay paungde tharrawaddy taungoo thandaunggyi
+				martaban dagon dala danubyu donwun haungtharaw hinthada hmawbi 
+				hpa_an ingapu kawliya kyainseikgyi kyaukkyi 
+				maubin mawlamyine myanaung myaungmya naungyo ngaputaw pathein 
+				pegu phyu sittaung thanlyin thaton twante ye tavoy
+			}
+			capital = pinya #阿瓦\彬牙
+			include = "south_east_asia_monarchy"
+			government = {
+				ruler = tng_thalun
+				ruler_term = { character = tng_thalun start_date = 1629.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = burmese_language
+			country_rank = rank_kingdom
+			accepted_cultures = {
+				burmese_culture
+			}
+			flag = "BUR"
+			country_name = "TNG"
+			currency_data = {
+				gold = 500 #国库
+				stability = 50 #稳定度
+				army_tradition = 80 #军队传统
+			}
+		}
+		HSE = { #兴威 Hsenwi
+			own_control_core = {
+				hsenwi kehsi lai_hka lashio mong_yai mongkung mongnawng monghsu muse namhsan
+			}
+			include = "south_east_asia_monarchy_no_coast"
+			government = {
+				ruler = random
+			}
+			tolerated_cultures = {
+				lisu_culture
+				tai_long_culture
+				palaung_culture
+			}
+			capital = hsenwi
+		}
+		LNA = { #兰纳 Lan Na
+			own_control_core = {
+				chiang_mai chiang_dao chiang_khong chiang_rai chiang_saen chom_khao_maneerat hot 
+				lampang lamphun mae_hong_son muang_jam muang_luang_phukha muang_wang muang_yuam 
+				mueng_thoen omkoi sariang vieng_phouka wiang_fang mong_hpayak mong_hsat
+			}
+			include = "south_east_asia_monarchy_no_coast"
+			government = {
+				ruler = random
+			}
+			accepted_cultures = {
+				lawa_culture
+			}
+			tolerated_cultures = {
+				karen_culture
+				lao_culture
+				tai_lu_culture
+			}
+			country_rank = rank_duchy
+			capital = chiang_mai
+		}
+		MNI = { #孟乃 Mongnai
+			own_control_core = {
+				mongnai kengkham kengtawng mawkmai mongtung
+			}
+			include = "south_east_asia_monarchy_no_coast"
+			tolerated_cultures = {
+				karen_culture
+			}
+			capital = mongnai
+			government = {
+				ruler = random
+			}
+		}
+		KTG = { #景东 Kengtung
+			own_control_core = {
+				kengtung mongping
+			}
+			include = "south_east_asia_monarchy_no_coast"
+			government = {
+				ruler = random
+			}
+			tolerated_cultures = {
+				lahu_culture
+				wa_culture
+				tai_long_culture
+			}
+			capital = kengtung
+		}
+		ADH = { #阿瑜陀耶
+			own_control_core = {
+				ayodhya suphanburi chaisri kanchanaburi ratchaburi wang_pho dong_lakhon mueng_thung_yai
+				dong_si_maha_phot lopburi muang_khuan_kra_buri phanat prachinburi rayong saraburi 
+				sukhothai ban_pa_la_ta chai_nat chakangrao mae_sot mueng_bang_yom mueng_rat 
+				nakhon_chum nakhon_sawan nakhon_thai phayuhakhiri phrae phraek phuenchapura 
+				song_khwae sra_luang sri_satchanalai sri_thep tak thung_yang
+				phetchaburi muang_na_rang chumphon tenasserim kawthaung mergui myitta singkhon thayetchaung
+				thammarat chaiya ko_samui kraburi krabi mardelong prasong satingpura sichon singgora takua_pa tha_tong thalang trang wiang_sa
+				phimai khorat nokor_reach_seyma phanom_rung thung_samrit
+				buriram muang_tam phutthaisong prathai_saman suwannaphum
+			}
+			capital = ayodhya
+			include = "south_east_asia_monarchy"
+			government = {
+				ruler = adh_prast_thong
+				ruler_term = { character = adh_prast_thong start_date = 1629.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = tai_language
+			country_rank = rank_kingdom
+			accepted_cultures = {
+				lawa_culture
+				mon_culture
+			}
+			country_name = "ADH"
+			currency_data = {
+				gold = 300 #国库
+				stability = 40 #稳定度
+				army_tradition = 40 #军队传统
+			}
+		}
+		KHM = { #高棉 Khmer
+			own_control_core = {
+				vyadhapura angkor_borei phnom_penh prasat_pram_lovet srey_sarchhor
+				or_keo kramuon_sa phsar_dek pouthi_loeu srok_khleang toek_khmau
+				prey_nokor angkor_knong chhmuoh_thmei kampong_roessei rong_damrel tuol_ta_mouk
+				indrapura_khmer beng_mealea phnom_santuk prasat_andet preah_khan_kompong_svay
+				ishanapura koh_ker prasat_don_kau preah_vihear sandan song_be
+				kracheh sampheak_borak tboung_khmum stung_treng banlung doh_kromum lumphat preah_ko
+				angkor banteay_chhmar damrey_trom phnom_srok sdok_kok_thom
+				battambang banon longvek prasat_don_an pursat tonle_sap_lake
+				peam kampong_saom koh_kong sa_kaeo
+			}
+			capital = phonm_penh
+			include = "south_east_asia_monarchy"
+			government = {
+				ruler = khm_ponheachan
+				ruler_term = { character = khm_ponheachan start_date = 1642.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = khmer_language
+			country_rank = rank_kingdom
+			accepted_cultures = {
+				khmer_culture
+			}
+			flag = "KHM"
+			country_name = "KHM"
+			currency_data = {
+				gold = 100 #国库
+				stability = 20 #稳定度
+				army_tradition = 20 #军队传统
+			}
+		}
+		MYA = { #孟养 Mongyang
+			own_control_core = {
+				mongyang monhyin katha phakant zalon_taung htamanthi thaungdut tamu minsin
+			}
+			include = "south_east_asia_monarchy_no_coast"
+			capital = monhyin
+			government = {
+				ruler = random
+			}
+			accepted_cultures = {
+				kado_culture
+			}
+		}
+		DRG = { #德格
+			own_control_core = {
+				derge jomda katok kharak sibda tromge wara_kham hengduanshan6 hengduanshan7
+				gonjo drayab tangkya ganze manigango trotsang longtang gegong mangge sershul hengduanshan8
+				nyarong chodrak_kham khordong
+			}
+			include = "east_asia_monarchy_no_coast"
+			capital = derge
+			government = {
+				ruler = drg_qangba
+				ruler_term = { character = drg_qangba start_date = 1630.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			accepted_cultures = {
+				tibetan_culture
+			}
+		}
+		CKL = { #明正土司
+			own_control_core = {
+				dartsedo lhagang kazhi dzogon zhanggu dawu
+			}
+			own_control_integrated = {
+				baurang
+			}
+			include = "asia_advanced_no_pagan_tribe"
+			tolerated_cultures = {
+				khampa_culture
+			}
+			capital = dartsedo
+			government = {
+				ruler = random
+			}
+		}
+		BTG = { #巴塘
+			own_control_core = {
+				batang markham shar_yelpuk tsakhalkho dzogang mengung sampheling dzingcho sangme
+			}
+			include = "asia_advanced_no_pagan_tribe"
+			capital = batang
+			government = {
+				ruler = random
+			}
+		}
+		LTN = { #理塘
+			own_control_core = {
+				litang nyachukha daoba
+			}
+			include = "asia_advanced_no_pagan_tribe"
+			capital = litang
+			government = {
+				ruler = random
+			}
+		}
+		MAR = { #麻域 拉达克 Maryul
+			own_control_core = {
+				shey leh charasa kargil karpokhar lamayuru
+				skardu khaplu shigar
+				nako tabo tsorub
+				rutok drangtse hanle tashigang
+				toling dungkar tsaparang
+				gartok rala
+				gyanema khyunglung
+				zangla padum phuktal
+			}
+			include = "east_asia_monarchy_no_coast"
+			government = {
+				ruler = random
+			}
+			tolerated_cultures = {
+				balti_culture
+				utsang_culture
+			}
+			capital = shey
+		}
+		CHG = { #叶尔羌/后东察合台 Yarkent Khanate
+			own_control_core = {
+				kashgar artush barchuk maralbexi payzawat tokkuzak yingisar yopurga tian_shan1 #kashgar_province
+				yarkand guma kargilik poskam #yarkand_province
+				khotan karakax keriya lop qira kunlun2 taklamakan5 #khotan_province
+				mazar_tagh tikenliq #taklamakan_province
+				aksu bai_xinjiang kumtura kucha qumbash shayar uqturpan tian_shan2 tian_shan3 #aksu_province
+				kurla bugur kuerchu #kurla_province
+				charchan charklik niya qietai tatrang waxxari #charchan_province
+				karasahr kumux bosten bosten_lake kuruktag #karasahr_province
+				turpan lukchun pichan qocho toksun #turpan_province
+				hami nazhi geziyandun #hami_province
+				zarafshan sarikol akto kizilsu koshoy_korgon naryn chon_naryn cholok_kaiyn
+				ketmen_tobe jumgal kochkor barskoon san_tash balychy
+				uzkand jalalabad_fergana arslanbob gulcha
+				dashahai loulan bailongdui 
+			}
+			capital = yarkand
+			include = "eurasian_horde_no_coast_no_pleading"
+			discovered_regions = {
+				tibet_region
+				hindustan_region
+				bengal_region
+				persia_region
+				caucasus_region
+				anatolia_region
+				ural_region
+				crescent_region
+				arabia_region
+				western_india_region
+				west_china_region
+				mongolia_region
+				xinjiang_region
+			}
+			government = {
+				ruler = chg_abdulah
+				ruler_term = { character = chg_abdulah start_date = 1639.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = karluk_language
+			country_rank = rank_kingdom
+			accepted_cultures = {
+				khorezmian_culture
+			}
+			flag = "YUA"
+			country_name = "CHG"
+			currency_data = {
+				gold = 100 #国库
+				stability = 60 #稳定度
+				army_tradition = 60 #军队传统
+			}
+		}
+		LGT = { #林葱土司
+			own_control_core = {
+				dzagyal khana lab serkar
+			}
+			our_cores_conquered_by_others = {
+				longtang gegong mangge sershul
+			}
+			include = "limited_east_asia_monarchy"
+			tolerated_cultures = {
+				amdowa_culture
+			}
+			capital = longtang
+			government = {
+				ruler = random
+			}
+		}
+		NCN = { #囊谦土司
+			own_control_core = {
+				nangchen chodrak gechak jang_tana pelme zurmang_namgyaltse
+			}
+			include = "east_asia_monarchy_no_coast"
+			capital = nangchen
+			government = {
+				ruler = random
+			}
+		}
+		NBH = { #霍尔
+			own_control_core = {
+				biru pembar riwoche samda shopando sok tengchen yangdzong
+			}
+			include = "asia_advanced_no_pagan_tribe"
+			capital = biru
+			government = {
+				ruler = random
+			}
+		}
+		
 	}
 }
 
