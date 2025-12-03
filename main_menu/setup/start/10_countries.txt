@@ -87,6 +87,9 @@ countries = {
 		}
 		include = "japanese_clan"
 		government = {
+			type = monarchy
+			ruler = random
+			
 			reforms = {
 				shogunate
 			}
@@ -3209,7 +3212,7 @@ countries = {
 		include = "expl_western_europe"
 	}
 
-###Iroquoi Tribes
+###American Tribes
 	#Mohawk/Kanien'kehaka
 	KKA = {
 
@@ -3315,6 +3318,105 @@ countries = {
 			stability = 33
 			tribal_cohesion = 90
 		}
+	}
+
+	CHK = { #Cahokia
+		own_control_core = {
+			cahokia peewareewa sangamon amonokoa macoupin tamaroa wyaconda oahaha emasulia
+			chariton meramec pahatsi tanwakanwakaghe moingwena
+			kaskaskia kaskankaham chepoussa ochechiton st_francois_mts
+			nudarcha wimihsoorita nodaway
+			peoria
+		}
+		starting_technology_level = 1
+
+		government = {
+			ruler = random
+
+			type = tribe
+			heir_selection = tribal_oldest_male
+
+			centralization_vs_decentralization = 80
+			traditionalist_vs_innovative = -70
+			spiritualist_vs_humanist = -60
+			aristocracy_vs_plutocracy = -80
+			serfdom_vs_free_subjects = 50
+			mercantilism_vs_free_trade = 50
+			belligerent_vs_conciliatory = 100
+			quality_vs_quantity = -75
+			offensive_vs_defensive = 50
+			land_vs_naval = -90
+			capital_economy_vs_traditional_economy = 100
+			individualism_vs_communalism = 60
+			outward_vs_inward = 50	
+
+			parliament = {
+				parliament_type = assembly
+			}	
+
+			laws = {
+				marriage_law = polygyny
+				heir_religion_law = heir_same_religion
+			}
+
+			reforms = {
+				agricultural_cultivation
+			}
+			privilege = {
+				#nobles
+				nobility_council
+				nobles_land_rights
+				tribal_autonomy
+
+				#clergy
+				embellish_great_works_of_faith
+
+				#burghers
+				urban_development_grants
+				market_fairs
+
+				#Commoners
+				peasants_autonomous_villages
+				communal_lands
+				allow_hunting
+				partial_yield
+				peasants_free_peasantry
+		
+				tribes_tribal_levies
+				tribes_allow_gatherings
+			}
+		}
+
+		discovered_areas = {
+			#east_coast_region
+			illinois_area
+			wisconsin_area
+			indiana_area
+			kentucky_area
+			tennessee_area
+			#louisiana_region
+			missouri_area
+			iowa_area
+			arkansas_area
+			central_plains_area
+		}
+
+		tolerated_cultures = {
+			tsawi_culture
+			ponca_culture
+			kaskankaham_culture
+			kahokiaki_culture
+		}
+
+		currency_data = {
+			gold = 180
+			stability = 20
+			prestige = 5
+			tribal_cohesion = 80
+		}
+
+		court_language = dhegiha_language
+		capital = cahokia
 	}
 
 ###Southeast Asian Islands
