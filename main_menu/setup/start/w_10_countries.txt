@@ -20,11 +20,19 @@ countries = {
 			orange
 		}
 		
+		own_control_colony = {
+			#West Africa
+			portudal arguin axim apollonia assinie fernando_po luanda icalo
+			#East Africa
+			mauritius
+		}
+		
 		starting_technology_level = 3
 		include = "expl_western_europe"
 		include = "catholic_monarchy"
 		include = "german_principality"
 		government = {
+			type = republic
 			ruler = hol_frederik_hendrik_van_oranje
 
 			ruler_term = { character = frederik_hendrik_van_oranje start_date = 1644.1.1 regnal_number = 1 }
@@ -4245,7 +4253,7 @@ countries = {
 			bastia aleria calvi corte ajaccio bonifacio sartene vico
 		}
 		own_control_integrated = {
-
+			tabarka 
 		}
 
 		starting_technology_level = 3
@@ -4532,7 +4540,7 @@ countries = {
 
 #Poland - Lithuania Commonwealth
 
-	POL = {	#Poland
+	PLC = {	#Poland
 		own_control_core = {
 			#Lesser Poland
 			krakow chrzanow ksiaz_wielki proszowice
@@ -4831,5 +4839,5214 @@ countries = {
 		country_rank = rank_duchy
 	}
 
+#Western Africa
+	KBR = { #Macina
+		own_control_core = {
+			macina niono sokolo dia tenenkou sanga kare
+			safare dogo soumpi korientze ras_el_ma gargando
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = kbr_hamadou_amina_diallo
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		capital = macina
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+		country_rank = rank_duchy
+	}
+
+	SEG = { #Segu
+		own_control_core = {
+			segou bla koulikoro nyamina sansanding dioila
+			djenne san kanibonzon bai #sanekuy 
+			douentza bore ngouma arlal bambara_maounde
+			hombori gossi dorey borenta #bourem bamba
+			kissi_loc deou mondoro tessit gorouol aribinda sampelga mansila
+			yatenga doubare rim djibo zondoma dori boussouma mane boala kougouri bilanga barsalogho
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = seg_barama_golo_coulibaly
+			heir = seg_kaladyan_coulibaly
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		accepted_cultures = {
+			dogon
+		}
+
+		capital = segou
+		country_rank = rank_kingdom
+	}
+
+	TMB = { #Timbuktu
+		own_control_core = {
+			timbuktu kabara goundam gourma_rharous tindirma
+			bourem bamba tondibi gao ansongo
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "muslim_republic"
+		government = {
+			type = republic
+
+			ruler = random
+		}
+
+		capital = timbuktu
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+		country_rank = rank_duchy
+	}
+
+	FUL = { #Great Fulo
+		own_control_core = {
+			linguere tuubaa mboune ndar dagana koki
+			podor walalde sioure golere salde agnam_civol silla
+			nguidjilone thilogne kanel waounde moudery kaedi matam
+			kayes maghana bakel sandare diamou koumbi_saleh timbedra diara balle
+			nioro tourougoumbe diangounte_camara dioumara kolokani kourouninkoto
+			sosso sagala mourdiah guire goumbou banamba
+			kita bafoulabe diakha niagassola narena tabou_m diawara ballou saraya sare_dioulde sutuko
+			wassu kabakama kodiam kerbatch 
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = ful_tabakali_denianke
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		accepted_cultures = {
+			soninke
+			wolof
+		}
+
+		capital = linguere
+		country_rank = rank_kingdom
+	}
+
+	TRR = { #Trarza
+		own_control_core = {
+			awlil rosso nouakchott
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = tra_ahmad_ibn_daman
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		capital = awlil
+	}
+
+	JOL= { #Jolof
+		own_control_core = {
+			beer_dun tivaouane ndiaganiao fandene diourbel
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = jol_mba_ndiaye
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		capital = ndiaganiao
+		country_rank = rank_duchy
+	}
+
+	BAO = { #Baol
+		own_control_core = {
+			joal tattaguine diakhao
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		capital = diakhao
+	}
+
+	SLU = { #Saloum
+		own_control_core = {
+			albreda djilor juffure sine_ngayene kahone wanar sorokogne
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		capital = sorokogne
+	}
+
+	 KAB = { #Kaabu
+		own_control_core = {
+			farim bissau kaabu bafata iwol salemata tuba
+			gambia bintang diaboudior casamance marsassoum geregia tankular
+			bissagos rio_grande rio_nunez boke # rio_pongo iles_de_los
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = kab_saamanka_dala_jeenung
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		capital = kaabu 
+		country_rank = rank_duchy
+	}
+
+	ANE = { #Mane
+		own_control_core = {
+			labe gueme_sangan timbo konkoure rio_pongo iles_de_los scarcies
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		capital = timbo 
+	}
+	
+	JUM = { #Juma
+		own_control_core = {
+			bandafassi nounkonkan tabon siguiri kaba dieribakoro 
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		capital = siguiri
+	}
+
+	MAL = { #Mali
+		own_control_core = {
+			niani dakadjalan kirina bamako 
+			tengrela niena garalo massigui niantjila koutiala sanekuy
+			kirikongo bankuy faramana hounde boromo
+			farakala sanzana sya banfora
+		}
+
+		own_control_integrated = {
+
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			parliament = {
+				parliament_type = council
+			}
+			reforms = {
+				manden_kurufa_reform
+			}
+			laws = {
+				administrative_system = feudal_administration
+				immigration_law = open_borders_law
+				censorship = no_censorship
+				heir_religion_law = heir_same_religion
+				cultural_traditions_law = martial_society
+				education_masses_law = uneducated_masses_education
+				feudal_de_jure_law = by_tradition
+				legal_code_law = sharia_law_policy
+				distribution_of_power_law = dop_law_gbara
+				medieval_levy_law = ton_ta_jon_ta_ni_woro
+				marriage_law = muslim_marriage
+				sharia_law = maliki_policy
+				iqta_law = efficient_tax_farming
+				mining_law = nobles_mining_law
+				precious_metal_distribution_law = regulated_gold_export
+				royal_court_customs_law = harem_policy
+				harem_law = public_harem_policy
+			}
+			centralization_vs_decentralization = 70
+			traditionalist_vs_innovative = -10
+			aristocracy_vs_plutocracy = -40
+			serfdom_vs_free_subjects = -20
+			quality_vs_quantity = -10
+			outward_vs_inward = -30
+			spiritualist_vs_humanist = -40
+			mercantilism_vs_free_trade = -20
+			belligerent_vs_conciliatory = -30
+			offensive_vs_defensive = -20
+			land_vs_naval = -60
+			capital_economy_vs_traditional_economy = 90
+			individualism_vs_communalism = 60
+
+			privilege = {
+				#Nobles
+				nobles_protected_faith
+				elaborate_court_ceremonies
+				noble_leaders_only
+				banal_lordship
+				noble_marriage_rights
+				#Clergy
+				clerical_advisory_council
+				clergy_protected_faith
+				#Burghers
+				burghers_protected_faith
+				control_over_monetary_policy
+				market_fairs
+				trade_monopolies
+				treasury_rights
+				urban_development_grants
+				#Dhimmi
+				dhimmi_in_administration
+				dhimmi_land_rights
+				dhimmi_lighter_taxes
+				dhimmi_pact_of_umar
+				#Peasants
+				peasants_protected_faith
+				peasants_allowed_weapons_privilege
+				peasants_free_peasantry
+			}
+		}
+
+		currency_data = {
+			gold = 22
+			prestige = 3
+			stability = -30
+		}
+
+		accepted_cultures = {
+			soninke
+		}
+
+		tolerated_cultures = {
+			bobo
+			dan
+			dyula
+			kissi
+			kpelle
+		}
+
+		country_rank = rank_empire
+		capital = niani
+		#dynasty = keita_dynasty
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+	}
+
+	KRO = { #Kouroussa
+		own_control_core = {
+			kouroussa kankan seydougou odienne kerouane mandiana koro
+			boundiali korhogo katiola morondo kong bouna
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		capital = kouroussa
+	}
+
+	MSI = { #Mossi
+		own_control_core = {
+			ouagadougou koudougou leo po zorgho tiebele
+			tenkodogo dourtenga bawku pusiga sansanne_mango
+			nungu pama tambaga matiakoali
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		capital = ouagadougou
+	}
+
+	DEI = { #Dendi
+		own_control_core = {
+			ayerou anzourou dargol gotheye namaro sikieye kukiya kokorou tera bura 
+			boubon ouallam goudel tondikandia hamdallaye libore say dosso loga koure kaouara dongondoutchi
+			tanda yelou tounouga gaia
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = dei_muhanmmad_askiya
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		capital = dargol
+	}
+
+	BOR = { #Borgu
+		own_control_core = {
+			nikki kaiama bussa botou makalondi
+			kandi kouande banikoara sori babana segbana
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa"
+		include = "subsaharan_tribe"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+		}
+
+		capital = nikki
+	}
+
+	OYO = { #Oyo
+		own_control_core = {
+			oyo_ile kisi igboho ikoyi ogbomosho ede tede saki irawo agbonle ilorin
+			ife iwo ilesa offa oshogbo oke_ila
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_south"
+		include = "subsaharan_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = oyo_ile
+	}
+
+	NUP = { #Nupe
+		own_control_core = {
+			bida mokwa tada jebba nupeko lokoja minna lapai
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_south"
+		include = "subsaharan_tribe"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			gbari
+		}
+
+		capital = bida
+	}
+
+	KBO = { #Kanem-Bornu
+		own_control_core = {
+			njimi manan bodou_sailay nguigmi
+			mondo cherfe ngousa moussoro
+			ngazargamu yo marte gubio gambaru
+			mir_loc garoumale boutti goure goudooumaria
+			nguru garun_gabas garandoili biriri
+			konduga daima mandaragirau dikwa keraoua
+		}
+
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+
+			ruler = kbo_umar_sayfawa
+			heir = kbo_ali_sayfawa
+
+			regnal_numbers = {
+				name_abdullah = 2
+				name_bir = 2
+				name_abraham = 1
+				name_salmama = 2
+				name_kaday = 1
+				name_dunama = 2
+			}
+
+			privilege = {
+				kbo_yerima
+				kbo_kaigama
+				kbo_cima
+
+				noble_marriage_rights
+				primacy_of_nobility
+
+				trade_monopolies
+				commercial_advisory_council
+
+				clerical_advisory_council
+				clergy_land_rights
+			}
+
+			reforms = {
+				banu_hummay_amendments
+			}
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		tolerated_cultures = {
+			sao_culture
+			toubou_culture
+			tuareg
+			hausa
+			mandara_culture
+		}
+
+		country_rank = rank_empire
+
+
+		capital = njimi
+		dynasty = sayfawa_dynasty
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+	}
+
+	ZAM = { #Zamfara
+		own_control_core = {
+			birnin_zamfara dutsi talata_mafara gusau funtua
+			birnin_kebbi surame sokoto goronyo takassaba koko anka
+			yauri kontagora zuru kulfo kotonkoro
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		capital = birnin_zamfara
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+	}
+
+
+	ZZZ = { #Zazzau
+		own_control_core = {
+			zazzau turunku birnin_gwari lere anchau tegina
+			bauchi jos zuba
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		tolerated_cultures = {
+			benue
+		}
+
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+		capital = zazzau
+	}
+
+	RAN = { #Rano
+		own_control_core = {
+			rano potiskum daniski damaturu kalam_hill
+			dutse shira birnin_kudu gwaram
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		capital = rano
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+	}
+
+	KAN = { #Kano
+		own_control_core = {
+			kano gaya_n biram auyo
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		capital = kano
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+	}
+
+	KTS = { #Katsina 
+		own_control_core = {
+			katsina tessawa gumel kazaure
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		capital = katsina
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+	}
+
+	DAA = { #Daura
+		own_control_core = {
+			daura
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		capital = daura
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+	}
+
+
+	GOB = { #Gobir
+		own_control_core = {
+			alkalawa birni_lalle maradi birni_nkonni
+			garadoume deoule
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		capital = alkalawa
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+	}
+
+	BON = { #Bonoman
+		own_control_core = {
+			bono_manso begho bondoukou techiman dormaa kintampo sampa kumasi goaso fomena banda_ahenkro bole
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa"
+		include = "subsaharan_tribe"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			gonja
+		}
+
+		capital = bono_manso
+	}
+
+	BEN = { #Benin
+		own_control_core = {
+			benin ughoton mahin ugbodu ukunzu uromi uzea ewu idah ozoro
+			ado_ekiti ikere akure owo ondo ewu
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_south"
+		include = "subsaharan_monarchy"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			yoruba
+			ijaw
+		}
+
+		country_rank = rank_kingdom
+		capital = benin
+	}
+
+	DAH = { #Dahomey
+		own_control_core = {
+			abomey ketu dassa_zoume sabe savalou atakpame notse tado 
+		}
+		starting_technology_level = 3
+		include = "expl_west_africa"
+		include = "subsaharan_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = abomey
+	}
+
+	BGH = { #Baghiri
+		own_control_core = {
+			mser afade goulfey makary gaoui logone_birni dourbali moito mora_cam maroua pouss massenya guelengdeng
+		}
+		starting_technology_level = 3
+		include = "expl_west_africa"
+		include = "subsaharan_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = gaoui
+	}
+
+#Kongo	
+	KON = { #Kongo
+		own_control_core = {
+			amulaca mbanza_mbata masinga mbanza_nsundi cundi mbanza_mpangu ocanga bula_kongo ngimbo_amburi pumbo
+			nogui mbanza_soyo mbanza_kongo maguela bembe_kongo damba ambuila kibango nkunga cuilo soyo mbaba
+			wandu wembo wizi mbridge oando kavanga berbela mbanza_mpemba dambi_angonga munza kuitonga sanga_kongo marimba
+		}
+
+		country_rank = rank_duchy
+		starting_technology_level = 3
+		include = "subsaharan_monarchy"
+		discovered_regions = { kongo_region }
+		discovered_regions = { central_africa_region }
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			kakongo
+			mboma
+		}
+
+		capital = bula_kongo
+	}
+
+	MOM = { #Matamba
+		own_control_core = {
+			kalala muene_ndinga muene_puto jaggas wambu popocabaca inzia kisakaba kwila bukino
+
+		}
+
+		our_cores_conquered_by_others = {
+			
+		}
+
+		starting_technology_level = 3
+		discovered_regions = { kongo_region }
+		discovered_regions = { central_africa_region }
+		include = "subsaharan_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			kongo
+			bazombo
+			kakongo
+		}
+
+		capital = inzia
+	}
+
+	KUB = { #Kuba
+		own_control_core = {
+			lubefu tetela_boa ikongo_boa kassali lukenie bumbuli
+
+		}
+
+		our_cores_conquered_by_others = {
+			
+		}
+
+		starting_technology_level = 3
+		discovered_regions = { kongo_region }
+		discovered_regions = { central_africa_region }
+		include = "subsaharan_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+
+		}
+
+		capital = lubefu
+	}
+
+	LBA = { #Luba
+		own_control_core = {
+			bojamba kikassa kangule lindi_kwila tumba luebo bag_ngula bakongo bumbuli chibango bayombe
+			batubenge lupungu lusambo_qandu golo_muiassa lukassi mussimi moana_mussumba ankoro moana_mpafu
+			chibango bag_ngula bayombe tchikunga hemtine kiendela 
+		}
+
+		our_cores_conquered_by_others = {
+			
+		}
+
+		starting_technology_level = 3
+		discovered_regions = { kongo_region }
+		discovered_regions = { central_africa_region }
+		include = "subsaharan_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+
+		}
+
+		capital = luebo
+	}
+
+	ANZ = { #Anziko
+		own_control_core = {
+			cuango bikoro north_juma muene_kwako south_juma kinguchi mfumu_bekussu tumba_ikoko
+		}
+
+		our_cores_conquered_by_others = {
+			
+		}
+
+		starting_technology_level = 3
+		discovered_regions = { kongo_region }
+		discovered_regions = { central_africa_region }
+		include = "subsaharan_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+
+		}
+
+		capital = north_juma
+	}
+	
+	KAA = { #Kasanze
+		own_control_core = {
+			bungu_kongo malemba chiloango dingi mindouli cabinda_kongo sanga_pumbo
+		}
+
+		starting_technology_level = 3
+		discovered_regions = { kongo_region }
+		discovered_regions = { central_africa_region }
+		include = "subsaharan_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+
+		}
+
+		capital = north_juma
+	}
+
+	KKO = { #Kakongo
+		own_control_core = {
+			loango buali piri bramas 
+		}
+
+		starting_technology_level = 3
+		discovered_regions = { kongo_region }
+		discovered_regions = { central_africa_region }
+		include = "subsaharan_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+
+		}
+
+		capital = loango
+	}
+
+	NGO = { #Ngoyo
+		own_control_core = {
+			sette nyanga kwilu 
+		}
+
+		starting_technology_level = 3
+		discovered_regions = { kongo_region }
+		discovered_regions = { central_africa_region }
+		include = "subsaharan_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+
+		}
+
+		capital = sette
+	}
+
+	LOA = { #Loango
+		own_control_core = {
+			monsol ubangi ngato lefini mombote ogowe makaka manguenzo madembe makabana ncando massabo mayumba yumba loeme
+		}
+
+		starting_technology_level = 3
+		discovered_regions = { kongo_region }
+		discovered_regions = { central_africa_region }
+		include = "subsaharan_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+
+		}
+
+		capital = ubangi
+	}
+
+	#East Africa
+	ZMW = {	#Zimbabwe
+		own_control_core = {
+			great_zimbabwe matendere majiri chipagwe chomuruvuti naletale
+			muchuchu zvipadze charumani mabveni inyanga mtanye nkankezi
+			pamuuyu chibvumani mtoko chipukuswi mwenezi chumnungwa jahunda
+			makutamazan impakwe
+		}
+
+		starting_technology_level = 3
+		include = "expl_east_africa_no_coast"
+		include = "subsaharan_monarchy_no_coast"
+		country_rank = rank_kingdom
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			#societal values
+			centralization_vs_decentralization = -40
+
+			#laws
+			laws = {
+				royal_court_customs_law = aristocratic_court_policy
+				cultural_traditions_law = martial_society
+				education_masses_law = uneducated_masses_education
+				mining_law = zimbabwe_mining_law
+				precious_metal_distribution_law = unlimited_gold_export
+			}
+
+			reforms = {
+				zimbabwe_royal_cattle_control
+			}
+		}
+		tolerated_cultures = {
+			kalanga_culture
+		}
+
+		capital = great_zimbabwe
+	}
+
+	BUT = { #Butua
+
+		own_control_core = {
+			khami zinjanja dhlo_dhlo
+		}
+
+		starting_technology_level = 3
+		include = "expl_east_africa_no_coast"
+		include = "subsaharan_monarchy_no_coast"
+		country_rank = rank_duchy
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			#societal values
+			centralization_vs_decentralization = -40
+
+			#laws
+			laws = {
+				royal_court_customs_law = aristocratic_court_policy
+				cultural_traditions_law = martial_society
+				education_masses_law = uneducated_masses_education
+				mining_law = zimbabwe_mining_law
+				precious_metal_distribution_law = unlimited_gold_export
+			}
+
+			reforms = {
+				zimbabwe_royal_cattle_control
+			}
+		}
+		tolerated_cultures = {
+			kalanga_culture
+		}
+
+		capital = khami
+	}
+
+	ZAN = { #Kilwa Sultanate
+		own_control_core = {
+			bagamoyo dar_es_salaam kisiju kisimani_mafia mitimiri
+			kilwa_kisiwani songo_mnara lindi mikindani
+			ras_mkumbuu zanzibar
+			vumba_kuu tanga pangani mkwaja utondwe
+			tungi vamizi
+		}
+
+		own_control_integrated = {
+			
+		}
+
+		country_rank = rank_kingdom
+
+		starting_technology_level = 3
+		include = "expl_east_africa"
+		include = "expl_horn_of_africa"
+		include = "expl_indonesian_trade_route"
+
+		government = {
+			type = monarchy
+			ruler = zan_yusuf_mahdali
+			heir_selection = cognatic_primogeniture
+			parliament = {
+				parliament_type = council
+			}
+			reforms = {
+				kilwan_trade_communities
+				control_of_the_mahdali_coinage_reform
+			}
+
+			laws = {
+				medieval_levy_law = noble_levies
+				censorship = strict_censorship
+				administrative_system = local_courts_administration
+				marriage_law = muslim_marriage
+				heir_religion_law = heir_same_religion
+				legal_code_law = sharia_law_policy
+				maritime_law = kilwan_merchant_navy
+				piracy_law = anti_piracy_policy
+				distribution_of_power_law = dop_favor_the_burghers
+				education_masses_law = basic_religious_education
+				feudal_de_jure_law = by_blood
+				royal_court_customs_law = court_of_culture_policy
+				cultural_traditions_law = martial_society
+				iqta_law = efficient_tax_farming
+				sharia_law = shafii_policy
+			}
+
+			aristocracy_vs_plutocracy = 80
+			centralization_vs_decentralization = 75
+			traditionalist_vs_innovative = 15
+			spiritualist_vs_humanist = 0
+			serfdom_vs_free_subjects = 30
+			mercantilism_vs_free_trade = 95
+			belligerent_vs_conciliatory = -50
+			quality_vs_quantity = 0
+			offensive_vs_defensive = -20
+			land_vs_naval = 25
+			capital_economy_vs_traditional_economy = -75
+			individualism_vs_communalism = -50
+			outward_vs_inward = -80
+
+			privilege = {
+				#Nobles
+				elaborate_court_ceremonies
+				noble_sponsored_navy
+
+				#Clergy
+				clergy_literacy_rights
+				clergy_enforced_unity
+				embellish_great_works_of_faith
+
+				#Burghers
+				formal_guilds
+				building_rights
+				commercial_advisory_council
+				land_of_commerce
+				market_fairs
+				shipwright_contracts
+				sponsor_maritime_contracts
+
+				#Peasants
+				partial_yield
+				peasants_free_peasantry
+
+				#Dhimmi
+				dhimmi_land_rights
+				dhimmi_administrative_posts
+
+				#Tribes
+				tribes_land_rights
+				tribes_pasture_access
+			}
+
+			ruler_term = { character = zan_al_hassan_ibn_talut_mahdali start_date = 1277.1.1 end_date = 1294.1.1 regnal_number = 1 }
+			ruler_term = { character = zan_suleiman_ibn_hassan_mahdali start_date = 1294.1.1 end_date = 1308.1.1 regnal_number = 1 }
+			ruler_term = { character = zan_daud_ibn_suleiman_mahdali start_date = 1308.1.1 end_date = 1310.1.1 regnal_number = 1 }
+			ruler_term = { character = zan_abu_al_mawahib_al_hasan_ibn_suleiman start_date = 1310.1.1 end_date = 1333.1.1 regnal_number = 1 }
+			ruler_term = { character = zan_daud_mahdali start_date = 1333.1.1 regnal_number = 2 }
+		}
+		religious_school = shafii_school
+		government = { mysticism_vs_jurisprudence = 20 }
+		
+
+		tolerated_cultures = {
+			yao_culture
+			swahili_culture
+		}
+
+		currency_data = {
+			stability = 15
+			prestige = 25
+		}
+
+		capital = kilwa_kisiwani
+		court_language = persian_language
+	}
+
+	GED = { #Gedi
+		own_control_core = {
+			gedi
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa"
+		include = "expl_east_africa"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = shafii_policy
+			}
+		}
+		religious_school = shafii_school
+		government = { mysticism_vs_jurisprudence = 20 }
+		
+
+		capital = gedi
+	}
+
+	UGW = { #Ungwana
+		own_control_core = {
+			ungwana
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = shafii_policy
+			}
+		}
+		religious_school = shafii_school
+		government = { mysticism_vs_jurisprudence = 20 }
+		
+
+		capital = ungwana
+	}
+
+	LAM = { #Lamu
+		own_control_core = {
+			lamu
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa"
+		include = "subsaharan_muslim_monarchy"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = shafii_policy
+			}
+		}
+		religious_school = shafii_school
+		government = { mysticism_vs_jurisprudence = 20 }
+		
+
+		capital = lamu
+	}
+
+	PTE = { #Pate
+		own_control_core = {
+			pate
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa"
+		include = "subsaharan_muslim_monarchy"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+
+			ruler = random
+
+			laws = {
+				sharia_law = shafii_policy
+			}
+		}
+		religious_school = shafii_school
+		government = { mysticism_vs_jurisprudence = 20 }
+		
+
+		tolerated_cultures = {
+			swahili_culture
+		}
+
+		country_rank = rank_kingdom
+		capital = pate
+	}
+
+	AJU = { #Ajuran
+		own_control_core = {
+			hobyo harardhere mareeg warsheikh #ajan_province
+			barawa haranka merca qoryooley #banaadir_province
+			kelafo el_dhere #haud_province
+			kismayo afmadow bardera buale garbahare jilib luuq rasini #jubaland_province
+			dusmareb ceeldheer el_buur #mudugh_province
+			baidoa beledweyne buur_hakaba buur_heybe hudur jowhar maxaas #shebelle_province
+			mogadishu
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa"
+		include = "subsaharan_muslim_monarchy"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = aju_umur_gareen
+
+			laws = {
+				sharia_law = shafii_policy
+			}
+		}
+		religious_school = shafii_school
+		government = { mysticism_vs_jurisprudence = 20 }
+
+		country_rank = rank_kingdom
+		capital = merca
+	}
+
+	WAR = { #Warsangali
+		own_control_core = {
+			haylan #ciid_province
+			bosaso el_ayum las_khorey maydh #maakhir_province
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa"
+		include = "subsaharan_muslim_monarchy_not_present"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = shafii_policy
+			}
+		}
+		religious_school = shafii_school
+		government = { mysticism_vs_jurisprudence = 20 }
+
+		capital = las_khorey
+	}
+
+	MJE  = { #Majeerteen
+		own_control_core = {
+			ras_hafun bargaal qandala alula bandarbeyla qardho barbacadle garoowe awrtable el_hamurre galkayo garacad
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa"
+		include = "subsaharan_muslim_monarchy_not_present"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = shafii_policy
+			}
+		}
+		religious_school = shafii_school
+		government = { mysticism_vs_jurisprudence = 20 }
+
+		capital = ras_hafun
+	}
+
+#Buganda
+	BUG = { #Buganda 
+		own_control_core = {
+			buganda buddu rubaga haya isinguro bigo_bya_mugenyi
+
+		}
+
+		starting_technology_level = 3
+		include = "expl_central_africa"
+		include = "subsaharan_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = bug_chwa_nabakka
+
+			ruler_term = { character = bug_katu_kintu start_date = 1290.1.1 end_date = 1305.1.1 regnal_number = 1 }
+			ruler_term = { character = bug_chwa_nabakka start_date = 1305.1.1 regnal_number = 1 }
+		}
+
+		capital = buganda
+	}
+
+	BUU = { #Burundi
+		own_control_core = {
+			nikoma mugamba mirama 
+		}
+
+		starting_technology_level = 3
+		include = "expl_central_africa"
+		include = "subsaharan_monarchy_not_present"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = nikoma
+	}
+
+	BNY = { #Bunyoro
+		own_control_core = {
+			kibiro pawir mubemde rugombe kibengo katwe
+
+		}
+
+		starting_technology_level = 3
+		include = "expl_central_africa"
+		include = "subsaharan_monarchy_not_present"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = kibiro
+	}
+#North Africa
+	TUN = { #Tunis
+		own_control_core = {
+			ajim medenine zarzis feriana kasserine sbiba subaytila thala
+			gabes bou_hajla madjul mahres sfaqes sidi_fredj
+			mahdia sousse el_jem monastir chebba bizertte zaghouan
+			kairouan kesra sbikha tunis el_fahs hammamet kelibia nabeul zaghouanbizerte mateur sejnane tebourba
+			beja_TUN el_kef el_ksour jama_TUN medjez_el_bab souk_el_arba thagaste 
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		country_rank = rank_kingdom
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+
+			ruler = tun_hammuda_muradoglu
+
+			ruler_term = { character = tun_hammuda_muradoglu start_date = 1644.1.1 regnal_number = 1 }
+
+			regnal_numbers = {
+				Abd_al-Wahid = 1
+				name_abdullah = 1
+				name_john = 2
+				name_muhammad = 2
+				name_abraham = 1
+				name_abd_al_aziz = 1
+				name_omar = 1
+				Khalid = 1
+				name_zechariah = 1
+				Abu_Bakr = 1
+			}
+
+			land_vs_naval = 30
+			laws = {
+				piracy_law = state_piracy_policy
+			}
+			privilege = {
+				#Nobles
+				noble_sponsored_navy
+				#Ulama
+				waqf_payments
+				#Burghers
+				land_of_commerce
+				allow_trade_center_sponsorship
+				#Dhimmi
+				dhimmi_pact_of_umar
+				#Tribes
+				tribes_tribal_levies
+				tribes_allow_gatherings
+			}
+			laws = {
+				amazigh_familial_connections = reliance_on_local_tribes
+				sharia_law = maliki_policy
+			}
+		}
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		tolerated_cultures = {
+			algerian
+			kabyle
+			chaoui
+			mustaarabi
+		}
+
+		capital = tunis
+	}
+
+	GFS = { #Gafsa
+		own_control_core = {
+			gafsa debila douz kebili madas nefta tozeur
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "muslim_monarchy_not_present"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		tolerated_cultures = {
+			chaoui
+			mozabite
+			mustaarabi
+		}
+
+		capital = gafsa
+	}
+
+	ALG = { #Algiers
+		own_control_core = {
+			annaba cheffia collo el_kala el_milia guelma jijel skikda tekouch
+			baghai dufanat meskiana tebessa tiffech chott_tinsilt
+			constantine_ALG bazer_sakhra ikjan mila ngaous tijis
+			bejaia azeffoun bordj_bou_arreridj bouira el_kseur kalaa_of_ait_abbas kuku mansouria setif tedelles
+			algiers medea tablat tamentfoust
+			mostaganem brashk cherchell tenes
+			miliana al_khadra_ALG chlef ksar_el_kaoua mazouna yellel
+			arshgul arzew ksar_ibn_senane nedroma tamazaghrane
+			tlemcen madinat_alawiyyin mascara saida tessala
+			ras_al_ain maqqara msila asir_ALG ksar_el_boukhari tissemsilt tahert qal_at_ibn_salama
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "muslim_monarchy_not_present"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		capital = algiers
+	}
+
+	MZB = { #Mzab
+		own_control_core = {
+			ghardaia berriane el_guerrara guettara
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "muslim_monarchy_not_present"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = ibadi_policy
+			}
+		}
+		religious_school = ibadi_school
+
+		tolerated_cultures = {
+			mustaarabi
+		}
+
+		capital = ghardaia
+	}
+
+	TGT = { #Touggourt
+		own_control_core = {
+			touggourt asuf tamacine
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "muslim_monarchy_not_present"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = ibadi_policy
+			}
+		}
+
+		religious_school = ibadi_school
+
+		tolerated_cultures = {
+			mustaarabi
+		}
+
+		capital = touggourt
+	}
+
+#Nubia and Ethopia
+	MAK = { #Makuria
+		own_control_core = {
+			shemkhiya #bayuda_province
+			dongola abu_hamed berber kerma karima #makuria_province
+			selima #oasis_province
+			sai
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa_no_coast"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		government = {
+			heir_selection = matrilineal_non_exclusive
+			ruler = random
+
+			laws = {
+				sharia_law = shafii_policy
+			}
+		}
+		religious_school = shafii_school
+		government = { mysticism_vs_jurisprudence = 20 }
+		
+
+		tolerated_cultures = {
+			sudanese_arab
+		}
+
+		country_rank = rank_kingdom
+		capital = dongola
+	}
+
+	SNR = { #Sennar
+		own_control_core = {
+			atbara kassala #atbai_province
+			omdurman #bayuda_province
+			kosa waylula #kordofan_province
+			soba qerri #lower_butana_province
+			sennar alays arbaji el_manaqil wad_madani #lower_gezira_province
+			el_gadarif al_matamma branko el_eleila quz_rajab #upper_butana_province
+			singa karkuj #upper_gezira_province
+			ed_damer shendi el_metemma 
+			zankor wadi_el_melik #kordofan_province
+			el_obeid barah dilling kadugli teqali 
+			ed_debba al_jeblien korti
+			chilga gilgel_beles guba al_rusayrisi dabarqi renk kaka
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa_no_coast"
+		include = "subsaharan_monarchy_no_coast"
+		discovered_regions = { nubia_region }
+		government = {
+			heir_selection = matrilineal_non_exclusive
+			ruler = random
+		}
+
+		country_rank = rank_kingdom
+		capital = sennar
+	}
+
+	WAD = { #Wadai
+		own_control_core = {
+			yao mongo oum_hadjer am_djemena djedaa
+			bokoro moussoro ngousa
+			ouara abesehir guereda hadjer_haddid am_dam #Future Waddai
+		}
+
+
+		starting_technology_level = 0
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_tribe"
+
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+		government = {
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+	}
+
+	NQS = { #Naqis
+		own_control_core = {
+			khawr_nubt #atbai_province
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa"
+		include = "subsaharan_advanced_muslim_tribe"
+		government = {
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		capital = deraheib
+	}
+
+	DAJ = { #Daju
+		own_control_core = {
+			ain_farah kabsoru kebkabiya kujunung mornei towing uri #north_darfur_province
+			masa_sud nyala taweisha wara #south_darfur_province
+
+		}
+
+		own_control_integrated = {
+			malha
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa_no_coast"
+		include = "subsaharan_advanced_tribe"
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			masalit_culture
+			maba_africa_culture
+			fur_culture
+		}
+
+		capital = uri
+	}
+
+	BZN = { #Bazin
+		own_control_core = {
+			tembesha #bazin_province
+			tesenei bazin #bazin_province
+		}
+		own_control_integrated = {
+			
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa"
+		include = "subsaharan_advanced_muslim_tribe"
+		government = {
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		tolerated_cultures = {
+			agaw_culture
+			tigre
+		}
+
+		capital = tesenei
+	}
+
+	BQL = { #Baqlin
+		own_control_core = {
+			anseba khawr_baraka #atbai_province
+			agordat #hamasien_province
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa"
+		include = "subsaharan_advanced_muslim_tribe"
+		government = {
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		tolerated_cultures = {
+			tigre
+		}
+
+		capital = agordat
+	}
+
+	ETH = { #Ethiopia
+		own_control_core = {
+			kubar aheyya_fagg gannata_giyorgis tadbaba #amhara_province
+			kombolcha #argobba_province
+			tsana debre_tabor #begemder_province
+			lalibela antalo sokota #lasta_province
+			senafe yeha #serae_province
+			axum abiy_addi adwa shire #tigray_province
+			debre_libanos ambat badabedi wej #wej_province
+			debra_berhan #wej_province
+			ankober gendebelo nora_eth #argobba_province
+			dima bahir_dar dangila debra_warq enjebara #gojjam_province
+			gonder #begemder_province
+			sharka hayq amora_gadal chercher manadeley 
+			mendefera debarwa debre_bizen dekemhare asmara keren bilo
+		}
+
+		own_control_integrated = {
+			maldarede gambo #damot_province
+			barara ziqwala #shewa_province
+			waldeba debarq kosoge #semien_province
+		}
+
+		own_control_conquered = {
+			seru #bale_province
+			abala adigrat agula mekele #enderta_province
+			harro_walabu #oromia_province
+			bossa worabe#sidamo_province
+		}
+
+		our_cores_conquered_by_others = {
+			zula #akele_guzai_province
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa_ethiopia"
+		include = "subsaharan_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+
+			laws = {
+				feudal_de_jure_law = by_tradition
+				cultural_traditions_law = martial_society
+				education_masses_law = basic_religious_education
+				patriarchate_law = separated_patriarchate_policy
+				royal_court_customs_law = itinerant_court_policy
+			}
+
+			centralization_vs_decentralization = 80
+			belligerent_vs_conciliatory = -50
+			offensive_vs_defensive = -30
+			outward_vs_inward = 0
+		}
+		capital = ankober #Marade/Tegulet, made capital by Amda Seyon I
+		country_rank = rank_empire
+
+		liturgical_language = geez_language
+
+		dynasty = solomonid_dynasty
+
+		tolerated_cultures = {
+			agaw_culture gurage
+			afar_culture
+			tigrinya
+		}
+	}
+
+	DAM = { #Damot
+		own_control_core = {
+			bonga soddo
+		}
+
+		our_cores_conquered_by_others = {
+			maldarede bilo gambo #damot_province
+			hirmata agaro ilimo lieka saqqa #ennarea_province
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa"
+		include = "subsaharan_monarchy_no_coast_no_censor"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			ometo_culture
+		}
+
+		liturgical_language = geez_language
+
+		capital = maldarede
+	}
+
+
+	ABB = { #Arbabni
+		own_control_core = {
+			jibat fofa 
+			hadiya 
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa"
+		include = "subsaharan_muslim_monarchy_not_present"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = hanafi_policy
+			}
+		}
+		religious_school = hanafi_school
+		government = { mysticism_vs_jurisprudence = -15 }
+		
+
+		capital = jibat 
+	}
+
+	AWS = { #Aussa
+		own_control_core  = {
+			asaita mora_eth killelu balho afrera assab rahayta obock tadjoura ali_sabieh arabi dire_dawa jeldesa awbare
+			
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa"
+		include = "subsaharan_muslim_monarchy_not_present"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = shafii_policy
+			}
+		}
+		religious_school = shafii_school
+		government = { mysticism_vs_jurisprudence = 20 }
+
+		capital = asaita
+	}
+
+	ENN = { #Ennarea 
+		own_control_core = {
+			agaro saqqa hirmata lieka
+			ilimo
+		}
+
+		starting_technology_level = 3
+		include = "expl_horn_of_africa"
+		include = "subsaharan_monarchy_no_coast_no_censor"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		liturgical_language = geez_language
+
+		capital = bilo
+	}
+#Caucasus
+
+	CIR = { #Circassia
+		own_control_core = {
+			tuapse khadyzhi kuzhyb maykop moschevo uspenskoye 
+			chatyun adyukh armavir shkhancheriekhabl belorechensk
+			taman susaco shanjir siba_circassia
+			khumar arkhyz mamiya_kala
+		}
+
+		include = "expl_christian_caucasus"
+		starting_technology_level = 3
+		include = "eastern_european_monarchy_not_present"
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			abazin_culture
+		}
+
+		capital = maykop
+	}
+
+	KDA = { #Kabardia
+		own_control_core = {
+			dzhulat chegem jariekhi karcha_kala koban tatartup yessentuq novopavlovsk rim_gora 
+		}
+
+		starting_technology_level = 3
+		include = "expl_christian_caucasus"
+		include = "eurasian_orthodox_tribe"
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+		}
+
+		capital = kuzhyb
+	}
+
+	DZK = { #Durdzuketia
+		own_control_core = {
+			simsir alkhan_kala argun nazran targim tsontaroy_kala
+		}
+
+		include = "expl_middle_east"
+		starting_technology_level = 3
+		include = "eurasian_tribe"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+		}
+
+		capital = simsir 
+		tolerated_cultures = {
+			astrakhani
+		}
+	}
+
+	TRK = { #Shamkhalate of Tarki
+		own_control_core = {
+			tarki boynak endirey kumukh temirkhan_shura terek
+		}
+
+		include = "expl_middle_east"
+		include = "muslim_tribe"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = hanafi_policy
+			}
+		}
+
+		tolerated_cultures = {
+			avar_culture
+			lak_culture
+		}
+
+		religious_school = hanafi_school
+		government = { mysticism_vs_jurisprudence = -15 }
+		
+		capital = tarki
+	}
+
+	AVR = { #Avaria
+		own_control_core = {
+			khunzakh tindi
+		}
+
+		include = "expl_middle_east"
+		include = "muslim_tribe_no_coast"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = hanafi_policy
+			}
+		}
+
+		tolerated_cultures = {
+			lak_culture
+		}
+
+		religious_school = hanafi_school
+		government = { mysticism_vs_jurisprudence = -15 }
+		
+		capital = khunzakh
+	}
+
+	KAI = { #Kaitag
+		own_control_core = {
+			kubachi khuchini
+		}
+
+		include = "expl_middle_east"
+		starting_technology_level = 3
+		include = "eurasian_orthodox_tribe"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			lezgin_culture
+		}
+
+		capital = kubachi
+	}
+
+	LEK = { #Lekhia
+		own_control_core = {
+			kurakh tpig
+		}
+
+		include = "expl_middle_east"
+		starting_technology_level = 3
+		include = "eurasian_tribe"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			dargin_culture
+		}
+
+		capital = kurakh
+	}
+
+	RUT = { #Rutul
+		own_control_core = {
+			rutul
+		}
+
+		include = "expl_middle_east"
+		starting_technology_level = 3
+		include = "eurasian_tribe"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			dargin_culture
+		}
+
+		capital = rutul
+	}
+	GEO = { #Georgia
+		own_control_core = {
+			lata_georgia kutaisi lentekhi skande shorapani tsageri tsesi ushguli vartsikhe
+			bedia anaklia batumi ozurgeti poti_caucasus tsalenjikha
+		}
+
+
+		include = "expl_christian_caucasus"
+		include = "eastern_european_monarchy"
+		starting_technology_level = 3
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+
+			ruler_term = { character = geo_george_x start_date = 1644.1.1 regnal_number = 1	}
+
+			ruler = geo_george_x
+
+			#Societal Values
+			offensive_vs_defensive = 40
+			aristocracy_vs_plutocracy = -25
+			belligerent_vs_conciliatory = -35
+
+
+
+			privilege = {
+				#Nobles
+				primacy_of_nobility
+				elaborate_court_ceremonies
+
+				#Burghers
+
+
+				#Clergy
+				clergy_in_administration
+				clerical_advisory_council
+				clergy_powerful_dioceses
+				clergy_strengthen_faith
+				embellish_great_works_of_faith
+				tax_exemption
+
+				#Peasants
+				peasants_allowed_weapons_privilege
+			}
+
+			laws = {
+				administrative_system = regulations_of_the_royal_court
+				distribution_of_power_law = dop_office_of_the_eristavi
+			}
+		}
+		country_rank = rank_kingdom
+
+		tolerated_cultures = {
+			abkhazian_culture
+			armenian_culture
+			mingrelian_culture
+			svan_culture
+			lezgin_culture
+		}
+
+		capital = kutaisi
+	}
+
+
+	ABH = { #Abkhazia
+		own_control_core = {
+			costa pitsunda anacopia
+		}
+
+
+		include = "expl_christian_caucasus"
+		include = "eastern_european_monarchy"
+		starting_technology_level = 3
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+		}
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			armenian_culture
+		}
+
+		capital = costa
+	}
+
+	AAI = { #Alastani
+		own_control_core = {
+			akhalkalaki dmanisi kldekari kumayri lori spitak gagi kayen khunani shamkir ganja gardman haterk gandzasar 
+			tbilisi gori mtskheta tsagvli kvenipnevi kasriskari shusha
+		}
+
+		include = "expl_christian_caucasus"
+		include = "eastern_european_monarchy_no_coast"
+		starting_technology_level = 3
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			armenian_culture
+		}
+
+		country_rank = rank_duchy
+
+		capital = tbilisi
+	}
+
+	SKI = { #Shaki
+		own_control_core = {
+			hereti balakan bodbe khornabuji qakh
+			telavi alaverdi dusheti gremi rustavi shatili
+			omalo
+		}
+
+
+		include = "expl_middle_east"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+		starting_technology_level = 3
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = hanafi_policy
+			}
+		}
+
+		religious_school = hanafi_school
+		government = { mysticism_vs_jurisprudence = -15 }
+		
+		capital = hereti
+		tolerated_cultures = {
+			azeri_culture
+			lezgin_culture
+		}
+	}
+
+
+
+
+#Arabic
+	MEC = { #Mecca
+		own_control_core = {
+			mecca al_jumum al_lith dhat_irq ghumayqah jeddah yalamlam
+			taif bani_saad abu_rakah barahrah turbah al_abala raghdan al_sirrayn adham 
+		}
+
+		include = "expl_middle_east"
+		starting_technology_level = 3
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = zaidi_policy
+			}
+		}
+
+		tolerated_cultures = {
+			yemeni_culture
+		}
+
+		religious_school = zaidi_school
+
+		capital = mecca
+	}
+
+	AMR = { #Al Mira
+		own_control_core = {
+			kaf al_harrah an_nasifah qurayyat_al_milh
+		}
+
+		starting_technology_level = 3
+		include = "expl_middle_east"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = irbid
+		tolerated_cultures = {
+			levantine_culture
+			najdi_culture
+		}
+		religious_school = hanafi_school
+		government = { mysticism_vs_jurisprudence = -15 }
+		
+	}
+
+	AAL = { #Al 'Alī
+		own_control_core = {
+			burraq jayrud qutayfah
+			sakaka dumat_al_jandal aba_al_qur al_hamad arar
+		}
+
+		starting_technology_level = 3
+		include = "expl_middle_east"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = aal_jumaz_bin_muhammed
+			ruler_term = {	 character = aal_abu_bakr_bin_ali start_date = 1301.1.1 end_date = 1320.1.1}
+			ruler_term = {	 character = aal_muhammed_bin_abu_bakr start_date = 1320.1.1 end_date = 1322.1.1}
+			ruler_term = {	 character = aal_jumaz_bin_muhammed start_date = 1322.1.1	}
+		}
+
+		capital = qutayfah
+		tolerated_cultures = {
+			levantine_culture
+			najdi_culture
+		}
+		religious_school = hanafi_school
+		government = { mysticism_vs_jurisprudence = -15 }
+		
+	}
+
+	HUT = { #Hutaym
+		own_control_core = {
+			tayma ash_shamli
+			abu_qasr basithah bir_fajr
+		}
+
+		include = "expl_middle_east"
+		starting_technology_level = 0
+		include = "muslim_tribe_no_coast"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = hanbali_policy
+			}
+		}
+
+		religious_school = hanbali_school
+		government = { mysticism_vs_jurisprudence = 40 }
+		
+
+		capital = tayma
+
+	}
+	
+	FDL = { #Al Fadl
+		own_control_core = {
+			ithriya sukhnah taybah
+			khanaser qastal salamiyya
+			marrat
+			arak huwwarin qaryatayn tadmur
+		}
+
+		own_control_integrated = {
+			zubala al_labbah al_thulayma al_waqbi linah lowqah
+			al_anbar hit ayn_tamr karbala
+			anah abu_kemal haditha
+			deir_ez_zor tabqah rahba
+		}
+
+		starting_technology_level = 3
+		include = "expl_middle_east"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = tadmur
+		tolerated_cultures = {
+			levantine_culture
+		}
+		religious_school = hanafi_school
+		government = { mysticism_vs_jurisprudence = -15 }
+		
+	}
+
+	SHM = { #Shammar
+		own_control_core = {
+			hail ash_shuaybah_hail baqa
+			al_hufayr jubbah mawqaq umm_al_qulban
+		}
+
+		include = "expl_middle_east"
+
+		starting_technology_level = 0
+		include = "muslim_tribe_no_coast"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = hanbali_policy
+			}
+		}
+
+		religious_school = hanbali_school
+		government = { mysticism_vs_jurisprudence = 40 }
+		
+		capital = hail
+	}
+
+	BNL = { #Banu Lam
+		own_control_core = {
+			buraydah unaizah al_mithnab
+			an_nabhaniyah ar_rass
+			al_laghfiyyah
+			afif al_baharah ramah
+			udakh al_bijadiyah al_fuqarah ash_shuara miskah nifi
+			al_burud al_maghib
+			al_udhaim at_tarfawi samira thadij
+			uyun_al_jiwa an_nibaj
+			al_ajfar  fayd sara
+		}
+
+		include = "expl_middle_east"
+
+		starting_technology_level = 0
+		include = "muslim_tribe_no_coast"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = hanbali_policy
+			}
+		}
+
+		religious_school = hanbali_school
+		government = { mysticism_vs_jurisprudence = 40 }
+		
+
+		capital = unaizah
+
+	}
+
+	ANZ = { #Anizah
+		own_control_core = {
+			al_ayn_khaybar khaybar
+			al_huwayyit fadak darghat
+		}
+
+		include = "expl_middle_east"
+
+		starting_technology_level = 0
+		include = "muslim_tribe_no_coast"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = hanbali_policy
+			}
+		}
+
+		tolerated_cultures = {
+			hijazi_culture
+		}
+
+		religious_school = hanbali_school
+		government = { mysticism_vs_jurisprudence = 40 }
+		
+
+		capital = dumat_al_jandal
+
+	}
+
+	MUT = { #Mutayr
+		own_control_core = {
+		al_hisu al_aythamah an_nuqrah an_nuhaytiyyah bilghah dawbah
+		al_ghazalah ar_rawdah as_sulaymi
+		}
+
+		our_cores_conquered_by_others = {
+
+		}
+
+		include = "expl_middle_east"
+
+		starting_technology_level = 0
+		include = "muslim_tribe_no_coast"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = hanbali_policy
+			}
+		}
+
+		religious_school = hanbali_school
+		government = { mysticism_vs_jurisprudence = 40 }
+
+		capital = al_aythamah
+
+	}
+
+	AAD = { #Al A'idh
+		own_control_core = {
+			al_majmaah al_ghat al_qaiyah az_zilfi
+			mashdhubah hafar_al_batin
+			tanumah al_suman ar_rukai
+		}
+
+		include = "expl_middle_east"
+
+		starting_technology_level = 0
+		include = "muslim_tribe_no_coast"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		capital = al_qaiyah
+	}
+
+	KLB = { #Banu Kilab
+		own_control_core = {
+			al_hajr diriyah malham thadiq
+			al_yamamah rumah khurays urayrah al_uyayna nita_arabia qaryat_ulya jarrarah 
+		}
+
+		include = "expl_middle_east"
+		starting_technology_level = 3
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		capital = al_yamamah
+	}
+
+	SBY = { #Subay
+		own_control_core = {
+			muzahmiyah
+			asila_arabia saqra dhurma
+			ad_dilam naam
+			al_quway ar_rayn al_mardamah al_maslum halaban rawdat_al_ard
+			tabalah
+		}
+
+		include = "expl_middle_east"
+
+		starting_technology_level = 0
+		include = "muslim_tribe_no_coast"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = hanbali_policy
+			}
+		}
+
+		tolerated_cultures = {
+			yemeni_culture
+			hijazi_culture
+		}
+
+		religious_school = hanbali_school
+		government = { mysticism_vs_jurisprudence = 40 }
+		
+
+		capital = tabalah
+	}
+
+	DWS = { #Dawasir
+		own_control_core = {
+			aqiq_banu_uqayi habiyah tamrah
+			laila al_aflaj al_haddar qasr_himam
+			al_majazah
+			ad_dawasir
+			al_amlah ash_shaqiqah qalat_bishah	ranyah
+		}
+
+		include = "expl_middle_east"
+
+		starting_technology_level = 0
+		include = "muslim_tribe_no_coast"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = hanbali_policy
+			}
+		}
+
+		religious_school = hanbali_school
+		government = { mysticism_vs_jurisprudence = 40 }
+		
+		dynasty = al_zayid_dynasty
+
+		capital = aqiq_banu_uqayi
+	}
+
+	YAS = { #Yas
+		own_control_core = {
+			liwa marawah sir_bani_yas al_udayd al_mashqar al_bidda al_huwaila eglat_faisal zubarah
+			abu_dhabi
+		}
+
+		include = "expl_middle_east"
+
+		starting_technology_level = 0
+		include = "muslim_tribe"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		capital = liwa
+	}
+
+	AZF = { #Al-Zafir
+		own_control_core = {
+			ar_rabadha as_suwaydirah
+			al_hinakiyah an_nakhil
+		}
+
+		include = "expl_middle_east"
+
+		starting_technology_level = 0
+		include = "muslim_tribe_no_coast"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = hanbali_policy
+			}
+		}
+
+		tolerated_cultures = {
+			hijazi_culture
+		}
+
+		religious_school = hanbali_school
+		government = { mysticism_vs_jurisprudence = 40 }
+		
+
+		capital = as_suwaydirah
+
+	}
+
+	ZIB = { #Zi'b
+		own_control_core = {
+			madin_bani_sulaym al_mundassah murayghan
+			al_ghrabah
+		}
+
+		include = "expl_middle_east"
+
+		starting_technology_level = 0
+		include = "muslim_tribe_no_coast"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = hanbali_policy
+			}
+		}
+
+		religious_school = hanbali_school
+		government = { mysticism_vs_jurisprudence = 40 }
+		
+
+		capital = madin_bani_sulaym
+
+	}
+
+	MRH = { #Al Murrah
+		own_control_core = {
+			yabrin harad_al_ahsa al_hunayy al_ahsa baqqa
+		}
+
+		include = "expl_middle_east"
+
+		starting_technology_level = 0
+		include = "muslim_tribe_no_coast"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = hanbali_policy
+			}
+		}
+
+		religious_school = hanbali_school
+		government = { mysticism_vs_jurisprudence = 40 }
+		
+
+		capital = al_hasa
+	}
+
+	QHT = { #Qahtan
+		own_control_core = {
+			tathlith al_amwah al_harjah al_maddah khaybar_janoub yadamah
+			al_husayniyah
+		}
+
+		include = "expl_middle_east"
+
+		starting_technology_level = 0
+		include = "muslim_tribe_no_coast"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = ismaili_policy
+			}
+		}
+
+		religious_school = ismaili_school
+
+		capital = tathlith
+	}
+
+	YAM = { #Yam
+		own_control_core = {
+			al_mahjal dhahran huth main najran sadah suq_al_ghinan
+		}
+
+		include = "expl_middle_east"
+
+		starting_technology_level = 0
+		include = "muslim_tribe_no_coast"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = ismaili_policy
+			}
+		}
+
+		religious_school = ismaili_school
+
+		capital = najran
+	}
+
+	HRB = { #Harb
+		own_control_core = {
+			dhalam al_hufayrah ar_ruwailiyyah muwayh qasr_al_qaba umm_ad_dawm
+			ad_dughmiyah
+		}
+
+		include = "expl_middle_east"
+
+		starting_technology_level = 0
+		include = "muslim_tribe_no_coast"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = ismaili_policy
+			}
+		}
+
+		religious_school = ismaili_school
+
+		capital = muwayh
+	}
+
+	YEM = { #Yemen
+		own_control_core = {
+			habban 
+			zabid al_ghulayfiqah as_salafiyah mikhlaf_al_hubishiyah mudhaykirah
+			adan al_arah al_mafalis lahj zinjibar
+			ahwar al_qara jurrah lawdar shuqra
+			al_hirda hajjah harad_asir khamir shaharah
+			hudaida al_luhayyah as_salif hutayb kawkaban
+			ibb dhafar juban musaymir yahr
+			jazan al_haqu al_khosuf farasan sabt_bani_bishr sabya
+			marib baraqish dhamar harib radaa
+			sana_yemen thula
+			shabwa al_bayda_yemen bayhan markha nisab
+			taizz al_mandab al_mukha hays mawza
+		}
+
+		our_cores_conquered_by_others = {
+			dhufar hadibu qulensya khalfut mirbat qishn raysut
+		}
+
+		include = "expl_middle_east"
+		starting_technology_level = 3
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = yem_ismail_qasimid
+
+			laws = {
+				sharia_law = shafii_policy
+			}
+		}
+
+		tolerated_cultures = {
+			hadhrami_culture
+		}
+
+		religious_school = shafii_school
+		government = { mysticism_vs_jurisprudence = 20 }
+		
+
+		country_rank = rank_kingdom
+		capital = zabid
+	}
+
+	KAT = { #Kathirids
+		own_control_core = {
+			birali al_mukalla al_shihr azzan balhaf hajar
+			shibam al_khuraybah arrayda dha_sohis huraydah khayrij rakhyah sayun tarim
+		}
+
+		include = "expl_middle_east"
+		starting_technology_level = 3
+		include = "muslim_monarchy"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = shafii_policy
+			}
+		}
+
+		tolerated_cultures = {
+			mehri_culture soqotri_culture
+		}
+
+		religious_school = shafii_school
+		government = { mysticism_vs_jurisprudence = 20 }
+
+		capital = dhufar
+	}
+
+	DHF = { #Dhofar
+		own_control_core = {
+			dhufar khalfut mirbat qishn raysut hadibu qulensya
+		}
+
+		include = "expl_middle_east"
+		starting_technology_level = 3
+		include = "muslim_monarchy"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+
+			laws = {
+				sharia_law = shafii_policy
+			}
+		}
+
+		tolerated_cultures = {
+			mehri_culture soqotri_culture
+		}
+
+		religious_school = shafii_school
+		government = { mysticism_vs_jurisprudence = 20 }
+
+		capital = dhufar
+	}
+
+	OMA = { #Oman
+		own_control_core = {
+			nizwa bahla ibra ibri izki sinaw yanqul
+			al_kamil_wal_wafi as_sib jalan_buani_buali masirah qalhat sur
+			suhar al_khaburah nakhal rustaq
+			khor_fakkan shinas
+			julfar al_ayn al_dhaid dubai sharjah
+		}
+
+		include = "expl_middle_east"
+		starting_technology_level = 3
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+
+			ruler = oma_nasir_yaariba
+
+			centralization_vs_decentralization = 50
+			aristocracy_vs_plutocracy = -50
+			serfdom_vs_free_subjects = -40
+			traditionalist_vs_innovative = 10
+			spiritualist_vs_humanist = -50
+			mercantilism_vs_free_trade = 50
+			belligerent_vs_conciliatory = 20
+			offensive_vs_defensive = 0
+			land_vs_naval = 50
+			quality_vs_quantity = 20
+			capital_economy_vs_traditional_economy = 100
+			individualism_vs_communalism = 20
+			outward_vs_inward = 0
+
+			laws = {
+				sharia_law = ibadi_policy
+			}
+		}
+
+		religious_school = ibadi_school
+
+		capital = nizwa
+	}
+
+
+
+#Turkey
+	TUR = {	#Ottomans Empire
+		own_control_core = {
+      			beypazari kibrus kizilca
+			bolu akcasehir akyazi konrapa gerede mengen mudurnu
+			bursa adranos iznik
+			izmit atpazari
+			domanic
+			sultanonu bilecik goynuk eynegol inonu nalli sogut
+
+			sporades servia kastoria hatera veria edessa kassandreia polygyros thessaloniki
+			kilkis giannitsa gynaikokastro serres rentina kavala mount_athos thasos drama xanthia komotini
+			traianopolis demotica lemnos imbros molyvos mitilene gallipoli kesan
+			edirne hayrabolu corlu
+			rodoscuk enez kiyikoy ahtopol constantinople silivri catalca luleburgaz kirklareli
+			malgara alasehir
+			monemvasia mystras oitylo leuktron astros ostrovo  amasra
+			uskudar silli biga eregli
+			chios vize
+			ormenio
+    			balikesir balya edremit manyas mihalic susurluk
+			ayvacik bandirma bayramic can canakkale gonen lapseki
+			dursunbey harmancik
+			manisa akhisar demirci gordes kula
+			bergama bigadic soma
+			mihaliccik sivrihisar bozan kaymaz
+			altintas emirdag seyitgazi
+			kutahya aslanapa emet simav tavsanli
+			usak banaz gediz seyhli
+			bartin
+			kastamonu arac boyabat devrekani inebolu kure_i_mamure sinop taskopru
+			cankiri bayat cerkes kursunlu tosya
+			iskilip sabanozu ulus yenicepazari
+			safranbolu pyli foca
+			mesudiye kills bitlis hizan sirnak
+
+			farsala
+			elassona al_sinn
+			tikrit
+			aksaray kochisar insuyu
+			kirsehir nevsehir sariyahsi
+			konya celtik eregli_kar eskil hatunsaray karapinar ladik_larende pirloganda
+			bekarlar bor_tur ermenek
+			beysehir aksehir bolvadin sarkikaraagac seydisehir
+			ilgin turgut suluklu kulu_turkey obruk altinekin cumra
+
+			silifke anamur mut nigde    peja prizren bitola prilep kicevo tetovo shkoder debar onogost gradina
+			budimlja brskovo gjakova mitrovica pristina novo_brdo skopje kumanovo veles prosek shtip
+			kratovo vranje podgorica bar_cg prijepolje visegrad ustikolina soko_grad
+			glubocica nis prokuplje stalac ravno jagodina gacko trebinje ohrid kocani strumica
+			krusevac kucevo branicevo rudnik smederevo krupanj valjevo uzice pljevlja
+			gradac zica trgoviste_SER sjenica velbuzd
+			arilje brvenik medveda
+			koman has dukagjini lezha florina  tavas sandikli 
+			sredets samokov plovdiv stipon ovech lazkiye honaz
+			hiambouli rusokastro lardeja boruy
+			tarnovo drastar tutrakan cherven razgrad shumen aytos targoviste_BUL sliven kran
+			lovech nikopol pleven vratsa kutlovitsa vidin oryahovo bozhenitsa hotalich tryavna
+			anhialo varna karvuna pangalia kaliakra
+			tulcea harsova
+			archar lom gigen dobrolak svoge kostenets strelcha ruse kladentsi lyaskovets veliki_preslav ktenia constantia_bul elhovo
+			babadag cernavoda constanta enisala isaccea
+			visesav kozelj svrljig pirot tsaribrod  
+			zemlungrad dupnitsa
+			dospat bansko krupnik melnik nevrokop 
+			tsepina 
+			beden haskovo perperek smolyan stanimaka
+			burgas sozopol nafpaktos angelokastron vonitsa arta preveza parga ioannina kleisoura_epirus butrint
+			argyrokastro avlonya karpenisi konitsa 
+			smyrna ayasuluk cesme menemen urla
+			tire balat birgi guzelhisar nazilli
+			milas
+			mugla bodrum cine gokabat marmaris megri yuksekkum      karahisar_i_sahib   suhut  isparta burdur dinar egirdir uluborlu yalvac
+			golhisar Stefani   antalya elmali karahisar_i_teke kas istanoz
+			manavgat finike   ankara cubuk haymana kalecik polatli karakecili
+
+			akdagmadeni aydincik koyulhisar sulusaray tokat zile
+			bozok baliseyh candir dinek_keskin sorgun
+			corum huseyinabad sungurlu bodonitsa
+			divrigi arapgir egin arguvan
+			kayseri bogazliyan comana_cil develi tomarza
+			hacibektas urgup
+			sivas darende dasmenda deliktash gemerek gurun hafik sarkisla zara
+			bayburt erzincan ilic kelkit kemah sebinkarahisar siran
+			yahyali malatya
+
+			#Egypt
+			alexandria el_alamein damanhur ramsis kafr_saqr kharibta rashid wadi_el_natrun
+			cairo atfih beni_suef faiyum giza dakahla
+			damietta al_mima el_burullus el_mahalla fuwa menouf samanoud tidah
+			mansoura bilbeis faqus ushmum_tannah qalyub tarrana tinnis
+			suez saint_anthony saint_paul_anchorite
+			el_tor
+			edfu esna qena hiw qus kom_ombo aswan kalabsha qasr_ibrim daw_sud faras 
+			asyut el_balyana el_buwit akhmim manfalut
+			minya ashmunayn el_bahnasa sharuna tahna
+			kharga bahariyya baris el_qasr qasr_farafra siwa     el_arish nekhel qatya warrada
+			matruh sallum tobruk
+			el_qoseir ras_gharib safaga
+			el_jundi faran nuweiba saint_katrine
+			ayntab dluk
+			jerusalem acre amman aqaba beersheba gaza hebron karak maan majdal nablus safed sughar jaffa al_quwayrah
+			beirut baalbek deir_qamar sidon tripoli_syria shoubak madaba
+			damascus al_bab aleppo antioch arsuz artah baniyas dabiq hama homs idlib jabbul jableh kafartab latakia manbij maskanah masyaf nabek qusayr tartus zardana
+			umluj al_hawra al_manjur al_maramiyah
+			al_ula al_bleiteh al_farah_ula al_marwa az_zubayir mughayra
+			duba ad_disah al_azlam al_wajh bada_yaqub bir_al_qurr
+			tabuk_arabia al_khanbarah al_muazzam al_ukhaydir bajdah bir_ibn_hermas dhat_al_hajj
+			aynuna al_bad al_muwaylih haql makna  iskenderun
+			alaiye selinti  adana
+			anavarza kars_armenia
+			sis caxud hargan molevon
+			tarsus candir_cil corycus
+			ayas kapan   gerze bafra  gumus merzifon gadegara ladik_pontus samsun amasya niksar sonisa
+			akkus terme
+
+			khadjibey teligol tighina dashev balikley  kuyanlik ananiv aqmecit_prybuzhzhya iagorlic  reni trapessac kills afrin  trebizond giresun gorele gumushane surmene
+
+			bayramlu unye  
+
+			nicosia_cyp famagusta kyrenia larnaca limassol morphou paphos
+			athens megara thebes atalanti livadeia gravia   
+			neopatras zetounion
+			negroponte kleisoura karystos kymi oreos eretreia
+			damala ermioni kalamata kyparissia
+			andritsaina pontikokastro andravida corinth
+			chalandritsa patras vostitsa kalavryta xylokastro
+			loidoriki salona argos nafplio modon berat ballsh  kavaje durres Tirana kruje Elbasan 
+
+			gerger kahta samsat
+			besni elbistan enguzud goksun afsin
+			kaysun
+			ulnia  marash  raqqa  busayrah jabar madinat_far
+			urfa  birecik harran suruc viransehir  siverek  mostar metkovic glamoc
+			vrhbosna konjic srebrenica doboj soli
+			jajce livno drijeva zenica kljuc srebrenik
+			kozara glaz teocak olovo borac nevesinj knin novigrad 
+			bihac makarska srb sinj otocac
+			ithriya sukhnah taybah
+			khanaser qastal salamiyya
+			marrat
+			arak huwwarin qaryatayn tadmur
+			al_anbar hit ayn_tamr karbala
+			anah abu_kemal haditha
+			deir_ez_zor tabqah rahba
+			bosra dara irbid nawa salkhad suwayda
+			azraq
+			burraq jayrud qutayfah
+			
+			theodoro lusta soldaia kaffa vosporo
+
+			benghazi ajdabiya al_bayda al_khuimat barca derna mechili msus qaminis suluntah tmimi     
+			awjila el_agheila
+			cemisgezek kuzucan pertek hillah kufa al_udayb qadisiyyah   midyat
+			dunaysir
+			araban hasakah makisin mardin tunanir  barqaid sinjar bara_iraq nusaybin ras_ayn al_qatif al_jubayl al_uqayr 
+			ash_shuaybah qurain
+			nita_arabiaal_uyayna jannah sayhat
+
+			harput adakli keban palu
+			malazgirt hinis karakilise tekman tutak varto
+			ahlat bargiri ercis
+			diyarbekir ergani
+			erzurum tercan
+			cermik  
+			mosul qayyarah tal_afar
+			egil sivrice akhaltsikhe ardahan
+			hasankale ispir khupati rize
+			artanuji khikhani oltu parkhali savsat
+			ani kars kagizman tmogvi
+			al_sim Tikrit tharthar samarra khalis khanaqin mandali balad_ruz baqubah ukbara 
+			ar_rabb van zakho bingol genc tortum panaskerti mus bitlits tatvan 
+			hazro heni kulp sason 
+			mayyafariqin savur hasankeyf kozluk siirt cizre eruh sirnk duhok balad akre amadiya Hakkari erbil rawanduz 
+			altun_kupri chamchamal daquq kirkuk tuz_khurma ustra bukelon nevesinje veligosti tripol tripolitsa karytaina demetrias 
+			far salad larissa karditsa trikala grevena siatista elassina tyrnavos stomio devol elbasan tirana stefani ladik larende   dinosijek
+			baja_hungary
+			csurgo simontornya kaposvar mohacs siklos
+			kikinda titel
+			belgrad debrc sabac
+			gradiski_brod dubica
+			buda pest kalocsa felegyhaza
+			somogyvar tolna pecs segesd
+			bacs zenta bodrog halas
+			szolnok eger karcag borsod
+			bekes csanad szeged
+			arad zarand ismail
+			chilia sarata cetatea_alba palada gura_galnenei petrovaradin sre
+			petrovaradin sremska_mitrovica ilok vukobar osijek
+			pozega
+			vaska
+			pakrac
+			virobitica
+			vukovar
+			virovitica
+			mako
+			szarvas
+			veszprem
+			fehervar
+			adony solt
+			abrahamtelke
+			kecskemet
+			jaszbereny
+			heves
+			#I hate this
+			petrinja esztergom nograd miskolc hajduszoboszlo andros naxos milos kythnos ikaria samos amorgos rodos karpathos
+			ineu lipova
+			#Iraq
+			baghdad
+			dayr_aqul badra
+			wasit  al_tib  bakusaya 
+			basra abdas al_madar al_qatr zuwayr #abadan
+			an_nil nasiriyah numaniyyah rusafa
+			 
+			samawa suq_al_shuyukh kazimah
+			#medina
+			medina al_furaish
+			yanbu al_ahmar al_jar ash_shibahah badr_hunayn yanbu_an_nakhil
+			al_thamad buwat shajwa
+			al_ais
+			
+			#South Sahara
+			aydhab deraheib suakin badi nafka dahlak massawa zula buri edd dallol bayul
+			#Arabic
+			as_suwaydirah al_hegrieah khalis_medina khulays al_abwa al_juhfah al_muthainiyah ar_rayyan asfan qudayd
+			al_hadhah al_kharabah al_mahani as_suwayriqiyah sufaynah umm_al_ghiran
+			hali al_qunfudhah al_shuqayq  bariq dhi_ain muhayil rijal_almaa
+			jazan al_haqu al_khosuf farasan sabt_bani_bishr sabya abha abil samakh tabalah tanomah
+
+			azok tana veliky_beckerek modos pancevo kovin recas timisoara gura_galbenei taman mapa sukhumi hosap catak bahcesaray baskale hakkari semdinli
+
+			#Libya
+			misratah bani_walid ras_lanuf sirte tarhuna tawurgha in_amenas
+			nalut ghariyan jadu mizda yafran zintan tripoli al_kadwa al_khums zawiya zliten 
+			zuwarah sinawin ghadames sokna zella maradah brak sabha ubari murzuk zawila
+
+			#Georgia
+			akhalkalaki kumayri 	
+     	}
+		include = "expl_eastern_europe"
+		include = "expl_muslim_mediterranean"
+		include = "turkish_beylik"
+		government = {
+
+			ruler = tur_ibrahim_i_ottomans
+			heir = tur_mehmet_i_ottomans
+
+			ruler_term = {	 character = tur_ibrahim_i_ottomans start_date = 1644.1.1 regnal_number = 1	}
+
+			centralization_vs_decentralization = 10
+			aristocracy_vs_plutocracy = -30
+			serfdom_vs_free_subjects = 0
+			traditionalist_vs_innovative = 10
+			spiritualist_vs_humanist = 10
+			mercantilism_vs_free_trade = -25
+			offensive_vs_defensive = 0
+			land_vs_naval = -20
+			quality_vs_quantity = -30
+			belligerent_vs_conciliatory = -40
+			capital_economy_vs_traditional_economy = 80
+			individualism_vs_communalism = -20
+			outward_vs_inward = -60
+
+			privilege = {
+				#Nobles
+				elaborate_court_ceremonies
+				noble_sponsored_navy
+				ghazi_privilege
+
+				#Clergy
+				clergy_literacy_rights
+				clergy_enforced_unity
+				embellish_great_works_of_faith
+				clergy_literacy_rights
+				clergy_land_rights
+
+				#Burghers
+				formal_guilds
+				building_rights
+				market_fairs
+				shipwright_contracts
+				sponsor_maritime_contracts
+
+				#Peasants
+				partial_yield
+				peasants_free_peasantry
+
+				#Dhimmi
+				dhimmi_land_rights
+				dhimmi_administrative_posts
+				dhimmi_abrahamic_communities
+				dhimmi_pact_of_umar
+
+				#Tribes
+				tribes_land_rights
+				tribes_pasture_access
+			}
+
+			laws = {
+				royal_court_customs_law = harem_policy
+				slave_conversion = allow_slave_religion
+				sharia_law = hanafi_policy
+				harem_law = secluded_harem_policy
+			}
+		}
+
+		accepted_cultures = {
+			turkish_culture
+		}
+
+		tolerated_cultures = {
+			greek_culture
+			turkoman_culture
+			arab_culture
+			armenian_culture
+			serbian_culture
+			bulgarian_culture
+		}
+
+		capital = constantinople
+		dynasty = ottomans_dynasty
+		country_rank = rank_empire
+
+		religious_school = maturidi_school #since their founding they were supporters of maturidi, although they were also among the earliest adopters of hanafi and had ismaili, alawi, alevi, bektashi and mevlevi
+	}
+
+	RUS = { #Russia
+		own_control_core = {
+			pereyaslavl alexandrovskaya_sloboda bogorodskoye_pereyaslavl kirzhach poreevo yanovokolomna 
+			borovsk khatun koshira maloyaroslavets serpukhov vereya vysokoyevladimir moshok
+			muromtsevo_murom osovets sudogda vlasovo yaropolch zolotkovo
+			uglich koi rozhalovo yuryev_polsky 
+			pskov gdov izborsk kobyle meletovo prudy ostrov opochka sebech slavkovitchi volodimerets voronich 
+			vyatka ust_cheptsa suna verkhoshizhemye orlov belozerye slobodskoy oparino obyachevo
+			lalsk nikolsk vokhma podosinovets 
+			omutninsk kholunitsky kobra nagorsk nikolsky koksharov bolshaya_yakshanga cherdyn nyrob ust_kulom lupya 
+			chernaya troitsko_pechorsk vukyl ukhta kortkeros ust_vym zheshart ust_sysola vizinga koygorodok kirs afanasyevo 
+			siva karagay nytva perm kungur beryozovka lysva kizel gubakha dobryanka solikamsk usolye yusva chyormoz kudymkar 
+			kelich kosa_perm gayny ochyor okhannoye chastye debyosy stepanenki igra dondykar yakshur_bodya votkings 
+			sarapul mozhga yelabuga izhevsk vavozh_mozhga vyatskiye_polyany kilmez stelty falenki uni ural_nema 
+			aspa suksun ust_kishert orda kasevo yanaul tatyshly saygatsky yelovo osa moscow zvenigorod ruza pushkino vokhna bronnitsy rogozh 
+			saratov samara astrakhan kazan murom rostov_don novocherkassk
+			sibirsk tyumen tobolsk narym yakutsk qashliq turtas yukonda vagay tavdinsky_sloboda yurginskoye vikulovo kulykol zhetykol shoptikol 
+			siberia_tenteksor konildi mangazeya yeniseysk kargasok surgut dudinka bestyakh
+
+
+			aspa suksun ust_kishert orda kasevo yanaul tatyshly saygatsky yelovo osa   
+		
+
+			kreminna bielska_sloboda bilovodsk novopskov kalnivka konstantinovka krasny_sulin
+			shakhty rovenky kalmius kamenskaya semikarakorsk
+			yundin mityakinskaya luhansk novoaidar belaya_kalitva millerovo oblivskaya
+			kashary chertkovo bokovskaya milyutinskaya boguchar ostrogozhsk
+			kalach uryupin mikhaylovka novoanninsky alexeyevskaya veesky kumylzhenskaya
+			yelan machekha novonikolayevsky samoylovka
+			alexandrovskoye blagodarnoye novoselitskoye
+			stavropol grigoropolisskaya shad_kirman petrovskoye_pontic privolnoye belaya_glina peschanokopskoye
+			novo_alexandrovskoye bezopasnoye ipatovo 
+			gebergeyel khaiylmysh khaqmar shikashin yuldibay
+
+			izium donets_kharkiv zmiiv chuhuiv vovchansk nyzhnia_duvanka 
+			bol_shaya_martynovka cheplak bolshoy_gashun dubovskoye ust_tsimla konstantinovsk 
+			tatsinskaya tormosin kremenskaya kletskaya ust_medveditskaya nizhny_chir anna_russia 
+			novaya_pokrovka semidesyatnoye zemlyansk rossosh borisoglebsk bannoye sadovoye 
+			bolshaya_gribanovka buturlinovka verkhny_mamon zimnyatsky malodelskaya ilovlya 
+			atkarsk lysye_gory yekaterinovka balanda rtishchevo balashov turki arkadak 
+			sosnovy_ostrov malykovka novye_burasy tereshka petrovsk mechet stepanevka 
+			kotovo kamyshin goly_karamysh pologoye_zaymishche srednyaya_akhtuba bykovo 
+			elton zolotari berezhnovka 
+			astrakhan zamyany yenotayevka sapara 
+			chernyye_zemli chyorny_yar nikolskoye_pontic malye_derbety 
+			sadovoye_kalmykia ded_khulsun zavetnoye 
+			ozinki mechetnaya perelyub ivanteyevka balakovo dukhovnitskoye 
+			sakminskoye_vodokhranilishche yashkul 
+			iki_burul priyutnoye elista remontnoye gorodovikovsk raguli majar zelenokumsk arzgir levokumskoye 
+
+			kutarka sernur morki urzhum
+			fomin_gorodok
+			rzhev
+			khotoshino
+			bolshevo
+			verkhovye
+			molodoi_tud kalugn volkona
+			tarusa
+			obolenk mozhaysk
+			vetza mushkov_pogost rogachevo
+			klin
+			dubna
+			dmitrov
+			yanovo
+			kolomna  vysokoye klepiki
+			zainsk syun verkhneyarkeyevo
+			menzelinsk lower_aktanyshbash chalninsky_pochinok chekmagush chishmy
+			ulukulevo davlekanovo bizhbulyak turkmenevo sterlibashevo
+			sterlitamak bavly bugulma abdulino aznakayevo
+			sadak gorkovskoye okoneshnikovo
+			qashliq siberia_abalak turtas yukonda
+			tara znamenskoye ust_ishim omsk kamyshnoye cherlak tyukalinsk kolosovka
+			siletiteniz zhalauly
+			tuzdysor imakia zhelezin lebyazhye
+			chastoozerye polovinnoye armizonskoye berdyuzhye korkina_sloboda
+			tarankol kyzylzhar presnowka staroye stanitsa_kokchetavskaya
+			shish muromtsevo ufa askino baltas
+			sartlan taskayevo kargat kainsky_pas kyshtovka
+			bursol kuchukskoye volchikha butyrskoe zmeinogorsk shemonayevskoye oskemen ust_kalmanka
+			krivoshchekovo kamen dovolnoye kozhevnikovo bolotnye
+			suzun berdsk chesnokovka kalmanka barnaul verkhotomsk kolchugino
+			altayskoye onguday ust_koksa smolenskoye mayma biysk
+			kuznetsk salair kytmanovo ust_kabyrza askiz abakasnk beya shushenskoye
+			tomsk melnikovo molchanovo kargasok vasyugan kolpashevo
+			surgut bolshoy_balyk irtysh megion bolshoy_yugan upper_ob
+			promsa alatyr batyrevo
+			atrat altyshevo bolshoye_boldino shatki arzamas sarov lukoyanov krasnoslobodsk ruzayevka
+			insar temnikov tarbeevka zubova_polyana mokhcha nizhny_lomov zemetchino bondari 
+			sergach chamzinka saransk lunino 
+			pokrovskoye simbirsk cherdakly staraya_mayna melekess tetyushi sviyazhsk
+			atishchevo tsivilsk sharanga uren tonshayevo
+			bolshoye_murashkino kurmysh lyskovo perevoz sechenovo spasskoye_lyskovo
+			cheboksary kozmodemyansk alikovo vasilsursk pavlovo
+			vetluga semyonov khakhaly kovernino krasnye_baki raznezhye voskresenskoye varnavino
+			kadom ardatov 
+			kazan laish calli mamadysh bogatye_saby oli_baraza dobyaz
+			yaransk kiknur kabachischi yoshkar_ola
+			bolghar cukataw bilyar almetyevsk 
+			tabynsky ishimbay beloretsk 
+			buguruslan sergiyevsk
+			koshki kamyshla bolshoy_cheremshan staryi_amanak
+			samara shigony morkvash chebarkul miass
+			krasnaya_gorka belekes 
+
+			tula_russia bogoroditsk arkhangelskoye kurkino donkov yelets talitsa_yelets gogol teshevka voronezh ukek
+			lipetsk usman mordovo zherdevka uvarovo kirsanov rasskazovo izberdey tambov ust_stanovykh_ryas
+			kozlov ust_livny terbuny kastornoye chernyanka alexeyevka opalkova
+			rovenki valuyki korocha belgorod rakitnoye muzhech sudzha oboyan
+			staroyuryevo morsha sasovo nikolskoye bazarny_syzgan karsun 
+			mokshan chembar
+			serdobinskaya malaya_serdoba shemysheyka
+			penza gorodishche russky_kameshkir staraya_kulatka solovtsovo
+			troitskoye_kuroedovo 
+			kasimov azeevo
+
+			meleuz kapova_pesera
+			khvorostyanka stavropol_na_volge kondurcha pestravka
+			poganovka sorochinskaya buzuluk grachevka bol_shoy_uran malyy_uran
+			s_ezzaja bogatoye
+			tobolsk vagay tavdinsky_sloboda yurginskoye vikulovo
+			bayanaul shybyndy bozok_astana akkol
+			karasor karkaraly takhir
+			arykbalyk kak kokshetau kumak
+			kulykol shoptikol siberia_tenteksor konildi
+			zharkol sasykkol kartaly alakol almenevo safkul shchuchye kargapolye kurtamysh
+			yetkul troitsk uyskoye 
+			bolshoy_ik ust_katav mesyagutovo zlatoust
+			chimgi_tura tugulym yalutorovsk shadrinsk
+			tsaryovo_gorodishche burayevo
+
+
+			#Principality of Kursk
+			kursk fatezh kosozhichi olgov
+			manturovo_kursk oskol troitskoye_na_shchigrakh burga khotsy kulotino megrino lyady mezhutka
+			novgorod golino staropolye staraya_russa chudovo kosichkoj zaplyusye kresttsy yazhelbitsy berezovets nebolchi
+			kholm velikiye_luki demon soltsy nalyuchi dolchinyo vlitsy sumino nadvoitsy
+			staraya_ladoga tikhvin lipno_nov borovichi pikalyovo soltsy_kirishi maselga spirkovo lyubytino
+			olonets vazhiny shuya_karelia kondpoga kizhi shyoltozero lindjarvi semcojarvi lodenoye_pole vytegra vinnitsy
+			gorodetsk maksatikha udomlya smerdyn moshenskoye okhona belye_kresty ozerevo troshovo babayevo pudoga iksa village_onega
+			luda malye_oserki nyonoksa priluky pomorye arkhangelsk kholmogory vaymuga brin_navolok siya ust_pinega vershinino sheleksa yemetsk
+			ramenki mednoye vyshny_volochyok bologoye zhabny torzhok kuvshinovo ostashkov
+			volosovskaya kargopol konyovo navolok shalakusha ves_yogonskaya vologda arkhangelskoye_vologda ustye
+			vozhega tavrenga tarnogsky_gorodok totma kubenskoye ust_kuloy shenga_kurya
+			verkhovazhye velsk rovdino vaga bereznik sogra nizhnyaya_toyma verkhnyaya_toyma
+			uftyuga koryazhma yarensk
+			ilyinsko_podomskoye ust_vayenga
+			porkhov plyussa dubronjo spas_na_kholmu
+			rzheva_pustaya ashevo bezhanitsy podberezye visokoye kuretsk lyakhovichy maryovo lyubno svinort gorodets_luga izori tesov
+			bronnitsa gruzino veliky_porog valday pribuzh izboishchi pashozero tervenichi megra voznesenye ostrechiny andomsky_pogost
+			kinerma pryazha sellinkyla karhumagi puatane saarijoki sumsky_posad unezhma vygozero maloshuyka
+			chelmuzhi vodlozero shalskii rakitnya mikshino bernovo yezsk lyuban
+			##Principality of Volokolansk
+			#yoniveem innurmin nuvuqaq kytryn yanrakynnot sigheneg guvrel nutepylmyn enmyl_yn nunligran keniergyn ervykynnot 
+			#valkall_an rykuul ugolnye nyerpicha konchalyt gytgomkyvamm tadlyeoan unazigmit
+			#krasnyano tavayveem v_enyn tumanskaya y_lkytveem gacgatagyn
+			#mejnypilgyn vatyrkan vukvylgayat machevna tyulene achaivayam apuka pakhachi khalino tilichiki talovka manily kamenskoie oklan paren gizhiga 
+			#skrytaya kichiga karaga ivashka karagin kuyul parapolsky rekinniki podkagernoye lesnaya 
+			#kuukucyn keelivtyn otrozhny kagyrgyn ujvyn yeropol
+			#palana voyampolka tigil sedanka kovran 
+			#uka_town shiveluch klyuchi kamchatsk malka
+			#ostrov_beringa milkovo achava oktyabr_skii pauzhetka kurile_lake 
+			#kozyrevsk krutogorovskiy sobolevo kirovskiy khayryuzovo
+			#amguema iultin vankarem ryrkaypiy polyarny yakan valkaran 
+			#chirovoye vulvyveyem ekityki palyavaam ichuveem peekin yanranay apapelgino valkumey rytkuchi chaun elgygytgyn 
+			#elgygytgyn_lake ayon nutel_gyrgym pucheveyem raucha lelyuveyem
+
+
+
+			chimgi_tura tugulym yalutorovsk tsaryovo_gorodishche shadrinsk stepnoye almenevo safkul shchuchye kargapolye kurtamysh 
+			yetkul chebarkul troitsk uyskoye miass qashliq siberia_abalak 
+			turtas yukonda tursunt konda yevra malaya_sosva ess leushinskiy_tuman andreyevskoye tuman tursunskiy_tuman syrkovoye tobolsk vagay bolshoy_uvat 
+			tavdinsky_sloboda yurginskoye vikulovo yendyr bardak kharom_vosh kartauzh 
+			chumyak yendra belogorye karymkary nazym sukhorukova landytuv un_zhallor kazym sumgut_vosh vezhakary kaltysyany ayyugan
+
+			#irkutsk slyudyanka cheremkhovo zalari bayanday kachug osinsky #Syayan fixes
+			ust_kut reka_tuba nikolsky_pogost irkutsk_kazachinskoye zhigalovo balagansk baikal 
+			djee argi dep kupuri mulmuga tok
+			gilyuy bryante mogot tukuringra tynda urkan
+			yakesa amazar emuer mohe ollo urka
+			
+			surgut sykhtymlor trom_yegan bolshoy_balyk yugranskaya_ob irtysh megion bolshoy_yugan upper_ob
+			kargasok vasyugan kolpashevo tara znamenskoye ust_ishim shish muromtsevo
+
+			mangazeya pur yevoyakha
+			voikar voykarskiy_sor synya synya_lake shuryshkar shuryshkarskiy_sor varchaty obdorsk ob shchuchya yamal yamal_lakes poluy
+			kunovat zazhimchar pitlyar beryozovo lake_kunovat lake_zazhimchar chebar_yugan nadym pravaya_khetta levaya_khetta nyurum_yegan
+			dudinka khantayskoye turukhansk messoyakha makovskoye
+
+			tomsk melnikovo molchanovo ket pervomayskoye
+			bolshoy_uluy itatsky tyukhtet makovskoe kazachinskoye komsa siberia_bor bakhtinsky verkhneimbatsk inbatskoye
+			yeniseysk nazimovo ust_ozernoye selo_yartsevo verkh_chebula mariinsk verkhotomsk kolchugino
+
+			omsk kamyshnoye ebeyty cherlak tyukalinsk okoneshnikovo kolosovka gorkovskoye
+			chastoozerye polovinnoye armizonskoye berdyuzhye korkina_sloboda medvezhye tarankol kyzylzhar presnowka staroye stanitsa_kokchetavskaya lake_ishim kadibek
+			bayanaul shybyndy lake_gidrowzel bozok_astana akkol siletiteniz zhukey ulken_karoy teke seletyteniz lake_zhalauly 
+			zhalauly kishi_karoy sartlan lake_sartlan chany lake_uryum 
+			taskayevo kargat kainsky_pas kyshtovka ubinskoye astrodym
+
+			kulykol zhetykol shoptikol siberia_tenteksor konildi kusmuryn lake_koybagar zhanshura shalkar_yega_kara aykye
+			zharkol sasykkol kartaly alakol lake_zharkol arykbalyk imantau kak kokshetau kozhakol
+
+			bursol bolshoye_yarovoye kulundinskoye kuchukskoye volchikha butyrskoe gorkoye bolshoye_topolnoye
+			imakia zhelezin lebyazhye maraldy azhbulat karasor tuzdysor lake_tuzdysor karkaraly lake_karasor balyktykol
+
+			suzun berdsk chsnokovka kalmanka barnaul
+			krivoshchekovo kamen dovolnoye kozhevnikovo bolotnye 
+			kuznetsk salair kytmanovo ust_kabyrza askiz
+
+			kansk ilansky krasnoyarsk yemelyanovo dzerzhinskoye biryusa
+			minusinsk shushenskoye beya abakasnk idrinskoye novosyolovo nazarovo uzhur bolshoy_kosogol tatarskaya_tesyu kortuz
+			kamensk motygino taseyevo pashino
+
+			bratsk chuva nizhneudinsk siberia_kuytun staraya_zima
+			kezhma upper_angara lower_angara educhanka yarkino manzaya boguchany chunoyar aban
+
+			syuldyukar kuchugunnur delinde batyr olguydakh syrgan emyakhsin
+			khakhsyk alymdya morkoka tangkhay ulakhan_vava aikhal udachny kharyyalakh zhilinda ebelyakh saskylakh yunyung_khaya anabar uele udya
+
+			kiya yeruda teya tis_reka sulomay kuzmovka
+			vangash enashimo kardakan vel_mo bryanka ika_nepa bur_nepa tokma icheda chambeta sekili 
+			chemal chadobets tsentral oskoba irkineieva tayga belya kamenka kazhma tokhomo turama baykit poligus
+
+			macha tinnaya patom nyuya lensk chamcha nakhara khamra
+			witym chuya peledui vitim alysardakh yukte  uel_tympychan tupuchikan dulis_ma moshi ichera
+			dyrashnichikha makarikha yerema os_kino irelyakh zarya tegelspit dyunkun ulegir kuchaky siyene
+
+			khamakar inarigda yukta ilimpeya kudepyapka ekonda turu
+			nidym uchami tutonchany nimde erachimo
+
+			#ypalgyn vstrechny keperveem orlovka aliskerovo ilirnej 
+			#chivitkino evenksk kushka merenga omchikan buksunda
+			#anyuysk dve_viski cerskey ambarchik mikhalkino nizhnekolymsk  ozero_chokudakh ozero_nerpinchye
+			yermolovo timkino kolymskoie omoloon achaka xalima kolyma_river
+			shabash berezovka lobuya srednekolymsk sededema urodan  ozero_xalima ozero_talgyn
+
+			indigiir oyotun cokuurdaax nicalaax olenegorsk vorontsovo shandrin 
+			ozero_mavrinskoye ozero_morskoye ozero_ilirgygyn ozero_ulakhan ozero_nuchcha 
+			ozero_khantagay ozero_bytynay ozero_dolgoye ozero_kargovat ozero_mogotoyevo ozero_bustakh
+			oyuuhardaax argaxtaax kelyuyekyan andryushkino aly_kyuyel ozero_unarba
+			xatingnaax nalimsk dyryn_ebe kal_gatana sylgy_ytar ulakh ozero_keppetekh ozero_balyma
+			ebeex olooko_kuol ynakh succun kholongsolokh sybaatayy ozero_chonduya ozero_pavylon ozero_ulakh_ulyong
+			suoyungu ocuogun khargytyr kurung_yuryakh suturuoxa tuyandina khachimcher ozero_kalgyn ozero_suturuaka ozero_ozhogino
+			shestakova kien_kuol abyy esteriktyaax syagannaax kebergene 
+
+			solomoydokh nagaradalaax kulun_olbut cibagalaax xonuu soboloox 
+			#tala_kyuyel ziryanka utaya ugolney nelemney glukharinyi
+			pobeda ust_nera #burkand_ya kontrand_ya delyankir artyk 
+			#kulu tokichan orotuk kadykchan neksikan burkhaia iagodnoie
+			#tala kupka myakit debin orotukan buiunda seymchan
+
+			#takhtoyamsk brokhovo yamsk atargan magadan palatka tauisk 
+			#madaun atka bakhapcha chalbukhan omchug omchak moi_urusta kolyma_highlands
+			tenut oimiakon kuydusun agayakan kyubeme razvika 
+			ketanda ogonok yugorenok ust_ynykchan eldikan tumul
+			ushki okam ul_ya arka enken ayan aimchan
+			
+			selemde burunda buse kogan mamyn nehru ulma
+			nurgan shantar torom tugur usalgin
+
+			nel_kan tsipanda aim_maia ust_yudoma ust_mil ust_maia
+			avlayakan chumikan udskoye bolodek tul_kichan maya
+			zolotiinka iyengra neriungri neluki nimnyr aldan tommot  ozero_tokko
+			tupik gulya larba chilchi yuktali tas_yuryakh kundy 
+			torgo dikimdya tyanya amedichi yukhta kuranakh 
+			onguren ul_kan kichera argada ust_barguzin chitkan bayangol karaftit bagdarin bukachacha ziul_zkan telemba isenga narhata 
+			ozero_oron ozero_baunt angoya kutima osenny kamniga konkudera bodaybo kyakhtinskii 
+			taksimo irakinda kuanda amalyk ikab_ya khani katugino 
+			yeremeyevka uch_barchik chara bul_bukhta balaganakh molvo 
+			teply_klyuch khandyga zhebariki_khaya chymnaii 
+			kharbalakh khanda nuotara myndagai abaga amga uchele darkylakh bulun uolba dakky cherkekh churapcha uorga us_kyuyol 
+			byanye byadi chiryapchi tomtor mayya tabaga ugoyan ukulan verkhnyaya tegyulte onnyos uluu borulakh khatas maymaga kysyl_syr ulu_sysy magan zhatai
+			sitte salban byas_kyuyol kobyai argas chagda sortol l
+			ozero_nidili ulakhan_kyuyol tyaia khatyryk_komo mastakh chay khampa terbyas kyubyainde uhun kyulekyan dippa seyat balagachchy
+			lyokyochyon sydybyl vilyuy khoro orosu orgyot byrakan nuochakha tit_ebya 
+			tyokhtyur charang kenkeme ulakhan_an toyon_ary tit_ary yedey ebya yert tongulakh
+			buotama talalakh tuolba tuorbchany olekma kudu_kyuyol balagannakh marxa sanyyakhtakh malykhan tuobuya mekimbya keyikte
+
+			alii kustur sakkyryr tenki machakh zhargalakh dulgalakh
+			bala sysy_meyite sartang barylas echiy suordakh nyuele
+			topolinoe kyulyunken nalyachchyya nelgese sentachan derbeke chyliga
+			ust_charky tokuma boronuk yuttyakh batagai taala cheriumche
+			udamik tompo menkyule uyana barayy tukulan
+
+			uolbut zharkhan daban tegen yunkyur kysyl_yuryuyya
+			tonguo alagadyan chayygda kyundyade arangastakh kempendyai namana
+			niurba kiyeng_yuryakh ynakhsyt sayylyk byuteydyakh bagadya
+			vilyuychan sergelyakh tuoydakh suntar krestyakh oyusut elgyai
+			ygyatta bysyttakh khati yerkyutey iyesyak khannya orotko ot_kyuyel sokurdakh tumat tenkeli chaydakh 
+			buor_yuryakh chondon_tundra ozero_sytygan_lake ozero_kubuy_lake ozero_orotko_lake ozero_laydy_kyuyel_lake 
+			altaikha oymyakon berelekh baky uyandi yrgychen kurannakh
+ 			salylyk selennyakh nemkuchen khabzhylakh chondon ukyulyakh yarok 
+			kuogastakh kazachye kular ust_kuiga spirka kel_tegey khayyr 
+			bestyakh bakhanay jigansk kystatyam 
+			ulakhan_kyuel_lake tiksi kengdey chekurovka kyusyur siktyakh molodo zharzhan 
+			olenyok taymylyr noyuo sklad kelimyar khorbusuonka reka_pur 
+			kele arylakh segyan_kyuyol batamay sangar kuturga omoloy dyagaryn urasalakh namy tyul_gyar kuolay naiba
+
+			enurmino_point inchoun_coast diomede_sea mechigmenskiy_zaliv achchen_bay medvezh_ye_bay1 medvezh_ye_bay2 
+			zaliv_kresta konergino_coast1 reka_tumanskaya beringovskii_cape2 beringovskii_cape3 vaarn_yechgyn khatyrka_coast 
+			bukhta_mutnaya kronotskiy_zaliv2 bering_coast3 karaginsky_coast3 kamtchatka_coast5 kamchatskiy_zaliv4 
+			bukhta_anastasii ozero_tyulen_ye1 ozero_tyulen_ye2 pakhachi_coast 
+			zapovednik_cape bukhta_ossora karaginsky_coast1 bukhta_lavrova 
+			shantarskiye_island okhosk_coast36 okhosk_coast34 okhosk_coast32 okhosk_coast30 okhosk_coast28 okhosk_coast24 okhotsk_high_sea25 okhotsk_high_sea27
+			okhosk_coast19 okhosk_coast18 okhosk_coast15 okhosk_coast14 okhosk_coast12 okhotsk_high_sea18 okhotsk_high_sea20 okhotsk_high_sea24
+			okhosk_coast10 okhosk_coast7 okhosk_coast6 okhosk_coast3 okhosk_coast1 kamtchatka_coast8  kostroma buy demyanovo 
+			gryazovets lyubim nerekhta sudislavl yakovlevskoye_bolshoye
+			ozero_bol_shoye oktyabr_skii_coast krutogorovskiy_coast ichinskiy_coast okhotsk_high_sea17  suzdal gavrilovskoye ilyinskoye_khovanskoye
+			shuya ivanovo lezhnevo vichuga  vladimir moshok muromtsevo_murom osovets sudogda vlasovo yaropolch  murom gorbatovo melenki 
+			tuma starodub_votsky shatur  novosil kolpny plavsk belyov 
+			odoyev tagin mtsensk
+			bogorodskoye mikhailovka vorotynsk vorotynsk_novosil rzhavets  ryazan perevitska rostislavl_ryazansky venyov
+			staraya_ryazan shilovo lopasnya
+			koponovo kazari putyatino  lyubichi pronsk  dubok karniki knyazhoye mikhaylov ryazhsk serebryanye_prudy skopin
+			volok rostov borisogleb petrovsk_rostov velikiy_ustyug krasny_bor pyras porog alferovskaya nyuksenitsa gorodishna
+			ledengskoye shuyskoye kichmengsky_gorodok voznesenskoye vexshenga 
+			zaostrovskoye krasavino ileza shangaly beloozero vashki kirillov nikolskoye_andoma cherepoves ustyuzhna_zheleznopolskaya 
+			lukoves poshekhonye beloe knyazhich_gorodok pokrovskoye_yaroslav spasskoye yorga ust_ugla vognema goroditse_megra georgievskoye chuzboy 
+			koloshma badozhsky nikolskoye_kema charonda svir_beloozero yaroslavl bolshoye_selo danilov kurba romanov sol_velikaya ust_sheksna 
+			mologa ilovna prozorovo kashin kalyazin kesova_gora kimra tver brody_tver vertyazin zubtsov gorodok kholm_tver lotoshino mikulino_tver
+			vyazma izdeshkovo khlepen kholm_zhirkovsky kozlov_vyazma orekhovna medyn sychyovka trufany zhulino  
+			murom gorodokhovets serebryanye_prudy tuma 
+			vydritsa nekloch nevel toropets andreapol bibirevo dubrovna ilyino nizhelskoe zhizhets bor_volgo yotkino shoptovo 
+			bely odintsovo przemysl_moscow kaluga obolensk pogoreloye
+			masalsk fominichi lyubun pogostishche yukhnov kozelsk khvastovichi ktsyn meshchovsk usty karachev bolkhov khotiml kromy zvenihorod_siverskyi
+			trubchevsk boldyzh dmitriyev rylsk sevsk putyvl sumy glushkovo krasnopillia vilshana khotmyzh okhtyrka kotelva mozhino 
+			gorodechnya demensk shui roslavl izyaslavl pustosel rognedino zaroy
+			bryansk foshnya knyazhichi pochep revny vshchizh
+
+			#Perm
+			bisert arti archit krasnoufimsk nyazepetrovsk
+			#Ural
+			kaslinsky kyshtym chelyaba polevskoy uyelgi irtyash uvildy 
+			uktus kalatay rezh pervouralsk nizhny_tagil nizhnyaya_salda
+			kamyshlov yegorshin_povytok kamensky_zavod kataysky talitsa
+			turinsk baykalovo irbit alapayevsk verkhnyaya_sinyachikha sankina tabory
+			kushva novaya_lyalya turyinskiye_rudniki sosva verkhoturye
+			ponil ivdel pelym gari pelymskiy_tuman
+
+			kupiansk
+
+			starodub_on_the_klyazma palekh rozhdestveno nizhny_novgorod dalneye_konstantinovo gorokhovets meshchersk pestyaki rastyapino
+			gorodets korenevo lukh vasilyeva_sloboda yuryev_povolzhsk kadyy ostrovskoye galich chukhloma nikolo_dor parfenyevo sol_galichskaya sudai 
+			unzha kologriv kuzhbal manturovo pyshchug veliky_ustyug pieninka repola
+			rukajarvi jyskyjarvi kiestinki ontajarvi paanajarvi suikujarvi tunkuo uhtuo kem keret kovda kriitina saarijoki 
+			kola dalniye_zelentsy kiltina luujarvi maaselka ponoi semiostrov svyatoy_nos umba kantalahti kashkarantsy olenitsa pyalitsa raivke tetrino varzuga
+			pechenga akkala alakurti koliskoj mootka nuorttijarvi prirechnyi suonikyla
+			zanyukhcha verkola shardonem pokshenga chakola ust_chulasa koptyuga chirki kuloy verkhnyaya_zolotitsa koyda 
+			pinega okladnikova_sloboda nes khimzha vizhas oma leshukonskoye vyya malaya_ilesha mezen bolshaya_laptyuga vashka usa_reka vorkuta pechora izhma
+			ust_tsilma pustozersk
+	
+			vekshenga kunozh nagavskaya aksay sarai_al_jadid beljamen zenzevatka danilovka rudnya_pontic oral irek
+			yaik atach ishkul tanalyk suyunduk 
+			yegorlykskaya bagayevskaya solovetsky
+			sloviansk adalaga barvinkove
+			lysychansk
+	 	}
+		
+		own_control_integrated = {
+			
+		}
+
+		starting_technology_level = 3
+		include = "russian_principality_no_coast"
+		include = "expl_novgorod"
+		country_rank = rank_empire	
+		capital = moscow
+		dynasty = romanov_dynasty
+
+		currency_data = {
+			gold = 5200 
+			stability = 17
+			prestige = 50
+			government_power = 40 
+			war_exhaustion = 0 
+			army_tradition = 20  
+		}
+
+
+		government = {
+			type = monarchy
+			ruler = rus_mikhail_romanov
+			heir = rus_aleksey_romanov
+			ruler_term = { character = rus_mikhail_romanov  start_date = 1613.1.1 regnal_number = 1	}
+
+			aristocracy_vs_plutocracy = 20
+			centralization_vs_decentralization = -10
+			traditionalist_vs_innovative = -20
+			spiritualist_vs_humanist = 10
+			serfdom_vs_free_subjects = 30
+			mercantilism_vs_free_trade = -70
+			belligerent_vs_conciliatory = -40
+			quality_vs_quantity = 10
+			offensive_vs_defensive = -50
+			land_vs_naval = 20
+			capital_economy_vs_traditional_economy = 60
+			individualism_vs_communalism = 10
+			outward_vs_inward = 15
+			parliament = {
+				#parliament_type =
+			}
+			reforms = {
+				centralization_early
+				serfdom_system
+			}
+			laws = {
+
+			}
+		}
+		accepted_cultures = {
+			ukrainian_culture
+			belarusian_culture
+		}
+		tolerated_cultures = {
+			finno_ugric_culture
+		}
+	}
+
+#Romania
+	TRA = { #Transylvania
+		own_control_core = {
+			dabaca baita bistrita dej sic #doboka_province
+			alba_iulia aiud cetatea_balta deva felvint hateg hunedoara #feher_province
+			turda baia_de_aries cluj huedin reghin #torda_province
+			sibiu brasov cincu fagaras medias sebes sighisoara #kiralyfold_province
+			targu_mures chezdi_osorheiu covasna cristuru_secuiesc gheorgheni gurghiu odorhei sfantu_gheorghe miercurea_cluc #szekelyfold_province
+			khust mezhorje sighet cuhea rakhiv baia_mare hodod zalau crasna 
+			bihar beius cheresig debrecen oradea baia_crisului lugoj  caransebes mihalt carasova semlacu_mare
+		}
+		starting_technology_level = 3
+		include = "expl_eastern_europe"
+		include = "eastern_european_catholic_monarchy_no_auxilium_no_coast_not_present"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = tra_gyorgy_rakoczy
+			heir = tra_gyorgy_ii_rakoczy
+			ruler_term = { character = tra_gyorgy_rakoczy start_date = 1644.1.1 regnal_number = 1	}
+		}
+		country_rank = rank_duchy
+		capital = cluj
+	}
+
+	WAL = {	#Wallachia
+		own_control_core = {
+			targoviste ploesti valenii_de_munte campulung_muscel arges zimnicea
+			severin stramba targu_jiu targu_bengai ramnicu_valcea craiova
+			caracal calafat slatina turnu_magurele
+			giurgiu rusii_de_vede comana bucharest
+			buzau orasul_de_floci braila ramnicu_sarat
+			lichiresti strehaia
+			corabia dragasani radovanu plenita
+			cozia glavacioc gratia pitesti poenari
+			bukov cegani cetateni gaiseni meteleu parscov slanic slobozia viziru
+		}
+
+		starting_technology_level = 3
+		include = "expl_eastern_europe"
+		include = "eastern_european_monarchy_no_coast"
+
+		government = {
+			ruler = random
+
+			centralization_vs_decentralization = 60
+			aristocracy_vs_plutocracy = -50
+			serfdom_vs_free_subjects = -90
+			traditionalist_vs_innovative = -30
+			spiritualist_vs_humanist = -50
+			mercantilism_vs_free_trade = -60
+			offensive_vs_defensive = 20
+			land_vs_naval = -20
+			quality_vs_quantity = 15
+			belligerent_vs_conciliatory = -20
+			capital_economy_vs_traditional_economy = 95
+			individualism_vs_communalism = -20
+			outward_vs_inward = 20
+		}
+
+		tolerated_cultures = {
+			bulgarian
+		}
+
+		liturgical_language = church_slavonic_language
+
+		country_rank = rank_duchy
+		capital = targoviste
+	}
+
+	MOL = { #Moldavia
+		own_control_core = {
+			iasi husi targul_saratii tutova ungheni vaslui
+			orhei chisinau targu_lapusnei tuzara balti hotin lipnic soroca viadineti
+			dorohoi cernauti cetatea_tetina cotnari harlau stefanesti 
+			suceava campulung_moldovenesc putna siret storozhynets vatra_dornei
+			bacau hangu_romania piatra_lui_craciun roman targu_neamt targu_trotus
+			barlad adjud cudalbi focsani galati oancea tecuci tulnici cahul
+		}
+
+		starting_technology_level = 3
+		include = "expl_eastern_europe"
+		include = "eastern_european_monarchy_no_coast"
+
+		government = {
+			ruler = random
+
+			centralization_vs_decentralization = 60
+			aristocracy_vs_plutocracy = -50
+			serfdom_vs_free_subjects = -90
+			traditionalist_vs_innovative = -30
+			spiritualist_vs_humanist = -50
+			mercantilism_vs_free_trade = -60
+			offensive_vs_defensive = 20
+			land_vs_naval = -20
+			quality_vs_quantity = 15
+			belligerent_vs_conciliatory = -20
+			capital_economy_vs_traditional_economy = 95
+			individualism_vs_communalism = -20
+			outward_vs_inward = 20
+		}
+
+		tolerated_cultures = {
+			
+		}
+
+		liturgical_language = church_slavonic_language
+
+		country_rank = rank_duchy
+		capital = iasi
+	}
+
+#Steppe
+	CRI = { #Crimea
+		type = location
+		own_control_core = {
+			qarasuvbazar solkhat seyitler qirq_yer kalay kezlev aqmecit jurchi or_qapi lake_sasyk_syvash syvash_lagoon syvash_sand_bar
+			qalancaq aslan_horod ordu_bazar rohat_kermen enice velyka_lepetykha 
+			melitopol kyrylivka tokmak konski_vody kuchugur berdiansk molochnyi_liman
+			taganrog velyka_novosilka domakha huliaipole shyrokyne vasylivka mius_liman
+			bakhmut oleksandrivka posad vithold_hammami oleshia tavan
+
+			shcherbinovka balzimachi kanevskaya starominskaya copa
+			akhtar kalininskaya bryukhovetskaya bzhedygu_kal ust_labinsk pavlovskaya tbilisskaya romanovsky_khutor
+		}
+		
+		starting_technology_level = 3
+		include = "expl_mongols"
+		include = "eurasian_horde_not_present"
+		country_rank = rank_duchy
+
+		capital = qarasuvbazar
+		
+		religious_school = hanafi_school
+		government = { 
+			ruler = cri_islam_giray 
+			ruler_term = { character = cri_islam_giray start_date = 1644.1.1 regnal_number = 1	}
+
+			mysticism_vs_jurisprudence = -15 
+			laws = {
+				legal_code_law = sharia_law_policy
+				sharia_law = hanafi_policy
+				marriage_law = muslim_marriage
+				heir_religion_law = heir_same_religion
+			}
+		}
+	}
+
+	ZAZ = { #Zaporozhia
+		type = location
+
+		own_control_core = {
+			kichkas rozdory hryshyne pavlohrad karlivka berestyn samarchyk oril ternivka
+			yelanets usivka mala_vyska umanske ingul petrove
+			kodak myshuryn_rih sofiivka kryvyi_rih tomakivka mykytyn_rih
+			velyka_oleksandrivka bereznehuvate bashtanka argamakli_sarai harbuzynka
+		}
+		starting_technology_level = 3
+		include = "expl_eastern_europe"
+		include = "eurasian_horde_not_present"
+		court_language = ukrainian_dialect
+
+		government = {
+			type = steppe_horde
+			heir_selection = tribal_oldest_male
+			ruler = random
+			reforms = {
+				cossacks_reform
+			}
+
+			laws = {
+				marriage_law = monogamous_marriage
+				heir_religion_law = heir_same_religion
+			}
+		}
+		capital = kodak
+	}
+
+	NOG = { #Nogai
+		type = location
+		own_control_core = {
+			naurskaya kara_bazaar terekli_mekteb kurskaya kamysh_burun dardeling kok_usn mekletin ikryanoye
+		}
+		
+		capital = akhta
+		
+		starting_technology_level = 3
+		include = "expl_mongols"
+		include = "eurasian_horde_not_present"
+		country_rank = rank_duchy
+		religious_school = hanafi_school
+		government = { 
+			ruler = random
+			mysticism_vs_jurisprudence = -15 
+			laws = {
+				legal_code_law = sharia_law_policy
+				sharia_law = hanafi_policy
+				marriage_law = muslim_marriage
+				heir_religion_law = heir_same_religion
+			}
+		}
+	}
+
+#India
+
+	GDA = { #Godara kingdom in Jangladesh
+		#Bikaner
+		own_control_core = {
+			bhatnir anupgarh suratgarh rawatsar sidhmukh taranagar churu sui pugal udasar sardarshahar
+		}
+
+		capital = sui
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		government = {
+			ruler = gda_karan_singh_rathore
+
+			reforms = {
+				
+			}
+		}
+		tolerated_cultures = {
+			marwari
+			shekhawati
+		 }
+	}
+
+	JSL = { #Jaisalmer
+		own_control_core = {
+			jaisalmer ludrava ramgar pokhran
+		}
+
+		capital = jaisalmer
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		government = {
+			ruler = jsl_manohar_das_yadava_bhati
+
+			reforms = {
+				
+			}
+		}
+		tolerated_cultures = {
+			marwari
+			shekhawati
+		 }
+	}
+
+	BAW = { #Bahawalpur
+		own_control_core = {
+			nawakot bijnot derawar channan_pir kot_marot uch mir_garh_qila dunga_bunga chishtian khairpur aror
+		}
+
+		capital = uch
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		government = {
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+		tolerated_cultures = {
+
+		 }
+	}
+
+	JOD = { #Jodhpur
+
+		own_control_core = {
+			merta nagaur makrana kolayat
+			mandore osian phalvardhika khed pali bahadamer kiradu gudamalani kurki
+			jalor chandravati siwana nadol
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		capital = gudamalani
+		government = {
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+
+		tolerated_cultures = { gujarati }
+	}
+
+	IDR = { #Idar
+		own_control_core = {
+			idar
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		capital = idar
+		government = {
+
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+	}
+
+	MEW = { #Mewar
+		own_control_core = {
+			nagahrada chavand salumbar amet chittor bhilwara phulia mandalgarh
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		capital = chittor #Or Nagahrada
+		government = {
+			ruler = mew_jagar_singh_sisodia
+
+			reforms = {
+				
+			}
+		}
+
+		tolerated_cultures = { bhil }
+	}
+
+	DHU = { #Jaipur
+		own_control_core = {
+			amber_loc malpura dausa sambhar ajmer
+			manoharpur sikar kolasar jhunjhunu
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		capital = amber_loc
+		government = {
+
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+
+		tolerated_cultures = { shekhawati }
+	}
+
+	BND = { #Orchha
+		own_control_core = {
+			orchha jhansi kundar 
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		capital = orchha
+		government = {
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+
+		tolerated_cultures = { bagheli }
+	}
+
+	BGK = { #Baghelas
+		own_control_core = {
+			 rahatgarh khajuraho
+			panna bhatta
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		capital = bandogarh
+		government = {
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+
+		tolerated_cultures = {
+			bundeli
+			gond
+		 }
+	}
+
+	GHR = { #Garha-Mandla
+		own_control_core = {
+			garha mandla amarkantak ghansor ramgad nainpur chauragarh tendukheda murwara
+			damoh singorgarh ujargarh 
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = garha
+		government = {
+			ruler = ghr_vasudev_rajgond
+			#(exact reign unknown, his preddecessor was Jagannatha and his successor Madan Singh).
+			#Ruler was a Rajput but the kingdom was majority Gond.
+			#Under later Gond rulers this kingdom is eventually dominant in the region for a while.
+			laws = {
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = {
+			bagheli
+			bundeli
+		 }
+	}
+
+	RKS = { #Raksel
+		own_control_core = {
+			ambikapur ramkola ramgiri garhwa sonhat janakpur
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+
+		tolerated_cultures = {
+			chhattisgarhi
+			bagheli
+		}
+
+		capital = ambikapur
+		government = {
+			ruler = random
+		}
+	}
+
+	KKR = { #Khokhra
+		own_control_core = {
+			khukhragarh porahat birugarh badamgarh
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+
+		tolerated_cultures = {
+			kurukh_culture
+			munda_culture
+		}
+
+		capital = khukhragarh
+		government = {
+			ruler = random
+		}
+	}
+
+	PTN = {	#Patna
+		own_control_core = {
+			sambalpur samasingha sonepur redhakhol bargarh debagarh kuchinda
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = patna_garjat
+		government = {
+
+			ruler = random
+
+			laws = {
+				administrative_system = feudal_administration
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = { chhattisgarhi }
+	}
+
+	KJA = { #Keonjhar_State
+		own_control_core = {
+			keonjhar khiching ghasipura jyotipur ghatgaon
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = keonjhar
+		government = {
+			ruler = random 
+
+			laws = {
+				administrative_system = feudal_administration
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = {
+			ho_culture
+			orissan
+		}
+	}
+
+	BNA = { #Bonai_State
+		own_control_core = {
+			bonaigarh
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = bonaigarh
+		government = {
+			ruler = random 
+
+			laws = {
+				administrative_system = feudal_administration
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = {
+			kurukh_culture
+			orissan
+		}
+	}
+
+	MJU = { #Mayurbhanj_State
+		own_control_core = {
+			nilagiri baripada rairangpur
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = baripada
+		government = {
+			ruler = random 
+			#There are supposed to have been 31 rulers before 1660, but their names are unknown.
+
+			laws = {
+				administrative_system = feudal_administration
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = {
+			santal_culture
+			orissan
+		}
+	}
+
+	BST = { #Bastar_State
+		own_control_core = {
+			dantewada barasuru sukhma rekapalle bastar kondagaon jagdalpur
+		}
+
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = bastar
+		government = {
+			ruler = bst_pratap_deo_bhanja
+			laws = {
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = {
+			gond
+			halbi
+			telugu
+		}
+	}
+
+	JPO = { #Jeypore_Estate
+		own_control_core = {
+			nandapur kotpad rayagada kotagad gunupur malkangiri nilakamberu bissam_cuttack kasipur nowrangapur
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = nandapur
+		government = {
+			ruler = random 
+
+			laws = {
+				administrative_system = feudal_administration
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = {
+			khond_culture
+			gond
+		}
+	}
+
+	KLH = { #Kalahandi
+		own_control_core = {
+			jajjaldeypur kalahandinagara raighar belkhandi
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = kalahandinagara
+		government = {
+			ruler = random
+
+			laws = {
+				administrative_system = feudal_administration
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = {
+			khond_culture
+		}
+
+	}
+
+	KNK = { #Kanker_State
+		own_control_core = {
+			kanker paralkot
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = kanker
+		government = {
+			ruler = random 
+			laws = {
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+
+		tolerated_cultures = { gond }
+	}
+
+	BAD = {	#Baudh_State
+		own_control_core = {
+			baud athmallik phulbani udayagiri_kotagad
+			kunjabangarh
+		}
+
+		include = "expl_india_hindu"
+		include = "india_limited_monarchy"
+		capital = baud
+		government = {
+			ruler = random.
+
+			laws = {
+				administrative_system = feudal_administration
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+			}
+		}
+	}
+
+	#Bhutan-Nepal
+	TWI = { #Twipra
+		own_control_core = {
+			rangamati agartala chandrapur kailashahar pilak laskarpur
+			karpus_mahal
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+
+		tolerated_cultures = {
+			chakma_culture
+		}
+
+		capital = rangamati
+		government = {
+			ruler = random
+			laws = { medieval_levy_law = paik_system }
+		}
+	}
+
+	LUR = { #Laur
+		own_control_core = {
+			 chisobibra jaintiapur lyngngam nabagram ruga sohra sutnga
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		court_language = sanskrit_language
+
+		tolerated_cultures = {
+			khasi_culture
+			garo_culture
+		}
+
+		capital = nabagram
+		government = {
+			ruler = random
+		}
+	}
+
+	AHO = { #Ahom
+		own_control_core = {
+			charaideo charagua namrup noadihang
+			konwargaon lakhimpur
+			itanagar nakshaparvat
+			morangi dergaon
+			durjaya rowta tezpur bordowa malinithan dibrugarh bengmara gomsi sadiya tengapani
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_animist_monarchy"
+		government = {
+			ruler = random
+			laws = { medieval_levy_law = paik_system }
+		}
+
+		tolerated_cultures = {
+			tiwa_culture tani_culture karbi_culture
+		}
+
+		capital = charaideo
+	}
+
+	LMN = { #Lho Mon
+		own_control_core = {
+			paro daga jabar_goemba punakha thimpu wangdue
+			zhemgang trongsa bumthang zhongkar lhuntsi tawang trasigang
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_animist_monarchy"
+
+		capital = paro
+		government = {
+			ruler = random
+		}
+	}
+
+	SKK = { #Sikkim
+		own_control_core = {
+			yuksom dalingkot gangtok tsunthang
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_animist_monarchy"
+
+		capital = yuksom
+		government = {
+			ruler = random
+		}
+	}
+
+	LWA = { #Limbuwan
+		own_control_core = {
+			vijayapur phakphok taplejung
+			chainpur ranibas dudhakunda halesi okhaldhunga dolakha sunkoshi ramechhap sindhuli rajanari
+			chaudandi 
+		}
+
+		own_control_integrated = {
+
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+
+		tolerated_cultures = {
+			kamarupi
+		}
+
+		capital = vijayapur
+		government = {
+			ruler = random
+
+			laws = {
+				medieval_levy_law = peasant_levies
+			}
+		}
+	}
+
+	KTU = { #Kathmandu
+		own_control_core = {
+			kathmandu dhading gorkha lamjung nuwakot upardang
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			tamang_culture
+		}
+
+		capital = kathmandu
+	}
+
+	KHS = { #Khasa
+		own_control_core = {
+			sinja bajura dullu jumla kharpunath yanal_densa
+			jagatipur chaughera dolpo malneta musikot pyuthan salianah
+			pokhara gulmi takam tanahun tansen
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+
+		tolerated_cultures = {
+			magar_culture
+			newar_culture
+			tharu_culture
+		}
+
+		capital = sinja
+		government = {
+			ruler = random
+		}
+	}
+
+	DTI = { #Doti
+		own_control_core = {
+			dipayal acham ajayameru bajhang kailali kanchapur
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+
+		tolerated_cultures = {
+			khas_culture
+			tharu_culture
+		}
+
+		capital = dipayal
+		government = {
+			ruler = random
+		}
+	}
+
+	KMN = { #Kumaon
+		own_control_core = {
+			champavati almora askot baijnath dwarahat kashipur nainital rudrapur_kumaon
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		court_language = sanskrit_language
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			garhwali
+			dehlavi
+		}
+
+		capital = champavati
+	}
+
+	GWL = { #Garhwal
+		own_control_core = {
+			chandpur_garhi badrinath devprayag gangadvara srinagar_garhwal thalisain uttarkashi
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		court_language = sanskrit_language
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			dehlavi
+		}
+
+		capital = chandpur_garhi
+	}
+
+	SRM = { #Nahan
+		own_control_core = {
+			kalsi nahan
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+
+		tolerated_cultures = {
+			kangri
+		}
+
+		capital = kalsi
+		government = {
+			ruler = random
+		}
+	}
+
+	JBL = { #Jubbal
+		own_control_core = {
+			soonpur hanol
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+
+		capital = soonpur
+		government = {
+			ruler = random
+		}
+	}
+
+	SKT = { #Suket
+		own_control_core = {
+			suket mandi sarahan kahlur naggar bajaura
+		}
+
+		capital = suket
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		government = {
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+
+		tolerated_cultures = { kumaoni }
+	}
+
+	KGR = { #Kangra
+		own_control_core = {
+			nagarkot palampur kutlehar nagarkot nurpur pathankot
+		}
+
+		capital = nagarkot
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		government = {
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+	}
+
+	KMA = { #Kamata
+		own_control_core = {
+			jalpaiguri birpara kamatapur koch_bihar panchagarh
+		}
+
+		own_control_integrated = {
+
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		government = {
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			bodo_culture
+			rabha_culture
+		}
+
+		capital = koch_bihar
+	}
+
+#South India
+	DEC = { #Deccan
+		own_control_core = {
+			bidar yedagiri gulbarga kalyani sagar talikota bagalkot bijapur manyakheta chitapur bhalki kembhavi sindagi basavana_bagewadi badami
+			savantvadi rajapur dabhol sangamesvara
+			pratapgarh satara karad kolhapur aundh jath miraj athani
+			ajara mudhol belgaum londa khanapur gokak raybag
+			raichur mudgal anegandi koppal hubli darwar bankapura devadurga kundgol sonda_karnataka gadag
+			kaulas adoni
+			#parangipettai pondicherry madras maduranthakam arcot
+			#vellore kanchipuram gingee padaividu tiruvannamalai
+			tirupati cuddapah medanapalle kangundi gurramkonda pottapi
+			kadiri penukonda gandikota chittoor pakala anantapur rayachoti
+			palasamudram dharmavaram vempalle
+			pavagada
+			doni gutti kurnool srisailam nandyal ahobalam udayagiri porumamilla dhone s_nallamalla
+			vijayanagar bellari rayadurga haveri puvina_padangile
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_no_coast"
+		government = {
+			ruler = random
+		}
+
+		capital = bijapur
+
+	}
+
+	GCO = { #Galconda
+		own_control_core = {
+			golconda koilkonda rachakonda devarakonda panugallu anumagallu amrabad nalgonda gadwal ghampur makhtal tandur kohir undrugonda
+			warangal palampet ramagiri vemulawada medak bhongir molangur korutla adlur tupran mangapet parkal
+			khammamet kalluru kondapalli wazirabad kothagudem nuzvid
+			visakhapatnam vizianagaram pithapuram tuni rampa bobbili madugula
+			rajamahendry pallakolu masulipatnam ellur peddapalli
+			adanki markapur motupalli 
+			kondavidu macherla cumbum vinukonda guntur kanigiri
+			pazhaverkadu durgarazpatnam nellore kavali kandakura gudur kalahasti
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		capital = golconda
+		government = {
+			ruler = random
+
+			reforms = {
+				
+			}
+		}
+
+	}
+
+	ALU = { #Keladi Nayaka
+		own_control_core = {
+			honnavara bhatkal karwar madgaon
+			karkala mangalore udupi kasaragod uppinangady
+			kannur wayanad thalassery
+		}
+		own_control_integrated = {
+
+		}
+
+		include = "indian_hindu_monarchy_jain"
+		capital = 
+		government = {
+			ruler = random 
+
+			reforms = {
+				
+			}
+
+			laws = {
+				administrative_system = feudal_administration
+			}
+
+			#Societal Values
+			land_vs_naval = 50
+		}
+
+		tolerated_cultures = {
+			malayali
+		 }
+	}
+
+	MYS = { #Mysore
+		own_control_core = {
+			mysore shravanabelagola seringapatam srigangapatna mankunda sathyagala
+			ummatur belur dvarasamudra haleri hassan_karnataka kadur narsipur nanjanagud
+			bangalore kolar manyapura nandagiri devanahalli hoskote ballalapura
+			magadi sira chitradurga uchangidurga tumkur hanagal aimangala
+			sringeri bednur ikkeri basavapattana shimoga
+		}
+
+		country_rank = rank_kingdom
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy_jain_no_coast"
+		capital = mysore
+		government = {
+
+			regnal_numbers = {
+				name_nripa_kama = 2
+				name_vinayaditya = 1
+				name_ereyanga = 1
+				name_vishnuvardhana = 1
+				name_vira.name_narasimha = 2
+				name_vira.name_someshwara = 1
+				name_narasimha = 3
+				name_vira.name_ballala = 3
+			}
+			ruler = hsl_kempa_deva_wodeyar
+
+			reforms = {
+				nayankara_system
+			}
+
+			laws = {
+				administrative_system = poligar_system_policy
+			}
+		}
+
+		tolerated_cultures = {
+			tamil
+			telugu
+			kodaga
+		 }
+	}
+
+	#MAB - Madurai Sultanate
+	MAB = {
+		own_control_core = {
+			kayal tirunelveli tenkasi kayattar sankaranayinarkoil
+			madurai ramesvaram vembar thoothukudi thondi aruppukkottai virudhunagar devakottai adams_bridge
+			puddokothai nagapattinam tiruccirapalli thanjavur srirangam jayankondam pennadam
+			karaikal pattukkottai perambalur tirukoilur kallakurichi
+			salem dharmapuri krishnagiri sendamangalam jagadevipalayam denkanikottai pennagaram biligiriranga
+			erode coimbatore dharapuram karur dindigul kambam batlagundu
+			satyamanagalam palani tiruppur bhavani 
+		}
+		own_control_conquered = {
+
+		}
+
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		include = "indian_muslim_monarchy_no_censor"
+		court_language = persian_language
+
+		country_rank = rank_kingdom
+		capital = madurai
+		government = {
+
+			ruler = mab_tirumala_nayaka
+
+			reforms = {
+				taluqdar_nobility
+				indian_sultanate_reform
+			}
+
+			#Societal Values
+			land_vs_naval = 50
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		tolerated_cultures = {
+			tamil
+		}
+
+	}
+
+	ZMR = { #Kozhikode
+		own_control_core = {
+			malapuram kozhikode ponnani angadippuram
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy"
+		capital = kozhikode
+		government = {
+			ruler = random 
+
+
+			reforms = {
+				
+			}
+
+			#Societal Values
+			land_vs_naval = 50
+		}
+	}
+
+	KDU = { #Kodungallur
+		own_control_core = {
+			kodungallur thrissur palghat
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy"
+		capital = kodungallur
+		government = {
+			ruler = random #Unknown
+
+			reforms = {
+				
+			}
+
+			#Societal Values
+			land_vs_naval = 50
+		}
+	}
+
+	PDU = { #Kingdom_of_Cochin
+		own_control_core = {
+			prakkad manikandapuram karikkode kochi edappaly
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy"
+		capital = kochi
+		government = {
+			ruler = random 
+
+
+			reforms = {
+				
+			}
+
+			#Societal Values
+			land_vs_naval = 50
+		}
+	}
+
+	VND = { #Venad
+		own_control_core = {
+			thiruvananthapuram kollam kanyakumari pandalam kottarakkara
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy"
+		capital = kollam
+		government = {
+			ruler = random 
+
+			reforms = {
+				
+			}
+
+			#Societal Values
+			land_vs_naval = 50
+		}
+
+		tolerated_cultures = { tamil }
+	}
+
+	DGL = { #Maldives
+		own_control_core = {
+			male_atoll addu_atoll nilandhe_atoll thiladhunmathi_atoll
+		}
+
+		include = "indian_muslim_monarchy_no_dharmic_dhimmi"
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+		government = {
+			ruler = random
+
+			#Societal Values
+			land_vs_naval = 50
+
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+
+		country_rank = rank_kingdom
+		capital = male_atoll
+	}
+
+	JFN = { #Jaffna
+		own_control_core = {
+			jaffna mullaitivu trincomalee vavuniya mahatittha medawachchiya
+			madakalapu digavapi salavata yapavu kurunegala negombo anuradhapura
+		}
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy"
+		capital = jaffna
+		government = {
+			ruler = random
+
+			reforms = {
+				
+			}
+
+			#Societal Values
+			land_vs_naval = 50
+		}
+
+		tolerated_cultures = { sinhalese }
+	}
+
+	DBD = { #Kandy
+		own_control_core = {
+			polonnaruva hatthigiripura sitavaka devanagara hambantota tissamaharama badulla gampola ratnapura_LKA kandy
+		}
+
+
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy"
+		capital = kandy
+		government = {
+			ruler = random
+
+			#Societal Values
+			land_vs_naval = 50
+
+			laws = {
+				marriage_law = monogamous_marriage
+				heir_religion_law = heir_same_religion
+				administrative_system = feudal_administration
+			}
+		}
+
+		tolerated_cultures = {
+			vedda
+			tamil
+		}
+
+	}
+
+	ARK = { #Arakan
+		own_control_core = {
+			launggyet
+			akyab ann gwa maungdaw minbya mrauk_u ramree talak_burma taungup thandwe weithali
+			chittagong chakaria kaptai ramu sitakunda
+		}
+
+		include = "south_east_asia_monarchy"
+		government = {
+			ruler = random
+			laws = {
+				education_masses_law = uneducated_masses_education
+			}
+		}
+
+		tolerated_cultures = {
+			chakma_culture
+		}
+
+		capital = launggyet
+	}
+
+#Kashimir/Kalat
+	CTR = { #Chitral
+		own_control_core = {
+			chitral mulkhow yarkhun mastuj yarkhun
+		}
+
+		capital = chitral
+
+		include = "expl_india_muslim"
+		include = "india_limited_muslim_monarchy"
+		government = {
+			ruler = random
+
+			laws = {
+				sharia_law = hanafi_policy
+			}
+		}
+
+		tolerated_cultures = { chitrali }
+		religious_school = hanafi_school
+		government = { mysticism_vs_jurisprudence = -15 }
+		
+	}
+
+	KLA = { #Kalat
+		own_control_core = {
+			surab kalat mastung nushki kharan besima washuk nagh
+			khuzdar awaran jhao mashkai nal
+			bela hinglaj lakhsar ormara sonamiani wadh
+			zik 
+		}
+
+		include = "expl_middle_east"
+		starting_technology_level = 0
+		include = "muslim_tribe_no_coast"
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = hanafi_policy
+			}
+		}
+
+		religious_school = hanafi_school
+		government = { mysticism_vs_jurisprudence = -15 }
+		
+		capital = kalat
+		dynasty = mirwari_dynasty
+		court_language = persian_language
+	}
+	
+	VIJ = {
+		own_control_core = {
+			parangipettai pondicherry madras maduranthakam arcot
+			vellore kanchipuram gingee padaividu tiruvannamalai
+		}
+		
+		capital = kanchipuram
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy"
+		
+		government = {
+			type = monarchy
+			ruler = random 
+			heir_selection = cognatic_primogeniture
+		}
+		
+		country_rank = rank_kingdom
+		starting_technology_level = 3
+	}
+}
 }
 
