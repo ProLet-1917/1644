@@ -2091,9 +2091,18 @@ countries = {
 		}
 		UUS = { #卫 us
 			own_control_core = {
-
+				lhasa drigung galo gyama tsurphu
+				nedong densatil gongkar nyemo rinpung_yarlung samye
+				trigu chikchar gonpatsi lhodrak lho_taklung tragor zangchen lake_puma_yumco yamdrok_lake
+				gyamda buchu daklha_gampo zhokha
+				metog rigyal tirkong
+				pome chumdo lhari shukden
+				lhakhang pasho pema
+				rima sangacho walong
+				tawang bomdila
+				siang siyom
 			}
-			capital = 
+			capital = lhasa
 			flag = "TIB"
 			country_rank = rank_kingdom
 
@@ -2103,7 +2112,7 @@ countries = {
 			government = {
 				type = theocracy
 				heir_selection = theocratic_elective
-				ruler = tib_namkha_lekpa
+				ruler = chi_dalai_lama_5
 				aristocracy_vs_plutocracy = -60
 				centralization_vs_decentralization = -60
 				traditionalist_vs_innovative = -50
@@ -2151,7 +2160,13 @@ countries = {
 		}
 		ZNG = { #藏 tsang
 			own_control_core = {
-
+				shigatse jonang namling tropu tsangdram
+				gyantse nenying ralung
+				sakya ganden_delingshar lhadrak ngamring tagmo_lingkha
+				dingri chorten_nyima gonga_chode nyalam pelmo
+				phari
+				dzongkar baryang dargyeling lo_mustang tradun
+				tokchen purang
 			}
 			capital = 
 			flag = "TIB"
@@ -2163,7 +2178,7 @@ countries = {
 			government = {
 				type = theocracy
 				heir_selection = theocratic_elective
-				ruler = tib_namkha_lekpa
+				ruler = chi_panchen_lama_4
 				aristocracy_vs_plutocracy = -60
 				centralization_vs_decentralization = -60
 				traditionalist_vs_innovative = -50
@@ -2208,6 +2223,31 @@ countries = {
 				khampa_culture
 			}
 			country_name = "ZNG"
+		}
+		DIM = { #底马萨 Dimasa
+			own_control_core = {
+				dimapur dhansiri diphu
+			}
+			include = "expl_india_hindu"
+			include = "indian_hindu_monarchy_no_coast"
+			tolerated_cultures = {
+				karbi_culture
+			}
+			capital = dimapur
+			government = {
+				ruler = random
+			}
+		}
+		MLB = { #Kangleipak (Manipur)
+			own_control_core = {
+				imphal thoubal liangmei rongmei_naga thada
+			}
+			include = "south_east_asia_monarchy_no_mandala_no_coast"
+			government = {
+				ruler = random
+			}
+
+			capital = imphal
 		}
 	}
 }
