@@ -1421,13 +1421,13 @@ countries = {
 				bakanas ashchyozek dagandely koksala sayak #bakanas_province
 				kurchum kandysu zaysan kokpekty shar zyryan #kurchum_province
 				kayalyk ayagoz dungene lepsy sagabuyen tansyk tekeli #kayalyk_province
-				targabatay dahra_sasykkol emin ilanbalyk koktuma toli balruq #emin_province
+				targabatay dahra_sasykkol emin ilanbalyk koktuma toli  #emin_province
 				bortala jing kuytun urghtbulaq usu_xinjiang alatau #bortala_province
 				almaliq gulja narat nilka tokkuztara  #almaliq_province
 				ilibalyk charyn chundzha kegen koktal lavar shelek #ilibalyk_province
 				yulduz
 				karamergen shengeldy boyauli
-				hoboksar gonganbao manas utbulaq zhekdeliq saur #gurbantunggut_province
+				hoboksar gonganbao manas utbulaq zhekdeliq  #gurbantunggut_province
 				atanuul bodonch bulgan burqin chinggil jeminay kara_irtysh ulungur lake_jili lake_ulungur #altay_province
 				almaty boyauli karakastek karamergen kargaly kurty shengeldy talkhir #almaty_province
 			}
@@ -1499,9 +1499,9 @@ countries = {
 		}
 		HSD = { #和硕特 Khoshuud
 			own_control_core = {
-				yangjibaliq kutubi ulan_us qanbalik urumqi borohoro3 #yangjibaliq_province
+				yangjibaliq kutubi ulan_us qanbalik urumqi  #yangjibaliq_province
 				beshbalik dunla guchung mori yuanhu  #beshbalik_province
-				barkul altayn_ovor_gobi naomao santokhe zuun_garyn_gobi barkol_mountains #barkul_province
+				barkul altayn_ovor_gobi naomao santokhe zuun_garyn_gobi  #barkul_province
 			}
 			capital = beshbalik
 			include = "eurasian_horde_china"
@@ -1585,7 +1585,7 @@ countries = {
 		TRH = { #郑主 Chúa Trịnh
 			own_control_core = {
 				thang_long tam_dai thai_binh thien_quan #升龙
-				quy_hoa lai_chau thuy_vi van_ban fan_si_mountains2 fan_si_mountains3 #归和
+				quy_hoa lai_chau thuy_vi van_ban  #归和
 				nam_sach hong_chau khoai_chau vu_ninh #南策
 				anbang quang_yen van_don #海东
 				thai_nguyen cam_hoa tuyen_hoa vo_nhai #太原
@@ -2000,11 +2000,11 @@ countries = {
 		}
 		CHG = { #叶尔羌/后东察合台 Yarkent Khanate
 			own_control_core = {
-				kashgar artush barchuk maralbexi payzawat tokkuzak yingisar yopurga tian_shan1 #kashgar_province
+				kashgar artush barchuk maralbexi payzawat tokkuzak yingisar yopurga  #kashgar_province
 				yarkand guma kargilik poskam #yarkand_province
-				khotan karakax keriya lop qira kunlun2 taklamakan5 #khotan_province
+				khotan karakax keriya lop qira  #khotan_province
 				mazar_tagh tikenliq #taklamakan_province
-				aksu bai_xinjiang kumtura kucha qumbash shayar uqturpan tian_shan2 tian_shan3 #aksu_province
+				aksu bai_xinjiang kumtura kucha qumbash shayar uqturpan  #aksu_province
 				kurla bugur kuerchu #kurla_province
 				charchan charklik niya qietai tatrang waxxari #charchan_province
 				karasahr kumux bosten bosten_lake kuruktag #karasahr_province
@@ -2089,7 +2089,126 @@ countries = {
 				ruler = random
 			}
 		}
-		
+		UUS = { #卫 us
+			own_control_core = {
+
+			}
+			capital = 
+			flag = "TIB"
+			country_rank = rank_kingdom
+
+			starting_technology_level = 3
+			include = "expl_china"
+
+			government = {
+				type = theocracy
+				heir_selection = theocratic_elective
+				ruler = tib_namkha_lekpa
+				aristocracy_vs_plutocracy = -60
+				centralization_vs_decentralization = -60
+				traditionalist_vs_innovative = -50
+				spiritualist_vs_humanist = -25
+				serfdom_vs_free_subjects = -40
+				mercantilism_vs_free_trade = -80
+				belligerent_vs_conciliatory = -50
+				quality_vs_quantity = 20
+				offensive_vs_defensive = 10
+				land_vs_naval = -20
+				capital_economy_vs_traditional_economy = 80
+				individualism_vs_communalism = 20
+				outward_vs_inward = -95
+				parliament = {
+					parliament_type = council
+				}
+				laws = {
+					censorship = limited_censorship
+					education_masses_law = basic_religious_education
+					administrative_system = feudal_administration
+					cultural_traditions_law = civil_society
+					marriage_law = monogamous_marriage
+					heir_religion_law = heir_special_succession
+					legal_code_law = traditional_law_policy
+					distribution_of_power_law = dop_traditional_distribution_of_power
+				}
+				privilege = {
+					#Clergy
+					clergy_literacy_rights
+					clergy_land_rights
+					embellish_great_works_of_faith
+					promote_cultural_unity
+					#Nobles
+					nobles_land_rights
+					noble_serfdom_rights
+					noble_fortification_licenses
+					elaborate_court_ceremonies
+				}
+			}
+			tolerated_cultures = {
+				changpa_culture
+				khampa_culture
+			}
+			country_name = UUS
+		}
+		ZNG = { #藏 tsang
+			own_control_core = {
+
+			}
+			capital = 
+			flag = "TIB"
+			country_rank = rank_kingdom
+
+			starting_technology_level = 3
+			include = "expl_china"
+
+			government = {
+				type = theocracy
+				heir_selection = theocratic_elective
+				ruler = tib_namkha_lekpa
+				aristocracy_vs_plutocracy = -60
+				centralization_vs_decentralization = -60
+				traditionalist_vs_innovative = -50
+				spiritualist_vs_humanist = -25
+				serfdom_vs_free_subjects = -40
+				mercantilism_vs_free_trade = -80
+				belligerent_vs_conciliatory = -50
+				quality_vs_quantity = 20
+				offensive_vs_defensive = 10
+				land_vs_naval = -20
+				capital_economy_vs_traditional_economy = 80
+				individualism_vs_communalism = 20
+				outward_vs_inward = -95
+				parliament = {
+					parliament_type = council
+				}
+				laws = {
+					censorship = limited_censorship
+					education_masses_law = basic_religious_education
+					administrative_system = feudal_administration
+					cultural_traditions_law = civil_society
+					marriage_law = monogamous_marriage
+					heir_religion_law = heir_special_succession
+					legal_code_law = traditional_law_policy
+					distribution_of_power_law = dop_traditional_distribution_of_power
+				}
+				privilege = {
+					#Clergy
+					clergy_literacy_rights
+					clergy_land_rights
+					embellish_great_works_of_faith
+					promote_cultural_unity
+					#Nobles
+					nobles_land_rights
+					noble_serfdom_rights
+					noble_fortification_licenses
+					elaborate_court_ceremonies
+				}
+			}
+			tolerated_cultures = {
+				changpa_culture
+				khampa_culture
+			}
+			country_name = "ZNG"
+		}
 	}
 }
 
