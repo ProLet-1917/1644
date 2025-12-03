@@ -1,10 +1,13 @@
 ﻿# 1644 模组：自定义征召兵规模
 # 
-# 八旗骑兵征召兵：三百一牛录（300人一个牛录）
-# 根据 a_banner_cavalry 的 max_strength = 0.3（300人），
-# levy size 应等于单位 max_strength，以确保一个征召单位 = 一个牛录
+# 八旗骑兵征召兵计算公式：
+# 征召兵数量 = estate人口 * levy_banner_cavalry_size * (1 + global_levy_size_modifier + estate_levy_size_modifier + local_levy_size_modifier)
+# 
+# 注意：levy_banner_cavalry_size 应等于 a_banner_cavalry 的 max_strength = 0.3
+# 以确保每个征召单位至少有一个牛录（300人）的strength，具备基本战斗力
+# 如果设置过小（如0.10），征召出来的单位strength会太小，容易被秒杀
 
-levy_banner_cavalry_size = 0.05
+levy_banner_cavalry_size = 0.06 #十万左右八旗征召骑兵
 
 
 
