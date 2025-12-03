@@ -1325,7 +1325,7 @@ countries = {
 				baibalyk alyanbulag kharkhul tarvagatai #selenga_province
 				karakorum khar_balgas orkhon tsetserleg #orkhon_province
 				ongiin_khiid gimpil_darjaalan shaazan_khot shaazan_tolgoi suriig #ongiin_province
-				baidrag boontsagaan khangal  orog tuin lake_boontsagaan lake_orog khangain_mountains khasagt_khairkhan
+				baidrag boontsagaan khangal  orog tuin lake_boontsagaan lake_orog khasagt_khairkhan
 				zavkhan
 				zagzuugiin_balgas chuluutyn ider lake_sangiin_dalai lake_terkhiin_tsagaan
 			}
@@ -1354,11 +1354,11 @@ countries = {
 			own_control_core = {
 				naran biger khalzan_shireg
 				altan_gadas delger_moron
-				otegu_qulan bugat chikhan_agui tevsh_uul tsagaan_agui tsogt gobi_altay #gobi_altai_province
+				otegu_qulan bugat chikhan_agui tevsh_uul tsagaan_agui tsogt #gobi_altai_province
 				dzaigil erzin lake_uureg lake_uvs #tes_province
 				haerhhana huysiyn tahiltyn_khotgot  #khovd_province
 				ulaagchiin airag_nuur hunguy telmen lake_airag lake_bayan lake_khyargas lake_oigon lake_telmen lake_ulaagchiin_khar lake_uvsiin_khar_us #khyargas_province
-				uliastai ogomoor teel targavatai_mountains
+				uliastai ogomoor teel
 			}
 			capital = uliastai
 			include = "eurasian_horde_china"
@@ -1381,25 +1381,54 @@ countries = {
 
 			}
 		}
+		HTG = { #和托辉特 Khotogoid
+			own_control_core = {
+				den_terek khemchik ulug usun
+				kaa balyktyg buren_khem busiyn lake_dood_tsagaan
+				bii choigan systyg
+				khatgal eringiin uur lake_khuvsgul
+				mori_baridag
+			}
+			capital = den_terek
+			include = "eurasian_horde_china"
+			government = {
+				ruler = chi_badma_erdeni
+				ruler_term = { character = chi_badma_erdeni start_date = 1623.1.11 }
+				heir_selection = cognatic_primogeniture
+			}
+			court_language = mongolian_language
+			country_rank = rank_duchy
+			accepted_cultures = {
+				mongolian_culture
+			}
+			flag = "YUA"
+			country_name = "HTG"
+			currency_data = {
+				gold = 100 #国库
+				stability = 60 #稳定度
+				army_tradition = 60 #军队传统
+
+			}
+		}
 		ZUN = { #准噶尔 Dzungar 
 			own_control_core = {
 				turuum ulaamgom tes
-				khovd achit_nuur tsagaan_usun khurgan lake_achit lake_dayan lake_durgun lake_khar lake_khar_us lake_khoton lake_khurgan lake_markakol lake_tolbo altay_mountains mongol_altay
+				khovd achit_nuur tsagaan_usun khurgan lake_achit lake_dayan lake_durgun lake_khar lake_khar_us lake_khoton lake_khurgan lake_markakol lake_tolbo
 				khyargas_nuur
 				altayskoye onguday ust_koksa smolenskoye mayma biysk teletskoye #altayskoye_province
-				zmeinogorsk shemonayevskoye oskemen ust_kalmanka altay_forest_wasteland_1 #zmeinogorsk_province
+				zmeinogorsk shemonayevskoye oskemen ust_kalmanka  #zmeinogorsk_province
 				sarybulak zhanaarka arkat kaynar_atbai takhir #sarybulak_province
 				bakanas ashchyozek dagandely koksala sayak #bakanas_province
 				kurchum kandysu zaysan kokpekty shar zyryan #kurchum_province
 				kayalyk ayagoz dungene lepsy sagabuyen tansyk tekeli #kayalyk_province
-				targabatay dahra_sasykkol emin ilanbalyk koktuma toli alakol_lake koshkarkol_lake sasykkol_lake balruq targabatay_mountains #emin_province
-				bortala jing kuytun urghtbulaq usu_xinjiang ebi_lake sayram_lake borohoro1 alatau #bortala_province
-				almaliq gulja narat nilka tokkuztara borohoro2 tian_shan6 wusun #almaliq_province
+				targabatay dahra_sasykkol emin ilanbalyk koktuma toli balruq #emin_province
+				bortala jing kuytun urghtbulaq usu_xinjiang alatau #bortala_province
+				almaliq gulja narat nilka tokkuztara  #almaliq_province
 				ilibalyk charyn chundzha kegen koktal lavar shelek #ilibalyk_province
 				yulduz
 				karamergen shengeldy boyauli
-				hoboksar gonganbao manas utbulaq zhekdeliq manas_lake gurbantunggut saur #gurbantunggut_province
-				atanuul bodonch bulgan burqin chinggil jeminay kara_irtysh ulungur lake_jili lake_ulungur atas_bogd #altay_province
+				hoboksar gonganbao manas utbulaq zhekdeliq saur #gurbantunggut_province
+				atanuul bodonch bulgan burqin chinggil jeminay kara_irtysh ulungur lake_jili lake_ulungur #altay_province
 				almaty boyauli karakastek karamergen kargaly kurty shengeldy talkhir #almaty_province
 			}
 			capital = hoboksar
@@ -1432,7 +1461,7 @@ countries = {
 		}
 		QKH = { #青海厄鲁特 Qinghai_Khoshuud
 			own_control_core = {
-				chabcha buha caka dulan dungkar_amdo guolimu qardam sanjiaocheng kunlun5 qilianshan4 caka_lake qinghai_lake #amdo_province
+				chabcha buha caka dulan dungkar_amdo guolimu qardam sanjiaocheng #amdo_province
 				amnye_machen
 				zeku quge sailahai
 				dsun chogyal_khar gashun tsaidam nalinggele
@@ -1471,7 +1500,7 @@ countries = {
 		HSD = { #和硕特 Khoshuud
 			own_control_core = {
 				yangjibaliq kutubi ulan_us qanbalik urumqi borohoro3 #yangjibaliq_province
-				beshbalik dunla guchung mori yuanhu bodga_shan #beshbalik_province
+				beshbalik dunla guchung mori yuanhu  #beshbalik_province
 				barkul altayn_ovor_gobi naomao santokhe zuun_garyn_gobi barkol_mountains #barkul_province
 			}
 			capital = beshbalik
@@ -1702,6 +1731,7 @@ countries = {
 				chiang_mai chiang_dao chiang_khong chiang_rai chiang_saen chom_khao_maneerat hot 
 				lampang lamphun mae_hong_son muang_jam muang_luang_phukha muang_wang muang_yuam 
 				mueng_thoen omkoi sariang vieng_phouka wiang_fang mong_hpayak mong_hsat
+				phayao muang_ngao
 			}
 			include = "south_east_asia_monarchy_no_coast"
 			government = {
@@ -1733,7 +1763,7 @@ countries = {
 		}
 		KTG = { #景东 Kengtung
 			own_control_core = {
-				kengtung mongping
+				kengtung mongping mong_yang
 			}
 			include = "south_east_asia_monarchy_no_coast"
 			government = {
@@ -1745,6 +1775,16 @@ countries = {
 				tai_long_culture
 			}
 			capital = kengtung
+		}
+		PUA = { #楠城 Nan
+			own_control_core = {
+				pua nan
+			}
+			include = "south_east_asia_monarchy_no_coast"
+			government = {
+				ruler = pua_phaya_phakong
+			}
+			capital = nan
 		}
 		ADH = { #阿瑜陀耶
 			own_control_core = {
@@ -1823,6 +1863,34 @@ countries = {
 				kado_culture
 			}
 		}
+		LXA = { #澜沧 Lan Xang
+			own_control_core = {
+				vientiane ban_khon phon_hong sayniabuli vang_vieng
+				loei chiang_khan dan_sai nong_khay udon_thani
+				 kaset_sombun khon_san  nong_bua_lamphu phu_wiang #chaiyaphum mancha_khiri
+				roi_et kham_muang khon_kaen muang_khemarat mueng_fa_daet yasothon
+				khukhan prasat_thong_lang  vat_phou #rattanaburi sangkha
+				champasak ban_phone idkabue muang_mang samxay tonle_kong
+				muang_nakhon kut_ling muang_nong_han_luang mukdahan pak_huei_lang that_phanom nong_han_lake
+				savannakhet muang_phalan muang_phin muang_ta_oi sepon thuan_binh
+				thakhek khamkeut mahaxay  nong_bok #ngoc_ma keutkeut
+				#muang_phuan bolikham 
+				phonsavan thoulakhom
+				hongsa muang_xay 
+				muang_sua nam_xuang
+				muang_kham
+			}
+			include = "south_east_asia_monarchy_no_coast"
+			government = {
+				ruler = lxa_vongsa
+				ruler_term = { character = lxa_vongsa start_date = 1637.1.1 }
+				heir_selection = cognatic_primogeniture
+			}
+			accepted_cultures = {
+				lao_culture
+			}
+			capital = vientiane
+		}
 		DRG = { #德格
 			own_control_core = {
 				derge jomda katok kharak sibda tromge wara_kham hengduanshan6 hengduanshan7
@@ -1876,6 +1944,39 @@ countries = {
 				ruler = random
 			}
 		}
+		KSY = { #绰斯甲布土司 khro skyabs
+			own_control_core = {
+				rahor dzamtang nubzur
+			}
+			include = "asia_advanced_no_pagan_tribe"
+			capital = rahor
+			government = {
+				ruler = random
+			}
+		}
+		CDO = { #昌都 Chamdo
+			own_control_core = {
+				chamdo khamgar karma_densa sho
+			}
+			include = "asia_advanced_no_pagan_tribe"
+			include = "expl_china"
+			capital = chamdo
+			government = {
+				type = theocracy
+				heir_selection = theocratic_elective
+				ruler = random
+			}
+		}
+		YSH = { #玉树
+			own_control_core = {
+				lungsho jyekundo
+			}
+			include = "asia_advanced_no_pagan_tribe"
+			capital = jyekundo
+			government = {
+				ruler = random
+			}
+		}
 		MAR = { #麻域 拉达克 Maryul
 			own_control_core = {
 				shey leh charasa kargil karpokhar lamayuru
@@ -1913,6 +2014,9 @@ countries = {
 				ketmen_tobe jumgal kochkor barskoon san_tash balykchy
 				uzkand jalalabad_fergana arslanbob gulcha
 				dashahai loulan bailongdui 
+				gharm daroot_korgon karakol muksu sangvor
+				qalai_khumb kham_bahar ragh vanch
+				shighnan gunt murghab oksu shiveh vamar
 			}
 			capital = yarkand
 			include = "eurasian_horde_no_coast_no_pleading"

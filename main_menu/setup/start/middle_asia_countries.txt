@@ -69,9 +69,9 @@ countries = {
                 khiva hazarasp urgench kyat_kala nyzvar vezir
                 kath khurgancha pulzhai qonirat shimbay xojeli
                 orta_kuyu talaikhan_ata uzboy big_balkhan
-                beleuli kyushe sam shuruk sisem_ata uchkuduk sarygamysh_lake ust_yurt_lakes
-                masat_ata beket_ata beki kenderli_kayasan koshkar_ata temir_baba karagiye_lake
-                ketik_kala kabakty karatobe_mangyshlak kyzylkala dead_kultuk dead_kultuk_sor
+                beleuli kyushe sam shuruk sisem_ata uchkuduk ust_yurt_lakes
+                masat_ata beket_ata beki kenderli_kayasan koshkar_ata temir_baba
+                ketik_kala kabakty karatobe_mangyshlak kyzylkala dead_kultuk 
             }
             capital = khiva
             include = "eurasian_horde_no_coast_no_pleading"
@@ -157,14 +157,14 @@ countries = {
             own_control_core = {
                 kalmyk karatobe shyngyrlau aksay_pointic zhympity terekti
                 ryn ushtagan kisikkamys kulagin saryadyn talowski
-                khosheutovo krasny_yar ganyushkino
+                khosheutovo  ganyushkino
                 bolkhuny mikhaylovka_pontic rechnoye bokey botkul zhanybek
                 piterka krasny_kut_pontic mokrous savinka rovnoye pokrovsk baronsk
-                chyorny_yar nikolskoye_pontic malye_derbety sadovoye_kalmykia ded_khulsun zavetnoye
+                
                 pologoye_zaymishche srednyaya_akhtuba bykovo elton zolotari berezhnovka
-                zamyany yenotayevka sapara chernyye_zemli
+
                 priyutnoye elista remontnoye 
-                yashkul iki_burul
+                
                 ozinki taskala dergachi chertanla alexandrov_gay
                 tas_kichu kaynar shagiz tenteksor
                 ushkan koskuduk manysai shagan zhaksy_karasay
@@ -192,6 +192,39 @@ countries = {
                 gold = 200 #国库
                 stability = 55 #稳定度
                 army_tradition = 70 #军队传统
+            }
+        }
+        TLU = { #铁列乌特 Teleut
+            own_control_core = {
+                imakia zhelezin lebyazhye maraldy azhbulat
+                bursol bolshoye_yarovoye kulundinskoye kuchukskoye volchikha butyrskoe gorkoye bolshoye_topolnoye
+                suzun berdsk chesnokovka kalmanka barnaul
+                taskayevo kamen dovolnoye
+            }
+            capital = kamen
+            include = "eurasian_tribe"
+            include = "expl_mongols"
+            include = "silk_road_center"
+            government = {
+                ruler = random
+            }
+            court_language = kipchak_language
+            country_rank = rank_duchy
+            accepted_cultures = {
+                teleut_culture
+                telengit_culture
+            }
+            tolerated_cultures = {
+                tubalar_culture
+                kumandin_culture
+                shor_culture
+            }
+            flag = "GLH"
+            country_name = "TLU"
+            currency_data = {
+                gold = 70 #国库
+                stability = 60 #稳定度
+                army_tradition = 50 #军队传统
             }
         }
     }
