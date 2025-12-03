@@ -1,27 +1,13 @@
-﻿# ==========================================
-# 1644 模组：八旗征召兵规模配置
-# ==========================================
+﻿# 1644 模组：自定义征召兵规模
 # 
-# 征召兵数量计算公式：
-# 征召兵数量 = estate人口 × levy_size × (1 + 各种modifier)
+# 八旗骑兵征召兵计算公式：
+# 征召兵数量 = estate人口 * levy_banner_cavalry_size * (1 + global_levy_size_modifier + estate_levy_size_modifier + local_levy_size_modifier)
 # 
-# 八旗制度特点：
-# 1. 八旗人口总数约200-300万（1644年）
-# 2. 其中能战之丁约20-30万
-# 3. 通过征召系统可以快速动员这些预备役
-# 
-# 规模设置说明：
-# - levy_banner_cavalry_size: 八旗骑兵，满蒙精锐
-# - levy_ujen_cooha_size: 乌真超哈，汉军步兵，数量众多
-# ==========================================
+# 注意：levy_banner_cavalry_size 应等于 a_banner_cavalry 的 max_strength = 0.3
+# 以确保每个征召单位至少有一个牛录（300人）的strength，具备基本战斗力
+# 如果设置过小（如0.10），征召出来的单位strength会太小，容易被秒杀
 
-# 八旗骑兵征召规模 - 满蒙精锐重骑兵
-# 预期产出：约8-10万骑兵（基于八旗人口规模）
-levy_banner_cavalry_size = 0.05
-
-# 乌真超哈征召规模 - 汉军步兵
-# 预期产出：大量汉人步兵（基于汉人人口规模）
-levy_ujen_cooha_size = 0.5
+levy_banner_cavalry_size = 0.06 #十万左右八旗征召骑兵
 
 
 

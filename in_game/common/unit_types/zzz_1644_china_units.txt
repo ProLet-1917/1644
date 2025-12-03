@@ -67,7 +67,6 @@ REPLACE:a_red_cannon = {
 	buildable = yes
 
 	# 一营 200 人（4 门炮 + 支援）
-	
 	max_strength = 0.2
 	initiative = 1
 	morale_damage_done = 0.1
@@ -77,15 +76,7 @@ REPLACE:a_red_cannon = {
 	}
 	gfx_tags = { heavy_tag }
 }
-# ==========================================
-# 八旗军事单位系统
-# ==========================================
-# 八旗制度是清朝的根本军事制度，包含：
-# 1. 八旗骑兵 - 满蒙精锐重骑兵，主力突击
-# 2. 乌真哈超 - 汉军步兵，数量众多的辅助部队
-# ==========================================
-
-# 八旗骑兵 - 满蒙精锐重骑兵
+#八旗骑兵
 REPLACE:a_banner_cavalry = {
 	category = army_cavalry
 	copy_from = a_age_4_reformation_cavalry
@@ -99,23 +90,6 @@ REPLACE:a_banner_cavalry = {
 	morale_damage_taken = -0.1
 	country_potential = { tag = QNG }
 	gfx_tags = { heavy_tag }
-}
-
-# 乌真超哈 - 汉军步兵
-# 乌真超哈（ujen cooha）：满语"重兵"，清朝特有的汉人步兵组织
-a_ujen_cooha = {
-	category = army_infantry
-	copy_from = a_age_4_reformation_infantry
-	buildable = no
-	levy = yes
-	light = yes    # 轻型征召兵
-	
-	max_strength = 0.3
-	initiative = -1
-	morale_damage_taken = 0.05    # 更容易受到士气打击
-
-	country_potential = { tag = QNG }
-	gfx_tags = { light_tag }
 }
 
 # 骑营
