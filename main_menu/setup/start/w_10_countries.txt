@@ -32,6 +32,7 @@ countries = {
 		include = "catholic_monarchy"
 		include = "german_principality"
 		government = {
+			type = republic
 			ruler = hol_frederik_hendrik_van_oranje
 
 			ruler_term = { character = frederik_hendrik_van_oranje start_date = 1644.1.1 regnal_number = 1 }
@@ -4539,7 +4540,7 @@ countries = {
 
 #Poland - Lithuania Commonwealth
 
-	POL = {	#Poland
+	PLC = {	#Poland
 		own_control_core = {
 			#Lesser Poland
 			krakow chrzanow ksiaz_wielki proszowice
@@ -8111,7 +8112,7 @@ countries = {
 			baghdad
 			dayr_aqul badra
 			wasit  al_tib  bakusaya 
-			basra abadan abdas al_madar al_qatr zuwayr
+			basra abdas al_madar al_qatr zuwayr #abadan
 			an_nil nasiriyah numaniyyah rusafa
 			 
 			samawa suq_al_shuyukh kazimah
@@ -8137,8 +8138,8 @@ countries = {
 			zuwarah sinawin ghadames sokna zella maradah brak sabha ubari murzuk zawila
 
 			#Georgia
-			akhalkalaki kumayri 
-     		}
+			akhalkalaki kumayri 	
+     	}
 		include = "expl_eastern_europe"
 		include = "expl_muslim_mediterranean"
 		include = "turkish_beylik"
@@ -9593,8 +9594,8 @@ countries = {
 			ajara mudhol belgaum londa khanapur gokak raybag
 			raichur mudgal anegandi koppal hubli darwar bankapura devadurga kundgol sonda_karnataka gadag
 			kaulas adoni
-			parangipettai pondicherry madras maduranthakam arcot
-			vellore kanchipuram gingee padaividu tiruvannamalai
+			#parangipettai pondicherry madras maduranthakam arcot
+			#vellore kanchipuram gingee padaividu tiruvannamalai
 			tirupati cuddapah medanapalle kangundi gurramkonda pottapi
 			kadiri penukonda gandikota chittoor pakala anantapur rayachoti
 			palasamudram dharmavaram vempalle
@@ -9992,7 +9993,26 @@ countries = {
 		dynasty = mirwari_dynasty
 		court_language = persian_language
 	}
-
+	
+	VIJ = {
+		own_control_core = {
+			parangipettai pondicherry madras maduranthakam arcot
+			vellore kanchipuram gingee padaividu tiruvannamalai
+		}
+		
+		capital = kanchipuram
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy"
+		
+		government = {
+			type = monarchy
+			ruler = random 
+			heir_selection = cognatic_primogeniture
+		}
+		
+		country_rank = rank_kingdom
+		starting_technology_level = 3
+	}
 }
 }
 
