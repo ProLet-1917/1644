@@ -225,7 +225,7 @@ levy_a_militiamen = {            // ← 后检查
 
 `00_1644_banner_levies.txt`：
 ```cpp
-levy_a_banner_cavalry = {
+levy_a_banner_niru = {
     country_allow = { tag = QNG }
     allowed_pop_type = nobles
     allowed_culture = jurchen_culture
@@ -233,7 +233,7 @@ levy_a_banner_cavalry = {
     allow = {
         owner = { tag = QNG }
     }
-    unit = a_banner_cavalry
+    unit = a_banner_niru
 }
 ```
 
@@ -246,7 +246,7 @@ levy_provincial_cavalry = {
 ```
 
 **匹配过程**：
-1. 检查`00_1644_banner_levies.txt`中的`levy_a_banner_cavalry`：
+1. 检查`00_1644_banner_levies.txt`中的`levy_a_banner_niru`：
    - ✅ `country_allow = { tag = QNG }`（匹配）
    - ✅ `allowed_pop_type = nobles`（匹配）
    - ✅ `allowed_culture = jurchen_culture`（匹配）
@@ -255,7 +255,7 @@ levy_provincial_cavalry = {
 
 2. 不再检查后续文件中的`levy_provincial_cavalry`
 
-**结果**：清朝的满族nobles使用`a_banner_cavalry`，而不是`a_provincial_cavalry`
+**结果**：清朝的满族nobles使用`a_banner_niru`，而不是`a_provincial_cavalry`
 
 ### 示例3：多个条件竞争的复杂情况
 
@@ -370,7 +370,7 @@ levy_generic = {
 **示例**：
 ```cpp
 // 八旗骑兵：4个条件
-levy_a_banner_cavalry = {
+levy_a_banner_niru = {
     country_allow = { tag = QNG }           // 条件1：国家
     allowed_pop_type = nobles               // 条件2：Pop类型
     allowed_culture = jurchen_culture       // 条件3：文化

@@ -10,9 +10,11 @@
 # 根据readme说明：super specialized units with many conditions are at the very top
 # 这个征召兵有最严格的条件（国家+文化+pop类型），应该优先匹配
 
-levy_a_banner_cavalry = {
-	size = levy_banner_cavalry_size
-	unit = a_banner_cavalry
+# 八旗骑兵征召兵 - 主力重骑兵
+# 来源：满洲八旗、蒙古八旗的贵族和士兵阶层
+levy_banner_cavalry = {
+	size = 0.05
+	unit = a_banner_niru
 	
 	# 限制只能由清朝使用（国家层面限制）
 	country_allow = {
@@ -35,6 +37,39 @@ levy_a_banner_cavalry = {
 	# 2. 属于上述文化组
 	# 3. 属于banners_estate（这个通过pop_types自动处理）
 	allow = {
-		unit_banner_cavalry_pop_levy_trigger = yes
+		OR = {
+			culture = { has_culture_group = culture_group:jurchen_group }
+			culture = { has_culture_group = culture_group:tungusic_group }
+			culture = { has_culture_group = culture_group:mongolian_group }
+		}
+	}
+}
+
+# 乌真超哈征召兵 - 汉军八旗（重兵）
+# 乌真超哈（ujen cooha）：满语"重兵"，即汉军八旗
+# 清朝精锐火器部队，擅长火炮和火枪，入关急先锋
+# 包括辽东陈汉军和后来归附的汉人、朝鲜人等
+levy_ujen_cooha = {
+	size = 0.5
+	unit = a_ujen_cooha
+	
+	# 限制只能由清朝使用
+	country_allow = {
+		tag = QNG
+	}
+	
+	# 汉军八旗主要来自士兵和贵族阶层，也包括部分农民
+	allowed_pop_type = soldiers
+	allowed_pop_type = nobles
+	allowed_pop_type = peasants
+	allowed_pop_type = laborers
+	allowed_pop_type = soldiers
+	
+	# 文化要求：汉文化组和朝鲜文化组
+	allow = {
+		OR = {
+			culture = { has_culture_group = culture_group:chinese_group }
+			culture = { has_culture_group = culture_group:korean_group }
+		}
 	}
 }
