@@ -134,6 +134,7 @@ countries = {
 		include = "expl_western_europe"
 		include = "catholic_bishopric_no_coast"
 		government = {
+			type = theocracy
 
 			ruler = kol_ferdinand_von_wittelsbach
 
@@ -416,6 +417,8 @@ countries = {
 		country_rank = rank_duchy
 		capital = cologne
 		government = {
+			type = theocracy
+
 			ruler = kol_ferdinand_von_wittelsbach
 
 			ruler_term = { character = kol_ferdinand_von_wittelsbach start_date = 1644.1.1 }
@@ -561,6 +564,7 @@ countries = {
 		include = "catholic_german_republic_no_coast"
 		include = "expl_northern_europe"
 		government = {
+			type = republic
 			ruler = dtm_benno_haase
 		}
 		country_rank = rank_county
@@ -762,6 +766,8 @@ countries = {
 		include = "expl_northern_europe"
 		include = "swiss_republic"
 		government = {
+			type = republic
+
 			ruler = random
 		}
 		country_rank = rank_county
@@ -899,6 +905,8 @@ countries = {
 		include = "catholic_german_republic_no_coast"
 		include = "expl_northern_europe"
 		government = {
+			type = republic
+
 			ruler = random
 		}
 		country_rank = rank_county
@@ -987,6 +995,8 @@ countries = {
 		include = "expl_northern_europe"
 		include = "swiss_republic"
 		government = {
+			type = republic
+
 			ruler = random
 		}
 		country_rank = rank_county
@@ -8687,7 +8697,7 @@ countries = {
 
 #Steppe
 	CRI = { #Crimea
-		type = location
+		type = army
 		own_control_core = {
 			qarasuvbazar solkhat seyitler qirq_yer kalay kezlev aqmecit jurchi or_qapi lake_sasyk_syvash syvash_lagoon syvash_sand_bar
 			qalancaq aslan_horod ordu_bazar rohat_kermen enice velyka_lepetykha 
@@ -8715,6 +8725,8 @@ countries = {
 		
 		religious_school = hanafi_school
 		government = { 
+			type = steppe_horde
+
 			ruler = cri_islam_giray 
 			ruler_term = { character = cri_islam_giray start_date = 1644.1.1 regnal_number = 1	}
 
