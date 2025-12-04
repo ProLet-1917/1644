@@ -1147,7 +1147,7 @@ MNG = {	#Míng
 }
 QNG = {    #Qing
     color = map_QNG            
-    color2 = rgb { 16 41 202 }
+    color2 = rgb { 36 57 193 } #rgb(36, 57, 193)
     culture_definition = jurchen_culture 
     religion_definition = sanjiao  #                      
 }
@@ -1161,8 +1161,9 @@ QNG = {    #Qing
 # }
 CSH = {
 	# 大顺
-	color = rgb { 91 121 194 }
-	color2 = rgb { 140 169 183 }
+	color = rgb { 91 121 194 } #rgb(91, 121, 194)
+	color2 = rgb { 153 43 43 } #rgb(153, 43, 43)
+
 	# male_regnal_names = {}
 	# female_regnal_names = {}
 	description_category = military	# cf. common/country_description_category DB
@@ -1176,7 +1177,7 @@ CSH = {
 
 CXI = {	#Xí
 	color = map_CXI
-	color2 = rgb { 140 183 154 }
+	color2 = map_MNG
 	culture_definition = han_culture
 	religion_definition = sanjiao
 	is_historic = no
@@ -1294,3 +1295,27 @@ LJG = { #Lijiang
 
 
 
+
+SKK = { #Sikkim
+	color = map_sikkim
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = sikkim_culture
+	religion_definition = tibetan_buddhism
+}
+
+LMN = { #Lho Mon
+	color = map_ngalop
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = ngalop_culture
+	religion_definition = tibetan_buddhism
+}
+
+LJG = { #Lijiang
+	color = map_nashi
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = nashi_culture
+	religion_definition = dongba_religion
+}

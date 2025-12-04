@@ -1,0 +1,50 @@
+#============Made by Lvtoumao============
+peace_talk_in_westphalia = { #1648 May.-Oct.
+
+	monthly_spawn_chance = monthly_spawn_chance_unique
+
+	can_start = {
+		exists = international_organization:hre
+		current_year > 1643
+		current_year < 1800
+	}
+
+	can_end = {
+		var:peace_talk_in_westphalia_phase = 5
+	}
+
+	visible = {
+		capital ?= { sub_continent = sub_continent:western_europe }
+	}
+
+	on_start = {
+		set_variable = {
+			name = peace_talk_in_westphalia_phase_remaining_month
+			value = 5
+		}
+		set_variable = {
+			name = peace_talk_in_westphalia_phase
+			value = 1
+		}
+	}
+
+	on_monthly = {
+		set_variable = {
+ 			name = peace_talk_in_westphalia_phase_remaining_month
+  			subtract = 1
+		}
+		if = {
+			limit = {
+				var:peace_talk_in_westphalia_phase_remaining_month = 0
+			}
+			set_variable = {
+ 				name = peace_talk_in_westphalia_phase
+  				add = 1
+			}
+			set_variable = {
+ 				name = peace_talk_in_westphalia_phase_remaining_month
+  				add = 5
+			}
+		}
+	}
+}

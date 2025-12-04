@@ -1,4 +1,4 @@
-situation_panel = {
+ situation_panel = {
 
 	blockoverride "situation_panel_image" {
 		using = two_countries_header_template
@@ -65,7 +65,7 @@ situation_panel = {
 			blockoverride "onaction_hint" {
 				action_tooltip = {
 					title = "OPEN_HINT"
-					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_hundred_years_war')]"
+					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_netherland_independent')]"
 				}
 			}
 			blockoverride "bottom_content_onclick" {
@@ -175,7 +175,7 @@ situation_panel = {
 			blockoverride "left_bottom_content" {
 				scrollarea = {
 					layoutpolicy_horizontal = expanding
-					size = { -1 190 }
+					size = { -1 200 }
 					scrollbarpolicy_horizontal = always_off
 					scrollbar_vertical = {
 						using = Scrollbar_Vertical
@@ -214,7 +214,7 @@ situation_panel = {
 			blockoverride "right_bottom_content" {
 				scrollarea = {
 					layoutpolicy_horizontal = expanding
-					size = { -1 190 }
+					size = { -1 200 }
 					scrollbarpolicy_horizontal = always_off
 					scrollbar_vertical = {
 						using = Scrollbar_Vertical
@@ -231,6 +231,48 @@ situation_panel = {
 							datamodel = "[WillJoinCountryList.GetJoinDefensive]"
 							item = {
 								country_flag_small = {}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		situation_card_header_button = {
+			blockoverride "card_header_button_header_content" {
+				icon = {
+					blockoverride "left_header_icon" { }
+				}
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					align = center|nobaseline
+					text = "NED_NEUTRAL_TT"
+					blockoverride "left_header_text" { }
+				}
+				expand = {}
+			}
+			blockoverride "bottom_content" {
+				scrollarea = {
+					layoutpolicy_horizontal = expanding
+					size = { -1 100 }
+					scrollbarpolicy_horizontal = always_off
+					scrollbar_vertical = {
+						using = Scrollbar_Vertical
+					}
+					
+					scrollwidget = {
+						dynamicgridbox = {
+							datamodel = "[GetGlobalList('country_list_of_dutches')]"
+							datacontext = "[Scope.Country]"
+							visible = "[DataModelHasItems(GetGlobalList('country_list_of_dutches'))]"
+							position = {0 10}
+							flipdirection = yes
+							datamodel_wrap = 15
+							maxhorizontalslots = 15
+							item = {
+								country_flag_small = {
+									datacontext = [Scope.GetCountry]
+								}
 							}
 						}
 					}

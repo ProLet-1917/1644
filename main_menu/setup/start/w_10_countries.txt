@@ -32,6 +32,7 @@ countries = {
 		include = "catholic_monarchy"
 		include = "german_principality"
 		government = {
+			type = republic
 			ruler = hol_frederik_hendrik_van_oranje
 
 			ruler_term = { character = frederik_hendrik_van_oranje start_date = 1644.1.1 regnal_number = 1 }
@@ -133,6 +134,7 @@ countries = {
 		include = "expl_western_europe"
 		include = "catholic_bishopric_no_coast"
 		government = {
+			type = theocracy
 
 			ruler = kol_ferdinand_von_wittelsbach
 
@@ -415,6 +417,8 @@ countries = {
 		country_rank = rank_duchy
 		capital = cologne
 		government = {
+			type = theocracy
+
 			ruler = kol_ferdinand_von_wittelsbach
 
 			ruler_term = { character = kol_ferdinand_von_wittelsbach start_date = 1644.1.1 }
@@ -560,6 +564,7 @@ countries = {
 		include = "catholic_german_republic_no_coast"
 		include = "expl_northern_europe"
 		government = {
+			type = republic
 			ruler = dtm_benno_haase
 		}
 		country_rank = rank_county
@@ -761,6 +766,8 @@ countries = {
 		include = "expl_northern_europe"
 		include = "swiss_republic"
 		government = {
+			type = republic
+
 			ruler = random
 		}
 		country_rank = rank_county
@@ -898,6 +905,8 @@ countries = {
 		include = "catholic_german_republic_no_coast"
 		include = "expl_northern_europe"
 		government = {
+			type = republic
+
 			ruler = random
 		}
 		country_rank = rank_county
@@ -986,6 +995,8 @@ countries = {
 		include = "expl_northern_europe"
 		include = "swiss_republic"
 		government = {
+			type = republic
+
 			ruler = random
 		}
 		country_rank = rank_county
@@ -4539,7 +4550,7 @@ countries = {
 
 #Poland - Lithuania Commonwealth
 
-	POL = {	#Poland
+	PLC = {	#Poland
 		own_control_core = {
 			#Lesser Poland
 			krakow chrzanow ksiaz_wielki proszowice
@@ -6885,7 +6896,7 @@ countries = {
 
 	KDA = { #Kabardia
 		own_control_core = {
-			dzhulat chegem jariekhi karcha_kala koban tatartup yessentuq novopavlovsk rim_gora 
+			dzhulat chegem jariekhi karcha_kala koban tatartup novopavlovsk rim_gora yessentuq
 		}
 
 		starting_technology_level = 3
@@ -6923,7 +6934,7 @@ countries = {
 
 	TRK = { #Shamkhalate of Tarki
 		own_control_core = {
-			tarki boynak endirey kumukh temirkhan_shura terek
+			tarki boynak kumukh temirkhan_shura 
 		}
 
 		include = "expl_middle_east"
@@ -8111,7 +8122,7 @@ countries = {
 			baghdad
 			dayr_aqul badra
 			wasit  al_tib  bakusaya 
-			basra abadan abdas al_madar al_qatr zuwayr
+			basra abdas al_madar al_qatr zuwayr #abadan
 			an_nil nasiriyah numaniyyah rusafa
 			 
 			samawa suq_al_shuyukh kazimah
@@ -8137,8 +8148,8 @@ countries = {
 			zuwarah sinawin ghadames sokna zella maradah brak sabha ubari murzuk zawila
 
 			#Georgia
-			akhalkalaki kumayri 
-     		}
+			akhalkalaki kumayri 	
+     	}
 		include = "expl_eastern_europe"
 		include = "expl_muslim_mediterranean"
 		include = "turkish_beylik"
@@ -8242,39 +8253,31 @@ countries = {
 			sarapul mozhga yelabuga izhevsk vavozh_mozhga vyatskiye_polyany kilmez stelty falenki uni ural_nema 
 			aspa suksun ust_kishert orda kasevo yanaul tatyshly saygatsky yelovo osa moscow zvenigorod ruza pushkino vokhna bronnitsy rogozh 
 			saratov samara astrakhan kazan murom rostov_don novocherkassk
-			sibirsk tyumen tobolsk narym yakutsk qashliq turtas yukonda vagay tavdinsky_sloboda yurginskoye vikulovo kulykol zhetykol shoptikol 
-			siberia_tenteksor konildi mangazeya yeniseysk kargasok surgut dudinka bestyakh
+			sibirsk tyumen tobolsk narym yakutsk qashliq turtas yukonda vagay tavdinsky_sloboda yurginskoye vikulovo  
+			mangazeya yeniseysk kargasok surgut dudinka bestyakh
 
 
 			aspa suksun ust_kishert orda kasevo yanaul tatyshly saygatsky yelovo osa   
 		
 
 			kreminna bielska_sloboda bilovodsk novopskov kalnivka konstantinovka krasny_sulin
-			shakhty rovenky kalmius kamenskaya semikarakorsk
-			yundin mityakinskaya luhansk novoaidar belaya_kalitva millerovo oblivskaya
+			shakhty rovenky kalmius kamenskaya  mityakinskaya luhansk novoaidar belaya_kalitva millerovo oblivskaya
 			kashary chertkovo bokovskaya milyutinskaya boguchar ostrogozhsk
-			kalach uryupin mikhaylovka novoanninsky alexeyevskaya veesky kumylzhenskaya
-			yelan machekha novonikolayevsky samoylovka
-			alexandrovskoye blagodarnoye novoselitskoye
-			stavropol grigoropolisskaya shad_kirman petrovskoye_pontic privolnoye belaya_glina peschanokopskoye
-			novo_alexandrovskoye bezopasnoye ipatovo 
-			gebergeyel khaiylmysh khaqmar shikashin yuldibay
+			
+			bakhmut oleksandrivka posad vasylivka 
+			
+			
 
 			izium donets_kharkiv zmiiv chuhuiv vovchansk nyzhnia_duvanka 
-			bol_shaya_martynovka cheplak bolshoy_gashun dubovskoye ust_tsimla konstantinovsk 
+			 ust_tsimla konstantinovsk 
 			tatsinskaya tormosin kremenskaya kletskaya ust_medveditskaya nizhny_chir anna_russia 
-			novaya_pokrovka semidesyatnoye zemlyansk rossosh borisoglebsk bannoye sadovoye 
-			bolshaya_gribanovka buturlinovka verkhny_mamon zimnyatsky malodelskaya ilovlya 
-			atkarsk lysye_gory yekaterinovka balanda rtishchevo balashov turki arkadak 
+			novaya_pokrovka semidesyatnoye zemlyansk rossosh 
 			sosnovy_ostrov malykovka novye_burasy tereshka petrovsk mechet stepanevka 
-			kotovo kamyshin goly_karamysh pologoye_zaymishche srednyaya_akhtuba bykovo 
-			elton zolotari berezhnovka 
-			astrakhan zamyany yenotayevka sapara 
-			chernyye_zemli chyorny_yar nikolskoye_pontic malye_derbety 
-			sadovoye_kalmykia ded_khulsun zavetnoye 
-			ozinki mechetnaya perelyub ivanteyevka balakovo dukhovnitskoye 
-			sakminskoye_vodokhranilishche yashkul 
-			iki_burul priyutnoye elista remontnoye gorodovikovsk raguli majar zelenokumsk arzgir levokumskoye 
+			kamyshin goly_karamysh 
+			astrakhan 
+			
+			
+			
 
 			kutarka sernur morki urzhum
 			fomin_gorodok
@@ -8292,23 +8295,20 @@ countries = {
 			yanovo
 			kolomna  vysokoye klepiki
 			zainsk syun verkhneyarkeyevo
-			menzelinsk lower_aktanyshbash chalninsky_pochinok chekmagush chishmy
-			ulukulevo davlekanovo bizhbulyak turkmenevo sterlibashevo
-			sterlitamak bavly bugulma abdulino aznakayevo
-			sadak gorkovskoye okoneshnikovo
+			menzelinsk lower_aktanyshbash chalninsky_pochinok chekmagush 
+			
+			 gorkovskoye okoneshnikovo
 			qashliq siberia_abalak turtas yukonda
-			tara znamenskoye ust_ishim omsk kamyshnoye cherlak tyukalinsk kolosovka
-			siletiteniz zhalauly
-			tuzdysor imakia zhelezin lebyazhye
+			tara znamenskoye ust_ishim omsk  tyukalinsk kolosovka
+			
 			chastoozerye polovinnoye armizonskoye berdyuzhye korkina_sloboda
-			tarankol kyzylzhar presnowka staroye stanitsa_kokchetavskaya
 			shish muromtsevo ufa askino baltas
-			sartlan taskayevo kargat kainsky_pas kyshtovka
-			bursol kuchukskoye volchikha butyrskoe zmeinogorsk shemonayevskoye oskemen ust_kalmanka
-			krivoshchekovo kamen dovolnoye kozhevnikovo bolotnye
-			suzun berdsk chesnokovka kalmanka barnaul verkhotomsk kolchugino
+			sartlan  kargat kainsky_pas kyshtovka
+			 zmeinogorsk shemonayevskoye oskemen ust_kalmanka
+			 kozhevnikovo bolotnye
+			 verkhotomsk kolchugino
 			altayskoye onguday ust_koksa smolenskoye mayma biysk
-			kuznetsk salair kytmanovo ust_kabyrza askiz abakasnk beya shushenskoye
+			kuznetsk salair kytmanovo ust_kabyrza askiz abakasnk 
 			tomsk melnikovo molchanovo kargasok vasyugan kolpashevo
 			surgut bolshoy_balyk irtysh megion bolshoy_yugan upper_ob
 			promsa alatyr batyrevo
@@ -8324,9 +8324,7 @@ countries = {
 			kazan laish calli mamadysh bogatye_saby oli_baraza dobyaz
 			yaransk kiknur kabachischi yoshkar_ola
 			bolghar cukataw bilyar almetyevsk 
-			tabynsky ishimbay beloretsk 
-			buguruslan sergiyevsk
-			koshki kamyshla bolshoy_cheremshan staryi_amanak
+			
 			samara shigony morkvash chebarkul miass
 			krasnaya_gorka belekes 
 
@@ -8341,17 +8339,13 @@ countries = {
 			troitskoye_kuroedovo 
 			kasimov azeevo
 
-			meleuz kapova_pesera
-			khvorostyanka stavropol_na_volge kondurcha pestravka
-			poganovka sorochinskaya buzuluk grachevka bol_shoy_uran malyy_uran
-			s_ezzaja bogatoye
+			
+			stavropol_na_volge kondurcha 
+			
 			tobolsk vagay tavdinsky_sloboda yurginskoye vikulovo
-			bayanaul shybyndy bozok_astana akkol
-			karasor karkaraly takhir
-			arykbalyk kak kokshetau kumak
-			kulykol shoptikol siberia_tenteksor konildi
-			zharkol sasykkol kartaly alakol almenevo safkul shchuchye kargapolye kurtamysh
-			yetkul troitsk uyskoye 
+			 takhir
+			 almenevo safkul shchuchye kargapolye kurtamysh
+			yetkul troitsk 
 			bolshoy_ik ust_katav mesyagutovo zlatoust
 			chimgi_tura tugulym yalutorovsk shadrinsk
 			tsaryovo_gorodishche burayevo
@@ -8377,30 +8371,13 @@ countries = {
 			bronnitsa gruzino veliky_porog valday pribuzh izboishchi pashozero tervenichi megra voznesenye ostrechiny andomsky_pogost
 			kinerma pryazha sellinkyla karhumagi puatane saarijoki sumsky_posad unezhma vygozero maloshuyka
 			chelmuzhi vodlozero shalskii rakitnya mikshino bernovo yezsk lyuban
-			#Principality of Volokolansk
-			yoniveem innurmin nuvuqaq kytryn yanrakynnot sigheneg guvrel nutepylmyn enmyl_yn nunligran keniergyn ervykynnot 
-			valkall_an rykuul ugolnye nyerpicha konchalyt gytgomkyvamm tadlyeoan unazigmit
-			anadyr_trail krasnyano tavayveem v_enyn tumanskaya y_lkytveem gacgatagyn
-			mejnypilgyn vatyrkan vukvylgayat machevna tyulene achaivayam apuka pakhachi khalino tilichiki talovka manily kamenskoie oklan paren gizhiga 
-			skrytaya kichiga karaga ivashka karagin kuyul parapolsky rekinniki podkagernoye lesnaya 
-			kuukucyn keelivtyn otrozhny kagyrgyn ujvyn yeropol
-			palana voyampolka tigil sedanka kovran 
-			uka_town shiveluch klyuchi kamchatsk malka
-			ostrov_beringa milkovo achava oktyabr_skii pauzhetka kurile_lake 
-			kozyrevsk krutogorovskiy sobolevo kirovskiy khayryuzovo
-			amguema iultin vankarem ryrkaypiy polyarny yakan valkaran 
-			chirovoye vulvyveyem ekityki palyavaam ichuveem peekin yanranay apapelgino valkumey rytkuchi chaun elgygytgyn 
-			elgygytgyn_lake ayon nutel_gyrgym pucheveyem raucha lelyuveyem
-
-
-
-			chimgi_tura tugulym yalutorovsk tsaryovo_gorodishche shadrinsk stepnoye almenevo safkul shchuchye kargapolye kurtamysh 
-			yetkul chebarkul troitsk uyskoye miass qashliq siberia_abalak 
+		chimgi_tura tugulym yalutorovsk tsaryovo_gorodishche shadrinsk stepnoye almenevo safkul shchuchye kargapolye kurtamysh
+			yetkul chebarkul troitsk  miass qashliq siberia_abalak 
 			turtas yukonda tursunt konda yevra malaya_sosva ess leushinskiy_tuman andreyevskoye tuman tursunskiy_tuman syrkovoye tobolsk vagay bolshoy_uvat 
 			tavdinsky_sloboda yurginskoye vikulovo yendyr bardak kharom_vosh kartauzh 
 			chumyak yendra belogorye karymkary nazym sukhorukova landytuv un_zhallor kazym sumgut_vosh vezhakary kaltysyany ayyugan
 
-			irkutsk slyudyanka cheremkhovo zalari
+			irkutsk  cheremkhovo zalari
 			ust_kut reka_tuba nikolsky_pogost irkutsk_kazachinskoye zhigalovo bayanday kachug balagansk baikal osinsky
 
 			surgut sykhtymlor trom_yegan bolshoy_balyk yugranskaya_ob irtysh megion bolshoy_yugan upper_ob
@@ -8416,23 +8393,19 @@ countries = {
 			yeniseysk nazimovo ust_ozernoye selo_yartsevo verkh_chebula mariinsk verkhotomsk kolchugino
 
 			omsk kamyshnoye ebeyty cherlak tyukalinsk okoneshnikovo kolosovka gorkovskoye
-			chastoozerye polovinnoye armizonskoye berdyuzhye korkina_sloboda medvezhye tarankol kyzylzhar presnowka staroye stanitsa_kokchetavskaya lake_ishim kadibek
-			bayanaul shybyndy lake_gidrowzel bozok_astana akkol siletiteniz zhukey ulken_karoy teke seletyteniz lake_zhalauly 
-			zhalauly kishi_karoy sartlan lake_sartlan chany lake_uryum 
-			taskayevo kargat kainsky_pas kyshtovka ubinskoye astrodym
+			chastoozerye polovinnoye armizonskoye berdyuzhye korkina_sloboda medvezhye 
+			sartlan lake_sartlan chany lake_uryum 
+			kargat kainsky_pas kyshtovka ubinskoye astrodym
 
-			kulykol zhetykol shoptikol siberia_tenteksor konildi kusmuryn lake_koybagar zhanshura shalkar_yega_kara aykye
-			zharkol sasykkol kartaly alakol lake_zharkol arykbalyk imantau kak kokshetau kozhakol
 
-			bursol bolshoye_yarovoye kulundinskoye kuchukskoye volchikha butyrskoe gorkoye bolshoye_topolnoye
-			imakia zhelezin lebyazhye maraldy azhbulat karasor tuzdysor lake_tuzdysor karkaraly lake_karasor balyktykol
+			 
 
-			suzun berdsk chsnokovka kalmanka barnaul
-			krivoshchekovo kamen dovolnoye kozhevnikovo bolotnye 
+			 chsnokovka 
+			krivoshchekovo  bolotnye 
 			kuznetsk salair kytmanovo ust_kabyrza askiz
 
-			kansk ilansky krasnoyarsk yemelyanovo dzerzhinskoye biryusa
-			minusinsk shushenskoye beya abakasnk idrinskoye novosyolovo nazarovo uzhur bolshoy_kosogol tatarskaya_tesyu kortuz
+			
+			 abakasnk  novosyolovo nazarovo uzhur bolshoy_kosogol tatarskaya_tesyu
 			kamensk motygino taseyevo pashino
 
 			bratsk chuva nizhneudinsk siberia_kuytun staraya_zima
@@ -8453,62 +8426,12 @@ countries = {
 			nidym uchami tutonchany nimde erachimo munduyskoye_lake
 
 
-			yoniveem innurmin nuvuqaq kytryn yanrakynnot sigheneg chauchu_trail1 guvrel 
-			nutepylmyn enmyl_yn nunligran keniergyn ervykynnot 
-			valkall_an rykuul ugolnye nyerpicha konchalyt gytgomkyvamm tadlyeoan unazigmit 
-			anadyr_trail krasnyano tavayveem v_enyn tumanskaya y_lkytveem gacgatagyn 
-
-			mejnypilgyn vatyrkan vukvylgayat machevna tyulene 
-			achaivayam apuka pakhachi khalino tilichiki 
-			talovka manily kamenskoie oklan paren gizhiga
-			skrytaya kichiga karaga ivashka karagin
-			kuyul parapolsky rekinniki podkagernoye lesnaya
-			kuukucyn keelivtyn otrozhny kagyrgyn ujvyn yeropol
-
-			palana voyampolka tigil sedanka kovran
-			uka_town shiveluch klyuchi kamchatsk malka 
-			ostrov_beringa  milkovo achava oktyabr_skii pauzhetka
-			kozyrevsk krutogorovskiy sobolevo kirovskiy khayryuzovo 
-
-			amguema iultin vankarem ryrkaypiy polyarny yakan valkaran 
-			chirovoye vulvyveyem ekityki palyavaam ichuveem
-			peekin yanranay apapelgino valkumey rytkuchi
-			chaun chuvan1 elgygytgyn chuvan2 chuvan3 
-			ayon nutel_gyrgym pucheveyem raucha lelyuveyem anjuj_river
-
-			ypalgyn vstrechny keperveem orlovka aliskerovo ilirnej 
-			chivitkino evenksk kushka merenga omchikan buksunda
-			anyuysk dve_viski cerskey ambarchik mikhalkino nizhnekolymsk  ozero_chokudakh ozero_nerpinchye
-			yermolovo timkino kolymskoie omoloon achaka xalima kolyma_river
-			shabash berezovka lobuya srednekolymsk sededema urodan  ozero_xalima ozero_talgyn
-
-			indigiir oyotun cokuurdaax nicalaax olenegorsk vorontsovo shandrin 
-			ozero_mavrinskoye ozero_morskoye ozero_ilirgygyn ozero_ulakhan ozero_nuchcha 
-			ozero_khantagay ozero_bytynay ozero_dolgoye ozero_kargovat ozero_mogotoyevo ozero_bustakh
-			oyuuhardaax argaxtaax kelyuyekyan andryushkino aly_kyuyel ozero_unarba
-			xatingnaax nalimsk dyryn_ebe kal_gatana sylgy_ytar ulakh ozero_keppetekh ozero_balyma
-			ebeex olooko_kuol ynakh succun kholongsolokh sybaatayy ozero_chonduya ozero_pavylon ozero_ulakh_ulyong
-			suoyungu ocuogun khargytyr kurung_yuryakh suturuoxa tuyandina khachimcher soyangi_trail ozero_kalgyn ozero_suturuaka ozero_ozhogino
-			shestakova kien_kuol abyy esteriktyaax syagannaax kebergene 
-
-			solomoydokh nagaradalaax kulun_olbut cibagalaax xonuu soboloox indigiir_trail orgulaax_trail 
-			tala_kyuyel ziryanka utaya ugolney nelemney glukharinyi kolyma_trail
-			burkand_ya kontrand_ya delyankir artyk pobeda ust_nera 
-			kulu tokichan orotuk kadykchan neksikan burkhaia iagodnoie
-			tala kupka myakit debin orotukan buiunda seymchan
-
-			takhtoyamsk brokhovo yamsk atargan magadan palatka tauisk 
-			madaun atka bakhapcha chalbukhan omchug omchak moi_urusta kolyma_highlands
-			tenut oimiakon kuydusun agayakan kyubeme razvika 
-			ketanda ogonok yugorenok ust_ynykchan eldikan tumul
-			ushki okam ul_ya arka enken ayan aimchan
-
-			nel_kan tsipanda aim_maia ust_yudoma ust_mil ust_maia
-			avlayakan chumikan udskoye bolodek tul_kichan maya
+		nel_kan tsipanda aim_maia ust_yudoma ust_mil ust_maia
+			
 			zolotiinka iyengra neriungri neluki nimnyr aldan tommot  ozero_tokko
-			tupik gulya larba chilchi yuktali tas_yuryakh kundy 
+			
 			torgo dikimdya tyanya amedichi yukhta kuranakh 
-			onguren ul_kan kichera argada ust_barguzin chitkan bayangol karaftit bagdarin bukachacha ziul_zkan telemba isenga narhata 
+			onguren ul_kan kichera argada ust_barguzin chitkan bayangol 
 			ozero_oron ozero_baunt angoya kutima osenny kamniga konkudera bodaybo kyakhtinskii 
 			taksimo irakinda kuanda amalyk ikab_ya khani katugino 
 			yeremeyevka uch_barchik chara bul_bukhta balaganakh molvo 
@@ -8594,11 +8517,14 @@ countries = {
 			pinega okladnikova_sloboda nes khimzha vizhas oma leshukonskoye vyya malaya_ilesha mezen bolshaya_laptyuga vashka usa_reka vorkuta pechora izhma
 			ust_tsilma pustozersk
 	
-			vekshenga kunozh nagavskaya aksay sarai_al_jadid beljamen zenzevatka danilovka rudnya_pontic oral irek
-			yaik atach ishkul tanalyk suyunduk 
-			yegorlykskaya bagayevskaya solovetsky
+			vekshenga kunozh  sarai_al_jadid beljamen zenzevatka oral irek
+			 solovetsky
 			sloviansk adalaga barvinkove
 			lysychansk
+			sarayjuk
+			kansk ilansky krasnoyarsk yemelyanovo dzerzhinskoye biryusa
+			terek endirey
+			chyorny_yar
 	 	}
 
 		starting_technology_level = 3
@@ -8771,16 +8697,23 @@ countries = {
 
 #Steppe
 	CRI = { #Crimea
-		type = location
+		type = army
 		own_control_core = {
 			qarasuvbazar solkhat seyitler qirq_yer kalay kezlev aqmecit jurchi or_qapi lake_sasyk_syvash syvash_lagoon syvash_sand_bar
 			qalancaq aslan_horod ordu_bazar rohat_kermen enice velyka_lepetykha 
 			melitopol kyrylivka tokmak konski_vody kuchugur berdiansk molochnyi_liman
-			taganrog velyka_novosilka domakha huliaipole shyrokyne vasylivka mius_liman
-			bakhmut oleksandrivka posad vithold_hammami oleshia tavan
+			taganrog velyka_novosilka domakha huliaipole shyrokyne mius_liman
+			 vithold_hammami oleshia tavan
 
 			shcherbinovka balzimachi kanevskaya starominskaya copa
 			akhtar kalininskaya bryukhovetskaya bzhedygu_kal ust_labinsk pavlovskaya tbilisskaya romanovsky_khutor
+
+			
+			stavropol grigoropolisskaya  shad_kirman 
+			privolnoye belaya_glina peschanokopskoye novo_alexandrovskoye bezopasnoye 
+			yegorlykskaya bagayevskaya
+			petrovskoye_pontic
+			yundin
 		}
 		
 		starting_technology_level = 3
@@ -8792,6 +8725,8 @@ countries = {
 		
 		religious_school = hanafi_school
 		government = { 
+			type = steppe_horde
+
 			ruler = cri_islam_giray 
 			ruler_term = { character = cri_islam_giray start_date = 1644.1.1 regnal_number = 1	}
 
@@ -8839,6 +8774,8 @@ countries = {
 		type = location
 		own_control_core = {
 			naurskaya kara_bazaar terekli_mekteb kurskaya kamysh_burun dardeling kok_usn mekletin ikryanoye
+			majar zelenokumsk arzgir levokumskoye yashkul iki_burul  chernyye_zemli #sapara
+			alexandrovskoye blagodarnoye novoselitskoye
 		}
 		
 		capital = akhta
@@ -8848,6 +8785,34 @@ countries = {
 		include = "eurasian_horde_not_present"
 		country_rank = rank_duchy
 		religious_school = hanafi_school
+		government = { 
+			ruler = random
+			mysticism_vs_jurisprudence = -15 
+			laws = {
+				legal_code_law = sharia_law_policy
+				sharia_law = hanafi_policy
+				marriage_law = muslim_marriage
+				heir_religion_law = heir_same_religion
+			}
+		}
+	}
+
+	BSR = { #Bashkir
+		type = location
+		own_control_core = {
+			atach ishkul kumak suyunduk tanalyk yaik
+			tabynsky ishimbay beloretsk meleuz kapova_pesera
+			uyskoye 
+			ulukulevo davlekanovo bizhbulyak turkmenevo sterlibashevo sterlitamak chishmy
+			gebergeyel khaiylmysh khaqmar shikashin yuldibay
+		}
+		
+		capital = khaqmar
+		
+		starting_technology_level = 3
+		include = "expl_mongols"
+		include = "eurasian_horde_not_present"
+		country_rank = rank_duchy
 		government = { 
 			ruler = random
 			mysticism_vs_jurisprudence = -15 
@@ -9387,7 +9352,7 @@ countries = {
 	LMN = { #Lho Mon
 		own_control_core = {
 			paro daga jabar_goemba punakha thimpu wangdue
-			zhemgang trongsa bumthang zhongkar lhuntsi tawang trasigang
+			zhemgang trongsa bumthang zhongkar lhuntsi  trasigang
 		}
 
 		include = "expl_india_hindu"
@@ -9641,8 +9606,8 @@ countries = {
 			ajara mudhol belgaum londa khanapur gokak raybag
 			raichur mudgal anegandi koppal hubli darwar bankapura devadurga kundgol sonda_karnataka gadag
 			kaulas adoni
-			parangipettai pondicherry madras maduranthakam arcot
-			vellore kanchipuram gingee padaividu tiruvannamalai
+			#parangipettai pondicherry madras maduranthakam arcot
+			#vellore kanchipuram gingee padaividu tiruvannamalai
 			tirupati cuddapah medanapalle kangundi gurramkonda pottapi
 			kadiri penukonda gandikota chittoor pakala anantapur rayachoti
 			palasamudram dharmavaram vempalle
@@ -10040,7 +10005,26 @@ countries = {
 		dynasty = mirwari_dynasty
 		court_language = persian_language
 	}
-
+	
+	VIJ = {
+		own_control_core = {
+			parangipettai pondicherry madras maduranthakam arcot
+			vellore kanchipuram gingee padaividu tiruvannamalai
+		}
+		
+		capital = kanchipuram
+		include = "expl_india_hindu"
+		include = "indian_hindu_monarchy"
+		
+		government = {
+			type = monarchy
+			ruler = random 
+			heir_selection = cognatic_primogeniture
+		}
+		
+		country_rank = rank_kingdom
+		starting_technology_level = 3
+	}
 }
 }
 

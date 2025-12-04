@@ -16,26 +16,22 @@
 #   paper         - 纸张
 #   medicaments   - 药品
 #   salt          - 盐
-a_1644_chinese_pikemen = {
+a_1644_chinese_zhanbing = {
 	category = army_infantry
-	copy_from = a_age_4_reformation_infantry
+	copy_from = a_age_3_discovery_infantry
 	buildable = yes
 
+	power = 1.2
 	# 步营 1000人（晚明战兵）
 	max_strength = 1.0
 	
-	#补给与征募需求（引用原版模板，避免解析异常）
-	maintenance_demand = pikemen_maintenance
-	construction_demand = pikemen_construction
-
 	# # 定位：晚明战兵，火器配备不足，整体素质弱于专业火器营
 	# # 略微降低输出与士气，作为廉价主力
 
-
-	country_potential = {
-		OR = { tag = QNG tag = CSH tag = WSG tag = CXI tag = MNG }
+	country_potential = { 
+		OR = { tag = CSH tag = WSG tag = CXI tag = MNG }
 	}
-	gfx_tags = { pike_tag }
+	gfx_tags = { chinese_zhabing }
 }
 
 a_1644_chinese_musketeers = {
@@ -57,7 +53,7 @@ a_1644_chinese_musketeers = {
 	country_potential = {
 		OR = { tag = QNG tag = CSH tag = WSG tag = CXI tag = MNG }
 	}
-	gfx_tags = { musket_tag medium_tag }
+	gfx_tags = { chinese_musket heavy_tag }
 }
 
 # 红衣大炮：重定义（每营约 100 人，对应 2 门火炮）
@@ -66,8 +62,8 @@ REPLACE:a_red_cannon = {
 	copy_from = a_age_4_reformation_artillery
 	buildable = yes
 
-	# 一营 100 人（2 门炮 + 支援）
-	max_strength = 0.15
+	# 一营 200 人（4 门炮 + 支援）
+	max_strength = 0.2
 	initiative = 1
 	morale_damage_done = 0.1
 
@@ -76,11 +72,20 @@ REPLACE:a_red_cannon = {
 	}
 	gfx_tags = { heavy_tag }
 }
-#八旗骑兵
+# ==========================================
+# 八旗军事单位系统
+# ==========================================
+# 八旗制度是清朝的根本军事制度，包含：
+# 1. 八旗骑兵 - 满蒙精锐重骑兵，主力突击
+# 2. 乌真哈超 - 汉军步兵，数量众多的辅助部队
+# ==========================================
+
+# 八旗骑兵 - 满蒙精锐重骑兵
 REPLACE:a_banner_cavalry = {
 	category = army_cavalry
 	copy_from = a_age_4_reformation_cavalry
 	buildable = yes
+	levy = yes
 	
 	max_strength = 0.3
 	initiative = 3
@@ -88,7 +93,23 @@ REPLACE:a_banner_cavalry = {
 	strength_damage_done = 0.1
 	morale_damage_taken = -0.1
 	country_potential = { tag = QNG }
-	gfx_tags = { heavy_tag }
+	gfx_tags = { medium_tag  }
+}
+
+# 乌真超哈 - 汉军八旗（重兵）
+# 乌真超哈（ujen cooha）：满语"重兵"
+# 汉军八旗，清朝精锐火器部队，擅长火炮和火枪
+# 入关急先锋，在铸造火炮、使用火器方面技术先进
+a_ujen_cooha = {
+	category = army_infantry
+	copy_from = a_age_4_reformation_infantry
+	buildable = no
+	levy = yes
+	
+	max_strength = 1.5
+
+	country_potential = { tag = QNG }
+	gfx_tags = { chinese_musket heavy_tag }  # 火枪 + 重装步兵
 }
 
 # 骑营

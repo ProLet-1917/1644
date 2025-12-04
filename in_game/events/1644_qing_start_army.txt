@@ -32,9 +32,9 @@ qng_1644_banner_army.1 = {
 			location:shenyang ?= {
 				if = {
 					limit = { owner = root }
-					# 红夷炮随军：10 营（2 门/营）
+					#25 营（4 门/营）
 					while = {
-						count = 10
+						count = 25
 						create_sub_unit_with_owner = {
 							type = a_red_cannon
 							owner = root
@@ -42,21 +42,19 @@ qng_1644_banner_army.1 = {
 							experience = 90
 						}
 					}
-					# 战兵营 10 营 10000 人
 					while = {
-						count = 10
+						count = 5
 						create_sub_unit_with_owner = {
-							type = a_1644_chinese_pikemen
+							type = a_ujen_cooha
 							owner = root
 							origin = this
 							experience = 90
 						}
 					}
-					# 火器营：减少至 2 营
 					while = {
-						count = 2
+						count = 20
 						create_sub_unit_with_owner = {
-							type = a_1644_chinese_musketeers
+							type = a_banner_cavalry
 							owner = root
 							origin = this
 							experience = 100
