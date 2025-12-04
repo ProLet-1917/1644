@@ -29,6 +29,7 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 			#	situation_is_active = no
 			#	situation_has_ended = yes
 			#}
+			#var:peace_talk_in_westphalia_phase > 3
 		}
 	}
 
@@ -48,6 +49,7 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 	}
 
 	on_start = {
+		netherland_independent_netural_country_list_effect = yes
 		if = {
 			limit = {
 				exists = c:NED
@@ -56,7 +58,6 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 				#trigger_event_sliently = netherland_independent.1 #Rise Up!
 			}
 		}
-
 		if = {
 			limit = {
 				exists = c:HOL
@@ -193,11 +194,13 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 					}
 				}
 				OR = {
-					area = area:friesland_area
-					area = area:holland_area
-					area = area:brabant_area
-					area = area:wallonia_area
-					area = area:flanders_area
+					OR = {
+						area = area:friesland_area
+						area = area:holland_area
+						area = area:brabant_area
+						area = area:wallonia_area
+						area = area:flanders_area
+					}
 				}
 			}
 			custom_tooltip = this_is_a_lowland_nation_tt
