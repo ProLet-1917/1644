@@ -1,17 +1,14 @@
-﻿# ==========================================
-# 1644 模组：八旗专用征召兵系统
-# ==========================================
+﻿# 1644 模组：八旗征召兵（最高优先级）
 # 
-# 八旗制度是清朝的根本军事制度，战时为兵，平时为民。
-# 八旗征召兵体现了满洲军事化社会的特点，相比普通征召兵有以下优势：
-# 1. 通过 qng_banner_reform 获得 +100% levy_combat_efficiency_modifier
-# 2. 单位本身具有更强的基础属性
-# 3. 可征召两种兵种：八旗骑兵（满蒙主力）、乌真哈超（汉军步兵）
+# 八旗骑兵征召兵 - 只能由清朝（QNG）的八旗阶层人口征召
+# 
+# 注意：根据 pop_types/05_special_estates_pops.txt 的定义，
+# 八旗人口属于 nobles/soldiers/tribesmen 类型，但通过 banners_estate 条件区分。
+# 八旗人口需要满足：tag = QNG 且 culture = jurchen_culture 或 manchu_culture
 # 
 # 文件命名为00开头，确保最先加载，获得最高优先级
 # 根据readme说明：super specialized units with many conditions are at the very top
-# 这些征召兵有最严格的条件（国家+文化+pop类型），应该优先匹配
-# ==========================================
+# 这个征召兵有最严格的条件（国家+文化+pop类型），应该优先匹配
 
 # 八旗骑兵征召兵 - 主力重骑兵
 # 来源：满洲八旗、蒙古八旗的贵族和士兵阶层
@@ -19,7 +16,7 @@ levy_banner_cavalry = {
 	size = 0.05
 	unit = a_banner_niru
 	
-	# 限制只能由清朝使用
+	# 限制只能由清朝使用（国家层面限制）
 	country_allow = {
 		tag = QNG
 	}
@@ -29,7 +26,16 @@ levy_banner_cavalry = {
 	allowed_pop_type = soldiers
 	allowed_pop_type = tribesmen
 	
-	# 文化要求：女真、通古斯、蒙古文化组
+	# 使用trigger来控制解锁条件（符合原版设计模式）
+	# trigger中已经通过has_culture_group匹配了：
+	# - jurchen_group（女真文化组）
+	# - tungusic_group（通古斯文化组）
+	# - mongolian_group（蒙古文化组）
+	# 这样可以确保只有东北-蒙古相关文化的人口被征召
+	# 根据pop_types定义，八旗人口必须同时满足：
+	# 1. tag = QNG
+	# 2. 属于上述文化组
+	# 3. 属于banners_estate（这个通过pop_types自动处理）
 	allow = {
 		OR = {
 			culture = { has_culture_group = culture_group:jurchen_group }
@@ -56,6 +62,8 @@ levy_ujen_cooha = {
 	allowed_pop_type = soldiers
 	allowed_pop_type = nobles
 	allowed_pop_type = peasants
+	allowed_pop_type = laborers
+	allowed_pop_type = soldiers
 	
 	# 文化要求：汉文化组和朝鲜文化组
 	allow = {

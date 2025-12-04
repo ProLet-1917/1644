@@ -87,6 +87,9 @@ countries = {
 		}
 		include = "japanese_clan"
 		government = {
+			type = monarchy
+			ruler = random
+			
 			reforms = {
 				shogunate
 			}
@@ -1514,7 +1517,25 @@ countries = {
 		capital = london
 
 		include = "expl_western_europe"
-
+		include = "expl_indian_trade_route"
+		include = "expl_indonesia"
+		include = "expl_mesoamerica"
+		include = "expl_silk_road_east"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_west"
+		include = "expl_southamerica"
+		include = "expl_west_africa"
+		include = "expl_west_africa_south"
+		include = "expl_central_africa"
+		include = "expl_amerindian_east_coast"
+		include = "expl_andean"
+		include = "expl_aridoamerica"
+		include = "expl_east_africa"
+		include = "expl_horn_of_africa"
+		include = "expl_polynesia"
+		include = "expl_southamerica"
+		
+		
 		ai_advance_preference_tags = {
 			exploration = 5
 		}
@@ -3209,7 +3230,7 @@ countries = {
 		include = "expl_western_europe"
 	}
 
-###Iroquoi Tribes
+###American Tribes
 	#Mohawk/Kanien'kehaka
 	KKA = {
 
@@ -3315,6 +3336,105 @@ countries = {
 			stability = 33
 			tribal_cohesion = 90
 		}
+	}
+
+	CHK = { #Cahokia
+		own_control_core = {
+			cahokia peewareewa sangamon amonokoa macoupin tamaroa wyaconda oahaha emasulia
+			chariton meramec pahatsi tanwakanwakaghe moingwena
+			kaskaskia kaskankaham chepoussa ochechiton st_francois_mts
+			nudarcha wimihsoorita nodaway
+			peoria
+		}
+		starting_technology_level = 1
+
+		government = {
+			ruler = random
+
+			type = tribe
+			heir_selection = tribal_oldest_male
+
+			centralization_vs_decentralization = 80
+			traditionalist_vs_innovative = -70
+			spiritualist_vs_humanist = -60
+			aristocracy_vs_plutocracy = -80
+			serfdom_vs_free_subjects = 50
+			mercantilism_vs_free_trade = 50
+			belligerent_vs_conciliatory = 100
+			quality_vs_quantity = -75
+			offensive_vs_defensive = 50
+			land_vs_naval = -90
+			capital_economy_vs_traditional_economy = 100
+			individualism_vs_communalism = 60
+			outward_vs_inward = 50	
+
+			parliament = {
+				parliament_type = assembly
+			}	
+
+			laws = {
+				marriage_law = polygyny
+				heir_religion_law = heir_same_religion
+			}
+
+			reforms = {
+				agricultural_cultivation
+			}
+			privilege = {
+				#nobles
+				nobility_council
+				nobles_land_rights
+				tribal_autonomy
+
+				#clergy
+				embellish_great_works_of_faith
+
+				#burghers
+				urban_development_grants
+				market_fairs
+
+				#Commoners
+				peasants_autonomous_villages
+				communal_lands
+				allow_hunting
+				partial_yield
+				peasants_free_peasantry
+		
+				tribes_tribal_levies
+				tribes_allow_gatherings
+			}
+		}
+
+		discovered_areas = {
+			#east_coast_region
+			illinois_area
+			wisconsin_area
+			indiana_area
+			kentucky_area
+			tennessee_area
+			#louisiana_region
+			missouri_area
+			iowa_area
+			arkansas_area
+			central_plains_area
+		}
+
+		tolerated_cultures = {
+			tsawi_culture
+			ponca_culture
+			kaskankaham_culture
+			kahokiaki_culture
+		}
+
+		currency_data = {
+			gold = 180
+			stability = 20
+			prestige = 5
+			tribal_cohesion = 80
+		}
+
+		court_language = dhegiha_language
+		capital = cahokia
 	}
 
 ###Southeast Asian Islands
@@ -4066,6 +4186,157 @@ countries = {
 		include = "expl_india_muslim"
 		include = "expl_indian_trade_route"
 	}
+	
+###Persia
+ SFV = { #Guarded Domains of Iran
+        own_control_core = {
+            #Persian Region
+			ardabil ahar aslanduz kaleybar khiyav mardanaqom qahqaheh nir
+			barza bukan malekan miandoab sain santeh takht_e_soleyman
+			khoy bayazit maku hadishahr marand nazok_olya qarahziaoddin siah_cheshmeh
+			miyaneh aghkand hashatjin hashtrud khalkhal
+			tabriz heris maragheh sarab tufarqan ujan
+			urmia khameneh mahabad osnavieh salmas
+
+			bampur bazman dalgan espakeh fahrej karvandar rameshk hamun_jaz_murian
+			bannajbur mahgas murt nagh paroom saravan suran
+			bela hinglaj lakhsar ormara sonamiani wadh
+			gwadar buleda irafshan kuddan pasni tump turbat zik
+			kharan besima chagai naalbandin washuk
+			khash jaleq ladiz mashkel hamun_mashkel
+			qasr_e_qand gwatar kalmat rask sarbaz
+			quetta gulistan kalat mastung nushki shorabak hamun_lora
+			khuzdar awaran jhao mashkai nal surab
+			al_tiz bandar_e_jask bashagard bent bih jagin_zir zarabad
+
+			abarkuh abadeh bavanat dehshir eqlid marvast
+			behbahan dehdasht dishmok dogonbadan hendijan suq
+			darab hajjiabad_zarrindasht jannat_shahr rostaq tarom
+			firuzabad bandar_deyr dehram kalameh khormoj riz
+			gamrun bandar_charak bandar_khamir bandar_lengeh hormuz
+			harat khabar khatunabad meshkan shahr_e_babak
+			istakhr aspas beyza qaryat_al_bidh saadatshahr shahr_meyan
+			jahrom fasa ij_iran juyom kavar meymand
+			kariyan alamarvdasht bagh_iran jahreh karzin khunj
+			kazerun borazjan reyshahr farashband sar_mashhad
+			lar darz dehtal fin ruydar
+			qala_safid bandar_deylam bandar_rig basht jannaba nurabad
+			shiraz abadeh_tashk kherameh neyriz sarvestan zarqan
+			siraf ahel asir bastak kish
+
+			ardestan anarak aqda nain natanz zavareh
+			golpayegan delijan khwansar khomeyn mahallat nimvar
+			hamadan karaj_abi_dulaf khondab kurijan qorveh_darjazin saruk tafresh
+			isfahan dehagh dowlatabad komshecheh murcheh_khvort tudeshk
+			qazvin abhar avaj qeydar sagzabad savojbolagh takestan
+			qom aveh kahak kashan maranjab neyasar saveh
+			qumisha fereydunshahr karkevand ramsheh sohrfiruzan yangabad yazdikhwast
+			rey damavand eyvanekey karaj khwar rahimabad razeqan varamin
+			yazd ardakan meybod nadushan saryazd taft
+			zanjan mahneshan sarcham sojas soltaniyeh
+
+			bam fahraj_narmashir narmashir rayen rigan sepeh
+			jiroft baft dowlatabad_esfandaqeh rabor sarduiyeh zakht
+			kahnuj mardehek qaleh_ganj shahabad_kerman
+			kerman ghobeyra mahan shahdad hamun_dasht_lut
+			minab golashkerd manujan nowdezh rudkhaneh shaqrud senderk sirik
+			rafsanjan anar baghin bahreman bardsir dehaj ernan negar
+			sirjan arzu hajjiabad khabr qatruyeh saadatabad soghan
+			zarand_iran bafq behabad kuhbanan ravar 
+
+			ahvaz dowraq hamidiyeh hoveyzeh mosharahat muhammerah
+			borujerd aligurdaz borborud dorud gerit sibak
+			deh_kord borujen samiram sisakht vanak yasuj
+			dezful andimeshk masjed_soleyman shush shushtar somaleh
+			izeh andika dehdez lordegan naghan
+			khorramabad aleshtar kuhdast pol_dokhtar sarab_dowreh
+			ramhormoz bagh_malek khalafabad machul quban
+
+			bijar bashqurtaran dehgolan divandarreh ghorveh sohrevard yasukand
+			kermanshah badreh darrehshahr harunabad holeylan kamyaran
+			nahavand asadabad bisotun malayer sonqor
+			sahrazur hawraman javanrud marivan muchesh qasr_shirin sanandaj sulaymaniyah
+
+			damghan bastam lasjerd qumis semnan
+			rudbar shahrestan_sofla shamiram sirdan
+			rasht fuman lahijan langarud
+			gorgan aliabad_katul astarabad etrek incheh_borun minudasht mubarakabad nardin tammisha
+			amol al_mamtir chalus kojur tonekabon
+			sari ashraf farim_iran firuzkuh lafur
+			dulab astara bandar_e_anzali lankaran
+
+			birjand deyhuk khusf khvor mazhan nayband qala_zari
+			gonabad azghand mahvelat roshtkhar salameh zaveh
+			qaen abiz khargerd shahrakht tabas_al_unnab yazduye zohan zozan
+			tabas_al_tamr dastgerdan jondaq korit ribat_ushturan saghand hamun_dasht_kavir
+			turaythith bajestan boshruyeh kashmar sarayan tun
+
+			adraskan azab firuzkuh_afghanistan khaysar shindand
+			bost baghran deh_kundi gereshk kajran musa_qala tarinkot
+			farah anardara doroh lash_joveyn sarbisheh shahr_sabz
+			garmsir banader khanashin maiwand pangvay
+			ghazni gardez muqur nawah wazakhwa zarghun_shahr
+			kabul alishang chak gandamak jalalabad logar kohi_safi
+			kandahar arghestan chaman deychopan maruf qalat_ghilji
+			zabol chehl_dokhtaran dowzdab nehbandan shusef
+			zaranj bahramchah delaram khash_sistan qala_fateh qarnin rudbar_sistan hamun_gowd_zerah hamun_pushak hamun_saberi dasht_khash dasht_margoh dasht_tarakun
+			
+			#Other regions
+			ani amberd artashavan kumayri
+			gandzasar goroz haterk kashatagh shusha
+			kapan_armenia gladzor goris julfa nakhchivan tatev
+			lori gagi kayen khunani spitak
+			yerevan bjni igdir khor_virap sotk
+			
+			merv barkdiz pandjih
+			bamyan andarab bagram charikar istalif kahmard panjshir yakawlang
+			
+			ganja barda beylagan gardman lemberan shamkir
+			baku javad mahmudabad maraza qobustan shamakhi
+			mughan baciravan bilasuvar germi salyan varsan
+			shaki agsu aresh goychay qabala vartashen zardab
+			shirvan derbent niyazabad quba shabran
+			
+			bojnord khabushan quchan raz samalqan shirvan_iran
+			esfarayen agh_qala azadvar bam_esfarayen jajarm meshkan_khorasan shoqan
+			faraveh dehistan ganlygala gazanjyk jargalan maraveh sarlawuk
+			konjikala anew dargaz durun
+			mashhad farhadgerd mazdaran radkan tus
+			nishapur fadisheh kadkan pivehzhan
+			sabzevar beyarjomand farumad haresabad kharturan meyami
+			tejend abiward kalat_nader sarakhs
+			torbat_e_jam bakharz fariman mashhad_rizeh salehabad
+			herat awbeh chishti_sarif firozkoh karokh pushang tulak
+			marv_al_rudh ghormach jawand kusk kusk_kohneh qala_kohistan qala_naw qasr_ahnaf
+			
+			manama abadan
+			
+			abdanan dehloran meymeh arkvaz
+			eyvan ilam gilan_gharb
+			mawet sardasht qaladiza piranshahr surmali
+		}
+  
+		government = {
+            type = monarchy
+			ruler = random
+        }
+        accepted_cultures = {
+            adhari_culture
+            azeri_culture
+            lur_culture
+            kurdish_culture
+            mazanderani_culture
+            khorasani_culture
+            baloch_culture
+            afghan_culture
+            achomi_culture
+        }
+        capital = isfahan  # Capital
+        starting_technology_level = 4
+        country_rank = rank_empire
+		include = "expl_middle_east"
+		include = "expl_indian_trade_route"
+    }
 	
 ###Northwest Africa
 	MOR = { #Morocco
