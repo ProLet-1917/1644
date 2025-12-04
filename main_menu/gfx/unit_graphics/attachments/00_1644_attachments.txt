@@ -1,18 +1,21 @@
 ﻿# 1644 MOD - 武器附件配置
+# 
+# 配合 zzz_1644_unit_constructors.txt 中的 use_uniformity = no 设置
+# 实现混合武器显示效果（冷兵器为主，少量火器）
 
+# 战兵：明清步兵，冷兵器为主
 chinese_zhabing:weapons = {
-	25 = soldier_musket_weapons    # 25% 火铳
-	25 = spear_weapons             # 25% 长矛
-	25 = sword_weapons             # 25% 刀剑
-	25 = polearm_weapons           # 25% 长柄武器
+	1 = soldier_musket_weapons    # 1/4 火铳（早期手持火炮）
+	1 = spear_weapons             # 1/4 长矛
+	1 = sword_weapons             # 1/4 刀剑
+	1 = polearm_weapons           # 1/4 长柄武器（戟、钩镰等）
 }
 
-# 宗教改革时代（1530-1630）：西法大方阵配置
-# 长矛为主 + 少量火绳枪（符合西班牙大方阵比例）
+# 火器营：明清火器部队，火器为主
 chinese_musket:weapons = {
-	50 = soldier_musket_weapons    # 50% 火绳枪
-	25 = pike_weapons              # 25% 长矛
-	25 = sword_weapons             # 25% 刀剑
+	2 = soldier_musket_weapons    # 2/4 火绳枪
+	1 = pike_weapons              # 1/4 长矛
+	1 = sword_weapons             # 1/4 刀剑
 }
 
 
