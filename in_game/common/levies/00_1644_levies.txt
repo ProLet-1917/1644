@@ -16,8 +16,8 @@
 # 八旗骑兵征召兵 - 主力重骑兵
 # 来源：满洲八旗、蒙古八旗的贵族和士兵阶层
 levy_banner_cavalry = {
-	size = levy_banner_cavalry_size
-	unit = a_banner_cavalry
+	size = 0.05
+	unit = a_banner_niru
 	
 	# 限制只能由清朝使用
 	country_allow = {
@@ -39,12 +39,12 @@ levy_banner_cavalry = {
 	}
 }
 
-# 乌真超哈征召兵 - 汉军步兵
-# 来源：汉军八旗的农民和劳工阶层
-# 乌真超哈（ujen cooha）：满语"重兵"，清朝特有的汉人步兵组织
-# 历史上也包括朝鲜人等其他被征服民族
+# 乌真超哈征召兵 - 汉军八旗（重兵）
+# 乌真超哈（ujen cooha）：满语"重兵"，即汉军八旗
+# 清朝精锐火器部队，擅长火炮和火枪，入关急先锋
+# 包括辽东陈汉军和后来归附的汉人、朝鲜人等
 levy_ujen_cooha = {
-	size = levy_ujen_cooha_size
+	size = 0.5
 	unit = a_ujen_cooha
 	
 	# 限制只能由清朝使用
@@ -52,10 +52,10 @@ levy_ujen_cooha = {
 		tag = QNG
 	}
 	
-	# 主要来自农民和劳工阶层
-	allowed_pop_type = peasants
-	allowed_pop_type = laborers
+	# 汉军八旗主要来自士兵和贵族阶层，也包括部分农民
 	allowed_pop_type = soldiers
+	allowed_pop_type = nobles
+	allowed_pop_type = peasants
 	
 	# 文化要求：汉文化组和朝鲜文化组
 	allow = {
