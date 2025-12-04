@@ -139,6 +139,28 @@ diplomacy_manager = {
 	dependency = { first = JAP second = HYJ subject_type = fiefdom }
 	dependency = { first = JAP second = JIC subject_type = vassal }
 
+	#Russia and Vast Grassland
+	dependency = { first = RUS second = BSR subject_type = fiefdom }
+	dependency = { first = MYK second = NOG subject_type = vassal }
+	dependency = { first = PLC second = ZAZ subject_type = tributary }
+
+	#Ottoman
+	dependency = {first = TUR second = WAL subject_type = vassal }
+	dependency = {first = TUR second = TRA subject_type = vassal }
+	dependency = {first = TUR second = MOL subject_type = vassal }
+
+	#Iran
+	dependency = { first = SFV second = TRK subject_type = tributary }
+
 	#Ryūkyū
 	dependency = { first = STM second = RYY subject_type = vassal }
+
+	#Southeast Asia
+	dependency = { first = TRH second = TTQ subject_type = tributary }
+	dependency = { first = TNG second = MNI subject_type = vassal }
+	dependency = { first = TNG second = LNA subject_type = vassal }
+	dependency = { first = TNG second = KTG subject_type = vassal }
+	dependency = { first = TNG second = HSE subject_type = vassal }
+	dependency = { first = TNG second = MYA subject_type = vassal }
+	dependency = { first = TNG second = PUA subject_type = vassal }
 }
