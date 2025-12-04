@@ -1,0 +1,26 @@
+netherland_independent_netural_country_list_effect = {
+	custom_description = {
+		every_country = {
+   			limit = {
+   				capital = {
+					OR = {
+						area = area:friesland_area
+						area = area:holland_area
+						area = area:brabant_area
+						area = area:wallonia_area
+						area = area:flanders_area
+					}
+				}
+				NOT = {
+					this = c:NED
+					this = c:HOL
+					this = c:PUL
+				}
+ 			}
+    			add_to_global_variable_list = {
+        			name = country_list_of_dutches
+        			target = this
+    			}
+		}
+	}
+}
