@@ -23,13 +23,25 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 						country_exists = c:HOL
 					}
 				}
-				NOT = { 	country_exists = c:SPA }
+				NOT = { country_exists = c:SPA }
 			}
 			#situation:war_of_religions = { #It ended in 1648
 			#	situation_is_active = no
 			#	situation_has_ended = yes
 			#}
 			#var:peace_talk_in_westphalia_phase > 3
+			custom_tooltip = {
+  				text = netherland_peace_talk_tt
+				has_global_variable = peace_talk_about_dutches_end  				
+			}
+			custom_tooltip = {
+  				text = netherland_control_brussel_tt
+				location:brussels ?= {
+					c:NED ?= controller
+				}				
+			}
+			c:NED = { is_subject_or_below_of = c:SPA }
+			c:SPA = { is_subject_or_below_of = c:NED }
 		}
 	}
 
@@ -50,12 +62,15 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 
 	on_start = {
 		netherland_independent_netural_country_list_effect = yes
+		#netherland_side_country_list_effect = yes
+		netherland_independent_netherland_country_list_effect = yes
+		netherland_independent_spain_country_list_effect = yes
 		if = {
 			limit = {
 				exists = c:NED
 			}
 			c:NED = {
-				#trigger_event_sliently = netherland_independent.1 #Rise Up!
+				trigger_event_non_silently = netherland_independent.1 #Rise Up!
 			}
 		}
 		if = {
@@ -63,11 +78,11 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 				exists = c:HOL
 			}
 			c:HOL = {
-				#trigger_event_sliently = netherland_independent.1 #Rise Up!
+				trigger_event_non_silently = netherland_independent.1 #Rise Up!
 			}
 		}
 		c:SPA = {
-			#trigger_event_sliently = netherland_independent.2 #Prepare Army!
+			trigger_event_non_silently = netherland_independent.2 #Prepare Army!
 		}
 	}
 
@@ -81,15 +96,77 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 				OR = {
 					NOT = { country_exists = c:NED }
 					NOT = { country_exists = c:HOL }
+					c:NED = { is_subject_or_below_of = c:SPA }
 				}
 			}
 			every_country  = {
-				#trigger_event_sliently = netherland_independent.3 #Independent Failed!
+				limit = {
+					NOT = {
+						this = c:NED
+						this = c:HOL
+						this = c:SPA
+					}
+				}
+				trigger_event_non_silently = netherland_independent.3 #Independent Failed!
 			}
 		}
-		else = {
+		else_if = {
+			limit = {
+				OR = {
+					NOT = { country_exists = c:SPA }
+					c:SPA = { is_subject_or_below_of = c:NED }
+				}
+			}
 			every_country  = {
-				#trigger_event_sliently = netherland_independent.4 #Peaceful End!
+				limit = {
+					NOT = {
+						this = c:NED
+						this = c:HOL
+						this = c:SPA
+					}
+				}
+				trigger_event_non_silently = netherland_independent.4 #Peaceful End!
+			}
+		}
+		else_if = {
+			limit = {
+				has_global_variable = peace_talk_about_dutches_end
+			}
+			every_country  = {
+				limit = {
+					OR = {
+						this = c:NED
+						this = c:HOL
+						this = c:SPA
+						is_subject_or_below_of = c:NED
+						is_subject_or_below_of = c:SPA
+					}
+				}
+				trigger_event_non_silently = netherland_independent.5 #Peace of Münster
+			}
+		}
+		else_if = {
+			limit = {
+				location:brussels ?= {
+					c:NED ?= controller
+				}
+			}
+			every_country  = {
+				limit = {
+					this = c:NED
+				}
+				trigger_event_non_silently = netherland_independent.9 #Peace of Trier
+			}
+		}
+		else_if = {
+			limit = {
+				current_year > 1699
+			}
+			every_country  = {
+				limit = {
+					this = c:NED
+				}
+				trigger_event_non_silently = netherland_independent.8
 			}
 		}
 	}
@@ -110,6 +187,9 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 						is_subject_or_below_of = c:NED
 						subject_loyalty >= 50
 					}
+					NOT = {
+						is_member_of_international_organization = international_organization:union_of_utrecht
+					}
 				}
 			}
 			custom_tooltip = loyal_member_of_the_netherland_side_tt
@@ -120,6 +200,9 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 					AND = {
 						is_subject_or_below_of = c:NED
 						is_disloyal_subject = yes
+					}
+					NOT = {
+						is_member_of_international_organization = international_organization:union_of_utrecht
 					}
 				}
 			}
@@ -132,6 +215,9 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 						is_subject_or_below_of = c:SPA
 						subject_loyalty >= 50
 					}
+					NOT = {
+						is_member_of_international_organization = international_organization:union_of_arras
+					}
 				}
 			}
 			custom_tooltip = loyal_member_of_the_spain_side_tt
@@ -143,9 +229,28 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 						is_subject_or_below_of = c:SPA
 						is_disloyal_subject = yes
 					}
+					NOT = {
+						is_member_of_international_organization = international_organization:union_of_arras
+					}
 				}
 			}
 			custom_tooltip = disloyal_member_of_the_spain_side_tt
+		}
+		else_if = {
+			limit = {
+				owner ?= {
+					is_member_of_international_organization = international_organization:union_of_utrecht
+				}
+			}
+			custom_tooltip = member_union_of_utrecht_tt
+		}
+		else_if = {
+			limit = {
+				owner ?= {
+					is_member_of_international_organization = international_organization:union_of_arras
+				}
+			}
+			custom_tooltip = member_union_of_arras_tt
 		}
 		else_if = {
 			limit = {
@@ -200,6 +305,8 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 						area = area:brabant_area
 						area = area:wallonia_area
 						area = area:flanders_area
+						province_definition = province_definition:lower_artois_province
+						province_definition = province_definition:upper_artois_province
 					}
 				}
 			}
@@ -228,7 +335,6 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 		}
 		else_if = {
 			limit = {
-				has_owner = yes
 				NOT = {
 					OR = {
 						owner ?= NED
@@ -243,6 +349,12 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 						owner ?= {
 							is_subject_or_below_of = c:SPA
 						}
+						owner ?= {
+							is_member_of_international_organization = international_organization:union_of_utrecht
+						}
+						owner ?= {
+							is_member_of_international_organization = international_organization:union_of_arras
+						}
 					}
 				}
 				OR = {
@@ -251,6 +363,8 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 					area = area:brabant_area
 					area = area:wallonia_area
 					area = area:flanders_area
+					province_definition = province_definition:lower_artois_province
+					province_definition = province_definition:upper_artois_province
 				}
 			}
 			value = rgb { 225 235 218 }
@@ -260,6 +374,14 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 				owner ?= {
 					is_subject_or_below_of = c:NED
 					subject_loyalty > 50
+				}
+			}
+			value = rgb { 85 175 169 }
+		}
+		else_if = {
+			limit = {
+				owner ?= {
+					is_member_of_international_organization = international_organization:union_of_utrecht
 				}
 			}
 			value = rgb { 85 175 169 }
@@ -278,6 +400,14 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 				owner ?= {
 					is_subject_or_below_of = c:SPA
 					subject_loyalty > 50
+				}
+			}
+			value = rgb { 181 154 46 }
+		}
+		else_if = {
+			limit = {
+				owner ?= {
+					is_member_of_international_organization = international_organization:union_of_arras
 				}
 			}
 			value = rgb { 181 154 46 }

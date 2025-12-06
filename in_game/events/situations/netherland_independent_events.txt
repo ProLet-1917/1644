@@ -1,0 +1,210 @@
+namespace = netherland_independent
+
+netherland_independent.1 = {
+	type = country_event
+	title = "netherland_independent.1.t"
+	desc = "netherland_independent.1.desc"
+	
+	option = {
+		name = "netherland_independent.1.a"
+		add_casus_belli = { target = c:SPA type = casus_belli:cb_dutch_revolt }
+	}
+}
+
+netherland_independent.2 = {
+	type = country_event
+	title = "netherland_independent.2.t"
+	desc = "netherland_independent.2.desc"
+	
+	option = {
+		name = "netherland_independent.2.a"
+	}
+}
+
+netherland_independent.3 = {
+	type = country_event
+	title = "netherland_independent.3.t"
+	desc = "netherland_independent.3.desc"
+	
+	option = {
+		name = "netherland_independent.3.a"
+	}
+}
+
+netherland_independent.4 = {
+	type = country_event
+	title = "netherland_independent.4.t"
+	desc = "netherland_independent.4.desc"
+	
+	option = {
+		name = "netherland_independent.4.a"
+	}
+}
+
+netherland_independent.5 = {
+	type = country_event
+	title = "netherland_independent.5.t"
+	desc = "netherland_independent.5.desc"
+	
+	option = {
+		name = "netherland_independent.5.a"
+	}
+}
+
+netherland_independent.6 = { #Peace Talk
+	type = country_event
+	title = "netherland_independent.6.t"
+	desc = "netherland_independent.6.desc"
+
+ 	dynamic_historical_event = {
+ 		tag = NED
+ 		from = 1646.1.1
+ 		to = 1666.1.1
+ 		monthly_chance = 10
+ 	}
+	
+	option = {
+		name = "netherland_independent.6.a"
+		historical_option = yes
+		ai_chance = {
+			base = 95
+		}
+		c:SPA = {
+			trigger_event_non_silently = netherland_independent.7
+		}
+	}
+
+	option = {
+		ai_chance = {
+			base = 5
+		}
+		name = "netherland_independent.6.b"
+	}
+}
+
+netherland_independent.7 = { #Peace tsalk request from netherlands
+	type = country_event
+	title = "netherland_independent.7.t"
+	desc = "netherland_independent.7.desc"
+	
+	option = {
+		name = "netherland_independent.7.a"
+		historical_option = yes
+		ai_chance = {
+			base = 90
+		}
+		c:NED = {
+			trigger_event_non_silently = netherland_independent.8
+		}
+	}
+
+	option = {
+		ai_chance = {
+			base = 10
+		}
+		name = "netherland_independent.7.b"
+	}
+}
+
+netherland_independent.8 = { #Peace talk request from netherlands
+	type = country_event
+	title = "netherland_independent.8.t"
+	desc = "netherland_independent.8.desc"
+	
+	option = {
+		name = "netherland_independent.8.a"
+		set_global_variable = peace_talk_about_dutches_end
+		every_country = {
+			limit = {
+				is_member_of_international_organization = international_organization:union_of_utrecht
+				NOT = { is_subject_or_below_of = c:NED }
+				can_make_subject_of = {
+					target = c:NED
+					type = subject_type:vassal
+				}
+			}
+			make_subject_of = {
+				target = c:NED
+				type = subject_type:vassal
+			}
+		}
+		every_country = {
+			limit = {
+				is_member_of_international_organization = international_organization:union_of_arras
+				NOT = { is_subject_or_below_of = c:SPA }
+				can_make_subject_of = {
+					target = c:SPA
+					type = subject_type:dominion
+				}
+			}
+			make_subject_of = {
+				target = c:SPA
+				type = subject_type:dominion
+			}
+		}
+		destroy_international_organization = {
+			target = international_organization:union_of_arras
+		}
+		destroy_international_organization = {
+			target = international_organization:union_of_utrecht			
+            	}
+	}
+}
+
+netherland_independent.9 = { #Treaty of Trier
+	type = country_event
+	title = "netherland_independent.9.t"
+	desc = "netherland_independent.9.desc"
+	
+	option = {
+		name = "netherland_independent.9.a"
+		every_country = {
+			limit = {
+				is_member_of_international_organization = international_organization:union_of_utrecht
+				NOT = { is_subject_or_below_of = c:NED }
+				can_make_subject_of = {
+					target = c:NED
+					type = subject_type:vassal
+				}
+			}
+			make_subject_of = {
+				target = c:NED
+				type = subject_type:vassal
+			}
+		}
+		every_country = {
+			limit = {
+				is_member_of_international_organization = international_organization:union_of_arras
+				NOT = { 
+					is_subject_or_below_of = c:SPA
+					this = c:SPA
+				}
+				can_make_subject_of = {
+					target = c:NED
+					type = subject_type:dominion
+				}
+				capital = {
+					OR = {
+						area = area:friesland_area
+						area = area:holland_area
+						area = area:brabant_area
+						area = area:wallonia_area
+						area = area:flanders_area
+						province_definition = province_definition:lower_artois_province
+						province_definition = province_definition:upper_artois_province
+					}
+				}
+			}
+			make_subject_of = {
+				target = c:NED
+				type = subject_type:dominion
+			}
+		}
+		destroy_international_organization = {
+			target = international_organization:union_of_arras
+		}
+		destroy_international_organization = {
+			target = international_organization:union_of_utrecht			
+            	}
+	}
+}
