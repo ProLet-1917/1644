@@ -154,9 +154,79 @@
 				}
 			}
     		}
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			maximumsize = { 510 -1 }
+			margin = {8 15}
+
+			# block "scroll_card_progress_bar_bg" {
+				using = bg_scroll_card_header
+				blockoverride "card_header_pattern" {}
+			# }
+
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				maximumsize = { 100 -1 }
+				spacing = 5
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					block "left_top_text" {			
+						raw_text = "Netherlands"
+					}
+					align = center|nobaseline
+					default_format = "#yellow_titles"
+				}
+				item = {
+					country_flag_small = {
+						datacontext = [MakeScope.GetCountry('NED')]
+					}
+				}
+			}
+
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 5
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					maximumsize = {300 -1}
+					block "central_top_text" {			
+						raw_text = "Strength Compare"
+					}
+					align = center|nobaseline
+					default_format = "#high"
+				}
+				progressbar = {
+					layoutpolicy_horizontal = expanding
+					size = { -1 20 }
+					using = morale_progressbar_bar
+					block "alt_scroll_card_progress_bar_value"
+					{
+						value = "[Multiply_float(FixedPointToFloat(GetCountry('NED').GetRelativeMilitaryStrength(GetCountry('SPA').Self)), '(float)100')]"
+					}
+				}
+			}
+		
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				maximumsize = { 100 -1 }
+				spacing = 5
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					block "right_top_text" {			
+						raw_text = "Spain"
+					}
+					align = center|nobaseline
+					default_format = "#yellow_titles"
+				}
+				icon = {
+
+				}
+			}
+		}
 	}
 
 	blockoverride "situation_panel_main_content_bottom" {
+
 		situation_side_cards = {
 
 			#Netherland side
@@ -167,7 +237,7 @@
 				text_single = {
 					layoutpolicy_horizontal = expanding
 					align = center|nobaseline
-					text = "NED_DEFENDERS_TT"
+					text = "NED_NED_SIDE_TT"
 					blockoverride "left_header_text" { }
 				}
 				expand = {}
@@ -175,7 +245,7 @@
 			blockoverride "left_bottom_content" {
 				scrollarea = {
 					layoutpolicy_horizontal = expanding
-					size = { -1 200 }
+					size = { -1 150 }
 					scrollbarpolicy_horizontal = always_off
 					scrollbar_vertical = {
 						using = Scrollbar_Vertical
@@ -183,15 +253,17 @@
 					
 					scrollwidget = {
 						dynamicgridbox = {
-							datacontext = "[GetWillJoinCountryList(GetCountry('NED').Self, GetCountry('SPA').Self)]"
-							visible = "[DataModelHasItems(WillJoinCountryList.GetJoinDefensive)]"
-							position = {0 10}
+							datamodel = "[GetGlobalList('country_list_of_netherland_sides')]"
+							datacontext = "[Scope.Country]"
+							visible = "[DataModelHasItems(GetGlobalList('country_list_of_netherland_sides'))]"
+							position = { 0 10 }
 							flipdirection = yes
 							datamodel_wrap = 6
 							maxhorizontalslots = 6
-							datamodel = "[WillJoinCountryList.GetJoinDefensive]"
 							item = {
-								country_flag_small = {}
+								country_flag_small = {
+									datacontext = [Scope.GetCountry]
+								}
 							}
 						}
 					}
@@ -206,15 +278,15 @@
 				text_single = {
 					layoutpolicy_horizontal = expanding
 					align = center|nobaseline
-					text = "SPA_DEFENDERS_TT"
-					blockoverride "right_header_text" { }
+					text = "NED_SPA_SIDE_TT"
+					blockoverride "left_header_text" { }
 				}
 				expand = {}
 			}
 			blockoverride "right_bottom_content" {
 				scrollarea = {
 					layoutpolicy_horizontal = expanding
-					size = { -1 200 }
+					size = { -1 150 }
 					scrollbarpolicy_horizontal = always_off
 					scrollbar_vertical = {
 						using = Scrollbar_Vertical
@@ -222,15 +294,17 @@
 					
 					scrollwidget = {
 						dynamicgridbox = {
-							datacontext = "[GetWillJoinCountryList(GetCountry('SPA').Self, GetCountry('NED').Self)]"
-							visible = "[DataModelHasItems(WillJoinCountryList.GetJoinDefensive)]"
-							position = {0 10}
+							datamodel = "[GetGlobalList('country_list_of_the_spain_sides')]"
+							datacontext = "[Scope.Country]"
+							visible = "[DataModelHasItems(GetGlobalList('country_list_of_the_spain_sides'))]"
+							position = { 0 10 }
 							flipdirection = yes
 							datamodel_wrap = 6
 							maxhorizontalslots = 6
-							datamodel = "[WillJoinCountryList.GetJoinDefensive]"
 							item = {
-								country_flag_small = {}
+								country_flag_small = {
+									datacontext = [Scope.GetCountry]
+								}
 							}
 						}
 					}
@@ -265,7 +339,7 @@
 							datamodel = "[GetGlobalList('country_list_of_dutches')]"
 							datacontext = "[Scope.Country]"
 							visible = "[DataModelHasItems(GetGlobalList('country_list_of_dutches'))]"
-							position = {0 10}
+							position = {14 20}
 							flipdirection = yes
 							datamodel_wrap = 15
 							maxhorizontalslots = 15
