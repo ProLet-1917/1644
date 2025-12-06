@@ -10,32 +10,23 @@
 # 根据readme说明：super specialized units with many conditions are at the very top
 # 这个征召兵有最严格的条件（国家+文化+pop类型），应该优先匹配
 
-# 八旗骑兵征召兵 - 主力重骑兵
-# 来源：满洲八旗、蒙古八旗的贵族和士兵阶层
+# 八旗甲喇骑兵 - 精锐骑兵（优先级更高）
+# 来源：满洲八旗、蒙古八旗的贵族和部落民（更精锐）
 levy_banner_cavalry = {
 	size = 0.05
-	unit = a_banner_cavalry
+	unit = levy_banner_cavalry
 	
-	# 限制只能由清朝使用（国家层面限制）
+	# 限制只能由清朝使用
 	country_allow = {
 		tag = QNG
 	}
 	
-	# 限制只能由八旗相关人口类型征召
+	# 骑兵优先从贵族和部落民中征召（条件更严格）
 	allowed_pop_type = nobles
-	allowed_pop_type = soldiers
 	allowed_pop_type = tribesmen
+	allowed_pop_type = soldiers
 	
-	# 使用trigger来控制解锁条件（符合原版设计模式）
-	# trigger中已经通过has_culture_group匹配了：
-	# - jurchen_group（女真文化组）
-	# - tungusic_group（通古斯文化组）
-	# - mongolian_group（蒙古文化组）
-	# 这样可以确保只有东北-蒙古相关文化的人口被征召
-	# 根据pop_types定义，八旗人口必须同时满足：
-	# 1. tag = QNG
-	# 2. 属于上述文化组
-	# 3. 属于banners_estate（这个通过pop_types自动处理）
+	# 文化要求：女真、通古斯、蒙古文化组
 	allow = {
 		OR = {
 			culture = { has_culture_group = culture_group:jurchen_group }
@@ -45,12 +36,33 @@ levy_banner_cavalry = {
 	}
 }
 
-# 乌真超哈征召兵 - 汉军八旗（重兵）
-# 乌真超哈（ujen cooha）：满语"重兵"，即汉军八旗
-# 清朝精锐火器部队，擅长火炮和火枪，入关急先锋
-# 包括辽东陈汉军和后来归附的汉人、朝鲜人等
+# 八旗甲喇步兵 - 普通步兵（优先级较低）
+# 来源：满洲八旗、蒙古八旗的士兵、农民、市民阶层
+levy_banner_jalan = {
+	size = 0.05
+	unit = levy_banner_jalan
+	
+	# 限制只能由清朝使用
+	country_allow = {
+		tag = QNG
+	}
+	
+	allowed_pop_type = peasants
+	allowed_pop_type = burghers
+	
+	# 文化要求：女真、通古斯、蒙古文化组
+	allow = {
+		OR = {
+			culture = { has_culture_group = culture_group:jurchen_group }
+			culture = { has_culture_group = culture_group:tungusic_group }
+			culture = { has_culture_group = culture_group:mongolian_group }
+		}
+	}
+}
+
+# 乌真超哈 - 汉军八旗（重兵）
 levy_ujen_cooha = {
-	size = 0.5
+	size = 0.05
 	unit = a_ujen_cooha
 	
 	# 限制只能由清朝使用
@@ -58,18 +70,18 @@ levy_ujen_cooha = {
 		tag = QNG
 	}
 	
-	# 汉军八旗主要来自士兵和贵族阶层，也包括部分农民
 	allowed_pop_type = soldiers
 	allowed_pop_type = nobles
 	allowed_pop_type = peasants
 	allowed_pop_type = laborers
-	allowed_pop_type = soldiers
+	allowed_pop_type = burghers
+
 	
-	# 文化要求：汉文化组和朝鲜文化组
+	# 文化要求：汉族文化和朝鲜文化
 	allow = {
 		OR = {
 			culture = { has_culture_group = culture_group:chinese_group }
-			culture = { has_culture_group = culture_group:korean_group }
+			culture = culture:korean_culture
 		}
 	}
 }

@@ -1,9 +1,36 @@
 diplomacy_manager = {
 
     #-----------1644-------------
+    #MNG
     dependency = { first = MNG second = WSG subject_type = vassal }
+    dependency = { first = MNG second = ZLY subject_type = vassal }
+    dependency = { first = MNG second = CGJ subject_type = vassal }
+    dependency = { first = MNG second = LLZ subject_type = vassal }
+    dependency = { first = MNG second = LZQ subject_type = vassal }
+    dependency = { first = MNG second = HDG subject_type = vassal }
+    dependency = { first = MNG second = CKL subject_type = vassal }
+    dependency = { first = MNG second = CBG subject_type = tributary }
+    #QNG
     dependency = { first = QNG second = JOE subject_type = tributary }
+    dependency = { first = QNG second = ZSG subject_type = tributary }
+    dependency = { first = QNG second = TSH subject_type = tributary }
+    dependency = { first = QNG second = SES subject_type = tributary }
+    dependency = { first = QNG second = QKH subject_type = tributary }
+    #CSH
+    dependency = { first = CSH second = CJX subject_type = vassal }
 
+    #Monogol and Oirat
+    dependency = { first = ZUN second = TLU subject_type = tributary }
+    scripted_mutual = { first = ZUN second = HSD type = alliance }
+    scripted_mutual = { first = HTG second = ZSG type = alliance }
 
-
+    #Tibet
+    dependency = { first = QKH second = DRG subject_type = vassal }
+    dependency = { first = QKH second = NBH subject_type = vassal }
+    dependency = { first = QKH second = LGT subject_type = vassal }
+    dependency = { first = QKH second = CDO subject_type = vassal }
+    dependency = { first = QKH second = YSH subject_type = tributary }
+    dependency = { first = QKH second = NCN subject_type = tributary }
+    dependency = { first = UUS second = BTG subject_type = vassal }
+    dependency = { first = UUS second = LTN subject_type = vassal }
 }

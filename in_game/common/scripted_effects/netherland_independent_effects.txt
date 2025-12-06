@@ -1,0 +1,192 @@
+netherland_independent_netural_country_list_effect = {
+	custom_description = {
+		every_country = {
+   			limit = {
+   				capital = {
+					OR = {
+						area = area:friesland_area
+						area = area:holland_area
+						area = area:brabant_area
+						area = area:wallonia_area
+						area = area:flanders_area
+						province_definition = province_definition:lower_artois_province
+						province_definition = province_definition:upper_artois_province
+					}
+				}
+				NOT = {
+					is_subject_or_below_of = c:NED
+					is_subject_or_below_of = c:HOL
+					is_member_of_international_organization = international_organization:union_of_utrecht
+					is_subject_or_below_of = c:SPA
+					is_member_of_international_organization = international_organization:union_of_arras
+					is_allied_with = { target = c:NED }
+					is_allied_with = { target = c:SPA }
+					has_variable = situation_netherland_side
+					has_variable = situation_spain_side
+				}
+ 			}
+    			add_to_global_variable_list = {
+        			name = country_list_of_dutches
+        			target = this
+    			}
+		}
+	}
+}
+
+netherland_independent_netural_country_list_monthly_check_effect = {
+	custom_description = {
+		clear_global_variable_list = country_list_of_dutches
+		every_country = {
+   			limit = {
+   				capital = {
+					OR = {
+						area = area:friesland_area
+						area = area:holland_area
+						area = area:brabant_area
+						area = area:wallonia_area
+						area = area:flanders_area
+						province_definition = province_definition:lower_artois_province
+						province_definition = province_definition:upper_artois_province
+					}
+				}
+				NOT = {
+					is_subject_or_below_of = c:NED
+					is_subject_or_below_of = c:HOL
+					is_member_of_international_organization = international_organization:union_of_utrecht
+					is_subject_or_below_of = c:SPA
+					is_member_of_international_organization = international_organization:union_of_arras
+					is_allied_with = { target = c:NED }
+					is_allied_with = { target = c:SPA }
+					has_variable = situation_netherland_side
+					has_variable = situation_spain_side
+				}
+ 			}
+    			add_to_global_variable_list = {
+        			name = country_list_of_dutches
+        			target = this
+    			}
+		}
+	}
+}
+
+#netherland_side_country_list_effect = { #Not in use
+#	custom_description = {
+#		every_country = {
+#			limit = {
+#				OR = {
+#					this = c:NED
+#					this = c:HOL
+#					is_subject_or_below_of = c:NED
+#					is_subject_or_below_of = c:HOL
+#					is_allied_with = { target = c:NED }
+#					is_allied_with = { target = c:HOL }
+#				]
+#				NOT = {
+#					AND = {
+#						is_allied_with = { target = c:NED }
+#						is_allied_with = { target = c:SPA }
+#					}
+#				}
+#			}
+#    			add_to_global_variable_list = {
+ #       			name = country_list_of_netherland_side
+ #       			target = this
+ #   			}
+#		}
+#		c:LIE = {
+#			set_variable = situation_netherland_side
+#    			add_to_global_variable_list = {
+ #       			name = country_list_of_netherland_side
+ #       			target = this
+#    			}
+#		}
+#	}
+#}
+
+netherland_independent_netherland_country_list_effect = {
+	custom_description = {
+		#c:FRI = {
+    		#	set_variable = situation_netherland_side
+    		#	add_to_global_variable_list = {
+        	#		name = country_list_of_netherland_sides
+        	#		target = this
+    		#	}
+		#}
+		every_country = {
+   			limit = {
+				OR = {
+					is_subject_or_below_of = c:NED
+					is_subject_or_below_of = c:HOL
+					is_member_of_international_organization = international_organization:union_of_utrecht
+				}
+			}
+    			add_to_global_variable_list = {
+        			name = country_list_of_netherland_sides
+        			target = this
+    			}
+		}
+	}
+}
+
+netherland_independent_spain_country_list_effect = {
+	custom_description = {
+		#c:BLL = {
+    		#	set_variable = situation_spain_side
+  		#	add_to_global_variable_list = {
+       		#		name = country_list_of_the_spain_sides
+       		#		target = this
+   		#	}
+		#}
+		every_country = {
+   			limit = {
+				OR = {
+					is_subject_or_below_of = c:SPA
+					is_member_of_international_organization = international_organization:union_of_arras
+				}
+			}
+    			add_to_global_variable_list = {
+        			name = country_list_of_the_spain_sides
+        			target = this
+			}
+		}
+	}
+}
+
+netherland_independent_netherland_country_list_monthly_check_effect = {
+	custom_description = {
+		clear_global_variable_list = country_list_of_netherland_sides
+		every_country = {
+   			limit = {
+				OR = {
+					has_variable = situation_netherland_side
+					is_subject_or_below_of = c:NED
+					is_subject_or_below_of = c:HOL
+					is_member_of_international_organization = international_organization:union_of_utrecht
+				}
+ 			}
+    			add_to_global_variable_list = {
+        			name = country_list_of_netherland_sides
+        			target = this
+    			}
+		}
+	}
+}
+
+netherland_independent_spain_country_list_monthly_check_effect = {
+	custom_description = {
+		clear_global_variable_list = country_list_of_the_spain_sides
+		every_country = {
+   			limit = {
+				OR = {
+					has_variable = situation_spain_side
+					is_subject_or_below_of = c:SPA
+					is_member_of_international_organization = international_organization:union_of_arras
+				}
+ 			}
+    			add_to_global_variable_list = {
+        			name = country_list_of_the_spain_sides
+        			target = this
+    			}
+		}
+	}
+}
