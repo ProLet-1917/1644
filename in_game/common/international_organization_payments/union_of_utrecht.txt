@@ -1,0 +1,54 @@
+#Gold contribution to the Netherlands
+union_of_utrecht_treasury = {
+	get_payer_list = {
+		every_international_organization_member = {
+			limit = { 
+				NOT = { is_leader_of_international_organization = root }
+			}
+			add_to_local_variable_list = {
+				name = payers
+				target = this
+			}
+		}
+	}
+	get_payee_list = {
+		leader_country ?= {
+			add_to_local_variable_list = {
+				name = payees
+				target = this
+			}
+		}
+	}
+	price = union_contribution_price #union_of_utrecht_price
+	uses_maintenance = yes 
+	price_multiplier = {
+		if = {
+			#nothing happens during a power struggle
+			limit = {
+				international_organization_has_leader = no
+			}
+			value = 0
+		}
+		else = {
+			every_international_organization_member = {
+				limit = { 
+					not = { is_leader_of_international_organization = root }
+				}
+				add = monthly_income_trade_and_tax
+			}
+			multiply = 0.08
+		}
+	}
+	proportion_for_payer = {
+		add = {
+			desc = "union_of_utrecht_treasury"
+			value = monthly_income_trade_and_tax
+		}
+	}
+	proportion_for_payee = {
+		add = {
+			desc = "union_of_utrecht_treasury"
+			value = 1
+		}
+	}
+}

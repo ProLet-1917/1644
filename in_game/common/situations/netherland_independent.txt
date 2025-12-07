@@ -279,9 +279,9 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 				has_owner = yes
 				NOT = {
 					OR = {
-						owner ?= NED
-						#owner ?= HOL
-						owner ?= SPA
+						owner ?= c:NED
+						#owner ?= c:HOL
+						owner ?= c:SPA
 						owner ?= {
 							is_subject_or_below_of = c:NED
 						}
@@ -332,9 +332,9 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 			limit = {
 				NOT = {
 					OR = {
-						owner ?= NED
-						#owner ?= HOL
-						owner ?= SPA
+						owner ?= c:NED
+						#owner ?= c:HOL
+						owner ?= c:SPA
 						owner ?= {
 							is_subject_or_below_of = c:NED
 						}
