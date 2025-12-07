@@ -7,8 +7,9 @@ qng_1644_banner_army.1 = {
 	
 
 	# 描述：清初旗军开局部队，迁移多尔衮或以君主为统领。
-	# 兵力构成：八旗骑兵约 24,000（80 骑营）、红夷炮约 3,200（8 炮营）、步营约 35,000（35 步营）、火器营约 15,000（15 火器营）。
-	# 指挥官：优先让 character:chi_dorgon 归国并担任主力部队统帅，若不存在则使用统治者。
+	# 兵力构成（调整后）：常备军规模大幅减少，主要依靠征召八旗骑兵
+	# 征召兵：大量八旗骑兵可通过征召系统获得（levy_a_banner_cavalry）
+	# 指挥官：优先让 character:chi_dorgon 担任主力部队统帅，若不存在则使用统治者。
 
 	immediate = {
 		if = {
@@ -30,9 +31,27 @@ qng_1644_banner_army.1 = {
 			location:shenyang ?= {
 				if = {
 					limit = { owner = root }
-					# 满蒙八旗主力骑兵：100 * 200 = 20000 人
+					#25 营（4 门/营）
 					while = {
-						count = 100
+						count = 25
+						create_sub_unit_with_owner = {
+							type = a_red_cannon
+							owner = root
+							origin = this
+							experience = 90
+						}
+					}
+					while = {
+						count = 10
+						create_sub_unit_with_owner = {
+							type = a_ujen_cooha
+							owner = root
+							origin = this
+							experience = 90
+						}
+					}
+					while = {
+						count = 20
 						create_sub_unit_with_owner = {
 							type = a_banner_cavalry
 							owner = root
@@ -40,44 +59,7 @@ qng_1644_banner_army.1 = {
 							experience = 100
 						}
 					}
-					# 红夷炮随军：8 营（2 门/营）≈ 16 门 ≈ 800 人
-					while = {
-						count = 8
-						create_sub_unit_with_owner = {
-							type = a_red_cannon
-							owner = root
-							origin = this
-							experience = 100
-						}
-					}
-					# 汉军步兵与旗丁：55 * 1000 = 55000 人（35 长枪、15 火器、5 骑兵）
-					while = {
-						count = 35
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_pikemen
-							owner = root
-							origin = this
-							experience = 100
-						}
-					}
-					while = {
-						count = 5
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_musketeers
-							owner = root
-							origin = this
-							experience = 100
-						}
-					}
-					while = {
-						count = 5
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_cavalry
-							owner = root
-							origin = this
-							experience = 100
-						}
-					}
+
 					if = {
 						limit = { exists = scope:qng_start_commander }
 						random_unit_in_location = {

@@ -1,0 +1,55 @@
+﻿starting_technology_level = 0
+
+government = {
+	type = tribe
+	heir_selection = tribal_oldest_male 
+
+	aristocracy_vs_plutocracy = -60
+	centralization_vs_decentralization = 60
+	traditionalist_vs_innovative = -50
+	spiritualist_vs_humanist = -50
+	serfdom_vs_free_subjects = 30
+	mercantilism_vs_free_trade = 50
+	belligerent_vs_conciliatory = 60
+	quality_vs_quantity = -20
+	offensive_vs_defensive = 30
+	land_vs_naval = -60
+	capital_economy_vs_traditional_economy = 100
+	individualism_vs_communalism = 60
+	outward_vs_inward = 30
+	sinicized_vs_unsinicized = 10
+	parliament = {
+		parliament_type = assembly
+	}
+
+	laws = {
+		marriage_law = polygyny
+		heir_religion_law = heir_same_religion
+	}
+
+	privilege = {
+		#nobles
+		nobles_land_rights
+		noble_marriage_rights
+		
+		#clergy
+		clerical_advisory_council
+		clergy_enforced_unity
+		clergy_strengthen_faith
+
+		#burghers
+		market_fairs
+		formal_guilds
+		building_roads_rights
+				
+		#peasants
+		allow_hunting
+		peasants_allowed_weapons_privilege
+		peasants_free_peasantry
+		peasant_owns_their_food
+
+		tribes_tribal_levies
+		tribes_allow_gatherings
+	}
+	
+}

@@ -1,0 +1,136 @@
+﻿ven_venetian_thalassocracy = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = VEN
+	}
+	global_merchant_power = 0.1
+	requires = trade_advance_age_of_trad
+}
+
+venetian_arsenal_advance = {
+	age = age_1_traditions
+	potential = { 
+		has_or_had_tag = VEN 
+	}
+	unlock_building = venetian_arsenal
+	requires = ven_venetian_thalassocracy
+}
+
+##############################
+
+ven_stato_da_mar = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = VEN
+	}
+	trade_efficiency = small_trade_efficiency_bonus
+	requires = renaissance_advance
+}
+
+ven_venetian_palaces = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = VEN
+	}
+	requires = renaissance_court
+	unlock_building = venetian_palaces
+}
+
+ven_gothic_architecture = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = VEN
+	}
+	requires = ven_venetian_palaces
+	global_urban_build_buildings_cost = -0.1
+}
+
+ven_ship_mounted_gunpowder_weapons = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = VEN
+	}
+	navy_galley_power = 0.15
+	requires = regiment_reinforcement_speed_renaissance
+}
+
+##############################
+
+ven_printing_industry = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = VEN
+	}
+	diplomatic_reputation = diplomatic_reputation_mild_bonus
+	requires = diplomatic_training
+}
+
+ven_state_inquisition = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = VEN
+	}
+	counter_espionage = 0.33
+	requires = crown_power_advance_discovery
+}
+
+ven_magistrato_alla_sanita = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = VEN
+	}
+	global_disease_resistance = 0.1
+	requires = print_culture
+}
+
+ven_venetian_painting = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = VEN
+	}
+	cultural_tradition_modifier = 0.2
+	requires = improved_book_binding
+}
+
+##############################
+
+ven_naval_conscription = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = VEN
+	}
+	navy_maintenance_cost = -0.2
+	requires = assault_ability_reformation
+}
+
+ven_venetian_school_of_music = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = VEN
+	}
+	cultural_influence_modifier = 0.25
+	requires = imperial_ambitions
+}
+
+ven_mixed_naval_tactics = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = VEN
+	}
+	requires = correct_box_advance_reformation
+	navy_galley_power = 0.1
+	navy_heavy_ship_power = 0.1
+}
+
+##############################
+
+ven_provveditori_ai_beni_inculti = {
+	age = age_5_absolutism
+	potential = {
+		has_or_had_tag = VEN
+	}
+	global_monthly_food_modifier = 0.1
+	requires = cork_stoppers
+}
+
+##############################

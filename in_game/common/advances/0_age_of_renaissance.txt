@@ -1,0 +1,164 @@
+﻿#####################################
+# Renaissance
+#####################################
+renaissance_advance = {
+	age = age_1_traditions
+	icon = renaissance_advance
+	
+	cultural_influence_modifier = 0.15
+	cultural_tradition_modifier = 0.10
+	global_stone_output_modifier = 0.1
+	government_reform_slots = 1
+	government_size = 1
+	chancery_cap_level = 1
+	global_crown_estate_power = 0.10
+	power_projection = 5
+	global_life_expectancy = 3
+	global_disease_resistance = 0.05
+	cultures_capacity = 1
+	
+	has_cultural_maintenance = yes
+	num_possible_artists = 1
+	allow_children = no
+	
+	unlock_building = theater
+	unlock_building = art_school
+	unlock_building = university
+	unlock_law = education_elites_law
+	unlock_government_reform = national_assemblies
+	unlock_law = nobles_rights_laws
+	
+	ai_weight = { add = 1 }
+
+	depth = 0
+	
+
+}
+
+#####################################
+# Banking
+#####################################
+
+
+banking_advance = {
+	age = age_1_traditions
+	icon = banking_advance
+		
+	bank_interest = -0.02
+	total_loan_capacity_modifier = 0.5
+	naval_range = 250
+	trade_range = 500
+	colonial_range = 250
+	minting_inflation_threshold = 0.01
+	global_pop_promotion_speed_modifier = 0.1
+	ship_repair_at_sea = 0.05
+	ship_repair_at_sea_to_max_strength = 0.3
+	global_maritime_presence_modifier = 0.1
+	diplomatic_range_modifier = 0.33
+	spy_network_construction = 0.1
+	exploration_preparation_time_modifier = -0.1
+	starting_technology_level = 3
+	
+	unlock_diplomacy = { supportrebels }
+	unlock_diplomacy = { infiltrate_administration }
+	unlock_building = pound_lock_canal_infrastructure
+	unlock_building = counting_house
+	unlock_building = dock
+	unlock_building = protected_harbor
+	unlock_building = entrepot
+	unlock_law = bureaucracy_law
+	unlock_cabinet_action = pop_promote_action
+	unlock_unit = n_early_carrack
+	unlock_unit = n_barque
+	unlock_unit = n_hulk
+	
+	ai_preference_tags = {
+		exploration
+	}
+	
+	ai_weight = { add = 1 }
+
+	depth = 0
+}
+
+###############################
+# Professional Armies
+###############################
+professional_armies_advance = {
+	age = age_1_traditions
+	icon = professional_armies_advance
+			
+	army_maintenance_cost = -0.10
+	military_tactics = 0.25
+	regiment_recruit_speed = 0.2
+	regiment_reinforcement_speed = 0.1
+	supply_depot_capacity = 25
+	correct_box_chance = 0.1
+	
+	unlock_ability = drill_army
+	unlock_building = gun_smith
+	unlock_building = armory
+	unlock_building = coastal_fort
+	unlock_building = cannon_maker
+	unlock_building = slave_center
+	unlock_unit = a_handgonners
+	unlock_unit = a_men_at_arms
+	unlock_levy = levy_a_men_at_arms
+	unlock_unit = a_crossbowmen
+	unlock_unit = a_houfnice
+	unlock_unit = a_cavalrymen
+	unlock_unit = a_heavy_cavalrymen
+	unlock_unit = a_late_crusader_knights
+	unlock_levy = levy_late_crusader_knights
+	unlock_unit = a_supply_carts
+	unlock_law = recruitment_law
+	ai_weight = { add = 1 }
+	depth = 0
+
+
+}
+
+###########################
+# The always allow tree
+##############################
+renaissance_development = {
+	age = age_1_traditions
+	icon = offensive_army
+	
+	embrace_institution_cost_modifier = -0.10
+	revoke_privilege_cost_modifier = -0.05
+	improve_relation_impact = 0.10
+	subject_loyalty = 5
+	land_morale = 0.25
+	naval_morale = 0.25
+	subject_opinions = 10
+	grant_privilege_cost_modifier = -0.1
+	global_max_rgo_size_modifier = 0.10
+	global_monthly_food_modifier = 0.10
+	war_no_cb_cost_modifier = -0.1
+	global_nobles_max_literacy = 10
+	global_burghers_max_literacy = 10
+	global_clergy_max_literacy = 10
+	land_morale_recovery = 0.01
+	merchant_power_from_maritime = 0.025
+	global_max_rgo_size_modifier_in_non_rural = 0.1
+	city_upgrade_cost_modifier = -0.1
+	town_upgrade_cost_modifier = -0.1
+	blockade_efficiency = 0.1
+	global_devastation_recovery = 0.005
+	navy_initiative = 0.2
+	army_initiative = 0.2
+	change_policy_cost_modifier = -0.05
+	diplomatic_annexation_cost = -0.1
+	global_rgo_build_time = -0.1
+	navy_repair_cost = -0.05
+	global_construction_speed = 0.1
+	
+	unlock_levy = levy_a_peasant_levy
+	unlock_unit = n_mediterrannean_galley
+	
+	ai_weight = { add = 1 }
+
+
+	depth = 0
+}

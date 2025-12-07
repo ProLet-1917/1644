@@ -1,0 +1,357 @@
+ situation_panel = {
+
+	blockoverride "situation_panel_image" {
+		using = two_countries_header_template
+	
+		blockoverride "FirstCountryContext" {
+			datacontext = "[GetCountry('NED')]"
+		}
+
+		blockoverride "SecondCountryContext" {
+			datacontext = "[GetCountry('SPA')]"
+		}
+
+		# blockoverride "history_button_anchor" {}
+
+		blockoverride "first_character_portrait_anchor" {
+			parentanchor = bottom|left
+		}
+
+		blockoverride "second_character_portrait_anchor" {
+			parentanchor = bottom|right
+		}
+
+		blockoverride "character_religion_visibility" {
+			visible = no
+		}
+
+		blockoverride "character_name_maximumsize" {
+			maximumsize = { 270 -1 }
+		}
+
+		blockoverride "country_header_extra" {
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				margin = { 10 10 }
+				spacing = 8
+
+				expand = {}
+			}
+		}
+	}
+
+	##################################### MAIN CONTENT #####################################
+
+	# ACTIONS
+	blockoverride "situation_panel_main_content" {
+
+		situation_card_expandable = {
+			blockoverride "header_button_onclick" {
+				onclick = "[LateralView.Vars.Toggle( 'requirements_toggled' )]"
+			}
+			blockoverride "header_text" {
+				text = "END_REQUIREMENTS"
+			}
+			blockoverride "header_icon" {
+				texture = "gfx/interface/icons/disasters/end_requirements_green.dds"
+			}
+			blockoverride "bottom_content" {
+				TooltipRequirementsList = {
+					textcontext = "[SituationView.GetActiveSituation.GetSituation.GetEndConditions]"
+				}
+			}
+			blockoverride "visible_hint" {}
+			blockoverride "onaction_hint" {
+				action_tooltip = {
+					title = "OPEN_HINT"
+					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_netherland_independent')]"
+				}
+			}
+			blockoverride "bottom_content_onclick" {
+				visible = "[LateralView.Vars.Exists( 'requirements_toggled' )]"
+			}
+			blockoverride "icon_replace_visible_yes" {
+				visible = "[LateralView.Vars.Exists( 'requirements_toggled' )]"
+			}
+			blockoverride "icon_replace_visible_not" {
+				visible = "[Not(LateralView.Vars.Exists( 'requirements_toggled' ))]"
+			}
+		}
+
+		situation_fancy_two_line_card = {
+			block "card_datacontext" { }	#We need two countries here, not one, so we will have to define both individually
+			
+			#Left - Netherland!
+			blockoverride "left_flag_properties" {
+				datacontext = "[GetCountry('NED')]"
+				visible = "[Country.IsValid]"
+			}
+			blockoverride "left_bottom_flag" { }
+			blockoverride "left_top_text" {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				visible = "[GetCountry('NED').IsValid]"
+				text = "[GetCountry('NED').GetName]"
+			}
+			blockoverride "left_bottom_text" {
+				text = "NED_STR_TT"
+				tooltipwidget = {
+					ContextualTooltipType = {
+						blockoverride "title_icon" {
+							country_flag_small = {
+								datacontext = "[GetCountry('NED')]"
+							}
+						}
+						blockoverride "title_text" {
+							text = "RELATIVE_MILITARY_STRENGTH_NED_TT_TITLE"
+						}
+						blockoverride "tooltip_content" {
+							TooltipStringPairList = {
+								blockoverride "block_title" {
+									visible = no
+								}
+								textcontext = "RELATIVE_MILITARY_STRENGTH_NED_TT_ARMY_STRENGTH"
+							}							
+						}						
+					}
+				}
+			}
+			
+			#Right - Spain!
+			blockoverride "right_flag_properties" {
+				datacontext = "[GetCountry('SPA')]"
+				visible = "[Country.IsValid]"
+			}
+			blockoverride "right_bottom_flag" {	}
+			blockoverride "right_top_text" {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				visible = "[GetCountry('SPA').IsValid]"
+				text = "[GetCountry('SPA').GetName]"
+			}
+			blockoverride "right_bottom_text" { 
+				text = "SPA_STR_TT"
+				tooltipwidget = {
+					ContextualTooltipType = {
+						blockoverride "title_icon" {
+							country_flag_small = {
+								datacontext = "[GetCountry('SPA')]"
+							}
+						}
+						blockoverride "title_text" {
+							text = "RELATIVE_MILITARY_STRENGTH_SPA_TT_TITLE"
+						}
+						blockoverride "tooltip_content" {
+							TooltipStringPairList = {
+								blockoverride "block_title" {
+									visible = no
+								}
+								textcontext = "RELATIVE_MILITARY_STRENGTH_SPA_TT_ARMY_STRENGTH"
+							}							
+						}						
+					}
+				}
+			}
+    		}
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			maximumsize = { 510 -1 }
+			margin = {8 15}
+
+			# block "scroll_card_progress_bar_bg" {
+				using = bg_scroll_card_header
+				blockoverride "card_header_pattern" {}
+			# }
+
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				maximumsize = { 100 -1 }
+				spacing = 5
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					block "left_top_text" {			
+						raw_text = "Netherlands"
+					}
+					align = center|nobaseline
+					default_format = "#yellow_titles"
+				}
+				item = {
+					country_flag_small = {
+						datacontext = [MakeScope.GetCountry('NED')]
+					}
+				}
+			}
+
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 5
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					maximumsize = {300 -1}
+					block "central_top_text" {			
+						raw_text = "STRENGTH_COMPARE_TT"
+					}
+					align = center|nobaseline
+					default_format = "#high"
+				}
+				progressbar = {
+					layoutpolicy_horizontal = expanding
+					size = { -1 20 }
+					using = morale_progressbar_bar
+					block "alt_scroll_card_progress_bar_value"
+					{
+						value = "[Multiply_float(FixedPointToFloat(GetCountry('NED').GetRelativeMilitaryStrength(GetCountry('SPA').Self)), '(float)100')]"
+					}
+				}
+			}
+		
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				maximumsize = { 100 -1 }
+				spacing = 5
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					block "right_top_text" {			
+						raw_text = "Spain"
+					}
+					align = center|nobaseline
+					default_format = "#yellow_titles"
+				}
+				icon = {
+
+				}
+			}
+		}
+	}
+
+	blockoverride "situation_panel_main_content_bottom" {
+
+		situation_side_cards = {
+
+			#Netherland side
+			blockoverride "left_header_content" {
+				icon = {
+					blockoverride "left_header_icon" { }
+				}
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					align = center|nobaseline
+					text = "NED_NED_SIDE_TT"
+					blockoverride "left_header_text" { }
+				}
+				expand = {}
+			}
+			blockoverride "left_bottom_content" {
+				scrollarea = {
+					layoutpolicy_horizontal = expanding
+					size = { -1 150 }
+					scrollbarpolicy_horizontal = always_off
+					scrollbar_vertical = {
+						using = Scrollbar_Vertical
+					}
+					
+					scrollwidget = {
+						dynamicgridbox = {
+							datamodel = "[GetGlobalList('country_list_of_netherland_sides')]"
+							datacontext = "[Scope.Country]"
+							visible = "[DataModelHasItems(GetGlobalList('country_list_of_netherland_sides'))]"
+							position = { 0 10 }
+							flipdirection = yes
+							datamodel_wrap = 6
+							maxhorizontalslots = 6
+							item = {
+								country_flag_small = {
+									datacontext = [Scope.GetCountry]
+								}
+							}
+						}
+					}
+				}
+			}
+
+			#Spain side
+			blockoverride "right_header_content" {
+				icon = {
+					blockoverride "right_header_icon" { }
+				}
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					align = center|nobaseline
+					text = "NED_SPA_SIDE_TT"
+					blockoverride "left_header_text" { }
+				}
+				expand = {}
+			}
+			blockoverride "right_bottom_content" {
+				scrollarea = {
+					layoutpolicy_horizontal = expanding
+					size = { -1 150 }
+					scrollbarpolicy_horizontal = always_off
+					scrollbar_vertical = {
+						using = Scrollbar_Vertical
+					}
+					
+					scrollwidget = {
+						dynamicgridbox = {
+							datamodel = "[GetGlobalList('country_list_of_the_spain_sides')]"
+							datacontext = "[Scope.Country]"
+							visible = "[DataModelHasItems(GetGlobalList('country_list_of_the_spain_sides'))]"
+							position = { 0 10 }
+							flipdirection = yes
+							datamodel_wrap = 6
+							maxhorizontalslots = 6
+							item = {
+								country_flag_small = {
+									datacontext = [Scope.GetCountry]
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		situation_card_header_button = {
+			blockoverride "card_header_button_header_content" {
+				icon = {
+					blockoverride "left_header_icon" { }
+				}
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					align = center|nobaseline
+					text = "NED_NEUTRAL_TT"
+					blockoverride "left_header_text" { }
+				}
+				expand = {}
+			}
+			blockoverride "bottom_content" {
+				scrollarea = {
+					layoutpolicy_horizontal = expanding
+					size = { -1 100 }
+					scrollbarpolicy_horizontal = always_off
+					scrollbar_vertical = {
+						using = Scrollbar_Vertical
+					}
+					
+					scrollwidget = {
+						dynamicgridbox = {
+							datamodel = "[GetGlobalList('country_list_of_dutches')]"
+							datacontext = "[Scope.Country]"
+							visible = "[DataModelHasItems(GetGlobalList('country_list_of_dutches'))]"
+							position = {14 20}
+							flipdirection = yes
+							datamodel_wrap = 15
+							maxhorizontalslots = 15
+							item = {
+								country_flag_small = {
+									datacontext = [Scope.GetCountry]
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,49 @@
+﻿monthly_country_pulse = {
+	on_actions = {
+		on_netherland_netural_list
+		on_netherland_netherland_side_list
+		on_netherland_spain_side_list
+		on_netherland_control_brussels 
+	}
+}
+
+on_netherland_netural_list = {
+	trigger = {
+		has_global_variable_list = country_list_of_dutches
+	}
+	effect = {
+		netherland_independent_netural_country_list_monthly_check_effect = yes
+	}
+}
+
+on_netherland_netherland_side_list = {
+	trigger = {
+		has_global_variable_list = country_list_of_netherland_sides
+	}
+	effect = {
+		netherland_independent_netherland_country_list_monthly_check_effect = yes
+	}
+}
+
+on_netherland_spain_side_list = {
+	trigger = {
+		has_global_variable_list = country_list_of_the_spain_sides
+	}
+	effect = {
+		netherland_independent_spain_country_list_monthly_check_effect = yes
+	}
+}
+
+on_netherland_control_brussels = {
+	trigger = {
+		location:brussels ?= {
+			c:NED ?= owner
+		}
+		situation:netherland_independent = { is_active = yes }
+	}
+	effect = {
+		c:NED = {
+			trigger_event_non_silently = netherland_independent.9
+		}
+	}
+}

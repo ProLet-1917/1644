@@ -29,9 +29,9 @@ cxi_1644_start_army.1 = {
 					limit = { owner = root }
 					# 西步军：8000 人
 					while = {
-						count = 5
+						count = 3
 						create_sub_unit_with_owner = {
-							type = a_1644_chinese_pikemen
+							type = a_1644_chinese_zhanbing
 							owner = root
 							origin = this
 							experience = 80
@@ -41,21 +41,13 @@ cxi_1644_start_army.1 = {
 					while = {
 						count = 5
 						create_sub_unit_with_owner = {
-							type = a_1644_chinese_pikemen
+							type = a_1644_chinese_zhanbing
 							owner = root
 							origin = this
 							experience = 80
 						}
 					}
-					while = {
-						count = 0
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_musketeers
-							owner = root
-							origin = this
-							experience = 80
-						}
-					}
+
 					# 西营骑兵：5 * 300 = 1500 人
 					while = {
 						count = 5
@@ -66,7 +58,7 @@ cxi_1644_start_army.1 = {
 							experience = 80
 						}
 					}
-					# 红夷炮：1 营（2 门/营）≈ 2 门 ≈ 100 人
+					# 红夷炮：1 营(3 门/营) ≈ 3 门 ≈ 150 人
 					while = {
 						count = 1
 						create_sub_unit_with_owner = {

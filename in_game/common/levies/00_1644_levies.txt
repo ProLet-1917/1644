@@ -1,0 +1,89 @@
+﻿# 1644 模组：八旗征召兵（最高优先级）
+# 
+# 八旗骑兵征召兵 - 只能由清朝（QNG）的八旗阶层人口征召
+# 
+# 注意：根据 pop_types/05_special_estates_pops.txt 的定义，
+# 八旗人口属于 nobles/soldiers/tribesmen 类型，但通过 banners_estate 条件区分。
+# 八旗人口需要满足：tag = QNG 且 culture = jurchen_culture 或 manchu_culture
+# 
+# 文件命名为00开头，确保最先加载，获得最高优先级
+# 根据readme说明：super specialized units with many conditions are at the very top
+# 这个征召兵有最严格的条件（国家+文化+pop类型），应该优先匹配
+
+# 八旗甲喇骑兵 - 精锐骑兵（优先级更高）
+# 来源：满洲八旗、蒙古八旗的贵族和部落民（更精锐）
+levy_banner_cavalry = {
+	size = 0.1
+	unit = levy_banner_cavalry
+	
+	# 限制只能由清朝使用
+	country_allow = {
+		tag = QNG
+	}
+	
+	# 骑兵优先从贵族和部落民中征召（条件更严格）
+	allowed_pop_type = nobles
+	allowed_pop_type = tribesmen
+	allowed_pop_type = soldiers
+	
+	# 文化要求：女真、通古斯、蒙古文化组
+	allow = {
+		OR = {
+			culture = { has_culture_group = culture_group:jurchen_group }
+			culture = { has_culture_group = culture_group:tungusic_group }
+			culture = { has_culture_group = culture_group:mongolian_group }
+		}
+	}
+}
+
+# 八旗甲喇步兵 - 普通步兵（优先级较低）
+# 来源：满洲八旗、蒙古八旗的士兵、农民、市民阶层
+levy_banner_jalan = {
+	size = 0.1
+	unit = levy_banner_jalan
+	
+	# 限制只能由清朝使用
+	country_allow = {
+		tag = QNG
+	}
+	
+	allowed_pop_type = peasants
+	allowed_pop_type = burghers
+	allowed_pop_type = laborers
+	allowed_pop_type = slave
+	
+	# 文化要求：女真、通古斯、蒙古文化组
+	allow = {
+		OR = {
+			culture = { has_culture_group = culture_group:jurchen_group }
+			culture = { has_culture_group = culture_group:tungusic_group }
+			culture = { has_culture_group = culture_group:mongolian_group }
+		}
+	}
+}
+
+# 乌真超哈 - 汉军八旗（重兵）
+levy_ujen_cooha = {
+	size = 0.05
+	unit = a_ujen_cooha
+	
+	# 限制只能由清朝使用
+	country_allow = {
+		tag = QNG
+	}
+	
+	allowed_pop_type = soldiers
+	allowed_pop_type = nobles
+	allowed_pop_type = peasants
+	allowed_pop_type = laborers
+	allowed_pop_type = burghers
+
+	
+	# 文化要求：汉族文化和朝鲜文化
+	allow = {
+		OR = {
+			culture = { has_culture_group = culture_group:chinese_group }
+			culture = culture:korean_culture
+		}
+	}
+}

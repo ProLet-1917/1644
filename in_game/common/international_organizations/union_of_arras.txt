@@ -1,0 +1,181 @@
+﻿union_of_arras = {
+	
+	has_target = no
+	unique = yes
+	expel_members_who_are_targets_of_other_members = no
+
+	show_leave_message = no
+	#custom_name = union_of_arras_name
+	has_leader_country = yes
+	leader_type = country
+	leader_change_method = none
+	disband_if_no_leader = yes
+
+	join_offensive_wars_always = {
+		custom_tooltip = {
+			text = independence_movement_join_war_always_tt
+			scope:target ?= {
+				this = root.international_organization_target
+			}
+		}
+	}
+	
+	join_defensive_wars_always = {
+		always = yes
+	}
+
+	create_visible_trigger = {
+		always = no
+		#is_situation_active = situation:netherland_independent
+	}
+
+	invite_visible_trigger = {
+		always = yes
+	}
+
+	can_declare_war = {
+		always = yes
+	}
+
+	gives_military_access_to_all_when_at_war = yes
+
+	can_join_trigger = { 
+		capital = {
+			OR = {
+				area = area:friesland_area
+				area = area:holland_area
+				area = area:brabant_area
+				area = area:wallonia_area
+				area = area:flanders_area
+				province_definition = province_definition:lower_artois_province
+				province_definition = province_definition:upper_artois_province
+			}
+		}
+		NOT = {
+			is_subject_or_below_of = c:NED
+			is_member_of_international_organization = international_organization:union_of_utrecht
+		}
+	}
+
+	auto_leave_trigger = {
+		OR = {
+			is_rebel_country = yes
+			NOT = {
+				this = c:SPA
+				#this = c:ARS
+				is_subject_or_below_of = c:SPA
+   				capital = {
+					OR = {
+						area = area:friesland_area
+						area = area:holland_area
+						area = area:brabant_area
+						area = area:wallonia_area
+						area = area:flanders_area
+						province_definition = province_definition:lower_artois_province
+						province_definition = province_definition:upper_artois_province
+					}
+				}
+			}
+		}
+	}
+
+	can_leave_trigger = {
+		NOT = { 
+			is_subject_of = scope:recipient.leader_country 
+			this = c:SPA
+		}
+	}
+
+	ai_desire_to_join = {
+		value = -40
+		if = {
+			limit = { is_protestant = yes }
+			add = {
+				desc = "WE_ARE_PROTESTANT"
+				value = -30
+			}
+		}
+		else_if = {
+			limit = { religion = religion:catholic }
+			add = {
+				desc = "WE_ARE_CATHOLIC"
+				value = 30
+			}
+		}
+		add = {
+			value = {
+				value = modifier:bias_for_tolerant_policies
+				multiply = -1
+			}
+		}
+		subtract = {
+			desc = "game_concept_tax_base"
+			value = {
+				value = country_tax_base
+				multiply = 3
+			}
+		}
+		add = {
+			desc = "game_concept_opinion"
+			value = {
+				value = "root.opinion(scope:actor)"
+				divide = 4      # max ±50 at ±200 opinion
+			}
+		}
+		add = {
+			desc = "game_concept_diplomatic_reputation"
+			value = {
+				value = "scope:actor.modifier:diplomatic_reputation"
+				multiply = 0.5  # +0.5 reasons per 1 diprep
+			}
+		}
+	}
+
+	ai_desire_to_allow_new_member = {
+		value = 50
+		if = {
+			limit = { is_protestant = yes }
+			add = {
+				desc = "WE_ARE_PROTESTANT"
+				value = -40
+			}
+		}
+		else_if = {
+			limit = { religion = religion:catholic }
+			add = {
+				desc = "WE_ARE_CATHOLIC"
+				value = 40
+			}
+		}
+		add = {
+			value = {
+				value = modifier:bias_for_tolerant_policies
+				multiply = -1
+			}
+		}
+		add = {
+			desc = "game_concept_tax_base"
+			value = {
+				value = country_tax_base
+				multiply = -3
+			}
+		}
+		add = {
+			desc = "game_concept_opinion"
+			value = {
+				value = "root.opinion(scope:actor)"
+				divide = 2      # max ±100 at ±200 opinion
+			}
+		}
+		add = {
+			desc = "game_concept_diplomatic_reputation"
+			value = {
+				value = "scope:actor.modifier:diplomatic_reputation"
+				multiply = 0.5  # +0.5 reasons per 1 diprep
+			}
+		}
+	}
+
+}
+
+	

@@ -1,2592 +1,1361 @@
-current_age = age_4_reformation
-# own_control_core
-# own_control_integrated
-# own_control_conquered
-# own_control_colony
-# own_core
-# own_conquered
-# own_integrated
-# own_colony
-# control_core
-# control
-# our_cores_conquered_by_others
+#current_age = age_1_traditions
+# 以下是省份控制和核心类型的简要注释：
+# own_control_core        # 本国完全控制的核心省份
+# own_control_integrated  # 本国已整合省份
+# own_control_conquered   # 本国占领的非核心省份
+# own_control_colony      # 本国控制的殖民地省份
+# own_core                # 本国拥有的核心省份集合
+# own_conquered           # 本国征服省份集合
+# own_integrated          # 本国已整合省份集合
+# own_colony              # 本国殖民地省份集合
+# control_core            # 控制但非本国的核心省份
+# control                 # 控制的省份（总称）
+# our_cores_conquered_by_others # 我方核心被他国占领
 countries = {
 	countries = {
+###Japan
+	JAP = { #Shogunate
+		own_control_core = {
+			inaka hanawa hiraka_aomori shimokita kamikita
+			nukanobu kazuno kuji iwate shimohei
+			kitahei kamihei shiwa hienuki esashi
+			waga isawa iwai kesen motoyoshi
+			oshika tome kurihara kami kurokawa
+			miyagi natori hiyama hinai akita
+			toshima yamamoto yuri kamiura yuza
+			murayama tagawa kitamogami minamimogami nishiokitama
+			higashiokitama uda_mutsu katta namekata shineha
+			naraha iwaki kikuta takano shirakawa
+			tamura shinobu adachi yama_jap
+			kawanuma oonuma kitaaizu minamiaizu iwase
+			asaka iwafune nutari nishikanbara higashikanbara
+			koshi kariwa minamiuonuma kitauonuma higashikubiki
+			nishikubiki kamo sawata niikawa nei
+			tonami imizu noto_jap fugeshi suzu
+			kaga nomi sakai_echizen nakaoono imadate
+			nyuu tsuruga onyuu nasu shioya
+			kawachi haga tsuga tone
+			seta nitta gunma usui kanra
+			agatsuma saku takai minochi sarashina
+			azumi chiisagata suwa tsukama kiso
+			kamiina shimoina yoshiki kamioono mashita
+			ena minokamo gujou mugi toki
+			katagata ikeda fuwa_mino azai echi
+			gamou kouka kurita takashima taga
+			kuji_kanto naka ibaraki kashima niihari
+			tsukuba katori chiba katsushika souma
+			musa isumi awa makuda ichihara
+			saitama adachi_kanto toshima_kanto tachibana tama
+			chichibu hiki hanzawa kamakura ashigara
+			aikou tsuru yamanashi yatsushiro koma_kai
+			tagata kamo_izu suntou fuji ihara
+			abe shida kitou shuuchi toyoda
+			fuchi hoi shitara kamo_mikawa hekikai
+			aichi niwa nakajima mie suzuka
+			ichishi watarai taki shima kitamuro
+			iga yoshino takaichi nara kuse
+			kyoto izumi osaka kawabe muko
+			kuwada funai ikaruga hikami kasa
+			yosa keta_tajima yabu futakata houmi
+			takakusa kume_houki aimi hino ou
+			oki izumo iishi nita nima
+			oochi naka_iwami mino kanoashi akashi
+			taka shikama akou shisou wake
+			joutou tsudaka kume mashima tomata
+			aita asakuchi katou_bicchuu kaya aka
+			ashida sera miyoshi eso nuka
+			kameshi toyota saeki yamagata takata
+			aki kuga kumage tsuno saba
+			yoshiki_suou asa toyoura ootsu abu
+			higashimuro minamimuro nishimuro hidaka kaisou
+			naga mitoyo aya miki awaji
+			nakata awa_shikoku naka_shikoku kaifu mima
+			miyoshi_shikoku nii ochi iyo ukena
+			kita_shikoku uwa aki_shikoku kami_shikoku nagaoka
+			tosa agawa takaoka hata kamiagata
+			shimoagata onga mikasa asakura hakata
+			saga higashimatsuura kishima takaki nishisonogi
+			higashisonogi nishimatsuura minamimatsuura mii kamitsuma
+			nakatsu mike usa kunisaki hayami
+			ooita amabe oono_bungo naoiri kusu
+			hita aso koushi tamana akita_kumamoto
+			mashiki yatsushiro_higo amakusa kuma ashikita
+			higashiusuki nishiusuki koyu naka_hyuuga nishimorokata
+			kitamorokata miyazaki minamimorokata soo kimotsuki
+			oosumi kuwabara hishikari gomu kumage_oosumi
+			satsuma kagoshima ibusuki izumi_satsuma	
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+			ruler = random
+			
+			reforms = {
+				shogunate
+			}
+			laws = {
+				censorship = limited_censorship
+				maritime_law = protect_trade_routes
+				piracy_law = anti_piracy_policy
+			}
+		}
+		accepted_cultures = {
+			tougoku_culture
+			touhoku_culture
+			kyushu_culture
+		}
+		country_rank = rank_empire
+		capital = toshima_kanto
+		starting_technology_level = 4
+	}
+	
+	##Touhoku
+	ANU = {
+		type = pop
 
-		#Japan
-		JAP = {
-			own_control_core = {
-				inaka
-				hanawa
-				hiraka_aomori
-				shimokita
-				kamikita
-				nukanobu
-				kazuno
-				kuji
-				iwate
-				shimohei
-				kitahei
-				kamihei
-				shiwa
-				hienuki
-				esashi
-				waga
-				isawa
-				iwai
-				kesen
-				motoyoshi
-				oshika
-				tome
-				kurihara
-				kami
-				kurokawa
-				miyagi
-				natori
-				hiyama
-				hinai
-				akita
-				toshima
-				yamamoto
-				yuri
-				kamiura
-				yuza
-				murayama
-				tagawa
-				kitamogami
-				minamimogami
-				nishiokitama
-				higashiokitama
-				uda_mutsu
-				katta
-				namekata
-				shineha
-				naraha
-				iwaki
-				kikuta
-				takano
-				shirakawa
-				tamura
-				date_loc
-				shinobu
-				adachi
-				yama_jap
-				kawanuma
-				oonuma
-				kitaaizu
-				minamiaizu
-				iwase
-				asaka
-				iwafune
-				nutari
-				nishikanbara
-				higashikanbara
-				koshi
-				kariwa
-				minamiuonuma
-				kitauonuma
-				higashikubiki
-				nishikubiki
-				kamo
-				sawata
-				niikawa
-				nei
-				tonami
-				imizu
-				noto_jap
-				fugeshi
-				suzu
-				kaga
-				nomi
-				sakai_echizen
-				nakaoono
-				imadate
-				nyuu
-				tsuruga
-				onyuu
-				nasu
-				shioya
-				kawachi
-				haga
-				tsuga
-				ashikaga_loc
-				tone
-				seta
-				nitta
-				gunma
-				usui
-				kanra
-				agatsuma
-				saku
-				takai
-				minochi
-				sarashina
-				azumi
-				chiisagata
-				suwa
-				tsukama
-				kiso
-				kamiina
-				shimoina
-				yoshiki
-				kamioono
-				mashita
-				ena
-				minokamo
-				gujou
-				mugi
-				toki
-				katagata
-				ikeda
-				fuwa_mino
-				azai
-				echi
-				gamou
-				kouka
-				kurita
-				takashima
-				taga
-				kuji_kanto
-				naka
-				ibaraki
-				kashima
-				niihari
-				tsukuba
-				katori
-				chiba
-				katsushika
-				souma
-				musa
-				isumi
-				awa
-				makuda
-				ichihara
-				saitama
-				adachi_kanto
-				toshima_kanto
-				tachibana
-				tama
-				chichibu
-				hiki
-				hanzawa
-				kamakura
-				ashigara
-				aikou
-				tsuru
-				yamanashi
-				yatsushiro
-				koma_kai
-				tagata
-				kamo_izu
-				suntou
-				fuji
-				ihara
-				abe
-				shida
-				kitou
-				shuuchi
-				toyoda
-				fuchi
-				hoi
-				shitara
-				kamo_mikawa
-				hekikai
-				aichi
-				niwa
-				nakajima
-				mie
-				suzuka
-				ichishi
-				watarai
-				taki
-				shima
-				kitamuro
-				iga
-				yoshino
-				takaichi
-				nara
-				kuse
-				kyoto
-				izumi
-				osaka
-				kawabe
-				muko
-				kuwada
-				funai
-				ikaruga
-				hikami
-				kasa
-				yosa
-				keta_tajima
-				yabu
-				futakata
-				houmi
-				takakusa
-				kume_houki
-				aimi
-				hino
-				ou
-				oki
-				izumo
-				iishi
-				nita
-				nima
-				oochi
-				naka_iwami
-				mino
-				kanoashi
-				akashi
-				taka
-				shikama
-				akou
-				shisou
-				wake
-				joutou
-				tsudaka
-				kume
-				mashima
-				tomata
-				aita
-				asakuchi
-				katou_bicchuu
-				kaya
-				aka
-				ashida
-				sera
-				miyoshi
-				eso
-				nuka
-				kameshi
-				toyota
-				saeki
-				yamagata
-				takata
-				aki
-				kuga
-				kumage
-				tsuno
-				saba
-				yoshiki_suou
-				asa
-				toyoura
-				ootsu
-				abu
-				higashimuro
-				minamimuro
-				nishimuro
-				hidaka
-				kaisou
-				naga
-				mitoyo
-				aya
-				miki
-				awaji
-				nakata
-				awa_shikoku
-				naka_shikoku
-				kaifu
-				mima
-				miyoshi_shikoku
-				nii
-				ochi
-				iyo
-				ukena
-				kita_shikoku
-				uwa
-				aki_shikoku
-				kami_shikoku
-				nagaoka
-				tosa
-				agawa
-				takaoka
-				hata
-				kamiagata
-				shimoagata
-				onga
-				mikasa
-				asakura
-				hakata
-				saga
-				higashimatsuura
-				kishima
-				takaki
-				nishisonogi
-				higashisonogi
-				nishimatsuura
-				minamimatsuura
-				mii
-				kamitsuma
-				nakatsu
-				mike
-				usa
-				kunisaki
-				hayami
-				ooita
-				amabe
-				oono_bungo
-				naoiri
-				kusu
-				hita
-				aso
-				koushi
-				tamana
-				akita_kumamoto
-				mashiki
-				yatsushiro_higo
-				amakusa
-				kuma
-				ashikita
-				higashiusuki
-				nishiusuki
-				koyu
-				naka_hyuuga
-				nishimorokata
-				kitamorokata
-				miyazaki
-				minamimorokata
-				soo
-				kimotsuki
-				oosumi
-				kuwabara
-				hishikari
-				gomu
-				kumage_oosumi
-				satsuma
-				kagoshima
-				ibusuki
-				izumi_satsuma
-			}
-			include = "japanese_clan"
-			government = {
-				ruler_term = {
-					character = jap_ashikaga_takauji
-					start_date = 1336.9.20
-					regnal_number = 1
-				}
-				ruler = jap_ashikaga_takauji
-				reforms = {
-					shogunate
-				}
-				laws = {
-					censorship = limited_censorship
-					maritime_law = protect_trade_routes
-					piracy_law = anti_piracy_policy
-				}
-			}
-			variables = {
-				data = {
-					{
-						flag = "supports_northern_court"
-						data = {
-							type = boolean
-							identity = 1
-						}
-					}
-				}
-			}
-			accepted_cultures = {
-				tougoku_culture
-				touhoku_culture
-				kyushu_culture
-			}
-			country_rank = rank_empire
-			capital = kyoto
-			flag = "ASK"
-			country_name = "ASK"
-			color = map_ASK
+		add_pops_from_locations = {
+			fukushima kamiiso kameda hiyama_hokkaido kayabe nishi
+			yamakoshi futoro setana shimamaki suttsu isoya iwanai furubira yoichi
+			abuta shiraoi chitose yuufutsu
+			sapporo ishikari yuubari sorachi atsuta uryuu nakakamikawa
+			saru niikappu shizunai urakawa samani
+			hiroo toubui kasai tokachi minamikamikawa katou minaminakagawa
+			shiranuka kushiro akan_loc akkeshi kawakami_hokkaido minamiabashiri ashoro
+			nemuro notsuke shibetsu hanasaki
+			shari abashiri tokoro monbetsu esashi_hokkaido souya rishiri
+			teshio kitanakagawa kitakamikawa tomamae rumoi
+			kunashiri etorofu furubetsu shana shibetoro uruppu shimushiru onnekotan paramushiru shumushu
+			guohuo boluohe kushunkotan nayoro
 		}
 
------------------------- Mesoamerica ----------------------------
+		discovered_regions = {
+			japan_region
+		}
 
 
-		#-------------------------- Tibet and Xinjiang ----------------------------
-		# MGE = {
-		# 	#The Mongol Empire
-		# 	type = army
-		# 	own_control_core = {
-		# 	}
-		# 	our_cores_conquered_by_others = {
-		# 	}
-		# 	starting_technology_level = 3
-		# 	include = "expl_mongols"
-		# 	include = "eurasian_horde_not_present"
-		# 	government = {
-		# 		ruler_term = {
-		# 			character = genghis_khan
-		# 			start_date = 1206.1.1
-		# 			end_date = 1227.8.25
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = tolui_borjigin
-		# 			start_date = 1227.8.25
-		# 			end_date = 1229.9.13
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = chg_ogedei_borjigin
-		# 			start_date = 1229.9.13
-		# 			end_date = 1241.12.11
-		# 			regnal_number = 1
-		# 		}
-		# 		type = steppe_horde
-		# 		heir_selection = tribal_oldest_male
-		# 	}
-		# 	country_rank = rank_empire
-		# 	court_language = mongolian_language
-		# 	capital = karakorum
-		# }
-		# OIR = {
-		# 	type = army
-		# 	own_control_core = {
-		# 	}
-		# 	our_cores_conquered_by_others = {
-		# 	}
-		# 	starting_technology_level = 3
-		# 	include = "expl_mongols"
-		# 	include = "eurasian_horde_not_present"
-		# 	government = {
-		# 		type = steppe_horde
-		# 		heir_selection = tribal_oldest_male
-		# 	}
-		# 	country_rank = rank_empire
-		# 	court_language = mongolian_language
-		# 	capital = karakorum
-		# }
-		# EVE = {
-		# 	#Even
-		# 	type = pop
-		# 	add_pops_from_locations = {
-		# 		chumikan
-		# 		avlayakan
-		# 		ayan
-		# 		enken
-		# 		ul_ya
-		# 		arka
-		# 		okam
-		# 		ushki
-		# 		tauisk
-		# 		aimchan
-		# 	}
-		# 	discovered_regions = {
-		# 		east_siberia_region
-		# 		korea_region
-		# 		manchuria_region
-		# 		mongolia_region
-		# 		north_china_region
-		# 		west_siberia_region
-		# 	}
-		# 	include = "asia_tribe"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# YKG = {
-		# 	#(Kolyma) Ykaghir
-		# 	type = pop
-		# 	add_pops_from_locations = {
-		# 		magadan
-		# 		palatka
-		# 		madaun
-		# 		atka
-		# 		bakhapcha
-		# 		chalbukhan
-		# 		omchug
-		# 		omchak
-		# 		moi_urusta
-		# 		kulu
-		# 		tokichan
-		# 		orotuk
-		# 		burkhaia
-		# 		iagodnoie
-		# 		neksikan
-		# 		kadykchan
-		# 		burkand_ya
-		# 		delyankir
-		# 		artyk
-		# 		pobeda
-		# 		ust_nera
-		# 		debin
-		# 		myakit
-		# 		tala
-		# 		kupka
-		# 		orotukan
-		# 		seymchan
-		# 		buiunda
-		# 		kontrand_ya
-		# 	}
-		# 	discovered_regions = {
-		# 		east_siberia_region
-		# 		korea_region
-		# 		manchuria_region
-		# 		mongolia_region
-		# 		north_china_region
-		# 		west_siberia_region
-		# 	}
-		# 	include = "asia_tribe"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# KYK = {
-		# 	#Koryak
-		# 	type = pop
-		# 	add_pops_from_locations = {
-		# 		atargan
-		# 		yamsk
-		# 		brokhovo
-		# 		takhtoyamsk
-		# 		merenga
-		# 		omchikan
-		# 		buksunda
-		# 		kushka
-		# 		evenksk
-		# 		chivitkino
-		# 		gizhiga
-		# 		paren
-		# 		manily
-		# 		kamenskoie
-		# 		oklan
-		# 		talovka
-		# 		achaivayam
-		# 		apuka
-		# 		pakhachi
-		# 		khalino
-		# 	}
-		# 	discovered_regions = {
-		# 		east_siberia_region
-		# 		korea_region
-		# 		manchuria_region
-		# 		mongolia_region
-		# 		north_china_region
-		# 		west_siberia_region
-		# 	}
-		# 	include = "asia_tribe"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		#-------------------------- South East Asia ----------------------------
-		# KHM = {
-		# 	#Khmer
-		# 	own_control_core = {
-		# 		angkor
-		# 		angkor_borei
-		# 		angkor_knong
-		# 		apui
-		# 		ban_don
-		# 		ban_phone
-		# 		banlung
-		# 		banon
-		# 		banteay_chhmar
-		# 		battambang
-		# 		beng_mealea
-		# 		buriram
-		# 		champasak
-		# 		chhmuoh_thmei
-		# 		damrey_trom
-		# 		doh_kromum
-		# 		idkabue
-		# 		indrapura_khmer
-		# 		ishanapura
-		# 		kampong_saom
-		# 		koh_ker
-		# 		koh_kong
-		# 		khorat
-		# 		kracheh
-		# 		longvek
-		# 		lumphat
-		# 		kampong_roessei
-		# 		kon_tum
-		# 		khukhan
-		# 		kramuon_sa
-		# 		mahaxay
-		# 		muang_mang
-		# 		muang_phalan
-		# 		muang_phin
-		# 		muang_ta_oi
-		# 		muang_tam
-		# 		mueng_thung_yai
-		# 		nokor_reach_seyma
-		# 		nong_bok
-		# 		or_keo
-		# 		peam
-		# 		phanom_rung
-		# 		phimai
-		# 		phnom_penh
-		# 		phnom_santuk
-		# 		phnom_srok
-		# 		phsar_dek
-		# 		phutthaisong
-		# 		pouthi_loeu
-		# 		prathai_saman
-		# 		preah_ko
-		# 		prasat_andet
-		# 		prasat_don_an
-		# 		prasat_don_kau
-		# 		prasat_pram_lovet
-		# 		prasat_thong_lang
-		# 		preah_khan_kompong_svay
-		# 		preah_vihear
-		# 		prey_nokor
-		# 		pursat
-		# 		rattanaburi
-		# 		rong_damrel
-		# 		sampheak_borak
-		# 		samxay
-		# 		sandan
-		# 		sangkha
-		# 		savannakhet
-		# 		sdok_kok_thom
-		# 		sepon
-		# 		song_be
-		# 		srey_sarchhor
-		# 		srok_khleang
-		# 		stung_treng
-		# 		suwannaphum
-		# 		tboung_khmum
-		# 		thuan_binh
-		# 		toek_khmau
-		# 		tonle_kong
-		# 		tuol_ta_mouk
-		# 		thung_samrit
-		# 		vat_phou
-		# 		vyadhapura
-		# 	}
-		# 	include = "south_east_asia_monarchy"
-		# 	government = {
-		# 		ruler = khm_trasak_paem
-		# 		#Ruler History
-		# 		ruler_term = {
-		# 			character = khm_jayavarman_vii
-		# 			start_date = 1181.1.1
-		# 			end_date = 1218.1.1
-		# 			regnal_number = 7
-		# 		}
-		# 		ruler_term = {
-		# 			character = khm_indravarman_ii
-		# 			start_date = 1218.1.1
-		# 			end_date = 1243.1.1
-		# 			regnal_number = 2
-		# 		}
-		# 		ruler_term = {
-		# 			character = khm_jayavarman_viii
-		# 			start_date = 1243.1.1
-		# 			end_date = 1295.1.1
-		# 			regnal_number = 8
-		# 		}
-		# 		ruler_term = {
-		# 			character = khm_indravarman_iii
-		# 			start_date = 1295.1.1
-		# 			end_date = 1308.1.1
-		# 			regnal_number = 3
-		# 		}
-		# 		ruler_term = {
-		# 			character = khm_indrajayavarman
-		# 			start_date = 1308.1.1
-		# 			end_date = 1327.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = khm_jayavarman_ix
-		# 			start_date = 1327.1.1
-		# 			end_date = 1336.1.1
-		# 			regnal_number = 9
-		# 		}
-		# 		#societal values
-		# 		centralization_vs_decentralization = -10
-		# 		spiritualist_vs_humanist = -40
-		# 		quality_vs_quantity = 30
-		# 		offensive_vs_defensive = -30
-		# 		land_vs_naval = 0
-		# 		capital_economy_vs_traditional_economy = 90
-		# 		individualism_vs_communalism = 40
-		# 		outward_vs_inward = 40
-		# 		laws = {
-		# 			education_masses_law = uneducated_masses_education
-		# 			mining_law = nobles_mining_law
-		# 		}
-		# 	}
-		# 	tolerated_cultures = {
-		# 		kuy_culture
-		# 		bru_culture
-		# 		bahnar_culture
-		# 		degar_culture
-		# 		sedang_culture
-		# 	}
-		# 	country_rank = rank_empire
-		# 	capital = angkor
-		# }
-		# CHA = {
-		# 	#Champa
-		# 	own_control_core = {
-		# 		vijaya
-		# 		amaravati
-		# 		aryaru
-		# 		bal_cattinon
-		# 		bong_son
-		# 		camp_po_thit
-		# 		cat_tien
-		# 		chan_bo
-		# 		dak_lak
-		# 		di_dinh
-		# 		dien_ban
-		# 		ha_va_nguon
-		# 		indrapura
-		# 		kampong_sraka_trey
-		# 		kauthara
-		# 		panduranga
-		# 		samriddhipuri
-		# 		simhapura
-		# 		kon_klor
-		# 		ia
-		# 		bang_keng
-		# 	}
-		# 	our_cores_conquered_by_others = {
-		# 	}
-		# 	include = "vietnamese_champa_monarchy"
-		# 	government = {
-		# 		ruler_term = {
-		# 			character = cha_indravarman_v
-		# 			start_date = 1257.1.1
-		# 			end_date = 1288.1.1
-		# 			regnal_number = 2
-		# 		}
-		# 		ruler_term = {
-		# 			character = cha_jaya_simhavarman_iii
-		# 			start_date = 1288.1.1
-		# 			end_date = 1307.1.1
-		# 			regnal_number = 3
-		# 		}
-		# 		ruler_term = {
-		# 			character = cha_jaya_simhavarman_iv
-		# 			start_date = 1307.1.1
-		# 			end_date = 1312.1.1
-		# 			regnal_number = 4
-		# 		}
-		# 		ruler_term = {
-		# 			character = cha_simhavarman
-		# 			start_date = 1312.1.1
-		# 			end_date = 1318.1.1
-		# 			regnal_number = 3
-		# 		}
-		# 		ruler_term = {
-		# 			character = cha_jaya_ananda
-		# 			start_date = 1318.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler = cha_jaya_ananda
-		# 		heir_selection = matrilineal_salic_law
-		# 		centralization_vs_decentralization = 40
-		# 		spiritualist_vs_humanist = 30
-		# 		mercantilism_vs_free_trade = 25
-		# 		offensive_vs_defensive = 30
-		# 		land_vs_naval = 40
-		# 		capital_economy_vs_traditional_economy = -10
-		# 		laws = {
-		# 			education_masses_law = uneducated_masses_education
-		# 		}
-		# 		privilege = {
-		# 			#Nobles
-		# 			primacy_of_nobility
-		# 			noble_leaders_only
-		# 			#Burghers
-		# 			allow_trade_center_sponsorship
-		# 			commercial_advisory_council
-		# 			market_fairs
-		# 			sponsor_maritime_contracts
-		# 			#Clergy
-		# 			clergy_in_administration
-		# 			clerical_advisory_council
-		# 			clergy_literacy_rights
-		# 			#Peasants
-		# 			peasants_allowed_weapons_privilege
-		# 		}
-		# 	}
-		# 	country_rank = rank_kingdom
-		# 	tolerated_cultures = {
-		# 		vietnamese_culture
-		# 		bahnar_culture
-		# 		degar_culture
-		# 		sedang_culture
-		# 	}
-		# 	capital = vijaya
-		# }
-		# DAI = {
-		# 	#Dai Viet
-		# 	own_control_core = {
-		# 		thang_long
-		# 		anbang
-		# 		quang_yen
-		# 		van_don
-		# 		bac_thai_nguyen
-		# 		bao_lac
-		# 		binh_lam
-		# 		binh_nguyen
-		# 		bo_hai_khau
-		# 		cam_hoa
-		# 		chi_la
-		# 		co_dang
-		# 		da_giang
-		# 		dai_man
-		# 		dien_chau
-		# 		hoan_chau
-		# 		hong_chau
-		# 		khet_theu
-		# 		khoai_chau
-		# 		ky_son
-		# 		lang_giang
-		# 		lang_son
-		# 		loc_chau
-		# 		mat_chau
-		# 		muang_sam_tai
-		# 		muong
-		# 		nam_sach
-		# 		nga_lac
-		# 		nghe_ann
-		# 		nhat_nam
-		# 		quan_da_chau
-		# 		quang_uyen
-		# 		quy_chau
-		# 		quynh_lam
-		# 		tam_dai
-		# 		thai_binh
-		# 		thai_nguyen
-		# 		thanh_hoa
-		# 		that_nguyen
-		# 		thien_quan
-		# 		thien_truong
-		# 		tho_hoang
-		# 		thu_vat
-		# 		trang_an
-		# 		tuyen_hoa
-		# 		tuyen_quang
-		# 		van_kiep
-		# 		vo_nhai
-		# 		vu_ninh
-		# 		# own_control_integrated, but culture accepted
-		# 		phon_nha
-		# 		vrddha_ratnapura
-		# 		visnupura
-		# 		amarendrapura
-		# 	}
-		# 	own_control_integrated = {
-		# 	}
-		# 	our_cores_conquered_by_others = {
-		# 	}
-		# 	include = "vietnamese_champa_monarchy"
-		# 	government = {
-		# 		ruler_term = {
-		# 			character = dai_canh
-		# 			start_date = 1226.1.11
-		# 			end_date = 1258.3.30
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = dai_hoang
-		# 			start_date = 1258.3.30
-		# 			end_date = 1278.11.8
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = dai_kham
-		# 			start_date = 1278.11.8
-		# 			end_date = 1293.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = dai_thuyen
-		# 			start_date = 1293.1.1
-		# 			end_date = 1314.4.3
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = dai_manh
-		# 			start_date = 1314.4.3
-		# 			end_date = 1329.3.15
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = dai_vuong
-		# 			start_date = 1329.3.15
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler = dai_vuong
-		# 		centralization_vs_decentralization = -35
-		# 		mercantilism_vs_free_trade = -20
-		# 		sinicized_vs_unsinicized = -25
-		# 		laws = {
-		# 			education_masses_law = uneducated_masses_education
-		# 		}
-		# 		privilege = {
-		# 			#Nobles
-		# 			primacy_of_nobility
-		# 			elaborate_court_ceremonies
-		# 			#Burghers
-		# 			allow_trade_center_sponsorship
-		# 			#Clergy
-		# 			clergy_literacy_rights
-		# 			clergy_in_administration
-		# 			clergy_land_rights
-		# 			#Peasants
-		# 			peasants_allowed_weapons_privilege
-		# 			peasants_autonomous_villages
-		# 		}
-		# 	}
-		# 	tolerated_cultures = {
-		# 		cham_culture
-		# 		muong_culture
-		# 		zhuang_culture
-		# 		dai_culture
-		# 	}
-		# 	country_rank = rank_kingdom
-		# 	capital = thang_long
-		# }
-		# SUK = {
-		# 	#Sukhothai
-		# 	own_control_core = {
-		# 		sukhothai
-		# 		ban_pa_la_ta
-		# 		chai_nat
-		# 		chakangrao
-		# 		mae_sot
-		# 		mueng_bang_yom
-		# 		mueng_rat
-		# 		nakhon_chum
-		# 		nakhon_sawan
-		# 		nakhon_thai
-		# 		phayuhakhiri
-		# 		phrae
-		# 		phraek
-		# 		phuenchapura
-		# 		song_khwae
-		# 		sra_luang
-		# 		sri_satchanalai
-		# 		sri_thep
-		# 		tak
-		# 		thung_yang
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	government = {
-		# 		ruler_term = {
-		# 			character = suk_si_inthrathit
-		# 			start_date = 1238.1.1
-		# 			end_date = 1270.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = suk_ban_mueang
-		# 			start_date = 1270.1.1
-		# 			end_date = 1279.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = suk_ram_khamhaeng
-		# 			start_date = 1279.1.1
-		# 			end_date = 1298.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = suk_loe_thai
-		# 			start_date = 1298.1.1
-		# 			end_date = 1323.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = suk_ngua_nam_thum
-		# 			start_date = 1323.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler = suk_ngua_nam_thum
-		# 	}
-		# 	accepted_cultures = {
-		# 		lawa_culture
-		# 	}
-		# 	tolerated_cultures = {
-		# 		karen_culture
-		# 	}
-		# 	country_rank = rank_kingdom
-		# 	capital = sukhothai
-		# }
-		# LNA = {
-		# 	#Lan Na
-		# 	own_control_core = {
-		# 		chiang_mai
-		# 		chiang_dao
-		# 		chiang_khong
-		# 		chiang_rai
-		# 		chiang_saen
-		# 		chom_khao_maneerat
-		# 		hot
-		# 		lampang
-		# 		lamphun
-		# 		mae_hong_son
-		# 		muang_jam
-		# 		muang_luang_phukha
-		# 		muang_wang
-		# 		muang_yuam
-		# 		mueng_thoen
-		# 		omkoi
-		# 		sariang
-		# 		vieng_phouka
-		# 		wiang_fang
-		# 		mong_hpayak
-		# 		mong_hsat
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	government = {
-		# 		ruler = lna_phayu
-		# 	}
-		# 	accepted_cultures = {
-		# 		lawa_culture
-		# 	}
-		# 	tolerated_cultures = {
-		# 		karen_culture
-		# 		lao_culture
-		# 		tai_lu_culture
-		# 	}
-		# 	country_rank = rank_duchy
-		# 	capital = chiang_mai
-		# }
-		# LAV = {
-		# 	#Lavo
-		# 	own_control_core = {
-		# 		dong_lakhon
-		# 		dong_si_maha_phot
-		# 		lopburi
-		# 		muang_khuan_kra_buri
-		# 		phanat
-		# 		prachinburi
-		# 		rayong
-		# 		sa_kaeo
-		# 		saraburi
-		# 	}
-		# 	our_cores_conquered_by_others = {
-		# 		ayodhya
-		# 	}
-		# 	include = "south_east_asia_monarchy"
-		# 	capital = lopburi
-		# 	government = {
-		# 		ruler_term = {
-		# 			character = adh_narai
-		# 			start_date = 1082.1.1
-		# 			end_date = 1087.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = lav_kraisornrat
-		# 			start_date = 1106.1.1
-		# 			end_date = 1150.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = lav_sri_thammasokkarat
-		# 			start_date = 1150.1.1
-		# 			end_date = 1191.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = khm_indravarman_ii
-		# 			start_date = 1191.1.1
-		# 			end_date = 1218.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = lav_kraisornrat_ii
-		# 			start_date = 1218.1.1
-		# 			end_date = 1283.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = lav_king_phraek_si_racha
-		# 			start_date = 1283.1.1
-		# 			end_date = 1319.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = lav_son_sai
-		# 			start_date = 1319.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler = lav_son_sai
-		# 		laws = {
-		# 			education_masses_law = uneducated_masses_education
-		# 		}
-		# 	}
-		# 	accepted_cultures = {
-		# 		mon_culture
-		# 	}
-		# 	tolerated_cultures = {
-		# 		khmer_culture
-		# 		lawa_culture
-		# 	}
-		# }
-		# ADH = {
-		# 	#Lavo
-		# 	own_control_core = {
-		# 		ayodhya
-		# 	}
-		# 	our_cores_conquered_by_others = {
-		# 		dong_lakhon
-		# 		dong_si_maha_phot
-		# 		lopburi
-		# 		muang_khuan_kra_buri
-		# 		phanat
-		# 		prachinburi
-		# 		rayong
-		# 		sa_kaeo
-		# 		saraburi
-		# 	}
-		# 	include = "south_east_asia_monarchy"
-		# 	capital = ayodhya
-		# 	government = {
-		# 		ruler_term = {
-		# 			character = adh_narai
-		# 			start_date = 1082.1.1
-		# 			end_date = 1087.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = adh_luang
-		# 			start_date = 1087.1.1
-		# 			end_date = 1111.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = adh_sai_nam_peung
-		# 			start_date = 1111.1.1
-		# 			end_date = 1165.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = adh_dhammikaraja
-		# 			start_date = 1165.1.1
-		# 			end_date = 1205.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = adh_uthong
-		# 			start_date = 1205.1.1
-		# 			end_date = 1253.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = adh_chaisen
-		# 			start_date = 1253.1.1
-		# 			end_date = 1289.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = adh_suwanracha
-		# 			start_date = 1289.1.1
-		# 			end_date = 1301.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = adh_thammaracha
-		# 			start_date = 1301.1.1
-		# 			end_date = 1310.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler_term = {
-		# 			character = adh_boromracha
-		# 			start_date = 1310.1.1
-		# 			regnal_number = 1
-		# 		}
-		# 		ruler = adh_boromracha
-		# 		laws = {
-		# 			education_masses_law = uneducated_masses_education
-		# 		}
-		# 	}
-		# 	accepted_cultures = {
-		# 		lawa_culture
-		# 		mon_culture
-		# 	}
-		# }
-		# PEG = {
-		# 	#Pegu / Hanthawaddy
-		# 	own_control_core = {
-		# 		martaban
-		# 		dagon
-		# 		dala
-		# 		danubyu
-		# 		donwun
-		# 		haungtharaw
-		# 		hinthada
-		# 		hmawbi
-		# 		hpa_an
-		# 		ingapu
-		# 		kawliya
-		# 		kyainseikgyi
-		# 		kyaukkyi
-		# 		maubin
-		# 		mawlamyine
-		# 		myanaung
-		# 		myaungmya
-		# 		naungyo
-		# 		ngaputaw
-		# 		papun
-		# 		pathein
-		# 		pegu
-		# 		phyu
-		# 		sittaung
-		# 		thanlyin
-		# 		thaton
-		# 		twante
-		# 		ye
-		# 	}
-		# 	include = "south_east_asia_monarchy"
-		# 	government = {
-		# 		ruler = peg_binnya_e_law
-		# 		laws = {
-		# 			education_masses_law = uneducated_masses_education
-		# 		}
-		# 	}
-		# 	tolerated_cultures = {
-		# 		karen_culture
-		# 	}
-		# 	country_rank = rank_duchy
-		# 	capital = martaban
-		# }
-		# SNG = {
-		# 	#Singapura
-		# 	own_control_core = {
-		# 		temasek
-		# 		tanjungpinang
-		# 		anambas_islands
-		# 		daik
-		# 		natuna_islands
-		# 		subi_islands
-		# 	}
-		# 	include = "indonesia_monarchy"
-		# 	government = {
-		# 		ruler = sng_sang_nila_utama
-		# 	}
-		# 	tolerated_cultures = {
-		# 		orang_laut_culture
-		# 	}
-		# 	capital = temasek
-		# }
-		# LIG = {
-		# 	#Ligor
-		# 	own_control_core = {
-		# 		thammarat
-		# 		chaiya
-		# 		ko_samui
-		# 		kraburi
-		# 		krabi
-		# 		mardelong
-		# 		prasong
-		# 		satingpura
-		# 		sichon
-		# 		singgora
-		# 		takua_pa
-		# 		tha_tong
-		# 		thalang
-		# 		trang
-		# 		wiang_sa
-		# 	}
-		# 	include = "south_east_asia_monarchy"
-		# 	tolerated_cultures = {
-		# 		orang_asli_culture
-		# 		malay_culture
-		# 	}
-		# 	capital = thammarat
-		# 	government = {
-		# 		ruler = random
-		# 		laws = {
-		# 			education_masses_law = uneducated_masses_education
-		# 		}
-		# 	}
-		# }
-		# LGK = {
-		# 	#Langkasuka
-		# 	own_control_core = {
-		# 		pattani
-		# 		dungun
-		# 		kampung_buloh
-		# 		kelantan
-		# 		menara
-		# 		paka
-		# 		trengganu
-		# 		yala
-		# 	}
-		# 	own_control_integrated = {
-		# 		gerik
-		# 	}
-		# 	include = "south_east_asia_monarchy"
-		# 	capital = pattani
-		# 	government = {
-		# 		ruler = random
-		# 		laws = {
-		# 			education_masses_law = uneducated_masses_education
-		# 		}
-		# 	}
-		# 	tolerated_cultures = {
-		# 		orang_asli_culture
-		# 	}
-		# }
-		# KED = {
-		# 	#Kedah
-		# 	own_control_core = {
-		# 		kedah
-		# 		bujang
-		# 		perlis
-		# 	}
-		# 	include = "expl_indonesia_muslim"
-		# 	include = "expl_indonesia"
-		# 	include = "indonesia_muslim_monarchy_no_mandala"
-		# 	government = {
-		# 		ruler = ked_ibrahim_shah
-		# 		laws = {
-		# 			sharia_law = shafii_policy
-		# 		}
-		# 	}
-		# 	religious_school = shafii_school
-		# 	government = {
-		# 		mysticism_vs_jurisprudence = 20
-		# 	}
-		# 	capital = kedah
-		# }
-		# PAH = {
-		# 	#Pahang
-		# 	own_control_core = {
-		# 		pahang
-		# 		bera
-		# 		gelanggi
-		# 		jerantut
-		# 		johor_lama
-		# 		kuala_lipis
-		# 		kuantan
-		# 		malacca
-		# 		muar
-		# 		pulai
-		# 		rantau_panjang
-		# 	}
-		# 	include = "indonesia_monarchy"
-		# 	tolerated_cultures = {
-		# 		orang_asli_culture
-		# 	}
-		# 	capital = pahang
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# SPN = {
-		# 	#Suphanburi
-		# 	own_control_core = {
-		# 		suphanburi
-		# 		chaisri
-		# 		kanchanaburi
-		# 		ratchaburi
-		# 		wang_pho
-		# 	}
-		# 	include = "south_east_asia_monarchy"
-		# 	accepted_cultures = {
-		# 		mon_culture
-		# 	}
-		# 	tolerated_cultures = {
-		# 		karen_culture
-		# 		lawa_culture
-		# 	}
-		# 	capital = suphanburi
-		# 	government = {
-		# 		ruler = spn_borommarachathirat
-		# 		laws = {
-		# 			education_masses_law = uneducated_masses_education
-		# 		}
-		# 	}
-		# }
-		# ARK = {
-		# 	#Arakan
-		# 	own_control_core = {
-		# 		launggyet
-		# 		akyab
-		# 		ann
-		# 		gwa
-		# 		maungdaw
-		# 		minbya
-		# 		mrauk_u
-		# 		ramree
-		# 		talak_burma
-		# 		taungup
-		# 		thandwe
-		# 		weithali
-		# 		chittagong
-		# 		chakaria
-		# 		kaptai
-		# 		ramu
-		# 		sitakunda
-		# 	}
-		# 	include = "south_east_asia_monarchy"
-		# 	government = {
-		# 		ruler = ark_min_hti
-		# 		laws = {
-		# 			education_masses_law = uneducated_masses_education
-		# 		}
-		# 	}
-		# 	tolerated_cultures = {
-		# 		chakma_culture
-		# 	}
-		# 	capital = launggyet
-		# }
-		# PIN = {
-		# 	#Pinya
-		# 	own_control_core = {
-		# 		pinya
-		# 		htilin
-		# 		kanna
-		# 		kyaukse
-		# 		laungshe
-		# 		lewe
-		# 		magway
-		# 		mindon
-		# 		mingin
-		# 		myede
-		# 		ngape
-		# 		nwamethin
-		# 		nyaungyan
-		# 		pagan
-		# 		pakokku
-		# 		pindale
-		# 		pinle
-		# 		pyinmana
-		# 		sagu
-		# 		salay
-		# 		salin
-		# 		saw
-		# 		talok
-		# 		taungdwingyi
-		# 		thayet
-		# 		wetwin
-		# 	}
-		# 	tolerated_cultures = {
-		# 		zo_culture
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	government = {
-		# 		ruler = pin_uzana
-		# 	}
-		# 	country_rank = rank_kingdom
-		# 	capital = pinya
-		# }
-		# SAG = {
-		# 	#Sagaing
-		# 	own_control_core = {
-		# 		sagaing
-		# 		amyint
-		# 		butalin
-		# 		dhipaesyin
-		# 		moksobo
-		# 		myedu
-		# 		ngasingu
-		# 		takawng
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	government = {
-		# 		ruler = sag_anawrahta
-		# 	}
-		# 	capital = sagaing
-		# }
-		# TNG = {
-		# 	#Toungoo
-		# 	own_control_core = {
-		# 		taungoo
-		# 		thandaunggyi
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	government = {
-		# 		ruler = tng_kayin_ba
-		# 	}
-		# 	capital = taungoo
-		# }
-		# BPR = {
-		# 	#Prome
-		# 	own_control_core = {
-		# 		pyay
-		# 		paungde
-		# 		tharrawaddy
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	government = {
-		# 		ruler = bpr_kyaswa
-		# 	}
-		# 	capital = pyay
-		# }
-		# PHY = {
-		# 	#Phayao
-		# 	own_control_core = {
-		# 		phayao
-		# 		muang_ngao
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	government = {
-		# 		ruler = phy_phraya_kham_rue
-		# 	}
-		# 	capital = phayao
-		# }
-		# PUA = {
-		# 	#Pua / Nan
-		# 	own_control_core = {
-		# 		pua
-		# 		nan
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	government = {
-		# 		ruler = pua_phaya_phakong
-		# 	}
-		# 	capital = pua
-		# }
-		# MUA = {
-		# 	#Muang Sua
-		# 	own_control_core = {
-		# 		muang_sua
-		# 		ban_luang_cheng
-		# 		hongsa
-		# 		muang_et
-		# 		muang_kham
-		# 		muang_lang
-		# 		muang_thaeng
-		# 		muang_xay
-		# 		nam_xuang
-		# 		phongsali
-		# 		phonsavan
-		# 		xam_neua
-		# 	}
-		# 	own_control_integrated = {
-		# 		ban_khon
-		# 		sayniabuli
-		# 		vang_vieng
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	government = {
-		# 		ruler = mua_panya_khamphong
-		# 	}
-		# 	tolerated_cultures = {
-		# 		dai_culture
-		# 		muong_culture
-		# 		tai_lu_culture
-		# 	}
-		# 	country_rank = rank_duchy
-		# 	capital = muang_sua
-		# }
-		# VTN = {
-		# 	#Vientiane
-		# 	own_control_core = {
-		# 		vientiane
-		# 		phon_hong
-		# 		loei
-		# 		chiang_khan
-		# 		dan_sai
-		# 		nong_khay
-		# 		udon_thani
-		# 		nong_bua_lamphu
-		# 		phu_wiang
-		# 		kham_muang
-		# 		khon_kaen
-		# 		mueng_fa_daet
-		# 		muang_nakhon
-		# 		kut_ling
-		# 		muang_nong_han_luang
-		# 		mukdahan
-		# 		pak_huei_lang
-		# 		that_phanom
-		# 		muang_phuan
-		# 		bolikham
-		# 		thoulakhom
-		# 		thakhek
-		# 		keutkeut
-		# 		khamkeut
-		# 		ngoc_ma
-		# 	}
-		# 	own_control_integrated = {
-		# 		muang_khemarat
-		# 		yasothon
-		# 		roi_et
-		# 		chaiyaphum
-		# 		kaset_sombun
-		# 		khon_san
-		# 		mancha_khiri
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# 	tolerated_cultures = {
-		# 		khmu_culture
-		# 		bru_culture
-		# 	}
-		# 	country_rank = rank_duchy
-		# 	capital = vientiane
-		# }
-		# CBK = {
-		# 	#Nguu Hong (Cobra Kingdom) https://en.wikipedia.org/wiki/Ng%C6%B0u_H%E1%BB%91ng
-		# 	own_control_core = {
-		# 		thuan_chau
-		# 		muong_cha
-		# 		muong_luan
-		# 		son_la
-		# 		mang_viet
-		# 		lai_chau
-		# 		thuy_vi
-		# 		van_ban
-		# 		quy_hoa
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# 	tolerated_cultures = {
-		# 		muong_culture
-		# 		zhuang_culture
-		# 	}
-		# 	capital = thuan_chau
-		# }
-		# MYA = {
-		# 	#Mongyang
-		# 	own_control_core = {
-		# 		mongyang
-		# 		monhyin
-		# 		katha
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	capital = monhyin
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# 	accepted_cultures = {
-		# 		kado_culture
-		# 	}
-		# }
-		# MKA = {
-		# 	#Mongkawng
-		# 	own_control_core = {
-		# 		mongkawng
-		# 		myitkyina
-		# 		tarung
-		# 		hukawng
-		# 		maingkwan
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	accepted_cultures = {
-		# 		kado_culture
-		# 	}
-		# 	tolerated_cultures = {
-		# 		naga_culture
-		# 	}
-		# 	capital = mongkawng
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# HKM = {
-		# 	#Hkamti
-		# 	own_control_core = {
-		# 		putao
-		# 		suamprabon
-		# 		injangyang
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	tolerated_cultures = {
-		# 		jingpo_culture
-		# 	}
-		# 	capital = putao
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# MKN = {
-		# 	#Mong Kong
-		# 	own_control_core = {
-		# 		phakant
-		# 		zalon_taung
-		# 		htamanthi
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	accepted_cultures = {
-		# 		kado_culture
-		# 	}
-		# 	tolerated_cultures = {
-		# 		naga_culture
-		# 	}
-		# 	capital = phakant
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# HHP = {
-		# 	#Hsawn Hsup
-		# 	own_control_core = {
-		# 		thaungdut
-		# 		tamu
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	accepted_cultures = {
-		# 		zo_culture
-		# 	}
-		# 	capital = thaungdut
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# HSE = {
-		# 	#Hsenwi
-		# 	own_control_core = {
-		# 		hsenwi
-		# 		kehsi
-		# 		lai_hka
-		# 		lashio
-		# 		mong_yai
-		# 		mongkung
-		# 		mongnawng
-		# 		monghsu
-		# 		muse
-		# 		namhsan
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	government = {
-		# 		ruler = hse_sao_san_noi
-		# 	}
-		# 	tolerated_cultures = {
-		# 		lisu_culture
-		# 		tai_long_culture
-		# 		palaung_culture
-		# 	}
-		# 	capital = hsenwi
-		# }
-		# HSI = {
-		# 	#Hsipaw
-		# 	own_control_core = {
-		# 		hsipaw
-		# 		kyaukme
-		# 		lawksawk
-		# 		monglong
-		# 	}
-		# 	tolerated_cultures = {
-		# 		danu_culture
-		# 		palaung_culture
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	capital = hsipaw
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# MNI = {
-		# 	#Mongnai
-		# 	own_control_core = {
-		# 		mongnai
-		# 		kengkham
-		# 		kengtawng
-		# 		mawkmai
-		# 		mongtung
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	tolerated_cultures = {
-		# 		karen_culture
-		# 	}
-		# 	capital = mongnai
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# MGT = {
-		# 	#Mongmit
-		# 	own_control_core = {
-		# 		mongmit
-		# 		mabein
-		# 		namhkan
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	tolerated_cultures = {
-		# 		palaung_culture
-		# 	}
-		# 	capital = mongmit
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# KAL = {
-		# 	#Kale
-		# 	own_control_core = {
-		# 		kale
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	tolerated_cultures = {
-		# 		zo_culture
-		# 	}
-		# 	capital = kale
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# WNT = {
-		# 	#Wuntho
-		# 	own_control_core = {
-		# 		wuntho
-		# 		htigyaing
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	tolerated_cultures = {
-		# 		kado_culture
-		# 	}
-		# 	capital = wuntho
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# BHM = {
-		# 	#Bhamo
-		# 	own_control_core = {
-		# 		manmaw
-		# 		shwegu
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	tolerated_cultures = {
-		# 		palaung_culture
-		# 	}
-		# 	capital = manmaw
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# KTG = {
-		# 	#Kengtung
-		# 	own_control_core = {
-		# 		kengtung
-		# 		mongping
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_coast"
-		# 	government = {
-		# 		ruler = ktg_sao_lak_hpa
-		# 	}
-		# 	tolerated_cultures = {
-		# 		lahu_culture
-		# 		wa_culture
-		# 		tai_long_culture
-		# 	}
-		# 	capital = kengtung
-		# }
-		# # MLM = {
-		# # 	#Mong Lem
-		# # 	own_control_core = {
-		# # 		mulian
-		# # 		mengdong
-		# # 		matman
-		# # 		pangyang
-		# # 	}
-		# # 	include = "south_east_asia_monarchy_no_mandala_no_coast"
-		# # 	capital = mulian
-		# # 	government = {
-		# # 		ruler = random
-		# # 	}
-		# # 	tolerated_cultures = {
-		# # 		wa_culture
-		# # 	}
-		# # }
-		# WAS = {
-		# 	#Wa
-		# 	type = pop
-		# 	add_pops_from_locations = {
-		# 		musuo
-		# 		mengdong
-		# 		kengtung
-		# 		nam_thing
-		# 		matman
-		# 		pangyang
-		# 		mong_yang
-		# 	}
-		# 	include = "expl_china"
-		# 	include = "asia_tribe"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# JGP = {
-		# 	#Jingpo
-		# 	type = pop
-		# 	add_pops_from_locations = {
-		# 		chibwe
-		# 		putao
-		# 		suamprabon
-		# 		injangyang
-		# 	}
-		# 	include = "expl_china"
-		# 	include = "asia_tribe"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# KRN = {
-		# 	#Karen
-		# 	type = pop
-		# 	add_pops_from_locations = {
-		# 		taunggyi
-		# 		yawnghwe
-		# 		mongpai
-		# 		siri_do
-		# 		ban_pa_la_ta
-		# 		mae_sot
-		# 		mae_hong_son
-		# 		muang_yuam
-		# 		sariang
-		# 		papun
-		# 		kanchanaburi
-		# 		wang_pho
-		# 		myitta
-		# 		mongnai
-		# 		kengtawng
-		# 		lai_hka
-		# 		mawkmai
-		# 		mongtung
-		# 		mongping
-		# 		kengkham
-		# 		lawksawk
-		# 		nyaungyan
-		# 		taungoo
-		# 		lewe
-		# 		nwamethin
-		# 		thandaunggyi
-		# 	}
-		# 	include = "expl_china"
-		# 	include = "asia_tribe"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# MUO = {
-		# 	#Muong
-		# 	type = pop
-		# 	add_pops_from_locations = {
-		# 		mang_viet
-		# 		muang_sam_tai
-		# 		quy_chau
-		# 		mat_chau
-		# 		da_giang
-		# 		muong
-		# 		thang_long
-		# 		thai_binh
-		# 		thien_quan
-		# 		thanh_hoa
-		# 		co_dang
-		# 		nga_lac
-		# 		quan_da_chau
-		# 		trang_an
-		# 	}
-		# 	capital = mang_viet
-		# 	include = "expl_china"
-		# 	include = "asia_tribe"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# ASL = {
-		# 	#Orang Asli
-		# 	type = pop
-		# 	add_pops_from_locations = {
-		# 		beruas
-		# 		manjung
-		# 		satingpura
-		# 		singgora
-		# 		trang
-		# 		gerik
-		# 		bera
-		# 		jerantut
-		# 		kuala_lipis
-		# 		pulai
-		# 		klang
-		# 		kajang
-		# 	}
-		# 	include = "expl_china"
-		# 	include = "asia_tribe"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# ZOO = {
-		# 	#Zo
-		# 	type = pop
-		# 	add_pops_from_locations = {
-		# 		falam
-		# 		hakha
-		# 		thantlang
-		# 		mon
-		# 		lai_lin_pi
-		# 		matupi
-		# 		khalangsha
-		# 		lushai
-		# 		mara_india
-		# 		tedim
-		# 		thada
-		# 		rongmei_naga
-		# 		liangmei
-		# 		chakma
-		# 		karpus_mahal
-		# 		saw
-		# 		taungdwingyi
-		# 		pyinmana
-		# 		kale
-		# 		htilin
-		# 		thayet
-		# 		mindon
-		# 		ingapu
-		# 		myanaung
-		# 		tamu
-		# 		thaungdut
-		# 		ann
-		# 		talak_burma
-		# 		kaptai
-		# 		launggyet
-		# 		weithali
-		# 		salin
-		# 		laungshe
-		# 		ngape
-		# 		sagu
-		# 	}
-		# 	include = "expl_china"
-		# 	include = "asia_tribe"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# ZHU = {
-		# 	#Zhuang
-		# 	type = pop
-		# 	add_pops_from_locations = {
-		# 		anyuan_lianzhou
-		# 		ruxi
-		# 		xiaodong
-		# 		baishan
-		# 		anding_mashan
-		# 		duyang
-		# 		yongshun
-		# 		lingfang
-		# 		shanglin
-		# 		qianjiang_binzhou
-		# 		yining
-		# 		yongfu
-		# 		guishun
-		# 		xiaozhenan
-		# 		zhenan_guishun
-		# 		ningpu
-		# 		yongning_hengzhou
-		# 		qianlong
-		# 		xilong
-		# 		bada
-		# 		ceheng
-		# 		machang
-		# 		zhenfeng
-		# 		maping
-		# 		liucheng
-		# 		wuxian_liuzhou
-		# 		yangshou
-		# 		laibin
-		# 		luorong
-		# 		dayaoshan
-		# 		lipu
-		# 		yangshuo
-		# 		nandan
-		# 		bama
-		# 		donglan
-		# 		zhishan
-		# 		nadi
-		# 		liuzhai
-		# 		xuanhua_nanning
-		# 		langning
-		# 		wuyuan_nanning
-		# 		yishan
-		# 		anhua_huanjiang
-		# 		hechi
-		# 		sien
-		# 		xincheng_xincheng
-		# 		libo
-		# 		rongshui
-		# 		changan
-		# 		luocheng
-		# 		tongdao_rongzhou
-		# 		sicheng
-		# 		xilin
-		# 		wangmu
-		# 		lucheng
-		# 		luodian
-		# 		tongle
-		# 		siming
-		# 		pingxiang_pingxiang
-		# 		shangsi
-		# 		qianlong_siming
-		# 		chongshan
-		# 		longzhou_longzhou
-		# 		mingying
-		# 		doukang
-		# 		guwan
-		# 		laian_tianzhou
-		# 		baise
-		# 		sienzhou
-		# 		tianzhou
-		# 		tangxing
-		# 		guizhou_xunzhou
-		# 		watang
-		# 		annan
-		# 		xinxing_annan
-		# 		xincheng_annan
-		# 		puding
-		# 		guangsuoling
-		# 		dingnan_anshun
-		# 		kangzuo
-		# 		xibao
-		# 		zhenning
-		# 		dushan
-		# 		guizhou_guizhou
-		# 		jinzhu
-		# 		xintian
-		# 		bafan
-		# 		suidong
-		# 		longli
-		# 		weiqing
-		# 		pingyue
-		# 		maxia
-		# 		puan_puan
-		# 		huangcaoba
-		# 		anlong
-		# 		shuixi
-		# 		shuicheng
-		# 		pingba
-		# 		zhijin
-		# 		guangnan
-		# 		bangban
-		# 		boai
-		# 		fuzhou_guangnan
-		# 		zhehong
-		# 		shizong
-		# 		qiubei
-		# 		wucao
-		# 		bazhai
-		# 		lihua
-		# 		jiaha
-		# 		jiaohua
-		# 		nanlang
-		# 		weimo
-		# 		xisa
-		# 		luoxiong
-		# 		shaxi
-		# 		wengshui
-		# 		van_don
-		# 		lang_son
-		# 		loc_chau
-		# 		quang_uyen
-		# 		that_nguyen
-		# 		van_kiep
-		# 		quy_hoa
-		# 		thuy_vi
-		# 		van_ban
-		# 		thai_nguyen
-		# 		bac_thai_nguyen
-		# 		cam_hoa
-		# 		tuyen_hoa
-		# 		vo_nhai
-		# 		tuyen_quang
-		# 		bao_lac
-		# 		binh_lam
-		# 		binh_nguyen
-		# 		dai_man
-		# 		thu_vat
-		# 	}
-		# 	include = "expl_china"
-		# 	include = "asia_tribe"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# MLB = {
-		# 	#Kangleipak (Manipur)
-		# 	own_control_core = {
-		# 		imphal
-		# 		thoubal
-		# 	}
-		# 	include = "south_east_asia_monarchy_no_mandala_no_coast"
-		# 	government = {
-		# 		ruler = mlb_telheipa
-		# 		laws = {
-		# 			medieval_levy_law = paik_system
-		# 		}
-		# 	}
-		# 	capital = imphal
-		# }
-		# BES = {
-		# 	#Beruas
-		# 	own_control_core = {
-		# 		beruas
-		# 	}
-		# 	include = "south_east_asia_monarchy"
-		# 	tolerated_cultures = {
-		# 		orang_asli_culture
-		# 	}
-		# 	capital = beruas
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# MNJ = {
-		# 	#Manjung
-		# 	own_control_core = {
-		# 		manjung
-		# 		klang
-		# 		kajang
-		# 	}
-		# 	include = "south_east_asia_monarchy"
-		# 	tolerated_cultures = {
-		# 		orang_asli_culture
-		# 	}
-		# 	capital = manjung
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# PTC = {
-		# 	#Phetchaburi
-		# 	own_control_core = {
-		# 		phetchaburi
-		# 		muang_na_rang
-		# 		chumphon
-		# 	}
-		# 	include = "south_east_asia_monarchy"
-		# 	accepted_cultures = {
-		# 		mon_culture
-		# 	}
-		# 	tolerated_cultures = {
-		# 		dambro_culture
-		# 	}
-		# 	capital = phetchaburi
-		# 	government = {
-		# 		ruler = adh_ramathibodi
-		# 		laws = {
-		# 			education_masses_law = uneducated_masses_education
-		# 		}
-		# 	}
-		# }
-		# TSM = {
-		# 	#Tenasserim
-		# 	own_control_core = {
-		# 		tenasserim
-		# 		kawthaung
-		# 		mergui
-		# 		myitta
-		# 		singkhon
-		# 		tavoy
-		# 		thayetchaung
-		# 	}
-		# 	include = "south_east_asia_monarchy"
-		# 	tolerated_cultures = {
-		# 		karen_culture
-		# 	}
-		# 	capital = tenasserim
-		# 	government = {
-		# 		ruler = random
-		# 		laws = {
-		# 			education_masses_law = uneducated_masses_education
-		# 		}
-		# 	}
-		# }
-		# DEG = {
-		# 	#Degar
-		# 	type = pop
-		# 	add_pops_from_locations = {
-		# 		stung_treng
-		# 		banlung
-		# 		doh_kromum
-		# 		lumphat
-		# 		preah_ko
-		# 		tonle_kong
-		# 		sandan
-		# 		phnom_santuk
-		# 		kracheh
-		# 		sampheak_borak
-		# 		tboung_khmum
-		# 		cat_tien
-		# 		di_dinh
-		# 		song_be
-		# 		panduranga
-		# 		bal_cattinon
-		# 		camp_po_thit
-		# 		chan_bo
-		# 		kampong_sraka_trey
-		# 		angkor_knong
-		# 		rong_damrel
-		# 		tuol_ta_mouk
-		# 	}
-		# 	capital = banlung
-		# 	include = "expl_china"
-		# 	include = "asia_tribe"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# BHN = {
-		# 	#Bahnar
-		# 	type = pop
-		# 	add_pops_from_locations = {
-		# 		apui
-		# 		ia
-		# 		kon_tum
-		# 		samriddhipuri
-		# 		ban_don
-		# 		dak_lak
-		# 		aryaru
-		# 		bang_keng
-		# 		ha_va_nguon
-		# 		doh_kromum
-		# 		lumphat
-		# 	}
-		# 	capital = apui
-		# 	include = "expl_china"
-		# 	include = "asia_tribe"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# SED = {
-		# 	#Sedang
-		# 	type = pop
-		# 	add_pops_from_locations = {
-		# 		kon_klor
-		# 		kon_tum
-		# 		samxay
-		# 		banlung
-		# 		idkabue
-		# 		tonle_kong
-		# 	}
-		# 	capital = kon_klor
-		# 	include = "expl_china"
-		# 	include = "asia_tribe"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# BVK = {
-		# 	#Bru
-		# 	type = pop
-		# 	add_pops_from_locations = {
-		# 		ban_phone
-		# 		mahaxay
-		# 		muang_mang
-		# 		muang_phalan
-		# 		muang_phin
-		# 		muang_ta_oi
-		# 		nong_bok
-		# 		savannakhet
-		# 		sepon
-		# 		thuan_binh
-		# 		bolikham
-		# 		keutkeut
-		# 		khamkeut
-		# 		muang_phuan
-		# 		ngoc_ma
-		# 		thakhek
-		# 	}
-		# 	capital = ban_phone
-		# 	include = "expl_china"
-		# 	include = "asia_tribe"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# KUY = {
-		# 	#Kuy
-		# 	type = pop
-		# 	add_pops_from_locations = {
-		# 		buriram
-		# 		muang_tam
-		# 		phutthaisong
-		# 		prathai_saman
-		# 		suwannaphum
-		# 		chaiyaphum
-		# 		kaset_sombun
-		# 		khon_san
-		# 		mancha_khiri
-		# 		phu_wiang
-		# 		champasak
-		# 		tonle_kong
-		# 		khukhan
-		# 		prasat_thong_lang
-		# 		rattanaburi
-		# 		sangkha
-		# 		vat_phou
-		# 		phimai
-		# 		khorat
-		# 		nokor_reach_seyma
-		# 		phanom_rung
-		# 		thung_samrit
-		# 		roi_et
-		# 		khon_kaen
-		# 		koh_ker
-		# 		muang_khemarat
-		# 		mueng_fa_daet
-		# 		yasothon
-		# 		banteay_chhmar
-		# 		damrey_trom
-		# 		prasat_don_kau
-		# 		preah_vihear
-		# 		preah_ko
-		# 	}
-		# 	capital = khorat
-		# 	include = "expl_china"
-		# 	include = "asia_tribe"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# KMU = {
-		# 	#Khmu
-		# 	type = pop
-		# 	add_pops_from_locations = {
-		# 		nong_bua_lamphu
-		# 		phu_wiang
-		# 		loei
-		# 		chiang_khan
-		# 		dan_sai
-		# 		nong_khay
-		# 		udon_thani
-		# 		muang_nakhon
-		# 		kut_ling
-		# 		muang_nong_han_luang
-		# 		mukdahan
-		# 		pak_huei_lang
-		# 		that_phanom
-		# 		thoulakhom
-		# 		roi_et
-		# 		kham_muang
-		# 		khon_kaen
-		# 		muang_khemarat
-		# 		mueng_fa_daet
-		# 		yasothon
-		# 		savannakhet
-		# 		thuan_binh
-		# 		nong_bok
-		# 		vientiane
-		# 		ban_khon
-		# 		phon_hong
-		# 		sayniabuli
-		# 		vang_vieng
-		# 	}
-		# 	capital = ban_khon
-		# 	include = "expl_china"
-		# 	include = "asia_tribe"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		# NAA = {
-		# 	#Naga
-		# 	type = pop
-		# 	add_pops_from_locations = {
-		# 		minsin
-		# 		hkamti
-		# 		lahe
-		# 		dikhu
-		# 		viswema
-		# 		tizu
-		# 		htamanthi
-		# 		tarung
-		# 		hukawng
-		# 	}
-		# 	include = "expl_china"
-		# 	include = "asia_tribe"
-		# 	government = {
-		# 		ruler = random
-		# 	}
-		# }
-		#-------------------Bengal-------------
+		starting_technology_level = 1
+		include = "asia_tribe"
+		government = {
+			ruler = random
+		}
 	}
-#------------------------ Western Europe by Syayan1 ----------------------------
-	ENG = { # England
+	
+	MTU = { #Matsumae
 		own_control_core = {
-			appleby hythe alnwick barnstaple bedford dunstable birmingham boston bosworth shoreham lewes bristol buckingham bury glossop cambridge canterbury carlisle rochester cheltenham chelmsford chesterfield chichester chippenham cockermouth colchester kettering coventry cirencester derby dorchester dover exeter gloucester grimsby guildford reigate harrow hastings hedingham hertford hexham hull huntingdon ipswich kendal grantham penrith kidderminster leeds leicester lincoln london loughborough lowestoft lynn daventry newark newcastle northampton norwich nottingham oxford ely plymouth bideford bampton okehampton poole portsmouth amesbury lymington retford rutland salisbury southampton prittlewell kingston stafford stoke stratford trowbridge taunton wells barking weymouth shaftesbury wight winchester windsor worcester yarmouth york scarborough tamworth bedale richmond whitby bridlington selby pontefract skipton wakefield louth thetford fakenham reading tonbridge minehead portishead bath henley royston aylesbury wycombe lavenham abingdon st_albans banbury walden spalding woking morpeth billingham norton ripon doncaster egremont basingstoke
-			# Earldom of Chester
-			#chester macclesfield nantwich
+			fukushima
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = fukushima
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	HRO = { #Hirosaki
+		own_control_core = {
+			inaka hanawa hiraka_aomori
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = hanawa
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	MRO = { #Morioka
+		own_control_core = {
+			shimokita kamikita nukanobu kazuno
+			iwate kuji shimohei kitahei kamihei shiwa hienuki esashi waga isawa
+			kesen
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = iwate
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	AKA = { #Akita
+		own_control_core = {
+			kamiura hiyama hinai akita toshima yamamoto
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = akita
+		country_rank = rank_duchy
+		starting_technology_level = 4
+	}
+	
+	KMD = { #Kameda
+		own_control_core = {
+			yuri
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = yuri
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	HNJ = { #Honjo
+		own_control_core = {
+			yuza
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = yuza
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	SHI = { #Shinjo
+		own_control_core = {
+			murayama
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = murayama
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	SDA = { #Sendai
+		own_control_core = {
+			miyagi motoyoshi oshika tome kurihara kami kurokawa natori
+			uda_mutsu katta iwai
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = miyagi
+		country_rank = rank_kingdom
+		starting_technology_level = 4
+	}
+	
+	KMI = { #Kaminoyama
+		own_control_core = {
+			minamimogami
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = minamimogami
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	YON = { #Yonezawa
+		own_control_core = {
+			nishiokitama higashiokitama shinobu date_loc
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = higashiokitama
+		country_rank = rank_duchy
+		starting_technology_level = 4
+	}
+	
+	AIZ = { #Aizu
+		own_control_core = {
+			yama_jap kawanuma oonuma kitaaizu minamiaizu
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = higashiokitama
+		country_rank = rank_duchy
+		starting_technology_level = 4
+	}
+	
+	NIH = { #Nihonmatsu
+		own_control_core = {
+			iwase adachi asaka
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = adachi
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	SMN = { #Souma-Nakamura
+		own_control_core = {
+			namekata shineha
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = namekata
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	KMI = { #Kaminoyama
+		own_control_core = {
+			minamimogami
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = minamimogami
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	YON = { #Yonezawa
+		own_control_core = {
+			nishiokitama higashiokitama shinobu date_loc
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = higashiokitama
+		country_rank = rank_duchy
+		starting_technology_level = 4
+	}
+	
+	AIZ = { #Aizu
+		own_control_core = {
+			yama_jap kawanuma oonuma kitaaizu minamiaizu
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = higashiokitama
+		country_rank = rank_duchy
+		starting_technology_level = 4
+	}
+	
+	NIH = { #Nihonmatsu
+		own_control_core = {
+			iwase adachi asaka
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = adachi
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	SMN = { #Souma-Nakamura
+		own_control_core = {
+			namekata shineha
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = namekata
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	HAR = { #Miharu
+		own_control_core = {
+			tamura
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = tamura
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	SRK = { #Shirakawa
+		own_control_core = {
+			shirakawa
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = shirakawa
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	TAG = { #Tanagura
+		own_control_core = {
+			takano
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = takano
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+
+	##Kinkiku
+	JIC = { #Kuge
+		own_control_core = {
+			kyoto
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kyoto  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_empire
+		}
+
+	UMY = { #Udamatsuyama
+		own_control_core = {
+			takaichi
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = takaichi  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	TOB = { #Toba
+		own_control_core = {
+			shima
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = shima  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	KSU = { #Kishū
+		own_control_core = {
+			kaisou naga hidaka nishimuro higashimuro minamimuro kitamuro taki watarai
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kaisou  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_kingdom
+		}
+
+	KBE = { #Kōbe
+		own_control_core = {
+			suzuka
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = suzuka  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	ATU = { #Anotsu
+		own_control_core = {
+			ichishi iga nara
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = ichishi  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}
+
+	NSJ = { #Nishōji
+		own_control_core = {
+			gamou
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = gamou  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	AKO = { #Asō
+		own_control_core = {
+			akou
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = akou  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	HYS = { #Hayashida
+		own_control_core = {
+			shikama
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = shikama  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	SIS = { #Shisō
+		own_control_core = {
+			shisou
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = shisou  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	AOK = { #Asada
+		own_control_core = {
+			muko
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = muko  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	TYK = { #Toyooka
+		own_control_core = {
+			keta_tajima __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = keta_tajima  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	IZS = { #Izushi
+		own_control_core = {
+			yabu __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = yabu  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	TNB = { #Tangotanabe
+		own_control_core = {
+			kasa __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kasa  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	MDU = { #Miyadu
+		own_control_core = {
+			yosa __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = yosa  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	FKY = { #Fukuchiyama
+		own_control_core = {
+			ikaruga __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = ikaruga  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+
+	NKB = { #Tanbakaibara
+		own_control_core = {
+			hikami __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = hikami  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	YME = { #Yamake
+		own_control_core = {
+			funai __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = funai  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	SNB = { #Sonobe
+		own_control_core = {
+			kuwada __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kuwada  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	##Shikoku
+	HCU = { #Tokushima
+		own_control_core = {
+			nakata awa_shikoku naka_shikoku kaifu mima miyoshi_shikoku awaji __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = nakata  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy
+		}
+
+	YUC = { #Tosa
+		own_control_core = {
+			tosa agawa takaoka hata kami_shikoku aki_shikoku nagaoka __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = tosa  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy
+		}
+
+	UWJ = { #Uwajima
+		own_control_core = {
+			uwa __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = uwa  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	ODZ = { #Ōdu
+		own_control_core = {
+			kita_shikoku ukena __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kita_shikoku  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	##Chuubu
+	MEK = { #Kaga
+		own_control_core = {
+			kaga nomi noto_jap fugeshi suzu tonami imizu nei niikawa takashima __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kaga  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_kingdom
+		}
+	
+	KNR = { #Hidatakayama
+		own_control_core = {
+			kamioono mashita yoshiki __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kamioono  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	GJO = { #Gujō
+		own_control_core = {
+			gujou __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = gujou  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	OWR = { #Owari
+		own_control_core = {
+			aichi niwa nakajima mugi minokamo toki ena   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = aichi  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_kingdom
+		}
+
+	SNX = { #Matsushiro
+		own_control_core = {
+			sarashina minochi   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = sarashina  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	SGV = { #Ueda
+		own_control_core = {
+			chiisagata   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = chiisagata  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	SZA = { #Suzaka
+		own_control_core = {
+			takai   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = takai  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	ZOG = { #Shibata
+		own_control_core = {
+			nutari   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = nutari  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	##Kanto
+	MTV = { #Mito
+		own_control_core = {
+			ibaraki niihari haga naka kuji_kanto taga   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = ibaraki  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_kingdom
+		}
+
+	KRY = { #Karasuyama
+		own_control_core = {
+			shioya   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = shioya  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	KRB = { #Kurobane
+		own_control_core = {
+			nasu   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = nasu  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+
+	OBX = { #Obata
+		own_control_core = {
+			kanra usui   __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kanra  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county
+		}
+	
+	##Chuugoku
+	CYY = { #Chōshū
+		own_control_core = {
+			abu ootsu toyoura asa yoshiki_suou saba tsuno kumage kuga    __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = abu  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_kingdom
+		}
+
+	TUW = { #Tsuwano
+		own_control_core = {
+			kanoashi    __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kanoashi  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+
+	HMW = { #Hamada
+		own_control_core = {
+			mino    __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = mino  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+
+	HLS = { #Hiroshima
+		own_control_core = {
+			saeki aki takata yamagata toyota sera miyoshi eso nuka     __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = saeki  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}
+
+	NWE = { #Niwase
+		own_control_core = {
+			asakuchi     __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = asakuchi  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+
+	AMV = { #Ashimori
+		own_control_core = {
+			kaya     __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kaya  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+
+	VYM = { #Okayama
+		own_control_core = {
+			joutou tsudaka wake     __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = joutou  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}
+
+	XTY = { #Tsuyama
+		own_control_core = {
+			mashima aita kume tomata     __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = mashima  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}
+
+	TTI = { #Tottori
+		own_control_core = {
+			houmi takakusa kume_houki aimi hino     __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = houmi  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}
+	
+	##Kyushu
+	STM = { #Satsuma
+		own_control_core = {
+			kagoshima izumi_satsuma satsuma ibusuki hishikari kuwabara soo kimotsuki oosumi gomu kumage_oosumi nishimorokata minamimorokata 				kitamorokata naka_hyuuga     __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kagoshima  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_kingdom 
+		}
+	
+	STM = { #Satsuma
+		own_control_core = {
+			kagoshima izumi_satsuma satsuma ibusuki hishikari kuwabara soo kimotsuki oosumi gomu kumage_oosumi nishimorokata minamimorokata 				kitamorokata naka_hyuuga     __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kagoshima  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_kingdom 
+		}
+	
+	OBI = { #Obi
+		own_control_core = {
+			    miyazaki __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = miyazaki  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	TKB = { #Takanabe
+		own_control_core = {
+			    koyu __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = koyu  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+	
+	HIY = { #Hitoyoshi
+		own_control_core = {
+			    kuma __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kuma  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+	
+	NBK = { #Nobeoka
+		own_control_core = {
+			    higashiusuki __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = higashiusuki  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+
+	QMM = { #Kumamoto
+		own_control_core = {
+			    akita_kumamoto tamana koushi aso mashiki yatsushiro_higo ashikita  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = akita_kumamoto  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}	
+
+	SGQ = { #Saga
+		own_control_core = {
+			    saga kishima takaki  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = saga  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}
+
+	OOR = { #Ōmura
+		own_control_core = {
+			higashisonogi nishisonogi  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = higashisonogi  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+
+	FQE = { #Fukue
+		own_control_core = {
+			minamimatsuura  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = minamimatsuura  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+
+	QRT = { #Karatsu
+		own_control_core = {
+			higashimatsuura amakusa  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = higashimatsuura  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+
+	HRV = { #Hirado
+		own_control_core = {
+			nishimatsuura  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = nishimatsuura  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}
+		
+	ZSM = { #Tsushima
+		own_control_core = {
+			shimoagata kamiagata  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = shimoagata  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	FOK = { #Fukuoka
+		own_control_core = {
+			hakata mikasa onga asakura  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = hakata  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}	
+
+	YGW = { #Yanagawa
+		own_control_core = {
+			mii  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = mii  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	QRM = { #Yanagawa
+		own_control_core = {
+			kamitsuma  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kamitsuma  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_duchy 
+		}	
+
+	QMR = { #Mori
+		own_control_core = {
+			kusu  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = kusu  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	FNA = { #Funai
+		own_control_core = {
+			naoiri  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = naoiri  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	OQA = { #Oka
+		own_control_core = {
+			oono_bungo  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = oono_bungo  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	VSQ = { #Usuki
+		own_control_core = {
+			ooita  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = ooita  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	SYQ = { #Saiki
+		own_control_core = {
+			amabe  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = amabe  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	HYJ = { #Hiji
+		own_control_core = {
+			hayami  __
+		}
+		include = "japanese_clan"
+		government = {
+			type = monarchy
+		}
+		capital = hayami  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_county 
+		}	
+
+	##Ryukyu
+	RYY = { #Ryūkyū
+		own_control_core = {
+			oozato urasoe nakijin tokunoshima amami_ooshima iriomote ishigaki miyakojima     __
+		}
+		government = {
+			type = monarchy
+		}
+		capital = oozato  # Capital
+		starting_technology_level = 4  
+		country_rank = rank_kingdom 
+		include = "expl_indonesia"
+	}
+
+#------------------------ Regions done by Syayan ----------------------------
+###British Isles
+	ROE = { # Royalist England
+		own_control_core = {
+			berwick appleby hythe alnwick barnstaple bedford dunstable birmingham boston bosworth shoreham lewes buckingham bury glossop cambridge canterbury carlisle rochester cheltenham chelmsford chesterfield chichester chippenham cockermouth colchester kettering coventry cirencester derby dorchester dover exeter grimsby guildford reigate harrow hastings hedingham hexham hull huntingdon ipswich kendal grantham penrith kidderminster leeds leicester lincoln london loughborough lowestoft lynn daventry newark newcastle northampton norwich nottingham oxford ely bideford bampton okehampton poole portsmouth amesbury lymington retford rutland salisbury southampton prittlewell kingston stafford stoke stratford trowbridge taunton wells barking weymouth shaftesbury wight winchester windsor worcester yarmouth york scarborough tamworth bedale richmond whitby bridlington selby pontefract skipton wakefield louth thetford fakenham reading tonbridge minehead portishead bath henley royston aylesbury wycombe lavenham abingdon banbury walden spalding woking morpeth billingham norton ripon doncaster egremont basingstoke
+			# cornwall
+			launceston truro bodmin
 			# English towns on the Welsh March
-			shrewsbury hereford
+			hereford
 			#from DHM
 			durham darlington stockton
 			#from CET
 			chester macclesfield nantwich
 			#from LAN
 			lancaster blackburn liverpool preston manchester
+			#below from Wales
+			aberystwyth anglesey cardigan carnarvon harlech conwy penllyn radnor
+			#from LAN
+			monmouth kidwelly
+			#from CHE
+			flint
+			#from GWR
+			swansea
+			#from GMG
+			cardiff caerphilly neath
+			#from MAC
+			adnor builth newport wigmore ludlow
+			#from AUD
+			llangollen oswestry
+			#from BRO
+			brecknock
+			#from POS
+			machynlleth montgomery
+			#from EWY
+			ewyas
+			#from CMS
+			fishguard
+			#from PMB
+			pembroke
+			#from DEN
+			denbigh
 		}
 		own_control_integrated = {
-			# Earldom of Chester
-			# cornwall
-			launceston truro bodmin
-			# channel
+			#channel
 			jersey
 		}
-		own_control_conquered = {
-			berwick
-		}
 
-		include = "catholic_monarchy"
-
-		starting_technology_level = 3
+		starting_technology_level = 5
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = eng_edward_iii
-
-			ruler_term = {	 character = eng_alfred_the_great start_date = 886.1.1 end_date = 899.10.26 regnal_number = 0	}
-			ruler_term = {	 character = eng_edward_the_elder start_date = 899.10.26 end_date = 924.7.17 regnal_number = 0	}
-			ruler_term = {	 character = eng_athelstan_the_glorious start_date = 924.7.17 end_date = 939.10.27 regnal_number = 0	}
-			ruler_term = {	 character = eng_edmund_the_magnificent start_date = 939.10.27 end_date = 946.5.26 regnal_number = 0	}
-			ruler_term = {	 character = eng_eadred start_date = 946.5.26 end_date = 955.11.23 regnal_number = 0	}
-			ruler_term = {	 character = eng_eadwig start_date = 955.11.23 end_date = 959.10.1 regnal_number = 0	}
-			ruler_term = {	 character = eng_edgar_the_peaceful start_date = 959.10.1 end_date = 975.7.8 regnal_number = 0	}
-			ruler_term = {	 character = eng_edward_the_martyr start_date = 975.7.8 end_date = 978.3.18 regnal_number = 0	}
-			ruler_term = {	 character = eng_ethelred_the_unready start_date = 978.3.18 end_date = 1013.12.25 regnal_number = 0	}
-
-			ruler_term = {	 character = eng_sweyn_forkbeard start_date = 1013.12.25 end_date = 1014.2.3 regnal_number = 0	}
-
-			ruler_term = {	 character = eng_ethelred_the_unready start_date = 1014.2.3 end_date = 1016.4.23 regnal_number = 0	}
-
-			ruler_term = { character = eng_edmund_ironside start_date = 1016.4.23 end_date = 1016.10.18 regnal_number = 0 }
-			ruler_term = {
-				character = eng_edmund_ironside start_date = 1016.10.18 end_date = 1016.11.30 regnal_number = 0
-				character = eng_cnut_the_great start_date = 1016.10.18 end_date = 1016.11.30 regnal_number = 0
-			}
-
-			ruler_term = { character = eng_cnut_the_great start_date = 1016.11.30 end_date = 1035.11.12 regnal_number = 0 }
-			ruler_term = { character = eng_harold_harefoot start_date = 1035.11.12 end_date = 1040.3.17 regnal_number = 0 }
-
-			ruler_term = { character = eng_harthacnute start_date = 1040.3.17 end_date = 1042.5.8 regnal_number = 0 }
-			ruler_term = {
-				character = eng_harthacnute start_date = 1042.5.8 end_date = 1042.6.8 regnal_number = 0
-				character = eng_edward_the_confessor start_date = 1042.5.8 end_date = 1042.6.8 regnal_number = 0
-			}
-
-			ruler_term = { character = eng_edward_the_confessor start_date = 1042.6.8 end_date = 1066.1.5 regnal_number = 0 }
-
-			ruler_term = {	 character = eng_harold_godwinson start_date = 1066.1.6 end_date = 1066.10.14 regnal_number = 0	}
-
-			# regnal numbering usually starts with the Norman Invasion
-			ruler_term = {	 character = eng_william_the_conquerer start_date = 1066.12.25 end_date = 1087.9.9 regnal_number = 1	}
-			ruler_term = {	 character = eng_william_ii_rufus start_date = 1087.9.26 end_date = 1100.7.2 regnal_number = 2	}
-			ruler_term = {	 character = eng_henry_i start_date = 1100.7.5 end_date = 1135.12.1 regnal_number = 1	}
-
-			ruler_term = {	 character = eng_stephen_i start_date = 1135.12.22 end_date = 1154.10.25 regnal_number = 1	}
-
-			ruler_term = {	 character = eng_henry_ii_curtmantle start_date = 1154.12.19 end_date = 1189.7.6 regnal_number = 2	}
-			ruler_term = {	 character = eng_richard_i_lionheart start_date = 1189.9.3 end_date = 1199.4.6 regnal_number = 1	}
-			ruler_term = {	 character = eng_john_lackland start_date = 1199.5.27 end_date = 1216.10.19 regnal_number = 1	}
-
-			ruler_term = {	 character = eng_henry_iii start_date = 1216.10.28 end_date = 1272.11.16 regnal_number = 3	}
-			ruler_term = {	 character = eng_edward_i start_date = 1272.11.20 end_date = 1307.7.8 regnal_number = 1	}
-			ruler_term = {	 character = eng_edward_ii start_date = 1307.7.8 end_date = 1327.1.20 regnal_number = 2	}
-			ruler_term = {	 character = eng_edward_iii start_date = 1327.1.25 regnal_number = 3 }
-
+			ruler = eng_charles_i_stuart
+			heir = eng_charles_ii_stuart
+			
+			ruler_term = { character = eng_james_i_stuart start_date = 1603.3.24 end_date = 1625.3.27 regnal_number = 1 }
+			
 			regnal_numbers = {
-				name_william = 2
-				name_henry = 3
-				name_stephen = 1
-				name_richard = 2
-				name_john = 1
-				name_edward = 3
+				name_james = 2
+				names_charles = 1
+				names_mary = 2
+				name_william = 3
 			}
 
 			reforms = {
@@ -2649,77 +1418,115 @@ countries = {
 		country_rank = rank_kingdom
 		capital = london
 
-		include = "expl_western_europe"
+		ai_advance_preference_tags = {
+			exploration = 5
+		}
+		
+		include = "zzz_expl_european_colonial_powers"
+	}
+	
+	ENG = { # Commonwealth of England
+		own_control_core = {
+			#home_counties_area
+			london harrow kingston reigate guildford woking southampton portsmouth winchester wight basingstoke dover canterbury rochester hythe tonbridge shoreham lewes hastings chichester dunstable bedford oxford henley windsor buckingham aylesbury wycombe
+			#east_anglia_area
+			norwich lynn yarmouth thetford fakenham colchester chelmsford prittlewell hedingham walden barking ipswich bury lowestoft lavenham cambridge ely huntingdon royston
+			#other main provinces
+			shrewsbury hertford st_albans coventry birmingham stratford northampton daventry kettering leicester loughborough bosworth rutland kidderminster stafford stoke tamworth derby glossop chesterfield chester macclesfield nantwich lancaster blackburn liverpool preston manchester leeds wakefield doncaster
+			#enclaves
+			bristol gloucester plymouth carmarthen
+		}
+		
+		own_control_colony = {
+			bermuda liamuiga ichirouganaim wadadli
+		}
+		
+		include = "catholic_monarchy"
 
+		starting_technology_level = 5
+		government = {
+			type = republic
+			ruler = eng_robert_devereux
+			heir_selection = oligarchic_elective
+
+			regnal_numbers = {
+				name_james = 1
+				names_charles = 1
+				names_mary = 2
+				name_william = 3
+			}
+
+			reforms = {
+				magna_carta_reform
+			}
+			privilege = {
+				#nobles
+				auxilium_et_consilium
+				nobles_land_rights
+				noble_marriage_rights
+				noble_fortification_licenses
+				manorial_courts
+
+				#burghers
+				formal_guilds
+				market_fairs
+
+				#clergy
+				clergy_literacy_rights
+				clergy_enforced_unity
+
+				#peasants
+				peasants_yeomanry
+				access_to_royal_and_ecclesiastical_courts
+			}
+			laws = {
+				distribution_of_power_law = dop_law_english_parliament
+				language_of_pleading = language_of_pleading_court
+				legal_code_law = common_law_policy
+				medieval_levy_law = longbow_competitions
+				feudal_de_jure_law = by_tradition
+				marriage_law = monogamous_marriage
+				heir_religion_law = heir_same_religion
+			}
+
+			centralization_vs_decentralization = 30
+			aristocracy_vs_plutocracy = -60
+			serfdom_vs_free_subjects = -10
+			traditionalist_vs_innovative = -40
+			spiritualist_vs_humanist = -50
+			mercantilism_vs_free_trade = -25
+			offensive_vs_defensive = 0
+			land_vs_naval = 0
+			quality_vs_quantity = -20
+			belligerent_vs_conciliatory = -25
+
+			capital_economy_vs_traditional_economy = 30
+			individualism_vs_communalism = -25
+			outward_vs_inward = -60
+
+
+		}
+
+		accepted_cultures = {
+			northumbrian
+		}
+		tolerated_cultures = { cornish welsh }
+
+		court_language = norman_dialect
+		country_rank = rank_kingdom
+		capital = london
+
+		include = "zzz_expl_european_colonial_powers"
+		
+		
 		ai_advance_preference_tags = {
 			exploration = 5
 		}
 	}
 
-	WLS = { # Wales
-		own_control_core = {
-			# Principality of Wales
-			aberystwyth anglesey cardigan carnarvon harlech conwy carmarthen penllyn radnor
-			#from LAN
-			monmouth kidwelly
-			#from CHE
-			flint
-			#from GWR
-			swansea
-			#from GMG
-			cardiff caerphilly neath
-			#from MAC
-			adnor builth newport wigmore ludlow
-			#from AUD
-			llangollen oswestry
-			#from BRO
-			brecknock
-			#from POS
-			machynlleth montgomery
-			#from EWY
-			ewyas
-			#from CMS
-			fishguard
-			#from PMB
-			pembroke
-			#from DEN
-			denbigh
-		}
-
-		include = "catholic_monarchy_english_lordship"
-
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-
-			aristocracy_vs_plutocracy = -60
-			quality_vs_quantity = 25
-			offensive_vs_defensive = 75
-
-			laws = {
-				distribution_of_power_law = dop_law_english_parliament
-				language_of_pleading = language_of_pleading_court
-				feudal_de_jure_law = by_tradition
-				medieval_levy_law = longbow_competitions
-			}
-			reforms = {
-				magna_carta_reform
-				iron_ring_reform
-			}
-			privilege = {
-				noble_fortification_licenses
-				peasants_yeomanry
-			}
-			ruler = eng_edward_iii
-		}
-		country_rank = rank_duchy
-		capital = carnarvon
-		accepted_cultures = { welsh }
-	}
-	
 	SCO = { # Scotland
 		own_control_core = {
-			glasgow paisley dumbarton aberdeen dunbar banff dunfermline st_andrews dundee buchan mar inverurie stonehaven clackmannan aberfeldy irvine
+			thurso glasgow paisley dumbarton aberdeen dunbar banff dunfermline st_andrews dundee buchan mar inverurie stonehaven clackmannan aberfeldy irvine
 			oban inverary cowal forfar arbroath arran selkirk scone
 			dornoch durness tongue
 			#from ROS
@@ -2731,75 +1538,26 @@ countries = {
 			#from SBL
 			kirkcudbright kenmure stranraer ayr perth edinburgh stirling roxburgh linlithgow duns dumfries lanark strathearn cupar
 		}
-		own_control_conquered = {
-			thurso
+		own_control_integrated = {
+			orkney shetland
 		}
-
-		our_cores_conquered_by_others = {
-			berwick
-			perth kirkcudbright kenmure stranraer
-			edinburgh stirling roxburgh dumfries lanark ayr
-			strathearn cupar
-			#ross
-			dingwall gairloch ullapool
-		}
-
-		include = "expl_northern_europe"
-		starting_technology_level = 3
+		
+		include = "zzz_expl_european_colonial_powers"
+		starting_technology_level = 5
 		include = "catholic_monarchy"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-
-			ruler_term = { character = sco_kenneth_i start_date = 843.1.1 end_date = 858.2.13 regnal_number = 1 }
-			ruler_term = { character = sco_donald_i start_date = 858.2.14 end_date = 862.4.13 regnal_number = 1 }
-			ruler_term = { character = sco_constantine_i start_date = 862.4.14 end_date = 877.11.29 regnal_number = 1 }
-			ruler_term = { character = sco_aedh start_date = 877.11.30 end_date = 878.4.26 regnal_number = 1 }
-			ruler_term = { character = sco_eochaid start_date = 878.4.27 end_date = 889.1.1 regnal_number = 1 }
-			ruler_term = { character = sco_donald_ii start_date = 889.1.2 end_date = 900.1.1 regnal_number = 2 }
-			ruler_term = { character = sco_constantine_ii start_date = 900.1.2 end_date = 943.1.1 regnal_number = 2 }
-			ruler_term = { character = sco_malcolm_i start_date = 943.1.2 end_date = 954.1.1 regnal_number = 1 }
-			ruler_term = { character = sco_indulf start_date = 954.1.2 end_date = 962.1.1 regnal_number = 1 }
-			ruler_term = { character = sco_dubh start_date = 962.1.2 end_date = 967.1.1 regnal_number = 1 }
-			ruler_term = { character = sco_culen start_date = 967.1.2 end_date = 971.1.1 regnal_number = 1 }
-			ruler_term = { character = sco_kenneth_ii start_date = 971.1.2 end_date = 995.1.1 regnal_number = 2 }
-			ruler_term = { character = sco_constantine_iii start_date = 995.1.2 end_date = 997.1.1 regnal_number = 3 }
-			ruler_term = { character = sco_kenneth_iii start_date = 997.1.2 end_date = 1005.1.1 regnal_number = 3 }
-			ruler_term = { character = sco_malcolm_ii start_date = 1005.1.2 end_date = 1034.1.1 regnal_number = 2 }
-			ruler_term = { character = sco_duncan_i start_date = 1034.1.2 end_date = 1040.8.14 regnal_number = 1 }
-			ruler_term = { character = sco_macbeth start_date = 1040.8.15 end_date = 1057.8.15 regnal_number = 1 }
-			ruler_term = { character = sco_lulach start_date = 1057.8.16 end_date = 1058.3.17 regnal_number = 1 }
-			ruler_term = { character = sco_malcolm_iii start_date = 1058.3.18 end_date = 1093.11.13 regnal_number = 3 }
-			ruler_term = { character = sco_donald_iii start_date = 1093.11.14 end_date = 1094.5.1 regnal_number = 3 }
-			ruler_term = { character = sco_duncan_ii start_date = 1094.5.2 end_date = 1094.11.12 regnal_number = 2 }
-			ruler_term = { character = sco_donald_iii start_date = 1094.11.13 end_date = 1097.1.1 regnal_number = 3 }
-			ruler_term = { character = sco_edgar start_date = 1097.1.2 end_date = 1107.1.8 regnal_number = 1 }
-			ruler_term = { character = sco_alexander_i start_date = 1107.1.9 end_date = 1124.4.23 regnal_number = 1 }
-			ruler_term = { character = sco_david_i start_date = 1124.4.24 end_date = 1153.5.24 regnal_number = 1 }
-			ruler_term = { character = sco_malcolm_iv start_date = 1153.5.25 end_date = 1165.12.9 regnal_number = 4 }
-			ruler_term = { character = sco_william_the_lion start_date = 1165.12.10 end_date = 1214.12.4 regnal_number = 1 }
-			ruler_term = { character = sco_alexander_ii start_date = 1214.12.5 end_date = 1249.7.6 regnal_number = 2 }
-			ruler_term = { character = sco_alexander_iii start_date = 1249.7.7 end_date = 1286.3.19 regnal_number = 3 }
-			ruler_term = { character = sco_john_balliol_of_scotland start_date = 1292.11.17 end_date = 1296.7.10 regnal_number = 1 }
-			ruler_term = { character = sco_robert_the_bruce start_date = 1306.3.25 end_date = 1329.6.7 regnal_number = 1 }
-			ruler_term = { character = sco_david_ii start_date = 1329.6.7 end_date = 1333.5.14 regnal_number = 2 } # exile in france
+			ruler = eng_charles_i_stuart
+			heir = eng_charles_ii_stuart
 			
-			#PU with ENG
-			ruler = eng_edward_iii
-
+			ruler_term = { character = eng_james_i_stuart start_date = 1603.3.24 end_date = 1625.3.27 regnal_number = 1 }
+			
 			regnal_numbers = {
-				name_robert = 1
-				name_john = 1
-				name_alexander = 3
-				name_william = 1
-				name_malcolm = 4
-				name_david = 1
-				name_edgar = 1
-				name_duncan = 2
-				name_donald = 3
-				name_lulach = 1
-				name_kenneth = 3
-				name_constantine = 3
+				name_james = 7
+				names_charles = 1
+				names_mary = 2
+				name_william = 3
 			}
 			privilege = {
 				#nobles
@@ -2862,41 +1620,94 @@ countries = {
 		own_control_core = {
 			mann
 		}
-		include = "catholic_monarchy_english_lordship"
-		include = "expl_northern_europe"
+
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler_term = { character = eng_william_montague start_date = 1333.8.9 regnal_number = 1 }
-			ruler = eng_william_montague
+			ruler = eng_charles_i_stuart
+			heir = eng_charles_ii_stuart
+			
+			ruler_term = { character = eng_james_i_stuart start_date = 1603.3.24 end_date = 1625.3.27 regnal_number = 1 }
+			
+			regnal_numbers = {
+				name_james = 2
+				names_charles = 1
+				names_mary = 2
+				name_william = 3
+			}
 		}
-		country_rank = rank_kingdom
+		country_rank = rank_county
 		capital = mann
 
 		tolerated_cultures = { english }
 		country_rank = rank_county
+		starting_technology_level = 4
 	}
 	
 	PLE = { # The Pale
 		own_control_core = {
-			# the pale proper
-			dublin navan fingal drogheda dundalk
-			
-			waterford wexford new_ross  
+			cork fermoy kinsale youghal dublin fingal wicklow glendalough carrickmacross armagh oriel dundalk drogheda downpatrick iveagh newtownards carrickfergus belfast ballymena ballycastle dunluce lough_neagh derry coleraine magherafelt donegal kilmacrennan inishowen raphoe kildare naas athy dunamase daingean dungannon navan
 		}
-		own_control_integrated = {
-			limerick cork
+		
+		our_cores_conquered_by_others = {
+			trim kells mullingar longford ardagh ballymore tullamore wexford new_ross ferns carlow kilkenny cullahill strabane clogher enniskillen belcoo lough_erne monaghan galway clifden athenry tuam kilconnell lough_corrib lough_derg roscommon castlereagh sligo athlone skreen lough_ree dromahair leitrim killeshandra cavan killycolly castlebar burrishoole erris ballaghaderreen lough_mask lough_conn killarney carbery kilbrittain muskerry dunhallow tralee dingle limerick killmallock adare castleconnell ennis bunratty moyarta tipperary nenagh clonmel cashel roscrea moycarn waterford dungarvan carrickbeg
 		}
-		own_control_conquered = {
-			# lordship of meath
-			 trim kells  ballymore
-			 # kilkenny frontier
-			  carlow kilkenny
-			 mullingar
-			 wicklow
-		}
+
 		government = {
 			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = eng_charles_i_stuart
+			heir = eng_charles_ii_stuart
+			
+			ruler_term = { character = eng_james_i_stuart start_date = 1603.3.24 end_date = 1625.3.27 regnal_number = 1 }
+			
+			regnal_numbers = {
+				name_james = 2
+				names_charles = 1
+				names_mary = 2
+				name_william = 3
+			}
+
+			quality_vs_quantity = 25
+			offensive_vs_defensive = 75
+
+			parliament = {
+				parliament_type = estate_parliament
+			}
+
+			privilege = {
+				noble_fortification_licenses
+			}
+			laws = {
+				distribution_of_power_law = dop_law_english_parliament
+				language_of_pleading = language_of_pleading_court
+				medieval_levy_law = longbow_competitions
+				feudal_de_jure_law = by_tradition
+			}
+			reforms = {
+				magna_carta_reform
+			}
+		}
+		include = "zzz_expl_european_colonial_powers"
+		capital = dublin
+		accepted_cultures = { anglo_irish }
+		tolerated_cultures = { irish }
+		starting_technology_level = 4
+	}
+	
+	IRE = { # Irish Confederate
+		own_control_core = {
+		trim kells mullingar longford ardagh ballymore tullamore wexford new_ross ferns carlow kilkenny cullahill strabane clogher enniskillen belcoo lough_erne monaghan galway clifden athenry tuam kilconnell lough_corrib lough_derg roscommon castlereagh sligo athlone skreen lough_ree dromahair leitrim killeshandra cavan killycolly castlebar burrishoole erris ballaghaderreen lough_mask lough_conn killarney carbery kilbrittain muskerry dunhallow tralee dingle limerick killmallock adare castleconnell ennis bunratty moyarta tipperary nenagh clonmel cashel roscrea moycarn waterford dungarvan carrickbeg
+		}
+		
+		our_cores_conquered_by_others = {
+		cork fermoy kinsale youghal dublin fingal wicklow glendalough carrickmacross armagh oriel dundalk drogheda downpatrick iveagh newtownards carrickfergus belfast ballymena ballycastle dunluce lough_neagh derry coleraine magherafelt donegal kilmacrennan inishowen raphoe kildare naas athy dunamase daingean dungannon navan
+		}
+
+		government = {
+			type = monarchy
+			ruler = ire_felim_oneill
 			heir_selection = cognatic_primogeniture
 
 			quality_vs_quantity = 25
@@ -2918,30 +1729,16 @@ countries = {
 			reforms = {
 				magna_carta_reform
 			}
-
-			ruler_term = {	 character = eng_john_lackland start_date = 1177.1.1 end_date = 1216.10.19 regnal_number = 1	} # became Lord of Ireland before being King of England
-			ruler_term = {	 character = eng_henry_iii start_date = 1216.10.28 end_date = 1272.11.16 regnal_number = 3	}
-			ruler_term = {	 character = eng_edward_i start_date = 1272.11.20 end_date = 1307.7.8 regnal_number = 1	}
-			ruler_term = {	 character = eng_edward_ii start_date = 1307.7.8 end_date = 1327.1.20 regnal_number = 2	}
-			ruler_term = {	 character = eng_edward_iii start_date = 1327.1.25 regnal_number = 3 }
-
-			# same numbering as England
-			regnal_numbers = {
-				name_william = 2
-				name_henry = 3
-				name_stephen = 1
-				name_richard = 2
-				name_john = 1
-				name_edward = 3
-			}
 		}
-		include = "catholic_monarchy_english_lordship"
+		include = "zzz_expl_european_colonial_powers"
 		capital = dublin
 		accepted_cultures = { anglo_irish }
 		tolerated_cultures = { irish }
+		starting_technology_level = 4
 	}
 	
-	CAS = {
+###Iberia
+	SPA = {
 		own_control_core = {
 			avila adrada arevalo las_navas oropesa villatoro
 			burgos aranda_de_duero briviesca castrojeriz lerma logrono miranda_de_ebro najera sto_domingo_silos villadiego villarcayo
@@ -2971,54 +1768,46 @@ countries = {
 			sevilla arcos_de_la_frontera cadiz carmona constantina ecija jerez_de_la_frontera medina_sidonia moron olvera osuna sanlucar tarifa
 			huelva almonaster_la_real aracena aroche ayamonte coria_del_rio niebla puebla_de_guzman sanlucar_la_mayor
 			bilbao anana durango onate salvatierra san_sebastian tolosa valmaseda vitoria
-		}
-
-		our_cores_conquered_by_others = {
+			#from ARA
 			jumilla
+		}
+		
+		own_control_integrated = {
+			asilah ceuta melilla teguise maxorata tamaraceite hipalan tedote aguere
+		}
+		
+		own_control_colony = {
+			#East Indies
+			bula hitu huamual latu nunusaku sahulau saparua werinama seram_mountains
+			ternate daratan jailolo loloda moro wasilei
+			tidore gane maba_celebes misool waigeo weda
+			wamesa moskona sougb hatam meyah
+			arandai maybrat abun moi maden
+			irarutu kaimana buruwai sumuri baham
+			iresim yaur roon
+			gresi kwerba bauzi kwesten nisa waropen
+			yapen biak
 		}
 
 		starting_technology_level = 3
-		include = "expl_mediterranean"
-		include = "expl_silk_road_west"
-		include = "expl_silk_road_center"
-		include = "expl_silk_road_east"
-		include = "expl_indian_trade_route"
-		include = "iberian_monarchy_no_auxilium"
-
+		include = "zzz_expl_european_colonial_powers"
+		
 		government = {
-			ruler = cas_alfonso_xi_burgundy
-			heir = cas_pedro_i_burgundy
-
-			ruler_term = { character = cas_sancho_ii_jimena start_date = 1065.12.27 end_date = 1072.10.7 regnal_number = 2 }
-			ruler_term = { character = lon_alfonso_vi_jimena start_date = 1072.10.7 end_date = 1109.7.1 regnal_number = 6 }
-			ruler_term = { character = lon_urraca_i_jimena start_date = 1109.7.1 end_date = 1126.3.8 regnal_number = 1 }
-
-			ruler_term = { character = cas_alfonso_vii_burgundy start_date = 1126.3.8 end_date = 1157.8.21 regnal_number = 7 }
-			ruler_term = { character = cas_sancho_iii_burgundy start_date = 1157.8.21 end_date = 1158.8.31 regnal_number = 3 }
-			ruler_term = { character = cas_alfonso_viii_burgundy start_date = 1158.8.31 end_date = 1214.10.6 regnal_number = 8 }
-			ruler_term = { character = cas_enrique_i_burgundy start_date = 1214.10.6 end_date = 1217.6.6 regnal_number = 1 }
-			ruler_term = { character = cas_berenguela_i_burgundy start_date = 1217.6.6 end_date = 1217.7.1 regnal_number = 1 }
-			ruler_term = { character = cas_fernando_iii_burgundy start_date = 1217.7.1 end_date = 1252.5.30 regnal_number = 3 }
-			ruler_term = { character = cas_alfonso_x_burgundy start_date = 1252.5.30 end_date = 1284.4.4 regnal_number = 10 }
-			ruler_term = { character = cas_sancho_iv_burgundy start_date = 1284.4.4 end_date = 1295.4.25 regnal_number = 4 }
-			ruler_term = { character = cas_fernando_iv_burgundy start_date = 1295.4.25 end_date = 1312.9.7 regnal_number = 4 }
-			ruler_term = { character = cas_alfonso_xi_burgundy start_date = 1312.9.7 regnal_number = 11 }
-
+			type = monarchy
+			ruler = spa_philip_iv_habsburg
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
 			regnal_numbers = {
-				name_pelagius = 1
-				name_alphonse = 11
-				name_froila = 2
-				name_aurelius = 1
-				name_ramiro = 3
-				name_ordono = 4
-				name_garcia = 2
-				name_sancho = 4
-				name_ferdinand = 4
-				name_urraca = 1
-				name_henry = 1
-				name_berengaria = 1
+				name_philip = 4
+				names_charles = 2
 			}
-
+			
 			reforms = {
 				crown_castile_reform
 				feudal_nobility
@@ -3057,7 +1846,7 @@ countries = {
 			exploration = 5
 		}
 
-		accepted_cultures = { 
+		accepted_cultures = {
 			leonese
 			galician			
 			basque
@@ -3065,6 +1854,7 @@ countries = {
 		tolerated_cultures = { 
 			sephardi
 		}
+		starting_technology_level = 5
 		
 	}
 
@@ -3077,36 +1867,31 @@ countries = {
 			porto aguiar barcelos braga guimaraes montalegre valenca viana_do_castelo
 			braganca chaves macedo miranda_de_i_douro mirandela moncorvo vila_real
 		}
-
+		
+		own_control_integrated = {
+			#Africa
+			tangier ponta_delgada santa_maria angra horta santa_cruz_flores funchal
+			#East Indies
+			laran balibo lifau likusaen nunkolo tutuala sikka larantuka
+			#Oman
+			masqat saham
+			#India
+			goa kotte galle
+		}
+		own_control_colony = {
+			#Africa
+			anomansah cabo_corso winneba accra akropong cacheu santo_antao sao_nicolao boa_vista santiago fogo sao_tome mbegela mombasa malindi
+			cuama chiveve chupanga sofala chindre cheringoma sena mopeia quelimane macuze bajone moma chamo maputo inhambane
+		}
+		
 		starting_technology_level = 3
-		include = "expl_mediterranean"
-		include = "expl_silk_road_west"
-		include = "expl_silk_road_center"
-		include = "expl_silk_road_east"
-		include = "expl_indian_trade_route"
-		include = "iberian_monarchy"
+		include = "zzz_expl_european_colonial_powers"
 
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = cas_alfonso_xi_burgundy
-			heir = cas_pedro_i_burgundy
-
-			ruler_term = { character = lon_ramiro_ii_leon start_date = 926.2.12 end_date = 931.11.6 regnal_number = 0 }
-
-			ruler_term = { character = por_afonso_i_portugal start_date = 1143.10.5 end_date = 1185.12.6 regnal_number = 1 }
-			ruler_term = { character = por_sancho_i_portugal start_date = 1185.12.6 end_date = 1211.3.26 regnal_number = 1 }
-			ruler_term = { character = por_afonso_ii_portugal start_date = 1211.3.26 end_date = 1223.3.25 regnal_number = 2 }
-			ruler_term = { character = por_sancho_ii_portugal start_date = 1223.3.25 end_date = 1247.12.4 regnal_number = 2 }
-			ruler_term = { character = por_afonso_iii_portugal start_date = 1247.12.4 end_date = 1279.2.16 regnal_number = 3 }
-			ruler_term = { character = por_dinis_i_portugal start_date = 1279.2.16 end_date = 1325.1.7 regnal_number = 1 }
-			ruler_term = { character = por_afonso_iv_portugal start_date = 1325.1.7 regnal_number = 4 }
-
-			regnal_numbers = {
-				name_alphonse = 4
-				name_sancho = 2
-				name_dennis = 1
-			}
+			ruler = por_john_iv_braganza
+			heir = por_afonso_vi_braganza
 
 			reforms = {
 				portuguese_monarchy_reform
@@ -3149,6 +1934,7 @@ countries = {
 		ai_advance_preference_tags = {
 			exploration = 5
 		}
+		starting_technology_level = 5
 	}
 	
 	ARA = {
@@ -3162,59 +1948,33 @@ countries = {
 			castellon_de_la_plana ares_del_maestre llucena morella peniscola
 			jativa alcoy alicante denia elche orihuela
 			valencia gandia ayora bunol chelva lliria
-		}
-
-		own_control_integrated = {
-			jumilla
-		}
-
-		own_control_conquered = {
-			cagliari tratalias villa_di_chiesa isili muravera seddori tortoli orosei terranova_pausania posada tempiopausania
-			sassari
+			#Catalonia
+			perpignan prades puigcerda lagoon_of_salses
+			#Balearic
+			palma ciudadela_de_menorca ibiza manacor pollensa
 		}
 
 		our_cores_conquered_by_others = {
-			puigcerda prades montpellier perpignan
-			palma ciudadela_de_menorca ibiza manacor pollensa #Majorca
+			barcelona sitges terrassa villafranca_del_penedes girona besalu castellon_ampurias ripoll sant_feliu tarragona flix lleida montblanc tarrega tortosa vic berga cardona cervera manresa perpignan prades puigcerda lagoon_of_salses seu_durgell agramunt balaguer talarn vielha
 		}
 
 		starting_technology_level = 3
-		include = "expl_mediterranean"
-		include = "expl_silk_road_west"
-		include = "expl_silk_road_center"
-		include = "expl_silk_road_east"
-		include = "expl_indian_trade_route"
-		include = "iberian_monarchy"
+		include = "zzz_expl_european_colonial_powers"
 
 		government = {
 			type = monarchy
+			ruler = spa_philip_iv_habsburg
 			heir_selection = cognatic_primogeniture
-			ruler = cas_alfonso_xi_burgundy
-			heir = cas_pedro_i_burgundy
-
-			ruler_term = { character = ara_ramiro_i_aragon start_date = 1035.10.18 end_date = 1063.5.8 regnal_number = 1 }
-			ruler_term = { character = ara_sancho_i_aragon start_date = 1063.5.8 end_date = 1094.6.4 regnal_number = 1 }
-			ruler_term = { character = ara_pedro_i_aragon start_date = 1094.6.4 end_date = 1104.12.28 regnal_number = 1 }
-			ruler_term = { character = ara_alfonso_i_aragon start_date = 1104.12.28 end_date = 1134.9.7 regnal_number = 1 }
-			ruler_term = { character = ara_ramiro_ii_aragon start_date = 1134.9.29 end_date = 1157.8.16 regnal_number = 2 }
-			ruler_term = { character = ara_petronila_i_aragon start_date = 1157.8.16 end_date = 1164.7.18 regnal_number = 1 }
-
-			ruler_term = { character = ara_alfons_ii_arago start_date = 1164.7.18 end_date = 1196.4.25 regnal_number = 2 }
-			ruler_term = { character = ara_pere_ii_arago start_date = 1196.4.25 end_date = 1213.9.13 regnal_number = 2 }
-			ruler_term = { character = ara_jacme_i_arago start_date = 1213.9.13 end_date = 1276.7.27 regnal_number = 1 }
-			ruler_term = { character = ara_pere_iii_arago start_date = 1276.7.27 end_date = 1285.11.11 regnal_number = 3 }
-			ruler_term = { character = ara_alfons_iii_arago start_date = 1285.11.11 end_date = 1291.6.18 regnal_number = 3 }
-			ruler_term = { character = ara_jaume_ii_arago start_date = 1291.6.18 end_date = 1327.11.2 regnal_number = 2 }
-			ruler_term = { character = ara_alfonso_iv_arago start_date = 1327.11.2 end_date = 1336.1.24 regnal_number = 4 }
-			ruler_term = { character = ara_peter_iv_arago start_date = 1336.1.24 regnal_number = 4 }
-
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
 			regnal_numbers = {
-				name_ramiro = 2
-				name_sancho = 1
-				name_peter = 4
-				name_alphonse = 4
-				name_petronilla = 1
-				name_james = 2
+				name_philip = 4
+				names_charles = 2
 			}
 
 			reforms = {
@@ -3241,7 +2001,7 @@ countries = {
 
 		court_language = catalan_dialect
 		country_rank = rank_kingdom
-		capital = barcelona
+		capital = valencia
 		accepted_cultures = { aragonese }
 		tolerated_cultures = {
 			andalusi
@@ -3249,6 +2009,7 @@ countries = {
 			gascon
 			castilian
 		}
+		starting_technology_level = 5
 	}
 	
 	GRA = {
@@ -3260,38 +2021,23 @@ countries = {
 			ronda algeciras gibraltar marbella
 		}
 
-		our_cores_conquered_by_others = {
-			olvera
-		}
-
 		starting_technology_level = 3
-		include = "expl_muslim_mediterranean"
-		include = "expl_silk_road_west"
-		include = "expl_silk_road_center"
-		include = "expl_silk_road_east"
-		include = "expl_indian_trade_route"
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "zzz_expl_european_colonial_powers"
 
 		government = {
-			ruler = gra_yusuf_i_nasrid
-
-			ruler_term = { character = gra_muhammad_i_nasrid start_date = 1238.5.1 end_date = 1273.1.20 regnal_number = 1 }
-			ruler_term = { character = gra_muhammad_ii_nasrid start_date = 1273.1.20 end_date = 1302.1.20 regnal_number = 2 }
-			ruler_term = {
-				character = gra_muhammad_ii_nasrid start_date = 1302.1.20 end_date = 1302.4.7 regnal_number = 2
-				character = gra_muhammad_iii_nasrid start_date = 1302.1.20 end_date = 1302.4.7 regnal_number = 3
-			}
-			ruler_term = { character = gra_muhammad_iii_nasrid start_date = 1302.4.7 end_date = 1309.3.14 regnal_number = 3 }
-			ruler_term = { character = gra_nasr_i_nasrid start_date = 1309.3.14 end_date = 1314.2.8 regnal_number = 1 }
-			ruler_term = { character = gra_ismail_i_nasrid start_date = 1314.2.8 end_date = 1325.7.8 regnal_number = 1 }
-			ruler_term = { character = gra_muhammad_iv_nasrid start_date = 1325.7.8 end_date = 1333.8.25 regnal_number = 4 }
-			ruler_term = { character = gra_yusuf_i_nasrid start_date = 1333.8.25 regnal_number = 1 }
-
+			type = monarchy
+			ruler = spa_philip_iv_habsburg
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
 			regnal_numbers = {
-				name_muhammad = 4
-				name_nasr = 1
-				name_ishmael = 1
-				name_joseph = 1
+				name_philip = 4
+				names_charles = 2
 			}
 
 			reforms = {
@@ -3310,11 +2056,10 @@ countries = {
 		tolerated_cultures = {
 			sephardi
 		}
-
 		capital = granada
+		starting_technology_level = 4
 	}
 
-	#Navarre
 	NAV = {
 		own_control_core = {
 			pamplona elizondo estella olite roncesvalles sanguesa tudela viana laguardia
@@ -3325,71 +2070,22 @@ countries = {
 		}
 
 		starting_technology_level = 3
-
-		include = "iberian_monarchy_no_coast"
-		include = "expl_mediterranean"
-		include = "expl_silk_road_west"
-		include = "expl_silk_road_center"
-
+		include = "zzz_expl_european_colonial_powers"
+		
 		government = {
 			type = monarchy
+			ruler = spa_philip_iv_habsburg
 			heir_selection = cognatic_primogeniture
-			ruler = cas_alfonso_xi_burgundy
-			heir = cas_pedro_i_burgundy
-
-			ruler_term = { character = nav_inigo_arista start_date = 815.1.1 end_date = 851.1.1 regnal_number = 1 }
-			ruler_term = { character = nav_garcia_iniguez start_date = 851.1.1 end_date = 882.1.1 regnal_number = 0 }
-			ruler_term = { character = nav_fortun_garces start_date = 882.1.1 end_date = 905.1.1 regnal_number = 1 }
-
-			ruler_term = { character = nav_sancho_i_jimena start_date = 905.1.1 end_date = 925.12.10 regnal_number = 1 }
-			ruler_term = { character = nav_garcia_i_jimena start_date = 925.12.10 end_date = 970.2.22 regnal_number = 1 }
-			ruler_term = { character = nav_sancho_ii_jimena start_date = 970.2.22 end_date = 994.12.1 regnal_number = 2 }
-			ruler_term = { character = nav_garcia_ii_jimena start_date = 994.12.1 end_date = 999.12.8 regnal_number = 2 }
-			ruler_term = { character = nav_sancho_iii_jimena start_date = 999.12.18 end_date = 1035.10.18 regnal_number = 3 }
-			ruler_term = { character = nav_garcia_iii_jimena start_date = 1035.10.18 end_date = 1054.9.1 regnal_number = 3 }
-			ruler_term = { character = nav_sancho_iv_jimena start_date = 1054.9.1 end_date = 1076.6.4 regnal_number = 4 }
-			ruler_term = { character = ara_sancho_i_aragon start_date = 1076.6.4 end_date = 1094.6.4 regnal_number = 5 }
-			ruler_term = { character = ara_pedro_i_aragon start_date = 1094.6.4 end_date = 1104.12.28 regnal_number = 1 }
-			ruler_term = { character = ara_alfonso_i_aragon start_date = 1104.12.28 end_date = 1134.9.7 regnal_number = 1 }
-			ruler_term = { character = nav_garcia_iv_jimena start_date = 1134.9.7 end_date = 1150.11.21 regnal_number = 4 }
-			ruler_term = { character = nav_sancho_vi_jimena start_date = 1150.11.21 end_date = 1194.6.27 regnal_number = 6 }
-			ruler_term = { character = nav_sancho_vii_jimena start_date = 1194.6.27 end_date = 1234.2.12 regnal_number = 7 }
-
-			ruler_term = {
-				character = nav_sancho_vii_jimena start_date = 1234.2.12 end_date = 1234.4.7 regnal_number = 7
-				character = nav_thibault_i_blois start_date = 1234.2.12 end_date = 1234.4.7 regnal_number = 1
-			}
-
-			ruler_term = { character = nav_thibault_i_blois start_date = 1234.4.7 end_date = 1253.7.8 regnal_number = 1 }
-			ruler_term = { character = nav_thibault_ii_blois start_date = 1253.7.8 end_date = 1270.12.4 regnal_number = 2 }
-			ruler_term = { character = nav_henri_i_blois start_date = 1270.12.4 end_date = 1274.7.22 regnal_number = 1 }
-			ruler_term = { character = fra_jeanne_i_blois start_date = 1274.7.22 end_date = 1284.8.16 regnal_number = 1 }
-			ruler_term = {
-				character = fra_jeanne_i_blois start_date = 1284.8.16 end_date = 1305.4.2 regnal_number = 1
-				character = fra_philippe_iv_capet start_date = 1284.8.16 end_date = 1305.4.2 regnal_number = 1 #Marital Co-Ruler
-			}
-
-			ruler_term = { character = fra_louis_x_capet start_date = 1305.4.2 end_date = 1316.6.5 regnal_number = 1 }
-			ruler_term = { character = fra_jean_i_capet start_date = 1316.11.15 end_date = 1316.11.20 regnal_number = 1 }
-			ruler_term = { character = fra_philippe_v_capet start_date = 1316.11.20 end_date = 1322.1.3 regnal_number = 2 }
-			ruler_term = { character = fra_charles_iv_capet start_date = 1322.1.3 end_date = 1328.2.1 regnal_number = 1 }
-			ruler_term = { character = nav_jeanne_ii_capet start_date = 1328.2.1 regnal_number = 2 }
-			#ruler_term = { character = nav_philip_iii_evreux start_date = 1328.2.1 regnal_number = 3 } # Marital Co-Ruler
-
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
 			regnal_numbers = {
-				name_inigo = 1
-				name_garcia = 5
-				name_fortunius = 1
-				name_sancho = 7
-				name_peter = 1
-				name_alphonse = 1
-				name_theobald = 2
-				name_henry = 1
-				name_joanna = 2
-				name_philip = 3
-				name_louis = 1
-				name_john = 1
-				name_charles = 1
+				name_philip = 4
+				names_charles = 2
 			}
 
 			reforms = {
@@ -3425,6 +2121,2260 @@ countries = {
 		country_rank = rank_kingdom
 		capital = pamplona
 		dynasty = de_evreux_dynasty
-
+		starting_technology_level = 4
 	}
+	
+	CAT = {
+		own_control_core = {
+			barcelona sitges terrassa villafranca_del_penedes girona besalu castellon_ampurias ripoll sant_feliu vic berga cardona cervera manresa perpignan prades puigcerda lagoon_of_salses seu_durgell agramunt balaguer talarn vielha
+		}
+		
+		own_conquered = {
+			tarragona flix lleida montblanc tarrega tortosa
+		}
+
+		starting_technology_level = 3
+		include = "zzz_expl_european_colonial_powers"
+
+		government = {
+			type = monarchy
+		}
+		capital = barcelona
+		country_rank = rank_county
+		starting_technology_level = 4
+	}
+	
+	ANR = {
+		own_control_core = {
+			andorra_la_vella
+		}
+
+		starting_technology_level = 3
+		include = "zzz_expl_european_colonial_powers"
+
+		government = {
+			type = theocracy
+		}
+		capital = andorra_la_vella
+		country_rank = rank_duchy
+		starting_technology_level = 4
+	}
+	
+###Spanish Italy
+	NAP = {
+		own_control_core = {
+			naples caserta gaeta nola piedimonte sora venafro salerno campagna salacon vallo avellino ariano benevento santangelo
+			chieti lanciano vasto aquila atri celano cittaducale csantangelo sulmona teramo lake_fucine bojano isernia larino trivento
+			bari altamura andria barletta monopoli foggia bovino lucera manfredonia rotondo sansevero lake_varano lecce brindisi francavilla gallipoliita martinafr taranto
+			potenza acerenza lagonegro matera melfi montepeloso santarcangelo catanzaro cotrone gerace monteleone nicastro palmi reggiocal cosenza cassano castrovillari scalea paola rossano
+		}
+		government = {
+			type = monarchy
+			ruler = spa_philip_iv_habsburg
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
+			regnal_numbers = {
+				name_philip = 4
+				names_charles = 2
+			}
+		}
+		capital = naples
+		country_rank = rank_kingdom
+		starting_technology_level = 4
+		include = "zzz_expl_european_colonial_powers"
+	}
+	
+	SIC = {
+		own_control_core = {
+			messina catania mistretta nicosiasic patti piazza mount_etna mount_stromboli girgenti bivona caltanisetta cefalu sciacca termini palermo corleone mazara salemi trapani pantelleria lampedusa syracuse caltagirone malta modica noto terranovasic
+		}
+		government = {
+			type = monarchy
+			ruler = spa_philip_iv_habsburg
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
+			regnal_numbers = {
+				name_philip = 4
+				names_charles = 2
+			}
+		}
+		capital = palermo
+		country_rank = rank_kingdom
+		starting_technology_level = 4
+		include = "zzz_expl_european_colonial_powers"
+	}
+	
+	SAR = {
+		own_control_core = {
+			oristano ales sorgono terralba cagliari tratalias villa_di_chiesa isili muravera seddori tortoli terranova_pausania orosei posada tempiopausania sassari alghero bosa castelsardo macomer bitti ozieri thiesi
+		}
+		government = {
+			type = monarchy
+			ruler = spa_philip_iv_habsburg
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = spa_philip_i_habsburg start_date = 1506.4.25 end_date = 1506.9.25 regnal_number = 1 }
+			ruler_term = { character = spa_charles_i_habsburg start_date = 1516.1.23 end_date = 1556.1.16 regnal_number = 1 }
+			ruler_term = { character = spa_philip_ii_habsburg start_date = 1556.1.16 end_date = 1598.9.13 regnal_number = 2 }
+			ruler_term = { character = spa_philip_iii_habsburg start_date = 1598.9.13 end_date = 1621.3.31 regnal_number = 3 }
+			ruler_term = { character = spa_philip_iv_habsburg start_date = 1621.3.31 end_date = 1665.9.17 regnal_number = 4 }
+			
+			regnal_numbers = {
+				name_philip = 4
+				names_charles = 2
+			}
+		}
+		capital = cagliari
+		country_rank = rank_kingdom
+		starting_technology_level = 4
+		include = "zzz_expl_european_colonial_powers"
+	}
+	
+###French Region
+	FRA = {
+		own_control_core = {
+			angers bauge beaupreau chateau_gontier le_lude loudun passavant saumur
+			mayenne laval sainte_suzanne villaines
+			le_mans beaumont_au_maine chateau_du_loir sable st_calais
+			mortagne alluyes belleme senonches
+
+			clermont allegre brioude riom thiers vic_le_comte vodable
+			bourbon huriel jaligny molins montlucon st_gerand vichy
+			chambon herment montaigut tour_auvergne
+			aurillac mauriac saint_flour
+
+			chaumont choiseul grancey la_mothe_en_bassigny langres vaucouleurs
+			meaux broyes chateau_thierry nogent_sur_seine provins
+			troyes brienne villemaur
+			vitry_en_pertois joinville bar_sur_aube rosnay
+			reims chalons_champagne epernay menehould vertus
+			rethel chateau_porcien grandpre mouzon
+			sens bar_sur_seine joigny saint_florentin tonnerre
+
+			auch lectoure lisle_jourdain mirande nogaro
+			pau oloron orthez tarbes
+			muret aspet saint_lizier saint_gaudens
+			dax aire labrit mimizan mont_de_marsan tartas tosse lagoon_of_sanguinet
+			bayonne mauleon saint_jean_pied_de_port
+
+			agen marmande montflanquin
+			bazas belin condom nerac sauveterre_de_guyenne
+			bordeaux benauges castelnau_de_medoc la_teste_de_buch lesparre_medoc libourne
+			perigueux bergerac limeuil riberac sarlat
+			cahors figeac gourdon montauban
+			rodez entraigues millau peyrusse st_affrique villefranche
+
+			beauvais chaumont_vexin clermont_en_beauvaisis crepy senlis
+			nemours brie_comte_robert melun
+			paris corbeil mantes monfort_lamaury montmorency
+			soissons braine coucy laon noyon roucy
+
+			castres albi lautrec
+			foix pamiers mirepoix
+			chateauneuf_de_randon florac mende peyre
+			narbonne agde beziers lodeve saint_pons lagoon_of_bages_sigean
+			nimes french_ales melgueil montpellier st_ambroix uzes
+			carcassonne fenouillet limoux
+			toulouse castelnaudary lavaur verdun_sur_garonne villemur
+			viviers chalancon le_puy montlaur privas tournon
+
+			limoges aixe nontron segur st_leonard thiviers
+			gueret aubusson bellac bourganeuf brosse charroux rochechouart
+			turenne tulle ussel ventadour
+
+			bourg_en_bresse belley gex bage thoire
+			beaujeu perreux trevoux villars
+			lyon feurs montbrison riverie roanne saint_etienne
+
+			caen bayeux domfront falaise pont_douilly vire
+			fecamp arques aumale longueville tancarville
+			coutances cherbourg avranches mortain st_sauveur
+			evreux alencon argentan bernay harcourt laigle
+			rouen gisors lisieux louviers pont_audemer
+
+			chateauroux boussac issoudun lignieres
+			blois chateaudun romorantin st_aignan vendome
+			chartres auneau dreux etampes
+			bourges gien sancerre sancoins vierzon
+			orleans beaugency montargis sully vitry_aux_loges
+			tours amboise chatillon_sur_indre chinon loches
+
+			amiens breteuil corbie
+			abbeville calais boulogne_sur_mer montreuil
+			guise hirson marle ribemont
+			saint_quentin nesle peronne
+
+			angouleme cognac chabanais
+			thouars beauvoir fontenay la_roche_sur_yon mauleon_poitou montaigu parthenay talmont
+			poitiers aulnay chatellerault lusignan montmorillon niort
+			saintes montendre la_rochelle oleron royan st_jean_dangely rochefort jonzac
+			
+			valence condorcet die vienne
+			metz fresnes verdun clermont_en_argonne toul vic_sur_seille
+		}
+		
+		own_control_colony = {
+			cayenne carucairi iguanacaera hewanorra
+			marien iguamuco guahaba tortuga baynoa
+			jaragua guanabo cahay guacayakima haniguayagua yaquimo yaguana
+		}
+		
+		government = {
+			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
+			
+			laws = {
+				feudal_de_jure_law = by_tradition
+				legal_code_law = civil_law_policy
+			}
+		}
+		capital = paris
+		country_rank = rank_kingdom
+		starting_technology_level = 5
+		include = "zzz_expl_european_colonial_powers"
+	}
+	
+	PRO = {
+		own_control_core = {
+			aix_en_provence arles brignoles marseille toulon tarascon
+			apt barcelonnette forcalquier sisteron
+			barjols castellane digne draguignan frejus grasse
+			cuneo
+		}
+		our_cores_conquered_by_others = {
+			avignon
+		}
+
+		starting_technology_level = 3
+		include = "zzz_expl_european_colonial_powers"
+		government = {
+			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+		}
+
+		tolerated_cultures = {
+			vivaro_alpine
+		}
+
+		capital = marseille
+		country_rank = rank_county
+		starting_technology_level = 5
+	}
+	
+	DAU = {
+		own_control_core = {
+			grenoble gap briancon pragelato
+			romans la_mure saint_marceilin 
+			mevouillon villars 
+			la_tour_du_pin 
+		}
+
+		starting_technology_level = 3
+		include = "zzz_expl_european_colonial_powers"
+		government = {
+			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+		}
+
+		tolerated_cultures = {
+			vivaro_alpine
+			auvergnat
+		}
+
+		country_rank = rank_county
+		capital = grenoble
+		starting_technology_level = 5
+	}
+	
+	ORL = {
+		own_control_core = {
+			orleans chartres blois beaugency chateaudun romorantin st_aignan
+		}
+
+		starting_technology_level = 3
+		include = "zzz_expl_european_colonial_powers"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			#Gaston Duke of Orleans
+			ruler = fra_gaston_orleans_bourbon
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
+			
+			reforms = {
+				french_ducal_vassal_reform
+			}
+		}
+
+		accepted_cultures = {
+			french
+		}
+		country_rank = rank_duchy
+		capital = orleans
+		starting_technology_level = 5
+	}
+	
+	BRI = {
+		own_control_core = {
+			brest carhaix chateaulin chatelaudren le_faou quimper quimperle saint_brieuc st_pol_de_leon treguier
+			nantes blain chateaubriant guerande machecoul
+			rennes dol fougeres monfort_sur_meu saint_malo vitre
+			vannes hennebont josselin ploermel redon rohan
+		}
+
+		starting_technology_level = 3
+		include = "zzz_expl_european_colonial_powers"
+		government = {
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
+			
+			centralization_vs_decentralization = 30
+			aristocracy_vs_plutocracy = -35
+			serfdom_vs_free_subjects = -35
+			traditionalist_vs_innovative = 10
+			spiritualist_vs_humanist = -50
+			mercantilism_vs_free_trade = 45
+			offensive_vs_defensive = 30
+			land_vs_naval = 30
+			quality_vs_quantity = 20
+			belligerent_vs_conciliatory = 10
+			capital_economy_vs_traditional_economy = 75
+			individualism_vs_communalism = -50
+			outward_vs_inward = -10
+			reforms = {
+				french_ducal_vassal_reform
+			}
+
+		}
+		court_language = angevin_dialect
+		capital = vannes
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			breton
+			poitevin
+		}
+		starting_technology_level = 5
+	}
+	
+	AUV = {
+		own_control_core = {
+			vic_le_comte
+		}
+		starting_technology_level = 3
+		include = "zzz_expl_european_colonial_powers"
+		government = {
+			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
+			reforms = {
+				french_appanage_reform
+			}
+		}
+		capital = vic_le_comte
+		starting_technology_level = 5
+	}
+	
+	BOU = {
+		own_control_core = {
+			bourbon molins huriel montlucon vichy
+			jaligny st_gerand
+			# own_control_integrated, but culture accepted
+			clermont_en_beauvaisis #C. Clermont-en-Beauvaisis
+		}
+		starting_technology_level = 3
+		include = "zzz_expl_european_colonial_powers"
+		government = {
+			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
+			reforms = {
+				french_appanage_reform
+			}
+		}
+
+		tolerated_cultures = {
+			limousin
+			picard
+		}
+
+		country_rank = rank_duchy
+		capital = bourbon
+		starting_technology_level = 5
+	}
+	
+	BRR = {
+		own_control_core = {
+			oloron orthez pau #Vic. of Béarn
+		}
+		starting_technology_level = 3
+		include = "zzz_expl_european_colonial_powers"
+		government = {
+			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
+
+			reforms = {
+				french_ducal_vassal_reform
+			}
+		}
+
+		capital = pau
+		starting_technology_level = 5
+	}
+	
+	FOI = {
+		own_control_core = {
+			foix pamiers
+		}
+		starting_technology_level = 3
+		include = "zzz_expl_european_colonial_powers"
+		government = {
+			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
+			reforms = {
+				french_ducal_vassal_reform
+			}
+		}
+
+		tolerated_cultures = {
+			gascon
+		}
+
+		capital = foix
+		starting_technology_level = 5
+	}
+	
+	POI = {
+		own_control_core = {
+			parthenay
+		}
+		include = "zzz_expl_european_colonial_powers"
+		government = {
+			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
+			laws = {
+				feudal_de_jure_law = by_tradition
+				legal_code_law = civil_law_policy
+			}
+		}
+		capital = parthenay
+		country_rank = rank_county
+		starting_technology_level = 5
+	}
+	
+	BUR = {
+		own_control_core = {
+			auxerre aignay arnay avallon chatillon_sur_seine semur_en_auxois
+			autun macon montcenis semur_en_brionnais
+			dijon auxonne beaune chalon_sur_saone louhans
+			nevers cercy chateau_chinon donzy montreuillon st_pierre_de_moutier
+		}
+
+		starting_technology_level = 3
+		include = "zzz_expl_european_colonial_powers"
+		government = {
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
+			centralization_vs_decentralization = 30
+			aristocracy_vs_plutocracy = -35
+			serfdom_vs_free_subjects = 35
+			traditionalist_vs_innovative = 25
+			spiritualist_vs_humanist = -50
+			mercantilism_vs_free_trade = 45
+			offensive_vs_defensive = -90
+			land_vs_naval = -60
+			quality_vs_quantity = -30
+			belligerent_vs_conciliatory = -20
+			capital_economy_vs_traditional_economy = 70
+			individualism_vs_communalism = -20
+			outward_vs_inward = -20
+
+			reforms = {
+				french_appanage_reform
+			}
+		}
+
+		tolerated_cultures = {
+			arpitan
+		}
+
+		capital = dijon
+		country_rank = rank_duchy
+		starting_technology_level = 5
+	}
+	
+	DOC = {
+		own_control_core = {
+			castres albi lautrec mirepoix narbonne agde beziers lodeve saint_pons lagoon_of_bages_sigean nimes french_ales melgueil montpellier st_ambroix uzes carcassonne fenouillet limoux toulouse castelnaudary lavaur verdun_sur_garonne villemur
+		}
+		include = "zzz_expl_european_colonial_powers"
+		government = {
+			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
+			laws = {
+				feudal_de_jure_law = by_tradition
+				legal_code_law = civil_law_policy
+			}
+		}
+		capital = narbonne
+		country_rank = rank_duchy
+		starting_technology_level = 5
+	}
+	
+	BNV = {
+		own_control_core = {
+			mauleon saint_jean_pied_de_port
+		}
+		include = "zzz_expl_european_colonial_powers"
+		government = {
+			type = monarchy
+			ruler = fra_louis_xiv_bourbon
+			heir_selection = cognatic_primogeniture
+			
+			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
+			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
+			
+			regnal_numbers = {
+				name_henry = 5
+				names_louis = 14
+			}
+			laws = {
+				feudal_de_jure_law = by_tradition
+				legal_code_law = civil_law_policy
+			}
+		}
+		capital = saint_jean_pied_de_port
+		country_rank = rank_kingdom
+		starting_technology_level = 5
+	}
+	
+###Scandinavia
+	SWE = {
+		own_control_core = {
+			linkoping soderkoping norrkoping alvastra vadstena vattern kalmar tjust sevede handbord kinda jonkoping oland skara hjo tiveden vartofta utlandet lodose ekholm falkoping allingsas bogesund lidkoping skene vaxjo vallsjo vetlanda albo konga uppvidinge ljungby trollaborg waestbo slite visby hoborg dalaborg amal vedbo
+			stockholm norrtalje enkoping uppsala kastelholm tierp heby nykoping kolmarden strangnas oppunda sodertalje malaren arboga vasteras nora sala skinskatteberg linde grythyttan orebro riseberga goksholm varnum tingvalla nas nordmark gillberg farnebo fryksdal josse vanern avesta falun leksand grange malung mora hedemora orsa soderbarke stora_tuna floda siljan gefle hedesunda hamrange ockelbo
+			hudiksvall alfta soderala hogdal havero selanger
+			harnosand solatunum ramsele sjalevad anundsjo grundsunda
+			asele lycksele arvidsjaur volgsjo stensele tarna ortrask
+			umea vindeln skelleftea tornea bygdea pitea lulea ranea gratesk hienatiemi branna byske bodebyn alvsby pajala
+			akkajaur arjeplog silbojock sorsele
+			storavan uddjaur socksjock jokkmokk kvikkjock porjus gellivaara sarek
+			nikkaluokta torne_trask vastenjaure akkajaure abisko raunala 
+			korpilombo juckasjarvi
+			#Baltic Territories
+			korela kurkijoki konevets joensuu sordavala vartsila ilomantsi lieksa juuka salmi loimola mohko suojarvi yanis_jarvi lake_orivesi lake_suoyarvi lake_otradnoye hoytiainen pielinen viinijarvi koitere nurmes
+			oreshek lisino markovo martyshkino neva toksovo 
+			koporye ivangorod khotchino moloskovitsa soikino yama
+			valjala kuressaare tallinn narva padise paide rakvere rapla toolse vasknarva cesis aluksne gulbene rauna valmiera parnu karksi poltsamaa saarde suure_jaani viljandi lake_vorts hapsal kaina lihula st_martin riga koknese limbazi salaspils sigulda straupe tartu valka vastseliina vonnu
+		}
+		
+		own_control_integrated = {
+			minguannan tappahanna shackamaxon tetamekanch
+		}
+
+		government = {
+			type = monarchy
+			ruler = swe_christina_vasa
+		}
+		capital = stockholm
+		country_rank = rank_kingdom
+		starting_technology_level = 5
+		include = "zzz_expl_european_colonial_powers"
+	}
+	
+	FIN = {
+		own_control_core = {
+			korsholm koppo pedersore storkyro karleby kaustby lappo vora abo nystad poytis sauvo helsinge ekenas sjundea porvoo liljendal ikalis raumo bjorneborg hvittis sastmola birkala sastamala orivesi nasisalki hollola lohja tavastehus janakkala forssa itis jyvaskyla jamsa saarijarvi viitasaari laukas sysma paijanne jaasjarvi mikkeli olofsborg heinola kangasniemi ristiina joroinen kuopio idensalmi rautavaara savonranta pihlajavesi haukivesi puula kyyvesi kymi_fi vyborg villmanstrand veckelax elimaki vederlax valkeasaari kyyrola beryozovskoye heinjoki jaskis pyhajarvi puruvesi saima
+			paltamo kajana sotkamo kuhmo suomussalmi kuusamo
+			salla kemijarvi korvala oulujarvi yli_kitka muojarvi
+			enare sodankyla savukoski ivalo utsjoki enare_trask
+			simo uleaborg brahestad utajarvi siikalatva taivalkoski kuivaniemi ranua pudasjarvi posio
+			mourionska kiemi rovaniemi kittila nunnanen enontakis kasivarren
+		}
+		government = {
+			type = monarchy
+			ruler = swe_christina_vasa
+		}
+		capital = abo
+		country_rank = rank_duchy
+		starting_technology_level = 5
+		include = "zzz_expl_european_colonial_powers"
+	}
+	
+	NOR = {
+		own_control_core = {
+			idre konghalla uddevalla stromstad hornborg borg halden moss trogstad tonsberg skien sande grenland stavanger ryfylke suledal haugalandet jaeren flekkefjord sirudal otredal lindesnes oddernes oyestad sondeled amli kongsberg ringerike hallingdal numedal sigdal bragernes bergen fana kvinnherad ullensvang moster eidfjord nordhordland voss eid stryn sunnfjord sogndal aurland vik laerdal oslo ski eidsvoll vardal lillehammer valdres otta imsdalen hedmarksvidda hamar kongsvinger elverum glommadal trysil amot tynset mjosa
+			nidaros roros stjordal oppdal orkdal skaun storen holtalen meraker alvdal levanger namdal orland snasa lierne steinkjer molde fosna sunndal rauma sunnmore borgund stordal tofte troms trondenes senja bardodalen raisa hammerdal offerdal berg froso ragunda sveg hede oviken storsjon bodo birndal hattfjelldal rana alstahaug gildeskal steigen langenes lofotr hamaroy ofoti kautokeino varanger vardo deatnu porsanger karasjok hammerfest alta kirkenes lebesby flesberg
+		}
+		own_control_integrated = {
+			holar husavik akureyri blonduos torshofn vopnafjordur egilsstadir seydisfjordur reydarfjordur holmur kirkjubaejar borgarnes olavsvik isafjordur hvamstangi skalholt selfoss keflavik reikjavik thingvellir hvolsvollur vattnajokull icelandic_highlands eyjafjallajokull
+			torshavn
+		}
+		government = {
+			type = monarchy
+			ruler = dan_christian_iv_oldenburg
+		}
+		capital = oslo
+		country_rank = rank_kingdom
+		starting_technology_level = 5
+		include = "zzz_expl_european_colonial_powers"
+	}
+	
+	DAN = {
+		own_control_core = {
+			ribe randers viborg aalborg ars limfjorden bolling ringkobing holstebro_lundenes varde kolding aarhus grindsted silkeborg kalo thisted skagen hjorring roskilde ringsted kalundborg helsingor hammershus kobenhavn slagelse vordingborg odense navskov falster assens svendborg
+			helsingborg lund malmo gladsax osby asbo varberg laholm halmstad kungsbacka ronneby bregne solvesborg
+		}
+		government = {
+			type = monarchy
+			ruler = dan_christian_iv_oldenburg
+		}
+		capital = kobenhavn
+		country_rank = rank_kingdom
+		starting_technology_level = 5
+		include = "zzz_expl_european_colonial_powers"
+	}
+
+###European Colonial Nations
+	VOC = { #Dutch East India Company
+		own_control_core = {
+			sunda_kelapa sombai kupang malacca temasek siraya lloa makatao lamakera
+		}
+		government = {
+			type = republic
+			ruler = random
+		}
+		capital = sunda_kelapa
+		country_rank = rank_kingdom
+		starting_technology_level = 5
+		include = "zzz_expl_european_colonial_powers"
+	}
+	
+	WIC = { #Dutch West India Company
+		own_control_core = {
+			#New Netherlands
+			manhattan tappan nochpeem massapequa poughkeepsie ponkhockie kitchawanc
+			#Brazil
+			upaon_acu miritiba tapuios igaracu jenipaboacu tremembe anace tapeba pitaguari payaku
+			monxoro kaaysara potiguara paraiba caxanga yapuata karapoto kariri arakaiu sauipe
+			#Guyana
+			essequibo demerara berbice
+		}
+		government = {
+			type = republic
+			ruler = random
+		}
+		capital = demerara #placeholder before adding Africa
+		country_rank = rank_kingdom
+		starting_technology_level = 5
+		include = "zzz_expl_european_colonial_powers"
+	}
+	
+	NEN = { #New England
+		own_control_core = {
+			weyanock kiskiack wicocomico werowocomoco rappahannock nentego patuxent wicomico chicamacomico matapeake accomac
+			quinnipiac rippowam saukiog siccanemos nehantuck
+			patuxet assonet nauset nantucket seekonk sagadahoc casco kennebunk squamscott naumkeag shawmut
+			#Newfoundland
+			cape_race cape_spear bacalhieu placentia mollyhuajeck mekwiskajk
+		}
+		government = {
+			type = republic
+			ruler = random
+		}
+		capital = weyanock
+		country_rank = rank_duchy
+		starting_technology_level = 5
+		include = "zzz_expl_european_colonial_powers"
+	}
+	
+	NFR = { #New France
+		own_control_core = {
+			eimastukwek epwikek kutapuskuj upsukdaskooch belle_isle wipetikil naskwotchu mekapisk
+			ekwentondie wolinak andawaohie wachilmezi kikonteku stadacona etchemin ahwendoe ondaonnentakwi menahkwesk nmejuaqnek
+		}
+		government = {
+			type = republic
+			ruler = random
+		}
+		capital = ahwendoe
+		country_rank = rank_duchy
+		starting_technology_level = 5
+		include = "zzz_expl_european_colonial_powers"
+	}
+	
+	NSP = { #New Spain
+		own_control_core = {
+			#Mesoamerica
+			xaltocan tehotihuacan culhuacan tetzcoco apan tenochtitlan tlacopan azcapotzalco chalco 
+			xochimilco axochiapan cuauhnahuac 
+			quauhquechollan huaxtepec itzocan amaticoztitlan tlapan ometepec oapan jicayan zacatepec 
+			yohualtepec huajuapan silacayoapam chiautla cuauhteopan tlazcozauhtitlan yopitzinco tixtla 
+			chilapa tecoanapa cihuatlan tecpan ixtapan zacatollan teotepec tlapacoya pachyohcan atocpan 
+			zempoala tollantzinco axocopan zimapan ixmiquilpan cadereyta tecozautla tututepec coatlan 
+			cuauhtolco tonameca manialtepec comitlan juchatengo nube_flan tehuantepec zanatepec chimalapan 
+			guiigu_yudxi huamelula juxtlahuaca tlachquiauhco poctlan tillantonco amoltepec teozacualco 
+			jaltepec yucucui coixtlahuacan yucundaa yucundeq yodzocahi nochixtlan sosola ixtlan zaachila 
+			miahuatlan totolapan mictlan yautepec tlacolula teotitlan ixcatlan oxitlan xicaltepec cuicatlan 
+			tochtepec mixtlan tozlan tlacotlalpan cosamaloapan iztachacalapan ozumacin 
+			atepec cuauhcuetzpaltepec chinantlan tesechoacan cuetlaxtlan xamapan nopiloa teutila puctlan 
+			otatitlan coatlicamac suchilapan atitlan choapan xochiapa coatzacoalco atzaccan acayucan 
+			texistepec tonala_coatzacoalco cuauhtochco ahuilizapan otlaquiquixtla zongolica cempoala 
+			itzcalpan xicochimalco quiahuiztlan tizatlan tepeticpac ocotelolco quiahuixtlan huexotzinco 
+			cholollan xicotepec zacatlan tetela ixtacamaxtitlan tepeyahualco tepeyacac 
+			tecalco tecamachalco tehuacan tepexi tlatlauquitepec nauhtlan tuzapan 
+			papantla tlapacoyan cuyuxquihui xalapa xalacinco mizantla teziutlan tuxpan teayotlan pantepec 
+			taximaroa tzitacuaro zinapecuaro guayangareo tiripetio tacambaro tzintzuntzan cuitzeo 
+			churumekua tuzantla caracuaro puruaran huandacareo acambaro maravatio yuririapundaro zacapu 
+			xacona zula_michoacan tlazazalca angamacutiro xilotlan erongaricuaro patzcuaro 
+			aguacana uruapan tinguindin tancitaro coliman tlacalahuastla caxitlan coahuayana chucutitlan 
+			apatzingan teloloapan ajuchitlan cutzamala tepecoacuilco tetellan zompanco 
+			oztoman tlachco temascaltepec zacazonapan malinalco tlalpujahua tollohcan ixtlahuaca ninil 
+			teotenanco mixquiahuala tollan cuauhtitlan xilotepec ixtachichimecapan 
+			kerhiretarhu tetzapotitlan huayacocotla tutotepec metztitlan jalpan tziuhcoac oxtlipan copuz 
+			cocomacan mo_o_ti pechichitane xiriquitzio nat_tha_hi penlamu uza pame otomi 
+			tanchaycha tangamanga hnahnu huaxcama ozuluama panuco tamtoc quechula ocosingo lakam_tun 
+			tenamitl zinacantan pochutla tila tonala_chiapas napinaica jaltenango huehuetan 
+			baak cupilco zahuatan tatahuitalpan mayapan mani hocabail sotuta maxcanu 
+			hunucma tho motul dzilam titsimin chichen_itza tases kalotmul zaci kaan_peech calkini edzna 
+			hochob dzibilnocac chakan_putum tixchel xicallanco itzamkanac nadzcaan chactemal 
+			colha nohmul chakanbakan xpuhil dzibanche bakhalal chacchoben tixmul xpaicheil telantunich ekab 
+			labcah zama coba chakan_yucatan jootsuuk tlayolan tochpan tlamazolan sayula cuzallapa amollan 
+			cocollan cutzalan tomatlan xihutla zihuatlan melahuacan revillagigedo_islands cuauhchinanco 
+			tlalpan amaxacotlan cuautla autlan tenamaxtlan ameca huitzquilic etzatlan tala_mx ahuacatlan 
+			tzapotzingo hostoticpac hostotipaquillo xalisco magdalenas aztatlan sentispac tonala tlaxomulco 
+			chapallan acatic ixtlahuacan coinan mextiacan mitic metzquititlan xalostotitlan 
+			tepactitlan yahualican cuzalapa
+			
+			#Aridoamerica
+			tahejoc comcaac cucurpe xiica_xnaai_iic_coii pitic ures aconchi aritpa
+			yoreme huatabampo chinipas makurawe cosihuiriachi
+			matape guaimas soyopa sahuaripa batuco oposura papigochic babicora corodehuachi
+			sinaloa baborigame badiraguato ahome cerocahui gonogochi
+			culiacan quetzalla piaxtla mazatlan tamazula otaez topia tayoltita
+			chiametlan maloya guarisamey acaponeta nayarit mezquital nilapohuana odam canatlan
+			atanagunypacam tamaulipeco maratine coospacam magueyes hualahuises galeana pilon
+			pantlan tula mante ypoa
+			ma_tehua_llan guanchenis mazatlpilli mazatepec guachichil miopacoas
+			coneto papanton cuencame alamamas irritila
+			tepehuan inde guanacevi papasquiaro
+			tlacuitlapan yamanquex zain tepecan yuac nochistlan xochipillan teulinchan xochitepec huaxtla sauzas guaxaban xiconaque cuxtaque
+						
+			#Central America
+			noh_peten namaan yax_mutal pachan wak_kabnal
+			ceibal ixtutz pusilha campin tzoite paliac
+			tzunuun altun_ha lamanai xunantunich uxwitza
+			acasaguastlan chiquimula cuauhtemallan guazacapan itzalku
+			
+			xelahuh kakol_kiej itzcuintlan atitlan_guatemala
+			
+			jolom_konob zapaluta tzunun_kaab otzoya chinabajul pismachi
+			
+			chama seacal kajyub nito toquegua
+			
+			talanga tecohtzincalpan comayagua maniani
+			tencoa ocotepec opoa cururu shalatenan
+			chinda naco yoro ticamaya
+			choluteca nacaome texiguat xoxonal
+			pech sico olanchito ollalko papayeca
+			usulutan chalchuapa metapan kuskatan cojutepeque nonualco
+			gotera queiquin
+			kukra tawahka prinzus boas bawika silam yuskus ku panamahkas
+			
+			matagalpa rama ulwas xiotenko ukutal xalapan danli
+			
+			nagarando nequecheri diria cuauhcapolca tezoatega guaxenicos sutiapan
+			
+			karawala awastara ahuya_yari
+			orosi bocto nekokiaw garabito uxarraci
+			coctu boruca quepos pacaca
+			burica chiriqui huista
+			veragua caribaro terbi dererri tariaca kabeka
+			
+			#Florida
+			mayaca utina itaraholata
+			jororo acuera surruque ho_bay
+			mayaimi ais guacata tequesta guarungube
+			tequemapo okeechobee caloosahatchee uriparacoxi lake_okeechobee
+			potano vicela uqueten
+			tocaste guazoco mocozo ozita
+			anhayca azile
+
+			#Caribbean
+			yateras bayaquitiri mayari guantanamo baracoa sagua barajagua
+			bayamo macaca jiguani cueiba maguanes bani_cuba lora cayaguayo
+			south_camaguey camaguey mabuya guaimaro
+			cubanacan east_cubanacan magon ornofay guamuhaya east_sabaneque central_sabaneque sabana
+			habana batanabo guanimar marien_cuba siguanea guaniguanico guanamacabibes macoriges west_sabaneneque hanabana jagua
+			maynoa yaguabo aguacadiba guaygata anaya oristan kaiman
+			cayguani baoruco
+			bavaro yuma mona_island hicayagua cayacoa yamasa boya
+			maguana jarabacoa cibao azua bani banique cordrilla_central
+			yaqui magorix bohio moca samana cubao ciguayo cotui
+			guaynabo guaraca guaynia guama arasibo ayamaco
+		}
+		
+		own_control_conquered = {
+			east_hanos west_hanos manso hue_hue_ri_gi_ta tehua suma namiquipa xicahua
+			julime tu_e_dine_de baopapas babonoyaba guajoquilla mesquite guiaquitas nonoava cocoyome coyame sainapuchi yoli jae_aaya
+			mapimi sisimbles osatayogliglas cacalotito
+			alazapa cuanales masacuajulam gualeguas tilijais guazapayogliglas huajuco
+			chisos espopolames gueiquesales muruam chichitames cauitaome yeme
+			tih_go_tel teypana shiewhibak aaku
+			tsiya tuf_shur_tia than_u_ge ohkweeo_owingeh ialophaybo dinetah nde_nda_i	
+		}
+		
+		own_control_colony = {
+			#Palehilippines
+			balbalan mallig tobog kiyyangan
+			ibalong binawangan daet naga_bikol sawangan vidak
+			tondo maynila kainta bay kalilayan kumintang mulanay pakil tayabas pulilu binangonan
+			aparr babuyan_islands batanes pudtol lal_lo gattaran tubigarao
+			mamburao basud kalapang mangarin
+			taytay busuanga
+			pantabangan baler bayambang magalo botolan hubek pulilan
+			agno agoo binalatongan bolinao kandong tagudin bigan malukkit
+			bolo ajanas camarag casiguran maddela
+			binalbagan bago_negros ilog tanjay
+			singhapala bool kangdaya talibon
+			masbate malindig matandang_nayon parpagoha
+			irong_irong aklan batan araut malandog
+			borongan basey catarman makarato tinago
+			kankabatok pangasugan limasawa mairete
+			panaon dapitan sindangan aparri
+		}
+		
+		government = {
+			type = republic
+			ruler = random
+		}
+		capital = Tenochtitlan
+		country_rank = rank_kingdom
+		starting_technology_level = 5
+		include = "zzz_expl_european_colonial_powers"
+	}
+	
+	VOP = { #Viceroyalty of Peru
+		own_control_core = {
+			#Panama
+			tauraba parita nata escoria chiru esquegua panama careta pocorosa comogre chochama cubiga chepo chuchures
+			
+			#Colombia
+			chayrama teyuna yaharo upar sicarate ariguani curumanao
+			mompoj norosi tamalameque mahates calamari mocana kamach zarate
+			necocli upper_sinu zenues sinu sincel one
+			iscuande narino tumaco tapaje hatunllacta inga patia
+			caly buga caloto micay timbiqui yauto munchique
+			vijes sonso gorrones tahamies cauroma umbra otun tulua
+			baudo choco quibdo gioro tatama noanama tado_colombia novita
+			acanti curiche kuna murri catios bojaya amaga xundabe ebejico
+			ichitki suchiimma marakaaya perija catatumbo jauregui
+			chitagaes kukuta babichas yukpa
+			coro paraguana tucanca chama_venezuela arapuey mukas cabimas capatarida
+			mayaba noris sotachiro yolombo nechi pantagoras cocorna guarzo aburra
+			simiti macaregua tora camacota hacaritamas duitama boiaca
+			aragua tirgua cura caracas batey onoto
+			
+			#Andes
+			hatunqulla ichuna chucuito contornasa pomata
+			guancavilca manta guayaquil daule yaguachi puna chacayacu machala yazne
+			caran baba jama atacames pailon babahuyu
+			quito waranka panzaleo imbaguarbak tsachila mindu otavalo kayambi tacunga hambatus liribamba
+			alausi hatun_kanar shabalula cangochamba malacatos calvas pukamuru
+			kofan quijos siona napo kichwa puyu sangay macas yaguarzongo
+			tumbes chira nariguala nunura xllang ayahuacas guayacundo apurlec huancapampa
+			pakatnamu sana farfan chan_chan chao huacatambo manchan huarmey ocro paramonga guamanmayo
+			chancay chiprac collique cantamarca rimaq huarochiri ishma chilca huarco naupahuasi incahuasi
+			chuqlluqucha chinchay puka_tampu ica cahuachi acari incawasi chullac pukiupukio
+			yauca atico caraveli ucuna camana quilca yanque aruni
+			arequipa churajon tampo puquina chaucalana tacna kileqollo
+			arica tarapaca huantajaya iki_iki tocopilla ckara_ama
+			tulor antofagasta paposo tatal chanaral cobija atacama_salt_pan punta_negra_salt_pan
+			oma_sacopo angastaco tastil salta jujuy tilcara paya
+			watungasta pipanaco aconquija shincal yukkuman kilmes tolombon lule pipanaco_salt_pan
+			guandacol talampaya polco cuyo tamberias fiambalao pissis ischigualasto jachal pivn_man_antu angualasto rio_salado_salt_marsh colorado_salt_marsh
+			chepes ulapes michilingue saleta nogolma uco uspallata huanacache guentota jaurua millcayac ullum sankancete zonda quines
+			qupayapu kellollampu huasco elki limari millapel liwen
+			inka_llaqta ayopaya paititi yungas guanay kallawaya caupolican sarkajpa yurakar
+			pomabamba huacareta tomina takopaya yamparaez samaipata chuwi mizque sachchaa_mukku arque incarraqay
+			aqush yaino huari rapayan chavin japallan huacrachuco manchac
+			garu wanuco_marka chiquia kotosh atash ichugan pumpu gochacalla
+			andaymarca pashas tumshukaiko waricoto choquerecuay kasha_tampu quillahuaca willcahuain
+			ingapirca llampqui tarmatambo tunanmarca hatun_xauxa pumaruri
+			wari_willka willka_ulo tampu_machay churkampa tayaccasa llacsapallanca
+			allpas wari_peru pariahuanca pampahuaylla choccalpata paqwayranra
+			sondor auccapana challwanqa millcca tukri_apu_apu willkawaman soras huaman_karpa caniche seqse_qaqa
+			yanahuara cotapampa antabamba tucssa sara_sara
+			raqchi sausaya kanamarca achachiwa uyo_uyo pampa
+			oruro ayaviri pukara macaya pumanota puncune wankani titimani iskanwaya
+			machaqa axawiri achacachi viacha tiwanaku calamarca chuqiyapu
+			kori_bara_karaa_ancas callapa ayo_ayo sicasica curahuara matarjawira sura
+			aullagas karanka uru carangas isluga llica uyuni loa lipi hatun_killaka coipasa_salt_pan uyuni_salt_pan
+			charka colquechaca ccantumarcani thumilki oronckota chake tupiza payacullo camataqui
+			toara cochinoca omaguacas puma susques lickanantay antofalla kolla pedernales_salt_pan
+			chumbivilcas maukallaqta waqrapukara pikillaqta qusqu pisaq paucartambo urupampa quillarumiyoc
+			yanatile yunca ullantaytampu picchu willka_pampa
+			ilucan chetilla huambos chumuch congona kuelap huamanpata olan
+			illapa kaxa_marca tantaricuy chimu llucho markahuamachuco pirca_pirca huallumarca
+			awajun bagua utkhupampa namballe ingatambo karajia huancachaca
+			moyobamba lamas yurimagua chatuza cocamas kachi rupharupha
+			may_ushin kakataibo ashaninka panatahuas yanesha chanchacc nomatsigenga
+			isabela_island santiago_islands santa_cruz_islands
+			aconca_hue qillu_uta waykuche meli_pillan rangkawe kolchawwe kuruko mawlen cauquen pikumche uthan_uthatun chillan perquilauquen puchacay biobio
+			lafkenmapu lelbunmapu wenteche inapiremapu pebuenmapu
+			pikunwijimapu caurakawin ancud quiquilhue quellon piren
+			juan_fernandez_islands
+		}
+		
+		own_control_conquered = {
+			#Chaco
+			kabishi kuruminaka paikoneka saraveka otuke koraveka
+			bia_mbya mbia guarayo cayuvava yuracare
+			nemby kyyindy akaray kaarendy canindeyu takuru_puku ycuamandiyu ayvu_pora
+			pai_tavytera kuarepoti curuguaty kaaguy_jehasapa yguazu tsiripa ygana
+			enlhet enxet guana nenlhet enenlhet tefeyak aseptiketiheylhets ipholhhelhlhup
+			eexiwa uechamitogosode eampepaigosode tunupegosode yshyr
+			totobiegosode gaaigosode amomegosode ijnapuigosode
+			chishamnee yita tavashay lumnanas tapiete yalve_sanga
+			sheulec dapiguemlec lanagashec tacshic pitlaxa wichi wiznay
+			niyaj eben_ezer shichaam alpu
+			qom_caia nonot_daxinic aim_mocoylek lalek_cotaa qar_ka_la
+			quisquisacate kata_kuna chipion karendo
+			raxalaa ongamira qompi qollaxalec rukahe yaaucaniga nakaigetergehe
+			moqoit tilala romang
+			ichukanai gualamba ashca kuska ayllu_yacuchiri auqajikuna patay
+			matara ocol chinipi sinipi qom_toba atoj_wasin ashca_caycu
+			macaclita noguinet auleta siton naure sumampa asingasta gualas chine
+			caminigas mogas chupilta
+			mepenes taragui agaes avaes payubre yapeyu itapua uruguay
+			cuareim pairindi mandisobi
+			saipuru muyupampa tarija weenhayek mrubicha
+			evuevi sucuriu piquiri camapua ytykyra
+			mebengokre aquidauana
+			kadiweu piripucu terena nioac
+			dawande balotipone parecis haliti ikuiapa guato otuques
+			paranaiba porekry opaye ofaie taquarucu anhandui
+			kaiowa kaiwa chiripa maracaju
+		}
+		
+		government = {
+			type = republic
+			ruler = random
+		}
+		capital = rimaq
+		country_rank = rank_duchy
+		starting_technology_level = 5
+		include = "zzz_expl_european_colonial_powers"
+	}
+	
+	VOB = { #Viceroyalty of Brazil
+		own_control_core = {
+			marapanim tupinamba samauma mairi kaapor kururupu tapuitapera
+			jiribatuba tupiniquim hahahae 
+			pataxo nac_nanuk tapuy jucuru caravelas vicosa
+			aimore kiri_kere malalis coutins
+			guaitaca jose_calcado itapemirim guarapiri itaparica nandu
+			tamoio cunhambebe
+			iguape cananeia marataiama gohayo sao_sebastiao
+			kapiwary ararayu_aba nheteroia mage y_uasu goana_para ita_kua_y
+			itaperuna guaitaka sao_fidelis cantagalo mokaie nova_friburgo
+			coropo praiba_sul tampruns piray ita_atiaia
+			aruja mogi_das_cruzes sao_roque jerubatuba parnaiba piratininga
+			sorocaba
+			lapa ponta_grossa curitiba bocaiuva_do_sul palmeira_brasil sao_jose_pinhais parnanguara
+			karai_yo xokleng itapocu itajai mafra
+			kariio apytere tubarao sambaqui iaguarauna
+			curitibanos lages sao_joaquim urubici
+			cruz_alta palmeira nandeva lagoa_vermelha passo_fundo vacaria
+			jeguakava ibicui ibirapuita cacequi ibaje inhandui
+			carijo piratinin piratini jaguarao cangucu chuy
+			icabaqua tupancireta umbu cacapava vacacai
+			tapes patos jacui sao_leopoldo san_antonio_patrulha arroio
+			harrua araicuahita yi hum arachan guenoa ita_cuara ybiti yacegua
+			apiai
+			sao_luis_do_paraitinga lorena guaratingueta taubate paraibuna jacarei
+			charrua ombu yaros
+		}
+		
+		own_conquered = {
+			upaon_acu miritiba tapuios igaracu jenipaboacu tremembe anace tapeba pitaguari payaku
+			monxoro kaaysara potiguara paraiba caxanga yapuata karapoto kariri arakaiu sauipe
+		}
+		government = {
+			type = republic
+			ruler = random
+		}
+		capital = gohayo
+		country_rank = rank_duchy
+		starting_technology_level = 5
+		include = "zzz_expl_european_colonial_powers"
+	}
+
+###American Tribes
+	#Mohawk/Kanien'kehaka
+	KKA = {
+
+		own_control_core = {
+			canajoharie teionontatatie oneonta schenectady saratoga ticonderoga kawenote oronia tsiietsenhtha oskennonton itekiatonhniarikon
+		}
+
+		starting_technology_level = 1
+		include = "haudenosaunee_tribe"
+		include = "expl_amerindian_east_coast"
+		government = {
+			ruler = random
+		}
+		capital = canajoharie
+
+		currency_data = {
+			gold = 100
+			stability = 33
+			tribal_cohesion = 90
+		}
+	}
+
+	#Oneida/Onyotaaka
+	ONY = {
+
+		own_control_core = {
+			onenioteke oneniote teiehonwahkhkwatha niiohehsane oswegatchie nikahionhwakowa
+		}
+
+		starting_technology_level = 1
+		include = "haudenosaunee_tribe"
+		include = "expl_amerindian_east_coast"
+		government = {
+			ruler = random
+		}
+		capital = onenioteke
+
+		currency_data = {
+			gold = 100
+			stability = 33
+			tribal_cohesion = 90
+		}
+	}
+	#Onondaga/Onondagega
+	ONO = {
+
+		own_control_core = {
+		tsikahiotsisto otsiningo oswego
+		}
+
+		starting_technology_level = 1
+		include = "expl_amerindian_east_coast"
+		include = "haudenosaunee_tribe"
+		government = {
+			ruler = random
+		}
+		capital = tsikahiotsisto
+
+		currency_data = {
+			gold = 100
+			stability = 33
+			tribal_cohesion = 90
+		}
+	}
+	#Cayuga/Gayogohono
+	GYO = {
+
+		own_control_core = {
+		skaniatares assorodus gahato
+		}
+
+		starting_technology_level = 1
+		include = "expl_amerindian_east_coast"
+		include = "haudenosaunee_tribe"
+		government = {
+			ruler = random
+		}
+		capital = skaniatares
+
+		currency_data = {
+			gold = 100
+			stability = 33
+			tribal_cohesion = 90
+		}
+	}
+	#Seneca/Onondowaga
+	ONN = {
+
+		own_control_core = {
+		canadaigua geneseo tsonentsiio irondequoit
+		}
+
+		starting_technology_level = 1
+		include = "haudenosaunee_tribe"
+		include = "expl_amerindian_east_coast"
+		government = {
+			ruler = random
+		}
+		capital = canadaigua
+
+		currency_data = {
+			gold = 100
+			stability = 33
+			tribal_cohesion = 90
+		}
+	}
+
+	CHK = { #Cahokia
+		own_control_core = {
+			cahokia peewareewa sangamon amonokoa macoupin tamaroa wyaconda oahaha emasulia
+			chariton meramec pahatsi tanwakanwakaghe moingwena
+			kaskaskia kaskankaham chepoussa ochechiton st_francois_mts
+			nudarcha wimihsoorita nodaway
+			peoria
+		}
+		starting_technology_level = 1
+
+		government = {
+			ruler = random
+
+			type = tribe
+			heir_selection = tribal_oldest_male
+
+			centralization_vs_decentralization = 80
+			traditionalist_vs_innovative = -70
+			spiritualist_vs_humanist = -60
+			aristocracy_vs_plutocracy = -80
+			serfdom_vs_free_subjects = 50
+			mercantilism_vs_free_trade = 50
+			belligerent_vs_conciliatory = 100
+			quality_vs_quantity = -75
+			offensive_vs_defensive = 50
+			land_vs_naval = -90
+			capital_economy_vs_traditional_economy = 100
+			individualism_vs_communalism = 60
+			outward_vs_inward = 50	
+
+			parliament = {
+				parliament_type = assembly
+			}	
+
+			laws = {
+				marriage_law = polygyny
+				heir_religion_law = heir_same_religion
+			}
+
+			reforms = {
+				agricultural_cultivation
+			}
+			privilege = {
+				#nobles
+				nobility_council
+				nobles_land_rights
+				tribal_autonomy
+
+				#clergy
+				embellish_great_works_of_faith
+
+				#burghers
+				urban_development_grants
+				market_fairs
+
+				#Commoners
+				peasants_autonomous_villages
+				communal_lands
+				allow_hunting
+				partial_yield
+				peasants_free_peasantry
+		
+				tribes_tribal_levies
+				tribes_allow_gatherings
+			}
+		}
+
+		discovered_areas = {
+			#east_coast_region
+			illinois_area
+			wisconsin_area
+			indiana_area
+			kentucky_area
+			tennessee_area
+			#louisiana_region
+			missouri_area
+			iowa_area
+			arkansas_area
+			central_plains_area
+		}
+
+		tolerated_cultures = {
+			tsawi_culture
+			ponca_culture
+			kaskankaham_culture
+			kahokiaki_culture
+		}
+
+		currency_data = {
+			gold = 180
+			stability = 20
+			prestige = 5
+			tribal_cohesion = 80
+		}
+
+		court_language = dhegiha_language
+		capital = cahokia
+	}
+
+###Southeast Asian Islands
+	ATJ = { #Aceh
+		own_control_core = {
+			barus natal panyabungan sibolga sionomhudon sorkam
+			deli asahan karo kota_rentang pakpak perbaungan silou
+			bandar_aceh linge pasai peureulak semerlanga sigli tamiang
+			pannai bahal balige bilah kota_pinang kualuh tanjung_balai
+			daya calang gayo_lues meulaboh singkil susoh tapaktuan
+			inderapura padang pariaman simeulue
+			
+			beruas manjung gerik
+		}
+		
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+		capital = bandar_aceh
+		country_rank = rank_kingdom
+		starting_technology_level = 3
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	BEI = { #Brunei
+		own_control_core = {
+			berune api_api padas pegalan hulu_limbang hulu_padas trusan
+			kudat hulu_labuk kota_marudu sandakan sibumbong mapun sugut
+			tutong baram barulo hulu_baram niah tinjar
+			rejang baleh balui belaga katibas plieran
+			igan julau mukah sarikei tatau
+			santubong samarahan saribas sebuyau tandang_sari
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+		country_rank = rank_kingdom
+
+		accepted_cultures = {
+			dusun_culture
+		}
+
+		tolerated_cultures = {
+			murut_culture
+			kayan_culture
+		}
+
+		capital = berune
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	MKS = { #Makassar
+		own_control_core = {
+			banggai bulakan gori_gori lingketeng una_una
+			bone bantayan buki tanahjampea cenrana tosora
+			bungku kendari mori_celebes sambandete unaaha
+			butung tukangbesi_islands andolo kolumba taubonto
+			donggala kulawi loree parigi pendau poso sigi
+			gorontalo atinggola boalemo guamonial paguat toli_toli tomini sulawesi
+			gowa barru bungi sengkae sidenreng tinco
+			mamudju balanipa kalumpang kurri_kurri managalang toraja
+			manado amurang belang karatung_island karakaralong_islands solimandungan sangihe_islands tabukan
+			palopo luwu malangke malili matano
+			kinabatangan hulu_kinabatangan hulu_segama kuamut lahad_datu lokan
+			tarakan hulu_sembakung sebuku sesayap tawau tong_talun
+			sambaliung kayan kelay segah sungai_lati tanjung_palas
+			sepinang
+			maimbung bongao lamitan 
+			balabak aborlan babuyan
+			paser hulu_paser tuyuk
+			bara_buru kayeli obi sanana taliabu tifu
+			banda_island kobroor ohoi_ewur trangan wokam
+			babar bungabali damar leti sangliat_dol wetar yamdena
+			banta_island_wasteland mamboro sabu sumba sumbawa taliwang waingapo
+			bajo_flores cibal ngada
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+		country_rank = rank_kingdom
+
+		accepted_cultures = {
+			dusun_culture
+		}
+
+		capital = sengkae
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	BNJ = { #Banjar
+		own_control_core = {
+			banjar banua_lawas martapura muara_bahan nagara_borneo pelaihari tanjungpuri
+			kuripan hulu_kahayan hulu_kapuas kahayan kapuas rungan
+			kotawaringin_lama air_hitam bulik hulu_jelai hulu_lamandau jelai
+			mendawai hulu_mendawai kahayan_hilir katingan sabangau samba
+			bangkalan_borneo cantung pagatan sigam
+			sampit arut cempaga hulu_mentaya hulu_seruyan kumai seruyan
+			karau barito hulu_barito lahei laung teweh
+		}
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			minangkabau_culture
+		}
+
+		capital = banjar
+		starting_technology_level = 3
+		country_rank = rank_kingdom
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	SUK = { #Sukadana
+		own_control_core = {
+			pontianak kubu tayan
+			sukadana hulu_pawan kendawangan pesaguan tanjungpura teluk_melano
+		}
+
+		government = {
+			type = republic
+			ruler = random
+		}
+
+		capital = sukadana
+		starting_technology_level = 3
+		country_rank = rank_duchy
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	MIN = { #Maguindanao
+		own_control_core = {
+			malabang himologan initao sumilao tukuran
+			kuta_watu buluan buayan kabacan kalalaw kalamansig minduso silae tboli
+			tagloc ata_mindanao makar caraga dibabawon kalagan mansaka sarangani
+			samboangan sibugay siocon
+			cateel bislig
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+			
+			reforms = {
+				mandala_system	
+			}
+		}
+
+		tolerated_cultures = {
+			manobo_culture
+			surigaonon_culture
+		}
+
+		capital = kuta_watu
+		country_rank = rank_duchy
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	MTM = { #Mataram
+		own_control_core = {
+			christmas_island
+			cirebon cibuaya cimanuk sindangkasih sumedang tegal wangung
+			demak jepara pandansalas pati pekalongan semarang
+			kawali cibadak kandangwesi pangandaran
+			mataram bagaluhan borobudur dieng pacitan purwalingga
+			pajang daha jagaraga matahun tulungagung wengker
+			surabaya bangkalan bawean gresik kangean sugeneb tuban_java
+			trowulan bajrajinaparamitapura balambangan lumajang malang pakembangan sadeng			
+		}
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			minangkabau_culture
+		}
+
+		capital = mataram
+		starting_technology_level = 3
+		country_rank = rank_kingdom
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	BAN = { #Banten
+		own_control_core = {
+			banten cianjur pakuan pangguyangan pulasari
+			lampung kalianda krui liwa_lampung palas_pasemah sukadana_lampung
+		}
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			minangkabau_culture
+		}
+
+		capital = banten
+		starting_technology_level = 3
+		country_rank = rank_duchy
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	JOH = { #Johor
+		own_control_core = {
+			gelanggi johor_lama muar rantau_panjang
+			pahang bera jerantut kuala_lipis kuantan kajang
+			tanjungpinang anambas_islands daik natuna_islands subi_islands
+			pangkalan_kerinci gunung_sahilan kampar pelalawan singingi
+			siak bengkalis buantan dumai sakai_riau senapelan
+			bagansiapipi kubu_rokan kunto rokan tambusai tanah_putih
+			pagaruyung inderapura padang pariaman pasaman solok sontang
+			jambi batang_tembesi berbak muara_sabak rantau_benar tungkal
+			dharmasraya batang_tabir batang_tebo karang_brahi sungai_penuh sungai_jujuhan tembesi
+			
+			dungun kampung_buloh paka trengganu
+			klang kajang
+			pattani kelantan menara pulai yala sankalakhiri_rang
+		}
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			minangkabau_culture
+		}
+
+		capital = johor_lama
+		starting_technology_level = 3
+		country_rank = rank_kingdom
+		
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	INR = { #Indragiri
+		own_control_core = {
+			rengat baru kuantan_riau peranap talang_mamak
+			kuala_kampar
+		}
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			minangkabau_culture
+		}
+
+		capital = rengat
+		starting_technology_level = 3
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	PLB = { #Palembang
+		own_control_core = {
+			palembang bumi_ayu komering lematang lubai pesagi prabumulih
+			buluranriding lebonghitam lumpur
+			hulu_musi musi_hilir
+			bengkulu manna topos
+			menggala gunung_sugih hulu_mesuji kotabumi mesuji tiyuh_tuha
+			kota_kapur badau koba pangkalpinang
+			lalan tenggulang perbatasan leko musi tingkip lakitan bingin mukomuko
+		}
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			lampung_culture
+			rejang_culture
+			orang_rimba_culture
+		}
+
+		capital = palembang
+		starting_technology_level = 3
+		country_rank = rank_kingdom
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	LNK = { #Landak
+		own_control_core = {
+			ngabang
+		}
+		
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = ngabang
+		starting_technology_level = 3
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+
+	SMB = { #Sambas
+		own_control_core = {
+			sambas hulu_sambas mandor mempawah monterado
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			malay_culture
+		}
+
+		capital = sambas
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}	
+	
+	SBU = { #Selimbau
+		own_control_core = {
+			selimbau jongkong
+		}
+
+		starting_technology_level = 3
+		
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = selimbau
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+
+	SLA = { #Silat
+		own_control_core = {
+			silat bunut
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			iban_culture
+		}
+
+		capital = silat
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+
+	KKG = { #Kutai Kartanegara
+		own_control_core = {
+			kutai_lama jembayan julau_kutai kedang_pahu tenggarong tuyuk
+			muarakaman belayan hulu_mahakam hulu_telen kelinjau mahakam telen
+			karangan bengalon sandaran sepinang sangata
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = kutai_lama
+		country_rank = rank_duchy
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	BLI = { #Bali
+		own_control_core = {
+			samprangan melara julah
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+		country_rank = rank_kingdom
+		capital = samprangan
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	SLP = { #Selaparang
+		own_control_core = {
+			sasak lombok
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = sasak
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	BIM = { #Bima
+		own_control_core = {
+			bima dompu
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = bima
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	BTN = { #Buton
+		own_control_core = {
+			butung kalisusu kotano_muna
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = butung
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	KNW = { #Konawe
+		own_control_core = {
+			unaaha andolo kendari
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			bungku_culture
+		}
+
+		capital = unaaha
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	BAI = { #Banggai
+		own_control_core = {
+			banggai gori_gori bulakan lingketeng tojo
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			saluan_culture
+		}
+
+		capital = banggai
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	BLN = { #Bolaang
+		own_control_core = {
+			belang solimandungan amurang
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			minahasan_culture
+		}
+
+		capital = belang
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	BAC = { #Bacan
+		own_control_core = {
+			amassing
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = amassing
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	TER = { #Ternate
+		own_control_core = {
+			ternate
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = ternate
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+
+	TID = { #Tidore
+		own_control_core = {
+			tidore
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		capital = tidore
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+	BTU = { #Butuan
+		own_control_core = {
+			butuan cantilan langan cabadbaran surigao talacogon hingoog
+		}
+
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+			
+			reforms = {
+				mandala_system	
+			}
+		}
+
+		tolerated_cultures = {
+			manobo_culture
+			surigaonon_culture
+		}
+
+		capital = butuan
+		include = "expl_indonesia" include = "expl_indonesian_trade_route"
+	}
+	
+###noboy expects random India
+	MUG = { #Mughal
+		own_control_core = {
+			awadh akbarpur kishi sultanpur_uttar_pradesh
+			bahraich balrampur gonda shravasti tulsipur
+			khairabad bhurwara biswan firuzabad_bahraich kherigarh
+			lucknow bilgram hardoi ibrahimabad pali_uttar_pradesh
+			manikpur bhadohi mungra raebareli unnao
+			
+			arrah ballia buxar jaund rohtas sasaram
+			azamgarh andar chillupar rudrapur sonepur_bihar thawe
+			bettiah makwanpur mehsi ramnagar_bihar sheohar simraungadh
+			gorakhpur bansi basti binayakpur kushinagar lumbini
+			varanasi chunar ghazipur jaunpur mau_jaunpur kantit
+
+			bareilly nahil pilibhit shahjahanpur
+			budaun gunnaur sambhal shahabad_uttar_pradesh
+			shishgarh chandpur_uttar_pradesh nagina seohara
+
+			alwar narnaul bharatpur
+			prayag kara asni korra shankargah
+			etawah kanauj sargadwari makanpur
+			agra mathura jalesar_doab kol dholpur chandwar
+			mirat hapur jansath baran saharanpur piran_i_kaliyar
+			delhi gurgaon rohtak panipat jind
+			sirhind sadhaura samana_india thanesar kaithal karnal
+
+			hajner sunam raikot faridkot bathinda firozpur muktsar
+			hisar sarsuti dadri hansi
+			jalandhar rahon bajwara milwat kapurthala
+			lahore sultanwind fatehabad batala kalanaur gugera kasur virkgarh sialkot eminabad pasrur
+			chiniot kamalia talwandi jaranwala jhang pindi_bhattian shorkot dijkot
+			multan mailsi chichawatni dipalpur pakpattan karur_punjab jalalpur_pirwala tulamba
+			dajal dera_ghazi_khan dera_ismail_khan kot_addu sitpur karor bhakkar mankera harrand mithankot omerkot
+			jammu udamphur kathua kishtwar pangi paddar chamba_india barmaur keylong koksar bhimber kohtali
+			gujrat busal bhera lalian shahpur sillanwali
+			dinkot isakhel bannu akora hangu khost tank thal_daman
+			peshawar lalpur mardan kohat attock
+			chakwal dina khewra khushab pindi_gheb rawalpindi sangni
+			zhob duki rakni lorelai kahan daraban wana urgun
+
+			parun asadabad_kunar hajiabad
+			kalam_swat dir timergara bajaur malakand
+			agror sherwan behali dasu kandia jijial tangir baligram
+			gilgit astore bunji chilas punial ishkoman phander yasin
+			altit nagar misgar passu hindu_kush8
+			srinagar pulawama baramulla ganderbal kupwara banihal rasyal rajouri poonch rawalakot udabhanda marwah sharda
+
+			bishnupur bankura barabhum chandrakona hijli madaran raipur_bengal tamluk
+			bogra birampur goraghat rangpur_bengal shahjadpur
+			devkot barbakaabad pandua_adina siliguri tajpur
+			gaur godagari naogaon pabna rampur_boalla
+			khalifatabad barguna chandrawip fathabad kotalipara qasba shahbazpur
+			khulna east_sundarban husaynabad jaynagar kulpi west_sundarban
+			mymensingh atiya belabo kapasia muktagacha tarakanda
+			nadia chandrabad jessore jhenaidah maheshpur pipli sreepur
+			pandua baragram bardhaman dubrajpur ilambazar satgaon
+			sonargaon bikrampur chandpur kobirhat kumilla savar
+			sylhet khaliajuri khaspur patharkandi rajnagar shaharpara
+			baniachang
+
+			hazaribagh chai gobindpur katrasgarh shergarh urda
+			palamau chatra tarhasi untari
+			ranchi ichagarh kharsawan
+
+			bhagalpur gidhaur hajipur khagaria monghyr samastipur
+			darbhanga janakpur_nepal jhanjharpur madhubani siraha sitamarhi
+			dumka deoghar jangipur mandar_parvat rajmahal teliagarhi
+			patna bihar_sharif deo gaya narhat rajgir roh
+			purnia alamganj bihariganj katihar kosi saharsa
+
+			puri kataka harishpur jajnagar bhadrak balasore jalesar ratnagiri kanthi
+			ganjam asika kalingapattanam parlakimidi kalinganagara brahmapur kulada
+			chaibasa ghatsila 
+			khariar patna_garjat balangir saintala 
+			dhenkanal khurda narsinghpur bhuban angul pal_lahara nayagarh
+			basna paikmal
+			rabkob sundergarh raigadh  jashpur_nagar sitapur upar_ghat
+
+			ujjain mandsaur rampura bhanpura agar indore dhar ratlam jabhua
+			sironj bhilsa bhopal sehore sarangpur maksi raisin chanderi guna
+			mandu maheshwar khategaon handia khandwa mandleshwar bijagarh alirajpur
+			thalner burhanpur asirgarh gawilgarh illichpur nandurbar sultanpur laling dharangaon pachora
+
+			dongartal bandhugara chhaparagarh balaghat wairagarh katol devgarh
+			basim kalam kelapur panar amravati akola mehkar sindkedh
+			ballarpur aheri bhadrachalam gadchiroli bramhapuri
+			kherla hoshangabad bhojpur 
+			lalitpur deogarh bhilsa sugaur
+			garha mandla ghansor nainpur ramgad amarkantak
+			ratnapura sarangarh kashigarh sakti chaiturgarh tummana kenda kawardha nawagarh pendra
+			tilda raipur durg dhamtari rajim sripura khairagarh nandgram ambagarh bemetara deori
+			bandogarh sohagpur beohari ramnagar rewa nagod mauganj madwas sidhi agori vijaygarh
+			tehri irij chhatarpur mahoba 
+			konch kalpi rath banda chitrakuta kalinjar
+
+			dungarpur banswara kanthal
+			sirohi
+			gwalior bhind datia narwar sipri sheopur sabalgarh khaniadhana
+			kota bundi mangrol gagraun aklera shahabad
+			bayana karauli ranthambore
+			merta nagaur makrana kolayat
+
+			dhrangadhra limbdi ranpur
+			sihor palitana lathi
+			nagnes dwarka bhanvad gondal morvi
+			chhaya junagarh somnath diu amreli
+			lakhpat kapilkot lakhiyarvira kantha
+
+			rander broach baroda nandod
+			danduka dholka ashaval khambat modasa
+			patan deodar radhanpur palanpur
+			baria champaner mohan astamba_dongar
+
+			kashmore shadodkot shikarpur jhatpat sukkur paat
+			vingur nagarparkar chor umarkot wanga_bazar agham_kot islamkot
+			thatta sonda manora muhammad_tur laribandar ahmad_khan kotri naserpur hala ranikot
+			rohri dubbi ghotki kot_lalu kandiaro islamgarh rajabar moro_sindh sehwan mansura
+			siwi dhadar gandava lahri bab_kot jhal dera_bugti mithri sui_pakistan
+			
+			dhubri kokrajhar bijni barpeta hajo guwahati goalpara dura
+			
+			kabul alishang chak gandamak jalalabad logar kohi_safi
+			ghazni gardez muqur nawah wazakhwa zarghun_shahr karor_2
+			
+			surat dang mayuragiri salagiri chandor udgir bir dahrur qandhar ahmednagar daulatabad jalna nander pathri
+			sirpur manikdrug mahur nirmal chennur adilabad asifabad yegaladapa balkonda sukhma mahagaon
+
+			dharampur nasik jawhar sinnar daman
+			janjira chaul kalyan bombay bassein
+			singarh raigarh pune junnar chakan
+			sholhapur naldrug ausa parenda chambargonda
+		}
+
+		government = {
+			type = monarchy
+			ruler = random
+		}
+		capital = delhi
+		country_rank = rank_empire
+		starting_technology_level = 5
+		include = "expl_india_muslim"
+		include = "expl_indian_trade_route"
+	}
+	
+###Persia
+ SFV = { #Guarded Domains of Iran
+        own_control_core = {
+            #Persian Region
+			ardabil ahar aslanduz kaleybar khiyav mardanaqom qahqaheh nir
+			barza bukan malekan miandoab sain santeh takht_e_soleyman
+			khoy bayazit maku hadishahr marand nazok_olya qarahziaoddin siah_cheshmeh
+			miyaneh aghkand hashatjin hashtrud khalkhal
+			tabriz heris maragheh sarab tufarqan ujan
+			urmia khameneh mahabad osnavieh salmas
+
+			bampur bazman dalgan espakeh fahrej karvandar rameshk hamun_jaz_murian
+			bannajbur mahgas murt nagh paroom saravan suran
+			bela hinglaj lakhsar ormara sonamiani wadh
+			gwadar buleda irafshan kuddan pasni tump turbat zik
+			kharan besima chagai naalbandin washuk
+			khash jaleq ladiz mashkel hamun_mashkel
+			qasr_e_qand gwatar kalmat rask sarbaz
+			quetta gulistan kalat mastung nushki shorabak hamun_lora
+			khuzdar awaran jhao mashkai nal surab
+			al_tiz bandar_e_jask bashagard bent bih jagin_zir zarabad
+
+			abarkuh abadeh bavanat dehshir eqlid marvast
+			behbahan dehdasht dishmok dogonbadan hendijan suq
+			darab hajjiabad_zarrindasht jannat_shahr rostaq tarom
+			firuzabad bandar_deyr dehram kalameh khormoj riz
+			gamrun bandar_charak bandar_khamir bandar_lengeh hormuz
+			harat khabar khatunabad meshkan shahr_e_babak
+			istakhr aspas beyza qaryat_al_bidh saadatshahr shahr_meyan
+			jahrom fasa ij_iran juyom kavar meymand
+			kariyan alamarvdasht bagh_iran jahreh karzin khunj
+			kazerun borazjan reyshahr farashband sar_mashhad
+			lar darz dehtal fin ruydar
+			qala_safid bandar_deylam bandar_rig basht jannaba nurabad
+			shiraz abadeh_tashk kherameh neyriz sarvestan zarqan
+			siraf ahel asir bastak kish
+
+			ardestan anarak aqda nain natanz zavareh
+			golpayegan delijan khwansar khomeyn mahallat nimvar
+			hamadan karaj_abi_dulaf khondab kurijan qorveh_darjazin saruk tafresh
+			isfahan dehagh dowlatabad komshecheh murcheh_khvort tudeshk
+			qazvin abhar avaj qeydar sagzabad savojbolagh takestan
+			qom aveh kahak kashan maranjab neyasar saveh
+			qumisha fereydunshahr karkevand ramsheh sohrfiruzan yangabad yazdikhwast
+			rey damavand eyvanekey karaj khwar rahimabad razeqan varamin
+			yazd ardakan meybod nadushan saryazd taft
+			zanjan mahneshan sarcham sojas soltaniyeh
+
+			bam fahraj_narmashir narmashir rayen rigan sepeh
+			jiroft baft dowlatabad_esfandaqeh rabor sarduiyeh zakht
+			kahnuj mardehek qaleh_ganj shahabad_kerman
+			kerman ghobeyra mahan shahdad hamun_dasht_lut
+			minab golashkerd manujan nowdezh rudkhaneh shaqrud senderk sirik
+			rafsanjan anar baghin bahreman bardsir dehaj ernan negar
+			sirjan arzu hajjiabad khabr qatruyeh saadatabad soghan
+			zarand_iran bafq behabad kuhbanan ravar 
+
+			ahvaz dowraq hamidiyeh hoveyzeh mosharahat muhammerah
+			borujerd aligurdaz borborud dorud gerit sibak
+			deh_kord borujen samiram sisakht vanak yasuj
+			dezful andimeshk masjed_soleyman shush shushtar somaleh
+			izeh andika dehdez lordegan naghan
+			khorramabad aleshtar kuhdast pol_dokhtar sarab_dowreh
+			ramhormoz bagh_malek khalafabad machul quban
+
+			bijar bashqurtaran dehgolan divandarreh ghorveh sohrevard yasukand
+			kermanshah badreh darrehshahr harunabad holeylan kamyaran
+			nahavand asadabad bisotun malayer sonqor
+			sahrazur hawraman javanrud marivan muchesh qasr_shirin sanandaj sulaymaniyah
+
+			damghan bastam lasjerd qumis semnan
+			rudbar shahrestan_sofla shamiram sirdan
+			rasht fuman lahijan langarud
+			gorgan aliabad_katul astarabad etrek incheh_borun minudasht mubarakabad nardin tammisha
+			amol al_mamtir chalus kojur tonekabon
+			sari ashraf farim_iran firuzkuh lafur
+			dulab astara bandar_e_anzali lankaran
+
+			birjand deyhuk khusf khvor mazhan nayband qala_zari
+			gonabad azghand mahvelat roshtkhar salameh zaveh
+			qaen abiz khargerd shahrakht tabas_al_unnab yazduye zohan zozan
+			tabas_al_tamr dastgerdan jondaq korit ribat_ushturan saghand hamun_dasht_kavir
+			turaythith bajestan boshruyeh kashmar sarayan tun
+
+			adraskan azab firuzkuh_afghanistan khaysar shindand
+			bost baghran deh_kundi gereshk kajran musa_qala tarinkot
+			farah anardara doroh lash_joveyn sarbisheh shahr_sabz
+			garmsir banader khanashin maiwand pangvay
+			ghazni gardez muqur nawah wazakhwa zarghun_shahr
+			kabul alishang chak gandamak jalalabad logar kohi_safi
+			kandahar arghestan chaman deychopan maruf qalat_ghilji
+			zabol chehl_dokhtaran dowzdab nehbandan shusef
+			zaranj bahramchah delaram khash_sistan qala_fateh qarnin rudbar_sistan hamun_gowd_zerah hamun_pushak hamun_saberi dasht_khash dasht_margoh dasht_tarakun
+			
+			#Other regions
+			ani amberd artashavan kumayri
+			gandzasar goroz haterk kashatagh shusha
+			kapan_armenia gladzor goris julfa nakhchivan tatev
+			lori gagi kayen khunani spitak
+			yerevan bjni igdir khor_virap sotk
+			
+			merv barkdiz pandjih
+			bamyan andarab bagram charikar istalif kahmard panjshir yakawlang
+			
+			ganja barda beylagan gardman lemberan shamkir
+			baku javad mahmudabad maraza qobustan shamakhi
+			mughan baciravan bilasuvar germi salyan varsan
+			shaki agsu aresh goychay qabala vartashen zardab
+			shirvan derbent niyazabad quba shabran
+			
+			bojnord khabushan quchan raz samalqan shirvan_iran
+			esfarayen agh_qala azadvar bam_esfarayen jajarm meshkan_khorasan shoqan
+			faraveh dehistan ganlygala gazanjyk jargalan maraveh sarlawuk
+			konjikala anew dargaz durun
+			mashhad farhadgerd mazdaran radkan tus
+			nishapur fadisheh kadkan pivehzhan
+			sabzevar beyarjomand farumad haresabad kharturan meyami
+			tejend abiward kalat_nader sarakhs
+			torbat_e_jam bakharz fariman mashhad_rizeh salehabad
+			herat awbeh chishti_sarif firozkoh karokh pushang tulak
+			marv_al_rudh ghormach jawand kusk kusk_kohneh qala_kohistan qala_naw qasr_ahnaf
+			
+			manama abadan
+			
+			abdanan dehloran meymeh arkvaz
+			eyvan ilam gilan_gharb
+			mawet sardasht qaladiza piranshahr surmali
+		}
+  
+		government = {
+            type = monarchy
+			ruler = random
+        }
+        accepted_cultures = {
+            adhari_culture
+            azeri_culture
+            lur_culture
+            kurdish_culture
+            mazanderani_culture
+            khorasani_culture
+            baloch_culture
+            afghan_culture
+            achomi_culture
+        }
+        capital = isfahan  # Capital
+        starting_technology_level = 4
+        country_rank = rank_empire
+		include = "expl_middle_east"
+		include = "expl_indian_trade_route"
+    }
+	
+###Northwest Africa
+	MOR = { #Morocco
+		own_control_core = {
+			tetouan basra_al_hamra larache taunat
+			badis tizgane amergo al_mazamma
+			ras_kebdana ghassasa temsamane tabarida
+			ksar_el_kebir tazroute ouezzane
+			fez meknes la_mamora sale azrou volubilis tefelfelt baht
+			anfa azemmour bejaad thagia rabat settat mrirah
+			asfi mazaghan tit boulaouane miatbir aguz
+			tednest ait_daoud tafedna mogador
+			marrakesh aghmat tinmel naffis hanimmei tamdegost
+			taroudant tidsi tiout tiznit massa_MOR tafraout ifni noul_lamta agadir
+			bzou demnate azilal
+			tadla khenifra chichaoua
+			guercif ameskour terrest tezerghe namalata taza sefrou
+			jarawah_abu_al_aysh oujda
+			jerada taourirt debdou echemmaia sidi_bennour
+			nedroma tegeget kalaat_sraghna midelt
+			aouint_yghomane afso ifrane
+			#additions
+			tamdoult assa beni_sabih foum_zguid igiliz taghjijt tata_MOR tiout tissint tizounine
+			ouarzazate agdez ait_benhaddou skoura tagmadert taznakht
+			ijilmasa boumalne_dades er_rich ksar_es_souk tazzarine todgha
+			tabelbala
+			laayoune smara tantan tindouf
+			idjil dakhla al_kuwayra aousserd bojador
+			sijilmasa taghaza taoudenni araouane
+		}
+
+		country_rank = rank_kingdom
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			masmuda
+			zenati
+			sanhaja
+			andalusi
+			mustaarabi
+		}
+
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		capital = fez
+		
+		include = "expl_muslim_mediterranean"
+	}
+}
 }

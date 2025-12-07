@@ -1,0 +1,112 @@
+war_manager = {
+	##War of Three Kingdoms
+	civil_war = {
+		war_name = {
+			name = "ENGLISH_CIVIL_WAR"
+			ordinal = 1
+			first = {
+				name = "PLE"
+			}
+		}
+		
+		start_date = 1642.8.1
+		action = 1644.4.17
+		attacker = {
+			country = ENG
+			request = {
+				reason = Instigator
+			}
+		}
+		defender = {
+			country = ROE
+			request = {
+				reason = Target
+			}
+		}
+		defender = {
+			country = PLE
+			request = {
+				caller = ROE
+				reason = Subject
+			}
+		}
+	}
+	
+	civil_war = {
+		war_name = {
+			name = "IRISH_REBELLION_1641"
+			ordinal = 1
+			first = {
+				name = "PLE"
+			}
+		}
+		
+		start_date = 1641.10.12
+		action = 1644.4.17
+		attacker = {
+			country = IRE
+			request = {
+				reason = Instigator
+			}
+		}
+		defender = {
+			country = PLE
+			request = {
+				reason = Target
+			}
+		}
+		defender = {
+			country = ROE
+			request = {
+				caller = PLE
+				reason = Subject
+			}
+		}
+	}
+	
+	##Iberian Independence Wars
+	war = {
+		war_name = {
+			name = "FRANCO_SPANISH_WAR"
+			ordinal = 1
+			first = {
+				name = "FRA"
+			}
+		}
+		
+		take_province = {
+			type = conquer_province
+			SPAus_belli = cb_conquer_province
+			location = arras
+		}
+		
+		start_date = 1635.5.19
+		action = 1644.4.17
+		attacker = {
+			country = FRA
+			request = {
+				reason = Instigator
+			}
+		}
+		attacker = {
+			country = CAT
+			request = {
+				caller = FRA
+				reason = Subject
+			}
+		}
+		defender = {
+			country = SPA
+			request = {
+				reason = Target
+			}
+		}
+		defender = {
+			country = ARA
+			request = {
+				caller = SPA
+				reason = Subject
+			}
+		}
+	}
+}

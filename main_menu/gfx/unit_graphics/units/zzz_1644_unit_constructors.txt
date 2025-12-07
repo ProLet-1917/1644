@@ -1,0 +1,54 @@
+﻿# 1644 MOD - 单位构造器覆盖
+# 
+# 作用：强制步兵单位显示混合武器（不使用 IDEAL_UNIFORM 统一化）
+# 
+# use_uniformity = no 的含义：
+# - yes（默认）：引擎会根据条件自动统一装备外观（触发 IDEAL_UNIFORM）
+# - no：强制显示多样化/混合装备（符合明清战兵实际情况）
+
+#############################
+##### 覆盖基础步兵构造器 #####
+#############################
+
+REPLACE:army_infantry = {
+	schematic_name = unit_skeleton_schematic
+
+	# 头部保持多样化（原版设置）
+	attach = { 100 = heads use_uniformity = no }
+	attach = { 100 = torsos }
+	attach = { 100 = legs }
+	attach = { 100 = headgear }
+	attach = { 100 = hairstyles }
+	attach = { 100 = beards }
+	
+	# 关键设置：武器不使用统一性，显示混合武器
+	attach = { 100 = weapons use_uniformity = no }
+	
+	attach = { 100 = shields }
+	attach = { 100 = back }
+	attach = { 100 = offhand }
+	
+	animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe
+}
+REPLACE:army_cavalry = {
+	schematic_name = unit_skeleton_schematic
+
+	schematic_name = unit_cavalry_skeleton_schematic_new
+
+	size = 3	# Affects space between units in formations and when marching
+
+	attach = { 100 = heads use_uniformity = no }
+	attach = { 100 = torsos }
+	attach = { 100 = legs }
+	attach = { 100 = headgear }
+	attach = { 100 = hairstyles }
+	attach = { 100 = beards }
+	attach = { 100 = cavalry_weapons use_uniformity = no }
+	attach = { 100 = shields }
+	attach = { 100 = back }
+	attach = { 100 = cavalry }
+	#attach = { 100 = saddle }
+	attach = { 100 = horse_accessories }
+	
+	animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe
+}

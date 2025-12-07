@@ -1,0 +1,46 @@
+﻿# 1644 MOD - 武器附件配置
+# 
+# 配合 zzz_1644_unit_constructors.txt 中的 use_uniformity = no 设置
+# 实现混合武器显示效果（冷兵器为主，少量火器）
+#
+# 语法说明：
+# gfx_tag:附件类型 = { 权重 = 附件组名称 }
+# - gfx_tag: 在 unit_types 中的 gfx_tags 定义
+# - 附件类型: weapons, cavalry_weapons, torsos, legs 等
+# - 权重: 出现概率
+# - 附件组名称: 引用 vanilla 或自定义的武器/装备组
+
+# 汉族基础武器集（引用vanilla定义）
+han_weapons_tag:weapons = {
+	10 = han_base_weapons    # 直接引用vanilla中定义的汉族武器组
+}
+
+# 战兵：明清步兵，冷兵器为主
+chinese_zhanbing:weapons = {
+	1 = peasant_musket_weapons    # 1/4 火铳（早期手持火炮）
+	1 = spear_weapons             # 1/4 长矛
+	1 = sword_weapons             # 1/4 刀剑
+	1 = polearm_weapons           # 1/4 长柄武器（戟、钩镰等）
+}
+
+# 火器营：明清火器部队，火器为主
+chinese_musket:weapons = {
+	2 = soldier_musket_weapons    # 2/4 火绳枪
+	1 = spear_weapons              # 1/4 长矛
+	1 = sword_weapons             # 1/4 刀剑
+}
+
+manchu_infantry:weapons = {
+	1 = spear_weapons             # 1/4 长矛
+	1 = sword_weapons             # 1/4 刀剑
+	1 = archer_weapons            # 1/4 弓箭
+	1 = axe_weapons               # 1/4 斧子
+}
+
+# 满洲骑兵武器
+manchu_cavalry:cavalry_weapons = {
+	1 = spear_weapons             # 1/4 长矛
+	1 = sword_weapons             # 1/4 刀剑
+	2 = archer_weapons            # 2/4 弓箭
+}
+

@@ -37,7 +37,7 @@
 # 1644模组：降低县衙纸张需求
 REPLACE:zhixian = {
 	is_foreign = no
-	max_levels = 1
+	max_levels = 4
 	pop_type = nobles
 	
 	employment_size = minor_noble_employment
@@ -58,11 +58,11 @@ REPLACE:zhixian = {
 	}
 	
 	unique_production_methods = {
-		zhixian_maintenance = {
-			paper = 0.2  
-			weaponry = 0.2
-			tools = 0.2
-			fine_cloth = 0.1
+		zhixian_1644_maintenance = {
+			paper = 0.25
+			weaponry = 0.1
+			tools = 0.05
+			fine_cloth = 0.05
 			category = building_maintenance
 		}
 	}
@@ -70,13 +70,11 @@ REPLACE:zhixian = {
 	construction_demand = zhixian_construction
 
 	modifier = {
-		local_max_control = 0.25  # 控制力上限提升（原版0.10，提升至0.3）
-		local_monthly_control = 0.01  # 控制力增长速度提升
-		local_distance_from_capital_cost_modifier = -0.25
+		local_max_control = 0.15  # 
+		local_monthly_control = 0.01  # 每月+1%控制力
 		local_proximity_source = 20
 		local_monthly_development_modifier = 0.025  # 发展度增长提升
-		local_nobles_estate_power = 0.25
-		local_unrest = -0.25
+		local_nobles_estate_power = 0.10
 	}
 }
 
@@ -124,4 +122,43 @@ REPLACE:provincial_garrison = {
 		local_manpower = 0.005  # 大幅提升：从0.0025提升至0.01（提升4倍）
 		can_recruit_regiment_in_this_location = yes
 	}
+}
+
+# 1644模组：大幅增强女真兵营，+10人力，本地化为八旗兵营
+REPLACE:jurchen_barracks = {
+	is_foreign = no
+	pop_type = soldiers
+	max_levels = 1
+	
+	category = military_category
+	
+	employment_size = manpower_employment_005
+	
+	town = yes
+	city = yes
+	rural_settlement = yes
+	
+	build_time = soldier_building
+	
+	allow = {
+		dominant_culture = { has_culture_group = culture_group:jurchen_group }
+	}
+	remove_if = {
+		location = {
+			NOT = { 
+				dominant_culture = { has_culture_group = culture_group:jurchen_group } 
+			}
+		}
+	}
+	
+	
+	modifier = {
+		local_manpower = 0.01  # 大幅增强：从0.0025提升至0.01（提升4倍，相当于+10人力）
+		can_recruit_regiment_in_this_location = yes
+	}
+	
+	possible_production_methods = {
+		early_soldier_building_maintenance
+	}
+	construction_demand = early_soldier_building_construction
 }

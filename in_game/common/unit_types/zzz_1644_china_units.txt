@@ -16,26 +16,22 @@
 #   paper         - 纸张
 #   medicaments   - 药品
 #   salt          - 盐
-a_1644_chinese_pikemen = {
+a_1644_chinese_zhanbing = {
 	category = army_infantry
-	copy_from = a_age_4_reformation_infantry
+	copy_from = a_age_3_discovery_infantry
 	buildable = yes
 
+	combat_power = 1.2
 	# 步营 1000人（晚明战兵）
 	max_strength = 1.0
 	
-	#补给与征募需求（引用原版模板，避免解析异常）
-	maintenance_demand = pikemen_maintenance
-	construction_demand = pikemen_construction
-
 	# # 定位：晚明战兵，火器配备不足，整体素质弱于专业火器营
 	# # 略微降低输出与士气，作为廉价主力
 
-
-	country_potential = {
-		OR = { tag = QNG tag = CSH tag = WSG tag = CXI tag = MNG tag = CXI}
+	country_potential = { 
+		OR = { tag = CSH tag = WSG tag = CXI tag = MNG }
 	}
-	gfx_tags = { pike_tag }
+	gfx_tags = { chinese_zhanbing medium_tag }
 }
 
 a_1644_chinese_musketeers = {
@@ -44,7 +40,7 @@ a_1644_chinese_musketeers = {
 	buildable = yes
 
 	# 火器营（孙元化登州火器）
-	max_strength = 2.0
+	max_strength = 1.5
 	
 	# 补给与征募需求（引用原版模板，避免解析异常）
 	maintenance_demand = infantry_maintenance
@@ -55,27 +51,94 @@ a_1644_chinese_musketeers = {
 	morale_damage_taken = -0.08
 
 	country_potential = {
-		OR = { tag = QNG tag = CSH tag = WSG tag = CXI tag = MNG }
+		OR = {tag = CSH tag = WSG tag = CXI tag = MNG }
 	}
-	gfx_tags = { musket_tag medium_tag }
+	gfx_tags = { chinese_musket heavy_tag }
 }
 
-# 红衣大炮：重定义（每营约 100 人，对应 2 门火炮）
+# 红衣大炮：重定义（每营约 200 人，对应 4 门火炮）
 REPLACE:a_red_cannon = {
 	category = army_artillery
 	copy_from = a_age_4_reformation_artillery
 	buildable = yes
 
-	# 一营 100 人（2 门炮 + 支援）
-	max_strength = 0.1
-	
-	supply_weight = 0.5
-	food_consumption_per_strength = 1
-	food_storage_per_strength = 0.5
+	# 一营 200 人（4 门炮 + 支援）
+	max_strength = 0.2
 	initiative = 1
-	morale_damage_done = 0.05
+	morale_damage_done = 0.1
 
+	country_potential = {
+		OR = { tag = QNG tag = CSH tag = WSG tag = CXI tag = MNG }
+	}
 	gfx_tags = { heavy_tag }
+}
+# ==========================================
+# 八旗军事单位
+
+
+# 八旗骑兵 
+REPLACE:a_banner_cavalry = {
+	category = army_cavalry
+	copy_from = a_age_4_reformation_cavalry
+	buildable = yes
+	levy = no
+	
+	max_strength = 0.3
+	initiative = 3
+	morale_damage_done = 0.1
+	strength_damage_done = 0.1
+	morale_damage_taken = -0.1
+	country_potential = { tag = QNG }
+	gfx_tags = { manchu_cavalry }
+}
+
+# 乌真超哈 - 汉军八旗
+a_ujen_cooha = {
+	category = army_infantry
+	copy_from = a_age_4_reformation_infantry
+	buildable = no
+	levy = yes
+	
+	max_strength = 1.0
+
+	country_potential = { tag = QNG }
+	gfx_tags = { chinese_musket heavy_tag }  # 火枪 + 重装步兵
+}
+
+# 八旗甲喇 - 征召步兵
+# 甲喇（jalan）是八旗战术单位，每甲喇5牛录约1500人
+# 作为征召单位，代表八旗披甲人的临时动员
+levy_banner_jalan = {
+	category = army_infantry
+	copy_from = a_age_3_discovery_infantry
+	buildable = no
+	levy = yes
+	
+	frontage = -0.2
+	combat_power = 1.3
+
+	max_strength = 0.6
+	initiative = 1
+	morale_damage_done = 0.1
+	morale_damage_taken = -0.1
+	
+	country_potential = { tag = QNG }
+	gfx_tags = { manchu_infantry heavy_tag }
+}
+
+# 八旗甲喇 - 征召骑兵
+# 骑兵版本的征召甲喇，机动性强但装备简陋
+levy_banner_cavalry = {
+	category = army_cavalry
+	copy_from = a_age_4_reformation_cavalry
+	buildable = no
+	levy = yes
+	
+	max_strength = 0.3
+	initiative = 2
+	
+	country_potential = { tag = QNG }
+	gfx_tags = { manchu_cavalry }
 }
 
 # 骑营
@@ -84,14 +147,8 @@ a_1644_chinese_cavalry = {
 	copy_from = a_age_4_reformation_cavalry
 	buildable = yes
 
-	# 强化冲击与速度，适应东北平原与山海关地形
-	initiative = 1
-	strength_damage_done = 0.04
-	morale_damage_done = 0.03
-	impact = { flatland = 0.05 hills = 0.03 wetlands = -0.05 mountains = -0.1 }
-
 	country_potential = {
-		OR = { tag = QNG tag = WSG tag = CSH tag = MNG tag = CXI}
+		OR = {tag = WSG tag = CSH tag = MNG tag = CXI}
 	}
 	gfx_tags = { medium_tag }
 }
@@ -104,9 +161,9 @@ a_1644_guanning_cavalry = {
 	
 	max_strength = 0.3
 	initiative = 1
-	morale_damage_done = 0.06
+	morale_damage_done = 0.05
 	strength_damage_done = 0.05
-	morale_damage_taken = -0.03
+	morale_damage_taken = -0.05
 	impact = { flatland = 0.1 hills = 0.05 }
 
 	country_potential = { tag = WSG }
