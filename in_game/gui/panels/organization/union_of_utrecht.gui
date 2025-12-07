@@ -1,0 +1,29 @@
+organization_geodiplomatic_theme = {
+    
+	blockoverride "organization_laws_tab_text" { # Hide laws tab
+      	 	visible = no
+      	 	tooltip_enabled = no
+   	}
+
+  	blockoverride "organization_overview_tab_visible" {}
+ 	   blockoverride "organization_panel_overview_visible" {
+   	     visible = "[InternationalOrganizationsView.Vars.NotExistOrHasValue( 'organizations', 'overview' )]"
+   	 }
+    	blockoverride "organization_members_tab_down" {
+		down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'members' )]"
+	}
+
+	blockoverride "organization_panel_members_visible" {
+		visible = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'members' )]"
+	}
+
+    blockoverride "scroll_overview_empty_visible" {  }
+    
+    blockoverride "io_main_actions_icon" {
+    }
+
+     blockoverride "blockoverride "organization_overview_list_item" {
+	card_io_payments = {}
+     }
+
+}
