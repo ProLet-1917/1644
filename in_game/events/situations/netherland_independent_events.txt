@@ -4,7 +4,9 @@ netherland_independent.1 = {
 	type = country_event
 	title = "netherland_independent.1.t"
 	desc = "netherland_independent.1.desc"
-	
+		
+	fire_only_once = yes 
+
 	option = {
 		name = "netherland_independent.1.a"
 		add_casus_belli = { target = c:SPA type = casus_belli:cb_dutch_revolt }
@@ -15,7 +17,9 @@ netherland_independent.2 = {
 	type = country_event
 	title = "netherland_independent.2.t"
 	desc = "netherland_independent.2.desc"
-	
+		
+	fire_only_once = yes 
+
 	option = {
 		name = "netherland_independent.2.a"
 	}
@@ -25,7 +29,9 @@ netherland_independent.3 = {
 	type = country_event
 	title = "netherland_independent.3.t"
 	desc = "netherland_independent.3.desc"
-	
+		
+	fire_only_once = yes 
+
 	option = {
 		name = "netherland_independent.3.a"
 	}
@@ -35,7 +41,9 @@ netherland_independent.4 = {
 	type = country_event
 	title = "netherland_independent.4.t"
 	desc = "netherland_independent.4.desc"
-	
+		
+	fire_only_once = yes 
+
 	option = {
 		name = "netherland_independent.4.a"
 	}
@@ -45,7 +53,9 @@ netherland_independent.5 = {
 	type = country_event
 	title = "netherland_independent.5.t"
 	desc = "netherland_independent.5.desc"
-	
+		
+	fire_only_once = yes 
+
 	option = {
 		name = "netherland_independent.5.a"
 	}
@@ -55,6 +65,12 @@ netherland_independent.6 = { #Peace Talk
 	type = country_event
 	title = "netherland_independent.6.t"
 	desc = "netherland_independent.6.desc"
+	
+	fire_only_once = yes 
+
+	trigger = {
+		situation:netherland_independent = { is_active = yes }
+	}
 
  	dynamic_historical_event = {
  		tag = NED
@@ -86,7 +102,9 @@ netherland_independent.7 = { #Peace tsalk request from netherlands
 	type = country_event
 	title = "netherland_independent.7.t"
 	desc = "netherland_independent.7.desc"
-	
+		
+	fire_only_once = yes 
+
 	option = {
 		name = "netherland_independent.7.a"
 		historical_option = yes
@@ -110,6 +128,8 @@ netherland_independent.8 = { #Peace talk request from netherlands
 	type = country_event
 	title = "netherland_independent.8.t"
 	desc = "netherland_independent.8.desc"
+	
+	fire_only_once = yes 
 	
 	option = {
 		name = "netherland_independent.8.a"
@@ -156,6 +176,8 @@ netherland_independent.9 = { #Treaty of Trier
 	title = "netherland_independent.9.t"
 	desc = "netherland_independent.9.desc"
 	
+	fire_only_once = yes 
+
 	option = {
 		name = "netherland_independent.9.a"
 		every_country = {
