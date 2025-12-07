@@ -1,0 +1,74 @@
+﻿############################
+# age_1_traditions
+############################
+
+italian_universities = {
+	age = age_1_traditions
+	icon = scholasticism
+
+	potential = {
+		has_or_had_tag = ITA
+	}
+	global_max_literacy = 5
+	global_monthly_literacy = 0.01
+
+	requires = guilds
+}
+
+############################
+# age_2_renaissance
+############################
+
+italy_great_families = {
+	age = age_1_traditions
+	icon = cultural_acceptance_advance
+	potential = {
+		has_or_had_tag = ITA
+	}
+	monthly_prestige = 0.1
+	diplomatic_capacity_modifier = 0.1
+	
+	requires = correct_box_advance_renaissance
+}
+
+############################
+# age_3_discovery
+############################
+
+italian_innovativeness = {
+	age = age_1_traditions
+	icon = genoese_banking_traditions
+
+	potential = {
+		has_or_had_tag = ITA
+	}
+	embrace_institution_cost_modifier = -0.2
+
+	requires = study_institutions_advance
+}
+
+############################
+# age_4_reformation
+############################
+
+italian_condottieri = {
+	age = age_1_traditions
+	icon = glorious_arms
+
+	potential = {
+		has_or_had_tag = ITA
+	}
+	hire_mercenary_premium_cost_modifier = -0.2
+	hire_mercenary_leader_cost_modifier = -0.2
+
+	requires = trade_envoys
+}
+
+############################
+# age_5_absolutism
+############################
+
+
+############################
+# age_6_revolutions
+############################
