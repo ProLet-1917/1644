@@ -1,0 +1,67 @@
+﻿bos_land_of_many_churches = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = BOS
+	}
+	icon = diplomatic_influence
+	tolerance_heretic = 2
+
+	requires = medieval_administration
+}
+
+bos_cultural_customs = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = BOS
+	}
+	icon = scholasticism
+	cultural_tradition_modifier = 0.2
+
+	requires = guilds
+}
+
+bos_katun_communities = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = BOS
+	}
+	icon = merchants_and_trade
+	global_max_rural_control = 0.05
+
+	requires = global_clergy_max_literacy_advance
+}
+
+bos_influence_of_the_stanak = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = BOS
+	}
+	icon = laws
+	nobles_estate_agenda_impact = 0.1
+
+	requires = global_clergy_max_literacy_advance
+	
+}
+
+bos_defiant_terrain = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = BOS
+	}
+	icon = supply_depot_advance_age_3_discovery
+	global_hostile_attrition = 1
+
+	requires = paved_road_advance
+}
+
+bos_kingly_ambitions = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = BOS
+	}
+	icon = crown_power_advance_renaissance
+	army_infantry_power = 0.05
+	monthly_legitimacy = 0.05
+
+	requires = regulate_court_procedures
+}

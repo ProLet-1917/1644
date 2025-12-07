@@ -1,0 +1,620 @@
+﻿#####################################
+# Renaissance
+#####################################
+renaissance_advance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = renaissance_advance
+	
+	cultural_influence_modifier = 0.05
+
+	depth = 0
+
+}
+
+patron_of_art  = {
+	age = age_1_traditions
+	starting_technology_level = 2
+
+	requires = renaissance_advance
+
+	has_cultural_maintenance = yes
+	num_possible_artists = 1
+}
+
+renaissance_sculptures  = {
+	icon = renaissance_advance
+	age = age_1_traditions
+	starting_technology_level = 2
+
+	requires = patron_of_art
+
+	global_stone_output_modifier = 0.1
+}
+
+renaissance_thought  = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	
+	government_reform_slots = 1
+	requires = renaissance_advance
+}
+
+government_size_renaissance  = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	
+	government_size = 1
+	
+	requires = renaissance_thought
+	ai_weight = { add = 2 }
+}
+
+chancery_records = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = smooth_administration
+	chancery_cap_level = 1
+	requires = government_size_renaissance
+	allow_children = no
+}
+
+crown_power_advance_renaissance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = crown_power_advance_renaissance
+
+	global_crown_estate_power = 0.10
+	ai_weight = { add = 2 }
+	requires = government_size_renaissance
+}
+
+renaissance_court = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = scholasticism
+
+	cultural_influence_modifier = 0.10
+	cultural_tradition_modifier = 0.10
+
+	requires = crown_power_advance_renaissance
+}
+
+power_projection_advance_2 = {
+	age = age_1_traditions
+	starting_technology_level = 2
+
+	requires = renaissance_court
+
+	power_projection = 5
+}
+
+
+anatomy_advance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	global_life_expectancy = 3
+	global_disease_resistance = 0.05
+
+	requires = power_projection_advance_2
+}
+
+vibrant_court_advance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = cultural_acceptance_advance
+	cultures_capacity = 1
+	requires = renaissance_court
+	ai_weight = { add = 2 }
+}
+
+
+
+#####################################
+# Banking
+#####################################
+
+
+banking_advance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = banking_advance
+		
+	bank_interest = -0.02
+	
+	total_loan_capacity_modifier = 0.5
+
+	depth = 0
+}
+
+merchants_and_trade = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = global_trade_routes_advance
+	
+	requires = banking_advance
+	
+	naval_range = 250
+	trade_range = 250
+	colonial_range = 250
+	
+	ai_preference_tags = {
+		exploration
+	}
+}
+
+standardized_coins = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = standardized_coins
+	
+	minting_inflation_threshold = 0.01
+	
+	ai_weight = { add = 1 }
+	
+	requires = banking_advance
+}
+
+pop_promotion_speed_age_2 = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = improved_foraging
+
+	requires = standardized_coins
+	
+	global_pop_promotion_speed_modifier = 0.1
+}
+
+trade_range_advance_age_2 = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = zmw_merchant_taxes
+
+	requires = standardized_coins
+	
+	trade_range	= 250
+}
+
+rudimentary_coastal_ship_repair = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = rudimentary_coastal_ship_repair
+
+	requires = merchants_and_trade
+
+	ship_repair_at_sea = 0.05
+	ship_repair_at_sea_to_max_strength = 0.3
+}
+
+maritime_advance_age_2 = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = maritime_advance_age_2
+	
+	requires = trade_range_advance_age_2
+	
+	global_maritime_presence_modifier = 0.1
+}
+
+diplomatic_range_age_1 = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = diplomatic_range_age_1
+	
+	requires = merchants_and_trade
+	
+	diplomatic_range_modifier = 0.33
+}
+
+spy_construction_renaissance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+
+	requires = pop_promotion_speed_age_2
+
+	spy_network_construction = 0.1
+}
+
+rebellion_support = {
+	icon = zakah
+	age = age_1_traditions
+	starting_technology_level = 2
+	requires = spy_construction_renaissance
+	
+	unlock_diplomacy = { supportrebels }
+}
+
+route_to_the_indies_advance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	
+	requires = merchants_and_trade
+
+	exploration_preparation_time_modifier = -0.1
+
+	potential = {
+		capital ?= { sub_continent = sub_continent:western_europe }
+	}
+}
+
+pound_lock_canals_advance = {
+	age = age_1_traditions
+	
+	requires = maritime_advance_age_2
+
+	starting_technology_level = 3
+	unlock_building = pound_lock_canal_infrastructure
+}
+
+###############################
+# Professional Armies
+###############################
+professional_armies_advance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = professional_armies_advance
+			
+	army_maintenance_cost = -0.10
+
+	depth = 0
+}
+
+gunpowder_advance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = gunpowder_advance
+			
+	military_tactics = 0.25
+		
+	requires = professional_armies_advance
+}
+
+recruitment_improvements_renaissance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = recruitment_improvements_renaissance
+
+	requires = professional_armies_advance	
+
+	regiment_recruit_speed = 0.2
+}
+
+drill_army_advance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = drill_army_advance
+	
+	unlock_ability = drill_army
+	
+	requires = recruitment_improvements_renaissance
+}
+
+regiment_reinforcement_speed_renaissance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = regiment_reinforcement_speed_renaissance
+
+	requires = recruitment_improvements_renaissance
+
+	regiment_reinforcement_speed = 0.1
+}
+
+
+supply_depot_advance_age_2_renaissance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+			
+	supply_depot_capacity = 25
+		
+	requires = regiment_reinforcement_speed_renaissance
+}
+
+correct_box_advance_renaissance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+			
+	correct_box_chance = 0.1
+		
+	requires = gunpowder_advance
+}
+
+###########################
+# The always allow tree
+##############################
+renaissance_development = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = offensive_army
+	
+	embrace_institution_cost_modifier = -0.10
+	revoke_privilege_cost_modifier = -0.05
+
+	depth = 0
+}
+
+
+improve_relation_impact_renaissance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = court_accounting
+
+	requires = renaissance_development
+	
+	improve_relation_impact = 0.10
+
+	ai_weight = {
+		if = {
+			limit = {
+				root = {
+					subjects_relative_power > 0.25
+				}
+			}
+			add = 1
+		}
+	}
+}
+
+late_feudal_relations = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = late_feudal_relations
+
+	requires = improve_relation_impact_renaissance
+	
+	subject_loyalty = 5
+
+	ai_weight = {
+		if = {
+			limit = {
+				root = {
+					subjects_relative_power > 0.25
+				}
+			}
+			add = 1
+		}
+	}
+}
+
+medieval_military = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	land_morale = 0.25
+	
+	requires = late_feudal_relations
+}
+
+naval_morale_advance_1 = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	
+	naval_morale = 0.25
+
+	requires = late_feudal_relations
+}
+	
+	
+renaissance_subject_opinions_advance = {	
+	age = age_1_traditions
+	starting_technology_level = 2
+
+	requires = late_feudal_relations
+
+	subject_opinions = 10
+
+	ai_weight = {
+		if = {
+			limit = {
+				root = {
+					subjects_relative_power > 0.25
+				}
+			}
+			add = 1
+		}
+	}
+}
+
+
+
+
+grant_privilege_cost_modifier_renaissance_advance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	starting_technology_level = 2
+	requires = renaissance_development
+
+	grant_privilege_cost_modifier = -0.1
+}
+
+rgo_size_advance_renaissance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+
+	requires = grant_privilege_cost_modifier_renaissance_advance
+	
+	global_max_rgo_size_modifier = 0.10
+}
+
+food_advance_renaissance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = expanded_supply_trains
+
+	requires = rgo_size_advance_renaissance
+	
+	global_monthly_food_modifier = 0.10
+}
+
+war_no_cb_cost_modifier_renaissance_advance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	starting_technology_level = 2
+	icon = expansionism
+	requires = grant_privilege_cost_modifier_renaissance_advance
+
+	war_no_cb_cost_modifier = -0.1
+}
+
+
+
+global_nobles_max_literacy_advance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	requires = renaissance_subject_opinions_advance
+
+	global_nobles_max_literacy = 10
+}
+
+global_burghers_max_literacy_advance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	requires = food_advance_renaissance
+
+	global_burghers_max_literacy = 10
+}
+
+
+global_clergy_max_literacy_advance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	requires = food_advance_renaissance
+
+	global_clergy_max_literacy = 10
+}
+
+
+land_morale_recovery_renaissance_advance = {
+	icon = offensive_army
+	age = age_1_traditions
+	starting_technology_level = 2
+	starting_technology_level = 2
+	
+	land_morale_recovery = 0.01
+	
+	requires = medieval_military
+}
+
+
+merchant_power_from_maritime_renaissance_advance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	starting_technology_level = 2
+	icon = global_trade_routes_advance
+	
+	merchant_power_from_maritime = 0.025
+	
+	requires = global_burghers_max_literacy_advance
+}
+
+
+
+renaissance_urbanisation = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	requires = food_advance_renaissance
+
+
+	global_max_rgo_size_modifier_in_non_rural = 0.1
+}
+
+
+renaissance_city_rights = {
+	icon = religious_toleration
+	age = age_1_traditions
+	starting_technology_level = 2
+	requires = renaissance_urbanisation
+	
+	city_upgrade_cost_modifier = -0.1
+	town_upgrade_cost_modifier = -0.1
+}
+
+
+blockade_tactics = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	requires = naval_morale_advance_1
+	
+	blockade_efficiency = 0.1
+}
+
+recovery_efforts = {
+	icon = offensive_army
+	age = age_1_traditions
+	starting_technology_level = 2
+	
+	requires = blockade_tactics
+
+
+	global_devastation_recovery = 0.005
+}
+
+
+
+naval_initiative_ren = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = ship_building_advance
+	
+	requires = blockade_tactics
+	
+	navy_initiative = 0.2
+}
+
+
+army_initiative_ren = {
+	icon = professional_armies_advance
+	age = age_1_traditions
+	starting_technology_level = 2
+	
+	requires = land_morale_recovery_renaissance_advance
+	
+	army_initiative = 0.2
+}
+
+
+law_making_renaissance = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	
+	requires = recovery_efforts
+	
+	change_policy_cost_modifier = -0.05
+}
+
+subject_integration = {
+	icon = glorious_arms
+	age = age_1_traditions
+	starting_technology_level = 2
+	
+	requires = renaissance_subject_opinions_advance
+	
+	diplomatic_annexation_cost = -0.1
+}
+
+rgo_construction_ren = {
+	age = age_1_traditions
+	starting_technology_level = 2
+	icon = efficient_mining
+	
+	requires = law_making_renaissance
+	
+	global_rgo_build_time = -0.1
+}
+
+naval_repair_ren = {
+	icon = rudimentary_coastal_ship_repair
+	age = age_1_traditions
+	starting_technology_level = 2
+	
+	requires = naval_initiative_ren
+	
+	navy_repair_cost = -0.05
+}
+
+construction_speed_renaissance = {
+	icon = efficient_mining
+	age = age_1_traditions
+	starting_technology_level = 2
+	global_construction_speed = 0.1
+	requires = rgo_construction_ren
+}
+	

@@ -1,0 +1,137 @@
+﻿land_of_many_religions = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = LIT
+	}
+
+	requires = feudalism_advance
+
+	tolerance_heretic = 1
+	tolerance_heathen = 1
+}
+migrant_opportunities = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = LIT
+	}
+
+	requires = land_of_many_religions
+	
+	rural_migration_attraction = 0.25
+	non_rural_migration_attraction = 0.25
+}
+warlord_dukes = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = LIT
+	} 
+
+	requires = medieval_military
+
+	monthly_army_tradition = 0.03
+	nobles_estate_levy_size = 0.5
+}
+
+two_realms = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = LIT
+	}
+	
+	requires = diplomatic_range_age_1
+
+	cultures_capacity = 1
+}
+
+chacery_slavonic = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = LIT
+	}
+	
+	requires = power_projection_advance_2
+
+	legislative_efficiency = 0.1
+	monthly_prestige = 0.05
+}
+
+ukrainian_farmlands = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = LIT
+	}
+	
+	requires = lumber_improvements_discovery
+	global_wheat_output_modifier = 0.25
+}
+
+supremus_dux_lithuaniae = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = LIT
+	}
+
+	requires = print_culture
+
+	global_crown_estate_power = 0.1
+}
+
+ties_with_the_holy_see = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = LIT
+		religion = religion:catholic
+	}
+
+	requires = artists_advance_reformations
+
+	papal_relations = 25
+	monthly_religious_influence = 0.2
+}
+
+patriarchate_of_lithuania = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = LIT
+		religion = religion:orthodox
+	}
+
+	requires = reformation_subject_opinions_advance
+
+	create_autocephalous_patriarchate_cost_modifier = -0.33
+	tolerance_own = 1
+}
+
+statutes_of_lithuania = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = LIT
+	}
+
+	requires = early_modern_administation
+	
+	unlock_policy = statutes_of_lithuania_policy
+}
+
+lithuanian_renaissance = {
+	age = age_5_absolutism
+	potential = {
+		has_or_had_tag = LIT
+	}
+
+	requires = national_sovereignty
+
+	research_speed_modifier = 0.05
+}
+
+columns_of_gediminids = {
+	age = age_5_absolutism
+
+	potential = {
+		has_or_had_tag = LIT
+	}
+
+	requires = correct_box_advance_absolutism
+
+	land_morale_modifier = 0.15
+}

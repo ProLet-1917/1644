@@ -1,0 +1,155 @@
+﻿university_naples = {
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = NAP
+			culture = culture:neapolitan
+		}
+	}
+	global_institution_growth_modifier = 0.2
+	
+	requires = library_advance
+}
+mercantile_spirit = {
+	age = age_1_traditions
+	icon = a_central_power
+	potential = {
+		OR = {
+			has_or_had_tag = NAP
+			has_or_had_tag = TWS
+		}
+	}
+	trade_efficiency = small_trade_efficiency_bonus
+	
+	requires = trade_advance_age_of_trad
+}
+consolidate_the_royal_domain = {
+	age = age_1_traditions
+	icon = court_accounting
+	potential = {
+		OR = {
+			has_or_had_tag = NAP
+			has_or_had_tag = TWS
+		}
+	}
+	global_crown_estate_power = 0.1
+	
+	requires = renaissance_thought
+}
+academia_pontaniana = {
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = NAP
+			culture = culture:neapolitan
+		}
+	}
+	global_max_literacy  = 5
+	
+	requires = university_advance
+}
+encouraged_city_living = {
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = NAP
+			has_or_had_tag = TWS
+		}
+	}
+	non_rural_migration_attraction = 0.2
+	global_burghers_city_desired_pop = 0.5
+	
+	requires = printing_press_advance
+}
+crush_the_barons = {
+	age = age_1_traditions
+	icon = hsa_exchange_of_ideas
+	potential = {
+		OR = {
+			has_or_had_tag = NAP
+			has_or_had_tag = TWS
+			culture = culture:neapolitan
+		}
+	}
+	global_nobles_estate_power = -0.2
+	
+	requires = crown_power_advance_discovery
+}
+expanded_arsenale = {
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = NAP
+			has_or_had_tag = TWS
+		}
+	}
+	ship_build_speed = 0.1
+	
+	requires = maritime_advance_age_4
+}
+city_of_artists = {
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = NAP
+			culture = culture:neapolitan
+		}
+	}
+	skill_of_new_artists = 0.1
+	invite_artist_cost_modifier = -0.25
+	
+	requires = artists_advance_reformations
+}
+institutional_reorganization = {
+	age = age_5_absolutism
+	icon = consolidate_the_royal_domain
+	potential = {
+		OR = {
+			has_or_had_tag = NAP
+			has_or_had_tag = TWS
+			culture = culture:neapolitan
+		}
+	}
+	government_reform_slots = 1
+	
+	requires = absolutist_court
+}
+a_central_power = {
+	age = age_5_absolutism
+	icon = diplomatic_range_age_1
+	potential = {
+		OR = {
+			has_or_had_tag = NAP
+			has_or_had_tag = TWS
+		}
+	}
+	max_diplomats = 2
+	
+	requires = relations_absolutism_advance
+}
+neapolitan_industrialization = {
+	age = age_6_revolutions
+	icon = industrialization_advance
+	potential = {
+		OR = {
+			has_or_had_tag = NAP
+			culture = culture:neapolitan
+		}
+	}
+	global_raw_material_output = 0.1
+	
+	requires = industrialization_advance
+}
+neapolitan_army_reforms = {
+	age = age_6_revolutions
+	icon = levee_en_masse_advance
+	potential = {
+		OR = {
+			has_or_had_tag = NAP
+			has_or_had_tag = TWS
+		}
+	}
+	army_infantry_power = 0.10
+	
+	requires = levee_en_masse_advance
+}
