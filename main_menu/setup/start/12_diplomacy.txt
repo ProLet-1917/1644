@@ -17,6 +17,7 @@ diplomacy_manager = {
 	dependency = { first = POR second = VOB subject_type = dominion }
 	#dependency = { first = SPA second = PUL subject_type = vassal }
 	dependency = { first = SPA second = TID subject_type = tributary }
+	dependency = { first = SPA second = FCB subject_type = fiefdom }
 	
 	#France
 	dependency = { first = FRA second = ORL subject_type = appanage }
@@ -24,7 +25,7 @@ diplomacy_manager = {
 	dependency = { first = FRA second = FOI subject_type = fiefdom }
 	dependency = { first = FRA second = BNV subject_type = fiefdom }
 	dependency = { first = FRA second = DOC subject_type = dominion }
-    dependency = { first = FRA second = PRO subject_type = dominion }
+    	dependency = { first = FRA second = PRO subject_type = dominion }
 	dependency = { first = FRA second = DAU subject_type = dominion }
 	dependency = { first = FRA second = BRI subject_type = dominion }
 	dependency = { first = FRA second = AUV subject_type = dominion }
@@ -32,10 +33,13 @@ diplomacy_manager = {
 	dependency = { first = FRA second = POI subject_type = dominion }
 	dependency = { first = FRA second = BUR subject_type = dominion }
 	dependency = { first = FRA second = CAT subject_type = vassal }
+	dependency = { first = FRA second = LOR subject_type = vassal }
 	dependency = { first = FRA second = NFR subject_type = dominion }
 	
 	#Scandinavia
-    dependency = { first = SWE second = FIN subject_type = fiefdom }
+    	dependency = { first = SWE second = FIN subject_type = fiefdom }
+    	dependency = { first = DAN second = SLV subject_type = fiefdom }
+	dependency = { first = DAN second = HTR subject_type = vassal }
 	
 	#Dutch
 	dependency = { first = NED second = VOC subject_type = dominion }
@@ -153,6 +157,8 @@ diplomacy_manager = {
 	dependency = {first = TUR second = WAL subject_type = vassal }
 	dependency = {first = TUR second = TRA subject_type = vassal }
 	dependency = {first = TUR second = MOL subject_type = vassal }
+	dependency = {first = TUR second = GEO subject_type = vassal }
+	dependency = {first = TUR second = CRI subject_type = tributary }
 
 	#Iran
 	dependency = { first = SFV second = TRK subject_type = tributary }
