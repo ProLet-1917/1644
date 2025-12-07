@@ -37,7 +37,7 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 			custom_tooltip = {
   				text = netherland_control_brussel_tt
 				location:brussels ?= {
-					c:NED ?= controller
+					c:NED ?= owner
 				}				
 			}
 			c:NED = { is_subject_or_below_of = c:SPA }
@@ -73,7 +73,7 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 				trigger_event_non_silently = netherland_independent.1 #Rise Up!
 			}
 		}
-		if = {
+		else_if = {
 			limit = {
 				exists = c:HOL
 			}
@@ -147,14 +147,12 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 		}
 		else_if = {
 			limit = {
+				exists = c:NED
 				location:brussels ?= {
-					c:NED ?= controller
+					c:NED ?= owner
 				}
 			}
-			every_country  = {
-				limit = {
-					this = c:NED
-				}
+			c:NED = {
 				trigger_event_non_silently = netherland_independent.9 #Peace of Trier
 			}
 		}
@@ -162,10 +160,7 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 			limit = {
 				current_year > 1699
 			}
-			every_country  = {
-				limit = {
-					this = c:NED
-				}
+			c:NED  = {
 				trigger_event_non_silently = netherland_independent.8
 			}
 		}
