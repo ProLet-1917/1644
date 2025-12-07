@@ -121,4 +121,57 @@ PAL
 		
 		leader = NED
 	}
+
+	#################################################################
+	# 				Catholic Church									#
+	#################################################################
+	add_international_organization = {
+		type = catholic_church
+		creation_date = 33.1.1
+		members = { PAP }
+		leader = PAP
+
+		laws = {
+			limited_indulgences
+			ultramontanism
+			unlimited_veneration
+			tolerated_simony
+			society_of_jesus_not_allowed
+			witchcraft_not_aknowledged
+			priest_marriage_not_allowed
+		}
+
+		ruler_term = { character = pap_callisto_ii start_date = 1119.2.2 end_date = 1124.12.13 regnal_number = 2 regnal_name = name_callisto }
+		ruler_term = { character = pap_celestino_iii start_date = 1191.3.30 end_date = 1198.1.8 regnal_number = 3 regnal_name = name_celestine }
+		ruler_term = { character = pap_innocenzo_iv start_date = 1243.6.25 end_date = 1254.12.7 regnal_number = 4 regnal_name = name_innocent }
+		ruler_term = { character = pap_adriano_v start_date = 1276.7.11 end_date = 1276.8.18 regnal_number = 5 regnal_name = name_adrian }
+		ruler_term = { character = pap_nicolaus_iii start_date = 1277.11.25 end_date = 1280.8.22 regnal_number = 3 regnal_name = name_nicholas }
+
+		ruler_term = { character = pap_boniface_viii start_date = 1294.12.24 end_date = 1303.10.11 regnal_number = 8 regnal_name = name_boniface }
+		ruler_term = { character = pap_benedict_xi start_date = 1303.10.22 end_date = 1304.7.7 regnal_number = 11 regnal_name = name_benedict }
+		ruler_term = { character = pap_clement_v start_date = 1305.6.5 end_date = 1314.4.20 regnal_number = 5 regnal_name = name_clement }
+		ruler_term = { character = pap_john_xxii start_date = 1316.8.7 end_date = 1334.12.4 regnal_number = 22 regnal_name = name_john	}
+		#ruler_term = { character = pap_benedetto_xii start_date = 1334.12.20 regnal_number = 12 regnal_name = name_benedict }
+	}
+
+	#################################################################
+	# 				Swiss Confederation								#
+	#################################################################
+	add_international_organization = {
+		type = swiss_confederation
+		creation_date = 1307.9.15
+		members = { BRN GRY BAS SIT MSO LCU ZUR STG TGG GLR BLM BCH WER NEU }
+		areas = {
+			central_switzerland_area
+			eastern_switzerland_area
+			western_switzerland_area
+		}
+
+		laws = {
+			sc_moderate_policy_proposals
+			sc_swiss_culture_and_geography
+			sc_defensive_pact
+		}
+	}
+
 }
