@@ -1,0 +1,162 @@
+﻿
+por_battle_ourique = { 
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = POR 
+			is_portuguese_spain = yes
+		}
+	}
+	army_infantry_power = 0.1
+	
+	requires = cultural_traditions_law_advance
+}
+
+por_establishment_portuguese_navy = { 
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = POR 
+			is_portuguese_spain = yes
+		}
+	}
+	monthly_navy_tradition = 0.1
+	navy_movement_speed = 0.1
+	
+	requires = ship_building_advance
+}
+
+por_estimulate_rural_areas = { 
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = POR 
+			is_portuguese_spain = yes
+		}
+	}
+	global_raw_material_output = 0.1
+	
+	requires = renaissance_thought
+}
+
+por_pursuing_waves = { 
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = POR 
+			is_portuguese_spain = yes
+		}
+	}
+	colonial_range_modifier = 0.2
+	exploration_mission_speed = 0.1
+	
+	requires = trade_range_advance_age_2
+}
+
+por_bombardeiros = { 
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = POR 
+			is_portuguese_spain = yes
+		}
+	}
+	navy_heavy_ship_power = 0.1
+	blockade_efficiency = 0.25
+	
+	requires = correct_box_advance_discovery
+}
+
+por_feitorias = { 
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = POR 
+			is_portuguese_spain = yes
+		}
+	}
+	global_merchant_power = 0.1
+	trade_sea_movement_cost_modifier = -0.10
+	unlock_building = por_feitoria
+	
+	requires = trade_range_advance_age_3
+}
+
+por_ordenancas = { 
+	age = age_1_traditions 
+	potential = {
+		OR = {
+			has_or_had_tag = POR 
+			is_portuguese_spain = yes
+		}
+	}
+	monthly_army_tradition = 0.05
+	
+	requires = flintlock_gun
+}
+
+por_the_bandeirantes = { 
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = POR 
+			is_portuguese_spain = yes
+		}
+	}
+	colonial_migration_size_modifier = 0.25
+	
+	requires = confessional_court
+}
+
+por_colonial_governors = {
+	age = age_5_absolutism
+	potential = {
+		OR = {
+			has_or_had_tag = POR 
+			is_portuguese_spain = yes
+		}
+	}
+	subject_loyalty = 5
+	
+	requires = maritime_advance_age_5
+}
+
+por_royal_absolutism = {
+	age = age_5_absolutism
+	potential = {
+		OR = {
+			has_or_had_tag = POR 
+			is_portuguese_spain = yes
+		}
+	}
+	global_crown_estate_power = 0.25
+	
+	requires = absolute_rulership
+}
+
+por_royal_military_academy = { 
+	age = age_6_revolutions 
+	potential = {
+		OR = {
+			has_or_had_tag = POR 
+			is_portuguese_spain = yes
+		}
+	}
+	army_artillery_power = 0.1
+	global_defensive = 0.1
+	
+	requires = artillery_vs_fort_age_6_revolutions
+}
+
+por_vinho_porto = {
+	age = age_6_revolutions 
+	potential = {
+		OR = {
+			has_or_had_tag = POR 
+			is_portuguese_spain = yes
+		}
+	}
+	global_wine_output_modifier = 0.33
+	
+	requires = rgo_size_advance_revolutions
+}

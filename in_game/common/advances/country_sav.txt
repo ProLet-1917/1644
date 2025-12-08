@@ -1,0 +1,86 @@
+﻿sav_savoyard_flexibility = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = SAV
+	}
+	icon = diplomatic_range_age_1
+	monthly_diplomats = 0.1
+	diplomatic_capacity = 1
+
+	requires = medieval_administration
+}
+
+sav_house_of_savoy = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = SAV
+	}
+	icon = glorious_arms
+	land_cost_on_distance_from_capital_modifier = -0.1
+
+	requires = codified_laws
+}
+
+sav_the_shroud_of_turin = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = SAV
+	}
+	icon = genoese_banking_traditions
+	tax_income_efficiency = large_tax_income_efficiency_bonus
+
+	requires = patron_of_art
+}
+
+sav_alpine_pass_control = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = SAV
+	}
+	icon = road_building
+	global_road_building_time = -0.2
+	global_trade_protection_factor = 0.1
+
+	requires = paved_road_advance
+}
+
+sav_fight_the_vaudois = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = SAV
+		religion = religion:catholic
+	}
+	icon = scholasticism
+	global_pop_conversion_speed_modifier = 0.1
+
+	requires = confessional_court
+	allow_children = no
+}
+
+sav_embrace_the_vaudois = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = SAV
+		OR = {
+			religion = religion:waldensian
+			religion = religion:calvinist
+			religion = religion:lutheran
+		}
+	}
+	icon = smooth_administration
+	tolerance_own = 1
+
+	requires = confessional_court
+	allow_children = no
+}
+
+sav_repopulate_the_valleys = {
+	age = age_5_absolutism
+	potential = {
+		has_or_had_tag = SAV
+	}
+	icon = city_building_advance
+	rural_migration_attraction = 0.2
+
+	requires = absolutism_agressive_advance
+}

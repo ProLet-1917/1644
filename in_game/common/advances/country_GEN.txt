@@ -1,0 +1,103 @@
+﻿genoese_banking_traditions = {
+	potential = { has_or_had_tag = GEN }
+
+	age = age_1_traditions
+	
+	bank_interest = -0.01
+		
+	requires = medieval_administration
+	
+}
+
+genoese_maritime_diplomacy = {
+	potential = { has_or_had_tag = GEN }
+
+	age = age_1_traditions
+	
+	max_diplomats = 2
+}
+
+slave_manned_galleys = {
+	potential = { has_or_had_tag = GEN }
+
+	age = age_1_traditions
+	
+	unlock_building = galley_barracks
+}
+
+genoese_galley = {
+	potential = { has_or_had_tag = GEN }
+	age = age_1_traditions
+	unlock_unit = n_genoese_galley
+}
+
+##############################
+
+genoese_crossbowmen = {
+	potential = { has_or_had_tag = GEN }
+	age = age_1_traditions
+	unlock_unit = a_genoese_crossbowmen
+	army_infantry_power = 0.1
+	requires = unlock_crossbowmen_advance
+}
+
+bank_of_saint_george = {
+	potential = { has_or_had_tag = GEN }
+	
+	age = age_1_traditions
+	
+	unlock_country_interaction = take_over_loan
+	minting_income_factor = 0.10
+	
+	requires = banking_advance
+}
+
+
+
+
+
+##############################
+
+alberghi_28_advance = {
+	potential = { has_or_had_tag = GEN }
+
+	age = age_1_traditions
+	
+	unlock_government_reform = alberghi_28
+	
+	requires = crown_power_advance_discovery
+}
+
+the_age_of_the_genoese = {
+	potential = { has_or_had_tag = GEN }
+
+	age = age_1_traditions
+	
+	bank_interest = -0.01
+	artist_salary_modifier = -0.2
+
+	requires = alberghi_28_advance
+}
+
+genoese_flexibility = {
+	potential = { has_or_had_tag = GEN }
+
+	age = age_1_traditions
+	navy_maintenance_cost = -0.05
+	can_convert_galleys_to_light = yes
+}
+
+##############################
+
+##############################
+genoese_school = {
+	potential = { has_or_had_tag = GEN }
+
+	age = age_5_absolutism
+	cultural_tradition_modifier = 0.1
+	cultural_influence_modifier = 0.1
+}
+
+
+
+##############################

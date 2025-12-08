@@ -1,0 +1,52 @@
+﻿ilk_restore_yam = {	#Restore the Yäm
+	age = age_1_traditions
+	potential = { has_or_had_tag = ILK}
+	requires = diplomatic_range_age_1
+	icon = diplomatic_training
+
+	global_distance_from_capital_cost_modifier = -0.1
+}
+
+ilk_ilkhanate_resurgent = {
+	age = age_1_traditions
+	potential = { has_or_had_tag = ILK}
+	requires = ilk_restore_yam
+	icon = horde_ardor
+
+	great_power_score_modifier = 0.1
+	monthly_prestige = 0.1
+}
+
+ilk_persian_arts_and_architecture = {
+	age = age_1_traditions
+	potential = { has_or_had_tag = ILK}
+	requires = hire_artist_cost_modifier_advance_disc
+	icon = ira_spread_of_persian_influence
+
+	research_speed_modifier = 0.1
+	global_urban_build_buildings_cost = -0.05
+}
+
+ilk_descendants_of_genghis_khan = {
+	age = age_1_traditions
+	potential = { has_or_had_tag = ILK}
+	requires = pike_and_shot_advance
+	icon = successors_of_genghis_khan
+
+	army_cavalry_power = 0.2
+}
+
+ilk_new_roots = {	#They move away from being horde-like to a more reformed state, more stable and robust
+	age = age_1_traditions
+	potential = { has_or_had_tag = ILK}
+	allow = {
+		NOT = { country_type = army }
+	}
+	requires = early_modern_administation
+	icon = administrative_leadership
+
+	government_reform_slots = 1
+
+	allow_children = no
+	
+}
