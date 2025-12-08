@@ -1,0 +1,153 @@
+﻿namespace = mng_1644
+
+mng_1644.1 = { #南迁之议
+	type = country_event
+	title = mng_1644.1.title
+	desc = mng_1644.1.desc
+	historical_info = mng_1644.1.historical_info
+
+	immediate = {
+		
+	}
+
+	option = {
+    	historical_option = yes
+		name = mng_1644.1.a  #坚守
+    	custom_tooltip = mng_1644.1.tt1
+		character:chi_tang_tong = { move_country = c:CSH }
+    	if = {
+			limit = { tag = MNG }
+			location:changping ?= {
+   				if = { 
+       				# 步营：5
+       				while = {
+            			count = 5
+           				create_sub_unit_with_owner = {
+                			type = a_1644_chinese_zhanbing
+                			owner = c:CSH
+                			origin = this
+                			experience = 60
+            			}
+        			}
+
+        			# 额外步营：3
+        			while = {
+            			count = 3
+            			create_sub_unit_with_owner = {
+                			type = a_1644_chinese_zhanbing
+                			owner = c:CSH
+                			origin = this
+                			experience = 60
+            			}
+        			}
+        			# 骑营：2
+        			while = {
+            			count = 2
+            			create_sub_unit_with_owner = {
+                			type = a_1644_chinese_cavalry
+                			owner = c:CSH
+                			origin = this
+                			experience = 60
+            			}
+        			}
+
+        			# 给部队派将领
+        			if = {
+            			limit = { exists = character:chi_tang_tong }
+            			random_unit_in_location = {
+                			limit = {
+                    			owner = c:CSH
+                    			unit_has_leader = no
+                			}
+                			set_as_commander = character:chi_tang_tong
+            			}
+        			}
+    			}
+			}
+			force_recalc_country_active_status = root
+		}
+	}
+  	option = {
+    	name = mng_1644.1.b  #南渡
+    	custom_tooltip = mng_1644.1.tt2
+    	set_capital = location:shangyuan
+		set_variable = mng_move_to_nanjing 
+		c:WSG = {
+			trigger_event_silently = {
+				id = wsg_1644_choice.3
+				days = 6
+			}
+		}
+    	if = {
+			limit = { tag = MNG }
+			location:dadu ?= {
+				if = {
+					limit = { owner = root }
+					# 步营：5 * 1000 = 5000 人
+					while = {
+						count = 5
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_zhanbing
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+					while = {
+						count = 3
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_zhanbing
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+					# 骑营：2 营 600 人
+					while = {
+						count = 2
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_cavalry
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+
+					if = {
+						limit = { exists = character:chi_tang_tong }
+						random_unit_in_location = {
+							limit = {
+								owner = root
+								unit_has_leader = no
+							}
+							set_as_commander = character:chi_tang_tong
+						}
+					}
+				}
+			}
+			force_recalc_country_active_status = root
+		}
+	}
+}
+
+mng_1644.2 = { #甲申之难
+	type = country_event
+	title = mng_1644.2.title
+	desc = mng_1644.2.desc
+	historical_info = mng_1644.2.historical_info
+	option = {
+		name = mng_1644.2.a
+    	custom_tooltip = mng_1644.2.tt1
+	}
+}
+
+mng_1644.3 = { #北都沦陷
+	type = country_event
+	title = mng_1644.3.title
+	desc = mng_1644.3.desc
+	historical_info = mng_1644.3.historical_info
+	option = {
+		name = mng_1644.3.a
+    	custom_tooltip = mng_1644.3.tt1
+	}
+}

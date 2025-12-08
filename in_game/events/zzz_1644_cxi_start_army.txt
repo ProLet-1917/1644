@@ -1,0 +1,93 @@
+﻿namespace = cxi_1644_start_army
+
+cxi_1644_start_army.1 = {
+	type = country_event
+	title = cxi_1644_start_army.1.title
+	desc = cxi_1644_start_army.1.desc
+	historical_info = cxi_1644_start_army.1.historical_info
+	# 描述：川西李定国部开局守军。
+	# 兵力构成：步营 4,000、火器营 3,000、骑营 1,000、红夷炮 300。
+	# 指挥官：character:chi_li_dingguo 优先回归统领；若缺失则由统治者代替。
+
+	immediate = {
+		if = {
+			limit = { tag = CXI }
+
+			set_variable = { name = cxi_1644_start_army_spawned value = 1 }
+
+			character:chi_li_dingguo ?= {
+
+				save_scope_as = cxi_start_commander
+			}
+			if = {
+				limit = { NOT = { exists = scope:cxi_start_commander } }
+				ruler = { save_scope_as = cxi_start_commander }
+			}
+
+			location:badong ?= {
+				if = {
+					limit = { owner = root }
+					# 西步军：8000 人
+					while = {
+						count = 3
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_zhanbing
+							owner = root
+							origin = this
+							experience = 80
+						}
+					}
+					# 以步营补足原移除的火器营编制：+5
+					while = {
+						count = 5
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_zhanbing
+							owner = root
+							origin = this
+							experience = 80
+						}
+					}
+
+					# 西营骑兵：5 * 300 = 1500 人
+					while = {
+						count = 5
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_cavalry
+							owner = root
+							origin = this
+							experience = 80
+						}
+					}
+					# 红夷炮：1 营(3 门/营) ≈ 3 门 ≈ 150 人
+					while = {
+						count = 1
+						create_sub_unit_with_owner = {
+							type = a_red_cannon
+							owner = root
+							origin = this
+							experience = 80
+						}
+					}
+					if = {
+						limit = { exists = scope:cxi_start_commander }
+						random_unit_in_location = {
+							limit = {
+								owner = root
+								unit_has_leader = no
+							}
+							set_as_commander = scope:cxi_start_commander
+						}
+					}
+				}
+			}
+
+
+
+			force_recalc_country_active_status = root
+		}
+	}
+
+	option = {
+		name = cxi_1644_start_army.1.a
+	}
+}

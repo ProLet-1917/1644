@@ -1,0 +1,71 @@
+﻿namespace = wsg_1644_start_army
+
+wsg_1644_start_army.1 = {
+	type = country_event
+	title = wsg_1644_start_army.1.title
+	desc = wsg_1644_start_army.1.desc
+	historical_info = wsg_1644_start_army.1
+	
+	# 兵力构成：步营 14,000、火器营 7,000、关宁铁骑 4,000。
+
+	immediate = {
+		if = {
+			limit = { tag = WSG }
+
+			set_variable = { name = wsg_1644_start_army_spawned value = 1 }
+
+			location:ningyuan_jinzhou ?= {
+				if = {
+					limit = { owner = root }
+					# 宁远步军：20 * 1000 = 20000 人
+					while = {
+						count = 10
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_zhanbing
+							owner = root
+							origin = this
+							experience = 90
+						}
+					}
+					while = {
+						count = 2
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_musketeers
+							owner = root
+							origin = this
+							experience = 90
+						}
+					}
+					while = {
+						count = 20
+						create_sub_unit_with_owner = {
+							type = a_1644_guanning_cavalry
+							owner = root
+							origin = this
+							experience = 95
+						}
+					}
+			
+					# 红夷炮：5 营(3 门/营) ≈ 15 门 ≈ 750 人
+					while = {
+						count = 5
+						create_sub_unit_with_owner = {
+							type = a_red_cannon
+							owner = root
+							origin = this
+							experience = 90
+						}
+					}
+				}
+			}
+
+
+
+			force_recalc_country_active_status = root
+		}
+	}
+
+	option = {
+		name = wsg_1644_start_army.1.a
+	}
+}

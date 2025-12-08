@@ -1148,6 +1148,11 @@ MNG = {	#Míng
 QNG = {    #Qing
     color = map_QNG            
     color2 = rgb { 36 57 193 } #rgb(36, 57, 193)
+
+
+	unit_color0 = "blue"
+	unit_color1 = "red"
+	unit_color2 = map_QNG
     culture_definition = jurchen_culture 
     religion_definition = sanjiao  #                      
 }
@@ -1164,7 +1169,10 @@ CSH = {
 	color = rgb { 91 121 194 } #rgb(91, 121, 194)
 	color2 = rgb { 153 43 43 } #rgb(153, 43, 43)
 
-	# male_regnal_names = {}
+	unit_color0 = rgb { 153 43 43 } #rgb(153, 43, 43)
+	unit_color1 = rgb { 47 90 201 } #rgb(35, 59, 119)
+	unit_color2 = rgb { 25 28 67 } #rgb(25, 28, 67)
+	# male_regnal_names = {} 
 	# female_regnal_names = {}
 	description_category = military	# cf. common/country_description_category DB
 	difficulty = 4	# int between 1 and 5
@@ -1287,6 +1295,14 @@ LJG = { #Lijiang
 
 	culture_definition = nashi_culture
 	religion_definition = dongba_religion
+}
+
+DUR = { #Daur
+	color = map_daur
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = daur_culture
+	religion_definition = tengri
 }
 
 

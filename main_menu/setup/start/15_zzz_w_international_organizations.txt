@@ -1,0 +1,178 @@
+international_organization_manager = {
+	#################################################################
+	# 				Unique International Organizations				#
+	#################################################################
+
+	#################################################################
+	# 				Holy Roman Empire								#
+	#################################################################
+	add_international_organization = {
+		type = hre
+		creation_date = 962.2.2
+
+		map_color = hsv360 { 40 50 70 }
+
+		members = { 
+			#Germany
+			FRI BNT MUN TCK OSN BRA KOL UPA AAC TRI SPO SAA DTM ESS NEU MTB BSC FCB ZWE PAL LNN SPY WRM WIE SYN TIR BXN MBZ TNT SLZ HAB BAM MEI BAY FRE PSS LGC TES STE MKL SWR WRN LUB HPL LBB HTR SLV LEU REG AUG UBV BRC EIC WEI NUR ANS ROT RVA UBL KNZ WDB BIB MEM KMP OET WUR BEU ULM HOH FUR ELL DNB OFB ALS SCF HAG LIC CFC MUR MUL BDE HBR MAI NSW FRN ERB MSB SWH TEU UFF KTZ HNA BUD WTZ WBG FLD HES WDE ENS QUB THU WTG HAM MAG ANH MLH MFE SHS NHS LUN LPP VRD BRE BRM OLD MDN PDB RBG GOS NIE HOX BBG WGO HDH LAU LCU ZUR STG TGG WER BLM SYZ OBW SIT MSO BCH GLR
+
+			#Netherland
+			HOL HAI ARS FLA BRB NAM LUX KLE LIM LIL DOU CAM LIE BLL
+
+			#Swiss
+			GNV BRN GRY 
+
+			#Lorrain
+			LOR SLM BAS SLT
+		 }
+		leader = HAB
+		regions = { south_german_region }
+		areas = { 
+			#North Germany
+			brabant_area friesland_area holland_area wallonia_area holstein_area brandenburg_area rhineland_area
+			hesse_area westphalia_area lower_saxony_area upper_saxony_area mecklenburg_area
+			#France
+			alsace_area franche_comte_area 
+			#Poland
+			silesia_area
+		}
+		provinces = { 
+			#Burgundy
+			bresse_province
+			#Lorraine
+			pays_messin_province pays_nancy_province sarregueminois_province verdunois_province vosges_province
+			#Pomerania
+			schwerin_province vorpommern_province stettin_province koslin_province pyritz_province stolp_province
+			#Slovenia
+			lower_styria_province lower_carniola_province upper_carniola_province 
+		}
+		locations = { 
+
+		}
+		emperor = { HAB }
+		elector = { 
+			BRA MEI UBV HAB
+		}
+		archbishop_elector = {
+			KOL TRI MAI 
+		}
+		free_city = {
+			FRN WTZ HAM BRM GOS LUB DTM AAC WRM SPY CFC MUL KNZ RVA KMP MEM OET NUR ROT REG
+		}
+		imperial_peasant_republic = {
+
+		}
+		imperial_prelate = { 
+			WBG FLD MAG VRD BRE PDB HDH
+		}
+		imperial_prince = {
+			#Germany
+			UPA FRI BNT MUN TCK OSN TRI SPO SAA ESS NEU MTB BSC FCB ZWE LNN WIE SYN BXN MBZ TNT SLZ HAB BAM BAY FRE PSS LGC TES STE MKL SWR WRN HPL LBB HTR SLV LEU AUG BRC EIC WEI ANS UBL WDB BIB WUR BEU ULM HOH FUR ELL DNB OFB ALS SCF HAG LIC MUR BDE HBR NSW ERB MSB SWH UFF KTZ HNA BUD HES WDE ENS QUB THU WTG ANH MLH MFE SHS NHS LUN LPP OLD MDN RBG NIE HOX BBG WGO LAU LCU ZUR STG TGG WER BLM SYZ OBW SIT MSO BCH GLR
+PAL
+			#Netherland
+			HOL HAI ARS FLA BRB NAM LUX KLE LIM LIL DOU CAM LIE BLL
+
+			#Swiss
+			GNV BRN GRY 
+
+			#Lorrain
+			LOR SLM BAS SLT
+		}
+		
+		laws = {
+			hre_religion_catholic
+			only_imperial_religion_policy
+			golden_bull_policy
+			no_monetary_contribution
+		}
+
+		ruler_term = { character = hab_ferdinand_iii_von_habsburg start_date = 1644.1.1 regnal_number = 4 }
+
+
+		variables = { 
+			imperial_authority = 5
+		}
+	}
+
+	#Union of Arras
+	add_international_organization = {
+		type = union_of_arras
+		creation_date = 1579.5.17
+		members = { 
+			SPA HAI ARS FLA BRB NAM LUX KLE LIM LIL DOU
+		}
+		areas = {
+			friesland_area holland_area brabant_area wallonia_area flanders_area
+		}
+		
+		leader = SPA
+	}
+
+	#Union of Utrecht
+	add_international_organization = {
+		type = union_of_utrecht
+		creation_date = 1579.1.23
+		members = { 
+			NED WIC VOC TER UTR GEL GRO DEV 
+		}
+		areas = {
+			friesland_area holland_area brabant_area wallonia_area flanders_area
+		}
+		
+		leader = NED
+	}
+
+	#################################################################
+	# 				Catholic Church									#
+	#################################################################
+	add_international_organization = {
+		type = catholic_church
+		creation_date = 33.1.1
+		members = { PAP }
+		leader = PAP
+
+		laws = {
+			limited_indulgences
+			ultramontanism
+			unlimited_veneration
+			tolerated_simony
+			society_of_jesus_not_allowed
+			witchcraft_not_aknowledged
+			priest_marriage_not_allowed
+		}
+
+		ruler_term = { character = pap_callisto_ii start_date = 1119.2.2 end_date = 1124.12.13 regnal_number = 2 regnal_name = name_callisto }
+		ruler_term = { character = pap_celestino_iii start_date = 1191.3.30 end_date = 1198.1.8 regnal_number = 3 regnal_name = name_celestine }
+		ruler_term = { character = pap_innocenzo_iv start_date = 1243.6.25 end_date = 1254.12.7 regnal_number = 4 regnal_name = name_innocent }
+		ruler_term = { character = pap_adriano_v start_date = 1276.7.11 end_date = 1276.8.18 regnal_number = 5 regnal_name = name_adrian }
+		ruler_term = { character = pap_nicolaus_iii start_date = 1277.11.25 end_date = 1280.8.22 regnal_number = 3 regnal_name = name_nicholas }
+
+		ruler_term = { character = pap_boniface_viii start_date = 1294.12.24 end_date = 1303.10.11 regnal_number = 8 regnal_name = name_boniface }
+		ruler_term = { character = pap_benedict_xi start_date = 1303.10.22 end_date = 1304.7.7 regnal_number = 11 regnal_name = name_benedict }
+		ruler_term = { character = pap_clement_v start_date = 1305.6.5 end_date = 1314.4.20 regnal_number = 5 regnal_name = name_clement }
+		ruler_term = { character = pap_john_xxii start_date = 1316.8.7 end_date = 1334.12.4 regnal_number = 22 regnal_name = name_john	}
+		#ruler_term = { character = pap_benedetto_xii start_date = 1334.12.20 regnal_number = 12 regnal_name = name_benedict }
+	}
+
+	#################################################################
+	# 				Swiss Confederation								#
+	#################################################################
+	add_international_organization = {
+		type = swiss_confederation
+		creation_date = 1307.9.15
+		members = { BRN GRY BAS SIT MSO LCU ZUR STG TGG GLR BLM BCH WER NEU OBW SYZ }
+		leader = BRN
+		areas = {
+			central_switzerland_area
+			eastern_switzerland_area
+			western_switzerland_area
+		}
+
+		laws = {
+			sc_moderate_policy_proposals
+			sc_swiss_culture_and_geography
+			sc_defensive_pact
+		}
+	}
+
+}
