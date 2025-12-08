@@ -5,13 +5,6 @@
 ############################
 # age_1_traditions
 ############################
-nair_military_advance = {
-    age = age_1_traditions
-    icon = vij_an_army_for_city_of_victory
-    potential = { culture = { has_culture_group = culture_group:indian_group } culture.language = language:malayalam_language }
-	requires = kalaripayattu_advance
-	nobles_estate_levy_size = 0.33
-}
 
 ############################
 # age_1_traditions
@@ -28,3 +21,15 @@ nair_military_advance = {
 ############################
 # age_6_revolutions
 ############################
+npl_the_divya_upadesh = {
+	age = age_6_revolutions
+	potential = { OR = { culture.language = language:nepali_language has_or_had_tag = NPL } }
+	diplomatic_reputation = diplomatic_reputation_mild_bonus
+	requires = enlightened_court
+}
+npl_gurkhas = {
+	age = age_6_revolutions
+	potential = { OR = { culture.language = language:nepali_language has_or_had_tag = NPL } }
+	unlock_unit = a_gurkha
+	requires = unlock_fusiliers_advance
+}
