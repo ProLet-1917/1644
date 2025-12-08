@@ -1,203 +1,203 @@
-﻿# 中国国家传统科技树 - 1644开局简化版
-# 前四个时代的中国专属科技效果已合并为5个开局自动解锁科技
-# 原版通用科技通过 starting_technology_level = 4 自动解锁，无需手动处理
+﻿# # 中国国家传统科技树 - 1644开局简化版
+# # 前四个时代的中国专属科技效果已合并为5个开局自动解锁科技
+# # 原版通用科技通过 starting_technology_level = 4 自动解锁，无需手动处理
 
-# ============================================
-# 前四个时代合并科技 - 开局自动解锁
-# ============================================
+# # ============================================
+# # 前四个时代合并科技 - 开局自动解锁
+# # ============================================
 
-# 明清行政遗产 - 合并前四个时代所有政治线效果
-ming_administrative_heritage = {
-	age = age_1_traditions
-	depth = 0
-	starting_technology_level = 3
+# # 明清行政遗产 - 合并前四个时代所有政治线效果
+# ming_administrative_heritage = {
+# 	age = age_1_traditions
+# 	depth = 0
+# 	starting_technology_level = 3
 	
-	country_cabinet_efficiency = 0.15 #内阁效率
-	head_of_cabinet_promotion_cost_modifier = -0.33
-	government_reform_slots = 3
-	government_size = 3
-	global_distance_from_capital_cost_modifier = -0.05
-	tax_income_efficiency = medium_tax_income_efficiency_bonus
-	global_crown_estate_power = 0.1
-	legislative_efficiency = 0.1
-	global_estate_max_tax = 0.1
+# 	country_cabinet_efficiency = 0.15 #内阁效率
+# 	head_of_cabinet_promotion_cost_modifier = -0.33
+# 	government_reform_slots = 3
+# 	government_size = 3
+# 	global_distance_from_capital_cost_modifier = -0.05
+# 	tax_income_efficiency = medium_tax_income_efficiency_bonus
+# 	global_crown_estate_power = 0.1
+# 	legislative_efficiency = 0.1
+# 	global_estate_max_tax = 0.1
 	
-	# 解锁行政法律与机制
-	unlock_law = cultural_traditions_law
-	unlock_law = immigration_law
-	unlock_law = distribution_of_power_law
-	unlock_law = administrative_system
-	unlock_law = mining_law
+# 	# 解锁行政法律与机制
+# 	unlock_law = cultural_traditions_law
+# 	unlock_law = immigration_law
+# 	unlock_law = distribution_of_power_law
+# 	unlock_law = administrative_system
+# 	unlock_law = mining_law
 	
-	# 解锁附庸类型
-	unlock_subject_type = vassal
-	unlock_subject_type = fiefdom
+# 	# 解锁附庸类型
+# 	unlock_subject_type = vassal
+# 	unlock_subject_type = fiefdom
 	
-	# 解锁基本机制
-	has_codified_laws = yes
-	allow_council_parliament = yes
-	enable_taxation = yes
-	has_stability_investment = yes
-}
+# 	# 解锁基本机制
+# 	has_codified_laws = yes
+# 	allow_council_parliament = yes
+# 	enable_taxation = yes
+# 	has_stability_investment = yes
+# }
 
-ming_military_heritage = {
-	age = age_1_traditions
-	depth = 0
-	starting_technology_level = 3
+# ming_military_heritage = {
+# 	age = age_1_traditions
+# 	depth = 0
+# 	starting_technology_level = 3
 	
-	global_manpower_modifier = 0.2
-	army_maintenance_cost = -0.1
-	army_auxiliary_build_cost_modifier = -0.2
-	monthly_army_tradition = 0.05
-	global_defensive = 0.20
-	global_garrison_size_modifier = 0.2
-	army_infantry_reinforce_cost_modifier = -0.1
-	global_separatism = -0.05
-	global_war_score_cost = -0.05
+# 	global_manpower_modifier = 0.2
+# 	army_maintenance_cost = -0.1
+# 	army_auxiliary_build_cost_modifier = -0.2
+# 	monthly_army_tradition = 0.05
+# 	global_defensive = 0.20
+# 	global_garrison_size_modifier = 0.2
+# 	army_infantry_reinforce_cost_modifier = -0.1
+# 	global_separatism = -0.05
+# 	global_war_score_cost = -0.05
 	
-	# 解锁中国战场自定义兵种：步营、骑营
-	unlock_unit = a_1644_chinese_zhanbing
-	unlock_unit = a_1644_chinese_cavalry
+# 	# 解锁中国战场自定义兵种：步营、骑营
+# 	unlock_unit = a_1644_chinese_zhanbing
+# 	unlock_unit = a_1644_chinese_cavalry
 	
-	# 红夷大炮
-	unlock_unit = a_red_cannon
-}
+# 	# 红夷大炮
+# 	unlock_unit = a_red_cannon
+# }
 
-# 明清经济遗产 - 合并前四个时代所有经济线效果
-ming_economic_heritage = {
-	age = age_1_traditions
-	depth = 0
-	starting_technology_level = 3
+# # 明清经济遗产 - 合并前四个时代所有经济线效果
+# ming_economic_heritage = {
+# 	age = age_1_traditions
+# 	depth = 0
+# 	starting_technology_level = 3
 	
-	global_monthly_food_modifier = 0.05
-	global_rural_build_buildings_cost = -0.025
-	global_monthly_prosperity = 0.001
-	global_tea_output_modifier = 0.2
-	global_salt_output_modifier = 0.2
-	global_silver_output_modifier = 0.15
-	global_porcelain_output_modifier = 0.1
+# 	global_monthly_food_modifier = 0.05
+# 	global_rural_build_buildings_cost = -0.025
+# 	global_monthly_prosperity = 0.001
+# 	global_tea_output_modifier = 0.2
+# 	global_salt_output_modifier = 0.2
+# 	global_silver_output_modifier = 0.15
+# 	global_porcelain_output_modifier = 0.1
 	
-	# 经济循环核心建筑：手工业行会 + 作坊 + 制造业
-	# 行会 / 基础生产
-	unlock_building = porcelain_guild
-	unlock_building = paper_guild
-	unlock_building = weapon_guild
-	unlock_building = lacquerware_guild
-	unlock_building = scriptorium
+# 	# 经济循环核心建筑：手工业行会 + 作坊 + 制造业
+# 	# 行会 / 基础生产
+# 	unlock_building = porcelain_guild
+# 	unlock_building = paper_guild
+# 	unlock_building = weapon_guild
+# 	unlock_building = lacquerware_guild
+# 	unlock_building = scriptorium
 	
-	# 作坊（中期加工）
-	unlock_building = weapon_workshop
-	unlock_building = naval_supplies_workshop
-	unlock_building = paper_workshop
-	unlock_building = cloth_workshop
-	unlock_building = fine_cloth_workshop
-	unlock_building = tools_workshop
-	unlock_building = pottery_workshop
-	unlock_building = glass_workshop
-	unlock_building = dyes_workshop
-	unlock_building = furniture_workshop
-	unlock_building = cannon_workshop
-	unlock_building = guns_workshop
-	unlock_building = tanning_workshop
-	unlock_building = beer_workshop
-	unlock_building = saltpeter_workshop
-	unlock_building = distillers_workshop
-	unlock_building = printing_press_shop
+# 	# 作坊（中期加工）
+# 	unlock_building = weapon_workshop
+# 	unlock_building = naval_supplies_workshop
+# 	unlock_building = paper_workshop
+# 	unlock_building = cloth_workshop
+# 	unlock_building = fine_cloth_workshop
+# 	unlock_building = tools_workshop
+# 	unlock_building = pottery_workshop
+# 	unlock_building = glass_workshop
+# 	unlock_building = dyes_workshop
+# 	unlock_building = furniture_workshop
+# 	unlock_building = cannon_workshop
+# 	unlock_building = guns_workshop
+# 	unlock_building = tanning_workshop
+# 	unlock_building = beer_workshop
+# 	unlock_building = saltpeter_workshop
+# 	unlock_building = distillers_workshop
+# 	unlock_building = printing_press_shop
 	
-	# 制造业（后期高端生产）
-	unlock_building = firearms_manufactory
-	unlock_building = cloth_manufactory
-	unlock_building = fine_cloth_manufactory
-	unlock_building = printing_manufactory
-	unlock_building = porcelain_manufactory
-	unlock_building = iron_foundry
-	unlock_building = weapon_manufactory
-	unlock_building = cannon_foundry
-	unlock_building = naval_supplies_manufactory
-	unlock_building = tannery_manufactory
-	unlock_building = pottery_manufactory
-	unlock_building = furniture_manufactory
-	unlock_building = distiller_manufactory
-	unlock_building = brewery_manufactory
-	unlock_building = winery_manufactory
-	unlock_building = lacquerware_manufactory
-	unlock_building = paper_manufactory
-	unlock_building = putrefaction_works
+# 	# 制造业（后期高端生产）
+# 	unlock_building = firearms_manufactory
+# 	unlock_building = cloth_manufactory
+# 	unlock_building = fine_cloth_manufactory
+# 	unlock_building = printing_manufactory
+# 	unlock_building = porcelain_manufactory
+# 	unlock_building = iron_foundry
+# 	unlock_building = weapon_manufactory
+# 	unlock_building = cannon_foundry
+# 	unlock_building = naval_supplies_manufactory
+# 	unlock_building = tannery_manufactory
+# 	unlock_building = pottery_manufactory
+# 	unlock_building = furniture_manufactory
+# 	unlock_building = distiller_manufactory
+# 	unlock_building = brewery_manufactory
+# 	unlock_building = winery_manufactory
+# 	unlock_building = lacquerware_manufactory
+# 	unlock_building = paper_manufactory
+# 	unlock_building = putrefaction_works
 	
-	# 经济基础设施
-	unlock_building = counting_house
-	unlock_building = merchants_quarters
-	unlock_building = port_authority
+# 	# 经济基础设施
+# 	unlock_building = counting_house
+# 	unlock_building = merchants_quarters
+# 	unlock_building = port_authority
 	
-	# 农业与资源
-	unlock_building = windmill
-	unlock_building = apothecary
-	unlock_building = pest_house
-	unlock_building = hospital
-}
+# 	# 农业与资源
+# 	unlock_building = windmill
+# 	unlock_building = apothecary
+# 	unlock_building = pest_house
+# 	unlock_building = hospital
+# }
 
-# 明清文化遗产 - 合并前四个时代所有文化线效果
-ming_cultural_heritage = {
-	age = age_1_traditions
-	depth = 0
-	starting_technology_level = 3
+# # 明清文化遗产 - 合并前四个时代所有文化线效果
+# ming_cultural_heritage = {
+# 	age = age_1_traditions
+# 	depth = 0
+# 	starting_technology_level = 3
 	
-	global_max_literacy = 5
-	cultural_influence_modifier = 0.25
-	num_possible_artists = 1
-	skill_of_new_artists = 0.05
-	monthly_prestige = 0.1
+# 	global_max_literacy = 5
+# 	cultural_influence_modifier = 0.25
+# 	num_possible_artists = 1
+# 	skill_of_new_artists = 0.05
+# 	monthly_prestige = 0.1
 	
-	# 文化与教育建筑
-	unlock_building = confucian_school
-	unlock_building = confucian_academy
-	unlock_building = library
-	unlock_building = university
-	unlock_building = opera_house
-	unlock_building = theater
+# 	# 文化与教育建筑
+# 	unlock_building = confucian_school
+# 	unlock_building = confucian_academy
+# 	unlock_building = library
+# 	unlock_building = university
+# 	unlock_building = opera_house
+# 	unlock_building = theater
 	
-	# 解锁教育法律
-	unlock_law = education_elites_law
-}
+# 	# 解锁教育法律
+# 	unlock_law = education_elites_law
+# }
 
-# 明清外交遗产 - 合并前四个时代所有外交线效果
-ming_diplomatic_heritage = {
-	age = age_1_traditions
-	depth = 0
-	starting_technology_level = 3
+# # 明清外交遗产 - 合并前四个时代所有外交线效果
+# ming_diplomatic_heritage = {
+# 	age = age_1_traditions
+# 	depth = 0
+# 	starting_technology_level = 3
 	
-	subject_loyalty = 10
-	pop_join_rebel_threshold = -0.03
-	diplomatic_reputation = 2
-	monthly_legitimacy = 0.1
+# 	subject_loyalty = 10
+# 	pop_join_rebel_threshold = -0.03
+# 	diplomatic_reputation = 2
+# 	monthly_legitimacy = 0.1
 	
-	# 解锁附庸类型与殖民机制
-	unlock_subject_type = trade_company
-	unlock_subject_type = march
-	allow_subjects = yes
+# 	# 解锁附庸类型与殖民机制
+# 	unlock_subject_type = trade_company
+# 	unlock_subject_type = march
+# 	allow_subjects = yes
 	
-	# 解锁殖民与探索机制
-	can_colonize = yes
-	may_explore = yes
+# 	# 解锁殖民与探索机制
+# 	can_colonize = yes
+# 	may_explore = yes
 	
-	# 解锁宣战理由
-	unlock_casus_belli = cb_exploration
+# 	# 解锁宣战理由
+# 	unlock_casus_belli = cb_exploration
 	
-	# 解锁殖民法律
-	unlock_law = colonial_policy
-	unlock_law = native_policy
-}
+# 	# 解锁殖民法律
+# 	unlock_law = colonial_policy
+# 	unlock_law = native_policy
+# }
 
-w_estate_advance = {
-	age = age_1_traditions
-	depth = 0
-	starting_technology_level = 1
+# w_estate_advance = {
+# 	age = age_1_traditions
+# 	depth = 0
+# 	starting_technology_level = 1
 
-	nobles_estate_target_satisfaction = 0.2
-	burghers_estate_target_satisfaction = 0.1
-	clergy_estate_target_satisfaction = 0.1
-	cossacks_estate_target_satisfaction = 0.1
-	dhimmi_estate_target_satisfaction = 0.1
-	peasants_estate_target_satisfaction = 0.15
-	tribes_estate_target_satisfaction = 0.05
-}
+# 	nobles_estate_target_satisfaction = 0.2
+# 	burghers_estate_target_satisfaction = 0.1
+# 	clergy_estate_target_satisfaction = 0.1
+# 	cossacks_estate_target_satisfaction = 0.1
+# 	dhimmi_estate_target_satisfaction = 0.1
+# 	peasants_estate_target_satisfaction = 0.15
+# 	tribes_estate_target_satisfaction = 0.05
+# }
