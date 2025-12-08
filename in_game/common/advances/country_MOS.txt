@@ -1,0 +1,92 @@
+﻿mos_skilled_tax_collectors = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = MOS
+	}
+	subject_income_modifier = 0.05
+	requires = feudalism_advance
+}
+mos_dynastic_ties = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = MOS
+	}
+	diplomatic_capacity = 1
+	requires = mos_skilled_tax_collectors
+}
+
+
+seat_of_metropolitan_bishop = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = MOS
+	}
+	global_pop_conversion_speed_modifier = 0.1
+	tolerance_own = 1
+}
+pomestnoe_voisko = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = MOS
+	}
+	land_morale_modifier = 0.1
+}
+strength_of_the_boyars = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = MOS
+	}
+	stability_cost = -0.1
+}
+zasechnaya_cherta = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = MOS
+	}
+	fort_maintenance_cost = -0.2
+}
+hurricane_hardy = {
+	age = age_5_absolutism
+	potential = {
+		OR = {
+			has_or_had_tag = MOS
+			has_or_had_tag = RUS
+		}
+	}
+	allow = { has_unlocked_advance_trigger = { type = hurricane_hardy } }
+	allow_children = no
+	naval_unit_attrition = -0.05
+}
+preobrazhensky_semyonovsky_imperial_guard = {
+	age = age_5_absolutism
+	potential = {
+		OR = {
+			has_or_had_tag = MOS
+			has_or_had_tag = RUS
+		}
+	}
+	allow = { has_unlocked_advance_trigger = { type = preobrazhensky_semyonovsky_imperial_guard } }
+	allow_children = no
+	global_crown_estate_power = 0.1
+	military_tactics = 0.1
+}
+mos_patrol_the_territories = {
+	age = age_6_revolutions
+	potential = {
+		has_or_had_tag = MOS
+	}
+	global_levy_size_modifier = 0.1
+}
+imperatorskiy_moskovskiy_universitet = {
+	age = age_6_revolutions
+	potential = {
+		has_or_had_tag = RUS
+	}
+
+	allow = { has_unlocked_advance_trigger = { type = imperatorskiy_moskovskiy_universitet } }
+	allow_children = no
+	cultural_tradition_modifier = 0.1
+	global_max_literacy  = 5
+
+	requires = rights_of_man
+}

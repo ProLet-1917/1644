@@ -1,0 +1,159 @@
+﻿ara_a_maritime_realm = {
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = ARA 
+			is_aragonese_catalan_spain = yes
+		}
+	}
+	navy_galley_power = 0.2
+	
+	requires = legalism_advance
+}
+
+ara_desperta_ferro = {
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = ARA 
+			is_aragonese_catalan_spain = yes
+		}
+	}
+	land_morale_modifier = 0.1
+
+	requires = feudalism_advance
+}
+
+ara_a_mediterranean_trade_power = {
+	age = age_1_traditions
+	icon = a_central_power
+	potential = {
+		OR = {
+			has_or_had_tag = ARA 
+			is_aragonese_catalan_spain = yes
+		}
+	}
+	trade_efficiency = small_trade_efficiency_bonus
+	merchant_maintenance_cost  = -0.1
+
+	requires = merchants_and_trade
+}
+
+ara_fleet_ordinances = {
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = ARA 
+			is_aragonese_catalan_spain = yes
+		}
+	}
+	global_maritime_presence_modifier = 0.25
+
+	requires = power_projection_advance_2
+}
+
+ara_valencian_golden_age = {
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = ARA 
+			is_aragonese_catalan_spain = yes
+		}
+	}
+	global_max_literacy = 5
+	prestige_decay = -0.001
+
+	requires = improved_book_binding
+}
+
+ara_remenca = {
+	age = age_1_traditions 
+	potential = {
+		OR = {
+			has_or_had_tag = ARA 
+			is_aragonese_catalan_spain = yes
+		}
+	}
+	global_max_rgo_size_modifier = 0.10
+
+	requires = rgo_logistics_discovery
+}
+
+ara_chartered_merchant_companies = {
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = ARA 
+			is_aragonese_catalan_spain = yes
+		}
+	}
+	global_merchant_power = 0.2
+
+	requires = chartered_companies
+}
+
+ara_stronger_united = {
+	age = age_1_traditions
+	potential = {
+		OR = {
+			has_or_had_tag = ARA 
+			is_aragonese_catalan_spain = yes
+		}
+	}
+	global_distance_from_capital_cost_modifier = -0.05
+
+	requires = confessional_court
+}
+
+ara_constellation_cities = {
+	age = age_5_absolutism
+	potential = {
+		OR = {
+			has_or_had_tag = ARA 
+			is_aragonese_catalan_spain = yes
+		}
+	}
+	non_rural_migration_attraction = 0.1
+	global_burghers_city_desired_pop = 0.75
+
+	requires = scientific_mapping_advance
+}
+
+ara_protection_of_the_little_folk = {
+	age = age_5_absolutism
+	potential = {
+		OR = {
+			has_or_had_tag = ARA 
+			is_aragonese_catalan_spain = yes
+		}
+	}
+	monthly_war_exhaustion = -0.05
+
+	requires = army_movement_speed_absolutism
+}
+
+ara_gunpowder_souls = {
+	age = age_6_revolutions
+	potential = {
+		OR = {
+			has_or_had_tag = ARA 
+			is_aragonese_catalan_spain = yes
+		}
+	}
+	army_artillery_power = 0.1
+
+	requires = napoleonic_warfare
+}
+
+ara_mossos_esquadra = {
+	age = age_6_revolutions
+	potential = {
+		OR = {
+			has_or_had_tag = ARA 
+			is_aragonese_catalan_spain = yes
+		}
+	}
+	global_estate_target_satisfaction = small_permanent_target_satisfaction
+
+	requires = power_projection_advance_6
+}
