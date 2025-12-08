@@ -1,0 +1,108 @@
+khoshuud_ulus = {
+    has_target = no                     # Whether org targets a country
+    unique = yes                        # Only one instance can exist
+    expel_members_who_are_targets_of_other_members = no
+
+    show_leave_message = yes
+    use_laws_as_join_reason = no
+
+    # Leadership configuration
+    has_leader_country = yes
+    leader_title_key = "khoshuud_ulus_leader"
+    use_regnal_number = yes
+    leader_type = character             # character or country
+    leader_change_trigger_type = rulerchange
+    leader_change_method = score
+    disband_if_no_leader = yes
+
+    leader_score = {
+        value = great_power_score
+    }
+
+    # Parliament configuration
+    has_parliament = no
+    
+
+    # War mechanics
+    only_leader_country_joins_defensive_wars = no
+    gives_military_access_to_all_when_at_war = yes
+
+    join_defensive_wars_always = yes
+    join_defensive_wars_auto_call = no
+    can_declare_war = yes
+
+    # Membership modifiers
+    modifier = {
+        block_from_change_to_kingdom_rank = no
+    }
+    leader_modifier = {
+        monthly_prestige = 0.05
+        diplomatic_capacity = 20
+    }
+    #international_organization_modifier = {
+    #    max_elector = 4
+    #}
+
+    # Membership triggers
+    create_visible_trigger = no
+    invite_visible_trigger = { 
+        is_subject_of = {
+            any_international_organization_member = {
+                is_member_of_international_organization = international_organization:khoshuud_ulus
+            }
+        }
+     }
+    can_lead_trigger = { 
+        is_ruler_of = {
+            AND = {
+                country_rank_level >= rank_kingdom
+                is_member_of_international_organization = international_organization:khoshuud_ulus
+                religion = religion:tibetan_buddhism
+            }
+        }
+     }
+    can_join_trigger = { 
+        AND = {
+            is_subject_of = {
+                any_international_organization_member = {
+                    is_member_of_international_organization = international_organization:khoshuud_ulus
+                }
+            } 
+        }
+    }
+    can_leave_trigger = no
+    auto_leave_trigger = no
+    auto_disband_trigger = no
+    can_vote_in_parliament = no
+
+    # Effects
+    #on_joined = { effect }
+    #on_left = { effect }
+    #monthly_effect = { effect }
+
+    # Variables
+    #variables = {
+    #    variable_name = {
+    #        format = "FORMAT_KEY"
+    #        min = 0
+    #        max = 100
+    #        monthly_change = { script_value }
+    #    }
+    #}
+
+    # Special statuses
+    #special_statuses_implemented = {
+    #    status_1
+    #    status_2
+    #}
+
+    # AI decision making
+    ai_desire_to_join = { add = 1000 }
+    ai_desire_to_allow_new_member = { add = 1000 }
+    #ai_issue_voting_bias = { script_value }
+
+    # Land ownership rules
+    #land_ownership_rule = rule_name
+    #antagonism_modifier_for_taking_land_from_fellow_member = 0.75
+    #no_cb_price_modifier_for_fellow_member = 0.75
+}
