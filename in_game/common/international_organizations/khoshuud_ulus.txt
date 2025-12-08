@@ -12,8 +12,12 @@ khoshuud_ulus = {
     use_regnal_number = yes
     leader_type = character             # character or country
     leader_change_trigger_type = rulerchange
-    leader_change_method = lottery
+    leader_change_method = score
     disband_if_no_leader = yes
+
+    leader_score = {
+        value = great_power_score
+    }
 
     # Parliament configuration
     has_parliament = no
@@ -33,6 +37,7 @@ khoshuud_ulus = {
     }
     leader_modifier = {
         monthly_prestige = 0.05
+        diplomatic_capacity = 20
     }
     #international_organization_modifier = {
     #    max_elector = 4
