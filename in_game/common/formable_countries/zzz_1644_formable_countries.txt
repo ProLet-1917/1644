@@ -1,0 +1,31 @@
+﻿# 1644 Mod - Formable Countries Override
+# 防止大清（QNG）被MCH覆盖
+
+REPLACE:MCH_f = {
+	level = 3
+	required_locations_fraction = 0.5
+	rule = historical
+	
+	potential = {
+		culture = culture:jurchen_culture
+		NOT = { tag = QNG }  # 排除大清，防止QNG被MCH覆盖
+	}
+
+	name = MCH
+	flag = MCH
+	adjective = MCH_ADJ
+	tag = MCH
+	color = map_MCH
+	areas = {
+		liaodong_area
+		lower_amur_area
+		middle_amur_area
+		songhua_area
+		songnen_area
+		ussuri_area
+	}
+	form_effect = {
+		trigger_event_non_silently = flavor_mch.5
+	}
+}
+
