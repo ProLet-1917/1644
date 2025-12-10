@@ -35,3 +35,6 @@
  RELATIVE_MILITARY_STRENGTH_SPA_TT_TEXT: "The [GetCountry('SPA').GetAdjective] Relative Military Strength to [GetCountry('NED').GetName] is: [GetCountry('SPA').GetRelativeMilitaryStrength(GetCountry('NED').Self)|V0%]"
  RELATIVE_MILITARY_STRENGTH_SPA_TT_ARMY_STRENGTH: "$RELATIVE_MILITARY_STRENGTH_SPA_TT_TEXT$\n[GetCountry('SPA').GetAdjectiveWithNoTooltip] [army|e] Size: [GetCountry('FRA').GetArmySize]\n[GetCountry('SPA').GetAdjectiveWithNoTooltip] Potential [levy|e]: [GetCountry('SPA').GetArmyLevyPotentialStrength]"
  RELATIVE_MILITARY_STRENGTH_SPA_TT_LEVY_STRENGTH: "[GetCountry('SPA').GetAdjectiveWithNoTooltip] Potential [levy|e]: [GetCountry('SPA').GetArmyLevyPotentialStrength]"
+
+ CURRENT_HERD_TT: "Current Herd: [SituationView.GetPlayer.MakeScope.GetVariable('current_herd').GetValue]"
+ HERD_GET_PER_MONTH: "Current Herd increase per month:\n[SituationView.GetPlayer.MakeScope.GetVariable('current_herd').GetValue]"
