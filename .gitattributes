@@ -1,0 +1,10 @@
+# .gitattributes
+# 这三个文件夹在合并时始终使用 main 分支（theirs）的版本
+in_game/** merge=theirs
+loading_screen/** merge=theirs
+main_menu/** merge=theirs
+
+
+
+# metadata.json 文件保留当前分支（release）的版本
+.metadata/metadata.json merge=ours
