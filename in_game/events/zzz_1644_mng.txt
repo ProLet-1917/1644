@@ -151,3 +151,21 @@ mng_1644.3 = { #北都沦陷
     	custom_tooltip = mng_1644.3.tt1
 	}
 }
+
+mng_1644.4 = { #让大明的附属国加入战争
+	type = country_event
+	hidden = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { tag = MNG }
+			# 让所有附属国加入大明的战争
+			mng_subjects_join_wars = yes
+		}
+	}
+	
+	option = {
+		name = mng_1644.4.a
+	}
+}
