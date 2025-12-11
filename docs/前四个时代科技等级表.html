@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前四个时代科技等级表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'SimHei', Arial, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #4a9eff;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(74, 158, 255, 0.5);
+        }
+        
+        h2 {
+            color: #ffd700;
+            margin: 40px 0 20px 0;
+            font-size: 2em;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: #ff6b6b;
+            margin: 30px 0 15px 0;
+            font-size: 1.5em;
+        }
+        
+        .rules {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #4a9eff;
+        }
+        
+        .rules ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .rules li {
+            padding: 8px 0;
+            color: #b0b0b0;
+        }
+        
+        .rules li strong {
+            color: #ffd700;
+        }
+        
+        .tech-tree {
+            background: #252525;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .tech-root {
+            margin-bottom: 40px;
+        }
+        
+        .tech-node {
+            position: relative;
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        .tech-node.level1 {
+            padding-left: 0;
+        }
+        
+        .tech-node.level1::before {
+            display: none;
+        }
+        
+        .tech-node::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15px;
+            width: 20px;
+            height: 2px;
+            background: #4a9eff;
+        }
+        
+        .tech-node::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 15px;
+            background: #4a9eff;
+        }
+        
+        .tech-node:last-child::after {
+            height: 15px;
+        }
+        
+        .tech-item {
+            display: inline-block;
+            background: linear-gradient(135deg, #2a3f5f 0%, #1e2a3f 100%);
+            padding: 12px 20px;
+            border-radius: 6px;
+            border: 2px solid #4a9eff;
+            box-shadow: 0 2px 8px rgba(74, 158, 255, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .tech-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(74, 158, 255, 0.6);
+            border-color: #6bb6ff;
+        }
+        
+        .tech-item.level1 {
+            background: linear-gradient(135deg, #4a9eff 0%, #2a5f9f 100%);
+            border-color: #ffd700;
+            font-weight: bold;
+            font-size: 1.1em;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+        
+        .tech-item.level1:hover {
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+        }
+        
+        .tech-name {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+        
+        .tech-desc {
+            color: #b0b0b0;
+            font-size: 0.85em;
+            margin-top: 4px;
+        }
+        
+        .tech-children {
+            margin-left: 30px;
+            border-left: 2px solid #3a3a3a;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .summary {
+            background: #2a2a2a;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 40px;
+            border-left: 4px solid #ffd700;
+        }
+        
+        .summary h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+        
+        .summary ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .summary li {
+            padding: 8px 0;
+            color: #b0b0b0;
+        }
+        
+        .summary li strong {
+            color: #4a9eff;
+        }
+        
+        .age-section {
+            margin-bottom: 60px;
+        }
+        
+        .age-title {
+            background: linear-gradient(90deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>前四个时代科技等级表</h1>
+        
+        <div class="rules">
+            <h3>科技等级划分规则</h3>
+            <ul>
+                <li><strong>等级1</strong>：基础科技（depth=0），无依赖</li>
+                <li><strong>等级2</strong>：直接依赖基础科技（等级1）</li>
+                <li><strong>等级3</strong>：依赖等级2的科技</li>
+                <li><strong>等级4</strong>：依赖等级3的科技</li>
+                <li><strong>等级5+</strong>：更深层的依赖</li>
+            </ul>
+        </div>
+
+        <!-- 时代1：传统时代 -->
+        <div class="age-section">
+            <div class="age-title">时代1：传统时代（age_1_traditions）</div>
+            <div class="tech-tree">
+                <div class="tech-root">
+                    <div class="tech-node level1">
+                        <div class="tech-item level1">
+                            <div class="tech-name">written_alphabet</div>
+                            <div class="tech-desc">书面字母</div>
+                        </div>
+                        <div class="tech-children">
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">cultural_traditions_law_advance</div>
+                                    <div class="tech-desc">文化传统法律</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">cultural_acceptance_advance</div>
+                                            <div class="tech-desc">文化接受</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">mapmaking</div>
+                                    <div class="tech-desc">地图制作</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">colonies</div>
+                                            <div class="tech-desc">殖民地</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">codified_laws</div>
+                                    <div class="tech-desc">成文法</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">distribution_of_power_advance</div>
+                                            <div class="tech-desc">权力分配</div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">subjects_advance</div>
+                                            <div class="tech-desc">附庸</div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">taxation_advance</div>
+                                            <div class="tech-desc">税收</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">state_administration_advance</div>
+                                                    <div class="tech-desc">国家管理</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">legalism_advance</div>
+                                            <div class="tech-desc">法家</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">medieval_administration</div>
+                                                    <div class="tech-desc">中世纪管理</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">pest_house_advance</div>
+                                                            <div class="tech-desc">瘟疫屋</div>
+                                                        </div>
+                                                        <div class="tech-children">
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">hospital_advance</div>
+                                                                    <div class="tech-desc">医院</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">banking_country_traditions</div>
+                                                            <div class="tech-desc">银行国家传统</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-node level1">
+                        <div class="tech-item level1">
+                            <div class="tech-name">agriculture_advance</div>
+                            <div class="tech-desc">农业进步</div>
+                        </div>
+                        <div class="tech-children">
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">windmills_advance</div>
+                                    <div class="tech-desc">风车</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">alchemy_advance</div>
+                                            <div class="tech-desc">炼金术</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">apothecary_advance</div>
+                                                    <div class="tech-desc">药剂师</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">ranching</div>
+                                            <div class="tech-desc">畜牧业</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">horse_riding_advance</div>
+                                                    <div class="tech-desc">骑术</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">feudalism_advance</div>
+                                                            <div class="tech-desc">封建主义</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">trade_caravans</div>
+                                                            <div class="tech-desc">贸易商队</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">city_building_advance</div>
+                                    <div class="tech-desc">城市建设</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-node level1">
+                        <div class="tech-item level1">
+                            <div class="tech-name">mining_advance</div>
+                            <div class="tech-desc">采矿进步</div>
+                        </div>
+                        <div class="tech-children">
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">mining_law_advance</div>
+                                    <div class="tech-desc">采矿法</div>
+                                </div>
+                            </div>
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">metallurgy</div>
+                                    <div class="tech-desc">冶金学</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">bronze_working</div>
+                                            <div class="tech-desc">青铜加工</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">fine_metals_mining</div>
+                                                    <div class="tech-desc">贵金属采矿</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">iron_working</div>
+                                            <div class="tech-desc">铁器加工</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">local_smelters_advance</div>
+                                                    <div class="tech-desc">本地冶炼厂</div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">advanced_mining</div>
+                                                    <div class="tech-desc">高级采矿</div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">faster_levy_recruitment</div>
+                                                    <div class="tech-desc">更快征召</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-node level1">
+                        <div class="tech-item level1">
+                            <div class="tech-name">ship_building_advance</div>
+                            <div class="tech-desc">造船进步</div>
+                        </div>
+                        <div class="tech-children">
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">trade_advance_age_of_trad</div>
+                                    <div class="tech-desc">贸易进步</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">more_merchants_age_of_trad</div>
+                                            <div class="tech-desc">更多商人</div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">slave_raid_advance</div>
+                                            <div class="tech-desc">奴隶突袭</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-node level1">
+                        <div class="tech-item level1">
+                            <div class="tech-name">organized_religion</div>
+                            <div class="tech-desc">有组织宗教</div>
+                        </div>
+                        <div class="tech-children">
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">scholasticism</div>
+                                    <div class="tech-desc">经院哲学</div>
+                                </div>
+                            </div>
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">guilds</div>
+                                    <div class="tech-desc">行会</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">peasant_connections_advance</div>
+                                            <div class="tech-desc">农民联系</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">construction_speed_traditions</div>
+                                                    <div class="tech-desc">建设速度</div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">rural_rgo_traditions</div>
+                                                    <div class="tech-desc">农村RGO</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">diplomatic_capacity_traditions</div>
+                                            <div class="tech-desc">外交容量</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-node level1">
+                        <div class="tech-item level1">
+                            <div class="tech-name">meritocracy_advance</div>
+                            <div class="tech-desc">任人唯贤</div>
+                        </div>
+                        <div class="tech-children">
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">educated_bureaucrats</div>
+                                    <div class="tech-desc">受过教育的官僚</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">efficient_bureaucracy</div>
+                                            <div class="tech-desc">高效官僚</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">right_to_rule</div>
+                                                    <div class="tech-desc">统治权</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">smooth_administration</div>
+                                                            <div class="tech-desc">顺畅管理</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">efficient_logistics</div>
+                                                    <div class="tech-desc">高效后勤</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">province_governors</div>
+                                                            <div class="tech-desc">省督</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">appointed_chain_of_command</div>
+                                                            <div class="tech-desc">任命指挥链</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">temporary_appointments</div>
+                                                    <div class="tech-desc">临时任命</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">non_inheritable_offices</div>
+                                                            <div class="tech-desc">不可继承职位</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">government_sanctioned_celebrations</div>
+                                            <div class="tech-desc">政府批准的庆祝活动</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">abacus_advance</div>
+                                    <div class="tech-desc">算盘</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">power_projection_advance_1</div>
+                                            <div class="tech-desc">权力投射1</div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">ledgers_double_checking</div>
+                                            <div class="tech-desc">账本双重检查</div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">talented_traders</div>
+                                            <div class="tech-desc">天才商人</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 时代2：文艺复兴时代 -->
+        <div class="age-section">
+            <div class="age-title">时代2：文艺复兴时代（age_2_renaissance）</div>
+            <div class="tech-tree">
+                <div class="tech-root">
+                    <div class="tech-node level1">
+                        <div class="tech-item level1">
+                            <div class="tech-name">renaissance_advance</div>
+                            <div class="tech-desc">文艺复兴</div>
+                        </div>
+                        <div class="tech-children">
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">patron_of_art</div>
+                                    <div class="tech-desc">艺术赞助</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">renaissance_sculptures</div>
+                                            <div class="tech-desc">文艺复兴雕塑</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">renaissance_thought</div>
+                                    <div class="tech-desc">文艺复兴思想</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">government_size_renaissance</div>
+                                            <div class="tech-desc">政府规模</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">chancery_records</div>
+                                                    <div class="tech-desc">大法官记录</div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">crown_power_advance_renaissance</div>
+                                                    <div class="tech-desc">王权进步</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">renaissance_court</div>
+                                                            <div class="tech-desc">文艺复兴宫廷</div>
+                                                        </div>
+                                                        <div class="tech-children">
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">power_projection_advance_2</div>
+                                                                    <div class="tech-desc">权力投射2</div>
+                                                                </div>
+                                                                <div class="tech-children">
+                                                                    <div class="tech-node">
+                                                                        <div class="tech-item">
+                                                                            <div class="tech-name">anatomy_advance</div>
+                                                                            <div class="tech-desc">解剖学</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">vibrant_court_advance</div>
+                                                                    <div class="tech-desc">活跃宫廷</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-node level1">
+                        <div class="tech-item level1">
+                            <div class="tech-name">banking_advance</div>
+                            <div class="tech-desc">银行业</div>
+                        </div>
+                        <div class="tech-children">
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">merchants_and_trade</div>
+                                    <div class="tech-desc">商人和贸易</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">rudimentary_coastal_ship_repair</div>
+                                            <div class="tech-desc">基础沿海修船</div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">diplomatic_range_age_1</div>
+                                            <div class="tech-desc">外交范围</div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">route_to_the_indies_advance</div>
+                                            <div class="tech-desc">通往印度之路</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">standardized_coins</div>
+                                    <div class="tech-desc">标准化货币</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">pop_promotion_speed_age_2</div>
+                                            <div class="tech-desc">人口晋升速度</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">spy_construction_renaissance</div>
+                                                    <div class="tech-desc">间谍建设</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">rebellion_support</div>
+                                                            <div class="tech-desc">支持叛乱</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">trade_range_advance_age_2</div>
+                                            <div class="tech-desc">贸易范围</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">maritime_advance_age_2</div>
+                                                    <div class="tech-desc">海事进步</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">pound_lock_canals_advance</div>
+                                                            <div class="tech-desc">磅锁运河</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-node level1">
+                        <div class="tech-item level1">
+                            <div class="tech-name">professional_armies_advance</div>
+                            <div class="tech-desc">职业军队</div>
+                        </div>
+                        <div class="tech-children">
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">gunpowder_advance</div>
+                                    <div class="tech-desc">火药</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">correct_box_advance_renaissance</div>
+                                            <div class="tech-desc">正确装弹</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">recruitment_improvements_renaissance</div>
+                                    <div class="tech-desc">征兵改进</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">drill_army_advance</div>
+                                            <div class="tech-desc">训练军队</div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">regiment_reinforcement_speed_renaissance</div>
+                                            <div class="tech-desc">团增援速度</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">supply_depot_advance_age_2_renaissance</div>
+                                                    <div class="tech-desc">补给站</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-node level1">
+                        <div class="tech-item level1">
+                            <div class="tech-name">renaissance_development</div>
+                            <div class="tech-desc">文艺复兴发展</div>
+                        </div>
+                        <div class="tech-children">
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">improve_relation_impact_renaissance</div>
+                                    <div class="tech-desc">改善关系影响</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">late_feudal_relations</div>
+                                            <div class="tech-desc">晚期封建关系</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">medieval_military</div>
+                                                    <div class="tech-desc">中世纪军事</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">land_morale_recovery_renaissance_advance</div>
+                                                            <div class="tech-desc">陆军士气恢复</div>
+                                                        </div>
+                                                        <div class="tech-children">
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">army_initiative_ren</div>
+                                                                    <div class="tech-desc">陆军主动性</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">naval_morale_advance_1</div>
+                                                    <div class="tech-desc">海军士气</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">blockade_tactics</div>
+                                                            <div class="tech-desc">封锁战术</div>
+                                                        </div>
+                                                        <div class="tech-children">
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">recovery_efforts</div>
+                                                                    <div class="tech-desc">恢复努力</div>
+                                                                </div>
+                                                                <div class="tech-children">
+                                                                    <div class="tech-node">
+                                                                        <div class="tech-item">
+                                                                            <div class="tech-name">law_making_renaissance</div>
+                                                                            <div class="tech-desc">法律制定</div>
+                                                                        </div>
+                                                                        <div class="tech-children">
+                                                                            <div class="tech-node">
+                                                                                <div class="tech-item">
+                                                                                    <div class="tech-name">rgo_construction_ren</div>
+                                                                                    <div class="tech-desc">RGO建设</div>
+                                                                                </div>
+                                                                                <div class="tech-children">
+                                                                                    <div class="tech-node">
+                                                                                        <div class="tech-item">
+                                                                                            <div class="tech-name">construction_speed_renaissance</div>
+                                                                                            <div class="tech-desc">建设速度</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">naval_initiative_ren</div>
+                                                                    <div class="tech-desc">海军主动性</div>
+                                                                </div>
+                                                                <div class="tech-children">
+                                                                    <div class="tech-node">
+                                                                        <div class="tech-item">
+                                                                            <div class="tech-name">naval_repair_ren</div>
+                                                                            <div class="tech-desc">海军维修</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">renaissance_subject_opinions_advance</div>
+                                                    <div class="tech-desc">附庸意见</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">subject_integration</div>
+                                                            <div class="tech-desc">附庸整合</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">global_nobles_max_literacy_advance</div>
+                                                            <div class="tech-desc">贵族最大识字率</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">grant_privilege_cost_modifier_renaissance_advance</div>
+                                    <div class="tech-desc">授予特权成本修正</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">rgo_size_advance_renaissance</div>
+                                            <div class="tech-desc">RGO规模</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">food_advance_renaissance</div>
+                                                    <div class="tech-desc">食物进步</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">global_burghers_max_literacy_advance</div>
+                                                            <div class="tech-desc">市民最大识字率</div>
+                                                        </div>
+                                                        <div class="tech-children">
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">merchant_power_from_maritime_renaissance_advance</div>
+                                                                    <div class="tech-desc">海事商人权力</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">global_clergy_max_literacy_advance</div>
+                                                            <div class="tech-desc">教士最大识字率</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">renaissance_urbanisation</div>
+                                                            <div class="tech-desc">文艺复兴城市化</div>
+                                                        </div>
+                                                        <div class="tech-children">
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">renaissance_city_rights</div>
+                                                                    <div class="tech-desc">文艺复兴城市权利</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">war_no_cb_cost_modifier_renaissance_advance</div>
+                                            <div class="tech-desc">无CB战争成本</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 时代3：发现时代 -->
+        <div class="age-section">
+            <div class="age-title">时代3：发现时代（age_3_discovery）</div>
+            <div class="tech-tree">
+                <div class="tech-root">
+                    <div class="tech-node level1">
+                        <div class="tech-item level1">
+                            <div class="tech-name">new_world_advance</div>
+                            <div class="tech-desc">新世界</div>
+                        </div>
+                        <div class="tech-children">
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">explorer_commisions_advance</div>
+                                    <div class="tech-desc">探险家委任</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">open_sea_exploration</div>
+                                            <div class="tech-desc">公海探索</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">merchant_power_from_maritime_discovery_advance</div>
+                                                    <div class="tech-desc">海事商人权力</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">maritime_decay_advance_disc</div>
+                                                            <div class="tech-desc">海事衰减</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">ship_building_techniques_discovery</div>
+                                                            <div class="tech-desc">造船技术</div>
+                                                        </div>
+                                                        <div class="tech-children">
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">port_cost_distance_from_capital_advance</div>
+                                                                    <div class="tech-desc">港口成本距离首都</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">native_policy_advance</div>
+                                                    <div class="tech-desc">原住民政策</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">repair_at_sea_aod</div>
+                                            <div class="tech-desc">海上修理</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">rgo_logistics_discovery</div>
+                                                    <div class="tech-desc">RGO后勤</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">green_vitriol</div>
+                                                            <div class="tech-desc">绿矾</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">colonial_charters</div>
+                                    <div class="tech-desc">殖民特许状</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">plantation_buildings_advance</div>
+                                            <div class="tech-desc">种植园建筑</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">pop_promotion_speed_age_3</div>
+                                                    <div class="tech-desc">人口晋升速度</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">blast_furnace</div>
+                                                            <div class="tech-desc">高炉</div>
+                                                        </div>
+                                                        <div class="tech-children">
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">saiger_process_discovery</div>
+                                                                    <div class="tech-desc">赛格工艺</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">new_currency_demands</div>
+                                                                    <div class="tech-desc">新货币需求</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">naval_ambitions</div>
+                                            <div class="tech-desc">海军野心</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">diplomatic_range_age_2</div>
+                                                    <div class="tech-desc">外交范围</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">new_world_crops</div>
+                                            <div class="tech-desc">新世界作物</div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">colonial_policy_advance</div>
+                                            <div class="tech-desc">殖民政策</div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">maritime_advance_age_3</div>
+                                            <div class="tech-desc">海事进步</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">trade_range_advance_age_3</div>
+                                                    <div class="tech-desc">贸易范围</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">rgo_size_advance_discovery</div>
+                                                            <div class="tech-desc">RGO规模</div>
+                                                        </div>
+                                                        <div class="tech-children">
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">surgery_advance</div>
+                                                                    <div class="tech-desc">外科学</div>
+                                                                </div>
+                                                                <div class="tech-children">
+                                                                    <div class="tech-node">
+                                                                        <div class="tech-item">
+                                                                            <div class="tech-name">patio_process_advance</div>
+                                                                            <div class="tech-desc">庭院工艺</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">construction_speed_discovery</div>
+                                                                    <div class="tech-desc">建设速度</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">coastal_trade_routes_advance</div>
+                                                    <div class="tech-desc">沿海贸易路线</div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">exploration_maintenance_advance</div>
+                                                    <div class="tech-desc">探索维护</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">beat_to_windward_advance</div>
+                                    <div class="tech-desc">迎风航行</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-node level1">
+                        <div class="tech-item level1">
+                            <div class="tech-name">printing_press_advance</div>
+                            <div class="tech-desc">印刷术</div>
+                        </div>
+                        <div class="tech-children">
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">spy_construction_discovery</div>
+                                    <div class="tech-desc">间谍建设</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">diplomatic_training</div>
+                                            <div class="tech-desc">外交训练</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">formalized_relations</div>
+                                    <div class="tech-desc">正式关系</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">faceting</div>
+                                            <div class="tech-desc">刻面</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">artists_advance_discovery</div>
+                                                    <div class="tech-desc">艺术家进步</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">regulate_court_procedures</div>
+                                                            <div class="tech-desc">规范宫廷程序</div>
+                                                        </div>
+                                                        <div class="tech-children">
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">crown_power_advance_discovery</div>
+                                                                    <div class="tech-desc">王权进步</div>
+                                                                </div>
+                                                                <div class="tech-children">
+                                                                    <div class="tech-node">
+                                                                        <div class="tech-item">
+                                                                            <div class="tech-name">government_size_discovery</div>
+                                                                            <div class="tech-desc">政府规模</div>
+                                                                        </div>
+                                                                        <div class="tech-children">
+                                                                            <div class="tech-node">
+                                                                                <div class="tech-item">
+                                                                                    <div class="tech-name">power_projection_advance_4</div>
+                                                                                    <div class="tech-desc">权力投射4</div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">print_culture</div>
+                                            <div class="tech-desc">印刷文化</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">improved_book_binding</div>
+                                                    <div class="tech-desc">改进装订</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">lumber_improvements_discovery</div>
+                                                            <div class="tech-desc">木材改进</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-node level1">
+                        <div class="tech-item level1">
+                            <div class="tech-name">pike_and_shot_advance</div>
+                            <div class="tech-desc">长矛与火枪</div>
+                        </div>
+                        <div class="tech-children">
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">matchlock_gun</div>
+                                    <div class="tech-desc">火绳枪</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">correct_box_advance_discovery</div>
+                                            <div class="tech-desc">正确装弹</div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">pike_square</div>
+                                            <div class="tech-desc">长矛方阵</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">supply_lines</div>
+                                                    <div class="tech-desc">补给线</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">land_morale_attrition_cost_advance</div>
+                                                            <div class="tech-desc">陆军士气损耗成本</div>
+                                                        </div>
+                                                        <div class="tech-children">
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">linked_armies_advance</div>
+                                                                    <div class="tech-desc">联合军队</div>
+                                                                </div>
+                                                                <div class="tech-children">
+                                                                    <div class="tech-node">
+                                                                        <div class="tech-item">
+                                                                            <div class="tech-name">land_morale_movement_cost_advance_disc</div>
+                                                                            <div class="tech-desc">陆军士气移动成本</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">supply_depot_advance_age_3_discovery</div>
+                                    <div class="tech-desc">补给站</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">regiment_reinforcement_speed_discovery</div>
+                                            <div class="tech-desc">团增援速度</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-node level1">
+                        <div class="tech-item level1">
+                            <div class="tech-name">trade_through_owned_disc_advance</div>
+                            <div class="tech-desc">通过拥有的贸易</div>
+                        </div>
+                        <div class="tech-children">
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">lazaretto_advance</div>
+                                    <div class="tech-desc">检疫站</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">basic_financial_instruments</div>
+                                            <div class="tech-desc">基础金融工具</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">hire_artist_cost_modifier_advance_disc</div>
+                                                    <div class="tech-desc">雇佣艺术家成本修正</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">gov_reform_discovery_a</div>
+                                                            <div class="tech-desc">政府改革</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">rural_rgo_disc_advance</div>
+                                                    <div class="tech-desc">农村RGO</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">naval_morale_advance_2</div>
+                                            <div class="tech-desc">海军士气2</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 时代4：宗教改革时代 -->
+        <div class="age-section">
+            <div class="age-title">时代4：宗教改革时代（age_4_reformation）</div>
+            <div class="tech-tree">
+                <div class="tech-root">
+                    <div class="tech-node level1">
+                        <div class="tech-item level1">
+                            <div class="tech-name">confessionalism_advance</div>
+                            <div class="tech-desc">忏悔主义</div>
+                        </div>
+                        <div class="tech-children">
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">power_projection_advance_3</div>
+                                    <div class="tech-desc">权力投射3</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">gov_reform_reformation_a</div>
+                                            <div class="tech-desc">政府改革</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">crown_power_advance_reformation</div>
+                                                    <div class="tech-desc">王权进步</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">confessional_court</div>
+                                            <div class="tech-desc">忏悔宫廷</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">artists_advance_reformations</div>
+                                                    <div class="tech-desc">艺术家进步</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">reformation_subject_opinions_advance</div>
+                                                            <div class="tech-desc">附庸意见</div>
+                                                        </div>
+                                                        <div class="tech-children">
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">early_modern_administation</div>
+                                                                    <div class="tech-desc">早期现代管理</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">war_score_reformations_advance</div>
+                                                    <div class="tech-desc">战争分数</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">pharmacology_advance</div>
+                                                            <div class="tech-desc">药理学</div>
+                                                        </div>
+                                                        <div class="tech-children">
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">pan_amalgamation_advance</div>
+                                                                    <div class="tech-desc">泛汞齐化</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">naval_morale_advance_3</div>
+                                                                    <div class="tech-desc">海军士气3</div>
+                                                                </div>
+                                                                <div class="tech-children">
+                                                                    <div class="tech-node">
+                                                                        <div class="tech-item">
+                                                                            <div class="tech-name">road_advance_1</div>
+                                                                            <div class="tech-desc">道路进步1</div>
+                                                                        </div>
+                                                                        <div class="tech-children">
+                                                                            <div class="tech-node">
+                                                                                <div class="tech-item">
+                                                                                    <div class="tech-name">construction_speed_reformation</div>
+                                                                                    <div class="tech-desc">建设速度</div>
+                                                                                </div>
+                                                                                <div class="tech-children">
+                                                                                    <div class="tech-node">
+                                                                                        <div class="tech-item">
+                                                                                            <div class="tech-name">lumber_improvements_reformation</div>
+                                                                                            <div class="tech-desc">木材改进</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-node level1">
+                        <div class="tech-item level1">
+                            <div class="tech-name">global_trade_advance</div>
+                            <div class="tech-desc">全球贸易</div>
+                        </div>
+                        <div class="tech-children">
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">merchant_power_from_maritime_reformation_advance</div>
+                                    <div class="tech-desc">海事商人权力</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">maritime_advance_age_4</div>
+                                            <div class="tech-desc">海事进步</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">global_trade_routes_advance</div>
+                                                    <div class="tech-desc">全球贸易路线</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">letters_of_marque</div>
+                                                            <div class="tech-desc">私掠许可证</div>
+                                                        </div>
+                                                        <div class="tech-children">
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">sturdy_privateers</div>
+                                                                    <div class="tech-desc">坚固私掠船</div>
+                                                                </div>
+                                                                <div class="tech-children">
+                                                                    <div class="tech-node">
+                                                                        <div class="tech-item">
+                                                                            <div class="tech-name">safe_exploration_techniques_advance</div>
+                                                                            <div class="tech-desc">安全探索技术</div>
+                                                                        </div>
+                                                                        <div class="tech-children">
+                                                                            <div class="tech-node">
+                                                                                <div class="tech-item">
+                                                                                    <div class="tech-name">trade_companies_advance</div>
+                                                                                    <div class="tech-desc">贸易公司</div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="tech-node">
+                                                                                <div class="tech-item">
+                                                                                    <div class="tech-name">chartered_companies</div>
+                                                                                    <div class="tech-desc">特许公司</div>
+                                                                                </div>
+                                                                                <div class="tech-children">
+                                                                                    <div class="tech-node">
+                                                                                        <div class="tech-item">
+                                                                                            <div class="tech-name">development_of_maritime_law</div>
+                                                                                            <div class="tech-desc">海事法发展</div>
+                                                                                        </div>
+                                                                                        <div class="tech-children">
+                                                                                            <div class="tech-node">
+                                                                                                <div class="tech-item">
+                                                                                                    <div class="tech-name">diplomatic_range_age_3</div>
+                                                                                                    <div class="tech-desc">外交范围3</div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="tech-node">
+                                                                                                <div class="tech-item">
+                                                                                                    <div class="tech-name">trade_envoys</div>
+                                                                                                    <div class="tech-desc">贸易使节</div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">bole_smelting</div>
+                                    <div class="tech-desc">波尔冶炼</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">slitting_mills</div>
+                                            <div class="tech-desc">切条机</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">pop_promotion_speed_age_4</div>
+                                                    <div class="tech-desc">人口晋升速度</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">leader_recruit_cost_advance</div>
+                                                            <div class="tech-desc">将领招募成本</div>
+                                                        </div>
+                                                        <div class="tech-children">
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">imperial_ambitions</div>
+                                                                    <div class="tech-desc">帝国野心</div>
+                                                                </div>
+                                                                <div class="tech-children">
+                                                                    <div class="tech-node">
+                                                                        <div class="tech-item">
+                                                                            <div class="tech-name">spy_construction_reformation</div>
+                                                                            <div class="tech-desc">间谍建设</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">shared_products_procedures</div>
+                                                    <div class="tech-desc">共享产品程序</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">riches_of_foreign_coasts</div>
+                                                            <div class="tech-desc">外国海岸的财富</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">foreign_mining_techniques</div>
+                                                    <div class="tech-desc">外国采矿技术</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">subject_income_reformation_advance</div>
+                                                            <div class="tech-desc">附庸收入</div>
+                                                        </div>
+                                                        <div class="tech-children">
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">rgo_size_advance_reformation</div>
+                                                                    <div class="tech-desc">RGO规模</div>
+                                                                </div>
+                                                                <div class="tech-children">
+                                                                    <div class="tech-node">
+                                                                        <div class="tech-item">
+                                                                            <div class="tech-name">scientific_experimentation</div>
+                                                                            <div class="tech-desc">科学实验</div>
+                                                                        </div>
+                                                                        <div class="tech-children">
+                                                                            <div class="tech-node">
+                                                                                <div class="tech-item">
+                                                                                    <div class="tech-name">spanish_square</div>
+                                                                                    <div class="tech-desc">西班牙方阵</div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tech-node">
+                                                                <div class="tech-item">
+                                                                    <div class="tech-name">food_advance_reformation</div>
+                                                                    <div class="tech-desc">食物进步</div>
+                                                                </div>
+                                                                <div class="tech-children">
+                                                                    <div class="tech-node">
+                                                                        <div class="tech-item">
+                                                                            <div class="tech-name">military_administration</div>
+                                                                            <div class="tech-desc">军事管理</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-node level1">
+                        <div class="tech-item level1">
+                            <div class="tech-name">artillery_institution_advance</div>
+                            <div class="tech-desc">炮兵制度</div>
+                        </div>
+                        <div class="tech-children">
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">flintlock_gun</div>
+                                    <div class="tech-desc">燧发枪</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">correct_box_advance_reformation</div>
+                                            <div class="tech-desc">正确装弹</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">supply_depot_advance_age_4_reformation</div>
+                                                    <div class="tech-desc">补给站</div>
+                                                </div>
+                                                <div class="tech-children">
+                                                    <div class="tech-node">
+                                                        <div class="tech-item">
+                                                            <div class="tech-name">mercenaries_reformation_advance</div>
+                                                            <div class="tech-desc">雇佣兵</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tech-node">
+                                <div class="tech-item">
+                                    <div class="tech-name">assault_ability_reformation</div>
+                                    <div class="tech-desc">突击能力</div>
+                                </div>
+                                <div class="tech-children">
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">regiment_reinforcement_speed_reformation</div>
+                                            <div class="tech-desc">团增援速度</div>
+                                        </div>
+                                        <div class="tech-children">
+                                            <div class="tech-node">
+                                                <div class="tech-item">
+                                                    <div class="tech-name">recruitment_improvements_reformation</div>
+                                                    <div class="tech-desc">征兵改进</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tech-node">
+                                        <div class="tech-item">
+                                            <div class="tech-name">maurician_infantry</div>
+                                            <div class="tech-desc">莫里斯步兵</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="summary">
+            <h3>总结</h3>
+            <ul>
+                <li><strong>传统时代</strong>：6个基础科技</li>
+                <li><strong>文艺复兴时代</strong>：4个基础科技</li>
+                <li><strong>发现时代</strong>：3个基础科技</li>
+                <li><strong>宗教改革时代</strong>：3个基础科技</li>
+                <li><strong>总计</strong>：16个基础科技（等级1）</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
