@@ -1,12 +1,8 @@
 ﻿on_game_start = {
 	effect = {
-
+		# 批量按地区设置科技等级
 		every_country = {
-			if = {
-				limit = { NOT = { has_variable = starting_tech_level } }
-				set_variable = { name = starting_tech_level value = 1 }
-				research_advances_by_level = yes
-			}
+			set_starting_tech_level_by_region = yes
 		}
 
         # 清除默认佣兵队长（仅针对主要国家）
