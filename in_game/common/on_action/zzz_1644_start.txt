@@ -3,27 +3,29 @@
 		# 批量按地区设置科技等级
 		every_country = {
 			set_starting_tech_level_by_region = yes
-		}
-
+			# 根据科技等级给予思潮
+			give_institutions_by_tech_level = yes
+            #设置自动征服 - 给所有首都在中国的国家
+            if = {
+                limit = {
+                    exists = capital
+                    OR = {
+                        capital.region = region:west_china_region
+                        capital.region = region:east_china_region
+                        capital.region = region:north_china_region
+                        capital.region = region:south_china_region
+                        capital.region = region:manchuria_region #满洲
+                    }
+                }
+                add_country_modifier = { modifier = 1644_china_auto_conquest years = 8 }
+            }
+        }
         # 清除默认佣兵队长（仅针对主要国家）
         c:QNG = { trigger_event_silently = cleanup_1644.1 }
         c:CSH = { trigger_event_silently = cleanup_1644.1 }
         c:WSG = { trigger_event_silently = cleanup_1644.1 }
         c:CXI = { trigger_event_silently = cleanup_1644.1 }
         c:MNG = { trigger_event_silently = cleanup_1644.1 }
-
-        # #设置所有前四个时代的思潮
-        # c:QNG = { give_all_1644_institutions = yes }
-        # c:CSH = { give_all_1644_institutions = yes }
-        # c:WSG = { give_all_1644_institutions = yes }
-        # c:CXI = { give_all_1644_institutions = yes }
-        # c:MNG = { give_all_1644_institutions = yes }
-        #设置自动征服
-        c:QNG = { add_country_modifier = { modifier = 1644_china_auto_conquest years = 10 } }
-        c:CSH = { add_country_modifier = { modifier = 1644_china_auto_conquest years = 10 } }
-        c:WSG = { add_country_modifier = { modifier = 1644_china_auto_conquest years = 10 } }
-        c:CXI = { add_country_modifier = { modifier = 1644_china_auto_conquest years = 10 } }
-        c:MNG = { add_country_modifier = { modifier = 1644_china_auto_conquest years = 10 } }
 
         # 为大顺创建起始军队
         c:CSH = {
@@ -49,7 +51,6 @@
             }
             trigger_event_silently = { id = qng_1644_unification.1 days = 23 }
 
-            give_all_1644_institutions = yes
 
             # 解锁并激活八旗改革
             unlock_government_reform_effect = {
