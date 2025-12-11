@@ -1,40 +1,117 @@
 ﻿# 1644 开局科技等级系统
 # 使用方法：
-# 1. 给国家设置变量：set_variable = { name = starting_tech_level value = 3 }
+# 1. 给国家设置变量：set_variable = { name = start_tech_lv_1644 value = 3 }
 # 2. 调用效果：research_advances_by_level = yes
+# 或者直接调用：set_starting_tech_level_by_region = yes（自动根据地区设置）
+
+# 根据次大陆自动设置科技等级
+set_starting_tech_level_by_region = {
+	# 西欧次大陆 - 科技等级4
+	if = {
+		limit = {
+			capital ?= { sub_continent = sub_continent:western_europe }
+		}
+		set_variable = { name = start_tech_lv_1644 value = 4 }
+		research_advances_by_level = yes
+	}
+	# 东欧次大陆 
+	else_if = {
+		limit = {
+			capital ?= { sub_continent = sub_continent:eastern_europe }
+		}
+		set_variable = { name = start_tech_lv_1644 value = 3 }
+		research_advances_by_level = yes
+	}
+	# 东亚次大陆
+	else_if = {
+		limit = {
+			capital ?= { sub_continent = sub_continent:east_asia }
+		}
+		set_variable = { name = start_tech_lv_1644 value = 3 }
+		research_advances_by_level = yes
+	}
+	#中亚次大陆
+	else_if = {
+		limit = {
+			capital ?= { sub_continent = sub_continent:central_asia }
+		}
+		set_variable = { name = start_tech_lv_1644 value = 3 }
+		research_advances_by_level = yes
+	}
+	# 中东次大陆 
+	else_if = {
+		limit = {
+			capital ?= { sub_continent = sub_continent:middle_east }
+		}
+		set_variable = { name = start_tech_lv_1644 value = 3 }
+		research_advances_by_level = yes
+	}
+	# 南亚次大陆 
+	else_if = {
+		limit = {
+			capital ?= { sub_continent = sub_continent:south_asia }
+		}
+		set_variable = { name = start_tech_lv_1644 value = 3 }
+		research_advances_by_level = yes
+	}
+	# 东南亚次大陆 
+	else_if = {
+		limit = {
+			capital ?= { sub_continent = sub_continent:south_east_asia }
+		}
+		set_variable = { name = start_tech_lv_1644 value = 3 }
+		research_advances_by_level = yes
+	}
+	# 北非次大陆
+	else_if = {
+		limit = {
+			capital ?= { sub_continent = sub_continent:north_africa }
+		}
+		set_variable = { name = start_tech_lv_1644 value = 2 }
+		research_advances_by_level = yes
+	}
+	# 其他次大陆默认 - 科技等级1
+	else = {
+		if = {
+			limit = { NOT = { has_variable = start_tech_lv_1644 } }
+			set_variable = { name = start_tech_lv_1644 value = 1 }
+			research_advances_by_level = yes
+		}
+	}
+}
 
 # 根据开局科技等级研究科技
 research_advances_by_level = {
 	# 检查是否有科技等级变量
 	if = {
-		limit = { has_variable = starting_tech_level }
+		limit = { has_variable = start_tech_lv_1644 }
 		
 		# 等级1：第五时代基础科技 - 工场
 		if = {
-			limit = { var:starting_tech_level >= 1 }
-			unlock_advance_effect = { type = manufactories_advance }
-			research_advance = advance_type:manufactories_advance
+			limit = { var:start_tech_lv_1644 >= 1 }
+			# unlock_advance_effect = { type = manufactories_advance }
+			# research_advance = advance_type:manufactories_advance
 		}
 		
 		# 等级2：第五时代基础科技 - 科学革命
 		if = {
-			limit = { var:starting_tech_level >= 2 }
-			unlock_advance_effect = { type = scientific_revolution_advance }
-			research_advance = advance_type:scientific_revolution_advance
+			limit = { var:start_tech_lv_1644 >= 2 }
+			# unlock_advance_effect = { type = scientific_revolution_advance }
+			# research_advance = advance_type:scientific_revolution_advance
 		}
 		
 		# 等级3：第五时代基础科技 - 军事革命
 		if = {
-			limit = { var:starting_tech_level >= 3 }
-			unlock_advance_effect = { type = military_revolution_advance }
-			research_advance = advance_type:military_revolution_advance
+			limit = { var:start_tech_lv_1644 >= 3 }
+			# unlock_advance_effect = { type = military_revolution_advance }
+			# research_advance = advance_type:military_revolution_advance
 		}
 		
 		# 等级4：第五时代进阶科技 - 铅矿选矿
 		if = {
-			limit = { var:starting_tech_level >= 4 }
-			unlock_advance_effect = { type = lead_ore_dressing }
-			research_advance = advance_type:lead_ore_dressing
+			limit = { var:start_tech_lv_1644 >= 4 }
+			# unlock_advance_effect = { type = lead_ore_dressing }
+			# research_advance = advance_type:lead_ore_dressing
 		}
 	}
 }
