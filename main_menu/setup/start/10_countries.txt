@@ -4302,9 +4302,15 @@ countries = {
 			mawet sardasht qaladiza piranshahr surmali
 		}
   
+		own_core = {
+			sukhumi anacopia lata_georgia pitsunda hereti balakan bodbe khornabuji qakh kutaisi lentekhi skande shorapani tsageri tsesi ushguli vartsikhe telavi alaverdi dusheti gremi rustavi 				shatili tbilisi dmanisi gori kasriskari kldekari kvenipnevi mtskheta tsagvli artanuji ispir khikhani oltu panaskerti parkhali savsat tortum bedia anaklia batumi ozurgeti poti_caucasus 			tsalenjikha akhaltsikhe akhalkalaki ardahan tmogvi lake_cildir
+			baghdad badra balad_ruz baqubah dayr_aqul khalis basra abdas al_madar al_qatr suq_al_shuyukh zuwayr an_nil nasiriyah numaniyyah rusafa samawa qaladiza akre mawet piranshahr rawanduz 				sardasht khanaqin mandali kufa al_udayb ayn_tamr hillah karbala qadisiyyah kirkuk altun_kupri chamchamal daquq erbil tuz_khurma samarra al_anbar ar_rabb hit tikrit ukbara
+			tharthar wasit al_tib bakusaya nushiki mastung kharan kalat surab besima washuk nagh mashkai nal wadh awaran zik jhao lakhsar bela sonamiani hinglaj ormara 
+
 		government = {
             type = monarchy
-			ruler = random
+			heir_selection = cognatic_primogeniture
+			ruler = sfv_abbas_ii_safavid
         }
         accepted_cultures = {
             adhari_culture
@@ -4322,6 +4328,8 @@ countries = {
         country_rank = rank_empire
 		include = "expl_middle_east"
 		include = "expl_indian_trade_route"
+	flag = "SFV"                          
+	country_name = "SFV"
     }
 	
 ###Northwest Africa
