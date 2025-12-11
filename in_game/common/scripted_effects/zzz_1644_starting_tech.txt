@@ -1,12 +1,8 @@
-﻿# 1644 开局科技等级系统
-# 使用方法：
-# 1. 给国家设置变量：set_variable = { name = start_tech_lv_1644 value = 3 }
-# 2. 调用效果：research_advances_by_level = yes
-# 或者直接调用：set_starting_tech_level_by_region = yes（自动根据地区设置）
+﻿
 
-# 根据次大陆自动设置科技等级
+
 set_starting_tech_level_by_region = {
-	# 西欧次大陆 - 科技等级4
+	#  - 
 	if = {
 		limit = {
 			capital ?= { sub_continent = sub_continent:western_europe }
@@ -14,7 +10,7 @@ set_starting_tech_level_by_region = {
 		set_variable = { name = start_tech_lv_1644 value = 4 }
 		research_advances_by_level = yes
 	}
-	# 东欧次大陆 
+	#  
 	else_if = {
 		limit = {
 			capital ?= { sub_continent = sub_continent:eastern_europe }
@@ -22,7 +18,7 @@ set_starting_tech_level_by_region = {
 		set_variable = { name = start_tech_lv_1644 value = 3 }
 		research_advances_by_level = yes
 	}
-	# 东亚次大陆
+	# 
 	else_if = {
 		limit = {
 			capital ?= { sub_continent = sub_continent:east_asia }
@@ -30,15 +26,15 @@ set_starting_tech_level_by_region = {
 		set_variable = { name = start_tech_lv_1644 value = 3 }
 		research_advances_by_level = yes
 	}
-	#中亚次大陆
+	#
 	else_if = {
 		limit = {
 			capital ?= { sub_continent = sub_continent:central_asia }
 		}
-		set_variable = { name = start_tech_lv_1644 value = 3 }
+		set_variable = { name = start_tech_lv_1644 value = 2 }
 		research_advances_by_level = yes
 	}
-	# 中东次大陆 
+	#  
 	else_if = {
 		limit = {
 			capital ?= { sub_continent = sub_continent:middle_east }
@@ -46,7 +42,7 @@ set_starting_tech_level_by_region = {
 		set_variable = { name = start_tech_lv_1644 value = 3 }
 		research_advances_by_level = yes
 	}
-	# 南亚次大陆 
+	#  
 	else_if = {
 		limit = {
 			capital ?= { sub_continent = sub_continent:south_asia }
@@ -54,23 +50,23 @@ set_starting_tech_level_by_region = {
 		set_variable = { name = start_tech_lv_1644 value = 3 }
 		research_advances_by_level = yes
 	}
-	# 东南亚次大陆 
+	#  
 	else_if = {
 		limit = {
 			capital ?= { sub_continent = sub_continent:south_east_asia }
 		}
-		set_variable = { name = start_tech_lv_1644 value = 3 }
+		set_variable = { name = start_tech_lv_1644 value = 2 }
 		research_advances_by_level = yes
 	}
-	# 北非次大陆
+	# 
 	else_if = {
 		limit = {
 			capital ?= { sub_continent = sub_continent:north_africa }
 		}
-		set_variable = { name = start_tech_lv_1644 value = 2 }
+		set_variable = { name = start_tech_lv_1644 value = 1 }
 		research_advances_by_level = yes
 	}
-	# 其他次大陆默认 - 科技等级1
+	#
 	else = {
 		if = {
 			limit = { NOT = { has_variable = start_tech_lv_1644 } }
@@ -80,38 +76,1223 @@ set_starting_tech_level_by_region = {
 	}
 }
 
-# 根据开局科技等级研究科技
+#
+research_age_1_advances = {
+	# ========================================
+	# written_alphabet 
+	# ========================================
+	unlock_advance_effect = { type = written_alphabet }
+	research_advance = advance_type:written_alphabet
+	
+	# written_alphabet -> cultural_traditions_law_advance
+	unlock_advance_effect = { type = cultural_traditions_law_advance }
+	research_advance = advance_type:cultural_traditions_law_advance
+	# cultural_traditions_law_advance -> cultural_acceptance_advance
+	unlock_advance_effect = { type = cultural_acceptance_advance }
+	research_advance = advance_type:cultural_acceptance_advance
+	
+	# written_alphabet -> mapmaking
+	unlock_advance_effect = { type = mapmaking }
+	research_advance = advance_type:mapmaking
+	# mapmaking -> colonies
+	unlock_advance_effect = { type = colonies }
+	research_advance = advance_type:colonies
+	
+	# written_alphabet -> scriptorium_advance
+	unlock_advance_effect = { type = scriptorium_advance }
+	research_advance = advance_type:scriptorium_advance
+	# scriptorium_advance -> paper_guild_advance
+	unlock_advance_effect = { type = paper_guild_advance }
+	research_advance = advance_type:paper_guild_advance
+	# scriptorium_advance -> library_advance
+	unlock_advance_effect = { type = library_advance }
+	research_advance = advance_type:library_advance
+	# scriptorium_advance -> confucian_school_advance
+	unlock_advance_effect = { type = confucian_school_advance }
+	research_advance = advance_type:confucian_school_advance
+	# paper_guild_advance -> paper_guild_fiber_pulp_maintenance_advance
+	unlock_advance_effect = { type = paper_guild_fiber_pulp_maintenance_advance }
+	research_advance = advance_type:paper_guild_fiber_pulp_maintenance_advance
+	
+	# written_alphabet -> codified_laws
+	unlock_advance_effect = { type = codified_laws }
+	research_advance = advance_type:codified_laws
+	# codified_laws -> chancery_advance
+	unlock_advance_effect = { type = chancery_advance }
+	research_advance = advance_type:chancery_advance
+	# codified_laws -> monarchy_reform_traditions_advance
+	unlock_advance_effect = { type = monarchy_reform_traditions_advance }
+	research_advance = advance_type:monarchy_reform_traditions_advance
+	# codified_laws -> republic_reform_traditions_advance
+	unlock_advance_effect = { type = republic_reform_traditions_advance }
+	research_advance = advance_type:republic_reform_traditions_advance
+	# codified_laws -> monarchy_royal_court_advance
+	unlock_advance_effect = { type = monarchy_royal_court_advance }
+	research_advance = advance_type:monarchy_royal_court_advance
+	# codified_laws -> theocracy_divine_cause_law_advance
+	unlock_advance_effect = { type = theocracy_divine_cause_law_advance }
+	research_advance = advance_type:theocracy_divine_cause_law_advance
+	# codified_laws -> tribal_religious_values_law_advance
+	unlock_advance_effect = { type = tribal_religious_values_law_advance }
+	research_advance = advance_type:tribal_religious_values_law_advance
+	# codified_laws -> distribution_of_power_advance
+	unlock_advance_effect = { type = distribution_of_power_advance }
+	research_advance = advance_type:distribution_of_power_advance
+	# codified_laws -> subjects_advance
+	unlock_advance_effect = { type = subjects_advance }
+	research_advance = advance_type:subjects_advance
+	# unlock_subject_type = vassal (�� research_advance )
+	# codified_laws -> taxation_advance
+	unlock_advance_effect = { type = taxation_advance }
+	research_advance = advance_type:taxation_advance
+	# taxation_advance -> state_administration_advance
+	unlock_advance_effect = { type = state_administration_advance }
+	research_advance = advance_type:state_administration_advance
+	# codified_laws -> legalism_advance
+	unlock_advance_effect = { type = legalism_advance }
+	research_advance = advance_type:legalism_advance
+	# legalism_advance -> medieval_administration
+	unlock_advance_effect = { type = medieval_administration }
+	research_advance = advance_type:medieval_administration
+	# medieval_administration -> pest_house_advance
+	unlock_advance_effect = { type = pest_house_advance }
+	research_advance = advance_type:pest_house_advance
+	# pest_house_advance -> hospital_advance
+	unlock_advance_effect = { type = hospital_advance }
+	research_advance = advance_type:hospital_advance
+	# medieval_administration -> banking_country_traditions
+	unlock_advance_effect = { type = banking_country_traditions }
+	research_advance = advance_type:banking_country_traditions
+	
+	# ========================================
+	# agriculture_advance (ũҵ)
+	# ========================================
+	unlock_advance_effect = { type = agriculture_advance }
+	research_advance = advance_type:agriculture_advance
+	
+	# agriculture_advance -> windmills_advance
+	unlock_advance_effect = { type = windmills_advance }
+	research_advance = advance_type:windmills_advance
+	# windmills_advance -> alchemy_advance
+	unlock_advance_effect = { type = alchemy_advance }
+	research_advance = advance_type:alchemy_advance
+	# alchemy_advance -> apothecary_advance
+	unlock_advance_effect = { type = apothecary_advance }
+	research_advance = advance_type:apothecary_advance
+	# agriculture_advance -> city_building_advance
+	unlock_advance_effect = { type = city_building_advance }
+	research_advance = advance_type:city_building_advance
+	# city_building_advance -> cathedral_advance (building unlock)
+	unlock_advance_effect = { type = cathedral_advance }
+	research_advance = advance_type:cathedral_advance
+	# city_building_advance -> road_building
+	unlock_advance_effect = { type = road_building }
+	research_advance = advance_type:road_building
+	# city_building_advance -> settle_the_frontier_advance
+	unlock_advance_effect = { type = settle_the_frontier_advance }
+	research_advance = advance_type:settle_the_frontier_advance
+	# windmills_advance -> ranching
+	unlock_advance_effect = { type = ranching }
+	research_advance = advance_type:ranching
+	# ranching -> horse_riding_advance
+	unlock_advance_effect = { type = horse_riding_advance }
+	research_advance = advance_type:horse_riding_advance
+	# horse_riding_advance -> feudalism_advance
+	unlock_advance_effect = { type = feudalism_advance }
+	research_advance = advance_type:feudalism_advance
+
+	# feudalism_advance -> castle_advance
+	unlock_advance_effect = { type = castle_advance }
+	research_advance = advance_type:castle_advance
+	# feudalism_advance -> unlock_feudal_levy_advance
+	unlock_advance_effect = { type = unlock_feudal_levy_advance }
+	research_advance = advance_type:unlock_feudal_levy_advance
+	# feudalism_advance -> noble_knights
+	unlock_advance_effect = { type = noble_knights }
+	research_advance = advance_type:noble_knights
+	# castle_advance -> fort_limit_1_advance
+	unlock_advance_effect = { type = fort_limit_1_advance }
+	research_advance = advance_type:fort_limit_1_advance
+	# castle_advance -> royal_court_advance
+	unlock_advance_effect = { type = royal_court_advance }
+	research_advance = advance_type:royal_court_advance
+	# castle_advance -> republican_assembly_advance
+	unlock_advance_effect = { type = republican_assembly_advance }
+	research_advance = advance_type:republican_assembly_advance
+	# castle_advance -> order_headquarters_advance
+	unlock_advance_effect = { type = order_headquarters_advance }
+	research_advance = advance_type:order_headquarters_advance
+	# castle_advance -> fortress_church_advance
+	unlock_advance_effect = { type = fortress_church_advance }
+	research_advance = advance_type:fortress_church_advance
+	# castle_advance -> lieutenancy_advance
+	unlock_advance_effect = { type = lieutenancy_advance }
+	research_advance = advance_type:lieutenancy_advance
+	# horse_riding_advance -> trade_caravans
+	unlock_advance_effect = { type = trade_caravans }
+	research_advance = advance_type:trade_caravans
+	
+	# ========================================
+	# mining_advance 
+	# ========================================
+	unlock_advance_effect = { type = mining_advance }
+	research_advance = advance_type:mining_advance
+	
+	# mining_advance -> metallurgy
+	unlock_advance_effect = { type = metallurgy }
+	research_advance = advance_type:metallurgy
+	# mining_advance -> mining_law_advance
+	unlock_advance_effect = { type = mining_law_advance }
+	research_advance = advance_type:mining_law_advance
+	# mining_law_advance -> weapon_guild_advance
+	unlock_advance_effect = { type = weapon_guild_advance }
+	research_advance = advance_type:weapon_guild_advance
+	# metallurgy -> bronze_working
+	unlock_advance_effect = { type = bronze_working }
+	research_advance = advance_type:bronze_working
+	# bronze_working -> fine_metals_mining
+	unlock_advance_effect = { type = fine_metals_mining }
+	research_advance = advance_type:fine_metals_mining
+	# metallurgy -> iron_working
+	unlock_advance_effect = { type = iron_working }
+	research_advance = advance_type:iron_working
+	# iron_working -> local_smelters_advance
+	unlock_advance_effect = { type = local_smelters_advance }
+	research_advance = advance_type:local_smelters_advance
+	# iron_working -> advanced_mining
+	unlock_advance_effect = { type = advanced_mining }
+	research_advance = advance_type:advanced_mining
+	# iron_working -> faster_levy_recruitment
+	unlock_advance_effect = { type = faster_levy_recruitment }
+	research_advance = advance_type:faster_levy_recruitment
+	# iron_working -> unlock_footmen_advance
+	unlock_advance_effect = { type = unlock_footmen_advance }
+	research_advance = advance_type:unlock_footmen_advance
+	# unlock_footmen_advance -> unlock_archers_advance
+	unlock_advance_effect = { type = unlock_archers_advance }
+	research_advance = advance_type:unlock_archers_advance
+	
+	# ========================================
+	# ship_building_advance 
+	# ========================================
+	unlock_advance_effect = { type = ship_building_advance }
+	research_advance = advance_type:ship_building_advance
+	
+	# ship_building_advance -> unlock_traditional_galley_advance
+	unlock_advance_effect = { type = unlock_traditional_galley_advance }
+	research_advance = advance_type:unlock_traditional_galley_advance
+	# unlock_traditional_galley_advance -> unlock_cog_advance
+	unlock_advance_effect = { type = unlock_cog_advance }
+	research_advance = advance_type:unlock_cog_advance
+	# ship_building_advance -> unlock_long_fada
+	unlock_advance_effect = { type = unlock_long_fada }
+	research_advance = advance_type:unlock_long_fada
+	# unlock_dhow (��������ʱ��1)
+	unlock_advance_effect = { type = unlock_dhow }
+	research_advance = advance_type:unlock_dhow
+	# ship_building_advance -> trade_advance_age_of_trad
+	unlock_advance_effect = { type = trade_advance_age_of_trad }
+	research_advance = advance_type:trade_advance_age_of_trad
+	# trade_advance_age_of_trad -> more_merchants_age_of_trad
+	unlock_advance_effect = { type = more_merchants_age_of_trad }
+	research_advance = advance_type:more_merchants_age_of_trad
+	# trade_advance_age_of_trad -> slave_raid_advance
+	unlock_advance_effect = { type = slave_raid_advance }
+	research_advance = advance_type:slave_raid_advance
+	
+	# ========================================
+	# organized_religion 
+	# ========================================
+	unlock_advance_effect = { type = organized_religion }
+	research_advance = advance_type:organized_religion
+	
+	# organized_religion -> scholasticism
+	unlock_advance_effect = { type = scholasticism }
+	research_advance = advance_type:scholasticism
+	# organized_religion -> guilds
+	unlock_advance_effect = { type = guilds }
+	research_advance = advance_type:guilds
+	# guilds -> peasant_connections_advance
+	unlock_advance_effect = { type = peasant_connections_advance }
+	research_advance = advance_type:peasant_connections_advance
+	# peasant_connections_advance -> construction_speed_traditions
+	unlock_advance_effect = { type = construction_speed_traditions }
+	research_advance = advance_type:construction_speed_traditions
+	# peasant_connections_advance -> rural_rgo_traditions
+	unlock_advance_effect = { type = rural_rgo_traditions }
+	research_advance = advance_type:rural_rgo_traditions
+	# guilds -> diplomatic_capacity_traditions
+	unlock_advance_effect = { type = diplomatic_capacity_traditions }
+	research_advance = advance_type:diplomatic_capacity_traditions
+	
+	# ========================================
+	# meritocracy_advance (��Ӣ�ƶ�)
+	# ========================================
+	unlock_advance_effect = { type = meritocracy_advance }
+	research_advance = advance_type:meritocracy_advance
+	
+	# meritocracy_advance -> educated_bureaucrats
+	unlock_advance_effect = { type = educated_bureaucrats }
+	research_advance = advance_type:educated_bureaucrats
+	# educated_bureaucrats -> efficient_bureaucracy
+	unlock_advance_effect = { type = efficient_bureaucracy }
+	research_advance = advance_type:efficient_bureaucracy
+	# efficient_bureaucracy -> right_to_rule
+	unlock_advance_effect = { type = right_to_rule }
+	research_advance = advance_type:right_to_rule
+	# right_to_rule -> smooth_administration
+	unlock_advance_effect = { type = smooth_administration }
+	research_advance = advance_type:smooth_administration
+	# efficient_bureaucracy -> efficient_logistics
+	unlock_advance_effect = { type = efficient_logistics }
+	research_advance = advance_type:efficient_logistics
+	# efficient_logistics -> province_governors
+	unlock_advance_effect = { type = province_governors }
+	research_advance = advance_type:province_governors
+	# efficient_logistics -> appointed_chain_of_command
+	unlock_advance_effect = { type = appointed_chain_of_command }
+	research_advance = advance_type:appointed_chain_of_command
+	# efficient_bureaucracy -> temporary_appointments
+	unlock_advance_effect = { type = temporary_appointments }
+	research_advance = advance_type:temporary_appointments
+	# temporary_appointments -> non_inheritable_offices
+	unlock_advance_effect = { type = non_inheritable_offices }
+	research_advance = advance_type:non_inheritable_offices
+	# meritocracy_advance -> abacus_advance
+	unlock_advance_effect = { type = abacus_advance }
+	research_advance = advance_type:abacus_advance
+	# abacus_advance -> power_projection_advance_1
+	unlock_advance_effect = { type = power_projection_advance_1 }
+	research_advance = advance_type:power_projection_advance_1
+	# abacus_advance -> ledgers_double_checking
+	unlock_advance_effect = { type = ledgers_double_checking }
+	research_advance = advance_type:ledgers_double_checking
+	# abacus_advance -> talented_traders
+	unlock_advance_effect = { type = talented_traders }
+	research_advance = advance_type:talented_traders
+	# educated_bureaucrats -> government_sanctioned_celebrations
+	unlock_advance_effect = { type = government_sanctioned_celebrations }
+	research_advance = advance_type:government_sanctioned_celebrations
+}
+
+# 
+research_age_2_advances = {
+	# ========================================
+	# renaissance_advance 
+	# ========================================
+	unlock_advance_effect = { type = renaissance_advance }
+	research_advance = advance_type:renaissance_advance
+	
+	# renaissance_advance -> patron_of_art
+	unlock_advance_effect = { type = patron_of_art }
+	research_advance = advance_type:patron_of_art
+	# patron_of_art -> renaissance_sculptures
+	unlock_advance_effect = { type = renaissance_sculptures }
+	research_advance = advance_type:renaissance_sculptures
+	# patron_of_art -> theater_advance
+	unlock_advance_effect = { type = theater_advance }
+	research_advance = advance_type:theater_advance
+	# patron_of_art -> art_school_advance
+	unlock_advance_effect = { type = art_school_advance }
+	research_advance = advance_type:art_school_advance
+	
+	# renaissance_advance -> renaissance_thought
+	unlock_advance_effect = { type = renaissance_thought }
+	research_advance = advance_type:renaissance_thought
+	# renaissance_thought -> government_size_renaissance
+	unlock_advance_effect = { type = government_size_renaissance }
+	research_advance = advance_type:government_size_renaissance
+	# government_size_renaissance -> chancery_records
+	unlock_advance_effect = { type = chancery_records }
+	research_advance = advance_type:chancery_records
+	# government_size_renaissance -> crown_power_advance_renaissance
+	unlock_advance_effect = { type = crown_power_advance_renaissance }
+	research_advance = advance_type:crown_power_advance_renaissance
+
+	# government_size_renaissance -> confucian_academy_advance
+	unlock_advance_effect = { type = confucian_academy_advance }
+	research_advance = advance_type:confucian_academy_advance
+	# government_size_renaissance -> university_advance
+	unlock_advance_effect = { type = university_advance }
+	research_advance = advance_type:university_advance
+	# government_size_renaissance -> national_assemblies_advance
+	unlock_advance_effect = { type = national_assemblies_advance }
+	research_advance = advance_type:national_assemblies_advance
+	# crown_power_advance_renaissance -> renaissance_court
+	unlock_advance_effect = { type = renaissance_court }
+	research_advance = advance_type:renaissance_court
+	# crown_power_advance_renaissance -> nobles_rights_laws_advance
+	unlock_advance_effect = { type = nobles_rights_laws_advance }
+	research_advance = advance_type:nobles_rights_laws_advance
+	# renaissance_court -> power_projection_advance_2
+	unlock_advance_effect = { type = power_projection_advance_2 }
+	research_advance = advance_type:power_projection_advance_2
+	# power_projection_advance_2 -> anatomy_advance
+	unlock_advance_effect = { type = anatomy_advance }
+	research_advance = advance_type:anatomy_advance
+	# renaissance_court -> vibrant_court_advance
+	unlock_advance_effect = { type = vibrant_court_advance }
+	research_advance = advance_type:vibrant_court_advance
+	
+	# ========================================
+	# banking_advance 
+	# ========================================
+	unlock_advance_effect = { type = banking_advance }
+	research_advance = advance_type:banking_advance
+	
+	# banking_advance -> merchants_and_trade
+	unlock_advance_effect = { type = merchants_and_trade }
+	research_advance = advance_type:merchants_and_trade
+	# merchants_and_trade -> rudimentary_coastal_ship_repair
+	unlock_advance_effect = { type = rudimentary_coastal_ship_repair }
+	research_advance = advance_type:rudimentary_coastal_ship_repair
+	# merchants_and_trade -> diplomatic_range_age_1
+	unlock_advance_effect = { type = diplomatic_range_age_1 }
+	research_advance = advance_type:diplomatic_range_age_1
+	# merchants_and_trade -> route_to_the_indies_advance
+	unlock_advance_effect = { type = route_to_the_indies_advance }
+	research_advance = advance_type:route_to_the_indies_advance
+	# merchants_and_trade -> dock_advance
+	unlock_advance_effect = { type = dock_advance }
+	research_advance = advance_type:dock_advance
+	# dock_advance -> protected_harbor_advance
+	unlock_advance_effect = { type = protected_harbor_advance }
+	research_advance = advance_type:protected_harbor_advance
+	# dock_advance -> unlock_early_carrack_advance
+	unlock_advance_effect = { type = unlock_early_carrack_advance }
+	research_advance = advance_type:unlock_early_carrack_advance
+	# dock_advance -> unlock_barque_advance
+	unlock_advance_effect = { type = unlock_barque_advance }
+	research_advance = advance_type:unlock_barque_advance
+	
+	# banking_advance -> standardized_coins
+	unlock_advance_effect = { type = standardized_coins }
+	research_advance = advance_type:standardized_coins
+	# standardized_coins -> pop_promotion_speed_age_2
+	unlock_advance_effect = { type = pop_promotion_speed_age_2 }
+	research_advance = advance_type:pop_promotion_speed_age_2
+	# standardized_coins -> counting_house_advance (building unlock)
+	unlock_advance_effect = { type = counting_house_advance }
+	research_advance = advance_type:counting_house_advance
+	# standardized_coins -> bureaucracy_law_advance
+	unlock_advance_effect = { type = bureaucracy_law_advance }
+	research_advance = advance_type:bureaucracy_law_advance
+	# standardized_coins -> paper_guild_cloth_maintenance_advance
+	unlock_advance_effect = { type = paper_guild_cloth_maintenance_advance }
+	research_advance = advance_type:paper_guild_cloth_maintenance_advance
+	# pop_promotion_speed_age_2 -> spy_construction_renaissance
+	unlock_advance_effect = { type = spy_construction_renaissance }
+	research_advance = advance_type:spy_construction_renaissance
+	# pop_promotion_speed_age_2 -> pop_promote_actions_advance
+	unlock_advance_effect = { type = pop_promote_actions_advance }
+	research_advance = advance_type:pop_promote_actions_advance
+	# spy_construction_renaissance -> rebellion_support
+	unlock_advance_effect = { type = rebellion_support }
+	research_advance = advance_type:rebellion_support
+	# spy_construction_renaissance -> inflitrate_administration_advance
+	unlock_advance_effect = { type = infiltrate_administration_advance }
+	research_advance = advance_type:infiltrate_administration_advance
+	
+	# standardized_coins -> trade_range_advance_age_2
+	unlock_advance_effect = { type = trade_range_advance_age_2 }
+	research_advance = advance_type:trade_range_advance_age_2
+	# trade_range_advance_age_2 -> maritime_advance_age_2
+	unlock_advance_effect = { type = maritime_advance_age_2 }
+	research_advance = advance_type:maritime_advance_age_2
+	# trade_range_advance_age_2 -> unlock_hulk_advance
+	unlock_advance_effect = { type = unlock_hulk_advance }
+	research_advance = advance_type:unlock_hulk_advance
+	# trade_range_advance_age_2 -> entrepot_advance
+	unlock_advance_effect = { type = entrepot_advance }
+	research_advance = advance_type:entrepot_advance
+	# maritime_advance_age_2 -> pound_lock_canals_advance
+	unlock_advance_effect = { type = pound_lock_canals_advance }
+	research_advance = advance_type:pound_lock_canals_advance
+	
+	# ========================================
+	# professional_armies_advance 
+	# ========================================
+	unlock_advance_effect = { type = professional_armies_advance }
+	research_advance = advance_type:professional_armies_advance
+	
+	# professional_armies_advance -> gunpowder_advance
+	unlock_advance_effect = { type = gunpowder_advance }
+	research_advance = advance_type:gunpowder_advance
+	# gunpowder_advance -> correct_box_advance_renaissance
+	unlock_advance_effect = { type = correct_box_advance_renaissance }
+	research_advance = advance_type:correct_box_advance_renaissance
+	# correct_box_advance_renaissance -> unlock_cavalry_advance
+	unlock_advance_effect = { type = unlock_cavalry_advance }
+	research_advance = advance_type:unlock_cavalry_advance
+	# unlock_cavalry_advance -> unlock_heavy_cavalry_advance
+	unlock_advance_effect = { type = unlock_heavy_cavalry_advance }
+	research_advance = advance_type:unlock_heavy_cavalry_advance
+	# gunpowder_advance -> gun_smith_advance
+	unlock_advance_effect = { type = gun_smith_advance }
+	research_advance = advance_type:gun_smith_advance
+	# gun_smith_advance -> unlock_handgonners_advance
+	unlock_advance_effect = { type = unlock_handgonners_advance }
+	research_advance = advance_type:unlock_handgonners_advance
+	# gun_smith_advance -> cannon_maker_advance
+	unlock_advance_effect = { type = cannon_maker_advance }
+	research_advance = advance_type:cannon_maker_advance
+	# cannon_maker_advance -> unlock_houfnice_advance
+	unlock_advance_effect = { type = unlock_houfnice_advance }
+	research_advance = advance_type:unlock_houfnice_advance
+	# gun_smith_advance -> slave_center_advance
+	unlock_advance_effect = { type = slave_center_advance }
+	research_advance = advance_type:slave_center_advance
+	
+	# professional_armies_advance -> recruitment_improvements_renaissance
+	unlock_advance_effect = { type = recruitment_improvements_renaissance }
+	research_advance = advance_type:recruitment_improvements_renaissance
+	# recruitment_improvements_renaissance -> drill_army_advance
+	unlock_advance_effect = { type = drill_army_advance }
+	research_advance = advance_type:drill_army_advance
+	# unlock_ability = drill_army (�� research_advance )
+	# drill_army_advance -> armory_advance
+	unlock_advance_effect = { type = armory_advance }
+	research_advance = advance_type:armory_advance
+	# armory_advance -> unlock_men_at_arms_advance
+	unlock_advance_effect = { type = unlock_men_at_arms_advance }
+	research_advance = advance_type:unlock_men_at_arms_advance
+	# armory_advance -> unlock_crossbowmen_advance
+	unlock_advance_effect = { type = unlock_crossbowmen_advance }
+	research_advance = advance_type:unlock_crossbowmen_advance
+	# recruitment_improvements_renaissance -> regiment_reinforcement_speed_renaissance
+	unlock_advance_effect = { type = regiment_reinforcement_speed_renaissance }
+	research_advance = advance_type:regiment_reinforcement_speed_renaissance
+	# regiment_reinforcement_speed_renaissance -> supply_depot_advance_age_2_renaissance
+	unlock_advance_effect = { type = supply_depot_advance_age_2_renaissance }
+	research_advance = advance_type:supply_depot_advance_age_2_renaissance
+	# supply_depot_advance_age_2_renaissance -> unlock_supply_carts
+	unlock_advance_effect = { type = unlock_supply_carts }
+	research_advance = advance_type:unlock_supply_carts
+	# supply_depot_advance_age_2_renaissance -> coastal_fort_advance
+	unlock_advance_effect = { type = coastal_fort_advance }
+	research_advance = advance_type:coastal_fort_advance
+	# regiment_reinforcement_speed_renaissance -> unlock_reformed_crusader_knights_advance
+	unlock_advance_effect = { type = unlock_reformed_crusader_knights_advance }
+	research_advance = advance_type:unlock_reformed_crusader_knights_advance
+	# recruitment_improvements_renaissance -> recruitment_law_advance
+	unlock_advance_effect = { type = recruitment_law_advance }
+	research_advance = advance_type:recruitment_law_advance
+	
+	# ========================================
+	# renaissance_development 
+	# ========================================
+	unlock_advance_effect = { type = renaissance_development }
+	research_advance = advance_type:renaissance_development
+	
+	# renaissance_development -> improve_relation_impact_renaissance
+	unlock_advance_effect = { type = improve_relation_impact_renaissance }
+	research_advance = advance_type:improve_relation_impact_renaissance
+	# improve_relation_impact_renaissance -> late_feudal_relations
+	unlock_advance_effect = { type = late_feudal_relations }
+	research_advance = advance_type:late_feudal_relations
+	# late_feudal_relations -> medieval_military
+	unlock_advance_effect = { type = medieval_military }
+	research_advance = advance_type:medieval_military
+	# medieval_military -> land_morale_recovery_renaissance_advance
+	unlock_advance_effect = { type = land_morale_recovery_renaissance_advance }
+	research_advance = advance_type:land_morale_recovery_renaissance_advance
+	# medieval_military -> unlock_peasant_levy_advance
+	unlock_advance_effect = { type = unlock_peasant_levy_advance }
+	research_advance = advance_type:unlock_peasant_levy_advance
+	# land_morale_recovery_renaissance_advance -> army_initiative_ren
+	unlock_advance_effect = { type = army_initiative_ren }
+	research_advance = advance_type:army_initiative_ren
+	# late_feudal_relations -> naval_morale_advance_1
+	unlock_advance_effect = { type = naval_morale_advance_1 }
+	research_advance = advance_type:naval_morale_advance_1
+	# naval_morale_advance_1 -> blockade_tactics
+	unlock_advance_effect = { type = blockade_tactics }
+	research_advance = advance_type:blockade_tactics
+	# blockade_tactics -> recovery_efforts
+	unlock_advance_effect = { type = recovery_efforts }
+	research_advance = advance_type:recovery_efforts
+	# recovery_efforts -> law_making_renaissance
+	unlock_advance_effect = { type = law_making_renaissance }
+	research_advance = advance_type:law_making_renaissance
+	# law_making_renaissance -> rgo_construction_ren
+	unlock_advance_effect = { type = rgo_construction_ren }
+	research_advance = advance_type:rgo_construction_ren
+	# rgo_construction_ren -> construction_speed_renaissance
+	unlock_advance_effect = { type = construction_speed_renaissance }
+	research_advance = advance_type:construction_speed_renaissance
+	# construction_speed_renaissance -> fort_limit_2_advance
+	unlock_advance_effect = { type = fort_limit_2_advance }
+	research_advance = advance_type:fort_limit_2_advance
+	# blockade_tactics -> naval_initiative_ren
+	unlock_advance_effect = { type = naval_initiative_ren }
+	research_advance = advance_type:naval_initiative_ren
+	# naval_initiative_ren -> naval_repair_ren
+	unlock_advance_effect = { type = naval_repair_ren }
+	research_advance = advance_type:naval_repair_ren
+	# late_feudal_relations -> renaissance_subject_opinions_advance
+	unlock_advance_effect = { type = renaissance_subject_opinions_advance }
+	research_advance = advance_type:renaissance_subject_opinions_advance
+	# renaissance_subject_opinions_advance -> global_nobles_max_literacy_advance
+	unlock_advance_effect = { type = global_nobles_max_literacy_advance }
+	research_advance = advance_type:global_nobles_max_literacy_advance
+	# renaissance_subject_opinions_advance -> subject_integration
+	unlock_advance_effect = { type = subject_integration }
+	research_advance = advance_type:subject_integration
+	
+	# renaissance_development -> grant_privilege_cost_modifier_renaissance_advance
+	unlock_advance_effect = { type = grant_privilege_cost_modifier_renaissance_advance }
+	research_advance = advance_type:grant_privilege_cost_modifier_renaissance_advance
+	# grant_privilege_cost_modifier_renaissance_advance -> rgo_size_advance_renaissance
+	unlock_advance_effect = { type = rgo_size_advance_renaissance }
+	research_advance = advance_type:rgo_size_advance_renaissance
+	# rgo_size_advance_renaissance -> food_advance_renaissance
+	unlock_advance_effect = { type = food_advance_renaissance }
+	research_advance = advance_type:food_advance_renaissance
+	# food_advance_renaissance -> global_burghers_max_literacy_advance
+	unlock_advance_effect = { type = global_burghers_max_literacy_advance }
+	research_advance = advance_type:global_burghers_max_literacy_advance
+	# global_burghers_max_literacy_advance -> merchant_power_from_maritime_renaissance_advance
+	unlock_advance_effect = { type = merchant_power_from_maritime_renaissance_advance }
+	research_advance = advance_type:merchant_power_from_maritime_renaissance_advance
+	# food_advance_renaissance -> global_supply_limit_modifier_advance_2
+	unlock_advance_effect = { type = global_supply_limit_modifier_advance_2 }
+	research_advance = advance_type:global_supply_limit_modifier_advance_2
+	# food_advance_renaissance -> global_clergy_max_literacy_advance
+	unlock_advance_effect = { type = global_clergy_max_literacy_advance }
+	research_advance = advance_type:global_clergy_max_literacy_advance
+	# food_advance_renaissance -> renaissance_urbanisation
+	unlock_advance_effect = { type = renaissance_urbanisation }
+	research_advance = advance_type:renaissance_urbanisation
+	# renaissance_urbanisation -> renaissance_city_rights
+	unlock_advance_effect = { type = renaissance_city_rights }
+	research_advance = advance_type:renaissance_city_rights
+	# grant_privilege_cost_modifier_renaissance_advance -> war_no_cb_cost_modifier_renaissance_advance
+	unlock_advance_effect = { type = war_no_cb_cost_modifier_renaissance_advance }
+	research_advance = advance_type:war_no_cb_cost_modifier_renaissance_advance
+}
+
+
+research_age_3_advances = {
+	# ========================================
+	### new_world_advance 
+	# ========================================
+	unlock_advance_effect = { type = new_world_advance }
+	research_advance = advance_type:new_world_advance
+	
+	# new_world_advance -> explorer_commisions_advance
+	unlock_advance_effect = { type = explorer_commisions_advance }
+	research_advance = advance_type:explorer_commisions_advance
+	# explorer_commisions_advance -> open_sea_exploration
+	unlock_advance_effect = { type = open_sea_exploration }
+	research_advance = advance_type:open_sea_exploration
+	# open_sea_exploration -> merchant_power_from_maritime_discovery_advance
+	unlock_advance_effect = { type = merchant_power_from_maritime_discovery_advance }
+	research_advance = advance_type:merchant_power_from_maritime_discovery_advance
+	# merchant_power_from_maritime_discovery_advance -> maritime_decay_advance_disc
+	unlock_advance_effect = { type = maritime_decay_advance_disc }
+	research_advance = advance_type:maritime_decay_advance_disc
+	# merchant_power_from_maritime_discovery_advance -> ship_building_techniques_discovery
+	unlock_advance_effect = { type = ship_building_techniques_discovery }
+	research_advance = advance_type:ship_building_techniques_discovery
+	# ship_building_techniques_discovery -> port_cost_distance_from_capital_advance
+	unlock_advance_effect = { type = port_cost_distance_from_capital_advance }
+	research_advance = advance_type:port_cost_distance_from_capital_advance
+	# port_cost_distance_from_capital_advance -> unlock_war_galley_advance
+	unlock_advance_effect = { type = unlock_war_galley_advance }
+	research_advance = advance_type:unlock_war_galley_advance
+	# explorer_commisions_advance -> repair_at_sea_aod
+	unlock_advance_effect = { type = repair_at_sea_aod }
+	research_advance = advance_type:repair_at_sea_aod
+	# repair_at_sea_aod -> rgo_logistics_discovery
+	unlock_advance_effect = { type = rgo_logistics_discovery }
+	research_advance = advance_type:rgo_logistics_discovery
+	# rgo_logistics_discovery -> green_vitriol
+	unlock_advance_effect = { type = green_vitriol }
+	research_advance = advance_type:green_vitriol
+	# open_sea_exploration -> native_policy_advance
+	unlock_advance_effect = { type = native_policy_advance }
+	research_advance = advance_type:native_policy_advance
+	# native_policy_advance -> send_people_to_colonial_charter_advance
+	unlock_advance_effect = { type = send_people_to_colonial_charter_advance }
+	research_advance = advance_type:send_people_to_colonial_charter_advance
+	# native_policy_advance -> send_people_to_the_colonies_advance
+	unlock_advance_effect = { type = send_people_to_the_colonies_advance }
+	research_advance = advance_type:send_people_to_the_colonies_advance
+	# open_sea_exploration -> unlock_caravel_advance
+	unlock_advance_effect = { type = unlock_caravel_advance }
+	research_advance = advance_type:unlock_caravel_advance
+
+	
+	# new_world_advance -> colonial_charters
+	unlock_advance_effect = { type = colonial_charters }
+	research_advance = advance_type:colonial_charters
+	# colonial_charters -> colonial_policy_advance
+	unlock_advance_effect = { type = colonial_policy_advance }
+	research_advance = advance_type:colonial_policy_advance
+	# colonial_charters -> burghers_rights_laws_advance
+	unlock_advance_effect = { type = burghers_rights_laws_advance }
+	research_advance = advance_type:burghers_rights_laws_advance
+	# foreign_cultural_law_advance (时代3，无依赖)
+	unlock_advance_effect = { type = foreign_cultural_law_advance }
+	research_advance = advance_type:foreign_cultural_law_advance
+
+	# colonial_charters -> maritime_advance_age_3
+	unlock_advance_effect = { type = maritime_advance_age_3 }
+	research_advance = advance_type:maritime_advance_age_3
+	# maritime_advance_age_3 -> trade_range_advance_age_3
+	unlock_advance_effect = { type = trade_range_advance_age_3 }
+	research_advance = advance_type:trade_range_advance_age_3
+	# trade_range_advance_age_3 -> rgo_size_advance_discovery
+	unlock_advance_effect = { type = rgo_size_advance_discovery }
+	research_advance = advance_type:rgo_size_advance_discovery
+	# rgo_size_advance_discovery -> surgery_advance
+	unlock_advance_effect = { type = surgery_advance }
+	research_advance = advance_type:surgery_advance
+	# surgery_advance -> patio_process_advance
+	unlock_advance_effect = { type = patio_process_advance }
+	research_advance = advance_type:patio_process_advance
+	# rgo_size_advance_discovery -> construction_speed_discovery
+	unlock_advance_effect = { type = construction_speed_discovery }
+	research_advance = advance_type:construction_speed_discovery
+	# maritime_advance_age_3 -> coastal_trade_routes_advance
+	unlock_advance_effect = { type = coastal_trade_routes_advance }
+	research_advance = advance_type:coastal_trade_routes_advance
+	# dry_dock_advance -> shipyard_advance
+	unlock_advance_effect = { type = dry_dock_advance }
+	research_advance = advance_type:dry_dock_advance
+	# maritime_advance_age_3 -> exploration_maintenance_advance
+	unlock_advance_effect = { type = exploration_maintenance_advance }
+	research_advance = advance_type:exploration_maintenance_advance
+	# colonial_charters -> plantation_buildings_advance
+	unlock_advance_effect = { type = plantation_buildings_advance }
+	research_advance = advance_type:plantation_buildings_advance
+	# plantation_buildings_advance -> pop_promotion_speed_age_3
+	unlock_advance_effect = { type = pop_promotion_speed_age_3 }
+	research_advance = advance_type:pop_promotion_speed_age_3
+	# pop_promotion_speed_age_3 -> blast_furnace
+	unlock_advance_effect = { type = blast_furnace }
+	research_advance = advance_type:blast_furnace
+	# pop_promotion_speed_age_3 -> arts_academy_advance
+	unlock_advance_effect = { type = arts_academy_advance }
+	research_advance = advance_type:arts_academy_advance
+	# blast_furnace -> saiger_process_discovery
+	unlock_advance_effect = { type = saiger_process_discovery }
+	research_advance = advance_type:saiger_process_discovery
+	# blast_furnace -> new_currency_demands
+	unlock_advance_effect = { type = new_currency_demands }
+	research_advance = advance_type:new_currency_demands
+	# colonial_charters -> naval_ambitions
+	unlock_advance_effect = { type = naval_ambitions }
+	research_advance = advance_type:naval_ambitions
+	# naval_ambitions -> diplomatic_range_age_2
+	unlock_advance_effect = { type = diplomatic_range_age_2 }
+	research_advance = advance_type:diplomatic_range_age_2
+	# naval_ambitions -> trading_hub_advance
+	unlock_advance_effect = { type = trading_hub_advance }
+	research_advance = advance_type:trading_hub_advance
+	# colonial_charters -> new_world_crops
+	unlock_advance_effect = { type = new_world_crops }
+	research_advance = advance_type:new_world_crops
+	# new_world_advance -> beat_to_windward_advance
+	unlock_advance_effect = { type = beat_to_windward_advance }
+	research_advance = advance_type:beat_to_windward_advance
+	# unlock_carrack_advance (时代3，无依赖)
+	unlock_advance_effect = { type = unlock_carrack_advance }
+	research_advance = advance_type:unlock_carrack_advance
+	
+	# ========================================
+	# printing_press_advance 
+	# ========================================
+	unlock_advance_effect = { type = printing_press_advance }
+	research_advance = advance_type:printing_press_advance
+	
+	# printing_press_advance -> spy_construction_discovery
+	unlock_advance_effect = { type = spy_construction_discovery }
+	research_advance = advance_type:spy_construction_discovery
+	# printing_press_advance -> study_institutions_advance
+	unlock_advance_effect = { type = study_institutions_advance }
+	research_advance = advance_type:study_institutions_advance
+	# spy_construction_discovery -> diplomatic_training
+	unlock_advance_effect = { type = diplomatic_training }
+	research_advance = advance_type:diplomatic_training
+	
+	# printing_press_advance -> formalized_relations
+	unlock_advance_effect = { type = formalized_relations }
+	research_advance = advance_type:formalized_relations
+	# formalized_relations -> faceting
+	unlock_advance_effect = { type = faceting }
+	research_advance = advance_type:faceting
+	# faceting -> artists_advance_discovery
+	unlock_advance_effect = { type = artists_advance_discovery }
+	research_advance = advance_type:artists_advance_discovery
+	# artists_advance_discovery -> regulate_court_procedures
+	unlock_advance_effect = { type = regulate_court_procedures }
+	research_advance = advance_type:regulate_court_procedures
+	# regulate_court_procedures -> crown_power_advance_discovery
+	unlock_advance_effect = { type = crown_power_advance_discovery }
+	research_advance = advance_type:crown_power_advance_discovery
+	# crown_power_advance_discovery -> government_size_discovery
+	unlock_advance_effect = { type = government_size_discovery }
+	research_advance = advance_type:government_size_discovery
+	# crown_power_advance_discovery -> paved_road_advance
+	unlock_advance_effect = { type = paved_road_advance }
+	research_advance = advance_type:paved_road_advance
+	# government_size_discovery -> power_projection_advance_4
+	unlock_advance_effect = { type = power_projection_advance_4 }
+	research_advance = advance_type:power_projection_advance_4
+	# formalized_relations -> print_culture
+	unlock_advance_effect = { type = print_culture }
+	research_advance = advance_type:print_culture
+	# print_culture -> improved_book_binding
+	unlock_advance_effect = { type = improved_book_binding }
+	research_advance = advance_type:improved_book_binding
+	# improved_book_binding -> cabinet_laws_advance
+	unlock_advance_effect = { type = cabinet_laws_advance }
+	research_advance = advance_type:cabinet_laws_advance
+	# improved_book_binding -> lumber_improvements_discovery
+	unlock_advance_effect = { type = lumber_improvements_discovery }
+	research_advance = advance_type:lumber_improvements_discovery
+	# lumber_improvements_discovery -> weapon_workshop_advance
+	unlock_advance_effect = { type = weapon_workshop_advance }
+	research_advance = advance_type:weapon_workshop_advance
+	# lumber_improvements_discovery -> naval_supplies_workshop_advance
+	unlock_advance_effect = { type = naval_supplies_workshop_advance }
+	research_advance = advance_type:naval_supplies_workshop_advance
+	# print_culture -> paper_workshop_advance
+	unlock_advance_effect = { type = paper_workshop_advance }
+	research_advance = advance_type:paper_workshop_advance
+	# paper_workshop_advance -> printing_press_shop_advance
+	unlock_advance_effect = { type = printing_press_shop_advance }
+	research_advance = advance_type:printing_press_shop_advance
+	
+	# trade_through_owned_disc_advance 
+	unlock_advance_effect = { type = trade_through_owned_disc_advance }
+	research_advance = advance_type:trade_through_owned_disc_advance
+	# trade_through_owned_disc_advance -> house_of_parliament_advance
+	unlock_advance_effect = { type = house_of_parliament_advance }
+	research_advance = advance_type:house_of_parliament_advance
+	# house_of_parliament_advance -> unlock_flute_advance
+	unlock_advance_effect = { type = unlock_flute_advance }
+	research_advance = advance_type:unlock_flute_advance
+	# trade_through_owned_disc_advance -> lazaretto_advance
+	unlock_advance_effect = { type = lazaretto_advance }
+	research_advance = advance_type:lazaretto_advance
+	# lazaretto_advance -> naval_morale_advance_2
+	unlock_advance_effect = { type = naval_morale_advance_2 }
+	research_advance = advance_type:naval_morale_advance_2
+	# lazaretto_advance -> basic_financial_instruments
+	unlock_advance_effect = { type = basic_financial_instruments }
+	research_advance = advance_type:basic_financial_instruments
+	# basic_financial_instruments -> construction_center_advance (building unlock)
+	unlock_advance_effect = { type = construction_center_advance }
+	research_advance = advance_type:construction_center_advance
+	# basic_financial_instruments -> merchants_quarters_advance (building unlock)
+	unlock_advance_effect = { type = merchants_quarters_advance }
+	research_advance = advance_type:merchants_quarters_advance
+	# basic_financial_instruments -> hire_artist_cost_modifier_advance_disc
+	unlock_advance_effect = { type = hire_artist_cost_modifier_advance_disc }
+	research_advance = advance_type:hire_artist_cost_modifier_advance_disc
+	# hire_artist_cost_modifier_advance_disc -> gov_reform_discovery_a
+	unlock_advance_effect = { type = gov_reform_discovery_a }
+	research_advance = advance_type:gov_reform_discovery_a
+	# basic_financial_instruments -> rural_rgo_disc_advance
+	unlock_advance_effect = { type = rural_rgo_disc_advance }
+	research_advance = advance_type:rural_rgo_disc_advance
+	
+	# ========================================
+	# pike_and_shot_advance (��ì����ǹ)
+	# ========================================
+	unlock_advance_effect = { type = pike_and_shot_advance }
+	research_advance = advance_type:pike_and_shot_advance
+	
+	# pike_and_shot_advance -> matchlock_gun
+	unlock_advance_effect = { type = matchlock_gun }
+	research_advance = advance_type:matchlock_gun
+	# matchlock_gun -> training_fields_advance
+	unlock_advance_effect = { type = training_fields_advance }
+	research_advance = advance_type:training_fields_advance
+	# matchlock_gun -> unlock_early_arquebusiers_advance
+	unlock_advance_effect = { type = unlock_early_arquebusiers_advance }
+	research_advance = advance_type:unlock_early_arquebusiers_advance
+	# unlock_early_arquebusiers_advance -> unlock_matchlock_levy
+	unlock_advance_effect = { type = unlock_matchlock_levy }
+	research_advance = advance_type:unlock_matchlock_levy
+	# training_fields_advance -> unlock_halberdiers_advance
+	unlock_advance_effect = { type = unlock_halberdiers_advance }
+	research_advance = advance_type:unlock_halberdiers_advance
+	# training_fields_advance -> unlock_lancers_advance
+	unlock_advance_effect = { type = unlock_lancers_advance }
+	research_advance = advance_type:unlock_lancers_advance
+	# training_fields_advance -> unlock_light_lancers_advance
+	unlock_advance_effect = { type = unlock_light_lancers_advance }
+	research_advance = advance_type:unlock_light_lancers_advance
+	# training_fields_advance -> unlock_falconet_advance
+	unlock_advance_effect = { type = unlock_falconet_advance }
+	research_advance = advance_type:unlock_falconet_advance
+	# training_fields_advance -> unlock_supply_convoy
+	unlock_advance_effect = { type = unlock_supply_convoy }
+	research_advance = advance_type:unlock_supply_convoy
+	# matchlock_gun -> correct_box_advance_discovery
+	unlock_advance_effect = { type = correct_box_advance_discovery }
+	research_advance = advance_type:correct_box_advance_discovery
+	# matchlock_gun -> pike_square
+	unlock_advance_effect = { type = pike_square }
+	research_advance = advance_type:pike_square
+	# pike_square -> supply_lines
+	unlock_advance_effect = { type = supply_lines }
+	research_advance = advance_type:supply_lines
+	# pike_square -> standardized_pikes
+	unlock_advance_effect = { type = standardized_pikes }
+	research_advance = advance_type:standardized_pikes
+	# supply_lines -> land_morale_attrition_cost_advance
+	# supply_lines -> fort_limit_3_advance
+	unlock_advance_effect = { type = fort_limit_3_advance }
+	research_advance = advance_type:fort_limit_3_advance
+	# supply_lines -> land_morale_attrition_cost_advance
+	unlock_advance_effect = { type = land_morale_attrition_cost_advance }
+	research_advance = advance_type:land_morale_attrition_cost_advance
+	# land_morale_attrition_cost_advance -> linked_armies_advance
+	unlock_advance_effect = { type = linked_armies_advance }
+	research_advance = advance_type:linked_armies_advance
+	# linked_armies_advance -> land_morale_movement_cost_advance_disc
+	unlock_advance_effect = { type = land_morale_movement_cost_advance_disc }
+	research_advance = advance_type:land_morale_movement_cost_advance_disc
+	
+	# pike_and_shot_advance -> supply_depot_advance_age_3_discovery
+	unlock_advance_effect = { type = supply_depot_advance_age_3_discovery }
+	research_advance = advance_type:supply_depot_advance_age_3_discovery
+	# supply_depot_advance_age_3_discovery -> regiment_reinforcement_speed_discovery
+	unlock_advance_effect = { type = regiment_reinforcement_speed_discovery }
+	research_advance = advance_type:regiment_reinforcement_speed_discovery
+	# regiment_reinforcement_speed_discovery -> battle_leadership_law_advance
+	unlock_advance_effect = { type = battle_leadership_law_advance }
+	research_advance = advance_type:battle_leadership_law_advance
+}
+
+# 
+research_age_4_advances = {
+	# ========================================
+	# confessionalism_advance 
+	# ========================================
+	unlock_advance_effect = { type = confessionalism_advance }
+	research_advance = advance_type:confessionalism_advance
+	
+	# confessionalism_advance -> power_projection_advance_3
+	unlock_advance_effect = { type = power_projection_advance_3 }
+	research_advance = advance_type:power_projection_advance_3
+	# confessionalism_advance -> clergy_rights_laws_advance
+	unlock_advance_effect = { type = clergy_rights_laws_advance }
+	research_advance = advance_type:clergy_rights_laws_advance
+	# clergy_rights_laws_advance -> unlock_brig_advance
+	unlock_advance_effect = { type = unlock_brig_advance }
+	research_advance = advance_type:unlock_brig_advance
+	# power_projection_advance_3 -> gov_reform_reformation_a
+	unlock_advance_effect = { type = gov_reform_reformation_a }
+	research_advance = advance_type:gov_reform_reformation_a
+	# power_projection_advance_3 -> counter_espionage_action_advance
+	unlock_advance_effect = { type = counter_espionage_action_advance }
+	research_advance = advance_type:counter_espionage_action_advance
+	# gov_reform_reformation_a -> supreme_court_advance
+	unlock_advance_effect = { type = supreme_court_advance }
+	research_advance = advance_type:supreme_court_advance
+	# gov_reform_reformation_a -> crown_power_advance_reformation
+	unlock_advance_effect = { type = crown_power_advance_reformation }
+	research_advance = advance_type:crown_power_advance_reformation
+	# gov_reform_reformation_a -> legitimization_of_power_law_advance
+	unlock_advance_effect = { type = legitimization_of_power_law_advance }
+	research_advance = advance_type:legitimization_of_power_law_advance
+	# crown_power_advance_reformation -> theocracy_nature_of_our_faith_law_advance
+	unlock_advance_effect = { type = theocracy_nature_of_our_faith_law_advance }
+	research_advance = advance_type:theocracy_nature_of_our_faith_law_advance
+
+	# power_projection_advance_3 -> confessional_court
+	unlock_advance_effect = { type = confessional_court }
+	research_advance = advance_type:confessional_court
+	# confessional_court -> artists_advance_reformations
+	unlock_advance_effect = { type = artists_advance_reformations }
+	research_advance = advance_type:artists_advance_reformations
+	# artists_advance_reformations -> reformation_subject_opinions_advance
+	unlock_advance_effect = { type = reformation_subject_opinions_advance }
+	research_advance = advance_type:reformation_subject_opinions_advance
+	# reformation_subject_opinions_advance -> early_modern_administation
+	unlock_advance_effect = { type = early_modern_administation }
+	research_advance = advance_type:early_modern_administation
+	# confessional_court -> war_score_reformations_advance
+	unlock_advance_effect = { type = war_score_reformations_advance }
+	research_advance = advance_type:war_score_reformations_advance
+	# war_score_reformations_advance -> pharmacology_advance
+	unlock_advance_effect = { type = pharmacology_advance }
+	research_advance = advance_type:pharmacology_advance
+	# pharmacology_advance -> pan_amalgamation_advance
+	unlock_advance_effect = { type = pan_amalgamation_advance }
+	research_advance = advance_type:pan_amalgamation_advance
+	# pharmacology_advance -> naval_morale_advance_3
+	unlock_advance_effect = { type = naval_morale_advance_3 }
+	research_advance = advance_type:naval_morale_advance_3
+	# naval_morale_advance_3 -> road_advance_1
+	unlock_advance_effect = { type = road_advance_1 }
+	research_advance = advance_type:road_advance_1
+	# road_advance_1 -> construction_speed_reformation
+	unlock_advance_effect = { type = construction_speed_reformation }
+	research_advance = advance_type:construction_speed_reformation
+	# construction_speed_reformation -> lumber_improvements_reformation
+	unlock_advance_effect = { type = lumber_improvements_reformation }
+	research_advance = advance_type:lumber_improvements_reformation
+	
+	# ========================================
+	# global_trade_advance ()
+	# ========================================
+	unlock_advance_effect = { type = global_trade_advance }
+	research_advance = advance_type:global_trade_advance
+	
+	# global_trade_advance -> merchant_power_from_maritime_reformation_advance
+	unlock_advance_effect = { type = merchant_power_from_maritime_reformation_advance }
+	research_advance = advance_type:merchant_power_from_maritime_reformation_advance
+	# merchant_power_from_maritime_reformation_advance -> maritime_advance_age_4
+	unlock_advance_effect = { type = maritime_advance_age_4 }
+	research_advance = advance_type:maritime_advance_age_4
+	# maritime_advance_age_4 -> global_trade_routes_advance
+	unlock_advance_effect = { type = global_trade_routes_advance }
+	research_advance = advance_type:global_trade_routes_advance
+	# global_trade_routes_advance -> dyes_workshop_advance
+	unlock_advance_effect = { type = dyes_workshop_advance }
+	research_advance = advance_type:dyes_workshop_advance
+	# merchant_power_from_maritime_reformation_advance -> furniture_workshop_advance
+	unlock_advance_effect = { type = furniture_workshop_advance }
+	research_advance = advance_type:furniture_workshop_advance
+	# maritime_advance_age_4 -> port_authority_advance (building unlock)
+	unlock_advance_effect = { type = port_authority_advance }
+	research_advance = advance_type:port_authority_advance
+	
+	# ========================================
+	# shipyard_advance (时代4，无依赖)
+	# ========================================
+	unlock_advance_effect = { type = shipyard_advance }
+	research_advance = advance_type:shipyard_advance
+	# shipyard_advance -> naval_battery_advance
+	unlock_advance_effect = { type = naval_battery_advance }
+	research_advance = advance_type:naval_battery_advance
+
+	# unlock_galleon_advance -> unlock_war_galleon
+	unlock_advance_effect = { type = unlock_war_galleon }
+	research_advance = advance_type:unlock_war_galleon
+	# maurician_infantry -> unlock_pinnace_advance
+	unlock_advance_effect = { type = unlock_pinnace_advance }
+	research_advance = advance_type:unlock_pinnace_advance
+
+	# maritime_advance_age_4 -> port_authority_advance (building unlock)
+	unlock_advance_effect = { type = port_authority_advance }
+	research_advance = advance_type:port_authority_advance
+	# global_trade_routes_advance -> letters_of_marque
+	unlock_advance_effect = { type = letters_of_marque }
+	research_advance = advance_type:letters_of_marque
+	# letters_of_marque -> sturdy_privateers
+	unlock_advance_effect = { type = sturdy_privateers }
+	research_advance = advance_type:sturdy_privateers
+	# sturdy_privateers -> safe_exploration_techniques_advance
+	unlock_advance_effect = { type = safe_exploration_techniques_advance }
+	research_advance = advance_type:safe_exploration_techniques_advance
+	# safe_exploration_techniques_advance -> trade_companies_advance
+	unlock_advance_effect = { type = trade_companies_advance }
+	research_advance = advance_type:trade_companies_advance
+	# unlock_subject_type = trade_company (�� research_advance )
+	# safe_exploration_techniques_advance -> chartered_companies
+	unlock_advance_effect = { type = chartered_companies }
+	research_advance = advance_type:chartered_companies
+	# unlock_casus_belli = cb_exploration (�� research_advance )
+	# chartered_companies -> development_of_maritime_law
+	unlock_advance_effect = { type = development_of_maritime_law }
+	research_advance = advance_type:development_of_maritime_law
+	# development_of_maritime_law -> diplomatic_range_age_3
+	unlock_advance_effect = { type = diplomatic_range_age_3 }
+	research_advance = advance_type:diplomatic_range_age_3
+	# development_of_maritime_law -> trade_envoys
+	unlock_advance_effect = { type = trade_envoys }
+	research_advance = advance_type:trade_envoys
+	#customs_house_advance -> unlock_customs_house_advance
+	unlock_advance_effect = { type = customs_house_advance }
+	research_advance = advance_type:customs_house_advance
+	
+	# global_trade_advance -> bole_smelting
+	unlock_advance_effect = { type = bole_smelting }
+	research_advance = advance_type:bole_smelting
+	# bole_smelting -> slitting_mills
+	unlock_advance_effect = { type = slitting_mills }
+	research_advance = advance_type:slitting_mills
+	# bole_smelting -> beer_workshop_advance
+	unlock_advance_effect = { type = beer_workshop_advance }
+	research_advance = advance_type:beer_workshop_advance
+	# bole_smelting -> tools_workshop_advance
+	unlock_advance_effect = { type = tools_workshop_advance }
+	research_advance = advance_type:tools_workshop_advance
+	# slitting_mills -> saltpeter_workshop_advance
+	unlock_advance_effect = { type = saltpeter_workshop_advance }
+	research_advance = advance_type:saltpeter_workshop_advance
+	# slitting_mills -> pottery_workshop_advance
+	unlock_advance_effect = { type = pottery_workshop_advance }
+	research_advance = advance_type:pottery_workshop_advance
+	# pottery_workshop_advance -> glass_workshop_advance
+	unlock_advance_effect = { type = glass_workshop_advance }
+	research_advance = advance_type:glass_workshop_advance
+	# slitting_mills -> pop_promotion_speed_age_4
+	unlock_advance_effect = { type = pop_promotion_speed_age_4 }
+	research_advance = advance_type:pop_promotion_speed_age_4
+	# pop_promotion_speed_age_4 -> leader_recruit_cost_advance
+	unlock_advance_effect = { type = leader_recruit_cost_advance }
+	research_advance = advance_type:leader_recruit_cost_advance
+	# pop_promotion_speed_age_4 -> distillers_workshop_advance
+	unlock_advance_effect = { type = distillers_workshop_advance }
+	research_advance = advance_type:distillers_workshop_advance
+	# leader_recruit_cost_advance -> imperial_ambitions
+	unlock_advance_effect = { type = imperial_ambitions }
+	research_advance = advance_type:imperial_ambitions
+	# imperial_ambitions -> spy_construction_reformation
+	unlock_advance_effect = { type = spy_construction_reformation }
+	research_advance = advance_type:spy_construction_reformation
+	# imperial_ambitions -> reduce_inflations_advance
+	unlock_advance_effect = { type = reduce_inflations_advance }
+	research_advance = advance_type:reduce_inflations_advance
+	# spy_construction_reformation -> intelligence_agency_advance
+	unlock_advance_effect = { type = intelligence_agency_advance }
+	research_advance = advance_type:intelligence_agency_advance
+	# spy_construction_reformation -> tanning_workshop_advance
+	unlock_advance_effect = { type = tanning_workshop_advance }
+	research_advance = advance_type:tanning_workshop_advance
+	# tanning_workshop_advance -> cloth_workshop_advance
+	unlock_advance_effect = { type = cloth_workshop_advance }
+	research_advance = advance_type:cloth_workshop_advance
+	# cloth_workshop_advance -> fine_cloth_workshop_advance
+	unlock_advance_effect = { type = fine_cloth_workshop_advance }
+	research_advance = advance_type:fine_cloth_workshop_advance
+	# slitting_mills -> shared_products_procedures
+	unlock_advance_effect = { type = shared_products_procedures }
+	research_advance = advance_type:shared_products_procedures
+	# shared_products_procedures -> riches_of_foreign_coasts
+	unlock_advance_effect = { type = riches_of_foreign_coasts }
+	research_advance = advance_type:riches_of_foreign_coasts
+	# slitting_mills -> foreign_mining_techniques
+	unlock_advance_effect = { type = foreign_mining_techniques }
+	research_advance = advance_type:foreign_mining_techniques
+	# foreign_mining_techniques -> subject_income_reformation_advance
+	unlock_advance_effect = { type = subject_income_reformation_advance }
+	research_advance = advance_type:subject_income_reformation_advance
+	# subject_income_reformation_advance -> rgo_size_advance_reformation
+	unlock_advance_effect = { type = rgo_size_advance_reformation }
+	research_advance = advance_type:rgo_size_advance_reformation
+	# rgo_size_advance_reformation -> scientific_experimentation
+	unlock_advance_effect = { type = scientific_experimentation }
+	research_advance = advance_type:scientific_experimentation
+	# scientific_experimentation -> spanish_square
+	unlock_advance_effect = { type = spanish_square }
+	research_advance = advance_type:spanish_square
+	# subject_income_reformation_advance -> food_advance_reformation
+	unlock_advance_effect = { type = food_advance_reformation }
+	research_advance = advance_type:food_advance_reformation
+	# food_advance_reformation -> military_administration
+	unlock_advance_effect = { type = military_administration }
+	research_advance = advance_type:military_administration
+	
+	# ========================================
+	# artillery_institution_advance 
+	# ========================================
+	unlock_advance_effect = { type = artillery_institution_advance }
+	research_advance = advance_type:artillery_institution_advance
+	
+	# artillery_institution_advance -> flintlock_gun
+	unlock_advance_effect = { type = flintlock_gun }
+	research_advance = advance_type:flintlock_gun
+	# standardisation_of_calibre -> dry_dock_advance
+	unlock_advance_effect = { type = standardisation_of_calibre }
+	research_advance = advance_type:standardisation_of_calibre
+	# flintlock_gun -> correct_box_advance_reformation
+	unlock_advance_effect = { type = correct_box_advance_reformation }
+	research_advance = advance_type:correct_box_advance_reformation
+	# flintlock_gun -> cannon_workshop_advance
+	unlock_advance_effect = { type = cannon_workshop_advance }
+	research_advance = advance_type:cannon_workshop_advance
+	# flintlock_gun -> unlock_arquebusiers_advance
+	unlock_advance_effect = { type = unlock_arquebusiers_advance }
+	research_advance = advance_type:unlock_arquebusiers_advance
+	# unlock_arquebusiers_advance -> unlock_flintlock_levy
+	unlock_advance_effect = { type = unlock_flintlock_levy }
+	research_advance = advance_type:unlock_flintlock_levy
+	# flintlock_gun -> unlock_pistoleers_advance
+	unlock_advance_effect = { type = unlock_pistoleers_advance }
+	research_advance = advance_type:unlock_pistoleers_advance
+	# correct_box_advance_reformation -> supply_depot_advance_age_4_reformation
+	unlock_advance_effect = { type = supply_depot_advance_age_4_reformation }
+	research_advance = advance_type:supply_depot_advance_age_4_reformation
+	# supply_depot_advance_age_4_reformation -> unlock_galleon_advance
+	unlock_advance_effect = { type = unlock_galleon_advance }
+	research_advance = advance_type:unlock_galleon_advance
+	# supply_depot_advance_age_4_reformation -> mercenaries_reformation_advance
+	unlock_advance_effect = { type = mercenaries_reformation_advance }
+	research_advance = advance_type:mercenaries_reformation_advance
+	
+	# artillery_institution_advance -> assault_ability_reformation
+	unlock_advance_effect = { type = assault_ability_reformation }
+	research_advance = advance_type:assault_ability_reformation
+	# assault_ability_reformation -> guns_workshop_advance
+	unlock_advance_effect = { type = guns_workshop_advance }
+	research_advance = advance_type:guns_workshop_advance
+	# assault_ability_reformation -> barracks_advance
+	unlock_advance_effect = { type = barracks_advance }
+	research_advance = advance_type:barracks_advance
+	# barracks_advance -> unlock_pikemen_advance
+	unlock_advance_effect = { type = unlock_pikemen_advance }
+	research_advance = advance_type:unlock_pikemen_advance
+	# barracks_advance -> unlock_heavy_lancers_advance
+	unlock_advance_effect = { type = unlock_heavy_lancers_advance }
+	research_advance = advance_type:unlock_heavy_lancers_advance
+	# assault_ability_reformation -> unlock_chambered_cannon_advance
+	unlock_advance_effect = { type = unlock_chambered_cannon_advance }
+	research_advance = advance_type:unlock_chambered_cannon_advance
+	# assault_ability_reformation -> regiment_reinforcement_speed_reformation
+	unlock_advance_effect = { type = regiment_reinforcement_speed_reformation }
+	research_advance = advance_type:regiment_reinforcement_speed_reformation
+	# regiment_reinforcement_speed_reformation -> recruitment_improvements_reformation
+	unlock_advance_effect = { type = recruitment_improvements_reformation }
+	research_advance = advance_type:recruitment_improvements_reformation
+	# recruitment_improvements_reformation -> unlock_baggage_train
+	unlock_advance_effect = { type = unlock_baggage_train }
+	research_advance = advance_type:unlock_baggage_train
+	# regiment_reinforcement_speed_reformation -> bastion_advance
+	unlock_advance_effect = { type = bastion_advance }
+	research_advance = advance_type:bastion_advance
+	# bastion_advance -> fort_limit_4_advance
+	unlock_advance_effect = { type = fort_limit_4_advance }
+	research_advance = advance_type:fort_limit_4_advance
+	# assault_ability_reformation -> maurician_infantry
+	unlock_advance_effect = { type = maurician_infantry }
+	research_advance = advance_type:maurician_infantry
+}
+
 research_advances_by_level = {
-	# 检查是否有科技等级变量
 	if = {
 		limit = { has_variable = start_tech_lv_1644 }
 		
-		# 等级1：第五时代基础科技 - 工场
+
 		if = {
 			limit = { var:start_tech_lv_1644 >= 1 }
-			# unlock_advance_effect = { type = manufactories_advance }
-			# research_advance = advance_type:manufactories_advance
+			research_age_1_advances = yes
 		}
 		
-		# 等级2：第五时代基础科技 - 科学革命
+
 		if = {
 			limit = { var:start_tech_lv_1644 >= 2 }
-			# unlock_advance_effect = { type = scientific_revolution_advance }
-			# research_advance = advance_type:scientific_revolution_advance
+			research_age_2_advances = yes
 		}
 		
-		# 等级3：第五时代基础科技 - 军事革命
+
 		if = {
 			limit = { var:start_tech_lv_1644 >= 3 }
-			# unlock_advance_effect = { type = military_revolution_advance }
-			# research_advance = advance_type:military_revolution_advance
+			research_age_3_advances = yes
 		}
 		
-		# 等级4：第五时代进阶科技 - 铅矿选矿
+
 		if = {
 			limit = { var:start_tech_lv_1644 >= 4 }
-			# unlock_advance_effect = { type = lead_ore_dressing }
-			# research_advance = advance_type:lead_ore_dressing
+			research_age_4_advances = yes
 		}
 	}
 }
