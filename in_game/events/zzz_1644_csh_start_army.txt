@@ -4,12 +4,12 @@ csh_1644_start_army.1 = {
 	desc = csh_1644_start_army.1.desc
 	historical_info = csh_1644_start_army.1.historical_info
 	type = country_event
-
-	# 李自成大顺军开局两路兵力配置。
-	# 北路（李自成）兵力：步营 25000、火器营 15000、骑营 9000、红衣大炮 6门。
-	# 南路（刘芳亮）兵力：步营 10000、火器营 10000、骑营 4500、 红衣大炮 4门。
-	# 指挥官：character:chi_li_zicheng 与 character:chi_liu_fangliang 分别统领两路部队。
-
+	# 李自成大顺军开局兵力配置。
+	# 北路（李自成，宣德）：步兵 40000、骑兵 30000、炮兵 40门（时代3）。
+	# 南路（刘芳亮，广平）：步兵 20000、骑兵 10000、炮兵 16门（时代3）。
+	# 大同（张天琳）：骑兵 8000。
+	# 安陆（袁宗第）：步兵 10000、骑兵 6000、炮兵 12门（时代3）。
+	# 指挥官：character:chi_li_zicheng、character:chi_liu_fangliang、character:chi_zhang_tianlin、character:chi_yuan_zongdi 分别统领各部队。
 	immediate = {
 		if = {
 			limit = {
@@ -21,26 +21,49 @@ csh_1644_start_army.1 = {
 			}
 			# 北路主帅：李自成
 			if = {
-				limit = { exists = character:chi_li_zicheng }
+				limit = {
+					exists = character:chi_li_zicheng
+				}
 				character:chi_li_zicheng = {
 					save_scope_as = csh_start_commander_1
 				}
 			}
 			# 南路主帅：刘芳亮
 			if = {
-				limit = { exists = character:chi_liu_fangliang }
+				limit = {
+					exists = character:chi_liu_fangliang
+				}
 				character:chi_liu_fangliang = {
 					save_scope_as = csh_start_commander_2
 				}
 			}
+			# 大同主帅：张天琳
+			if = {
+				limit = {
+					exists = character:chi_zhang_tianlin
+				}
+				character:chi_zhang_tianlin = {
+					save_scope_as = csh_start_commander_3
+				}
+			}
+			# 安陆主帅：袁宗第
+			if = {
+				limit = {
+					exists = character:chi_yuan_zongdi
+				}
+				character:chi_yuan_zongdi = {
+					save_scope_as = csh_start_commander_4
+				}
+			}
+			# 北路（李自成，宣德）：步兵 40000、骑兵 30000、炮兵 40门（时代3）
 			location:xuande ?= {
 				if = {
 					limit = {
 						owner = root
 					}
-					# 北路（李自成）步兵主力：40 * 1000 = 40000 人
+					# 步兵：40 * 1000 = 40000 人
 					while = {
-						count = 25
+						count = 40
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_zhanbing
 							owner = root
@@ -48,28 +71,9 @@ csh_1644_start_army.1 = {
 							experience = 50
 						}
 					}
-					# 以步营补足原移除的火器营编制：+15
+					# 骑兵：100 * 300 = 30000 人
 					while = {
-						count = 15
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_zhanbing
-							owner = root
-							origin = this
-							experience = 50
-						}
-					}
-					while = {
-						count = 0
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_musketeers
-							owner = root
-							origin = this
-							experience = 50
-						}
-					}
-					# 北路（李自成）骑兵：30 * 300 = 9000 人
-					while = {
-						count = 20
+						count = 100
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_cavalry
 							owner = root
@@ -77,9 +81,18 @@ csh_1644_start_army.1 = {
 							experience = 50
 						}
 					}
-					# 北路（李自成）红衣大炮
+					# 炮兵：10 营(4 门/营) = 40门（晚明火炮）
 					while = {
-						count = 3
+						count = 10
+						create_sub_unit_with_owner = {
+							type = a_1644_late_ming_artillery
+							owner = root
+							origin = this
+							experience = 50
+						}
+					}
+					while = {
+						count = 2
 						create_sub_unit_with_owner = {
 							type = a_red_cannon
 							owner = root
@@ -101,14 +114,15 @@ csh_1644_start_army.1 = {
 					}
 				}
 			}
+			# 南路（刘芳亮，广平）：步兵 20000、骑兵 10000、炮兵 16门（时代3）
 			location:guangping ?= {
 				if = {
 					limit = {
 						owner = root
 					}
-					# 南路（刘芳亮）步兵：20 * 1000 = 20000 人
+					# 步兵：20 * 1000 = 20000 人
 					while = {
-						count = 10
+						count = 20
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_zhanbing
 							owner = root
@@ -116,19 +130,9 @@ csh_1644_start_army.1 = {
 							experience = 50
 						}
 					}
-					# 以步营补足原移除的火器营编制：+10
+					# 骑兵：33 * 300 = 10000 人（约）
 					while = {
-						count = 10
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_zhanbing
-							owner = root
-							origin = this
-							experience = 50
-						}
-					}
-					# 南路（刘芳亮）骑兵：15 * 300 = 4500 人
-					while = {
-						count = 15
+						count = 33
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_cavalry
 							owner = root
@@ -136,11 +140,11 @@ csh_1644_start_army.1 = {
 							experience = 50
 						}
 					}
+					# 炮兵：4 营(4 门/营) = 16门（晚明火炮）
 					while = {
-						# 南路（刘芳亮）红夷炮：2 营(3 门/营) ≈ 6 门 ≈ 450 人
-						count = 2
+						count = 4
 						create_sub_unit_with_owner = {
-							type = a_red_cannon
+							type = a_1644_late_ming_artillery
 							owner = root
 							origin = this
 							experience = 50
@@ -156,6 +160,80 @@ csh_1644_start_army.1 = {
 								unit_has_leader = no
 							}
 							set_as_commander = scope:csh_start_commander_2
+						}
+					}
+				}
+			}
+			# 大同（张天琳）：骑兵 8000
+			location:datong_datong ?= {
+				# 骑兵：27 * 300 = 8100 人（约8000）
+				while = {
+					count = 27
+					create_sub_unit_with_owner = {
+						type = a_1644_chinese_cavalry
+						owner = root
+						origin = this
+						experience = 95
+					}
+				}
+				if = {
+					limit = {
+						exists = scope:csh_start_commander_3
+					}
+					random_unit_in_location = {
+						limit = {
+							unit_has_leader = no
+						}
+						set_as_commander = scope:csh_start_commander_3
+					}
+				}
+			}
+			# 安陆（袁宗第）：步兵 10000、骑兵 6000、炮兵 12门（时代3）
+			location:anlu ?= {
+				if = {
+					limit = {
+						owner = root
+					}
+					# 步兵：10 * 1000 = 10000 人
+					while = {
+						count = 10
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_zhanbing
+							owner = root
+							origin = this
+							experience = 80
+						}
+					}
+					# 骑兵：20 * 300 = 6000 人
+					while = {
+						count = 20
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_cavalry
+							owner = root
+							origin = this
+							experience = 80
+						}
+					}
+					# 炮兵：3 营(4 门/营) = 12门（晚明火炮）
+					while = {
+						count = 3
+						create_sub_unit_with_owner = {
+							type = a_1644_late_ming_artillery
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+					if = {
+						limit = {
+							exists = scope:csh_start_commander_4
+						}
+						random_unit_in_location = {
+							limit = {
+								owner = root
+								unit_has_leader = no
+							}
+							set_as_commander = scope:csh_start_commander_4
 						}
 					}
 				}

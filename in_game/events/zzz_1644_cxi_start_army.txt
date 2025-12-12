@@ -5,9 +5,9 @@ cxi_1644_start_army.1 = {
 	title = cxi_1644_start_army.1.title
 	desc = cxi_1644_start_army.1.desc
 	historical_info = cxi_1644_start_army.1.historical_info
-	# 描述：川西李定国部开局守军。
-	# 兵力构成：步营 4,000、火器营 3,000、骑营 1,000、红夷炮 300。
-	# 指挥官：character:chi_li_dingguo 优先回归统领；若缺失则由统治者代替。
+	# 描述：大西张献忠部开局守军。
+	# 兵力构成：步兵 15000、骑兵 90000、炮兵 4门（时代4红衣大炮）。
+	# 指挥官：character:chi_zhang_xianzhong 优先回归统领；若缺失则由统治者代替。
 
 	immediate = {
 		if = {
@@ -15,21 +15,23 @@ cxi_1644_start_army.1 = {
 
 			set_variable = { name = cxi_1644_start_army_spawned value = 1 }
 
-			character:chi_li_dingguo ?= {
-
-				save_scope_as = cxi_start_commander
+			if = {
+				limit = { exists = character:chi_zhang_xianzhong }
+				character:chi_zhang_xianzhong = {
+					save_scope_as = cxi_start_commander
+				}
 			}
 			if = {
 				limit = { NOT = { exists = scope:cxi_start_commander } }
 				ruler = { save_scope_as = cxi_start_commander }
 			}
 
-			location:badong ?= {
+			location:fengjie ?= {
 				if = {
 					limit = { owner = root }
-					# 西步军：8000 人
+					# 大西步兵：15 * 1000 = 15000 人
 					while = {
-						count = 3
+						count = 15
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_zhanbing
 							owner = root
@@ -37,20 +39,9 @@ cxi_1644_start_army.1 = {
 							experience = 80
 						}
 					}
-					# 以步营补足原移除的火器营编制：+5
+					# 大西骑兵：30 * 300 = 9000 人
 					while = {
-						count = 5
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_zhanbing
-							owner = root
-							origin = this
-							experience = 80
-						}
-					}
-
-					# 西营骑兵：5 * 300 = 1500 人
-					while = {
-						count = 5
+						count = 30
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_cavalry
 							owner = root
@@ -58,7 +49,16 @@ cxi_1644_start_army.1 = {
 							experience = 80
 						}
 					}
-					# 红夷炮：1 营(3 门/营) ≈ 3 门 ≈ 150 人
+					while = {
+						count = 3
+						create_sub_unit_with_owner = {
+							type = a_1644_late_ming_artillery
+							owner = root
+							origin = this
+							experience = 80
+						}
+					}
+					# 红夷炮：1 营(4 门/营) = 4门（时代4红衣大炮）
 					while = {
 						count = 1
 						create_sub_unit_with_owner = {
