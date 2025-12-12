@@ -1,0 +1,82 @@
+﻿REPLACE:trade_through_owned_disc_advance = {
+	icon = colonies
+	depth = 0
+	age = age_3_discovery
+	global_trade_through_owned_territory_cost_modifier = -0.1
+}
+
+REPLACE:dry_dock_advance = {
+	age = age_3_discovery
+	unlock_building = dry_dock
+	requires = trade_through_owned_disc_advance
+	ai_weight = {
+		if = {
+			limit = {
+				has_ports = yes
+			}
+			add = {
+				value = 100
+				multiply = num_of_ports
+				divide = num_locations
+			}
+		}
+	}
+	ai_preference_tags = {
+		exploration
+	}
+}
+
+REPLACE:foreign_cultural_law_advance = {
+	age = age_3_discovery
+	unlock_law = foreign_cultural_law
+	requires = unlock_carrack_advance
+}
+REPLACE:unlock_carrack_advance = {
+	age = age_3_discovery
+	requires = dry_dock_advance
+	unlock_unit = n_carrack
+
+	ai_preference_tags = {
+		exploration
+	}
+
+	ai_weight = { 
+		add = "ai_unlock_unit_score(n_carrack)"
+	}
+
+}
+REPLACE:unlock_flute_advance = {
+	age = age_3_discovery
+	requires = unlock_carrack_advance
+	unlock_unit = n_flute
+
+	ai_weight = { 
+		add = "ai_unlock_unit_score(n_flute)"
+	}
+}
+
+REPLACE:unlock_baochuan = {
+	age = age_3_discovery
+	requires = naval_morale_advance_2
+
+	potential = {
+		culture = {
+			has_culture_group = culture_group:chinese_group
+		}
+	}
+
+	unlock_unit = n_baochuan
+
+	ai_preference_tags = {
+		exploration
+	}
+
+	ai_weight = { 
+		add = "ai_unlock_unit_score(n_baochuan)"
+	}
+}
+REPLACE:house_of_parliament_advance = {
+	age = age_3_discovery
+	requires = trade_through_owned_disc_advance
+	unlock_building = house_of_parliament
+}
