@@ -19,6 +19,12 @@
                 }
                 add_country_modifier = { modifier = 1644_china_auto_conquest years = 8 }
             }
+
+            # 开局生成大量女角色以防止绝嗣（为每个国家触发）
+            if = {
+                limit = { exists = capital }
+                trigger_event_silently = zzz_1644_generate_female_characters.1
+            }
         }
         # 清除默认佣兵队长（仅针对主要国家）
         c:QNG = { trigger_event_silently = cleanup_1644.1 }
@@ -88,6 +94,15 @@
                 trigger_event_silently = cxi_1644_start_army.1
             }
         }
+        
+        # 开局生成大量女角色以防止绝嗣
+   
+        # 开局生成明末军阀军队（江北四镇和左良玉）
+        c:CGJ = { trigger_event_silently = ming_warlords.1 } # 兴平镇（高杰）
+        c:LZQ = { trigger_event_silently = ming_warlords.1 } # 东平镇（刘泽清）
+        c:LLZ = { trigger_event_silently = ming_warlords.1 } # 广昌镇（刘良佐）
+        c:HDG = { trigger_event_silently = ming_warlords.1 } # 靖南镇（黄得功）
+        c:ZLY = { trigger_event_silently = ming_warlords.1 } # 宁南镇（左良玉）
 
     }
 }
