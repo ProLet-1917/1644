@@ -1,0 +1,68 @@
+﻿# ========================================
+# ROOT: professional_armies_advance (level=0)
+# ========================================
+unlock_advance_effect = { type = professional_armies_advance }
+research_advance = advance_type:professional_armies_advance
+
+# professional_armies_advance -> gunpowder_advance
+unlock_advance_effect = { type = gunpowder_advance }
+research_advance = advance_type:gunpowder_advance
+# gunpowder_advance -> correct_box_advance_renaissance
+unlock_advance_effect = { type = correct_box_advance_renaissance }
+research_advance = advance_type:correct_box_advance_renaissance
+# correct_box_advance_renaissance -> unlock_cavalry_advance
+unlock_advance_effect = { type = unlock_cavalry_advance }
+research_advance = advance_type:unlock_cavalry_advance
+# unlock_cavalry_advance -> unlock_heavy_cavalry_advance
+unlock_advance_effect = { type = unlock_heavy_cavalry_advance }
+research_advance = advance_type:unlock_heavy_cavalry_advance
+# gunpowder_advance -> gun_smith_advance
+unlock_advance_effect = { type = gun_smith_advance }
+research_advance = advance_type:gun_smith_advance
+# gun_smith_advance -> unlock_handgonners_advance
+unlock_advance_effect = { type = unlock_handgonners_advance }
+research_advance = advance_type:unlock_handgonners_advance
+# gun_smith_advance -> cannon_maker_advance
+unlock_advance_effect = { type = cannon_maker_advance }
+research_advance = advance_type:cannon_maker_advance
+# cannon_maker_advance -> unlock_houfnice_advance
+unlock_advance_effect = { type = unlock_houfnice_advance }
+research_advance = advance_type:unlock_houfnice_advance
+# gun_smith_advance -> slave_center_advance
+unlock_advance_effect = { type = slave_center_advance }
+research_advance = advance_type:slave_center_advance
+
+# professional_armies_advance -> recruitment_improvements_renaissance
+unlock_advance_effect = { type = recruitment_improvements_renaissance }
+research_advance = advance_type:recruitment_improvements_renaissance
+# recruitment_improvements_renaissance -> drill_army_advance
+unlock_advance_effect = { type = drill_army_advance }
+research_advance = advance_type:drill_army_advance
+# unlock_ability = drill_army ( research_advance )
+# drill_army_advance -> armory_advance
+unlock_advance_effect = { type = armory_advance }
+research_advance = advance_type:armory_advance
+# armory_advance -> unlock_men_at_arms_advance
+unlock_advance_effect = { type = unlock_men_at_arms_advance }
+research_advance = advance_type:unlock_men_at_arms_advance
+# armory_advance -> unlock_crossbowmen_advance
+unlock_advance_effect = { type = unlock_crossbowmen_advance }
+research_advance = advance_type:unlock_crossbowmen_advance
+# recruitment_improvements_renaissance -> regiment_reinforcement_speed_renaissance
+unlock_advance_effect = { type = regiment_reinforcement_speed_renaissance }
+research_advance = advance_type:regiment_reinforcement_speed_renaissance
+# regiment_reinforcement_speed_renaissance -> supply_depot_advance_age_2_renaissance
+unlock_advance_effect = { type = supply_depot_advance_age_2_renaissance }
+research_advance = advance_type:supply_depot_advance_age_2_renaissance
+# supply_depot_advance_age_2_renaissance -> unlock_supply_carts
+unlock_advance_effect = { type = unlock_supply_carts }
+research_advance = advance_type:unlock_supply_carts
+# supply_depot_advance_age_2_renaissance -> coastal_fort_advance
+unlock_advance_effect = { type = coastal_fort_advance }
+research_advance = advance_type:coastal_fort_advance
+# regiment_reinforcement_speed_renaissance -> unlock_reformed_crusader_knights_advance
+unlock_advance_effect = { type = unlock_reformed_crusader_knights_advance }
+research_advance = advance_type:unlock_reformed_crusader_knights_advance
+# recruitment_improvements_renaissance -> recruitment_law_advance
+unlock_advance_effect = { type = recruitment_law_advance }
+research_advance = advance_type:recruitment_law_advance
