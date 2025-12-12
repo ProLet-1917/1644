@@ -1,0 +1,172 @@
+﻿#=======Made by Lvtoumao========
+#This is the main file for Decisions
+#Search "How to add new decision" to get the tutorial
+widget = {
+	name = "decisions_panel"
+    	datacontext = "[GetPlayer]"
+
+	#visible = { #What a smart coder 
+		#has_global_variable = show_decision_panel
+	visible = "[GetVariableSystem.Exists('decisions_panel')]"
+	#}
+   	layer = top
+	size = { 100% 100% }
+	alwaystransparent = yes
+	using = layoutpolicy_expanding
+
+	window = {
+		using = bg_window_default_alt
+		using = layoutpolicy_expanding
+
+		name = "decisions_panel_window"
+		datacontext = "[GetPlayer]"
+		datacontext = "[GetVariableSystem]"
+        
+		size = { 25% 70% }
+		#alwaystransparent = yes
+		layoutpolicy_horizontal = expanding
+		layoutpolicy_vertical = expanding
+
+		widget = {
+			size = { 100% 40 }
+			parentanchor = hleft|top
+			hbox = {
+				header_title = {
+					block "header_text" {
+						text = "DECISION_PANEL_TT"
+						#text = "[GetSituationByKey('decisions_panel').GetName]"
+					}
+				}
+			}
+			widget = {
+				parentanchor = right|vcenter
+				size = { 40 40 }
+
+				ui_direction_button_holder_right = {}
+
+				ui_direction_button_alt = {
+					parentanchor = right|vcenter
+					using = bg_button_light_alt_round
+
+					onclick = "[GetVariableSystem.Toggle('decisions_panel')]"
+					down = "[GetVariableSystem.Toggle('decisions_panel')]"
+
+					blockoverride "button_texture" {
+						texture = "gfx/interface/buttons/flats/close_button_alt.dds"
+						texture_density = 2
+					}
+
+					blockoverride "glow_visible" {
+						visible = "[IsOutlinerShown]"
+						alpha = 0.4
+					}
+
+				}	
+			}
+			expand = { }
+		}
+
+		vbox = {
+			position = { 0 40 }
+			using = lateralview_margins
+			#using = layoutpolicy_expanding
+			size = { 100% 80% }
+			scrollbox = {
+				using = layoutpolicy_expanding
+				blockoverride "scrollbox_content" {
+					vbox = {
+						name = "select_decisions"
+						size = { 100% 100% }
+
+						vbox = {
+							position = { 0 0 }
+							size = { 100% 100% }
+							minimumsize = { 450 50 }
+							
+						
+							layoutpolicy_vertical = expanding
+							set_parent_size_to_minimum = yes
+							spacing = 15
+
+							background = {
+								texture = "gfx/interface/component_tiles/side_menus/side_scrollwidget_bckg.dds"
+								texture_density = 2
+								spriteType = corneredstretched
+								spriteborder = { 20 20 }
+
+								using = color_dark_blue
+
+								modify_texture = {
+									texture = "gfx/interface/component_masks/patterns/cloth_texture.dds"
+									spriteborder = { 250 250 }
+									blend_mode = overlay
+									alpha = 0.2
+									}
+								}
+
+								block "select_content" {}
+							
+							}
+
+							#How to add new decision
+							#If You want to add a new decision,You need add 2 button here,One as normal one(fake) and another as do the action one(real)
+							#Effect in scripted_guis folder,Trigger is visible = "[GetPlayer.MakeScope.var('var_name_here').IsSet]"
+							#You can use on action to check the requirement
+							#You can use situation to set start var to show the fake decision panel or on game action(I am not sure this one will work fine)
+							#If you want ai do the decision,you can change on action to make it trigger an event to do the code for ai
+							#You can use tooltip to show the requirement
+							#All file are not need decision in the name,but if they have will be better to check
+							#Full Tutorial will be release later - Lvtoumao Dec.13 2025 1:25am
+ 							button_regular = { #This one is fake decision
+								name = "dec_cri_n_claim_yedisan"
+								tooltip = "CRI_N_CLAIM_YEDISAN_TT"
+								using = tooltip_ne
+								size = { 100% 20 }
+								visible = "[GetPlayer.MakeScope.Var('cri_t_claim_yedisan').IsSet]"
+								text = "DEC_CRI_N_CLAIM_YEDISAN"
+								action_tooltip = {
+  									click_type = left
+									title = "CRI_N_CLAIM_YEDISAN"
+								}
+
+							}
+
+ 							button_regular = { #This one is true decision
+								name = "dec_cri_claim_yedisan"
+								tooltip = "CRI_CLAIM_YEDISAN_TT"
+								using = tooltip_ne
+								size = { 100% 20 }
+								visible = "[GetPlayer.MakeScope.Var('cri_c_claim_yedisan').IsSet]"
+								#visible = "[And(GetPlayer.MakeScope.Var('cri_c_claim_yedisan').IsSet, Not(GetPlayer.MakeScope.Var('cri_c_claim_yedisan_f').IsSet))]" #Test this Later
+								text = "DEC_CRI_CLAIM_YEDISAN"
+								action_tooltip = {
+  									click_type = left
+									title = "CRI_C_CLAIM_YEDISAN"
+									on_action = "[GetScriptedGui('dec_cri_claim_yedisan').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+
+							}
+
+ 							button_regular = { #This one is for test
+								name = "dec_add_herd_60"
+								tooltip = "HERD"
+								using = tooltip_ne
+								size = { 100% 20 }
+								visible = "[GetPlayer.MakeScope.Var('current_herd').IsSet]"
+								text = "ADD_HERD_60"
+
+								action_tooltip = {
+  									click_type = left
+									title = "HERD"
+									on_action = "[GetScriptedGui('add_herd_60').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+							}
+
+							expand = { }
+						}
+					}
+				}
+			}
+		}
+	}
+}

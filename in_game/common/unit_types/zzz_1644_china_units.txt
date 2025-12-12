@@ -21,7 +21,7 @@ a_1644_chinese_zhanbing = {
 	copy_from = a_age_3_discovery_infantry
 	buildable = yes
 
-	power = 1.2
+	combat_power = 1.2
 	# 步营 1000人（晚明战兵）
 	max_strength = 1.0
 	
@@ -53,10 +53,10 @@ a_1644_chinese_musketeers = {
 	country_potential = {
 		OR = {tag = CSH tag = WSG tag = CXI tag = MNG }
 	}
-	gfx_tags = { chinese_musket heavy_tag }
+	gfx_tags = { chinese_musket medium_tag }
 }
 
-# 红衣大炮：重定义（每营约 100 人，对应 2 门火炮）
+# 红衣大炮：重定义（每营约 200 人，对应 4 门火炮）
 REPLACE:a_red_cannon = {
 	category = army_artillery
 	copy_from = a_age_4_reformation_artillery
@@ -123,7 +123,7 @@ levy_banner_jalan = {
 	morale_damage_taken = -0.1
 	
 	country_potential = { tag = QNG }
-	gfx_tags = { manchu_infantry medium_tag }
+	gfx_tags = { manchu_infantry heavy_tag }
 }
 
 # 八旗甲喇 - 征召骑兵

@@ -121,3 +121,16 @@ subject_join_overlord_wars_against_csh_mng = {
 	}
 }
 
+# 让大明的所有附属国加入大明的战争
+# 使用方法：c:MNG = { mng_subjects_join_wars = yes }
+mng_subjects_join_wars = {
+	# 遍历大明的所有附属国
+	every_subject = {
+		limit = {
+			exists = this
+		}
+		# 让每个附属国加入大明的所有战争
+		subject_join_overlord_wars = yes
+	}
+}
+

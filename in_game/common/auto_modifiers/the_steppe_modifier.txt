@@ -1,0 +1,42 @@
+the_herd_benifit_modifier = {
+
+	category = country
+	type = country
+
+	scales_with = var:current_herd
+
+	potential_trigger = {
+   		capital = {
+			OR = {
+				region = region:steppes_region
+				region = region:khorasan_region
+				region = region:mongolia_region
+				region = region:xinjiang_region
+				area = area:bursol_area
+				area = area:suzun_area
+				area = area:omsk_area
+				area = area:kulykol_area
+				area = area:bashkiria_area
+				area = area:bolghar_area
+				province_definition = province_definition:samara_province
+				province_definition = province_definition:saratov_province
+				province_definition = province_definition:atkarsk_province
+			}
+		}
+		government_type = government_type:steppe_horde
+	}
+
+	global_crown_estate_power = 0.00002
+	subject_loyalty = 0.0005
+
+	global_raw_material_output = 0.000001 #Need change
+	global_supply_limit_modifier = 0.000002 #Need change
+
+	manpower_importance_modifier = 0.00002 #Need change
+	diplomacy_importance_modifier = 0.000001 #Need change
+
+	global_monthly_food_modifier = 0.000002 #Need change
+
+	power_projection = 0.0005
+}
+

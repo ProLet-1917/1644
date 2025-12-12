@@ -1,0 +1,627 @@
+# template right_panel_vbox_setup {
+# 	margin = { 5 5 }
+# 	alwaystransparent = no
+# 	allow_outside = yes
+
+# 	using = bg_hud_corner
+# }
+
+types RightPanelTypes
+{
+	type right_panel_bar = widget {
+		alwaystransparent = no
+		allow_outside = yes
+		using = panel_bar_size
+
+		vbox = {
+			allow_outside = yes
+			using = bg_panel_bar
+
+			widget = {
+				allow_outside = yes
+				using = layoutpolicy_expanding
+				alwaystransparent = no
+				filter_mouse = all
+
+				## CORNER1
+				icon = {
+					parentanchor = left
+					widgetanchor = right
+					using = panel_decor_size
+					texture = "[GetGraphicalCultureTexture('panel_bar_corner_shadow')]"
+					# texture = "gfx/interface/graphical_cultures/european_gfx/panel_bar_corner_shadow.dds"
+					texture_density = 2
+
+					using = color_black_texture
+				}
+				icon = {
+					parentanchor = left
+					widgetanchor = right
+					using = panel_decor_size
+					texture = "[GetGraphicalCultureTexture('panel_bar_corner')]"
+					# texture = "gfx/interface/graphical_cultures/european_gfx/panel_bar_corner.dds"
+					texture_density = 2
+
+					using = non_clickable_color_gold_texture
+				}
+
+				flowcontainer = {
+					parentanchor = center
+					spacing = 5
+					datacontext = "[GetCurrentAge]"
+					alwaystransparent = no
+					filter_mouse = all
+					allow_outside = yes
+
+					text_single = {
+						allow_outside = yes
+						text = "[Age.GetNameWithNoTooltip]"
+						using = Font_Size_Medium
+						using = Font_Type_Headers
+						align = center
+						autoresize = yes
+						default_format = "#yellow_titles"
+
+						widget = {
+							size = { 40 40 }
+							position = { -5 0 }
+
+							datacontext = "[GetCurrentAge]"
+							parentanchor = left|vcenter
+							widgetanchor = right|vcenter
+
+							tooltipwidget = {
+								using = Age_tooltip
+							}
+		
+							background = {
+								texture = "gfx/interface/component_tiles/hud_corners/circle_background.dds"
+								texture_density = 2
+								alpha = 1
+		
+								modify_texture = {
+									using = color_mid_blue_texture
+								}
+		
+								modify_texture = {
+									texture = "gfx/interface/component_overlay/gold_overlay_circle.dds"
+									texture_density = 2
+									spriteType = stretched
+									spriteborder = { 250 250 }
+									blend_mode = overlay
+									alpha = 0.7
+								}
+							}
+		
+							background = {
+								texture = "gfx/interface/component_tiles/hud_corners/circle_shadow.dds"
+								texture_density = 2
+								margin = { 1 1 }
+								alpha = 1
+							}
+		
+							background = {
+								texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
+								texture_density = 2
+								alpha = 1
+		
+								modify_texture = {
+									using = color_gold_texture
+								}
+		
+								using = overlay_gold
+							}
+		
+							piechart = {
+								parentanchor = center
+								size = { 100% 100% }
+								using = piechart_angles
+		
+								pieslice_no_highlight = {
+									texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
+									value = "[GetCurrentAgePercentage]"
+									color = { 1 1 1 1 }
+								}
+		
+								pieslice_no_highlight = {
+									texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
+									value = "[Subtract_float('(float)1.0', GetCurrentAgePercentage)]"
+									color = { 1 1 1 0 }
+								}
+							}
+		
+							button = {
+								parentanchor = center
+								size = { 80% 80% }
+								onclick = "[OpenLateralViewWithParams('advances', 'subtab = ages')]"
+								tooltip_enabled = no
+								# gfx\interface\icons\age
+								texture = "[GetAgeIcon(Age.Self)]"
+							}
+						}
+					}
+
+					tooltipwidget = {
+						using = Age_tooltip
+					}
+				}
+
+				### CORNER2
+				# icon = {
+				# 	widgetanchor = right
+				# 	parentanchor = right
+				# 	size = { 64 54 }
+				# 	texture = "[GetGraphicalCultureTexture('panel_bar_corner')]"
+				# 	texture_density = 2
+
+				# 	modify_texture = {
+				# 		using = color_new_gold_texture
+				# 		blend_mode = add
+				# 		alpha = 0.6
+				# 	}
+
+				# 	modify_texture = {
+				# 		using = color_black_texture
+				# 		blend_mode = overlay
+				# 		alpha = 0.4
+				# 	}
+
+				# 	glow = {
+				# 		name = "drop_shadow"
+				# 		glow_radius = 2
+				# 		color = {0.0 0.0 0.0 1.0}
+				# 		alpha = 0.7
+				# 	}
+				# }
+			}
+
+			### TABS/Buttons
+			widget = {
+				visible = "[Not(TutorialHasVar('intro_hide_ui_6'))]"
+				layoutpolicy_horizontal = expanding
+				size = { -1 35 }
+
+				hbox = {
+					using = bg_panel_tabs
+					blockoverride "bg_panel_tabs_color" {
+						using = color_intense_bg_blue_texture
+					}
+
+					blockoverride "bg_panel_tabs_gradient_color" {
+						using = color_mid_purple_texture
+					}
+
+					blockoverride "bg_panel_group_tabs_color" {
+						visible = no
+					}
+					using = layoutpolicy_expanding
+
+					button_panel_tab_alt = { ### DECISIONS
+						using = layoutpolicy_expanding
+
+						onclick = "[GetVariableSystem.Toggle('decisions_panel')]"
+						down = "[GetVariableSystem.Toggle('decisions_panel')]"
+
+						tooltipwidget = {
+							ConceptTooltipType = {
+								blockoverride "title_text" {
+									text = "TAB_TOOLTIP_DECISION_TT_TITLE"
+								}
+
+								blockoverride "title_icon" {
+									icon = {
+										using = tooltip_title_icon_size
+										texture = "gfx/interface/icons/flat_icons/tabicons/info_flat_icon.dds"
+									}
+								}
+
+								blockoverride "tooltip_content" {
+									TooltipTextBlock = {
+										blockoverride "text" {
+											text = "TAB_TOOLTIP_DECISION_TT_TEXT"
+										}
+									}
+									TooltipFunctionalBlock = {
+										using = tooltip_left_click_template
+
+										blockoverride "action_left_text" {
+											text = "OPEN_LEDGER"
+										}
+									}
+								}
+							}
+						}
+
+						background = {
+							block "bg_panel_group_tabs_color" {
+								visible = "[GetVariableSystem.Exists('decisions_panel')]"
+							}
+							using = color_default_brown_texture
+						}
+
+						icon = {
+							texture = "gfx/interface/icons/flat_icons/tabicons/info_flat_icon.dds"
+							texture_density = 2
+							size = { 24 24 }
+							parentanchor = center
+
+							using = button_panel_tab_icon_effect
+							blockoverride "icon_effect_visible" { visible = no }
+						}
+					}
+
+					button_panel_tab_alt = { ### LEDGER
+						using = layoutpolicy_expanding
+
+						onclick = "[ToggleLateralGroup('ledger_group')]"
+						down = "[IsLateralGroupOpened('ledger_group')]"
+
+						tooltipwidget = {
+							ConceptTooltipType = {
+								blockoverride "title_text" {
+									text = "TAB_TOOLTIP_LEDGER_TT_TITLE"
+								}
+
+								blockoverride "title_icon" {
+									icon = {
+										using = tooltip_title_icon_size
+										texture = "gfx/interface/icons/flat_icons/tabicons/info_flat_icon.dds"
+									}
+								}
+
+								blockoverride "tooltip_content" {
+									TooltipTextBlock = {
+										blockoverride "text" {
+											text = "TAB_TOOLTIP_LEDGER_TT_TEXT"
+										}
+									}
+									TooltipFunctionalBlock = {
+										using = tooltip_left_click_template
+
+										blockoverride "action_left_text" {
+											text = "OPEN_LEDGER"
+										}
+									}
+								}
+							}
+						}
+
+						background = {
+							block "bg_panel_group_tabs_color" {
+								visible = "[IsLateralGroupOpened('ledger_group')]"
+							}
+							using = color_default_brown_texture
+						}
+
+						icon = {
+							texture = "gfx/interface/icons/flat_icons/tabicons/info_flat_icon.dds"
+							texture_density = 2
+							size = { 24 24 }
+							parentanchor = center
+
+							using = button_panel_tab_icon_effect
+							blockoverride "icon_effect_visible" { visible = no }
+						}
+					}
+
+					button_panel_tab_alt = { ### FIND LOCATION
+						using = layoutpolicy_expanding
+
+						input_action = "find_province"
+						use_global_input_instance = yes
+						onclick = "[ToggleLateralView('find_location')]"
+						down = "[IsLateralViewOpened('find_location')]"
+
+						tooltipwidget = {
+							SimpleConceptTooltipType = {
+								textcontext = "TAB_TOOLTIP_FIND_LOCATION"
+
+								blockoverride "title_icon" {
+									icon = {
+										using = tooltip_title_icon_size
+										texture = "gfx/interface/icons/flat_icons/tabicons/find_location_flat_icon.dds"
+									}
+								}
+								blockoverride "tooltip_extra_content" {
+									TooltipFunctionalBlock = {
+										using = tooltip_left_click_template
+
+										blockoverride "action_left_text" {
+											text = "OPEN_FINDER"
+										}
+									}
+								}
+							}
+						}
+
+						background = {
+							block "bg_panel_group_tabs_color" {
+								visible = "[IsLateralViewOpened('find_location')]"
+							}
+							using = color_default_brown_texture
+						}
+
+						icon = {
+							texture = "gfx/interface/icons/flat_icons/tabicons/find_location_flat_icon.dds"
+							texture_density = 2
+							size = { 24 24 }
+							parentanchor = center
+
+							using = button_panel_tab_icon_effect
+							blockoverride "icon_effect_visible" { visible = no }
+						}
+					}
+
+					button_panel_tab_alt = { ### EUROPEDIA
+						using = layoutpolicy_expanding
+						onclick = "[ToggleLateralView('encyclopedia')]"
+						down = "[IsLateralViewOpened('encyclopedia')]"
+
+						tooltipwidget = {
+							SimpleConceptTooltipType = {
+								textcontext = "TAB_TOOLTIP_EUROPEDIA"
+
+								blockoverride "title_icon" {
+									icon = {
+										texture = "gfx/interface/icons/flat_icons/tabicons/europedia_flat_icon.dds"
+										using = tooltip_title_icon_size
+									}
+								}
+								blockoverride "tooltip_extra_content" {
+									TooltipFunctionalBlock = {
+										using = tooltip_left_click_template
+
+										blockoverride "action_left_text" {
+											text = "OPEN_EUROPEDIA"
+										}
+									}
+								}
+							}
+						}
+
+						background = {
+							block "bg_panel_group_tabs_color" {
+								visible = "[IsLateralViewOpened('encyclopedia')]"
+							}
+							using = color_default_brown_texture
+						}
+
+						icon = {
+							texture = "gfx/interface/icons/flat_icons/tabicons/europedia_flat_icon.dds"
+							texture_density = 2
+							size = { 24 24 }
+							parentanchor = center
+
+							using = button_panel_tab_icon_effect
+							blockoverride "icon_effect_visible" { visible = no }
+						}
+					}
+
+					button_panel_tab_alt = { ### AUTOMATION
+						using = layoutpolicy_expanding
+						name = "button_automation"
+
+						visible = "[IsPlayerValid]"
+						onclick = "[ToggleLateralView('automation')]"
+						down = "[IsLateralViewOpened('automation')]"
+
+						tooltipwidget = {
+							SimpleConceptTooltipType = {
+								textcontext = "TAB_TOOLTIP_AUTOMATION"
+
+								blockoverride "title_icon" {
+									icon = {
+										texture = "gfx/interface/buttons/checkbox_auto_right.dds"
+										using = tooltip_title_icon_size
+									}
+								}
+								blockoverride "tooltip_extra_content" {
+									TooltipFunctionalBlock = {
+										using = tooltip_left_click_template
+
+										blockoverride "action_left_text" {
+											text = "OPEN_AUTOMATION"
+										}
+									}
+								}
+							}
+						}
+
+						background = {
+							block "bg_panel_group_tabs_color" {
+								visible = "[IsLateralViewOpened('automation')]"
+							}
+							using = color_default_brown_texture
+						}
+
+						icon = {
+							texture = "gfx/interface/buttons/checkbox_auto.dds"
+							frame_grid = { 2 1 }
+							frame = 2
+							size = { 24 24 }
+							parentanchor = center
+
+							using = button_panel_tab_icon_effect
+							blockoverride "icon_effect_visible" { visible = no }
+						}
+					}
+					
+					button_panel_tab_alt = { ### HINTS
+						using = layoutpolicy_expanding
+						name = "button_hints"
+
+						visible = "[IsPlayerValid]"
+						onclick = "[ToggleLateralView('hints')]"
+						down = "[IsLateralViewOpened('hints')]"
+
+						tooltipwidget = {
+							SimpleConceptTooltipType = {
+								textcontext = "TAB_TOOLTIP_HINTS"
+
+								blockoverride "title_icon" {
+									icon = {
+										texture = "gfx/interface/icons/flat_icons/tabicons/hints.dds"
+										texture_density = 2
+										using = tooltip_title_icon_size
+									}
+								}
+								blockoverride "tooltip_extra_content" {
+									TooltipFunctionalBlock = {
+										using = tooltip_left_click_template
+
+										blockoverride "action_left_text" {
+											text = "OPEN_HINTS"
+										}
+									}
+								}
+							}
+						}
+
+						background = {
+							block "bg_panel_group_tabs_color" {
+								visible = "[IsLateralViewOpened('hints')]"
+							}
+							using = color_default_brown_texture
+						}
+
+						icon = {
+							texture = "gfx/interface/icons/flat_icons/tabicons/hints.dds"
+							texture_density = 2
+							size = { 24 24 }
+							parentanchor = center
+
+							using = button_panel_tab_icon_effect
+							blockoverride "icon_effect_visible" { visible = no }
+						}
+					}
+					
+					button_panel_tab_alt = { ### AGENDA
+						name = "agenda_button"
+						visible = "[Not(IsObserving)]"
+						down = "[IsGameViewOpen('agenda')]"
+						using = layoutpolicy_expanding
+
+						action_tooltip = {
+							click_type = left
+							title = "OUTLINER_AGENDA_OPEN"
+							on_action = "[ToggleGameView('agenda')]"
+						}
+
+						tooltipwidget = {
+							SimpleConceptTooltipType = {
+								textcontext = "AGENDA_BUTTON_TOOLTIP"
+
+								blockoverride "title_icon" {
+									icon = {
+										texture = "gfx/interface/icons/flat_icons/tabicons/agenda.dds"
+										using = tooltip_title_icon_size
+									}
+								}
+							}
+						}
+						
+						icon = {
+							texture = "gfx/interface/icons/flat_icons/tabicons/agenda.dds"
+							texture_density = 2
+							size = { 24 24 }
+							parentanchor = center
+
+
+							using = button_panel_tab_icon_effect
+							blockoverride "icon_effect_visible" { visible = no }
+						}
+					}
+					
+					button_panel_tab_alt = { ## MENU
+						onclick = "[OnPauseMenu]"
+						enabled = "[CanShowPauseMenu]"
+
+						tooltipwidget = {
+							SimpleConceptTooltipType = {
+								textcontext = "TAB_TOOLTIP_MENU"
+
+								blockoverride "title_icon" {
+									icon = {
+										texture = "gfx/interface/icons/flat_icons/tabicons/settings_flat_icon.dds"
+										using = tooltip_title_icon_size
+									}
+								}
+								blockoverride "tooltip_extra_content" {
+									TooltipFunctionalBlock = {
+										using = tooltip_left_click_template
+
+										blockoverride "action_left_text" {
+											text = "OPEN_MENU"
+										}
+									}
+								}
+							}
+						}
+
+						using = layoutpolicy_expanding
+
+						icon = {
+							texture = "gfx/interface/icons/flat_icons/tabicons/settings_flat_icon.dds"
+							texture_density = 2
+							size = { 24 24 }
+							parentanchor = center
+
+							using = button_panel_tab_icon_effect
+							blockoverride "icon_effect_visible" { visible = no }
+						}
+					}					
+				}
+			}
+		}
+	}
+
+	type right_panel = widget {
+		visible = "[And(Not(TutorialHasVar('intro_hide_ui_5')), Not(IsLobbyOpen))]"
+		allow_outside = yes
+		layer = bottom
+
+		# Closed panel
+		widget = {
+			allow_outside = yes
+
+			vbox = {
+				visible = "[Not(And(RightView.IsShown, And(Not(IsLateralViewFullScreen), Not(IsLateralViewOpened('international_organizations')))))]"
+				
+				allow_outside = yes
+				using = layoutpolicy_expanding
+				using = right_panel_maxmin_width
+				using = bg_lateralview
+				set_parent_size_to_minimum = yes
+
+				right_panel_bar = {
+					layoutpolicy_horizontal = expanding
+				}
+			}
+		}
+
+		# Opened panel
+		vbox = {
+			visible = "[And(RightView.IsShown, Not(IsLateralViewFullScreen))]"
+
+			allow_outside = yes
+			using = layoutpolicy_expanding
+			using = right_panel_maxmin_width
+			using = panels_margin_bottom
+			using = snd_UI_lateralview
+
+			vbox = {
+				using = layoutpolicy_expanding
+				using = bg_lateralview
+
+				right_panel_bar = {
+					layoutpolicy_horizontal = expanding
+				}
+
+				widget = {
+					using = layoutpolicy_expanding
+					allow_outside = yes
+				}
+			}
+		}
+	}
+} # END OF "types HudTopRight"

@@ -1,0 +1,47 @@
+monthly_country_pulse = {
+    on_actions = {
+        on_dec_cri_c_claim_yedisan
+    }
+}
+
+on_dec_cri_c_claim_yedisan = {
+    trigger = {
+        location:teligol = {
+            c:TUR ?= owner
+        }
+        location:ananiv = {
+            c:TUR ?= owner
+        }
+        location:kuyanlik = {
+            c:TUR ?= owner
+        }
+        location:iagorlic = {
+            c:TUR ?= owner
+        }
+        location:khadjibey = {
+            c:TUR ?= owner
+        }
+        location:dashev = {
+            c:TUR ?= owner
+        }
+        location:balikley = {
+            c:TUR ?= owner
+        }
+        location:aqmecit_prybuzhzhya = {
+            c:TUR ?= owner
+        }
+        c:CRI = {
+            has_variable = cri_t_claim_yedisan
+            is_subject_of = c:TUR
+        }
+    }
+    effect = {
+        c:CRI = {
+            remove_variable = cri_t_claim_yedisan
+        }
+        c:CRI = {
+            set_variable = cri_c_claim_yedisan
+        }
+        cri_claim_yedisan_effect = yes
+    }
+}

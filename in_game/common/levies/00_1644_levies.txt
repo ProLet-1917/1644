@@ -13,7 +13,7 @@
 # 八旗甲喇骑兵 - 精锐骑兵（优先级更高）
 # 来源：满洲八旗、蒙古八旗的贵族和部落民（更精锐）
 levy_banner_cavalry = {
-	size = 0.05
+	size = 0.1
 	unit = levy_banner_cavalry
 	
 	# 限制只能由清朝使用
@@ -39,7 +39,7 @@ levy_banner_cavalry = {
 # 八旗甲喇步兵 - 普通步兵（优先级较低）
 # 来源：满洲八旗、蒙古八旗的士兵、农民、市民阶层
 levy_banner_jalan = {
-	size = 0.05
+	size = 0.1
 	unit = levy_banner_jalan
 	
 	# 限制只能由清朝使用
@@ -49,6 +49,8 @@ levy_banner_jalan = {
 	
 	allowed_pop_type = peasants
 	allowed_pop_type = burghers
+	allowed_pop_type = laborers
+	allowed_pop_type = slaves
 	
 	# 文化要求：女真、通古斯、蒙古文化组
 	allow = {
@@ -75,6 +77,7 @@ levy_ujen_cooha = {
 	allowed_pop_type = peasants
 	allowed_pop_type = laborers
 	allowed_pop_type = burghers
+	allowed_pop_type = slaves
 
 	
 	# 文化要求：汉族文化和朝鲜文化

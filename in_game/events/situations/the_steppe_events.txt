@@ -1,0 +1,26 @@
+namespace = the_steppe
+
+#Debug Event
+the_steppe.1 = {
+	type = country_event
+	title = "the_steppe.1.t"
+	desc = "the_steppe.1.desc"
+		
+	fire_only_once = yes 
+
+	option = {
+		name = "the_steppe.1.a"
+		change_variable = {
+			name = current_herd
+			add = 50
+		}
+	}
+
+	option = {
+		name = "the_steppe.1.b"
+		change_variable = {
+			name = current_herd
+			subtract = 50
+		}
+	}
+}

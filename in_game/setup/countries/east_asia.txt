@@ -1148,6 +1148,11 @@ MNG = {	#Míng
 QNG = {    #Qing
     color = map_QNG            
     color2 = rgb { 36 57 193 } #rgb(36, 57, 193)
+
+
+	unit_color0 = "brown"
+	unit_color1 = map_QNG
+	unit_color2 = "blue"
     culture_definition = jurchen_culture 
     religion_definition = sanjiao  #                      
 }
@@ -1164,7 +1169,10 @@ CSH = {
 	color = rgb { 91 121 194 } #rgb(91, 121, 194)
 	color2 = rgb { 153 43 43 } #rgb(153, 43, 43)
 
-	# male_regnal_names = {}
+	unit_color0 = "red"
+	unit_color1 = "blue"
+	unit_color2 = "white"
+	# male_regnal_names = {} 
 	# female_regnal_names = {}
 	description_category = military	# cf. common/country_description_category DB
 	difficulty = 4	# int between 1 and 5
@@ -1177,7 +1185,12 @@ CSH = {
 
 CXI = {	#Xí
 	color = map_CXI
-	color2 = map_MNG
+	color2 = "red"
+
+	unit_color0 = "brown"
+	unit_color1 = "white"
+	unit_color2 = "black"
+	
 	culture_definition = han_culture
 	religion_definition = sanjiao
 	is_historic = no
@@ -1232,7 +1245,7 @@ CHG = { #Chagatai
 	color2 = rgb { 16 41 202 }
 
 	culture_definition = mongolian_culture
-	religion_definition = tengri
+	religion_definition = sunni
 
 	description_category = military
 	difficulty = 4
@@ -1287,6 +1300,14 @@ LJG = { #Lijiang
 
 	culture_definition = nashi_culture
 	religion_definition = dongba_religion
+}
+
+DUR = { #Daur
+	color = map_daur
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = daur_culture
+	religion_definition = tengri
 }
 
 

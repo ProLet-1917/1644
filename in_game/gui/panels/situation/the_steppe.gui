@@ -1,0 +1,145 @@
+situation_panel = {
+	blockoverride "situation_panel_image" {
+		using = one_country_header_template
+		
+		blockoverride "CountryContext" {
+			datacontext = "[SituationView.GetActiveSituation.GetSituation.MakeScope.GetVariable('strongest_horde_variable').GetCountry]"
+		}
+		# blockoverride "history_button_anchor" {}
+		blockoverride "character_portrait_anchor" {
+			parentanchor = bottom|left
+		}
+		blockoverride "character_religion_visibility" {
+			visible = no
+		}
+		blockoverride "character_name_maximumsize" {
+			maximumsize = { 270 -1 }
+		}
+		blockoverride "country_header_extra" {
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				margin = { 10 10 }
+				spacing = 8
+				expand = {}
+			}
+		}
+	}
+
+	blockoverride "situation_panel_main_content" {
+		widget = {
+			minimumsize = { 200 40 }
+			maximumsize = { 200 40 }
+			layoutpolicy_horizontal= expanding
+			using = bg_generic_shadow
+				
+			using = bg_text_mask_container_brown
+			background = {
+				using = text_mask_container_texture
+				modify_texture = {
+					using = color_paper_texture
+					blend_mode = add
+				}
+			}
+			background = {
+				texture = "gfx/interface/component_decoration/ios/hre/hre_overview_frame.dds"
+				texture_density = 2
+				spriteType = corneredstretched
+				spriteBorder = {20 20}
+			}
+			tooltip_widget = {
+				position = { 20 10 }
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					align = center|nobaseline
+					raw_text = "CURRENT_HERD_TT"
+				
+				}
+				TooltipStringPairList = {
+					using = action_tooltip_inner_content
+					visible = no
+					textcontext = "HERD_GET_PER_MONTH"
+				}	
+			}
+		}
+
+		#LEADER COUNTRY
+		situation_card_expandable = {
+			blockoverride "header_button_onclick" {
+				onclick = "[LateralView.Vars.Toggle( 'requirements_toggled' )]"
+			}
+			blockoverride "header_text" {
+				text = "END_REQUIREMENTS"
+			}
+			blockoverride "header_icon" {
+				texture = "gfx/interface/icons/disasters/end_requirements_green.dds"
+			}
+			blockoverride "bottom_content" {
+				TooltipRequirementsList = {
+					textcontext = "[SituationView.GetActiveSituation.GetSituation.GetEndConditions]"
+				}
+			}
+			blockoverride "visible_hint" {}
+			blockoverride "onaction_hint" {
+				action_tooltip = {
+					title = "OPEN_HINT"
+					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_the_steppe')]"
+				}
+			}
+			blockoverride "bottom_content_onclick" {
+				visible = "[LateralView.Vars.Exists( 'requirements_toggled' )]"
+			}
+			blockoverride "icon_replace_visible_yes" {
+				visible = "[LateralView.Vars.Exists( 'requirements_toggled' )]"
+			}
+			blockoverride "icon_replace_visible_not" {
+				visible = "[Not(LateralView.Vars.Exists( 'requirements_toggled' ))]"
+			}
+		}
+	}
+
+	blockoverride "situation_panel_main_content_bottom" {
+		situation_card_header_button = {
+			blockoverride "card_header_button_header_content" {
+				icon = {
+					blockoverride "left_header_icon" { }
+				}
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					align = center|nobaseline
+					text = "HORDE_NATIONS_TT"
+					blockoverride "left_header_text" { }
+				}
+				expand = {}
+			}
+			blockoverride "bottom_content" {
+				scrollarea = {
+					layoutpolicy_horizontal = expanding
+					size = { -1 100 }
+					scrollbarpolicy_horizontal = always_off
+					scrollbar_vertical = {
+						using = Scrollbar_Vertical
+					}
+					
+					scrollwidget = {
+						dynamicgridbox = {
+							datamodel = "[GetGlobalList('horde_nations_list')]"
+							datacontext = "[Scope.Country]"
+							visible = "[DataModelHasItems(GetGlobalList('horde_nations_list'))]"
+							position = {20 20}
+							flipdirection = yes
+							datamodel_wrap = 13
+							maxhorizontalslots = 13
+							item = {
+								country_flag_small = {
+									datacontext = [Scope.GetCountry]
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+}

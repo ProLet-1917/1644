@@ -1,0 +1,131 @@
+#============Made by Lvtoumao============
+#Russia,Horde and Steppe
+the_steppe = { #The land from Ukraine to Mongolia
+
+	monthly_spawn_chance = monthly_spawn_chance_unique
+
+	can_start = {
+		current_year > 1643
+		current_year < 1990
+	}
+
+	can_end = {
+		current_year > 1930
+	}
+
+	visible = {
+		OR = {
+			has_presence_in = region:steppes_region
+			has_presence_in = region:khorasan_region
+			has_presence_in = region:mongolia_region
+			has_presence_in = region:xinjiang_region
+			has_presence_in = area:bursol_area
+			has_presence_in = area:suzun_area
+			has_presence_in = area:omsk_area
+			has_presence_in = area:kulykol_area
+			has_presence_in = area:bashkiria_area
+			has_presence_in = area:bolghar_area
+			has_presence_in = province_definition:samara_province
+			has_presence_in = province_definition:saratov_province
+			has_presence_in = province_definition:atkarsk_province
+		}
+	}
+
+	on_start = {
+		horde_nations_list_effect = yes
+		start_herd_check_effect = yes
+		strength_horde_start_effect = yes
+		monthly_herd_check_effect = yes
+		c:CRI = {
+			set_variable = cri_t_claim_yedisan
+		}
+	}
+
+	on_monthly = {
+
+	}
+
+	on_end = {
+
+	}
+
+	tooltip = {
+
+	}
+
+	map_color = {
+		if = {
+			limit = {
+				owner ?= {
+					AND = {
+						government_type = government_type:steppe_horde
+						OR = {
+							has_presence_in = region:steppes_region
+							has_presence_in = region:khorasan_region
+							has_presence_in = region:mongolia_region
+							has_presence_in = region:xinjiang_region
+							has_presence_in = area:bursol_area
+							has_presence_in = area:suzun_area
+							has_presence_in = area:omsk_area
+							has_presence_in = area:kulykol_area
+							has_presence_in = area:bashkiria_area
+							has_presence_in = area:bolghar_area
+							has_presence_in = province_definition:samara_province
+							has_presence_in = province_definition:saratov_province
+							has_presence_in = province_definition:atkarsk_province
+						}
+					}
+				}
+			}
+			value = rgb { 215 206 198 }
+		}
+		else_if = {
+			limit = {
+				owner ?= {
+					NOT = {
+						government_type = government_type:steppe_horde
+					}
+					OR = {
+						has_presence_in = region:steppes_region
+						has_presence_in = region:khorasan_region
+						has_presence_in = region:mongolia_region
+						has_presence_in = region:xinjiang_region
+						has_presence_in = area:bursol_area
+						has_presence_in = area:suzun_area
+						has_presence_in = area:omsk_area
+						has_presence_in = area:kulykol_area
+						has_presence_in = area:bashkiria_area
+						has_presence_in = area:bolghar_area
+						has_presence_in = province_definition:samara_province
+						has_presence_in = province_definition:saratov_province
+						has_presence_in = province_definition:atkarsk_province
+					}
+				}
+			}
+			value = rgb { 112 150 195 }
+		}
+	}
+
+	secondary_map_color = {
+		if = {
+			limit = {
+				OR = {
+					region = region:steppes_region
+					region = region:khorasan_region
+					region = region:mongolia_region
+					region = region:xinjiang_region
+					area = area:bursol_area
+					area = area:suzun_area
+					area = area:omsk_area
+					area = area:kulykol_area
+					area = area:bashkiria_area
+					area = area:bolghar_area
+					province_definition = province_definition:samara_province
+					province_definition = province_definition:saratov_province
+					province_definition = province_definition:atkarsk_province
+				}
+			}
+			value = rgb { 85 175 169 }
+		}
+	}
+}

@@ -1,0 +1,111 @@
+war_manager = {
+	war = {
+		war_name = {
+			name = "LATE_MING_PEASANT_WARS"
+			ordinal = 1
+			first = { name = "CSH" }
+			second = { name = "MNG" }
+		}
+
+
+		take_province = {
+			type = superiority_chinese_unification
+			casus_belli = cb_claim_mandate_of_heaven
+			location = dadu
+		}
+
+		start_date = 1643.1.1
+		action = 1644.4.17
+
+		defender = {
+			country = MNG
+			request = { reason = Target }
+		}
+		# 大明的附属国加入防守方
+		defender = {
+			country = WSG # 吴三桂
+			request = {
+				caller = MNG
+				reason = Subject
+			}
+		}
+		defender = {
+			country = ZLY # 左良玉
+			request = {
+				caller = MNG
+				reason = Subject
+			}
+		}
+		defender = {
+			country = CGJ # 高杰
+			request = {
+				caller = MNG
+				reason = Subject
+			}
+		}
+		defender = {
+			country = LLZ # 刘良佐
+			request = {
+				caller = MNG
+				reason = Subject
+			}
+		}
+		defender = {
+			country = LZQ # 刘泽清
+			request = {
+				caller = MNG
+				reason = Subject
+			}
+		}
+		defender = {
+			country = HDG # 黄得功
+			request = {
+				caller = MNG
+				reason = Subject
+			}
+		}
+		attacker = {
+			country = CSH
+			request = { reason = Instigator }
+		}
+	}
+
+	war = {
+		war_name = {
+			name = "CXI_CONQUEST_OF_SICHUAN"
+			ordinal = 1
+			first = { name = "CXI" }
+			second = { name = "MNG" }
+		}
+
+		take_province = {
+			type = superiority_chinese_unification
+			casus_belli = cb_chinese_unification
+			location = chengdu
+		}
+
+		start_date = 1644.1.1
+		action = 1644.4.18
+
+		attacker = {
+			country = CXI
+			request = { reason = Instigator }
+		}
+
+		defender = {
+			country = MNG
+			request = { reason = Target }
+		}
+		defender = {
+			country = ZLY # 左良玉
+			request = {
+				caller = MNG
+				reason = Subject
+			}
+		}
+	}
+
+}
+
+
+
