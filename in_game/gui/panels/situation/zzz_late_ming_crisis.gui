@@ -1,0 +1,56 @@
+situation_panel = {
+
+	blockoverride "situation_panel_image" {
+		using = one_country_header_template
+	
+		blockoverride "CountryContext" {
+			datacontext = "[GetCountry('MNG')]"
+		}
+
+		blockoverride "character_religion_visibility" {
+			visible = no
+		}
+
+		blockoverride "character_name_maximumsize" {
+			maximumsize = { 270 -1 }
+		}
+	}
+
+	##################################### MAIN CONTENT #####################################
+
+	# ACTIONS
+	blockoverride "situation_panel_main_content" {
+
+		situation_card_expandable = {
+			blockoverride "header_button_onclick" {
+				onclick = "[LateralView.Vars.Toggle( 'requirements_toggled' )]"
+			}
+			blockoverride "header_text" {
+				text = "END_REQUIREMENTS"
+			}
+			blockoverride "header_icon" {
+				texture = "gfx/interface/icons/disasters/end_requirements_green.dds"
+			}
+			blockoverride "bottom_content" {
+				TooltipRequirementsList = {
+					textcontext = "[SituationView.GetActiveSituation.GetSituation.GetEndConditions]"
+				}
+			}
+			blockoverride "visible_hint" {}
+			blockoverride "bottom_content_onclick" {
+				visible = "[LateralView.Vars.Exists( 'requirements_toggled' )]"
+			}
+			blockoverride "icon_replace_visible_yes" {
+				visible = "[LateralView.Vars.Exists( 'requirements_toggled' )]"
+			}
+			blockoverride "icon_replace_visible_not" {
+				visible = "[Not(LateralView.Vars.Exists( 'requirements_toggled' ))]"
+			}
+		}
+	}
+
+	blockoverride "situation_panel_main_content_bottom" {
+		# 可以在这里添加额外的内容，比如显示参与的国家列表等
+	}
+}
+
