@@ -1,0 +1,28 @@
+﻿namespace = zzz_1644_generate_female_characters
+
+# 开局生成大量女角色以防止绝嗣
+# 使用while循环批量生成女性角色
+
+zzz_1644_generate_female_characters.1 = {
+	type = country_event
+	title = zzz_1644_generate_female_characters.1.title
+	desc = zzz_1644_generate_female_characters.1.desc
+
+	
+	option = {
+		name = zzz_1644_generate_female_characters.1.a
+		# 使用while循环生成5个女角色以防止绝嗣
+		while = {
+			count = 5
+			create_character = {
+				female = yes
+				age = { 15 28 }
+				culture = root.culture
+				religion = root.religion
+				estate = estate_type:nobles_estate
+				create_in_limbo = no
+			}
+		}
+	}
+}
+

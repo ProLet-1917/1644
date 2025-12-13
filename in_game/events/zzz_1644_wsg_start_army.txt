@@ -6,63 +6,75 @@ wsg_1644_start_army.1 = {
 	desc = wsg_1644_start_army.1.desc
 	historical_info = wsg_1644_start_army.1
 	
-	# 兵力构成：步营 14,000、火器营 7,000、关宁铁骑 4,000。
+	# 兵力构成：步兵 15000（时代3）、步兵 3000（时代4，西法火器营）、骑兵 10000（关宁铁骑）、炮兵 40门（时代4红衣大炮）。
 
 	immediate = {
+		set_variable = { name = wsg_1644_start_army_spawned value = 1 }
+
 		if = {
-			limit = { tag = WSG }
+			limit = { exists = character:chi_wu_sangui }
+			character:chi_wu_sangui = {
+				save_scope_as = wsg_start_commander
+			}
+		}
 
-			set_variable = { name = wsg_1644_start_army_spawned value = 1 }
-
-			location:ningyuan_jinzhou ?= {
+		location:ningyuan_jinzhou ?= {
+			if = {
+				limit = { owner = root }
+				# 宁远步军：15 * 1000 = 15000 人（时代3）
+				while = {
+					count = 15
+					create_sub_unit_with_owner = {
+						type = a_1644_chinese_zhanbing
+						owner = root
+						origin = this
+						experience = 90
+					}
+				}
+				# 西法火器营：3 * 1000 = 3000 人（时代4）
+				while = {
+					count = 2
+					create_sub_unit_with_owner = {
+						type = a_1644_chinese_musketeers
+						owner = root
+						origin = this
+						experience = 90
+					}
+				}
+				# 关宁铁骑：33 * 300 = 10000 人（约）
+				while = {
+					count = 33
+					create_sub_unit_with_owner = {
+						type = a_1644_guanning_cavalry
+						owner = root
+						origin = this
+						experience = 95
+					}
+				}
+				# 红夷炮：10 营(4 门/营) = 40门（时代4红衣大炮）
+				while = {
+					count = 10
+					create_sub_unit_with_owner = {
+						type = a_red_cannon
+						owner = root
+						origin = this
+						experience = 90
+					}
+				}
 				if = {
-					limit = { owner = root }
-					# 宁远步军：20 * 1000 = 20000 人
-					while = {
-						count = 10
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_zhanbing
+					limit = { exists = scope:wsg_start_commander }
+					random_unit_in_location = {
+						limit = {
 							owner = root
-							origin = this
-							experience = 90
+							unit_has_leader = no
 						}
-					}
-					while = {
-						count = 2
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_musketeers
-							owner = root
-							origin = this
-							experience = 90
-						}
-					}
-					while = {
-						count = 20
-						create_sub_unit_with_owner = {
-							type = a_1644_guanning_cavalry
-							owner = root
-							origin = this
-							experience = 95
-						}
-					}
-			
-					# 红夷炮：5 营(3 门/营) ≈ 15 门 ≈ 750 人
-					while = {
-						count = 5
-						create_sub_unit_with_owner = {
-							type = a_red_cannon
-							owner = root
-							origin = this
-							experience = 90
-						}
+						set_as_commander = scope:wsg_start_commander
 					}
 				}
 			}
-
-
-
-			force_recalc_country_active_status = root
 		}
+
+		force_recalc_country_active_status = root
 	}
 
 	option = {

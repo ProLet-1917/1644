@@ -1,0 +1,612 @@
+# 1644 场景所有可能的特权、法律和议会类型列表
+# Complete List of All Possible Privileges, Laws, and Parliament Types for 1644 Scenario
+
+############################
+# 议会类型 (Parliament Types)
+############################
+# no_parliament              - 无议会
+# assembly                   - 大会
+# council                    - 议会（需要 allow_council_parliament 修饰符）
+# estate_parliament          - 等级议会（需要 allow_estate_parliament 修饰符）
+# dutch_parliament           - 荷兰议会（低地法兰克文化）
+# plc_parliament             - 波兰-立陶宛议会（波兰/立陶宛文化组，需要 PLC 标签）
+# autocratic_parliament      - 专制议会（需要 allow_autocratic_parliament 修饰符）
+# constitutional_parliament  - 宪政议会（需要 allow_constitutional_parliament 修饰符）
+
+############################
+# 贵族特权 (Nobles Estate Privileges)
+############################
+# 通用特权
+auxilium_et_consilium              # 辅助与建议（君主制，需要 noble_knights advance）
+nobles_land_rights                 # 贵族土地权利
+noble_serfdom_rights               # 贵族农奴制权利
+noble_fortification_licenses       # 贵族筑城许可（需要 castle_advance）
+noble_marriage_rights              # 贵族婚姻权利（君主制/部落）
+banal_lordship                     # 封地领主制
+primacy_of_nobility                # 贵族优先权
+noble_leaders_only                 # 仅贵族将领
+elaborate_court_ceremonies        # 精致宫廷仪式（非部落/游牧）
+nobles_protected_faith            # 贵族保护信仰（宗教统一 < 66%）
+nobility_council                  # 贵族议会
+manorial_courts                   # 庄园法庭（君主制）
+increased_civic_engagement        # 增加公民参与（共和制）
+inherited_offices                 # 世袭官职（共和制）
+recognized_communes               # 承认公社（共和制）
+appoint_ecclesiastical_offices    # 任命教会职务（神权制）
+control_of_the_borderlands        # 边境控制权（神权制）
+feudal_mercenary_contracts        # 封建雇佣兵合同（需要 feudalism 制度）
+monetary_fiefs                    # 货币封地（与 auxilium_et_consilium 互斥）
+scholar_officials                 # 学者官员（儒家文化组/中朝）
+noble_patronage_of_the_arts       # 贵族艺术赞助
+
+# 国家特定特权（部分）
+liberum_veto                      # 自由否决权（POL/PLC）
+visconti_city_states              # 维斯康蒂城邦（MLO）
+general_privilege                 # 总特权（ARA）
+union_privilege                   # 联合特权（ARA，通过事件）
+signoria_council                  # 执政团议会（FLO）
+tysiatskii_privilege             # 千人长特权（NOV）
+the_ryad_privilege               # 里亚德特权（俄罗斯文化组）
+kbo_kaigama                      # 卡伊加马（KBO）
+kbo_yerima                       # 耶里马（KBO）
+kbo_cima                         # 西马（KBO）
+office_of_the_farima_soura_privilege      # 法里马·苏拉办公室（MAL）
+office_of_the_sankar_zouma_privilege       # 桑卡尔·祖马办公室（MAL）
+golden_liberty                   # 黄金自由（POL/PLC）
+nieszawa_privileges              # 涅沙瓦特权（POL/PLC）
+pacta_conventa                   # 协议条款（POL/PLC）
+noble_armies                     # 贵族军队（FRA/KOR）
+chancellor_nobles                 # 总理贵族（FRA）
+great_offices_of_the_crown_of_france      # 法国王室大职（FRA）
+residence_in_versailles         # 凡尔赛宫居住权（FRA）
+permanent_residence_in_versailles         # 永久凡尔赛宫居住权（FRA）
+right_to_inherit                 # 继承权（日耳曼文化组/分割继承）
+inaugural_diplomas               # 就职文凭（BOH）
+district_paving_privilege       # 地区铺路特权
+joint_assembly_decrees            # 联合议会法令（HRE 领袖）
+kormlenije                       # 食邑制（俄罗斯文化组）
+ordinance_of_laborers            # 劳工法令（ENG）
+autonomous_local_commanders      # 自治地方指挥官（KNI，神权制）
+bashtinas_and_pronijas_grants    # 巴什提纳斯和普罗尼亚授予（SER）
+zupa_districts                   # 茹帕区（SER）
+vlastele_krayishnik              # 弗拉斯特勒·克拉伊什尼克（SER）
+golden_bull_of_1222              # 1222年金玺诏书（HUN）
+ghazi_privilege                  # 加齐特权（穆斯林，突厥文化组）
+share_of_the_spoils              # 战利品份额（部落政府）
+tribal_host                      # 部落军队（部落政府，需要 ranching advance）
+tribal_autonomy                  # 部落自治（部落政府）
+powerful_italian_families        # 强大的意大利家族（PAP）
+plc_empower_orthodox_nobility     # 波兰-立陶宛增强东正教贵族
+scottish_clans                   # 苏格兰氏族（苏格兰文化组）
+autonomous_scottish_clans        # 自治苏格兰氏族（苏格兰文化组）
+sco_statutes_of_iona             # 爱奥那法令（苏格兰）
+coign_and_livery_privilege       # 征用和给养特权（爱尔兰文化组/凯尔特传统）
+libro_d_oro                      # 黄金书（VEN）
+avogadoria_de_comun              # 公社检察官（VEN）
+zontas                           # 宗塔斯（VEN）
+rajput_society                   # 拉杰普特社会（南亚，非拉贾斯坦语）
+zamindar_tax_privilege           # 柴明达尔税收特权（需要 mug_zamindar_system advance）
+consolidated_corruption_of_the_nobles     # 贵族腐败整合
+privilege_of_koszyce             # 科希策特权
+nihil_novi                       # 无新事（波兰）
+noble_sponsored_navy             # 贵族赞助海军（有港口）
+charter_of_the_nobility          # 贵族宪章（RUS）
+reduced_responsibilities_for_the_nobles   # 减少贵族责任
+reduced_taxation_for_the_nobles  # 减少贵族税收
+heritable_iqta                   # 世袭伊克塔（需要 iqta_law）
+manifesto_of_freedom             # 自由宣言（RUS）
+bavarian_share_of_land           # 巴伐利亚土地份额
+cas_fuero_viejo                  # 卡斯蒂利亚旧法（CAS）
+justicia_de_aragon               # 阿拉贡司法官（ARA）
+formalized_oath                  # 正式誓言（ARA）
+ayans_privilege                  # 阿扬特权（TUR）
+cas_regimiento                   # 卡斯蒂利亚军团（CAS/SPA）
+lit_integrated_ruthenian_laws    # 立陶宛整合鲁塞尼亚法律
+lit_equal_status_of_orthodox_nobility     # 立陶宛东正教贵族平等地位
+mam_refined_furusiyya            # 马穆鲁克精炼富鲁西耶（MAM）
+tur_banned_weaponry_for_peasants # 土耳其禁止农民武器
+statutes_of_piotrkow             # 彼得库夫法令
+
+############################
+# 教士特权 (Clergy Estate Privileges)
+############################
+# 通用特权
+clergy_literacy_rights           # 教士识字权利（需要 written_alphabet advance）
+clergy_strengthen_faith          # 教士强化信仰
+clergy_enforced_unity            # 教士强制统一
+clergy_military_orders           # 教士军事修会（天主教，需要 castle_advance）
+clergy_lecture_oaths             # 教士讲座誓言（需要大学）
+clergy_land_rights               # 教士土地权利（非基督教）
+clerical_advisory_council        # 教士顾问委员会
+clergy_powerful_dioceses         # 教士强大教区（基督教）
+clergy_protected_faith           # 教士保护信仰（宗教统一 < 66%）
+clergy_religious_state           # 教士宗教国家
+expansionist_zealotry            # 扩张狂热
+religious_diplomats              # 宗教外交官
+promote_cultural_unity           # 促进文化统一
+embellish_great_works_of_faith  # 美化信仰伟大作品
+clergy_papal_emissary            # 教士教皇特使（天主教，非 PAP）
+freedom_of_interpretation         # 解释自由（穆斯林）
+waqf_payments                    # 瓦克夫支付（穆斯林）
+maintain_clerical_proceedings    # 维持教士程序（共和制）
+state_official_oaths             # 国家官员誓言（共和制）
+mandatory_clerical_donations     # 强制教士捐赠（共和制）
+sponsor_printing_of_religious_texts      # 赞助印刷宗教文本（神权制，需要 printing_of_religious_texts advance）
+liturgical_mural_art             # 礼仪壁画艺术（神权制）
+apostolic_tax_privilege         # 使徒税收特权（天主教，非 PAP）
+tax_exemption                    # 税收豁免（非天主教）
+clergy_in_administration        # 教士参与行政
+consolidated_corruption_of_the_clergy     # 教士腐败整合
+
+# 国家/宗教特定特权
+commons_petition                 # 平民请愿（非天主教）
+austere_monastic_life            # 严格修道生活（非天主教，需要修道院）
+unity_brethren_privilege         # 联合兄弟会特权（胡斯派）
+warrior_tribunal                 # 战士法庭（纳瓦特尔）
+hurin_qusqu_privilege            # 下库斯科特权（印加）
+reduced_from_military_obligations         # 减少军事义务（非军事修会改革）
+fra_papacy_pragmatic_sanctions   # 法国教皇实用制裁（FRA）
+french_cardinals                 # 法国枢机（PAP）
+dharmic_dhimmi_communities       # 达摩迪米社区（穆斯林，有达摩宗教省份）
+austrian_monastery_reform_melk   # 奥地利修道院改革梅尔克（天主教）
+vienna_concordat_privilege       # 维也纳协定特权（天主教）
+vij_patronization_of_local_gods  # 维查耶纳加尔地方神赞助（VIJ，印度教）
+promotion_of_muslim_scholars     # 促进穆斯林学者
+autonomous_kadiluks              # 自治卡迪卢克（TUR，时代 4-6）
+ira_clerical_aristocracy         # 伊朗教士贵族（IRA，穆斯林）
+
+############################
+# 市民特权 (Burghers Estate Privileges)
+############################
+# 通用特权
+formal_guilds                    # 正式行会
+trade_monopolies                 # 贸易垄断
+control_over_monetary_policy     # 控制货币政策
+building_rights                  # 建设权
+burghers_land_rights             # 市民土地权利
+commercial_advisory_council      # 商业顾问委员会
+burghers_protected_faith         # 市民保护信仰（宗教统一 < 66%）
+land_of_commerce                 # 商业之地
+treasury_rights                  # 财政权
+urban_development_grants         # 城市发展补助
+sponsor_maritime_contracts       # 赞助海事合同（有港口）
+control_over_the_coinage         # 控制铸币
+allow_trade_center_sponsorship   # 允许贸易中心赞助
+shipwright_contracts             # 造船合同（有港口）
+market_fairs                     # 市场集市
+fund_karimi                      # 资助卡里米（穆斯林，生产胡椒）
+toll_and_tariff_exemptions       # 通行费和关税豁免（共和制）
+dedicated_merchant_courts        # 专门商人法庭（共和制）
+noble_patronage                  # 贵族赞助（共和制）
+privateer_contracts              # 私掠船合同（有港口，可以雇佣私掠船）
+ceremonial_tax_exemptions        # 仪式税收豁免（纳瓦特尔，需要 taxation_advance）
+kulm_law                         # 库尔姆法（普鲁士/日耳曼文化组，波罗的海地区）
+shooting_societies               # 射击协会
+building_roads_rights            # 道路建设权
+guild_investments                # 行会投资
+
+# 国家特定特权
+burghers_royal_burgh_commissioners        # 市民皇家自治市专员（SCO/SBL）
+milanese_cloth_guilds_privileges          # 米兰布料行会特权（MLO）
+florence_guilds                  # 佛罗伦萨行会（FLO）
+novgorod_ivans_hundred           # 诺夫哥罗德伊凡百人团（NOV）
+kbo_lake_chad_trade_privilege    # 卡诺湖乍得贸易特权（KBO）
+kbo_serfdom_economy             # 卡诺农奴制经济（KBO）
+kbo_amenokal_salt_traders        # 卡诺阿梅诺卡尔盐商（KBO）
+polish_merchant_seal            # 波兰商人印章（POL/PLC）
+villes_franches                 # 自由城市（FRA）
+fra_leadership_of_marcel         # 法国马塞尔领导（FRA）
+fra_marcel_great_ordinance       # 法国马塞尔大法令（FRA）
+fra_marcel_compromise_ordinance  # 法国马塞尔妥协法令（FRA）
+petty_bureaucracy                # 小官僚（儒家文化组/中朝，需要科举）
+cardinal_lead_guilds             # 枢机领导行会（神权制，天主教）
+libro_d_argento                  # 银书（VEN）
+bra_kreditwerk                   # 勃兰登堡信贷工作
+bra_kreditwerk_reformed          # 勃兰登堡信贷工作改革
+vij_tamil_trading_rights         # 维查耶纳加尔泰米尔贸易权（VIJ）
+jain_banking_rights             # 耆那教银行权（南亚，非耆那教，有耆那教人口）
+jain_scholars                    # 耆那教学者（南亚，非耆那教，有耆那教人口）
+consolidated_corruption_of_the_burghers   # 市民腐败整合
+magdeburg_rights                 # 马格德堡权利（HRE 成员，特定地区）
+novi_fori                        # 新论坛（特定地区）
+kannada_literature_aid           # 卡纳达文学援助
+vij_allowance_of_religious_practices       # 维查耶纳加尔允许宗教实践（VIJ）
+mam_muhtasibs                    # 马穆鲁克穆赫塔西布（MAM）
+trunk_road_to_erzurum_privilege  # 通往埃尔祖鲁姆的干线道路特权（安纳托利亚贝利克）
+cas_mita_system                  # 卡斯蒂利亚米塔制（CAS）
+royal_factories_privilege        # 皇家工厂特权
+ira_iranian_art_patronage        # 伊朗艺术赞助（IRA）
+
+############################
+# 农民特权 (Peasants Estate Privileges)
+############################
+# 通用特权
+peasants_free_peasantry          # 农民自由农制（与某些特权互斥）
+peasants_represented_in_parliament         # 农民在议会中代表（有议会系统）
+peasant_owns_their_food          # 农民拥有自己的食物
+peasants_fewer_levies            # 农民减少征召
+peasants_yeomanry               # 农民自耕农
+peasants_allowed_weapons_privilege        # 农民允许武器特权（与 tur_banned_weaponry_for_peasants 互斥）
+peasants_protected_faith         # 农民保护信仰（宗教统一 < 66%）
+allow_hunting                    # 允许狩猎
+no_labor_sunday                  # 周日不劳动（基督教）
+communal_lands                   # 公共土地
+partial_yield                    # 部分收成
+access_to_royal_and_ecclesiastical_courts         # 进入皇家和教会法庭
+peasants_in_administration       # 农民参与行政
+peasants_autonomous_villages     # 农民自治村庄
+consolidated_corruption_of_the_peasants   # 农民腐败整合
+
+# 国家/文化特定特权
+peasants_no_poll_tax_privilege   # 农民免人头税特权（ENG）
+ara_sindicat_ara_remenca         # 阿拉贡辛迪卡特阿拉伦卡（ARA）
+creaghts_privilege               # 克雷特特权（爱尔兰文化组/凯尔特传统）
+masaniellos_fight                # 马萨尼洛战斗
+double_sabbath                   # 双重安息日（一性论，通过事件）
+ius_teutonicum                   # 条顿法（波西米亚文化组）
+invite_german_settlers           # 邀请德国定居者（天主教，特定地区）
+haudenosaunee_labor_division      # 易洛魁劳动分工（易洛魁文化组）
+mita_system                      # 米塔制（安第斯文化组）
+gradozadanje_and_gradobljudenlje_rights   # 格拉多扎丹杰和格拉多布尤登列权利（SER）
+salt_tax_exemption               # 盐税豁免（MOS）
+hab_tractatus_incorporalibus     # 哈布斯堡无形条约（HAB）
+ayuntamientos                     # 市政厅（SPA/CAS）
+cas_caballeros_villanos          # 卡斯蒂利亚村民骑士（CAS）
+ukr_kholop_protection            # 乌克兰霍洛普保护
+land_owning_farmers              # 拥有土地的农民（SWE）
+
+############################
+# 部落特权 (Tribes Estate Privileges)
+############################
+# 通用特权
+tribes_land_rights               # 部落土地权利
+tribes_allow_gatherings           # 部落允许集会
+tribes_pasture_access            # 部落牧场使用权
+tribes_tribal_levies             # 部落征召
+tribes_tribal_registry           # 部落登记册
+tribes_protected_faith            # 部落保护信仰
+tribes_respect_tribal_traditions  # 部落尊重传统
+jaysh_armies                     # 军队（部落）
+tribes_in_administration         # 部落参与行政
+local_tribal_strongholds         # 地方部落要塞（马格里布地区）
+mch_tribal_favor                 # 部落恩惠（需要解锁）
+
+# 苏格兰特定特权
+tribes_creach                     # 克雷奇（苏格兰文化组）
+tribes_fosterage                 # 寄养制（苏格兰文化组）
+tribes_manrent                   # 人役制（苏格兰文化组）
+tribes_scotland_gaelic_heritage   # 苏格兰盖尔传统（苏格兰文化组）
+autonomous_tribes_scotland_gaelic_heritage  # 自治部落苏格兰盖尔传统（苏格兰文化组）
+
+############################
+# 国家类型 (Government Types)
+############################
+monarchy                                 # 君主制
+republic                                 # 共和制
+theocracy                                # 神权制
+steppe_horde                             # 草原游牧
+tribe                                    # 部落
+
+############################
+# 国家实体类型 (Country Entity Types)
+############################
+# 注意：这些是在 setup 文件中使用的 type = 字段，不是 government type
+army                                     # 军队国家（如征服者国家）
+building                                 # 建筑国家（如银行、贸易公司）
+location                                 # 地点国家
+pop                                      # 人口国家
+
+############################
+# 法律类型 (Law Types)
+############################
+# 注意：每个法律类型下有多个政策选项，这里只列出法律类型名称
+
+# 君主制法律 (Monarchy Laws)
+feudal_de_jure_law               # 封建法理法
+medieval_levy_law                # 中世纪征召法
+royal_court_customs_law          # 皇家宫廷习俗法
+legitimization_of_power_law      # 权力合法化法
+harem_law                        # 后宫法
+
+# 军事法律 (Military Laws)
+recruitment_law                  # 征兵法
+battle_leadership_law             # 战斗领导法
+army_doctrine_law                # 陆军学说法
+mamluk_rank_system_laws          # 马穆鲁克等级制度法
+mamluk_army_law                  # 马穆鲁克陆军法
+mamluk_promotion_law             # 马穆鲁克晋升法
+
+# 海军法律 (Naval Laws)
+maritime_law                     # 海事法
+piracy_law                       # 海盗法
+
+# 通用法律 (Common Laws)
+education_elites_law             # 精英教育法
+education_masses_law             # 大众教育法
+slavery_laws                     # 奴隶制法律
+colonial_policy                  # 殖民政策
+native_policy                    # 原住民政策
+administrative_system            # 行政系统
+intelligence_agency               # 情报机构
+bureaucracy_law                  # 官僚法
+cabinet_laws                     # 内阁法
+economical_policies_law          # 经济政策法
+cultural_traditions_law           # 文化传统法
+foreign_cultural_law             # 外国文化法
+marriage_law                     # 婚姻法
+heir_religion_law               # 继承人宗教法
+precious_metal_distribution_law   # 贵金属分配法
+press_law                        # 新闻法
+mining_law                       # 采矿法
+amazigh_familial_connections     # 柏柏尔家族联系
+immigration_law                  # 移民法
+
+# 法律系统 (Legal System Laws)
+legal_code_law                   # 法律法典
+language_of_pleading             # 诉讼语言
+sharia_law                       # 沙里亚法
+
+# 权力分配法 (Distribution of Power Laws)
+distribution_of_power_law        # 权力分配法
+
+# 宗教法律 (Religious Laws)
+censorship                       # 审查制度（在 01_common.txt 中）
+
+# 国家特定法律 (Country Specific Laws)
+sumptuary_law                    # 禁奢法
+eng_order_of_the_garter_law      # 英国嘉德勋章法（ENG）
+fra_fouage_tax                   # 法国炉灶税（FRA）
+fra_taille                       # 法国人头税（FRA）
+fra_reformation_tolerance_edicts # 法国宗教改革宽容法令（FRA）
+french_colonial_ambition_focus  # 法国殖民野心焦点（FRA）
+fra_jansenism_legality           # 法国詹森主义合法性（FRA）
+guilds_of_florence              # 佛罗伦萨行会（FLO）
+por_estudo_geral_law             # 葡萄牙总学习法（POR）
+teu_amber_monopoly_law           # 条顿琥珀垄断法（TEU）
+nav_adaptability                 # 纳瓦拉适应性（NAV）
+six_ministries_overseer_law      # 六部监督法
+ashta_pradhan_council_law        # 八大臣议会法
+kor_currency                     # 朝鲜货币（KOR）
+mesta_council_law                # 梅斯塔议会法
+imperial_examination_law         # 科举法
+status_of_the_han_law            # 藩地位法
+sco_clan_holdings                # 苏格兰氏族领地（SCO）
+sco_authority_over_the_clergy    # 苏格兰对教士的权威（SCO）
+sco_colonial_affairs_law         # 苏格兰殖民事务法（SCO）
+
+# HRE 法律 (HRE Laws)
+golden_bull                      # 金玺诏书
+monetary_contribution            # 货币贡献
+military_contribution             # 军事贡献
+imperial_religion                # 帝国宗教
+electorate_religion_law          # 选帝侯宗教法
+imperial_succession_law          # 帝国继承法
+imperial_voting_law              # 帝国投票法
+electorate_organization_law      # 选帝侯组织法
+free_city_law                    # 自由城市法
+free_city_rights_law             # 自由城市权利法
+landfriede_law                   # 土地和平法
+imperial_diet_law                # 帝国议会法
+perpetual_diet_law               # 永久议会法
+power_of_the_emperor_law         # 皇帝权力法
+
+# 个人联合法律 (Personal Union Laws)
+union_foundation_law             # 联合基础法
+union_codified_inheritance_law   # 联合成文继承法
+union_economic_law               # 联合经济法
+union_diplomatic_law             # 联合外交法
+union_legislature_law            # 联合立法法
+union_unification_of_crowns_law  # 联合王冠统一法
+union_mutual_offense_law         # 联合共同进攻法
+
+# 殖民法律 (Colonial Laws)
+colonial_representation_law      # 殖民代表法
+
+# 国际组织联盟法律 (IO Alliance Laws)
+mutual_defense_law               # 共同防御法
+mutual_offense_law               # 共同进攻法
+
+# 基督教教义 (Christian Tenets)
+nature_tenet                     # 本质教义
+christology                      # 基督论
+liturgical_practices              # 礼仪实践
+essence_tenet                    # 本质教义
+person_tenet                     # 位格教义
+prosopon_tenet                   # 位格教义
+christological_debates_tenet     # 基督论辩论教义
+double_sabbath_tenet             # 双重安息日教义
+
+############################
+# 继承制类型 (Heir Selection Types)
+############################
+# 君主制继承制
+cognatic_primogeniture                    # 双系长子继承制
+absolute_cognatic_primogeniture           # 绝对双系长子继承制
+salic_law                                 # 萨利克法（仅男性）
+semi_salic_law                           # 半萨利克法
+partition_inheritance                     # 分割继承
+fratricide_succesion                     # 弑亲继承制（土耳其/土库曼文化）
+unigeniture                              # 单子继承制（土耳其/土库曼文化）
+mamluk_succesion                         # 马穆鲁克继承制（马穆鲁克政府）
+youngest_son_of_ruler                    # 幼子继承制
+tanistry_elective                        # 塔尼斯特选举制（凯尔特文化组）
+elective_succession                      # 选举继承制（需要解锁）
+dynastic_elective_succession             # 王朝选举继承制（需要解锁）
+favorite_son_elective_succession         # 爱子选举继承制
+union_of_crowns_succession              # 王冠联合继承制
+austrian_cognatic_primogeniture          # 奥地利双系长子继承制（需要特定改革）
+matrilineal_salic_law                    # 母系萨利克法
+judicial_election                        # 司法选举（需要特定改革）
+
+# 共和制继承制
+oligarchic_elective                       # 寡头选举制
+lottery_election                         # 抽签选举制
+veche_selection                          # 市民大会选举制
+doge_election                            # 总督选举制
+diarchic_election                        # 双头选举制
+bank_selection                           # 银行选举制
+pirate_elective                          # 海盗选举制
+peasant_elective                         # 农民选举制
+military_dictatorship                    # 军事独裁制
+signoria_selection                       # 执政团选举制
+podesta_elective                         # 波德斯塔选举制
+
+# 神权制继承制
+bishopric_elective                       # 主教选举制
+theocratic_elective                      # 神权选举制
+grandmaster_elective                     # 大团长选举制
+abbot_elective                           # 修道院长选举制
+abbess_elective_female                  # 女修道院长选举制
+papal_election                           # 教皇选举制
+
+# 部落继承制
+tribal_oldest_male                       # 部落最年长男性
+tribal_matrilineal                       # 部落母系继承
+ritual_selection                         # 仪式选举
+
+# 特殊继承制
+admiralty_regime_heir_selection         # 海军政权继承制（需要海军政权改革）
+general_heir_selection                   # 将军继承制（需要军事政权改革）
+guru_election                           # 古鲁选举制
+matrilineal_non_exclusive               # 母系非排他继承制
+
+############################
+# 国家制度类型 (Government Reform Types)
+############################
+# 注意：国家制度数量庞大，这里只列出主要的通用制度
+# 国家特定制度请参考 country_specific.txt
+
+# 君主制通用制度
+autocracy                                 # 专制制度
+feudal_nobility                          # 封建贵族制
+margraviate                              # 边地侯制（HRE）
+landgraviate                             # 领地伯爵制（HRE）
+of_noble_bearing                         # 贵族风范
+judicate_reform                          # 司法改革（ARB特定）
+the_court_of_wards_and_liveries         # 监护和封地法庭
+royal_decree                             # 皇家法令
+privy_council                            # 枢密院
+royal_commission_act                     # 皇家委员会法案
+revolutionary_empire                     # 革命帝国
+feudal_theocracy                         # 封建神权制（穆斯林）
+
+# 共和制通用制度
+noble_elite                              # 贵族精英
+sortition                                # 抽签制
+merchant_republic                        # 商业共和国
+peasant_republic_reform                  # 农民共和国改革
+
+# 神权制通用制度
+military_order_reform                    # 军事修会改革（天主教）
+abbey_reform                             # 修道院改革
+
+# 通用制度（所有政府类型）
+religious_tolerance                      # 宗教宽容
+the_combination_act                      # 联合法案
+the_recruiting_act                       # 征募法案
+national_assemblies                      # 国民议会
+east_india_trading_company              # 东印度贸易公司
+admiralty_regime_reform                  # 海军政权改革
+military_regime_reform                   # 军事政权改革
+thalassocracy_reform                     # 海洋霸权改革
+agricultural_cultivation                 # 农业耕作
+the_espionage_act                       # 间谍法案
+public_welfare_act                       # 公共福利法案
+religious_laws_enforced                  # 宗教法律执行
+land_inheritance_act                     # 土地继承法案
+the_education_act                        # 教育法案
+the_loyalty_act                         # 忠诚法案
+vassal_obligation_act                    # 附庸义务法案
+enlightened_aristocracy                  # 开明贵族制
+the_transportation_act                   # 运输法案
+cultural_recognition_act                 # 文化承认法案
+licensing_of_the_press_act               # 新闻许可法案
+diplomatic_traditions                    # 外交传统
+patrimonialism                           # 世袭制（异教，小国）
+enforce_religious_adherence              # 强制宗教遵守
+harbor_administration                    # 港口管理
+trade_office_network                     # 贸易办事处网络
+exchange_of_ideas                        # 思想交流
+local_army_organization                  # 地方军队组织
+bank_ledgers_system                      # 银行账册系统
+plutocratic_ethos                        # 财阀精神
+garrison_system                          # 驻防系统
+colonial_expansion                       # 殖民扩张
+mercenary_registration_act               # 雇佣兵登记法案
+multilingual_diplomats                   # 多语言外交官
+asymmetrical_warfare_tactics             # 不对称战争战术
+mining_communities                       # 采矿社区
+universal_serfdom                        # 普遍农奴制
+statute_of_monopolies                    # 垄断法令
+state_backed_merchant_fleet              # 国家支持的商船队
+naval_infrastructure_act                 # 海军基础设施法案
+policy_of_calculated_delay               # 计算延迟政策
+anti_heresy_act                          # 反异端法案
+administration_of_clerical_lands         # 教会土地管理
+humanitarian_administration              # 人道主义管理
+production_quota_bureaus                 # 生产配额局
+weapons_quality_standards                # 武器质量标准
+diplomatic_consolidation_act             # 外交整合法案
+provincial_taxation_system               # 省级税收系统
+conscript_logistics_act                  # 征兵后勤法案
+smooth_integration_act                   # 顺利整合法案
+centralization_of_power_act              # 权力集中法案
+horse_artillery                          # 马炮兵
+autonomous_estates                       # 自治等级
+military_allotment                       # 军事分配
+naval_armament_act                       # 海军军备法案
+recordkeeping_act                        # 记录保存法案
+visionary_thinkers                       # 远见思想家
+organized_marines                        # 组织化海军陆战队
+mandatory_service                        # 强制服役
+flexible_diplomatic_stance               # 灵活外交立场
+modern_assault_tactics                   # 现代突击战术
+state_sponsored_markets                  # 国家支持市场
+nautical_education_act                   # 航海教育法案
+constitutional_state                     # 宪政国家
+
+############################
+# 使用说明
+############################
+# 1. 特权 (Privileges)
+#    - 在 setup 模板中使用 privilege = { privilege_name } 格式
+#    - 某些特权有潜在条件 (potential) 和允许条件 (allow)
+#    - 某些特权互斥，不能同时使用
+#
+# 2. 法律 (Laws)
+#    - 在 setup 模板中使用 laws = { law_name = policy_name } 格式
+#    - 每个法律类型下有多个政策选项
+#    - 某些法律需要特定政府类型或条件
+#
+# 3. 议会 (Parliament)
+#    - 在 setup 模板中使用 parliament = { parliament_type = parliament_type:type_name } 格式
+#    - 某些议会类型需要特定条件或修饰符
+#
+# 4. 国家类型 (Government Type)
+#    - 在 setup 模板中使用 government = { type = government_type_name } 格式
+#    - 国家类型决定可用的继承制和国家制度
+#
+# 5. 国家实体类型 (Country Entity Type)
+#    - 在 setup 文件中使用 type = entity_type_name 格式（在国家定义块中）
+#    - 用于特殊国家实体：army（军队国家）、building（建筑国家）、location（地点国家）、pop（人口国家）
+#    - 这些不是政府类型，而是国家实体的分类
+#
+# 6. 继承制 (Heir Selection)
+#    - 在 setup 模板中使用 heir_selection = heir_selection:type_name 格式
+#    - 某些继承制需要特定政府类型、文化或条件
+#
+# 7. 国家制度 (Government Reforms)
+#    - 在 setup 模板中使用 reforms = { reform_name } 格式
+#    - 某些制度需要特定政府类型、时代或条件
+#    - 某些制度互斥，不能同时使用
+
+############################
+# 参考文件
+############################
+# Vanilla:
+# - D:\SteamLibrary\steamapps\common\Europa Universalis V\game\in_game\common\estate_privileges\
+# - D:\SteamLibrary\steamapps\common\Europa Universalis V\game\in_game\common\laws\
+# - D:\SteamLibrary\steamapps\common\Europa Universalis V\game\in_game\common\parliament_types\
+# - D:\SteamLibrary\steamapps\common\Europa Universalis V\game\in_game\common\government_types\
+# - D:\SteamLibrary\steamapps\common\Europa Universalis V\game\in_game\common\heir_selections\
+# - D:\SteamLibrary\steamapps\common\Europa Universalis V\game\in_game\common\government_reforms\
