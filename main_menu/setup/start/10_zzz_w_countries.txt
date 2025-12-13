@@ -10481,6 +10481,135 @@ countries = {
 		country_rank = rank_kingdom
 		starting_technology_level = 3
 	}
+
+#Oceania
+	TOG = { #Tuʻi Tonga 
+		own_control_core = {
+			tongatapu vauvau haapai
+		}
+
+		include = "polynesian_monarchy"
+		include = "expl_polynesia"
+		government = {
+			ruler = random
+		}
+		capital = tongatapu
+	}
+
+	SAM = { 	#Samoa - SAM
+		own_control_core = {
+			savaii upolu tutuila
+		}
+
+		include = "polynesian_monarchy"
+		include = "expl_polynesia"
+		government = {
+			ruler = random
+		}
+		capital = savaii
+	}
+
+	BUB = { #Fiji
+
+		own_control_core = {
+			burebasaga kandavu beqa_lagoon
+			kubuna yasawa ngau
+		}
+
+		include = "polynesian_tribe"
+		include = "expl_polynesia"
+		government = {
+			ruler = random
+		}
+	}
+
+	#HAW - Hawai'i
+	HAW = {
+		own_control_core = {
+			kohala kona ka_u hilo
+		}
+
+		include = "polynesian_monarchy"
+		include = "expl_polynesia"
+
+		government = {
+			ruler = random
+		}
+	}
+
+	#MUI - Maui
+	MUI = {
+		own_control_core = {
+			maui
+		}
+
+		include = "polynesian_monarchy"
+		include = "expl_polynesia"
+
+		government = {
+			ruler = random
+		}
+	}
+
+	#LHN - Lahaina
+	LHN = {
+		own_control_core = {
+			lahaina
+		}
+
+		include = "polynesian_monarchy"
+		include = "expl_polynesia"
+
+		government = {
+			ruler = random
+		}
+	}
+
+	#MLK - Moloka'i
+	MLK = {
+		own_control_core = {
+			moloka_i
+		}
+
+		include = "polynesian_monarchy"
+		include = "expl_polynesia"
+
+		government = {
+			type = tribe
+			heir_selection = matrilineal_non_exclusive
+			ruler = random
+		}
+	}
+
+	#OAH - O'ahu
+	OAH = {
+		own_control_core = {
+			o_ahu
+		}
+
+		include = "polynesian_monarchy"
+		include = "expl_polynesia"
+
+		government = {
+			ruler = random
+		}
+	}
+
+	#KAU - Kaua'i
+	KAU = {
+		own_control_core = {
+			kaua_i
+		}
+
+		include = "polynesian_monarchy"
+		include = "expl_polynesia"
+
+		government = {
+			ruler = random
+		}
+	}
+
+
 }
 
 
