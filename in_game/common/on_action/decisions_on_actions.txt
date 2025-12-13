@@ -1,10 +1,11 @@
 monthly_country_pulse = {
     on_actions = {
         on_dec_cri_c_claim_yedisan
+        on_dec_cri_n_claim_yedisan
     }
 }
 
-on_dec_cri_c_claim_yedisan = {
+on_dec_cri_c_claim_yedisan = { #Check Requirement
     trigger = {
         location:teligol = {
             c:TUR ?= owner
@@ -32,16 +33,67 @@ on_dec_cri_c_claim_yedisan = {
         }
         c:CRI = {
             has_variable = cri_t_claim_yedisan
+            var:current_herd > 200
             is_subject_of = c:TUR
         }
     }
     effect = {
         c:CRI = {
             remove_variable = cri_t_claim_yedisan
-        }
-        c:CRI = {
             set_variable = cri_c_claim_yedisan
+            change_variable = {
+                name = current_herd
+                subtract = 200
+            }
         }
         cri_claim_yedisan_effect = yes
+    }
+}
+
+on_dec_cri_n_claim_yedisan = { #Check is it still meet the conditions
+    trigger = {
+        c:CRI = {
+            has_variable = cri_c_claim_yedisan
+        }
+        NOT = {
+            AND = {
+                location:teligol = {
+                    c:TUR ?= owner
+                }
+                location:ananiv = {
+                    c:TUR ?= owner
+                }
+                location:kuyanlik = {
+                    c:TUR ?= owner
+                }
+                location:iagorlic = {
+                    c:TUR ?= owner
+                }
+                location:khadjibey = {
+                    c:TUR ?= owner
+                }
+                location:dashev = {
+                    c:TUR ?= owner
+                }
+                location:balikley = {
+                    c:TUR ?= owner
+                }
+                location:aqmecit_prybuzhzhya = {
+                    c:TUR ?= owner
+                }
+                c:CRI = {
+                    is_subject_of = c:TUR
+                }
+                c:CRI = {
+                    var:current_herd > 200
+                }
+            }
+        }
+    }
+    effect = {
+        c:CRI = {
+            remove_variable = cri_c_claim_yedisan
+            set_variable = cri_t_claim_yedisan
+        }
     }
 }

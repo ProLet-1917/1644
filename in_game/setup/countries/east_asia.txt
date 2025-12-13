@@ -1139,8 +1139,11 @@ NZN = {
 
 
 MNG = {	#Míng
-	color = map_MNG
-	color2 = rgb { 179 128 104 }
+	color = rgb { 201 112 96 } # rgb(201, 112, 96)
+	color2 = "red_light" 
+
+	unit_color0 = "red_light"
+	unit_color1 = rgb { 179 128 104 } # rgb(179 128 104)
 	culture_definition = han_culture
 	religion_definition = sanjiao
 	#Released during the Crisis events
@@ -1149,9 +1152,8 @@ QNG = {    #Qing
     color = map_QNG            
     color2 = rgb { 36 57 193 } #rgb(36, 57, 193)
 
-
 	unit_color0 = "brown"
-	unit_color1 = map_QNG
+	unit_color1 = "yellow_dark"
 	unit_color2 = "blue"
     culture_definition = jurchen_culture 
     religion_definition = sanjiao  #                      

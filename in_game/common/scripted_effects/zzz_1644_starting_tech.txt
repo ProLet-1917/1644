@@ -2,8 +2,38 @@
 
 
 set_starting_tech_level_by_region = {
-	#  - 
+	# QNG（清）例外：无论首都在哪里都是3级科技
 	if = {
+		limit = { tag = QNG }
+		set_variable = { name = start_tech_lv_1644 value = 3 }
+		research_advances_by_level = yes
+	}
+	# 中国地区细化设置：华西、华北、华南、华东 = 3级
+	else_if = {
+		limit = {
+			exists = capital
+			OR = {
+				capital.region = region:west_china_region
+				capital.region = region:north_china_region
+				capital.region = region:south_china_region
+				capital.region = region:east_china_region
+				capital.region = region:japan_region
+				capital.region = region:korea_region
+			}
+		}
+		set_variable = { name = start_tech_lv_1644 value = 3 }
+		research_advances_by_level = yes
+	}
+	# 其他中国地区 = 1级
+	else_if = {
+		limit = {
+			capital ?= { sub_continent = sub_continent:east_asia }
+		}
+		set_variable = { name = start_tech_lv_1644 value = 1 }
+		research_advances_by_level = yes
+	}
+	#  - 
+	else_if = {
 		limit = {
 			capital ?= { sub_continent = sub_continent:western_europe }
 		}
@@ -14,14 +44,6 @@ set_starting_tech_level_by_region = {
 	else_if = {
 		limit = {
 			capital ?= { sub_continent = sub_continent:eastern_europe }
-		}
-		set_variable = { name = start_tech_lv_1644 value = 3 }
-		research_advances_by_level = yes
-	}
-	# 
-	else_if = {
-		limit = {
-			capital ?= { sub_continent = sub_continent:east_asia }
 		}
 		set_variable = { name = start_tech_lv_1644 value = 3 }
 		research_advances_by_level = yes
@@ -326,7 +348,7 @@ research_age_1_advances = {
 	research_advance = advance_type:diplomatic_capacity_traditions
 	
 	# ========================================
-	# meritocracy_advance (��Ӣ�ƶ�)
+	# meritocracy_advance 
 	# ========================================
 	unlock_advance_effect = { type = meritocracy_advance }
 	research_advance = advance_type:meritocracy_advance

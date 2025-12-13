@@ -1,0 +1,68 @@
+﻿# ========================================
+# ROOT: pike_and_shot_advance (level=0)
+# ========================================
+unlock_advance_effect = { type = pike_and_shot_advance }
+research_advance = advance_type:pike_and_shot_advance
+
+# pike_and_shot_advance -> matchlock_gun
+unlock_advance_effect = { type = matchlock_gun }
+research_advance = advance_type:matchlock_gun
+# matchlock_gun -> training_fields_advance
+unlock_advance_effect = { type = training_fields_advance }
+research_advance = advance_type:training_fields_advance
+# matchlock_gun -> unlock_early_arquebusiers_advance
+unlock_advance_effect = { type = unlock_early_arquebusiers_advance }
+research_advance = advance_type:unlock_early_arquebusiers_advance
+# unlock_early_arquebusiers_advance -> unlock_matchlock_levy
+unlock_advance_effect = { type = unlock_matchlock_levy }
+research_advance = advance_type:unlock_matchlock_levy
+# training_fields_advance -> unlock_halberdiers_advance
+unlock_advance_effect = { type = unlock_halberdiers_advance }
+research_advance = advance_type:unlock_halberdiers_advance
+# training_fields_advance -> unlock_lancers_advance
+unlock_advance_effect = { type = unlock_lancers_advance }
+research_advance = advance_type:unlock_lancers_advance
+# training_fields_advance -> unlock_light_lancers_advance
+unlock_advance_effect = { type = unlock_light_lancers_advance }
+research_advance = advance_type:unlock_light_lancers_advance
+# training_fields_advance -> unlock_falconet_advance
+unlock_advance_effect = { type = unlock_falconet_advance }
+research_advance = advance_type:unlock_falconet_advance
+# training_fields_advance -> unlock_supply_convoy
+unlock_advance_effect = { type = unlock_supply_convoy }
+research_advance = advance_type:unlock_supply_convoy
+# matchlock_gun -> correct_box_advance_discovery
+unlock_advance_effect = { type = correct_box_advance_discovery }
+research_advance = advance_type:correct_box_advance_discovery
+# matchlock_gun -> pike_square
+unlock_advance_effect = { type = pike_square }
+research_advance = advance_type:pike_square
+# pike_square -> supply_lines
+unlock_advance_effect = { type = supply_lines }
+research_advance = advance_type:supply_lines
+# pike_square -> standardized_pikes
+unlock_advance_effect = { type = standardized_pikes }
+research_advance = advance_type:standardized_pikes
+# supply_lines -> land_morale_attrition_cost_advance
+# supply_lines -> fort_limit_3_advance
+unlock_advance_effect = { type = fort_limit_3_advance }
+research_advance = advance_type:fort_limit_3_advance
+# supply_lines -> land_morale_attrition_cost_advance
+unlock_advance_effect = { type = land_morale_attrition_cost_advance }
+research_advance = advance_type:land_morale_attrition_cost_advance
+# land_morale_attrition_cost_advance -> linked_armies_advance
+unlock_advance_effect = { type = linked_armies_advance }
+research_advance = advance_type:linked_armies_advance
+# linked_armies_advance -> land_morale_movement_cost_advance_disc
+unlock_advance_effect = { type = land_morale_movement_cost_advance_disc }
+research_advance = advance_type:land_morale_movement_cost_advance_disc
+
+# pike_and_shot_advance -> supply_depot_advance_age_3_discovery
+unlock_advance_effect = { type = supply_depot_advance_age_3_discovery }
+research_advance = advance_type:supply_depot_advance_age_3_discovery
+# supply_depot_advance_age_3_discovery -> regiment_reinforcement_speed_discovery
+unlock_advance_effect = { type = regiment_reinforcement_speed_discovery }
+research_advance = advance_type:regiment_reinforcement_speed_discovery
+# regiment_reinforcement_speed_discovery -> battle_leadership_law_advance
+unlock_advance_effect = { type = battle_leadership_law_advance }
+research_advance = advance_type:battle_leadership_law_advance

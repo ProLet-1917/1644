@@ -1,0 +1,47 @@
+﻿# ========================================
+# ROOT: trade_through_owned_disc_advance (level=0, 无依赖)
+# ========================================
+unlock_advance_effect = { type = trade_through_owned_disc_advance }
+research_advance = advance_type:trade_through_owned_disc_advance
+
+# trade_through_owned_disc_advance -> house_of_parliament_advance
+unlock_advance_effect = { type = house_of_parliament_advance }
+research_advance = advance_type:house_of_parliament_advance
+# house_of_parliament_advance -> unlock_flute_advance
+unlock_advance_effect = { type = unlock_flute_advance }
+research_advance = advance_type:unlock_flute_advance
+# trade_through_owned_disc_advance -> lazaretto_advance
+unlock_advance_effect = { type = lazaretto_advance }
+research_advance = advance_type:lazaretto_advance
+# lazaretto_advance -> naval_morale_advance_2
+unlock_advance_effect = { type = naval_morale_advance_2 }
+research_advance = advance_type:naval_morale_advance_2
+# lazaretto_advance -> basic_financial_instruments
+unlock_advance_effect = { type = basic_financial_instruments }
+research_advance = advance_type:basic_financial_instruments
+# basic_financial_instruments -> construction_center_advance (building unlock)
+unlock_advance_effect = { type = construction_center_advance }
+research_advance = advance_type:construction_center_advance
+# basic_financial_instruments -> merchants_quarters_advance (building unlock)
+unlock_advance_effect = { type = merchants_quarters_advance }
+research_advance = advance_type:merchants_quarters_advance
+# basic_financial_instruments -> hire_artist_cost_modifier_advance_disc
+unlock_advance_effect = { type = hire_artist_cost_modifier_advance_disc }
+research_advance = advance_type:hire_artist_cost_modifier_advance_disc
+# hire_artist_cost_modifier_advance_disc -> gov_reform_discovery_a
+unlock_advance_effect = { type = gov_reform_discovery_a }
+research_advance = advance_type:gov_reform_discovery_a
+# basic_financial_instruments -> rural_rgo_disc_advance
+unlock_advance_effect = { type = rural_rgo_disc_advance }
+research_advance = advance_type:rural_rgo_disc_advance
+
+
+# trade_through_owned_disc_advance -> dry_dock_advance
+unlock_advance_effect = { type = dry_dock_advance }
+research_advance = advance_type:dry_dock_advance
+# dry_dock_advance -> unlock_carrack_advance
+unlock_advance_effect = { type = unlock_carrack_advance }
+research_advance = advance_type:unlock_carrack_advance
+# unlock_carrack_advance -> foreign_cultural_law_advance
+unlock_advance_effect = { type = foreign_cultural_law_advance }
+research_advance = advance_type:foreign_cultural_law_advance

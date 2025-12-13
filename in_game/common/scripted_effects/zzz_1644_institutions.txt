@@ -4,6 +4,23 @@
 # 注意：思潮进度达到100%后，国家会自动拥抱该思潮
 
 
+give_traditions_institutions = {
+	every_owned_location = {
+		change_institution_progress = {
+			type = institution:feudalism
+			value = 100
+		}
+		change_institution_progress = {
+			type = institution:legalism
+			value = 100
+		}
+		change_institution_progress = {
+			type = institution:meritocracy
+			value = 100
+		}
+	}
+}
+
 give_renaissance_institutions = {
 	every_owned_location = {
 		change_institution_progress = {
@@ -103,6 +120,42 @@ give_all_1644_institutions = {
 		change_institution_progress = {
 			type = institution:artillery_institution
 			value = 100
+		}
+	}
+}
+
+# 根据科技等级给予思潮
+# 科技等级对应：
+# 等级1 = Age 1 (Traditions) - feudalism, legalism, meritocracy
+# 等级2 = Age 2 (Renaissance) - renaissance, banking, professional_armies
+# 等级3 = Age 3 (Discovery) - new_world, printing_press, pike_and_shot
+# 等级4 = Age 4 (Reformation) - confessionalism, global_trade, artillery_institution
+give_institutions_by_tech_level = {
+	if = {
+		limit = { has_variable = start_tech_lv_1644 }
+		
+		# 等级1：Age 1 思潮
+		if = {
+			limit = { var:start_tech_lv_1644 >= 1 }
+			give_traditions_institutions = yes
+		}
+		
+		# 等级2：Age 2 思潮
+		if = {
+			limit = { var:start_tech_lv_1644 >= 2 }
+			give_renaissance_institutions = yes
+		}
+		
+		# 等级3：Age 3 思潮
+		if = {
+			limit = { var:start_tech_lv_1644 >= 3 }
+			give_discovery_institutions = yes
+		}
+		
+		# 等级4：Age 4 思潮
+		if = {
+			limit = { var:start_tech_lv_1644 >= 4 }
+			give_reformation_institutions = yes
 		}
 	}
 }
