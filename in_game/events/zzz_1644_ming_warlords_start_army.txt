@@ -1,8 +1,8 @@
 ﻿namespace = ming_warlords
 
 # 明末军阀开局军队生成事件（隐藏事件）
-# 包括：江北四镇（兴平镇、东平镇、广昌镇、靖南镇、宁南镇）
-# 注意：时代3的火炮使用 a_1644_late_ming_artillery（晚明火炮：佛郎机、将军炮、威远炮等）
+# 包括：江北四镇（兴平镇、东平镇、广昌镇、靖南镇、宁南镇）、大同镇（姜瓖）
+# 注意：时代3的火炮使用 a_1644_late_ming_artillery（晚明火炮：佛郎机、将军炮、威远炮等），时代4的火炮使用 a_red_cannon（红衣大炮）
 
 ming_warlords.1 = {
 	type = country_event
@@ -281,6 +281,67 @@ ming_warlords.1 = {
 								unit_has_leader = no
 							}
 							set_as_commander = scope:zly_start_commander
+						}
+					}
+				}
+			}
+			force_recalc_country_active_status = root
+		}
+		
+		# 大同镇（姜瓖，大同）
+		if = {
+			limit = { tag = CJX }
+			set_variable = { name = cjx_1644_start_army_spawned value = 1 }
+			
+			if = {
+				limit = { exists = character:chi_jiang_xiang }
+				character:chi_jiang_xiang = {
+					save_scope_as = cjx_start_commander
+				}
+			}
+			
+			# 大同：步兵 10000（时代3）、骑兵 10000（时代4）、炮兵 12门（时代4）
+			location:datong_datong ?= {
+				if = {
+					limit = { owner = root }
+					# 步兵：10 * 1000 = 10000 人（时代3）
+					while = {
+						count = 10
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_zhanbing
+							owner = root
+							origin = this
+							experience = 90
+						}
+					}
+					# 骑兵：33 * 300 = 10000 人（约，时代4）
+					while = {
+						count = 33
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_cavalry
+							owner = root
+							origin = this
+							experience = 95
+						}
+					}
+					# 炮兵：3 营(4 门/营) = 12门（时代4红衣大炮）
+					while = {
+						count = 3
+						create_sub_unit_with_owner = {
+							type = a_red_cannon
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+					if = {
+						limit = { exists = scope:cjx_start_commander }
+						random_unit_in_location = {
+							limit = {
+								owner = root
+								unit_has_leader = no
+							}
+							set_as_commander = scope:cjx_start_commander
 						}
 					}
 				}
