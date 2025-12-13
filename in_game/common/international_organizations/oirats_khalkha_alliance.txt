@@ -20,9 +20,9 @@
     # War mechanics
     gives_military_access_to_all_when_at_war = yes
 
-    join_defensive_wars_always = no
-    join_defensive_wars_auto_call = no
-    can_declare_war = yes
+    join_defensive_wars_always = { always = no }
+    join_defensive_wars_auto_call = { always = no }
+    can_declare_war = { always = yes }
 
     # Membership modifiers
     modifier = {
@@ -37,7 +37,7 @@
     #}
 
     # Membership triggers
-    create_visible_trigger = no
+    create_visible_trigger = { always = no }
     invite_visible_trigger = { 
         is_subject_of = {
             any_international_organization_member = {
@@ -66,9 +66,9 @@
     can_leave_trigger = {
         NOT = { religion = religion:tibetan_buddhism }
     }
-    auto_leave_trigger = no
-    auto_disband_trigger = no
-    can_vote_in_parliament = no
+    auto_leave_trigger = { always = no }
+    auto_disband_trigger = { always = no }
+    can_vote_in_parliament = { always = no }
 
     # Effects
     #on_joined = { effect }
