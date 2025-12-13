@@ -492,14 +492,14 @@ def main():
             scaled_pops = scaler.scale_multiple_areas(area_names, target_population)
             
             # 生成注释
-            comment = f"Scaled population for {target_name}: {target_population:.1f}万 (from {len(area_names)} areas)"
+            comment = f"Scaled population for {target_name}: {target_population:.1f}千 (from {len(area_names)} areas)"
         else:
             # 处理单个area
             print(f"\n正在处理 area: {target_name}...")
             scaled_pops = scaler.scale_population(target_name, target_population)
             
             # 生成注释
-            comment = f"Scaled population for {target_name}: {target_population:.1f}万"
+            comment = f"Scaled population for {target_name}: {target_population:.1f}千"
         
         # 更新原pops文件
         print("\n" + "=" * 60)
