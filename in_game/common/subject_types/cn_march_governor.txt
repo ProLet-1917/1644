@@ -164,14 +164,15 @@ cn_march_governor = {
         }
     }
     allow_declaring_wars = {
-        scope:defender ?= {
-            is_subject = yes
-            overlord = scope:overlord
-            OR = {
-                subject_type = root #藩镇内战
-                subject_type = subject_type:tusi #兼并土司
-            }
-        }
+        #scope:defender ?= {
+        #    is_subject = yes
+        #    overlord = scope:overlord
+        #    OR = {
+        #        subject_type = root #藩镇内战
+        #        subject_type = subject_type:tusi #兼并土司
+        #    }
+        #}
+        always = yes
     }
 
 
