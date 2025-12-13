@@ -7,8 +7,7 @@ qng_1644_banner_army.1 = {
 	
 
 	# 描述：清初旗军开局部队，迁移多尔衮或以君主为统领。
-	# 兵力构成（调整后）：常备军规模大幅减少，主要依靠征召八旗骑兵
-	# 征召兵：大量八旗骑兵可通过征召系统获得（levy_a_banner_cavalry）
+	# 兵力构成：炮兵 100门（时代4红衣大炮）、步兵 10000（乌真超哈）、骑兵 6000（八旗骑兵）
 	# 指挥官：优先让 character:chi_dorgon 担任主力部队统帅，若不存在则使用统治者。
 
 	immediate = {
@@ -31,7 +30,7 @@ qng_1644_banner_army.1 = {
 			location:shenyang ?= {
 				if = {
 					limit = { owner = root }
-					#25 营（4 门/营）
+					# 炮兵：25 营（4 门/营）= 100门（时代4红衣大炮）
 					while = {
 						count = 25
 						create_sub_unit_with_owner = {
@@ -41,6 +40,7 @@ qng_1644_banner_army.1 = {
 							experience = 90
 						}
 					}
+					# 乌真超哈：10 * 1000 = 10000 人
 					while = {
 						count = 10
 						create_sub_unit_with_owner = {
@@ -50,6 +50,7 @@ qng_1644_banner_army.1 = {
 							experience = 90
 						}
 					}
+					# 八旗骑兵：20 * 600 = 12000 人
 					while = {
 						count = 20
 						create_sub_unit_with_owner = {

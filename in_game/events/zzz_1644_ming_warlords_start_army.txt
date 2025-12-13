@@ -1,0 +1,292 @@
+﻿namespace = ming_warlords
+
+# 明末军阀开局军队生成事件（隐藏事件）
+# 包括：江北四镇（兴平镇、东平镇、广昌镇、靖南镇、宁南镇）
+# 注意：时代3的火炮使用 a_1644_late_ming_artillery（晚明火炮：佛郎机、将军炮、威远炮等）
+
+ming_warlords.1 = {
+	type = country_event
+	hidden = yes
+
+	immediate = {
+		# ==========================================
+		# 江北四镇 - 时代3
+		# ==========================================
+		
+		# 兴平镇（高杰，徐州）
+		if = {
+			limit = { tag = CGJ }
+			set_variable = { name = cgj_1644_start_army_spawned value = 1 }
+			
+			if = {
+				limit = { exists = character:chi_gao_jie }
+				character:chi_gao_jie = {
+					save_scope_as = cgj_start_commander
+				}
+			}
+			
+			# 徐州：步兵 10000、骑兵 15000、炮兵 16门（时代3）
+			location:xuzhou ?= {
+				if = {
+					limit = { owner = root }
+					# 步兵：10 * 1000 = 10000 人
+					while = {
+						count = 10
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_zhanbing
+							owner = root
+							origin = this
+							experience = 90
+						}
+					}
+					# 骑兵：50 * 300 = 15000 人
+					while = {
+						count = 50
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_cavalry
+							owner = root
+							origin = this
+							experience = 95
+						}
+					}
+					# 炮兵：4 营(4 门/营) = 16门（晚明火炮）
+					while = {
+						count = 4
+						create_sub_unit_with_owner = {
+							type = a_1644_late_ming_artillery
+							owner = root
+							origin = this
+							experience = 90
+						}
+					}
+					if = {
+						limit = { exists = scope:cgj_start_commander }
+						random_unit_in_location = {
+							limit = {
+								owner = root
+								unit_has_leader = no
+							}
+							set_as_commander = scope:cgj_start_commander
+						}
+					}
+				}
+			}
+			force_recalc_country_active_status = root
+		}
+		
+		# 东平镇（刘泽清，淮安）
+		if = {
+			limit = { tag = LZQ }
+			set_variable = { name = lzq_1644_start_army_spawned value = 1 }
+			
+			if = {
+				limit = { exists = character:chi_liu_zeqing }
+				character:chi_liu_zeqing = {
+					save_scope_as = lzq_start_commander
+				}
+			}
+			
+			# 淮安：步兵 6000、骑兵 6000
+			location:shanyang_huaian ?= {
+				if = {
+					limit = { owner = root }
+					# 步兵：6 * 1000 = 6000 人
+					while = {
+						count = 6
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_zhanbing
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+					# 骑兵：20 * 300 = 6000 人
+					while = {
+						count = 20
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_cavalry
+							owner = root
+							origin = this
+							experience = 70
+						}
+					}
+					if = {
+						limit = { exists = scope:lzq_start_commander }
+						random_unit_in_location = {
+							limit = {
+								owner = root
+								unit_has_leader = no
+							}
+							set_as_commander = scope:lzq_start_commander
+						}
+					}
+				}
+			}
+			force_recalc_country_active_status = root
+		}
+		
+		# 广昌镇（刘良佐，寿春）
+		if = {
+			limit = { tag = LLZ }
+			set_variable = { name = llz_1644_start_army_spawned value = 1 }
+			
+			if = {
+				limit = { exists = character:chi_liu_liangzuo }
+				character:chi_liu_liangzuo = {
+					save_scope_as = llz_start_commander
+				}
+			}
+			
+			# 寿春：步兵 6000、骑兵 4000
+			location:shouchun ?= {
+				if = {
+					limit = { owner = root }
+					# 步兵：6 * 1000 = 6000 人
+					while = {
+						count = 6
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_zhanbing
+							owner = root
+							origin = this
+							experience = 50
+						}
+					}
+					# 骑兵：13 * 300 = 4000 人（约）
+					while = {
+						count = 13
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_cavalry
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+					if = {
+						limit = { exists = scope:llz_start_commander }
+						random_unit_in_location = {
+							limit = {
+								owner = root
+								unit_has_leader = no
+							}
+							set_as_commander = scope:llz_start_commander
+						}
+					}
+				}
+			}
+			force_recalc_country_active_status = root
+		}
+		
+		# 靖南镇（黄得功，合肥）
+		if = {
+			limit = { tag = HDG }
+			set_variable = { name = hdg_1644_start_army_spawned value = 1 }
+			
+			if = {
+				limit = { exists = character:chi_huang_degong }
+				character:chi_huang_degong = {
+					save_scope_as = hdg_start_commander
+				}
+			}
+			
+			# 合肥：步兵 15000、骑兵 10000
+			location:hefei ?= {
+				if = {
+					limit = { owner = root }
+					# 步兵：15 * 1000 = 15000 人
+					while = {
+						count = 15
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_zhanbing
+							owner = root
+							origin = this
+							experience = 50
+						}
+					}
+					# 骑兵：33 * 300 = 10000 人（约）
+					while = {
+						count = 33
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_cavalry
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+					if = {
+						limit = { exists = scope:hdg_start_commander }
+						random_unit_in_location = {
+							limit = {
+								owner = root
+								unit_has_leader = no
+							}
+							set_as_commander = scope:hdg_start_commander
+						}
+					}
+				}
+			}
+			force_recalc_country_active_status = root
+		}
+		
+		# 宁南镇（左良玉，江夏）
+		if = {
+			limit = { tag = ZLY }
+			set_variable = { name = zly_1644_start_army_spawned value = 1 }
+			
+			if = {
+				limit = { exists = character:chi_zuo_liangyu }
+				character:chi_zuo_liangyu = {
+					save_scope_as = zly_start_commander
+				}
+			}
+			
+			# 江夏：步兵 20000、骑兵 20000、炮兵 40门（时代3）
+			location:jiangxia ?= {
+				if = {
+					limit = { owner = root }
+					# 步兵：20 * 1000 = 20000 人
+					while = {
+						count = 20
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_zhanbing
+							owner = root
+							origin = this
+							experience = 80
+						}
+					}
+					# 骑兵：67 * 300 = 20000 人（约）
+					while = {
+						count = 67
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_cavalry
+							owner = root
+							origin = this
+							experience = 90
+						}
+					}
+					# 炮兵：10 营(4 门/营) = 40门（晚明火炮）
+					while = {
+						count = 10
+						create_sub_unit_with_owner = {
+							type = a_1644_late_ming_artillery
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+					if = {
+						limit = { exists = scope:zly_start_commander }
+						random_unit_in_location = {
+							limit = {
+								owner = root
+								unit_has_leader = no
+							}
+							set_as_commander = scope:zly_start_commander
+						}
+					}
+				}
+			}
+			force_recalc_country_active_status = root
+		}
+	}
+}
+

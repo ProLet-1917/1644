@@ -29,20 +29,9 @@ mng_1644.1 = { #南迁之议
                 			experience = 60
             			}
         			}
-
-        			# 额外步营：3
+        			# 骑营：10
         			while = {
-            			count = 3
-            			create_sub_unit_with_owner = {
-                			type = a_1644_chinese_zhanbing
-                			owner = c:CSH
-                			origin = this
-                			experience = 60
-            			}
-        			}
-        			# 骑营：2
-        			while = {
-            			count = 2
+            			count = 10
             			create_sub_unit_with_owner = {
                 			type = a_1644_chinese_cavalry
                 			owner = c:CSH
@@ -50,7 +39,15 @@ mng_1644.1 = { #南迁之议
                 			experience = 60
             			}
         			}
-
+					while = {
+						count = 3
+						create_sub_unit_with_owner = {
+							type = a_1644_late_ming_artillery
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
         			# 给部队派将领
         			if = {
             			limit = { exists = character:chi_tang_tong }
@@ -78,55 +75,55 @@ mng_1644.1 = { #南迁之议
 				days = 6
 			}
 		}
-    	if = {
-			limit = { tag = MNG }
-			location:dadu ?= {
-				if = {
-					limit = { owner = root }
-					# 步营：5 * 1000 = 5000 人
-					while = {
-						count = 5
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_zhanbing
-							owner = root
-							origin = this
-							experience = 60
-						}
-					}
-					while = {
-						count = 3
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_zhanbing
-							owner = root
-							origin = this
-							experience = 60
-						}
-					}
-					# 骑营：2 营 600 人
-					while = {
-						count = 2
-						create_sub_unit_with_owner = {
-							type = a_1644_chinese_cavalry
-							owner = root
-							origin = this
-							experience = 60
-						}
-					}
+    	# if = { # 注释掉，不要再给大明军队了
+		# 	limit = { tag = MNG }
+		# 	location:dadu ?= {
+		# 		if = {
+		# 			limit = { owner = root }
+		# 			# 步营：5 * 1000 = 5000 人
+		# 			while = {
+		# 				count = 5
+		# 				create_sub_unit_with_owner = {
+		# 					type = a_1644_chinese_zhanbing
+		# 					owner = root
+		# 					origin = this
+		# 					experience = 60
+		# 				}
+		# 			}
+		# 			while = {
+		# 				count = 3
+		# 				create_sub_unit_with_owner = {
+		# 					type = a_1644_chinese_zhanbing
+		# 					owner = root
+		# 					origin = this
+		# 					experience = 60
+		# 				}
+		# 			}
+		# 			# 骑营：2 营 600 人
+		# 			while = {
+		# 				count = 2
+		# 				create_sub_unit_with_owner = {
+		# 					type = a_1644_chinese_cavalry
+		# 					owner = root
+		# 					origin = this
+		# 					experience = 60
+		# 				}
+		# 			}
 
-					if = {
-						limit = { exists = character:chi_tang_tong }
-						random_unit_in_location = {
-							limit = {
-								owner = root
-								unit_has_leader = no
-							}
-							set_as_commander = character:chi_tang_tong
-						}
-					}
-				}
-			}
-			force_recalc_country_active_status = root
-		}
+		# 			if = {
+		# 				limit = { exists = character:chi_tang_tong }
+		# 				random_unit_in_location = {
+		# 					limit = {
+		# 						owner = root
+		# 						unit_has_leader = no
+		# 					}
+		# 					set_as_commander = character:chi_tang_tong
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# 	force_recalc_country_active_status = root
+		# }
 	}
 }
 

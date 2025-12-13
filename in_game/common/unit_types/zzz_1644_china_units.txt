@@ -29,7 +29,7 @@ a_1644_chinese_zhanbing = {
 	# # 略微降低输出与士气，作为廉价主力
 
 	country_potential = { 
-		OR = { tag = CSH tag = WSG tag = CXI tag = MNG }
+		culture ?= { has_culture_group = culture_group:chinese_group }
 	}
 	gfx_tags = { chinese_zhanbing medium_tag }
 }
@@ -51,9 +51,25 @@ a_1644_chinese_musketeers = {
 	morale_damage_taken = -0.08
 
 	country_potential = {
-		OR = {tag = CSH tag = WSG tag = CXI tag = MNG }
+		culture ?= { has_culture_group = culture_group:chinese_group }
 	}
 	gfx_tags = { chinese_musket medium_tag }
+}
+
+# 晚明火炮：佛郎机、将军炮、威远炮等（时代3）
+a_1644_late_ming_artillery = {
+	category = army_artillery
+	copy_from = a_age_3_discovery_artillery
+	buildable = yes
+
+	# 一营约 100 人（4 门炮）
+	# 晚明火炮包括佛郎机、将军炮、威远炮等传统火炮
+	initiative = 1
+
+	country_potential = {
+		culture ?= { has_culture_group = culture_group:chinese_group }
+	}
+	gfx_tags = { age_2_renaissance }
 }
 
 # 红衣大炮：重定义（每营约 200 人，对应 4 门火炮）
@@ -68,7 +84,10 @@ REPLACE:a_red_cannon = {
 	morale_damage_done = 0.1
 
 	country_potential = {
-		OR = { tag = QNG tag = CSH tag = WSG tag = CXI tag = MNG }
+		OR = { 
+			tag = QNG 
+			culture ?= { has_culture_group = culture_group:chinese_group }
+		}
 	}
 	gfx_tags = { heavy_tag }
 }
@@ -83,7 +102,7 @@ REPLACE:a_banner_cavalry = {
 	buildable = yes
 	levy = no
 	
-	max_strength = 0.3
+	max_strength = 0.6
 	initiative = 3
 	morale_damage_done = 0.1
 	strength_damage_done = 0.1
@@ -148,7 +167,7 @@ a_1644_chinese_cavalry = {
 	buildable = yes
 
 	country_potential = {
-		OR = {tag = WSG tag = CSH tag = MNG tag = CXI}
+		culture ?= { has_culture_group = culture_group:chinese_group }
 	}
 	gfx_tags = { medium_tag }
 }
