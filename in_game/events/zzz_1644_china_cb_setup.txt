@@ -1,0 +1,49 @@
+namespace = china_cb_setup
+
+# 给所有首都在中国和满洲的国家互相添加"统一中国"CB
+# 这个事件会被每个符合条件的国家触发
+china_cb_setup.1 = {
+	type = country_event
+	hidden = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = capital
+		OR = {
+			capital.region = region:west_china_region
+			capital.region = region:east_china_region
+			capital.region = region:north_china_region
+			capital.region = region:south_china_region
+			capital.region = region:manchuria_region
+		}
+	}
+	
+	immediate = {
+		# 为当前国家添加对其他所有符合条件的国家的CB
+		every_country = {
+			limit = {
+				exists = capital
+				exists = this
+				NOT = { this = ROOT }
+				OR = {
+					capital.region = region:west_china_region
+					capital.region = region:east_china_region
+					capital.region = region:north_china_region
+					capital.region = region:south_china_region
+					capital.region = region:manchuria_region
+				}
+			}
+			ROOT = {
+				add_casus_belli = {
+					target = this
+					type = casus_belli:cb_chinese_unification
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = china_cb_setup.1.a
+	}
+}
+

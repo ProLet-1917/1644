@@ -1,7 +1,7 @@
 character_db = {
 
 	tun_hammuda_muradoglu = {
-		first_name = { name = name_hammuda }
+		first_name = { name = name_hamid }
 		culture = tunisian
 		religion = sunni
 		estate = nobles_estate
@@ -12,7 +12,7 @@ character_db = {
 		dynasty = muradoglu_dynasty
 	}
 	tur_ibrahim_i_ottomans = {
-		first_name = { name = name_ibrahim }
+		first_name = { name = name_abraham }
 		culture = turkish_culture
 		religion = sunni
 		estate = nobles_estate
@@ -35,7 +35,7 @@ character_db = {
 		dynasty = ottomans_dynasty
 	}
 	rus_mikhail_romanov = {
-		first_name = { name = name_mikhail }
+		first_name = { name = name_michael }
 		culture = muscovite
 		religion = orthodox
 		estate = nobles_estate
@@ -46,7 +46,7 @@ character_db = {
 		dynasty = romanov_dynasty
 	}
 	rus_aleksey_romanov = {
-		first_name = { name = name_aleksey }
+		first_name = { name = name_alexis }
 		culture = muscovite
 		religion = orthodox
 		estate = nobles_estate
@@ -58,7 +58,7 @@ character_db = {
 		dynasty = romanov_dynasty
 	}
 	tra_gyorgy_rakoczy = {
-		first_name = { name = name_gyorgy }
+		first_name = { name = name_george }
 		culture = transylvanian
 		religion = orthodox
 		estate = nobles_estate
@@ -69,7 +69,7 @@ character_db = {
 		dynasty = rakoczy_dynasty
 	}
 	tra_gyorgy_ii_rakoczy = {
-		first_name = { name = name_gyorgy }
+		first_name = { name = name_george }
 		culture = transylvanian
 		religion = orthodox
 		estate = nobles_estate
@@ -81,7 +81,7 @@ character_db = {
 		dynasty = rakoczy_dynasty
 	}
 	cri_islam_giray = {
-		first_name = { name = name_islam }
+		first_name = { name = name_ishmael }
 		culture = crimean
 		religion = sunni
 		estate = nobles_estate
@@ -92,7 +92,7 @@ character_db = {
 		dynasty = giray_dynasty
 	}
 	oma_nasir_yaariba = {
-		first_name = { name = name_nasir }
+		first_name = { name = name_nasr }
 		culture = omani_culture
 		religion = ibadi
 		estate = nobles_estate
@@ -103,7 +103,7 @@ character_db = {
 		dynasty = yaariba_dynasty
 	}
 	yem_ismail_qasimid = {
-		first_name = { name = name_ismail }
+		first_name = { name = name_ishmael }
 		culture = yemeni_culture
 		religion = sunni
 		estate = nobles_estate
@@ -136,7 +136,7 @@ character_db = {
 		tag = GDA
 	}
 	jsl_manohar_das_yadava_bhati = {
-		first_name = { name = name_manohar }
+		first_name = { name = manoharpur }
 		culture = marwari
 		religion = sunni
 		estate = nobles_estate
@@ -147,7 +147,7 @@ character_db = {
 		tag = JSL
 	}
 	mew_jagar_singh_sisodia = {
-		first_name = { name = name_jagar.name_singh }
+		first_name = { name = name_jagat}
 		culture = mewari
 		religion = hindu
 		estate = nobles_estate
@@ -169,7 +169,7 @@ character_db = {
 		tag = BST
 	}
 	hsl_kempa_deva_wodeyar = {
-		first_name = { name = name_kempa }
+		first_name = { name = name_kamal }
 		culture = kannadiga
 		religion = hindu
 		estate = nobles_estate
@@ -180,7 +180,7 @@ character_db = {
 		tag = HSL
 	}
 	mab_tirumala_nayaka = {
-		first_name = { name = name_tirumala }
+		first_name = { name = tiruvannamalai}
 		culture = tamil
 		religion = hindu
 		estate = nobles_estate
@@ -189,5 +189,136 @@ character_db = {
 		birth = madurai
 		dynasty = nayaka_dynasty
 		tag = MAB
+	}
+	sax_magdelena_sibylle = {
+		first_name = { name = name_madeleine }
+		culture = prussian
+		religion = lutheran
+		estate = nobles_estate
+		adm = 35 dip = 48 mil = 28
+		female = yes
+		spouse = sax_johann_georg_i_von_wettin
+		birth_date = 1586.12.31
+		birth = konigsberg
+		dynasty = hohenzollern_dynasty
+		tag = SAX
+	}
+
+	ktz_sophie_eleonore = {
+		first_name = { name = name_sophia }
+		culture = saxon
+		religion = lutheran
+		estate = nobles_estate
+		adm = 38 dip = 51 mil = 27
+		female = yes
+		father = sax_johann_georg_i_von_wettin
+		mother = sax_magdelena_sibylle
+		spouse = ktz_landgrave_georg_von_hessen
+		birth_date = 1609.11.23
+		birth = dresden
+		dynasty = wettin_dynasty
+		tag = KTZ
+	}
+
+	hpl_marie_elisabeth = {
+		first_name = { name = name_sophia }
+		culture = saxon
+		religion = lutheran
+		estate = nobles_estate
+		adm = 35 dip = 52 mil = 31
+		female = yes
+		father = sax_johann_georg_i_von_wettin
+		mother = sax_magdelena_sibylle
+		spouse = hpl_friedrich_von_oldenburg
+		birth_date = 1610.11.22
+		birth = dresden
+		dynasty = wettin_dynasty
+		tag = HPL
+	}
+
+	sax_augustus_von_wettin = {
+		first_name = { name = name_august }
+		culture = saxon
+		religion = lutheran
+		estate = nobles_estate
+		adm = 42 dip = 41 mil = 50
+		father = sax_johann_georg_i_von_wettin
+		mother = sax_magdelena_sibylle
+		birth_date = 1614.8.13
+		birth = dresden
+		dynasty = wettin_dynasty
+		tag = SAX
+	}
+
+	sax_christian_von_wettin = {
+		first_name = { name = name_christian }
+		culture = saxon
+		religion = lutheran
+		estate = nobles_estate
+		adm = 38 dip = 40 mil = 52
+		father = sax_johann_georg_i_von_wettin
+		mother = sax_magdelena_sibylle
+		birth_date = 1615.10.27
+		birth = dresden
+		dynasty = wettin_dynasty
+		tag = SAX
+	}
+
+	dan_magdelena_sibylle_ii = {
+		first_name = { name = name_madeleine }
+		culture = saxon
+		religion = lutheran
+		estate = nobles_estate
+		adm = 31 dip = 55 mil = 27
+		female = yes
+		father = sax_johann_georg_i_von_wettin
+		mother = sax_magdelena_sibylle
+		birth_date = 1617.12.23
+		birth = dresden
+		dynasty = wettin_dynasty
+		tag = DAN
+	}
+
+	sax_maurice_von_wettin = {
+		first_name = { name = name_maurice }
+		culture = saxon
+		religion = lutheran
+		estate = nobles_estate
+		adm = 35 dip = 41 mil = 48
+		father = sax_johann_georg_i_von_wettin
+		mother = sax_magdelena_sibylle
+		birth_date = 1619.3.28
+		birth = dresden
+		dynasty = wettin_dynasty
+		tag = SAX
+	}
+
+	sax_magdelena_sibylle_ii = {
+		first_name = { name = name_madeleine }
+		culture = prussian
+		religion = lutheran
+		estate = nobles_estate
+		adm = 33 dip = 46 mil = 31
+		female = yes
+		spouse = sax_johann_georg_von_wettin
+		birth_date = 1612.10.27
+		birth = bayreuth
+		dynasty = hohenzollern_dynasty
+		tag = SAX
+	}
+
+	sax_erdmuthe_sophie = {
+		first_name = { name = name_sophia }
+		culture = saxon
+		religion = lutheran
+		estate = nobles_estate
+		adm = 3 dip = 4 mil = 1
+		female = yes
+		father = sax_johann_georg_von_wettin
+		mother = sax_magdelena_sibylle_ii
+		birth_date = 1644.2.25
+		birth = dresden
+		dynasty = wettin_dynasty
+		tag = SAX
 	}
 }
