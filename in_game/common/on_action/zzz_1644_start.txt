@@ -21,10 +21,7 @@
             }
 
             # 开局生成大量女角色以防止绝嗣（为每个国家触发）
-            if = {
-                limit = { exists = capital }
-                trigger_event_silently = zzz_1644_generate_female_characters.1
-            }
+            trigger_event_silently = zzz_1644_generate_female_characters.1
         }
         # 清除默认佣兵队长（仅针对主要国家）
         c:QNG = { trigger_event_silently = cleanup_1644.1 }
@@ -33,76 +30,37 @@
         c:CXI = { trigger_event_silently = cleanup_1644.1 }
         c:MNG = { trigger_event_silently = cleanup_1644.1 }
 
-        # 为大顺创建起始军队
+        # 主要势力开局事件
         c:CSH = {
-            if = {
-                limit = { NOT = { has_variable = csh_1644_dashun_start_army_spawned } }
-                trigger_event_silently = csh_1644_start_army.1
-            }
-            trigger_event_silently = {
-                id = csh_1644_unification.1
-                days = 4
-            }
-            # 解锁"庶民的王朝"改革触发器
-            unlock_government_reform_effect = {
-                type = chi_peasant_empire_reform
-            }
+            trigger_event_silently = csh_1644_start_army.1
+            trigger_event_silently = { id = csh_1644_unification.1 days = 4 }
+            unlock_government_reform_effect = { type = chi_peasant_empire_reform }
         }
-        # 清朝，创建旗军并安排统一战争事件(已移动到事件trigger中)
         c:QNG = {
-            # 生成旗军
-            if = {
-                limit = { NOT = { has_variable = qng_1644_banner_cavalry_spawned } }
-                trigger_event_silently = qng_1644_banner_army.1
-            }
+            trigger_event_silently = qng_1644_banner_army.1
             trigger_event_silently = { id = qng_1644_unification.1 days = 23 }
-
-
-            # 解锁并激活八旗改革
-            unlock_government_reform_effect = {
-                type = qng_banner_reform
-            }
-            enact_government_reform_effect = {
-                type = qng_banner_reform
-            }
-
-        }
-        # 吴三桂创建起始军队
-        c:WSG = {
-            if = {
-                limit = { NOT = { has_variable = wsg_1644_start_army_spawned } }
-                trigger_event_silently = wsg_1644_start_army.1
-            }
-        }
-        # 南迁之议
-        c:MNG = {
-            if = {
-                limit = { NOT = { has_variable = mng_1644_changping_garrison_spawned } }
-                trigger_event_silently = mng_1644.1
-            }
         }
         c:WSG = {
-            if = {
-                limit = { NOT = { has_variable = wsg_goto_beijing } }
-                trigger_event_silently = { id = wsg_1644_choice.2 days = 1 }
+            trigger_event_silently = wsg_1644_start_army.1
+            c:WSG = {
+                if = {
+                    limit = { NOT = { has_variable = wsg_goto_beijing } }
+                    trigger_event_silently = { id = wsg_1644_choice.2 days = 1 }
+                }
             }
         }
-        # 大西政权（CXI）创建起始军队
-        c:CXI = {
-            if = {
-                limit = { NOT = { has_variable = cxi_1644_start_army_spawned } }
-                trigger_event_silently = cxi_1644_start_army.1
-            }
-        }
+        c:MNG = { trigger_event_silently = mng_1644.1 }
+        c:CXI = { trigger_event_silently = cxi_1644_start_army.1 }
         
         # 开局生成大量女角色以防止绝嗣
    
-        # 开局生成明末军阀军队（江北四镇和左良玉）
+        # 开局生成明末军阀军队（江北四镇、左良玉、大同镇）
         c:CGJ = { trigger_event_silently = ming_warlords.1 } # 兴平镇（高杰）
         c:LZQ = { trigger_event_silently = ming_warlords.1 } # 东平镇（刘泽清）
         c:LLZ = { trigger_event_silently = ming_warlords.1 } # 广昌镇（刘良佐）
         c:HDG = { trigger_event_silently = ming_warlords.1 } # 靖南镇（黄得功）
         c:ZLY = { trigger_event_silently = ming_warlords.1 } # 宁南镇（左良玉）
+        c:CJX = { trigger_event_silently = ming_warlords.1 } # 大同镇（姜瓖）
 
     }
 }

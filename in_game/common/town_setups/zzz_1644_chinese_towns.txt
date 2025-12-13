@@ -41,29 +41,29 @@ REPLACE:chinese_city = {
 	temple = 1
 	
 	# --- 基础设施与商业 ---
-	marketplace = 3		# 大幅增加：区域贸易中心
-	granary = 3			# 增加：粮食储备
+	marketplace = 3		# 大幅区域贸易中心
+	granary = 3			# 粮食储备
 	construction_center = 2 # 新增：加强建设能力 (吸纳劳工)
 	
 	# --- 工业与手工业 (工坊级别) ---
 	# 纺织业 (支柱产业)
-	cloth_workshop = 3		# 增加：纺织业
-	fine_cloth_workshop = 1	# 增加：丝绸出口
+	cloth_workshop = 3		# 纺织业
+	fine_cloth_workshop = 1	# 丝绸出口
 	
 	# 轻工业
-	porcelain_workshop = 1	# 增加：瓷器出口
-	pottery_workshop = 1	# 增加：陶瓷产业
-	paper_workshop = 3		# 增加：造纸与出版
-	furniture_workshop = 1	# 增加：手工业
-	lacquerware_workshop = 1 # 增加：漆器工艺
-	distillers_workshop = 1	# 增加：蒸馏酒业
-	tannery = 3				# 增加：皮革加工
+	porcelain_guild = 1	# 瓷器出口
+	pottery_workshop = 1	# 陶瓷产业
+	paper_workshop = 3		# 造纸与出版
+	furniture_workshop = 1	# 手工业
+	lacquerware_guild = 1 # 漆器工艺
+	distillers_workshop = 1	# 蒸馏酒业
+	tannery = 3				# 皮革加工
 	
 	# 重工业与工具
-	tools_workshop = 3		# 增加：工具制造
-	weapon_workshop = 3		# 增加：军事装备
+	tools_workshop = 3		# 工具制造
+	weapon_workshop = 3		# 军事装备
 	guns_workshop = 1		# 新增：火器工坊 (晚明特征)
-	mason = 1				# 增加：建筑技术
+	mason = 1				# 建筑技术
 	
 	# --- 军事防御 ---
 	castle = 1				# 城墙
@@ -83,7 +83,7 @@ REPLACE:chinese_coastal_city = {
 	marketplace = 3		# 国际贸易中心
 	granary = 3
 	construction_center = 2 # 加强建设能力
-	wharf = 1			# 增加：港口设施 (区别于内陆城市)
+	wharf = 1			# 港口设施 (区别于内陆城市)
 	
 	# --- 工业与手工业 ---
 	# 纺织业
@@ -91,11 +91,11 @@ REPLACE:chinese_coastal_city = {
 	fine_cloth_workshop = 1	# 丝绸出口
 	
 	# 轻工业
-	porcelain_workshop = 1
+	porcelain_guild = 1
 	pottery_workshop = 1
 	paper_workshop = 3
 	furniture_workshop = 1
-	lacquerware_workshop = 1
+	lacquerware_guild = 1
 	distillers_workshop = 1
 	tannery = 3
 	
@@ -126,9 +126,9 @@ chinese_town_mil = {
 	
 	# --- 工业与手工业 ---
 	# 军需产业优先
-	weapon_guild = 3	# 大幅增加：军事装备制造
-	tools_guild = 3		# 增加：工具制造
-	tannery = 3			# 增加：皮革加工 (甲胄)
+	weapon_guild = 3	# 大幅军事装备制造
+	tools_guild = 3		# 工具制造
+	tannery = 3			# 皮革加工 (甲胄)
 	
 	# 民用产业 (基础)
 	cloth_guild = 3		# 军服
@@ -142,7 +142,7 @@ chinese_town_mil = {
 	# --- 军事防御 ---
 	castle = 1			# 城堡防御
 	# stockade = 1		# 营垒 (可选)
-	provincial_garrison = 1	# 大幅增加：卫所驻军
+	provincial_garrison = 1	# 大幅卫所驻军
 }
 
 # =============================================================================

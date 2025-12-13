@@ -1,0 +1,53 @@
+# 收集所有首都在中国和满洲的国家到全局变量列表
+zzz_1644_collect_china_countries_effect = {
+	custom_description = {
+		clear_global_variable_list = china_countries_list
+		every_country = {
+			limit = {
+				exists = capital
+				exists = this
+				is_subject = no
+				OR = {
+					capital.region = region:west_china_region
+					capital.region = region:east_china_region
+					capital.region = region:north_china_region
+					capital.region = region:south_china_region
+					capital.region = region:manchuria_region
+				}
+			}
+			add_to_global_variable_list = {
+				name = china_countries_list
+				target = this
+			}
+		}
+	}
+}
+
+# 为每个首都在中国和满洲的国家添加对其他所有国家的CB
+# 使用全局变量列表，遍历列表中的国家
+zzz_1644_add_china_cb_effect = {
+	custom_description = {
+		every_country = {
+			limit = {
+				has_global_variable_list = china_countries_list
+				exists = this
+			}
+			save_scope_as = source_country
+			# 遍历所有国家，为在列表中的其他国家添加CB
+			every_country = {
+				limit = {
+					has_global_variable_list = china_countries_list
+					NOT = { this = scope:source_country }
+					exists = this
+				}
+				scope:source_country = {
+					add_casus_belli = {
+						target = this
+						type = casus_belli:cb_chinese_unification
+					}
+				}
+			}
+		}
+	}
+}
+
