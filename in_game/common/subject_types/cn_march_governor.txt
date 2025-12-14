@@ -3,9 +3,9 @@ cn_march_governor = {
 	color = subject_march
 	level = 1
 	visible_through_diplomacy = {
-		country_rank_level >= scope:target.country_rank_level
-		scope:target = { subject_type_is_not_locked = yes }
-		
+		#country_rank_level >= scope:target.country_rank_level
+		#scope:target = { subject_type_is_not_locked = yes }
+		always = no
 		#Japanese Imperial Courts Exception
 		trigger_if = {
 			limit = {
@@ -24,9 +24,9 @@ cn_march_governor = {
 	}
 
 	visible_through_treaty = {
-		country_rank_level >= scope:target.country_rank_level
-		scope:target = { subject_type_is_not_locked = yes }
-		
+		#country_rank_level >= scope:target.country_rank_level
+		#scope:target = { subject_type_is_not_locked = yes }
+		always = no
 		#Japanese Imperial Courts Exception
 		trigger_if = {
 			limit = {
