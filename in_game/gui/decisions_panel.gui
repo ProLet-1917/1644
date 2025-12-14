@@ -144,7 +144,34 @@ widget = {
 									title = "CRI_C_CLAIM_YEDISAN"
 									on_action = "[GetScriptedGui('dec_cri_claim_yedisan').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								}
+							}
 
+							#Horde Decisions
+							button_regular = { #Kill Herd for Money
+								name = "dec_horde_n_kill_herd"
+								tooltip = "DEC_N_HORDE_KILL_HERD_TT"
+								using = tooltip_ne
+								size = { 100% 30 }
+								visible = "[GetPlayer.MakeScope.Var('dec_t_kill_herd').IsSet]"
+								text = "DEC_N_HORDE_KILL_HERD"
+								action_tooltip = {
+									click_type = left
+									title = "N_HORDE_KILL_HERD"
+								}
+							}
+
+							button_regular = { #Kill Herd for Money
+								name = "dec_horde_kill_herd"
+								tooltip = "DEC_HORDE_KILL_HERD_TT"
+								using = tooltip_ne
+								size = { 100% 30 }
+								visible = "[GetPlayer.MakeScope.Var('dec_c_kill_herd').IsSet]"
+								text = "DEC_HORDE_KILL_HERD"
+								action_tooltip = {
+									click_type = left
+									title = "HORDE_KILL_HERD"
+									on_action = "[GetScriptedGui('dec_horde_kill_herd').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
 							}
 
  							button_regular = { #This one is for test
@@ -152,7 +179,8 @@ widget = {
 								tooltip = "HERD"
 								using = tooltip_ne
 								size = { 100% 30 }
-								visible = "[GetPlayer.MakeScope.Var('current_herd').IsSet]"
+								visible = no
+								#visible = "[GetPlayer.MakeScope.Var('current_herd').IsSet]"
 								text = "ADD_HERD_60"
 
 								action_tooltip = {

@@ -1,7 +1,7 @@
 namespace = the_steppe
 
 #Debug Event
-the_steppe.1 = {
+the_steppe.1 = {#Debug Event
 	type = country_event
 	title = "the_steppe.1.t"
 	desc = "the_steppe.1.desc"
@@ -22,5 +22,49 @@ the_steppe.1 = {
 			name = current_herd
 			subtract = 50
 		}
+	}
+}
+
+the_steppe.2 = {
+	type = country_event
+	category = situation_event
+
+	title = the_steppe.2.title
+	desc = the_steppe.2.desc
+
+	immediate = {
+		ruler_or_regent ?= { save_scope_as = target_character1 }
+		scope:target.owner = {
+			save_scope_as = target_country
+			ruler_or_regent ?= { save_scope_as = target_character2 }
+		}
+	}
+
+	option = {
+		name = the_steppe.2.a
+		add_casus_belli = { target = scope:target.owner type = casus_belli:cb_conquer_another_horde province = scope:target }
+		refresh_map_colors = yes
+	}
+}
+
+the_steppe.3 = {
+	type = country_event
+	category = situation_event
+
+	title = the_steppe.3.title
+	desc = the_steppe.3.desc
+
+	immediate = {
+		ruler_or_regent ?= { save_scope_as = target_character1 }
+		scope:target.owner = {
+			save_scope_as = target_country
+			ruler_or_regent ?= { save_scope_as = target_character2 }
+		}
+	}
+
+	option = {
+		name = the_steppe.3.a
+		add_casus_belli = { target = scope:target.owner type = casus_belli:cb_horde_vs_civ province = scope:target }
+		refresh_map_colors = yes
 	}
 }

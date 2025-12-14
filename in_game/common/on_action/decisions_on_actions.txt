@@ -2,6 +2,8 @@ monthly_country_pulse = {
     on_actions = {
         on_dec_cri_c_claim_yedisan
         on_dec_cri_n_claim_yedisan
+        on_dec_horde_c_kill_herd
+        on_dec_horde_n_kill_herd
     }
 }
 
@@ -41,10 +43,6 @@ on_dec_cri_c_claim_yedisan = { #Check Requirement
         c:CRI = {
             remove_variable = cri_t_claim_yedisan
             set_variable = cri_c_claim_yedisan
-            change_variable = {
-                name = current_herd
-                subtract = 200
-            }
         }
         cri_claim_yedisan_effect = yes
     }
@@ -95,5 +93,33 @@ on_dec_cri_n_claim_yedisan = { #Check is it still meet the conditions
             remove_variable = cri_c_claim_yedisan
             set_variable = cri_t_claim_yedisan
         }
+    }
+}
+
+on_dec_horde_c_kill_herd = {
+    trigger = {
+        has_variable = current_herd
+        var:current_herd > 250
+    }
+    effect = {
+        remove_variable = dec_t_kill_herd
+        set_variable = dec_c_kill_herd
+        if = {
+            limit = {
+                is_ai = yes
+            }
+            trigger_event_non_silently = ai_decision_event.1
+        }
+    }
+}
+
+on_dec_horde_n_kill_herd = {
+    trigger = {
+        has_variable = current_herd
+        var:current_herd < 250
+    }
+    effect = {
+        remove_variable = dec_c_kill_herd
+        set_variable = dec_t_kill_herd
     }
 }

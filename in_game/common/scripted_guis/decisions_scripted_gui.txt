@@ -8,6 +8,10 @@ dec_cri_claim_yedisan = {
 		}
 		c:CRI = {
 			remove_variable = cri_c_claim_yedisan
+			change_variable = {
+				name = current_herd
+				subtract = 200
+			}
 		}
 	}
 }
@@ -18,5 +22,15 @@ add_herd_60 = {
 			name = current_herd
 			add = 60
 		}
+	}
+}
+
+dec_horde_kill_herd = {
+	effect = {
+		change_variable = {
+			name = current_herd
+			subtract = 250
+		}
+		add_gold = 50
 	}
 }
