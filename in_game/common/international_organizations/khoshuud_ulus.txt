@@ -27,9 +27,9 @@
     only_leader_country_joins_defensive_wars = no
     gives_military_access_to_all_when_at_war = yes
 
-    join_defensive_wars_always = yes
-    join_defensive_wars_auto_call = no
-    can_declare_war = yes
+    join_defensive_wars_always = { always = yes }
+    join_defensive_wars_auto_call = { always = yes }
+    can_declare_war = { always = yes }
 
     # Membership modifiers
     modifier = {
@@ -37,14 +37,14 @@
     }
     leader_modifier = {
         monthly_prestige = 0.05
-        diplomatic_capacity = 20
+        diplomatic_capacity = 10
     }
     #international_organization_modifier = {
     #    max_elector = 4
     #}
 
     # Membership triggers
-    create_visible_trigger = no
+    create_visible_trigger = { always = no }
     invite_visible_trigger = { 
         is_subject_of = {
             any_international_organization_member = {
@@ -70,10 +70,10 @@
             } 
         }
     }
-    can_leave_trigger = no
-    auto_leave_trigger = no
-    auto_disband_trigger = no
-    can_vote_in_parliament = no
+    can_leave_trigger = { always = no }
+    auto_leave_trigger = { always = no }
+    auto_disband_trigger = { always = no }
+    can_vote_in_parliament = { always = no }
 
     # Effects
     #on_joined = { effect }

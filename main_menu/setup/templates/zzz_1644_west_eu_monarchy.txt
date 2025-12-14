@@ -1,0 +1,71 @@
+# 西欧君主制 Setup 模板
+# 参考 1644 年法国（路易十四早期，马萨林摄政）
+# 适用于 1644 场景中的西欧君主制国家
+
+starting_technology_level = 5
+
+government = {
+	type = monarchy
+	heir_selection = cognatic_primogeniture
+	
+	# 社会价值观（范围：-100 到 100，正值=左侧，负值=右侧）
+	# 1644年法国：专制主义发展期，中央集权加强，但贵族仍有权力
+	centralization_vs_decentralization = 20       # 中央化 vs 地方化
+	traditionalist_vs_innovative = 10             # 传统主义 vs 创新
+	spiritualist_vs_humanist = 20                 # 精神主义 vs 人文主义
+	aristocracy_vs_plutocracy = 30                # 贵族政治 vs 财阀政治
+	serfdom_vs_free_subjects = 5                  # 农奴制 vs 自由民
+	mercantilism_vs_free_trade = 20              # 重商主义 vs 自由贸易
+	belligerent_vs_conciliatory = 15             # 好战 vs 和解
+	quality_vs_quantity = 10                     # 质量 vs 数量
+	offensive_vs_defensive = 10                   # 进攻 vs 防御
+	land_vs_naval = 10                           # 陆军 vs 海军
+	capital_economy_vs_traditional_economy = 60   # 资本经济 vs 传统经济
+	individualism_vs_communalism = 15            # 个人主义 vs 集体主义
+	outward_vs_inward = 10                       # 外向 vs 内向
+	
+	# 1644年法国：三级会议已长期未召开，但等级议会制度仍存在
+	parliament = {
+		parliament_type = estate_parliament # 等级议会
+	}
+	
+	privilege = {
+		# 贵族
+		auxilium_et_consilium              # 辅助与建议
+		nobles_land_rights                 # 贵族土地权利
+		noble_marriage_rights              # 贵族婚姻权利
+
+	
+		# 教士
+		clergy_literacy_rights             # 教士识字权利
+		clergy_enforced_unity              # 教士强制统一
+		clergy_powerful_dioceses           # 教士强大教区
+
+		# 市民
+		market_fairs                        # 市场集市
+		formal_guilds                       # 正式行会
+		building_roads_rights               # 道路建设权
+		# villes_franches                   # 自由城市
+
+		# 平民
+		partial_yield                      # 部分收成
+	}
+
+	laws = {
+		feudal_de_jure_law = by_tradition                    # 封建法理：按传统
+		medieval_levy_law = peasant_levies                  # 中世纪征召法：农民征召
+		royal_court_customs_law = aristocratic_court_policy   # 皇家宫廷习俗法：贵族宫廷政策
+		censorship = limited_censorship                       # 审查制度：有限审查
+		education_masses_law = basic_religious_education     # 大众教育法：基础宗教教育
+		administrative_system = central_councils             # 行政系统：中央议会
+		cultural_traditions_law = martial_society           # 文化传统法：军事社会
+		marriage_law = monogamous_marriage                  # 婚姻法：一夫一妻制
+		heir_religion_law = heir_same_religion              # 继承人宗教法：继承人同宗教
+		legal_code_law = civil_law_policy                   # 法律法典：民法政策
+		maritime_law = protect_trade_routes                  # 海事法：保护贸易路线
+		piracy_law = anti_piracy_policy                      # 海盗法：反海盗政策
+		distribution_of_power_law = dop_favor_the_ruler     # 权力分配法：偏向统治者
+		immigration_law = open_borders_law                   # 移民法：开放边界
+		mining_law = nobles_mining_law                       # 采矿法：贵族采矿法
+	}
+}

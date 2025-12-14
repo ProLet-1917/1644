@@ -1,69 +1,74 @@
 ﻿late_ming_crisis = {
-	monthly_spawn_chance = monthly_spawn_chance_unique
+	monthly_spawn_chance = 100
 
 	# 1. 触发条件
 	can_start = {
-		current_year >= 1644
+		current_year >= 1627
+		current_year <= 1650
 		exists = c:MNG
-		c:MNG = { owns = location:dadu }
-		OR = {
-			c:MNG = { stability < 50 }
-			c:MNG = { current_celestial_authority < 50 } # Assuming this trigger exists for Mandate
-			c:MNG = { is_at_war_with = c:QNG }
-			c:MNG = { is_at_war_with = c:CSH }
-		}
+		# c:MNG = { owns = location:dadu }
+		# OR = {
+		# 	current_year = 1644  # 1644年游戏开始时自动启动
+		# 	c:MNG = { stability < 50 }
+		# 	c:MNG = { current_celestial_authority < 50 } # Assuming this trigger exists for Mandate
+		# 	c:MNG = { is_at_war_with = c:QNG }
+		# 	c:MNG = { is_at_war_with = c:CSH }
+		# }
 	}
 
 	# 2. 结束条件
 	can_end = {
-		OR = {
-			NOT = { exists = c:MNG }
-			AND = {
-				exists = c:MNG
-				c:MNG = {
-					stability > 50
-					owns = location:dadu
-					NOT = { is_at_war = yes }
-				}
-			}
-			AND = {
-				exists = c:QNG
-				c:QNG = {
-					owns = location:dadu
-					stability > 50
-				}
-			}
-			AND = {
-				exists = c:CSH
-				c:CSH = {
-					owns = location:dadu
-					stability > 50
-				}
-			}
-		}
+		current_year > 1650
+		# OR = {
+		# 	NOT = { exists = c:MNG }
+		# 	AND = {
+		# 		exists = c:MNG
+		# 		c:MNG = {
+		# 			stability > 50
+		# 			owns = location:dadu
+		# 			at_war = no
+		# 		}
+		# 	}
+		# 	AND = {
+		# 		exists = c:QNG
+		# 		c:QNG = {
+		# 			owns = location:dadu
+		# 			stability > 50
+		# 		}
+		# 	}
+		# 	AND = {
+		# 		exists = c:CSH
+		# 		c:CSH = {
+		# 			owns = location:dadu
+		# 			stability > 50
+		# 		}
+		# 	}
+		# }
 	}
 
-	# 3. 可见性
+	# 3. 可见性 - 对所有首都在中国和满洲的国家可见
 	visible = {
 		OR = {
-			tag = MNG
-			tag = QNG
-			tag = CSH
-			tag = CXI
-			tag = WSG
+			capital.region = region:west_china_region
+			capital.region = region:east_china_region
+			capital.region = region:north_china_region
+			capital.region = region:south_china_region
+			capital.region = region:manchuria_region
 		}
 	}
 
 	# 4. 启动效果
 	on_start = {
+		# 触发事件给相关国家
 		every_country = {
 			limit = {
+				exists = capital
 				OR = {
-					tag = MNG
-					tag = QNG
-					tag = CSH
-					tag = CXI
-					tag = WSG
+					capital.region = region:west_china_region
+					capital.region = region:east_china_region
+					capital.region = region:north_china_region
+					capital.region = region:south_china_region
+					capital.region = region:manchuria_region
 				}
 			}
 			trigger_event_non_silently = late_ming_crisis.1
@@ -73,6 +78,10 @@
 			name = ming_collapse_progress
 			value = 0
 		}
+		# 给所有首都在中国和满洲的国家互相添加"统一中国"CB
+		# 使用全局变量列表方法，分两步执行
+		zzz_1644_collect_china_countries_effect = yes
+		zzz_1644_add_china_cb_effect = yes
 	}
 
 	# 5. 月度逻辑
@@ -84,11 +93,11 @@
 				every_country = {
 					limit = {
 						OR = {
-							tag = MNG
-							tag = QNG
-							tag = CSH
-							tag = CXI
-							tag = WSG
+							capital.region = region:west_china_region
+							capital.region = region:east_china_region
+							capital.region = region:north_china_region
+							capital.region = region:south_china_region
+							capital.region = region:manchuria_region
 						}
 					}
 					trigger_event_non_silently = late_ming_crisis.100 # Generic monthly pulse event
@@ -98,56 +107,5 @@
 		}
 	}
 
-	# 6. 地图模式
-	map_color = {
-		if = {
-			limit = { has_owner = yes owner = { tag = MNG } }
-			value = MNG
-		}
-		else_if = {
-			limit = { has_owner = yes owner = { tag = QNG } }
-			value = QNG
-		}
-		else_if = {
-			limit = { has_owner = yes owner = { tag = CSH } }
-			value = CSH
-		}
-		else_if = {
-			limit = { has_owner = yes owner = { tag = CXI } }
-			value = CXI
-		}
-		else_if = {
-			limit = { has_owner = yes owner = { tag = WSG } }
-			value = WSG
-		}
-		else = {
-			value = define:NMapColors|DEFAULT_COLOR
-		}
-	}
-	
-	legend_key = { 
-		desc = "MNG"
-		color = MNG
-		require_color_on_map = yes
-	}
-	legend_key = { 
-		desc = "QNG"
-		color = QNG
-		require_color_on_map = yes
-	}
-	legend_key = { 
-		desc = "CSH"
-		color = CSH
-		require_color_on_map = yes
-	}
-	legend_key = { 
-		desc = "CXI"
-		color = CXI
-		require_color_on_map = yes
-	}
-	legend_key = { 
-		desc = "WSG"
-		color = WSG
-		require_color_on_map = yes
-	}
+
 }
