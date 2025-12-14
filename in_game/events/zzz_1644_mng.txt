@@ -39,15 +39,6 @@ mng_1644.1 = { #南迁之议
                 			experience = 60
             			}
         			}
-					while = {
-						count = 3
-						create_sub_unit_with_owner = {
-							type = a_1644_late_ming_artillery
-							owner = root
-							origin = this
-							experience = 60
-						}
-					}
         			# 给部队派将领
         			if = {
             			limit = { exists = character:chi_tang_tong }
