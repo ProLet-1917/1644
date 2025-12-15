@@ -1,0 +1,66 @@
+﻿REPLACE:cb_chinese_unification = {
+	speed = 100
+	visible = {
+		# 只有中国境内的国家才能看到这个CB
+		capital = {
+			OR = {
+				region = region:east_china_region
+				region = region:north_china_region
+				region = region:south_china_region
+				region = region:west_china_region
+				region = region:manchuria_region
+			}
+		}
+		# 目标国家也必须在中国境内
+		scope:target = {
+			capital = {
+				OR = {
+					region = region:east_china_region
+					region = region:north_china_region
+					region = region:south_china_region
+					region = region:west_china_region
+					region = region:manchuria_region
+				}
+			}
+			any_owned_location = {
+				OR = {
+					region = region:east_china_region
+					region = region:north_china_region
+					region = region:south_china_region
+					region = region:west_china_region
+					region = region:manchuria_region
+				}
+			}
+		}
+	}
+	allow_creation = {
+	}
+
+	war_goal_type = superiority_chinese_unification
+}
+
+REPLACE:cb_claim_mandate_of_heaven = {
+	speed = 10
+	visible = {
+		exists = international_organization:middle_kingdom
+		scope:target = { is_leader_of_international_organization = international_organization:middle_kingdom }
+		OR = {
+			culture = {
+				OR = {
+					has_culture_group = culture_group:chinese_group
+					has_culture_group = culture_group:confucian_group
+					has_culture_group = culture_group:jurchen_group
+					has_culture_group = culture_group:mongolian_group
+				}
+			}
+			AND = {
+				has_societal_value = societal_value_type:sinicized_vs_unsinicized
+				societal_value:sinicized_vs_unsinicized < 75
+			}
+		}
+	}
+	allow_creation = {
+	}
+
+	war_goal_type = take_capital
+}

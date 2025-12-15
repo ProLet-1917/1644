@@ -65,47 +65,445 @@ war_manager = {
 	}
 	
 	##Iberian Independence Wars
+	#war = {
+	#	war_name = {
+	#		name = "FRANCO_SPANISH_WAR"
+	#		ordinal = 1
+	#		first = {
+	#			name = "FRA"
+	#		}
+	#	}
+	#
+	#	take_province = {
+	#		type = conquer_province
+	#		casus_belli = cb_conquer_province
+	#		location = arras
+	#	}
+	#
+	#	start_date = 1635.5.19
+	#	action = 1644.4.17
+	#	attacker = {
+	#		country = FRA
+	#		request = {
+	#			reason = Instigator
+	#		}
+	#	}
+	#	attacker = {
+	#		country = CAT
+	#		request = {
+	#			caller = FRA
+	#			reason = Subject
+	#		}
+	#	}
+	#	defender = {
+	#		country = SPA
+	#		request = {
+	#			reason = Target
+	#		}
+	#	}
+	#	defender = {
+	#		country = ARA
+	#		request = {
+	#			caller = SPA
+	#			reason = Subject
+	#		}
+	#	}
+	#}
+
+	#Thirty Years War
 	war = {
-		war_name = {
-			name = "FRANCO_SPANISH_WAR"
-			ordinal = 1
-			first = {
-				name = "FRA"
-			}
-		}
-		
-		take_province = {
-			type = conquer_province
-			SPAus_belli = cb_conquer_province
-			location = arras
-		}
-		
-		start_date = 1635.5.19
+		war_name = "THIRTY_YEARS_WAR"
+		#ordinal = 1
+
+		start_date = 1618.5.23
 		action = 1644.4.17
+
+		superiority = {
+			type = superiority
+			casus_belli = cb_religious_superiority
+		}
+
 		attacker = {
 			country = FRA
 			request = {
 				reason = Instigator
 			}
 		}
+
+		attacker = {
+			country = DOC
+			request = {
+				reason = subject
+			}
+		}
+
+		attacker = {
+			country = BRR
+			request = {
+				reason = subject
+			}
+		}
+
+		attacker = {
+			country = BNV
+			request = {
+				reason = subject
+			}
+		}
+
 		attacker = {
 			country = CAT
 			request = {
-				caller = FRA
-				reason = Subject
+				reason = subject
 			}
 		}
+
+		attacker = {
+			country = BRI
+			request = {
+				reason = subject
+			}
+		}
+
+		attacker = {
+			country = ORL
+			request = {
+				reason = subject
+			}
+		}
+
+		attacker = {
+			country = POI
+			request = {
+				reason = subject
+			}
+		}
+
+		attacker = {
+			country = BUR
+			request = {
+				reason = subject
+			}
+		}
+
+		attacker = {
+			country = BOU
+			request = {
+				reason = subject
+			}
+		}
+
+		attacker = {
+			country = AUV
+			request = {
+				reason = subject
+			}
+		}
+
+		attacker = {
+			country = DAU
+			request = {
+				reason = subject
+			}
+		}
+
+		attacker = {
+			country = PRO
+			request = {
+				reason = subject
+			}
+		}
+
+		attacker = {
+			country = LOR
+			request = {
+				reason = subject
+			}
+		}
+
+		attacker = {
+			country = POR
+			request = {
+				reason = alliance
+			}
+		}
+
+		attacker = {
+			country = SAV
+			request = {
+				reason = alliance
+			}
+		}
+
+		attacker = {
+			country = NED
+			request = {
+				reason = alliance
+			}
+		}
+
+		attacker = {
+			country = UTR
+			request = {
+				reason = alliance
+			}
+		}
+
+		attacker = {
+			country = GEL
+			request = {
+				reason = alliance
+			}
+		}
+
+		attacker = {
+			country = GRO
+			request = {
+				reason = alliance
+			}
+		}
+
+		attacker = {
+			country = DEV
+			request = {
+				reason = alliance
+			}
+		}
+
+		attacker = {
+			country = HES
+			request = {
+				reason = alliance
+			}
+		}
+
+		attacker = {
+			country = SWE
+			request = {
+				reason = alliance
+			}
+		}
+
+		attacker = {
+			country = FIN
+			request = {
+				reason = subject
+			}
+		}
+
+		attacker = {
+			country = STE
+			request = {
+				reason = subject
+			}
+		}
+
 		defender = {
-			country = SPA
+			country = HAB
 			request = {
 				reason = Target
 			}
 		}
+
+		defender = {
+			country = HUN
+			request = {
+				reason = subject
+			}
+		}
+
+		defender = {
+			country = BAV
+			request = {
+				reason = alliance
+			}
+		}
+
+		defender = {
+			country = TIR
+			request = {
+				reason = alliance
+			}
+		}
+
+		defender = {
+			country = SPA
+			request = {
+				reason = alliance
+			}
+		}
+
 		defender = {
 			country = ARA
 			request = {
-				caller = SPA
-				reason = Subject
+				reason = subject
+			}
+		}
+
+		defender = {
+			country = NAV
+			request = {
+				reason = subject
+			}
+		}
+
+		defender = {
+			country = GRA
+			request = {
+				reason = subject
+			}
+		}
+
+		defender = {
+			country = HAI
+			request = {
+				reason = alliance
+			}
+		}
+
+		defender = {
+			country = ARS
+			request = {
+				reason = alliance
+			}
+		}
+
+		defender = {
+			country = FLA
+			request = {
+				reason = alliance
+			}
+		}
+		defender = {
+			country = BRB
+			request = {
+				reason = alliance
+			}
+		}
+
+		defender = {
+			country = NAM
+			request = {
+				reason = alliance
+			}
+		}
+
+		defender = {
+			country = LUX
+			request = {
+				reason = alliance
+			}
+		}
+
+		defender = {
+			country = KLE
+			request = {
+				reason = alliance
+			}
+		}
+
+		defender = {
+			country = LIM
+			request = {
+				reason = alliance
+			}
+		}
+
+		defender = {
+			country = LIL
+			request = {
+				reason = alliance
+			}
+		}
+
+		defender = {
+			country = DOU
+			request = {
+				reason = alliance
+			}
+		}
+
+		defender = {
+			country = MLO
+			request = {
+				reason = subject
+			}
+		}
+
+		defender = {
+			country = NAP
+			request = {
+				reason = subject
+			}
+		}
+
+		defender = {
+			country = SIC
+			request = {
+				reason = subject
+			}
+		}
+
+		defender = {
+			country = SAR
+			request = {
+				reason = subject
+			}
+		}
+
+		defender = {
+			country = FCB
+			request = {
+				reason = subject
+			}
+		}
+
+		defender = {
+			country = SAX
+			request = {
+				reason = alliance
+			}
+		}
+
+		defender = {
+			country = UPA
+			request = {
+				reason = alliance
+			}
+		}
+
+		defender = {
+			country = MAI
+			request = {
+				reason = alliance
+			}
+		}
+
+		defender = {
+			country = DAN
+			request = {
+				reason = alliance
+			}
+		}
+
+		defender = {
+			country = HTR
+			request = {
+				reason = subject
+			}
+		}
+
+		defender = {
+			country = SLV
+			request = {
+				reason = subject
+			}
+		}
+
+		defender = {
+			country = NOR
+			request = {
+				reason = subject
 			}
 		}
 	}

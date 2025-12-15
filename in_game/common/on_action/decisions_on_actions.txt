@@ -2,8 +2,8 @@ monthly_country_pulse = {
     on_actions = {
         on_dec_cri_c_claim_yedisan
         on_dec_cri_n_claim_yedisan
-        on_dec_horde_c_kill_herd
-        on_dec_horde_n_kill_herd
+        on_dec_horde_c_sell_herd
+        on_dec_horde_n_sell_herd
     }
 }
 
@@ -96,14 +96,14 @@ on_dec_cri_n_claim_yedisan = { #Check is it still meet the conditions
     }
 }
 
-on_dec_horde_c_kill_herd = {
+on_dec_horde_c_sell_herd = {
     trigger = {
         has_variable = current_herd
         var:current_herd > 250
     }
     effect = {
-        remove_variable = dec_t_kill_herd
-        set_variable = dec_c_kill_herd
+        remove_variable = dec_t_sell_herd
+        set_variable = dec_c_sell_herd
         if = {
             limit = {
                 is_ai = yes
@@ -113,13 +113,13 @@ on_dec_horde_c_kill_herd = {
     }
 }
 
-on_dec_horde_n_kill_herd = {
+on_dec_horde_n_sell_herd = {
     trigger = {
         has_variable = current_herd
         var:current_herd < 250
     }
     effect = {
-        remove_variable = dec_c_kill_herd
-        set_variable = dec_t_kill_herd
+        remove_variable = dec_c_sell_herd
+        set_variable = dec_t_sell_herd
     }
 }

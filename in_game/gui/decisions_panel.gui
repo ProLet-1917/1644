@@ -147,30 +147,30 @@ widget = {
 							}
 
 							#Horde Decisions
-							button_regular = { #Kill Herd for Money
-								name = "dec_horde_n_kill_herd"
-								tooltip = "DEC_N_HORDE_KILL_HERD_TT"
+							button_regular = { #Sell Herd for Money
+								name = "dec_horde_n_sell_herd"
+								tooltip = "DEC_N_HORDE_SELL_HERD_TT"
 								using = tooltip_ne
 								size = { 100% 30 }
-								visible = "[GetPlayer.MakeScope.Var('dec_t_kill_herd').IsSet]"
-								text = "DEC_N_HORDE_KILL_HERD"
+								visible = "[GetPlayer.MakeScope.Var('dec_t_sell_herd').IsSet]"
+								text = "DEC_N_HORDE_SELL_HERD"
 								action_tooltip = {
 									click_type = left
-									title = "N_HORDE_KILL_HERD"
+									title = "N_HORDE_SELL_HERD"
 								}
 							}
 
-							button_regular = { #Kill Herd for Money
-								name = "dec_horde_kill_herd"
-								tooltip = "DEC_HORDE_KILL_HERD_TT"
+							button_regular = { #Sell Herd for Money
+								name = "dec_horde_sell_herd"
+								tooltip = "DEC_HORDE_SELL_HERD_TT"
 								using = tooltip_ne
 								size = { 100% 30 }
-								visible = "[GetPlayer.MakeScope.Var('dec_c_kill_herd').IsSet]"
-								text = "DEC_HORDE_KILL_HERD"
+								visible = "[GetPlayer.MakeScope.Var('dec_c_sell_herd').IsSet]"
+								text = "DEC_HORDE_SELL_HERD"
 								action_tooltip = {
 									click_type = left
-									title = "HORDE_KILL_HERD"
-									on_action = "[GetScriptedGui('dec_horde_kill_herd').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									title = "HORDE_SELL_HERD"
+									on_action = "[GetScriptedGui('dec_horde_sell_herd').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								}
 							}
 
