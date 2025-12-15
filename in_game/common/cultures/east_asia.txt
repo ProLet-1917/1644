@@ -1556,7 +1556,7 @@ mulam_culture = { #https://en.wikipedia.org/wiki/Mulao_people
 }
 
 sibe_culture = { #https://en.wikipedia.org/wiki/Sibe_people
-	language = jurchen_language
+	language = mongolian_language
 
 	color = map_sibe
 
@@ -1566,7 +1566,8 @@ sibe_culture = { #https://en.wikipedia.org/wiki/Sibe_people
 
 	}
 	culture_groups = {
-		tungusic_group
+		jurchen_group
+		mongolian_group
 	}
 }
 
@@ -2765,10 +2766,10 @@ buryat_culture = { #https://en.wikipedia.org/wiki/Buryats
 	}
 }
 
-khamag_culture = { #https://en.wikipedia.org/wiki/Khamag_Mongol
+khamag_culture = { #Change this to Barga https://en.wikipedia.org/wiki/Barga_(tribe)
 	language = mongolian_language
 
-	color = map_khamag
+	color = map_kharchin
 
 	tags = { east_asian_gfx mongolian_coa_gfx altai_coa_gfx }
 
@@ -2780,10 +2781,25 @@ khamag_culture = { #https://en.wikipedia.org/wiki/Khamag_Mongol
 	}
 }
 
-kharchin_culture = { #https://en.wikipedia.org/wiki/Kharchin_Mongols
+kharchin_culture = { #https://en.wikipedia.org/wiki/Kharchin_Mongols 明末这个和其他蒙古没什么区别了
 	language = mongolian_language
 
 	color = map_kharchin
+
+	tags = { east_asian_gfx mongolian_coa_gfx altai_coa_gfx }
+
+	opinions = {
+
+	}
+	culture_groups = {
+		mongolian_group
+	}
+}
+
+onnigud_culture = { #https://ja.wikipedia.org/wiki/%E6%9D%B1%E9%81%93%E8%AB%B8%E7%8E%8B There is no such information of this on the English Internet
+	language = mongolian_language
+
+	color = map_khamag
 
 	tags = { east_asian_gfx mongolian_coa_gfx altai_coa_gfx }
 
@@ -2826,8 +2842,9 @@ tuvan_culture = { #https://en.wikipedia.org/wiki/Tuvans
 
 }
 
-solon_culture = { #https://en.wikipedia.org/wiki/Solon_people
-	language = evenk_language
+solon_culture = { #注：此为p社之讹误，并无索伦一族，对应位置应该是卦爾察 γoulčin ᠭᠣᠣᠯᠴᠢᠨ in Manchu language
+#Note: This is a mistake made by the Paradox, and there is no Solon people. The corresponding position should be the γoulčin(I don't know how in English, there is no relevant information on the English internet)
+	language = jurchen_language
 
 	color = map_solon
 
@@ -2837,6 +2854,7 @@ solon_culture = { #https://en.wikipedia.org/wiki/Solon_people
 
 	}	
 	culture_groups = {
+		jurchen_group
 		tungusic_group
 	}
 }
