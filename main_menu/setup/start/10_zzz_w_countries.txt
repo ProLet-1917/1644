@@ -25,6 +25,10 @@ countries = {
 			mauritius
 		}
 
+		control = {
+			hulst antwerp eindhoven venlo geldern roermond
+		}
+
 		starting_technology_level = 3
 		include = "expl_western_europe"
 		include = "catholic_monarchy"
@@ -183,7 +187,11 @@ countries = {
 	HAI = { #Hainaut
 		own_control_core = {
 			valenciennes #France
-			ath chimay enghien maubeuge mons tournai
+			ath  enghien  mons tournai
+		}
+
+		own_core = {
+			chimay maubeuge
 		}
 
 		starting_technology_level = 3
@@ -225,7 +233,7 @@ countries = {
 	}
 
 	ARS = { #Artois
-		own_control_core = {
+		own_core = {
 			arras bapaume bethune hesdin lens saint_omer saint_pol hesdin
 		}
 
@@ -254,7 +262,11 @@ countries = {
 	FLA = { #Flanders
 		own_control_core = {
 			cassel dunkirk oudenaarde ypres veurne
-			ostend hulst ghent sint_niklaas aalst kortriik
+			ostend ghent sint_niklaas aalst kortriik
+		}
+
+		own_core = {
+			hulst
 		}
 
 		starting_technology_level = 3
@@ -290,7 +302,11 @@ countries = {
 
 	BRB = { #Brabant
 		own_control_core = {
-			brussels nivelles leuven mechelen antwerp turnhout eindhoven
+			brussels nivelles leuven mechelen turnhout
+		}
+
+		own_core = {
+			antwerp eindhoven
 		}
 
 		starting_technology_level = 3
@@ -355,7 +371,11 @@ countries = {
 
 	LUX = { #Luxemburg
 		own_control_core = {
-			luxembourg arlon bastogne bitburg la_roche orchimont neufchateau_luxembourg st_vith thionville vianden montmedy
+			luxembourg arlon bitburg thionville vianden
+		}
+
+		own_core = {
+			bastogne la_roche orchimont neufchateau_luxembourg st_vith montmedy
 		}
 
 		starting_technology_level = 3
@@ -392,7 +412,7 @@ countries = {
 	}
 
 	KLE = {	#Cleves
-		own_control_core = {
+		own_core = {
 			geldern venlo roermond
 		}
 
@@ -645,7 +665,7 @@ countries = {
 	}
 
 	FCB = { #Franche-Comt   Spainish Burgundy
-		own_control_core = {
+		own_core = {
 			gray vesoul dole
 			pontarlier poligny orgelet ornans baume montbozon
 			luxeuil salins_les_bains
@@ -730,12 +750,16 @@ countries = {
 
 	UPA = {	#Nordgau
 		own_control_core = {
-			heinsberg bergheim duren monchengladbach
-			dusseldorf remscheid siegburg solingen schleiden
+			heinsberg monchengladbach
 			amberg eschenbach neumarkt roding sulzbach #Oberpfalz
 			tirschenreuth cham
 			beilngries
 			dillingen
+		}
+
+		own_core = {
+			bergheim duren schleiden
+			dusseldorf remscheid siegburg solingen
 		}
 
 		starting_technology_level = 3
@@ -1411,9 +1435,13 @@ countries = {
 			imst reutte landeck
 			merano sterzing villandro bolzano silandro
 			lienz bruneck kufstein bregenz feldkirch bludenz wertingen hohenberg freiburg
-			belfort ferrette waldshut
-			kitzbuhel horb villingen stockach ensisheim
+			waldshut
+			kitzbuhel horb villingen stockach
 			krumbach gunzburg erbach_swabia
+		}
+
+		own_core = {
+			belfort ferrette ensisheim
 		}
 
 		starting_technology_level = 3
@@ -2051,7 +2079,7 @@ countries = {
 	}
 
 	HTR = { #Holstein #PU with Denmark
-		own_control_core = {
+		own_core = {
 			heide steinburg rendsburg stormarn segeberg pinneberg
 			haderslev flensburg
 		}
@@ -2078,7 +2106,7 @@ countries = {
 	}
 
 	SLV = { #Slesvig #Puppet of Denmark
-		own_control_core = {
+		own_core = {
 			aabenraa tonder
 			slesvig eckernforde amrum_island_wasteland husum
 		}
@@ -8679,10 +8707,10 @@ countries = {
 		tolerated_cultures = {
 			greek_culture
 			turkoman_culture
-			arab_culture
+			#arab_culture
 			armenian_culture
-			serbian_culture
-			bulgarian_culture
+			serbian
+			bulgarian
 		}
 
 		capital = constantinople
