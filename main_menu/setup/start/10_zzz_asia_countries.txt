@@ -190,11 +190,10 @@ countries = {
 			country_name = "CSH"
 
 			currency_data = {
-				gold = 12000 #国库
+				gold = 10000 #国库
 				stability = 40 #稳定度
 				prestige = 60 #声望
 				government_power = 40 #正统性
-				war_exhaustion = 0 #战争疲劳
 				army_tradition = 50 #军队传统
 			}
 		}
@@ -329,7 +328,7 @@ countries = {
 				monguor_culture
 			}
 			currency_data = {
-				gold = 50000 #国库 先给花不完的钱
+				gold = 30000 #国库 先给花不完的钱
 				stability = 60 #稳定度
 				prestige = 60 #声望
 				government_power = 80 #正统性
@@ -844,7 +843,7 @@ countries = {
 				stability = 30 #稳定度
 				prestige = 50 #声望
 				government_power = 40 #正统性
-				army_tradition = 30 #军队传统
+				army_tradition = 50 #军队传统
 			}
 		}
 
@@ -875,9 +874,9 @@ countries = {
 			flag = "WSG"
 			country_name = "WSG"
 			currency_data = {
-				gold = 1000 #国库
+				gold = 2000 #国库
 				stability = 80 #稳定度
-				army_tradition = 100 #军队传统
+				army_tradition = 60 #军队传统
 
 			}
 		}
@@ -1117,7 +1116,7 @@ countries = {
 			flag = "CHI_Ming_Sanchen"
 			country_name = "ZLY"
 			currency_data = {
-				gold = 500 #国库
+				gold = 2000 #国库
 				stability = 30 #稳定度
 				army_tradition = 50 #军队传统
 
@@ -1132,6 +1131,7 @@ countries = {
 				hongxian linhuai tianchang wuhe xuyi #泗州
 			}
 			capital = xuzhou
+			include = "zzz_cn_military_gvn"
 			government = {
 				type = monarchy
 				ruler = chi_gao_jie
@@ -1143,7 +1143,7 @@ countries = {
 			}
 			court_language = northern_mandarin_dialect
 			country_rank = rank_county
-			include = "zzz_cn_military_gvn"
+			
 			accepted_cultures = {
 				jin_culture
 				zhongyuan_culture
@@ -1151,7 +1151,7 @@ countries = {
 			flag = "CHI_Ming_Sanchen"
 			country_name = "CGJ"
 			currency_data = {
-				gold = 100 #国库
+				gold = 1000 #国库
 				stability = 30 #稳定度
 				army_tradition = 50 #军队传统
 
@@ -1163,6 +1163,7 @@ countries = {
 				shanyang_huaian andong_huaian qinghe_huaian yancheng funing_huaian taoyuan_huaian #淮安府
 			}
 			capital = shanyang_huaian
+			include = "zzz_cn_military_gvn"
 			government = {
 				type = monarchy
 				ruler = chi_liu_zeqing
@@ -1182,9 +1183,9 @@ countries = {
 			flag = "CHI_Ming_Sanchen"
 			country_name = "LZQ"
 			currency_data = {
-				gold = 50 #国库
+				gold = 500 #国库
 				stability = 30 #稳定度
-				army_tradition = 60 #军队传统
+				army_tradition = 50 #军队传统
 
 			}
 		}
@@ -1214,9 +1215,9 @@ countries = {
 			flag = "CHI_Ming_Sanchen"
 			country_name = "LLZ"
 			currency_data = {
-				gold = 50 #国库
+				gold = 500 #国库
 				stability = 30 #稳定度
-				army_tradition = 60 #军队传统
+				army_tradition = 50 #军队传统
 
 			}
 		}
@@ -1246,9 +1247,9 @@ countries = {
 			flag = "CHI_Ming_Sanchen"
 			country_name = "HDG"
 			currency_data = {
-				gold = 100 #国库
+				gold = 1000 #国库
 				stability = 30 #稳定度
-				army_tradition = 60 #军队传统
+				army_tradition = 50 #军队传统
 
 			}
 		}
@@ -1259,6 +1260,8 @@ countries = {
 				datong_datong xuanning huairen tiancheng baideng yulin_datong yunchuan #大同府
 			}
 			capital = datong_datong
+			
+			
 			government = {
 				type = monarchy
 				ruler = chi_jiang_xiang
@@ -1270,7 +1273,7 @@ countries = {
 			}
 			court_language = northern_mandarin_dialect
 			country_rank = rank_county
-			include = "zzz_cn_military_gvn"
+			
 			accepted_cultures = {
 				yan_culture
 				jin_culture
@@ -1278,7 +1281,7 @@ countries = {
 			flag = "CHI_Ming_Sanchen"
 			country_name = "CJX"
 			currency_data = {
-				gold = 100 #国库
+				gold = 1000 #国库
 				stability = 60 #稳定度
 				army_tradition = 50 #军队传统
 
@@ -1309,7 +1312,7 @@ countries = {
 			flag = "YUA"
 			country_name = "SES"
 			currency_data = {
-				gold = 100 #国库
+				gold = 1000 #国库
 				stability = 60 #稳定度
 				army_tradition = 40 #军队传统
 
@@ -1345,7 +1348,7 @@ countries = {
 			flag = "YUA"
 			country_name = "TSH"
 			currency_data = {
-				gold = 100 #国库
+				gold = 1000 #国库
 				stability = 60 #稳定度
 				army_tradition = 40 #军队传统
 
@@ -1376,7 +1379,7 @@ countries = {
 			flag = "YUA"
 			country_name = "ZSG"
 			currency_data = {
-				gold = 100 #国库
+				gold = 1000 #国库
 				stability = 60 #稳定度
 				army_tradition = 40 #军队传统
 
@@ -1405,7 +1408,7 @@ countries = {
 			flag = "YUA"
 			country_name = "HTG"
 			currency_data = {
-				gold = 100 #国库
+				gold = 1000 #国库
 				stability = 60 #稳定度
 				army_tradition = 60 #军队传统
 
@@ -1454,7 +1457,7 @@ countries = {
 			flag = "YUA"
 			country_name = "ZUN"
 			currency_data = {
-				gold = 200 #国库
+				gold = 2000 #国库
 				stability = 60 #稳定度
 				army_tradition = 80 #军队传统
 
@@ -1492,7 +1495,7 @@ countries = {
 			flag = "YUA"
 			country_name = "QKH"
 			currency_data = {
-				gold = 400 #国库
+				gold = 1000 #国库
 				stability = 60 #稳定度
 				army_tradition = 80 #军队传统
 
