@@ -37,7 +37,7 @@
 # 1644模组：降低县衙纸张需求
 REPLACE:zhixian = {
 	is_foreign = no
-	max_levels = 4
+	max_levels = 2
 	pop_type = nobles
 	
 	employment_size = minor_noble_employment
@@ -161,4 +161,44 @@ REPLACE:jurchen_barracks = {
 		early_soldier_building_maintenance
 	}
 	construction_demand = early_soldier_building_construction
+}
+
+# 1644模组：中国城墙建筑，驻军2000人
+chinese_city_wall = {
+	is_foreign = no
+	pop_type = soldiers
+	max_levels = 1
+	
+	category = defense_category
+	
+	employment_size = 3.0
+	
+	rural_settlement = yes
+	town = yes
+	city = yes
+	
+	build_time = large_fort_building
+	
+	expensive = yes
+	
+	country_potential = {
+		culture ?= { has_culture_group = culture_group:chinese_group }
+	}
+	
+	possible_production_methods = {
+		chinese_city_wall_maintenance
+	}
+	
+	construction_demand = chinese_city_wall_construction
+	
+	modifier = {
+		local_garrison_size = 1.5
+		local_defensive = 0.05
+		local_unrest = -0.1
+	}
+	
+	raw_modifier = {
+		fort_level = 3
+		propagating_zone_of_control = yes
+	}
 }
