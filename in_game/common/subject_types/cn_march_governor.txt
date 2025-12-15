@@ -1,5 +1,8 @@
-cn_march_governor = { 
-	subject_pays = subject_pays_march
+﻿cn_march_governor = { 
+	subject_pays = {
+        scaled_gold = 0
+        ignore_inflation = yes
+    }
 	color = subject_march
 	level = 1
 	visible_through_diplomacy = {
@@ -153,15 +156,7 @@ cn_march_governor = {
         }
     }
     can_marry = {
-        scope:actor = scope:subject
-        scope:recipient ?= {
-            is_subject = yes
-            overlord = scope:overlord
-            OR = {
-                subject_type = root #藩镇内战
-                subject_type = subject_type:tusi #兼并土司
-            }
-        }
+        always = yes
     }
     allow_declaring_wars = {
         #scope:defender ?= {
@@ -179,8 +174,8 @@ cn_march_governor = {
 
 
 	
-	can_change_rank = no
-	can_change_heir_selection = no
+	can_change_rank = yes #允许藩镇 改变 rank
+	can_change_heir_selection = yes
 
 	minimum_opinion_for_offer = 150
 

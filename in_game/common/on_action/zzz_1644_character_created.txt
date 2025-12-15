@@ -1,0 +1,56 @@
+# 为汉文化角色分配非location类型的dynasty，避免使用地名作为姓氏
+# root = character (角色创建时触发)
+on_character_created = {
+	effect = {
+		# 检查角色是否有汉文化
+		if = {
+			limit = {
+				has_culture_group = culture_group:chinese_group
+			}
+			# 如果角色没有dynasty，尝试分配一个
+			if = {
+				limit = {
+					NOT = { has_dynasty = yes }
+				}
+				# 尝试找到一个已有角色的dynasty
+				random_dynasty = {
+					limit = {
+						# 确保dynasty中有至少一个相同文化的成年角色
+						any_character_in_dynasty = {
+							culture = root.culture
+							is_adult = yes
+							NOT = { this = root }
+						}
+					}
+					root = {
+						dynasty = this
+					}
+				}
+			}
+			# 如果角色有dynasty，检查是否是只有自己的新dynasty（可能是location dynasty）
+			else_if = {
+				limit = {
+					has_dynasty = yes
+					# 检查dynasty中是否只有自己（可能是新创建的location dynasty）
+					all_character_in_dynasty = {
+						this = root
+					}
+				}
+				# 直接重新分配一个已有角色的dynasty（覆盖当前的location dynasty）
+				random_dynasty = {
+					limit = {
+						any_character_in_dynasty = {
+							culture = root.culture
+							is_adult = yes
+							NOT = { this = root }
+						}
+					}
+					root = {
+						dynasty = this
+					}
+				}
+			}
+		}
+	}
+}
+
