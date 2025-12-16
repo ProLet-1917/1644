@@ -1,0 +1,245 @@
+the_steppe_horde_claims = {
+    type = situation
+    show_message = no
+    potential = {
+    }
+
+    allow = {
+        scope:actor = {
+            at_war = no
+            has_raised_levies = no
+        }
+    }
+
+    automation_tick = never
+    automation_tick_frequency = 12
+    ai_tick = monthly
+    ai_tick_frequency = 3
+    price = price:the_steppe_horde_claims_price
+
+    cooldown = {
+        type = the_steppe_horde_claims_price_key
+        years = 3
+    }
+
+    select_trigger = {
+        looking_for_a = situation
+        interaction_source_list = {
+            situation:the_steppe = {
+                add_to_list = source
+            }
+        }
+        target_flag = recipient
+        name = "choose_situation"
+        column = {
+            data = name
+        }
+        visible = {
+            situation:the_steppe = this
+            situation_is_active = yes
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = province
+        target_flag = target
+        name = "choose_province"
+        none_available_msg_key = "no_provinces_available"
+        column = { data = owner_flag }
+        column = { data = name }
+        column = { data = population }
+        visible = {
+            scope:actor = { can_declare_war_on = root.owner }
+            trigger_if = {
+                limit = {
+                    scope:actor ?= {
+                        government_type = government_type:steppe_horde
+                    }
+                }
+                OR = {
+                    region = region:steppes_region
+                    region = region:khorasan_region
+                    region = region:mongolia_region
+                    region = region:xinjiang_region
+                    area = area:bursol_area
+                    area = area:suzun_area
+                    area = area:omsk_area
+                    area = area:kulykol_area
+                    area = area:bashkiria_area
+                    area = area:bolghar_area
+                    province_definition = province_definition:samara_province
+                    province_definition = province_definition:saratov_province
+                    province_definition = province_definition:atkarsk_province
+                }
+            }
+            any_location_in_province = {
+                is_neighbor_of = scope:actor
+            }
+            NOT = {
+                owner = {
+                    OR = {
+                        this = scope:actor
+                        overlord ?= scope:actor
+                        has_mutual_scripted_relation = {
+                            type = relation_type:alliance
+                            target = scope:actor
+                        }
+                    }
+                }
+            }
+        }
+    }
+    effect = {
+        if = {
+            limit = {
+                exists = scope:target
+                scope:target.owner ?= { government_type = government_type:steppe_horde }
+            }
+            custom_tooltip = {
+                text = ts_horde_claim_anotherhorde_tt
+                scope:actor = {
+                    trigger_event_silently = the_steppe.2
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                exists = scope:target
+                scope:target.owner ?= { NOT = { government_type = government_type:steppe_horde } }
+            }
+            custom_tooltip = {
+                text = ts_horde_claim_civ_tt
+                scope:actor = {
+                    trigger_event_silently = the_steppe.3
+                }
+            }
+        }
+    }
+
+    ai_will_do = {
+        if = {
+            limit = {
+                exists = scope:target
+            }
+
+            if = {
+                limit = {
+                    scope:target.owner = {
+                        is_subject = yes
+                        top_overlord ?= scope:actor
+                    }
+                }
+
+                add = {
+                    value = -1000
+                    desc = "our subject"
+                }
+            }
+
+            if = {
+                limit = {
+                    scope:actor = { is_during_bankruptcy = yes }
+                }
+                subtract = {
+                    desc = "[bankruptcy|e]"
+                    value = 10
+                }
+            }
+
+            if = {
+                limit = {
+                    scope:actor = { num_loans > 0 }
+                }
+                subtract = {
+                    desc = "loans"
+                    value = 1
+                }
+            }
+
+            if = {
+                limit = {
+                    scope:actor = { stability < 0 }
+                }
+                subtract = {
+                    desc = "low stability"
+                    value = 2
+                }
+            }
+
+            if = {
+                limit = {
+                    scope:actor = {
+                        has_truce_with = scope:target.owner
+                    }
+                }
+                add = {
+                    value = -1000
+                    desc = "truce"
+                }
+            }
+
+            if = {
+                limit = {
+                    scope:actor = {
+                        wants_to_subjugate = scope:target.owner
+                    }
+                }
+                add = {
+                    value = -1000
+                    desc = "wants to subjugate"
+                }
+            }
+
+            if = {
+                limit = {
+                    scope:actor = { has_casus_belli_on = scope:target.owner }
+                }
+                add = {
+                    value = -1000
+                    desc = "We already have a cb on them"
+                }
+            }
+
+            add = {
+                desc = "RELATIVE_STRENGTH"
+                value = "scope:actor.relative_defensive_alliance_strength(scope:target.owner)"
+                multiply = 10
+                subtract = 6
+            }
+
+            add = {
+                desc = "we want their land"
+                value = "scope:actor.conquer_desire(scope:target.owner)"
+                divide = 5
+            }
+
+            if = {
+                limit = {
+                    scope:actor = { wants_casus_belli_with = scope:target.owner }
+                }
+                add = {
+                    desc = "wants casus belli on target owner"
+                    value = 10
+                }
+            }
+
+            if = {
+                limit = {
+                    scope:target.owner = {
+                        num_locations < 5
+                    }
+                }
+                divide = {
+                    value = 3
+                    desc = "very small enemy"
+                }
+            }
+        }
+        else = {
+            add = {
+                value = 10
+                desc = BASE_VALUE
+            }
+        }
+    }
+}
