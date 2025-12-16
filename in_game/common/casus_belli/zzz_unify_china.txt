@@ -1,8 +1,23 @@
 ﻿REPLACE:cb_chinese_unification = {
 	speed = 100
+	ai_selection_desire = 1000
+	additional_war_enthusiasm_attacker = 0.5
+	additional_war_enthusiasm_defender = 0.2
 	visible = {
 		# 只有中国境内的国家才能看到这个CB
 		capital = {
+			OR = {
+				region = region:east_china_region
+				region = region:north_china_region
+				region = region:south_china_region
+				region = region:west_china_region
+				region = region:manchuria_region
+			}
+		}
+	}
+	allow_creation = {
+		# 使用CB的国家必须在中国境内
+		capital ?= {
 			OR = {
 				region = region:east_china_region
 				region = region:north_china_region
@@ -32,8 +47,6 @@
 				}
 			}
 		}
-	}
-	allow_creation = {
 	}
 
 	war_goal_type = superiority_chinese_unification
