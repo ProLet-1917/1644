@@ -1,0 +1,36 @@
+dec_cri_claim_yedisan = {
+	effect = {
+		cri_claim_yedisan_effect = yes
+		every_in_list = {
+			list = list_of_yedisan_province
+			limit = { owner = c:TUR }
+			change_location_owner = c:CRI
+		}
+		c:CRI = {
+			remove_variable = cri_c_claim_yedisan
+			change_variable = {
+				name = current_herd
+				subtract = 200
+			}
+		}
+	}
+}
+
+add_herd_60 = {
+	effect = {
+		change_variable = {
+			name = current_herd
+			add = 60
+		}
+	}
+}
+
+dec_horde_sell_herd = {
+	effect = {
+		change_variable = {
+			name = current_herd
+			subtract = 250
+		}
+		add_gold = 50
+	}
+}
