@@ -11,10 +11,10 @@
 	rural_settlement = yes
 	town = yes
 	city = yes
-	build_time = huge_unique_build_time
+	build_time = small_fort_building
 
 	allow = {
-			# has_building = building_type:ruined_great_wall_of_china #1644剧本是修好的
+			 has_building = building_type:ruined_great_wall_of_china #1644剧本是修好的
 			# is_historical_route_of_great_wall = yes
 	}
 
@@ -25,7 +25,7 @@
 	construction_demand = repaired_great_wall_of_china_construction
 
 	modifier = {
-		local_garrison_size = 0.2
+		local_garrison_size = 0.5
 	}
 	
 	raw_modifier = {
@@ -33,11 +33,47 @@
 		propagating_zone_of_control = yes
 	}
 }
+REPLACE:ruined_great_wall_of_china = {
+	is_foreign = no
+	pop_type = soldiers
+	max_levels = 1
+	
+	employment_size = great_wall_of_china_employment
+	category = defense_category
+	
+	
+	rural_settlement = yes
+	town = yes
+	city = yes
+	build_time = huge_unique_build_time
+
+
+	country_potential = {
+		always = no
+	}
+	allow = {
+		always = no
+	}
+
+	expensive = yes
+	possible_production_methods = {
+		ruined_great_wall_of_china_maintenance
+	}
+	construction_demand = ruined_great_wall_of_china_construction
+
+	modifier = {
+		local_garrison_size = 0.1
+	}
+	
+	raw_modifier = {
+		propagating_zone_of_control = no
+	}
+}
 
 # 1644模组：降低县衙纸张需求
 REPLACE:zhixian = {
 	is_foreign = no
-	max_levels = 4
+	max_levels = 2
 	pop_type = nobles
 	
 	employment_size = minor_noble_employment
@@ -71,7 +107,7 @@ REPLACE:zhixian = {
 
 	modifier = {
 		local_max_control = 0.15  # 
-		local_monthly_control = 0.01  # 每月+1%控制力
+		local_monthly_control = 0.005  # 每月+0.5%控制力
 		local_proximity_source = 20
 		local_monthly_development_modifier = 0.025  # 发展度增长提升
 		local_nobles_estate_power = 0.10
@@ -161,4 +197,88 @@ REPLACE:jurchen_barracks = {
 		early_soldier_building_maintenance
 	}
 	construction_demand = early_soldier_building_construction
+}
+
+# 1644模组：中国城墙建筑
+chinese_city_wall = {
+	is_foreign = no
+	pop_type = soldiers
+	max_levels = 1
+	
+	category = defense_category
+	
+	employment_size = 3.0
+	
+	rural_settlement = yes
+	town = yes
+	city = yes
+	
+	build_time = large_fort_building
+	
+	expensive = yes
+	
+	country_potential = {
+		culture ?= { has_culture_group = culture_group:chinese_group }
+	}
+	
+	possible_production_methods = {
+		chinese_city_wall_maintenance
+	}
+	
+	construction_demand = chinese_city_wall_construction
+	
+	modifier = {
+		local_garrison_size = 1.5
+		local_defensive = 0.05
+		local_unrest = -0.1
+	}
+	
+	raw_modifier = {
+		fort_level = 3
+		propagating_zone_of_control = yes
+	}
+}
+REPLACE:castle = {
+	is_foreign = no
+	max_levels = 1
+	pop_type = soldiers
+	
+	category = defense_category
+	obsolete = stockade
+	
+	employment_size = castle_employment
+	
+	rural_settlement = yes
+	town = yes
+	city = yes
+	
+	
+	build_time = medium_fort_building
+
+	expensive = yes
+	
+	
+	unique_production_methods = {
+		castle_maintenance = {
+			stone = 0.1
+			tools = 0.05
+			weaponry = 0.1
+			tar = 0.025
+			category = building_maintenance
+		}
+	}
+	construction_demand = castle_construction
+	
+
+	modifier = {
+		local_garrison_size = 0.5 # 驻军500，原为250
+		local_unrest = -0.05
+		local_nobles_estate_power = 1.0
+	}
+	
+	raw_modifier = {
+		fort_level = 2
+		local_nobles_desired_pop = 0.02
+		propagating_zone_of_control = yes
+	}
 }

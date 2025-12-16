@@ -50,7 +50,45 @@ situation_panel = {
 	}
 
 	blockoverride "situation_panel_main_content_bottom" {
-		# 可以在这里添加额外的内容，比如显示参与的国家列表等
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			spacing = 10
+			margin = { 0 10 }
+			
+			# Generic Action: 获取统一中国CB
+			widget = {
+				datacontext = "[GetGenericAction('late_ming_crisis_grant_unification_cb')]"
+				visible = "[GenericAction.IsVisibleForCountry(SituationView.GetPlayer)]"
+				size = { 480 40 }
+				
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					spacing = 5
+					
+					tooltipmeta = {
+						texture = "[SituationView.GetActiveSituation.GetIcon]"
+					}
+					
+					action_button_default = {
+						name = "Late Ming Crisis action button"
+						size = { 480 30 }
+						text = "[GenericAction.GetNameWithNoTooltip]"
+						title = "[GenericAction.GetName]"
+						actor = "[SituationView.GetPlayer]"
+						parameter = {
+							parameter_name = "recipient"
+							parameter_value = "[SituationView.GetActiveSituation.GetSituation]"
+						}
+						left_action = { 
+							action_name = "[GenericAction.GetLeftClickKey]"
+						}
+						left_click_and_hold_action = { 
+							action_name = "[GenericAction.GetLeftClickAndHoldKey]"
+						}
+					}
+				}
+			}
+		}
 	}
 }
 

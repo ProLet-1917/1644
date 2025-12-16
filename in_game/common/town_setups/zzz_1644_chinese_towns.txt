@@ -7,11 +7,13 @@
 REPLACE:chinese_town = {
 	# --- 行政与宗教 ---
 	temple = 1
+	zhixian = 1
+	confucian_academy = 1
 	
 	# --- 基础设施与商业 ---
 	marketplace = 1		# 基础商业
 	granary = 1			# 基础粮食储备
-	construction_center = 1 # 新增：基础建设能力
+	construction_center = 1 # 基础建设能力
 	
 	# --- 工业与手工业 (行会级别) ---
 	# 纺织业
@@ -38,12 +40,13 @@ REPLACE:chinese_city = {
 	# --- 行政与宗教 ---
 	zhixian = 2		# 行政管理
 	scriptorium = 1		# 文化教育 (书院)
+	confucian_academy = 1
 	temple = 1
 	
 	# --- 基础设施与商业 ---
 	marketplace = 3		# 大幅区域贸易中心
 	granary = 3			# 粮食储备
-	construction_center = 2 # 新增：加强建设能力 (吸纳劳工)
+	construction_center = 2 # 加强建设能力 (吸纳劳工)
 	
 	# --- 工业与手工业 (工坊级别) ---
 	# 纺织业 (支柱产业)
@@ -62,11 +65,12 @@ REPLACE:chinese_city = {
 	# 重工业与工具
 	tools_workshop = 3		# 工具制造
 	weapon_workshop = 3		# 军事装备
-	guns_workshop = 1		# 新增：火器工坊 (晚明特征)
+	guns_workshop = 1		# 火器工坊 (晚明特征)
+	cannon_workshop = 1
 	mason = 1				# 建筑技术
 	
 	# --- 军事防御 ---
-	castle = 1				# 城墙
+	chinese_city_wall = 1				# 城墙
 	provincial_garrison = 1	# 卫所
 }
 
@@ -77,6 +81,7 @@ REPLACE:chinese_coastal_city = {
 	# --- 行政与宗教 ---
 	zhixian = 2
 	scriptorium = 1
+	confucian_academy = 1
 	temple = 1
 	
 	# --- 基础设施与商业 ---
@@ -102,14 +107,19 @@ REPLACE:chinese_coastal_city = {
 	# 重工业与军工
 	tools_workshop = 3
 	weapon_workshop = 3
-	guns_workshop = 1
-	naval_supplies_workshop = 1	# 新增：海军物资 (沿海特征)
+	guns_workshop = 2
+	cannon_workshop = 2
 	mason = 1
 	
 	# --- 军事防御 ---
-	castle = 1
+	chinese_city_wall = 1
 	provincial_garrison = 1
+
+	#海上
+	#码头
+	
 }
+
 
 # =============================================================================
 # CHINESE MILITARY TOWN (九边重镇/卫所治所)
@@ -118,6 +128,7 @@ chinese_town_mil = {
 	# --- 行政与宗教 ---
 	zhixian = 2			# 军事行政合一
 	temple = 1
+	confucian_academy = 1
 	
 	# --- 基础设施与商业 ---
 	marketplace = 1		# 军市
@@ -137,14 +148,48 @@ chinese_town_mil = {
 	furniture_guild = 1
 	winery = 1
 	mason = 1			# 防御工事材料
-	guns_workshop = 1	# 新增：火器工坊
+	guns_workshop = 1	# 火器工坊
+	cannon_workshop = 1
 	
 	# --- 军事防御 ---
-	castle = 1			# 城堡防御
+	chinese_city_wall = 1			# 城堡防御
 	# stockade = 1		# 营垒 (可选)
 	provincial_garrison = 1	# 大幅卫所驻军
 }
+chinese_coastal_town_mil = {
+		# --- 行政与宗教 ---
+		zhixian = 2			# 军事行政合一
+		temple = 1
+		confucian_academy = 1
+		
+		# --- 基础设施与商业 ---
+		marketplace = 1		# 军市
+		granary = 1
+		construction_center = 1 # 基础建设 (修缮堡垒)
+		
+		# --- 工业与手工业 ---
+		# 军需产业优先
+		weapon_guild = 3	# 大幅军事装备制造
+		tools_guild = 3		# 工具制造
+		tannery = 3			# 皮革加工 (甲胄)
+		
+		# 民用产业 (基础)
+		cloth_guild = 3		# 军服
+		paper_guild = 3
+		pottery_guild = 1
+		furniture_guild = 1
+		winery = 1
+		mason = 1			# 防御工事材料
+		guns_workshop = 1	# 火器工坊
+		cannon_workshop = 1
+		
+		# --- 军事防御 ---
+		chinese_city_wall = 1			# 城堡防御
+		# stockade = 1		# 营垒 (可选)
+		provincial_garrison = 1	# 卫所
+		naval_supplies_guild = 1	# 海军物资 (沿海特征)
 
+}
 # =============================================================================
 # CHINESE MILITARY CITY (军事重镇/督抚驻地)
 # =============================================================================
@@ -152,6 +197,7 @@ chinese_city_mil = {
 	# --- 行政与宗教 ---
 	zhixian = 2
 	scriptorium = 1
+	confucian_academy = 1
 	temple = 1
 	
 	# --- 基础设施与商业 ---
@@ -162,7 +208,8 @@ chinese_city_mil = {
 	# --- 工业与手工业 ---
 	# 军需产业核心
 	weapon_workshop = 5	# 极高：军事装备中心
-	guns_workshop = 1	# 火器中心
+	guns_workshop = 2	# 火器中心
+	cannon_workshop = 2
 	tannery = 4			# 皮革中心
 	tools_workshop = 3	# 工具中心
 	
@@ -176,6 +223,28 @@ chinese_city_mil = {
 	mason = 1
 	
 	# --- 军事防御 ---
-	castle = 1
+	chinese_city_wall = 1
 	provincial_garrison = 1
+}
+
+REPLACE:jurchen_town = {
+	temple = 1
+	marketplace = 1
+	mason = 1
+	pottery_guild = 2
+	furniture_guild = 1
+	cloth_guild = 3
+	paper_guild = 2
+	tannery = 2
+	granary = 2
+	weapon_guild = 3
+	brewery = 1
+	tools_guild = 3
+	scriptorium = 1
+
+	jurchen_barracks = 1
+	cannon_maker = 1	# 火器中心
+	gun_smith = 1
+
+	
 }

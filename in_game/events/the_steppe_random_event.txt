@@ -1,0 +1,95 @@
+﻿namespace = the_steppe_random_event
+
+the_steppe_random_event.1 = {
+    type = country_event
+
+    title = the_steppe_random_event.1.title
+    desc = the_steppe_random_event.1.desc
+
+    trigger = {
+        has_variable = current_herd
+        government_type = government_type:steppe_horde
+    }
+
+    option = {
+        name = the_steppe_random_event.1.a
+        custom_tooltip = {
+            text = the_steppe_random_event.1.tt
+            change_variable = {
+                name = current_herd
+                add = 50
+            }
+        }
+    }
+}
+
+the_steppe_random_event.2 = {
+    type = country_event
+
+    title = the_steppe_random_event.2.title
+    desc = the_steppe_random_event.2.desc
+
+    trigger = {
+        has_variable = current_herd
+        government_type = government_type:steppe_horde
+    }
+
+    option = {
+        name = the_steppe_random_event.2.a
+        custom_tooltip = {
+            text = the_steppe_random_event.2.tt
+            change_variable = {
+                name = current_herd
+                add = 200
+            }
+        }
+    }
+}
+
+the_steppe_random_event.3 = {
+    type = country_event
+
+    title = the_steppe_random_event.3.title
+    desc = the_steppe_random_event.3.desc
+
+    trigger = {
+        has_variable = current_herd
+        var:current_herd > 50
+        government_type = government_type:steppe_horde
+    }
+
+    option = {
+        name = the_steppe_random_event.3.a
+        custom_tooltip = {
+            text = the_steppe_random_event.3.tt
+            change_variable = {
+                name = current_herd
+                subtract = 50
+            }
+        }
+    }
+}
+
+the_steppe_random_event.4 = {
+    type = country_event
+
+    title = the_steppe_random_event.4.title
+    desc = the_steppe_random_event.4.desc
+
+    trigger = {
+        has_variable = current_herd
+        var:current_herd > 200
+        government_type = government_type:steppe_horde
+    }
+
+    option = {
+        name = the_steppe_random_event.4.a
+        custom_tooltip = {
+            text = the_steppe_random_event.4.tt
+            change_variable = {
+                name = current_herd
+                subtract = 200
+            }
+        }
+    }
+}
