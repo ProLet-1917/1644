@@ -51,3 +51,43 @@ zzz_1644_add_china_cb_effect = {
 	}
 }
 
+# 为单个国家授予对所有中国境内国家的统一中国CB
+# 用于generic action按钮
+zzz_1644_grant_unification_cb_for_country = {
+	custom_description = {
+		text = zzz_1644_grant_unification_cb_tt
+		# 为当前国家授予对所有符合条件的国家的CB
+		every_country = {
+			limit = {
+				exists = capital
+				exists = this
+				NOT = { this = root }
+				NOT = { is_subject_or_below_of = root }
+				NOT = { has_truce_with = root }
+				OR = {
+					capital.region = region:west_china_region
+					capital.region = region:east_china_region
+					capital.region = region:north_china_region
+					capital.region = region:south_china_region
+					capital.region = region:manchuria_region
+				}
+				any_owned_location = {
+					OR = {
+						region = region:west_china_region
+						region = region:east_china_region
+						region = region:north_china_region
+						region = region:south_china_region
+						region = region:manchuria_region
+					}
+				}
+			}
+			root = {
+				add_casus_belli = {
+					target = this
+					type = casus_belli:cb_chinese_unification
+				}
+			}
+		}
+	}
+}
+
