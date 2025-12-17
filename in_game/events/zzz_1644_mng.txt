@@ -157,3 +157,59 @@ mng_1644.4 = { #让大明的附属国加入战争
 		name = mng_1644.4.a
 	}
 }
+
+mng_1644.5 = { #立新君
+	type = country_event
+	title = mng_1644.5.title
+	desc = mng_1644.5.desc
+	historical_info = mng_1644.5.historical_info
+	
+	option = { #拥立福王朱由崧（正统性最高，支持率最高）
+		name = mng_1644.5.a
+		historical_option = yes
+		custom_tooltip = mng_1644.5.tt1
+		if = {
+			limit = { exists = character:chi_zhu_yousong }
+			character:chi_zhu_yousong = {
+				move_country = c:MNG
+			}
+			set_new_ruler = character:chi_zhu_yousong
+		}
+		add_government_power = government_power_mild_bonus
+		add_prestige = prestige_mild_bonus
+	}
+	
+	option = { #拥立潞王朱常淓（正统性较高，支持率较高）
+		name = mng_1644.5.b
+		custom_tooltip = mng_1644.5.tt2
+		if = {
+			limit = { exists = character:chi_zhu_changfang }
+			character:chi_zhu_changfang = {
+				move_country = c:MNG
+			}
+			set_new_ruler = character:chi_zhu_changfang
+		}
+		add_government_power = government_power_weak_bonus
+	}
+	
+	option = { #亲不亲，贤不贤，就没有更靠谱的继承人吗？
+		name = mng_1644.5.c
+		custom_tooltip = mng_1644.5.tt3
+		if = {
+			limit = { exists = character:chi_zhu_yihai }
+			character:chi_zhu_yihai = {
+				move_country = c:MNG
+			}
+			set_new_ruler = character:chi_zhu_yihai
+		}
+		else_if = {
+			limit = { exists = character:chi_zhu_yujian }
+			character:chi_zhu_yujian = {
+				move_country = c:MNG
+			}
+			set_new_ruler = character:chi_zhu_yujian
+		}
+		add_government_power = government_power_extreme_penalty
+		add_prestige = prestige_mild_penalty
+	}
+}
