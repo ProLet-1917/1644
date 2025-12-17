@@ -1,0 +1,38 @@
+﻿# 1644 Scenario - Chinese Dynasty Name Type Effects
+# 防止汉人角色使用location或patronym命名类型
+
+# 检查并修正汉人角色的命名类型
+# 如果角色是汉人文化，强制设置为default命名类型
+zzz_1644_fix_chinese_dynasty_name_type = {
+	hidden_effect = {
+		if = {
+			limit = {
+				# 检查是否为汉人文化组
+				has_culture_group = culture_group:chinese_group
+				exists = dynasty
+			}
+			# 如果王朝命名类型是location或patronym，改为default
+			if = {
+				limit = {
+					dynasty = {
+						dynasty_name_type = location
+					}
+				}
+				dynasty = {
+					set_dynasty_name_type = default
+				}
+			}
+			if = {
+				limit = {
+					dynasty = {
+						dynasty_name_type = patronym
+					}
+				}
+				dynasty = {
+					set_dynasty_name_type = default
+				}
+			}
+		}
+	}
+}
+

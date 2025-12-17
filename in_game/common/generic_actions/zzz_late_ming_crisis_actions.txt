@@ -10,7 +10,6 @@ late_ming_crisis_grant_unification_cb = {
 
 	allow = {
 		scope:actor = {
-			is_subject = no
 			capital ?= {
 				OR = {
 					region = region:west_china_region
@@ -26,24 +25,71 @@ late_ming_crisis_grant_unification_cb = {
 	ai_tick = monthly
 	ai_tick_frequency = 3 # check every 6 months
 	automation_tick = never
-	automation_tick_frequency = 1
+	automation_tick_frequency = 3
 
 	select_trigger = {
-		looking_for_a = situation
-		target_flag = recipient
-		name = "choose_situation"
+		looking_for_a = country
+		target_flag = target
+		name = "choose_target_country"
 		column = {
 			data = name
 		}
+		column = {
+			data = military_strength
+		}
 		visible = {
-			situation:late_ming_crisis = this
-			situation_is_active = yes
+			exists = capital
+			NOT = { this = scope:actor }
+			NOT = { is_subject_or_below_of = scope:actor }
+			OR = {
+				capital.region = region:west_china_region
+				capital.region = region:east_china_region
+				capital.region = region:north_china_region
+				capital.region = region:south_china_region
+				capital.region = region:manchuria_region
+			}
+			any_owned_location = {
+				OR = {
+					region = region:west_china_region
+					region = region:east_china_region
+					region = region:north_china_region
+					region = region:south_china_region
+					region = region:manchuria_region
+				}
+			}
 		}
 	}
 
 	effect = {
-		scope:actor = {
-			zzz_1644_grant_unification_cb_for_country = yes
+		if = {
+			limit = {
+				exists = scope:target
+				scope:target = {
+					exists = capital
+					OR = {
+						capital.region = region:west_china_region
+						capital.region = region:east_china_region
+						capital.region = region:north_china_region
+						capital.region = region:south_china_region
+						capital.region = region:manchuria_region
+					}
+					any_owned_location = {
+						OR = {
+							region = region:west_china_region
+							region = region:east_china_region
+							region = region:north_china_region
+							region = region:south_china_region
+							region = region:manchuria_region
+						}
+					}
+				}
+			}
+			scope:actor = {
+				add_casus_belli = {
+					target = scope:target
+					type = casus_belli:cb_chinese_unification
+				}
+			}
 		}
 	}
 
@@ -72,16 +118,6 @@ late_ming_crisis_grant_unification_cb = {
 					}
 				}
 				value = 100
-			}
-		}
-		add = {
-			if = {
-				limit = {
-					scope:actor = {
-						at_war = yes
-					}
-				}
-				value = -50
 			}
 		}
 	}

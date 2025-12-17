@@ -1,0 +1,188 @@
+﻿# 宗法继承法（Patrilineal Primogeniture）
+# 禁止女性继承，只允许男性继承人
+# 必须从同宗族内选择继承者，优先选择直系血亲（亲生子女），如果没有则选择其他同宗族成员
+# 基于 cognatic_primogeniture，但设置 allow_female = no 和 through_female = no
+
+patrilineal_primogeniture = {
+	include_ruler_siblings = yes
+	all_in_dynasty = yes  # 搜索整个dynasty中的所有成员，不仅仅是家族树
+	through_female = no
+	allow_female = no
+	allow_children = yes
+	ignore_ruler = yes
+	
+	potential = {
+		NOR = {
+			succession_law = heir_selection:fratricide_succesion
+			succession_law = heir_selection:unigeniture
+		}
+	}
+	
+	allowed_estates = { nobles_estate }
+	
+	heir_is_allowed = {
+		# all_in_dynasty = yes 已经确保了只有同宗族成员会被考虑
+		# 这里可以添加额外的限制（如果需要）
+	}
+	
+	traverse_family_tree = yes
+	
+	calc = {
+		# 使用calc而不是sibling_score，因为all_in_dynasty可能需要calc
+		if = {
+			limit = {
+				exists = root
+			}
+			# 直系血亲（亲生子女）最高分，优先选择
+			add = {
+				desc = "HEIR_SELECTION_DIRECT_DESCENDANT"
+				if = {
+					limit = {
+						OR = {
+							# 是统治者的亲生儿子
+							AND = {
+								exists = father
+								father = root
+								is_female = no
+							}
+							# 
+							AND = {
+								exists = mother
+								mother = root
+							}
+						}
+					}
+					value = 1000  # 大幅加分，确保直系血亲优先
+				}
+			}
+			
+			# 兄弟姐妹（第二优先级）
+			add = {
+				desc = "HEIR_SELECTION_SIBLING"
+				if = {
+					limit = {
+						# 不是直系血亲（避免重复加分）
+						NOT = {
+							OR = {
+								AND = {
+									exists = father
+									father = root
+								}
+								AND = {
+									exists = mother
+									mother = root
+								}
+							}
+						}
+						# 有共同的父亲（同父兄弟）
+						OR = {
+							AND = {
+								exists = father
+								root.exists = father
+								father = root.father
+							}
+							# 有共同的母亲（同母兄弟）
+							AND = {
+								exists = mother
+								root.exists = mother
+								mother = root.mother
+							}
+						}
+					}
+					value = 500  # 兄弟姐妹加分
+				}
+			}
+			
+			# 叔伯/侄子（第三优先级）
+			add = {
+				desc = "HEIR_SELECTION_UNCLE_OR_NEPHEW"
+				if = {
+					limit = {
+						# 不是直系血亲或兄弟姐妹（避免重复加分）
+						NOT = {
+							OR = {
+								AND = {
+									exists = father
+									father = root
+								}
+								AND = {
+									exists = mother
+									mother = root
+								}
+								AND = {
+									exists = father
+									root.exists = father
+									father = root.father
+								}
+								AND = {
+									exists = mother
+									root.exists = mother
+									mother = root.mother
+								}
+							}
+						}
+						# 是统治者的侄子（兄弟的儿子）
+						OR = {
+							AND = {
+								exists = father
+								father.exists = father
+								father.father = root.father
+							}
+							# 是统治者的叔伯（父亲的兄弟）
+							AND = {
+								root.exists = father
+								exists = father
+								father.exists = father
+								father.father = root.father.father
+								NOT = {
+									this = root.father
+								}
+							}
+						}
+					}
+					value = 200  # 叔伯/侄子加分
+				}
+			}
+			
+			# 男性继承人加分
+			add = {
+				desc = "HEIR_SELECTION_MALE_DESC"
+				if = {
+					limit = {
+						is_female = no
+					}
+					value = 100
+				}
+			}
+			
+			# 年长继承人加分（使用root.character_age，参考原版实现）
+			add = {
+				desc = "HEIR_SELECTION_OLDER_HEIR_DESC"
+				value = root.character_age
+			}
+			
+			# 不适合统治的继承人减分
+			add = {
+				desc = "HEIR_SELECTION_IS_UNSUITED_TO_RULE_DESC"
+				if = { 
+					limit = { modifier:blocked_from_being_ruler = yes } 
+					value = -1000 
+				}
+			}
+		}
+		else = {
+			# 描述（当不存在root时）
+			add = {
+				desc = "HEIR_SELECTION_MALE_DESC"
+				value = 100
+			}
+			
+			add = {
+				desc = "HEIR_SELECTION_OLDER_HEIR_DESC"
+				value = 1
+			}
+		}
+	}
+}
+
+
