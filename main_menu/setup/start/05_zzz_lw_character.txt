@@ -221,7 +221,7 @@ character_db = {
 	}
 
 	hpl_marie_elisabeth = {
-		first_name = { name = name_sophia }
+		first_name = { name = name_marianne }
 		culture = saxon
 		religion = lutheran
 		estate = nobles_estate
@@ -264,7 +264,7 @@ character_db = {
 		tag = SAX
 	}
 
-	dan_magdelena_sibylle_ii = {
+	dan_magdelena_sibylle = {
 		first_name = { name = name_madeleine }
 		culture = saxon
 		religion = lutheran
@@ -320,5 +320,136 @@ character_db = {
 		birth = dresden
 		dynasty = wettin_dynasty
 		tag = SAX
+	}
+
+	dan_anne_catherine_hohenzollern = {
+		first_name = { name = name_anna }
+		culture = brandenburgish
+		religion = lutheran
+		estate = nobles_estate
+		adm = 33 dip = 45 mil = 31
+		female = yes
+		birth_date = 1575.6.26
+		death_date = 1612.4.8
+		spouse = dan_christian_iv_oldenburg
+		birth = halle_an_der_saale
+		dynasty = hohenzollern_dynasty
+		tag = DAN
+	}
+
+	dan_christian_oldenburg = {
+		first_name = { name = name_christian }
+		culture = danish
+		religion = lutheran
+		estate = nobles_estate
+		adm = 45 dip = 38 mil = 55
+		birth_date = 1603.4.10
+		father = dan_christian_iv_oldenburg
+		mother = dan_anne_catherine_hohenzollern
+		spouse = dan_magdelena_sibylle
+		birth = kobenhavn
+		dynasty = oldenburg_dynasty
+		tag = DAN
+	}
+
+	dan_frederick_iii_oldenburg = {
+		first_name = { name = name_frederick }
+		culture =  danish
+		religion = lutheran
+		estate = nobles_estate
+		adm = 55 dip = 48 mil = 62
+		birth_date = 1609.3.18
+		father = dan_christian_iv_oldenburg
+		mother = dan_anne_catherine_hohenzollern
+		spouse = dan_sophie_amalie_welf
+		birth = haderslev
+		dynasty = oldenburg_dynasty
+		tag = DAN
+	}
+
+	dan_sophie_amalie_welf = {
+		first_name = { name = name_sophia }
+		culture = saxon
+		religion = lutheran
+		estate = nobles_estate
+		adm = 33 dip = 45 mil = 29
+		birth_date = 1628.3.24
+		female = yes
+		spouse = dan_frederick_iii_oldenburg
+		birth = herzberg
+		dynasty = welfen_dynasty
+		tag = DAN
+	}
+
+	ktz_louis_iv_von_hessen = {
+		first_name = { name = name_louis }
+		culture = rhine_franconian
+		religion = lutheran
+		estate = nobles_estate
+		adm = 33 dip = 30 mil = 31
+		birth_date = 1630.1.25
+		birth = darmstadt
+		father = ktz_landgrave_georg_von_hessen
+		mother = ktz_sophie_eleonore
+		tag = KTZ
+	}
+
+	hpl_spfie_auguste = {
+		first_name = { name = name_sophia }
+		culture = holsatian
+		religion = lutheran
+		estate = nobles_estate
+		adm = 25 dip = 37 mil = 21
+		female = yes
+		birth_date = 1630.12.5
+		birth = kiel
+		father = hpl_friedrich_von_oldenburg
+		mother = hpl_marie_elisabeth
+		dynasty = oldenburg_dynasty
+		tag = HPL
+	}
+
+	hpl_magdalene_sibylle = {
+		first_name = { name = name_madeleine }
+		culture = holsatian
+		religion = lutheran
+		estate = nobles_estate
+		adm = 20 dip = 32 mil = 18
+		female = yes
+		birth_date = 1631.11.24
+		birth = kiel
+		father = hpl_friedrich_von_oldenburg
+		mother = hpl_marie_elisabeth
+		dynasty = oldenburg_dynasty
+		tag = HPL
+	}
+
+	hpl_maria_elisabeth = {
+		first_name = { name = name_marianne }
+		culture = holsatian
+		religion = lutheran
+		estate = nobles_estate
+		adm = 18 dip = 25 mil = 11
+		female = yes
+		birth_date = 1634.6.6
+		birth = kiel
+		father = hpl_friedrich_von_oldenburg
+		mother = hpl_marie_elisabeth
+		dynasty = oldenburg_dynasty
+		tag = HPL
+	}
+
+	hpl_christian_albert_oldenburg = {
+		first_name = { name = name_christian }
+		culture = holsatian
+		religion = lutheran
+		estate = nobles_estate
+		adm = 5 dip = 6 mil = 4
+		birth_date = 1641.2.3
+		birth = kiel
+		father = hpl_friedrich_von_oldenburg
+		mother = hpl_marie_elisabeth
+		dynasty = oldenburg_dynasty
+		tag = HPL
 	}
 }
