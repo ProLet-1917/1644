@@ -1,19 +1,250 @@
 situation_panel = {
 
 	blockoverride "situation_panel_image" {
-		using = one_country_header_template
-	
-		blockoverride "CountryContext" {
-			datacontext = "[GetCountry('MNG')]"
+		# 基于 two_countries_header_template 的三国家header：顺、明、清
+		layoutpolicy_horizontal = expanding
+		size = { -1 220 }
+		
+		blockoverride "country_header_names_visible" { visible = no }
+		
+		# 背景图
+		block "three_countries_header_image" {
+			background = {
+				texture = "gfx/interface/illustrations/situation/red_turban_rebellions.dds"
+				texture_density = 2
+				spriteType = stretched
+				spriteborder = { 0 0 }
+			}
 		}
-
-		blockoverride "character_religion_visibility" {
-			visible = no
+		
+		# 渐变遮罩
+		background = {
+			using = color_dark_blue_texture
+			alpha = 1
+			margin_top = -50
+			modify_texture = {
+				using = bg_fade_vertical_up_mask_texture
+				blend_mode = alphamultiply
+				alpha = 1
+			}
 		}
-
-		blockoverride "character_name_maximumsize" {
-			maximumsize = { 270 -1 }
+		
+		# 大顺 (CSH) - 左侧
+		container = {
+			block "FirstCountryVisible" {
+				visible = "[And(GetCountry('CSH').Exists, GetCountry('CSH').GetGovernment.HasRulerOrRegent)]"
+			}
+			block "first_character_portrait_anchor" {
+				parentanchor = bottom|left
+			}
+			container = {
+				block "FirstCountryContext" {
+					datacontext = "[GetCountry('CSH')]"
+				}
+				
+				visible = "[And(GetCountry('CSH').Exists, GetCountry('CSH').GetGovernment.HasRulerOrRegent)]"
+				
+				block "first_character_portrait_anchor" {
+					parentanchor = bottom|left
+				}
+				
+				block "first_country_character_frame" {
+					character_frame_medium_with_labels = {
+						block "character_right_visible" {
+							visible = yes
+						}
+						parentanchor = bottom|left
+						size = { 180 200 }
+						blockoverride "portrait_datacontext" {
+							datacontext = "[GetCountry('CSH').GetGovernment.GetRulerOrRegent]"
+						}
+					}
+				}
+			}
 		}
+		
+		# 大明 (MNG) - 中间
+		container = {
+			block "SecondCountryVisible" {
+				visible = "[And(GetCountry('MNG').Exists, GetCountry('MNG').GetGovernment.HasRulerOrRegent)]"
+			}
+			block "second_character_portrait_anchor" {
+				parentanchor = bottom|hcenter
+			}
+			container = {
+				block "SecondCountryContext" {
+					datacontext = "[GetCountry('MNG')]"
+				}
+				
+				visible = "[And(GetCountry('MNG').Exists, GetCountry('MNG').GetGovernment.HasRulerOrRegent)]"
+				
+				block "second_character_portrait_anchor" {
+					parentanchor = bottom|hcenter
+				}
+				
+				block "second_country_character_frame" {
+					character_frame_medium_with_labels = {
+						block "character_right_visible" {
+							visible = yes
+						}
+						parentanchor = bottom|hcenter
+						size = { 180 200 }
+						blockoverride "portrait_datacontext" {
+							datacontext = "[GetCountry('MNG').GetGovernment.GetRulerOrRegent]"
+						}
+					}
+				}
+			}
+		}
+		
+		# 大清 (QNG) - 右侧
+		container = {
+			block "ThirdCountryVisible" {
+				visible = "[And(GetCountry('QNG').Exists, GetCountry('QNG').GetGovernment.HasRulerOrRegent)]"
+			}
+			block "third_character_portrait_anchor" {
+				parentanchor = bottom|right
+			}
+			container = {
+				block "ThirdCountryContext" {
+					datacontext = "[GetCountry('QNG')]"
+				}
+				
+				visible = "[And(GetCountry('QNG').Exists, GetCountry('QNG').GetGovernment.HasRulerOrRegent)]"
+				
+				block "third_character_portrait_anchor" {
+					parentanchor = bottom|right
+				}
+				
+				block "third_country_character_frame" {
+					character_frame_medium_with_labels = {
+						block "character_right_visible" {
+							visible = yes
+						}
+						parentanchor = bottom|right
+						size = { 180 200 }
+						blockoverride "portrait_datacontext" {
+							datacontext = "[GetCountry('QNG').GetGovernment.GetRulerOrRegent]"
+						}
+					}
+				}
+			}
+		}
+		
+		# 大顺名称和徽章
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			
+			block "FirstCountryVisible" {
+				visible = "[And(GetCountry('CSH').Exists, GetCountry('CSH').GetGovernment.HasRulerOrRegent)]"
+			}
+			hbox = {
+				using = layoutpolicy_expanding
+				block "FirstCountryContext" {
+					datacontext = "[GetCountry('CSH')]"
+				}
+				datacontext = "[GetCountry('CSH').GetGovernment]"
+				country_government_character = {
+					block "FirstCountryContext" {
+						datacontext = "[GetCountry('CSH')]"
+					}
+					blockoverride "character_name_maximumsize" {
+						maximumsize = { 160 -1 }
+					}
+					blockoverride "character_name_text" {
+						raw_text = "[Character.GetShortNameWithNoTooltip]"
+					}
+				}
+				blockoverride "bg_name_banner_flip" {}
+				blockoverride "bg_name_banner_margin" {
+					margin_left = 20
+					margin_right = 0
+					margin_top = 2
+					margin_bottom = 7
+				}
+			}
+		}
+		
+		# 大明名称和徽章
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			
+			block "SecondCountryVisible" {
+				visible = "[And(GetCountry('MNG').Exists, GetCountry('MNG').GetGovernment.HasRulerOrRegent)]"
+			}
+			hbox = {
+				using = layoutpolicy_expanding
+				block "SecondCountryContext" {
+					datacontext = "[GetCountry('MNG')]"
+				}
+				datacontext = "[GetCountry('MNG').GetGovernment]"
+				country_government_character = {
+					block "SecondCountryContext" {
+						datacontext = "[GetCountry('MNG')]"
+					}
+					blockoverride "character_name_maximumsize" {
+						maximumsize = { 160 -1 }
+					}
+					blockoverride "character_name_text" {
+						raw_text = "[Character.GetShortNameWithNoTooltip]"
+					}
+				}
+				blockoverride "bg_name_banner_flip" {}
+				blockoverride "bg_name_banner_margin" {
+					margin_left = 0
+					margin_right = 0
+					margin_top = 2
+					margin_bottom = 7
+				}
+			}
+		}
+		
+		# 大清名称和徽章
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			
+			block "ThirdCountryVisible" {
+				visible = "[And(GetCountry('QNG').Exists, GetCountry('QNG').GetGovernment.HasRulerOrRegent)]"
+			}
+			hbox = {
+				using = layoutpolicy_expanding
+				block "ThirdCountryContext" {
+					datacontext = "[GetCountry('QNG')]"
+				}
+				datacontext = "[GetCountry('QNG').GetGovernment]"
+				country_government_character = {
+					block "ThirdCountryContext" {
+						datacontext = "[GetCountry('QNG')]"
+					}
+					blockoverride "country_header_orientation" {
+						righttoleft = yes
+					}
+					blockoverride "country_government_character_labels_align" {
+						align = right|nobaseline
+					}
+					blockoverride "character_name_maximumsize" {
+						maximumsize = { 160 -1 }
+					}
+					blockoverride "character_name_text" {
+						raw_text = "[Character.GetShortNameWithNoTooltip]"
+					}
+				}
+				blockoverride "bg_name_banner_margin" {
+					margin_left = 0
+					margin_right = 20
+					margin_top = 2
+					margin_bottom = 7
+				}
+			}
+		}
+		
+		using = bg_age_event_frame
+		
+		block "country_header_extra" {}
+		blockoverride "abilities_widget" {}
 	}
 
 	##################################### MAIN CONTENT #####################################
@@ -55,37 +286,162 @@ situation_panel = {
 			spacing = 10
 			margin = { 0 10 }
 			
-			# Generic Action: 获取统一中国CB
-			widget = {
-				datacontext = "[GetGenericAction('late_ming_crisis_grant_unification_cb')]"
-				visible = "[GenericAction.IsVisibleForCountry(SituationView.GetPlayer)]"
-				size = { 480 40 }
-				
-				hbox = {
-					layoutpolicy_horizontal = expanding
-					spacing = 5
-					
-					tooltipmeta = {
-						texture = "[SituationView.GetActiveSituation.GetIcon]"
+			# 所有参与势力：包含所有中国地区国家
+			situation_card_expandable = {
+				blockoverride "header_button_onclick" {
+					onclick = "[LateralView.Vars.Toggle( 'participants_toggled' )]"
+				}
+				blockoverride "header_text" {
+					text = "PARTICIPATING_COUNTRIES"
+				}
+				blockoverride "header_icon" {
+					texture = "gfx/interface/icons/flat_icons/war_view/war_participants.dds"
+				}
+				blockoverride "bottom_content" {
+					scrollarea = {
+						layoutpolicy_horizontal = expanding
+						maximumsize = { -1 400 }
+						scrollbarpolicy_horizontal = always_off
+						autoresizescrollarea = yes
+						
+						scrollbar_vertical = {
+							using = Scrollbar_Vertical
+						}
+						
+						scrollwidget = {
+							dynamicgridbox = {
+								# 使用 GetGlobalList 访问全局变量列表
+								datamodel = "[GetGlobalList('china_countries_list')]"
+								layoutpolicy_horizontal = expanding
+								spacing = 5
+								
+								item = {
+									widget = {
+										size = { 480 40 }
+										
+										using = bg_paper_card
+										using = bg_cabinet_card_frame
+										
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											margin = { 8 0 }
+											spacing = 10
+											
+											# 国旗
+											widget = {
+												size = { 42 28 }
+												allow_outside = yes
+												country_flag_small = {
+													datacontext = "[Scope.GetCountry]"
+													size = { 42 29 }
+												}
+											}
+											
+											# 国家名称
+											text_single = {
+												datacontext = "[Scope.GetCountry]"
+												layoutpolicy_horizontal = expanding
+												size = { -1 20 }
+												align = left|nobaseline
+												text = "[Country.GetNameWithNoTooltip]"
+											}
+											
+											# 陆军军力（包含征召兵）
+											hbox = {
+												spacing = 5
+												margin_right = 5
+												
+												text_single = {
+													datacontext = "[Scope.GetCountry]"
+													size = { 60 20 }
+													align = right|nobaseline
+													autoresize = no
+													text = "[Country.GetTotalArmyStrengthAndPotentialLevies]"
+												}
+												
+												icon = {
+													size = { 25 25 }
+													texture = "gfx/interface/icons/unit_category/total_strength.dds"
+													glow = {
+														name = "drop_shadow"
+														glow_radius = 3
+														color = {0.0 0.0 0.0 1.0}
+														alpha = 0.6
+													}
+												}
+											}
+											
+											divider_flavor_01 = {size = { 12 -1 }}
+											
+											# 控制人口
+											hbox = {
+												spacing = 5
+												margin_right = 5
+												
+												text_single = {
+													datacontext = "[Scope.GetCountry]"
+													size = { 60 20 }
+													align = right|nobaseline
+													autoresize = no
+													text = "[Country.GetTotalPopulation]"
+												}
+												
+												icon = {
+													size = { 25 25 }
+													texture = "gfx/interface/icons/location_icons/population.dds"
+													glow = {
+														name = "drop_shadow"
+														glow_radius = 3
+														color = {0.0 0.0 0.0 1.0}
+														alpha = 0.6
+													}
+												}
+											}
+											
+											divider_flavor_01 = {size = { 12 -1 }}
+											
+											# 海军军力
+											hbox = {
+												spacing = 5
+												margin_right = 10
+												
+												text_single = {
+													datacontext = "[Scope.GetCountry]"
+													size = { 40 20 }
+													align = right|nobaseline
+													autoresize = no
+													text = "[Country.GetTotalShips]"
+												}
+												
+												icon = {
+													size = { 25 25 }
+													texture = "gfx/interface/icons/flat_icons/war_view/navy_unit.dds"
+													glow = {
+														name = "drop_shadow"
+														glow_radius = 3
+														color = {0.0 0.0 0.0 1.0}
+														alpha = 0.6
+													}
+												}
+											}
+										}
+									}
+									datacontext = "[Scope.GetCountry]"
+									visible = "[Country.Exists]"
+								}
+							}
+						}
 					}
-					
-					action_button_default = {
-						name = "Late Ming Crisis action button"
-						size = { 480 30 }
-						text = "[GenericAction.GetNameWithNoTooltip]"
-						title = "[GenericAction.GetName]"
-						actor = "[SituationView.GetPlayer]"
-						parameter = {
-							parameter_name = "recipient"
-							parameter_value = "[SituationView.GetActiveSituation.GetSituation]"
-						}
-						left_action = { 
-							action_name = "[GenericAction.GetLeftClickKey]"
-						}
-						left_click_and_hold_action = { 
-							action_name = "[GenericAction.GetLeftClickAndHoldKey]"
-						}
-					}
+				}
+				blockoverride "visible_hint" {}
+				blockoverride "bottom_content_onclick" {
+					visible = "[LateralView.Vars.Exists( 'participants_toggled' )]"
+				}
+				blockoverride "icon_replace_visible_yes" {
+					visible = "[LateralView.Vars.Exists( 'participants_toggled' )]"
+				}
+				blockoverride "icon_replace_visible_not" {
+					visible = "[Not(LateralView.Vars.Exists( 'participants_toggled' ))]"
 				}
 			}
 		}

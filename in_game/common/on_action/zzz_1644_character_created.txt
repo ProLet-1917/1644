@@ -50,6 +50,13 @@ on_character_created = {
 					}
 				}
 			}
+			# 确保汉人角色的dynasty不使用location或patronym命名类型
+			if = {
+				limit = {
+					has_dynasty = yes
+				}
+				zzz_1644_fix_chinese_dynasty_name_type = yes
+			}
 		}
 	}
 }
