@@ -33,150 +33,158 @@ patrilineal_primogeniture = {
 			limit = {
 				exists = root
 			}
-			# 直系血亲（亲生子女）最高分，优先选择
-			add = {
-				desc = "HEIR_SELECTION_DIRECT_DESCENDANT"
-				if = {
-					limit = {
-						OR = {
-							# 是统治者的亲生儿子
-							AND = {
-								exists = father
-								father = root
-								is_female = no
-							}
-							# 
-							AND = {
-								exists = mother
-								mother = root
-							}
-						}
+			# 直系血亲（亲生儿子）最高分，优先选择
+			if = {
+				limit = {
+					# 必须是统治者的亲生儿子（父系血统，男性）
+					exists = father
+					any_parent = {
+						this = scope:target.ruler
 					}
-					value = 1000  # 大幅加分，确保直系血亲优先
+					is_female = no
+				}
+				add = {
+					desc = "HEIR_SELECTION_DIRECT_DESCENDANT"
+					value = -1000  # 大幅减分，确保亲儿子绝对优先（分数越低越优先）
 				}
 			}
 			
 			# 兄弟姐妹（第二优先级）
-			add = {
-				desc = "HEIR_SELECTION_SIBLING"
-				if = {
-					limit = {
-						# 不是直系血亲（避免重复加分）
-						NOT = {
-							OR = {
-								AND = {
-									exists = father
-									father = root
-								}
-								AND = {
-									exists = mother
-									mother = root
-								}
-							}
+			if = {
+				limit = {
+					# 不是直系血亲（避免重复加分）
+					NOT = {
+						exists = father
+						any_parent = {
+							this = scope:target.ruler
 						}
-						# 有共同的父亲（同父兄弟）
-						OR = {
-							AND = {
-								exists = father
-								root.exists = father
-								father = root.father
-							}
-							# 有共同的母亲（同母兄弟）
-							AND = {
-								exists = mother
-								root.exists = mother
-								mother = root.mother
-							}
-						}
+						is_female = no
 					}
-					value = 500  # 兄弟姐妹加分
+					# 有共同的父亲（同父兄弟，父系优先）
+					exists = father
+					scope:target.ruler.exists = father
+					father = scope:target.ruler.father
+					is_female = no
+				}
+				add = {
+					desc = "HEIR_SELECTION_SIBLING"
+					value = -500  # 兄弟姐妹减分，但远高于亲儿子（分数越低越优先）
 				}
 			}
 			
 			# 叔伯/侄子（第三优先级）
-			add = {
-				desc = "HEIR_SELECTION_UNCLE_OR_NEPHEW"
-				if = {
-					limit = {
-						# 不是直系血亲或兄弟姐妹（避免重复加分）
-						NOT = {
-							OR = {
-								AND = {
-									exists = father
-									father = root
-								}
-								AND = {
-									exists = mother
-									mother = root
-								}
-								AND = {
-									exists = father
-									root.exists = father
-									father = root.father
-								}
-								AND = {
-									exists = mother
-									root.exists = mother
-									mother = root.mother
-								}
-							}
-						}
-						# 是统治者的侄子（兄弟的儿子）
+			if = {
+				limit = {
+					# 不是直系血亲或兄弟姐妹（避免重复加分）
+					NOT = {
 						OR = {
 							AND = {
 								exists = father
-								father.exists = father
-								father.father = root.father
-							}
-							# 是统治者的叔伯（父亲的兄弟）
-							AND = {
-								root.exists = father
-								exists = father
-								father.exists = father
-								father.father = root.father.father
-								NOT = {
-									this = root.father
+								any_parent = {
+									this = scope:target.ruler
 								}
+								is_female = no
+							}
+							AND = {
+								exists = father
+								scope:target.ruler.exists = father
+								father = scope:target.ruler.father
+								is_female = no
 							}
 						}
 					}
-					value = 200  # 叔伯/侄子加分
-				}
-			}
-			
-			# 男性继承人加分
-			add = {
-				desc = "HEIR_SELECTION_MALE_DESC"
-				if = {
-					limit = {
-						is_female = no
+					# 是统治者的侄子（兄弟的儿子，父系）
+					OR = {
+						AND = {
+							exists = father
+							father.exists = father
+							father.father = scope:target.ruler.father
+							is_female = no
+						}
+						# 是统治者的叔伯（父亲的兄弟，父系）
+						AND = {
+							scope:target.ruler.exists = father
+							exists = father
+							father.exists = father
+							father.father = scope:target.ruler.father.father
+							NOT = {
+								this = scope:target.ruler.father
+							}
+							is_female = no
+						}
 					}
-					value = 100
+				}
+				add = {
+					desc = "HEIR_SELECTION_UNCLE_OR_NEPHEW"
+					value = -200  # 叔伯/侄子减分，但远高于兄弟姐妹（分数越低越优先）
+				}
+			}
+		
+			# 其他同宗族成员（表兄弟等远亲，第四优先级）
+			if = {
+				limit = {
+					# 不是直系血亲、兄弟姐妹或叔伯/侄子（避免重复加分）
+					NOT = {
+						OR = {
+							AND = {
+								exists = father
+								any_parent = {
+									this = scope:target.ruler
+								}
+								is_female = no
+							}
+							AND = {
+								exists = father
+								scope:target.ruler.exists = father
+								father = scope:target.ruler.father
+								is_female = no
+							}
+							AND = {
+								exists = father
+								father.exists = father
+								father.father = scope:target.ruler.father
+								is_female = no
+							}
+							AND = {
+								scope:target.ruler.exists = father
+								exists = father
+								father.exists = father
+								father.father = scope:target.ruler.father.father
+								NOT = {
+									this = scope:target.ruler.father
+								}
+								is_female = no
+							}
+						}
+					}
+					# 必须是男性
+					is_female = no
+				}
+				add = {
+					desc = "HEIR_SELECTION_SAME_DYNASTY"
+					value = -50  # 其他同宗族成员基础分，远高于近亲（分数越低越优先）
 				}
 			}
 			
-			# 年长继承人加分（使用root.character_age，参考原版实现）
+			# 年长继承人减分（使用root.character_age，参考原版实现）
+			# 注意：年龄减分应该很小，不能影响亲疏关系的优先级
+			# 年龄越大分数越低（越优先）
 			add = {
 				desc = "HEIR_SELECTION_OLDER_HEIR_DESC"
-				value = root.character_age
+				value = -root.character_age
 			}
 			
-			# 不适合统治的继承人减分
-			add = {
-				desc = "HEIR_SELECTION_IS_UNSUITED_TO_RULE_DESC"
-				if = { 
-					limit = { modifier:blocked_from_being_ruler = yes } 
-					value = -1000 
+			# 不适合统治的继承人加分（分数越高越不优先）
+			if = { 
+				limit = { modifier:blocked_from_being_ruler = yes }
+				add = {
+					desc = "HEIR_SELECTION_IS_UNSUITED_TO_RULE_DESC"
+					value = 1000  # 大幅加分，确保不适合统治的人排在后面
 				}
 			}
 		}
 		else = {
 			# 描述（当不存在root时）
-			add = {
-				desc = "HEIR_SELECTION_MALE_DESC"
-				value = 100
-			}
-			
 			add = {
 				desc = "HEIR_SELECTION_OLDER_HEIR_DESC"
 				value = 1
