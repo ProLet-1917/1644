@@ -286,10 +286,10 @@ situation_panel = {
 			spacing = 10
 			margin = { 0 10 }
 			
-			# 所有参与势力：包含所有中国地区国家
+			# 所有参与势力：包含所有中国地区国家（不可折叠）
 			situation_card_expandable = {
 				blockoverride "header_button_onclick" {
-					onclick = "[LateralView.Vars.Toggle( 'participants_toggled' )]"
+					visible = no  # 隐藏折叠按钮
 				}
 				blockoverride "header_text" {
 					text = "PARTICIPATING_COUNTRIES"
@@ -321,6 +321,9 @@ situation_panel = {
 										
 										using = bg_paper_card
 										using = bg_cabinet_card_frame
+										
+										# 鼠标悬停时在地图上高亮国家
+										onmousehierarchyenter = "[Scope.GetCountry.HighlightOnMap(PdxGuiWidget.AccessSelf)]"
 										
 										hbox = {
 											layoutpolicy_horizontal = expanding
@@ -435,13 +438,13 @@ situation_panel = {
 				}
 				blockoverride "visible_hint" {}
 				blockoverride "bottom_content_onclick" {
-					visible = "[LateralView.Vars.Exists( 'participants_toggled' )]"
+					visible = yes  # 内容始终可见
 				}
 				blockoverride "icon_replace_visible_yes" {
-					visible = "[LateralView.Vars.Exists( 'participants_toggled' )]"
+					visible = no  # 隐藏展开图标
 				}
 				blockoverride "icon_replace_visible_not" {
-					visible = "[Not(LateralView.Vars.Exists( 'participants_toggled' ))]"
+					visible = no  # 隐藏折叠图标
 				}
 			}
 		}
