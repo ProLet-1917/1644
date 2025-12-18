@@ -1,0 +1,1902 @@
+﻿namespace = war_of_religions
+
+war_of_religions.1 = { #Ottavio Piccolomini
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1.title
+	desc = war_of_religions.1.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_octavius
+			last_name = Piccolomini
+			birth_location = location:florence
+			birth_date = 1599.11.11
+			culture = culture:tuscan
+			religion = religion:catholic
+			estate = estate_type:nobles_estate
+			adm = { 50 75 }
+			dip = { 70 85 }
+			mil = { 50 80 }
+			save_scope_as = target_character
+			script = wor_piccolomini_script
+			create_in_limbo = yes
+		}
+		location:florence = {
+			save_scope_as = target_location
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+		character:wor_wallenstein_script = {
+			if = {
+				limit = {
+					is_alive = yes
+				}
+			}
+			save_scope_as = target_wallenstein
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.a
+
+		trigger = {
+			scope:target_wallenstein = {
+				NOT = {
+					owner = root
+				}
+			}
+		}
+
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:glory_seeker
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.b
+
+		trigger = {
+			scope:target_wallenstein = {
+				owner = root
+			}
+		}
+
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:glory_seeker
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.c
+
+		scope:target_character = {
+			move_country = scope:exile_destination
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:glory_seeker
+		}
+	}
+}
+
+war_of_religions.2 = { #Matthias Gallas
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1.title
+	desc = war_of_religions.2.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_matthias
+			last_name = Gallas
+			birth_location = location:trento
+			birth_date = 1588.10.17
+			culture = culture:danube_bavarian
+			religion = religion:catholic
+			estate = estate_type:nobles_estate
+			adm = { 50 75 }
+			dip = { 80 95 }
+			mil = { 70 90 }
+			save_scope_as = target_character
+			script = wor_gallas_script
+			create_in_limbo = yes
+		}
+		location:trento = {
+			save_scope_as = target_location
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.a
+
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:ruthless
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.c
+
+		scope:target_character = {
+			move_country = scope:exile_destination
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:ruthless
+		}
+	}
+}
+
+war_of_religions.3 = { #Charles de Longueval Bucquoy
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1.title
+	desc = war_of_religions.3.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_charles
+			last_name = de_longueval
+			birth_location = location:arras
+			birth_date = 1571.1.9
+			culture = culture:picard
+			religion = religion:catholic
+			estate = estate_type:nobles_estate
+			adm = { 60 95 }
+			dip = { 70 85 }
+			mil = { 60 80 }
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		location:trento = {
+			save_scope_as = target_location
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.a
+
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:defensive_planner
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.c
+
+		scope:target_character = {
+			move_country = scope:exile_destination
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:defensive_planner
+		}
+	}
+}
+
+war_of_religions.4 = { #Franz von Mercy
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1.title
+	desc = war_of_religions.4.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_francis
+			last_name = von_mercy
+			birth_location = location:longwy
+			birth_date = 1597.1.1 #unknown
+			culture = culture:lorrain
+			religion = religion:catholic
+			estate = estate_type:nobles_estate
+			adm = { 70 85 }
+			dip = { 70 85 }
+			mil = { 70 85 }
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		location:longwy = {
+			save_scope_as = target_location
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.a
+
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:inspirational_leader_general
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.c
+
+		scope:target_character = {
+			move_country = scope:exile_destination
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:inspirational_leader_general
+		}
+	}
+}
+
+war_of_religions.5 = { #Ambrogio Spinola
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1.title
+	desc = war_of_religions.5.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_ambrose
+			last_name = Spinola
+			birth_location = location:genoa
+			birth_date = 1569.1.1 #unknown
+			culture = culture:ligurian
+			religion = religion:catholic
+			estate = estate_type:nobles_estate
+			adm = { 70 85 }
+			dip = { 60 80 }
+			mil = { 75 85 }
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		location:genoa = {
+			save_scope_as = target_location
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.a
+
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:siege_specialist
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.c
+
+		scope:target_character = {
+			move_country = scope:exile_destination
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:siege_specialist
+		}
+	}
+}
+
+war_of_religions.6 = { #Tommaso Carcciolo
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1.title
+	desc = war_of_religions.6.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_thomas
+			last_name = caracciolo
+			birth_location = location:naples
+			birth_date = 1572.3.10
+			culture = culture:neapolitan
+			religion = religion:catholic
+			estate = estate_type:nobles_estate
+			adm = { 70 85 }
+			dip = { 60 80 }
+			mil = { 75 85 }
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		location:naples = {
+			save_scope_as = target_location
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.a
+
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:master_of_arms
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.c
+
+		scope:target_character = {
+			move_country = scope:exile_destination
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:master_of_arms
+		}
+	}
+}
+
+war_of_religions.7 = { #Peter Ernst von Mansfeld
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1.title
+	desc = war_of_religions.7.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_peter.name_ernest
+			last_name = von_Mansfeld
+			birth_location = location:luxembourg
+			birth_date = 1572.3.10
+			culture = culture:moselle_franconian
+			religion = religion:lutheran
+			estate = estate_type:nobles_estate
+			adm = { 70 80 }
+			dip = { 60 75 }
+			mil = { 75 90 }
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		location:luxembourg = {
+			save_scope_as = target_location
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.a
+
+		change_gold_effect = { scale = 5 }
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:battlefield_medic
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.c
+
+		scope:target_character = {
+			move_country = scope:exile_destination
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:battlefield_medic
+		}
+	}
+}
+
+war_of_religions.8 = { #Heinrich Matthias von Thurn
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1.title
+	desc = war_of_religions.8.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_henry.name_matthias
+			last_name = von_Thurn
+			birth_location = location:nemecky_brod
+			birth_date = 1567.2.24
+			culture = culture:czech
+			religion = religion:lutheran
+			estate = estate_type:nobles_estate
+			adm = { 70 85 }
+			dip = { 75 85 }
+			mil = { 70 80 }
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		location:nemecky_brod = {
+			save_scope_as = target_location
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.a
+
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:battlefield_medic
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.c
+
+		scope:target_character = {
+			move_country = scope:exile_destination
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:battlefield_medic
+		}
+	}
+}
+
+war_of_religions.9 = { #Johan Banér
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1.title
+	desc = war_of_religions.9.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_john
+			last_name = baner
+			birth_location = location:stockholm
+			birth_date = 1596.7.3
+			culture = culture:swedish
+			religion = religion:lutheran
+			estate = estate_type:nobles_estate
+			adm = { 70 85 }
+			dip = { 75 85 }
+			mil = { 70 80 }
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		location:stockholm = {
+			save_scope_as = target_location
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.a
+
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:ruthless
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.c
+
+		scope:target_character = {
+			move_country = scope:exile_destination
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:ruthless
+		}
+	}
+}
+
+war_of_religions.10 = { #Lennart Torstensson
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1.title
+	desc = war_of_religions.10.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_leonard
+			last_name = Torstensson
+			birth_location = location:ekholm
+			birth_date = 1603.8.17
+			culture = culture:swedish
+			religion = religion:lutheran
+			estate = estate_type:nobles_estate
+			adm = { 70 85 }
+			dip = { 75 85 }
+			mil = { 70 80 }
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		location:ekholm = {
+			save_scope_as = target_location
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.a
+
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:cannoneer
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.c
+
+		scope:target_character = {
+			move_country = scope:exile_destination
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:cannoneer
+		}
+	}
+}
+
+war_of_religions.11 = { #Gustaf Horn
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1.title
+	desc = war_of_religions.11.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_gustav
+			last_name = horn_surname
+			birth_location = location:uppsala
+			birth_date = 1603.8.17
+			culture = culture:swedish
+			religion = religion:lutheran
+			estate = estate_type:nobles_estate
+			adm = { 70 85 }
+			dip = { 75 85 }
+			mil = { 70 90 }
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		location:uppsala = {
+			save_scope_as = target_location
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.a
+
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:cannoneer
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.c
+
+		scope:target_character = {
+			move_country = scope:exile_destination
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:cannoneer
+		}
+	}
+}
+
+war_of_religions.12 = { #Turenne
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1.title
+	desc = war_of_religions.12.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_henry
+			last_name = Turenne
+			birth_location = location:mouzon
+			birth_date = 1603.8.17
+			culture = culture:champenais
+			religion = religion:catholic
+			estate = estate_type:nobles_estate
+			adm = { 75 90 }
+			dip = { 75 90 }
+			mil = { 70 90 }
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		location:mouzon = {
+			save_scope_as = target_location
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.a
+
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:goal_oriented
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.c
+
+		scope:target_character = {
+			move_country = scope:exile_destination
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:goal_oriented
+		}
+	}
+}
+
+war_of_religions.13 = { #Johann Tilly
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1.title
+	desc = war_of_religions.13.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_john
+			last_name = Tilly
+			birth_location = location:nivelles
+			birth_date = 1559.2.1
+			culture = culture:ripuarian_franconian
+			religion = religion:catholic
+			estate = estate_type:nobles_estate
+			adm = { 75 90 }
+			dip = { 75 90 }
+			mil = { 70 90 }
+			save_scope_as = target_character
+			script = johann_tilly
+			create_in_limbo = yes
+		}
+		location:nivelles = {
+			save_scope_as = target_location
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.a
+
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:ruthless
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.c
+
+		scope:target_character = {
+			move_country = scope:exile_destination
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:ruthless
+		}
+	}
+}
+
+war_of_religions.14 = { #Johann von Aldringen
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1.title
+	desc = war_of_religions.14.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_john
+			last_name = von_aldringen
+			birth_location = location:luxembourg
+			birth_date = 1588.12.10
+			culture = culture:moselle_franconian
+			religion = religion:catholic
+			estate = estate_type:nobles_estate
+			adm = { 75 90 }
+			dip = { 75 90 }
+			mil = { 70 90 }
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		location:luxembourg = {
+			save_scope_as = target_location
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.a
+
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:ruthless
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.c
+
+		scope:target_character = {
+			move_country = scope:exile_destination
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:ruthless
+		}
+	}
+}
+
+war_of_religions.15 = { #Otto Heinrich Fugger
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1.title
+	desc = war_of_religions.15.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_otto.name_henry
+			last_name = Fugger_von_glott
+			birth_location = location:augsburg
+			birth_date = 1592.1.12
+			culture = culture:swabian
+			religion = religion:catholic
+			estate = estate_type:nobles_estate
+			adm = { 75 90 }
+			dip = { 75 90 }
+			mil = { 70 90 }
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		location:augsburg = {
+			save_scope_as = target_location
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.a
+
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:defensive_planner
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.c
+
+		scope:target_character = {
+			move_country = scope:exile_destination
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:defensive_planner
+		}
+	}
+}
+
+war_of_religions.16 = { #Gottfried Heinrich zu Pappenheim
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1.title
+	desc = war_of_religions.16.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_godfrey.name_henry
+			last_name = von_Pappenheim
+			birth_location = location:eichstatt
+			birth_date = 1588.12.10
+			culture = culture:swabian
+			religion = religion:catholic
+			estate = estate_type:nobles_estate
+			adm = { 75 90 }
+			dip = { 75 90 }
+			mil = { 70 90 }
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		location:eichstatt = {
+			save_scope_as = target_location
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.a
+
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:born_to_the_saddle
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.c
+
+		scope:target_character = {
+			move_country = scope:exile_destination
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:born_to_the_saddle
+		}
+	}
+}
+
+war_of_religions.17 = { #Sack of Magdeburg
+	type = country_event
+	category = situation_event
+	title = war_of_religions.17.title
+	desc = war_of_religions.17.desc
+
+	fire_only_once = yes
+	major = yes
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	trigger = {
+		is_situation_active = situation:war_of_religions
+		NOT = {
+			owns = location:magdeburg
+		}
+		exists = scope:target
+		scope:target = location:magdeburg
+		in_war_of_casus_belli = casus_belli:cb_religious_superiority
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:peasants
+  background = pop_type:peasants }
+
+		scope:target = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = war_of_religions.17.a
+
+		scope:target_location = {
+			change_location_rank = location_rank:rural_settlement
+			every_buildings_in_location = {
+				save_temporary_scope_as = target_building
+				PREV = {
+					destroy_building = scope:target_building
+				}
+			}
+			change_prosperity = prosperity_radical_penalty
+			every_pop = {
+				add_pop_size = {
+					value = pop_size
+					multiply = -0.2
+				}
+			}
+		}
+	}
+}
+
+war_of_religions.18 = { #Looting of Heidelberg Library
+	type = country_event
+	category = situation_event
+	title = war_of_religions.18.title
+	desc = war_of_religions.18.desc
+
+	fire_only_once = yes
+	major = yes
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	trigger = {
+		is_situation_active = situation:war_of_religions
+		NOT = {
+			owns = location:heidelberg
+		}
+		location:heidelberg = {
+			has_building = building_type:library
+			any_work_of_art_in_location = {
+				OR = {
+					work_of_art_type = work_of_art_type:chronicle
+					work_of_art_type = work_of_art_type:novel
+					work_of_art_type = work_of_art_type:poem
+					work_of_art_type = work_of_art_type:play
+					work_of_art_type = work_of_art_type:prayer_book
+				}
+			}
+		}
+		exists = scope:target
+		scope:target = location:heidelberg
+		in_war_of_casus_belli = casus_belli:cb_religious_superiority
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:peasants
+  background = pop_type:peasants }
+
+		scope:target = {
+			save_scope_as = target_location
+		}
+		if = {
+			limit = {
+				religion = religion:catholic
+				country_exists = c:PAP
+			}
+			c:PAP.capital = {
+				save_scope_as = target_book_donation
+			}
+		}
+		else = {
+			capital = {
+				save_scope_as = target_book_donation
+			}
+		}
+	}
+
+	option = {
+		name = war_of_religions.18.a
+
+		scope:target_location = {
+			change_prosperity = prosperity_extreme_penalty
+			every_work_of_art_in_location = {
+				limit = {
+					OR = {
+						work_of_art_type = work_of_art_type:chronicle
+						work_of_art_type = work_of_art_type:novel
+						work_of_art_type = work_of_art_type:poem
+						work_of_art_type = work_of_art_type:play
+						work_of_art_type = work_of_art_type:prayer_book
+					}
+				}
+				move_art = scope:target_book_donation
+			}
+		}
+		if = {
+			limit = {
+				religion = religion:catholic
+				country_exists = c:PAP
+			}
+			c:PAP = {
+				add_opinion = {
+					target = root
+					modifier = opinion_gifted_heidelberg_books
+				}
+			}
+			add_religious_influence = religious_influence_mild_bonus
+		}
+	}
+}
+
+war_of_religions.19 = { #The Death of the Ruler in Battle
+	type = country_event
+	category = situation_event
+	title = war_of_religions.19.title
+	desc = war_of_religions.19.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		ruler = {
+			save_scope_as = target_ruler
+
+			unit ?= {
+				save_scope_as = target_unit
+
+				unit_location = {
+					save_scope_as = target_location
+				}
+			}
+		}
+	}
+
+	option = {
+		name = war_of_religions.19.a
+
+		custom_tooltip =  war_of_religions.19.a.tt
+		hidden_effect = {
+			random_list = {
+				90 = {
+					kill_character = {
+						target = scope:target_ruler
+						reason = combat
+					}
+					scope:target_ruler = {
+						set_nickname = nick_defender_of_the_faith
+					}
+					root.religion = {
+						every_country_in_religion = {
+							add_opinion = {
+								target = root
+								modifier = defender_of_our_faith
+							}
+						}
+					}
+
+					add_prestige = prestige_mild_bonus
+				}
+				10 = {
+					scope:target_ruler = {
+						add_trait = trait:inspirational_leader_general
+					}
+				}
+			}
+			set_global_variable = wor_ruler_died_gloriously
+		}
+	}
+}
+
+war_of_religions.1000 = { #on start for Emperor
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1000.title
+	desc = war_of_religions.1000.desc
+
+	image = "gfx/interface/illustrations/situation/war_of_religions.dds"
+
+	option = { #
+		name = war_of_religions.1000.a
+
+		custom_tooltip = war_of_religions.1000.a.tt
+	}
+}
+
+war_of_religions.1001 = { #on start event for HRE Members
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1001.title
+	desc = war_of_religions.1001.desc
+
+	image = "gfx/interface/illustrations/situation/war_of_religions.dds"
+
+	option = { #
+		name = war_of_religions.1001.a
+
+		custom_tooltip = war_of_religions.1000.a.tt
+	}
+}
+
+war_of_religions.1002 = { #on start event for non HRE Members
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1002.title
+	desc = war_of_religions.1002.desc
+
+	image = "gfx/interface/illustrations/situation/war_of_religions.dds"
+
+	option = { #
+		name = war_of_religions.1002.a
+
+		custom_tooltip = war_of_religions.1000.a.tt
+	}
+}
+
+war_of_religions.1200 = { #Wallenstein
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1200.title
+	desc = war_of_religions.1200.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_albert
+			last_name = Wallenstein
+			birth_location = location:nachod
+			birth_date = 1583.9.24
+			culture = culture:danube_bavarian
+			religion = religion:catholic
+			estate = estate_type:nobles_estate
+			adm = { 50 75 }
+			dip = { 80 95 }
+			mil = { 70 90 }
+			save_scope_as = target_character
+			script = wor_wallenstein_script
+			create_in_limbo = yes
+		}
+		location:nachod = {
+			save_scope_as = target_location
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.a
+
+		change_gold_effect = { scale = 5 }
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:goal_oriented
+		}
+	}
+
+	option = {
+		name = war_of_religions.1.c
+
+		scope:target_character = {
+			move_country = scope:exile_destination
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_trait = trait:goal_oriented
+		}
+	}
+}
+
+war_of_religions.1201 = { #Wallenstein, a Traitor?
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1201.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					character:wor_piccolomini_script = {
+						is_alive = yes
+						owner = root
+					}
+					character:wor_gallas_script = {
+						is_alive = yes
+						owner = root
+					}
+				}
+				desc =  war_of_religions.1201.desc.a
+			}
+			triggered_desc = {
+				trigger = {
+					character:wor_piccolomini_script = {
+						is_alive = yes
+						owner = root
+					}
+				}
+				desc = war_of_religions.1201.desc.b
+			}
+			triggered_desc = {
+				trigger = {
+					character:wor_gallas_script = {
+						is_alive = yes
+						owner = root
+					}
+				}
+				desc = war_of_religions.1201.desc.c
+			}
+			triggered_desc = {
+				desc = war_of_religions.1201.desc.d
+			}
+		}
+	}
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	trigger = {
+		character:wor_wallenstein_script ?= {
+			is_alive = yes
+			owner = root
+		}
+		in_war_of_casus_belli = casus_belli:cb_religious_superiority
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		character:wor_wallenstein_script = {
+			if = {
+				limit = {
+					is_alive = yes
+				}
+				save_scope_as = target_character
+			}
+		}
+		character:wor_piccolomini_script = {
+			if = {
+				limit = {
+					is_alive = yes
+					owner = root
+				}
+				save_scope_as = target_piccolomini
+			}
+		}
+		character:wor_gallas_script = {
+			if = {
+				limit = {
+					is_alive = yes
+					owner = root
+				}
+				save_scope_as = target_gallas
+			}
+		}
+	}
+
+	option = {
+		name = war_of_religions.1201.a
+
+		scope:target_character = {
+			add_trait = trait:unsuited_for_army_command
+		}
+		random_owned_location = {
+			limit = {
+				any_buildings_in_location = {
+					building_category = defense_category
+				}
+			}
+			set_variable = {
+				name = wallensteins_prison_timer
+				months = 6
+			}
+			save_scope_as = target_location
+		}
+		set_global_variable = {
+			name = wallensteins_prison
+			value = scope:target_location
+		}
+		if = {
+			limit = { any_country_at_war_with = { is_member_of_international_organization = international_organization:catholic_league } }
+			international_organization:catholic_league = {
+				leader_country ?= {
+					trigger_event_silently = war_of_religions.1202
+				}
+			}
+		}
+		else = {
+			international_organization:protestant_union = {
+				leader_country ?= {
+					trigger_event_silently = war_of_religions.1202
+				}
+			}
+		}
+	}
+
+	option = {
+		name = war_of_religions.1201.b
+
+		add_war_exhaustion = war_exhaustion_severe_penalty
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
+	}
+}
+
+war_of_religions.1202 = { #The Rescue of Wallenstein
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1202.title
+	desc = war_of_religions.1202.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		#these two are only here to wipe the two characters from this event so they do not appear in the illustration
+		government_type:monarchy = {
+			save_scope_as = target_piccolomini
+		}
+		government_type:monarchy = {
+			save_scope_as = target_gallas
+		}
+		#
+		character:wor_wallenstein_script = {
+			if = {
+				limit = {
+					is_alive = yes
+				}
+			}
+			save_scope_as = target_character
+		}
+		global_var:wallensteins_prison = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = war_of_religions.1202.a
+
+		set_variable = wallenstein_rescue_mission
+		custom_tooltip = war_of_religions.1202.a.tt
+	}
+}
+
+war_of_religions.1203 = { #Wallenstein rescued
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1203.title
+	desc = war_of_religions.1203.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		character:wor_wallenstein_script = {
+			if = {
+				limit = {
+					is_alive = yes
+				}
+			}
+			save_scope_as = target_character
+		}
+		global_var:wallensteins_prison = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = war_of_religions.1203.a
+
+		scope:target_character = {
+			move_country = root
+			remove_trait = trait:unsuited_for_army_command
+		}
+		remove_variable = wallenstein_rescue_mission
+		remove_global_variable = wallensteins_prison
+	}
+}
+
+war_of_religions.1204 = { #Wallenstein executed
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1204.title
+	desc = war_of_religions.1204.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	trigger = {
+		character:wor_wallenstein_script ?= {
+			is_alive = yes
+			owner = root
+			has_trait = unsuited_for_army_command
+		}
+		in_war_of_casus_belli = casus_belli:cb_religious_superiority
+		any_owned_location = {
+			NOT = {
+				has_variable = wallensteins_prison_timer
+			}
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		character:wor_wallenstein_script = {
+			if = {
+				limit = {
+					is_alive = yes
+				}
+			}
+			save_scope_as = target_character
+		}
+		global_var:wallensteins_prison = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = war_of_religions.1204.a
+
+		kill_character = {
+			target = scope:target_character
+			reason = execution
+			killer = ruler
+		}
+		if = {
+			limit = { any_country_at_war_with = { is_member_of_international_organization = international_organization:catholic_league } }
+			international_organization:catholic_league = {
+				leader_country ?= {
+					trigger_event_silently = war_of_religions.1205
+				}
+			}
+		}
+		else = {
+			international_organization:protestant_union = {
+				leader_country ?= {
+					trigger_event_silently = war_of_religions.1205
+				}
+			}
+		}
+	}
+}
+
+war_of_religions.1205 = { #Wallenstein Rescue Failed
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1204.title
+	desc = war_of_religions.1205.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	trigger = {
+		character:wor_wallenstein_script = {
+			is_alive = yes
+			owner = root
+			has_trait = unsuited_for_army_command
+		}
+		in_war_of_casus_belli = casus_belli:cb_religious_superiority
+		any_owned_location = {
+			NOT = {
+				has_variable = wallensteins_prison_timer
+			}
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		character:wor_wallenstein_script = {
+			save_scope_as = target_character
+		}
+		global_var:wallensteins_prison = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = war_of_religions.1205.a
+
+		remove_variable = wallenstein_rescue_mission
+		remove_global_variable = wallensteins_prison
+	}
+}
+
+war_of_religions.1300 = { #Peace of Westphalia
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1300.title
+	desc = war_of_religions.1300.desc
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = war_of_religions.1300.a
+		#white_peace = var:war_of_religion_current_war
+		c:HAB = { white_peace = "war_with_country(c:HES)" }
+		c:NED = { trigger_event_non_silently = netherland_independent.8 }
+		situation:war_of_religions = {
+			end_situation = this
+		}
+		change_imperial_authority = { value = imperial_authority_unique_penalty }
+		international_organization:hre = {
+			add_policy_to_international_organization = policy:hre_religion_christian
+			add_policy_to_international_organization = policy:only_imperial_religion_group_policy
+		}
+	}
+}
+
+war_of_religions.1400 = { #Hans Jakob Christoffel von Grimmelshausen
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1400.title
+	desc = war_of_religions.1400.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_john.name_james #CAESAR-2659 Should be diminutive:Hans
+			last_name = von_grimmelshausen
+			birth_location = location:hanau
+			birth_date = 1622.1.1
+			culture = culture:rhine_franconian
+			religion = religion:catholic
+			estate = estate_type:burghers_estate
+			artist_skill = 0.84
+			artist = writer
+			save_scope_as = target_artist
+			script = script_grimmelshausen_character
+			create_in_limbo = yes
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	option = {
+		name = war_of_religions.1400.a
+
+		scope:target_artist = {
+			move_country = root
+		}
+	}
+
+	option = {
+		name = war_of_religions.1400.b
+
+		scope:target_artist = {
+			move_country = scope:exile_destination
+		}
+	}
+}
+
+war_of_religions.1401 = { #Simplicius Simplicissimus
+	type = country_event
+	category = situation_event
+	title = war_of_religions.1401.title
+	desc = war_of_religions.1401.desc
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+
+		character:script_grimmelshausen_character = {
+			save_scope_as = target_artist
+		}
+	}
+
+	trigger = {
+		character:script_grimmelshausen_character ?= {
+			is_alive = yes
+			owner ?= root
+		}
+	}
+
+	option = {
+		name = war_of_religions.1401.a
+
+		capital = {
+			create_art = {
+				artist = scope:target_artist
+				quality = 91
+				type = work_of_art_type:novel
+				key = simplicius_simplicissimus
+			}
+		}
+	}
+}

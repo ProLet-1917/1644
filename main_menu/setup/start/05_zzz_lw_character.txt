@@ -34,7 +34,7 @@ character_db = {
 		tag = TUR
 		dynasty = ottomans_dynasty
 	}
-	rus_mikhail_romanov = {
+	rus_mikhail_romanov = { #https://en.wikipedia.org/wiki/Michael_of_Russia
 		first_name = { name = name_michael }
 		culture = muscovite
 		religion = orthodox
@@ -42,8 +42,23 @@ character_db = {
 		adm = 72 dip = 47 mil = 61
 		birth_date = 1597.1.1
 		birth = moscow
+		spouse = rus_eudoxia_streshneva
 		tag = RUS
 		dynasty = romanov_dynasty
+	}
+
+	rus_eudoxia_streshneva = { #https://en.wikipedia.org/wiki/Eudoxia_Streshneva
+		first_name = { name = name_eudokia }
+		culture = muscovite
+		religion = orthodox
+		estate = nobles_estate
+		adm = 35 dip = 62 mil = 28
+		female = yes
+		birth_date = 1608.1.1
+		birth = meshchovsk
+		spouse = rus_mikhail_romanov
+		tag = RUS
+
 	}
 	rus_aleksey_romanov = {
 		first_name = { name = name_alexis }
@@ -51,12 +66,43 @@ character_db = {
 		religion = orthodox
 		estate = nobles_estate
 		adm = 72 dip = 47 mil = 61
-		birth_date = 1597.1.1
+		birth_date = 1629.3.19
 		birth = moscow
 		father = rus_mikhail_romanov
 		tag = RUS
 		dynasty = romanov_dynasty
 	}
+
+	rus_irina_romanov = {
+		first_name = { name = name_irene }
+		culture = muscovite
+		religion = orthodox
+		estate = nobles_estate
+		adm = 41 dip = 55 mil = 35
+		birth_date = 1627.4.22
+		birth = moscow
+		female = yes
+		father = rus_mikhail_romanov
+		mother = rus_eudoxia_streshneva
+		tag = RUS
+		dynasty = romanov_dynasty
+	}
+
+	rus_anna_romanov = {
+		first_name = { name = name_anna }
+		culture = muscovite
+		religion = orthodox
+		estate = nobles_estate
+		adm = 40 dip = 56 mil = 28
+		birth_date = 1630.7.14
+		birth = moscow
+		female = yes
+		father = rus_mikhail_romanov
+		mother = rus_eudoxia_streshneva
+		tag = RUS
+		dynasty = romanov_dynasty
+	}
+
 	tra_gyorgy_rakoczy = {
 		first_name = { name = name_george }
 		culture = transylvanian
@@ -451,5 +497,92 @@ character_db = {
 		mother = hpl_marie_elisabeth
 		dynasty = oldenburg_dynasty
 		tag = HPL
+	}
+
+	ned_amalia = {
+		first_name = { name = name_amelia }
+		culture = frisian
+		religion = calvinist
+		estate = nobles_estate
+		adm = 33 dip = 57 mil = 66
+		female = yes
+		birth_date = 1602.8.31
+		birth = amsterdam
+		spouse = hol_frederik_hendrik_van_oranje
+		tag = HOL
+	}
+
+	ned_william_ii_oranje = {
+		first_name = { name = name_william }
+		culture = frisian
+		religion = calvinist
+		estate = nobles_estate
+		adm = 52 dip = 45 mil = 62
+		birth_date = 1626.5.27
+		birth = amsterdam
+		father = hol_frederik_hendrik_van_oranje
+		mother = ned_amalia
+		dynasty = oranje_dynasty
+		tag = HOL
+	}
+
+	ned_luise_henriette_oranje = {
+		first_name = { name = name_louise }
+		culture = frisian
+		religion = calvinist
+		estate = nobles_estate
+		adm = 38 dip = 49 mil = 38
+		birth_date = 1627.12.27
+		birth = amsterdam
+		female = yes
+		father = hol_frederik_hendrik_van_oranje
+		mother = ned_amalia
+		dynasty = oranje_dynasty
+		tag = HOL
+	}
+
+	ned_albertine_agnes_oranje = {
+		first_name = { name = name_albertina }
+		culture = frisian
+		religion = calvinist
+		estate = nobles_estate
+		adm = 22 dip = 28 mil = 17
+		birth_date = 1634.4.9
+		birth = amsterdam
+		female = yes
+		father = hol_frederik_hendrik_van_oranje
+		mother = ned_amalia
+		dynasty = oranje_dynasty
+		tag = HOL
+	}
+
+	ned_henriette_catherine_oranje = {
+		first_name = { name = name_henrietta }
+		culture = frisian
+		religion = calvinist
+		estate = nobles_estate
+		adm = 18 dip = 23 mil = 13
+		birth_date = 1637.2.10
+		birth = amsterdam
+		female = yes
+		father = hol_frederik_hendrik_van_oranje
+		mother = ned_amalia
+		dynasty = oranje_dynasty
+		tag = HOL
+	}
+
+	ned_maria_oranje = {
+		first_name = { name = name_marianne }
+		culture = frisian
+		religion = calvinist
+		estate = nobles_estate
+		adm = 7 dip = 5 mil = 5
+		birth_date = 1642.9.5
+		birth = amsterdam
+		female = yes
+		father = hol_frederik_hendrik_van_oranje
+		mother = ned_amalia
+		dynasty = oranje_dynasty
+		tag = HOL
 	}
 }
