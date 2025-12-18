@@ -1,4 +1,4 @@
-﻿# 为汉文化角色分配非location类型的dynasty，避免使用地名作为姓氏
+# 为汉文化角色分配非location类型的dynasty，避免使用地名或父名作为姓氏
 # root = character (角色创建时触发)
 on_character_created = {
 	effect = {
@@ -6,56 +6,62 @@ on_character_created = {
 		if = {
 			limit = {
 				has_culture_group = culture_group:chinese_group
+				exists = dynasty
 			}
-			# 如果角色没有dynasty，尝试分配一个
+			# 强制设置王朝命名类型为default（无论当前是什么类型）
+			dynasty = {
+				set_dynasty_name_type = default
+			}
+			# 检查是否与宗族中其他人重名
+			# 注意：EU5 可能没有直接的名字比较触发器，这里先实现基本框架
+			# 如果发现重名，可以在这里添加处理逻辑（如重新生成名字等）
 			if = {
 				limit = {
-					NOT = { has_dynasty = yes }
-				}
-				# 尝试找到一个已有角色的dynasty
-				random_dynasty = {
-					limit = {
-						# 确保dynasty中有至少一个相同文化的成年角色
+					dynasty = {
 						any_character_in_dynasty = {
-							culture = root.culture
-							is_adult = yes
-							NOT = { this = root }
+							NOT = { this = root }  # 排除自己
+							# 这里可以添加其他检查条件
+							# 注意：由于无法直接比较名字，可能需要使用其他方法
 						}
 					}
-					root = {
-						dynasty = this
-					}
+				}
+				# 如果发现重名，可以在这里添加处理逻辑
+				# 例如：重新生成名字、记录日志等
+			}
+		}
+	}
+}
+
+# 角色出生时也检查（更早的时机）
+# root = country, scope:character = newborn
+on_character_birth = {
+	effect = {
+		# 检查角色是否有汉文化
+		if = {
+			limit = {
+				scope:character = {
+					has_culture_group = culture_group:chinese_group
+					exists = dynasty
 				}
 			}
-			# 如果角色有dynasty，检查是否是只有自己的新dynasty（可能是location dynasty）
-			else_if = {
-				limit = {
-					has_dynasty = yes
-					# 检查dynasty中是否只有自己（可能是新创建的location dynasty）
-					all_character_in_dynasty = {
-						this = root
-					}
-				}
-				# 直接重新分配一个已有角色的dynasty（覆盖当前的location dynasty）
-				random_dynasty = {
-					limit = {
-						any_character_in_dynasty = {
-							culture = root.culture
-							is_adult = yes
-							NOT = { this = root }
-						}
-					}
-					root = {
-						dynasty = this
-					}
-				}
+			# 强制设置王朝命名类型为default（无论当前是什么类型）
+			scope:character.dynasty = {
+				set_dynasty_name_type = default
 			}
-			# 确保汉人角色的dynasty不使用location或patronym命名类型
+			# 检查是否与宗族中其他人重名
+			# 注意：EU5 可能没有直接的名字比较触发器，这里先实现基本框架
 			if = {
 				limit = {
-					has_dynasty = yes
+					scope:character.dynasty = {
+						any_character_in_dynasty = {
+							NOT = { this = scope:character }  # 排除自己
+							# 这里可以添加其他检查条件
+							# 注意：由于无法直接比较名字，可能需要使用其他方法
+						}
+					}
 				}
-				zzz_1644_fix_chinese_dynasty_name_type = yes
+				# 如果发现重名，可以在这里添加处理逻辑
+				# 例如：重新生成名字、记录日志等
 			}
 		}
 	}
