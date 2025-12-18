@@ -44,7 +44,7 @@ patrilineal_primogeniture = {
 					is_female = no
 				}
 				add = {
-					desc = "HEIR_SELECTION_DIRECT_DESCENDANT"
+					desc = "HEIR_SELECTION_IS_RULER_SON_DESC"
 					value = -1000  # 大幅减分，确保亲儿子绝对优先（分数越低越优先）
 				}
 			}
@@ -67,7 +67,7 @@ patrilineal_primogeniture = {
 					is_female = no
 				}
 				add = {
-					desc = "HEIR_SELECTION_SIBLING"
+					desc = "HEIR_SELECTION_FATHER_IS_RULER_DESC"
 					value = -500  # 兄弟姐妹减分，但远高于亲儿子（分数越低越优先）
 				}
 			}
@@ -115,7 +115,7 @@ patrilineal_primogeniture = {
 					}
 				}
 				add = {
-					desc = "HEIR_SELECTION_UNCLE_OR_NEPHEW"
+					desc = "HEIR_SELECTION_GRANDFATHER_IS_RULER_DESC"
 					value = -200  # 叔伯/侄子减分，但远高于兄弟姐妹（分数越低越优先）
 				}
 			}
@@ -161,7 +161,7 @@ patrilineal_primogeniture = {
 					is_female = no
 				}
 				add = {
-					desc = "HEIR_SELECTION_SAME_DYNASTY"
+					desc = "HEIR_SELECTION_SAME_DYNASTY_AS_CURRENT_RULER"
 					value = -50  # 其他同宗族成员基础分，远高于近亲（分数越低越优先）
 				}
 			}
