@@ -20,10 +20,11 @@ patrilineal_primogeniture = {
         }
     }
 
-    allowed_estates = { nobles_estate }
+    allowed_estates = { crown_estate nobles_estate }
 
     heir_is_allowed = {
-       
+        # 只允许国内角色作为继承人
+        owner ?= scope:target
     }
 
     traverse_family_tree = no
@@ -36,7 +37,7 @@ patrilineal_primogeniture = {
             # 嫡长孙（嫡长子的长子，如果嫡长子已死）- 第一优先级
             # 根据周礼，嫡长孙优先于次子，甚至优先于活着的次子
             add = {
-                desc = "HEIR_SELECTION_GRANDFATHER_IS_RULER_DESC"
+                desc = "HEIR_SELECTION_IS_RULER_GRANDSON_DESC"
                 if = {
                     limit = {
                         OR = {
@@ -46,6 +47,7 @@ patrilineal_primogeniture = {
                                 exists = father
                                 exists = father.father
                                 father.father = {
+									is_alive = yes
                                     any_ruling_countries ?= {
                                         this ?= scope:target
                                     }
@@ -68,9 +70,7 @@ patrilineal_primogeniture = {
                 if = {
                     limit = {
                         exists = father
-                        any_parent = {
-                            this = scope:target.ruler
-                        }
+						father = scope:target.ruler
                         is_female = no
                     }
                     value = 1000
