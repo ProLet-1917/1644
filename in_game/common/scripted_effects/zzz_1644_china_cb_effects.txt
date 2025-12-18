@@ -1,5 +1,5 @@
 ﻿# 收集所有首都在中国和满洲的国家到全局变量列表
-# 每月更新，用于GUI动态显示，按军力排序（降序，军力高的在前）
+# 每月更新，用于GUI动态显示，按人口排序（降序，人口高的在前）
 zzz_1644_collect_china_countries_effect = {
 	clear_global_variable_list = china_countries_list
 	every_country = {
@@ -20,12 +20,12 @@ zzz_1644_collect_china_countries_effect = {
 			target = this
 		}
 	}
-	# 按军力排序（降序，军力高的在前）
+	# 按人口排序（降序，人口高的在前）
 	ordered_in_global_list = {
 		variable = china_countries_list
 		order_by = {
 			add = {
-				value = military_strength
+				value = total_population
 			}
 		}
 	}
