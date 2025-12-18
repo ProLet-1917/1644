@@ -23,7 +23,7 @@ patrilineal_primogeniture = {
     allowed_estates = { nobles_estate }
 
     heir_is_allowed = {
-        # all_in_dynasty = yes 已经确保了只有同宗族成员会被考虑
+       
     }
 
     traverse_family_tree = no
@@ -33,7 +33,36 @@ patrilineal_primogeniture = {
             limit = {
                 exists = root
             }
-            # 直系血亲（亲生儿子）最高分，优先选择
+            # 嫡长孙（嫡长子的长子，如果嫡长子已死）- 第一优先级
+            # 根据周礼，嫡长孙优先于次子，甚至优先于活着的次子
+            add = {
+                desc = "HEIR_SELECTION_GRANDFATHER_IS_RULER_DESC"
+                if = {
+                    limit = {
+                        OR = {
+                            not = { exists = root }
+                            # 嫡长孙：父亲的父亲是统治者，且父亲已死
+                            AND = {
+                                exists = father
+                                exists = father.father
+                                father.father = {
+                                    any_ruling_countries ?= {
+                                        this ?= scope:target
+                                    }
+                                }
+                                father = {
+                                    is_alive = no
+                                }
+                                is_female = no
+                            }
+                        }
+                    }
+                    value = 1200  # 高于所有次子（1000分），体现嫡长孙优先
+                }
+            }
+
+            # 直系血亲（亲生儿子）第二优先级
+            # 包括所有统治者的儿子（次子等）
             add = {
                 desc = "HEIR_SELECTION_IS_RULER_SON_DESC"
                 if = {
@@ -48,7 +77,7 @@ patrilineal_primogeniture = {
                 }
             }
 
-            # 兄弟姐妹（第二优先级）
+            # 兄弟姐妹（第三优先级）
             add = {
                 desc = "HEIR_SELECTION_FATHER_IS_RULER_DESC"
                 if = {
@@ -59,7 +88,7 @@ patrilineal_primogeniture = {
                 }
             }
 
-            # 叔伯/侄子（第三优先级）
+            # 叔伯/侄子（第四优先级）
             # 追溯父系祖先链，检查是否有任何祖先的父辈是历史上任何一任统治者
             add = {
                 desc = "HEIR_SELECTION_GRANDFATHER_IS_RULER_DESC"
@@ -67,7 +96,7 @@ patrilineal_primogeniture = {
                     limit = {
                         OR = {
                             not = { exists = root }
-                            # 祖父是历史上任何一任统治者
+                            # 祖父是历史上任何一任统治者（但排除嫡长孙，嫡长孙已单独处理）
                             AND = {
                                 exists = father
                                 exists = father.father
@@ -75,6 +104,12 @@ patrilineal_primogeniture = {
                                     is_alive = no
                                     any_ruling_countries ?= {
                                         this ?= scope:target
+                                    }
+                                }
+                                # 排除嫡长孙（父亲的父亲是统治者，且父亲已死的情况）
+                                NOT = {
+                                    father = {
+                                        is_alive = no
                                     }
                                 }
                             }
@@ -146,7 +181,7 @@ patrilineal_primogeniture = {
                 }
             }
 
-            # 其他同宗族成员（表兄弟等远亲，第四优先级）
+            # 其他同宗族成员（表兄弟等远亲，第五优先级）
             # 由于前面的关系已经给了更高的分数，这里直接给基础分即可
             # 即使重复加分也不会影响优先级（1000 > 500 > 200 > 50）
             add = {
@@ -186,7 +221,7 @@ patrilineal_primogeniture = {
             }
             add = {
                 desc = "HEIR_SELECTION_GRANDFATHER_IS_RULER_DESC"
-                value = 200
+                value = 800
             }
             add = {
                 desc = "HEIR_SELECTION_SAME_DYNASTY_AS_CURRENT_RULER"
