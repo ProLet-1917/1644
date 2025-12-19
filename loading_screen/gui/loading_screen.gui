@@ -140,7 +140,7 @@ template version_label {
 							fontsize = 12
 							font = Debug
 							minimumsize = { -1 25 }
-							text = "Anno 1644 0.2.0"
+							text = "ANNO_1644_VERSION_TT"
 						}
 						widget = {
 							layoutpolicy_horizontal = growing
@@ -154,7 +154,7 @@ template version_label {
 							fontsize = 12
 							font = Debug
 							minimumsize = { -1 25 }
-							text = "Kalmyk Pre-2"
+							text = "ANNO_1644_SUB_VERSIONNAME_TT"
 						}
 						widget = {
 							layoutpolicy_horizontal = growing
@@ -218,7 +218,7 @@ types LoadingScreenTypes
 		}
 
 		ecs_scene_viewer_widget =  {
-			blockoverride "use_for_loading_screen" 
+			blockoverride "use_for_loading_screen"
 			{
 				use_for_loading_screen = yes
 			}
@@ -250,7 +250,7 @@ types LoadingScreenTypes
 		}
 
 		############################ temporary until we have a proper loading screen
-		# icon = 
+		# icon =
 		#{
 		#	texture = "gfx/interface/illustrations/loading_screens/frontend_bg_0.dds"
 		#	size = { 100% 100% }
@@ -311,7 +311,7 @@ types LoadingScreenTypes
 					texture = "gfx/interface/colors/new_gold.dds"
 					blend_mode = multiply
 				}
-				
+
 				modify_texture = {
 					texture = "gfx/interface/component_overlay/overlay_stone.dds"
 					texture_density = 2
@@ -342,7 +342,7 @@ types LoadingScreenTypes
 					texture = "gfx/interface/colors/new_gold.dds"
 					blend_mode = multiply
 				}
-				
+
 				modify_texture = {
 					texture = "gfx/interface/component_overlay/overlay_stone.dds"
 					texture_density = 2
@@ -388,7 +388,7 @@ types LoadingScreenTypes
 					alpha = 0.5
 				}
 			}
-			
+
 
 			hbox = {
 				margin = { 8 6 }
@@ -415,7 +415,7 @@ types LoadingScreenTypes
 						# }
 					}
 
-					
+
 					icon = {
 						ignore_layout = yes
 						size = { 100% 100% }
@@ -423,7 +423,7 @@ types LoadingScreenTypes
 						texture_density = 2
 						spriteType = Corneredstretched
 						spriteborder = { 20 0 }
-		
+
 						modify_texture = {
 							texture = "gfx/interface/colors/new_gold.dds"
 							blend_mode = multiply
@@ -471,7 +471,7 @@ types LoadingScreenTypes
 					size = { 100% 100% }
 					texture = "gfx/interface/buttons/bg_button_big.dds"
 					texture_density = 2
-	
+
 					modify_texture = {
 						texture = "gfx/interface/colors/dark_blue.dds"
 						blend_mode = multiply
@@ -496,7 +496,7 @@ types LoadingScreenTypes
 					size = { 100% 100% }
 					texture = "gfx/interface/component_decoration/circle_fancy_frame.dds"
 					texture_density = 2
-	
+
 					modify_texture = {
 						texture = "gfx/interface/colors/new_gold.dds"
 						blend_mode = multiply
@@ -533,7 +533,7 @@ types LoadingScreenTypes
 					texture = "gfx/interface/colors/new_gold.dds"
 					blend_mode = multiply
 				}
-				
+
 				modify_texture = {
 					texture = "gfx/interface/component_overlay/overlay_stone.dds"
 					texture_density = 2
@@ -610,7 +610,7 @@ types LoadingScreenTypes
 						texture_density = 2
 						alpha = 1
 						mirror = vertical
-						
+
 						# modify_texture = {
 						# 	texture = "gfx/interface/colors/wood_brown.dds"
 						# 	blend_mode = multiply
@@ -629,7 +629,7 @@ types LoadingScreenTypes
 						texture = "gfx/interface/cards/card_roll_side.dds"
 						texture_density = 2
 						alpha = 1
-	
+
 						modify_texture = {
 							texture = "gfx/interface/colors/paper.dds"
 							blend_mode = multiply
@@ -656,7 +656,7 @@ types LoadingScreenTypes
 						texture = "gfx/interface/cards/wood_roll.dds"
 						texture_density = 2
 						alpha = 1
-						
+
 						# modify_texture = {
 						# 	texture = "gfx/interface/colors/wood_brown.dds"
 						# 	blend_mode = multiply
@@ -707,7 +707,7 @@ types LoadingScreenTypes
 						texture_density = 2
 						alpha = 1
 						mirror = vertical
-						
+
 						# modify_texture = {
 						# 	texture = "gfx/interface/colors/wood_brown.dds"
 						# 	blend_mode = multiply
@@ -726,7 +726,7 @@ types LoadingScreenTypes
 						texture = "gfx/interface/cards/card_roll_side.dds"
 						texture_density = 2
 						alpha = 1
-	
+
 						modify_texture = {
 							texture = "gfx/interface/colors/paper.dds"
 							blend_mode = multiply
@@ -753,7 +753,7 @@ types LoadingScreenTypes
 						texture = "gfx/interface/cards/wood_roll.dds"
 						texture_density = 2
 						alpha = 1
-						
+
 						# modify_texture = {
 						# 	texture = "gfx/interface/colors/wood_brown.dds"
 						# 	blend_mode = multiply
