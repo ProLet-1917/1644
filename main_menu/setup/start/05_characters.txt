@@ -240,6 +240,7 @@ character_db={
 		tag = FRA
 	}
 
+
 	fra_gaston_orleans_bourbon = {
 		first_name = { name = name_gaston }
 		culture = french
@@ -274,6 +275,26 @@ character_db={
 
 	#memo cardinal_mazarinは登場イベントあり（flavor_fra.411）
 
+	
+	fra_anne_of_austria = {#https://en.wikipedia.org/wiki/Anne_of_Austria
+		first_name = { name = name_anna }
+		culture = french
+		religion = catholic
+		estate = nobles_estate
+		adm = 68	# 統治: 摂政として政務の中心に立つが、実務はマザラン等の補佐が大きい想定で「高め寄りの中堅」
+		dip = 64	# 外交: 宮廷政治・対外関係の軸にはなるが、フランス対スペイン戦争期で立場が難しい点を加味
+		mil = 12	# 軍事: 軍指揮官ではないため低め
+		female = yes
+		spouse = fra_louis_xiii_bourbon
+		father = spa_philip_iii_habsburg
+		birth_date = 1601.9.22
+		birth = valladolid
+		dynasty = habsburg_dynasty
+		tag = FRA
+	}
+
+	#memo cardinal_mazarinは登場イベントあり（flavor_fra.411）
+
 	fra_louis_xiv_bourbon = {
 		first_name = { name = name_louis }
 		culture = french
@@ -285,6 +306,7 @@ character_db={
 		birth_date = 1638.9.5
 		birth = saint_germain_en_laye
 		father = fra_louis_xiii_bourbon
+		mother = fra_anne_of_austria
 		mother = fra_anne_of_austria
 		dynasty = bourbon_dynasty
 		tag = FRA
@@ -304,10 +326,10 @@ character_db={
 		tag = FRA
 	}
 
-	fra_viscount_of_turenne = { #https://en.wikipedia.org/wiki/Henri_de_La_Tour_d%27Auvergne,_Viscount_of_Turenne
+	fra_viscount_of_turenne = {
 		first_name = { name = name_henry }
 		culture = french
-		religion = lutheran
+		religion = protestant
 		estate = nobles_estate
 		adm = 58	# 堅実だが宰相型ではない
 		dip = 60	# 同盟・折衝より軍事で評価されるタイプ
