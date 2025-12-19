@@ -118,10 +118,17 @@ NUnit = {
 # ============================================================
 NCombat = {
 	# [已修改]
-	DAYS_PER_SIEGE_PHASE = 7             # 原版: 30 - 每个围城阶段的天数，加快攻城速度
+	DAYS_PER_SIEGE_PHASE = 14     #v0.2.0 after debates # 原版: 30 - 每个围城阶段的天数，加快攻城速度
 	MIN_DAYS_PER_SIEGE_PHASE = 1          # 原版: 7 - 最小围城阶段天数
-	DAYS_PER_SIEGE_PHASE_WITHOUT_FORT = 5 # 原版: 15 - 无要塞时占领天数，快速拿下无防御地区
+	DAYS_PER_SIEGE_PHASE_WITHOUT_FORT = 10 #v0.2.0 after debates  原版: 15 - 无要塞时占领天数
+	ASSAULT_DEFENDER_LOSS = 0.2 #v0.2.0 vanilla 0.05
+	ASSAULT_WIDTH_LIMIT = 1.5 #v0.2.0 vanilla 1
+	ASSAULT_ATTACKER_LOSS = 1.0 #v0.2.0 vanilla 1.5
+
+
 	
+
+
 	# 以下保持原版
 	NAVAL_LEVY_IMPACT = 0.05
 	RETREAT_STRENGTH_DAMAGE = 0.1
@@ -220,10 +227,7 @@ NCombat = {
 
 	SIEGE_DAYS_PER_PHASE = 5
 	
-	ASSAULT_ATTACKER_LOSS = 1.5
 	ASSAULT_ATTACKER_MORALE_LOSS = 0.4
-	ASSAULT_DEFENDER_LOSS = 0.05
 	ASSAULT_DEFENDER_MORALE_LOSS = 0.25
 	ASSAULT_DICE_MODIFIER = 5
-	ASSAULT_WIDTH_LIMIT = 1
 }
