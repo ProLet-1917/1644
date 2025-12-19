@@ -11,6 +11,18 @@ character_db = {
 		tag = TUN
 		dynasty = muradoglu_dynasty
 	}
+
+	tur_kösem_sultan = {
+		first_name = { name = Kosem }
+		culture = turkish_culture
+		religion = sunni
+		estate = nobles_estate
+		adm = 73 dip = 67 mil = 22
+		female = yes
+		birth_date = 1589.1.1
+		birth = mykonos
+		tag = TUR
+	}
 	tur_ibrahim_i_ottomans = {
 		first_name = { name = name_abraham }
 		culture = turkish_culture
@@ -19,20 +31,90 @@ character_db = {
 		adm = 17 dip = 16 mil = 11
 		birth_date = 1616.1.1
 		birth = constantinople
+		mother = tur_kösem_sultan
 		tag = TUR
 		dynasty = ottomans_dynasty
+	}
+	tur_turhan_sultan = {
+		first_name = { name = Turhan }
+		culture = turkish_culture
+		religion = sunni
+		estate = nobles_estate
+		adm = 65 dip = 59 mil = 24
+		female = yes
+		birth_date = 1626.1.1
+		birth = moscow
+		spouse = tur_ibrahim_i_ottomans
+		tag = TUR
 	}
 	tur_mehmet_i_ottomans = {
 		first_name = { name = name_muhammad }
 		culture = turkish_culture
 		religion = sunni
 		estate = nobles_estate
-		adm = 8 dip = 10 mil = 9
+		#adm = 8 dip = 10 mil = 9
 		birth_date = 1642.1.1
+		birth = constantinople
+		father = tur_ibrahim_i_ottomans
+		mother = tur_turhan_sultan
+		tag = TUR
+		dynasty = ottomans_dynasty
+	}
+	tur_suleiman_ii_ottomans = {
+		first_name = { name = name_salomon }
+		culture = turkish_culture
+		religion = sunni
+		estate = nobles_estate
+		birth_date = 1642.4.15
 		birth = constantinople
 		father = tur_ibrahim_i_ottomans
 		tag = TUR
 		dynasty = ottomans_dynasty
+	}
+	tur_ahmed_ii_ottomans = {
+		first_name = { name = name_ahmad }
+		culture = turkish_culture
+		religion = sunni
+		estate = nobles_estate
+		birth_date = 1643.2.25
+		birth = constantinople
+		father = tur_ibrahim_i_ottomans
+		tag = TUR
+		dynasty = ottomans_dynasty
+	}
+	tur_semize_mehmed_pasha = { #https://en.wikipedia.org/wiki/Semiz_Mehmed_Pasha
+		first_name = { name = name_muhammad }
+		nickname = { name = Semiz }
+		culture = turkish_culture
+		religion = sunni
+		estate = nobles_estate
+		adm = 66 dip = 52 mil = 60
+		birth_date = 1596.1.1
+		birth = constantinople
+		tag = TUR
+	}
+	tur_nevesinli_salih_pasha = { #https://en.wikipedia.org/wiki/Nevesinli_Salih_Pasha
+		first_name = { name = Salih }
+		nickname = { name = Nevesinli }
+		culture = turkish_culture
+		religion = sunni
+		estate = nobles_estate
+		adm = 68 dip = 54 mil = 58
+		birth_date = 1602.1.1 #史実不詳のため仮置き
+		birth = nevesinje
+		tag = TUR
+	}
+	tur_silahdar_yusuf_pasha = { #https://en.wikipedia.org/wiki/Silahdar_Yusuf_Pasha
+		first_name = { name = name_joseph }
+		nickname = { name = Silahdar }
+		culture = turkish_culture
+		religion = sunni
+		estate = nobles_estate
+		adm = 58 dip = 52 mil = 82
+		birth_date = 1604.1.1 
+		birth = zadar
+		tag = TUR
+		general_trait = accomplished_sailor
 	}
 	rus_mikhail_romanov = { #https://en.wikipedia.org/wiki/Michael_of_Russia
 		first_name = { name = name_michael.east_slavic_language }
