@@ -58,6 +58,9 @@ situation_panel = {
 						blockoverride "portrait_datacontext" {
 							datacontext = "[GetCountry('CSH').GetGovernment.GetRulerOrRegent]"
 						}
+						blockoverride "character_religion_visibility" {
+							visible = no
+						}
 					}
 				}
 			}
@@ -92,6 +95,9 @@ situation_panel = {
 						blockoverride "portrait_datacontext" {
 							datacontext = "[GetCountry('MNG').GetGovernment.GetRulerOrRegent]"
 						}
+						blockoverride "character_religion_visibility" {
+							visible = no
+						}
 					}
 				}
 			}
@@ -125,6 +131,9 @@ situation_panel = {
 						size = { 180 200 }
 						blockoverride "portrait_datacontext" {
 							datacontext = "[GetCountry('QNG').GetGovernment.GetRulerOrRegent]"
+						}
+						blockoverride "character_religion_visibility" {
+							visible = no
 						}
 					}
 				}
