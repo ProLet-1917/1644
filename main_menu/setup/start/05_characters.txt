@@ -320,6 +320,37 @@ character_db={
 
 ###Scandinavia
 	#DAN-NOR
+	dan_christian_iii_oldenburg = {
+		first_name = { name = name_christian }
+		culture = danish
+		religion = lutheran
+		estate = nobles_estate
+		adm = 75	# 行政: 宗教改革断行と王権強化
+		dip = 60	# 外交: 神聖ローマ帝国・北欧との均衡
+		mil = 55	# 軍事: 伯爵戦争を終結させたが名将ではない
+		birth_date = 1503.8.12
+		birth = gottorp
+		death_date = 1559.1.1
+		dynasty = oldenburg_dynasty
+		tag = DAN
+	}
+
+	dan_frederick_ii_oldenburg = {
+		first_name = { name = name_frederick }
+		culture = danish
+		religion = lutheran
+		estate = nobles_estate
+		adm = 60	# 行政: 宮廷運営は安定するも浪費傾向
+		dip = 55	# 外交: 北方七年戦争で緊張激化
+		mil = 65	# 軍事: 戦争指導には一定の関与
+		birth_date = 1534.7.1
+		birth = haderslev
+		father = dan_christian_iii_oldenburg
+		death_date = 1588.4.4
+		dynasty = oldenburg_dynasty
+		tag = DAN
+	}
+	
 	dan_christian_iv_oldenburg = {
 		first_name = { name = name_christian }
 		culture = danish
@@ -330,6 +361,7 @@ character_db={
 		mil = 65	# 軍事: 直接指揮経験あり、軍事行動で活躍
 		birth_date = 1577.4.12
 		birth = helsingor
+		father = dan_frederick_ii_oldenburg
         spouse = dan_anne_catherine_hohenzollern
 		dynasty = oldenburg_dynasty
 		tag = DAN
@@ -337,6 +369,87 @@ character_db={
 
 	
 	#SWE
+	swe_gustav_i_vasa = {
+		first_name = { name = name_gustav }
+		culture = swedish
+		religion = lutheran
+		estate = nobles_estate
+		adm = 75	# 行政: 国家建設と財政基盤確立
+		dip = 60	# 外交: 独立維持と周辺調整
+		mil = 70	# 軍事: 独立戦争の指導者
+		birth_date = 1496.5.12
+		birth = uppland
+		death_date = 1560.9.29
+		dynasty = vasa_dynasty
+		tag = SWE
+	}
+
+	swe_eric_xiv_vasa = {
+		first_name = { name = name_eric }
+		culture = swedish
+		religion = lutheran
+		estate = nobles_estate
+		adm = 45	# 行政: 統治不安定
+		dip = 40	# 外交: 対外関係を悪化
+		mil = 50	# 軍事: 北方七年戦争を主導
+		birth_date = 1533.12.13
+		birth = stockholm
+		father = swe_gustav_i_vasa
+		death_date = 1577.2.26
+		dynasty = vasa_dynasty
+		tag = SWE
+	}
+
+	swe_john_iii_vasa = {
+		first_name = { name = name_john }
+		culture = swedish
+		religion = lutheran
+		estate = nobles_estate
+		adm = 60	# 行政: 統治は比較的安定
+		dip = 65	# 外交: 対ポーランド関係を重視
+		mil = 45	# 軍事: 軍事指導は限定的
+		birth_date = 1537.10.4
+		birth = stockholm
+		father = swe_gustav_i_vasa
+		death_date = 1592.11.17
+		dynasty = vasa_dynasty
+		tag = SWE
+	}
+	
+	pol_sigismund_iii_vasa = { #https://en.wikipedia.org/wiki/Sigismund_III_Vasa
+		first_name = { name = name_sigmund }
+		culture = swedish
+		religion = catholic
+		estate = nobles_estate
+		adm = 50	# 行政: 二重王政で統治困難
+		dip = 55	# 外交: ポーランドとの結合
+		mil = 35	# 軍事: スウェーデン内戦で敗北
+		birth_date = 1566.6.20
+		father = swe_john_iii_vasa
+		death_date = 1632.4.30
+		birth = gripsholm
+		spouse = pol_anne_of_austria
+		spouse = pol_constance_of_austria
+		tag = SWE
+		dynasty = vasa_dynasty
+	}
+
+	swe_charles_ix_vasa = {
+		first_name = { name = name_charles }
+		culture = swedish
+		religion = lutheran
+		estate = nobles_estate
+		adm = 65	# 行政: 王権と教会統制を確立
+		dip = 55	# 外交: 対ポーランド・デンマーク緊張
+		mil = 60	# 軍事: 内戦と対外戦争を指導
+		birth_date = 1550.10.4
+		birth = stockholm
+		father = swe_gustav_i_vasa
+		death_date = 1611.10.30
+		dynasty = vasa_dynasty
+		tag = SWE
+	}
+	
 	swe_gustav_ii_vasa = {
 		first_name = { name = name_gustav }
 		culture = swedish
@@ -347,6 +460,7 @@ character_db={
 		mil = 90	# 軍事: 三十年戦争での戦術・指揮で極めて高評価
 		birth_date = 1594.12.9
 		birth = stockholm
+		father = swe_charles_ix_vasa
 		death_date = 1632.11.6
 		dynasty = vasa_dynasty
 		tag = SWE
