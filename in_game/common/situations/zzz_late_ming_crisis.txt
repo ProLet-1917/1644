@@ -1,5 +1,6 @@
 ﻿late_ming_crisis = {
 	monthly_spawn_chance = 100
+	hint_tag = hint_red_turban_rebellions
 
 	# 1. 触发条件
 	can_start = {
@@ -21,12 +22,12 @@
 		OR = {
 			current_year > 1690
 			
-			# 参与者中有国家同时拥有九个关键城市且稳定度>40
-			# 且局势已运行至少1年（避免开局立即结束）
-			AND = {
-				current_year >= 1645
-				late_ming_crisis_unification_achieved = yes
-			}
+			# # 参与者中有国家同时拥有九个关键城市且稳定度>40
+			# # 且局势已运行至少1年（避免开局立即结束）
+			# AND = {
+			# 	current_year >= 1645
+			# 	late_ming_crisis_unification_achieved = yes
+			# }
 		}
 	}
 
@@ -47,6 +48,24 @@
 
 	# 4. 启动效果
 	on_start = {
+		# 解散天朝：移除所有天朝成员
+		if = {
+			limit = { exists = international_organization:middle_kingdom }
+			international_organization:middle_kingdom = {
+				# 先移除leader（如果有）
+				if = {
+					limit = { international_organization_has_leader = yes }
+					update_leader_country = yes
+				}
+				# 移除所有成员
+				every_international_organization_member = {
+					international_organization:middle_kingdom = {
+						remove_country_from_international_organization = prev
+					}
+				}
+			}
+		}
+		
 		# 触发事件给相关国家
 		every_country = {
 			limit = {
@@ -150,5 +169,62 @@
 		}
 	}
 
+	# 7. 地图颜色显示
+	map_color = {
+		if = {
+			limit = {
+				has_owner = yes
+				owner ?= { tag = MNG }
+			}
+			value = orange  # 大明 -
+		}
+		else_if = {
+			limit = {
+				has_owner = yes
+				owner ?= { tag = CSH }
+			}
+			value = blue  # 大顺 - 
+		}
+		else_if = {
+			limit = {
+				has_owner = yes
+				owner ?= { tag = QNG }
+			}
+			value = yellow  # 大清 - 
+		}
+		else_if = {
+			limit = {
+				has_owner = yes
+				owner ?= {
+					has_country_modifier = late_ming_crisis_participant
+				}
+			}
+			value = green  # 其他参与国 - 
+		}
+		else = {
+			value = define:NMapColors|DEFAULT_COLOR
+		}
+	}
+
+	legend_key = {
+		desc = "MNG"
+		color = yellow
+		require_color_on_map = yes
+	}
+	legend_key = {
+		desc = "CSH"
+		color = red
+		require_color_on_map = yes
+	}
+	legend_key = {
+		desc = "QNG"
+		color = blue
+		require_color_on_map = yes
+	}
+	legend_key = {
+		desc = "late_ming_crisis_participant"
+		color = green
+		require_color_on_map = yes
+	}
 
 }
