@@ -1602,16 +1602,16 @@ countries = {
 		}
 		court_language = norman_dialect
 		country_rank = rank_kingdom
-		capital = dunfermline
+		capital = edinburgh
 		accepted_cultures = { highland }
 		tolerated_cultures = { norse_gael }
 
 		currency_data = {
 			gold = 200
-			stability = 30 # Starting Turnmoil with Balliol
+			stability = 60
 			prestige = 25
 			government_power = 80
-			war_exhaustion = 1.5 # Starting Turnmoil with Balliol
+			war_exhaustion = 0
 			army_tradition = 15
 		}
 	}
@@ -2802,6 +2802,22 @@ countries = {
 		government = {
 			type = monarchy
 			ruler = swe_christina_vasa
+
+			ruler_term = { character = swe_gustav_i_vasa start_date = 1523.6.6 end_date = 1560.9.29 regnal_number = 1 }
+			ruler_term = { character = swe_eric_xiv_vasa start_date = 1560.9.29 end_date = 1568.9.29 regnal_number = 14 }
+			ruler_term = { character = swe_john_iii_vasa start_date = 1568.9.29 end_date = 1592.11.17 regnal_number = 3 }
+			ruler_term = { character = swe_sigismund_vasa start_date = 1592.11.17 end_date = 1599.7.24 regnal_number = 1 }
+			ruler_term = { character = swe_charles_ix_vasa start_date = 1604.3.22 end_date = 1611.10.30 regnal_number = 9 }
+			ruler_term = { character = swe_gustav_ii_vasa start_date = 1611.10.30 end_date = 1632.11.6 regnal_number = 2 }
+		
+			regnal_numbers = {
+				name_gustav = 2
+				name_eric = 14
+				name_john = 3
+				name_sigismund = 1
+				name_charles = 9
+			}
+			
 		}
 		capital = stockholm
 		country_rank = rank_kingdom
@@ -2821,9 +2837,56 @@ countries = {
 		government = {
 			type = monarchy
 			ruler = swe_christina_vasa
+			
+			ruler_term = { character = swe_gustav_i_vasa start_date = 1523.6.6 end_date = 1560.9.29 regnal_number = 1 }
+			ruler_term = { character = swe_eric_xiv_vasa start_date = 1560.9.29 end_date = 1568.9.29 regnal_number = 14 }
+			ruler_term = { character = swe_john_iii_vasa start_date = 1568.9.29 end_date = 1592.11.17 regnal_number = 3 }
+			ruler_term = { character = swe_sigismund_vasa start_date = 1592.11.17 end_date = 1599.7.24 regnal_number = 1 }
+			ruler_term = { character = swe_charles_ix_vasa start_date = 1604.3.22 end_date = 1611.10.30 regnal_number = 9 }
+			ruler_term = { character = swe_gustav_ii_vasa start_date = 1611.10.30 end_date = 1632.11.6 regnal_number = 2 }
+		
+			regnal_numbers = {
+				name_gustav = 2
+				name_eric = 14
+				name_john = 3
+				name_sigismund = 1
+				name_charles = 9
+			}
+			
 		}
 		capital = abo
 		country_rank = rank_duchy
+		starting_technology_level = 4
+		include = "zzz_expl_european_colonial_powers"
+	}
+	
+	DAN = {
+		own_control_core = {
+			roskilde ringsted kalundborg helsingor hammershus kobenhavn slagelse vordingborg odense navskov falster assens svendborg
+			helsingborg lund malmo gladsax ronneby bregne solvesborg
+		}
+
+		own_core = {
+			varberg laholm halmstad kungsbacka osby asbo 
+			ribe randers viborg aalborg ars kolding aarhus grindsted silkeborg kalo bolling ringkobing holstebro_lundenes varde 
+			thisted skagen hjorring 
+		}
+
+		government = {
+			type = monarchy
+			ruler = dan_christian_iv_oldenburg
+			
+			ruler_term = { character = dan_christian_iii_oldenburg start_date = 1534.7.4 end_date = 1559.1.1 regnal_number = 3 }
+			ruler_term = { character = dan_frederick_ii_oldenburg start_date = 1559.1.1 end_date = 1588.4.4 regnal_number = 2 }
+
+			regnal_numbers = {
+				name_christian = 4
+				name_frederick = 2
+			}
+
+		}
+		capital = kobenhavn
+		country_rank = rank_kingdom
 		starting_technology_level = 4
 		include = "zzz_expl_european_colonial_powers"
 	}
@@ -2845,30 +2908,17 @@ countries = {
 		government = {
 			type = monarchy
 			ruler = dan_christian_iv_oldenburg
+			
+			ruler_term = { character = dan_christian_iii_oldenburg start_date = 1534.7.4 end_date = 1559.1.1 regnal_number = 3 }
+			ruler_term = { character = dan_frederick_ii_oldenburg start_date = 1559.1.1 end_date = 1588.4.4 regnal_number = 2 }
+			
+			regnal_numbers = {
+				name_christian = 4
+				name_frederick = 2
+			}
+			
 		}
 		capital = oslo
-		country_rank = rank_kingdom
-		starting_technology_level = 4
-		include = "zzz_expl_european_colonial_powers"
-	}
-	
-	DAN = {
-		own_control_core = {
-			roskilde ringsted kalundborg helsingor hammershus kobenhavn slagelse vordingborg odense navskov falster assens svendborg
-			helsingborg lund malmo gladsax ronneby bregne solvesborg
-		}
-
-		own_core = {
-			varberg laholm halmstad kungsbacka osby asbo 
-			ribe randers viborg aalborg ars kolding aarhus grindsted silkeborg kalo bolling ringkobing holstebro_lundenes varde 
-			thisted skagen hjorring 
-		}
-
-		government = {
-			type = monarchy
-			ruler = dan_christian_iv_oldenburg
-		}
-		capital = kobenhavn
 		country_rank = rank_kingdom
 		starting_technology_level = 4
 		include = "zzz_expl_european_colonial_powers"
