@@ -75,5 +75,51 @@
                 }
             }
         }
+
+        #catholics
+        if = {
+            limit = { NOT = { has_global_variable_list = pope_countries } }
+            every_country = {
+                limit = { has_reform = government_reform:papacy_reform }
+                add_to_global_variable_list = { name = pope_countries target = this }
+                #In case we need multiple papacies with antipopes and such
+            }
+        }
+        every_country = {
+            limit = {
+                religion = religion:catholic
+                not = {
+                    is_member_of_international_organization_of_type = { type = catholic_church }
+                    #they get added at the end
+                    this = c:ARA
+                }
+            }
+            international_organization:catholic_church = {
+                add_country_to_international_organization_no_update = prev
+            }
+        }
+        international_organization:catholic_church = {
+            #just do one update at the end
+            add_country_to_international_organization = c:ARA
+        }
+
+        if = {
+            limit = { current_year < 1645 }
+            every_country = {
+                limit = { is_ai = yes }
+                random = {
+                    chance = 90
+                    add_cooldown = {
+                        type = ai_spam_protection
+                        years = 4	#4 years as it gets updated on four yearly pulse
+                    }
+                }
+            }
+        }
+
+        every_location_in_the_world = { #This is a temporary solution
+            change_max_raw_material_workers = 3
+        }
+
     }
 }

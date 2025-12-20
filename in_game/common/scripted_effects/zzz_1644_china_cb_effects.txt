@@ -102,3 +102,26 @@ zzz_1644_grant_unification_cb_for_country = {
 	}
 }
 
+# 重建天朝：创建天朝组织并设置当前国家为leader
+zzz_1644_recreate_middle_kingdom = {
+	# 保存当前国家scope
+	save_scope_as = country_to_become_leader
+	# 如果天朝不存在，创建它
+	if = {
+		limit = { NOT = { exists = international_organization:middle_kingdom } }
+		create_international_organization = {
+			type = international_organization_type:middle_kingdom
+		}
+		international_organization:middle_kingdom = {
+			set_variable = { name = num_of_celestial_governors value = 0 }
+			set_variable = { name = celestial_authority value = 50 }
+		}
+	}
+	# 将当前国家添加为成员并设置为leader
+	international_organization:middle_kingdom = {
+		add_country_to_international_organization = scope:country_to_become_leader
+		set_leader_country = scope:country_to_become_leader
+		change_celestial_authority = { value = celestial_authority_very_strong_bonus }
+	}
+}
+
