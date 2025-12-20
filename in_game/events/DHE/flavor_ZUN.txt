@@ -1,0 +1,242 @@
+namespace = flavor_zun
+
+flavor_zun.1 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_zun.1.title
+    desc = flavor_zun.1.desc
+
+    dynamic_historical_event = {
+        tag = ZUN
+        from = 1650.1.1
+        to = 1685.1.1
+        monthly_chance = 10
+    }
+
+    option = {
+        name = flavor_zun.1.a
+        historical_option = yes
+        add_casus_belli = {
+            target = c:HSD
+            type = casus_belli:cb_conquer_another_horde
+        }
+        add_gold = 200
+        add_manpower = 2
+        add_country_modifier = {
+            months = 360
+            modifier = rise_of_dzungar_horde
+        }
+        if = {
+            limit = {
+                has_variable = current_herd
+            }
+            change_variable = {
+                name = current_herd
+                add = 2500
+            }
+        }
+        capital = {
+            while = {
+                count = 5
+                create_sub_unit_with_owner = {
+                    type = a_steppe_horde
+                    owner = root
+                    origin = this
+                    experience = 90
+                }
+            }
+            while = {
+                count = 2
+                create_sub_unit_with_owner = {
+                    type = a_armored_horsemen
+                    owner = root
+                    origin = this
+                    experience = 90
+                }
+            }
+            create_sub_unit_with_owner = {
+                type = a_chambered_cannon
+                owner = root
+                origin = this
+                experience = 90
+            }
+        }
+        ai_chance = 30
+    }
+
+    option = {
+        name = flavor_zun.1.b
+        add_gold = 500
+
+        ai_chance = 1
+    }
+}
+
+flavor_zun.2 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_zun.2.title
+    desc = flavor_zun.2.desc
+
+    trigger = {
+        own_entire_province = province_definition:yangikent_province
+    }
+
+    dynamic_historical_event = {
+        tag = ZUN
+        from = 1655.1.1
+        to = 1700.1.1
+        monthly_chance = 10
+    }
+
+    option = {
+        name = flavor_zun.2.a
+        historical_option = yes
+        add_casus_belli = {
+            target = c:CHG
+            type = casus_belli:cb_conquer_another_horde
+        }
+        add_gold = 100
+        add_manpower = 1
+        if = {
+            limit = {
+                has_variable = current_herd
+            }
+            change_variable = {
+                name = current_herd
+                add = 1500
+            }
+        }
+        capital = {
+            while = {
+                count = 2
+                create_sub_unit_with_owner = {
+                    type = a_steppe_horde
+                    owner = root
+                    origin = this
+                    experience = 90
+                }
+            }
+            while = {
+                count = 2
+                create_sub_unit_with_owner = {
+                    type = a_armored_horsemen
+                    owner = root
+                    origin = this
+                    experience = 90
+                }
+            }
+            create_sub_unit_with_owner = {
+                type = a_chambered_cannon
+                owner = root
+                origin = this
+                experience = 90
+            }
+        }
+        ai_chance = 30
+    }
+
+    option = {
+        name = flavor_zun.2.b
+        add_gold = 300
+
+        ai_chance = 1
+    }
+}
+
+flavor_zun.3 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_zun.3.title
+    desc = flavor_zun.3.desc
+
+    trigger = {
+        own_entire_province = province_definition:khotan_province
+        own_entire_province = province_definition:aksu_province
+        own_entire_province = province_definition:taklamakan_province
+        own_entire_province = province_definition:kurla_province
+        own_entire_province = province_definition:karasahr_province
+    }
+
+    dynamic_historical_event = {
+        tag = ZUN
+        from = 1675.1.1
+        to = 1740.1.1
+        monthly_chance = 10
+    }
+
+    immediate = {
+        add_country_modifier = {
+            modifier = conquest_tibet_region
+            months = 60
+        }
+    }
+    option = {
+        name = flavor_zun.3.a
+        historical_option = yes
+        add_casus_belli = {
+            target = c:QKH
+            type = casus_belli:cb_conquer_another_horde
+        }
+        if = {
+            limit = {
+                c:UUS = {
+                    is_subject_of = c:QKH
+                }
+            }
+            add_casus_belli = {
+                target = c:UUS
+                type = casus_belli:cb_subjugation
+            }
+        }
+        else = {
+            add_casus_belli = {
+                target = c:UUS
+                type = casus_belli:cb_horde_vs_civ
+            }
+        }
+        add_manpower = 3
+        capital = {
+            while = {
+                count = 5
+                create_sub_unit_with_owner = {
+                    type = a_steppe_horde
+                    owner = root
+                    origin = this
+                    experience = 90
+                }
+            }
+        }
+        ai_chance = 10
+    }
+
+    option = {
+        name = flavor_zun.3.b
+        create_character = {
+            set_variable = var_event_zun_3_target
+            adm = { 50 70 }
+            dip = { 50 70 }
+            mil = { 75 95 }
+            age = { 16 35 }
+            culture = root.culture
+            religion = root.religion
+            estate = estate_type:nobles_estate
+            create_in_limbo = no
+        }
+        start_conquistador = {
+            area = area:amdo_area
+            location = location:chabcha
+            character = var:var_event_zun_3_target
+            price = scope:price
+            price_modifier = scope:price_modifier
+        }
+        ai_chance = 30
+    }
+    option = {
+        name = flavor_zun.3.c
+        add_prestige = 15
+
+        ai_chance = 1
+    }
+}
+
