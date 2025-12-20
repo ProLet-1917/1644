@@ -1,14 +1,6 @@
 starting_technology_level = 5
 
-discovered_regions = {
-	west_china_region
-	east_china_region
-	# mongolia_region
-	north_china_region
-	south_china_region
-	# korea_region
-	# manchuria_region
-}
+include = "expl_china"
 
 discovered_provinces = {
 
@@ -16,7 +8,7 @@ discovered_provinces = {
 
 government = {
 	type = monarchy
-	heir_selection = cognatic_primogeniture
+	heir_selection = patrilineal_primogeniture
 
 
 	aristocracy_vs_plutocracy = -60
@@ -68,7 +60,7 @@ government = {
 	}
 }
 currency_data = {
-    gold = 4000
+    gold = 1000
     stability = 30
     prestige = 25
     government_power = 80

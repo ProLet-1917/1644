@@ -1,0 +1,71 @@
+﻿# 禁止东亚地区国家释放采邑
+# 参考原版文件: D:\SteamLibrary\steamapps\common\Europa Universalis V\game\in_game\common\subject_types\fiefdom.txt
+
+REPLACE:fiefdom = {
+	release_country_enabled = {
+		has_ruler = yes
+		# 禁止东亚地区国家释放采邑
+		NOT = {
+			capital ?= {sub_continent = sub_continent:asia}
+		}
+	}
+	
+	visible_through_diplomacy = {
+		has_ruler = yes
+		religion.group = scope:target.religion.group
+		government_type = government_type:monarchy
+		country_rank_level >= scope:target.country_rank_level
+		
+		# 禁止东亚地区国家看到释放采邑选项
+		NOT = {
+			capital ?= {
+				OR = {
+					sub_continent = sub_continent:east_asia
+3
+				}
+			}
+		}
+		
+		#Japanese Imperial Courts Exception
+		trigger_if = {
+			limit = {
+				is_member_of_international_organization = international_organization:japanese_shogunate
+				is_situation_active = situation:nanbokuchou
+			}
+			NOT = {
+				scope:target = {
+					has_special_status_in_international_organization = {
+						type = special_status:japanese_emperor
+						international_organization = international_organization:japanese_shogunate
+					}
+				}
+			}
+		}
+	}
+	
+	enabled_through_diplomacy = {
+		has_ruler = yes
+		government_type = government_type:monarchy
+		
+		religion.group = scope:target.religion.group
+
+		scope:target = { 
+			government_type = government_type:monarchy
+			OR = {
+				ruler ?= root.ruler
+				regent ?= root.ruler
+			}
+		}
+		
+		# 禁止东亚地区国家使用释放采邑外交行动
+		NOT = {
+			capital ?= {
+				OR = {
+					sub_continent = sub_continent:east_asia
+3
+				}
+			}
+		}
+	}
+}
+
