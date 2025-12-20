@@ -116,5 +116,15 @@
                 }
             }
         }
+
+        every_location_in_the_world = {
+            limit = { #This limit should not work but I already write it here
+                location ?= {
+                    max_rgo_workers <= 2
+                }
+            }
+            change_max_raw_material_workers = 3
+        }
+
     }
 }
