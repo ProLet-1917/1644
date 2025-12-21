@@ -39,7 +39,9 @@
 		if = {
 			limit = {
 				current_year > 1648
-				c:HAB = "war_with_country(c:HES)"
+				c:HAB = {
+					is_at_war_with = c:HES
+				}
 			}
 			c:HAB = {
 				trigger_event_non_silently = war_of_religions.1300
