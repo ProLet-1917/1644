@@ -36,6 +36,15 @@
 	}
 
 	on_monthly = {
+		if = {
+			limit = {
+				current_year > 1648
+				c:HAB = "war_with_country(c:HES)"
+			}
+			c:HAB = {
+				trigger_event_non_silently = war_of_religions.1300
+			}
+		}
 		hidden_effect = {
 			if = {
 				limit = { has_variable = war_of_religion_current_war }
