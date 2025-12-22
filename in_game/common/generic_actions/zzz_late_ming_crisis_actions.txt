@@ -1,0 +1,225 @@
+﻿# 明朝危机局势 - 获取统一中国CB的按钮
+late_ming_crisis_grant_unification_cb = {
+	type = situation
+	
+	potential = {
+		scope:actor = {
+			can_see_situation = situation:late_ming_crisis
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			capital ?= {
+				OR = {
+					region = region:west_china_region
+					region = region:east_china_region
+					region = region:north_china_region
+					region = region:south_china_region
+					region = region:manchuria_region
+				}
+			}
+		}
+	}
+
+	ai_tick = monthly
+	ai_tick_frequency = 3 # check every 6 months
+	automation_tick = never
+	automation_tick_frequency = 3
+	cooldown = {
+		type = late_ming_crisis_grant_unification_cb
+		months = 2
+	}
+
+
+
+	select_trigger = {
+		looking_for_a = country
+		target_flag = target
+		name = "choose_target_country"
+		column = {
+			data = name
+		}
+		column = {
+			data = military_strength
+		}
+		visible = {
+			exists = capital
+			NOT = { this = scope:actor }
+			NOT = { is_subject_or_below_of = scope:actor }
+			OR = {
+				capital.region = region:west_china_region
+				capital.region = region:east_china_region
+				capital.region = region:north_china_region
+				capital.region = region:south_china_region
+				capital.region = region:manchuria_region
+			}
+			any_owned_location = {
+				OR = {
+					region = region:west_china_region
+					region = region:east_china_region
+					region = region:north_china_region
+					region = region:south_china_region
+					region = region:manchuria_region
+				}
+			}
+		}
+	}
+
+	effect = {
+		if = {
+			limit = {
+				exists = scope:target
+				scope:target = {
+					exists = capital
+					OR = {
+						capital.region = region:west_china_region
+						capital.region = region:east_china_region
+						capital.region = region:north_china_region
+						capital.region = region:south_china_region
+						capital.region = region:manchuria_region
+					}
+					any_owned_location = {
+						OR = {
+							region = region:west_china_region
+							region = region:east_china_region
+							region = region:north_china_region
+							region = region:south_china_region
+							region = region:manchuria_region
+						}
+					}
+				}
+			}
+			scope:actor = {
+				add_casus_belli = {
+					target = scope:target
+					type = casus_belli:cb_chinese_unification
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		add = 25
+		add = {
+			if = {
+				limit = {
+					scope:actor = {
+						any_country = {
+							limit = {
+								exists = capital
+								NOT = { this = scope:actor }
+								NOT = { is_subject_or_below_of = scope:actor }
+								NOT = { has_truce_with = scope:actor }
+								OR = {
+									capital.region = region:west_china_region
+									capital.region = region:east_china_region
+									capital.region = region:north_china_region
+									capital.region = region:south_china_region
+									capital.region = region:manchuria_region
+								}
+							}
+							count >= 1
+						}
+					}
+				}
+				value = 100
+			}
+		}
+	}
+}
+
+# 结束甲申天变局势并重建天朝
+late_ming_crisis_end_and_recreate_middle_kingdom = {
+	type = situation
+	
+	potential = {
+		scope:actor = {
+			can_see_situation = situation:late_ming_crisis
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			# 必须满足统一条件
+			exists = capital
+			is_subject = no
+			stability > 40
+			# 同时拥有所有关键城市
+			owns = location:dadu
+			owns = location:chengdu
+			owns = location:jingzhao
+			owns = location:jiangxia
+			owns = location:shangyuan
+			owns = location:hangzhou
+			owns = location:changsha
+			owns = location:pingjin
+			owns = location:kaifeng
+			owns = location:nanchang
+			owns = location:baxian
+			# 局势必须已运行至少1年
+			current_year >= 1645
+		}
+	}
+
+	ai_tick = yearly
+	ai_tick_frequency = 1
+	automation_tick = never
+
+	cooldown = {
+		type = late_ming_crisis_end_and_recreate_middle_kingdom
+		months = 12
+	}
+
+	effect = {
+		scope:actor = {
+			# 重建天朝
+			zzz_1644_recreate_middle_kingdom = yes
+			# 结束局势
+			end_situation = situation:late_ming_crisis
+		}
+	}
+
+	ai_will_do = {
+		add = 100
+	}
+}
+
+# 测试用：无条件重建天朝按钮（已注释）
+# late_ming_crisis_test_recreate_middle_kingdom = {
+# 	type = situation
+# 	
+# 	potential = {
+# 		scope:actor = {
+# 			can_see_situation = situation:late_ming_crisis
+# 		}
+# 	}
+# 
+# 	allow = {
+# 		# 无条件，随时可以点击
+# 		always = yes
+# 	}
+# 
+# 	ai_tick = never
+# 	automation_tick = never
+# 
+# 	cooldown = {
+# 		type = late_ming_crisis_test_recreate_middle_kingdom
+# 		months = 1
+# 	}
+# 
+# 	effect = {
+# 		scope:actor = {
+# 			# 重建天朝
+# 			zzz_1644_recreate_middle_kingdom = yes
+# 			# 结束局势
+# 			end_situation = situation:late_ming_crisis
+# 		}
+# 	}
+# 
+# 	ai_will_do = {
+# 		add = 0  # AI不使用测试按钮
+# 	}
+# }
+
+

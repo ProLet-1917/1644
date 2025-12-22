@@ -1,0 +1,27 @@
+﻿namespace = ai_decision_event
+
+ai_decision_event.1 = {#Sell herd for Gold
+    type = country_event
+
+    title = ai_decision_event.1.title
+    desc = ai_decision_event.1.desc
+
+    option = {
+        name = ai_decision_event.1.a
+        hidden_effect = {
+            change_variable = {
+                name = current_herd
+                subtract = 250
+            }
+            add_gold = 50
+        }
+        ai_chance = {
+            base = 1
+        }
+    }
+
+    option = {
+        name = ai_decision_event.1.b
+        ai_chance = 100
+    }
+}

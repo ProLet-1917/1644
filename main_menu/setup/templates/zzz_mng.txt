@@ -1,23 +1,12 @@
-﻿starting_technology_level = 3
-
-discovered_regions = {
-	west_china_region
-	east_china_region
-	mongolia_region
-	north_china_region
-	south_china_region
-	korea_region
-	manchuria_region
-}
-
-discovered_provinces = {
+﻿starting_technology_level = 5
 
 
-}
+include = "expl_china"
+
 
 government = {
 	type = monarchy
-	heir_selection = cognatic_primogeniture
+	heir_selection = patrilineal_primogeniture
 
 
 	aristocracy_vs_plutocracy = -60
@@ -58,23 +47,21 @@ government = {
 	}
 	privilege = {
 		#Nobles
-		elaborate_court_ceremonies
-		scholar_officials
+		elaborate_court_ceremonies #繁琐的宫廷仪式
+		scholar_officials #士大夫文官
 		
 		#Clergy
 		clergy_literacy_rights
 		clergy_land_rights
 		clergy_enforced_unity
-		tax_exemption
+		tax_exemption #税收豁免
 		
 		#Burghers
-		burghers_land_rights
 		building_rights
 		building_roads_rights
-		burghers_land_rights
+		petty_bureaucracy #吏胥制
 
 		#Peasants
-		peasants_fewer_levies
 		
 		#tribes
 		tribes_tribal_levies#允许部落征召兵

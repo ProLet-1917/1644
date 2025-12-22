@@ -1,0 +1,242 @@
+﻿# 宗法继承法（Patrilineal Primogeniture）
+# 禁止女性继承，只允许男性继承人
+# 必须从同宗族内选择继承者，优先选择直系血亲（亲生子女），如果没有则选择其他同宗族成员
+# 基于 cognatic_primogeniture，但设置 allow_female = no 和 through_female = no
+
+patrilineal_primogeniture = {
+    include_ruler_siblings = yes
+    all_in_dynasty = yes  # 搜索整个dynasty中的所有成员，不仅仅是家族树
+    through_female = no
+    allow_female = no
+    allow_children = yes
+    ignore_ruler = yes
+
+	show_candidates = yes
+
+    potential = {
+        NOR = {
+            succession_law = heir_selection:fratricide_succesion
+            succession_law = heir_selection:unigeniture
+        }
+    }
+
+    allowed_estates = { crown_estate nobles_estate }
+
+    heir_is_allowed = {
+        # 只允许国内角色作为继承人
+        owner ?= scope:target
+    }
+
+    traverse_family_tree = no
+
+    calc = {
+        if = {
+            limit = {
+                exists = root
+            }
+            # 嫡长孙（嫡长子的长子，如果嫡长子已死）- 第一优先级
+            # 根据周礼，嫡长孙优先于次子，甚至优先于活着的次子
+            add = {
+                desc = "HEIR_SELECTION_IS_RULER_GRANDSON_DESC"
+                if = {
+                    limit = {
+                        OR = {
+                            not = { exists = root }
+                            # 嫡长孙：父亲的父亲是统治者，且父亲已死
+                            AND = {
+                                exists = father
+                                exists = father.father
+                                father.father = {
+									is_alive = yes
+                                    any_ruling_countries ?= {
+                                        this ?= scope:target
+                                    }
+                                }
+                                father = {
+                                    is_alive = no
+                                }
+                                is_female = no
+                            }
+                        }
+                    }
+                    value = 1200  # 高于所有次子（1000分），体现嫡长孙优先
+                }
+            }
+
+            # 直系血亲（亲生儿子）第二优先级
+            # 包括所有统治者的儿子（次子等）
+            add = {
+                desc = "HEIR_SELECTION_IS_RULER_SON_DESC"
+                if = {
+                    limit = {
+                        exists = father
+						father = scope:target.ruler
+                        is_female = no
+                    }
+                    value = 1000
+                }
+            }
+
+            # 兄弟姐妹（第三优先级）
+            add = {
+                desc = "HEIR_SELECTION_FATHER_IS_RULER_DESC"
+                if = {
+                    limit = {
+                        father ?= scope:target.last_valid_ruler
+                    }
+                    value = 500
+                }
+            }
+
+            # 叔伯/侄子（第四优先级）
+            # 追溯父系祖先链，检查是否有任何祖先的父辈是历史上任何一任统治者
+            add = {
+                desc = "HEIR_SELECTION_GRANDFATHER_IS_RULER_DESC"
+                if = {
+                    limit = {
+                        OR = {
+                            not = { exists = root }
+                            # 祖父是历史上任何一任统治者（但排除嫡长孙，嫡长孙已单独处理）
+                            AND = {
+                                exists = father
+                                exists = father.father
+                                father.father = {
+                                    is_alive = no
+                                    any_ruling_countries ?= {
+                                        this ?= scope:target
+                                    }
+                                }
+                                # 排除嫡长孙（父亲的父亲是统治者，且父亲已死的情况）
+                                NOT = {
+                                    father = {
+                                        is_alive = no
+                                    }
+                                }
+                            }
+                            # 曾祖父是历史上任何一任统治者
+                            AND = {
+                                exists = father
+                                exists = father.father
+                                exists = father.father.father
+                                father.father.father = {
+                                    is_alive = no
+                                    any_ruling_countries ?= {
+                                        this ?= scope:target
+                                    }
+                                }
+                            }
+                            # 高祖父是历史上任何一任统治者
+                            AND = {
+                                exists = father
+                                exists = father.father
+                                exists = father.father.father
+                                exists = father.father.father.father
+                                father.father.father.father = {
+                                    is_alive = no
+                                    any_ruling_countries ?= {
+                                        this ?= scope:target
+                                    }
+                                }
+                            }
+                            # 或者候选人的父亲是历史上任何一任统治者的兄弟（叔伯关系）
+                            # 即：候选人的祖父 = 历史上任何一任统治者的父亲
+                            AND = {
+                                exists = father
+                                exists = father.father
+                                scope:target = {
+                                    any_ruler = {
+                                        is_alive = no
+                                        exists = father
+                                        father = root.father.father
+                                    }
+                                }
+                                NOT = {
+                                    scope:target = {
+                                        any_ruler = {
+                                            father = root.father
+                                        }
+                                    }
+                                }
+                            }
+                            # 或者候选人是历史上任何一任统治者的侄子（兄弟的儿子）
+                            # 即：候选人的父亲是历史上任何一任统治者的兄弟
+                            # 即：候选人的祖父 = 历史上任何一任统治者的父亲，且候选人的父亲 != 该统治者
+                            AND = {
+                                exists = father
+                                exists = father.father
+                                scope:target = {
+                                    any_ruler = {
+                                        is_alive = no
+                                        exists = father
+                                        father = root.father.father
+                                        NOT = {
+                                            this = root.father
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    value = 200
+                }
+            }
+
+            # 其他同宗族成员（表兄弟等远亲，第五优先级）
+            # 由于前面的关系已经给了更高的分数，这里直接给基础分即可
+            # 即使重复加分也不会影响优先级（1000 > 500 > 200 > 50）
+            add = {
+                desc = "HEIR_SELECTION_SAME_DYNASTY_AS_CURRENT_RULER"
+                if = {
+                    limit = {
+                        is_female = no
+                    }
+                }
+                value = 50
+            }
+
+            # 年长继承人加分
+            add = {
+                desc = "HEIR_SELECTION_OLDER_HEIR_DESC"
+                value = character_age
+            }
+
+            # 不适合统治的继承人减分
+            add = {
+                desc = "HEIR_SELECTION_IS_UNSUITED_TO_RULE_DESC"
+                if = {
+                    limit = { modifier:blocked_from_being_ruler = yes }
+                    value = -1000
+                }
+            }
+        }
+        else = {
+            #description
+            add = {
+                desc = "HEIR_SELECTION_IS_RULER_SON_DESC"
+                value = 1000
+            }
+            add = {
+                desc = "HEIR_SELECTION_FATHER_IS_RULER_DESC"
+                value = 500
+            }
+            add = {
+                desc = "HEIR_SELECTION_GRANDFATHER_IS_RULER_DESC"
+                value = 800
+            }
+            add = {
+                desc = "HEIR_SELECTION_SAME_DYNASTY_AS_CURRENT_RULER"
+                value = 50
+            }
+            add = {
+                desc = "HEIR_SELECTION_OLDER_HEIR_DESC"
+                value = 1
+            }
+            add = {
+                desc = "HEIR_SELECTION_IS_UNSUITED_TO_RULE_DESC"
+                value = -1000
+            }
+        }
+    }
+
+}
+

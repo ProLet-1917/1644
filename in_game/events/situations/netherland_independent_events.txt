@@ -68,16 +68,17 @@ netherland_independent.6 = { #Peace Talk
 	
 	fire_only_once = yes 
 
-	trigger = {
-		situation:netherland_independent = { is_active = yes }
-	}
+	#trigger = {
+	#	situation:netherland_independent = { situation_is_active  = yes }
+	#	situation:war_of_religions = { situation_has_ended = yes }
+	#}
 
- 	dynamic_historical_event = {
- 		tag = NED
- 		from = 1646.1.1
- 		to = 1666.1.1
- 		monthly_chance = 10
- 	}
+ 	#dynamic_historical_event = {
+ 	#	tag = NED
+ 	#	from = 1646.1.1
+ 	#	to = 1666.1.1
+ 	#	monthly_chance = 10
+ 	#}
 	
 	option = {
 		name = "netherland_independent.6.a"
@@ -133,6 +134,7 @@ netherland_independent.8 = { #Peace talk request from netherlands
 	
 	option = {
 		name = "netherland_independent.8.a"
+		#white_peace = "war_with_country(c:HAB)" #It will end the entire war
 		set_global_variable = peace_talk_about_dutches_end
 		every_country = {
 			limit = {
@@ -180,6 +182,7 @@ netherland_independent.9 = { #Treaty of Trier
 
 	option = {
 		name = "netherland_independent.9.a"
+		#white_peace = "war_with_country(c:HAB)"
 		every_country = {
 			limit = {
 				is_member_of_international_organization = international_organization:union_of_utrecht

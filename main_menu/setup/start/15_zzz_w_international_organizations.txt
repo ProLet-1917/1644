@@ -14,7 +14,7 @@ international_organization_manager = {
 
 		members = { 
 			#Germany
-			FRI BNT MUN TCK OSN BRA KOL UPA AAC TRI SPO SAA DTM ESS NEU MTB BSC FCB ZWE PAL LNN SPY WRM WIE SYN TIR BXN MBZ TNT SLZ HAB BAM MEI BAY FRE PSS LGC TES STE MKL SWR WRN LUB HPL LBB HTR SLV LEU REG AUG BAV BRC EIC WEI NUR ANS ROT RVA UBL KNZ WDB BIB MEM KMP OET WUR BEU ULM HOH FUR ELL DNB OFB ALS SCF HAG LIC CFC MUR MUL BDE HBR MAI NSW FRN ERB MSB SWH TEU UFF KTZ HNA BUD WTZ WBG FLD HES WDE ENS QUB THU WTG HAM MAG ANH MLH MFE SHS NHS LUN LPP VRD BRE BRM OLD MDN PDB RBG GOS NIE HOX BBG WGO HDH LAU LCU ZUR STG TGG WER BLM SYZ OBW SIT MSO BCH GLR
+			FRI BNT MUN TCK OSN BRA KOL UPA AAC TRI SPO SAA DTM ESS NEU MTB BSC FCB ZWE PAL LNN SPY WRM WIE SYN TIR BXN MBZ TNT SLZ HAB BAM SAX BAY FRE PSS LGC TES STE MKL SWR WRN LUB HPL LBB HTR SLV LEU REG AUG BAV BRC EIC WEI NUR ANS ROT RVA UBL KNZ WDB BIB MEM KMP OET WUR BEU ULM HOH FUR ELL DNB OFB ALS SCF HAG LIC CFC MUR MUL BDE HBR MAI NSW FRN ERB MSB SWH TEU UFF KTZ HNA BUD WTZ WBG FLD HES WDE ENS QUB THU WTG HAM MAG ANH MLH MFE SHS NHS LUN LPP VRD BRE BRM OLD MDN PDB RBG GOS NIE HOX BBG WGO HDH LAU LCU ZUR STG TGG WER BLM SYZ OBW SIT MSO BCH GLR
 
 			#Netherland
 			HOL HAI ARS FLA BRB NAM LUX KLE LIM LIL DOU CAM LIE BLL
@@ -29,7 +29,7 @@ international_organization_manager = {
 		regions = { south_german_region }
 		areas = { 
 			#North Germany
-			brabant_area friesland_area holland_area wallonia_area holstein_area brandenburg_area rhineland_area
+			flanders_area brabant_area friesland_area holland_area wallonia_area holstein_area brandenburg_area rhineland_area
 			hesse_area westphalia_area lower_saxony_area upper_saxony_area mecklenburg_area
 			#France
 			alsace_area franche_comte_area 
@@ -51,7 +51,7 @@ international_organization_manager = {
 		}
 		emperor = { HAB }
 		elector = { 
-			BRA MEI BAV HAB
+			BRA SAX BAV HAB
 		}
 		archbishop_elector = {
 			KOL TRI MAI 
@@ -174,5 +174,22 @@ PAL
 			sc_defensive_pact
 		}
 	}
-
+	#################################################################
+	# 				Catholic League									#
+	#################################################################
+	add_international_organization = {
+		type = catholic_league
+		creation_date = 1609.7.10
+		members = { HAB HUN BAV TIR SPA ARA NAV GRA HAI ARS FLA BRB NAM LUX KLE LIM LIL DOU MLO NAP SIC SAR FCB SAX UPA MAI DAN HTR SLV NOR }
+		leader = HAB
+	}
+	#################################################################
+	# 				Protestant union								#
+	#################################################################
+	add_international_organization = {
+		type = protestant_union
+		creation_date = 1618.5.23
+		members = { FRA DOC BRR BNV CAT BRI ORL POI BUR BOU AUV DAU PRO LOR POR SAV NED UTR GEL GRO DEV HES SWE FIN STE FOI }
+		leader = HES
+	}
 }
