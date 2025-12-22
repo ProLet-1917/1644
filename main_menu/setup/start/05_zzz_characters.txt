@@ -1679,6 +1679,7 @@ character_db = {
 			culture = liaodong_culture
 			birth_date = 1612.1.1
 			birth = qiantun
+			father = chi_wu_xiang
 			tag = WSG
 			ruler_trait = malevolent #心狠手辣
 		}
@@ -1898,7 +1899,7 @@ character_db = {
 			dynasty = rtr_gao_dynasty
 			culture = jin_culture
 			religion = sanjiao
-			birth_date = 1607.1.1
+			birth_date = 1615.1.1
 			birth = mizhi
 			spouse = chi_li_zicheng
 			tag = CSH
@@ -1909,7 +1910,7 @@ character_db = {
 			first_name = {
 				name = name_shou.name_zhong1_5fe0
 			}
-			dynasty = rtr_shun_li_dynasty
+			dynasty = rtr_shun_zhang_li_dynasty
 			culture = jin_culture
 			religion = sanjiao
 			birth_date = 1580.1.1
@@ -1924,7 +1925,7 @@ character_db = {
 			dynasty = borjigin_dynasty
 			culture = mongol_culture
 			religion = tibetan_buddhism
-			birth_date = 1620
+			birth_date = 1620.1.1
 			birth = shenyang
 			spouse = chi_dorgon
 			tag = QNG
@@ -1956,5 +1957,55 @@ character_db = {
 			birth = shenyang
 			spouse = chi_huang_taiji
 			tag = QNG
+		}
+
+		# 吴襄（吴三桂之父）
+		chi_wu_xiang = {
+			first_name = {
+				name = name_xiang
+			}
+			last_name = {
+				name = name_wu2
+			}
+			dynasty = rtr_pingxi_wu_dynasty
+			culture = liaodong_culture
+			religion = sanjiao
+			birth_date = 1590.1.1
+			birth = qiantun
+			tag = MNG
+		}
+
+		# 吴应熊（吴三桂之子）
+		chi_wu_yingxiong = {
+			first_name = {
+				name = name_yingxiong
+			}
+			last_name = {
+				name = name_wu2
+			}
+			dynasty = rtr_pingxi_wu_dynasty
+			culture = liaodong_culture
+			religion = sanjiao
+			birth_date = 1634.1.1
+			birth = qiantun
+			father = chi_wu_san_gui
+			tag = WSG
+		}
+
+		# 高元爵（高杰之子）
+		chi_gao_yuanjue = {
+			first_name = {
+				name = name_yuanjue
+			}
+			last_name = {
+				name = name_gao
+			}
+			dynasty = rtr_xingping_gao_dynasty
+			culture = jin_culture
+			religion = sanjiao
+			birth_date = 1625.1.1
+			birth = mizhi
+			father = chi_gao_jie
+			tag = CGJ
 		}
 }
