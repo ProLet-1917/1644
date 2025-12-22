@@ -1,0 +1,19 @@
+﻿#root is country
+#scope:target is the target
+
+# Horde Expansion
+cb_conquer_another_horde = {
+    visible = {
+        government_type = government_type:steppe_horde
+    }
+
+    allow_creation = {
+        scope:target = {
+            government_type = government_type:steppe_horde
+        }
+        government_type = government_type:steppe_horde
+        is_neighbor_of = scope:target
+    }
+
+    war_goal_type = superiority_horde
+}

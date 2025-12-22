@@ -1,0 +1,32 @@
+﻿REPLACE:superiority_chinese_unification = {
+	type = take_capital
+	attacker = {
+		conquer_cost = 0.1
+		subjugate_cost = 0.1
+		antagonism = 0.1
+		allowed_locations = {
+			OR = {
+				region = region:east_china_region
+				region = region:north_china_region
+				region = region:south_china_region
+				region = region:west_china_region
+                region = region:manchuria_region
+			}
+		}
+	}
+	defender = {
+		conquer_cost = 0.1
+		subjugate_cost = 0.1
+		antagonism = 0.1
+		allowed_locations = {
+			OR = {
+				region = region:east_china_region
+				region = region:north_china_region
+				region = region:south_china_region
+				region = region:west_china_region
+                region = region:manchuria_region
+			}
+		}
+	}
+	ticking_war_score = 0.1
+}

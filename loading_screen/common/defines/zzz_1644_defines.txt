@@ -8,9 +8,9 @@
 NGame = {
 	# [已修改]
 	START_DATE = "1644.4.17"  # 原版: 1337.4.1 - 三月十一日（4月17日）李自成入宣府
+	END_DATE = "1918.11.11" #The End of Great War
 	
 	# 以下保持原版
-	END_DATE = "1836.12.31"
 	
 	HOUR_TICK = 2
 	MORNING_OFFSET = 8
@@ -42,7 +42,7 @@ NGame = {
 # ============================================================
 NUnit = {
 	# [已修改]
-	ARMY_MOVEMENT_SPEED = 0.26       # 原版: 0.13 - 陆军移动速度提升3倍
+	ARMY_MOVEMENT_SPEED = 0.20       # 原版: 0.13 - 陆军移动速度提升3倍
 	LEADER_ASSIGN_MIN_DAYS = 1       # 原版: 7 - 将领分配最小天数，加快战时指挥
 	
 	# 以下保持原版
@@ -118,10 +118,17 @@ NUnit = {
 # ============================================================
 NCombat = {
 	# [已修改]
-	DAYS_PER_SIEGE_PHASE = 7             # 原版: 30 - 每个围城阶段的天数，加快攻城速度
+	DAYS_PER_SIEGE_PHASE = 14     #v0.2.0 after debates # 原版: 30 - 每个围城阶段的天数，加快攻城速度
 	MIN_DAYS_PER_SIEGE_PHASE = 1          # 原版: 7 - 最小围城阶段天数
-	DAYS_PER_SIEGE_PHASE_WITHOUT_FORT = 5 # 原版: 15 - 无要塞时占领天数，快速拿下无防御地区
+	DAYS_PER_SIEGE_PHASE_WITHOUT_FORT = 10 #v0.2.0 after debates  原版: 15 - 无要塞时占领天数
+	ASSAULT_DEFENDER_LOSS = 0.2 #v0.2.0 vanilla 0.05
+	ASSAULT_WIDTH_LIMIT = 1.5 #v0.2.0 vanilla 1
+	ASSAULT_ATTACKER_LOSS = 1.0 #v0.2.0 vanilla 1.5
+
+
 	
+
+
 	# 以下保持原版
 	NAVAL_LEVY_IMPACT = 0.05
 	RETREAT_STRENGTH_DAMAGE = 0.1
@@ -144,9 +151,11 @@ NCombat = {
 	
 	FOOD_PERCENTAGE_LOST_AT_OCCUPATION = 0.9		# lost 90% at occupation..
 	
+	MAX_FRONTAGE_OVERSTACKING = 1.25	#25% overstack in flanks.
+	
 	LAND_LEVY_COMBAT_IMPACT = 0.20
 	LAND_LEVY_COMBAT_AGE_MUL = 0.05
-	DAMAGE_ON_LEVY_FACTOR = 0.2
+	DAMAGE_ON_LEVY_FACTOR = 0.1
 	LEVY_ASSAULT_EFFICIENCY = 0.3
 	
 	INITIATIVE_BASE_CHANCE = 0.1	# base chance each tick
@@ -159,11 +168,17 @@ NCombat = {
 	LAND_EXPERIENCE_DAMAGE_REDUCTION = 0.5
 
 	LAND_STRENGTH_DAMAGE_MODIFIER = 0.2
-	NAVAL_STRENGTH_DAMAGE_MODIFIER = 0.5
+	NAVAL_STRENGTH_DAMAGE_MODIFIER = 0.05
 	LAND_MORALE_DAMAGE_MODIFIER = 1.0
-	NAVAL_MORALE_DAMAGE_MODIFIER = 1.0
+	NAVAL_MORALE_DAMAGE_MODIFIER = 0.2 
 	NOT_ENGAGED_STRENGTH_DAMAGE_MODIFIER = 1.1
 	NOT_ENGAGED_MORALE_DAMAGE_MODIFIER = 1.2
+	
+	NAVY_OVERRUN_EXTRA_CAPTURE_CHANCE = 0.15
+	NAVAL_COMBAT_DAMAGED_SHIP_EXTRA_CAPTURE_SCALE = 0.01
+
+	NAVAL_COMBAT_SHIP_STR_SINK_THRESHOLD = 0.1		#ships below this % have a chance of sinking when retreating.
+	NAVAL_COMBAT_DAMAGED_SHIP_SINK_CHANCE = 10		# chance vs (1-100) dice to sink when retreating at below threshold
 	
 	
 	NAVAL_RETREAT_DAMAGE_THRESHOLD = 0.5		# if below this % strength, check chance to retreat.
@@ -175,9 +190,9 @@ NCombat = {
 
 	EXPERIENCE_GAIN = 30
 
-	LAND_WAR_EXHAUTION_FROM_LOSSES = 100
+	LAND_WAR_EXHAUSTION_FROM_LOSSES = 100
 	
-	NAVAL_WAR_EXHAUTION_FROM_LOSSES = 1.5 #Multiplier on losses
+	NAVAL_WAR_EXHAUSTION_FROM_LOSSES = 1.5 #Multiplier on losses
 	MAX_WAR_EXHAUSTION_FROM_BATTLE = 10.0
 
 
@@ -212,10 +227,7 @@ NCombat = {
 
 	SIEGE_DAYS_PER_PHASE = 5
 	
-	ASSAULT_ATTACKER_LOSS = 1.5
 	ASSAULT_ATTACKER_MORALE_LOSS = 0.4
-	ASSAULT_DEFENDER_LOSS = 0.05
 	ASSAULT_DEFENDER_MORALE_LOSS = 0.25
 	ASSAULT_DICE_MODIFIER = 5
-	ASSAULT_WIDTH_LIMIT = 1
 }

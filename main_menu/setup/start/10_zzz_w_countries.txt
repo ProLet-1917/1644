@@ -25,10 +25,15 @@ countries = {
 			mauritius
 		}
 
+		control = {
+			hulst antwerp eindhoven venlo geldern roermond
+		}
+
 		starting_technology_level = 3
 		include = "expl_western_europe"
 		include = "catholic_monarchy"
 		include = "german_principality"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = republic
 			ruler = hol_frederik_hendrik_van_oranje
@@ -68,6 +73,7 @@ countries = {
 		include = "expl_western_europe"
 		include = "expl_northern_europe"
 		include = "german_principality"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = republic
 			ruler = random
@@ -99,6 +105,7 @@ countries = {
 		include = "catholic_monarchy"
 		include = "expl_northern_europe"
 		include = "german_principality"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 
 			ruler = random
@@ -129,6 +136,7 @@ countries = {
 		include = "expl_western_europe"
 		include = "expl_northern_europe"
 		include = "german_principality"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = republic
 			ruler = random
@@ -159,6 +167,7 @@ countries = {
 		include = "expl_western_europe"
 		include = "expl_northern_europe"
 		include = "german_principality"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = republic
 			ruler = random
@@ -183,13 +192,18 @@ countries = {
 	HAI = { #Hainaut
 		own_control_core = {
 			valenciennes #France
-			ath chimay enghien maubeuge mons tournai
+			ath  enghien  mons tournai
+		}
+
+		own_core = {
+			chimay maubeuge
 		}
 
 		starting_technology_level = 3
 		include = "expl_western_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			ruler = random
 
@@ -225,13 +239,14 @@ countries = {
 	}
 
 	ARS = { #Artois
-		own_control_core = {
+		own_core = {
 			arras bapaume bethune hesdin lens saint_omer saint_pol hesdin
 		}
 
 		starting_technology_level = 3
 		include = "expl_western_europe"
 		include = "catholic_monarchy"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
@@ -254,12 +269,17 @@ countries = {
 	FLA = { #Flanders
 		own_control_core = {
 			cassel dunkirk oudenaarde ypres veurne
-			ostend hulst ghent sint_niklaas aalst kortriik
+			ostend ghent sint_niklaas aalst kortriik
+		}
+
+		own_core = {
+			hulst
 		}
 
 		starting_technology_level = 3
 		include = "expl_western_europe"
 		include = "catholic_monarchy"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
@@ -290,13 +310,18 @@ countries = {
 
 	BRB = { #Brabant
 		own_control_core = {
-			brussels nivelles leuven mechelen antwerp turnhout eindhoven
+			brussels nivelles leuven mechelen turnhout
+		}
+
+		own_core = {
+			antwerp eindhoven
 		}
 
 		starting_technology_level = 3
 		include = "expl_western_europe"
 		include = "catholic_monarchy"
 		include = "german_principality"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			ruler = random
 
@@ -328,6 +353,7 @@ countries = {
 		include = "expl_western_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 
 			ruler = random
@@ -355,13 +381,18 @@ countries = {
 
 	LUX = { #Luxemburg
 		own_control_core = {
-			luxembourg arlon bastogne bitburg la_roche orchimont neufchateau_luxembourg st_vith thionville vianden montmedy
+			luxembourg arlon bitburg thionville vianden
+		}
+
+		own_core = {
+			bastogne la_roche orchimont neufchateau_luxembourg st_vith montmedy
 		}
 
 		starting_technology_level = 3
 		include = "expl_western_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			ruler = random
 
@@ -392,7 +423,7 @@ countries = {
 	}
 
 	KLE = {	#Cleves
-		own_control_core = {
+		own_core = {
 			geldern venlo roermond
 		}
 
@@ -401,6 +432,7 @@ countries = {
 		include = "catholic_monarchy_no_coast"
 		include = "expl_northern_europe"
 		include = "german_principality"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 
 			ruler = random
@@ -425,6 +457,7 @@ countries = {
 		include = "expl_western_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
+		include = "zzz_expl_european_colonial_powers"
 		capital = limbourg
 		dynasty = reginar_dynasty
 		government = {
@@ -462,6 +495,7 @@ countries = {
 		include = "expl_western_europe"
 		include = "expl_northern_europe"
 		include = "catholic_free_city"
+		include = "zzz_expl_european_colonial_powers"
 
 		government = {
 			ruler = random
@@ -480,6 +514,7 @@ countries = {
 		include = "expl_western_europe"
 		include = "expl_northern_europe"
 		include = "catholic_free_city"
+		include = "zzz_expl_european_colonial_powers"
 
 		government = {
 			ruler = random
@@ -502,6 +537,7 @@ countries = {
 		include = "expl_western_europe"
 		include = "catholic_german_bishopric_no_coast"
 		include = "expl_northern_europe"
+		include = "zzz_expl_european_colonial_powers"
 		capital = cambrai
 		government = {
 			ruler = cam_joseph_de_bergaigne
@@ -535,6 +571,7 @@ countries = {
 		starting_technology_level = 3
 		include = "expl_western_europe"
 		include = "catholic_bishopric_no_coast"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = theocracy
 
@@ -565,6 +602,7 @@ countries = {
 		starting_technology_level = 3
 		include = "expl_western_europe"
 		include = "catholic_monarchy_no_coast"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			ruler = bll_frederic_maurice_de_la_tour
 
@@ -590,6 +628,7 @@ countries = {
 		starting_technology_level = 3
 		include = "expl_western_europe"
 		include = "catholic_monarchy"
+		include = "zzz_expl_european_colonial_powers"
 		capital = emden
 		government = {
 			ruler = fri_ulrich_cirksena
@@ -626,6 +665,7 @@ countries = {
 		include = "catholic_monarchy_no_coast"
 		include = "expl_northern_europe"
 		include = "german_principality"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			ruler = bnt_philipp_konrad_von_gotterswick
 
@@ -645,7 +685,7 @@ countries = {
 	}
 
 	FCB = { #Franche-Comt   Spainish Burgundy
-		own_control_core = {
+		own_core = {
 			gray vesoul dole
 			pontarlier poligny orgelet ornans baume montbozon
 			luxeuil salins_les_bains
@@ -655,6 +695,7 @@ countries = {
 		starting_technology_level = 3
 		include = "expl_western_europe"
 		include = "catholic_monarchy_no_coast"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 
 			centralization_vs_decentralization = 30
@@ -730,12 +771,17 @@ countries = {
 
 	UPA = {	#Nordgau
 		own_control_core = {
-			heinsberg bergheim duren monchengladbach
-			dusseldorf remscheid siegburg solingen schleiden
+			heinsberg monchengladbach
 			amberg eschenbach neumarkt roding sulzbach #Oberpfalz
 			tirschenreuth cham
 			beilngries
 			dillingen
+			siegburg 
+		}
+
+		own_core = {
+			bergheim duren schleiden
+			dusseldorf remscheid solingen
 		}
 
 		starting_technology_level = 3
@@ -1062,6 +1108,7 @@ countries = {
 		include = "catholic_monarchy_no_coast"
 		include = "expl_northern_europe"
 		include = "german_principality"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			ruler = bra_friedrich_wilhelm_von_hohenzollern
 
@@ -1108,6 +1155,7 @@ countries = {
 		starting_technology_level = 3
 		include = "expl_western_europe"
 		include = "catholic_monarchy_no_coast"
+		include = "zzz_expl_european_colonial_powers"
 		country_rank = rank_duchy
 		government = {
 			type = monarchy
@@ -1410,10 +1458,13 @@ countries = {
 			schwaz innsbruck
 			imst reutte landeck
 			merano sterzing villandro bolzano silandro
-			lienz bruneck kufstein bregenz feldkirch bludenz wertingen hohenberg freiburg
-			belfort ferrette waldshut
-			kitzbuhel horb villingen stockach ensisheim
+			lienz bruneck kufstein bregenz feldkirch bludenz wertingen hohenberg
+			kitzbuhel horb stockach
 			krumbach gunzburg erbach_swabia
+		}
+
+		own_core = {
+			belfort ferrette ensisheim waldshut freiburg villingen
 		}
 
 		starting_technology_level = 3
@@ -1421,6 +1472,7 @@ countries = {
 		include = "catholic_monarchy_no_coast"
 		include = "expl_northern_europe"
 		include = "german_principality"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			ruler = tir_ferdinand_karl_von_habsburg
 			regnal_numbers = {
@@ -1597,12 +1649,13 @@ countries = {
 		include = "expl_western_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 
 			ruler = hab_ferdinand_iii_von_habsburg
 			heir = hab_leopold_von_habsburg
 
-			ruler_term = { character = hab_ferdinand_iii_von_habsburg start_date = 1644.1.1 regnal_number = 3 }
+			ruler_term = { character = hab_ferdinand_iii_von_habsburg start_date = 1644.1.1 regnal_number = 2 }
 
 
 			regnal_numbers = {
@@ -1674,6 +1727,7 @@ countries = {
 		include = "catholic_monarchy_no_coast"
 		include = "expl_northern_europe"
 		include = "german_principality"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 
 			ruler = sax_johann_georg_i_von_wettin
@@ -1985,6 +2039,7 @@ countries = {
 		capital = lubeck
 		include = "catholic_free_city"
 		include = "expl_northern_europe"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			ruler = random
 		}
@@ -2051,7 +2106,7 @@ countries = {
 	}
 
 	HTR = { #Holstein #PU with Denmark
-		own_control_core = {
+		own_core = {
 			heide steinburg rendsburg stormarn segeberg pinneberg
 			haderslev flensburg
 		}
@@ -2078,7 +2133,7 @@ countries = {
 	}
 
 	SLV = { #Slesvig #Puppet of Denmark
-		own_control_core = {
+		own_core = {
 			aabenraa tonder
 			slesvig eckernforde amrum_island_wasteland husum
 		}
@@ -2207,6 +2262,7 @@ countries = {
 		include = "catholic_monarchy_no_coast"
 		include = "expl_northern_europe"
 		include = "german_principality"
+		include = "zzz_expl_european_colonial_powers"
 		country_rank = rank_duchy
 		government = {
 			ruler = bav_maximilian_von_wittelsbach
@@ -4249,6 +4305,7 @@ countries = {
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
 		include = "catholic_republic"
+		include = "zzz_expl_european_colonial_powers"
 		country_rank = rank_duchy
 		government = {
 			type = republic
@@ -4401,6 +4458,7 @@ countries = {
 		starting_technology_level = 3
 		include = "expl_mediterranean"
 		include = "catholic_monarchy"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
@@ -4438,6 +4496,7 @@ countries = {
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
 		include = "catholic_monarchy_no_coast"
+		include = "zzz_expl_european_colonial_powers"
 
 		government = {
 			type = monarchy
@@ -4606,6 +4665,7 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
+		include = "zzz_expl_european_colonial_powers"
 		discovered_regions = {
 			ethiopia_region
 			nubia_region
@@ -4727,6 +4787,7 @@ countries = {
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
 		include = "catholic_republic"
+		include = "zzz_expl_european_colonial_powers"
 		country_rank = rank_duchy
 		government = {
 			type = republic
@@ -4885,6 +4946,7 @@ countries = {
 		include = "expl_eastern_europe"
 		include = "eastern_european_catholic_monarchy_no_auxilium_no_coast"
 		include = "eastern_european_catholic"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 
 			ruler = hab_ferdinand_iii_von_habsburg
@@ -5162,11 +5224,13 @@ countries = {
 		include = "expl_eastern_europe"
 		include = "eastern_european_catholic_monarchy_no_coast"
 		include = "eastern_european_catholic"
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
 			heir_selection = semi_salic_law
 
 			ruler = pol_vladislav_iv_vasa
+			ruler_term = { character = pol_sigismund_iii_vasa start_date = 1587.12.27 end_date = 1632.4.30 regnal_number = 3 }
 			ruler_term = {	character = pol_vladislav_iv_vasa start_date = 1644.1.1 regnal_number = 4	}
 			regnal_numbers = {
 				name_vladislav = 4
@@ -8121,7 +8185,7 @@ countries = {
 
 	MRH = { #Al Murrah
 		own_control_core = {
-			yabrin harad_al_ahsa al_hunayy al_hasa baqqa
+			yabrin harad_al_ahsa al_hunayy al_ahsa baqqa
 		}
 
 		include = "expl_middle_east"
@@ -8679,10 +8743,10 @@ countries = {
 		tolerated_cultures = {
 			greek_culture
 			turkoman_culture
-			arab_culture
+			#arab_culture
 			armenian_culture
-			serbian_culture
-			bulgarian_culture
+			serbian
+			bulgarian
 		}
 
 		capital = constantinople
@@ -8985,6 +9049,7 @@ countries = {
 		starting_technology_level = 3
 
 		include = "russian_principality_no_coast"
+		include = "zzz_expl_european_colonial_powers"
 		include = "expl_novgorod"
 		country_rank = rank_empire
 		capital = moscow
@@ -10614,8 +10679,58 @@ countries = {
 		}
 	}
 
+	KNI = { #Knights Hospitaller
+		own_control_core = {
+			malta
+		}
 
-}
+		include = "catholic_military_order"
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+
+		government = {
+			ruler = random
+
+			reforms = {
+				crusade_sea_reform
+			}
+			laws = {
+				administrative_system = tongues_policy
+				divine_cause_law = safeguard_holy_sites_policy
+				holy_mission_law = mission_on_the_high_seas_policy
+				piracy_law = state_piracy_policy
+			}
+
+			land_vs_naval = 30
+
+			
+			privilege = {
+
+				#Burghers
+				privateer_contracts #By the mid/late point of the 14th century Rhodes had become one of the major naval bases in the eastern Mediterranean specifically structured to support Hospitaller corsair operations and fleet maintenance.
+
+			}
+
+		}
+
+		tolerated_cultures = {
+
+		}
+
+		capital = malta
+		dynasty = villeneuve_dynasty
+
+		country_rank = rank_duchy
+	}
+
+
+
+	}
 }
 
 
