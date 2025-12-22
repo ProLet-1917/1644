@@ -90,11 +90,10 @@
 		zzz_1644_collect_china_countries_effect = yes
 		zzz_1644_add_china_cb_effect = yes
 		
-		# 为初始参与国添加局势 modifier
+		# 为初始参与国添加局势 modifier（包括附属国）
 		every_country = {
 			limit = {
 				exists = capital
-				is_subject = no
 				OR = {
 					capital.region = region:west_china_region
 					capital.region = region:east_china_region
@@ -116,11 +115,10 @@
 		# 每月更新中国国家列表（用于GUI显示）
 		zzz_1644_collect_china_countries_effect = yes
 		
-		# 为参与国添加局势 modifier
+		# 为参与国添加局势 modifier（包括附属国）
 		every_country = {
 			limit = {
 				exists = capital
-				is_subject = no
 				OR = {
 					capital.region = region:west_china_region
 					capital.region = region:east_china_region
@@ -135,26 +133,6 @@
 				months = -1  # 永久，直到局势结束
 				mode = replace
 			}
-		}
-		
-		# 随机事件逻辑，通过事件文件处理
-		# 这里可以调用一个统一的脉冲事件
-		random_list = {
-			10 = { # 10% 概率触发随机事件
-				every_country = {
-					limit = {
-						OR = {
-							capital.region = region:west_china_region
-							capital.region = region:east_china_region
-							capital.region = region:north_china_region
-							capital.region = region:south_china_region
-							capital.region = region:manchuria_region
-						}
-					}
-					trigger_event_non_silently = late_ming_crisis.100 # Generic monthly pulse event
-				}
-			}
-			90 = {}
 		}
 	}
 
