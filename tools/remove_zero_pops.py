@@ -107,8 +107,7 @@ if __name__ == "__main__":
     main()
 
 
+<<<<<<< HEAD
 
-
-
-
-
+=======
+>>>>>>> c6ea3f5 (Squashed commit of the following:)

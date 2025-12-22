@@ -9,34 +9,56 @@
  late_ming_crisis.1.desc: "甲申之变在即，天下大乱。各方势力都已做好准备，迎接这场决定中国命运的决战。"
  late_ming_crisis.1.a: "苍天已死，黄天当立..."
 
+ # 事件 10: 多尔衮
+ late_ming_crisis.10.t: "多尔衮的摄政"
+ late_ming_crisis.10.desc: "摄政王多尔衮整顿八旗，意图入主中原。"
+ late_ming_crisis.10.a: "整军经武，准备入关"
+ late_ming_crisis.10.b: "静观其变"
 
+ # 事件 11: 招降
+ late_ming_crisis.11.t: "招降纳叛"
+ late_ming_crisis.11.desc: "明朝将领大多动摇，正是招降的好时机。"
+ late_ming_crisis.11.a: "广发劝降信"
 
-# Generic Action: 获取统一中国CB
-late_ming_crisis_grant_unification_cb: "逐鹿群雄"
-late_ming_crisis_grant_unification_cb_desc: "获得对明末群雄的“统一中国”宣战理由。"
+ # 事件 20: 练饷
+ late_ming_crisis.20.t: "征收练饷"
+ late_ming_crisis.20.desc: "国库空虚，崇祯帝不得不加派“练饷”，但这更加剧了民怨。"
+ late_ming_crisis.20.a: "苦一苦百姓"
+ late_ming_crisis.20.b: "不可再加赋了"
 
-# Generic Action: 对附庸获取统一中国CB
-late_ming_crisis_subjugate_disobedient: "征讨不臣"
-late_ming_crisis_subjugate_disobedient_desc: "获得对附属国的"统一中国"宣战理由并解除附属关系。"
+ # 事件 21: 勤王
+ late_ming_crisis.21.t: "勤王诏书"
+ late_ming_crisis.21.desc: "京师危急，只有召唤吴三桂的关宁铁骑入卫才能解围。"
+ late_ming_crisis.21.a: "飞檄勤王！"
 
-# Generic Action: 重建天朝
-late_ming_crisis_restore_celestial_empire: "重建天朝"
-late_ming_crisis_restore_celestial_empire_desc: "通过统一中国并重建[GetUniqueInternationalOrganization('middle_kingdom').GetName]组织，重新确立天朝体系。此行动将我国确立为天朝领袖，恢复传统的朝贡体系。"
+ # 事件 22: 罪己诏
+ late_ming_crisis.22.t: "罪己诏"
+ late_ming_crisis.22.desc: "朕非亡国之君，臣皆亡国之臣！"
+ late_ming_crisis.22.a: "皆诸臣误朕！"
 
-# Generic Action: 测试按钮 - 重建天朝组织（测试用）
-late_ming_crisis_test_recreate_middle_kingdom: "[测试]重建天朝组织"
-late_ming_crisis_test_recreate_middle_kingdom_desc: "测试用：使用原版效果重建[GetUniqueInternationalOrganization('middle_kingdom').GetName]组织，包含完整国家效果（改变tag为CHI、核心化中国地区、接受中华文化、设置帝国等级等）。"
+ # 事件 30: 吃大户
+ late_ming_crisis.30.t: "吃大户"
+ late_ming_crisis.30.desc: "义军所到之处，拷掠官绅，以此充饷。"
+ late_ming_crisis.30.a: "助饷！"
 
- # GUI 文本
- MAJOR_POWERS: "主要势力"
- PARTICIPATING_COUNTRIES: "明末群雄"
- BATTLE_STATISTICS_LATE_MING: "战斗统计"
- BATTLE_STATISTICS_LATE_MING_TOOLTIP: "#T 战斗统计#!显示甲申局势中的战斗统计数据，包括总伤亡、我方阵斩和我方阵亡。"
- TOTAL_CASUALTIES_LATE_MING: "阵亡将士总数"
- TOTAL_CASUALTIES_LATE_MING_TOOLTIP: "#T 阵亡总数#!甲申局势中所有参与方在战斗中阵亡的士兵总数为[SituationView.GetActiveSituation.GetSituation.MakeScope.GetVariable('late_ming_crisis_total_casualties').GetValue]人。"
- MY_KILLS_LATE_MING: "我方阵斩"
- MY_KILLS_LATE_MING_TOOLTIP: "#T 我方阵斩#!甲申局势中我方在战斗中阵斩的敌军总数为[Country.MakeScope.GetVariable('late_ming_crisis_my_kills').GetValue]人。"
- MY_CASUALTIES_LATE_MING: "我方阵亡"
- MY_CASUALTIES_LATE_MING_TOOLTIP: "#T 我方阵亡#!甲申局势中我方在战斗中阵亡的士兵总数为[Country.MakeScope.GetVariable('late_ming_crisis_my_casualties').GetValue]人。"
+ # 事件 31: 不纳粮
+ late_ming_crisis.31.t: "闯王来了不纳粮"
+ late_ming_crisis.31.desc: "吃他娘，穿他娘，闯王来了不纳粮！"
+ late_ming_crisis.31.a: "万民拥戴"
 
- # Modifier 文本（静态modifier的本地化在main_menu/localization中）
+ # 事件 40: 待价而沽
+ late_ming_crisis.40.t: "待价而沽"
+ late_ming_crisis.40.desc: "吴三桂手握精兵，坐观成败，各方皆欲拉拢。"
+ late_ming_crisis.40.a: "且看谁给的价码高"
+
+ # 事件 1000: 北京陷落
+ late_ming_crisis.1000.t: "京师陷落"
+ late_ming_crisis.1000.desc: "崇祯皇帝于煤山自缢，大明亡了！"
+ late_ming_crisis.1000.a: "国破家亡..."
+
+ # 事件 1001: 吴三桂抉择
+ late_ming_crisis.1001.t: "冲冠一怒"
+ late_ming_crisis.1001.desc: "听闻爱妾陈圆圆被刘宗敏所掠，吴三桂怒发冲冠，决意引清兵入关！"
+ late_ming_crisis.1001.a: "剃发降清！"
+ late_ming_crisis.1001.b: "归顺大顺"
+ late_ming_crisis.1001.c: "自立为王"
