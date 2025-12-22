@@ -31,7 +31,17 @@ zzz_1644_collect_china_countries_effect = {
 	}
 }
 
-
+# 为所有收集到的中国国家添加局势 modifier
+zzz_1644_add_crisis_participant_modifier_effect = {
+	every_in_global_list = {
+		variable = china_countries_list
+		add_country_modifier = {
+			modifier = late_ming_crisis_participant
+			years = 10
+			mode = add_and_extend
+		}
+	}
+}
 
 # 为单个国家授予对指定目标国家的统一中国CB
 # 用于generic action按钮，选择目标国家后使用
