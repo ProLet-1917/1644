@@ -111,10 +111,18 @@ csh_1644_unification.1 = { #进京赶考
 		 	id = csh_1644_unification.2
 		 	days = 7
 		}
-		trigger_event_silently = {
-		 	id = csh_1644_unification.3
-		 	days = 7
+		if = {
+			limit = {
+				c:MNG = {
+					has_variable = mng_move_to_nanjing 
+				}
+			}
+			trigger_event_silently = {
+		 		id = csh_1644_unification.3
+		 		days = 7
+			}
 		}
+		
 	}
 	option = { #暂缓进京
 		name = csh_1644_unification.1.b
@@ -267,6 +275,7 @@ csh_1644_unification.2 = { #天翻地覆
 			limit = {
 				has_variable = csh_attack_beijing
 			}
+			set_capital = location:dadu
 			shandong_csh_list_add1 = yes
 		}
 		shandong_csh_list_add2 = yes
@@ -276,24 +285,13 @@ csh_1644_unification.2 = { #天翻地覆
 			change_location_owner = c:CSH
 			change_control = control_mild_bonus
 		}
-		set_capital = location:dadu
 		c:MNG = {
 			if = {
 				limit = {
 					NOT = { has_variable = mng_move_to_nanjing }
 				}
-				if = {
-					limit = {
-						exists = character:chi_zhu_youjian
-					}
-					kill_character = character:chi_zhu_youjian
-				}
 				trigger_event_silently = {
 		 			id = mng_1644.2 #甲申之难
-				}
-				trigger_event_silently = {
-		 			id = mng_1644.5 #立新君
-					days = 10
 				}
 			}
 			else = {
