@@ -7,7 +7,7 @@
 		current_year >= 1627
 		current_year <= 1650
 		exists = c:MNG
-		# c:MNG = { owns = location:dadu }
+		NOT = { c:MNG = { owns = location:dadu } }
 		# OR = {
 		# 	current_year = 1644  # 1644年游戏开始时自动启动
 		# 	c:MNG = { stability < 50 }
@@ -20,7 +20,7 @@
 	# 2. 结束条件
 	can_end = {
 		OR = {
-			current_year > 1690
+			current_year > 1661
 			
 			# # 参与者中有国家同时拥有九个关键城市且稳定度>40
 			# # 且局势已运行至少1年（避免开局立即结束）
