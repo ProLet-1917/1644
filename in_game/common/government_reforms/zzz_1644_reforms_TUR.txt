@@ -1,0 +1,26 @@
+﻿REPLACE:legacy_of_the_ottomans = {
+	unique = yes
+	potential = {
+		has_or_had_tag = TUR
+	}
+
+	country_modifier = {
+		cultures_capacity_modifier = 0.25
+		auto_slave_raid_different_religion = yes
+		government_reform_slots = 1
+	}
+	years = 2
+}
+
+REPLACE:turkish_pashas = {
+	potential = {
+		has_or_had_tag = TUR
+	}
+	country_modifier = {
+		monthly_towards_decentralization = societal_value_monthly_move
+		global_crown_estate_power = 0.05
+		government_size = 1
+	}
+	years = 2
+}
+
