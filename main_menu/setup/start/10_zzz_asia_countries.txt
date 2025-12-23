@@ -161,7 +161,6 @@ countries = {
 			government = {
 				type = monarchy
 				ruler = chi_li_zicheng
-				heir_selection = cognatic_primogeniture
 				ruler_term = { character = chi_li_zicheng start_date = 1643.3.8 }
 
 			}
@@ -282,6 +281,9 @@ countries = {
 				ordos aerzhai otog tongwancheng
 				fengzhou yinshan hebin zhenwu ningbian yunnei dongsheng wuchuan
 
+				#关外
+				sanchakou longwangmiao
+
 			}
 			# 整合省份：已整合，文化可能被接受，税收正常
 			own_control_integrated = {
@@ -333,7 +335,7 @@ countries = {
 				stability = 60 #稳定度
 				prestige = 60 #声望
 				government_power = 80 #正统性
-				army_tradition = 80 #军队传统
+				army_tradition = 100 #军队传统
 			}
 			court_language = jurchen_language
 			country_rank = rank_empire
@@ -355,7 +357,7 @@ countries = {
 				dadu fangshan guan daxing dongan_shuntian wanping yongqing fanyang
 				luxian baodi sanhe_tongzhou lutai xianghe wuqing
 
-				lulong changli funing longwangmiao qianan sanchakou
+				lulong changli funing  qianan 
 
 				longqing
 				# yannan_area ─ 冀南平原与保定重镇
@@ -679,7 +681,7 @@ countries = {
 			government = {
 				type = monarchy
 				ruler = chi_zhu_youjian
-				heir_selection = cognatic_primogeniture #
+				heir = chi_zhu_cilang
 				ruler_term = {
 					character = chi_zhu_yuanzhang
 					start_date = 1368.1.23
@@ -829,7 +831,6 @@ countries = {
 					start_date = 1644.1.1
 					#end_date = 1647.1.27
 				}
-				heir_selection = cognatic_primogeniture
 				laws = {
 					medieval_levy_law = broken_weisuo
 				}
@@ -860,7 +861,6 @@ countries = {
 				type = monarchy
 				ruler = chi_wu_san_gui
 				ruler_term = { character = chi_wu_san_gui start_date = 1644.4.10 }
-				heir_selection = cognatic_primogeniture
 				laws = {
 					medieval_levy_law = broken_weisuo
 				}

@@ -5,7 +5,15 @@ locations = {
 	ganzhou = { rank = city town_setup = chinese_city_mil } #甘州 - 
 	ningxia = { rank = city town_setup = chinese_city_mil } #宁夏 - 
 	lanzhou = { rank = city town_setup = chinese_city_mil } #兰州 - 
-	shenyang = { rank = city town_setup = chinese_city_mil } #沈阳 
+	shenyang = { rank = city town_setup = chinese_city_mil } #沈阳
+	zhongli = { rank = city town_setup = chinese_city_mil } #中都
+	xuzhou = { rank = city town_setup = chinese_city_mil } #徐州 
+	jiangxia = { rank = city town_setup = chinese_city_mil }# 武昌
+	gaoyao = { rank = city town_setup = chinese_city_mil }# 肇庆
+	kunming = { rank = city town_setup = chinese_city_mil }# 昆明
+
+
+
     #集镇
 	fuzhou_sichuan = { rank = town town_setup = chinese_town_mil }
 	yanqing = { rank = town town_setup = chinese_town_mil } #延庆- 居庸关
@@ -17,6 +25,17 @@ locations = {
 	changping = { rank = town town_setup = chinese_town_mil } #昌平 
 	funing = { rank = town town_setup = chinese_town_mil } #抚宁 - 山海关
 	ningyuan_jinzhou = { rank = town town_setup = chinese_town_mil } #宁远 
+	fengjie = { rank = town town_setup = chinese_town_mil } #奉节
+	baoji = { rank = town town_setup = chinese_town_mil } #宝鸡
+	chengji = { rank = town town_setup = chinese_town_mil } #成纪
+	dingyuan_fengyang = { rank = town town_setup = chinese_town_mil } #定远 - 凤阳
+	# longqing = { rank = town town_setup = chinese_town_mil } #龙庆
+	miyun = { rank = town town_setup = chinese_town_mil } #密云
+	haiyang = { rank = town town_setup = chinese_town_mil }# 潮州
+	guizhou_guizhou = { rank = town town_setup = chinese_town_mil }# 贵阳
+	hefei = { rank = town town_setup = chinese_town_mil }# 合肥
+
+
 
 	liaoyang = { rank = town town_setup = chinese_town_mil } #辽阳
 	lieling = { rank = town town_setup = chinese_town_mil } #铁岭
@@ -25,9 +44,9 @@ locations = {
 	guangning = { rank = town town_setup = chinese_town_mil } #广宁
 	jinzhou_liaoyang = { rank = town town_setup = chinese_town_mil } #锦州
 
-	qiantun = { rank = town town_setup = chinese_coastal_town } #前屯 - 辽西
-	penglai = { rank = town town_setup = chinese_coastal_town } #蓬莱 - 登州
-	jinzhou_dalian = { rank = town town_setup = chinese_coastal_town } #金州
+	qiantun = { rank = town town_setup = chinese_coastal_town_mil } #前屯 - 辽西
+	penglai = { rank = town town_setup = chinese_coastal_city } #蓬莱 - 登州
+	jinzhou_dalian = { rank = town town_setup = chinese_coastal_town_mil } #金州
 	
 
 
@@ -47,19 +66,16 @@ locations = {
 	jiangdu = { rank = city town_setup = chinese_city } #Yangzhou
 	jiangling = { rank = city town_setup = chinese_city }
 	kaifeng = { rank = city town_setup = chinese_city }
-	kunming = { rank = city town_setup = chinese_city }
 	nanchang = { rank = city town_setup = chinese_city } #Nanchang
 	luoyang = { rank = city town_setup = chinese_city }
 	shangyuan = { rank = city town_setup = chinese_city }
 	xuanhua_nanning = { rank = city town_setup = chinese_city }
-	chengji = { rank = city town_setup = chinese_city }
 	qingxiang = { rank = city town_setup = chinese_city }
 	qufu = { rank = city town_setup = chinese_city }
 	suiyang_guide = { rank = city town_setup = chinese_city }
 	shaoxing = { rank = city town_setup = chinese_coastal_city }
 	wuxian = { rank = city town_setup = chinese_city }
 	pingjin = { rank = city town_setup = chinese_city }
-	jiangxia = { rank = city town_setup = chinese_city }
 	jingzhao = { rank = city town_setup = chinese_city }
 	xiangyang = { rank = city town_setup = chinese_city }
 	xinzheng = { rank = city town_setup = chinese_city }
@@ -77,9 +93,10 @@ locations = {
 	yinxian = { rank = city town_setup = chinese_coastal_city } #宁波 - 1644年重要港口城市
 	changshu = { rank = city town_setup = chinese_city } #常熟 - 1644年江南重要城市
 	fuzhou = { rank = city town_setup = chinese_city } #福州 - 1644年福建首府，约30万人
-	xuzhou = { rank = city town_setup = chinese_city } #徐州 - 1644年重要军事和商业城市
 
 #===== 集镇 =====
+	luxian = { rank = town town_setup = chinese_town } #通州
+
 	shipai = { rank = town town_setup = chinese_town }
 	huaining = { rank = town town_setup = chinese_town }
 	dingxing = { rank = town town_setup = chinese_town }
@@ -305,7 +322,6 @@ locations = {
 	lingxian_shanxi = { rank = town town_setup = chinese_town }
 	jincheng_zezhou = { rank = town town_setup = chinese_town }
 	zhangping = { rank = town town_setup = chinese_town }
-	gaoyao = { rank = town town_setup = chinese_town }
 	pingji = { rank = town town_setup = chinese_town }
 	zhending = { rank = town town_setup = chinese_town }
 	yangdi = { rank = town town_setup = chinese_town }
@@ -392,7 +408,6 @@ building_manager ={
 	ruined_great_wall_of_china = { tag = CSH level = 1 location = xuanping }
 	ruined_great_wall_of_china = { tag = CSH level = 1 location = xuande }
 	ruined_great_wall_of_china = { tag = CSH level = 1 location = longmen_chicheng }
-	ruined_great_wall_of_china = { tag = CSH level = 1 location = dushikou }
 
 	# # 大明（MNG）昌平以东
 
@@ -403,12 +418,13 @@ building_manager ={
 	ruined_great_wall_of_china = { tag = MNG level = 1 location = luanyang }
 	ruined_great_wall_of_china = { tag = MNG level = 1 location = qianan }
 	ruined_great_wall_of_china = { tag = MNG level = 1 location = banbishan }
-	ruined_great_wall_of_china = { tag = MNG level = 1 location = sanchakou }
-	ruined_great_wall_of_china = { tag = MNG level = 1 location = longwangmiao }
 	ruined_great_wall_of_china = { tag = MNG level = 1 location = yunzhou }
 
 
 	# 大清（QNG）辽东与塞北段
+	ruined_great_wall_of_china = { tag = QNG level = 1 location = longwangmiao }
+	ruined_great_wall_of_china = { tag = QNG level = 1 location = sanchakou }
+	
 	# ruined_great_wall_of_china = { tag = QNG level = 1 location = hebin }
 	# ruined_great_wall_of_china = { tag = QNG level = 1 location = yinshan }
 	# ruined_great_wall_of_china = { tag = QNG level = 1 location = wuchuan }
@@ -450,24 +466,23 @@ building_manager ={
 
 	# 火器与火炮工坊
 
-	guns_workshop = { tag = CSH level = 2 location = jingzhao }
-	cannon_workshop = { tag = CSH level = 1 location = jingzhao }
 
-
-	guns_workshop = { tag = MNG level = 2 location = dadu }
+	guns_workshop = { tag = MNG level = 1 location = dadu }
 	cannon_workshop = { tag = MNG level = 1 location = dadu }
 	
-	guns_workshop = { tag = MNG level = 3 location = guangzhou }
-	cannon_workshop = { tag = MNG level = 3 location = guangzhou }
+	guns_workshop = { tag = MNG level = 1 location = guangzhou }
+	cannon_workshop = { tag = MNG level = 1 location = guangzhou }
 
-	guns_workshop = { tag = WSG level = 2 location = ningyuan_jinzhou }
+	guns_workshop = { tag = WSG level = 1 location = ningyuan_jinzhou }
 	cannon_workshop = { tag = WSG level = 1 location = ningyuan_jinzhou }
 
+	guns_workshop = { tag = QNG level = 1 location = shenyang }
+	cannon_workshop = { tag = QNG level = 1 location = shenyang }
 
-	guns_workshop = { tag = QNG level = 2 location = liaoyang }
-	cannon_workshop = { tag = QNG level = 1 location = liaoyang }
+	# 澳门条约港（葡萄牙在香山新会的租借地）
+	chi_macau_port = { tag = POR level = 5 location = xiangshan_xinhui }
 
-	#关宁
+
 
 	
 }

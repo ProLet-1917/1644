@@ -8,7 +8,7 @@ REPLACE:chinese_town = {
 	# --- 行政与宗教 ---
 	temple = 1
 	zhixian = 1
-	confucian_academy = 1
+	confucian_school = 1
 	
 	# --- 基础设施与商业 ---
 	marketplace = 1		# 基础商业
@@ -28,6 +28,8 @@ REPLACE:chinese_town = {
 	# 重工业与资源
 	winery = 1			# 基础：农业加工
 	mason = 1			# 基础：建筑材料
+
+	weapon_guild = 1
 	
 	# --- 军事防御 ---
 	provincial_garrison = 1	# 卫所
@@ -64,9 +66,9 @@ REPLACE:chinese_city = {
 	
 	# 重工业与工具
 	tools_workshop = 3		# 工具制造
-	weapon_workshop = 3		# 军事装备
-	guns_workshop = 1		# 火器工坊 (晚明特征)
-	cannon_workshop = 1
+	weapon_guild = 3		# 军事装备
+	gun_smith = 1		# 火器工坊 (晚明特征)
+	cannon_maker = 1
 	mason = 1				# 建筑技术
 	
 	# --- 军事防御 ---
@@ -106,9 +108,9 @@ REPLACE:chinese_coastal_city = {
 	
 	# 重工业与军工
 	tools_workshop = 3
-	weapon_workshop = 3
-	guns_workshop = 2
-	cannon_workshop = 2
+	weapon_guild = 3
+	gun_smith = 2
+	cannon_maker = 2
 	mason = 1
 	
 	# --- 军事防御 ---
@@ -128,7 +130,7 @@ chinese_town_mil = {
 	# --- 行政与宗教 ---
 	zhixian = 2			# 军事行政合一
 	temple = 1
-	confucian_academy = 1
+	confucian_school = 1
 	
 	# --- 基础设施与商业 ---
 	marketplace = 1		# 军市
@@ -148,8 +150,8 @@ chinese_town_mil = {
 	furniture_guild = 1
 	winery = 1
 	mason = 1			# 防御工事材料
-	guns_workshop = 1	# 火器工坊
-	cannon_workshop = 1
+	gun_smith = 2	# 火器工坊
+	cannon_maker = 2
 	
 	# --- 军事防御 ---
 	chinese_city_wall = 1			# 城堡防御
@@ -160,7 +162,7 @@ chinese_coastal_town_mil = {
 		# --- 行政与宗教 ---
 		zhixian = 2			# 军事行政合一
 		temple = 1
-		confucian_academy = 1
+		confucian_school = 1 #儒学门舍
 		
 		# --- 基础设施与商业 ---
 		marketplace = 1		# 军市
@@ -180,8 +182,8 @@ chinese_coastal_town_mil = {
 		furniture_guild = 1
 		winery = 1
 		mason = 1			# 防御工事材料
-		guns_workshop = 1	# 火器工坊
-		cannon_workshop = 1
+		gun_smith = 2	# 火器工坊
+		cannon_maker = 2
 		
 		# --- 军事防御 ---
 		chinese_city_wall = 1			# 城堡防御
@@ -197,7 +199,7 @@ chinese_city_mil = {
 	# --- 行政与宗教 ---
 	zhixian = 2
 	scriptorium = 1
-	confucian_academy = 1
+	confucian_school = 1
 	temple = 1
 	
 	# --- 基础设施与商业 ---
@@ -207,9 +209,9 @@ chinese_city_mil = {
 	
 	# --- 工业与手工业 ---
 	# 军需产业核心
-	weapon_workshop = 5	# 极高：军事装备中心
-	guns_workshop = 2	# 火器中心
-	cannon_workshop = 2
+	weapon_guild = 6	# 极高：军事装备中心
+	gun_smith = 4	# 火器中心
+	cannon_maker = 4
 	tannery = 4			# 皮革中心
 	tools_workshop = 3	# 工具中心
 	

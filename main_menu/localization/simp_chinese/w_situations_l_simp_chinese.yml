@@ -1,4 +1,5 @@
 ﻿l_simp_chinese:
+ THIRTY_YEARS_WAR:"三十年战争"
  union_of_utrecht_treasury: "联盟金库"
  STRENGTH_COMPARE_TT: "实力对比"
  netherland_independent:"尼德兰独立运动"
@@ -35,3 +36,12 @@
  RELATIVE_MILITARY_STRENGTH_SPA_TT_TEXT: "The [GetCountry('SPA').GetAdjective] Relative Military Strength to [GetCountry('NED').GetName] is: [GetCountry('SPA').GetRelativeMilitaryStrength(GetCountry('NED').Self)|V0%]"
  RELATIVE_MILITARY_STRENGTH_SPA_TT_ARMY_STRENGTH: "$RELATIVE_MILITARY_STRENGTH_SPA_TT_TEXT$\n[GetCountry('SPA').GetAdjectiveWithNoTooltip] [army|e] Size: [GetCountry('FRA').GetArmySize]\n[GetCountry('SPA').GetAdjectiveWithNoTooltip] Potential [levy|e]: [GetCountry('SPA').GetArmyLevyPotentialStrength]"
  RELATIVE_MILITARY_STRENGTH_SPA_TT_LEVY_STRENGTH: "[GetCountry('SPA').GetAdjectiveWithNoTooltip] Potential [levy|e]: [GetCountry('SPA').GetArmyLevyPotentialStrength]"
+
+ CURRENT_HERD_TT: "当前牧群: [SituationView.GetPlayer.MakeScope.GetVariable('current_herd').GetValue]"
+ HERD_GET_PER_MONTH: "牧群每月增长:\n[SituationView.GetPlayer.MakeScope.GetVariable('current_herd').GetValue]"
+ the_steppe:"大草原"
+ the_steppe_desc:"从黑海到蒙古之间的草原地区被称为大草原"
+ HORDE_NATIONS_TT:"游牧国家"
+ cb_conquer_another_horde: "征服另一个游牧"
+ the_steppe_horde_claims: "宣称一片新的牧场"
+ the_steppe_horde_claims_desc: "住在草原的人们往往为了一些东西而大打出手,有些人追求荣耀而另一部分则追求金钱"

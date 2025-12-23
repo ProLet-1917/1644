@@ -28,6 +28,8 @@ a_1644_chinese_zhanbing = {
 	# # 定位：晚明战兵，火器配备不足，整体素质弱于专业火器营
 	# # 略微降低输出与士气，作为廉价主力
 
+	construction_demand = chinese_zhanbing_construction
+	maintenance_demand = chinese_zhanbing_maintenance
 	country_potential = { 
 		culture ?= { has_culture_group = culture_group:chinese_group }
 	}
@@ -43,12 +45,12 @@ a_1644_chinese_musketeers = {
 	max_strength = 1.5
 	
 	# 补给与征募需求（引用原版模板，避免解析异常）
-	maintenance_demand = infantry_maintenance
-	construction_demand = infantry_construction
+	maintenance_demand = heavy_infantry_maintenance
+	construction_demand = heavy_infantry_construction
 	#提高输出并略微提升士气
-	morale_damage_done = 0.08
-	strength_damage_done = 0.08
-	morale_damage_taken = -0.08
+	morale_damage_done = 0.1
+	strength_damage_done = 0.1
+	morale_damage_taken = -0.1
 
 	country_potential = {
 		culture ?= { has_culture_group = culture_group:chinese_group }
