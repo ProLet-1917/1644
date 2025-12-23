@@ -21,26 +21,31 @@ zzz_1644_is_china_region_country = {
 	}
 }
 
-# 检查是否有参与国家满足统一条件（拥有九个关键城市且稳定度>40）
+# 检查单个国家是否占领了所有主要城市（拥有所有关键城市且稳定度>40）
+zzz_1644_owns_major_cn_cities = {
+	exists = capital
+	is_subject = no
+	stability > 40
+	# 同时拥有所有关键城市
+	owns = location:dadu
+	owns = location:chengdu
+	owns = location:jingzhao
+	owns = location:jiangxia
+	owns = location:shangyuan
+	owns = location:hangzhou
+	owns = location:changsha
+	owns = location:pingjin
+	owns = location:kaifeng
+	owns = location:nanchang
+	owns = location:baxian
+}
+
+# 检查是否有参与国家满足统一条件（拥有所有关键城市且稳定度>40）
 late_ming_crisis_unification_achieved = {
 	# 使用参与国列表 china_countries_list 进行检查
 	any_in_global_list = {
 		variable = china_countries_list
-		exists = capital
-		is_subject = no
-		stability > 40
-		# 同时拥有九个关键城市
-		owns = location:dadu
-		owns = location:chengdu
-		owns = location:jingzhao
-		owns = location:jiangxia
-		owns = location:shangyuan
-		owns = location:hangzhou
-		owns = location:changsha
-		owns = location:pingjin
-		owns = location:kaifeng
-        owns = location:nanchang
-        owns = location:baxian
+		zzz_1644_owns_major_cn_cities = yes
 	}
 }
 
