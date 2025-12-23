@@ -286,7 +286,7 @@ csh_1644_unification.2 = { #天翻地覆
 			change_control = control_mild_bonus
 		}
 		c:MNG = {
-			if = {
+			if = { #不南迁线
 				limit = {
 					NOT = { has_variable = mng_move_to_nanjing }
 				}
@@ -304,7 +304,7 @@ csh_1644_unification.2 = { #天翻地覆
 					days = 10
 				}
 			}
-			else = {
+			else = { #南迁线
 				trigger_event_silently = {
 		 			id = mng_1644.3 #北都沦陷
 				}

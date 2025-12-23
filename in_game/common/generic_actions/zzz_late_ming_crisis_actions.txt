@@ -31,7 +31,7 @@ late_ming_crisis_grant_unification_cb = {
 		looking_for_a = country
 		source_global_list = china_countries_list
 		target_flag = target
-		name = "choose_target_country"
+		name = "choose_country"
 		column = {
 			data = name
 		}
@@ -40,8 +40,9 @@ late_ming_crisis_grant_unification_cb = {
 		}
 		visible = {
 			NOT = { this = scope:actor }
-			# 检查目标是否是邻居
+			# 检查目标是否是邻居 且不是root的附庸
 			scope:actor = {
+				NOT = { is_subject_or_below_of = root }
 				any_neighbor_country = {
 					this = root
 				}
@@ -55,6 +56,7 @@ late_ming_crisis_grant_unification_cb = {
 				exists = scope:target
 			}
 			scope:actor = {
+				remove_truce_with = scope:target
 				add_casus_belli = {
 					target = scope:target
 					type = casus_belli:cb_chinese_unification
@@ -129,14 +131,12 @@ late_ming_crisis_subjugate_disobedient = {
 	}
 
 	ai_tick = monthly
-	ai_tick_frequency = 2
-	automation_tick = never
-	automation_tick_frequency = 3
+	ai_tick_frequency = 6	
 
 	select_trigger = {
 		looking_for_a = country
 		target_flag = target
-		name = "choose_target_country"
+		name = "choose_country"
 		column = {
 			data = name
 		}
@@ -164,8 +164,9 @@ late_ming_crisis_subjugate_disobedient = {
 			scope:actor = {
 				cancel_subject = scope:target
 			}
-			# 添加统一中国CB
+			# 取消和平协议并添加统一中国CB
 			scope:actor = {
+				remove_truce_with = scope:target
 				add_casus_belli = {
 					target = scope:target
 					type = casus_belli:cb_chinese_unification
@@ -178,12 +179,26 @@ late_ming_crisis_subjugate_disobedient = {
 		# 基础分数
 		add = 50
 		
-		# 检查目标是否是附庸
+		# 检查目标是否是附庸，且满足军事优势和低好感度条件
 		if = {
 			limit = {
 				exists = scope:target
 				scope:target = {
 					is_subject_or_below_of = scope:actor
+				}
+				# 检查宗主国对附庸国有大量军事优势（至少2倍）
+				scope:actor = {
+					relative_military_strength = {
+						target = scope:target
+						value > 2.0
+					}
+				}
+				# 检查附庸国对宗主国有低好感度（低于20）
+				scope:target = {
+					opinion = {
+						target = scope:actor
+						value < 20
+					}
 				}
 				# 如果已经拥有对该目标的CB，降低优先级
 				scope:actor = {
@@ -196,6 +211,30 @@ late_ming_crisis_subjugate_disobedient = {
 				}
 			}
 			value = 150
+		}
+		
+		# 如果不满足军事优势或好感度条件，大幅降低分数
+		if = {
+			limit = {
+				exists = scope:target
+				OR = {
+					# 军事优势不足
+					scope:actor = {
+						relative_military_strength = {
+							target = scope:target
+							value <= 2.0
+						}
+					}
+					# 好感度不低
+					scope:target = {
+						opinion = {
+							target = scope:actor
+							value >= 20
+						}
+					}
+				}
+			}
+			value = -500
 		}
 		
 		# 如果已有CB，降低分数
