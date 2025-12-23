@@ -31,7 +31,7 @@ late_ming_crisis_grant_unification_cb = {
 		looking_for_a = country
 		source_global_list = china_countries_list
 		target_flag = target
-		name = "choose_target_country"
+		name = "choose_country"
 		column = {
 			data = name
 		}
@@ -40,8 +40,9 @@ late_ming_crisis_grant_unification_cb = {
 		}
 		visible = {
 			NOT = { this = scope:actor }
-			# 检查目标是否是邻居
+			# 检查目标是否是邻居 且不是root的附庸
 			scope:actor = {
+				NOT = { is_subject_or_below_of = root }
 				any_neighbor_country = {
 					this = root
 				}
@@ -55,6 +56,7 @@ late_ming_crisis_grant_unification_cb = {
 				exists = scope:target
 			}
 			scope:actor = {
+				remove_truce_with = scope:target
 				add_casus_belli = {
 					target = scope:target
 					type = casus_belli:cb_chinese_unification
@@ -129,14 +131,12 @@ late_ming_crisis_subjugate_disobedient = {
 	}
 
 	ai_tick = monthly
-	ai_tick_frequency = 2
-	automation_tick = never
-	automation_tick_frequency = 3
+	ai_tick_frequency = 6	
 
 	select_trigger = {
 		looking_for_a = country
 		target_flag = target
-		name = "choose_target_country"
+		name = "choose_country"
 		column = {
 			data = name
 		}
@@ -164,8 +164,9 @@ late_ming_crisis_subjugate_disobedient = {
 			scope:actor = {
 				cancel_subject = scope:target
 			}
-			# 添加统一中国CB
+			# 取消和平协议并添加统一中国CB
 			scope:actor = {
+				remove_truce_with = scope:target
 				add_casus_belli = {
 					target = scope:target
 					type = casus_belli:cb_chinese_unification
