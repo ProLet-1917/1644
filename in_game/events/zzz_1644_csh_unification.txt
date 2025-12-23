@@ -290,8 +290,18 @@ csh_1644_unification.2 = { #天翻地覆
 				limit = {
 					NOT = { has_variable = mng_move_to_nanjing }
 				}
+				if = {
+					limit = {
+						exists = character:chi_zhu_youjian
+					}
+					kill_character = character:chi_zhu_youjian
+				}
 				trigger_event_silently = {
 		 			id = mng_1644.2 #甲申之难
+				}
+				trigger_event_silently = {
+		 			id = mng_1644.5 #立新君
+					days = 10
 				}
 			}
 			else = {
