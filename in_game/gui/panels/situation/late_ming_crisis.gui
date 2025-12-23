@@ -3,7 +3,7 @@ situation_panel = {
 	blockoverride "situation_panel_image" {
 		# 基于 two_countries_header_template 的三国家header：顺、明、清
 		layoutpolicy_horizontal = expanding
-		size = { -1 200 }
+		size = { -1 205 }
 		
 		blockoverride "country_header_names_visible" { visible = no }
 		
@@ -140,7 +140,115 @@ situation_panel = {
 			}
 		}
 		
+		# # 大顺名称和徽章
+		# hbox = {
+		# 	layoutpolicy_horizontal = expanding
+		# 	layoutpolicy_vertical = expanding
+			
+		# 	block "FirstCountryVisible" {
+		# 		visible = "[And(GetCountry('CSH').Exists, GetCountry('CSH').GetGovernment.HasRulerOrRegent)]"
+		# 	}
+		# 	hbox = {
+		# 		using = layoutpolicy_expanding
+		# 		block "FirstCountryContext" {
+		# 			datacontext = "[GetCountry('CSH')]"
+		# 		}
+		# 		datacontext = "[GetCountry('CSH').GetGovernment]"
+		# 		country_government_character = {
+		# 			block "FirstCountryContext" {
+		# 				datacontext = "[GetCountry('CSH')]"
+		# 			}
+		# 			blockoverride "character_name_maximumsize" {
+		# 				maximumsize = { 160 -1 }
+		# 			}
+		# 			blockoverride "character_name_text" {
+		# 				raw_text = "[Character.GetShortNameWithNoTooltip]"
+		# 			}
+		# 		}
+		# 		blockoverride "bg_name_banner_flip" {}
+		# 		blockoverride "bg_name_banner_margin" {
+		# 			margin_left = 20
+		# 			margin_right = 0
+		# 			margin_top = 2
+		# 			margin_bottom = 7
+		# 		}
+		# 	}
+		# }
 		
+		# # 大明名称和徽章
+		# hbox = {
+		# 	layoutpolicy_horizontal = expanding
+		# 	layoutpolicy_vertical = expanding
+			
+		# 	block "SecondCountryVisible" {
+		# 		visible = "[And(GetCountry('MNG').Exists, GetCountry('MNG').GetGovernment.HasRulerOrRegent)]"
+		# 	}
+		# 	hbox = {
+		# 		using = layoutpolicy_expanding
+		# 		block "SecondCountryContext" {
+		# 			datacontext = "[GetCountry('MNG')]"
+		# 		}
+		# 		datacontext = "[GetCountry('MNG').GetGovernment]"
+		# 		country_government_character = {
+		# 			block "SecondCountryContext" {
+		# 				datacontext = "[GetCountry('MNG')]"
+		# 			}
+		# 			blockoverride "character_name_maximumsize" {
+		# 				maximumsize = { 160 -1 }
+		# 			}
+		# 			blockoverride "character_name_text" {
+		# 				raw_text = "[Character.GetShortNameWithNoTooltip]"
+		# 			}
+		# 		}
+		# 		blockoverride "bg_name_banner_flip" {}
+		# 		blockoverride "bg_name_banner_margin" {
+		# 			margin_left = 0
+		# 			margin_right = 0
+		# 			margin_top = 2
+		# 			margin_bottom = 7
+		# 		}
+		# 	}
+		# }
+		
+		# # 大清名称和徽章
+		# hbox = {
+		# 	layoutpolicy_horizontal = expanding
+		# 	layoutpolicy_vertical = expanding
+			
+		# 	block "ThirdCountryVisible" {
+		# 		visible = "[And(GetCountry('QNG').Exists, GetCountry('QNG').GetGovernment.HasRulerOrRegent)]"
+		# 	}
+		# 	hbox = {
+		# 		using = layoutpolicy_expanding
+		# 		block "ThirdCountryContext" {
+		# 			datacontext = "[GetCountry('QNG')]"
+		# 		}
+		# 		datacontext = "[GetCountry('QNG').GetGovernment]"
+		# 		country_government_character = {
+		# 			block "ThirdCountryContext" {
+		# 				datacontext = "[GetCountry('QNG')]"
+		# 			}
+		# 			blockoverride "country_header_orientation" {
+		# 				righttoleft = yes
+		# 			}
+		# 			blockoverride "country_government_character_labels_align" {
+		# 				align = right|nobaseline
+		# 			}
+		# 			blockoverride "character_name_maximumsize" {
+		# 				maximumsize = { 160 -1 }
+		# 			}
+		# 			blockoverride "character_name_text" {
+		# 				raw_text = "[Character.GetShortNameWithNoTooltip]"
+		# 			}
+		# 		}
+		# 		blockoverride "bg_name_banner_margin" {
+		# 			margin_left = 0
+		# 			margin_right = 20
+		# 			margin_top = 2
+		# 			margin_bottom = 7
+		# 		}
+		# 	}
+		# }
 		
 		using = bg_age_event_frame
 		
@@ -152,7 +260,6 @@ situation_panel = {
 
 	# ACTIONS
 	blockoverride "situation_panel_main_content" {
-		margin_top = -50  # 向上移动主内容，压缩标题下方的空白
 
 		situation_card_expandable = {
 			blockoverride "header_button_onclick" {
@@ -178,114 +285,6 @@ situation_panel = {
 			}
 			blockoverride "icon_replace_visible_not" {
 				visible = "[Not(LateralView.Vars.Exists( 'requirements_toggled' ))]"
-			}
-		}
-
-		# 战斗统计显示 - 三个变量在同一行
-		situation_card_expandable = {
-			blockoverride "header_button_onclick" {
-				visible = no  # 隐藏折叠按钮
-			}
-			blockoverride "header_text" {
-				text = "BATTLE_STATISTICS_LATE_MING"
-			}
-			blockoverride "header_icon" {
-				texture = "gfx/interface/icons/flat_icons/geopolitics/privateer.dds"
-			}
-			blockoverride "bottom_content" {
-				container = {
-					datacontext = "[Player.GetCountry]"
-					
-					hbox = {
-						layoutpolicy_horizontal = expanding
-						margin = { 5 5 }
-						spacing = 30
-						
-						# 总伤亡
-						hbox = {
-							spacing = 10
-							icon = {
-								size = {32 32}
-								texture = "gfx/interface/icons/flat_icons/geopolitics/privateer.dds"
-							}
-							vbox = {
-								spacing = 2
-								text_single = {
-									text = "TOTAL_CASUALTIES_LATE_MING"
-									fontsize = 14
-								}
-								text_single = {
-									text = "[SituationView.GetActiveSituation.GetSituation.MakeScope.GetVariable('late_ming_crisis_total_casualties').GetValue]"
-									fontsize = 18
-								}
-							}
-						}
-						
-						# 我方击杀
-						hbox = {
-							spacing = 10
-							icon = {
-								size = {32 32}
-								texture = "gfx/interface/icons/flat_icons/war_view/army_unit.dds"
-							}
-							vbox = {
-								spacing = 2
-								text_single = {
-									text = "MY_KILLS_LATE_MING"
-									fontsize = 14
-								}
-								text_single = {
-									text = "[SituationView.GetPlayer.MakeScope.GetVariable('late_ming_crisis_my_kills').GetValue]"
-									fontsize = 18
-								}
-							}
-						}
-						
-						# 我方阵亡
-						hbox = {
-							spacing = 10
-							icon = {
-								size = {32 32}
-								texture = "gfx/interface/icons/character_roles/death.dds"
-							}
-							vbox = {
-								spacing = 2
-								text_single = {
-									text = "MY_CASUALTIES_LATE_MING"
-									fontsize = 14
-								}
-								text_single = {
-									text = "[SituationView.GetPlayer.MakeScope.GetVariable('late_ming_crisis_my_casualties').GetValue]"
-									fontsize = 18
-								}
-							}
-						}
-					}
-				}
-			}
-			blockoverride "visible_hint" {}
-			blockoverride "bottom_content_onclick" {
-				visible = yes  # 内容始终可见
-			}
-			blockoverride "icon_replace_visible_yes" {
-				visible = no  # 隐藏展开图标
-			}
-			blockoverride "icon_replace_visible_not" {
-				visible = no  # 隐藏折叠图标
-			}
-			tooltipwidget = {
-				SimpleContextualTooltipType = {
-					blockoverride "title_icon" {
-						icon = {
-							using = tooltip_title_icon_size
-							texture = "gfx/interface/icons/flat_icons/geopolitics/privateer.dds"
-						}
-					}
-					blockoverride "concept_link" {
-						text = "[battle|e]"
-					}
-					lowpriotextcontext = "BATTLE_STATISTICS_LATE_MING_TOOLTIP"
-				}
 			}
 		}
 	}
@@ -384,7 +383,7 @@ situation_panel = {
 												}
 											}
 											
-											divider_flavor_01 = {size = { 14 -1 }}
+											divider_flavor_01 = {size = { 12 -1 }}
 											
 											# 控制人口
 											hbox = {
@@ -411,7 +410,7 @@ situation_panel = {
 												}
 											}
 											
-											divider_flavor_01 = {size = { 14 -1 }}
+											divider_flavor_01 = {size = { 12 -1 }}
 											
 											# 海军军力
 											hbox = {
