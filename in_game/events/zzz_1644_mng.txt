@@ -7,7 +7,16 @@ mng_1644.1 = { #南迁之议
 	historical_info = mng_1644.1.historical_info
 
 	immediate = {
-		
+		location:dadu = {
+			every_unit_in_location = {
+				destroy_unit = yes
+			}
+		}
+		location:shangyuan = {
+			every_unit_in_location = {
+				destroy_unit = yes
+			}
+		}
 	}
 
 	option = {
@@ -123,6 +132,19 @@ mng_1644.2 = { #甲申之难
 	title = mng_1644.2.title
 	desc = mng_1644.2.desc
 	historical_info = mng_1644.2.historical_info
+	immediate = {
+		c:MNG = { set_new_ruler = interregnum }
+		if = {
+			limit = {
+				exists = character:chi_zhu_youjian
+			}
+			kill_character = character:chi_zhu_youjian
+		}
+		trigger_event_silently = {
+		 	id = mng_1644.5 #立新君
+			days = 30
+		}
+	}
 	option = {
 		name = mng_1644.2.a
     	custom_tooltip = mng_1644.2.tt1
@@ -192,24 +214,25 @@ mng_1644.5 = { #立新君
 		add_government_power = government_power_weak_bonus
 	}
 	
-	option = { #亲不亲，贤不贤，就没有更靠谱的继承人吗？
-		name = mng_1644.5.c
-		custom_tooltip = mng_1644.5.tt3
-		if = {
-			limit = { exists = character:chi_zhu_yihai }
-			character:chi_zhu_yihai = {
-				move_country = c:MNG
-			}
-			set_new_ruler = character:chi_zhu_yihai
-		}
-		else_if = {
-			limit = { exists = character:chi_zhu_yujian }
-			character:chi_zhu_yujian = {
-				move_country = c:MNG
-			}
-			set_new_ruler = character:chi_zhu_yujian
-		}
-		add_government_power = government_power_extreme_penalty
-		add_prestige = prestige_mild_penalty
-	}
+	#option = { #亲不亲，贤不贤，就没有更靠谱的继承人吗？
+	#除了伪太子没有别的选择
+	#	name = mng_1644.5.c
+	#	custom_tooltip = mng_1644.5.tt3
+	#	if = {
+	#		limit = { exists = character:chi_zhu_yihai }
+	#		character:chi_zhu_yihai = {
+	#			move_country = c:MNG
+	#		}
+	#		set_new_ruler = character:chi_zhu_yihai
+	#	}
+	#	else_if = {
+	#		limit = { exists = character:chi_zhu_yujian }
+	#		character:chi_zhu_yujian = {
+	#			move_country = c:MNG
+	#		}
+	#		set_new_ruler = character:chi_zhu_yujian
+	#	}
+	#	add_government_power = government_power_extreme_penalty
+	#	add_prestige = prestige_mild_penalty
+	#}
 }
