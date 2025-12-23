@@ -1,11 +1,11 @@
 war_manager = {
-	##War of Three Kingdoms
+	##War of the Three Kingdoms
 	civil_war = {
 		war_name = {
 			name = "ENGLISH_CIVIL_WAR"
 			ordinal = 1
 			first = {
-				name = "PLE"
+				name = "ENG"
 			}
 		}
 		
@@ -17,17 +17,17 @@ war_manager = {
 				reason = Instigator
 			}
 		}
+		attacker = {
+			country = SCO
+			request = {
+				reason = alliance
+			}
+		}
+		
 		defender = {
 			country = ROE
 			request = {
 				reason = Target
-			}
-		}
-		defender = {
-			country = PLE
-			request = {
-				caller = ROE
-				reason = Subject
 			}
 		}
 	}
@@ -37,7 +37,7 @@ war_manager = {
 			name = "IRISH_REBELLION_1641"
 			ordinal = 1
 			first = {
-				name = "PLE"
+				name = "IRE"
 			}
 		}
 		
@@ -49,6 +49,14 @@ war_manager = {
 				reason = Instigator
 			}
 		}
+		attacker = {
+			country = ROE
+			request = {
+				caller = IRE
+				reason = Subject
+			}
+		}
+		
 		defender = {
 			country = PLE
 			request = {
@@ -56,7 +64,7 @@ war_manager = {
 			}
 		}
 		defender = {
-			country = ROE
+			country = ENG
 			request = {
 				caller = PLE
 				reason = Subject
