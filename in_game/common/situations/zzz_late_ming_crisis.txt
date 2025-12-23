@@ -66,49 +66,13 @@
 			}
 		}
 		
-		# 触发事件给相关国家
-		every_country = {
-			limit = {
-				exists = capital
-				OR = {
-					capital.region = region:west_china_region
-					capital.region = region:east_china_region
-					capital.region = region:north_china_region
-					capital.region = region:south_china_region
-					capital.region = region:manchuria_region
-				}
-			}
-			trigger_event_non_silently = late_ming_crisis.1
-		}
-		# 初始化变量
-		set_global_variable = {
-			name = ming_collapse_progress
-			value = 0
-		}
 		# 给所有首都在中国和满洲的国家互相添加"统一中国"CB
 		# 使用全局变量列表方法，分两步执行
 		zzz_1644_collect_china_countries_effect = yes
 		zzz_1644_add_china_cb_effect = yes
 		
-		# 为初始参与国添加局势 modifier
-		every_country = {
-			limit = {
-				exists = capital
-				is_subject = no
-				OR = {
-					capital.region = region:west_china_region
-					capital.region = region:east_china_region
-					capital.region = region:north_china_region
-					capital.region = region:south_china_region
-					capital.region = region:manchuria_region
-				}
-			}
-			add_country_modifier = {
-				modifier = late_ming_crisis_participant
-				months = -1  # 永久，直到局势结束
-				mode = replace
-			}
-		}
+		# 为初始参与国添加局势 modifier（使用已收集的国家列表）
+		zzz_1644_add_crisis_participant_modifier_effect = yes
 	}
 
 	# 5. 月度逻辑
@@ -116,46 +80,19 @@
 		# 每月更新中国国家列表（用于GUI显示）
 		zzz_1644_collect_china_countries_effect = yes
 		
-		# 为参与国添加局势 modifier
-		every_country = {
+		# 为参与国添加局势 modifier（使用已收集的国家列表，只添加给还没有 modifier 的国家）
+		every_in_global_list = {
+			variable = china_countries_list
 			limit = {
-				exists = capital
-				is_subject = no
-				OR = {
-					capital.region = region:west_china_region
-					capital.region = region:east_china_region
-					capital.region = region:north_china_region
-					capital.region = region:south_china_region
-					capital.region = region:manchuria_region
-				}
 				NOT = { has_country_modifier = late_ming_crisis_participant }
 			}
 			add_country_modifier = {
 				modifier = late_ming_crisis_participant
-				months = -1  # 永久，直到局势结束
-				mode = replace
+				years = 10
+				mode = add_and_extend
 			}
 		}
 		
-		# 随机事件逻辑，通过事件文件处理
-		# 这里可以调用一个统一的脉冲事件
-		random_list = {
-			10 = { # 10% 概率触发随机事件
-				every_country = {
-					limit = {
-						OR = {
-							capital.region = region:west_china_region
-							capital.region = region:east_china_region
-							capital.region = region:north_china_region
-							capital.region = region:south_china_region
-							capital.region = region:manchuria_region
-						}
-					}
-					trigger_event_non_silently = late_ming_crisis.100 # Generic monthly pulse event
-				}
-			}
-			90 = {}
-		}
 	}
 
 	# 6. 结束效果
