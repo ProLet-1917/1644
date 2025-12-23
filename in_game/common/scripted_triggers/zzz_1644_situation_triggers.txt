@@ -1,5 +1,26 @@
 ﻿# 明朝危机局势触发器
 
+# 检查国家是否在中国区域（用于简化重复的区域检查）
+zzz_1644_is_china_region_country = {
+	exists = capital
+	OR = {
+		capital.region = region:west_china_region
+		capital.region = region:east_china_region
+		capital.region = region:north_china_region
+		capital.region = region:south_china_region
+		capital.region = region:manchuria_region
+	}
+	any_owned_location = {
+		OR = {
+			region = region:west_china_region
+			region = region:east_china_region
+			region = region:north_china_region
+			region = region:south_china_region
+			region = region:manchuria_region
+		}
+	}
+}
+
 # 检查是否有参与国家满足统一条件（拥有九个关键城市且稳定度>40）
 late_ming_crisis_unification_achieved = {
 	# 使用参与国列表 china_countries_list 进行检查
