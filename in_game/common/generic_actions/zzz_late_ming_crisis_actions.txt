@@ -23,7 +23,113 @@ late_ming_crisis_grant_unification_cb = {
 	}
 
 	ai_tick = monthly
-	ai_tick_frequency = 3 # check every 6 months
+	ai_tick_frequency = 2
+	automation_tick = never
+	automation_tick_frequency = 3
+
+	select_trigger = {
+		looking_for_a = country
+		source_global_list = china_countries_list
+		target_flag = target
+		name = "choose_target_country"
+		column = {
+			data = name
+		}
+		column = {
+			data = military_strength
+		}
+		visible = {
+			NOT = { this = scope:actor }
+			# 检查目标是否是邻居
+			scope:actor = {
+				any_neighbor_country = {
+					this = root
+				}
+			}
+		}
+	}
+
+	effect = {
+		if = {
+			limit = {
+				exists = scope:target
+			}
+			scope:actor = {
+				add_casus_belli = {
+					target = scope:target
+					type = casus_belli:cb_chinese_unification
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		# 基础分数
+		add = 50
+		
+		# 检查目标是否是邻居
+		if = {
+			limit = {
+				exists = scope:target
+				scope:actor = {
+					any_neighbor_country = {
+						this = scope:target
+					}
+				}
+				# 如果已经拥有对该目标的CB，降低优先级
+				scope:actor = {
+					NOT = { 
+						has_casus_belli_of_type_on = {
+							type = casus_belli:cb_chinese_unification
+							target = scope:target
+						}
+					}
+				}
+			}
+			value = 150
+		}
+		
+		# 如果已有CB，降低分数
+		if = {
+			limit = {
+				scope:actor = {
+					has_casus_belli_of_type_on = {
+						type = casus_belli:cb_chinese_unification
+						target = scope:target
+					}
+				}
+			}
+			value = -200
+		}
+	}
+}
+
+# 讨伐不臣 - 对附庸获取统一中国CB
+late_ming_crisis_subjugate_disobedient = {
+	type = situation
+	
+	potential = {
+		scope:actor = {
+			can_see_situation = situation:late_ming_crisis
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			capital ?= {
+				OR = {
+					region = region:west_china_region
+					region = region:east_china_region
+					region = region:north_china_region
+					region = region:south_china_region
+					region = region:manchuria_region
+				}
+			}
+		}
+	}
+
+	ai_tick = monthly
+	ai_tick_frequency = 2
 	automation_tick = never
 	automation_tick_frequency = 3
 
@@ -38,25 +144,11 @@ late_ming_crisis_grant_unification_cb = {
 			data = military_strength
 		}
 		visible = {
-			exists = capital
 			NOT = { this = scope:actor }
-			NOT = { is_subject_or_below_of = scope:actor }
-			OR = {
-				capital.region = region:west_china_region
-				capital.region = region:east_china_region
-				capital.region = region:north_china_region
-				capital.region = region:south_china_region
-				capital.region = region:manchuria_region
-			}
-			any_owned_location = {
-				OR = {
-					region = region:west_china_region
-					region = region:east_china_region
-					region = region:north_china_region
-					region = region:south_china_region
-					region = region:manchuria_region
-				}
-			}
+			# 检查目标是否是actor的附庸
+			is_subject_or_below_of = scope:actor
+			# 使用scripted trigger检查是否在中国区域
+			zzz_1644_is_china_region_country = yes
 		}
 	}
 
@@ -65,25 +157,14 @@ late_ming_crisis_grant_unification_cb = {
 			limit = {
 				exists = scope:target
 				scope:target = {
-					exists = capital
-					OR = {
-						capital.region = region:west_china_region
-						capital.region = region:east_china_region
-						capital.region = region:north_china_region
-						capital.region = region:south_china_region
-						capital.region = region:manchuria_region
-					}
-					any_owned_location = {
-						OR = {
-							region = region:west_china_region
-							region = region:east_china_region
-							region = region:north_china_region
-							region = region:south_china_region
-							region = region:manchuria_region
-						}
-					}
+					is_subject_or_below_of = scope:actor
 				}
 			}
+			# 解除附庸关系
+			scope:actor = {
+				cancel_subject = scope:target
+			}
+			# 添加统一中国CB
 			scope:actor = {
 				add_casus_belli = {
 					target = scope:target
@@ -94,31 +175,40 @@ late_ming_crisis_grant_unification_cb = {
 	}
 
 	ai_will_do = {
-		add = 25
-		add = {
-			if = {
-				limit = {
-					scope:actor = {
-						any_country = {
-							limit = {
-								exists = capital
-								NOT = { this = scope:actor }
-								NOT = { is_subject_or_below_of = scope:actor }
-								NOT = { has_truce_with = scope:actor }
-								OR = {
-									capital.region = region:west_china_region
-									capital.region = region:east_china_region
-									capital.region = region:north_china_region
-									capital.region = region:south_china_region
-									capital.region = region:manchuria_region
-								}
-							}
-							count >= 1
+		# 基础分数
+		add = 50
+		
+		# 检查目标是否是附庸
+		if = {
+			limit = {
+				exists = scope:target
+				scope:target = {
+					is_subject_or_below_of = scope:actor
+				}
+				# 如果已经拥有对该目标的CB，降低优先级
+				scope:actor = {
+					NOT = { 
+						has_casus_belli_of_type_on = {
+							type = casus_belli:cb_chinese_unification
+							target = scope:target
 						}
 					}
 				}
-				value = 100
 			}
+			value = 150
+		}
+		
+		# 如果已有CB，降低分数
+		if = {
+			limit = {
+				scope:actor = {
+					has_casus_belli_of_type_on = {
+						type = casus_belli:cb_chinese_unification
+						target = scope:target
+					}
+				}
+			}
+			value = -200
 		}
 	}
 }
