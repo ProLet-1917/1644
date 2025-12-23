@@ -213,3 +213,80 @@ late_ming_crisis_subjugate_disobedient = {
 	}
 }
 
+# 重建天朝 - 在明末危机局势中重建天朝组织
+late_ming_crisis_restore_celestial_empire = {
+	type = situation
+	
+	potential = {
+		scope:actor = {
+			can_see_situation = situation:late_ming_crisis
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			zzz_1644_is_china_region_country = yes
+			OR = {
+				NOT = { exists = international_organization:middle_kingdom }
+				NOT = { is_leader_of_international_organization = international_organization:middle_kingdom }
+			}
+			# 需要占领所有主要城市以证明统一
+			zzz_1644_owns_major_cn_cities = yes
+		}
+	}
+
+	ai_tick = monthly
+	ai_tick_frequency = 2
+	automation_tick = never
+	automation_tick_frequency = 3
+
+	select_trigger = {
+		looking_for_a = situation
+		target_flag = recipient
+		name = "choose_situation"
+		column = {
+			data = name
+		}
+		visible = {
+			situation:late_ming_crisis = this
+			situation_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			zzz_1644_recreate_middle_kingdom = yes
+		}
+	}
+
+	ai_will_do = {
+		# 基础分数
+		add = 100
+		
+		# 如果已经统一了中国（拥有多个关键城市），提高优先级
+		if = {
+			limit = {
+				scope:actor = {
+					owns = location:dadu
+					owns = location:chengdu
+					owns = location:jingzhao
+					owns = location:jiangxia
+					owns = location:shangyuan
+					stability > 50
+				}
+			}
+			value = 200
+		}
+		
+		# 如果已经是天朝领袖，降低优先级
+		if = {
+			limit = {
+				scope:actor = {
+					is_leader_of_international_organization = international_organization:middle_kingdom
+				}
+			}
+			value = -500
+		}
+	}
+}
+
