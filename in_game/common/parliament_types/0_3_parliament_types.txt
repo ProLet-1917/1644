@@ -1,0 +1,12 @@
+swe_empire_parliament = {
+    type = international_organization
+    potential = {
+        international_organization_type = international_organization_type:swedish_empire
+    }
+    locked = { parliament_type = parliament_type:swe_empire_parliament }
+    modifier = {
+        has_international_parliament = yes
+        uses_parliament_for_law_votes = yes
+        forbid_multiple_policies_vote = yes
+    }
+}

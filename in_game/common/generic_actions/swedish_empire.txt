@@ -1,0 +1,69 @@
+emeragency_recruit = {
+    type = internationalorganization
+
+    potential = {
+        scope:actor = {
+            is_member_of_international_organization = international_organization:swedish_empire
+            NOT = {
+                is_leader_of_international_organization = international_organization:swedish_empire
+            }
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            is_leader_of_international_organization = international_organization:swedish_empire
+        }
+    }
+
+    ai_tick = daily
+    ai_tick_frequency = 80
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    cooldown = {
+        type = emeragency_recruit
+        years = 10
+    }
+
+    select_trigger = {
+        looking_for_a = international_organization
+        source = actor
+        target_flag = recipient
+        name = "choose_country"
+        none_available_msg_key = "no_country_available"
+        column = {
+            data = name
+        }
+        visible = {
+            this = international_organization:swedish_empire
+        }
+    }
+
+    effect = {
+        add_manpower = 500
+        change_variable = {
+            name = swedish_empire_authority
+            subtract = 10
+        }
+    }
+
+    ai_will_do = {
+        add = -20
+        international_organization:swedish_empire.leader_country ?= {
+            save_temporary_scope_as = target_country
+        }
+        add = {
+            if = {
+                limit = {
+                    exists = international_organization:swedish_empire.leader_country
+                    scope:actor = {
+                        great_power_score > scope:target_country.great_power_score
+                    }
+                }
+                add = 30
+            }
+        }
+    }
+}

@@ -1,0 +1,130 @@
+swedish_empire = { #svenska stormaktstiden https://en.wikipedia.org/wiki/Swedish_Empire
+    has_target = no
+    unique = yes
+    expel_members_who_are_targets_of_other_members = no
+
+    show_leave_message = no
+    has_leader_country = yes
+    leader_type = country
+    leader_change_method = none
+    disband_if_no_leader = yes
+    has_parliament = yes
+    parliament_type = swe_empire_parliament
+
+    join_offensive_wars_always = {
+        always = no
+    }
+
+    join_defensive_wars_always = {
+        always = no
+    }
+
+    create_visible_trigger = {
+        always = no
+    }
+
+    invite_visible_trigger = {
+        always = no
+    }
+
+    can_declare_war = {
+        always = yes
+    }
+
+    modifier = {
+        block_from_change_to_empire_rank = yes
+    }
+
+    leader_modifier = {
+        great_power_score = 100
+        cannot_be_subjugated = yes
+    }
+
+    gives_military_access_to_all_when_at_war = yes
+
+    can_join_trigger = {
+        OR = {
+            this = c:SWE
+            is_subject_of = c:SWE
+            has_positive_opinion = c:SWE
+        }
+    }
+
+    auto_leave_trigger = {
+        OR = {
+            is_rebel_country = yes
+        }
+    }
+
+    auto_disband_trigger = {
+        var:swedish_empire_authority < 5
+    }
+
+    can_leave_trigger = {
+        NOT = {
+            this = c:SWE
+            is_subject_of = c:SWE
+        }
+    }
+
+    ai_desire_to_join = {
+        value = -50
+        if = {
+            limit = {
+                is_subject_of = c:SWE
+            }
+            value = 1000
+        }
+    }
+
+    variables = {
+        swedish_empire_authority = {
+            #format = "swedish_empire_authority"
+            change_format = "VARIABLE_CHANGE_FORMAT"
+            min = 0
+            max = 100
+            monthly_change = {
+                add = {
+                    add = {
+                        desc = "IS_GREAT_POWER_TRIGGER"
+                        if = {
+                            limit = {
+                                c:SWE = {
+                                    is_great_power = yes
+                                }
+                            }
+                            value = 0.05
+                        }
+                    }
+                    add = {
+                        desc = "MEMBERS"
+                        value = total_members
+                        multiply = 0.005
+                    }
+                    add = {
+                        desc = "EMPIRE_STABLE"
+                        value = c:SWE.stability
+                        multiply = 0.002
+                    }
+                }
+                subtract = {
+                    subtract = {
+                        desc = "IS_NOT_GREAT_POWER"
+                        if = {
+                            limit = {
+                                c:SWE = {
+                                    is_great_power = no
+                                }
+                            }
+                            value = 0.05
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    payments_implemented = {
+        swe_simple_treasury
+    }
+}

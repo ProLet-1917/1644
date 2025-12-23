@@ -2823,6 +2823,86 @@ countries = {
 		country_rank = rank_kingdom
 		starting_technology_level = 4
 		include = "zzz_expl_european_colonial_powers"
+
+		government = {
+
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+
+			#Societal Values
+			centralization_vs_decentralization = -25
+			traditionalist_vs_innovative = -40
+			spiritualist_vs_humanist = 30
+			aristocracy_vs_plutocracy = -20
+			serfdom_vs_free_subjects = -25
+			mercantilism_vs_free_trade = -20
+			belligerent_vs_conciliatory = 5
+			quality_vs_quantity = 0
+			offensive_vs_defensive = -5
+			land_vs_naval = 0
+			capital_economy_vs_traditional_economy = 15
+			individualism_vs_communalism = 15
+			outward_vs_inward = 25
+
+			parliament = {
+				parliament_type = assembly
+			}
+
+			#Estate Privileges
+			privilege = {
+				#nobles
+				nobles_land_rights
+				noble_marriage_rights
+			primacy_of_nobility
+
+				#clergy
+				clergy_literacy_rights
+				clergy_enforced_unity
+
+				#burghers
+				market_fairs
+				formal_guilds
+				building_roads_rights
+
+				#Commoners
+				allow_hunting
+				communal_lands
+			}
+
+			#reforms = {
+			#	swe_age_of_freedom
+			#	alsno_stadga
+			#}
+
+			laws = {
+				recruitment_law = expanded_levies_policy
+				battle_leadership_law = noble_command_policy
+				maritime_law = mandatory_impressment
+				piracy_law = issue_letter_of_marque_policy
+				medieval_levy_law = peasant_levies
+
+				censorship = limited_censorship
+				marriage_law = monogamous_marriage
+				heir_religion_law = heir_same_religion
+
+				administrative_system = central_councils
+				bureaucracy_law = centralized_bureaucracy_policy
+				cabinet_laws = nobles_of_the_robe_policy
+				legal_code_law = civil_law_policy
+				legitimization_of_power_law = machiavellian_rule_policy
+				royal_court_customs_law = aristocratic_court_policy
+
+				immigration_law = open_borders_law
+				colonial_policy = trade_colonies
+				cultural_traditions_law = civil_society
+				education_masses_law = personal_religious_education
+				foreign_cultural_law = allow_foreign_rituals
+				mining_law = burghers_mining_law
+				native_policy = native_trade
+
+				distribution_of_power_law = dop_favor_the_nobles
+			}
+		}
 	}
 	
 	FIN = {
@@ -2834,6 +2914,8 @@ countries = {
 			simo uleaborg brahestad utajarvi siikalatva taivalkoski kuivaniemi ranua pudasjarvi posio
 			mourionska kiemi rovaniemi kittila nunnanen enontakis kasivarren
 		}
+		include = "zzz_expl_european_colonial_powers"
+		include = "lutheran_monarchy"
 		government = {
 			type = monarchy
 			ruler = swe_christina_vasa
@@ -2857,7 +2939,6 @@ countries = {
 		capital = abo
 		country_rank = rank_duchy
 		starting_technology_level = 4
-		include = "zzz_expl_european_colonial_powers"
 	}
 	
 	DAN = {
@@ -2889,6 +2970,7 @@ countries = {
 		country_rank = rank_kingdom
 		starting_technology_level = 4
 		include = "zzz_expl_european_colonial_powers"
+		include = "lutheran_monarchy"
 	}
 	
 	NOR = {
@@ -2922,6 +3004,7 @@ countries = {
 		country_rank = rank_kingdom
 		starting_technology_level = 4
 		include = "zzz_expl_european_colonial_powers"
+		include = "lutheran_monarchy"
 	}
 
 ###European Colonial Nations

@@ -192,4 +192,22 @@ PAL
 		members = { FRA DOC BRR BNV CAT BRI ORL POI BUR BOU AUV DAU PRO LOR POR SAV NED UTR GEL GRO DEV HES SWE FIN STE FOI }
 		leader = HES
 	}
+	#################################################################
+	# 				Swedish Empire									#
+	#################################################################
+	add_international_organization = {
+		type = swedish_empire
+		creation_date = 1611.10.30
+		members = { SWE FIN STE }
+		leader = SWE
+
+		laws = {
+			swe_imperial_parliament = swe_empire_parliament_policy
+			swe_imperial_court = swe_swedish_court_policy
+			swe_imperial_treasury = swe_simple_treasury_policy
+		}
+		variables = {
+			swedish_empire_authority = 45
+		}
+	}
 }

@@ -1,0 +1,108 @@
+#Swedish Empire
+swe_imperial_parliament = {
+    type = international_organization
+    law_category = leadership
+
+    potential = {
+        international_organization_type = international_organization_type:swedish_empire
+    }
+
+    swe_empire_parliament_policy = {
+        on_activate = {
+            set_parliament_type = parliament_type:swe_empire_parliament
+            change_variable = {
+                name = swedish_empire_authority
+                add = 0.02
+            }
+        }
+
+        wants_propose_policy = {
+            add = {
+                desc = "POLICY_BIAS_LEADER_WANTS"
+                value = 50
+            }
+        }
+
+    }
+
+    no_parliament_policy = {
+        on_activate = {
+            set_parliament_active = no
+            change_variable = {
+                name = swedish_empire_authority
+                add = -0.1
+            }
+        }
+    }
+
+}
+
+swe_imperial_court = {
+    type = international_organization
+    law_category = administrative
+
+    potential = {
+        international_organization_type = international_organization_type:swedish_empire
+    }
+
+    allow = {
+        international_organization_has_policy = policy:swe_empire_parliament_policy
+    }
+    swe_swedish_court_policy = {
+        leader_modifier = {
+            cultural_tradition = 0.05
+            cultural_influence = 0.05
+            country_cabinet_efficiency = 0.02
+        }
+    }
+
+    swe_free_culture_court_policy = {
+        leader_modifier = {
+            country_cabinet_efficiency = 0.05
+        }
+    }
+}
+
+swe_imperial_treasury = {
+    type = international_organization
+    law_category = centralization
+
+    potential = {
+        international_organization_type = international_organization_type:swedish_empire
+    }
+
+    allow = {
+        international_organization_has_policy = policy:swe_empire_parliament_policy
+    }
+
+    swe_unified_treasury_policy = {
+        payments_implemented = { swedish_unified_treasury }
+
+        on_activate = {
+            change_variable = {
+                name = swedish_empire_authority
+                add = 0.02
+            }
+        }
+    }
+
+    swe_simple_treasury_policy = {
+        payments_implemented = { swe_simple_treasury }
+
+        on_activate = {
+            change_variable = {
+                name = swedish_empire_authority
+                add = 0.01
+            }
+        }
+    }
+
+    swe_no_treasury_policy = {
+        on_activate = {
+            change_variable = {
+                name = swedish_empire_authority
+                add = -0.02
+            }
+        }
+    }
+}
