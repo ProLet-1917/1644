@@ -282,3 +282,22 @@ REPLACE:castle = {
 		propagating_zone_of_control = yes
 	}
 }
+
+# 1644模组：修复儒学学宫建造限制，防止非儒家国家（如勃兰登堡）建造
+INJECT:confucian_academy = {
+	country_potential = {
+		OR = {
+			culture = { has_culture_group = culture_group:confucian_group }
+			religion = religion:sanjiao
+			any_international_organizations_member_of = {
+				international_organization_type = international_organization_type:sect
+				international_organization_has_policy = policy:confucianism_policy
+			}
+			custom_tooltip = {
+				text = has_neo_confucianism_tt
+				has_variable = has_neo_confucianism
+			}
+			is_member_of_international_organization = international_organization:middle_kingdom
+		}
+	}
+}
