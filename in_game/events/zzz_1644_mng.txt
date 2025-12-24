@@ -81,15 +81,15 @@ mng_1644.1 = { #南迁之议
 		add_prestige = prestige_severe_penalty
 		# 减少金钱
 		add_gold = -5000
-    	if = { # 唐通护送南迁
-			limit = { tag = MNG }
-			location:dadu ?= {
-				if = {
-					limit = { owner = root }
+    	if = { 
+		 	limit = { tag = MNG }
+		 	location:dadu ?= {
+		 		if = {
+		 			limit = { owner = root }
 					# 步营：5 * 1000 = 5000 人
-					while = {
+		 			while = {
 						count = 5
-						create_sub_unit_with_owner = {
+		 				create_sub_unit_with_owner = {
 							type = a_1644_chinese_zhanbing
 							owner = root
 							origin = this
@@ -114,21 +114,21 @@ mng_1644.1 = { #南迁之议
 							origin = this
 							experience = 60
 						}
-					}
+		 			}
 
-					if = {
-						limit = { exists = character:chi_tang_tong }
-						random_unit_in_location = {
-							limit = {
-								owner = root
-								unit_has_leader = no
-							}
-							set_as_commander = character:chi_tang_tong
-						}
-					}
-				}
-			}
-			force_recalc_country_active_status = root
+		 			if = {
+		 				limit = { exists = character:chi_tang_tong }
+		 				random_unit_in_location = {
+		 					limit = {
+		 						owner = root
+		 						unit_has_leader = no
+		 					}
+		 					set_as_commander = character:chi_tang_tong
+		 				}
+		 			}
+		 		}
+		 	}
+		 	force_recalc_country_active_status = root
 		}
 	}
 }
