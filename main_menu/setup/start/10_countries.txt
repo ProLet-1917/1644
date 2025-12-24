@@ -2819,10 +2819,6 @@ countries = {
 			koporye ivangorod khotchino moloskovitsa soikino yama
 			valjala kuressaare tallinn narva padise paide rakvere rapla toolse vasknarva cesis aluksne gulbene rauna valmiera parnu karksi poltsamaa saarde suure_jaani viljandi lake_vorts hapsal kaina lihula st_martin riga koknese limbazi salaspils sigulda straupe tartu valka vastseliina vonnu
 		}
-		
-		own_control_integrated = {
-			minguannan tappahanna shackamaxon tetamekanch
-		}
 
 		control = {
 			heide steinburg rendsburg stormarn segeberg pinneberg
@@ -2884,12 +2880,17 @@ countries = {
 				parliament_type = assembly
 			}
 
+			reforms = {
+				swe_age_of_freedom
+				alsno_stadga
+			}
+
 			#Estate Privileges
 			privilege = {
 				#nobles
 				nobles_land_rights
 				noble_marriage_rights
-			primacy_of_nobility
+				primacy_of_nobility
 
 				#clergy
 				clergy_literacy_rights
@@ -2904,11 +2905,6 @@ countries = {
 				allow_hunting
 				communal_lands
 			}
-
-			#reforms = {
-			#	swe_age_of_freedom
-			#	alsno_stadga
-			#}
 
 			laws = {
 				recruitment_law = expanded_levies_policy
@@ -2954,7 +2950,7 @@ countries = {
 		include = "lutheran_monarchy"
 		government = {
 			type = monarchy
-			ruler = swe_christina_vasa
+			ruler = random
 			
 			ruler_term = { character = swe_gustav_i_vasa start_date = 1523.6.6 end_date = 1560.9.29 regnal_number = 1 }
 			ruler_term = { character = swe_eric_xiv_vasa start_date = 1560.9.29 end_date = 1568.9.29 regnal_number = 14 }

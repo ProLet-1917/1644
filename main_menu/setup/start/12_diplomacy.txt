@@ -25,7 +25,7 @@ diplomacy_manager = {
 	dependency = { first = FRA second = FOI subject_type = fiefdom }
 	dependency = { first = FRA second = BNV subject_type = fiefdom }
 	dependency = { first = FRA second = DOC subject_type = dominion }
-    	dependency = { first = FRA second = PRO subject_type = dominion }
+	dependency = { first = FRA second = PRO subject_type = dominion }
 	dependency = { first = FRA second = DAU subject_type = dominion }
 	dependency = { first = FRA second = BRI subject_type = dominion }
 	dependency = { first = FRA second = AUV subject_type = dominion }
@@ -37,8 +37,10 @@ diplomacy_manager = {
 	dependency = { first = FRA second = NFR subject_type = dominion }
 	
 	#Scandinavia
-    	dependency = { first = SWE second = FIN subject_type = fiefdom }
-    	dependency = { first = DAN second = SLV subject_type = fiefdom }
+	dependency = { first = SWE second = FIN subject_type = vassal }
+	dependency = { first = SWE second = STE subject_type = vassal }
+	#dependency = { first = SWE second = NSV subject_type = colonial_nation } #This will causing game crash.
+	dependency = { first = DAN second = SLV subject_type = fiefdom }
 	dependency = { first = DAN second = HTR subject_type = vassal }
 	
 	#Dutch

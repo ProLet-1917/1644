@@ -1,18 +1,11 @@
 emeragency_recruit = {
     type = internationalorganization
 
-    potential = {
-        scope:actor = {
-            is_member_of_international_organization = international_organization:swedish_empire
-            NOT = {
-                is_leader_of_international_organization = international_organization:swedish_empire
-            }
-        }
-    }
-
     allow = {
         scope:actor = {
-            is_leader_of_international_organization = international_organization:swedish_empire
+            is_leader_of_international_organization_of_type = {
+                type = swedish_empire
+            }
         }
     }
 

@@ -1918,7 +1918,7 @@ countries = {
 		country_rank = rank_duchy
 		government = {
 
-			ruler = swe_christina_vasa
+			ruler = random
 
 			regnal_numbers = {
 				Barnim = 1
@@ -10735,9 +10735,33 @@ countries = {
 		country_rank = rank_duchy
 	}
 
+	NSV = { #Nova Svecia
+		own_control_core = {
+			minguannan tappahanna shackamaxon tetamekanch
 
+		}
 
+		include = "zzz_expl_european_colonial_powers"
+
+		starting_technology_level = 4
+
+		government = {
+			ruler = random
+
+			type = republic
+
+			reforms = {
+				colonial_subject
+			}
+
+		}
+
+		capital = shackamaxon
+		country_rank = rank_county
 	}
+
+
+}
 }
 
 

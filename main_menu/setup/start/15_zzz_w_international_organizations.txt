@@ -198,7 +198,7 @@ PAL
 	add_international_organization = {
 		type = swedish_empire
 		creation_date = 1611.10.30
-		members = { SWE FIN STE }
+		members = { SWE FIN STE NSV }
 		leader = SWE
 
 		laws = {
@@ -209,5 +209,14 @@ PAL
 		variables = {
 			swedish_empire_authority = 45
 		}
+
+		ruler_term = { character = swe_gustav_ii_vasa start_date = 1611.10.30 end_date = 1632.11.6 regnal_number = 2 }
+		#ruler_term = { character = swe_christina_vasa start_date = 1632.11.7 regnal_number = 1 }
+
+		kung_of_swedish = { SWE }
+
+		crownland_of_swedish = { FIN STE }
+
+		chartered_colony_of_swedish_empire = { NSV }
 	}
 }
