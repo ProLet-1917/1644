@@ -106,7 +106,7 @@ zzz_1644_grant_unification_cb_for_country = {
 	}
 }
 
-# 重建天朝：创建天朝组织并设置当前国家为leader
+# 重建天朝：创建天朝组织并设置当前国家为leader（测试用）
 zzz_1644_recreate_middle_kingdom = {
 	# 保存当前国家scope
 	save_scope_as = country_to_become_leader
@@ -127,5 +127,15 @@ zzz_1644_recreate_middle_kingdom = {
 		set_leader_country = scope:country_to_become_leader
 		change_celestial_authority = { value = celestial_authority_very_strong_bonus }
 	}
+}
+
+# 成立CHI国家：等同于CHI_f的form_effect
+zzz_1644_form_china_effect = {
+	# 改为君主制
+	change_government_type = government_type:monarchy
+	# 重建天朝组织（这会改变tag为CHI，核心化中国地区，接受中华文化）
+	rtr_recreate_middle_kingdom = yes
+	# 设置国家等级为4级（帝国级）
+	set_country_rank_effect = { rank = country_rank:rank_empire }
 }
 
