@@ -5,7 +5,7 @@ mng_1644.1 = { #南迁之议
 	title = mng_1644.1.title
 	desc = mng_1644.1.desc
 	historical_info = mng_1644.1.historical_info
-	major = yes
+
 	immediate = {
 		location:dadu = {
 			every_unit_in_location = {
@@ -81,15 +81,15 @@ mng_1644.1 = { #南迁之议
 		add_prestige = prestige_severe_penalty
 		# 减少金钱
 		add_gold = -5000
-    	if = { 
-		 	limit = { tag = MNG }
-		 	location:dadu ?= {
-		 		if = {
-		 			limit = { owner = root }
+    	if = { # 唐通护送南迁
+			limit = { tag = MNG }
+			location:dadu ?= {
+				if = {
+					limit = { owner = root }
 					# 步营：5 * 1000 = 5000 人
-		 			while = {
+					while = {
 						count = 5
-		 				create_sub_unit_with_owner = {
+						create_sub_unit_with_owner = {
 							type = a_1644_chinese_zhanbing
 							owner = root
 							origin = this
@@ -114,21 +114,21 @@ mng_1644.1 = { #南迁之议
 							origin = this
 							experience = 60
 						}
-		 			}
+					}
 
-		 			if = {
-		 				limit = { exists = character:chi_tang_tong }
-		 				random_unit_in_location = {
-		 					limit = {
-		 						owner = root
-		 						unit_has_leader = no
-		 					}
-		 					set_as_commander = character:chi_tang_tong
-		 				}
-		 			}
-		 		}
-		 	}
-		 	force_recalc_country_active_status = root
+					if = {
+						limit = { exists = character:chi_tang_tong }
+						random_unit_in_location = {
+							limit = {
+								owner = root
+								unit_has_leader = no
+							}
+							set_as_commander = character:chi_tang_tong
+						}
+					}
+				}
+			}
+			force_recalc_country_active_status = root
 		}
 	}
 }
@@ -224,24 +224,6 @@ mng_1644.5 = { #立新君
 		}
 		add_government_power = government_power_mild_bonus
 		add_prestige = prestige_mild_bonus
-		c:MNG = {
-            if = {
-                limit = {
-                    AND = {
-                        has_variable = chi_domination
-                        has_variable = chi_mandate
-                    }
-                }
-                change_variable = {
-				    name = chi_domination
-				    subtract = 0
-			    }
-			    change_variable = {
-				    name = chi_mandate
-				    subtract = 5
-			    }
-		    }
-        }
 	}
 	
 	option = { #拥立潞王朱常淓（正统性较高，支持率较高）
@@ -255,24 +237,6 @@ mng_1644.5 = { #立新君
 			set_new_ruler = character:chi_zhu_changfang
 		}
 		add_government_power = government_power_weak_bonus
-		c:MNG = {
-            if = {
-                limit = {
-                    AND = {
-                        has_variable = chi_domination
-                        has_variable = chi_mandate
-                    }
-                }
-                change_variable = {
-				    name = chi_domination
-				    subtract = 5
-			    }
-			    change_variable = {
-				    name = chi_mandate
-				    subtract = 0
-			    }
-		    }
-        }
 	}
 	
 	#option = { #亲不亲，贤不贤，就没有更靠谱的继承人吗？
