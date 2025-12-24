@@ -75,55 +75,61 @@ mng_1644.1 = { #南迁之议
 				days = 6
 			}
 		}
-    	# if = { # 注释掉，不要再给大明军队了
-		# 	limit = { tag = MNG }
-		# 	location:dadu ?= {
-		# 		if = {
-		# 			limit = { owner = root }
-		# 			# 步营：5 * 1000 = 5000 人
-		# 			while = {
-		# 				count = 5
-		# 				create_sub_unit_with_owner = {
-		# 					type = a_1644_chinese_zhanbing
-		# 					owner = root
-		# 					origin = this
-		# 					experience = 60
-		# 				}
-		# 			}
-		# 			while = {
-		# 				count = 3
-		# 				create_sub_unit_with_owner = {
-		# 					type = a_1644_chinese_zhanbing
-		# 					owner = root
-		# 					origin = this
-		# 					experience = 60
-		# 				}
-		# 			}
-		# 			# 骑营：2 营 600 人
-		# 			while = {
-		# 				count = 2
-		# 				create_sub_unit_with_owner = {
-		# 					type = a_1644_chinese_cavalry
-		# 					owner = root
-		# 					origin = this
-		# 					experience = 60
-		# 				}
-		# 			}
+		# 损失稳定度
+		add_stability = stability_severe_penalty
+		# 减少威望
+		add_prestige = prestige_severe_penalty
+		# 减少金钱
+		add_gold = -5000
+    	if = { 
+		 	limit = { tag = MNG }
+		 	location:dadu ?= {
+		 		if = {
+		 			limit = { owner = root }
+					# 步营：5 * 1000 = 5000 人
+		 			while = {
+						count = 5
+		 				create_sub_unit_with_owner = {
+							type = a_1644_chinese_zhanbing
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+					while = {
+						count = 3
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_zhanbing
+							owner = root
+							origin = this
+							experience = 60
+						}
+					}
+					# 骑营：2 营 600 人
+					while = {
+						count = 2
+						create_sub_unit_with_owner = {
+							type = a_1644_chinese_cavalry
+							owner = root
+							origin = this
+							experience = 60
+						}
+		 			}
 
-		# 			if = {
-		# 				limit = { exists = character:chi_tang_tong }
-		# 				random_unit_in_location = {
-		# 					limit = {
-		# 						owner = root
-		# 						unit_has_leader = no
-		# 					}
-		# 					set_as_commander = character:chi_tang_tong
-		# 				}
-		# 			}
-		# 		}
-		# 	}
-		# 	force_recalc_country_active_status = root
-		# }
+		 			if = {
+		 				limit = { exists = character:chi_tang_tong }
+		 				random_unit_in_location = {
+		 					limit = {
+		 						owner = root
+		 						unit_has_leader = no
+		 					}
+		 					set_as_commander = character:chi_tang_tong
+		 				}
+		 			}
+		 		}
+		 	}
+		 	force_recalc_country_active_status = root
+		}
 	}
 }
 
