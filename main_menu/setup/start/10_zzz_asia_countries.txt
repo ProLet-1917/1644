@@ -190,7 +190,7 @@ countries = {
 			country_name = "CSH"
 
 			currency_data = {
-				gold = 0 #国库 大顺穷
+				gold = 5000 #国库
 				stability = 30 #稳定度
 				prestige = 60 #声望
 				government_power = 40 #正统性
@@ -330,8 +330,6 @@ countries = {
 				liaodong_culture
 				yan_culture
 				monguor_culture
-				han_culture
-
 			}
 			currency_data = {
 				gold = 30000 #国库 先给花不完的钱
@@ -1222,7 +1220,7 @@ countries = {
 			}
 		}
 		ZZL = {#南安伯郑芝龙
-			type = army
+			type = navy
 			own_control_core = {
 				ningde fuan changshi
 				minxian lianjiang luoyuan houguan minqing changle_fujian gutian yongfu_fuzhou
@@ -1235,15 +1233,18 @@ countries = {
 				longxi zhaoan huafeng longyan pinghe nansheng zhangpu changtai zhangping
 			}
 			capital = jinjiang
-			include = "zzz_cn_military_gvn"
 			government = {
 				type = monarchy
 				ruler = chi_zheng_zhilong
 				ruler_term = { character = chi_zheng_zhilong start_date = 1640.1.1 }
-
+				heir_selection = cognatic_primogeniture
+				laws = {
+					medieval_levy_law = broken_weisuo
+				}
 			}
 			court_language = northern_mandarin_dialect
 			country_rank = rank_county
+			include = "zzz_cn_military_gvn"
 			accepted_cultures = {
 				minnan_culture
 			}
@@ -1334,7 +1335,7 @@ countries = {
 			}
 			capital = datong_datong
 			
-			include = "zzz_cn_military_gvn"
+			
 			government = {
 				type = monarchy
 				ruler = chi_jiang_xiang
