@@ -6,6 +6,10 @@ late_ming_crisis_grant_unification_cb = {
 		scope:actor = {
 			can_see_situation = situation:late_ming_crisis
 		}
+		# 确保明末危机局势是激活的
+		situation:late_ming_crisis = {
+			situation_is_active = yes
+		}
 	}
 
 	allow = {
@@ -26,6 +30,19 @@ late_ming_crisis_grant_unification_cb = {
 	ai_tick_frequency = 2
 	automation_tick = never
 	automation_tick_frequency = 3
+
+	select_trigger = {
+		looking_for_a = situation
+		target_flag = recipient
+		name = "choose_situation"
+		column = {
+			data = name
+		}
+		visible = {
+			situation:late_ming_crisis = this
+			situation_is_active = yes
+		}
+	}
 
 	select_trigger = {
 		looking_for_a = country
@@ -114,6 +131,10 @@ late_ming_crisis_subjugate_disobedient = {
 		scope:actor = {
 			can_see_situation = situation:late_ming_crisis
 		}
+		# 确保明末危机局势是激活的
+		situation:late_ming_crisis = {
+			situation_is_active = yes
+		}
 	}
 
 	allow = {
@@ -132,6 +153,19 @@ late_ming_crisis_subjugate_disobedient = {
 
 	ai_tick = monthly
 	ai_tick_frequency = 6	
+
+	select_trigger = {
+		looking_for_a = situation
+		target_flag = recipient
+		name = "choose_situation"
+		column = {
+			data = name
+		}
+		visible = {
+			situation:late_ming_crisis = this
+			situation_is_active = yes
+		}
+	}
 
 	select_trigger = {
 		looking_for_a = country
@@ -260,6 +294,10 @@ late_ming_crisis_restore_celestial_empire = {
 		scope:actor = {
 			can_see_situation = situation:late_ming_crisis
 		}
+		# 确保明末危机局势是激活的
+		situation:late_ming_crisis = {
+			situation_is_active = yes
+		}
 	}
 
 	allow = {
@@ -331,52 +369,56 @@ late_ming_crisis_restore_celestial_empire = {
 }
 
 # 测试按钮：重建天朝组织（不改变tag，仅用于测试）
-late_ming_crisis_test_recreate_middle_kingdom = {
-	type = situation
-	
-	potential = {
-		scope:actor = {
-			can_see_situation = situation:late_ming_crisis
-		}
-	}
-
-	allow = {
-		scope:actor = {
-			zzz_1644_is_china_region_country = yes
-			OR = {
-				NOT = { exists = international_organization:middle_kingdom }
-				NOT = { is_leader_of_international_organization = international_organization:middle_kingdom }
-			}
-		}
-	}
-
-	ai_tick = never
-	automation_tick = never
-
-	select_trigger = {
-		looking_for_a = situation
-		target_flag = recipient
-		name = "choose_situation"
-		column = {
-			data = name
-		}
-		visible = {
-			situation:late_ming_crisis = this
-			situation_is_active = yes
-		}
-	}
-
-	effect = {
-		scope:actor = {
-			# 测试用：使用原版rtr_recreate_middle_kingdom（包含完整国家效果：改变tag、核心化、接受文化等）
-			rtr_recreate_middle_kingdom = yes
-			# 设置国家等级为4级（帝国级）
-			set_country_rank_effect = { rank = country_rank:rank_empire }
-		}
-	}
-
-	ai_will_do = {
-		add = -1000  # AI不会使用测试按钮
-	}
-}
+# late_ming_crisis_test_recreate_middle_kingdom = {
+# 	type = situation
+# 	
+# 	potential = {
+# 		scope:actor = {
+# 			can_see_situation = situation:late_ming_crisis
+# 		}
+# 		# 确保明末危机局势是激活的
+# 		situation:late_ming_crisis = {
+# 			situation_is_active = yes
+# 		}
+# 	}
+# 
+# 	allow = {
+# 		scope:actor = {
+# 			zzz_1644_is_china_region_country = yes
+# 			OR = {
+# 				NOT = { exists = international_organization:middle_kingdom }
+# 				NOT = { is_leader_of_international_organization = international_organization:middle_kingdom }
+# 			}
+# 		}
+# 	}
+# 
+# 	ai_tick = never
+# 	automation_tick = never
+# 
+# 	select_trigger = {
+# 		looking_for_a = situation
+# 		target_flag = recipient
+# 		name = "choose_situation"
+# 		column = {
+# 			data = name
+# 		}
+# 		visible = {
+# 			situation:late_ming_crisis = this
+# 			situation_is_active = yes
+# 		}
+# 	}
+# 
+# 	effect = {
+# 		scope:actor = {
+# 			# 测试用：使用原版rtr_recreate_middle_kingdom（包含完整国家效果：改变tag、核心化、接受文化等）
+# 			rtr_recreate_middle_kingdom = yes
+# 			# 设置国家等级为4级（帝国级）
+# 			set_country_rank_effect = { rank = country_rank:rank_empire }
+# 		}
+# 	}
+# 
+# 	ai_will_do = {
+# 		add = -1000  # AI不会使用测试按钮
+# 	}
+# }
 
