@@ -1,0 +1,220 @@
+﻿war_of_three_kingdoms = {
+
+	monthly_spawn_chance = monthly_spawn_chance_unique
+	hint_tag = hint_war_of_three_kingdoms
+
+	################################
+	# 可視性（UIに必須）
+	################################
+	visible = {
+		has_presence_in = continent:europe
+	}
+
+	################################
+	# 開始条件（1644年4月即時発火）
+	################################
+	can_start = {
+		current_date >= 1644.4.1
+		OR = {
+			country_exists = c:ROE
+			country_exists = c:ENG
+		}
+	}
+
+	################################
+	# 終了条件
+	################################
+	can_end = {
+		OR = {
+			################################
+			# 1. 共和制ENGによる完全制圧
+			################################
+			AND = {
+				c:ENG = {
+					has_government_type = republic
+				}
+				NOT = { country_exists = c:ROE }
+				NOT = { country_exists = c:IRE }
+
+				OR = {
+					NOT = { country_exists = c:SCO }
+					AND = {
+						country_exists = c:SCO
+						c:SCO = { is_subject_or_below_of = c:ENG }
+					}
+				}
+			}
+
+			################################
+			# 2. 王党派勝利
+			################################
+			NOT = { country_exists = c:ENG }
+			
+			################################
+			# 3. 1660年到達（両陣営存続）
+			################################
+			AND = {
+				current_date >= 1660.1.1
+				country_exists = c:ENG
+				country_exists = c:ROE
+			}
+		}
+	}
+
+
+	################################
+	# 開始時処理
+	################################
+	on_start = {
+
+		every_country = {
+			limit = {
+				capital.sub_continent = sub_continent:british_isles
+			}
+			trigger_event_non_silently = war_of_three_kingdoms.1
+		}
+
+		c:ROE = {
+			add_country_modifier = {
+				modifier = war_of_three_kingdoms_impact
+				years = -1
+				mode = add
+			}
+		}
+
+		c:ENG = {
+			add_country_modifier = {
+				modifier = war_of_three_kingdoms_impact
+				years = -1
+				mode = add
+			}
+		}
+	}
+
+	################################
+	# 月次処理（表示用）
+	################################
+	on_monthly = { }
+
+	################################
+	# 終了時処理
+	################################
+	on_ended = {
+
+		# 王党派勝利
+		if = {
+			limit = { NOT = { country_exists = c:ENG } }
+			every_country = {
+				limit = { capital.sub_continent = sub_continent:british_isles }
+				trigger_event_non_silently = war_of_three_kingdoms.100
+			}
+		}
+
+		# 議会派勝利
+		else_if = {
+			limit = {
+				AND = {
+					NOT = { country_exists = c:ROE }
+
+					OR = {
+						AND = {
+							country_exists = c:SCO
+							c:SCO = { is_subject_or_below_of = c:ENG }
+						}
+						NOT = { country_exists = c:SCO }
+					}
+
+					OR = {
+						AND = {
+							country_exists = c:IRE
+							c:IRE = { is_subject_or_below_of = c:ENG }
+						}
+						NOT = { country_exists = c:IRE }
+					}
+				}
+			}
+			every_country = {
+				limit = { capital.sub_continent = sub_continent:british_isles }
+				trigger_event_non_silently = war_of_three_kingdoms.101
+			}
+		}
+
+		# 妥協・未解決
+		else = {
+			every_country = {
+				limit = { can_see_situation = situation:war_of_three_kingdoms }
+				trigger_event_non_silently = war_of_three_kingdoms.102
+			}
+		}
+
+		# 後始末
+		c:ROE = { remove_country_modifier = war_of_three_kingdoms_impact }
+		c:ENG = { remove_country_modifier = war_of_three_kingdoms_impact }
+	}
+
+	################################
+	# Situationツールチップ（必須）
+	################################
+	tooltip = {
+		if = {
+			limit = { has_owner = yes owner ?= c:ROE }
+			custom_tooltip = war_of_three_kingdoms_royalist_tt
+		}
+		else_if = {
+			limit = { has_owner = yes owner ?= c:ENG }
+			custom_tooltip = war_of_three_kingdoms_parliament_tt
+		}
+		else = {
+			custom_tooltip = war_of_three_kingdoms_neutral_tt
+		}
+	}
+
+	################################
+	# マップカラー
+	################################
+	map_color = {
+		if = {
+			limit = {
+				has_owner = yes
+				OR = {
+					owner ?= c:ROE
+					AND = {
+						NOT = { owner ?= c:ROE }
+						owner ?= { is_at_war_with ?= c:ENG }
+					}
+				}
+			}
+			value = rgb { 245 210 80 }
+		}
+		else_if = {
+			limit = {
+				has_owner = yes
+				OR = {
+					owner ?= c:ENG
+					AND = {
+						NOT = { owner ?= c:ENG }
+						owner ?= { is_at_war_with ?= c:ROE }
+					}
+				}
+			}
+			value = rgb { 200 150 255 }
+		}
+		else = {
+			value = define:NMapColors|DEFAULT_COLOR
+		}
+	}
+
+	################################
+	# 凡例（UIに必須）
+	################################
+	legend_key = {
+		desc = WAR_OF_THREE_KINGDOMS_ROE
+		color = map_ROE
+		require_color_on_map = yes
+	}
+	legend_key = {
+		desc = WAR_OF_THREE_KINGDOMS_ENG
+		color = map_ENG
+		require_color_on_map = yes
+	}
+}
