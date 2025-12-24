@@ -217,6 +217,7 @@ countries = {
 				dongliangting shangdu chagannur huanzhou
 				baitan yixingzhou kuanhe_xingzhou niushan limin taipingzhuang liuyuan xiabancheng zhangsanying
 				gaoyuan baochang fuzhou weining zhongdu
+				luanyang
 
 				# songhua_area ─ 松花
 				hulan bayan_susu hailun hvlan ougen
@@ -352,7 +353,7 @@ countries = {
 				# beiping_area ─北平
 				yijin dacheng wenan
 				changping huairou miyun shunyi
-				yuyang luanyang banbishan fengrun shicheng_jizhou pinggu yutian zunhua
+				yuyang  banbishan fengrun shicheng_jizhou pinggu yutian zunhua
 				yifeng macheng_luanzhou laoting
 				dadu fangshan guan daxing dongan_shuntian wanping yongqing fanyang
 				luxian baodi sanhe_tongzhou lutai xianghe wuqing
@@ -457,15 +458,7 @@ countries = {
 				jiande chunan suian tonglu
 
 				# fujian_area ─ 福建沿海与汀漳四邑
-				ningde fuan changshi
-				minxian lianjiang luoyuan houguan minqing changle_fujian gutian yongfu_fuzhou
-				ouning jianan pucheng_jianning songxi jianyang chongan zhenghe
-				jinjiang tongan anxi dehua huian yongchun nanan_quanzhou
-				shaowu guangze taining jianning
-				changting ninghua_tingzhou liancheng shanghang qingliu wuping mingxi yongding_shanghang
-				putian fuqing xianyou
-				nanping datian shaxian jiangle shunchang yongan_sha youxi
-				longxi zhaoan huafeng longyan pinghe nansheng zhangpu changtai zhangping
+				
 
 				# hunan_area ─ 湖湘诸府
 				baicang baima longhui shaoyang suxi xinhua
@@ -598,37 +591,10 @@ countries = {
 				zhengan zhenzhou suiyang bochuan
 
 				# dali_area ─ 滇西茶马古道
-				beisheng langqu jinshajiang yongning_baisheng ningfan
-				taihe_dali menghua yunlong binchuan yangbei wujing yunnan langqiong
-				heqing jianchuan
-				lanzhou_lanzhou zhiziluo adeqiu zhuluo gongshan luzhang
-				tongan_lijiang linxi dadandang jujin nixi xiaodandang
-				mangshi longchuan luchuan_mangshi
-				mengding gengma mengdong mengmeng
-				mulian matman menglei pangyang musuo yinshaluo
-				shunning midu dingbian_shunning baotong youdian
-				tengchong wadian zhenxi nandan_tengcheng nandian
-				yaozhou dayao juque
-				yongchang_yongchang zhenkang shidian kongwei yongping_yongchang rouyuan lujiang
+				
 
 				# yunnan_area ─ 云南高原与南盘江
-				jinglong daolong gengdang mengban_jihong menghai mengla yot_ou
-				heyang jiangchuan lunan xinxing
-				weichu dingyuan_chuxiong zhennan nanan
-				guangnan bangban boai fuzhou_guangnan zhehong
-				guangxi shizong qiubei mile wucao
-				nalou situo luokong muong_te phong_tho
-				kainan baodian zheledian
-				kunyang anning chenggong yimen
-				jianshui ami xisha tonghai shiping
-				pingdian malongtalang xie
-				mengzi bazhai lihua jiaha mengding_mengzi jiaohua nanlang weimo xisa
-				nanning kedu luoxiong zhanyi malong_qujing luoshan_qujing luliang
-				sime niuwu puri_simao
-				yuanjiang_yuanjiang talang tongguan_yuanjiang
-				kunming lufeng yiliang songming fumin
-				weiyuan mengtong mengban_weiyuan
-				hequ_wuding luquan rende yuanmou
+				
 
 				
 				# chuanxi_area ─ 川西
@@ -653,15 +619,14 @@ countries = {
 				runyan mala pingchuan zuosuo
 				changning_changning luoji yunlian rongxian
 				dechang huili huichuan_dechang mingyi
-				dongchuan qiaojia tangdan zhehai
+				
 				longyou_jiading emei jiajiang rongzhou weiyuan_jiading qianwei
 				hanyuan suzhou lugu qiongbu shimian zhenxi_lizhou
 				mahu lizhou_mahu leibo mabian muchuan
 				meizhou qingshen danleng pengshan
 				qiongzhou pujiang_qiongzhou dayi
 				jianchang_sichuan kuozhou puge beishe
-				wusa zhaoban heizhang
-				wumeng daguan luozuoguan yongshan
+				
 				yibin fushun nanxi qingfu xuanhua
 				yandao rongjing diaomen lushan_yazhou mingshan
 				yongning gulin luojiao mangbu guihua
@@ -1252,6 +1217,114 @@ countries = {
 				stability = 30 #稳定度
 				army_tradition = 50 #军队传统
 
+			}
+		}
+		ZZL = {#南安伯郑芝龙
+			type = navy
+			own_control_core = {
+				ningde fuan changshi
+				minxian lianjiang luoyuan houguan minqing changle_fujian gutian yongfu_fuzhou
+				ouning jianan pucheng_jianning songxi jianyang chongan zhenghe
+				jinjiang tongan anxi dehua huian yongchun nanan_quanzhou
+				shaowu guangze taining jianning
+				changting ninghua_tingzhou liancheng shanghang qingliu wuping mingxi yongding_shanghang
+				putian fuqing xianyou
+				nanping datian shaxian jiangle shunchang yongan_sha youxi
+				longxi zhaoan huafeng longyan pinghe nansheng zhangpu changtai zhangping
+			}
+			capital = jinjiang
+			government = {
+				type = monarchy
+				ruler = chi_zheng_zhilong
+				ruler_term = { character = chi_zheng_zhilong start_date = 1640.1.1 }
+				heir_selection = cognatic_primogeniture
+				laws = {
+					medieval_levy_law = broken_weisuo
+				}
+			}
+			court_language = northern_mandarin_dialect
+			country_rank = rank_county
+			include = "zzz_cn_military_gvn"
+			accepted_cultures = {
+				minnan_culture
+			}
+			flag = "CHI_Ming_Sanchen"
+			country_name = "ZZL"
+			currency_data = {
+				gold = 2000 #国库
+				stability = 50 #稳定度
+				army_tradition = 0 #军队传统
+
+			}
+		}
+		LNG = { #黔国公沐天波 Qian
+			own_control_core = {
+				kunming lufeng yiliang kunyang anning chenggong yimen songming fumin
+				zhennan dingyuan_chuxiong weichu nanan
+				heyang jiangchuan lunan xinxing
+				#以下可能细化为土司
+				#滇东
+				jinglong daolong gengdang mengban_jihong menghai mengla yot_ou
+				guangnan bangban boai fuzhou_guangnan zhehong
+				guangxi shizong qiubei mile wucao
+				nalou situo luokong muong_te phong_tho
+				kainan baodian zheledian
+				jianshui ami xisha tonghai shiping
+				pingdian malongtalang xie
+				mengzi bazhai lihua jiaha mengding_mengzi jiaohua nanlang weimo xisa
+				nanning kedu luoxiong zhanyi malong_qujing luoshan_qujing luliang
+				sime niuwu puri_simao
+				yuanjiang_yuanjiang talang tongguan_yuanjiang
+				weiyuan mengtong mengban_weiyuan
+				hequ_wuding luquan rende yuanmou
+				wusa zhaoban heizhang
+				wumeng daguan luozuoguan yongshan
+				dongchuan qiaojia tangdan zhehai
+				#滇西
+				beisheng langqu jinshajiang yongning_baisheng ningfan
+				taihe_dali menghua yunlong binchuan yangbei wujing yunnan langqiong
+				heqing jianchuan
+				lanzhou_lanzhou zhiziluo adeqiu zhuluo gongshan luzhang
+				tongan_lijiang linxi dadandang jujin nixi xiaodandang
+				mangshi longchuan luchuan_mangshi
+				mengding gengma mengdong mengmeng
+				mulian matman menglei pangyang musuo yinshaluo
+				shunning midu dingbian_shunning baotong youdian
+				tengchong wadian zhenxi nandan_tengcheng nandian
+				yaozhou dayao juque
+				yongchang_yongchang zhenkang shidian kongwei yongping_yongchang rouyuan lujiang
+
+				muli kheong waerhdje
+			}
+
+			own_control_integrated = {
+			}
+
+			capital = kunming
+			include = "zzz_cn_military_gvn"
+			include = "expl_mongols"
+			include = "expl_china"
+			include = "expl_silk_road_west"
+			include = "expl_silk_road_center"
+			include = "expl_silk_road_east"
+			government = {
+				type = monarchy
+				ruler = chi_mu_tianbo
+				ruler_term = { character = chi_mu_tianbo start_date = 1629.1.1 }
+				heir_selection = cognatic_primogeniture
+				laws = {
+					medieval_levy_law = broken_weisuo
+				}
+			}
+			tolerated_cultures = {
+				dian_culture
+			}
+			court_language = northern_mandarin_dialect
+			country_rank = rank_kingdom
+			currency_data = {
+				gold = 500 #国库
+				stability = 40 #稳定度
+				army_tradition = 0 #军队传统
 			}
 		}
 		CJX = {#姜瓖

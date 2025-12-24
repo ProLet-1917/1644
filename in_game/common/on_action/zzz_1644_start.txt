@@ -17,7 +17,6 @@
                         capital.region = region:manchuria_region #满洲
                     }
                 }
-                add_country_modifier = { modifier = 1644_china_auto_conquest years = 8 }
             }
 
             # 开局生成大量女角色以防止绝嗣（为每个国家触发）
@@ -67,7 +66,7 @@
                 count = 5
                 create_character = {
                     female = yes
-                    age = { 16 25 }
+                    age = { 16 29 }
                     culture = root.culture
                     religion = root.religion
                     estate = estate_type:nobles_estate
@@ -129,15 +128,5 @@
             change_max_raw_material_workers = 3
         }
 
-        c:SWE = {
-            add_country_modifier = {
-                months = 360
-                modifier = the_reforms_of_gustav_ii
-            }
-            add_country_modifier = {
-                months = 600
-                modifier = age_of_swedish_empire
-            }
-        }
     }
 }
