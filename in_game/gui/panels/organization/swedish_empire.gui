@@ -24,26 +24,6 @@ organization_panel = {
     }
 
     blockoverride "organization_overview_filtered_list" {
-        margin_top = 5
-        filtered_sorted_list = {
-            datacontext = "[InternationalOrganizationsView.GetMembersSortSearch]"
-            blockoverride "scroll_list_is_empty" {
-                visible = "[IsDataModelEmpty(InternationalOrganizationsView.GetMemberItems)]"
-            }
-            blockoverride "scroll_list_is_empty_text" {
-                text = "MEMBERS_SCROLL_LIST_EMPTY"
-            }
-            blockoverride "scroll_list_layout" {
-                vbox = {
-                    block "organization_overview_list_bg" {
-                        using = layoutpolicy_expanding
-                        using = bg_secondary_inner_alt
-                        margin_bottom = 20
-                    }
-
-                    card_io_payments = { }
-                }
-            }
-        }
+        card_io_payments = { }
     }
 }
