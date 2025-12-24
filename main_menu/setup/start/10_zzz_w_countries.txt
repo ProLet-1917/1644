@@ -8672,12 +8672,18 @@ countries = {
 		include = "expl_eastern_europe"
 		include = "expl_muslim_mediterranean"
 		include = "turkish_beylik"
+
 		government = {
 
 			ruler = tur_ibrahim_i_ottomans
 			heir = tur_mehmet_i_ottomans
 
 			ruler_term = {	 character = tur_ibrahim_i_ottomans start_date = 1644.1.1 regnal_number = 1	}
+
+			reforms = {
+				legacy_of_the_ottomans
+				turkish_pashas
+			}
 
 			centralization_vs_decentralization = 10
 			aristocracy_vs_plutocracy = -30
@@ -8733,6 +8739,7 @@ countries = {
 				slave_conversion = allow_slave_religion
 				sharia_law = hanafi_policy
 				harem_law = secluded_harem_policy
+				administrative_system = eyalet_division_1644
 			}
 		}
 
