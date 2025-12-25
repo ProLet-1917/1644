@@ -380,12 +380,12 @@ csh_1644_unification.5 = { #吴三桂反叛
     title = csh_1644_unification.5.title
     desc = csh_1644_unification.5.desc
     historical_info = csh_1644_unification.5.historical_info
-    immediate = {
-        trigger_event_silently = {
-            id = csh_1644_unification.6
-            days = 12
-        }
-    }
+    # immediate = {
+    #     trigger_event_silently = {
+    #         id = csh_1644_unification.6
+    #         days = 12
+    #     }
+    # }
     option = {
         name = csh_1644_unification.5.a
     }
@@ -396,10 +396,60 @@ csh_1644_unification.6 = { #山海关之战
     title = csh_1644_unification.6.title
     desc = csh_1644_unification.6.desc
     historical_info = csh_1644_unification.6.historical_info
+    
+    
     immediate = {
+        # 保存关键作用域
+        c:QNG ?= {
+            save_scope_as = target_qng
+        }
+        location:funing ?= {
+            save_scope_as = shanhaiguan_location
+        }
+        location:dadu ?= {
+            save_scope_as = beijing_location
+        }
+        
+        # 判断交战不利的情况
+        if = {
+            limit = {
+                exists = scope:target_qng
+                is_at_war_with = scope:target_qng
+                OR = {
+                    # 失去山海关
+                    NOT = { owns = location:funing }
+                    # 失去北京
+                    NOT = { owns = location:dadu }
+                    # 战争疲劳度过高
+                    war_exhaustion >= 50
+                    # 失去多个关键省份
+                    AND = {
+                        NOT = { owns = location:funing }
+                        NOT = { owns = location:yongping }
+                    }
+                    # 相对军事力量处于劣势（己方军事力量 <= 清军的50%）
+                    relative_military_strength = {
+                        target = scope:target_qng
+                        value <= 0.5
+                    }
+                    # 输掉了与清军的战斗（通过on_battle_lost设置）
+                    has_variable = csh_lost_battle_against_qng
+                    # 战损严重（如果记录了战损变量）
+                    AND = {
+                        has_variable = csh_battle_losses
+                        var:csh_battle_losses >= 5000
+                    }
+                }
+            }
+            # 设置变量，表示交战不利
+            set_variable = csh_losing_war_against_qng
+        }
+        
+        # 无论是否交战不利，都触发原有事件
         c:WSG = { trigger_event_silently = wsg_1644_choice.5 }
         c:QNG = { trigger_event_silently = qng_1644_unification.4 }
     }
+    
     option = {
         name = csh_1644_unification.6.a
     }
