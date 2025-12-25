@@ -289,6 +289,26 @@ qng_1644_unification.4 = {
 	title = qng_1644_unification.4.title
 	desc = qng_1644_unification.4.desc
 	historical_info = qng_1644_unification.4.historical_info
+	immediate = {
+		c:QNG = {
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+				    name = chi_domination
+				    add = 15
+			    }
+			    change_variable = {
+				    name = chi_mandate
+				    add = 5
+			    }
+		    }
+        }
+	}
 	option = {
 		name = qng_1644_unification.4.a
 	}
@@ -302,6 +322,24 @@ qng_1644_unification.5 = {
 	historical_info = qng_1644_unification.5.historical_info
 	option = {
 		name = qng_1644_unification.5.a
+		c:QNG = {
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+				    name = chi_domination
+				    add = 0
+			    }
+			    change_variable = {
+				    name = chi_mandate
+				    add = 5
+			    }
+		    }
+        }
 	}
 }
 
@@ -328,9 +366,45 @@ qng_1644_unification.6 = {
 		name = qng_1644_unification.6.a#迁都
 		historical_option = yes
 		set_capital = location:dadu
+		c:QNG = {
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+				    name = chi_domination
+				    add = 0
+			    }
+			    change_variable = {
+				    name = chi_mandate
+				    add = 10
+			    }
+		    }
+        }
 	}
 	option = {
 		name = qng_1644_unification.6.b#不迁都
+		c:QNG = {
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+				    name = chi_domination
+				    add = 0
+			    }
+			    change_variable = {
+				    name = chi_mandate
+				    subtract = 10
+			    }
+		    }
+        }
 	}
 }
 

@@ -349,9 +349,29 @@ csh_1644_unification.3 = { #二王三恪
     title = csh_1644_unification.3.title
     desc = csh_1644_unification.3.desc
     historical_info = csh_1644_unification.3.historical_info
+    immediate = {
+        character:chi_zhu_cilang = { move_country = c:CSH }
+        c:CSH = {
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+				    name = chi_domination
+				    add = 0
+			    }
+			    change_variable = {
+				    name = chi_mandate
+				    add = 10
+			    }
+		    }
+        }
+    }
     option = {
         name = csh_1644_unification.3.a
-        character:chi_zhu_cilang = { move_country = c:CSH }
     }
 }
 
@@ -361,6 +381,16 @@ csh_1644_unification.4 = { #吴三桂、唐通迎主
     desc = csh_1644_unification.4.desc
     historical_info = csh_1644_unification.4.historical_info
     immediate = {
+        #c:CSH = {
+		#	change_variable = {
+		#		name = chi_domination
+		#		add = 5
+		#	}
+		#	change_variable = {
+		#		name = chi_mandate
+		#		add = 5
+		#	}
+		#}
         trigger_event_silently = {
             id = csh_1644_unification.2
             days = 6
@@ -388,6 +418,24 @@ csh_1644_unification.5 = { #吴三桂反叛
     # }
     option = {
         name = csh_1644_unification.5.a
+        c:CSH = {
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+				    name = chi_domination
+				    subtract = 10
+			    }
+			    change_variable = {
+				    name = chi_mandate
+				    subtract = 0
+			    }
+		    }
+        }
     }
 }
 
@@ -483,7 +531,25 @@ csh_1644_unification.7 = { #在京铐掠
         add_gold = 5000
 
         # 失去稳定度（拷饷导致人心离散）
-        add_stability = stability_extreme_penalty
+        #add_stability = stability_extreme_penalty
+        c:CSH = {
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+				    name = chi_domination
+				    subtract = 0
+			    }
+			    change_variable = {
+				    name = chi_mandate
+				    subtract = 10
+			    }
+		    }
+        }
 
         #贵族不满
         add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_extreme_penalty }
@@ -516,7 +582,7 @@ csh_1644_unification.7 = { #在京铐掠
         add_war_exhaustion = war_exhaustion_mild_bonus
 
         # 保持稳定度
-        add_stability = stability_weak_bonus
+        #add_stability = stability_weak_bonus
 
         # 首都省份的民众满意度略有提升和控制度提升（政策温和）
         scope:target_province = {
