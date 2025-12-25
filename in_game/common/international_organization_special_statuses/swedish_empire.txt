@@ -15,6 +15,48 @@ kung_of_swedish = {
 	special_status_power = {
 		value = 25
 	}
+
+	modifier = {
+		great_power_score = 50
+	}
+}
+
+kingdom_of_finland = {
+	priority = 12
+	can_bestow_trigger = {
+		this = c:FIN
+		is_subject_of = international_organization:swedish_empire.leader_country
+	}
+
+	auto_bestowal_trigger = {
+
+	}
+
+	auto_rescind_trigger = {
+		OR = {
+			NOT = { is_subject_of = international_organization:swedish_empire.leader_country }
+			NOT = { this = c:FIN }
+		}
+	}
+
+	on_bestowed_effect = {
+		scope:recipient = {
+			international_organization_remove_special_status = {
+				type = scope:source
+				country = root
+			}
+		}
+	}
+
+	on_rescinded_effect = {
+
+	}
+
+	modifier = {
+		great_power_score = 20
+		loyalty_to_overlord = 0.10
+	}
+
 }
 
 crownland_of_swedish = {
@@ -24,6 +66,9 @@ crownland_of_swedish = {
 		has_primary_or_accepted_or_tolerated_culture = international_organization:swedish_empire.leader_country.dominant_culture
 		is_member_of_international_organization = scope:recipient
 		government_type = government_type:monarchy
+		NOT = {
+			this = c:FIN
+		}
 	}
 	auto_bestowal_trigger = {
 
@@ -49,6 +94,10 @@ crownland_of_swedish = {
 	}
 
 	#map_color =
+
+	modifier = {
+		loyalty_to_overlord = 0.05
+	}
 }
 
 chartered_colony_of_swedish_empire = {
@@ -99,6 +148,9 @@ dominion_of_empire = {
 		scope:recipient = {
 			NOT = {
 				country_has_special_status = { type = special_status:kung_of_swedish country = root }
+			}
+			NOT = {
+				country_has_special_status = { type = special_status:kingdom_of_finland country = root }
 			}
 			NOT = {
 				country_has_special_status = { type = special_status:crownland_of_swedish country = root }

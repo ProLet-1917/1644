@@ -1,11 +1,15 @@
-emeragency_recruit = {
+send_conquestor = {
     type = internationalorganization
+
+    potential = {
+        scope:actor = {
+            is_leader_of_international_organization = international_organization:swedish_empire
+        }
+    }
 
     allow = {
         scope:actor = {
-            is_leader_of_international_organization_of_type = {
-                type = swedish_empire
-            }
+            is_leader_of_international_organization = international_organization:swedish_empire
         }
     }
 
@@ -16,46 +20,125 @@ emeragency_recruit = {
     automation_tick_frequency = 12
 
     cooldown = {
-        type = emeragency_recruit
+        type = send_conquestor
         years = 10
     }
 
     select_trigger = {
-        looking_for_a = international_organization
+        looking_for_a = character
         source = actor
-        target_flag = recipient
-        name = "choose_country"
-        none_available_msg_key = "no_country_available"
+        target_flag = target
+        name = "recruit_conquistador_select_char_title"
+        none_available_msg_key = "create_conquistador_no_characters"
+        column = {
+            data = character_explorer
+        }
+        visible = {
+            is_valid_for_exploration = yes
+            is_married = no
+            NOT = { has_estate = estate_type:crown_estate }
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = area
+        target_flag = target_1
+        cache_targets = yes #this list of targets doesn't rely on the previous target so we only need to do it once
+        name = "recruit_conquistador_select_area_title"
+        none_available_msg_key = "create_conquistador_no_areas"
         column = {
             data = name
         }
         visible = {
-            this = international_organization:swedish_empire
+            #within_colonial_range_of = scope:actor
+            OR = {
+                continent = continent:america
+                #sub_continent = sub_continent:west_africa
+                sub_continent = sub_continent:central_africa
+                sub_continent = sub_continent:southern_africa
+                sub_continent = sub_continent:east_africa
+            }
+            scope:actor = { has_discovered_area = prev }
+
+            any_location_in_area = {
+
+                has_owner = yes
+                NOT = { top_owner = scope:actor }
+                NOT = { dominant_religion.group = scope:actor.religion.group }
+                NOT = { owner ?= { is_subject_type = colonial_nation  } }
+                NOT = { owner ?= { is_subject_type = vassal  } }
+                NOT = { owner ?= { is_subject_type = dominion  } }
+                NOT = { owner ?= { is_subject_type = fiefdom  } }
+            }
         }
     }
 
     effect = {
-        add_manpower = 500
-        change_variable = {
-            name = swedish_empire_authority
-            subtract = 10
+        if = {
+            limit = {
+                exists = scope:target_1
+            }
+
+            scope:target_1 = {
+                ordered_location_in_area = {
+                    order_by = population
+                    max = 1
+                    limit = {
+                        is_coastal = yes
+                        has_owner = yes
+                        NOT = { top_owner = scope:actor }
+                        NOT = { dominant_religion.group = scope:actor.religion.group }
+
+                    }
+                    save_scope_as = target_location
+                }
+
+                if = {
+                    limit = {
+                        not = { exists = scope:target_location }
+                    }
+
+                    #try again, but this time ignore coastal
+                    ordered_location_in_area = {
+                        order_by = population
+                        max = 1
+                        limit = {
+                            has_owner = yes
+                            NOT = { top_owner = scope:actor }
+                            NOT = { dominant_religion.group = scope:actor.religion.group }
+
+                        }
+                        save_scope_as = target_location
+                    }
+                }
+            }
+
+            scope:actor = {
+                start_conquistador = {
+                    area = scope:target_1
+                    location = scope:target_location
+                    character = scope:target
+                    price = scope:price
+                    price_modifier = scope:price_modifier
+                }
+            }
         }
     }
 
     ai_will_do = {
-        add = -20
-        international_organization:swedish_empire.leader_country ?= {
-            save_temporary_scope_as = target_country
-        }
-        add = {
-            if = {
-                limit = {
-                    exists = international_organization:swedish_empire.leader_country
-                    scope:actor = {
-                        great_power_score > scope:target_country.great_power_score
+        scope:actor = {
+            add = {
+                value = "conquistador_utility(scope:target_1)"
+                save_temporary_value_as = utility_val
+                if = {
+                    limit = {
+                        scope:utility_val > 0
+                    }
+                    add = {
+                        value = scope:target.total_abilities
+                        subtract = 150
                     }
                 }
-                add = 30
             }
         }
     }

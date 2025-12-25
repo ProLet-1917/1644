@@ -9091,9 +9091,7 @@ countries = {
 			capital_economy_vs_traditional_economy = 60
 			individualism_vs_communalism = 10
 			outward_vs_inward = 15
-			parliament = {
-				#parliament_type =
-			}
+
 			reforms = {
 				centralization_early
 				serfdom_system
@@ -10760,7 +10758,67 @@ countries = {
 		country_rank = rank_county
 	}
 
+	KRL = { #Karelia
+		own_control_core = {
+			korela kurkijoki konevets joensuu sordavala vartsila ilomantsi lieksa juuka salmi loimola mohko suojarvi nurmes
+		}
 
+		include = "zzz_expl_european_colonial_powers"
+		include = "lutheran_monarchy"
+
+		starting_technology_level = 4
+
+		government = {
+			#ruler = swe_christina_vasa
+		}
+
+		capital = korela
+		country_rank = rank_duchy
+	}
+
+	ING = {
+		own_control_core = {
+			oreshek lisino markovo martyshkino neva toksovo
+			koporye ivangorod khotchino moloskovitsa soikino yama
+		}
+
+		include = "zzz_expl_european_colonial_powers"
+		include = "lutheran_monarchy"
+
+		starting_technology_level = 4
+
+		government = {
+			ruler = random
+		}
+
+		capital = korela
+		country_rank = rank_county
+	}
+
+	LIV = {
+		own_control_core = {
+			cesis aluksne gulbene rauna valmiera parnu karksi poltsamaa
+			saarde suure_jaani viljandi lake_vorts
+			koknese limbazi sigulda straupe tartu valka vastseliina vonnu
+		}
+		include = "zzz_expl_european_colonial_powers"
+		include = "lutheran_monarchy"
+
+		starting_technology_level = 4
+
+		government = {
+			type = monarchy
+			ruler = random
+		}
+
+		capital = tartu
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			estonian
+			german_baltic
+		}
+	}
 }
 }
 

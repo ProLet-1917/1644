@@ -24,7 +24,7 @@ swedish_empire = { #svenska stormaktstiden https://en.wikipedia.org/wiki/Swedish
     }
 
     invite_visible_trigger = {
-        always = no
+        always = yes
     }
 
     can_declare_war = {
@@ -68,12 +68,17 @@ swedish_empire = { #svenska stormaktstiden https://en.wikipedia.org/wiki/Swedish
     }
 
     ai_desire_to_join = {
-        value = -50
+        #value = -50
         if = {
             limit = {
                 is_subject_of = c:SWE
             }
             value = 1000
+        }
+        subtract = {
+            desc = "game_concept_tax_base"
+            value = country_tax_base
+            multiply = 0.5
         }
     }
 
@@ -126,6 +131,7 @@ swedish_empire = { #svenska stormaktstiden https://en.wikipedia.org/wiki/Swedish
 
     special_statuses_implemented = {
         kung_of_swedish
+        kingdom_of_finland
         crownland_of_swedish
         chartered_colony_of_swedish_empire
         dominion_of_empire

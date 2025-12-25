@@ -86,7 +86,7 @@ PAL
 			no_monetary_contribution
 		}
 
-		ruler_term = { character = hab_ferdinand_iii_von_habsburg start_date = 1644.1.1 regnal_number = 3 }
+		ruler_term = { character = hab_ferdinand_iii_von_habsburg start_date = 1644.1.1 regnal_number = 4 }
 
 
 		variables = { 
@@ -198,7 +198,7 @@ PAL
 	add_international_organization = {
 		type = swedish_empire
 		creation_date = 1611.10.30
-		members = { SWE FIN STE NSV }
+		members = { SWE FIN STE NSV KRL ING LIV }
 		leader = SWE
 
 		laws = {
@@ -215,8 +215,12 @@ PAL
 
 		kung_of_swedish = { SWE }
 
-		crownland_of_swedish = { FIN STE }
+		kingdom_of_finland = { FIN }
+		
+		crownland_of_swedish = { KRL ING LIV }
 
 		chartered_colony_of_swedish_empire = { NSV }
+
+		dominion_of_empire = { STE }
 	}
 }
