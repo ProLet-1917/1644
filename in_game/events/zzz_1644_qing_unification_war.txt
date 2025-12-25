@@ -422,8 +422,8 @@ qng_1644_unification.7 = {
  		monthly_chance = 25	# Monthly chance that this event will fire (10 = 10% chance)
  	}
 	trigger = {
-		AND = {
-			c:QNG = { has_variable = qng_invasion }
+		c:QNG = { 
+			has_variable = qng_invasion 
 			owns = location:dadu
 			capital = location:dadu
 		}
