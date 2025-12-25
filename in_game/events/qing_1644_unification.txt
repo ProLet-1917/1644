@@ -17,10 +17,11 @@ qng_1644_unification.1 = {
 }
 
 qng_1644_unification.2 = {
+	#吴三桂献关
 	type = country_event
 	title = qng_1644_unification.2.title
 	desc = qng_1644_unification.2.desc
-	major = yes
+	is_triggered_only = yes
 	immediate = {
 		set_variable = qng_invasion
 	}
@@ -37,11 +38,15 @@ qng_1644_unification.2 = {
 					limit = {
 						exists = this
 						is_subject = no
+						# ROOT = {
+						# 	NOT = { is_at_war_with = this }
+						# 	NOT = { has_truce_with = this }
+						# }
 					}
 					ROOT = {
 						add_casus_belli = {
 							target = scope:target_csh
-							type = casus_belli:cb_chinese_unification
+							type = casus_belli:cb_claim_mandate_of_heaven
 						}
 						if = {
 							limit = {
@@ -51,7 +56,7 @@ qng_1644_unification.2 = {
 							}
 							declare_war_with_cb = {
 								target = scope:target_csh
-								type = casus_belli:cb_chinese_unification
+								type = casus_belli:cb_claim_mandate_of_heaven
 							}
 						}
 						custom_tooltip = qng_1644_unification_gain_cb_tt
@@ -64,6 +69,10 @@ qng_1644_unification.2 = {
 					limit = {
 						exists = this
 						is_subject = no
+						# ROOT = {
+						# 	NOT = { is_at_war_with = this }
+						# 	NOT = { has_truce_with = this }
+						# }
 					}
 					ROOT = {
 						add_casus_belli = {
@@ -159,7 +168,6 @@ qng_1644_unification.3 = {
 	title = qng_1644_unification.3.title
 	desc = qng_1644_unification.3.desc
 	historical_info = qng_1644_unification.3.historical_info
-	major = yes
 	immediate = {
 		set_variable = qng_invasion
 	}
@@ -234,6 +242,10 @@ qng_1644_unification.3 = {
 					limit = {
 						exists = this
 						is_subject = no
+						# ROOT = {
+						# 	NOT = { is_at_war_with = this }
+						# 	NOT = { has_truce_with = this }
+						# }
 					}
 					ROOT = {
 						add_casus_belli = {
@@ -242,8 +254,10 @@ qng_1644_unification.3 = {
 						}
 						if = {
 							limit = {
-								c:MNG = {
-									owns = location:dadu
+								NOT = {
+									c:MNG = {
+										owns = location:dadu
+									}
 								}
 							}
 							declare_war_with_cb = {
@@ -275,26 +289,25 @@ qng_1644_unification.4 = {
 	title = qng_1644_unification.4.title
 	desc = qng_1644_unification.4.desc
 	historical_info = qng_1644_unification.4.historical_info
-	major = yes
 	immediate = {
 		c:QNG = {
-			if = {
-				limit = {
-					AND = {
-						has_variable = chi_domination
-						has_variable = chi_mandate
-					}
-				}
-				change_variable = {
-					name = chi_domination
-					add = 15
-				}
-				change_variable = {
-					name = chi_mandate
-					add = 5
-				}
-			}
-		}
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+				    name = chi_domination
+				    add = 15
+			    }
+			    change_variable = {
+				    name = chi_mandate
+				    add = 5
+			    }
+		    }
+        }
 	}
 	option = {
 		name = qng_1644_unification.4.a
@@ -310,23 +323,23 @@ qng_1644_unification.5 = {
 	option = {
 		name = qng_1644_unification.5.a
 		c:QNG = {
-			if = {
-				limit = {
-					AND = {
-						has_variable = chi_domination
-						has_variable = chi_mandate
-					}
-				}
-				change_variable = {
-					name = chi_domination
-					add = 0
-				}
-				change_variable = {
-					name = chi_mandate
-					add = 5
-				}
-			}
-		}
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+				    name = chi_domination
+				    add = 0
+			    }
+			    change_variable = {
+				    name = chi_mandate
+				    add = 5
+			    }
+		    }
+        }
 	}
 }
 
@@ -337,61 +350,61 @@ qng_1644_unification.6 = {
 	desc = qng_1644_unification.6.desc
 	historical_info = qng_1644_unification.6.historical_info
 	fire_only_once = yes
+	dynamic_historical_event = {
+ 		tag = QNG
+ 		from = 1644.1.1		# The game will check if this event can be fired after this date
+ 		to = 1844.1.1		# The game will stop checking after this date.
+ 		monthly_chance = 100	# Monthly chance that this event will fire (10 = 10% chance)
+ 	}
 	trigger = {
-		has_variable = qng_invasion
+		c:QNG = { has_variable = qng_invasion }
 		owns = location:dadu
 		capital != location:dadu
 		exists = capital
 	}
-	dynamic_historical_event = {
-		tag = QNG
-		from = 1644.1.1		# The game will check if this event can be fired after this date
-		to = 1700.1.1		# The game will stop checking after this date.
-		monthly_chance = 60		# Monthly chance that this event will fire (10 = 10% chance)
-	}
 	option = {
-		name = qng_1644_unification.6.a		#迁都
+		name = qng_1644_unification.6.a#迁都
 		historical_option = yes
 		set_capital = location:dadu
 		c:QNG = {
-			if = {
-				limit = {
-					AND = {
-						has_variable = chi_domination
-						has_variable = chi_mandate
-					}
-				}
-				change_variable = {
-					name = chi_domination
-					add = 0
-				}
-				change_variable = {
-					name = chi_mandate
-					add = 10
-				}
-			}
-		}
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+				    name = chi_domination
+				    add = 0
+			    }
+			    change_variable = {
+				    name = chi_mandate
+				    add = 10
+			    }
+		    }
+        }
 	}
 	option = {
-		name = qng_1644_unification.6.b		#不迁都
+		name = qng_1644_unification.6.b#不迁都
 		c:QNG = {
-			if = {
-				limit = {
-					AND = {
-						has_variable = chi_domination
-						has_variable = chi_mandate
-					}
-				}
-				change_variable = {
-					name = chi_domination
-					add = 0
-				}
-				change_variable = {
-					name = chi_mandate
-					subtract = 10
-				}
-			}
-		}
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+				    name = chi_domination
+				    add = 0
+			    }
+			    change_variable = {
+				    name = chi_mandate
+				    subtract = 10
+			    }
+		    }
+        }
 	}
 }
 
@@ -401,206 +414,87 @@ qng_1644_unification.7 = {
 	title = qng_1644_unification.7.title
 	desc = qng_1644_unification.7.desc
 	historical_info = qng_1644_unification.7.historical_info
-	major = yes
 	fire_only_once = yes
-	trigger = {
-		has_variable = qng_invasion
-		owns = location:dadu
-		capital = location:dadu
-	}
 	dynamic_historical_event = {
-		tag = QNG
-		from = 1644.6.1		# The game will check if this event can be fired after this date
-		to = 1700.1.1		# The game will stop checking after this date.
-		monthly_chance = 40		# Monthly chance that this event will fire (10 = 10% chance)
+ 		tag = QNG
+ 		from = 1644.1.1		# The game will check if this event can be fired after this date
+ 		to = 1844.1.1		# The game will stop checking after this date.
+ 		monthly_chance = 25	# Monthly chance that this event will fire (10 = 10% chance)
+ 	}
+	trigger = {
+		AND = {
+			c:QNG = { has_variable = qng_invasion }
+			owns = location:dadu
+			capital = location:dadu
+		}
 	}
 	option = {
-		name = qng_1644_unification.7.a		#宣战
-		historical_option = yes
-		# 对明、顺、西宣战，并拉入附属国
-		# 对大明宣战
-		c:MNG ?= {
-			save_scope_as = target_mng
-			if = {
-				limit = {
-					exists = this
-					is_subject = no
-					ROOT = {
-						NOT = {
-							is_at_war_with = this
-						}
-						NOT = {
-							is_subject_of = this
-						}
-					}
-				}
-				ROOT = {
-					add_casus_belli = {
-						target = scope:target_mng
-						type = casus_belli:cb_chinese_unification
-					}
-					declare_war_with_cb = {
-						target = scope:target_mng
-						type = casus_belli:cb_chinese_unification
-					}
-				}
-			}
-			# 让大明的所有附属国加入战争
-			every_subject = {
-				limit = {
-					exists = this
-				}
-				subject_join_overlord_wars = yes
-			}
-		}
-		# 对大顺宣战
-		c:CSH ?= {
-			save_scope_as = target_csh
-			if = {
-				limit = {
-					exists = this
-					is_subject = no
-					ROOT = {
-						NOT = {
-							is_at_war_with = this
-						}
-						NOT = {
-							is_subject_of = this
-						}
-					}
-				}
-				ROOT = {
-					add_casus_belli = {
-						target = scope:target_csh
-						type = casus_belli:cb_chinese_unification
-					}
-					declare_war_with_cb = {
-						target = scope:target_csh
-						type = casus_belli:cb_chinese_unification
-					}
-				}
-			}
-			# 让大顺的所有附属国加入战争
-			every_subject = {
-				limit = {
-					exists = this
-				}
-				subject_join_overlord_wars = yes
-			}
-		}
-		# 对大西宣战
-		c:CXI ?= {
-			save_scope_as = target_cxi
-			if = {
-				limit = {
-					exists = this
-					is_subject = no
-					ROOT = {
-						NOT = {
-							is_at_war_with = this
-						}
-						NOT = {
-							is_subject_of = this
-						}
-					}
-				}
-				ROOT = {
-					add_casus_belli = {
-						target = scope:target_cxi
-						type = casus_belli:cb_chinese_unification
-					}
-					declare_war_with_cb = {
-						target = scope:target_cxi
-						type = casus_belli:cb_chinese_unification
-					}
-				}
-			}
-			# 让大西的所有附属国加入战争
-			every_subject = {
-				limit = {
-					exists = this
-				}
-				subject_join_overlord_wars = yes
-			}
-		}
-		# 让大清的所有附属国加入大清的战争
-		every_subject = {
+		name = qng_1644_unification.7.a#宣战
+		if = {
 			limit = {
-				exists = this
+				tag = QNG
 			}
-			subject_join_overlord_wars = yes
-		}
-	}
-	option = {
-		name = qng_1644_unification.7.b		#不宣战
-	}
-}
-
-qng_1644_unification.8 = {
-	#明朝藩属投降大清（触发事件，在MNG上）
-	type = country_event
-	hidden = no
-	title = ""
-	trigger = {
-		# 大清存在且在战争中
-		c:QNG = {
-			exists = this
-			any_current_war = {
-				any_attacker = {
-					this = c:QNG
-				}
-				any_defender = {
-					this = c:MNG
-				}
-			}
-		}
-	}
-	immediate = {
-	}
-	fire_only_once = no
-	dynamic_historical_event = {
-		tag = MNG
-		from = 1644.6.1
-		to = 1700.1.1
-		monthly_chance = 25
-	}
-	option = {
-		name = OK
-		# 随机选择一个符合条件的藩属
-		c:MNG = {
-			random_subject = {
-				# 保存被选中的藩属作用域
-				save_scope_as = defecting_subject
-				# 取消对明朝的附庸关系
-				cancel_subject = scope:defecting_subject
-				# 成为大清的附庸
-				scope:defecting_subject = {
-					c:QNG = {
-						make_subject_of = {
-							target = c:QNG
-							type = subject_type:cn_march_governor
+			c:CSH ?= {
+				save_scope_as = target_csh
+				if = {
+					limit = {
+						exists = this
+						is_subject = no
+						ROOT = {
+						 	NOT = { is_at_war_with = this }
+							NOT = { has_truce_with = this }
 						}
 					}
-					# 加入大清的战争
-					subject_join_overlord_wars = yes
-					# 增加对大清的临时忠诚度
-					add_country_modifier = {
-						target = c:QNG
-						modifier = loyalty_tifayifu
-						years = 3
+					ROOT = {
+						add_casus_belli = {
+							target = scope:target_csh
+							type = casus_belli:cb_claim_mandate_of_heaven
+						}
+						if = {
+							limit = {
+								
+							}
+							declare_war_with_cb = {
+								target = scope:target_csh
+								type = casus_belli:cb_claim_mandate_of_heaven
+							}
+						}
+						custom_tooltip = qng_1644_unification_gain_cb_tt
+					}
+				}
+			}
+			c:MNG ?= {
+				save_scope_as = target_mng
+				if = {
+					limit = {
+						exists = this
+						is_subject = no
+						ROOT = {
+						 	NOT = { is_at_war_with = this }
+						 	NOT = { has_truce_with = this }
+						}
+					}
+					ROOT = {
+						add_casus_belli = {
+							target = scope:target_mng
+							type = casus_belli:cb_claim_mandate_of_heaven
+						}
+						if = {
+							limit = {
+								
+							}
+							declare_war_with_cb = {
+								target = scope:target_mng
+								type = casus_belli:cb_claim_mandate_of_heaven
+							}
+						}
+						custom_tooltip = qng_1644_unification_gain_cb_tt
 					}
 				}
 			}
 		}
 	}
-}
-
-qng_1644_unification.9 = {
-	#姜瓖来投
-	title = qng_1644_unification.9.title
-	desc = qng_1644_unification.9.desc
-	historical_info = qng_1644_unification.9.historical_info
 	option = {
-		name = qng_1644_unification.9.a
+		name = qng_1644_unification.7.b#不宣战
 	}
 }
