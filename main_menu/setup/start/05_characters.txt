@@ -239,7 +239,7 @@ character_db={
 		dynasty = bourbon_dynasty
 		tag = FRA
 	}
-	
+
 	fra_gaston_orleans_bourbon = {
 		first_name = { name = name_gaston }
 		culture = french
@@ -254,6 +254,25 @@ character_db={
 		dynasty = bourbon_dynasty
 		tag = FRA
 	}
+	
+	fra_anne_of_austria = {#https://en.wikipedia.org/wiki/Anne_of_Austria
+		first_name = { name = name_anna }
+		culture = french
+		religion = catholic
+		estate = nobles_estate
+		adm = 68	# 統治: 摂政として政務の中心に立つが、実務はマザラン等の補佐が大きい想定で「高め寄りの中堅」
+		dip = 64	# 外交: 宮廷政治・対外関係の軸にはなるが、フランス対スペイン戦争期で立場が難しい点を加味
+		mil = 12	# 軍事: 軍指揮官ではないため低め
+		female = yes
+		spouse = fra_louis_xiii_bourbon
+		father = spa_philip_iii_habsburg
+		birth_date = 1601.9.22
+		birth = valladolid
+		dynasty = habsburg_dynasty
+		tag = FRA
+	}
+
+	#memo cardinal_mazarinは登場イベントあり（flavor_fra.411）
 
 	fra_louis_xiv_bourbon = {
 		first_name = { name = name_louis }
@@ -266,7 +285,36 @@ character_db={
 		birth_date = 1638.9.5
 		birth = saint_germain_en_laye
 		father = fra_louis_xiii_bourbon
+		mother = fra_anne_of_austria
 		dynasty = bourbon_dynasty
+		tag = FRA
+	}
+
+	fra_louis_grand_condé = {#https://en.wikipedia.org/wiki/Louis,_Grand_Cond%C3%A9
+		first_name = { name = name_louis }
+		culture = french
+		religion = catholic
+		estate = nobles_estate
+		adm = 60	# 若年時に統治（ブルゴーニュ統治など）経験はあるが、基本は軍事キャリアで評価が立つため高すぎない実務力
+		dip = 62	# 王族級貴族として宮廷政治・同盟関係に影響力はあるが、主戦場は軍事なので「高めの中堅」。
+		mil = 93	# ロクロワなどで象徴的勝利を挙げる「戦争の顔」枠として、最上位クラスに設定
+		birth_date = 1621.9.8
+		birth = paris
+		dynasty = bourbon_condé_dynasty
+		tag = FRA
+	}
+
+	fra_viscount_of_turenne = {
+		first_name = { name = name_henry }
+		culture = french
+		religion = protestant
+		estate = nobles_estate
+		adm = 58	# 堅実だが宰相型ではない
+		dip = 60	# 同盟・折衝より軍事で評価されるタイプ
+		mil = 94	# 17世紀屈指の名将枠として上位固定
+		birth_date = 1611.9.11
+		birth = etain
+		dynasty = la_tour_d_auvergne_dynasty
 		tag = FRA
 	}
 
