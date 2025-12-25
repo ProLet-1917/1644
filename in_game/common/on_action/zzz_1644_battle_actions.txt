@@ -1,0 +1,31 @@
+﻿# 大顺与清军战斗失败的处理
+# root = 失败方单位, scope:actor = 获胜方单位, scope:target = 失败方单位
+# scope:lost_land_units = 损失的陆军单位数
+# scope:lost_navy_units = 损失的海军单位数
+# scope:war_score = 失败方失去的战争分数
+on_battle_lost = {
+	effect = {
+		# 判断是否是大顺输给了清军
+		if = {
+			limit = {
+				scope:target.owner = { tag = CSH }  # 失败方是大顺
+				scope:actor.owner = { tag = QNG }   # 获胜方是清军
+			}
+			scope:target.owner = {
+				# 设置变量表示输掉了与清军的战斗
+				set_variable = csh_lost_battle_against_qng
+				# 可选：记录战损数量（如果损失超过一定数量）
+				if = {
+					limit = {
+						scope:lost_land_units >= 1000
+					}
+					set_variable = {
+						name = csh_battle_losses
+						value = scope:lost_land_units
+					}
+				}
+			}
+		}
+	}
+}
+
