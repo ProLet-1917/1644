@@ -380,12 +380,12 @@ csh_1644_unification.5 = { #吴三桂反叛
     title = csh_1644_unification.5.title
     desc = csh_1644_unification.5.desc
     historical_info = csh_1644_unification.5.historical_info
-    immediate = {
-        trigger_event_silently = {
-            id = csh_1644_unification.6
-            days = 12
-        }
-    }
+    # immediate = {
+    #     trigger_event_silently = {
+    #         id = csh_1644_unification.6
+    #         days = 12
+    #     }
+    # }
     option = {
         name = csh_1644_unification.5.a
     }
@@ -397,10 +397,6 @@ csh_1644_unification.6 = { #山海关之战
     desc = csh_1644_unification.6.desc
     historical_info = csh_1644_unification.6.historical_info
     
-    trigger = {
-        tag = CSH
-        c:QNG = { exists = yes }
-    }
     
     immediate = {
         # 保存关键作用域
