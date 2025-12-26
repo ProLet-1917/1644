@@ -420,10 +420,10 @@ csh_1644_unification.5 = { #吴三桂反叛
     desc = csh_1644_unification.5.desc
     historical_info = csh_1644_unification.5.historical_info
     immediate = {
-        trigger_event_silently = {
-            id = csh_1644_unification.6
-            days = 12
-        }
+        # trigger_event_silently = {
+        #     id = csh_1644_unification.6
+        #     days = 12
+        # }
     }
     option = {
         name = csh_1644_unification.5.a
@@ -539,7 +539,7 @@ csh_1644_unification.7 = { #在京铐掠
         }
 
         #贵族不满
-        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_extreme_penalty }
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
 
         # 首都省份的民众满意度下降和控制度下降（拷饷导致社会秩序混乱）
         scope:target_province = {

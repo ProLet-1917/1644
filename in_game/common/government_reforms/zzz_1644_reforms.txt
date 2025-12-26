@@ -1,4 +1,26 @@
-﻿REPLACE:chi_peasant_empire_reform = {
+﻿# 追赃助饷
+REPLACE:chi_peasant_empire_reform = {
+	major = yes
+	unique = yes #
+	potential = {
+		has_or_had_tag = CSH
+	}
+	locked = {
+		has_or_had_tag = CSH
+		# when these triggers are true, the reform cannot be manually removed by the country. root = country
+	}
+	country_modifier = {
+		amount_looted_modifier = 5.0
+		peasants_estate_levy_size = 0.25
+		peasants_estate_target_satisfaction = medium_permanent_target_satisfaction
+		nobles_estate_target_satisfaction = huge_permanent_target_satisfaction_penalty
+	}
+
+	years = 3 #这个不是持续时间！how long it takes before the reform is fully implemented. Leave unset for instant implementation 
+}
+
+# 三年免征 
+csh_three_year_tax_exemption_reform = {
 	major = yes
 	unique = yes
 	potential = {
@@ -6,11 +28,10 @@
 	}
 
 	country_modifier = {
-		government_reform_slots = 1
-		amount_looted_modifier = 3.0
-		peasants_estate_levy_size = 0.25
-		peasants_estate_target_satisfaction = medium_permanent_target_satisfaction
-		nobles_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+		peasants_estate_max_tax = -1.0
+		peasants_estate_target_satisfaction = large_permanent_target_satisfaction
+		monthly_towards_free_subjects = societal_value_monthly_move
+		tax_income_efficiency = large_tax_income_efficiency_penalty
 	}
 
 	years = 3
