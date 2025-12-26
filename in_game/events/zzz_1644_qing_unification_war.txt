@@ -434,11 +434,11 @@ qng_1644_unification.7 = {
 				save_scope_as = target_csh
 				if = {
 					limit = {
-						exists = this
+						exists = target_csh
 						is_subject = no
 						ROOT = {
-						 	NOT = { is_at_war_with = this }
-							NOT = { has_truce_with = this }
+						 	NOT = { is_at_war_with = target_csh }
+							NOT = { has_truce_with = target_csh }
 						}
 					}
 					ROOT = {
@@ -463,11 +463,11 @@ qng_1644_unification.7 = {
 				save_scope_as = target_mng
 				if = {
 					limit = {
-						exists = this
+						exists = target_mng
 						is_subject = no
 						ROOT = {
-						 	NOT = { is_at_war_with = this }
-						 	NOT = { has_truce_with = this }
+						 	NOT = { is_at_war_with = target_mng }
+						 	NOT = { has_truce_with = target_mng }
 						}
 					}
 					ROOT = {
