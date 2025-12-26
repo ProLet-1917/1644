@@ -1,0 +1,73 @@
+# 初始化变量
+late_ming_crisis_init_variable = {
+        #text = "late_ming_crisis_start_effect_desc"
+        c:CSH = { trigger_event_silently = wsg_1644_choice.5 }#for test
+        # 遍历中国国家列表中的所有国家
+        every_in_global_list = {
+            variable = china_countries_list
+            #limit = {
+                #is_subject = no  # 可选：排除附属国
+            #}
+            if = {
+                limit = {
+                    NOT = { has_variable = chi_domination }
+                }
+                set_variable = {
+                    name = chi_domination
+                    value = 0
+                    max = 100  # 可选：设置最大值
+                    min = -100    # 可选：设置最小值
+                }
+            }
+            if = {
+                limit = {
+                    NOT = { has_variable = chi_mandate }
+                }
+                set_variable = {
+                    name = chi_mandate
+                    value = 0
+                    max = 100  
+                    min = -100
+                }
+            }
+            # 可选：记录到日志以供调试
+            #log = "[This.GetName] 的初始统治度: 100, 初始天命: 100"
+        }
+}
+
+# 战斗胜利
+late_ming_crisis_combat_victory_effect = {
+    custom_description = {
+        #text = "late_ming_crisis_combat_victory_effect_desc"
+        scope:actor.owner = {
+            if = {
+                limit = {
+                    is_in_list = china_countries_list
+                    #is_subject = no  # 可选：仅对独立国家生效
+                }
+                change_variable = {
+                    name = chi_domination
+                    add = scope:war_score
+                }
+            }
+        }
+    }
+}
+# 战斗失败
+late_ming_crisis_combat_defeat_effect = {
+    custom_description = {
+        #text = "late_ming_crisis_combat_defeat_effect_desc"
+        scope:actor.owner = {
+            if = {
+                limit = {
+                    is_in_list = china_countries_list
+                    #is_subject = no  # 可选：仅对独立国家生效
+                }
+                change_variable = {
+                    name = chi_domination
+                    subtract = scope:war_score
+                }
+            }
+        }
+    }
+}

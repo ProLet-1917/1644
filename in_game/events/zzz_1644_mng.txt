@@ -224,6 +224,24 @@ mng_1644.5 = { #立新君
 		}
 		add_government_power = government_power_mild_bonus
 		add_prestige = prestige_mild_bonus
+		c:MNG = {
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+				    name = chi_domination
+				    subtract = 0
+			    }
+			    change_variable = {
+				    name = chi_mandate
+				    subtract = 5
+			    }
+		    }
+        }
 	}
 	
 	option = { #拥立潞王朱常淓（正统性较高，支持率较高）
@@ -237,6 +255,24 @@ mng_1644.5 = { #立新君
 			set_new_ruler = character:chi_zhu_changfang
 		}
 		add_government_power = government_power_weak_bonus
+		c:MNG = {
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+				    name = chi_domination
+				    subtract = 5
+			    }
+			    change_variable = {
+				    name = chi_mandate
+				    subtract = 0
+			    }
+		    }
+        }
 	}
 	
 	#option = { #亲不亲，贤不贤，就没有更靠谱的继承人吗？

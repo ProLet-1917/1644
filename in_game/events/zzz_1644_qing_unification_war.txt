@@ -254,10 +254,8 @@ qng_1644_unification.3 = {
 						}
 						if = {
 							limit = {
-								NOT = {
-									c:MNG = {
-										owns = location:dadu
-									}
+								c:MNG = {
+									owns = location:dadu
 								}
 							}
 							declare_war_with_cb = {
@@ -289,6 +287,26 @@ qng_1644_unification.4 = {
 	title = qng_1644_unification.4.title
 	desc = qng_1644_unification.4.desc
 	historical_info = qng_1644_unification.4.historical_info
+	immediate = {
+		c:QNG = {
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+				    name = chi_domination
+				    add = 15
+			    }
+			    change_variable = {
+				    name = chi_mandate
+				    add = 5
+			    }
+		    }
+        }
+	}
 	option = {
 		name = qng_1644_unification.4.a
 	}
@@ -302,6 +320,24 @@ qng_1644_unification.5 = {
 	historical_info = qng_1644_unification.5.historical_info
 	option = {
 		name = qng_1644_unification.5.a
+		c:QNG = {
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+				    name = chi_domination
+				    add = 0
+			    }
+			    change_variable = {
+				    name = chi_mandate
+				    add = 5
+			    }
+		    }
+        }
 	}
 }
 
@@ -315,11 +351,11 @@ qng_1644_unification.6 = {
 	dynamic_historical_event = {
  		tag = QNG
  		from = 1644.1.1		# The game will check if this event can be fired after this date
- 		to = 1844.1.1		# The game will stop checking after this date.
+ 		to = 1700.1.1		# The game will stop checking after this date.
  		monthly_chance = 100	# Monthly chance that this event will fire (10 = 10% chance)
  	}
 	trigger = {
-		c:QNG = { has_variable = qng_invasion }
+		has_variable = qng_invasion
 		owns = location:dadu
 		capital != location:dadu
 		exists = capital
@@ -328,9 +364,45 @@ qng_1644_unification.6 = {
 		name = qng_1644_unification.6.a#迁都
 		historical_option = yes
 		set_capital = location:dadu
+		c:QNG = {
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+				    name = chi_domination
+				    add = 0
+			    }
+			    change_variable = {
+				    name = chi_mandate
+				    add = 10
+			    }
+		    }
+        }
 	}
 	option = {
 		name = qng_1644_unification.6.b#不迁都
+		c:QNG = {
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+				    name = chi_domination
+				    add = 0
+			    }
+			    change_variable = {
+				    name = chi_mandate
+				    subtract = 10
+			    }
+		    }
+        }
 	}
 }
 
@@ -348,11 +420,9 @@ qng_1644_unification.7 = {
  		monthly_chance = 25	# Monthly chance that this event will fire (10 = 10% chance)
  	}
 	trigger = {
-		AND = {
-			c:QNG = { has_variable = qng_invasion }
-			owns = location:dadu
-			capital = location:dadu
-		}
+		has_variable = qng_invasion
+		owns = location:dadu
+		capital = location:dadu
 	}
 	option = {
 		name = qng_1644_unification.7.a#宣战
@@ -364,11 +434,11 @@ qng_1644_unification.7 = {
 				save_scope_as = target_csh
 				if = {
 					limit = {
-						exists = this
+						exists = target_csh
 						is_subject = no
 						ROOT = {
-						 	NOT = { is_at_war_with = this }
-							NOT = { has_truce_with = this }
+						 	NOT = { is_at_war_with = target_csh }
+							NOT = { has_truce_with = target_csh }
 						}
 					}
 					ROOT = {
@@ -378,7 +448,7 @@ qng_1644_unification.7 = {
 						}
 						if = {
 							limit = {
-								
+								always = yes
 							}
 							declare_war_with_cb = {
 								target = scope:target_csh
@@ -393,11 +463,11 @@ qng_1644_unification.7 = {
 				save_scope_as = target_mng
 				if = {
 					limit = {
-						exists = this
+						exists = target_mng
 						is_subject = no
 						ROOT = {
-						 	NOT = { is_at_war_with = this }
-						 	NOT = { has_truce_with = this }
+						 	NOT = { is_at_war_with = target_mng }
+						 	NOT = { has_truce_with = target_mng }
 						}
 					}
 					ROOT = {
@@ -407,7 +477,7 @@ qng_1644_unification.7 = {
 						}
 						if = {
 							limit = {
-								
+								always = yes
 							}
 							declare_war_with_cb = {
 								target = scope:target_mng
