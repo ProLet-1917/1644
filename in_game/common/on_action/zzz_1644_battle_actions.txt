@@ -1,31 +1,157 @@
-﻿# 大顺与清军战斗失败的处理
-# root = 失败方单位, scope:actor = 获胜方单位, scope:target = 失败方单位
-# scope:lost_land_units = 损失的陆军单位数
+﻿# 大顺战斗追踪系统
+# 用于追踪大顺赢/输的所有战斗，变量可在 debug 中查看
+
+# on_battle_won: root = actor, scope:actor = winning "unit", scope:target = losing "unit"
+# scope:killed_land_units = 在陆地战斗中杀死的士兵数
+# scope:killed_navy_units = 在海战中摧毁的船只数
+# scope:lost_land_units = 在陆地战斗中损失的士兵数（失败方的损失）
+# scope:lost_navy_units = 在海战中损失的船只数
+# scope:war_score = 获胜方因该战斗获得的战争分数（正数）
+on_battle_won = {
+	effect = {
+		# 判断是否是大顺获胜
+		if = {
+			limit = {
+				scope:actor.owner = { tag = CSH }  # 获胜方是大顺
+			}
+			scope:actor.owner = {
+				# 增加大顺获胜战斗计数（用于 debug）
+				if = {
+					limit = { NOT = { has_variable = csh_battles_won } }
+					set_variable = { name = csh_battles_won value = 0 }
+				}
+				change_variable = {
+					name = csh_battles_won
+					add = 1
+				}
+				
+				# 对清军的胜场计数
+				if = {
+					limit = { scope:target.owner = { tag = QNG } }
+					set_variable = csh_won_against_qng
+					# 增加对清军的胜场计数
+					if = {
+						limit = { NOT = { has_variable = csh_battles_won_against_qng } }
+						set_variable = { name = csh_battles_won_against_qng value = 0 }
+					}
+					change_variable = {
+						name = csh_battles_won_against_qng
+						add = 1
+					}
+				}
+				
+				# 记录本次战斗的战果（用于 debug）
+				# scope:killed_land_units = 大顺杀死的敌军数量
+				set_variable = {
+					name = csh_last_battle_our_lost_land_units
+					value = scope:killed_land_units
+				}
+				# 注意：scope:lost_land_units 在 on_battle_won 中指的是失败方（敌方）的损失
+				# 大顺自己的损失无法在此直接获取，需要在 on_battle_lost 中从失败方角度获取
+				set_variable = {
+					name = csh_last_won_battle_enemy_lost_land_units
+					value = scope:lost_land_units
+				}
+				set_variable = {
+					name = csh_last_won_battle_war_score
+					value = scope:war_score
+				}
+			}
+		}
+
+		#检测是否属于局势参与方
+		scope:actor.owner = {
+            if = {
+                limit = {
+                    is_in_list = china_countries_list
+                    #is_subject = no  # 可选：仅对独立国家生效
+                }
+				#增加权威
+                change_variable = {
+                    name = chi_domination
+                    add = scope:war_score
+                }
+            }
+        }
+	}
+}
+
+# on_battle_lost: , scope:actor = 获胜方单位, scope:target = 失败方单位
+# scope:lost_land_units = 损失的陆军单位数（失败方自己的损失）
 # scope:lost_navy_units = 损失的海军单位数
 # scope:war_score = 失败方失去的战争分数
 on_battle_lost = {
 	effect = {
-		# 判断是否是大顺输给了清军
+		# 判断是否是大顺失败
 		if = {
 			limit = {
-				scope:target.owner = { tag = CSH }  # 失败方是大顺
-				scope:actor.owner = { tag = QNG }   # 获胜方是清军
+				scope:actor.owner = { tag = CSH }  # 失败方是大顺
 			}
-			scope:target.owner = {
-				# 设置变量表示输掉了与清军的战斗
-				set_variable = csh_lost_battle_against_qng
-				# 可选：记录战损数量（如果损失超过一定数量）
+			scope:actor.owner = {
+				# 增加大顺失败战斗计数（用于 debug）
 				if = {
-					limit = {
-						scope:lost_land_units >= 1000
+					limit = { NOT = { has_variable = csh_battles_lost } }
+					set_variable = { name = csh_battles_lost value = 0 }
+				}
+				change_variable = {
+					name = csh_battles_lost
+					add = 1
+				}
+				
+				# 对清军的败场计数
+				if = {
+					limit = { scope:target.owner = { tag = QNG } }  # 获胜方是清军
+					# 增加对清军的败场计数
+					if = {
+						limit = { NOT = { has_variable = csh_battles_lost_against_qng } }
+						set_variable = { name = csh_battles_lost_against_qng value = 0 }
 					}
-					set_variable = {
-						name = csh_battle_losses
-						value = scope:lost_land_units
+					change_variable = {
+						name = csh_battles_lost_against_qng
+						add = 1
 					}
+					# 触发山海关之战事件（当第一次输给清军时，csh_battles_lost_against_qng = 1）
+					# 需要在失败方（大顺）国家上触发事件
+					#if = {
+					#	limit = {
+					#		var:csh_battles_lost_against_qng = 1
+					#		exists = c:QNG
+					#	}
+					#	c:CSH = {
+					#		trigger_event_silently = csh_1644_unification.6
+					#	}
+					#}
+				}
+				
+				# 记录本次战斗的战损（用于 debug）
+				# scope:lost_land_units = 大顺自己的损失（失败方损失）
+				set_variable = {
+					name = csh_last_lost_battle_our_lost_land_units
+					value = scope:lost_land_units
+				}
+				# 注意：在 on_battle_lost 中，无法直接获取敌军杀死的数量
+				# 但可以记录失败方失去的战争分数
+				set_variable = {
+					name = csh_last_lost_battle_war_score
+					value = scope:war_score
 				}
 			}
 		}
+
+		#检测是否属于局势参与方
+		scope:actor.owner = {
+            if = {
+                limit = {
+                    is_in_list = china_countries_list
+                    #is_subject = no  # 可选：仅对独立国家生效
+                }
+				#削减权威
+                change_variable = {
+                    name = chi_domination
+                    subtract = scope:war_score
+                }
+            }
+        }
 	}
 }
 

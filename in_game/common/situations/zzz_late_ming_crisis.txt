@@ -73,12 +73,81 @@
 		
 		# 为初始参与国添加局势 modifier（使用已收集的国家列表）
 		zzz_1644_add_crisis_participant_modifier_effect = yes
+
+		#为所有参与国添加domination和mandate
+		late_ming_crisis_init_variable = yes
+
+
+		#为明、顺、清设置独特变量值
+		c:MNG = {
+			if = {
+				limit = {
+					has_variable = mng_move_to_nanjing
+				}
+				change_variable = {
+					name = chi_domination
+					add = 20
+				}
+				change_variable = {
+					name = chi_mandate
+					add = 30
+				}
+			}
+			else = {
+				change_variable = {
+					name = chi_domination
+					subtract = 20
+				}
+				change_variable = {
+					name = chi_mandate
+					add = 40
+				}
+			}
+		}
+		c:CSH = {
+			if = {
+				limit = {
+					has_variable = csh_attack_beijing
+				}
+				change_variable = {
+					name = chi_domination
+					add = 75
+				}
+				change_variable = {
+					name = chi_mandate
+					add = 45
+				}
+			}
+			else = {
+				change_variable = {
+					name = chi_domination
+					add = 50
+				}
+				change_variable = {
+					name = chi_mandate
+					add = 60
+				}
+			}
+		}
+		c:QNG = {
+			change_variable = {
+				name = chi_domination
+				add = 75
+			}
+			change_variable = {
+				name = chi_mandate
+				subtract = 20
+			}
+		}
+
 	}
 
 	# 5. 月度逻辑
 	on_monthly = {
 		# 每月更新中国国家列表（用于GUI显示）
 		zzz_1644_collect_china_countries_effect = yes
+		#为所有参与国添加domination和mandate
+		late_ming_crisis_init_variable = yes
 		
 		# 为参与国添加局势 modifier（使用已收集的国家列表，只添加给还没有 modifier 的国家）
 		every_in_global_list = {
