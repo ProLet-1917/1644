@@ -265,6 +265,15 @@ scripted_effect shandong_csh_list_add2 = {
     }
 }
 
+scripted_effect beiping_area_csh_list_add = {
+    # 将北平地区的所有location添加到列表
+    area:beiping_area = {
+        every_location_in_area = {
+            add_to_list = list_of_beiping_csh
+        }
+    }
+}
+
 csh_1644_unification.2 = { #天翻地覆
     type = country_event
     title = csh_1644_unification.2.title
@@ -380,12 +389,12 @@ csh_1644_unification.5 = { #吴三桂反叛
     title = csh_1644_unification.5.title
     desc = csh_1644_unification.5.desc
     historical_info = csh_1644_unification.5.historical_info
-    # immediate = {
-    #     trigger_event_silently = {
-    #         id = csh_1644_unification.6
-    #         days = 12
-    #     }
-    # }
+    immediate = {
+        trigger_event_silently = {
+            id = csh_1644_unification.6
+            days = 12
+        }
+    }
     option = {
         name = csh_1644_unification.5.a
     }
@@ -399,50 +408,28 @@ csh_1644_unification.6 = { #山海关之战
     
     
     immediate = {
-        # 保存关键作用域
-        c:QNG ?= {
-            save_scope_as = target_qng
-        }
-        location:funing ?= {
-            save_scope_as = shanhaiguan_location
-        }
-        location:dadu ?= {
-            save_scope_as = beijing_location
-        }
+
+        # 将北平地区的location添加到列表
+        beiping_area_csh_list_add = yes
         
-        # 判断交战不利的情况
+        # 失去北京和河北：将列表中的省份转移给QNG
         if = {
             limit = {
-                exists = scope:target_qng
-                is_at_war_with = scope:target_qng
-                OR = {
-                    # 失去山海关
-                    NOT = { owns = location:funing }
-                    # 失去北京
-                    NOT = { owns = location:dadu }
-                    # 战争疲劳度过高
-                    war_exhaustion >= 50
-                    # 失去多个关键省份
-                    AND = {
-                        NOT = { owns = location:funing }
-                        NOT = { owns = location:yongping }
-                    }
-                    # 相对军事力量处于劣势（己方军事力量 <= 清军的50%）
-                    relative_military_strength = {
-                        target = scope:target_qng
-                        value <= 0.5
-                    }
-                    # 输掉了与清军的战斗（通过on_battle_lost设置）
-                    has_variable = csh_lost_battle_against_qng
-                    # 战损严重（如果记录了战损变量）
-                    AND = {
-                        has_variable = csh_battle_losses
-                        var:csh_battle_losses >= 5000
-                    }
-                }
+                exists = c:QNG
             }
-            # 设置变量，表示交战不利
-            set_variable = csh_losing_war_against_qng
+            every_in_list = {
+                list = list_of_beiping_csh
+                limit = { owner = c:CSH }
+                change_location_owner = c:QNG
+                change_control = control_mild_penalty
+            }
+        }
+        
+        # 如果首都是北京，需要改变首都
+        if = {
+            limit = { capital = location:dadu }
+            # 将首都改为西安
+            set_capital = location:jingzhao
         }
         
         # 无论是否交战不利，都触发原有事件
