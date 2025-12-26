@@ -74,6 +74,9 @@
 		# 为初始参与国添加局势 modifier（使用已收集的国家列表）
 		zzz_1644_add_crisis_participant_modifier_effect = yes
 
+		#为所有参与国添加domination和mandate
+		late_ming_crisis_init_variable = yes
+
 
 		#为明、顺、清设置独特变量值
 		c:MNG = {
@@ -143,6 +146,8 @@
 	on_monthly = {
 		# 每月更新中国国家列表（用于GUI显示）
 		zzz_1644_collect_china_countries_effect = yes
+		#为所有参与国添加domination和mandate
+		late_ming_crisis_init_variable = yes
 		
 		# 为参与国添加局势 modifier（使用已收集的国家列表，只添加给还没有 modifier 的国家）
 		every_in_global_list = {
