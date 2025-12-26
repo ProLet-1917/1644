@@ -351,11 +351,11 @@ qng_1644_unification.6 = {
 	dynamic_historical_event = {
  		tag = QNG
  		from = 1644.1.1		# The game will check if this event can be fired after this date
- 		to = 1844.1.1		# The game will stop checking after this date.
+ 		to = 1700.1.1		# The game will stop checking after this date.
  		monthly_chance = 100	# Monthly chance that this event will fire (10 = 10% chance)
  	}
 	trigger = {
-		c:QNG = { has_variable = qng_invasion }
+		has_variable = qng_invasion
 		owns = location:dadu
 		capital != location:dadu
 		exists = capital
@@ -420,11 +420,9 @@ qng_1644_unification.7 = {
  		monthly_chance = 25	# Monthly chance that this event will fire (10 = 10% chance)
  	}
 	trigger = {
-		c:QNG = { 
-			has_variable = qng_invasion 
-			owns = location:dadu
-			capital = location:dadu
-		}·
+		has_variable = qng_invasion
+		owns = location:dadu
+		capital = location:dadu
 	}
 	option = {
 		name = qng_1644_unification.7.a#宣战
@@ -450,7 +448,7 @@ qng_1644_unification.7 = {
 						}
 						if = {
 							limit = {
-								
+								always = yes
 							}
 							declare_war_with_cb = {
 								target = scope:target_csh
@@ -479,7 +477,7 @@ qng_1644_unification.7 = {
 						}
 						if = {
 							limit = {
-								
+								always = yes
 							}
 							declare_war_with_cb = {
 								target = scope:target_mng
