@@ -436,12 +436,12 @@ qng_1644_unification.7 = {
 					limit = {
 						exists = target_csh
 						is_subject = no
-						ROOT = {
+						c:QNG = {
 						 	NOT = { is_at_war_with = target_csh }
 							NOT = { has_truce_with = target_csh }
 						}
 					}
-					ROOT = {
+					c:QNG = {
 						add_casus_belli = {
 							target = scope:target_csh
 							type = casus_belli:cb_claim_mandate_of_heaven
@@ -460,12 +460,12 @@ qng_1644_unification.7 = {
 					limit = {
 						exists = target_mng
 						is_subject = no
-						ROOT = {
+						c:QNG = {
 						 	NOT = { is_at_war_with = target_mng }
 						 	NOT = { has_truce_with = target_mng }
 						}
 					}
-					ROOT = {
+					c:QNG = {
 						add_casus_belli = {
 							target = scope:target_mng
 							type = casus_belli:cb_claim_mandate_of_heaven
