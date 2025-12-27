@@ -48,6 +48,11 @@
 
 	# 4. 启动效果
 	on_start = {
+		# 存储玩家国家引用到 Situation 变量（用于 GUI 访问）
+		set_variable = {
+			name = player_country_ref
+			value = root
+		}
 		# 解散天朝：移除所有天朝成员
 		if = {
 			limit = { exists = international_organization:middle_kingdom }
@@ -68,7 +73,7 @@
 		
 		# 给所有首都在中国和满洲的国家互相添加"统一中国"CB
 		# 使用全局变量列表方法，分两步执行
-		zzz_1644_collect_china_countries_effect = yes
+		collect_china_countries_effect = yes
 		zzz_1644_add_china_cb_effect = yes
 		
 		# 为初始参与国添加局势 modifier（使用已收集的国家列表）
@@ -140,12 +145,19 @@
 			}
 		}
 
+		# 初始化明末局势死亡总人数计数器（局势变量）
+		set_variable = {
+			name = late_ming_crisis_total_casualties
+			value = 0
+		}
+		# 注意：我方击杀和阵亡计数器是国家变量，不需要在局势中初始化
+
 	}
 
 	# 5. 月度逻辑
 	on_monthly = {
-		# 每月更新中国国家列表（用于GUI显示）
-		zzz_1644_collect_china_countries_effect = yes
+		# # 每月更新中国国家列表，已经在别处更新
+		# collect_china_countries_effect = yes
 		#为所有参与国添加domination和mandate
 		late_ming_crisis_init_variable = yes
 		

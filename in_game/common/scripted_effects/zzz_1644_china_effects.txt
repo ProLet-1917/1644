@@ -74,33 +74,6 @@ zzz_1644_grant_unification_cb_for_single_target = {
 	}
 }
 
-# 为单个国家授予对所有中国境内国家的统一中国CB
-# 保留此效果以备后用
-# 使用全局列表以提高性能
-zzz_1644_grant_unification_cb_for_country = {
-	# 为当前国家授予对所有符合条件的国家的CB
-	every_in_global_list = {
-		variable = china_countries_list
-		limit = {
-			any_owned_location = {
-				OR = {
-					region = region:west_china_region
-					region = region:east_china_region
-					region = region:north_china_region
-					region = region:south_china_region
-					region = region:manchuria_region
-				}
-			}
-		}
-		root = {
-			add_casus_belli = {
-				target = this
-				type = casus_belli:cb_chinese_unification
-			}
-		}
-	}
-}
-
 # 重建天朝：创建天朝组织并设置当前国家为leader（测试用）
 zzz_1644_recreate_middle_kingdom = {
 	# 保存当前国家scope
@@ -132,5 +105,20 @@ zzz_1644_form_china_effect = {
 	rtr_recreate_middle_kingdom = yes
 	# 设置国家等级为4级（帝国级）
 	set_country_rank_effect = { rank = country_rank:rank_empire }
+}
+
+# 增加明末局势死亡总人数（照抄 rise_of_timur 的方式）
+zzz_1644_increase_total_casualties = {
+	if = {
+		limit = {
+			situation:late_ming_crisis = { situation_is_active = yes }
+		}
+		situation:late_ming_crisis = {
+			change_variable = {
+				name = late_ming_crisis_total_casualties
+				add = $variable$
+			}
+		}
+	}
 }
 

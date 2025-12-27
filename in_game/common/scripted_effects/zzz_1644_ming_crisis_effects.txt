@@ -1,4 +1,4 @@
-# 初始化变量
+﻿# 初始化变量
 late_ming_crisis_init_variable = {
     custom_description = {
         #text = "late_ming_crisis_start_effect_desc"
@@ -31,6 +31,16 @@ late_ming_crisis_init_variable = {
                     min = -100
                 }
             }
+            # 初始化我方击杀和阵亡计数器（如果不存在）
+            if = {
+                limit = { NOT = { has_variable = late_ming_crisis_my_kills } }
+                set_variable = { name = late_ming_crisis_my_kills value = 0 }
+            }
+            if = {
+                limit = { NOT = { has_variable = late_ming_crisis_my_casualties } }
+                set_variable = { name = late_ming_crisis_my_casualties value = 0 }
+            }
+
             # 可选：记录到日志以供调试
             #log = "[This.GetName] 的初始统治度: 100, 初始天命: 100"
         }
@@ -44,7 +54,7 @@ late_ming_crisis_combat_victory_effect = {
         scope:actor.owner = {
             if = {
                 limit = {
-                    is_in_list = china_countries_list
+                    has_variable = chinese_country
                     #is_subject = no  # 可选：仅对独立国家生效
                 }
                 change_variable = {
@@ -62,7 +72,7 @@ late_ming_crisis_combat_defeat_effect = {
         scope:actor.owner = {
             if = {
                 limit = {
-                    is_in_list = china_countries_list
+                    has_variable = chinese_country
                     #is_subject = no  # 可选：仅对独立国家生效
                 }
                 change_variable = {
