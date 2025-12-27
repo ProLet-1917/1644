@@ -433,6 +433,7 @@ qng_1644_unification.7 = {
 		monthly_chance = 40		# Monthly chance that this event will fire (10 = 10% chance)
 	}
 	option = {
+<<<<<<< HEAD:in_game/events/qing_1644_unification.txt
 		name = qng_1644_unification.7.a		#宣战
 		historical_option = yes
 		# 对明、顺、西宣战，并拉入附属国
@@ -463,6 +464,25 @@ qng_1644_unification.7 = {
 						type = casus_belli:cb_chinese_unification
 =======
 					ROOT = {
+=======
+		name = qng_1644_unification.7.a#宣战
+		if = {
+			limit = {
+				tag = QNG
+			}
+			c:CSH ?= {
+				save_scope_as = target_csh
+				if = {
+					limit = {
+						exists = target_csh
+						is_subject = no
+						c:QNG = {
+						 	NOT = { is_at_war_with = target_csh }
+							NOT = { has_truce_with = target_csh }
+						}
+					}
+					c:QNG = {
+>>>>>>> 11afcf6 (debug):in_game/events/zzz_1644_qing_unification_war.txt
 						add_casus_belli = {
 							target = scope:target_csh
 							type = casus_belli:cb_claim_mandate_of_heaven
@@ -476,6 +496,7 @@ qng_1644_unification.7 = {
 					}
 				}
 			}
+<<<<<<< HEAD:in_game/events/qing_1644_unification.txt
 			# 让大明的所有附属国加入战争
 			every_subject = {
 				limit = {
@@ -529,6 +550,23 @@ qng_1644_unification.7 = {
 					ROOT = {
 						NOT = {
 							is_at_war_with = this
+=======
+			c:MNG ?= {
+				save_scope_as = target_mng
+				if = {
+					limit = {
+						exists = target_mng
+						is_subject = no
+						c:QNG = {
+						 	NOT = { is_at_war_with = target_mng }
+						 	NOT = { has_truce_with = target_mng }
+						}
+					}
+					c:QNG = {
+						add_casus_belli = {
+							target = scope:target_mng
+							type = casus_belli:cb_claim_mandate_of_heaven
+>>>>>>> 11afcf6 (debug):in_game/events/zzz_1644_qing_unification_war.txt
 						}
 <<<<<<< HEAD:in_game/events/qing_1644_unification.txt
 						NOT = {
