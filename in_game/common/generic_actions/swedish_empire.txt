@@ -2,6 +2,7 @@ send_conquestor = {
     type = internationalorganization
 
     potential = {
+        exists = international_organization:swedish_empire
         scope:actor = {
             is_leader_of_international_organization = international_organization:swedish_empire
         }
@@ -22,6 +23,19 @@ send_conquestor = {
     cooldown = {
         type = send_conquestor
         years = 10
+    }
+
+    select_trigger = {
+        looking_for_a = international_organization
+        source = actor
+        target_flag = recipient
+        name = "choose_international_organization"
+        column = {
+            data = name
+        }
+        visible = {
+            international_organization_type = international_organization_type:swedish_empire
+        }
     }
 
     select_trigger = {
@@ -69,6 +83,13 @@ send_conquestor = {
                 NOT = { owner ?= { is_subject_type = vassal  } }
                 NOT = { owner ?= { is_subject_type = dominion  } }
                 NOT = { owner ?= { is_subject_type = fiefdom  } }
+                NOT = {
+                    owner ?= {
+                        capital ?= {
+                            continent = continent:europe
+                        }
+                    }
+                }
             }
         }
     }
