@@ -59,11 +59,12 @@ on_battle_won = {
 			}
 		}
 
+
 		#检测是否属于局势参与方
 		scope:actor.owner = {
             if = {
                 limit = {
-                    is_in_list = china_countries_list
+                    has_variable = chinese_country
                     #is_subject = no  # 可选：仅对独立国家生效
                 }
 				#增加权威
@@ -73,10 +74,72 @@ on_battle_won = {
                 }
             }
         }
+
+		# 统计明末局势死亡总人数（照抄 rise_of_timur 的方式）
+		# 在 on_battle_won 中统计获胜方（actor）的击杀和损失
+		if = {
+			limit = {
+				situation:late_ming_crisis = { situation_is_active = yes }
+			}
+
+			# 统计双方击杀和损失（双方都是参与方）
+			if = {
+				limit = {  
+					AND = {
+						scope:actor.owner = {has_variable = chinese_country} 
+						scope:target.owner = {has_variable = chinese_country} 
+					} 
+				}
+							# 先设置变量存储击杀数和损失数
+			scope:actor = {
+				owner = {
+					set_variable = { name = last_battle_win_lost_land_units value = scope:lost_land_units }
+					set_variable = { name = last_battle_win_killed_land_units value = scope:killed_land_units }
+				}
+			}
+			scope:target = {
+				owner = {
+					set_variable = { name = last_battle_loss_lost_land_units value = scope:lost_land_units }
+					set_variable = { name = last_battle_loss_killed_land_units value = scope:killed_land_units }
+				}
+			}
+				# 统计总伤亡（失败方的损失）
+				zzz_1644_increase_total_casualties = {
+					variable = scope:actor.owner.var:last_battle_win_lost_land_units
+				}
+				zzz_1644_increase_total_casualties = {
+					variable = scope:target.owner.var:last_battle_loss_lost_land_units
+				}
+				# 统计我方（获胜方）击杀（国家变量）
+				if = {
+					limit = {
+						situation:late_ming_crisis = { situation_is_active = yes }
+					}
+					scope:actor.owner = {
+						# 确保变量存在
+						if = {
+							limit = {
+								NOT = { has_variable = late_ming_crisis_my_kills }
+							}
+							set_variable = {
+								name = late_ming_crisis_my_kills
+								value = 0
+							}
+						}
+						change_variable = {
+							name = late_ming_crisis_my_kills
+							add = var:last_battle_win_killed_land_units
+						}
+					}
+				}
+				# 统计失败方的击杀（失败方杀死的敌军数，即获胜方的损失）
+				# 注意：在 on_battle_won 中无法直接获取失败方的击杀，需要在 on_battle_lost 中统计
+			}
+		}
 	}
 }
 
-# on_battle_lost: , scope:actor = 获胜方单位, scope:target = 失败方单位
+# on_battle_lost: scope:actor = 失败方单位, scope:target = 获胜方单位
 # scope:lost_land_units = 损失的陆军单位数（失败方自己的损失）
 # scope:lost_navy_units = 损失的海军单位数
 # scope:war_score = 失败方失去的战争分数
@@ -138,11 +201,12 @@ on_battle_lost = {
 			}
 		}
 
+
 		#检测是否属于局势参与方
 		scope:actor.owner = {
             if = {
                 limit = {
-                    is_in_list = china_countries_list
+                    has_variable = chinese_country
                     #is_subject = no  # 可选：仅对独立国家生效
                 }
 				#削减权威
@@ -152,6 +216,93 @@ on_battle_lost = {
                 }
             }
         }
+
+		# 统计我方（失败方）阵亡和击杀
+		if = {
+			limit = {
+				situation:late_ming_crisis = { situation_is_active = yes }
+				scope:actor.owner = {has_variable = chinese_country}
+			}
+			# 在 on_battle_lost 中：
+			# scope:actor = 失败方，scope:target = 获胜方
+			# scope:lost_land_units = 失败方（我方）的损失
+			# scope:killed_land_units = 失败方杀死的敌军数（获胜方的损失，即失败方的击杀）
+			scope:actor = {
+				owner = {
+					set_variable = { name = my_lost_land_units value = scope:lost_land_units }
+					set_variable = { name = my_killed_land_units value = scope:killed_land_units }
+				}
+			}
+			# 统计失败方（我方）的阵亡（国家变量）
+			scope:actor.owner = {
+				# 确保变量存在
+				if = {
+					limit = {
+						NOT = { has_variable = late_ming_crisis_my_casualties }
+					}
+					set_variable = {
+						name = late_ming_crisis_my_casualties
+						value = 0
+					}
+				}
+				change_variable = {
+					name = late_ming_crisis_my_casualties
+					add = var:my_lost_land_units
+				}
+			}
+			# 统计失败方（我方）的击杀（国家变量）
+			scope:actor.owner = {
+				# 确保变量存在
+				if = {
+					limit = {
+						NOT = { has_variable = late_ming_crisis_my_kills }
+					}
+					set_variable = {
+						name = late_ming_crisis_my_kills
+						value = 0
+					}
+				}
+				change_variable = {
+					name = late_ming_crisis_my_kills
+					add = var:my_killed_land_units
+				}
+			}
+		}
+		# 统计获胜方的损失（如果获胜方是参与方）
+		if = {
+			limit = {
+				situation:late_ming_crisis = { situation_is_active = yes }
+				scope:target.owner = {has_variable = chinese_country}
+			}
+			# 在 on_battle_lost 中：
+			# scope:target = 获胜方
+			# scope:killed_land_units = 失败方杀死的敌军数（获胜方的损失）
+			scope:target = {
+				owner = {
+					set_variable = { name = win_lost_land_units value = scope:killed_land_units }
+				}
+			}
+			# 统计获胜方的损失（从失败方的击杀角度，国家变量）
+			scope:target.owner = {
+				# 确保变量存在
+				if = {
+					limit = {
+						NOT = { has_variable = late_ming_crisis_my_casualties }
+					}
+					set_variable = {
+						name = late_ming_crisis_my_casualties
+						value = 0
+					}
+				}
+				change_variable = {
+					name = late_ming_crisis_my_casualties
+					add = var:win_lost_land_units
+				}
+			}
+		}
+
 	}
 }
+
+
 
