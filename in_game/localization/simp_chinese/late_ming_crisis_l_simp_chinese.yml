@@ -12,7 +12,7 @@
 
 
 # Generic Action: 获取统一中国CB
-late_ming_crisis_grant_unification_cb: "逐鹿"
+late_ming_crisis_grant_unification_cb: "逐鹿群雄"
 late_ming_crisis_grant_unification_cb_desc: "获得对明末群雄的“统一中国”宣战理由。"
 
 # Generic Action: 对附庸获取统一中国CB
@@ -30,5 +30,13 @@ late_ming_crisis_test_recreate_middle_kingdom_desc: "测试用：使用原版效
  # GUI 文本
  MAJOR_POWERS: "主要势力"
  PARTICIPATING_COUNTRIES: "明末群雄"
+ BATTLE_STATISTICS_LATE_MING: "战斗统计"
+ BATTLE_STATISTICS_LATE_MING_TOOLTIP: "#T 战斗统计#!显示甲申局势中的战斗统计数据，包括总伤亡、我方阵斩和我方阵亡。"
+ TOTAL_CASUALTIES_LATE_MING: "阵亡将士总数"
+ TOTAL_CASUALTIES_LATE_MING_TOOLTIP: "#T 阵亡总数#!甲申局势中所有参与方在战斗中阵亡的士兵总数为[SituationView.GetActiveSituation.GetSituation.MakeScope.GetVariable('late_ming_crisis_total_casualties').GetValue]人。"
+ MY_KILLS_LATE_MING: "我方阵斩"
+ MY_KILLS_LATE_MING_TOOLTIP: "#T 我方阵斩#!甲申局势中我方在战斗中阵斩的敌军总数为[Country.MakeScope.GetVariable('late_ming_crisis_my_kills').GetValue]人。"
+ MY_CASUALTIES_LATE_MING: "我方阵亡"
+ MY_CASUALTIES_LATE_MING_TOOLTIP: "#T 我方阵亡#!甲申局势中我方在战斗中阵亡的士兵总数为[Country.MakeScope.GetVariable('late_ming_crisis_my_casualties').GetValue]人。"
 
  # Modifier 文本（静态modifier的本地化在main_menu/localization中）
