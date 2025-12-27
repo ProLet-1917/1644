@@ -5,8 +5,9 @@ peace_talk_in_westphalia = { #1648 May.-Oct.
 
 	can_start = {
 		exists = international_organization:hre
-		current_year > 1643
-		current_year < 1800
+		situation:thirty_years_war = {
+			situation_is_active = yes
+		}
 	}
 
 	can_end = {
@@ -14,7 +15,10 @@ peace_talk_in_westphalia = { #1648 May.-Oct.
 	}
 
 	visible = {
-		capital ?= { sub_continent = sub_continent:western_europe }
+		OR = {
+			is_member_of_international_organization = international_organization:catholic_league
+			is_member_of_international_organization = international_organization:protestant_union
+		}
 	}
 
 	on_start = {

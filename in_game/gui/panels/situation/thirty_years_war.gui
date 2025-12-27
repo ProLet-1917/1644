@@ -1,0 +1,458 @@
+﻿situation_panel = {
+
+    ##################################### TOP HEADER #####################################
+
+    blockoverride "situation_header_left" {
+        vbox = {
+            layoutpolicy_horizontal = expanding
+            widget = {
+                layoutpolicy_horizontal = expanding
+                blockoverride "header_color" {
+                    alpha = 1
+                    using = color_purple_02_texture
+                }
+                size = { -1 37 }
+                hbox = {
+                    ignoreinvisible = yes
+                    widget = {
+                        layoutpolicy_horizontal = expanding
+                        size = { -1 37 }
+                        hbox = {
+                            spacing = 5
+                            icon = {
+                                name = "type_icon"
+                                texture = "[GetReligionIcon(GetReligionByKey('lutheran').Self)]"
+                                datacontext = "[GetReligionByKey('lutheran')]"
+                                tooltipwidget = {
+                                    using = religion_tooltip
+                                }
+                                size = { 30 30 }
+                            }
+                            vbox = {
+                                # spacing = 5
+                                layoutpolicy_horizontal = expanding
+                                text_single = {
+                                    layoutpolicy_horizontal = expanding
+                                    align = left|nobaseline
+                                    text = "REFORMATION_LUTHERAN_POPS"
+                                    default_format = "#yellow_titles"
+                                }
+                                text_single = {
+                                    layoutpolicy_horizontal = expanding
+                                    align = left|nobaseline
+                                    raw_text = "[GetReligionByKey('lutheran').GetTotalPopulation]"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    blockoverride "situation_header_center" { #Paradox dont make it work check gui/panels/situation/common.gui line 66
+        vbox = {
+            layoutpolicy_horizontal = expanding
+            text_single = {
+                layoutpolicy_horizontal = expanding
+                align = center
+                text = "SITUATION_LATERAL_VIEW_START_DATE_HEADER"
+                default_format = "#subtle_name"
+            }
+
+            text_single = {
+                layoutpolicy_horizontal = expanding
+                align = center
+                fontsize = 13
+                text = "1618.5.23"
+            }
+        }
+    }
+
+    blockoverride "situation_header_right" {
+        vbox = {
+            layoutpolicy_horizontal = expanding
+            widget = {
+                layoutpolicy_horizontal = expanding
+                blockoverride "header_color" {
+                    alpha = 1
+                    using = color_purple_02_texture
+                }
+                size = { -1 37 }
+                hbox = {
+                    ignoreinvisible = yes
+                    widget = {
+                        layoutpolicy_horizontal = expanding
+                        hbox = {
+                            spacing = 5
+                            vbox = {
+                                # spacing = 5
+                                layoutpolicy_horizontal = expanding
+                                text_single = {
+                                    layoutpolicy_horizontal = expanding
+                                    align = right|nobaseline
+                                    text = "REFORMATION_CATHOLIC_POPS"
+                                    default_format = "#yellow_titles"
+                                }
+                                text_single = {
+                                    layoutpolicy_horizontal = expanding
+                                    align = right|nobaseline
+                                    raw_text = "[GetReligionByKey('catholic').GetTotalPopulation]"
+                                }
+                            }
+                            icon = {
+                                name = "type_icon"
+                                texture = "[GetReligionIcon(GetReligionByKey('catholic').Self)]"
+                                datacontext = "[GetReligionByKey('catholic')]"
+                                tooltipwidget = {
+                                    using = religion_tooltip
+                                }
+                                size = { 30 30 }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    ##################################### MAIN IMAGE #####################################
+
+    blockoverride "situation_panel_image" {
+        using = two_countries_header_template
+
+        blockoverride "FirstCountryContext" {
+            datacontext = "[GetUniqueInternationalOrganization('protestant_union').GetLeaderCountry]"
+        }
+
+        blockoverride "SecondCountryContext" {
+            datacontext = "[GetUniqueInternationalOrganization('catholic_league').GetLeaderCountry]"
+        }
+
+        # blockoverride "history_button_anchor" {}
+
+        blockoverride "first_character_portrait_anchor" {
+            parentanchor = bottom|left
+        }
+
+        blockoverride "second_character_portrait_anchor" {
+            parentanchor = bottom|right
+        }
+
+        blockoverride "character_religion_visibility" {
+            visible = no
+        }
+
+        blockoverride "character_name_maximumsize" {
+            maximumsize = { 270 -1 }
+        }
+
+        blockoverride "country_header_extra" {
+            icon = {
+                parentanchor = top|hcenter
+                texture = "gfx/interface/great_powers/banner_rank.dds"
+                texture_density = 2
+                size = { 65 40 }
+
+                datacontext = "[GetUniqueInternationalOrganization('hre')]"
+                datacontext = "[SituationView.GetActiveSituation.GetSituation]"
+                button = {
+                    parentanchor = center
+                    texture = "[GetUniqueInternationalOrganization('hre').GetIcon]"
+                    texture_density = 2
+                    size = {28 28}
+                    glow = {
+                        name = "drop_shadow"
+                        glow_radius = 3
+                        color = {0.0 0.0 0.0 1.0}
+                        alpha = 0.6
+                    }
+                    onclick = "[OpenInternationalOrganizationView(GetUniqueInternationalOrganization('hre').Self)]"
+                    tooltipwidget = {
+                        using = Situation_WarOfReligions_tooltip
+                    }
+                    onmousehierarchyenter = "[PdxGuiWidget.SetHighlightInternationalOrganization(GetUniqueInternationalOrganization('hre').Self)]"
+                }
+            }
+        }
+    }
+
+    ##################################### TAB NAME #####################################
+
+    # DEFAULT
+
+    ##################################### SUBHEADER #####################################
+
+    blockoverride "situation_subheader_content" {}
+
+    ##################################### MAIN CONTENT #####################################
+
+    blockoverride "situation_panel_main_content" {
+        # End Requirements
+        situation_card_expandable = {
+            blockoverride "header_button_onclick" {
+                onclick = "[LateralView.Vars.Toggle( 'requirements_toggled' )]"
+            }
+            blockoverride "header_text" {
+                text = "END_REQUIREMENTS"
+            }
+            blockoverride "header_icon" {
+                texture = "gfx/interface/icons/disasters/end_requirements_green.dds"
+            }
+            blockoverride "bottom_content" {
+                TooltipRequirementsList = {
+                    textcontext = "[SituationView.GetActiveSituation.GetSituation.GetEndConditions]"
+                }
+            }
+            blockoverride "visible_hint" {}
+            blockoverride "onaction_hint" {
+                action_tooltip = {
+                    title = "OPEN_HINT"
+                    on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_thirty_years_war')]"
+                }
+            }
+            blockoverride "bottom_content_onclick" {
+                visible = "[LateralView.Vars.Exists( 'requirements_toggled' )]"
+            }
+            blockoverride "icon_replace_visible_yes" {
+                visible = "[LateralView.Vars.Exists( 'requirements_toggled' )]"
+            }
+            blockoverride "icon_replace_visible_not" {
+                visible = "[Not(LateralView.Vars.Exists( 'requirements_toggled' ))]"
+            }
+        }
+
+        widget = {
+            minimumsize = { 200 40 }
+            maximumsize = { 200 40 }
+            layoutpolicy_horizontal= expanding
+            using = bg_generic_shadow
+
+            using = bg_text_mask_container_brown
+            background = {
+                using = text_mask_container_texture
+                modify_texture = {
+                    using = color_paper_texture
+                    blend_mode = add
+                }
+            }
+            background = {
+                texture = "gfx/interface/component_decoration/ios/hre/hre_overview_frame.dds"
+                texture_density = 2
+                spriteType = corneredstretched
+                spriteBorder = {20 20}
+            }
+            tooltip_widget = {
+                position = { 20 10 }
+                text_single = {
+                    layoutpolicy_horizontal = expanding
+                    align = center|nobaseline
+                    raw_text = "Current War Length: [GetGlobalVariable('current_religion_war_length').GetValue]"
+
+                }
+            }
+        }
+
+        # list of leading countries
+        situation_fancy_two_line_card = {
+            blockoverride "card_datacontext" {}
+            # Protestant Union
+            # Leader
+            blockoverride "left_flag_properties" {
+                datacontext = "[GetUniqueInternationalOrganization('protestant_union').GetLeaderCountry]"
+                visible = "[Country.IsValid]"
+            }
+            blockoverride "left_top_text" {
+                text = "[GetUniqueInternationalOrganization('protestant_union').GetLeaderCountry.GetName]"
+            }
+            blockoverride "left_bottom_flag" {
+                icon = {
+                    size = { 30 30 }
+                    texture = "gfx/interface/icons/religion/lutheran.dds"
+                }
+            }
+            blockoverride "left_bottom_text" {
+                text = "[GetUniqueInternationalOrganization('protestant_union').GetName]"
+            }
+            # Catholic League
+            # Leader
+            blockoverride "right_flag_properties" {
+                datacontext = "[GetUniqueInternationalOrganization('catholic_league').GetLeaderCountry]"
+                visible = "[Country.IsValid]"
+            }
+            blockoverride "right_top_text" {
+                text = "[GetUniqueInternationalOrganization('catholic_league').GetLeaderCountry.GetName]"
+            }
+            blockoverride "right_bottom_flag" {
+                icon = {
+                    size = { 30 30 }
+                    texture = "gfx/interface/icons/religion/catholic.dds"
+                }
+            }
+            blockoverride "right_bottom_text" {
+                text = "[GetUniqueInternationalOrganization('catholic_league').GetName]"
+            }
+        }
+
+        #IO Membership
+        situation_side_cards = {
+            blockoverride "card_datacontext" {}
+            # Protestant Union
+            blockoverride "left_header_icon" {
+                texture = "gfx/interface/icons/international_organizations/protestant_union.dds"
+            }
+            blockoverride "left_header_text" {
+                text = "WAR_OF_RELIGIONS_PROTESTANT_UNION_TITLE"
+            }
+            blockoverride "left_bottom_content" {
+                scrollarea = {
+                    layoutpolicy_horizontal = expanding
+                    size = { -1 200 }
+                    scrollbarpolicy_horizontal = always_off
+                    scrollbar_vertical = {
+                        using = Scrollbar_Vertical
+                    }
+
+                    scrollwidget = {
+                        dynamicgridbox = {
+                            layoutpolicy_horizontal = expanding
+                            flipdirection = yes
+                            position = {10 10}
+                            datamodel_wrap = 5
+                            maxhorizontalslots = 12
+                            datamodel = "[GetInternationalOrganization('protestant_union').GetMembers]"
+                            item = {
+                                country_flag_small = {}
+                            }
+                        }
+                    }
+                }
+            }
+            # Catholic League
+            blockoverride "right_header_icon" {
+                texture = "gfx/interface/icons/international_organizations/catholic_league.dds"
+            }
+            blockoverride "right_header_text" {
+                text = "WAR_OF_RELIGIONS_CATHOLIC_LEAGUE_TITLE"
+            }
+            blockoverride "right_bottom_content" {
+                scrollarea = {
+                    layoutpolicy_horizontal = expanding
+                    size = { -1 200 }
+                    scrollbarpolicy_horizontal = always_off
+                    scrollbar_vertical = {
+                        using = Scrollbar_Vertical
+                    }
+
+                    scrollwidget = {
+                        dynamicgridbox = {
+                            layoutpolicy_horizontal = expanding
+                            flipdirection = yes
+                            position = {10 10}
+                            datamodel_wrap = 5
+                            maxhorizontalslots = 12
+                            datamodel = "[GetInternationalOrganization('catholic_league').GetMembers]"
+                            item = {
+                                country_flag_small = {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    # IOs SUPPORT
+    blockoverride "situation_panel_main_content_bottom" {
+        # Stance on the War
+        situation_card_one_line = {
+            visible = "[SituationView.GetActiveSituation.GetSituation.MakeScope.GetVariable('war_of_religion_current_war').IsSet]"
+            blockoverride "header_icon" {
+                texture = "gfx/interface/icons/situations/war_of_religions.dds"
+            }
+            blockoverride "header_text" {
+                text = "WAR_OF_RELIGIONS_CURRENT_WAR"
+            }
+        }
+        situation_side_cards = {
+            visible = "[SituationView.GetActiveSituation.GetSituation.MakeScope.GetVariable('war_of_religion_current_war').IsSet]"
+            blockoverride "left_header_icon" {
+                texture = "gfx/interface/icons/diplomatic_status/war.dds"
+            }
+            blockoverride "left_header_text" {
+                text = "WAR_OF_RELIGIONS_FAVOR_WAR"
+            }
+            blockoverride "left_bottom_content" {
+                scrollarea = {
+                    layoutpolicy_horizontal = expanding
+                    size = { -1 150 }
+                    scrollbarpolicy_horizontal = always_off
+                    scrollbar_vertical = {
+                        using = Scrollbar_Vertical
+                    }
+                    scrollwidget = {
+                        dynamicgridbox = {
+                            layoutpolicy_horizontal = expanding
+                            flipdirection = yes
+                            position = {10 10}
+                            datamodel_wrap = 5
+                            maxhorizontalslots = 12
+                            datamodel = "[GetGlobalList('war_of_religions_wants_war_list')]"
+                            item = {
+                                country_flag_small = {
+                                    datacontext = "[Scope.GetCountry]"
+                                    blockoverride "click" {
+                                        onclick = "[OpenDiplomacy(Country.Self)]"
+                                    }
+                                    tooltipwidget = {
+                                        using = CountryTooltip
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            blockoverride "right_header_icon" {
+                texture = "gfx/interface/icons/alerts_icons/alert_call_for_peace.dds"
+            }
+            blockoverride "right_header_text" {
+                text = "WAR_OF_RELIGIONS_REJECT_WAR"
+            }
+            blockoverride "right_bottom_content" {
+                scrollarea = {
+                    layoutpolicy_horizontal = expanding
+                    size = { -1 150 }
+                    scrollbarpolicy_horizontal = always_off
+                    scrollbar_vertical = {
+                        using = Scrollbar_Vertical
+                    }
+                    scrollwidget = {
+                        dynamicgridbox = {
+                            layoutpolicy_horizontal = expanding
+                            flipdirection = yes
+                            position = {10 10}
+                            datamodel_wrap = 5
+                            maxhorizontalslots = 12
+                            datamodel = "[GetGlobalList('war_of_religions_wants_peace_list')]"
+                            item = {
+                                country_flag_small = {
+                                    datacontext = "[Scope.GetCountry]"
+                                    blockoverride "click" {
+                                        onclick = "[OpenDiplomacy(Country.Self)]"
+                                    }
+                                    tooltipwidget = {
+                                        using = CountryTooltip
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

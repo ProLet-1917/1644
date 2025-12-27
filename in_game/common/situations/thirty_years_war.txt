@@ -1,0 +1,279 @@
+thirty_years_war = {
+    monthly_spawn_chance = 1
+    hint_tag = hint_thirty_years_war
+
+    can_start = {
+        #current_year > 1590
+        #current_year < 1655
+        current_year >= 1615
+        exists = international_organization:hre
+        international_organization:hre = {
+            exists = leader_country
+            any_international_organization_member = {
+                is_subject = no
+                religion = religion:catholic
+            }
+            any_international_organization_member = {
+                is_subject = no
+                is_protestant = yes
+            }
+        }
+    }
+    can_end = {
+        current_year >= 1700
+        OR = {
+            custom_tooltip = {
+                text = in_peace_talk_in_westphalia
+                has_global_variable = now_in_peace_talk_in_westphalia
+            }
+            custom_tooltip = {
+                text = war_of_religions_peace_treaty_enforced_tt
+                always = no
+            }
+        }
+        NOT = { exists = international_organization:protestant_union }
+        NOT = { exists = international_organization:catholic_league }
+        NOT = { exists = international_organization:hre }
+    }
+
+    visible = {
+        has_presence_in = continent:europe
+    }
+
+    on_start = {
+        set_global_variable = {
+            name = current_religion_war_length
+            value = 312
+        }
+    }
+
+    on_monthly = {
+        change_global_variable = {
+            name = current_religion_war_length
+            add = 1
+        }
+    }
+
+    on_ended = {
+        random_country = {
+            destroy_international_organization = { target = international_organization:protestant_union }
+            destroy_international_organization = { target = international_organization:catholic_league }
+        }
+        remove_global_variable = current_religion_war_length
+        international_organization_chooses_new_leader = international_organization:hre
+    }
+
+    tooltip = {
+        if = {
+            limit = {
+                has_owner = yes
+                owner ?= {
+                    is_member_of_international_organization = international_organization:protestant_union
+                    is_leader_of_international_organization = international_organization:protestant_union
+                }
+            }
+            custom_tooltip = protestant_union_leader.tt
+        }
+        else_if = {
+            limit = {
+                has_owner = yes
+                owner ?= {
+                    is_member_of_international_organization = international_organization:catholic_league
+                    is_leader_of_international_organization = international_organization:catholic_league
+                }
+            }
+            custom_tooltip = catholic_league_leader.tt
+        }
+        else_if = {
+            limit = {
+                has_owner = yes
+                owner ?= { is_member_of_international_organization = international_organization:protestant_union }
+            }
+            custom_tooltip = protestant_union.tt
+        }
+        else_if = {
+            limit = {
+                has_owner = yes
+                owner ?= { is_member_of_international_organization = international_organization:catholic_league }
+            }
+            custom_tooltip = catholic_league.tt
+        }
+        else_if = {
+            limit = {
+                has_owner = yes
+                owner ?= {
+                    any_related_country = {
+                        type = alliance
+                        is_leader_of_international_organization = international_organization:protestant_union
+                    }
+                    NOT = {
+                        any_related_country = {
+                            type = alliance
+                            is_leader_of_international_organization = international_organization:catholic_league
+                        }
+                    }
+                }
+            }
+            custom_tooltip = protestant_union_ally.tt
+        }
+        else_if = {
+            limit = {
+                has_owner = yes
+                owner ?= {
+                    any_related_country = {
+                        type = alliance
+                        is_leader_of_international_organization = international_organization:catholic_league
+                    }
+                    NOT = {
+                        any_related_country = {
+                            type = alliance
+                            is_leader_of_international_organization = international_organization:protestant_union
+                        }
+                    }
+                }
+            }
+            custom_tooltip = catholic_league_ally.tt
+        }
+        else_if = {
+            limit = {
+                has_owner = yes
+                owner ?= {
+                    NOT = {
+                        OR = {
+                            is_member_of_international_organization = international_organization:protestant_union
+                            is_member_of_international_organization = international_organization:catholic_league
+                        }
+                    }
+                }
+            }
+            custom_tooltip = war_of_religions_neutral.tt
+        }
+    }
+
+    map_color = {
+        if = {
+            limit = { #Leader of the Protestant Union
+                has_owner = yes
+                owner ?= {
+                    is_member_of_international_organization = international_organization:protestant_union
+                    is_leader_of_international_organization = international_organization:protestant_union
+                }
+            }
+            value = war_of_religions_protestant_union_leader_color
+        }
+        else_if = {
+            limit = { #Leader of the Catholic League
+                has_owner = yes
+                owner ?= {
+                    is_member_of_international_organization = international_organization:catholic_league
+                    is_leader_of_international_organization = international_organization:catholic_league
+                }
+            }
+            value = war_of_religions_catholic_league_leader_color
+        }
+        else_if = {
+            limit = { #Member of the Protestant Union
+                has_owner = yes
+                owner ?= { is_member_of_international_organization = international_organization:protestant_union }
+            }
+            value = war_of_religions_protestant_union_color
+        }
+        else_if = {
+            limit = { #Member of the Catholic League
+                has_owner = yes
+                owner ?= { is_member_of_international_organization = international_organization:catholic_league }
+            }
+            value = war_of_religions_catholic_league_color
+        }
+        else_if = {
+            limit = { #Ally of the Protestant Union Leader
+                has_owner = yes
+                owner ?= {
+                    any_related_country = {
+                        type = alliance
+                        is_leader_of_international_organization = international_organization:protestant_union
+                    }
+                    NOT = {
+                        any_related_country = {
+                            type = alliance
+                            is_leader_of_international_organization = international_organization:catholic_league
+                        }
+                    }
+                }
+            }
+            value = war_of_religions_protestant_union_ally_color
+        }
+        else_if = {
+            limit = { #Ally of the Catholic League Leader
+                has_owner = yes
+                owner ?= {
+                    any_related_country = {
+                        type = alliance
+                        is_leader_of_international_organization = international_organization:catholic_league
+                    }
+                    NOT = {
+                        any_related_country = {
+                            type = alliance
+                            is_leader_of_international_organization = international_organization:protestant_union
+                        }
+                    }
+                }
+            }
+            value = war_of_religions_catholic_league_ally_color
+        }
+        else_if = {
+            limit = { #Neutral
+                has_owner = yes
+                owner ?= {
+                    can_see_situation = situation:war_of_religions
+                    NOR = {
+                        OR = {
+                            is_member_of_international_organization = international_organization:protestant_union
+                            is_member_of_international_organization = international_organization:catholic_league
+                        }
+                    }
+                }
+            }
+            value = rtr_neutral_color
+        }
+        else = {
+            value = define:NMapColors|DEFAULT_COLOR
+        }
+    }
+
+    legend_key = {
+        desc = "WAR_OF_RELIGIONS_PROTESTANT_UNION_LEADER"
+        color = war_of_religions_protestant_union_leader_color
+        require_color_on_map = yes
+    }
+    legend_key = {
+        desc = "protestant_union"
+        color = war_of_religions_protestant_union_color
+        require_color_on_map = yes
+    }
+    legend_key = {
+        desc = "WAR_OF_RELIGIONS_PROTESTANT_LEAGUE_LEADER_ALLY"
+        color = war_of_religions_protestant_union_ally_color
+        require_color_on_map = yes
+    }
+    legend_key = {
+        desc = "WAR_OF_RELIGIONS_CATHOLIC_LEAGUE_LEADER"
+        color = war_of_religions_catholic_league_leader_color
+        require_color_on_map = yes
+    }
+    legend_key = {
+        desc = "catholic_league"
+        color = war_of_religions_catholic_league_color
+        require_color_on_map = yes
+    }
+    legend_key = {
+        desc = "WAR_OF_RELIGIONS_CATHOLIC_LEAGUE_LEADER_ALLY"
+        color = war_of_religions_catholic_league_ally_color
+        require_color_on_map = yes
+    }
+    legend_key = {
+        desc = "RTR_NEUTRALS_TITLE"
+        color = rtr_neutral_color
+        require_color_on_map = yes
+    }
+}
