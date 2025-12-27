@@ -1,11 +1,14 @@
 ﻿# 初始化变量
 late_ming_crisis_init_variable = {
-    custom_description = {
+<<<<<<< HEAD
+
+=======
         #text = "late_ming_crisis_start_effect_desc"
-        trigger_event_silently = wsg_1644_choice.5 #for test
+        #c:CSH = { trigger_event_silently = wsg_1644_choice.5 }#for test
+>>>>>>> 9a6bbcf (debug)
         # 遍历中国国家列表中的所有国家
-        every_in_global_variable_list = {
-            list = china_countries_list
+        every_in_global_list = {
+            variable = china_countries_list
             #limit = {
                 #is_subject = no  # 可选：排除附属国
             #}
@@ -41,10 +44,7 @@ late_ming_crisis_init_variable = {
                 set_variable = { name = late_ming_crisis_my_casualties value = 0 }
             }
 
-            # 可选：记录到日志以供调试
-            #log = "[This.GetName] 的初始统治度: 100, 初始天命: 100"
         }
-    }
 }
 
 # 战斗胜利
