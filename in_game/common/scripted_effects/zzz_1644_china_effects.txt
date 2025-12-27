@@ -1,18 +1,40 @@
 ﻿# 收集所有首都在中国和满洲的国家到全局变量列表
 # 每月更新，用于GUI动态显示，按人口排序（降序，人口高的在前）
-zzz_1644_collect_china_countries_effect = {
-	clear_global_variable_list = china_countries_list
+# 同时给这些国家添加 chinese_country 变量用于判断
+collect_china_countries_effect = {
 	every_country = {
 		limit = {
 			exists = capital
 			exists = this
-			is_subject = no
 			OR = {
 				capital.region = region:west_china_region
 				capital.region = region:east_china_region
 				capital.region = region:north_china_region
 				capital.region = region:south_china_region
 				capital.region = region:manchuria_region
+			}
+		}
+		# 添加 bool 变量用于判断
+		set_variable = chinese_country
+		# 初始化战斗统计变量（如果还没有）
+		if = {
+			limit = {
+				situation:late_ming_crisis = { situation_is_active = yes }
+				NOT = { has_variable = late_ming_crisis_my_kills }
+			}
+			set_variable = {
+				name = late_ming_crisis_my_kills
+				value = 0
+			}
+		}
+		if = {
+			limit = {
+				situation:late_ming_crisis = { situation_is_active = yes }
+				NOT = { has_variable = late_ming_crisis_my_casualties }
+			}
+			set_variable = {
+				name = late_ming_crisis_my_casualties
+				value = 0
 			}
 		}
 		add_to_global_variable_list = {
@@ -79,33 +101,6 @@ zzz_1644_grant_unification_cb_for_single_target = {
 	}
 }
 
-# 为单个国家授予对所有中国境内国家的统一中国CB
-# 保留此效果以备后用
-# 使用全局列表以提高性能
-zzz_1644_grant_unification_cb_for_country = {
-	# 为当前国家授予对所有符合条件的国家的CB
-	every_in_global_list = {
-		variable = china_countries_list
-		limit = {
-			any_owned_location = {
-				OR = {
-					region = region:west_china_region
-					region = region:east_china_region
-					region = region:north_china_region
-					region = region:south_china_region
-					region = region:manchuria_region
-				}
-			}
-		}
-		root = {
-			add_casus_belli = {
-				target = this
-				type = casus_belli:cb_chinese_unification
-			}
-		}
-	}
-}
-
 # 重建天朝：创建天朝组织并设置当前国家为leader（测试用）
 zzz_1644_recreate_middle_kingdom = {
 	# 保存当前国家scope
@@ -137,5 +132,20 @@ zzz_1644_form_china_effect = {
 	rtr_recreate_middle_kingdom = yes
 	# 设置国家等级为4级（帝国级）
 	set_country_rank_effect = { rank = country_rank:rank_empire }
+}
+
+# 增加明末局势死亡总人数（照抄 rise_of_timur 的方式）
+zzz_1644_increase_total_casualties = {
+	if = {
+		limit = {
+			situation:late_ming_crisis = { situation_is_active = yes }
+		}
+		situation:late_ming_crisis = {
+			change_variable = {
+				name = late_ming_crisis_total_casualties
+				add = $variable$
+			}
+		}
+	}
 }
 
