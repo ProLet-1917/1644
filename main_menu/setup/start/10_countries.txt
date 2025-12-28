@@ -1541,10 +1541,14 @@ countries = {
 		include = "zzz_expl_european_colonial_powers"
 		starting_technology_level = 4
 		include = "catholic_monarchy"
+		
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = eng_charles_i_stuart
+			regency = consort_regency
+			active_regent = sco_archibald_campbell
+			start_regency_date = 1639.3.21
+			end_regency_date = 1640.9.1
 			heir = eng_charles_ii_stuart
 			
 			ruler_term = { character = eng_james_i_stuart start_date = 1603.3.24 end_date = 1625.3.27 regnal_number = 1 }
