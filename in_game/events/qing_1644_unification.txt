@@ -318,6 +318,7 @@ qng_1644_unification.5 = {
 	title = qng_1644_unification.5.title
 	desc = qng_1644_unification.5.desc
 	historical_info = qng_1644_unification.5.historical_info
+	major = yes
 	option = {
 		name = qng_1644_unification.5.a
 		c:QNG = {
@@ -348,20 +349,21 @@ qng_1644_unification.6 = {
 	desc = qng_1644_unification.6.desc
 	historical_info = qng_1644_unification.6.historical_info
 	fire_only_once = yes
-	dynamic_historical_event = {
- 		tag = QNG
- 		from = 1644.1.1		# The game will check if this event can be fired after this date
- 		to = 1700.1.1		# The game will stop checking after this date.
- 		monthly_chance = 100	# Monthly chance that this event will fire (10 = 10% chance)
- 	}
+	major = yes
 	trigger = {
 		has_variable = qng_invasion
 		owns = location:dadu
 		capital != location:dadu
 		exists = capital
 	}
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1644.1.1		# The game will check if this event can be fired after this date
+		to = 1700.1.1		# The game will stop checking after this date.
+		monthly_chance = 100	# Monthly chance that this event will fire (10 = 10% chance)
+	}
 	option = {
-		name = qng_1644_unification.6.a#迁都
+		name = qng_1644_unification.6.a #迁都
 		historical_option = yes
 		set_capital = location:dadu
 		c:QNG = {
@@ -384,7 +386,7 @@ qng_1644_unification.6 = {
         }
 	}
 	option = {
-		name = qng_1644_unification.6.b#不迁都
+		name = qng_1644_unification.6.b #不迁都
 		c:QNG = {
             if = {
                 limit = {
@@ -413,84 +415,108 @@ qng_1644_unification.7 = {
 	desc = qng_1644_unification.7.desc
 	historical_info = qng_1644_unification.7.historical_info
 	fire_only_once = yes
-	dynamic_historical_event = {
- 		tag = QNG
- 		from = 1644.1.1		# The game will check if this event can be fired after this date
- 		to = 1844.1.1		# The game will stop checking after this date.
- 		monthly_chance = 25	# Monthly chance that this event will fire (10 = 10% chance)
- 	}
+	major = yes
 	trigger = {
 		has_variable = qng_invasion
 		owns = location:dadu
 		capital = location:dadu
 	}
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1644.1.1		# The game will check if this event can be fired after this date
+		to = 1700.1.1		# The game will stop checking after this date.
+		monthly_chance = 25	# Monthly chance that this event will fire (10 = 10% chance)
+	}
 	option = {
-		name = qng_1644_unification.7.a#宣战
+		name = qng_1644_unification.7.a #宣战
 		if = {
 			limit = {
 				tag = QNG
 			}
-			c:CSH ?= {
-				save_scope_as = target_csh
-				if = {
+			# 注释掉原来的单独宣战代码
+			# c:CSH ?= {
+			# 	save_scope_as = target_csh
+			# 	if = {
+			# 		limit = {
+			# 			exists = target_csh
+			# 			is_subject = no
+			# 			ROOT = {
+			# 			 	NOT = { is_at_war_with = target_csh }
+			# 			}
+			# 		}
+			# 		ROOT = {
+			# 			add_casus_belli = {
+			# 				target = scope:target_csh
+			# 				type = casus_belli:cb_claim_mandate_of_heaven
+			# 			}
+			# 			if = {
+			# 				limit = {
+			# 					always = yes
+			# 				}
+			# 				declare_war_with_cb = {
+			# 					target = scope:target_csh
+			# 					type = casus_belli:cb_claim_mandate_of_heaven
+			# 				}
+			# 			}
+			# 			custom_tooltip = qng_1644_unification_gain_cb_tt
+			# 		}
+			# 	}
+			# }
+			# c:MNG ?= {
+			# 	save_scope_as = target_mng
+			# 	if = {
+			# 		limit = {
+			# 			exists = target_mng
+			# 			is_subject = no
+			# 			ROOT = {
+			# 			 	NOT = { is_at_war_with = target_mng }
+			# 			}
+			# 		}
+			# 		ROOT = {
+			# 			add_casus_belli = {
+			# 				target = scope:target_mng
+			# 				type = casus_belli:cb_claim_mandate_of_heaven
+			# 			}
+			# 			if = {
+			# 				limit = {
+			# 					always = yes
+			# 				}
+			# 				declare_war_with_cb = {
+			# 					target = scope:target_mng
+			# 					type = casus_belli:cb_claim_mandate_of_heaven
+			# 				}
+			# 			}
+			# 			custom_tooltip = qng_1644_unification_gain_cb_tt
+			# 		}
+			# 	}
+			# }
+			
+			# 对全部中国势力宣战（使用中国国家列表）
+			custom_tooltip = qng_1644_unification_gain_cb_tt
+			hidden_effect = {
+				every_in_global_list = {
+					variable = china_countries_list
 					limit = {
-						exists = target_csh
-						is_subject = no
+						this != ROOT
 						ROOT = {
-						 	NOT = { is_at_war_with = target_csh }
-							NOT = { has_truce_with = target_csh }
+							NOT = { is_at_war_with = this }
 						}
 					}
 					ROOT = {
 						add_casus_belli = {
-							target = scope:target_csh
-							type = casus_belli:cb_claim_mandate_of_heaven
+							target = this
+							type = casus_belli:cb_chinese_unification
 						}
-						if = {
-							limit = {
-								always = yes
-							}
-							declare_war_with_cb = {
-								target = scope:target_csh
-								type = casus_belli:cb_claim_mandate_of_heaven
-							}
+						declare_war_with_cb = {
+							target = this
+							type = casus_belli:cb_chinese_unification
 						}
-						custom_tooltip = qng_1644_unification_gain_cb_tt
-					}
-				}
-			}
-			c:MNG ?= {
-				save_scope_as = target_mng
-				if = {
-					limit = {
-						exists = target_mng
-						is_subject = no
-						ROOT = {
-						 	NOT = { is_at_war_with = target_mng }
-						 	NOT = { has_truce_with = target_mng }
-						}
-					}
-					ROOT = {
-						add_casus_belli = {
-							target = scope:target_mng
-							type = casus_belli:cb_claim_mandate_of_heaven
-						}
-						if = {
-							limit = {
-								always = yes
-							}
-							declare_war_with_cb = {
-								target = scope:target_mng
-								type = casus_belli:cb_claim_mandate_of_heaven
-							}
-						}
-						custom_tooltip = qng_1644_unification_gain_cb_tt
 					}
 				}
 			}
 		}
 	}
-	option = {
-		name = qng_1644_unification.7.b#不宣战
-	}
+	# option = {
+	# 	name = qng_1644_unification.7.b #不宣战
+	# }
 }
