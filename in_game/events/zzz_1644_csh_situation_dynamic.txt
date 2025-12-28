@@ -7,7 +7,7 @@ lmc_situation_dynamic.1 = { #大同反正
     fire_only_once = yes
     dynamic_historical_event = {
  		tag = CSH
- 		from = 1644.1.1		# The game will check if this event can be fired after this date
+ 		from = 1644.4.1		# The game will check if this event can be fired after this date
  		to = 1700.1.1		# The game will stop checking after this date.
  		monthly_chance = 100	# Monthly chance that this event will fire (10 = 10% chance)
  	}
@@ -17,17 +17,17 @@ lmc_situation_dynamic.1 = { #大同反正
 			c:QNG ?= { has_variable = chi_domination }
             c:CSH ?= { 
                 has_variable = chi_domination 
-                chi_domination < 70
-                NOT = { owns = location:funing }
-            }
+                chi_domination < 70 #天命
+                NOT = { owns = location:funing } #失去山海关
+            } #
             c:WSG ?= {
                 NOT = {
-                    is_subject_of = c:CSH
+                    is_subject_of = c:CSH #吴三桂不是大顺附庸
                 }
             }
             OR = {
-                c:QNG.var:chi_domination > c:CSH.var:chi_domination
-                c:MNG.var:chi_domination > c:CSH.var:chi_domination
+                c:QNG.var:chi_domination > c:CSH.var:chi_domination #清国天命大于大顺天命
+                c:MNG.var:chi_domination > c:CSH.var:chi_domination #明国天命大于大顺天命
             }
 		}
 	}
