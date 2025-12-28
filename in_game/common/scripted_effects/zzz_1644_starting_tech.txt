@@ -2,8 +2,16 @@
 
 
 set_starting_tech_level_by_region = {
-	# QNG（清）例外：无论首都在哪里都是3级科技
+	# 酋邦政府类型 = 0级
 	if = {
+		limit = {
+			government_type = government_type:tribe
+		}
+		set_variable = { name = start_tech_lv_1644 value = 0 }
+		research_advances_by_level = no
+	}
+	# QNG（清）例外：无论首都在哪里都是3级科技
+	else_if = {
 		limit = { tag = QNG }
 		set_variable = { name = start_tech_lv_1644 value = 3 }
 		research_advances_by_level = yes
@@ -38,6 +46,35 @@ set_starting_tech_level_by_region = {
 			capital ?= { sub_continent = sub_continent:western_europe }
 		}
 		set_variable = { name = start_tech_lv_1644 value = 4 }
+		research_advances_by_level = yes
+	}
+	# 游牧政府类型 = 1级
+	else_if = {
+		limit = {
+			government_type = government_type:steppe_horde
+		}
+		set_variable = { name = start_tech_lv_1644 value = 1 }
+		research_advances_by_level = yes
+	}
+	# 高加索地区 = 2级
+	else_if = {
+		limit = {
+			exists = capital
+			capital.region = region:caucasus_region
+		}
+		set_variable = { name = start_tech_lv_1644 value = 2 }
+		research_advances_by_level = yes
+	}
+	# 乌拉尔、大草原地区 = 1级
+	else_if = {
+		limit = {
+			exists = capital
+			OR = {
+				capital.region = region:ural_region
+				capital.region = region:steppes_region
+			}
+		}
+		set_variable = { name = start_tech_lv_1644 value = 1 }
 		research_advances_by_level = yes
 	}
 	#  
@@ -2052,6 +2089,13 @@ research_advances_by_level = {
 		if = {
 			limit = { var:start_tech_lv_1644 >= 4 }
 			research_age_4_advances = yes
+			
+			# 瑞典特殊处理：研究军事革命科技
+			if = {
+				limit = { tag = SWE }
+				unlock_advance_effect = { type = military_revolution_advance }
+				research_advance = advance_type:military_revolution_advance
+			}
 		}
 	}
 }
