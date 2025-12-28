@@ -129,5 +129,23 @@
             change_max_raw_material_workers = 3
         }
 
+        c:SWE = {
+            add_country_modifier = {
+                months = 360
+                modifier = the_reforms_of_gustav_ii
+            }
+            add_country_modifier = {
+                months = 600
+                modifier = age_of_swedish_empire
+            }
+        }
+
+        c:NSV = {
+            make_subject_of = {
+                target = c:SWE
+                type = subject_type:colonial_nation
+            }
+        }
+
     }
 }
