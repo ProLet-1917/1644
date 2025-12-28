@@ -24,3 +24,18 @@ REPLACE:turkish_pashas = {
 	years = 2
 }
 
+REPLACE:expanded_timariot_system = {
+	unique = yes
+	potential = {
+		has_or_had_tag = TUR
+		NOT = { has_variable = abolished_timariot_system }
+	}
+	country_modifier = {
+		army_cavalry_power = 0.2
+		army_cavalry_maintenance_cost_modifier = -0.2
+		monthly_towards_aristocracy = societal_value_monthly_move
+	}
+	years = 2
+}
+
+
