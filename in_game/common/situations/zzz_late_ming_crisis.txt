@@ -7,14 +7,7 @@
 		current_year >= 1627
 		current_year <= 1650
 		exists = c:MNG
-		NOT = { c:MNG = { owns = location:dadu } }
-		# OR = {
-		# 	current_year = 1644  # 1644年游戏开始时自动启动
-		# 	c:MNG = { stability < 50 }
-		# 	c:MNG = { current_celestial_authority < 50 } # Assuming this trigger exists for Mandate
-		# 	c:MNG = { is_at_war_with = c:QNG }
-		# 	c:MNG = { is_at_war_with = c:CSH }
-		# }
+
 	}
 
 	# 2. 结束条件
@@ -48,11 +41,7 @@
 
 	# 4. 启动效果
 	on_start = {
-		# 存储玩家国家引用到 Situation 变量（用于 GUI 访问）
-		set_variable = {
-			name = player_country_ref
-			value = root
-		}
+
 		# 解散天朝：移除所有天朝成员
 		if = {
 			limit = { exists = international_organization:middle_kingdom }
@@ -169,8 +158,8 @@
 			}
 			add_country_modifier = {
 				modifier = late_ming_crisis_participant
-				years = 10
-				mode = add_and_extend
+				years = 5
+				mode = replace
 			}
 		}
 		

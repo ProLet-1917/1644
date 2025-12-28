@@ -3,7 +3,7 @@ situation_panel = {
 	blockoverride "situation_panel_image" {
 		# 基于 two_countries_header_template 的三国家header：顺、明、清
 		layoutpolicy_horizontal = expanding
-		size = { -1 205 }
+		size = { -1 200 }
 		
 		blockoverride "country_header_names_visible" { visible = no }
 		
@@ -140,115 +140,7 @@ situation_panel = {
 			}
 		}
 		
-		# # 大顺名称和徽章
-		# hbox = {
-		# 	layoutpolicy_horizontal = expanding
-		# 	layoutpolicy_vertical = expanding
-			
-		# 	block "FirstCountryVisible" {
-		# 		visible = "[And(GetCountry('CSH').Exists, GetCountry('CSH').GetGovernment.HasRulerOrRegent)]"
-		# 	}
-		# 	hbox = {
-		# 		using = layoutpolicy_expanding
-		# 		block "FirstCountryContext" {
-		# 			datacontext = "[GetCountry('CSH')]"
-		# 		}
-		# 		datacontext = "[GetCountry('CSH').GetGovernment]"
-		# 		country_government_character = {
-		# 			block "FirstCountryContext" {
-		# 				datacontext = "[GetCountry('CSH')]"
-		# 			}
-		# 			blockoverride "character_name_maximumsize" {
-		# 				maximumsize = { 140 -1 }
-		# 			}
-		# 			blockoverride "character_name_text" {
-		# 				raw_text = "[Character.GetShortNameWithNoTooltip]"
-		# 			}
-		# 		}
-		# 		blockoverride "bg_name_banner_flip" {}
-		# 		blockoverride "bg_name_banner_margin" {
-		# 			margin_left = 20
-		# 			margin_right = 0
-		# 			margin_top = 2
-		# 			margin_bottom = 7
-		# 		}
-		# 	}
-		# }
 		
-		# # 大明名称和徽章
-		# hbox = {
-		# 	layoutpolicy_horizontal = expanding
-		# 	layoutpolicy_vertical = expanding
-			
-		# 	block "SecondCountryVisible" {
-		# 		visible = "[And(GetCountry('MNG').Exists, GetCountry('MNG').GetGovernment.HasRulerOrRegent)]"
-		# 	}
-		# 	hbox = {
-		# 		using = layoutpolicy_expanding
-		# 		block "SecondCountryContext" {
-		# 			datacontext = "[GetCountry('MNG')]"
-		# 		}
-		# 		datacontext = "[GetCountry('MNG').GetGovernment]"
-		# 		country_government_character = {
-		# 			block "SecondCountryContext" {
-		# 				datacontext = "[GetCountry('MNG')]"
-		# 			}
-		# 			blockoverride "character_name_maximumsize" {
-		# 				maximumsize = { 140 -1 }
-		# 			}
-		# 			blockoverride "character_name_text" {
-		# 				raw_text = "[Character.GetShortNameWithNoTooltip]"
-		# 			}
-		# 		}
-		# 		blockoverride "bg_name_banner_flip" {}
-		# 		blockoverride "bg_name_banner_margin" {
-		# 			margin_left = 0
-		# 			margin_right = 0
-		# 			margin_top = 2
-		# 			margin_bottom = 7
-		# 		}
-		# 	}
-		# }
-		
-		# # 大清名称和徽章
-		# hbox = {
-		# 	layoutpolicy_horizontal = expanding
-		# 	layoutpolicy_vertical = expanding
-			
-		# 	block "ThirdCountryVisible" {
-		# 		visible = "[And(GetCountry('QNG').Exists, GetCountry('QNG').GetGovernment.HasRulerOrRegent)]"
-		# 	}
-		# 	hbox = {
-		# 		using = layoutpolicy_expanding
-		# 		block "ThirdCountryContext" {
-		# 			datacontext = "[GetCountry('QNG')]"
-		# 		}
-		# 		datacontext = "[GetCountry('QNG').GetGovernment]"
-		# 		country_government_character = {
-		# 			block "ThirdCountryContext" {
-		# 				datacontext = "[GetCountry('QNG')]"
-		# 			}
-		# 			blockoverride "country_header_orientation" {
-		# 				righttoleft = yes
-		# 			}
-		# 			blockoverride "country_government_character_labels_align" {
-		# 				align = right|nobaseline
-		# 			}
-		# 			blockoverride "character_name_maximumsize" {
-		# 				maximumsize = { 140 -1 }
-		# 			}
-		# 			blockoverride "character_name_text" {
-		# 				raw_text = "[Character.GetShortNameWithNoTooltip]"
-		# 			}
-		# 		}
-		# 		blockoverride "bg_name_banner_margin" {
-		# 			margin_left = 0
-		# 			margin_right = 20
-		# 			margin_top = 2
-		# 			margin_bottom = 7
-		# 		}
-		# 	}
-		# }
 		
 		using = bg_age_event_frame
 		
@@ -260,6 +152,7 @@ situation_panel = {
 
 	# ACTIONS
 	blockoverride "situation_panel_main_content" {
+		margin_top = -50  # 向上移动主内容，压缩标题下方的空白
 
 		situation_card_expandable = {
 			blockoverride "header_button_onclick" {
