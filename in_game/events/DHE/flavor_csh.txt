@@ -7,7 +7,6 @@ flavor_csh.1 = {
 	historical_info = flavor_csh.1.historical_info
 	major = yes
 	trigger = {
-		# CJX必须是CSH的附庸
 		c:CJX ?= {
 			is_subject_of = c:CSH
 		}
@@ -23,10 +22,15 @@ flavor_csh.1 = {
 		#
 		c:WSG ?= {
 			NOT = {
-				is_subject_of = c:CSH
+				is_subject_of = c:CSH				#吴三桂不是大顺附庸
 			}
 		}
+		# OR = {
+		# 	c:QNG.var:chi_domination > c:CSH.var:chi_domination			#清国军威大于大顺军威
+		# 	c:MNG.var:chi_domination > c:CSH.var:chi_domination			#明国军威大于大顺军威
+		# }
 	}
+
 	immediate = {
 		c:CJX = {
 			set_variable = cjx_rebellion_first
