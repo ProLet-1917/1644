@@ -474,6 +474,7 @@ qng_1644_unification.7 = {
 			limit = {
 				tag = QNG
 			}
+<<<<<<< HEAD
 			c:CSH ?= {
 				save_scope_as = target_csh
 				if = {
@@ -660,6 +661,114 @@ qng_1644_unification.8 = {
 						modifier = opinion_emperors_genorisity
 					}
 				}
+=======
+			# 注释掉原来的单独宣战代码
+			# c:CSH ?= {
+			# 	save_scope_as = target_csh
+			# 	if = {
+			# 		limit = {
+			# 			exists = target_csh
+			# 			is_subject = no
+			# 			ROOT = {
+			# 			 	NOT = { is_at_war_with = target_csh }
+			# 			}
+			# 		}
+			# 		ROOT = {
+			# 			add_casus_belli = {
+			# 				target = scope:target_csh
+			# 				type = casus_belli:cb_claim_mandate_of_heaven
+			# 			}
+			# 			if = {
+			# 				limit = {
+			# 					always = yes
+			# 				}
+			# 				declare_war_with_cb = {
+			# 					target = scope:target_csh
+			# 					type = casus_belli:cb_claim_mandate_of_heaven
+			# 				}
+			# 			}
+			# 			custom_tooltip = qng_1644_unification_gain_cb_tt
+			# 		}
+			# 	}
+			# }
+			# c:MNG ?= {
+			# 	save_scope_as = target_mng
+			# 	if = {
+			# 		limit = {
+			# 			exists = target_mng
+			# 			is_subject = no
+			# 			ROOT = {
+			# 			 	NOT = { is_at_war_with = target_mng }
+			# 			}
+			# 		}
+			# 		ROOT = {
+			# 			add_casus_belli = {
+			# 				target = scope:target_mng
+			# 				type = casus_belli:cb_claim_mandate_of_heaven
+			# 			}
+			# 			if = {
+			# 				limit = {
+			# 					always = yes
+			# 				}
+			# 				declare_war_with_cb = {
+			# 					target = scope:target_mng
+			# 					type = casus_belli:cb_claim_mandate_of_heaven
+			# 				}
+			# 			}
+			# 			custom_tooltip = qng_1644_unification_gain_cb_tt
+			# 		}
+			# 	}
+			# }
+			
+			# 仅对未与 ROOT 开战的 CSH 和 MNG 宣战
+			custom_tooltip = qng_1644_unification_gain_cb_tt
+			hidden_effect = {
+				# 如果大明存在且不是附庸且未与 ROOT 开战，则宣战
+				c:CSH ?= {
+					save_scope_as = target_csh
+					if = {
+						limit = {
+							exists = target_csh
+							is_subject = no
+							ROOT = {
+								NOT = { is_at_war_with = target_csh }
+							}
+						}
+						ROOT = {
+							add_casus_belli = {
+								target = scope:target_csh
+								type = casus_belli:cb_chinese_unification
+							}
+							declare_war_with_cb = {
+								target = scope:target_csh
+								type = casus_belli:cb_chinese_unification
+							}
+						}
+					}
+				}
+				# 如果蒙古存在且不是附庸且未与 ROOT 开战，则宣战
+				c:MNG ?= {
+					save_scope_as = target_mng
+					if = {
+						limit = {
+							exists = target_mng
+							is_subject = no
+							ROOT = {
+								NOT = { is_at_war_with = target_mng }
+							}
+						}
+						ROOT = {
+							add_casus_belli = {
+								target = scope:target_mng
+								type = casus_belli:cb_chinese_unification
+							}
+							declare_war_with_cb = {
+								target = scope:target_mng
+								type = casus_belli:cb_chinese_unification
+							}
+						}
+					}
+>>>>>>> e9e07ec (debug)
 			}
 		}
 	}
