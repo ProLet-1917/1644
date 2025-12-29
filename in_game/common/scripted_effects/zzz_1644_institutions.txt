@@ -109,6 +109,16 @@ give_reformation_institutions = {
 		}
 	}
 }
+
+# 给予军事革命思潮
+give_military_revolution_institution = {
+	every_owned_location = {
+		change_institution_progress = {
+			type = institution:military_revolution
+			value = 100
+		}
+	}
+}
 give_all_1644_institutions = {
 	every_owned_location = {
 		change_institution_progress = {
@@ -219,6 +229,12 @@ give_institutions_by_tech_level = {
 		if = {
 			limit = { var:start_tech_lv_1644 >= 4 }
 			give_reformation_institutions = yes
+			
+			# 瑞典特殊处理：4级科技时也给予军事革命思潮
+			if = {
+				limit = { tag = SWE }
+				give_military_revolution_institution = yes
+			}
 		}
 	}
 }
