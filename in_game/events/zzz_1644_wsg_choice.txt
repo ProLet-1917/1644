@@ -281,7 +281,7 @@ wsg_1644_choice.4 = { #崇祯不南迁、李自成不进京、清朝入关后：
 			}
 			if = {
 				limit = { exists = scope:wsg_qng }
-				make_subject_of = { target = scope:wsg_qng type = subject_type:vassal }
+				make_subject_of = { target = scope:wsg_qng type = subject_type:cn_march_governor }
 				# 成为附庸后，稍作延迟再处理加入宗主战争（便于关系生效）
 				ROOT = { trigger_event_silently = { id = wsg_1644_choice.100 days = 2 } }
 			}

@@ -17,11 +17,11 @@ qng_1644_unification.1 = {
 }
 
 qng_1644_unification.2 = {
-    #吴三桂献关
+
     type = country_event
     title = qng_1644_unification.2.title
     desc = qng_1644_unification.2.desc
-    is_triggered_only = yes
+    major = yes
     immediate = {
         set_variable = qng_invasion
     }
@@ -38,10 +38,6 @@ qng_1644_unification.2 = {
                     limit = {
                         exists = this
                         is_subject = no
-                        # ROOT = {
-                        # 	NOT = { is_at_war_with = this }
-                        # 	NOT = { has_truce_with = this }
-                        # }
                     }
                     ROOT = {
                         add_casus_belli = {
@@ -69,10 +65,6 @@ qng_1644_unification.2 = {
                     limit = {
                         exists = this
                         is_subject = no
-                        # ROOT = {
-                        # 	NOT = { is_at_war_with = this }
-                        # 	NOT = { has_truce_with = this }
-                        # }
                     }
                     ROOT = {
                         add_casus_belli = {
@@ -242,10 +234,6 @@ qng_1644_unification.3 = {
                     limit = {
                         exists = this
                         is_subject = no
-                        # ROOT = {
-                        # 	NOT = { is_at_war_with = this }
-                        # 	NOT = { has_truce_with = this }
-                        # }
                     }
                     ROOT = {
                         add_casus_belli = {
@@ -424,70 +412,13 @@ qng_1644_unification.7 = {
     }
     dynamic_historical_event = {
         tag = QNG
-        from = 1644.5.1		# The game will check if this event can be fired after this date
+        from = 1644.6.1		# The game will check if this event can be fired after this date
         to = 1700.1.1		# The game will stop checking after this date.
         monthly_chance = 40	# Monthly chance that this event will fire (10 = 10% chance)
     }
     option = {
         name = qng_1644_unification.7.a #宣战
 		historical_option = yes
-        # 注释掉原来的单独宣战代码
-        # c:CSH ?= {
-        # 	save_scope_as = target_csh
-        # 	if = {
-        # 		limit = {
-        # 			exists = target_csh
-        # 			is_subject = no
-        # 			ROOT = {
-        # 			 	NOT = { is_at_war_with = target_csh }
-        # 			}
-        # 		}
-        # 		ROOT = {
-        # 			add_casus_belli = {
-        # 				target = scope:target_csh
-        # 				type = casus_belli:cb_claim_mandate_of_heaven
-        # 			}
-        # 			if = {
-        # 				limit = {
-        # 					always = yes
-        # 				}
-        # 				declare_war_with_cb = {
-        # 					target = scope:target_csh
-        # 					type = casus_belli:cb_claim_mandate_of_heaven
-        # 				}
-        # 			}
-        # 			custom_tooltip = qng_1644_unification_gain_cb_tt
-        # 		}
-        # 	}
-        # }
-        # c:MNG ?= {
-        # 	save_scope_as = target_mng
-        # 	if = {
-        # 		limit = {
-        # 			exists = target_mng
-        # 			is_subject = no
-        # 			ROOT = {
-        # 			 	NOT = { is_at_war_with = target_mng }
-        # 			}
-        # 		}
-        # 		ROOT = {
-        # 			add_casus_belli = {
-        # 				target = scope:target_mng
-        # 				type = casus_belli:cb_claim_mandate_of_heaven
-        # 			}
-        # 			if = {
-        # 				limit = {
-        # 					always = yes
-        # 				}
-        # 				declare_war_with_cb = {
-        # 					target = scope:target_mng
-        # 					type = casus_belli:cb_claim_mandate_of_heaven
-        # 				}
-        # 			}
-        # 			custom_tooltip = qng_1644_unification_gain_cb_tt
-        # 		}
-        # 	}
-        # }
 
         # 对明、顺、西宣战，并拉入附属国
         # 对大明宣战
@@ -597,5 +528,66 @@ qng_1644_unification.7 = {
     }
     option = {
     	name = qng_1644_unification.7.b #不宣战
+    }
+}
+
+qng_1644_unification.8 = {
+    #明朝藩属投降大清（触发事件，在MNG上）
+    type = country_event
+    hidden = yes
+    title = ""
+    
+    trigger = {
+        # 大清存在且在战争中
+        c:QNG = {
+            exists = this
+            any_current_war = {
+                any_attacker = { this = c:QNG }
+                any_defender = { this = c:MNG }
+            }
+        }
+    }
+    
+    immediate = {
+        # 随机选择一个符合条件的藩属
+        random_subject = {
+            limit = {
+                exists = this
+                NOT = { is_subject_of = c:QNG }
+            }
+            # 保存被选中的藩属作用域
+            save_scope_as = defecting_subject
+            # 取消对明朝的附庸关系
+            c:MNG = {
+                cancel_subject = scope:defecting_subject
+            }
+            # 成为大清的附庸
+            scope:defecting_subject = {
+                c:QNG = {
+                    make_subject_of = {
+                        target = c:QNG
+                        type = subject_type:cn_march_governor
+                    }
+                }
+                # 加入大清的战争
+                subject_join_overlord_wars = yes
+                # 增加对大清的临时忠诚度
+                add_opinion = {
+                    target = c:QNG
+                    modifier = opinion_emperors_genorisity
+                }
+            }
+        }
+    }
+    
+    dynamic_historical_event = {
+        tag = MNG
+        from = 1644.6.1
+        to = 1700.1.1
+        monthly_chance = 25
+    }
+    
+    option = {
+        name = qng_1644_unification.8.a
     }
 }
