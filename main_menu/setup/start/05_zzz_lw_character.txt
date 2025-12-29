@@ -14,7 +14,7 @@ character_db = {
 
 	tur_kösem_sultan = {
 		first_name = { name = Kosem }
-		culture = turkish_culture
+		culture = greek_culture
 		religion = sunni
 		estate = nobles_estate
 		adm = 73 dip = 67 mil = 22
@@ -37,7 +37,7 @@ character_db = {
 	}
 	tur_turhan_sultan = {
 		first_name = { name = Turhan }
-		culture = turkish_culture
+		culture = muscovite
 		religion = sunni
 		estate = nobles_estate
 		adm = 65 dip = 59 mil = 24
@@ -116,6 +116,42 @@ character_db = {
 		tag = TUR
 		general_trait = accomplished_sailor
 	}
+	tur_muhammad_koprulu = { #http://en.wikipedia.org/wiki/K%C3%B6pr%C3%BCl%C3%BC_Mehmed_Pasha
+		first_name = { name = name_muhammad }
+		culture = turkish_culture
+		religion = sunni
+		estate = nobles_estate
+		adm = 88 #大宰相として汚職の一掃・統制強化、軍の再編などでオスマンの立て直しを主導した人物
+		dip = 72 #対外関係というより「大宰相権限の回復（介入させない条件で就任）」など、政務運営・権力調整の巧さが目立つため、統治ほどは伸ばさない
+		mil = 78 #1657年のダーダネルス戦（封鎖突破）や、その後のテネドス／レムノス回復など、軍事的成果（とくに海軍戦域）で権威を確立した
+		birth_date = 1575.1.1 
+		birth = berat
+		dynasty = koprulu_dynasty
+		tag = TUR
+	}
+	tur_fazil_ahmed_koprulu = { #https://en.wikipedia.org/wiki/K%C3%B6pr%C3%BCl%C3%BCzade_Faz%C4%B1l_Ahmed_Pasha
+		first_name = { name = fazil_ahmed }
+		culture = turkish_culture
+		religion = sunni
+		estate = nobles_estate
+		birth_date = 1635.1.1 
+		father = tur_muhammad_koprulu
+		birth = samsun
+		dynasty = koprulu_dynasty
+		tag = TUR
+	}
+	tur_fazil_mustafa_koprulu = { #https://en.wikipedia.org/wiki/K%C3%B6pr%C3%BCl%C3%BCzade_Faz%C4%B1l_Mustafa_Pasha
+		first_name = { name = fazil_mustafa }
+		culture = turkish_culture
+		religion = sunni
+		estate = nobles_estate
+		birth_date = 1637.1.1 
+		father = tur_muhammad_koprulu
+		birth = samsun
+		dynasty = koprulu_dynasty
+		tag = TUR
+	}
+
 	rus_mikhail_romanov = { #https://en.wikipedia.org/wiki/Michael_of_Russia
 		first_name = { name = name_michael.east_slavic_language }
 		culture = muscovite
@@ -125,7 +161,7 @@ character_db = {
 		birth_date = 1597.1.1
 		birth = moscow
 		spouse = rus_eudoxia_streshneva
-		tag = RUS
+		tag = RUS	
 		dynasty = romanov_dynasty
 	}
 
