@@ -4,8 +4,7 @@ flavor_csh.1 = {
 	type = country_event
 	title = flavor_csh.1.title
 	desc = flavor_csh.1.desc
-	historical_info = flavor_csh.1.historical_info
-
+	#historical_info = flavor_csh.1.historical_info
 	trigger = {
 		c:CJX ?= {
 			is_subject_of = c:CSH
@@ -32,9 +31,7 @@ flavor_csh.1 = {
 	}
 
 	immediate = {
-		c:CJX = {
-			set_variable = cjx_rebellion_first
-		}
+		
 
 	}
 	major = yes
@@ -51,6 +48,7 @@ flavor_csh.1 = {
 		#降清
 		name = flavor_csh.1.a
 		cancel_subject = c:CJX
+		historical_option = yes
 		c:CJX = {
 			make_subject_of = {
 				target = c:QNG
@@ -66,6 +64,12 @@ flavor_csh.1 = {
 				years = 2
 			}
 		}
+		c:CJX = {
+			set_variable = cjx_rebellion_first
+		}
+		c:CSH = { trigger_event_silently = flavor_csh.2 }#通知大顺
+		c:QNG = { trigger_event_silently = qng_1644_unification.9 }#通知大清
+		kill_character = character:chi_zhang_tianlin
 		# trigger = {
 		#     c:QNG.var:chi_domination > c:CSH.var:chi_domination
 		#     c:QNG.var:chi_domination > c:MNG.var:chi_domination
@@ -88,4 +92,23 @@ flavor_csh.1 = {
 	#         }
 	#     }
 	# }
+	option = {
+		#忠诚 
+		name = flavor_csh.1.c
+		ai_chance = 0
+		c:CJX = {
+			add_opinion = {
+				target = c:CSH
+				modifier = opinion_emperors_genorisity
+			}
+		}
+	}
+}
+flavor_csh.2 = { #通知大顺
+	title = flavor_csh.2.title
+	desc = flavor_csh.2.desc
+	is_trigger_only = yes
+	option = {
+		name = flavor_csh.2.a	
+	}
 }
