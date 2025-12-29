@@ -345,21 +345,14 @@ qng_1644_unification.6 = {
  		to = 1700.1.1		# The game will stop checking after this date.
  		monthly_chance = 100	# Monthly chance that this event will fire (10 = 10% chance)
  	}
->>>>>>> 3e03e56 (debug):in_game/events/zzz_1644_qing_unification_war.txt
 	trigger = {
 		has_variable = qng_invasion
 		owns = location:dadu
 		capital != location:dadu
 		exists = capital
 	}
-	dynamic_historical_event = {
-		tag = QNG
-		from = 1644.1.1		# The game will check if this event can be fired after this date
-		to = 1700.1.1		# The game will stop checking after this date.
-		monthly_chance = 100		# Monthly chance that this event will fire (10 = 10% chance)
-	}
 	option = {
-		name = qng_1644_unification.6.a		#迁都
+		name = qng_1644_unification.6.a#迁都
 		historical_option = yes
 		set_capital = location:dadu
 		c:QNG = {
@@ -382,7 +375,7 @@ qng_1644_unification.6 = {
 		}
 	}
 	option = {
-		name = qng_1644_unification.6.b		#不迁都
+		name = qng_1644_unification.6.b#不迁都
 		c:QNG = {
 			if = {
 				limit = {
@@ -420,355 +413,74 @@ qng_1644_unification.7 = {
  		to = 1700.5.1		# The game will stop checking after this date.
  		monthly_chance = 25	# Monthly chance that this event will fire (10 = 10% chance)
  	}
->>>>>>> 3e03e56 (debug):in_game/events/zzz_1644_qing_unification_war.txt
 	trigger = {
 		has_variable = qng_invasion
 		owns = location:dadu
 		capital = location:dadu
 	}
-	dynamic_historical_event = {
-		tag = QNG
-		from = 1644.6.1		# The game will check if this event can be fired after this date
-		to = 1700.1.1		# The game will stop checking after this date.
-<<<<<<< HEAD
-		monthly_chance = 40		# Monthly chance that this event will fire (10 = 10% chance)
-=======
-		monthly_chance = 50	# Monthly chance that this event will fire (10 = 10% chance)
->>>>>>> b9c7cd5 (debug)
-	}
 	option = {
-<<<<<<< HEAD:in_game/events/qing_1644_unification.txt
-		name = qng_1644_unification.7.a		#宣战
-		historical_option = yes
-		# 对明、顺、西宣战，并拉入附属国
-		# 对大明宣战
-		c:MNG ?= {
-			save_scope_as = target_mng
-			if = {
-				limit = {
-					exists = this
-					is_subject = no
-					ROOT = {
-						NOT = {
-							is_at_war_with = this
-						}
-						NOT = {
-							is_subject_of = this
-						}
-					}
-<<<<<<< HEAD:in_game/events/qing_1644_unification.txt
-				}
-				ROOT = {
-					add_casus_belli = {
-						target = scope:target_mng
-						type = casus_belli:cb_chinese_unification
-					}
-					declare_war_with_cb = {
-						target = scope:target_mng
-						type = casus_belli:cb_chinese_unification
-=======
-					ROOT = {
-=======
 		name = qng_1644_unification.7.a#宣战
 		if = {
 			limit = {
 				tag = QNG
 			}
-<<<<<<< HEAD
 			c:CSH ?= {
 				save_scope_as = target_csh
 				if = {
 					limit = {
 						exists = target_csh
 						is_subject = no
-						c:QNG = {
+						ROOT = {
 						 	NOT = { is_at_war_with = target_csh }
 							NOT = { has_truce_with = target_csh }
 						}
 					}
-					c:QNG = {
->>>>>>> 11afcf6 (debug):in_game/events/zzz_1644_qing_unification_war.txt
+					ROOT = {
 						add_casus_belli = {
 							target = scope:target_csh
 							type = casus_belli:cb_claim_mandate_of_heaven
 						}
-						declare_war_with_cb = {
-							target = scope:target_csh
-							type = casus_belli:cb_claim_mandate_of_heaven
+						if = {
+							limit = {
+								always = yes
+							}
+							declare_war_with_cb = {
+								target = scope:target_csh
+								type = casus_belli:cb_claim_mandate_of_heaven
+							}
 						}
 						custom_tooltip = qng_1644_unification_gain_cb_tt
->>>>>>> e24d966 (debug):in_game/events/zzz_1644_qing_unification_war.txt
 					}
 				}
 			}
-<<<<<<< HEAD:in_game/events/qing_1644_unification.txt
-			# 让大明的所有附属国加入战争
-			every_subject = {
-				limit = {
-					exists = this
-				}
-				subject_join_overlord_wars = yes
-			}
-		}
-		# 对大顺宣战
-		c:CSH ?= {
-			save_scope_as = target_csh
-			if = {
-				limit = {
-					exists = this
-					is_subject = no
-					ROOT = {
-						NOT = {
-							is_at_war_with = this
-						}
-						NOT = {
-							is_subject_of = this
-						}
-					}
-				}
-				ROOT = {
-					add_casus_belli = {
-						target = scope:target_csh
-						type = casus_belli:cb_chinese_unification
-					}
-					declare_war_with_cb = {
-						target = scope:target_csh
-						type = casus_belli:cb_chinese_unification
-					}
-				}
-			}
-			# 让大顺的所有附属国加入战争
-			every_subject = {
-				limit = {
-					exists = this
-				}
-				subject_join_overlord_wars = yes
-			}
-		}
-		# 对大西宣战
-		c:CXI ?= {
-			save_scope_as = target_cxi
-			if = {
-				limit = {
-					exists = this
-					is_subject = no
-					ROOT = {
-						NOT = {
-							is_at_war_with = this
-=======
 			c:MNG ?= {
 				save_scope_as = target_mng
 				if = {
 					limit = {
 						exists = target_mng
 						is_subject = no
-						c:QNG = {
+						ROOT = {
 						 	NOT = { is_at_war_with = target_mng }
 						 	NOT = { has_truce_with = target_mng }
 						}
 					}
-					c:QNG = {
+					ROOT = {
 						add_casus_belli = {
 							target = scope:target_mng
 							type = casus_belli:cb_claim_mandate_of_heaven
->>>>>>> 11afcf6 (debug):in_game/events/zzz_1644_qing_unification_war.txt
 						}
-<<<<<<< HEAD:in_game/events/qing_1644_unification.txt
-						NOT = {
-							is_subject_of = this
-=======
-						declare_war_with_cb = {
-							target = scope:target_mng
-							type = casus_belli:cb_claim_mandate_of_heaven
->>>>>>> e24d966 (debug):in_game/events/zzz_1644_qing_unification_war.txt
-						}
-					}
-				}
-				ROOT = {
-					add_casus_belli = {
-						target = scope:target_cxi
-						type = casus_belli:cb_chinese_unification
-					}
-					declare_war_with_cb = {
-						target = scope:target_cxi
-						type = casus_belli:cb_chinese_unification
-					}
-				}
-			}
-			# 让大西的所有附属国加入战争
-			every_subject = {
-				limit = {
-					exists = this
-				}
-				subject_join_overlord_wars = yes
-			}
-		}
-		# 让大清的所有附属国加入大清的战争
-		every_subject = {
-			limit = {
-				exists = this
-			}
-			subject_join_overlord_wars = yes
-		}
-	}
-	option = {
-		name = qng_1644_unification.7.b		#不宣战
-	}
-}
-
-qng_1644_unification.8 = {
-	#明朝藩属投降大清（触发事件，在MNG上）
-	type = country_event
-	hidden = yes
-	title = ""
-	trigger = {
-		# 大清存在且在战争中
-		c:QNG = {
-			exists = this
-			any_current_war = {
-				any_attacker = {
-					this = c:QNG
-				}
-				any_defender = {
-					this = c:MNG
-				}
-			}
-		}
-	}
-	immediate = {
-		# 随机选择一个符合条件的藩属
-		c:MNG = {
-			random_subject = {
-				# 保存被选中的藩属作用域
-				save_scope_as = defecting_subject
-				# 取消对明朝的附庸关系
-
-				cancel_subject = scope:defecting_subject
-
-				# 成为大清的附庸
-				scope:defecting_subject = {
-					c:QNG = {
-						make_subject_of = {
-							target = c:QNG
-							type = subject_type:cn_march_governor
-						}
-					}
-					# 加入大清的战争
-					subject_join_overlord_wars = yes
-					# 增加对大清的临时忠诚度
-					add_opinion = {
-						target = c:QNG
-						modifier = opinion_emperors_genorisity
-					}
-				}
-=======
-			# 注释掉原来的单独宣战代码
-			# c:CSH ?= {
-			# 	save_scope_as = target_csh
-			# 	if = {
-			# 		limit = {
-			# 			exists = target_csh
-			# 			is_subject = no
-			# 			ROOT = {
-			# 			 	NOT = { is_at_war_with = target_csh }
-			# 			}
-			# 		}
-			# 		ROOT = {
-			# 			add_casus_belli = {
-			# 				target = scope:target_csh
-			# 				type = casus_belli:cb_claim_mandate_of_heaven
-			# 			}
-			# 			if = {
-			# 				limit = {
-			# 					always = yes
-			# 				}
-			# 				declare_war_with_cb = {
-			# 					target = scope:target_csh
-			# 					type = casus_belli:cb_claim_mandate_of_heaven
-			# 				}
-			# 			}
-			# 			custom_tooltip = qng_1644_unification_gain_cb_tt
-			# 		}
-			# 	}
-			# }
-			# c:MNG ?= {
-			# 	save_scope_as = target_mng
-			# 	if = {
-			# 		limit = {
-			# 			exists = target_mng
-			# 			is_subject = no
-			# 			ROOT = {
-			# 			 	NOT = { is_at_war_with = target_mng }
-			# 			}
-			# 		}
-			# 		ROOT = {
-			# 			add_casus_belli = {
-			# 				target = scope:target_mng
-			# 				type = casus_belli:cb_claim_mandate_of_heaven
-			# 			}
-			# 			if = {
-			# 				limit = {
-			# 					always = yes
-			# 				}
-			# 				declare_war_with_cb = {
-			# 					target = scope:target_mng
-			# 					type = casus_belli:cb_claim_mandate_of_heaven
-			# 				}
-			# 			}
-			# 			custom_tooltip = qng_1644_unification_gain_cb_tt
-			# 		}
-			# 	}
-			# }
-			
-			# 仅对未与 ROOT 开战的 CSH 和 MNG 宣战
-			custom_tooltip = qng_1644_unification_gain_cb_tt
-			hidden_effect = {
-				# 如果大明存在且不是附庸且未与 ROOT 开战，则宣战
-				c:CSH ?= {
-					save_scope_as = target_csh
-					if = {
-						limit = {
-							exists = target_csh
-							is_subject = no
-							ROOT = {
-								NOT = { is_at_war_with = target_csh }
-							}
-						}
-						ROOT = {
-							add_casus_belli = {
-								target = scope:target_csh
-								type = casus_belli:cb_chinese_unification
-							}
-							declare_war_with_cb = {
-								target = scope:target_csh
-								type = casus_belli:cb_chinese_unification
-							}
-						}
-					}
-				}
-				# 如果蒙古存在且不是附庸且未与 ROOT 开战，则宣战
-				c:MNG ?= {
-					save_scope_as = target_mng
-					if = {
-						limit = {
-							exists = target_mng
-							is_subject = no
-							ROOT = {
-								NOT = { is_at_war_with = target_mng }
-							}
-						}
-						ROOT = {
-							add_casus_belli = {
-								target = scope:target_mng
-								type = casus_belli:cb_chinese_unification
+						if = {
+							limit = {
+								always = yes
 							}
 							declare_war_with_cb = {
 								target = scope:target_mng
 								type = casus_belli:cb_chinese_unification
 							}
 						}
+						custom_tooltip = qng_1644_unification_gain_cb_tt
 					}
->>>>>>> e9e07ec (debug)
+				}
 			}
 		}
 	}
@@ -779,6 +491,6 @@ qng_1644_unification.8 = {
 		monthly_chance = 25
 	}
 	option = {
-		name = qng_1644_unification.8.a
+		name = qng_1644_unification.7.b#不宣战
 	}
 }
