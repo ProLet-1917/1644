@@ -4,11 +4,15 @@ flavor_csh.1 = {
 	type = country_event
 	title = flavor_csh.1.title
 	desc = flavor_csh.1.desc
+<<<<<<< HEAD
 	historical_info = flavor_csh.1.historical_info
 <<<<<<< HEAD
 
 =======
 >>>>>>> 4378e07 (CJX surrender notice)
+=======
+	#historical_info = flavor_csh.1.historical_info
+>>>>>>> 3b29f47 (debug)
 	trigger = {
 		c:CJX ?= {
 			is_subject_of = c:CSH
@@ -90,7 +94,7 @@ flavor_csh.1 = {
 			set_variable = cjx_rebellion_first
 		}
 		c:CSH = { trigger_event_silently = flavor_csh.2 }#通知大顺
-		c:QNG = { trigger_event_silently = qing_1644_unification.9 }#通知大清
+		c:QNG = { trigger_event_silently = qng_1644_unification.9 }#通知大清
 		kill_character = character:chi_zhang_tianlin
 		# trigger = {
 		#     c:QNG.var:chi_domination > c:CSH.var:chi_domination
