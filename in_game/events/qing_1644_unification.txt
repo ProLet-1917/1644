@@ -351,6 +351,15 @@ qng_1644_unification.6 = {
 		capital != location:dadu
 		exists = capital
 	}
+<<<<<<< HEAD
+=======
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1644.1.1		# The game will check if this event can be fired after this date
+		to = 1700.1.1		# The game will stop checking after this date.
+		monthly_chance = 100	# Monthly chance that this event will fire (10 = 10% chance)
+	}
+>>>>>>> b9a9668 (debug)
 	option = {
 		name = qng_1644_unification.6.a#迁都
 		historical_option = yes
@@ -418,23 +427,106 @@ qng_1644_unification.7 = {
 		owns = location:dadu
 		capital = location:dadu
 	}
+<<<<<<< HEAD
+=======
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1644.1.1		# The game will check if this event can be fired after this date
+		to = 1700.1.1		# The game will stop checking after this date.
+		monthly_chance = 50	# Monthly chance that this event will fire (10 = 10% chance)
+	}
+>>>>>>> b9a9668 (debug)
 	option = {
 		name = qng_1644_unification.7.a#宣战
 		if = {
 			limit = {
 				tag = QNG
 			}
+<<<<<<< HEAD
 			c:CSH ?= {
 				save_scope_as = target_csh
 				if = {
 					limit = {
 						exists = target_csh
 						is_subject = no
+=======
+			# 注释掉原来的单独宣战代码
+			# c:CSH ?= {
+			# 	save_scope_as = target_csh
+			# 	if = {
+			# 		limit = {
+			# 			exists = target_csh
+			# 			is_subject = no
+			# 			ROOT = {
+			# 			 	NOT = { is_at_war_with = target_csh }
+			# 			}
+			# 		}
+			# 		ROOT = {
+			# 			add_casus_belli = {
+			# 				target = scope:target_csh
+			# 				type = casus_belli:cb_claim_mandate_of_heaven
+			# 			}
+			# 			if = {
+			# 				limit = {
+			# 					always = yes
+			# 				}
+			# 				declare_war_with_cb = {
+			# 					target = scope:target_csh
+			# 					type = casus_belli:cb_claim_mandate_of_heaven
+			# 				}
+			# 			}
+			# 			custom_tooltip = qng_1644_unification_gain_cb_tt
+			# 		}
+			# 	}
+			# }
+			# c:MNG ?= {
+			# 	save_scope_as = target_mng
+			# 	if = {
+			# 		limit = {
+			# 			exists = target_mng
+			# 			is_subject = no
+			# 			ROOT = {
+			# 			 	NOT = { is_at_war_with = target_mng }
+			# 			}
+			# 		}
+			# 		ROOT = {
+			# 			add_casus_belli = {
+			# 				target = scope:target_mng
+			# 				type = casus_belli:cb_claim_mandate_of_heaven
+			# 			}
+			# 			if = {
+			# 				limit = {
+			# 					always = yes
+			# 				}
+			# 				declare_war_with_cb = {
+			# 					target = scope:target_mng
+			# 					type = casus_belli:cb_claim_mandate_of_heaven
+			# 				}
+			# 			}
+			# 			custom_tooltip = qng_1644_unification_gain_cb_tt
+			# 		}
+			# 	}
+			# }
+			
+			# 仅对未与 ROOT 开战的 CSH 和 MNG 宣战
+			custom_tooltip = qng_1644_unification_gain_cb_tt
+				c:CSH ?= {
+					save_scope_as = target_csh
+					if = {
+						limit = {
+							exists = target_csh
+							is_subject = no
+							ROOT = {
+								NOT = { is_at_war_with = target_csh }
+							}
+						}
+>>>>>>> b9a9668 (debug)
 						ROOT = {
 						 	NOT = { is_at_war_with = target_csh }
 							NOT = { has_truce_with = target_csh }
 						}
 					}
+<<<<<<< HEAD
 					ROOT = {
 						add_casus_belli = {
 							target = scope:target_csh
@@ -447,6 +539,17 @@ qng_1644_unification.7 = {
 							declare_war_with_cb = {
 								target = scope:target_csh
 								type = casus_belli:cb_claim_mandate_of_heaven
+=======
+				}
+				c:MNG ?= {
+					save_scope_as = target_mng
+					if = {
+						limit = {
+							exists = target_mng
+							is_subject = no
+							ROOT = {
+								NOT = { is_at_war_with = target_mng }
+>>>>>>> b9a9668 (debug)
 							}
 						}
 						custom_tooltip = qng_1644_unification_gain_cb_tt
@@ -481,7 +584,6 @@ qng_1644_unification.7 = {
 						custom_tooltip = qng_1644_unification_gain_cb_tt
 					}
 				}
-			}
 		}
 	}
 	dynamic_historical_event = {
