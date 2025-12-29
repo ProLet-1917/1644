@@ -368,6 +368,9 @@ qng_1644_unification.6 = {
 		to = 1700.1.1		# The game will stop checking after this date.
 		monthly_chance = 100	# Monthly chance that this event will fire (10 = 10% chance)
 	}
+	on_trigger_fail = { #for test
+    	trigger_event_non_silently = cleanup_1644.2
+	}
 	option = {
 		name = qng_1644_unification.6.a #迁都
 		historical_option = yes
@@ -438,6 +441,9 @@ qng_1644_unification.7 = {
 		from = 1644.1.1		# The game will check if this event can be fired after this date
 		to = 1700.1.1		# The game will stop checking after this date.
 		monthly_chance = 50	# Monthly chance that this event will fire (10 = 10% chance)
+	}
+	on_trigger_fail = { #for test
+    	trigger_event_non_silently = cleanup_1644.3
 	}
 	option = {
 		name = qng_1644_unification.7.a #宣战
@@ -551,6 +557,7 @@ qng_1644_unification.7 = {
 							}
 						}
 					}
+				}
 			}
 		}
 	}
