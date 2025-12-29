@@ -154,245 +154,245 @@ qng_1644_unification.2 = {
 }
 
 qng_1644_unification.3 = {
-	#紫气东来
-	type = country_event
-	title = qng_1644_unification.3.title
-	desc = qng_1644_unification.3.desc
-	historical_info = qng_1644_unification.3.historical_info
-	immediate = {
-		set_variable = qng_invasion
-	}
-	option = {
-		#入关
-		name = qng_1644_unification.3.a
-		historical_option = yes
-		if = {
-			limit = {
-				tag = QNG
-			}
-			# 吴三桂抉择（触发要求：李自成不进京、崇祯不南迁）
-			c:WSG ?= {
-				if = {
-					limit = {
-						exists = this
-						NOT = {
-							has_variable = wsg_1644_chosen_side
-						}
-						NOT = {
-							c:CSH = {
-								has_variable = csh_attack_beijing
-							}
-						}
-						NOT = {
-							c:MNG = {
-								has_variable = mng_move_to_nanjing
-							}
-						}
-					}
-					trigger_event_non_silently = {
-						id = wsg_1644_choice.4
-						days = 5
-					}
-				}
-			}
-			c:CSH ?= {
-				save_scope_as = target_csh
-				if = {
-					limit = {
-						exists = this
-						is_subject = no
-						# ROOT = {
-						# 	NOT = { is_at_war_with = this }
-						# 	NOT = { has_truce_with = this }
-						# }
-					}
-					ROOT = {
-						add_casus_belli = {
-							target = scope:target_csh
-							type = casus_belli:cb_chinese_unification
-						}
-						if = {
-							limit = {
-								c:CSH = {
-									owns = location:dadu
-								}
-							}
-							declare_war_with_cb = {
-								target = scope:target_csh
-								type = casus_belli:cb_chinese_unification
-								# war_name = "QNG_MANCHU_INVASION"
-							}
-						}
-						custom_tooltip = qng_1644_unification_gain_cb_tt
-					}
-				}
-			}
-			c:MNG ?= {
-				save_scope_as = target_mng
-				if = {
-					limit = {
-						exists = this
-						is_subject = no
-					}
-					ROOT = {
-						add_casus_belli = {
-							target = scope:target_mng
-							type = casus_belli:cb_chinese_unification
-						}
-						if = {
-							limit = {
-								c:MNG = {
-									owns = location:dadu
-								}
-							}
-							declare_war_with_cb = {
-								target = scope:target_mng
-								type = casus_belli:cb_chinese_unification
-								# war_name = "QNG_MANCHU_INVASION"
-							}
-						}
-						custom_tooltip = qng_1644_unification_gain_cb_tt
-					}
-				}
-			}
-		}
-	}
-	option = {
-		#不入关
-		name = qng_1644_unification.3.b
-		ai_chance = {
-			factor = 0.1
-		}
-		add_stability = stability_severe_bonus
-		add_government_power = government_power_mild_bonus
-	}
+    #紫气东来
+    type = country_event
+    title = qng_1644_unification.3.title
+    desc = qng_1644_unification.3.desc
+    historical_info = qng_1644_unification.3.historical_info
+    major = yes
+    immediate = {
+        set_variable = qng_invasion
+    }
+    option = {
+        #入关
+        name = qng_1644_unification.3.a
+        historical_option = yes
+        if = {
+            limit = {
+                tag = QNG
+            }
+            # 吴三桂抉择（触发要求：李自成不进京、崇祯不南迁）
+            c:WSG ?= {
+                if = {
+                    limit = {
+                        exists = this
+                        NOT = {
+                            has_variable = wsg_1644_chosen_side
+                        }
+                        NOT = {
+                            c:CSH = {
+                                has_variable = csh_attack_beijing
+                            }
+                        }
+                        NOT = {
+                            c:MNG = {
+                                has_variable = mng_move_to_nanjing
+                            }
+                        }
+                    }
+                    trigger_event_non_silently = {
+                        id = wsg_1644_choice.4
+                        days = 5
+                    }
+                }
+            }
+            c:CSH ?= {
+                save_scope_as = target_csh
+                if = {
+                    limit = {
+                        exists = this
+                        is_subject = no
+                        # ROOT = {
+                        # 	NOT = { is_at_war_with = this }
+                        # 	NOT = { has_truce_with = this }
+                        # }
+                    }
+                    ROOT = {
+                        add_casus_belli = {
+                            target = scope:target_csh
+                            type = casus_belli:cb_chinese_unification
+                        }
+                        if = {
+                            limit = {
+                                c:CSH = {
+                                    owns = location:dadu
+                                }
+                            }
+                            declare_war_with_cb = {
+                                target = scope:target_csh
+                                type = casus_belli:cb_chinese_unification
+                                # war_name = "QNG_MANCHU_INVASION"
+                            }
+                        }
+                        custom_tooltip = qng_1644_unification_gain_cb_tt
+                    }
+                }
+            }
+            c:MNG ?= {
+                save_scope_as = target_mng
+                if = {
+                    limit = {
+                        exists = this
+                        is_subject = no
+                    }
+                    ROOT = {
+                        add_casus_belli = {
+                            target = scope:target_mng
+                            type = casus_belli:cb_chinese_unification
+                        }
+                        if = {
+                            limit = {
+                                c:MNG = {
+                                    owns = location:dadu
+                                }
+                            }
+                            declare_war_with_cb = {
+                                target = scope:target_mng
+                                type = casus_belli:cb_chinese_unification
+                                # war_name = "QNG_MANCHU_INVASION"
+                            }
+                        }
+                        custom_tooltip = qng_1644_unification_gain_cb_tt
+                    }
+                }
+            }
+        }
+    }
+    option = {
+        #不入关
+        name = qng_1644_unification.3.b
+        ai_chance = {
+            factor = 0.1
+        }
+        add_stability = stability_severe_bonus
+        add_government_power = government_power_mild_bonus
+    }
 }
 
 qng_1644_unification.4 = {
-	#山海关之战
-	type = country_event
-	title = qng_1644_unification.4.title
-	desc = qng_1644_unification.4.desc
-	historical_info = qng_1644_unification.4.historical_info
-	immediate = {
-		c:QNG = {
-			if = {
-				limit = {
-					AND = {
-						has_variable = chi_domination
-						has_variable = chi_mandate
-					}
-				}
-				change_variable = {
-					name = chi_domination
-					add = 15
-				}
-				change_variable = {
-					name = chi_mandate
-					add = 5
-				}
-			}
-		}
-	}
-	option = {
-		name = qng_1644_unification.4.a
-	}
+    #山海关之战
+    type = country_event
+    title = qng_1644_unification.4.title
+    desc = qng_1644_unification.4.desc
+    historical_info = qng_1644_unification.4.historical_info
+    major = yes
+    immediate = {
+        c:QNG = {
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+                    name = chi_domination
+                    add = 15
+                }
+                change_variable = {
+                    name = chi_mandate
+                    add = 5
+                }
+            }
+        }
+    }
+    option = {
+        name = qng_1644_unification.4.a
+    }
 }
 
 qng_1644_unification.5 = {
-	#吴三桂降清
-	type = country_event
-	title = qng_1644_unification.5.title
-	desc = qng_1644_unification.5.desc
-	historical_info = qng_1644_unification.5.historical_info
-	major = yes
-	option = {
-		name = qng_1644_unification.5.a
-		c:QNG = {
-			if = {
-				limit = {
-					AND = {
-						has_variable = chi_domination
-						has_variable = chi_mandate
-					}
-				}
-				change_variable = {
-					name = chi_domination
-					add = 0
-				}
-				change_variable = {
-					name = chi_mandate
-					add = 5
-				}
-			}
-		}
-	}
+    #吴三桂降清
+    type = country_event
+    title = qng_1644_unification.5.title
+    desc = qng_1644_unification.5.desc
+    historical_info = qng_1644_unification.5.historical_info
+    option = {
+        name = qng_1644_unification.5.a
+        c:QNG = {
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+                    name = chi_domination
+                    add = 0
+                }
+                change_variable = {
+                    name = chi_mandate
+                    add = 5
+                }
+            }
+        }
+    }
 }
 
 qng_1644_unification.6 = {
-	#迁都顺天
-	type = country_event
-	title = qng_1644_unification.6.title
-	desc = qng_1644_unification.6.desc
-	historical_info = qng_1644_unification.6.historical_info
-	fire_only_once = yes
-	major = yes
-	trigger = {
-		has_variable = qng_invasion
-		owns = location:dadu
-		capital != location:dadu
-		exists = capital
-	}
-	dynamic_historical_event = {
-		tag = QNG
-		from = 1644.1.1		# The game will check if this event can be fired after this date
-		to = 1700.1.1		# The game will stop checking after this date.
-		monthly_chance = 100		# Monthly chance that this event will fire (10 = 10% chance)
-	}
-	option = {
-		name = qng_1644_unification.6.a		#迁都
-		historical_option = yes
-		set_capital = location:dadu
-		c:QNG = {
-			if = {
-				limit = {
-					AND = {
-						has_variable = chi_domination
-						has_variable = chi_mandate
-					}
-				}
-				change_variable = {
-					name = chi_domination
-					add = 0
-				}
-				change_variable = {
-					name = chi_mandate
-					add = 10
-				}
-			}
-		}
-	}
-	option = {
-		name = qng_1644_unification.6.b		#不迁都
-		c:QNG = {
-			if = {
-				limit = {
-					AND = {
-						has_variable = chi_domination
-						has_variable = chi_mandate
-					}
-				}
-				change_variable = {
-					name = chi_domination
-					add = 0
-				}
-				change_variable = {
-					name = chi_mandate
-					subtract = 10
-				}
-			}
-		}
-	}
+    #迁都顺天
+    type = country_event
+    title = qng_1644_unification.6.title
+    desc = qng_1644_unification.6.desc
+    historical_info = qng_1644_unification.6.historical_info
+    fire_only_once = yes
+    trigger = {
+        has_variable = qng_invasion
+        owns = location:dadu
+        capital != location:dadu
+        exists = capital
+    }
+    dynamic_historical_event = {
+        tag = QNG
+        from = 1644.1.1		# The game will check if this event can be fired after this date
+        to = 1700.1.1		# The game will stop checking after this date.
+        monthly_chance = 100	# Monthly chance that this event will fire (10 = 10% chance)
+    }
+    option = {
+        name = qng_1644_unification.6.a #迁都
+        historical_option = yes
+        set_capital = location:dadu
+        c:QNG = {
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+                    name = chi_domination
+                    add = 0
+                }
+                change_variable = {
+                    name = chi_mandate
+                    add = 10
+                }
+            }
+        }
+    }
+    option = {
+        name = qng_1644_unification.6.b #不迁都
+        c:QNG = {
+            if = {
+                limit = {
+                    AND = {
+                        has_variable = chi_domination
+                        has_variable = chi_mandate
+                    }
+                }
+                change_variable = {
+                    name = chi_domination
+                    add = 0
+                }
+                change_variable = {
+                    name = chi_mandate
+                    subtract = 10
+                }
+            }
+        }
+    }
 }
 
 qng_1644_unification.7 = {
