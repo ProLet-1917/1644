@@ -38,10 +38,9 @@ wsg_1644_choice.1 = { #史实：崇祯不南迁，李自成进京，选择降清
 			}
 		}
 		# 增加WSG对大清的100点临时忠诚度（通过opinion modifier）
-		add_country_modifier = {
+		add_opinion = {
 			target = c:QNG
-			modifier = loyalty_tifayifu
-			years = 5
+			modifier = opinion_emperors_genorisity
 		}
 		c:CSH = {
 			trigger_event_silently = {
@@ -205,10 +204,9 @@ wsg_1644_choice.3 = { #崇祯南迁：降顺、降清、南渡登州、固守
 			}
 		}
 		# 增加WSG对大清的50点临时忠诚度（通过opinion modifier）
-		add_country_modifier = {
+		add_opinion = {
 			target = c:QNG
-			modifier = loyalty_tifayifu
-			years = 5
+			modifier = opinion_emperors_genorisity
 		}
 	}
 	option = { #南渡登州
@@ -283,7 +281,7 @@ wsg_1644_choice.4 = { #崇祯不南迁、李自成不进京、清朝入关后：
 			}
 			if = {
 				limit = { exists = scope:wsg_qng }
-				make_subject_of = { target = scope:wsg_qng type = subject_type:cn_march_governor }
+				make_subject_of = { target = scope:wsg_qng type = subject_type:vassal }
 				# 成为附庸后，稍作延迟再处理加入宗主战争（便于关系生效）
 				ROOT = { trigger_event_silently = { id = wsg_1644_choice.100 days = 2 } }
 			}
@@ -295,10 +293,9 @@ wsg_1644_choice.4 = { #崇祯不南迁、李自成不进京、清朝入关后：
 			}
 		}
 		# 增加WSG对大清的50点临时忠诚度（通过opinion modifier）
-		add_country_modifier = {
+		add_opinion = {
 			target = c:QNG
-			modifier = loyalty_tifayifu
-			years = 5
+			modifier = opinion_emperors_genorisity
 		}
 	}
 	option = { #降顺
