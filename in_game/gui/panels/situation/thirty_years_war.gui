@@ -295,6 +295,76 @@
             }
         }
 
+        hbox = {
+            layoutpolicy_horizontal = expanding
+            maximumsize = { 510 -1 }
+            margin = { 8 15 }
+
+            # block "scroll_card_progress_bar_bg" {
+            using = bg_scroll_card_header
+            blockoverride "card_header_pattern" { }
+            # }
+
+            vbox = {
+                layoutpolicy_horizontal = expanding
+                maximumsize = { 100 -1 }
+                spacing = 5
+                text_single = {
+                    layoutpolicy_horizontal = expanding
+                    block "left_top_text" {
+                        raw_text = "Hesse"
+                    }
+                    align = center|nobaseline
+                    default_format = "#yellow_titles"
+                }
+                item = {
+                    country_flag_small = {
+                        datacontext = "[MakeScope.GetCountry('HES')]"
+                    }
+                }
+            }
+
+            vbox = {
+                layoutpolicy_horizontal = expanding
+                spacing = 5
+                text_single = {
+                    layoutpolicy_horizontal = expanding
+                    maximumsize = { 300 -1 }
+                    block "central_top_text" {
+                        raw_text = "Current War Balance"
+                    }
+                    align = center|nobaseline
+                    default_format = "#high"
+                }
+                progressbar = {
+                    layoutpolicy_horizontal = expanding
+                    size = { -1 20 }
+                    using = morale_progressbar_bar
+                    block "alt_scroll_card_progress_bar_value"
+                    {
+                        value = "[Add_float('(float)0', FixedPointToFloat(GetGlobalVariable('current_war_balance').GetValue))]"
+                    }
+                }
+            }
+
+            vbox = {
+                layoutpolicy_horizontal = expanding
+                maximumsize = { 100 -1 }
+                spacing = 5
+                text_single = {
+                    layoutpolicy_horizontal = expanding
+                    block "right_top_text" {
+                        raw_text = "Austria"
+                    }
+                    align = center|nobaseline
+                    default_format = "#yellow_titles"
+                }
+                icon = {
+
+                }
+            }
+        }
+
         #IO Membership
         situation_side_cards = {
             blockoverride "card_datacontext" {}

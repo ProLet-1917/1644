@@ -45,12 +45,55 @@ thirty_years_war = {
             name = current_religion_war_length
             value = 312
         }
+        set_global_variable = {
+            name = current_war_balance
+            value = 51.8
+        }
     }
 
     on_monthly = {
         change_global_variable = {
             name = current_religion_war_length
             add = 1
+        }
+        change_global_variable = {
+            name = current_war_balance
+            add = 0.02
+            max = 100
+            min = 0
+        }
+        if = {
+            limit = {
+                var:current_religion_war_length >= 350
+            }
+            random = {
+                chance = 95
+                every_country = {
+                    limit = {
+                        OR = {
+                            is_member_of_international_organization = international_organization:catholic_league
+                            is_member_of_international_organization = international_organization:protestant_union
+                        }
+                    }
+                    add_manpower = 0.2
+                }
+            }
+            random = {
+                chance = 5
+                if = {
+                    limit = {
+                        var:current_war_balance >= 50
+                    }
+                    international_organization:catholic_league.leader_country = {
+                        trigger_event_non_silently = war_of_religions.1300
+                    }
+                }
+                else = {
+                    international_organization:protestant_union.leader_country = {
+                        trigger_event_non_silently = war_of_religions.1300
+                    }
+                }
+            }
         }
     }
 

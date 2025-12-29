@@ -147,5 +147,21 @@
             }
         }
 
+        every_country = {
+            limit = {
+                OR = {
+                    is_member_of_international_organization = international_organization:protestant_union
+                    is_member_of_international_organization = international_organization:catholic_league
+                }
+                #is_ai = yes
+            }
+            hidden_effect = {
+                add_country_modifier = {
+                    modifier = ai_in_religion_war
+                    months = 36
+                }
+            }
+        }
+
     }
 }

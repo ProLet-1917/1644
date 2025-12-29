@@ -6,8 +6,9 @@ peace_talk_in_westphalia = { #1648 May.-Oct.
 	can_start = {
 		exists = international_organization:hre
 		situation:thirty_years_war = {
-			situation_is_active = yes
+			situation_is_active = no
 		}
+		has_variable = start_peace_talk_in_westphalia
 	}
 
 	can_end = {
@@ -53,6 +54,11 @@ peace_talk_in_westphalia = { #1648 May.-Oct.
 	}
 
 	on_ended = {
-
+		every_country = {
+			limit = {
+				has_country_modifier = ai_in_religion_war
+			}
+			remove_country_modifier = ai_in_religion_war
+		}
 	}
 }
