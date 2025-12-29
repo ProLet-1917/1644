@@ -503,28 +503,54 @@ qng_1644_unification.7 = {
 			# 	}
 			# }
 			
-			# 对全部中国势力宣战（使用中国国家列表）
+			# 仅对未与 ROOT 开战的 CSH 和 MNG 宣战
 			custom_tooltip = qng_1644_unification_gain_cb_tt
 			hidden_effect = {
-				every_in_global_list = {
-					variable = china_countries_list
-					limit = {
-						this != ROOT
+				# 如果大明存在且不是附庸且未与 ROOT 开战，则宣战
+				c:CSH ?= {
+					save_scope_as = target_csh
+					if = {
+						limit = {
+							exists = target_csh
+							is_subject = no
+							ROOT = {
+								NOT = { is_at_war_with = target_csh }
+							}
+						}
 						ROOT = {
-							NOT = { is_at_war_with = this }
-						}
-					}
-					c:QNG = {
-						add_casus_belli = {
-							target = this
-							type = casus_belli:cb_chinese_unification
-						}
-						declare_war_with_cb = {
-							target = this
-							type = casus_belli:cb_chinese_unification
+							add_casus_belli = {
+								target = scope:target_csh
+								type = casus_belli:cb_chinese_unification
+							}
+							declare_war_with_cb = {
+								target = scope:target_csh
+								type = casus_belli:cb_chinese_unification
+							}
 						}
 					}
 				}
+				# 如果蒙古存在且不是附庸且未与 ROOT 开战，则宣战
+				c:MNG ?= {
+					save_scope_as = target_mng
+					if = {
+						limit = {
+							exists = target_mng
+							is_subject = no
+							ROOT = {
+								NOT = { is_at_war_with = target_mng }
+							}
+						}
+						ROOT = {
+							add_casus_belli = {
+								target = scope:target_mng
+								type = casus_belli:cb_chinese_unification
+							}
+							declare_war_with_cb = {
+								target = scope:target_mng
+								type = casus_belli:cb_chinese_unification
+							}
+						}
+					}
 			}
 		}
 	}
