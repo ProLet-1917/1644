@@ -8,7 +8,7 @@ flavor_csh.1 = {
 	trigger = {
 		# CJX必须是CSH的附庸
 		c:CJX ?= {
-			is_subject_of = ROOT
+			is_subject_of = c:CSH
 		}
 		c:QNG ?= { has_variable = chi_domination }
 		c:MNG ?= { has_variable = chi_domination }
@@ -22,7 +22,7 @@ flavor_csh.1 = {
 		#
 		c:WSG ?= {
 			NOT = {
-				is_subject_of = ROOT
+				is_subject_of = c:CSH
 			}
 		}
 	}
