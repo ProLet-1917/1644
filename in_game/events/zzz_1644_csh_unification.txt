@@ -266,6 +266,7 @@ scripted_effect shandong_csh_list_add2 = {
 }
 
 csh_1644_unification.2 = { #天翻地覆
+<<<<<<< HEAD
 	type = country_event
 	title = csh_1644_unification.2.title
 	desc = csh_1644_unification.2.desc
@@ -346,6 +347,85 @@ csh_1644_unification.2 = { #天翻地覆
 	option = {
 		name = csh_1644_unification.2.a
 	}
+=======
+    type = country_event
+    title = csh_1644_unification.2.title
+    desc = csh_1644_unification.2.desc
+    historical_info = csh_1644_unification.2.historical_info
+    major = yes
+    immediate = {
+        if = {
+            limit = {
+                has_variable = csh_attack_beijing
+            }
+            set_capital = location:dadu
+            shandong_csh_list_add1 = yes
+            trigger_event_silently = {
+                id = csh_1644_unification.7
+                days = 9
+            }
+        }
+        shandong_csh_list_add2 = yes
+        every_in_list = {
+            list = list_of_shandong_csh
+            limit = { owner = c:MNG }
+            change_location_owner = c:CSH
+            change_control = control_mild_bonus
+        }
+        c:MNG = {
+            if = { #不南迁线
+                limit = {
+                    NOT = { has_variable = mng_move_to_nanjing }
+                }
+                if = {
+                    limit = {
+                        exists = character:chi_zhu_youjian
+                    }
+                    kill_character = character:chi_zhu_youjian
+                }
+                trigger_event_silently = {
+                    id = mng_1644.2 #甲申之难
+                }
+                trigger_event_silently = {
+                    id = mng_1644.5 #立新君
+                    days = 10
+                }
+            }
+            else = { #南迁线
+                trigger_event_silently = {
+                    id = mng_1644.3 #北都沦陷
+                }
+            }
+        }
+        c:WSG = { #没有南迁且不是吴三桂迎主的情况下吴三桂选择
+            if = {
+                limit = {
+                    c:MNG = { NOT = { has_variable = mng_move_to_nanjing } }
+                    NOT = { has_variable = wsg_1644_chosen_side }
+                    c:CSH = { has_variable = csh_attack_beijing }
+                }
+                trigger_event_silently = {
+                    id = wsg_1644_choice.1
+                    days = 6
+                }
+            }
+        }
+        # 触发拷饷事件
+
+    }
+    option = {
+        name = csh_1644_unification.2.a
+        show_as_tooltip = {
+            set_capital = location:dadu
+            every_in_list = {
+                list = shandong_csh_list_add1
+                limit = { owner = c:MNG }
+                change_location_owner = c:CSH
+                change_control = control_mild_bonus
+            }
+        }
+    }
+>>>>>>> afd75d1 (调整文本)
 }
 
 csh_1644_unification.3 = { #二王三恪
