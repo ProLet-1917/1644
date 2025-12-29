@@ -8,7 +8,7 @@ flavor_csh.1 = {
 	trigger = {
 		# CJX必须是CSH的附庸
 		c:CJX ?= {
-			is_subject_of = ROOT
+			is_subject_of = c:CSH
 		}
 <<<<<<< HEAD
 		# CSH的条件（ROOT就是CSH）
@@ -32,7 +32,7 @@ flavor_csh.1 = {
 >>>>>>> 7615544 (debug)
 		c:WSG ?= {
 			NOT = {
-				is_subject_of = ROOT
+				is_subject_of = c:CSH
 			}
 		}
 	}
