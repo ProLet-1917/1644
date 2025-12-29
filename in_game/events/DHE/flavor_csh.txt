@@ -22,54 +22,66 @@ flavor_csh.1 = {
 				is_subject_of = c:CSH				#吴三桂不是大顺附庸
 			}
 		}
-		OR = {
-			c:QNG.var:chi_domination > c:CSH.var:chi_domination			#清国军威大于大顺军威
-			c:MNG.var:chi_domination > c:CSH.var:chi_domination			#明国军威大于大顺军威
-		}
+		# OR = {
+		# 	c:QNG.var:chi_domination > c:CSH.var:chi_domination			#清国军威大于大顺军威
+		# 	c:MNG.var:chi_domination > c:CSH.var:chi_domination			#明国军威大于大顺军威
+		# }
 	}
 	immediate = {
 		c:CJX = {
 			set_variable = cjx_rebellion_first
 		}
+
 	}
 
 	fire_only_once = yes
 
 	dynamic_historical_event = {
+		tag = CJX
 		tag = CSH
-		from = 1644.6.1		# The game will check if this event can be fired after this date
+		from = 1644.5.1		# The game will check if this event can be fired after this date
 		to = 1700.1.1		# The game will stop checking after this date.
 		monthly_chance = 100		# Monthly chance that this event will fire (10 = 10% chance)
 	}
 	option = {
 		#降清
 		name = flavor_csh.1.a
-		trigger = {
-		    c:QNG.var:chi_domination > c:CSH.var:chi_domination
-		    c:QNG.var:chi_domination > c:MNG.var:chi_domination
-		}
 		cancel_subject = c:CJX
 		c:CJX = {
 			make_subject_of = {
 				target = c:QNG
 				type = subject_type:cn_march_governor
 			}
+			# 让CJX加入大清的战争
+			subject_join_overlord_wars = yes
 		}
+		# 增加CJX对大清的100点临时忠诚度（通过opinion modifier）
+		c:CJX = {
+			add_opinion = {
+				target = c:QNG
+				modifier = opinion_emperors_genorisity
+			}
+		}
+		# trigger = {
+		#     c:QNG.var:chi_domination > c:CSH.var:chi_domination
+		#     c:QNG.var:chi_domination > c:MNG.var:chi_domination
+		# }
+
 	}
-	option = {#归明
-	    name = flavor_csh.1.b
-	    trigger = {
-	        c:MNG.var:chi_domination > c:CSH.var:chi_domination
-	        c:MNG.var:chi_domination > c:QNG.var:chi_domination
-	    }
-	    c:CSH = {
-	        cancel_subject = c:CJX
-	    }
-	    c:CJX = {
-	        make_subject_of = {
-	            target = c:MNG
-	            type = subject_type:cn_march_governor
-	        }
-	    }
-	}
+	# option = {#归明
+	#     name = flavor_csh.1.b
+	#     trigger = {
+	#         c:MNG.var:chi_domination > c:CSH.var:chi_domination
+	#         c:MNG.var:chi_domination > c:QNG.var:chi_domination
+	#     }
+	#     c:CSH = {
+	#         cancel_subject = c:CJX
+	#     }
+	#     c:CJX = {
+	#         make_subject_of = {
+	#             target = c:MNG
+	#             type = subject_type:cn_march_governor
+	#         }
+	#     }
+	# }
 }
