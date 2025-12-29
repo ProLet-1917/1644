@@ -6,9 +6,21 @@ flavor_csh.1 = {
 	desc = flavor_csh.1.desc
 	historical_info = flavor_csh.1.historical_info
 	trigger = {
+		# CJX必须是CSH的附庸
 		c:CJX ?= {
-			is_subject_of = c:CSH
+			is_subject_of = ROOT
 		}
+<<<<<<< HEAD
+		# CSH的条件（ROOT就是CSH）
+		has_variable = chi_domination
+		var:chi_domination < 70			#军威
+		NOT = {
+			owns = location:funing
+		}			#失去山海关
+		# 吴三桂不是大顺附庸
+=======
+		c:QNG ?= { has_variable = chi_domination }
+		c:MNG ?= { has_variable = chi_domination }
 		c:CSH ?= {
 			has_variable = chi_domination
 			var:chi_domination < 70			#军威
@@ -17,15 +29,12 @@ flavor_csh.1 = {
 			}			#失去山海关
 		}
 		#
+>>>>>>> 7615544 (debug)
 		c:WSG ?= {
 			NOT = {
-				is_subject_of = c:CSH				#吴三桂不是大顺附庸
+				is_subject_of = ROOT
 			}
 		}
-		# OR = {
-		# 	c:QNG.var:chi_domination > c:CSH.var:chi_domination			#清国军威大于大顺军威
-		# 	c:MNG.var:chi_domination > c:CSH.var:chi_domination			#明国军威大于大顺军威
-		# }
 	}
 	immediate = {
 		c:CJX = {
@@ -37,11 +46,10 @@ flavor_csh.1 = {
 	fire_only_once = yes
 
 	dynamic_historical_event = {
-		tag = CJX
 		tag = CSH
 		from = 1644.5.1		# The game will check if this event can be fired after this date
 		to = 1700.1.1		# The game will stop checking after this date.
-		monthly_chance = 100		# Monthly chance that this event will fire (10 = 10% chance)
+		monthly_chance = 100		# Monthly chance that this event will fire (100 = 100% chance)
 	}
 	option = {
 		#降清
