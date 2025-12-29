@@ -5,7 +5,7 @@ flavor_csh.1 = {
 	title = flavor_csh.1.title
 	desc = flavor_csh.1.desc
 	historical_info = flavor_csh.1.historical_info
-	major = yes
+
 	trigger = {
 		c:CJX ?= {
 			is_subject_of = c:CSH
@@ -37,7 +37,7 @@ flavor_csh.1 = {
 		}
 
 	}
-
+	major = yes
 	fire_only_once = yes
 
 	dynamic_historical_event = {
@@ -59,11 +59,11 @@ flavor_csh.1 = {
 			# 让CJX加入大清的战争
 			subject_join_overlord_wars = yes
 		}
-		# 增加CJX对大清的100点临时忠诚度（通过opinion modifier）
+		# 增加CJX对大清的100点临时忠诚度
 		c:CJX = {
-			add_opinion = {
-				target = c:QNG
-				modifier = opinion_emperors_genorisity
+			add_country_modifier = {
+				modifier = loyalty_tifayifu
+				years = 2
 			}
 		}
 		# trigger = {
