@@ -24,7 +24,7 @@ thirty_years_war = {
         OR = {
             custom_tooltip = {
                 text = in_peace_talk_in_westphalia
-                has_global_variable = now_in_peace_talk_in_westphalia
+                has_global_variable = start_peace_talk_in_westphalia
             }
             custom_tooltip = {
                 text = war_of_religions_peace_treaty_enforced_tt
@@ -59,6 +59,9 @@ thirty_years_war = {
         change_global_variable = {
             name = current_war_balance
             add = 0.02
+        }
+        change_global_variable = {
+            name = current_war_balance
             max = 100
             min = 0
         }
