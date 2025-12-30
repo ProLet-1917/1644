@@ -4,23 +4,32 @@
 
 
 
- # Generic Action: Grant Unification CB
- late_ming_crisis_grant_unification_cb: "Grant Unification of China Casus Belli"
- late_ming_crisis_grant_unification_cb_desc: "During the Late Ming Crisis situation, eligible countries in Chinese regions can obtain a casus belli to unify China, allowing them to declare war on other countries in the same region."
+# Generic Action: Grant Unification CB
+late_ming_crisis_grant_unification_cb: "Grant Unification of China Casus Belli"
+late_ming_crisis_grant_unification_cb_desc: "During the Late Ming Crisis situation, eligible countries in Chinese regions can obtain a casus belli to unify China, allowing them to declare war on other countries in the same region."
 
- # Generic Action: End Situation and Recreate Middle Kingdom
- late_ming_crisis_end_and_recreate_middle_kingdom: "Recreate Middle Kingdom"
- late_ming_crisis_end_and_recreate_middle_kingdom_desc: "End the Late Ming Crisis situation and recreate the Middle Kingdom, becoming the new Celestial Emperor. Requires owning all key cities and stability above 40."
+# Generic Action: Subjugate Disobedient Subject
+late_ming_crisis_subjugate_disobedient: "Subjugate Disobedient Subject"
+late_ming_crisis_subjugate_disobedient_desc: "Obtain a casus belli to unify China, allowing you to annex your subject countries."
 
- # Generic Action: Test Recreate Middle Kingdom (No Conditions)
- late_ming_crisis_test_recreate_middle_kingdom: "[TEST] Recreate Middle Kingdom"
- late_ming_crisis_test_recreate_middle_kingdom_desc: "Test button, recreate Middle Kingdom and end situation without conditions."
+# Generic Action: Restore Celestial Empire
+late_ming_crisis_restore_celestial_empire: "Restore Celestial Empire"
+late_ming_crisis_restore_celestial_empire_desc: "By unifying China and recreating the [GetUniqueInternationalOrganization('middle_kingdom').GetName] organization, reestablish the Celestial Empire system. This action establishes our country as the leader of the Celestial Empire and restores the traditional tributary system."
 
-# GUI Text
-MAJOR_POWERS: "Major Powers"
-PARTICIPATING_COUNTRIES: "All Participating Powers"
-SHOW_PARTICIPANTS_ON_MAP: "Show all participants on map"
+# Generic Action: Test Button - Recreate Middle Kingdom (Test Only)
+late_ming_crisis_test_recreate_middle_kingdom: "[TEST] Recreate Middle Kingdom"
+late_ming_crisis_test_recreate_middle_kingdom_desc: "Test only: Use vanilla effect to recreate the [GetUniqueInternationalOrganization('middle_kingdom').GetName] organization with full country effects (change tag to CHI, core all of China, accept Chinese cultures, set empire rank, etc.)."
 
- # Modifier Text
- late_ming_crisis_participant: "Late Ming Crisis Participant"
- late_ming_crisis_participant_desc: "This country is participating in the Late Ming Crisis situation, a critical period in the war for Chinese unification."
+ # GUI Text
+ MAJOR_POWERS: "Major Powers"
+ PARTICIPATING_COUNTRIES: "All Participating Powers"
+ BATTLE_STATISTICS_LATE_MING: "Battle Statistics"
+ BATTLE_STATISTICS_LATE_MING_TOOLTIP: "#T Battle Statistics#!Displays battle statistics for the Late Ming Crisis situation, including total casualties, our kills, and our casualties."
+ TOTAL_CASUALTIES_LATE_MING: "Total Casualties"
+ TOTAL_CASUALTIES_LATE_MING_TOOLTIP: "#T Total Casualties#!The total number of soldiers killed in battle by all participants in the Late Ming Crisis is [SituationView.GetActiveSituation.GetSituation.MakeScope.GetVariable('late_ming_crisis_total_casualties').GetValue]."
+ MY_KILLS_LATE_MING: "Our Kills"
+ MY_KILLS_LATE_MING_TOOLTIP: "#T Our Kills#!The total number of enemy soldiers killed by our side in battle during the Late Ming Crisis is [Country.MakeScope.GetVariable('late_ming_crisis_my_kills').GetValue]."
+ MY_CASUALTIES_LATE_MING: "Our Casualties"
+ MY_CASUALTIES_LATE_MING_TOOLTIP: "#T Our Casualties#!The total number of our soldiers killed in battle during the Late Ming Crisis is [Country.MakeScope.GetVariable('late_ming_crisis_my_casualties').GetValue]."
+
+# Modifier Text (Static modifier localization is in main_menu/localization)

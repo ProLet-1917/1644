@@ -5,20 +5,19 @@
 			set_starting_tech_level_by_region = yes
 			# 根据科技等级给予思潮
 			give_institutions_by_tech_level = yes
-            #设置自动征服 - 给所有首都在中国的国家
-            if = {
-                limit = {
-                    exists = capital
-                    OR = {
-                        capital.region = region:west_china_region
-                        capital.region = region:east_china_region
-                        capital.region = region:north_china_region
-                        capital.region = region:south_china_region
-                        capital.region = region:manchuria_region #满洲
-                    }
-                }
-                add_country_modifier = { modifier = 1644_china_auto_conquest years = 8 }
-            }
+            # #设置自动征服 - 给所有首都在中国的国家
+            # if = {
+            #     limit = {
+            #         exists = capital
+            #         OR = {
+            #             capital.region = region:west_china_region
+            #             capital.region = region:east_china_region
+            #             capital.region = region:north_china_region
+            #             capital.region = region:south_china_region
+            #             capital.region = region:manchuria_region #满洲
+            #         }
+            #     }
+            # }
 
             # 开局生成大量女角色以防止绝嗣（为每个国家触发）
             #trigger_event_silently = zzz_1644_generate_female_characters.1
@@ -30,10 +29,11 @@
         c:CXI = { trigger_event_silently = cleanup_1644.1 }
         c:MNG = { trigger_event_silently = cleanup_1644.1 }
 
+
         # 主要势力开局事件
         c:CSH = {
             trigger_event_silently = csh_1644_start_army.1
-            trigger_event_silently = { id = csh_1644_unification.1 days = 4 }
+            trigger_event_silently = { id = csh_1644_unification.1 days = 4 }   
             unlock_government_reform_effect = { type = chi_peasant_empire_reform }
         }
         c:QNG = {
@@ -67,7 +67,7 @@
                 count = 5
                 create_character = {
                     female = yes
-                    age = { 16 25 }
+                    age = { 16 29 }
                     culture = root.culture
                     religion = root.religion
                     estate = estate_type:nobles_estate
