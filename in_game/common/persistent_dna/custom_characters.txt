@@ -1,0 +1,160 @@
+﻿# ## 李自成DNA设置
+# ## 基于历史记载：高颧骨、深眼窝、鸱目（锐利）、曷鼻（特殊形状）
+
+# chi_li_zicheng = {
+#     priority = 1
+# 	tags = { chi_li_zicheng }
+# 	portrait_info = {
+# 		genes = {
+# 			# 颜色基因 - 汉族特征（深黑色头发、中等偏黄肤色、深棕色眼睛）
+# 			hair_color={ 93 181 93 181 }
+# 			skin_color={ 130 102 130 102 }
+# 			eye_color={ 197 239 197 239 }
+# 			pose={ "" 127 "" 127 }
+# 			poses_height={ "all_height" 127 "all_height" 127 }
+			
+# 			# 老化基因 - 1644年时38岁，中等老化
+# 			gene_aging_body={ "old_body" 83 "old_body" 83 }
+# 			gene_aging_eyes={ "old_eyes_2" 180 "old_eyes_2" 180 }
+# 			gene_aging_forehead={ "old_forehead_2" 150 "old_forehead_2" 150 }
+# 			gene_aging_mouth={ "old_mouth_2" 100 "old_mouth_2" 100 }
+# 			gene_aging_colors={ "average_aging_colors" 127 "average_aging_colors" 127 }
+			
+# 			# 身体特征 - 中等偏壮（农民出身，长期征战）
+# 			gene_body_weight={ "template_1" 150 "template_1" 150 }
+# 			gene_complexion={ "face_default" 255 "face_default" 255 }
+			
+# 			# 颧骨特征 - 高颧骨（历史记载）
+# 			gene_cheek_def={ "template_1" 150 "template_1" 150 }
+# 			gene_cheek_fat={ "template_2" 120 "template_2" 120 }
+# 			gene_cheek_forward={ "template_1" 180 "template_1" 180 }  # 高颧骨
+# 			gene_cheek_height={ "template_1" 140 "template_1" 140 }
+# 			gene_cheek_width={ "template_1" 130 "template_1" 130 }
+			
+# 			# 下巴特征
+# 			gene_chin_def={ "template_1" 132 "template_1" 132 }
+# 			gene_chin_dimple={ "template_1" 0 "template_1" 0 }
+# 			gene_chin_height={ "template_1" 146 "template_1" 146 }
+# 			gene_chin_length={ "template_1" 168 "template_1" 168 }
+# 			gene_chin_size={ "template_1" 132 "template_1" 132 }
+			
+# 			# 耳朵特征
+# 			gene_ear_angle={ "template_1" 116 "template_1" 116 }
+# 			gene_ear_out={ "template_1" 107 "template_1" 117 }
+# 			gene_ear_size={ "template_1" 165 "template_1" 86 }
+			
+# 			# 眼睛特征 - 深眼窝、鸱目（锐利）
+# 			gene_eye_angle={ "template_1" 140 "template_1" 140 }
+# 			gene_eye_forward={ "template_1" 100 "template_1" 100 }  # 深眼窝
+# 			gene_eye_height={ "template_1" 127 "template_1" 127 }
+# 			gene_eye_lower_lid_def={ "template_1" 228 "template_1" 228 }
+# 			gene_eye_open={ "template_1" 140 "template_1" 140 }  # 锐利眼神
+# 			gene_eye_size={ "template_1" 120 "template_1" 120 }
+# 			gene_eye_socket={ "template_2" 120 "template_2" 120 }  # 深眼窝
+# 			gene_eye_spacing={ "template_1" 140 "template_1" 128 }
+# 			gene_eye_upper_lid_shape={ "template_1" 20 "template_1" 20 }
+# 			gene_eye_upper_lid_size={ "template_1" 30 "template_1" 30 }  # 较小的上眼睑，更锐利
+			
+# 			# 前额特征
+# 			gene_forehead_angle={ "template_1" 136 "template_1" 136 }
+# 			gene_forehead_brow_angle={ "template_1" 152 "template_1" 133 }
+# 			gene_forehead_brow_curve={ "template_1" 61 "template_1" 103 }
+# 			gene_forehead_brow_forward={ "template_1" 74 "template_1" 74 }
+# 			gene_forehead_brow_height={ "template_1" 212 "template_1" 176 }
+# 			gene_forehead_height={ "template_1" 79 "template_1" 126 }
+# 			gene_forehead_roundness={ "template_1" 143 "template_1" 143 }
+			
+# 			# 头部特征
+# 			gene_head_face_forward={ "template_1" 80 "template_1" 80 }
+# 			gene_head_height={ "template_1" 113 "template_1" 113 }
+# 			gene_head_size={ "template_1" 127 "template_1" 127 }
+# 			gene_head_width={ "template_1" 138 "template_1" 122 }
+			
+# 			# 下颌特征
+# 			gene_jaw_angle={ "template_1" 111 "template_1" 111 }
+# 			gene_jaw_def={ "template_1" 45 "template_1" 116 }
+# 			gene_jaw_forward={ "template_1" 124 "template_1" 124 }
+# 			gene_jaw_height={ "template_1" 114 "template_1" 114 }
+# 			gene_jaw_width={ "template_1" 156 "template_1" 97 }
+			
+# 			# 嘴巴特征
+# 			gene_mouth_corner_height={ "template_1" 145 "template_1" 145 }
+# 			gene_mouth_forward={ "template_1" 115 "template_1" 115 }
+# 			gene_mouth_height={ "template_1" 129 "template_1" 129 }
+# 			gene_mouth_lip_def={ "template_1" 127 "template_1" 127 }
+# 			gene_mouth_lower_lip_pad={ "template_1" 66 "template_1" 66 }
+# 			gene_mouth_lower_lip_size={ "template_1" 150 "template_1" 150 }
+# 			gene_mouth_philtrum_def={ "template_1" 196 "template_1" 196 }
+# 			gene_mouth_philtrum_shape={ "template_1" 127 "template_1" 127 }
+# 			gene_mouth_philtrum_width={ "template_1" 147 "template_1" 147 }
+# 			gene_mouth_upper_lip_shape={ "template_1" 255 "template_1" 144 }
+# 			gene_mouth_upper_lip_size={ "template_1" 143 "template_1" 143 }
+# 			gene_mouth_width={ "template_1" 61 "template_1" 61 }
+			
+# 			# 脖子特征
+# 			gene_neck_def={ "template_1" 84 "template_1" 112 }
+# 			gene_neck_length={ "template_1" 132 "template_1" 120 }
+# 			gene_neck_width={ "template_1" 161 "template_1" 115 }
+			
+# 			# 头骨特征
+# 			gene_skull_depth={ "template_1" 27 "template_1" 27 }
+# 			gene_skull_height={ "template_1" 111 "template_1" 111 }
+# 			gene_skull_width={ "template_1" 150 "template_1" 129 }
+			
+# 			# 鼻子特征 - 曷鼻（特殊形状，可能较扁平）
+# 			gene_nose_forward={ "template_1" 66 "template_1" 66 }
+# 			gene_nose_height={ "template_1" 80 "template_1" 76 }  # 较低，较扁平
+# 			gene_nose_length={ "template_1" 72 "template_1" 72 }
+# 			gene_nose_nostril_height={ "template_1" 71 "template_1" 71 }
+# 			gene_nose_nostril_width={ "template_1" 157 "template_1" 157 }
+# 			gene_nose_ridge_angle={ "template_1" 125 "template_1" 125 }
+# 			gene_nose_ridge_shape={ "template_1" 138 "template_1" 138 }
+# 			gene_nose_ridge_def={ "template_1" 82 "template_1" 82 }
+# 			gene_nose_root_def={ "template_1" 189 "template_1" 116 }
+# 			gene_nose_tip_angle={ "template_1" 125 "template_1" 125 }
+# 			gene_nose_tip_def={ "template_1" 113 "template_1" 113 }
+# 			gene_nose_tip_forward={ "template_1" 88 "template_1" 88 }
+# 			gene_nose_tip_size={ "template_1" 52 "template_1" 52 }
+# 			gene_nose_width={ "template_1" 117 "template_1" 117 }
+			
+# 			# 太阳穴特征
+# 			gene_temple_def={ "template_1" 127 "template_1" 127 }
+			
+# 			# 眉毛特征
+# 			gene_eyebrows_inner={ "thinner_long" 0 "thin_medium" 148 }
+# 			gene_eyebrows_outer={ "thinner_medium" 108 "thin_short" 120 }
+			
+# 			# 其他细节
+# 			gene_lip_color={ "template_1" 216 "template_1" 216 }
+# 			gene_skin_noise={ "template_1" 0 "template_1" 0 }
+# 			gene_blush={ "template_1" 89 "template_1" 89 }
+# 			gene_eye_socket_color={ "template_1" 3 "template_1" 3 }
+# 			gene_eyelashes={ "upper_strong_eyeliner" 244 "upper_strong_eyeliner" 244 }
+# 			gene_skin_detail={ "template_3" 87 "template_3" 87 }
+# 			gene_stubble={ "template_1" 77 "template_1" 77 }
+			
+# 			# 眼睛和睫毛
+# 			eyes={ "all_eyes" 255 "all_eyes" 255 }
+# 			eyelashes={ "upper_eyelashes" 58 "upper_eyelashes" 58 }
+# 			mouth_inside={ "mouth_inside_normal" 0 "mouth_inside_normal" 0 }
+			
+# 			# 配饰基因 - 强制设置（使用模板名称和索引值）
+# 			# 注意：虽然原版建议使用portrait_modifiers，但这里直接设置以强制应用
+# 			clothes={ "chinese_war_nobility" 255 "chinese_war_nobility" 255 }
+# 			capes={ "no_cape" 0 "no_cape" 0 }
+# 			beards={ "beard_asian_full_manchu" 255 "beard_asian_full_manchu" 255 }
+# 			headwear={ "chinese_war_nobility" 255 "chinese_war_nobility" 255 }
+# 			headwear_additive={ "no_headwear_additive" 0 "no_headwear_additive" 0 }
+# 			neckware_neck={ "no_neckware_neck" 0 "no_neckware_neck" 0 }
+# 			neckware_inner={ "no_neckware_inner" 0 "no_neckware_inner" 0 }
+# 			neckware_outer={ "no_neckware_outer" 0 "no_neckware_outer" 0 }
+# 			hair_styles={ "chinese_hair" 194 "chinese_hair" 194 }
+			
+# 			# 表情
+# 			expressions_mouth={ "no_expression" 128 "no_expression" 128 }
+# 			expressions_eyes={ "no_expression" 128 "no_expression" 128 }
+# 			expressions_brow={ "no_expression" 128 "no_expression" 128 }
+# 			expressions_forehead={ "no_expression" 128 "no_expression" 128 }
+# 		}
+# 	}
+# }
