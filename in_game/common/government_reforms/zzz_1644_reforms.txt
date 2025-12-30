@@ -6,14 +6,15 @@ REPLACE:chi_peasant_empire_reform = {
 		has_or_had_tag = CSH
 	}
 	locked = {
-		has_or_had_tag = CSH
+		NOT = {	owns =location:dadu }
+
 		# when these triggers are true, the reform cannot be manually removed by the country. root = country
 	}
 	country_modifier = {
 		amount_looted_modifier = 5.0
 		peasants_estate_levy_size = 0.25
 		peasants_estate_target_satisfaction = medium_permanent_target_satisfaction
-		nobles_estate_target_satisfaction = huge_permanent_target_satisfaction_penalty
+		nobles_estate_target_satisfaction = large_permanent_target_satisfaction_penalty
 	}
 
 	years = 3 #这个不是持续时间！how long it takes before the reform is fully implemented. Leave unset for instant implementation 
