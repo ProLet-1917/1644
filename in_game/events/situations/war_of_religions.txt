@@ -1799,6 +1799,12 @@ war_of_religions.1300 = { #Peace of Westphalia
 		situation:war_of_religions = {
 			end_situation = this
 		}
+		situation:thirty_years_war = {
+			end_situation = this
+		}
+		set_global_variable = {
+			name = start_peace_talk_in_westphalia
+		}
 		change_imperial_authority = { value = imperial_authority_unique_penalty }
 		international_organization:hre = {
 			add_policy_to_international_organization = policy:hre_religion_christian
