@@ -7,20 +7,13 @@
 		current_year >= 1627
 		current_year <= 1650
 		exists = c:MNG
-		# c:MNG = { owns = location:dadu }
-		# OR = {
-		# 	current_year = 1644  # 1644年游戏开始时自动启动
-		# 	c:MNG = { stability < 50 }
-		# 	c:MNG = { current_celestial_authority < 50 } # Assuming this trigger exists for Mandate
-		# 	c:MNG = { is_at_war_with = c:QNG }
-		# 	c:MNG = { is_at_war_with = c:CSH }
-		# }
+
 	}
 
 	# 2. 结束条件
 	can_end = {
 		OR = {
-			current_year > 1690
+			current_year > 1661
 			
 			# # 参与者中有国家同时拥有九个关键城市且稳定度>40
 			# # 且局势已运行至少1年（避免开局立即结束）
@@ -48,6 +41,7 @@
 
 	# 4. 启动效果
 	on_start = {
+
 		# 解散天朝：移除所有天朝成员
 		if = {
 			limit = { exists = international_organization:middle_kingdom }
@@ -66,96 +60,109 @@
 			}
 		}
 		
-		# 触发事件给相关国家
-		every_country = {
-			limit = {
-				exists = capital
-				OR = {
-					capital.region = region:west_china_region
-					capital.region = region:east_china_region
-					capital.region = region:north_china_region
-					capital.region = region:south_china_region
-					capital.region = region:manchuria_region
-				}
-			}
-			trigger_event_non_silently = late_ming_crisis.1
-		}
-		# 初始化变量
-		set_global_variable = {
-			name = ming_collapse_progress
-			value = 0
-		}
 		# 给所有首都在中国和满洲的国家互相添加"统一中国"CB
 		# 使用全局变量列表方法，分两步执行
-		zzz_1644_collect_china_countries_effect = yes
+		collect_china_countries_effect = yes
 		zzz_1644_add_china_cb_effect = yes
 		
-		# 为初始参与国添加局势 modifier
-		every_country = {
-			limit = {
-				exists = capital
-				is_subject = no
-				OR = {
-					capital.region = region:west_china_region
-					capital.region = region:east_china_region
-					capital.region = region:north_china_region
-					capital.region = region:south_china_region
-					capital.region = region:manchuria_region
+		# 为初始参与国添加局势 modifier（使用已收集的国家列表）
+		zzz_1644_add_crisis_participant_modifier_effect = yes
+
+		#为所有参与国添加domination和mandate
+		late_ming_crisis_init_variable = yes
+
+
+		#为明、顺、清设置独特变量值
+		c:MNG = {
+			if = {
+				limit = {
+					has_variable = mng_move_to_nanjing
+				}
+				change_variable = {
+					name = chi_domination
+					add = 20
+				}
+				change_variable = {
+					name = chi_mandate
+					add = 30
 				}
 			}
-			add_country_modifier = {
-				modifier = late_ming_crisis_participant
-				months = -1  # 永久，直到局势结束
-				mode = replace
+			else = {
+				change_variable = {
+					name = chi_domination
+					subtract = 20
+				}
+				change_variable = {
+					name = chi_mandate
+					add = 40
+				}
 			}
 		}
+		c:CSH = {
+			if = {
+				limit = {
+					has_variable = csh_attack_beijing
+				}
+				change_variable = {
+					name = chi_domination
+					add = 75
+				}
+				change_variable = {
+					name = chi_mandate
+					add = 45
+				}
+			}
+			else = {
+				change_variable = {
+					name = chi_domination
+					add = 50
+				}
+				change_variable = {
+					name = chi_mandate
+					add = 60
+				}
+			}
+		}
+		c:QNG = {
+			change_variable = {
+				name = chi_domination
+				add = 75
+			}
+			change_variable = {
+				name = chi_mandate
+				subtract = 20
+			}
+		}
+
+		# 初始化明末局势死亡总人数计数器（局势变量）
+		set_variable = {
+			name = late_ming_crisis_total_casualties
+			value = 0
+		}
+		# 注意：我方击杀和阵亡计数器是国家变量，不需要在局势中初始化
+
 	}
 
 	# 5. 月度逻辑
 	on_monthly = {
-		# 每月更新中国国家列表（用于GUI显示）
-		zzz_1644_collect_china_countries_effect = yes
+		# # 每月更新中国国家列表，已经在别处更新
+		# collect_china_countries_effect = yes
+		#为所有参与国添加domination和mandate
+		late_ming_crisis_init_variable = yes
 		
-		# 为参与国添加局势 modifier
-		every_country = {
+		# 为参与国添加局势 modifier（使用已收集的国家列表，只添加给还没有 modifier 的国家）
+		every_in_global_list = {
+			variable = china_countries_list
 			limit = {
-				exists = capital
-				is_subject = no
-				OR = {
-					capital.region = region:west_china_region
-					capital.region = region:east_china_region
-					capital.region = region:north_china_region
-					capital.region = region:south_china_region
-					capital.region = region:manchuria_region
-				}
 				NOT = { has_country_modifier = late_ming_crisis_participant }
 			}
 			add_country_modifier = {
 				modifier = late_ming_crisis_participant
-				months = -1  # 永久，直到局势结束
+				years = 5
 				mode = replace
 			}
 		}
 		
-		# 随机事件逻辑，通过事件文件处理
-		# 这里可以调用一个统一的脉冲事件
-		random_list = {
-			10 = { # 10% 概率触发随机事件
-				every_country = {
-					limit = {
-						OR = {
-							capital.region = region:west_china_region
-							capital.region = region:east_china_region
-							capital.region = region:north_china_region
-							capital.region = region:south_china_region
-							capital.region = region:manchuria_region
-						}
-					}
-					trigger_event_non_silently = late_ming_crisis.100 # Generic monthly pulse event
-				}
-			}
-			90 = {}
-		}
 	}
 
 	# 6. 结束效果

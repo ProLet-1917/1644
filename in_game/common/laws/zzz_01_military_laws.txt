@@ -1,12 +1,7 @@
 ﻿INJECT:medieval_levy_law = {
 	broken_weisuo = {
 		potential = {
-			OR = {
-				tag = MNG
-				tag = CSH
-				tag = WSG
-				tag = CXI
-			}
+	        has_culture_group = culture_group:chinese_group
 		}
 		country_modifier = {
 			global_levy_size_modifier = -0.7
@@ -16,6 +11,6 @@
 			crown_estate
 			peasants_estate
 		}
-		years = 10
+		years = 3
 	}
 }
