@@ -1,36 +1,26 @@
-namespace = zzz_late_ming_crisis
-zzz_late_ming_crisis.1 = {
+namespace = late_ming_crisis
+late_ming_crisis.1 = {
 	#大同反正
 	type = country_event
     category = situation_event
-	title = zzz_late_ming_crisis.1.title
-	desc = zzz_late_ming_crisis.1.desc
-	#historical_info = zzz_late_ming_crisis.1.historical_info
+	title = late_ming_crisis.1.title
+	desc = late_ming_crisis.1.desc
+	#historical_info = late_ming_crisis.1.historical_info
 	trigger = {
 		c:CJX ?= {
 			is_subject_of = c:CSH
 		}
-		c:QNG ?= { has_variable = chi_domination }
-		c:MNG ?= { has_variable = chi_domination }
 		c:CSH ?= {
-			has_variable = chi_domination
-			var:chi_domination < 70			#军威
 			NOT = {
 				owns = location:funing
 			}			#失去山海关
 		}
-		#
 		c:WSG ?= {
 			NOT = {
 				is_subject_of = c:CSH				#吴三桂不是大顺附庸
 			}
 		}
-		# OR = {
-		# 	c:QNG.var:chi_domination > c:CSH.var:chi_domination			#清国军威大于大顺军威
-		# 	c:MNG.var:chi_domination > c:CSH.var:chi_domination			#明国军威大于大顺军威
-		# }
 	}
-
 	immediate = {
 		
 
@@ -39,7 +29,7 @@ zzz_late_ming_crisis.1 = {
 	fire_only_once = yes
 	option = {
 		#降清
-		name = zzz_late_ming_crisis.1.a
+		name = late_ming_crisis.1.a
 		cancel_subject = c:CJX
 		historical_option = yes
 		c:CJX = {
@@ -70,7 +60,7 @@ zzz_late_ming_crisis.1 = {
 
 	}
 	option = {#归明
-	     name = zzz_late_ming_crisis.1.b
+	     name = late_ming_crisis.1.b
 	     trigger = {
 	         c:MNG.var:chi_domination > c:CSH.var:chi_domination
 	         c:MNG.var:chi_domination > c:QNG.var:chi_domination
@@ -87,7 +77,7 @@ zzz_late_ming_crisis.1 = {
 	}
 	option = {
 		#忠诚 
-		name = zzz_late_ming_crisis.1.c
+		name = late_ming_crisis.1.c
 		ai_chance = 0
 		c:CJX = {
             set_variable = cjx_refus_rebellion_first
@@ -97,4 +87,12 @@ zzz_late_ming_crisis.1 = {
 			}
 		}
 	}
+}
+late_ming_crisis.2 = { #通知大顺
+ 	title = late_ming_crisis.2.title
+ 	desc = late_ming_crisis.2.desc
+ 	is_trigger_only = yes
+ 	option = {
+ 		name = late_ming_crisis.2.a	
+ 	}
 }
