@@ -184,7 +184,7 @@
 					}		
 				}
 				random = {
-					chance = 10
+					chance = 20
 					modifier = {
 						c:CSH.var:chi_domination < 70
 						multiply = 2
@@ -193,10 +193,10 @@
 						c:CSH.var:chi_domination < 60
 						multiply = 2
 					}
-					modifier = {
-						c:CSH.var:chi_domination < 50
-						multiply = 2
-					}
+					#modifier = {
+					#	c:CSH.var:chi_domination < 50
+					#	multiply = 2
+					#}
 					c:CJX = {
 						trigger_event_silently = zzz_late_ming_crisis.1
 					}
@@ -206,7 +206,7 @@
 	}
 
 	# 6. 结束效果
-	on_end = {
+	on_ended = {
 		# 移除所有参与国的局势 modifier
 		every_country = {
 			limit = {
