@@ -141,5 +141,21 @@ on_battle_lost = {
 				}
 			}
 		}
+
+		
+	}
+}
+
+on_great_battle_lost = {
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_global_variable = battle_of_shanhaiguan }
+				scope:actor.owner = c:CSH
+				scope:target.owner = c:QNG
+				scope:actor.unit_location = location:funing
+			}
+		}
+		c:CSH = { trigger_event_silently = csh_1644_unification.6 }
 	}
 }

@@ -1,0 +1,98 @@
+namespace = late_ming_crisis
+late_ming_crisis.1 = {
+	#大同反正
+	type = country_event
+    category = situation_event
+	title = late_ming_crisis.1.title
+	desc = late_ming_crisis.1.desc
+	#historical_info = late_ming_crisis.1.historical_info
+	trigger = {
+		c:CJX ?= {
+			is_subject_of = c:CSH
+		}
+		c:CSH ?= {
+			NOT = {
+				owns = location:funing
+			}			#失去山海关
+		}
+		c:WSG ?= {
+			NOT = {
+				is_subject_of = c:CSH				#吴三桂不是大顺附庸
+			}
+		}
+	}
+	immediate = {
+		
+
+	}
+	major = yes
+	fire_only_once = yes
+	option = {
+		#降清
+		name = late_ming_crisis.1.a
+		cancel_subject = c:CJX
+		historical_option = yes
+		c:CJX = {
+			make_subject_of = {
+				target = c:QNG
+				type = subject_type:cn_march_governor
+			}
+			# 让CJX加入大清的战争
+			subject_join_overlord_wars = yes
+		}
+		# 增加CJX对大清的100点临时忠诚度
+		c:CJX = {
+			add_country_modifier = {
+				modifier = loyalty_tifayifu
+				years = 2
+			}
+		}
+		c:CJX = {
+			set_variable = cjx_rebellion_first
+		}
+		c:CSH = { trigger_event_silently = flavor_csh.2 }#通知大顺
+		c:QNG = { trigger_event_silently = qng_1644_unification.9 }#通知大清
+		kill_character = character:chi_zhang_tianlin
+		 trigger = {
+		     c:QNG.var:chi_domination > c:CSH.var:chi_domination
+		     c:QNG.var:chi_domination > c:MNG.var:chi_domination
+		}
+
+	}
+	option = {#归明
+	     name = late_ming_crisis.1.b
+	     trigger = {
+	         c:MNG.var:chi_domination > c:CSH.var:chi_domination
+	         c:MNG.var:chi_domination > c:QNG.var:chi_domination
+	     }
+	     c:CSH = {
+	         cancel_subject = c:CJX
+	     }
+	     c:CJX = {
+	         make_subject_of = {
+	             target = c:MNG
+	             type = subject_type:cn_march_governor
+	         }
+	     }
+	}
+	option = {
+		#忠诚 
+		name = late_ming_crisis.1.c
+		ai_chance = 0
+		c:CJX = {
+            set_variable = cjx_refus_rebellion_first
+			add_country_modifier = {
+				modifier = loyalty_tifayifu
+				years = 2
+			}
+		}
+	}
+}
+late_ming_crisis.2 = { #通知大顺
+ 	title = late_ming_crisis.2.title
+ 	desc = late_ming_crisis.2.desc
+ 	is_trigger_only = yes
+ 	option = {
+ 		name = late_ming_crisis.2.a	
+ 	}
+}

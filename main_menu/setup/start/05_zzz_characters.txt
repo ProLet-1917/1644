@@ -122,7 +122,7 @@ character_db = {
         death_date = 1464.2.23
         father = chi_zhu_zhanji
         tag = MNG
-        ruler_trait = craven # 懦夫
+        ruler_trait = naive # 懦夫
     }
     # 朱祁钰
     chi_zhu_qiyu = {
@@ -294,6 +294,7 @@ character_db = {
         death_date = 1641.3.2
         father = chi_zhu_yijun
         tag = MNG
+		ruler_trait = embezzler
     }
     # 朱常淓
     chi_zhu_changfang = {
@@ -314,43 +315,42 @@ character_db = {
         ruler_trait = craven # 懦夫
     }
     # 朱以海
-    chi_zhu_yihai = {
-        first_name = {
-            name = name_yihai
-        }
-        dynasty = rtr_ming_zhu_dynasty
-        culture = zhongyuan_culture
-        religion = sanjiao
-        adm = 45
-        dip =70
-        mil = 50
-        birth_date = 1618.7.6
-        birth = ziyang
-        tag = MNG
-        ruler_trait = charismatic_negotiator # 魅力型谈判者
-        ruler_trait = kind_hearted # 善良
-        ruler_trait = inspiring_leader # 鼓舞人心的领袖
-        general_trait = inspirational_leader_general # 励志领袖
-    }
+    #chi_zhu_yihai = {
+    #    first_name = {
+    #        name = name_yihai
+    #    }
+    #    dynasty = rtr_ming_zhu_dynasty
+    #    culture = zhongyuan_culture
+    #    religion = sanjiao
+    #    adm = 45
+    #    dip = 70
+    #    mil = 50
+    #    birth_date = 1618.7.6
+    #    birth = ziyang
+    #    tag = MNG
+    #    ruler_trait = charismatic_negotiator # 魅力型谈判者
+    #    ruler_trait = kind_hearted # 善良
+    #    ruler_trait = inspiring_leader # 鼓舞人心的领袖
+    #    admiral_trait = level_headed
+    #}
     # 朱聿键
-    chi_zhu_yujian = {
-        first_name = {
-            name = name_yujian
-        }
-        dynasty = rtr_ming_zhu_dynasty
-        culture = zhongyuan_culture
-        religion = sanjiao
-        adm = 40
-        dip = 65
-        mil = 35
-        birth_date = 1602.5.25
-        birth = nanyang
-        tag = MNG
-        ruler_trait = fierce_negotiator # 铁腕谈判家
-        ruler_trait = benevolent # 仁爱
-        ruler_trait = industrious # 勤勉
-        general_trait = inspirational_leader_general # 励志领袖
-    }
+    #chi_zhu_yujian = {
+    #    first_name = {
+    #        name = name_yujian
+    #    }
+    #    dynasty = rtr_ming_zhu_dynasty
+    #    culture = zhongyuan_culture
+    #    religion = sanjiao
+    #    adm = 40
+    #    dip = 65
+    #    mil = 35
+    #    birth_date = 1602.5.25
+    #    birth = nanyang
+    #    tag = MNG
+    #    ruler_trait = fierce_negotiator # 铁腕谈判家
+    #    ruler_trait = benevolent # 仁爱
+    #    ruler_trait = industrious # 勤勉
+    #}
     # 朱由崧
     chi_zhu_yousong = {
         first_name = {
@@ -384,7 +384,7 @@ character_db = {
         birth_date = 1596.5.9
         birth = guizhou_guizhou
         tag = MNG
-        ruler_trait = naive_enthusiast # 天真狂热
+        ruler_trait = naive # 天真狂热
     }
     # 史可法
     chi_shi_kefa = {
@@ -419,10 +419,8 @@ character_db = {
         birth_date = 1607.1.1
         birth = mizhi
         tag = CGJ
-        ruler_trait = inspiring_leader # 鼓舞人心的领袖
-        ruler_trait = greedy # 贪婪
-        ruler_trait = cruel # 残酷
-        general_trait = goal_oriented # 目标导向
+        ruler_trait = bold_fighter
+        general_trait = master_of_arms
     }
 	# 高元爵（高杰之子）
 	chi_gao_yuanjue = {
@@ -454,8 +452,6 @@ character_db = {
         birth_date = 1607.1.1
         birth = ningxia
         tag = CGJ
-        ruler_trait = indulgent # 纵欲享乐
-        ruler_trait = greedy # 贪婪
         ruler_trait = cruel # 残酷
         general_trait = goal_oriented # 目标导向
     }
@@ -473,11 +469,8 @@ character_db = {
         birth_date = 1603.1.1
         birth = jiyin
         tag = LZQ
-        ruler_trait = greedy # 贪婪
-        ruler_trait = cruel # 残酷
         ruler_trait = careful # 谨慎
         general_trait = born_to_the_saddle # 马背上的将军
-
     }
     # 刘良佐
     chi_liu_liangzuo = {
@@ -496,7 +489,6 @@ character_db = {
         tag = LLZ
         ruler_trait = greedy # 贪婪
         ruler_trait = cruel # 残酷
-        general_trait = goal_oriented # 目标导向
     }
     # 黄得功
     chi_huang_degong = {
@@ -512,7 +504,6 @@ character_db = {
         birth_date = 1583.1.1
         birth = kaiyuan_jurchen
         tag = HDG
-        ruler_trait = greedy #贪婪
         ruler_trait = bold_fighter # 勇猛战士
         general_trait = glory_seeker # 荣耀追寻者
     }
@@ -550,9 +541,7 @@ character_db = {
         birth = liping
         tag = MNG
         ruler_trait = silver_tongue # 巧舌善辩
-        ruler_trait = calm  # 冷静
-        ruler_trait = kind_hearted # 善良
-        general_trait = battlefield_medic # 战地医师
+        ruler_trait = entrepreneur
     }
     # 丁魁楚
     chi_ding_kuichu = {
@@ -590,9 +579,8 @@ character_db = {
         birth_date = 1590.1.1
         birth = changshu
         tag = MNG
-        ruler_trait = charismatic_negotiator # 魅力型谈判者
-        ruler_trait = inspiring_leader # 鼓舞人心的领袖
-        general_trait = defensive_planner # 防御策划师
+        ruler_trait = incorruptible
+        ruler_trait = pious
     }
     # 陈士奇
     chi_chen_shiqi = {
@@ -659,6 +647,7 @@ character_db = {
         birth_date = 1618.1.1
         birth = kunming
         tag = MNG
+        ruler_trait = righteous
         general_trait = glory_seeker # 荣耀追寻者
     }
     # 郑芝龙
@@ -678,44 +667,44 @@ character_db = {
         ruler_trait = careful # 谨慎
         ruler_trait = indulgent # 纵欲享乐
         ruler_trait = craven # 懦夫
-        admiral_traits = buccaneer # 海盗
+        admiral_trait = buccaneer # 海盗
     }
     # 郑森
-    chi_guoxing = {
-        first_name = {
-            name = mori_surname
-        }
-        dynasty = rtr_yanping_zheng_dynasty
-        culture = minnan_culture
-        religion = sanjiao
-        adm = 85
-        dip = 88
-        mil = 90
-        father = chi_zheng_zhilong
-        birth_date = 1624.8.28
-        birth = nishimatsuura
-        tag = ZZL
-        ruler_trait = strict # 治军严明
-        ruler_trait = midas_touched #点石成金
-        ruler_trait = fierce_negotiator # 铁腕谈判家
-        admiral_traits = naval_gunner # 海军炮术专家
-        general_trait = ruthless # 无情
-        religious_figure = efficient_administrator # 高效行政官
-    }
+    #chi_guoxing = {
+    #    first_name = {
+    #        name = mori_surname
+    #    }
+    #    dynasty = rtr_yanping_zheng_dynasty
+    #    culture = minnan_culture
+    #    religion = sanjiao
+    #    adm = 85
+    #    dip = 88
+    #    mil = 90
+    #    father = chi_zheng_zhilong
+    #    birth_date = 1624.8.28
+    #    birth = nishimatsuura
+    #    tag = ZZL
+    #    ruler_trait = strict # 治军严明
+    #    #ruler_trait = midas_touched #点石成金
+    #    #ruler_trait = fierce_negotiator # 铁腕谈判家
+    #    admiral_trait = naval_gunner # 海军炮术专家
+    #    general_trait = ruthless # 无情
+    #    religious_figure = efficient_administrator # 高效行政官
+    #}
     # 艾儒略
-    chi_giulio_aleni = {
-        first_name = {
-            name = name_rulue
-        }
-        last_name = {
-            name = name_ai4
-        }
-        culture = lombard
-        religion = catholic
-        birth_date = 1582.1.1
-        birth = brescia
-        tag = ZZL
-    }
+    #chi_giulio_aleni = {
+    #    first_name = {
+    #       name = name_rulue
+    #    }
+    #    last_name = {
+    #        name = name_ai4
+    #    }
+    #    culture = lombard
+    #    religion = catholic
+    #    birth_date = 1582.1.1
+    #    birth = brescia
+    #    tag = ZZL
+    #}
     # 左良玉
     chi_zuo_liangyu = {
         first_name = {
@@ -731,9 +720,9 @@ character_db = {
         birth = linqing
         tag = ZLY
         ruler_trait = careful # 谨慎
-        ruler_trait = bold_fighter # 勇猛战士
+        ruler_trait = expansionist
         ruler_trait = cruel # 残酷
-        general_trait = glory_seeker
+        general_trait = hardy_warrior
     }
     # 左梦庚
     chi_zuo_menggeng = {
@@ -768,10 +757,9 @@ character_db = {
         birth_date = 1600.1.1
         birth = liaoyang
         tag = ZLY
-        ruler_trait = greedy # 贪婪
+        ruler_trait = martial_educator
         ruler_trait = cruel # 残酷
-        ruler_trait = kind_hearted # 善良
-        general_trait = defensive_planner # 防御策划师
+        general_trait = master_of_arms
     }
     # 李国英
     chi_li_guoying = {
@@ -806,7 +794,7 @@ character_db = {
         birth_date = 1606.1.1
         birth = fushi
         tag = ZLY
-        general_trait = master_of_arms # 武器大师
+        general_trait = defensive_planner
     }
     # 钱谦益
     chi_qian_qianyi = {
@@ -826,80 +814,80 @@ character_db = {
         tag = MNG
         artist = philosopher
         artist_skill = 0.70
-        artist_traits = adept # 能手
+        artist_trait = adept # 能手
     }
     # 黄宗羲
-    chi_huang_zongxi = {
-        first_name = {
-            name = name_zongxi
-        }
-        last_name = {
-            name = name_huang2
-        }
-        culture = yue_wu_culture
-        religion = sanjiao
-        adm = 82
-        birth_date = 1610.9.24
-        birth = yuyao
-        tag = MNG
-        artist = philosopher
-        artist_skill = 0.88
-        artist_trait = prominent
-    }
+    #chi_huang_zongxi = {
+    #    first_name = {
+    #        name = name_zongxi
+    #    }
+    #    last_name = {
+    #        name = name_huang2
+    #    }
+    #    culture = yue_wu_culture
+    #    religion = sanjiao
+    #    adm = 82
+    #    birth_date = 1610.9.24
+    #    birth = yuyao
+    #    tag = MNG
+    #    artist = philosopher
+    #    artist_skill = 0.88
+    #    artist_trait = prominent
+    #}
     # 顾炎武
-    chi_gu_yanwu = {
-        first_name = {
-            name = name_yanwu
-        }
-        last_name = {
-            name = name_gu
-        }
-        culture = wu_culture
-        religion = sanjiao
-        adm = 86
-        birth_date = 1613.7.15
-        birth = kunshan
-        tag = MNG
-        artist = philosopher
-        artist_skill = 0.90
-        artist_trait = prominent
-    }
+    #chi_gu_yanwu = {
+    #    first_name = {
+    #        name = name_yanwu
+    #    }
+    #    last_name = {
+    #        name = name_gu
+    #    }
+    #    culture = wu_culture
+    #    religion = sanjiao
+    #    adm = 86
+    #    birth_date = 1613.7.15
+    #    birth = kunshan
+    #    tag = MNG
+    #    artist = philosopher
+    #    artist_skill = 0.90
+    #    artist_trait = prominent
+    #}
     # 王夫之
-    chi_wang_fuzhi = {
-        first_name = {
-            name = name_fuzhi
-        }
-        last_name = {
-            name = name_wang
-        }
-        culture = hengzhou_culture
-        religion = sanjiao
-        adm = 84
-        birth_date = 1619.10.7
-        birth = hengyang
-        tag = MNG
-        artist = philosopher
-        artist_skill = 0.87
-        artist_trait = prominent
-    }
+    #chi_wang_fuzhi = {
+    #    first_name = {
+    #        name = name_fuzhi
+    #    }
+    #    last_name = {
+    #        name = name_wang
+    #    }
+    #    culture = hengzhou_culture
+    #    religion = sanjiao
+    #    adm = 84
+    #    birth_date = 1619.10.7
+    #    birth = hengyang
+    #    tag = MNG
+    #    artist = philosopher
+    #   artist_skill = 0.87
+    #    artist_trait = prominent
+    #}
     # 张岱
-    chi_zhang_dai = {
-        first_name = {
-            name = name_dai4
-        }
-        last_name = {
-            name = name_zhang1
-        }
-        culture = yue_wu_culture
-        religion = sanjiao
-        adm = 83
-        birth_date = 1597.10.5
-        birth = shaoxing
-        tag = MNG
-        artist = writer
-        artist_skill = 0.85
-        artist_trait = prominent
-    }
+    #chi_zhang_dai = {
+    #    first_name = {
+    #        name = name_dai4
+    #    }
+    #    last_name = {
+    #        name = name_zhang1
+    #    }
+    #    culture = yue_wu_culture
+    #    religion = sanjiao
+    #    adm = 83
+    #    birth_date = 1597.10.5
+    #    birth = shaoxing
+    #    tag = MNG
+    #    artist = writer
+    #    artist_skill = 0.85
+    #    artist_trait = prominent
+    #}
 		# 孝和皇后（明光宗皇后，崇祯之母）
 		chi_wang_empress_guangzong = {
 			female = yes
@@ -968,8 +956,26 @@ character_db = {
         birth = dadu
         tag = MNG
         father = chi_zhu_youjian
+        mother = chi_zhou_empress
     }
 #大顺
+        #大顺补充 （爱闯 信闯 等闯）
+    # 李世辅
+    chi_li_shifu = {
+        first_name = {
+            name = name_shifu
+        }
+        dynasty = rtr_shun_li_dynasty
+        culture = jin_culture
+        religion = sanjiao
+        adm = 15
+        dip = 16
+        mil = 17
+        birth_date = 1523.1.1
+        birth = mizhi
+        death_date = 1580.1.1
+        tag = CSH
+    }
 	    #李海
 		chi_li_hai = {
 			first_name = {
@@ -1000,7 +1006,7 @@ character_db = {
 			mil = 20
 			birth_date = 1564.1.1
 			birth = mizhi
-			death_date = 1610.1.1
+			death_date = 1615.1.1
 			father = chi_li_hai
 			tag = CSH
 		}
@@ -1045,9 +1051,9 @@ character_db = {
         dynasty = rtr_shun_li_dynasty
         culture = jin_culture
         religion = sanjiao
-        adm = 65
-        dip = 76
-        mil = 87
+        adm = 70
+        dip = 80
+        mil = 88
         birth_date = 1606.9.22
         birth = mizhi
         father = chi_li_shouzhong
@@ -1084,15 +1090,15 @@ character_db = {
         culture = jin_culture
         religion = sanjiao
         adm = 55
-        dip = 65
+        dip = 70
         mil = 82
         # 三围备注：生年不明
         birth_date = 1606.1.1
         birth = mizhi
         father = chi_li_zili
         tag = CSH
-        ruler_trait = inspiring_leader # 鼓舞人心的领袖
-        ruler_trait = kind_hearted # 善良
+        ruler_trait = righteous
+        ruler_trait = just
         general_trait = inspirational_leader_general # 励志领袖
     }
     # 张鼐
@@ -1107,7 +1113,7 @@ character_db = {
         religion = sanjiao
         adm = 40
         dip = 35
-        mil = 60
+        mil = 70
         # 三围备注：生年不明
         birth_date = 1619.1.1
         birth = suide
@@ -1131,7 +1137,6 @@ character_db = {
         birth = mizhi
         tag = CSH
         ruler_trait = kind_hearted # 善良
-        ruler_trait = naive_enthusiast # 天真的热衷者
         general_trait = goal_oriented # 目标导向
 
     }
@@ -1152,8 +1157,22 @@ character_db = {
         tag = CSH
         father = chi_li_guo
         ruler_trait = inspiring_leader # 鼓舞人心的领袖
-        ruler_trait = kind_hearted # 善良
-        general_trait = defensive_planner #防御策划师
+        ruler_trait = strict
+        general_trait = hardy_warrior
+    }
+    #李嗣民
+    chi_li_simin = {
+        first_name = {
+            name = name_simin
+        }
+        dynasty = rtr_shun_li_dynasty
+        culture = jin_culture
+        religion = sanjiao
+        birth_date = 1643.1.1
+        birth = mizhi
+        father = chi_li_laiheng
+        tag = CSH
+        child_trait = child_gallant # 侠义
     }
     # 刘宗敏
     chi_liu_zongmin = {
@@ -1172,9 +1191,9 @@ character_db = {
         birth_date = 1607.1.1
         birth = lantian
         tag = CSH
-        ruler_trait = inspiring_leader # 鼓舞人心的领袖
-        ruler_trait = kind_hearted # 善良
-        general_trait = born_to_the_saddle #马背上的将军
+        ruler_trait = bold_fighter
+        ruler_trait = martial_educator
+        general_trait = ruthless
     }
     # 田见秀
     chi_tian_jianxiu = {
@@ -1193,6 +1212,9 @@ character_db = {
         birth_date = 1605.1.1
         birth = suide
         tag = CSH
+        ruler_trait = obsessive_perfectionist
+        ruler_trait = calm
+        ruler_trait = benevolent
         general_trait = goal_oriented # 目标导向
     }
     # 刘芳亮
@@ -1207,12 +1229,12 @@ character_db = {
         religion = sanjiao
         adm = 50
         dip = 55
-        mil = 78
+        mil = 81
         # 三围备注：生年不明
         birth_date = 1608.1.1
         birth = jingzhao
         tag = CSH
-        general_trait = goal_oriented # 目标导向
+        general_trait = hussar_commander
     }
     # 袁宗第
     chi_yuan_zongdi = {
@@ -1231,8 +1253,6 @@ character_db = {
         birth_date = 1605.1.1
         birth = suide
         tag = CSH
-        ruler_trait = inspiring_leader # 鼓舞人心的领袖
-        ruler_trait = kind_hearted # 善良
         ruler_trait = industrious #勤勉
         general_trait = master_of_arms #武器大师
 
@@ -1254,8 +1274,7 @@ character_db = {
         birth_date = 1607.1.1
         birth = mizhi
         tag = CSH
-        ruler_trait = silver_tongue #巧舌善辩
-        general_trait = master_of_arms #武器大师
+        general_trait = hussar_commander
     }
     # 刘国昌
     chi_liu_xiyao = {
@@ -1323,8 +1342,8 @@ character_db = {
         culture = zhongyuan_culture
         religion = sanjiao
         adm = 87
-        dip = 64
-        mil = 46
+        dip = 54
+        mil = 56
         # 三围备注：生年不明，姓缺失
         birth_date = 1598.1.1
         birth = lushi
@@ -1405,26 +1424,26 @@ character_db = {
         birth_date = 1581.1.1
         birth = qingjian
         tag = CSH
+        religious_figure = efficient_administrator # 高效行政官
     }
     # 韩霖
-    chi_han_lin = {
-        first_name = {
-            name = name_lin2
-        }
-        last_name = {
-            name = name_han2
-        }
-        culture = qin_culture
-        religion = catholic
-        adm = 70
-        dip = 68
-        mil = 50
-        birth_date = 1598.1.1
-        birth = zhengping
-        tag = CSH #已经投顺
-        ruler_trait = entrepreneur # 实业家
-        ruler_trait = architectural_visionary # 能工巧匠
-    }
+    #chi_han_lin = {
+    #    first_name = {
+    #        name = name_lin2
+    #    }
+    #    last_name = {
+    #        name = name_han2
+    #    }
+    #    culture = qin_culture
+    #    religion = catholic
+    #    adm = 70
+    #    dip = 68
+    #    mil = 50
+    #    birth_date = 1598.1.1
+    #    birth = zhengping
+    #    tag = CSH #已经投顺
+    #    ruler_trait = architectural_visionary # 能工巧匠
+    #}
     # 汤若望
     #chi_adam_schall = {
     #	first_name = {
@@ -1489,8 +1508,7 @@ character_db = {
         death_date = 1626.9.30
         father = chi_taksi
         tag = QNG
-        # 征服者
-        ruler_trait = conqueror
+        ruler_trait = dragon_tiger
     }
     # 爱新觉罗皇太极
     chi_huang_taiji = {
@@ -1571,7 +1589,7 @@ character_db = {
         tag = QNG
         # 鼓舞人心
         ruler_trait = inspiring_leader
-        general_trait = born_to_the_saddle # 马背上的将军
+        general_trait = goal_oriented # 目标导向
     }
     # 博尔济吉特氏（多尔衮妻）
     chi_borgijit_dorgon = {
@@ -1616,12 +1634,12 @@ character_db = {
         religion = tibetan_buddhism
         adm = 40
         dip = 30
-        mil = 94
+        mil = 91
         birth_date = 1614.4.2
         birth = shenyang
         father = chi_nurhachi
         tag = QNG
-        general_trait = born_to_the_saddle
+        general_trait = glory_seeker
     }
     # 爱新觉罗阿济格
     chi_ajige = {
@@ -1633,12 +1651,12 @@ character_db = {
         religion = tibetan_buddhism
         adm = 15
         dip = 25
-        mil = 93
+        mil = 87
         birth_date = 1605.8.28
         birth = shenyang
         father = chi_nurhachi
         tag = QNG
-        general_trait = goal_oriented # 目标导向
+        general_trait = hussar_commander
     }
     # 爱新觉罗豪格
     chi_hooge = {
@@ -1744,6 +1762,7 @@ character_db = {
         father = chi_huang_taiji
         mother = chi_borgijit_xiaozhuang
         tag = QNG
+        child_trait = child_shrewd
     }
     # 范文程
     chi_fan_wencheng = {
@@ -1753,6 +1772,7 @@ character_db = {
         last_name = {
             name = name_fan
         }
+        dip = 86
         culture = liaodong_culture
         religion = sanjiao
         birth_date = 1597.1.1
@@ -1785,6 +1805,8 @@ character_db = {
         dynasty = Heseri
         culture = jurchen_culture
         religion = sanjiao
+        adm = 91
+        mil = 76
         birth_date = 1589.1.1
         birth = fushun_liaoyang
         tag = QNG
@@ -1794,6 +1816,8 @@ character_db = {
         first_name = {
             name = name_ganglin
         }
+        adm = 74
+        dip = 87
         dynasty = Guwalgiya
         culture = jurchen_culture
         religion = sanjiao
@@ -1832,7 +1856,6 @@ character_db = {
         birth = tieling
         tag = QNG
         ruler_trait = greedy # 贪婪
-        ruler_trait = cruel # 残酷
         ruler_trait = strict # 严厉
         general_trait = cannoneer # 炮手指挥官
     }
@@ -1846,13 +1869,12 @@ character_db = {
         religion = sanjiao
         adm = 70
         dip = 85
-        mil = 80
+        mil = 85
         birth_date = 1604.9.23
         birth = haizhou_liaoyang
         tag = QNG
-        ruler_trait = greedy # 贪婪
-        ruler_trait = cruel # 残酷
         ruler_trait = careful # 谨慎
+        ruler_trait = calm
         general_trait = defensive_planner # 防御策划师
     }
     # 耿仲明
@@ -1865,7 +1887,7 @@ character_db = {
         religion = sanjiao
         adm = 55
         dip = 60
-        mil = 72
+        mil = 77
         birth_date = 1604.1.1
         birth = gaizhou
         tag = QNG
@@ -1911,20 +1933,20 @@ character_db = {
     # 孙可望
     chi_sun_kewang = {
         first_name = {
-            name = name_kewang
+            name = name_kewang 
         }
         dynasty = rtr_cxi_sun_dynasty
         culture = jin_culture
         religion = sanjiao
-        adm = 95
-        dip = 40
+        adm = 98
+        dip = 10 #孙哥众叛亲离，给那么高干什么
         mil = 80
         # 三围备注：生年不明
         birth_date = 1618.1.1
         birth = yanchang
         tag = CXI
         ruler_trait = strict # 治军严明
-        ruler_trait = lawgiver # 立法者
+        ruler_trait = midas_touched
         ruler_trait = malevolent # 恶意
         general_trait = glory_seeker # 荣耀追寻者
     }
@@ -1944,8 +1966,8 @@ character_db = {
         birth = fushi
         tag = CXI
         ruler_trait = strict # 治军严明
-        ruler_trait = kind_hearted # 善良
-        ruler_trait = tactical_genius # 战术天才
+        ruler_trait = obsessive_perfectionist
+        ruler_trait = bold_fighter
         general_trait = glory_seeker # 荣耀追寻者
     }
     # 刘文秀
@@ -1964,7 +1986,6 @@ character_db = {
         birth = fushi
         tag = CXI
         ruler_trait = kind_hearted # 善良
-        ruler_trait = benevolent  # 仁爱
         general_trait = master_of_arms # 武器大师
     }
     # 艾能奇
@@ -2015,7 +2036,6 @@ character_db = {
         birth = qiantun
         tag = WSG
 		father = chi_wu_xiang
-        ruler_trait = malevolent #心狠手辣
         ruler_trait = greedy # 贪婪
         ruler_trait = bold_fighter # 勇猛战士
         general_trait = inspirational_leader_general # 励志领袖
@@ -2061,9 +2081,9 @@ character_db = {
         dynasty = Colos_dynasty
         culture = oirat_culture
         religion = tibetan_buddhism
-        adm = 60
-        dip = 75
-        mil = 65
+        adm = 70
+        dip = 85
+        mil = 70
         birth_date = 1602.1.1
         birth = hoboksar
         tag = ZUN
@@ -2099,7 +2119,7 @@ character_db = {
         birth = hoboksar
         father = chi_erdeni_batur
         tag = ZUN
-        child_traits = child_gallant # 侠义
+        child_trait = child_gallant # 侠义
     }
     #孛儿只斤俄木布额尔德尼
     chi_badma_erdeni = {
@@ -2126,9 +2146,8 @@ character_db = {
         birth_date = 1582.1.1
         birth = beshbalik
         ruler_trait = charismatic_negotiator # 魅力型谈判者
-        ruler_trait = inspiring_leader # 鼓舞人心的领袖
-        ruler_trait = expansionist  # 扩张主义者
-        general_trait = strategist # 战略家
+        ruler_trait = conqueror
+        general_trait = hussar_commande
     }
     #孛儿只斤鄂齐尔图
     chi_ochirtukhan = {
@@ -2154,8 +2173,7 @@ character_db = {
         mil = 55
         birth_date = 1590.1.1
         birth = urga
-        ruler_trait = naive_enthusiast  # 天真狂热
-        ruler_trait = lawgiver # 立法者
+        ruler_trait = naive  # 天真狂热
     }
     # 孛儿只斤素巴第
     chi_jasagh_subaday = {
@@ -2171,7 +2189,6 @@ character_db = {
         birth_date = 1580.1.1
         birth = uliastai
         ruler_trait = loose_lips # 口无遮拦
-        ruler_trait = lawgiver # 立法者
     }
     # 孛儿只斤硕垒
     chi_tsakhar_soloi = {
@@ -2198,7 +2215,7 @@ character_db = {
         birth_date = 1595.12.7
         birth = namgyeong
         tag = JOE
-        ruler_trait = naive_enthusiast  # 天真狂热
+        ruler_trait = naive  # 天真狂热
     }
     #昭显世子李𣳫
     joe_lee_wang = {
@@ -2382,22 +2399,22 @@ character_db = {
         tag = LZQ
     }
     # 高进库（团练，走崇明后降）
-    chi_gao_jinku = {
-        first_name = {
-            name = name_jinku
-        }
-        last_name = {
-            name = name_gao
-        }
-        culture = zhongyuan_culture
-        religion = sanjiao
-        adm = 20
-        dip = 45
-        mil = 54
-        birth_date = 1603.1.1
-        birth = jiyin
-        tag = LZQ
-    }
+    #chi_gao_jinku = {
+    #    first_name = {
+    #        name = name_jinku
+    #    }
+    #    last_name = {
+    #        name = name_gao
+    #    }
+    #    culture = zhongyuan_culture
+    #    religion = sanjiao
+    #    adm = 20
+    #    dip = 45
+    #    mil = 54
+    #    birth_date = 1603.1.1
+    #    birth = jiyin
+    #    tag = LZQ
+    #}
     #李化鲸（榆园军领袖，早为成武县衙役，后为泽清结交）
     chi_li_huajing = {
         first_name = {
@@ -2452,27 +2469,27 @@ character_db = {
         birth_date = 1610.1.1
         birth = kaiyuan_jurchen
         tag = HDG
-        admiral_traits = naval_showman # 海军表演家
+        admiral_trait = naval_showman # 海军表演家
     }
 
     #林察（黄蜚部将，弘光灭，护朱聿奥为帝拒桂王，后为成功部将，会李定国，失期，后从成功战厦门，胜）
-    chi_lin_cha = {
-        first_name = {
-            name = name_cha
-        }
-        last_name = {
-            name = name_lin
-        }
-        culture = liaodong_culture
-        religion = sanjiao
-        adm = 50
-        dip = 60
-        mil = 74
-        birth_date = 1620.1.1
-        birth = kaiyuan_jurchen
-        tag = HDG
-        admiral_traits = ruthless_blockader # 无情封锁者
-    }
+    #chi_lin_cha = {
+    #    first_name = {
+    #        name = name_cha
+    #    }
+    #    last_name = {
+    #        name = name_lin
+    #    }
+    #    culture = liaodong_culture
+    #    religion = sanjiao
+    #    adm = 50
+    #    dip = 60
+    #    mil = 74
+    #    birth_date = 1620.1.1
+    #    birth = kaiyuan_jurchen
+    #    tag = HDG
+    #    admiral_trait = ruthless_blockader # 无情封锁者
+    #}
 
     #田雄（从黄得功战芜湖，降，与田雄缚弘光，后为浙江提督，破舟山杀阮进）
     chi_tian_xiong = {
@@ -2490,43 +2507,43 @@ character_db = {
         birth_date = 1620.1.1
         birth = kaiyuan_jurchen
         tag = HDG
-        admiral_traits = naval_showman # 海军表演家
+        admiral_trait = naval_showman # 海军表演家
     }
 
     #诸葛晋明（天启年武举人，弘光年死芜湖）
-    chi_zhuge_jinming = {
-        first_name = {
-            name = name_jinming
-        }
-        last_name = {
-            name = name_zhuge
-        }
-        culture = zhongyuan_culture
-        religion = sanjiao
-        adm = 40
-        dip = 50
-        mil = 55
-        birth_date = 1600.1.1
-        birth = kaiyuan_jurchen
-        tag = HDG
-    }
+    #chi_zhuge_jinming = {
+    #    first_name = {
+    #        name = name_jinming
+    #    }
+    #    last_name = {
+    #        name = name_zhuge
+    #    }
+    #    culture = zhongyuan_culture
+    #    religion = sanjiao
+    #    adm = 40
+    #    dip = 50
+    #    mil = 55
+    #    birth_date = 1600.1.1
+    #    birth = kaiyuan_jurchen
+    #    tag = HDG
+    #}
     #黄蜚（黄龙侄，以炮拒左梦庚，弘光灭，走太湖，隆武年败）
-    chi_huang_fei= {
-        first_name = {
-            name = name_fei
-        }
-        last_name = {
-            name = name_huang
-        }
-        culture = liaodong_culture
-        religion = sanjiao
-        adm = 40
-        dip = 65
-        mil = 45
-        birth_date = 1600.1.1
-        birth = kaiyuan_jurchen
-        tag = HDG
-    }
+    #chi_huang_fei= {
+    #    first_name = {
+    #        name = name_fei
+    #    }
+    #    last_name = {
+    #        name = name_huang
+    #    }
+    #    culture = liaodong_culture
+    #    religion = sanjiao
+    #    adm = 40
+    #    dip = 65
+    #    mil = 45
+    #    birth_date = 1600.1.1
+    #    birth = kaiyuan_jurchen
+    #    tag = HDG
+    #}
     #高杰补充
     # 高进库（是的还有一个高进库，高杰侄，从洪承畴三千人平江西，破李成栋，后为高雷总兵）
     chi_gao_jingku = {
@@ -2629,56 +2646,26 @@ character_db = {
         general_trait = born_to_the_saddle # 马背上的将军
     }
     # 马惟兴（南明三马，秦晋之争，与马宝马进忠共同反对孙可望，明亡，为吴三桂十总兵之一，三藩之乱，从耿精忠反仙霞关）
-    chi_ma_weixing = {
-        first_name = {
-            name = name_weixing
-        }
-        last_name = {
-            name = name_ma100
-        }
-        culture = liang_culture
-        religion = sanjiao
-        adm = 40
-        dip = 70
-        mil = 75
-        # 三围备注：生年不明，名不缺
-        birth_date = 1615.1.1
-        birth = ningxia
-        tag = CGJ
-        general_trait = hardy_warrior # 硬汉将军
-    }
-    #大顺补充 （爱闯 信闯 等闯）
-    # 李世辅
-    chi_li_shifu = {
-        first_name = {
-            name = name_shifu
-        }
-        dynasty = rtr_shun_li_dynasty
-        culture = jin_culture
-        religion = sanjiao
-        adm = 15
-        dip = 16
-        mil = 17
-        birth_date = 1523.1.1
-        birth = mizhi
-        death_date = 1580.1.1
-        tag = CSH
-    }
+    # 修正：马惟兴为马进忠从子
+    #chi_ma_weixing = {
+    #    first_name = {
+    #        name = name_weixing
+    #    }
+    #    last_name = {
+    #        name = name_ma100
+    #    }
+    #    culture = liang_culture
+    #    religion = sanjiao
+    #    adm = 40
+    #    dip = 70
+    #    mil = 75
+    #    # 三围备注：生年不明，名不缺
+    #    birth_date = 1615.1.1
+    #    birth = ningxia
+    #    tag = ZLY
+    #    general_trait = hardy_warrior # 硬汉将军
+    #}
 
-    #李嗣民
-    chi_li_simin = {
-        first_name = {
-            name = name_simin
-        }
-        dynasty = rtr_shun_li_dynasty
-        culture = jin_culture
-        religion = sanjiao
-        birth_date = 1643.1.1
-        birth = mizhi
-        father = chi_li_laiheng
-        tag = CSH
-        child_traits = child_gallant # 侠义
-    }
     #刘体纯
     chi_liu_tichun = {
         first_name = {
@@ -2702,48 +2689,48 @@ character_db = {
         general_trait = defensive_planner # 防御策划师
     }
     #郝摇旗
-    chi_hao_yaoqi = {
-        first_name = {
-            name = name_yaoqi
-        }
-        last_name = {
-            name = name_hao100
-        }
-        culture = qin_culture
-        religion = sanjiao
-        adm =48
-        dip = 74
-        mil = 79
-        # 三围备注：生年不明
-        birth_date = 1614.1.1
-        birth = lantian
-        tag = CSH
-        ruler_trait = loose_lips # 口无遮拦
-        ruler_trait = cruel # 残酷
-        ruler_trait = bold_fighter # 勇猛战士
-        general_trait = born_to_the_saddle # 马背上的将军
-    }
+    #chi_hao_yaoqi = {
+    #    first_name = {
+    #        name = name_yaoqi
+    #    }
+    #    last_name = {
+    #        name = name_hao100
+    #    }
+    #    culture = qin_culture
+    #    religion = sanjiao
+    #    adm =48
+    #    dip = 74
+    #    mil = 79
+    #    # 三围备注：生年不明
+    #    birth_date = 1614.1.1
+    #    birth = lantian
+    #    tag = CSH
+    #    ruler_trait = loose_lips # 口无遮拦
+    #    ruler_trait = cruel # 残酷
+    #    ruler_trait = bold_fighter # 勇猛战士
+    #    general_trait = born_to_the_saddle # 马背上的将军
+    #}
     #马宝
-    chi_ma_bao = {
-        first_name = {
-            name = name_bao
-        }
-        last_name = {
-            name = name_ma100
-        }
-        culture = qin_culture
-        religion = sanjiao
-        adm =62
-        dip = 75
-        mil = 83
-        # 三围备注：生年不明
-        birth_date = 1612.1.1
-        birth = lantian
-        tag = CSH
-        ruler_trait = bold_fighter # 勇猛战士
-        ruler_trait = careful # 谨慎
-        general_trait = strategist # 战略家
-    }
+    #chi_ma_bao = {
+    #    first_name = {
+    #        name = name_bao
+    #    }
+    #    last_name = {
+    #        name = name_ma100
+    #    }
+    #    culture = qin_culture
+    #    religion = sanjiao
+    #    adm =62
+    #    dip = 75
+    #    mil = 83
+    #    # 三围备注：生年不明
+    #    birth_date = 1612.1.1
+    #    birth = lantian
+    #    tag = CSH
+    #    ruler_trait = bold_fighter # 勇猛战士
+    #    ruler_trait = careful # 谨慎
+    #    general_trait = ruthless
+    #}
     #贺珍
     chi_he_zhen = {
         first_name = {
@@ -2762,8 +2749,6 @@ character_db = {
         birth = lantian
         tag = CSH
         general_trait = inspirational_leader_general # 励志领袖
-        ruler_trait = kind_hearted # 善良
-        ruler_trait = inspiring_leader # 鼓舞人心的领袖
         ruler_trait = charismatic_negotiator # 魅力型谈判者
     }
     #任光荣
@@ -2807,25 +2792,25 @@ character_db = {
         general_trait = born_to_the_saddle # 马背上的将军
     }
     #郭君镇
-    chi_guo_junzhen = {
-        first_name = {
-            name = name_junzhen
-        }
-        last_name = {
-            name = name_guo100
-        }
-        culture = qin_culture
-        religion = sanjiao
-        adm = 40
-        dip = 56
-        mil = 65
-        # 三围备注：生年不明，姓缺失
-        birth_date = 1608.1.1
-        birth = lushi
-        tag = CSH
-        ruler_trait = industrious # 勤勉
-        general_trait = inspirational_leader_general # 励志领袖
-    }
+    #chi_guo_junzhen = {
+    #    first_name = {
+    #        name = name_junzhen
+    #    }
+    #    last_name = {
+    #        name = name_guo100
+    #    }
+    #    culture = qin_culture
+    #    religion = sanjiao
+    #    adm = 40
+    #    dip = 56
+    #    mil = 65
+    #    # 三围备注：生年不明，姓缺失
+    #    birth_date = 1608.1.1
+    #    birth = lushi
+    #    tag = CSH
+    #    ruler_trait = industrious # 勤勉
+    #    general_trait = inspirational_leader_general # 励志领袖
+    #}
     #党守素
     #辛思忠
     #杨永裕
@@ -2904,29 +2889,30 @@ character_db = {
         mil = 77
         # 三围备注：生年不明，姓缺失
         birth_date = 1595.1.1
+        death_date = 1644.1.1
         birth = lushi
         tag = CSH
         general_trait = master_of_arms # 武器大师
     }
     #王得仁
-    chi_wang_deren = {
-        first_name = {
-            name = name_deren
-        }
-        last_name = {
-            name = name_wang102
-        }
-        culture = qin_culture
-        religion = sanjiao
-        adm = 28
-        dip = 36
-        mil = 82
-        # 三围备注：生年不明，姓缺失
-        birth_date = 1614.1.1
-        birth = lushi
-        tag = CSH
-        general_trait = born_to_the_saddle # 马背上的将军
-    }
+    #chi_wang_deren = {
+    #    first_name = {
+    #        name = name_deren
+    #    }
+    #    last_name = {
+    #        name = name_wang102
+    #    }
+    #    culture = qin_culture
+    #    religion = sanjiao
+    #    adm = 28
+    #    dip = 36
+    #    mil = 82
+    #    # 三围备注：生年不明，姓缺失
+    #    birth_date = 1614.1.1
+    #   birth = lushi
+    #    tag = CSH
+    #    general_trait = born_to_the_saddle # 马背上的将军
+    #}
     #田虎
     #蔺养成
     chi_lin_yangcheng = {
@@ -2945,7 +2931,7 @@ character_db = {
         birth_date = 1612.1.1
         birth = lushi
         tag = CSH
-        admiral_traits = naval_showman # 海军表演家
+        admiral_trait = naval_showman # 海军表演家
     }
     #刘忠
     chi_liu_zhong = {
@@ -2968,22 +2954,22 @@ character_db = {
         general_trait = glory_seeker # 荣耀追寻者
     }
     #刘一虎（康熙十年，李自成馀党刘一虎等以数万人犯巫山，世凯击卻之。寻从国英进剿，以功加总兵衔）
-    chi_liu_yihu = {
-        first_name = {
-            name = name_yihu
-        }
-        dynasty = rtr_shun_liu_dynasty
-        culture = jin_culture
-        religion = sanjiao
-        adm = 45
-        dip = 40
-        mil = 55
-        birth_date = 1625.1.1
-        birth = mizhi
-        tag = CSH
-        ruler_trait = inspiring_leader # 鼓舞人心的领袖
-        general_trait = hardy_warrior # 硬汉将军
-    }
+    #chi_liu_yihu = {
+    #    first_name = {
+    #        name = name_yihu
+    #    }
+    #    dynasty = rtr_shun_liu_dynasty
+    #    culture = jin_culture
+    #    religion = sanjiao
+    #    adm = 45
+    #    dip = 40
+    #    mil = 55
+    #    birth_date = 1625.1.1
+    #   birth = mizhi
+    #    tag = CSH
+    #    ruler_trait = inspiring_leader # 鼓舞人心的领袖
+    #    general_trait = hardy_warrior # 硬汉将军
+    #}
     #左光先
     chi_zuo_guangxian = {
         first_name = {
@@ -3030,55 +3016,55 @@ character_db = {
     #陈士奇
     #马守应
     #窦名望
-    chi_dou_mingwang = {
-        first_name = {
-            name = name_mingwang
-        }
-        dynasty = rtr_cxi_dou_dynasty
-        culture = jin_culture
-        religion = sanjiao
-        adm = 45
-        dip = 60
-        mil = 80
-        birth_date = 1620.9.18
-        birth = dingbian
-        tag = CXI
-        general_trait = defensive_planner # 防御策划师
-    }
+    #chi_dou_mingwang = {
+    #    first_name = {
+    #        name = name_mingwang
+    #    }
+    #    dynasty = rtr_cxi_dou_dynasty
+    #    culture = jin_culture
+    #    religion = sanjiao
+    #    adm = 45
+    #    dip = 60
+    #    mil = 80
+    #    birth_date = 1620.9.18
+    #    birth = dingbian
+    #    tag = CXI
+    #    general_trait = defensive_planner # 防御策划师
+    #}
     #冯双礼
-    chi_feng_shuangli = {
-        first_name = {
-            name = name_shuangli
-        }
-        dynasty = rtr_cxi_feng_dynasty
-        culture = jin_culture
-        religion = sanjiao
-        adm = 50
-        dip = 64
-        mil = 76
-        birth_date = 1620.9.18
-        birth = dingbian
-        tag = CXI
-        general_trait = battlefield_medic # 战地医师
-    }
+    #chi_feng_shuangli = {
+    #    first_name = {
+    #        name = name_shuangli
+    #    }
+    #    dynasty = rtr_cxi_feng_dynasty
+    #    culture = jin_culture
+    #    religion = sanjiao
+    #    adm = 50
+    #    dip = 64
+    #    mil = 76
+    #    birth_date = 1620.9.18
+    #    birth = dingbian
+    #    tag = CXI
+    #    general_trait = battlefield_medic # 战地医师
+    #}
     #张胜
-    chi_zhang_sheng = {
-        first_name = {
-            name = name_sheng
-        }
-        last_name = {
-            name = name_zhang1
-        }
-        culture = jin_culture
-        religion = sanjiao
-        adm = 55
-        dip = 57
-        mil = 78
-        birth_date = 1618.9.18
-        birth = dingbian
-        tag = CXI
-        general_trait = glory_seeker # 荣耀追寻者
-    }
+    #chi_zhang_sheng = {
+    #    first_name = {
+    #        name = name_sheng
+    #    }
+    #    last_name = {
+    #        name = name_zhang1
+    #   }
+    #    culture = jin_culture
+    #    religion = sanjiao
+    #   adm = 55
+    #    dip = 57
+    #    mil = 78
+    #    birth_date = 1618.9.18
+    #    birth = dingbian
+    #    tag = CXI
+    #    general_trait = glory_seeker # 荣耀追寻者
+    #}
     #贺九仪
     #白文选
     chi_bai_wenxuan = {
