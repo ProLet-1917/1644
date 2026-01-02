@@ -562,7 +562,7 @@ qng_1644_unification.8 = {
 		tag = MNG
 		from = 1644.6.1
 		to = 1700.1.1
-		monthly_chance = 25
+		monthly_chance = 100
 	}
 	option = {
 		name = OK
@@ -571,23 +571,29 @@ qng_1644_unification.8 = {
 			random_subject = {
 				# 保存被选中的藩属作用域
 				save_scope_as = defecting_subject
-				# 取消对明朝的附庸关系
-				cancel_subject = scope:defecting_subject
-				# 成为大清的附庸
-				scope:defecting_subject = {
-					c:QNG = {
+				if = {
+					limit = {
+						scope:defecting_subject = {
+							is_subject_type = subject_type:cn_march_governor
+						}
+					}
+					# 取消对明朝的附庸关系
+					c:MNG = {
+						cancel_subject = scope:defecting_subject
+					}
+					# 成为大清的附庸
+					scope:defecting_subject = {
 						make_subject_of = {
 							target = c:QNG
 							type = subject_type:cn_march_governor
 						}
-					}
-					# 加入大清的战争
-					subject_join_overlord_wars = yes
-					# 增加对大清的临时忠诚度
-					add_country_modifier = {
-						target = c:QNG
-						modifier = loyalty_tifayifu
-						years = 3
+						# 加入大清的战争
+						subject_join_overlord_wars = yes
+						# 增加对大清的临时忠诚度
+						add_country_modifier = {
+							modifier = loyalty_tifayifu
+							years = 3
+						}
 					}
 				}
 			}

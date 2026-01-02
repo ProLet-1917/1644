@@ -16,68 +16,71 @@ on_battle_won = {
 			}
 		}
 		# 统计明末局势死亡总人数
-		# 警告：scope:killed_land_units 和 scope:lost_land_units 动态指向战斗界面左侧的国家（攻击方），不是固定的胜利方
-		# 当失败方在左侧时，这些值会指向失败方数据，导致bug
-		# 解决方案：通过判断scope:actor是否是攻击方来确定胜利方是否在左侧
-		
-		# 在scope:actor作用域内读取左侧（攻击方）的数据
-		# 两个作用域读取的值相同，都指向左侧（攻击方）
-		scope:actor = {
-			owner = {
-				set_variable = {
-					name = left_side_killed
-					value = scope:killed_land_units
-				}
-				set_variable = {
-					name = left_side_lost
-					value = scope:lost_land_units
+		# 使用 killed_land_units 来计算总伤亡
+		# 在 on_battle_won 中：scope:killed_land_units = 获胜方杀死的敌军数（即失败方的损失）
+		# 在 on_battle_lost 中：scope:killed_land_units = 失败方杀死的敌军数（即获胜方的损失）
+		if = {
+			limit = {
+				situation:late_ming_crisis = {
+					situation_is_active = yes
 				}
 			}
-		}
-		
-		# 判断scope:actor是否是攻击方
-		scope:actor = {
+			# 统计双方都是参与方的情况
 			if = {
 				limit = {
-					unit_location = {
-						has_combat = yes
-						combat ?= {
-							combat_attacker ?= {
-								any_unit = {
-									owner = scope:actor.owner
-								}
-							}
+					AND = {
+						scope:actor.owner = {
+							has_variable = chinese_country
+						}
+						scope:target.owner = {
+							has_variable = chinese_country
 						}
 					}
 				}
-				# scope:actor是攻击方，胜利方在左侧，使用左侧的值（当前逻辑正确）
-				owner = {
-					set_variable = {
-						name = left_winner_killed
-						value = var:left_side_killed
-					}
-					set_variable = {
-						name = left_winner_lost
-						value = var:left_side_lost
-					}
+				# 统计总人数（只用 killed_land_units）
+				# 获胜方杀死的敌军数（失败方的损失）
+				zzz_1644_increase_total_casualties = {
+					variable = scope:killed_land_units
 				}
-			}
-			else = {
-				# scope:actor不是攻击方，失败方在左侧
-				# 胜利方的击杀数 = 失败方的损失数 = left_side_lost
-				# 胜利方的损失数 = 失败方的击杀数 = left_side_killed
-				owner = {
-					set_variable = {
-						name = right_winner_killed
-						value = var:left_side_lost
-					}
-					set_variable = {
-						name = right_winner_lost
-						value = var:left_side_killed
-					}
+				zzz_1644_increase_total_casualties = {
+					variable = scope:lost_land_units
 				}
 			}
 		}
+		
+		# 注释掉：攻击方/防守方判断代码（测试失败，暂时不使用）
+		# scope:actor = {
+		# 	unit_location = {
+		# 		if = {
+		# 			limit = {
+		# 				has_combat = yes
+		# 			}
+		# 			combat ?= {
+		# 				# 检查scope:actor是否在攻击方
+		# 				if = {
+		# 					limit = {
+		# 						combat_attacker ?= {
+		# 						}
+		# 					}
+		# 					scope:actor.owner = {
+		# 						set_variable = {
+		# 							name = debug_is_attacker
+		# 							value = yes
+		# 						}
+		# 					}
+		# 				}
+		# 				else = {
+		# 					scope:actor.owner = {
+		# 						set_variable = {
+		# 							name = debug_is_defender
+		# 							value = yes
+		# 						}
+		# 					}
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# }
 		
 		# 标记actor和target的身份（用于debug）
 		scope:actor.owner = {
@@ -85,7 +88,7 @@ on_battle_won = {
 			set_variable = {
 				name = debug_is_actor
 				value = yes
-			} 
+			}
 		}
 		scope:target.owner = {
 			remove_variable = debug_is_actor
@@ -94,13 +97,13 @@ on_battle_won = {
 				value = yes
 			}
 		}
+		
 	}
 }
 
 
 on_battle_lost = {
 	effect = {
-
 		#检测是否属于局势参与方
 		scope:actor.owner = {
 			if = {
@@ -115,6 +118,28 @@ on_battle_lost = {
 				}
 			}
 		}
-	
+		
+		# 统计明末局势死亡总人数（失败方部分）
+		# 在 on_battle_lost 中：scope:killed_land_units = 失败方杀死的敌军数（即获胜方的损失）
+		if = {
+			limit = {
+				situation:late_ming_crisis = {
+					situation_is_active = yes
+				}
+			}
+			# 统计双方都是参与方的情况
+			if = {
+				limit = {
+					AND = {
+						scope:actor.owner = {
+							has_variable = chinese_country
+						}
+						scope:target.owner = {
+							has_variable = chinese_country
+						}
+					}
+				}
+			}
+		}
 	}
 }

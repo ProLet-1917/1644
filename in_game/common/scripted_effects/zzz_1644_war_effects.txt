@@ -10,6 +10,7 @@ subject_join_overlord_wars = {
 		save_scope_as = subject_overlord
 		
 		# 遍历宗主的所有当前战争
+		scope:subject_overlord = {	
 		every_current_war = {
 			save_scope_as = overlord_war
 			
@@ -40,6 +41,7 @@ subject_join_overlord_wars = {
 				}
 			}
 		}
+	}
 	}
 }
 

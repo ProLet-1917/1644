@@ -220,46 +220,6 @@ situation_panel = {
 								}
 							}
 						}
-						
-						# 我方击杀
-						hbox = {
-							spacing = 10
-							icon = {
-								size = {32 32}
-								texture = "gfx/interface/icons/flat_icons/war_view/army_unit.dds"
-							}
-							vbox = {
-								spacing = 2
-								text_single = {
-									text = "MY_KILLS_LATE_MING"
-									fontsize = 14
-								}
-								text_single = {
-									text = "[SituationView.GetPlayer.MakeScope.GetVariable('late_ming_crisis_my_kills').GetValue]"
-									fontsize = 18
-								}
-							}
-						}
-						
-						# 我方阵亡
-						hbox = {
-							spacing = 10
-							icon = {
-								size = {32 32}
-								texture = "gfx/interface/icons/character_roles/death.dds"
-							}
-							vbox = {
-								spacing = 2
-								text_single = {
-									text = "MY_CASUALTIES_LATE_MING"
-									fontsize = 14
-								}
-								text_single = {
-									text = "[SituationView.GetPlayer.MakeScope.GetVariable('late_ming_crisis_my_casualties').GetValue]"
-									fontsize = 18
-								}
-							}
-						}
 					}
 				}
 			}
