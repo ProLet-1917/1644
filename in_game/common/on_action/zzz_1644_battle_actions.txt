@@ -8,9 +8,19 @@ on_battle_won = {
 					has_variable = chinese_country
 					#is_subject = no  # 可选：仅对独立国家生效
 				}
-				#增加权威
+				#增加domination
 				change_variable = {
 					name = chi_domination
+					#10*war_score
+					add = scope:war_score
+					add = scope:war_score
+					add = scope:war_score
+					add = scope:war_score
+					add = scope:war_score
+					add = scope:war_score
+					add = scope:war_score
+					add = scope:war_score
+					add = scope:war_score
 					add = scope:war_score
 				}
 			}
@@ -111,9 +121,19 @@ on_battle_lost = {
 					has_variable = chinese_country
 					#is_subject = no  # 可选：仅对独立国家生效
 				}
-				#削减权威
+				#削减domination
 				change_variable = {
 					name = chi_domination
+					#10*war_score
+					subtract = scope:war_score
+					subtract = scope:war_score
+					subtract = scope:war_score
+					subtract = scope:war_score
+					subtract = scope:war_score
+					subtract = scope:war_score
+					subtract = scope:war_score
+					subtract = scope:war_score
+					subtract = scope:war_score
 					subtract = scope:war_score
 				}
 			}

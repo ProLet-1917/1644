@@ -22,10 +22,7 @@ late_ming_crisis.1 = {
 		}
 	}
 	immediate = {
-		
-
 	}
-	major = yes
 	fire_only_once = yes
 	option = {
 		#降清
@@ -50,8 +47,18 @@ late_ming_crisis.1 = {
 		c:CJX = {
 			set_variable = cjx_rebellion_first
 		}
-		c:CSH = { trigger_event_silently = flavor_csh.2 }#通知大顺
-		c:QNG = { trigger_event_silently = qng_1644_unification.9 }#通知大清
+		c:CSH = { 
+			trigger_event_silently = {#通知大顺
+				id = late_ming_crisis.2
+				days = { 3 10 }
+			} 
+		}
+		c:QNG = { 
+			trigger_event_silently = {#通知大清
+				id = qng_1644_unification.9
+				days = { 5 25 }
+			} 
+		}
 		kill_character = character:chi_zhang_tianlin
 		 trigger = {
 		     c:QNG.var:chi_domination > c:CSH.var:chi_domination
@@ -92,7 +99,90 @@ late_ming_crisis.2 = { #通知大顺
  	title = late_ming_crisis.2.title
  	desc = late_ming_crisis.2.desc
  	is_trigger_only = yes
+	immediate = {
+		c:CSH = {
+			set_variable = csh_lost_datong
+			change_variable = {
+				name = chi_domination
+				subtract = 5
+			}
+		}
+	}
  	option = {
  		name = late_ming_crisis.2.a	
+ 	}
+}
+
+scripted_effect xuanfu_list_add = {
+    province_definition:wanquan_province = {
+        every_location_in_province_definition = {
+            add_to_list = list_of_xuanfu_locations
+        }
+    }
+}
+late_ming_crisis.3 = { #宣府叛乱
+ 	title = late_ming_crisis.3.title
+ 	desc = late_ming_crisis.3.desc
+ 	is_trigger_only = yes
+	trigger = {
+		c:CSH ?= {
+			owns = location:xuande
+		}
+	}
+	immediate = {
+		c:CSH = {
+			set_variable = csh_lost_xuanfu
+			change_variable = {
+				name = chi_domination
+				subtract = 5
+			}
+		}
+		xuanfu_list_add = yes
+	}
+ 	option = {
+ 		name = late_ming_crisis.3.a	
+		every_in_list = {
+			list = list_of_xuanfu_locations
+			limit = { owner = c:CSH }
+			change_location_owner = c:QNG
+			change_control = control_radical_bonus
+		}
+		trigger_event_silently = {#通知大清
+			id = qng_1644_unification.10
+			days = { 2 6 }
+		}
+ 	}
+}
+late_ming_crisis.3 = { #宣府叛乱
+ 	title = late_ming_crisis.3.title
+ 	desc = late_ming_crisis.3.desc
+ 	is_trigger_only = yes
+	trigger = {
+		c:CSH ?= {
+			owns = location:xuande
+		}
+	}
+	immediate = {
+		c:CSH = {
+			set_variable = csh_lost_xuanfu
+			change_variable = {
+				name = chi_domination
+				subtract = 5
+			}
+		}
+		xuanfu_list_add = yes
+	}
+ 	option = {
+ 		name = late_ming_crisis.3.a	
+		every_in_list = {
+			list = list_of_xuanfu_locations
+			limit = { owner = c:CSH }
+			change_location_owner = c:QNG
+			change_control = control_radical_bonus
+		}
+		trigger_event_silently = {#通知大清
+			id = qng_1644_unification.10
+			days = { 2 6 }
+		}
  	}
 }
