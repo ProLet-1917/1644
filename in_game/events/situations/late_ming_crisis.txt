@@ -147,42 +147,156 @@ late_ming_crisis.3 = { #宣府叛乱
 			change_location_owner = c:QNG
 			change_control = control_radical_bonus
 		}
-		trigger_event_silently = {#通知大清
-			id = qng_1644_unification.10
-			days = { 2 6 }
+		c:QNG = {#通知大清
+			trigger_event_silently = {
+				id = qng_1644_unification.10
+				days = { 2 6 }
+			}
 		}
  	}
 }
-late_ming_crisis.3 = { #宣府叛乱
- 	title = late_ming_crisis.3.title
- 	desc = late_ming_crisis.3.desc
+
+scripted_effect ji_list_add = {
+    province_definition:dezhou_province = {
+        every_location_in_province_definition = {
+            add_to_list = list_of_ji_locations
+        }
+    }
+	province_definition:jinan_province = {
+        every_location_in_province_definition = {
+            add_to_list = list_of_ji_locations
+        }
+    }
+	province_definition:gaotang_province = {
+        every_location_in_province_definition = {
+            add_to_list = list_of_ji_locations
+        }
+    }
+	province_definition:qingzhou_province = {
+        every_location_in_province_definition = {
+            add_to_list = list_of_ji_locations
+        }
+    }
+	province_definition:taian_province = {
+        every_location_in_province_definition = {
+            add_to_list = list_of_ji_locations
+        }
+    }
+	province_definition:taian_province = {
+        every_location_in_province_definition = {
+            add_to_list = list_of_ji_locations
+        }
+    }
+	province_definition:binzhou_province = {
+        every_location_in_province_definition = {
+            add_to_list = list_of_ji_locations
+        }
+    }
+	province_definition:wuding_shandong_province = {
+        every_location_in_province_definition = {
+            add_to_list = list_of_ji_locations
+        }
+    }
+	province_definition:dongchang_province = {
+        every_location_in_province_definition = {
+            add_to_list = list_of_ji_locations
+        }
+    }
+	province_definition:linqing_province = {
+        every_location_in_province_definition = {
+            add_to_list = list_of_ji_locations
+        }
+    }
+	province_definition:daming_province = {
+        every_location_in_province_definition = {
+            add_to_list = list_of_ji_locations
+        }
+    }
+	province_definition:jingzhou_beizhili_province = {
+        every_location_in_province_definition = {
+            add_to_list = list_of_ji_locations
+        }
+    }
+	province_definition:hejian_province = {
+        every_location_in_province_definition = {
+            add_to_list = list_of_ji_locations
+        }
+    }
+	province_definition:jizhou_zhending_province = {
+        every_location_in_province_definition = {
+            add_to_list = list_of_ji_locations
+        }
+    }
+	province_definition:qingchi = {
+        every_location_in_province_definition = {
+            add_to_list = list_of_ji_locations
+        }
+    }
+	location:quzhou = {
+		add_to_list = list_of_ji_locations
+	}
+	location:guangzong = {
+		add_to_list = list_of_ji_locations
+	}
+	location:mingshui = {
+		add_to_list = list_of_ji_locations
+	}
+	location:qinghe = {
+		add_to_list = list_of_ji_locations
+	}
+	location:hengshui = {
+		add_to_list = list_of_ji_locations
+	}
+	location:wuyi = {
+		add_to_list = list_of_ji_locations
+	}
+}
+late_ming_crisis.4 = { #河北山东叛乱
+ 	title = late_ming_crisis.4.title
+ 	desc = late_ming_crisis.4.desc
  	is_trigger_only = yes
 	trigger = {
 		c:CSH ?= {
-			owns = location:xuande
+			owns = location:lingzhou_dezhou
+			owns = location:licheng
 		}
 	}
 	immediate = {
+		set_global_variable = csh_rebellion_of_hebe_shandong
 		c:CSH = {
-			set_variable = csh_lost_xuanfu
 			change_variable = {
-				name = chi_domination
+				name = chi_mandate
 				subtract = 5
 			}
 		}
-		xuanfu_list_add = yes
+		ji_list_add = yes
 	}
  	option = {
- 		name = late_ming_crisis.3.a	
+ 		name = late_ming_crisis.4.a	
 		every_in_list = {
-			list = list_of_xuanfu_locations
+			list = list_of_ji_locations
 			limit = { owner = c:CSH }
-			change_location_owner = c:QNG
+			change_location_owner = c:CJI
 			change_control = control_radical_bonus
 		}
-		trigger_event_silently = {#通知大清
-			id = qng_1644_unification.10
-			days = { 2 6 }
+		c:CJI = {
+			set_capital = location:lingzhou_dezhou
+			create_character = {#朱帅锬
+				first_name = name_shuaitan
+				dynasty = rtr_ming_zhu_dynasty
+				religion = sanjiao
+				culture = han_culture
+				age = { 20 60 }
+				female = no
+				save_scope_as = new_ji_ruler
+			}
+			set_new_ruler = scope:new_ji_ruler
+		}
+		c:MNG = {#通知大明
+			trigger_event_silently = {
+				id = mng_1644.6
+				days = { 5 20 }
+			}
 		}
  	}
 }
