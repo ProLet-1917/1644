@@ -1,8 +1,5 @@
 ﻿cn_march_governor = { 
-	subject_pays = {
-        scaled_gold = 0
-        ignore_inflation = yes
-    }
+	subject_pays =  middle_kingdom_tribute_price
 	color = subject_march
 	level = 1
 	visible_through_diplomacy = {
@@ -48,32 +45,32 @@
 	}
 	
 	join_offensive_wars_always = {
-		always = no
+		always = yes
 	}
-    join_offensive_wars_can_call = {
-        OR = {
-        # ───────────────
-        # 情况 A：宗主 → 附庸（宗主发动侵略）
-        # ───────────────
-            scope:recipient ?= {
-                is_subject_of = scope:actor
-            }
-        # ───────────────
-        # 情况 B：附庸 → 宗主（附庸发动侵略，但不是内斗）
-        # ───────────────
-            AND = {
-                # caller 是附庸
-                scope:actor ?= { is_subject_of = scope:recipient }
-                # 目标不是同一宗主下的附庸
-                NOT = {
-                    scope:target ?= {
-                        is_subject = yes
-                        overlord = scope:recipient
-                    }
-                }
-            }
-        }
-    }
+    # join_offensive_wars_can_call = {
+    #     OR = {
+    #     # ───────────────
+    #     # 情况 A：宗主 → 附庸（宗主发动侵略）
+    #     # ───────────────
+    #         scope:recipient ?= {
+    #             is_subject_of = scope:actor
+    #         }
+    #     # ───────────────
+    #     # 情况 B：附庸 → 宗主（附庸发动侵略，但不是内斗）
+    #     # ───────────────
+    #         AND = {
+    #             # caller 是附庸
+    #             scope:actor ?= { is_subject_of = scope:recipient }
+    #             # 目标不是同一宗主下的附庸
+    #             NOT = {
+    #                 scope:target ?= {
+    #                     is_subject = yes
+    #                     overlord = scope:recipient
+    #                 }
+    #             }
+    #         }
+    #     }
+    # }
     join_defensive_wars_always = {
         # OR = {
         # # ───────────────
@@ -98,9 +95,9 @@
         # }
 		always = yes #应急
     }
-    join_defensive_wars_can_call = {
-        always = no
-    }
+    # join_defensive_wars_can_call = {
+    #     always = no
+    # }
 
 
 
