@@ -8678,17 +8678,53 @@ countries = {
 		include = "expl_muslim_mediterranean"
 		include = "turkish_beylik"
 
+		starting_technology_level = 3
+
 		government = {
 
 			ruler = tur_ibrahim_i_ottomans
 			heir = tur_mehmet_i_ottomans
 
-			ruler_term = {	 character = tur_ibrahim_i_ottomans start_date = 1644.1.1 regnal_number = 1	}
+			ruler_term = {	 character = tur_osman start_date = 1299.1.1 end_date = 1324.1.1 regnal_number = 1	}
+			ruler_term = {	 character = tur_orhan start_date = 1324.1.1 end_date = 1362.1.1 regnal_number = 1	}
+			ruler_term = {	 character = tur_murad start_date = 1362.1.1 end_date = 1389.6.15 regnal_number = 1	}
+			ruler_term = {	 character = tur_bayezid_i start_date = 1389.6.15 end_date = 1402.7.20 regnal_number = 1 }
+			ruler_term = {	 character = tur_mehmed_i start_date = 1413.7.5 end_date = 1421.5.26 regnal_number = 1	}
+			ruler_term = {	 character = tur_murad_ii start_date = 1421.5.26 end_date = 1444.8.1 regnal_number = 2	}
+			ruler_term = {	 character = tur_mehmed_ii start_date = 1444.8.1 end_date = 1446.9.1 regnal_number = 2	}
+			ruler_term = {	 character = tur_murad_ii start_date = 1446.9.1 end_date = 1451.2.3 regnal_number = 2	}
+			ruler_term = {	 character = tur_mehmed_ii start_date = 1451.2.3 end_date = 1481.5.3 regnal_number = 2	}
+			ruler_term = {	 character = tur_bayezid_ii start_date = 1481.5.3 end_date = 1512.4.24 regnal_number = 2 }
+			ruler_term = {	 character = tur_selim_i start_date = 1512.4.24 end_date = 1520.9.22 regnal_number = 1	}
+			ruler_term = {	 character = tur_suleiman_the_magnificent start_date = 1520.9.30 end_date = 1566.9.6 regnal_number = 1	}
+			ruler_term = {	 character = tur_selim_ii start_date = 1566.9.7 end_date = 1574.12.15 regnal_number = 2	}
+			ruler_term = {	 character = tur_murad_iii start_date = 1574.12.27 end_date = 1595.1.16 regnal_number = 3	}
+			ruler_term = {	 character = tur_mehmed_iii start_date = 1595.1.16 end_date = 1603.12.22 regnal_number = 3	}
+			ruler_term = {	 character = tur_ahmed_i start_date = 1603.12.22 end_date = 1617.11.22 regnal_number = 1	}
+			ruler_term = {	 character = tur_mustafa_i start_date = 1617.11.22 end_date = 1618.2.26 regnal_number = 1	}
+			ruler_term = {	 character = tur_osman_ii start_date = 1618.2.26 end_date = 1622.5.20 regnal_number = 2	}
+			ruler_term = {	 character = tur_mustafa_i start_date = 1622.5.20 end_date = 1623.9.10 regnal_number = 1	}
+			ruler_term = {	 character = tur_murad_iv start_date = 1623.9.10 end_date = 1640.2.8 regnal_number = 4	}
+			ruler_term = {	 character = tur_ibrahim_i_ottomans start_date = 1640.2.9 regnal_number = 1	}
+
+			regnal_numbers = {
+				name_osman = 1
+				name_orhan = 1
+				name_murad = 4
+				Bayezid = 2
+				name_muhammad = 3
+				Selim = 2
+				name_salomon = 1
+				name_ahmad = 1
+				name_mustafa = 1
+				name_abraham = 1
+			}
 
 			reforms = {
 				legacy_of_the_ottomans
 				turkish_pashas
-				expanded_timariot_system
+				expanded_timariot_system #セクバン制度イベントのトリガーとなるので設定
+				enderun_interior_service
 			}
 
 			centralization_vs_decentralization = 10
@@ -8746,6 +8782,8 @@ countries = {
 				sharia_law = hanafi_policy
 				harem_law = secluded_harem_policy
 				administrative_system = eyalet_division_1644
+				recruitment_law = devshirme_system_policy #エラーで反映できていない
+				piracy_law = state_piracy_policy
 			}
 		}
 
