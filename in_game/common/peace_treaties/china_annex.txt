@@ -1,0 +1,56 @@
+﻿china_annex = {
+	cost = {
+		add = {
+			desc = "DIPLOREASON_BASE"
+			value = 80
+		}
+	}
+
+	potential = {
+		scope:war = {
+			is_no_cb_war = no
+			casus_belli ?= casus_belli:cb_chinese_unification
+		}
+		scope:winner = {
+			# 确保胜利者在中国境内
+			capital ?= {
+				OR = {
+					region = region:east_china_region
+					region = region:north_china_region
+					region = region:south_china_region
+					region = region:west_china_region
+					region = region:manchuria_region
+				}
+			}
+		}
+		scope:loser = {
+			# 确保失败者也在中国境内
+			capital ?= {
+				OR = {
+					region = region:east_china_region
+					region = region:north_china_region
+					region = region:south_china_region
+					region = region:west_china_region
+					region = region:manchuria_region
+				}
+			}
+		}
+	}
+	
+	allow = {
+	}
+
+	effect = {
+		scope:winner = {
+			annex_country = {
+				country = scope:loser
+				reason = MilitaryConquest
+			}
+		}
+	}
+
+	ai_desire = {
+		value = 1000
+	}
+}
+
