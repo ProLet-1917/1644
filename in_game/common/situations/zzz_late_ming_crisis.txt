@@ -63,6 +63,7 @@
 		# 给所有首都在中国和满洲的国家互相添加"统一中国"CB
 		# 使用全局变量列表方法，分两步执行
 		collect_china_countries_effect = yes
+		zzz_1644_add_china_cb_effect = yes
 		
 		# 为初始参与国添加局势 modifier（使用已收集的国家列表）
 		zzz_1644_add_crisis_participant_modifier_effect = yes
@@ -149,6 +150,18 @@
 		#为所有参与国添加domination和mandate
 		late_ming_crisis_init_variable = yes
 		
+		# 为参与国添加局势 modifier（使用已收集的国家列表，只添加给还没有 modifier 的国家）
+		every_in_global_list = {
+			variable = china_countries_list
+			limit = {
+				NOT = { has_country_modifier = late_ming_crisis_participant }
+			}
+			add_country_modifier = {
+				modifier = late_ming_crisis_participant
+				years = 5
+				mode = replace
+			}
+		}
 		
 		#大同叛乱事件
 		if = {
@@ -171,25 +184,100 @@
 					}		
 				}
 				random = {
-					chance = 30
+					chance = 10
 					modifier = {
 						c:CSH.var:chi_domination < 70
-						multiply = 2
+						multiply = 4
 					}
 					modifier = {
 						c:CSH.var:chi_domination < 60
 						multiply = 2
 					}
-					#modifier = {
-					#	c:CSH.var:chi_domination < 50
-					#	multiply = 2
-					#}
+					modifier = {
+						c:CSH.var:chi_domination < 50
+						multiply = 2
+					}
+					modifier = {
+						location:xuande.owner = c:QNG#宣府
+						multiply = 4
+					}
+					modifier = {
+						location:yangqu.owner = c:QNG#太原
+						multiply = 4
+					}
+					modifier = {
+						location:ninghua.owner = c:QNG#宁武
+						multiply = 2
+					}
+					modifier = {
+						location:daizhou.owner = c:QNG#代州
+						multiply = 2
+					}
+					modifier = {
+						location:dadu.owner = c:QNG#北京
+						multiply = 4
+					}
+					modifier = {
+						location:changan.owner = c:QNG#西京
+						multiply = 4
+					}
 					c:CJX = {
-						trigger_event_silently = zzz_late_ming_crisis.1
+						trigger_event_silently = {
+							id = late_ming_crisis.1
+							days = { 3 10 }
+						}
 					}
 				}
 			}
 		}
+
+		#宣府叛乱事件
+		if = {
+			limit = {
+				NOT = { c:CSH ?= { has_variable = csh_lost_xuanfu } }
+			}
+			if = {
+				limit = {
+					c:QNG ?= { has_variable = chi_domination }
+					c:MNG ?= { has_variable = chi_domination }
+					c:CSH ?= { has_variable = chi_domination }
+					c:QNG.var:chi_domination > c:CSH.var:chi_domination
+				}
+				random = {
+					chance = 10
+					modifier = {
+						c:CSH.var:chi_domination < 70
+						multiply = 4
+					}
+					modifier = {
+						c:CSH.var:chi_domination < 60
+						multiply = 2
+					}
+					modifier = {
+						c:CSH.var:chi_domination < 50
+						multiply = 2
+					}
+					modifier = {
+						OR = {
+							location:datong_datong.owner = c:QNG
+							c:CJX ?= { is_subject_of = c:QNG }
+						}
+						multiply = 2
+					}
+					modifier = {
+						location:dadu.owner = c:QNG#北京
+						multiply = 2
+					}
+					c:CSH = {
+						trigger_event_silently = {
+							id = late_ming_crisis.3
+							days = { 1 3 }
+						}
+					}
+				}
+			}
+		}
+
 	}
 
 	# 6. 结束效果

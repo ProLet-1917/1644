@@ -1,5 +1,5 @@
 ﻿cn_march_governor = { 
-	subject_pays =  middle_kingdom_tribute_price
+	subject_pays = middle_kingdom_tribute_price
 	color = subject_march
 	level = 1
 	visible_through_diplomacy = {
@@ -73,17 +73,17 @@
     }
     join_defensive_wars_always = {
         OR = {
-        # ───────────────
-        # 情况 C：宗主被侵略 → 附庸自动参战
-        # ───────────────
-            scope:recipient ?= {
-                is_subject_of = scope:actor
-            }
-        # ───────────────
-        # 情况 D：附庸被外敌侵略 → 宗主自动参战
-        # （排除同宗主附庸内斗）
-        # ───────────────
-            AND = {
+         # ───────────────
+         # 情况 C：宗主被侵略 → 附庸自动参战
+         # ───────────────
+             scope:recipient ?= {
+                 is_subject_of = scope:actor
+             }
+         # ───────────────
+         # 情况 D：附庸被外敌侵略 → 宗主自动参战
+         # （排除同宗主附庸内斗）
+         # ───────────────
+             AND = {
                 scope:actor ?= { is_subject_of = scope:recipient }
                 NOT = {
                     scope:target ?= {
@@ -93,6 +93,7 @@
                 }
             }
         }
+		#always = yes
     }
     join_defensive_wars_can_call = {
         always = no
