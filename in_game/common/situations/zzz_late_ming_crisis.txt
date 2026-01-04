@@ -7,7 +7,7 @@
 		current_year >= 1627
 		current_year <= 1650
 		exists = c:MNG
-
+		NOT = { c:MNG = { owns = location:dadu } }
 	}
 
 	# 2. 结束条件
@@ -221,6 +221,10 @@
 						location:changan.owner = c:QNG#西京
 						multiply = 4
 					}
+					modifier = {
+						c:CSH.var:chi_domination > 75
+						devide = 2
+					}
 					c:CJX = {
 						trigger_event_silently = {
 							id = late_ming_crisis.1
@@ -268,6 +272,10 @@
 						location:dadu.owner = c:QNG#北京
 						multiply = 2
 					}
+					modifier = {
+						c:CSH.var:chi_domination > 75
+						devide = 2
+					}
 					c:CSH = {
 						trigger_event_silently = {
 							id = late_ming_crisis.3
@@ -305,6 +313,10 @@
 					modifier = {
 						c:QNG.var:chi_domination > c:CSH.var:chi_domination	
 						multiply = 2
+					}
+					modifier = {
+						c:CSH.var:chi_domination > 75
+						devide = 2
 					}
 					c:CSH = {
 						trigger_event_silently = {
@@ -356,6 +368,10 @@
 					modifier = {
 						c:CSH.var:chi_domination < 60
 						multiply = 2
+					}
+					modifier = {
+						c:CSH.var:chi_domination > 75
+						devide = 2
 					}
 					modifier = {
 						c:CSH.var:chi_mandate < 25
