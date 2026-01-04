@@ -27,7 +27,7 @@ late_ming_crisis_grant_unification_cb = {
 	}
 
 	ai_tick = monthly
-	ai_tick_frequency = 2
+	ai_tick_frequency = 6
 	automation_tick = never
 	automation_tick_frequency = 3
 
@@ -78,6 +78,26 @@ late_ming_crisis_grant_unification_cb = {
 					target = scope:target
 					type = casus_belli:cb_chinese_unification
 				}
+				# 为目标国家的所有省份添加核心
+				scope:target = {
+					every_owned_location = {
+						scope:actor = {
+							add_core = prev
+						}
+					}
+				}
+				# 自动宣战
+				if = {
+					limit = {
+						NOT = { scope:target = scope:actor }
+						NOT = { is_at_war_with = scope:target }
+						NOT = { is_fighting_war_together_with = scope:target }
+					}
+					declare_war_with_cb = {
+						target = scope:target
+						type = casus_belli:cb_chinese_unification
+					}
+				}
 			}
 		}
 	}
@@ -102,6 +122,13 @@ late_ming_crisis_grant_unification_cb = {
 							type = casus_belli:cb_chinese_unification
 							target = scope:target
 						}
+					}
+				}
+				# 检查宗主国对附庸国有大量军事优势（至少2倍）
+				scope:actor = {
+					relative_military_strength = {
+						target = scope:target
+						value > 2.0
 					}
 				}
 			}
@@ -190,6 +217,7 @@ late_ming_crisis_subjugate_disobedient = {
 		if = {
 			limit = {
 				exists = scope:target
+				NOT = { scope:target = scope:actor }
 				scope:target = {
 					is_subject_or_below_of = scope:actor
 				}
@@ -202,8 +230,28 @@ late_ming_crisis_subjugate_disobedient = {
 			scope:actor = {
 				remove_truce_with = scope:target
 				add_casus_belli = {
-					target = scope:target
+					target = scope:target 
 					type = casus_belli:cb_chinese_unification
+				}
+				# 为目标国家的所有省份添加核心
+				scope:target = {
+					every_owned_location = {
+						scope:actor = {
+							add_core = prev
+						}
+					}
+				}
+				# 自动宣战
+				if = {
+					limit = {
+						NOT = { scope:target = scope:actor }
+						NOT = { is_at_war_with = scope:target }
+						NOT = { is_fighting_war_together_with = scope:target }
+					}
+					declare_war_with_cb = {
+						target = scope:target
+						type = casus_belli:cb_chinese_unification
+					}
 				}
 			}
 		}

@@ -63,7 +63,6 @@
 		# 给所有首都在中国和满洲的国家互相添加"统一中国"CB
 		# 使用全局变量列表方法，分两步执行
 		collect_china_countries_effect = yes
-		zzz_1644_add_china_cb_effect = yes
 		
 		# 为初始参与国添加局势 modifier（使用已收集的国家列表）
 		zzz_1644_add_crisis_participant_modifier_effect = yes
@@ -150,23 +149,51 @@
 		#为所有参与国添加domination和mandate
 		late_ming_crisis_init_variable = yes
 		
-		# 为参与国添加局势 modifier（使用已收集的国家列表，只添加给还没有 modifier 的国家）
-		every_in_global_list = {
-			variable = china_countries_list
+		
+		#大同叛乱事件
+		if = {
 			limit = {
-				NOT = { has_country_modifier = late_ming_crisis_participant }
+				c:CJX ?= {
+					NOR = {
+						has_variable = cjx_rebellion_first
+						has_variable = cjx_refus_rebellion_first
+					}
+				}
 			}
-			add_country_modifier = {
-				modifier = late_ming_crisis_participant
-				years = 5
-				mode = replace
+			if = {
+				limit = {
+					c:QNG ?= { has_variable = chi_domination }
+					c:MNG ?= { has_variable = chi_domination }
+					c:CSH ?= { has_variable = chi_domination }
+					OR = {
+						c:QNG.var:chi_domination > c:CSH.var:chi_domination			
+				 		c:MNG.var:chi_domination > c:CSH.var:chi_domination	
+					}		
+				}
+				random = {
+					chance = 30
+					modifier = {
+						c:CSH.var:chi_domination < 70
+						multiply = 2
+					}
+					modifier = {
+						c:CSH.var:chi_domination < 60
+						multiply = 2
+					}
+					#modifier = {
+					#	c:CSH.var:chi_domination < 50
+					#	multiply = 2
+					#}
+					c:CJX = {
+						trigger_event_silently = zzz_late_ming_crisis.1
+					}
+				}
 			}
 		}
-		
 	}
 
 	# 6. 结束效果
-	on_end = {
+	on_ended = {
 		# 移除所有参与国的局势 modifier
 		every_country = {
 			limit = {
