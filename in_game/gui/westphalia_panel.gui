@@ -1,0 +1,263 @@
+widget = {
+    name = "westphalia_panel"
+    datacontext = "[GetPlayer]"
+
+    #visible = { #What a smart coder
+    #has_global_variable = show_decision_panel
+    visible = "[GetVariableSystem.Exists('westphalia_panel')]"
+    #}
+    layer = top
+    size = { 100% 100% }
+    alwaystransparent = yes
+    using = layoutpolicy_expanding
+
+    window = {
+        using = bg_window_default_alt
+        using = layoutpolicy_expanding
+
+        name = "westphalia_panel_window"
+        datacontext = "[GetPlayer]"
+        datacontext = "[GetVariableSystem]"
+
+        size = { 55% 80% }
+        #alwaystransparent = yes
+        layoutpolicy_horizontal = expanding
+        layoutpolicy_vertical = expanding
+
+        widget = {
+            size = { 100% 40 }
+            parentanchor = hleft|top
+            hbox = {
+                header_title = {
+                    block "header_text" {
+                        text = "westphalia_panel"
+                    }
+                }
+            }
+            widget = {
+                parentanchor = right|vcenter
+                size = { 40 40 }
+
+                ui_direction_button_holder_right = { }
+
+                ui_direction_button_alt = {
+                    parentanchor = right|vcenter
+                    using = bg_button_light_alt_round
+
+                    onclick = "[GetVariableSystem.Toggle('westphalia_panel')]"
+                    down = "[GetVariableSystem.Toggle('westphalia_panel')]"
+
+                    blockoverride "button_texture" {
+                        texture = "gfx/interface/buttons/flats/close_button_alt.dds"
+                        texture_density = 2
+                    }
+
+                    blockoverride "glow_visible" {
+                        visible = "[IsOutlinerShown]"
+                        alpha = 0.4
+                    }
+
+                }
+            }
+            expand = { }
+        }
+        widget = {
+            size = { 100% 50 }
+            position = { 0 40 }
+            widget = {
+                minimumsize = { 200 40 }
+                maximumsize = { 200 40 }
+                parentanchor = hcenter|vcenter
+                layoutpolicy_horizontal= expanding
+                using = bg_generic_shadow
+
+                using = bg_text_mask_container_brown
+                background = {
+                    using = text_mask_container_texture
+                    modify_texture = {
+                        using = color_paper_texture
+                        blend_mode = add
+                    }
+                }
+                background = {
+                    texture = "gfx/interface/component_decoration/ios/hre/hre_overview_frame.dds"
+                    texture_density = 2
+                    spriteType = corneredstretched
+                    spriteBorder = {20 20}
+                }
+                tooltip_widget = {
+                    position = { 35 10 }
+                    text_single = {
+                        layoutpolicy_horizontal = expanding
+                        align = center|nobaseline
+                        raw_text = "War Balance [GetGlobalVariable('current_war_balance').GetValue]"
+
+                    }
+                }
+            }
+            expand = { }
+        }
+        widget = {
+            size = { 100% 100 }
+            position = { 0 90 }
+            widget = {
+                size = { 80% 80% }
+                parentanchor = hcenter|vcenter
+                # list of leading countries
+                situation_fancy_two_line_card = {
+                    blockoverride "card_datacontext" { }
+                    # Protestant Union
+                    # Leader
+                    blockoverride "left_flag_properties" {
+                        datacontext = "[GetUniqueInternationalOrganization('protestant_union').GetLeaderCountry]"
+                        visible = "[Country.IsValid]"
+                    }
+                    blockoverride "left_top_text" {
+                        text = "[GetUniqueInternationalOrganization('protestant_union').GetLeaderCountry.GetName]"
+                    }
+                    blockoverride "left_bottom_flag" {
+                        icon = {
+                            size = { 30 30 }
+                            texture = "gfx/interface/icons/religion/lutheran.dds"
+                        }
+                    }
+                    blockoverride "left_bottom_text" {
+                        text = "[GetUniqueInternationalOrganization('protestant_union').GetName]"
+                    }
+                    # Catholic League
+                    # Leader
+                    blockoverride "right_flag_properties" {
+                        datacontext = "[GetUniqueInternationalOrganization('catholic_league').GetLeaderCountry]"
+                        visible = "[Country.IsValid]"
+                    }
+                    blockoverride "right_top_text" {
+                        text = "[GetUniqueInternationalOrganization('catholic_league').GetLeaderCountry.GetName]"
+                    }
+                    blockoverride "right_bottom_flag" {
+                        icon = {
+                            size = { 30 30 }
+                            texture = "gfx/interface/icons/religion/catholic.dds"
+                        }
+                    }
+                    blockoverride "right_bottom_text" {
+                        text = "[GetUniqueInternationalOrganization('catholic_league').GetName]"
+                    }
+                }
+            }
+        }
+        widget = {
+            size = { 100% 50 }
+            position = { 0 190 }
+            widget = {
+                minimumsize = { 300 40 }
+                maximumsize = { 300 40 }
+                parentanchor = hcenter|vcenter
+                layoutpolicy_horizontal= expanding
+                using = bg_generic_shadow
+
+                using = bg_text_mask_container_brown
+                tooltip_widget = {
+                    position = { 10 10 }
+                    visible = "[GetGlobalVariable('now_talking_about_north_europe_problem').IsSet]"
+                    text_single = {
+                        layoutpolicy_horizontal = expanding
+                        align = center|nobaseline
+                        raw_text = "now_talking_about_north_europe_problem"
+                    }
+                }
+                tooltip_widget = {
+                    position = { 10 10 }
+                    visible = "[GetGlobalVariable('now_talking_about_lowland_problem').IsSet]"
+                    text_single = {
+                        layoutpolicy_horizontal = expanding
+                        align = center|nobaseline
+                        raw_text = "now_talking_about_lowland_problem"
+                    }
+                }
+                tooltip_widget = {
+                    position = { 10 10 }
+                    visible = "[GetGlobalVariable('now_talking_about_wittersbach_problem').IsSet]"
+                    text_single = {
+                        layoutpolicy_horizontal = expanding
+                        align = center|nobaseline
+                        raw_text = "now_talking_about_wittersbach_problem"
+                    }
+                }
+                tooltip_widget = {
+                    position = { 10 10 }
+                    visible = "[GetGlobalVariable('now_talking_about_france_austria_problem').IsSet]"
+                    text_single = {
+                        layoutpolicy_horizontal = expanding
+                        align = center|nobaseline
+                        raw_text = "now_talking_about_france_austria_problem"
+                    }
+                }
+                tooltip_widget = {
+                    position = { 10 10 }
+                    visible = "[GetGlobalVariable('now_talking_about_france_spain_problem').IsSet]"
+                    text_single = {
+                        layoutpolicy_horizontal = expanding
+                        align = center|nobaseline
+                        raw_text = "now_talking_about_france_spain_problem"
+                    }
+                }
+            }
+        }
+        vbox = {
+            position = { 0 240 }
+            using = lateralview_margins
+            #using = layoutpolicy_expanding
+            size = { 100% 60% }
+            scrollbox = {
+                using = layoutpolicy_expanding
+                blockoverride "scrollbox_content" {
+                    vbox = {
+                        name = "select_treaties"
+                        size = { 100% 20% }
+                        visible = "[Country.MakeScope.GetVariable('winning_side').IsSet]"
+
+                        vbox = {
+                            position = { 0 0 }
+                            size = { 100% 100% }
+                            minimumsize = { 450 50 }
+
+
+                            layoutpolicy_vertical = expanding
+                            set_parent_size_to_minimum = yes
+                            spacing = 15
+
+                            block "select_content" {}
+
+                        }
+
+                        button_regular = {
+                            name = "pay_war_reparations"
+                            tooltip = "pay_war_reparations_TT"
+                            using = tooltip_ne
+                            size = { 100% 30 }
+                            visible = "[GetGlobalVariable('allow_war_reparations').IsSet]"
+                            text = "pay_war_reparations"
+                            action_tooltip = {
+                                click_type = left
+                                on_action = "[GetScriptedGui('pay_war_reparations').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                            }
+                        }
+
+                        button_regular = {
+                            name = "split_pomelamia"
+                            tooltip = "split_pomelamia_TT"
+                            using = tooltip_ne
+                            size = { 100% 30 }
+                            visible = "[GetGlobalVariable('allow_split_pomelamia').IsSet]"
+                            text = "split_pomelamia"
+                            action_tooltip = {
+                                click_type = left
+                                on_action = "[GetScriptedGui('split_pomelamia').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

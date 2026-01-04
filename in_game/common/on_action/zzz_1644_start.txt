@@ -147,6 +147,14 @@
             }
         }
 
+        c:HAB = {
+            set_variable = privilegium_maius_granted
+            #add_reform = government_reform:libertas_affectandi
+            change_heir_selection = heir_selection:austrian_cognatic_primogeniture
+            unlock_government_reform_effect = { type = austrian_archduchy_reform }
+            #add_reform = government_reform:austrian_archduchy_reform
+        }
+
         every_country = {
             limit = {
                 OR = {
@@ -158,7 +166,7 @@
             hidden_effect = {
                 add_country_modifier = {
                     modifier = ai_in_religion_war
-                    months = 36
+                    months = 180
                 }
             }
         }

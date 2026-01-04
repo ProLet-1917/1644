@@ -1,0 +1,349 @@
+monthly_war_balance_effect = {
+    change_global_variable = {
+        name = current_war_balance
+        add = 0.12
+    }
+    if = {
+        limit = {
+            location:paris ?= {
+                c:FRA ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            add = 0.10
+        }
+    }
+    if = {
+        limit = {
+            location:kassel ?= {
+               c:HES ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            add = 0.04
+        }
+    }
+    if = {
+        limit = {
+            location:stockholm ?= {
+                c:SWE ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            add = 0.04
+        }
+    }
+    if = {
+        limit = {
+            location:amsterdam ?= {
+                c:NED ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            add = 0.04
+        }
+    }
+
+    if = {
+        limit = {
+            location:vienna ?= {
+                c:HAB ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            subtract = 0.08
+        }
+    }
+    if = {
+        limit = {
+            location:prague ?= {
+                c:HAB ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            subtract = 0.04
+        }
+    }
+    if = {
+        limit = {
+            location:madrid ?= {
+                c:SPA ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            subtract = 0.04
+        }
+    }
+    if = {
+        limit = {
+            location:antwerp ?= {
+                c:BRB ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            subtract = 0.02
+        }
+    }
+    if = {
+        limit = {
+            location:dresden ?= {
+                c:SAX ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            subtract = 0.02
+        }
+    }
+    if = {
+        limit = {
+            location:munich ?= {
+                c:BAV ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            subtract = 0.02
+        }
+    }
+    if = {
+        limit = {
+            location:kobenhavn ?= {
+                c:DAN ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            subtract = 0.02
+        }
+    }
+
+    if = {
+        limit = {
+            location:arras ?= {
+                international_organization:protestant_union.leader_country ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            add = 0.03
+        }
+    }
+    else_if = {
+        limit = {
+            location:arras ?= {
+                c:ARS ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            subtract = 0.03
+        }
+    }
+
+    if = {
+        limit = {
+            location:dole ?= {
+                international_organization:protestant_union.leader_country ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            add = 0.03
+        }
+    }
+    else_if = {
+        limit = {
+            location:dole ?= {
+                c:FCB ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            subtract = 0.03
+        }
+    }
+
+    if = {
+        limit = {
+            location:freiburg ?= {
+                international_organization:protestant_union.leader_country ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            add = 0.03
+        }
+    }
+    else_if = {
+        limit = {
+            location:freiburg ?= {
+                c:TIR ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            subtract = 0.03
+        }
+    }
+
+    if = {
+        limit = {
+            location:viborg ?= {
+                international_organization:protestant_union.leader_country ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            add = 0.03
+        }
+    }
+    else_if = {
+        limit = {
+            location:viborg ?= {
+                c:DAN ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            subtract = 0.03
+        }
+    }
+
+    if = {
+        limit = {
+            location:ghent ?= {
+                international_organization:protestant_union.leader_country ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            add = 0.03
+        }
+    }
+    else_if = {
+        limit = {
+            location:ghent ?= {
+                c:FLA ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            subtract = 0.03
+        }
+    }
+
+    if = {
+        limit = {
+            location:brussels ?= {
+                international_organization:protestant_union.leader_country ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            add = 0.03
+        }
+    }
+    else_if = {
+        limit = {
+            location:brussels ?= {
+                c:BRB ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            subtract = 0.03
+        }
+    }
+
+
+    if = {
+        limit = {
+            location:stettin ?= {
+                international_organization:catholic_league.leader_country ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            subtract = 0.03
+        }
+    }
+    else_if = {
+        limit = {
+            location:stettin ?= {
+                c:STE ?= controller
+            }
+        }
+        change_global_variable = {
+            name = current_war_balance
+            add = 0.03
+        }
+    }
+}
+
+religion_war_check_effect = { #Donot use it
+    if = {
+        limit = {
+            var:current_religion_war_length >= 350
+        }
+        random = {
+            chance = 50
+            every_country = {
+                limit = {
+                    OR = {
+                        is_member_of_international_organization = international_organization:catholic_league
+                        is_member_of_international_organization = international_organization:protestant_union
+                    }
+                }
+                add_manpower = 0.2
+            }
+        }
+        random = {
+            chance = 50
+            if = {
+                limit = {
+                    var:current_war_balance >= 50
+                }
+                international_organization:catholic_league.leader_country = {
+                    trigger_event_non_silently = war_of_religions.1300
+                }
+            }
+            else = {
+                international_organization:protestant_union.leader_country = {
+                    trigger_event_non_silently = war_of_religions.1300
+                }
+            }
+        }
+    }
+}
+
+count_allowed_treaty_effect = {
+    if = {
+        limit = {
+            has_global_variable = protestant_winning
+            situation:peace_talk_in_westphalia.var:peace_talk_in_westphalia_phase = 1
+            global_var:current_war_balance >= 51.5
+        }
+        set_global_variable = {
+            name = allow_war_reparations
+        }
+    }
+    if = {
+        limit = {
+            has_global_variable = protestant_winning
+            situation:peace_talk_in_westphalia.var:peace_talk_in_westphalia_phase = 1
+            global_var:current_war_balance >= 53.5
+        }
+        set_global_variable = {
+            name = allow_split_pomelamia
+        }
+    }
+}

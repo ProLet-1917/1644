@@ -107,7 +107,25 @@ situation_panel = {
 			}
 
 			blockoverride "right_bottom_text" { text = "LEADER_ANTI_CATHOLIC" }
-    		}
+		}
+		vbox = {
+			size = { 50% 50% }
+			minimumsize = { 150 50 }
+
+
+			#layoutpolicy_vertical = expanding
+			set_parent_size_to_minimum = yes
+			spacing = 15
+			button_regular_icon = {
+				using = layoutpolicy_expanding
+				using = tooltip_ne
+				size = { 100% 30 }
+				text = "Open Westphalia Panel"
+
+				onclick = "[GetVariableSystem.Toggle('westphalia_panel')]"
+				down = "[GetVariableSystem.Toggle('westphalia_panel')]"
+			}
+		}
 	}
 
 	blockoverride "situation_header_left" {
@@ -144,6 +162,7 @@ situation_panel = {
 				fontsize = 13
 				text = "[SituationView.GetActiveSituation.GetSituation.MakeScope.GetVariable('peace_talk_in_westphalia_phase_remaining_month').GetValue]"
 			}
+
 		}
 	}
 

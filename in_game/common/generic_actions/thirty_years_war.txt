@@ -1,0 +1,147 @@
+request_peaceful_talk = {
+    type = situation
+
+    potential = {
+        scope:actor = {
+            OR = {
+                is_leader_of_international_organization = international_organization:protestant_union
+                is_leader_of_international_organization = international_organization:catholic_league
+            }
+        }
+        situation:thirty_years_war = {
+            situation_is_active = yes
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            OR = {
+                is_leader_of_international_organization = international_organization:protestant_union
+                is_leader_of_international_organization = international_organization:catholic_league
+            }
+        }
+        NOT = {
+            has_game_rule = treaty_of_westphalia_historical
+        }
+    }
+
+    ai_tick = monthly
+    ai_tick_frequency = 3
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = "choose_situation"
+        column = {data = name}
+        visible = {
+            situation:thirty_years_war = this
+            situation_is_active = yes
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = international_organization
+        target_flag = target
+        name = "choose_international_organization"
+        column = {
+            data = name
+        }
+        visible = {
+            OR = {
+                international_organization_type = international_organization_type:protestant_union
+                international_organization_type = international_organization_type:catholic_league
+            }
+            scope:actor = {
+                NOT = {
+                    is_member_of_international_organization = root
+                }
+            }
+        }
+    }
+
+    effect = {
+        if = {
+            limit = {
+                exists = scope:target
+                scope:target = international_organization:protestant_union
+            }
+            scope:target.leader_country = {
+                trigger_event_non_silently = thirty_years_war_events.2
+            }
+        }
+        if = {
+            limit = {
+                exists = scope:target
+                scope:target = international_organization:catholic_league
+            }
+            scope:target.leader_country = {
+                trigger_event_non_silently = thirty_years_war_events.3
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = -50
+        if = {
+            limit = {
+                global_var:current_religion_war_length >= 320
+                global_var:current_religion_war_length < 350
+            }
+            add = 30
+        }
+        if = {
+            limit = {
+                global_var:current_religion_war_length >= 350
+                global_var:current_religion_war_length < 380
+            }
+            add = 50
+        }
+        if = {
+            limit = {
+                global_var:current_religion_war_length >= 380
+            }
+            add = 80
+        }
+        if = {
+            limit = {
+                global_var:current_war_balance >= 55
+                global_var:current_war_balance < 60
+                scope:actor = {
+                    is_leader_of_international_organization = international_organization:catholic_league
+                }
+            }
+            add = 30
+        }
+        if = {
+            limit = {
+                global_var:current_war_balance >= 60
+                scope:actor = {
+                    is_leader_of_international_organization = international_organization:catholic_league
+                }
+            }
+            add = 80
+        }
+        if = {
+            limit = {
+                global_var:current_war_balance <= 45
+                global_var:current_war_balance > 40
+                scope:actor = {
+                    is_leader_of_international_organization = international_organization:protestant_union
+                }
+            }
+            add = 30
+        }
+        if = {
+            limit = {
+                global_var:current_war_balance < 40
+                scope:actor = {
+                    is_leader_of_international_organization = international_organization:protestant_union
+                }
+            }
+            add = 80
+        }
+    }
+}

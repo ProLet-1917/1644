@@ -20,8 +20,8 @@ thirty_years_war = {
         }
     }
     can_end = {
-        current_year >= 1700
         OR = {
+            current_year >= 1700
             custom_tooltip = {
                 text = in_peace_talk_in_westphalia
                 has_global_variable = start_peace_talk_in_westphalia
@@ -30,10 +30,17 @@ thirty_years_war = {
                 text = war_of_religions_peace_treaty_enforced_tt
                 always = no
             }
+            AND = {
+                has_game_rule = treaty_of_westphalia_historical
+                custom_tooltip = {
+                    text = current_war_length_larger_to_equal_360
+                    global_var:current_religion_war_length >= 360
+                }
+            }
+            NOT = { exists = international_organization:protestant_union }
+            NOT = { exists = international_organization:catholic_league }
+            NOT = { exists = international_organization:hre }
         }
-        NOT = { exists = international_organization:protestant_union }
-        NOT = { exists = international_organization:catholic_league }
-        NOT = { exists = international_organization:hre }
     }
 
     visible = {
@@ -47,7 +54,11 @@ thirty_years_war = {
         }
         set_global_variable = {
             name = current_war_balance
-            value = 51.8
+            value = {
+                add = 51.8
+                max = 100
+                min = 0
+            }
         }
     }
 
@@ -56,57 +67,19 @@ thirty_years_war = {
             name = current_religion_war_length
             add = 1
         }
-        change_global_variable = {
-            name = current_war_balance
-            add = 0.02
-        }
-        change_global_variable = {
-            name = current_war_balance
-            max = 100
-            min = 0
-        }
-        if = {
-            limit = {
-                var:current_religion_war_length >= 350
-            }
-            random = {
-                chance = 95
-                every_country = {
-                    limit = {
-                        OR = {
-                            is_member_of_international_organization = international_organization:catholic_league
-                            is_member_of_international_organization = international_organization:protestant_union
-                        }
-                    }
-                    add_manpower = 0.2
-                }
-            }
-            random = {
-                chance = 5
-                if = {
-                    limit = {
-                        var:current_war_balance >= 50
-                    }
-                    international_organization:catholic_league.leader_country = {
-                        trigger_event_non_silently = war_of_religions.1300
-                    }
-                }
-                else = {
-                    international_organization:protestant_union.leader_country = {
-                        trigger_event_non_silently = war_of_religions.1300
-                    }
-                }
-            }
-        }
+        monthly_war_balance_effect = yes
     }
 
     on_ended = {
-        random_country = {
-            destroy_international_organization = { target = international_organization:protestant_union }
-            destroy_international_organization = { target = international_organization:catholic_league }
+        if = {
+            limit = {
+                has_game_rule = treaty_of_westphalia_historical
+            }
+            international_organization:catholic_league.leader_country = {
+                trigger_event_non_silently = thirty_years_war_events.1
+            }
         }
         remove_global_variable = current_religion_war_length
-        international_organization_chooses_new_leader = international_organization:hre
     }
 
     tooltip = {

@@ -5,10 +5,13 @@ peace_talk_in_westphalia = { #1648 May.-Oct.
 
 	can_start = {
 		exists = international_organization:hre
-		situation:thirty_years_war = {
-			situation_is_active = no
+		#situation:thirty_years_war = {
+		#	situation_is_active = no
+		#}
+		#has_global_variable = start_peace_talk_in_westphalia
+		NOT = {
+			has_game_rule = treaty_of_westphalia_historical
 		}
-		has_global_variable = start_peace_talk_in_westphalia
 	}
 
 	can_end = {
@@ -31,6 +34,10 @@ peace_talk_in_westphalia = { #1648 May.-Oct.
 			name = peace_talk_in_westphalia_phase
 			value = 1
 		}
+		set_global_variable = {
+			name = now_talking_about_north_europe_problem
+		}
+		count_allowed_treaty_effect = yes
 	}
 
 	on_monthly = {
@@ -49,6 +56,44 @@ peace_talk_in_westphalia = { #1648 May.-Oct.
 			change_variable = {
  				name = peace_talk_in_westphalia_phase_remaining_month
   				add = 5
+			}
+			remove_global_variable = now_talking_about_north_europe_problem
+			remove_global_variable = now_talking_about_lowland_problem
+			remove_global_variable = now_talking_about_wittersbach_problem
+			remove_global_variable = now_talking_about_france_austria_problem
+			remove_global_variable = now_talking_about_france_spain_problem
+			count_allowed_treaty_effect = yes
+		}
+		if = {
+			limit = {
+				var:peace_talk_in_westphalia_phase = 2
+			}
+			set_global_variable = {
+				name = now_talking_about_lowland_problem
+			}
+		}
+		if = {
+			limit = {
+				var:peace_talk_in_westphalia_phase = 3
+			}
+			set_global_variable = {
+				name = now_talking_about_wittersbach_problem
+			}
+		}
+		if = {
+			limit = {
+				var:peace_talk_in_westphalia_phase = 4
+			}
+			set_global_variable = {
+				name = now_talking_about_france_austria_problem
+			}
+		}
+		if = {
+			limit = {
+				var:peace_talk_in_westphalia_phase = 5
+			}
+			set_global_variable = {
+				name = now_talking_about_france_spain_problem
 			}
 		}
 	}
