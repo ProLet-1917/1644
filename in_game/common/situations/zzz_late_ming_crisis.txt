@@ -280,7 +280,7 @@
 
 		#河北山东叛乱事件
 		if = {
-			limit = { has_global_variable = csh_rebellion_of_hebe_shandong }
+			limit = { NOT = { has_global_variable = csh_rebellion_of_hebe_shandong } }
 			if = {
 				limit = {
 					c:QNG ?= { has_variable = chi_domination }
@@ -318,7 +318,7 @@
 
 		#放弃北京
 		if = {
-			limit = { c:CSH = { has_variable = csh_back_to_shaanxi } }
+			limit = { NOT = { c:CSH = { has_variable = csh_back_to_shaanxi } } }
 			if = {
 				limit = {
 					c:QNG ?= { has_variable = chi_domination }
