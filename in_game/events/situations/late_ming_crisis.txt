@@ -8,7 +8,10 @@ late_ming_crisis.1 = {
 	#historical_info = late_ming_crisis.1.historical_info
 	trigger = {
 		c:CJX ?= {
-			is_subject_of = c:CSH
+			OR = {
+				is_subject_of = c:CSH
+				is_subject = no
+			}
 		}
 		c:CSH ?= {
 			NOT = {
