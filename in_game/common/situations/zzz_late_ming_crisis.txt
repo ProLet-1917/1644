@@ -278,6 +278,99 @@
 			}
 		}
 
+		#河北山东叛乱事件
+		if = {
+			limit = { has_global_variable = csh_rebellion_of_hebe_shandong }
+			if = {
+				limit = {
+					c:QNG ?= { has_variable = chi_domination }
+					c:MNG ?= { has_variable = chi_domination }
+					c:CSH ?= { has_variable = chi_domination }
+					c:CSH.var:chi_mandate < c:MNG.var:chi_mandate
+				}
+				random = {
+					chance = 25
+					modifier = {
+						c:CSH.var:chi_mandate < 50
+						multiply = 2
+					}
+					modifier = {
+						c:CSH.var:chi_mandate < 40
+						multiply = 2
+					}
+					modifier = {
+						location:dadu.owner != c:CSH#北京
+						multiply = 2
+					}
+					modifier = {
+						c:QNG.var:chi_domination > c:CSH.var:chi_domination	
+						multiply = 2
+					}
+					c:CSH = {
+						trigger_event_silently = {
+							id = late_ming_crisis.4
+							days = { 1 3 }
+						}
+					}
+				}
+			}
+		}
+
+		#放弃北京
+		if = {
+			limit = { c:CSH = { has_variable = csh_back_to_shaanxi } }
+			if = {
+				limit = {
+					c:QNG ?= { has_variable = chi_domination }
+					c:MNG ?= { has_variable = chi_domination }
+					c:CSH ?= { 
+						has_variable = chi_domination 
+						has_variable = csh_attack_beijing
+					}
+					OR = {
+						c:QNG.var:chi_domination > c:CSH.var:chi_domination			
+				 		c:MNG.var:chi_domination > c:CSH.var:chi_domination	
+					}
+				}
+				random = {
+					chance = 5
+					modifier = {
+						c:CSH = { has_variable = csh_lost_xuanfu }
+						multiply = 4
+					}
+					modifier = {
+						OR = {
+							location:funing.owner = c:QNG
+							c:WSG ?= { is_subject_of = c:QNG }
+						}
+						multiply = 4
+					}
+					modifier = {
+						has_global_variable = csh_rebellion_of_hebe_shandong
+						multiply = 4
+					}
+					modifier = {
+						c:CJX ?= { is_subject_of = c:QNG }
+						multiply = 2
+					}
+					modifier = {
+						c:CSH.var:chi_domination < 60
+						multiply = 2
+					}
+					modifier = {
+						c:CSH.var:chi_mandate < 25
+						multiply = 2
+					}
+					c:CSH = {
+						trigger_event_silently = {
+							id = late_ming_crisis.5
+							days = { 1 3 }
+						}
+					}
+				}
+			}
+		}
+
 	}
 
 	# 6. 结束效果
