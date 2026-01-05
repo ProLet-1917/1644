@@ -374,6 +374,44 @@
 			}
 		}
 
+		#济王投降
+		if = {
+			limit = {
+				NOT = { has_global_variable = cji_try_surrender_to_qng }
+			}
+			if ={
+				limit = {
+					c:QNG ?= { has_variable = chi_domination }
+					c:MNG ?= { has_variable = chi_domination }
+					c:CSH ?= { has_variable = chi_domination }
+					c:QNG.var:chi_domination > c:MNG.var:chi_domination
+				}
+				random = {
+					chance = 10
+					modifier = {
+						location:dadu.owner = c:QNG
+						multiply = 2
+					}
+					modifier = {
+						c:QNG.var:chi_domination > 80
+						multiply = 2
+					}
+					modifier = {
+						c:CJI = {
+							is_at_war_with = c:QNG
+						}
+						multiply = 2
+					}
+					c:CJI = {
+						trigger_event_silently = {
+							id = late_ming_crisis.6
+							days = { 1 3 }
+						}
+					}
+				}
+			}
+		}
+
 	}
 
 	# 6. 结束效果
