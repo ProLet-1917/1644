@@ -282,6 +282,19 @@ late_ming_crisis.4 = { #河北山东叛乱
 			estate = estate_type:nobles_estate
 			script = chi_zhu_shuaiqin
 		}
+		create_character = {#谢升
+			first_name = name_sheng1_5347
+			last_name = name_xie4_8b1d
+			religion = religion:sanjiao
+			culture = culture:han_culture
+			birth_date = 1579.1.1
+			birth = location:lingzhou_dezhou
+			female = no
+			estate = estate_type:nobles_estate
+			script = chi_xie_sheng
+			adm = 90
+			dip = 85
+		}
 		ji_list_add = yes
 		every_in_list = {
 			list = list_of_ji_locations
@@ -297,6 +310,9 @@ late_ming_crisis.4 = { #河北山东叛乱
 			change_country_flag = CHI_Ming_Sanchen
 			set_country_rank = country_rank:rank_kingdom
 			change_religion = religion:sanjiao
+		}
+		chi_xie_sheng = {
+			move_country = c:CJI
 		}
 	}
  	option = {
@@ -342,5 +358,48 @@ late_ming_crisis.5 = {#交了白卷
 		c:CSH = {
 			#保持北京为首都
 		}
+	}
+}
+late_ming_crisis.6 = {#朱帅钦降清
+	title = late_ming_crisis.6.title
+	desc = late_ming_crisis.6.desc
+	historical_info = late_ming_crisis.6.historical_info
+	trigger = {
+		exists = c:CJI
+		exists = c:QNG
+	}
+	immediate = {
+		set_global_variable = cji_try_surrender_to_qng 
+	}
+	option = {#归降大清
+		name = late_ming_crisis.6.a
+		historical_option = yes
+		c:QNG = {
+			annex_country = {
+				country = c:CJI
+				reason = Diplomatic
+				transfer = yes
+			}
+		}
+		trigger_event_silently = {
+			id = qng_1644_unification.11
+			days = { 3 10 }
+		}
+		chi_xie_sheng = {
+			move_country = c:QNG
+		}
+	}
+	option = {#誓死抵抗
+		name = late_ming_crisis.6.b
+		#c:CJI = {
+		#	change_variable = {
+		#		name = chi_domination
+		#		subtract = 10
+		#	}
+		#	change_variable = {
+		#		name = chi_mandate
+		#		subtract = 10
+		#	}
+		#}
 	}
 }
