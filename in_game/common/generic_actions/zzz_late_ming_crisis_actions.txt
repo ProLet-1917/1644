@@ -36,6 +36,7 @@ late_ming_crisis_grant_unification_cb = {
 		source_global_list = china_countries_list
 		target_flag = target
 		name = "choose_country"
+		none_available_msg_key = "no_countries_available"
         column = {
             data = name
         }
@@ -44,12 +45,13 @@ late_ming_crisis_grant_unification_cb = {
         }
         visible = {
             NOT = { this = scope:actor }
-            # 检查目标是否是邻居 且不是root的附庸
+            # 检查目标是否是actor的邻居，且actor不是目标的附庸
             scope:actor = {
-                NOT = { is_subject_or_below_of = root }
-                any_neighbor_country = {
-                    this = root
-                }
+                NOT = { is_subject_or_below_of = this }
+            }
+            # 检查this是否是scope:actor的邻居
+            this = {
+                is_neighbor_of = scope:actor
             }
         }
     }
@@ -60,6 +62,13 @@ late_ming_crisis_grant_unification_cb = {
                 exists = scope:target
             }
             scope:actor = {
+                # Debug: 保存军力比较结果（在effect中执行，会在action执行时设置）
+                set_variable = {
+                    name = zzz_1644_debug_military_strength
+                    value = {
+                        value = "relative_military_strength(scope:target)"
+                    }
+                }
                 remove_truce_with = scope:target
                 add_casus_belli = {
                     target = scope:target
@@ -93,21 +102,6 @@ late_ming_crisis_grant_unification_cb = {
         # 基础分数
         add = 50
 
-        # Debug: 保存军力比较结果
-        if = {
-            limit = {
-                exists = scope:target
-            }
-            scope:actor = {
-                set_variable = {
-                    name = zzz_1644_debug_military_strength
-                    value = {
-                        value = "relative_military_strength(scope:target)"
-                    }
-                }
-            }
-        }
-
         # 检查目标是否是邻居
         if = {
             limit = {
@@ -126,10 +120,19 @@ late_ming_crisis_grant_unification_cb = {
                         }
                     }
                 }
-                # 检查宗主国对目标国有大量军事优势（至少2倍）
-                "scope:actor.relative_military_strength(scope:target)" > 2.0
+                # 检查actor对target有大量军事优势（至少2倍）
+                "scope:actor.relative_military_strength(scope:target)" > 1.5
             }
             value = 150
+        }
+
+        # 如果军力不足（<= 1.5），大幅降低分数，避免弱国攻击强国
+        if = {
+            limit = {
+                exists = scope:target
+                "scope:actor.relative_military_strength(scope:target)" <= 1.5
+            }
+            value = -500
         }
 
         # 如果已有CB，降低分数
@@ -212,6 +215,13 @@ late_ming_crisis_subjugate_disobedient = {
             }
             # 取消和平协议并添加统一中国CB
             scope:actor = {
+                # Debug: 保存军力比较结果（在effect中执行，会在action执行时设置）
+                set_variable = {
+                    name = zzz_1644_debug_military_strength
+                    value = {
+                        value = "relative_military_strength(scope:target)"
+                    }
+                }
                 remove_truce_with = scope:target
                 add_casus_belli = {
                     target = scope:target
@@ -245,21 +255,6 @@ late_ming_crisis_subjugate_disobedient = {
         # 基础分数
         add = 50
 
-        # Debug: 保存军力比较结果
-        if = {
-            limit = {
-                exists = scope:target
-            }
-            scope:actor = {
-                set_variable = {
-                    name = debug_military_strength
-                    value = {
-                        value = "relative_military_strength(scope:target)"
-                    }
-                }
-            }
-        }
-
         # 检查目标是否是附庸，且满足军事优势和低好感度条件
         if = {
             limit = {
@@ -268,7 +263,7 @@ late_ming_crisis_subjugate_disobedient = {
                     is_subject_or_below_of = scope:actor
                 }
                 # 检查宗主国对附庸国有大量军事优势（至少2倍）
-                "scope:actor.relative_military_strength(scope:target)" > 2.0
+                "scope:actor.relative_military_strength(scope:target)" > 1.5
                 # 检查附庸国对宗主国有低好感度（低于20）
                 scope:target = {
                     opinion = {
@@ -295,7 +290,7 @@ late_ming_crisis_subjugate_disobedient = {
                 exists = scope:target
                 OR = {
                     # 军事优势不足
-                    "scope:actor.relative_military_strength(scope:target)" <= 2.0
+                    "scope:actor.relative_military_strength(scope:target)" <= 1.5
                     # 好感度不低
                     scope:target = {
                         opinion = {

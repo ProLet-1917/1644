@@ -38,20 +38,22 @@
 	}
 	
 	allow = {
+
 	}
 
 	effect = {
-		scope:loser = {
-			every_owned_location = {
-				add_core = scope:winner
-			}
-		}
 		scope:winner = {
 			annex_country = {
 				country = scope:loser
 				reason = MilitaryConquest
 			}
 		}
+		scope:loser = {
+			every_owned_location = {
+				add_core = scope:winner
+			}
+		}
+		
 	}
 
 	ai_desire = {
