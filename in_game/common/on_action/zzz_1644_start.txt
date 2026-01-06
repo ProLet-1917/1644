@@ -5,22 +5,6 @@
 			set_starting_tech_level_by_region = yes
 			# 根据科技等级给予思潮
 			give_institutions_by_tech_level = yes
-            # #设置自动征服 - 给所有首都在中国的国家
-            # if = {
-            #     limit = {
-            #         exists = capital
-            #         OR = {
-            #             capital.region = region:west_china_region
-            #             capital.region = region:east_china_region
-            #             capital.region = region:north_china_region
-            #             capital.region = region:south_china_region
-            #             capital.region = region:manchuria_region #满洲
-            #         }
-            #     }
-            # }
-
-            # 开局生成大量女角色以防止绝嗣（为每个国家触发）
-            #trigger_event_silently = zzz_1644_generate_female_characters.1
         }
         # 清除默认佣兵队长（仅针对主要国家）
         c:QNG = { trigger_event_silently = cleanup_1644.1 }
@@ -52,7 +36,6 @@
         c:MNG = { trigger_event_silently = mng_1644.1 }
         c:CXI = { trigger_event_silently = cxi_1644_start_army.1 }
         
-        # 开局生成大量女角色以防止绝嗣
    
         # 开局生成明末军阀军队（江北四镇、左良玉、大同镇）
         c:CGJ = { trigger_event_silently = ming_warlords.1 } # 兴平镇（高杰）
