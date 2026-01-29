@@ -1,0 +1,46 @@
+﻿# we want the iberians to unify through diplomacy, not by warfare.
+# ai_rule is "block" if you are TAG
+# Rival criterias determine who is allowed to be rivaled by the defined tag
+# root = the defined tag
+# triggers in enabled are applied to the potential target country
+SPA = {
+	ai_rule = {
+		tag = POR
+	}
+	enabled = {
+		NOT = {
+			tag = POR
+			current_age < age_6_revolutions
+		}
+	}
+}
+
+POR = {
+	ai_rule = {
+		tag = SPA
+	}
+	enabled = {
+		NOT = {
+			tag = SPA
+			current_age < age_6_revolutions
+		}
+	}
+}
+
+RUS = {
+	enabled = {
+		OR = {
+			AND = {
+				tag = PLC
+				is_situation_active = situation:the_deluge
+			}
+			AND = {
+				current_year > 1715
+				tag = PLC
+			}
+		}
+	}
+}
+
+
+

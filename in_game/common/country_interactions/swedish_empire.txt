@@ -28,11 +28,9 @@ bestow_crownland_of_swedish_status = {
             is_member_of_international_organization = international_organization:swedish_empire
             is_rebel_country = no
             international_organization:swedish_empire = {
-                not = {
-                    country_has_special_status = {
-                        type = special_status:crownland_of_swedish
-                        country = root
-                    }
+                country_has_special_status = {
+                    type = special_status:dominion_of_empire
+                    country = root
                 }
             }
         }

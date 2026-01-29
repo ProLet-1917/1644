@@ -117,6 +117,61 @@
             }
         }
 
+        every_country = {
+            limit = {
+                is_member_of_international_organization = international_organization:hre
+                government_type = government_type:theocracy
+                NOT = {
+                    has_special_status_in_international_organization = {
+                        type = special_status:imperial_prelate
+                        international_organization = international_organization:hre
+                    }
+                    has_special_status_in_international_organization = {
+                        type = special_status:archbishop_elector
+                        international_organization = international_organization:hre
+                    }
+                    has_special_status_in_international_organization = {
+                        type = special_status:italia_state
+                        international_organization = international_organization:hre
+                    }
+                }
+            }
+            international_organization_add_special_status = {
+                type = special_status:imperial_prelate
+                country = prev
+            }
+        }
+
+        every_country = {
+            limit = {
+                is_member_of_international_organization = international_organization:hre
+                NOT = {
+                    has_special_status_in_international_organization = {
+                        type = special_status:emperor
+                        international_organization = international_organization:hre
+                    }
+                    has_special_status_in_international_organization = {
+                        type = special_status:elector
+                        international_organization = international_organization:hre
+                    }
+                    has_special_status_in_international_organization = {
+                        type = special_status:imperial_prince
+                        international_organization = international_organization:hre
+                    }
+                    has_special_status_in_international_organization = {
+                        type = special_status:italia_state
+                        international_organization = international_organization:hre
+                    }
+                    this = c:MLO
+                }
+                government_type = government_type:monarchy
+            }
+            international_organization_add_special_status = {
+                type = special_status:imperial_prince
+                country = prev
+            }
+        }
+
         every_market_in_world = {
             add_goods_supply = { goods = goods:iron amount = 200 }
             add_goods_supply = { goods = goods:coal amount = 200 }
@@ -138,11 +193,90 @@
                 months = 600
                 modifier = age_of_swedish_empire
             }
+
+        }
+        location:viborg = {
+            while = {
+                count = 6
+                create_sub_unit_with_owner = {
+                    type = a_pikemen
+                    owner = c:SWE
+                    origin = this
+                    experience = 95
+                }
+            }
+            while = {
+                count = 3
+                create_sub_unit_with_owner = {
+                    type = a_heavy_lancers
+                    owner = c:SWE
+                    origin = this
+                    experience = 95
+                }
+            }
+            while = {
+                count = 3
+                create_sub_unit_with_owner = {
+                    type = a_chambered_cannon
+                    owner = c:SWE
+                    origin = this
+                    experience = 95
+                }
+            }
         }
 
         c:NSV = {
             make_subject_of = {
                 target = c:SWE
+                type = subject_type:colonial_nation
+            }
+        }
+
+        c:NEN = {
+            make_subject_of = {
+                target = c:ENG
+                type = subject_type:colonial_nation
+            }
+        }
+
+        c:NFR = {
+            make_subject_of = {
+                target = c:FRA
+                type = subject_type:colonial_nation
+            }
+        }
+
+        c:NSP = {
+            make_subject_of = {
+                target = c:SPA
+                type = subject_type:colonial_nation
+            }
+        }
+
+        c:VOP = {
+            make_subject_of = {
+                target = c:SPA
+                type = subject_type:colonial_nation
+            }
+        }
+
+        c:VOB = {
+            make_subject_of = {
+                target = c:POR
+                type = subject_type:colonial_nation
+            }
+        }
+
+        c:WIC = {
+            make_subject_of = {
+                target = c:NED
+                type = subject_type:colonial_nation
+            }
+        }
+
+        c:VOC = {
+            make_subject_of = {
+                target = c:NED
                 type = subject_type:colonial_nation
             }
         }
@@ -153,6 +287,25 @@
             change_heir_selection = heir_selection:austrian_cognatic_primogeniture
             unlock_government_reform_effect = { type = austrian_archduchy_reform }
             #add_reform = government_reform:austrian_archduchy_reform
+            trigger_event_non_silently = start_events.1
+            add_country_modifier = {
+                modifier = habsburgs_goldern_century
+                years = 26
+            }
+        }
+
+        c:SPA = {
+            add_country_modifier = {
+                modifier = habsburgs_goldern_century
+                years = 26
+            }
+        }
+
+        c:RUS = {
+            add_country_modifier = {
+                modifier = rise_of_the_russia
+                years = 46
+            }
         }
 
         every_country = {
@@ -171,5 +324,20 @@
             }
         }
 
+        c:ZAZ = {
+            add_country_modifier = {
+                modifier = new_home_of_the_serfs
+                years = 20
+            }
+        }
+
+        c:PLC = {
+            add_country_modifier = {
+                modifier = the_corruption_in_sejm
+                years = -1
+            }
+        }
+
+        the_fronde_protest_effect = yes
     }
 }

@@ -326,6 +326,18 @@ religion_war_check_effect = { #Donot use it
 }
 
 count_allowed_treaty_effect = {
+    every_country = {
+        limit = {
+            has_variable = now_be_talking
+        }
+        remove_variable = now_be_talking
+    }
+    every_country = {
+        limit = {
+            has_variable = now_in_talking
+        }
+        remove_variable = now_in_talking
+    }
     if = {
         limit = {
             has_global_variable = protestant_winning
@@ -346,4 +358,197 @@ count_allowed_treaty_effect = {
             name = allow_split_pomelamia
         }
     }
+    if = {
+        limit = {
+            has_global_variable = now_talking_about_north_europe_problem
+        }
+        if = {
+            limit = {
+                has_global_variable = allow_split_pomelamia
+            }
+            c:STE = {
+                trigger_event_non_silently = thirty_years_war_events.100
+            }
+        }
+        if = {
+            limit = {
+                has_global_variable = protestant_winning
+            }
+            every_country = {
+                limit = {
+                    is_member_of_international_organization = international_organization:protestant_union
+                    capital ?= {
+                        region = region:scandinavian_region
+                    }
+                }
+                set_variable = now_in_talking
+            }
+            every_country = {
+                limit = {
+                    is_member_of_international_organization = international_organization:catholic_league
+                    capital ?= {
+                        region = region:scandinavian_region
+                    }
+                }
+                set_variable = now_be_talking
+            }
+        }
+        else_if = {
+            limit = {
+                has_global_variable = catholic_winning
+            }
+            every_country = {
+                limit = {
+                    is_member_of_international_organization = international_organization:protestant_union
+                    capital ?= {
+                        region = region:scandinavian_region
+                    }
+                }
+                set_variable = now_be_talking
+            }
+            every_country = {
+                limit = {
+                    is_member_of_international_organization = international_organization:catholic_league
+                    capital ?= {
+                        region = region:scandinavian_region
+                    }
+                }
+                set_variable = now_in_talking
+            }
+        }
+    }
+    if = {
+        limit = {
+            #has_global_variable = protestant_winning
+            has_global_variable = now_talking_about_lowland_problem
+        }
+        c:NED = {
+            trigger_event_non_silently = thirty_years_war_events.103
+        }
+    }
+    if = {
+        limit = {
+            has_global_variable = now_talking_about_wittersbach_problem
+        }
+        c:HAB = {
+            trigger_event_non_silently = thirty_years_war_events.107
+        }
+    }
+    if = {
+        limit = {
+            has_global_variable = now_talking_about_france_austria_problem
+        }
+        if = {
+            limit = {
+                has_global_variable = protestant_winning
+            }
+            every_country = {
+                limit = {
+                    is_member_of_international_organization = international_organization:protestant_union
+                    OR = {
+                        capital ?= {
+                            region = region:france_region
+                        }
+                        is_member_of_international_organization = international_organization:hre
+                    }
+                }
+                set_variable = now_in_talking
+            }
+            every_country = {
+                limit = {
+                    is_member_of_international_organization = international_organization:catholic_league
+                    OR = {
+                        capital ?= {
+                            region = region:france_region
+                        }
+                        is_member_of_international_organization = international_organization:hre
+                    }
+                }
+                set_variable = now_be_talking
+            }
+        }
+        else_if = {
+            limit = {
+                has_global_variable = catholic_winning
+            }
+            every_country = {
+                limit = {
+                    is_member_of_international_organization = international_organization:protestant_union
+                    OR = {
+                        capital ?= {
+                            region = region:france_region
+                        }
+                        is_member_of_international_organization = international_organization:hre
+                    }
+                }
+                set_variable = now_be_talking
+            }
+            every_country = {
+                limit = {
+                    is_member_of_international_organization = international_organization:catholic_league
+                    OR = {
+                        capital ?= {
+                            region = region:france_region
+                        }
+                        is_member_of_international_organization = international_organization:hre
+                    }
+                }
+                set_variable = now_in_talking
+            }
+        }
+    }
+    if = {
+        limit = {
+            has_global_variable = now_talking_about_france_spain_problem
+        }
+        c:SPA = {
+            trigger_event_non_silently = thirty_years_war_events.109
+        }
+    }
 }
+
+the_fronde_protest_effect = {
+    area:ile_de_france_area = {
+        every_location_in_area = {
+            limit = {
+                owner = c:FRA
+            }
+            add_location_modifier = {
+                modifier = the_fronde_protest
+                years = 15
+            }
+        }
+    }
+
+    area:guyenne_area = {
+        every_location_in_area = {
+            limit = {
+                owner = c:FRA
+            }
+            add_location_modifier = {
+                modifier = the_fronde_protest
+                years = 18
+            }
+        }
+    }
+
+    area:picardy_area = {
+        every_location_in_area = {
+            limit = {
+                owner = c:FRA
+            }
+            add_location_modifier = {
+                modifier = the_fronde_protest
+                years = 12
+            }
+        }
+    }
+
+    c:FRA = {
+        add_country_modifier = {
+            modifier = the_fronde_movement
+            years = 18
+        }
+    }
+}
+

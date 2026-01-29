@@ -15,7 +15,7 @@ anaesthesia = {
     age = age_7_imperialism
     requires = power_revolution_advance
 
-    global_population_growth = 0.05
+    global_population_growth = 0.0025
     character_life_expectancy = 5
 
 }
@@ -24,7 +24,7 @@ chemotherapy = {
     age = age_7_imperialism
     requires = anaesthesia
 
-    global_population_growth = 0.05
+    global_population_growth = 0.0025
     local_army_attrition = -0.05
 }
 
@@ -32,7 +32,7 @@ penicillin = {
     age = age_7_imperialism
     requires = chemotherapy
 
-    global_population_growth = 0.1
+    global_population_growth = 0.005
     global_disease_resistance = 0.1
 }
 
@@ -41,14 +41,14 @@ sulfanilamide = {
     requires = chemotherapy
     global_disease_resistance = 0.1
     local_army_attrition = -0.1
-    global_population_growth = 0.1
+    global_population_growth = 0.001
 }
 
 x-rays = {
     age = age_7_imperialism
     requires = chemotherapy
 
-    global_population_growth = 0.1
+    global_population_growth = 0.005
     local_army_attrition = -0.05
     character_life_expectancy = 5
 }

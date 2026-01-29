@@ -1,0 +1,283 @@
+claim_mandate_of_heaven = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:claim_mandate_of_heave_prices
+
+    cooldown = {
+        type = claim_mandate_of_heaven
+        years = 20
+    }
+
+    potential = {
+        scope:actor = {
+            capital = {
+                OR = {
+                    region = region:east_china_region
+                    region = region:north_china_region
+                    region = region:south_china_region
+                    region = region:west_china_region
+                    region = region:manchuria_region
+                }
+            }
+            NOT = { is_leader_of_international_organization = international_organization:middle_kingdom }
+        }
+    }
+    allow = {
+        scope:actor = {
+            capital = {
+                OR = {
+                    region = region:east_china_region
+                    region = region:north_china_region
+                    region = region:south_china_region
+                    region = region:west_china_region
+                    region = region:manchuria_region
+                }
+            }
+            NOT = { is_leader_of_international_organization = international_organization:middle_kingdom }
+            OR = {
+                owns = location:dadu
+                owns = location:shangyuan
+            }
+            OR = {
+                owns = location:luoyang
+                owns = location:xiangyang
+            }
+            OR = {
+                owns = location:changan
+                owns = location:chengdu
+                owns = location:jiangxia
+                owns = location:xuzhou
+            }
+            num_locations_owned_or_owned_by_subjects_or_below >= 800
+        }
+        NOT = { is_situation_active = situation:late_ming_crisis }
+    }
+    effect = {
+        scope:actor = {
+            change_government_type = government_type:monarchy
+            rtr_recreate_middle_kingdom = yes
+            #set_country_rank_effect = { rank = country_rank:rank_empire }
+            set_country_rank = country_rank:rank_empire
+        }
+    }
+
+    ai_will_do = { value = 100 }	#They always want to do this
+}
+
+create_general_war_commissariat = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:create_general_war_commissariat_prices
+
+    cooldown = {
+        type = create_general_war_commissariat
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            has_or_had_tag = BRA
+            NOT = {
+                has_country_modifier = general_war_commissariat
+            }
+        }
+    }
+    allow = {
+        scope:actor = {
+            societal_value:quality_vs_quantity < -20
+        }
+    }
+    effect = {
+        scope:actor = {
+            add_country_modifier = {
+                modifier = general_war_commissariat
+                years = -1
+            }
+        }
+    }
+
+    ai_will_do = { value = 100 }	#They always want to do this
+}
+
+reform_sejm_parliament = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:reform_sejm_parliament_prices
+
+    cooldown = {
+        type = reform_sejm_parliament_prices
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            has_or_had_tag = PLC
+            has_country_modifier = the_corruption_in_sejm
+        }
+    }
+    allow = {
+        scope:actor = {
+            "estate_power(estate_type:nobles_estate)" <= 0.25
+            "estate_power(estate_type:crown_estate)" >= 0.35
+            stability >= 25
+        }
+    }
+    effect = {
+        scope:actor = {
+            remove_country_modifier = the_corruption_in_sejm
+        }
+    }
+
+    ai_will_do = { value = 100 }	#They always want to do this
+}
+
+claim_dominance_over_the_baltic_sea = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:claim_dominance_over_the_baltic_sea_prices
+
+    cooldown = {
+        type = claim_dominance_over_the_baltic_sea
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            has_or_had_tag = SWE
+        }
+    }
+
+    allow = {
+        area:gotaland_area = {
+            NOT = {
+                any_location_in_area = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+        area:svealand_area = {
+            NOT = {
+                any_location_in_area = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+        area:norrland_area = {
+            NOT = {
+                any_location_in_area = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+        area:finland_area = {
+            NOT = {
+                any_location_in_area = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+        area:baltic_area = {
+            NOT = {
+                any_location_in_area = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+        area:pomerania_area = {
+            NOT = {
+                any_location_in_area = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+        area:prussia_area = {
+            NOT = {
+                any_location_in_area = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+        area:skaneland_area = {
+            NOT = {
+                any_location_in_area = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    effect = {
+        scope:actor = {
+            add_country_modifier = {
+                modifier = dominance_over_the_baltic_sea
+                years = -1
+            }
+        }
+    }
+
+    ai_will_do = { value = 100 }	#They always want to do this
+}
+

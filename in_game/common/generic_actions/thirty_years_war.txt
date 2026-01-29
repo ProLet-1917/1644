@@ -143,5 +143,25 @@ request_peaceful_talk = {
             }
             add = 80
         }
+        if = {
+            limit = {
+                global_var:current_religion_war_length >= 480
+                global_var:current_war_balance < 50
+                scope:actor = {
+                    is_leader_of_international_organization = international_organization:protestant_union
+                }
+            }
+            add = 1000
+        }
+        else_if = {
+            limit = {
+                global_var:current_religion_war_length >= 480
+                global_var:current_war_balance > 50
+                scope:actor = {
+                    is_leader_of_international_organization = international_organization:catholic_league
+                }
+            }
+            add = 1000
+        }
     }
 }

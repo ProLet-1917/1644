@@ -1,0 +1,64 @@
+#0.3.0 Lions of the North
+cossack_hetmanate_reform = {
+    major = yes
+    unique = yes
+    potential = {
+        has_or_had_tag = ZAZ
+        has_variable = enable_cossack_hetmanate
+    }
+    locked = {
+        has_variable = enable_cossack_hetmanate
+    }
+    country_modifier = {
+        amount_looted_modifier = 0.2
+        cossacks_estate_levy_size = 0.2
+        cossacks_estate_max_tax = 0.05
+        cossacks_estate_target_satisfaction = 0.1
+        levy_combat_efficiency_modifier = 0.05
+    }
+
+    years = 2
+}
+
+landless_adventurer_reform = {
+    major = yes
+    unique = yes
+
+    potential = {
+        num_locations_owned_or_owned_by_subjects = 0
+    }
+
+    country_modifier = {
+        amount_looted_modifier = 0.33
+        army_maintenance_cost = -0.66
+        land_morale_modifier = -0.05
+        discipline = -0.05
+    }
+}
+
+an_army_owned_country = {
+    unique = yes
+
+    potential = {
+        OR = {
+            tag = PRU
+            tag = BRA
+        }
+        has_variable = pru_allow_an_army_owned_country
+    }
+
+    locked = {
+        has_variable = pru_allow_an_army_owned_country
+    }
+    country_modifier = {
+        discipline = 0.10
+        land_morale_modifier = 0.05
+        army_infantry_power = 0.05
+        army_movement_speed = 0.05
+        army_tradition_from_battle = 0.15
+        global_soldiers_desired_pop_scaled = 0.05
+        monthly_towards_quality = 0.05
+    }
+
+    years = 2
+}

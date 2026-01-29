@@ -5,10 +5,10 @@ peace_talk_in_westphalia = { #1648 May.-Oct.
 
 	can_start = {
 		exists = international_organization:hre
-		#situation:thirty_years_war = {
-		#	situation_is_active = no
-		#}
-		#has_global_variable = start_peace_talk_in_westphalia
+		situation:thirty_years_war = {
+			situation_is_active = no
+		}
+		has_global_variable = start_peace_talk_in_westphalia
 		NOT = {
 			has_game_rule = treaty_of_westphalia_historical
 		}
@@ -36,6 +36,10 @@ peace_talk_in_westphalia = { #1648 May.-Oct.
 		}
 		set_global_variable = {
 			name = now_talking_about_north_europe_problem
+		}
+		set_global_variable = {
+			name = losing_side_benifit
+			value = 0
 		}
 		count_allowed_treaty_effect = yes
 	}
@@ -104,6 +108,46 @@ peace_talk_in_westphalia = { #1648 May.-Oct.
 				has_country_modifier = ai_in_religion_war
 			}
 			remove_country_modifier = ai_in_religion_war
+		}
+		international_organization:catholic_league.leader_country = {
+			trigger_event_silently = thirty_years_war_events.1000
+		}
+	}
+
+	map_color = {
+		if = {
+			limit = {
+				has_global_variable = catholic_winning
+			}
+			if = {
+				limit = {
+					is_member_of_international_organization = international_organization:catholic_league
+				}
+				value = rgb { 155 99 156 }
+			}
+			else_if = {
+				limit = {
+					is_member_of_international_organization = international_organization:protestant_union
+				}
+				value = rgb { 102 195 223 }
+			}
+		}
+		else_if = {
+			limit = {
+				has_global_variable = protestant_winning
+			}
+			if = {
+				limit = {
+					is_member_of_international_organization = international_organization:catholic_league
+				}
+				value = rgb { 102 195 223 }
+			}
+			else_if = {
+				limit = {
+					is_member_of_international_organization = international_organization:protestant_union
+				}
+				value = rgb { 155 99 156 }
+			}
 		}
 	}
 }

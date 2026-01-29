@@ -38,51 +38,10 @@ protestant_union = {
 	}
 
 	can_join_trigger = {
-		OR = {
-			has_presence_in = sub_continent:western_europe
-			has_presence_in = region:carpathia_region
-			has_presence_in = region:baltic_region
-		}
-		is_rebel_country = no
-		NOT = { is_member_of_international_organization = international_organization:catholic_league }
-		NOT = {
-			country_has_recently_joined_situation_faction = {
-				situation = thirty_years_war
-				years = 5
-				variable = war_of_religions_join_variable
-			}
-		}
-		NOT = {
-			country_has_recently_left_situation_faction = {
-				situation = thirty_years_war
-				years = 2
-				variable = war_of_religions_left_variable
-			}
-		}
-		NOT = {
-			has_cooldown = blocked_from_joining_protestant_union
-		}
+		always = no
 	}
 	can_leave_trigger = {
-		trigger_if = {
-			limit = { exists = root }
-			NOT = {
-				country_has_recently_joined_situation_faction = {
-					situation = thirty_years_war
-					years = 5
-					variable = war_of_religions_join_variable
-				}
-			}
-			NOT = {
-				country_has_recently_left_situation_faction = {
-					situation = thirty_years_war
-					years = 2
-					variable = war_of_religions_left_variable
-				}
-			}
-			scope:recipient.total_members > 1
-		}
-		trigger_else = { always = no }
+		always = no
 	}
 	can_lead_trigger = {
 		is_member_of_international_organization = international_organization:hre
@@ -309,51 +268,10 @@ catholic_league = {
 	}
 
 	can_join_trigger = {
-		has_presence_in = continent:europe
-		is_rebel_country = no
-		NOT = { is_member_of_international_organization = international_organization:protestant_union }
-		OR = {
-			religion = religion:catholic
-			is_protestant = yes
-		}
-		NOT = {
-			country_has_recently_joined_situation_faction = {
-				situation = thirty_years_war
-				years = 5
-				variable = war_of_religions_join_variable
-			}
-		}
-		NOT = {
-			country_has_recently_left_situation_faction = {
-				situation = thirty_years_war
-				years = 2
-				variable = war_of_religions_left_variable
-			}
-		}
-		NOT = {
-			has_cooldown = blocked_from_joining_catholic_league
-		}
+		always = no
 	}
 	can_leave_trigger = {
-		trigger_if = {
-			limit = { exists = root }
-			NOT = {
-				country_has_recently_joined_situation_faction = {
-					situation = thirty_years_war
-					years = 5
-					variable = war_of_religions_join_variable
-				}
-			}
-			NOT = {
-				country_has_recently_left_situation_faction = {
-					situation = thirty_years_war
-					years = 2
-					variable = war_of_religions_left_variable
-				}
-			}
-			scope:recipient.total_members > 1
-		}
-		trigger_else = { always = no }
+		always = no
 	}
 	can_lead_trigger = {
 		is_member_of_international_organization = international_organization:hre

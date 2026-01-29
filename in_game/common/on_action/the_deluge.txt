@@ -1,0 +1,38 @@
+on_the_deluge_foreign_occupy_land = {
+    trigger = {
+        location ?= {
+            owner = c:PLC
+            controller != owner
+            NOT = { has_location_modifier = chaos_and_destruction}
+            save_temporary_scope_as = target_location
+        }
+        situation:the_deluge = {
+            situation_is_active = yes
+        }
+    }
+    effect = {
+        scope:target_location = {
+            add_location_modifier = {
+                modifier = chaos_and_destruction
+            }
+        }
+    }
+}
+on_the_deluge_foreign_recontrol_land = {
+    trigger = {
+        location ?= {
+            owner = c:PLC
+            controller = owner
+            has_location_modifier = chaos_and_destruction
+            save_temporary_scope_as = target_location
+        }
+        situation:the_deluge = {
+            situation_is_active = yes
+        }
+    }
+    effect = {
+        scope:target_location = {
+            remove_location_modifier = chaos_and_destruction
+        }
+    }
+}

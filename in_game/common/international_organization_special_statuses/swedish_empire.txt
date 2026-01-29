@@ -13,7 +13,7 @@ kung_of_swedish = {
 	leader = yes
 	#map_color = 
 	special_status_power = {
-		value = 25
+		value = 12
 	}
 
 	modifier = {
@@ -52,9 +52,13 @@ kingdom_of_finland = {
 
 	}
 
+	special_status_power = {
+		value = 4
+	}
+
 	modifier = {
 		great_power_score = 20
-		loyalty_to_overlord = 0.10
+		loyalty_to_overlord = 10
 	}
 
 }
@@ -95,8 +99,12 @@ crownland_of_swedish = {
 
 	#map_color =
 
+	special_status_power = {
+		value = 2
+	}
+
 	modifier = {
-		loyalty_to_overlord = 0.05
+		loyalty_to_overlord = 5
 	}
 }
 
@@ -135,6 +143,10 @@ chartered_colony_of_swedish_empire = {
 
 	}
 
+	special_status_power = {
+		value = 0.5
+	}
+
 	#map_color =
 }
 
@@ -143,9 +155,9 @@ dominion_of_empire = {
 	modifier = {
 	}
 	can_bestow_trigger = {
-		is_member_of_international_organization = scope:recipient
-		government_type = government_type:monarchy
-		scope:recipient = {
+		is_member_of_international_organization = international_organization:swedish_empire
+		NOT = { is_subject_of = international_organization:swedish_empire.leader_country }
+		international_organization:swedish_empire = {
 			NOT = {
 				country_has_special_status = { type = special_status:kung_of_swedish country = root }
 			}
@@ -167,10 +179,10 @@ dominion_of_empire = {
 
 	auto_rescind_trigger = {
 		OR = {
-			NOT = { is_member_of_international_organization = scope:recipient }
-			has_special_status_in_international_organization = { type = special_status:kung_of_swedish international_organization = scope:recipient }
-			has_special_status_in_international_organization = { type = special_status:crownland_of_swedish international_organization = scope:recipient }
-			has_special_status_in_international_organization = { type = special_status:chartered_colony_of_swedish_empire international_organization = scope:recipient }
+			NOT = { is_member_of_international_organization = international_organization:swedish_empire }
+			has_special_status_in_international_organization = { type = special_status:kung_of_swedish international_organization = international_organization:swedish_empire }
+			has_special_status_in_international_organization = { type = special_status:crownland_of_swedish international_organization = international_organization:swedish_empire }
+			has_special_status_in_international_organization = { type = special_status:chartered_colony_of_swedish_empire international_organization = international_organization:swedish_empire }
 		}
 	}
 
@@ -181,4 +193,7 @@ dominion_of_empire = {
 	}
 	#map_color =
 
+	special_status_power = {
+		value = 1
+	}
 }

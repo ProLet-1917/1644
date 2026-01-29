@@ -52,6 +52,10 @@ countries = {
 			individualism_vs_communalism = -20
 			outward_vs_inward = 0
 
+			parliament = {
+				parliament_type = dutch_parliament
+			}
+
 			reforms = {
 				feudal_nobility
 			}
@@ -4872,7 +4876,7 @@ countries = {
 		capital = lucca
 	}
 
-	FLO = { #Florence
+	TUS = { #Tuscony
 		own_control_core = {
 			florence mangona poggibonsi prato sanlorenzo pistoia arezzo cortona sansepolcro siena chiusi montalcino
 			pisa livorno pontedera volterra grosseto massamar pitigliano
@@ -4891,7 +4895,8 @@ countries = {
 		include = "catholic_monarchy"
 
 		government = {
-
+			type = republic
+			heir_selection = podesta_elective
 			ruler = flo_ferdinando_medici
 		}
 
@@ -4900,7 +4905,7 @@ countries = {
 		tolerated_cultures = {
 			emilian
 		}
-
+		country_rank = rank_duchy
 	}
 
 	PIO = {
@@ -5242,6 +5247,8 @@ countries = {
 				name_casimir = 3
 			}
 
+
+
 			centralization_vs_decentralization = 80
 			traditionalist_vs_innovative = 20
 			spiritualist_vs_humanist = 10
@@ -5259,6 +5266,10 @@ countries = {
 			reforms = {
 				feudal_nobility
 				agricultural_cultivation
+			}
+
+			parliament = {
+				parliament_type = plc_parliament
 			}
 
 			laws = {
@@ -6861,6 +6872,7 @@ countries = {
 			mahdia sousse el_jem monastir chebba bizertte zaghouan
 			kairouan kesra sbikha tunis el_fahs hammamet kelibia nabeul zaghouanbizerte mateur sejnane tebourba
 			beja_TUN el_kef el_ksour jama_TUN medjez_el_bab souk_el_arba thagaste
+			bizerte
 		}
 
 		starting_technology_level = 3
@@ -9088,12 +9100,11 @@ countries = {
 			ust_tsilma pustozersk
 
 			vekshenga kunozh  sarai_al_jadid beljamen zenzevatka oral irek
-			 solovetsky
+			solovetsky
 			sloviansk adalaga barvinkove
 			lysychansk
 			sarayjuk
 			kansk ilansky krasnoyarsk yemelyanovo dzerzhinskoye biryusa
-			terek endirey
 			chyorny_yar
 	 	}
 
@@ -9115,6 +9126,8 @@ countries = {
 			army_tradition = 20
 		}
 
+		discovered_regions = { west_siberia_region east_siberia_region }
+		discovered_areas = { desht_kipchak_area }
 
 		government = {
 			type = monarchy
@@ -9126,10 +9139,10 @@ countries = {
 			centralization_vs_decentralization = -10
 			traditionalist_vs_innovative = -20
 			spiritualist_vs_humanist = 10
-			serfdom_vs_free_subjects = 30
+			serfdom_vs_free_subjects = -55
 			mercantilism_vs_free_trade = -70
 			belligerent_vs_conciliatory = -40
-			quality_vs_quantity = 10
+			quality_vs_quantity = 25
 			offensive_vs_defensive = -50
 			land_vs_naval = 20
 			capital_economy_vs_traditional_economy = 60
@@ -9137,20 +9150,88 @@ countries = {
 			outward_vs_inward = 15
 
 			reforms = {
-				centralization_early
-				serfdom_system
+				universal_serfdom
 			}
-			laws = {
+			parliament = {
+				parliament_type = estate_parliament
+			}
 
+			#Estate Privileges
+			privilege = {
+				#nobles
+				noble_leaders_only
+				banal_lordship
+				noble_serfdom_rights
+				nobles_land_rights
+				kormlenije
+
+				#clergy
+				clergy_literacy_rights
+				clergy_enforced_unity
+
+				#burghers
+				market_fairs
+				formal_guilds
+				building_roads_rights
+				trade_monopolies
+
+				#Commoners
+				allow_hunting
+				communal_lands
 			}
+
+			laws = {
+				feudal_de_jure_law = by_tradition
+				medieval_levy_law = noble_levies
+				royal_court_customs_law = aristocratic_court_policy
+				patriarchate_law = separated_patriarchate_policy
+				censorship = limited_censorship
+				education_masses_law = basic_religious_education
+				administrative_system = feudal_administration
+				cultural_traditions_law = martial_society
+				marriage_law = monogamous_marriage
+				heir_religion_law = heir_same_religion
+				legal_code_law = russkaya_pravda_policy
+				maritime_law = protect_trade_routes
+				piracy_law = anti_piracy_policy
+				distribution_of_power_law = dop_traditional_distribution_of_power
+				immigration_law = open_borders_law
+				mining_law = nobles_mining_law
+			}
+
 		}
 		accepted_cultures = {
-			ukrainian_culture
-			belarusian_culture
+
 		}
 		tolerated_cultures = {
-			finno_ugric_culture
+
 		}
+	}
+
+	ERK = {
+		type = army
+		own_control_core = {
+			terek endirey
+		}
+
+		starting_technology_level = 3
+		include = "expl_eastern_europe"
+		include = "eurasian_orthodox_tribe"
+		government = {
+			type = steppe_horde
+			heir_selection = tribal_oldest_male
+			ruler = random
+			reforms = {
+				cossacks_reform
+			}
+
+			laws = {
+				marriage_law = monogamous_marriage
+				heir_religion_law = heir_same_religion
+			}
+		}
+
+		capital = terek
 	}
 
 #Romania
@@ -9311,7 +9392,7 @@ countries = {
 	}
 
 	ZAZ = { #Zaporozhia
-		type = location
+		type = army
 
 		own_control_core = {
 			kichkas rozdory hryshyne pavlohrad karlivka berestyn samarchyk oril ternivka
@@ -9319,7 +9400,7 @@ countries = {
 			kodak myshuryn_rih sofiivka kryvyi_rih tomakivka mykytyn_rih
 			velyka_oleksandrivka bereznehuvate bashtanka argamakli_sarai harbuzynka
 		}
-		starting_technology_level = 3
+		starting_technology_level = 4
 		include = "expl_eastern_europe"
 		include = "eurasian_horde_not_present"
 		court_language = ukrainian_dialect

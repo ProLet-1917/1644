@@ -48,7 +48,9 @@ on_netherland_control_brussels = {
 		location:brussels ?= {
 			c:NED ?= owner
 		}
-		situation:netherland_independent = { is_active = yes }
+		situation:netherland_independent = {
+			situation_is_active = yes
+		}
 	}
 	effect = {
 		c:NED = {

@@ -84,7 +84,7 @@ swedish_empire = { #svenska stormaktstiden https://en.wikipedia.org/wiki/Swedish
 
     variables = {
         swedish_empire_authority = {
-            #format = "swedish_empire_authority"
+            format = "swedish_empire_authority_DISPLAY"
             change_format = "VARIABLE_CHANGE_FORMAT"
             min = 0
             max = 100
@@ -113,16 +113,33 @@ swedish_empire = { #svenska stormaktstiden https://en.wikipedia.org/wiki/Swedish
                     }
                 }
                 subtract = {
-                    subtract = {
-                        desc = "IS_NOT_GREAT_POWER"
-                        if = {
-                            limit = {
+                    desc = "IS_NOT_GREAT_POWER"
+                    if = {
+                        limit = {
+                            c:SWE = {
+                                is_great_power = no
+                            }
+                        }
+                        value = 0.05
+                    }
+                }
+                subtract = {
+                    desc = "NOT_CONTROL_FINLAND"
+                    if = {
+                        limit = {
+                            NOR = {
+                                c:FIN = {
+                                    has_special_status_in_international_organization = {
+                                        type = special_status:kingdom_of_finland
+                                        international_organization = international_organization:swedish_empire
+                                    }
+                                }
                                 c:SWE = {
-                                    is_great_power = no
+                                    own_entire_province = province_definition:finland_province
                                 }
                             }
-                            value = 0.05
                         }
+                        value = 0.20
                     }
                 }
             }

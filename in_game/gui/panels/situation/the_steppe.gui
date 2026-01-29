@@ -48,18 +48,18 @@ situation_panel = {
 				spriteBorder = {20 20}
 			}
 			tooltip_widget = {
-				position = { 20 10 }
+				position = { 30 10 }
 				text_single = {
 					layoutpolicy_horizontal = expanding
 					align = center|nobaseline
 					raw_text = "CURRENT_HERD_TT"
-				
+					#format = "current_herd_DISPLAY"
 				}
 				TooltipStringPairList = {
 					using = action_tooltip_inner_content
 					visible = no
 					textcontext = "HERD_GET_PER_MONTH"
-				}	
+				}
 			}
 		}
 	}
@@ -99,7 +99,7 @@ situation_panel = {
 							maxhorizontalslots = 13
 							item = {
 								country_flag_small = {
-									datacontext = [Scope.GetCountry]
+									datacontext = "[Scope.GetCountry]"
 								}
 							}
 						}

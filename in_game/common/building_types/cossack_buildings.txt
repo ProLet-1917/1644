@@ -1,0 +1,37 @@
+cossack_host_camp = {
+    is_foreign = no
+    pop_type = soldiers
+    max_levels = 1
+
+    category = military_category
+
+    employment_size = manpower_employment_005
+
+    rural_settlement = yes
+    town = yes
+    city = yes
+
+    build_time = medium_soldier_building
+
+    location_potential = {
+        is_capital = yes
+    }
+    country_potential = {
+        country_type = army
+        culture = culture:cossack_culture
+    }
+    remove_if = {
+        is_no_longer_capital = yes
+    }
+
+    capital_modifier = {
+        local_manpower = 0.030
+        can_recruit_regiment_in_this_location = yes
+        local_peasants_estate_power = 0.33
+    }
+
+    possible_production_methods = {
+        early_soldier_building_maintenance
+    }
+    construction_demand = early_soldier_building_construction
+}

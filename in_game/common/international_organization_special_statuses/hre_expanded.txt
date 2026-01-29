@@ -1,0 +1,156 @@
+italia_state = {
+    priority = 10
+
+    modifier = {
+    }
+
+    can_bestow_trigger = {
+        is_member_of_international_organization = international_organization:hre
+        #dominant_culture = culture_group:italian_group
+        capital ?= {
+            region = region:italy_region
+        }
+        international_organization:hre = {
+            NOT = {
+                country_has_special_status = { type = special_status:emperor country = root }
+            }
+            NOT = {
+                country_has_special_status = { type = special_status:elector country = root }
+            }
+            NOT = {
+                country_has_special_status = { type = special_status:imperial_prince country = root }
+            }
+        }
+        NOR = {
+            this = c:SAV
+            this = c:PAP
+        }
+    }
+
+    auto_bestowal_trigger = {
+        always = yes
+    }
+
+    auto_rescind_trigger = {
+        OR = {
+            NOT = {
+                capital ?= {
+                    region = region:italy_region
+                }
+            }
+            this = c:SAV
+            this = c:PAP
+            NOT = { is_member_of_international_organization = international_organization:hre }
+            has_special_status_in_international_organization = { type = special_status:emperor international_organization = international_organization:hre }
+            has_special_status_in_international_organization = { type = special_status:elector international_organization = international_organization:hre }
+            has_special_status_in_international_organization = { type = special_status:imperial_prince international_organization = international_organization:hre }
+        }
+    }
+
+    on_bestowed_effect = {
+    }
+
+    on_rescinded_effect = {
+    }
+
+    map_color = rgb { 66 170 163 }
+    special_status_power = {
+        value = 2
+        if = {
+            limit = {
+                OR = {
+                    international_organization:hre = { international_organization_has_policy = policy:no_imperial_diet_policy }
+                    international_organization:hre = { international_organization_has_policy = policy:no_golden_bull_policy }
+                }
+            }
+            multiply = 1.0
+        }
+        else_if = {
+            limit = { international_organization:hre = { international_organization_has_policy = policy:hre_early_imperial_diet_policy } }
+            multiply = 0
+        }
+        else_if = {
+            limit = { international_organization:hre = { international_organization_has_policy = policy:hre_bi_camerial_imperial_diet_policy } }
+            multiply = 0
+        }
+        else_if = {
+            limit = { international_organization:hre = { international_organization_has_policy = policy:hre_tri_camerial_imperial_diet_policy } }
+            multiply = 0
+        }
+    }
+
+    modifier = {
+
+    }
+}
+
+REPLACE:imperial_prince = {
+    priority = 10
+    modifier = {
+    }
+    can_bestow_trigger = {
+        is_member_of_international_organization = international_organization:hre
+        government_type = government_type:monarchy
+        NOT = { dominant_culture = culture_group:italian_group }
+        international_organization:hre = {
+            NOT = {
+                country_has_special_status = { type = special_status:imperial_prince country = root }
+            }
+            NOT = {
+                country_has_special_status = { type = special_status:emperor country = root }
+            }
+            NOT = {
+                country_has_special_status = { type = special_status:elector country = root }
+            }
+            NOT = {
+                country_has_special_status = { type = special_status:italia_state country = root }
+            }
+        }
+    }
+
+    auto_bestowal_trigger = {
+        always = yes
+    }
+
+    auto_rescind_trigger = {
+        OR = {
+            NOT = { government_type = government_type:monarchy }
+            NOT = { is_member_of_international_organization = international_organization:hre }
+            dominant_culture = culture_group:italian_group
+            has_special_status_in_international_organization = { type = special_status:emperor international_organization = international_organization:hre }
+            has_special_status_in_international_organization = { type = special_status:elector international_organization = international_organization:hre }
+            has_special_status_in_international_organization = { type = special_status:italia_state international_organization = international_organization:hre }
+        }
+    }
+
+    on_bestowed_effect = {
+    }
+
+    on_rescinded_effect = {
+    }
+    map_color = define:NMapColors|HRE_IMPERIAL_PRINCE_COLOR
+    special_status_power = {
+        value = 2
+        if = {
+            limit = {
+                OR = {
+                    international_organization:hre = { international_organization_has_policy = policy:no_imperial_diet_policy }
+                    international_organization:hre = { international_organization_has_policy = policy:no_golden_bull_policy }
+                }
+            }
+            multiply = 1
+        }
+        else_if = {
+            limit = { international_organization:hre = { international_organization_has_policy = policy:hre_early_imperial_diet_policy } }
+            multiply = 1.25
+        }
+        else_if = {
+            limit = { international_organization:hre = { international_organization_has_policy = policy:hre_bi_camerial_imperial_diet_policy } }
+            multiply = 1.5
+        }
+        else_if = {
+            limit = { international_organization:hre = { international_organization_has_policy = policy:hre_tri_camerial_imperial_diet_policy } }
+            multiply = 1.5
+        }
+    }
+}

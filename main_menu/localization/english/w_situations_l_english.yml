@@ -2,7 +2,7 @@
  THIRTY_YEARS_WAR:"Thirty Years War"
  union_of_utrecht_treasury: "Treasury of Union"
  STRENGTH_COMPARE_TT: "Strength Compare"
- netherland_independent:"The Dutch independence movement"
+ netherland_independent:"The Dutch Independence movement"
  netherland_independent_info:"People who lived in lowland now declaim independent![GetCountry('NED').GetName]'s people now stand up against [GetCountry('SPA').GetName]'s rule!"
  netherland_independent_desc:"After the Emperor of Holy Roman Empire rule the lowland region and the religion reform,[GetCountry('NED').GetName]' people now realize they as calvinst now under a catholic king's rule.They united and formed the Union of Utrecht as the sign of the beginning of war."
  this_is_netherland_tt:"This is [GetCountry('NED').GetName]"
@@ -37,7 +37,8 @@
  RELATIVE_MILITARY_STRENGTH_SPA_TT_ARMY_STRENGTH: "$RELATIVE_MILITARY_STRENGTH_SPA_TT_TEXT$\n[GetCountry('SPA').GetAdjectiveWithNoTooltip] [army|e] Size: [GetCountry('FRA').GetArmySize]\n[GetCountry('SPA').GetAdjectiveWithNoTooltip] Potential [levy|e]: [GetCountry('SPA').GetArmyLevyPotentialStrength]"
  RELATIVE_MILITARY_STRENGTH_SPA_TT_LEVY_STRENGTH: "[GetCountry('SPA').GetAdjectiveWithNoTooltip] Potential [levy|e]: [GetCountry('SPA').GetArmyLevyPotentialStrength]"
 
- CURRENT_HERD_TT: "Current Herd: [SituationView.GetPlayer.MakeScope.GetVariable('current_herd').GetValue]"
+ CURRENT_HERD_TT: "Current Herd: [SituationView.GetPlayer.MakeScope.GetVariable('current_herd').GetValue|2]"
+ current_herd_DISPLAY:"$VAL|2$"
  HERD_GET_PER_MONTH: "Current Herd increase per month:\n[SituationView.GetPlayer.MakeScope.GetVariable('current_herd').GetValue]"
  the_steppe:"The Steppe"
  the_steppe_desc:"The Steppe is the area from Black sea to Mongolia"
@@ -46,3 +47,15 @@
  the_steppe_horde_claims: "Claim another part of The Steppe"
  the_steppe_horde_claims_desc: "People who lived in the steppe always attack another horde or another nation.No matter what they for - Gold or Glory."
  CURRENT_WAR_BALANCE_TT:"Current War Balance: [GetGlobalVariable('current_war_balance').GetValue]\n"
+
+ peace_talk_in_westphalia: "The Westphalia Congress"
+ peace_talk_in_westphalia_desc: "REPLACE_ME"
+
+ the_deluge: "The Deluge"
+ the_deluge_desc: "REPLACE_ME"
+
+ thirty_years_war: "Thirty Years War"
+ thirty_years_war_desc: "REPLACE_ME"
+ current_war_length_larger_to_equal_360: "Current War Length >= 360"
+ hint_thirty_years_war: "REPLACE_ME"
+ in_peace_talk_in_westphalia: "We are in The Westphalia Congress"
