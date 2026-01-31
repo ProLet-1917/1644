@@ -88,7 +88,7 @@ the_deluge = {
 
     global_estate_target_satisfaction = -0.05
     stability_cost = 0.2
-    global_levy_size_modifier = -0.05
+    global_levy_size_modifier = -0.10
     levy_combat_efficiency_modifier = -0.10
     land_morale_modifier = -0.1
     discipline = -0.05
@@ -209,4 +209,29 @@ dominance_over_the_baltic_sea = {
     monthly_prestige = 0.05
     sea_cost_on_distance_from_capital = -0.05
     monthly_towards_naval = 0.05
+}
+
+reform_the_regulars = {
+    game_data = {
+        category = country
+    }
+    army_maintenance_cost = -0.02
+    army_reinforce_cost = -0.02
+    military_tactics = 0.01
+    army_initiative = 0.01
+    expected_army_size_modifier = 0.05
+}
+
+golden_age_of_our_country = {
+    game_data = {
+        category = country
+    }
+    power_projection = 25
+    land_morale_modifier = 0.1
+    army_maintenance_cost = -0.05
+    research_speed_modifier = 0.05
+    cultures_capacity_modifier = 0.1
+    global_pop_assimilation_speed = 0.05
+    land_cost_on_distance_from_capital_modifier = -0.05
+    tax_income_efficiency = 0.05
 }

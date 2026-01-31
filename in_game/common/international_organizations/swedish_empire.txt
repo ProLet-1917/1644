@@ -68,17 +68,76 @@ swedish_empire = { #svenska stormaktstiden https://en.wikipedia.org/wiki/Swedish
     }
 
     ai_desire_to_join = {
-        #value = -50
+        subtract = {
+            desc = "BASE"
+            value = 50
+        }
         if = {
             limit = {
                 is_subject_of = c:SWE
             }
             value = 1000
         }
+        add = {
+            desc = "game_concept_opinion"
+            value = {
+                value = "root.opinion(scope:actor)"
+                divide = 5      # max ±40 at ±200 opinion
+            }
+        }
+        add = {
+            desc = "game_concept_diplomatic_reputation"
+            value = {
+                value = "scope:actor.modifier:diplomatic_reputation"
+                multiply = 0.2  # +0.25 reasons per 1 diprep
+            }
+        }
+        add = {
+            desc = "expanded_influnce"
+            if = {
+                limit = {
+                    has_variable = in_swedish_empire_influnce
+                }
+                value = 20
+            }
+        }
+        if = {
+            limit = {
+                exists = scope:actor
+                OR = {
+                    culture ?= scope:actor.culture
+                    ruler ?= {
+                        culture ?= scope:actor.culture
+                    }
+                }
+            }
+            add = {
+                desc = "PRIMARY_OR_RULER_CULTURE_EQUAL_TO_LEADER_CULTURE"
+                value = 20
+            }
+        }
+        if = {
+            limit = {
+                exists = scope:actor
+                exists = scope:recipient
+                any_neighbor_country = {
+                    is_threat_to = root
+                    NOT = { is_member_of_international_organization = scope:recipient }
+                    OR = {
+                        is_rival_of = scope:actor
+                        is_enemy_of = scope:actor
+                    }
+                }
+            }
+            add = {
+                desc = "THREATENED_BY_LEADER_RIVALS_OR_ENEMIES"
+                value = 20
+            }
+        }
         subtract = {
             desc = "game_concept_tax_base"
             value = country_tax_base
-            multiply = 0.5
+            multiply = 0.25
         }
     }
 

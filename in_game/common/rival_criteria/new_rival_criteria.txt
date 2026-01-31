@@ -9,8 +9,10 @@ SPA = {
 	}
 	enabled = {
 		NOT = {
-			tag = POR
-			current_age < age_6_revolutions
+			AND = {
+				tag = POR
+				current_age < age_6_revolutions
+			}
 		}
 	}
 }
@@ -21,24 +23,23 @@ POR = {
 	}
 	enabled = {
 		NOT = {
-			tag = SPA
-			current_age < age_6_revolutions
+			AND = {
+				tag = SPA
+				current_age < age_6_revolutions
+			}
 		}
 	}
 }
 
 RUS = {
 	enabled = {
-		OR = {
-			AND = {
-				tag = PLC
-				is_situation_active = situation:the_deluge
-			}
-			AND = {
-				current_year > 1715
-				tag = PLC
-			}
-		}
+		tag = PLC
+	}
+}
+
+PLC = {
+	enabled = {
+		tag = RUS
 	}
 }
 

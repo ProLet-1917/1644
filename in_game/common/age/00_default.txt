@@ -271,11 +271,11 @@ age_6_revolutions = {
 	victory_card = 5
 
 	max_ai_privilege_per_estate = {
-		nobles_estate = 0
-		clergy_estate = 0
-		burghers_estate = 0
-		peasants_estate = 0
-		dhimmi_estate = 0
+		nobles_estate = 1
+		clergy_estate = 1
+		burghers_estate = 2
+		peasants_estate = 2
+		dhimmi_estate = 1
 		tribes_estate = 0
 		cossacks_estate = 0
 	}
@@ -300,7 +300,7 @@ age_7_imperialism = {
 	months_for_exploration_spread = 150
 	modifier = {
 		expected_army_size_modifier = 36
-		levy_maintenance_modifier = 2.0
+		levy_maintenance_modifier = 4.0
 		army_maintenance_cost = -0.1
 		
 		global_war_score_cost = -0.3
@@ -311,17 +311,18 @@ age_7_imperialism = {
 		
 		global_navy_levy_size_modifier = -3.0
 		
-		levy_combat_efficiency_modifier = -0.8
+		levy_combat_efficiency_modifier = -0.75
 		
 		subject_pays_colonial_cost_modifier = 2.5
 		
 		antagonism_culture_influence = 0.15
 		antagonism_societal_value_influence = 0.25
 		antagonism_government_type_influence = 0.4
+		antagonism_religion_influence = -0.1
 	}
 	
-	mercenaries = -0.99
-	war_score_from_battles = -0.9
+	mercenaries = -0.95
+	war_score_from_battles = -0.85
 
 	
 	efficiency = 0.05

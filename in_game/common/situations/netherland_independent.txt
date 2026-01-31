@@ -95,7 +95,7 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 			limit = {
 				OR = {
 					NOT = { country_exists = c:NED }
-					NOT = { country_exists = c:HOL }
+					#NOT = { country_exists = c:HOL }
 					c:NED = { is_subject_or_below_of = c:SPA }
 				}
 			}

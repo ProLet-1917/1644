@@ -88,6 +88,14 @@ scripted_effect halberstadt_area = {
     }
 }
 
+scripted_effect rosello_area = {
+   province_definition:rosello_province = {
+       every_location_in_province_definition = {
+           add_to_list = rosello_list
+       }
+   }
+}
+
 
 
 thirty_years_war_events.1 = { #Historical Peace of Westphalia
@@ -859,6 +867,7 @@ thirty_years_war_events.1000 = { #Custom Treaty of Westphalia
         jamtland_area = yes
         amberg_area = yes
         halberstadt_area = yes
+        rosello_area = yes
     }
 
     option = {
@@ -967,6 +976,12 @@ thirty_years_war_events.1000 = { #Custom Treaty of Westphalia
         if = {
             limit = {
                 has_global_variable = westphalia_split_catalonia
+            }
+            every_in_list = {
+                list = rosello_list
+                limit = { owner = c:CAT }
+                change_location_owner = c:FRA
+                change_control = 0.12
             }
             c:FRA = {
                 cancel_subject = c:CAT

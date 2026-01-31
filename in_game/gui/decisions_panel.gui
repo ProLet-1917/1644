@@ -320,6 +320,94 @@ widget = {
 							}
 						}
 
+						action_button_regular = {
+							layoutpolicy_horizontal = expanding
+							size = { 100% 30 }
+							text = "unite_ukranie"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "unite_ukranie" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "unite_ukranie"
+									}
+									blockoverride "concept_link" {
+										text = "DECISIONS_TT"
+										default_format = "#E"
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							layoutpolicy_horizontal = expanding
+							size = { 100% 30 }
+							text = "reform_the_regulars"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "reform_the_regulars" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "reform_the_regulars"
+									}
+									blockoverride "concept_link" {
+										text = "DECISIONS_TT"
+										default_format = "#E"
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							layoutpolicy_horizontal = expanding
+							size = { 100% 30 }
+							text = "declare_golden_age_of_our_country"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "declare_golden_age_of_our_country" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "declare_golden_age_of_our_country"
+									}
+									blockoverride "concept_link" {
+										text = "DECISIONS_TT"
+										default_format = "#E"
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+
 						expand = { }
 					}
 				}

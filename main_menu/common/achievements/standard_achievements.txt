@@ -3,6 +3,21 @@
 
 #Achievements Easy
 
+Declare_Golden_Age = {
+    possible = { }
+
+    happened = {
+        has_country_modifier = golden_age_of_our_country
+    }
+}
+
+Over_three_houndreds_years = {
+    possible = { }
+
+    happened = {
+        current_date >= 1918.11.10
+    }
+}
 
 #Achievements Medium
 
@@ -16,11 +31,52 @@ An_Early_empire = {
 
     happened = {
         tag = GER
+        government_type = government_type:monarchy
+    }
+}
+
+Slava_ukraini = {
+    possible = {
+        has_or_had_tag = ZAZ
+    }
+
+    happened = {
+        tag = UKR
     }
 }
 
 #Achievements Hard
 
+Declare_Baltic_Hegemony = {
+    possible = {
+        has_or_had_tag = SWE
+    }
 
+    happened = {
+        has_global_variable = declare_baltic_hegemony
+    }
+}
+
+Fire_and_sword = {
+    possible = {
+        tag = PLC
+    }
+
+    happened = {
+        owns = location:stockholm
+        owns = location:moscow
+    }
+}
 
 #Achievements Very Hard
+
+Triple_crown = {
+    possible = {
+        has_or_had_tag = RUS
+    }
+
+    happened = {
+        is_leader_of_international_organization = international_organization:middle_kingdom
+        is_leader_of_international_organization = international_organization:hre
+    }
+}

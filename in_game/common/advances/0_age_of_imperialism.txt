@@ -11,32 +11,32 @@ power_revolution_advance = {
     allow = { has_embraced_institution = institution:power_revolution }
 }
 
-anaesthesia = {
+anaesthesia_advance = {
     age = age_7_imperialism
     requires = power_revolution_advance
 
-    global_population_growth = 0.0025
+    global_population_growth = 0.0010
     character_life_expectancy = 5
 
 }
 
-chemotherapy = {
+chemotherapy_advance = {
     age = age_7_imperialism
     requires = anaesthesia
 
-    global_population_growth = 0.0025
+    global_population_growth = 0.0010
     local_army_attrition = -0.05
 }
 
-penicillin = {
+penicillin_advance = {
     age = age_7_imperialism
     requires = chemotherapy
 
-    global_population_growth = 0.005
+    global_population_growth = 0.0015
     global_disease_resistance = 0.1
 }
 
-sulfanilamide = {
+sulfanilamide_advance = {
     age = age_7_imperialism
     requires = chemotherapy
     global_disease_resistance = 0.1
@@ -44,99 +44,99 @@ sulfanilamide = {
     global_population_growth = 0.001
 }
 
-x-rays = {
+x-rays_advance = {
     age = age_7_imperialism
     requires = chemotherapy
 
-    global_population_growth = 0.005
+    global_population_growth = 0.0015
     local_army_attrition = -0.05
     character_life_expectancy = 5
 }
 
-clean_coal = {
+clean_coal_advance = {
     age = age_7_imperialism
     requires = power_revolution_advance
 
     global_coal_output_modifier = 0.2
 }
 
-steel_factory = {
+steel_factory_advance = {
     age = age_7_imperialism
-    requires = clean_coal
+    requires = clean_coal_advance
 
     #unlock_building =
 }
 
-structural_steel_construction = {
+structural_steel_construction_advance = {
     age = age_7_imperialism
-    requires = steel_factory
+    requires = steel_factory_advance
 
     max_constructions_at_same_time = 4
     global_construction_speed = 0.05
 }
 
-ammunition_factory = {
+ammunition_factory_advance = {
     age = age_7_imperialism
-    requires = steel_factory
+    requires = steel_factory_advance
 
     #unlock_building =
 }
 
-artillery_factory = {
+artillery_factory_advance = {
     age = age_7_imperialism
-    requires = steel_factory
+    requires = steel_factory_advance
 
     #unlock_building =
 }
 
-steel_railroad = {
+steel_railroad_advance = {
     age = age_7_imperialism
-    requires = steel_factory
+    requires = steel_factory_advance
 
     #unlock_road_type =
     trade_efficiency = 0.05
 }
 
-modernize_high_speed_railroad = {
+modernize_high_speed_railroad_advance = {
     age = age_7_imperialism
-    requires = steel_railroad
+    requires = steel_railroad_advance
 
     #unlock_road_type =
     trade_efficiency = 0.05
 }
 
-bessemer_steel = {
+bessemer_steel_advance = {
     age = age_7_imperialism
-    requires = clean_coal
+    requires = clean_coal_advance
 
     global_steel_output_modifier = 0.2
     global_iron_output_modifier = 0.2
 }
 
-cordite = {
+cordite_advance = {
     age = age_7_imperialism
-    requires = bessemer_steel
+    requires = bessemer_steel_advance
 
     global_firearms_output_modifier = 0.1
     army_artillery_power = 0.1
     army_infantry_power = 0.1
 }
 
-open_hearth_furnace = { #https://en.wikipedia.org/wiki/Open-hearth_furnace
+open_hearth_furnace_advance = { #https://en.wikipedia.org/wiki/Open-hearth_furnace
     age = age_7_imperialism
-    requires = bessemer_steel
+    requires = bessemer_steel_advance
     global_steel_output_modifier = 0.25
 }
 
-stainless_steel = {
+stainless_steel_advance = {
     age = age_7_imperialism
-    requires = open_hearth_furnace
+    requires = open_hearth_furnace_advance
     global_steel_output_modifier = 0.25
 }
 
-harvey_steel = {
+harvey_steel_advance = {
     age = age_7_imperialism
-    requires = open_hearth_furnace
+    requires = open_hearth_furnace_advance
     global_steel_output_modifier = 0.15
     navy_heavy_ship_power = 0.1
     navy_galley_power = 0.1
@@ -145,16 +145,16 @@ harvey_steel = {
     navy_maintenance_cost = 0.05
 }
 
-electricity = {
+electricity_advance = {
     age = age_7_imperialism
     requires = power_revolution_advance
 
     supply_limit = 0.5
 }
 
-electric_rolling_techniques = {
+electric_rolling_techniques_advance = {
     age = age_7_imperialism
-    requires = electricity
+    requires = electricity_advance
 
     global_copper_output_modifier = 0.15
     global_steel_output_modifier = 0.15
@@ -162,9 +162,9 @@ electric_rolling_techniques = {
     global_tin_output_modifier = 0.15
 }
 
-electric_arc_furnace = {
+electric_arc_furnace_advance = {
     age = age_7_imperialism
-    requires = electric_rolling_techniques
+    requires = electric_rolling_techniques_advance
 
     global_copper_output_modifier = 0.15
     global_steel_output_modifier = 0.15
@@ -172,7 +172,7 @@ electric_arc_furnace = {
     global_tin_output_modifier = 0.15
 }
 
-high_and_low_pressure_steam_engine = {
+high_and_low_pressure_steam_engine_advance = {
     age = age_7_imperialism
     requires = power_revolution_advance
 
@@ -181,25 +181,25 @@ high_and_low_pressure_steam_engine = {
     #unlock_building =
 }
 
-mobile_engine = {
+mobile_engine_advance = {
     age = age_7_imperialism
-    requires = high_and_low_pressure_steam_engine
+    requires = high_and_low_pressure_steam_engine_advance
 
     global_road_building_time = -15
     road_cost_on_distance_from_capital = -0.05
 }
 
-agricultural_harvesting_machinery = {
+agricultural_harvesting_machinery_advance = {
     age = age_7_imperialism
-    requires = mobile_engine
+    requires = mobile_engine_advance
 
     expand_rgo_farming_cost_modifier = 0.02
     global_monthly_food_modifier = 0.1
 }
 
-large_construction_machinery = {
+large_construction_machinery_advance = {
     age = age_7_imperialism
-    requires = mobile_engine
+    requires = mobile_engine_advance
 
     global_construction_speed = 0.1
     global_build_buildings_cost = 0.02
@@ -208,80 +208,80 @@ large_construction_machinery = {
     global_max_rgo_size_modifier_in_non_rural = 0.1
 }
 
-combustion_engine = {
+combustion_engine_advance = {
     age = age_7_imperialism
-    requires = high_and_low_pressure_steam_engine
+    requires = high_and_low_pressure_steam_engine_advance
 
     global_raw_material_output = 0.15
 }
 
-turbine_engine = {
+turbine_engine_advance = {
     age = age_7_imperialism
-    requires = combustion_engine
+    requires = combustion_engine_advance
 
     navy_movement_speed = 1.0
     navy_maintenance_cost = 0.02
     navy_repair_cost = 0.01
 }
 
-electrical_power_generation = {
+electrical_power_generation_advance = {
     age = age_7_imperialism
-    requires = combustion_engine
+    requires = combustion_engine_advance
 
     global_raw_material_output = 0.15
     #unlock_building =
 }
 
-mechanization_factory = {
+mechanization_factory_advance = {
     age = age_7_imperialism
-    requires = electrical_power_generation
+    requires = electrical_power_generation_advance
 
     army_movement_speed = 0.1
     #unlock_building =
 }
 
-mechanical_production = {
+mechanical_production_advance = {
     age = age_7_imperialism
-    requires = clean_coal
+    requires = clean_coal_advance
 
     building_upkeep_costs = -0.1
 }
 
-assembly_line = {
+assembly_line_advance = {
     age = age_7_imperialism
-    requires = mechanical_production
+    requires = mechanical_production_advance
 
     building_upkeep_costs = -0.25
 }
 
-telephone_assembly = {
+telephone_assembly_advance = {
     age = age_7_imperialism
-    requires = electricity
+    requires = electricity_advance
 
     land_cost_on_distance_from_capital_modifier = -0.05
     global_institution_growth_modifier = 0.05
     #unlock_building =
 }
 
-radio_application = {
+radio_application_advance = {
     age = age_7_imperialism
-    requires = telephone_assembly
+    requires = telephone_assembly_advance
 
     land_cost_on_distance_from_capital_modifier = -0.05
     global_institution_growth_modifier = 0.1
 }
 
-fertilizer = {
+fertilizer_advance = {
     age = age_7_imperialism
-    requires = clean_coal
+    requires = clean_coal_advance
     icon = expanded_supply_trains
 
     global_monthly_food_modifier = 0.2
 }
 
-large_scale_farms = {
+large_scale_farms_advance = {
     age = age_7_imperialism
-    requires = fertilizer
+    requires = fertilizer_advance
 
     global_monthly_food_modifier = 0.15
     global_livestock_output_modifier = 0.15
@@ -295,7 +295,7 @@ ideology_advance = {
     global_crown_estate_power = 0.25
 }
 
-nationalism = {
+nationalism_advance = {
     age = age_7_imperialism
     requires = ideology_advance
 

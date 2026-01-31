@@ -39,6 +39,7 @@ claim_mandate_of_heaven = {
                     region = region:manchuria_region
                 }
             }
+            NOT = { is_subject = yes }
             NOT = { is_leader_of_international_organization = international_organization:middle_kingdom }
             OR = {
                 owns = location:dadu
@@ -168,6 +169,9 @@ claim_dominance_over_the_baltic_sea = {
     potential = {
         scope:actor = {
             has_or_had_tag = SWE
+            NOT = {
+                has_country_modifier = dominance_over_the_baltic_sea
+            }
         }
     }
 
@@ -275,9 +279,246 @@ claim_dominance_over_the_baltic_sea = {
                 modifier = dominance_over_the_baltic_sea
                 years = -1
             }
+            if = {
+                limit = {
+                    ironman = yes
+                }
+                set_global_variable = {
+                    name = declare_baltic_hegemony
+                }
+            }
         }
     }
 
     ai_will_do = { value = 100 }	#They always want to do this
 }
+
+unite_ukranie = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:unite_ukranie_prices
+
+    cooldown = {
+        type = unite_ukranie
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            tag = ZAZ
+        }
+    }
+
+    allow = {
+        area:zaporizhzhia_area = {
+            NOT = {
+                any_location_in_area = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+        area:right_bank_ukraine_area = {
+            NOT = {
+                any_location_in_area = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+        area:left_bank_ukraine_area = {
+            NOT = {
+                any_location_in_area = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            custom_tooltip = {
+                text = custom_unite_ukraine
+                form_country = formable_country:UKR_f
+                change_country_adjective = URZ_ADJ
+            }
+            change_country_name = URZ
+        }
+    }
+
+
+    ai_will_do = { value = 100 }	#They always want to do this
+
+}
+
+reform_the_regulars = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:reform_the_regulars_prices
+
+    cooldown = {
+        type = reform_the_regulars
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            OR = {
+                country_type = location
+                country_type = army
+                country_type = navy
+            }
+            NOT = {
+                has_country_modifier = reform_the_regulars
+            }
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            regular_army_size > {
+                value = total_control_scaled_population
+                multiply = 0.02
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            add_country_modifier = {
+                modifier = reform_the_regulars
+                years = -1
+            }
+        }
+    }
+
+
+    ai_will_do = {
+        value = 5
+    }
+
+}
+
+declare_golden_age_of_our_country = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:declare_golden_age_of_our_country_prices
+
+    cooldown = {
+        type = declare_golden_age_of_our_country
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            OR = {
+                country_type = location
+                country_type = army
+                country_type = navy
+            }
+            NOT = {
+                has_variable = already_declare_golden_age
+            }
+            NOR = {
+                this = c:HAB
+                this = c:SPA
+            }
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            OR = {
+                AND = {
+                    current_age = age_5_absolutism
+                    has_embraced_institution = institution:manufactories
+                    has_embraced_institution = institution:scientific_revolution
+                    has_embraced_institution = institution:military_revolution
+                    stability > 60
+                    government_power > 95
+                    prestige > 40
+                    ruler ?= {
+                        total_abilities > 210
+                    }
+                }
+                AND = {
+                    current_age = age_6_revolutions
+                    has_embraced_institution = institution:enlightenment
+                    has_embraced_institution = institution:industrialization
+                    has_embraced_institution = institution:levee_en_masse
+                    stability > 60
+                    government_power > 95
+                    prestige > 55
+                    ruler ?= {
+                        total_abilities > 210
+                    }
+                }
+                #AND = {
+                    #current_age = age_7_imperialism
+                    #has_embraced_institution = institution:power_revolution
+                    #has_embraced_institution = institution:ideology
+                    #has_embraced_institution = institution:the_theory_on_war
+                    #stability > 60
+                    #government_power > 95
+                    #prestige > 75
+                    #ruler ?= {
+                    #    total_abilities > 210
+                    #}
+                #}
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            add_country_modifier = {
+                modifier = golden_age_of_our_country
+                years = 50
+            }
+            custom_tooltip = {
+                text = only_once_golden_age_of_our_country_allowed_per_game
+            }
+            set_variable = already_declare_golden_age
+        }
+    }
+
+
+    ai_will_do = {
+        value = 10
+    }
+
+}
+
+
 
