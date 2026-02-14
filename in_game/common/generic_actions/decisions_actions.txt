@@ -42,18 +42,74 @@ claim_mandate_of_heaven = {
             NOT = { is_subject = yes }
             NOT = { is_leader_of_international_organization = international_organization:middle_kingdom }
             OR = {
-                owns = location:dadu
-                owns = location:shangyuan
+                location:dadu = {
+                    OR = {
+                        owner = scope:actor
+                        owner = {
+                            is_subject_of = scope:actor
+                        }
+                    }
+                }
+                location:shangyuan = {
+                    OR = {
+                        owner = scope:actor
+                        owner = {
+                            is_subject_of = scope:actor
+                        }
+                    }
+                }
             }
             OR = {
-                owns = location:luoyang
-                owns = location:xiangyang
+                location:luoyang = {
+                    OR = {
+                        owner = scope:actor
+                        owner = {
+                            is_subject_of = scope:actor
+                        }
+                    }
+                }
+                location:xiangyang = {
+                    OR = {
+                        owner = scope:actor
+                        owner = {
+                            is_subject_of = scope:actor
+                        }
+                    }
+                }
             }
             OR = {
-                owns = location:changan
-                owns = location:chengdu
-                owns = location:jiangxia
-                owns = location:xuzhou
+                location:changan = {
+                    OR = {
+                        owner = scope:actor
+                        owner = {
+                            is_subject_of = scope:actor
+                        }
+                    }
+                }
+                location:chengdu = {
+                    OR = {
+                        owner = scope:actor
+                        owner = {
+                            is_subject_of = scope:actor
+                        }
+                    }
+                }
+                location:jiangxia = {
+                    OR = {
+                        owner = scope:actor
+                        owner = {
+                            is_subject_of = scope:actor
+                        }
+                    }
+                }
+                location:xuzhou = {
+                    OR = {
+                        owner = scope:actor
+                        owner = {
+                            is_subject_of = scope:actor
+                        }
+                    }
+                }
             }
             num_locations_owned_or_owned_by_subjects_or_below >= 800
         }
@@ -516,6 +572,492 @@ declare_golden_age_of_our_country = {
 
     ai_will_do = {
         value = 10
+    }
+
+}
+
+Reform_tibet_empire = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:reform_tibet_empire_prices
+
+    cooldown = {
+        type = Reform_tibet_empire
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            culture = {
+                has_culture_group = culture_group:nepali_group
+            }
+            NOT = {
+                tag = TIB
+            }
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            formable_country:NPL_f = {
+                has_been_formed = yes
+            }
+            tag = NPL
+        }
+        c:TIB = {
+            exists = no
+        }
+        area:tsang_area = {
+            NOT = {
+                any_ownable_location_in_area = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+        area:u_area = {
+            NOT = {
+                any_ownable_location_in_area = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            form_country = formable_country:TIB_f
+            merge_culture_group = culture_group:tibetan_group
+            merge_culture_group = culture_group:nepali_group
+            set_country_rank = country_rank:rank_empire
+        }
+    }
+
+
+    ai_will_do = {
+        value = 100 #They always want to do this
+    }
+}
+
+Between_the_two_seas = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:Between_the_two_seas_prices
+
+    cooldown = {
+        type = Between_the_two_seas
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            tag = RUS
+            NOT = {
+                has_country_modifier = between_the_two_seas
+            }
+        }
+    }
+
+    allow = {
+        province_definition:lopskaya_province = {
+            NOT = {
+                any_ownable_location_in_province_definition = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+        province_definition:tana_province = {
+            NOT = {
+                any_ownable_location_in_province_definition = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            add_country_modifier = {
+                modifier = between_the_two_seas
+                years = -1
+            }
+            remove_variable = Between_the_two_seas
+        }
+    }
+
+
+    ai_will_do = {
+        value = 100 #They always want to do this
+    }
+}
+
+Claim_the_third_rome = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:Claim_the_third_rome_prices
+
+    cooldown = {
+        type = Claim_the_third_rome
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            tag = RUS
+            NOT = {
+                has_country_modifier = the_third_rome
+            }
+        }
+    }
+
+    allow = {
+        area:lazio_area = {
+            NOT = {
+                any_ownable_location_in_area = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+        province_definition:constantinople_province = {
+            NOT = {
+                any_ownable_location_in_province_definition = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+        province_definition:moscow_province = {
+            NOT = {
+                any_ownable_location_in_province_definition = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            add_country_modifier = {
+                modifier = the_third_rome
+                years = -1
+            }
+            change_country_name = TRD
+        }
+    }
+
+
+    ai_will_do = {
+        value = 100 #They always want to do this
+    }
+}
+
+Expand_hofburg_palace = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:Expand_hofburg_palace_prices
+
+    cooldown = {
+        type = Expand_hofburg_palace
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            culture = { has_culture_group = culture_group:german_group }
+        }
+        location:vienna = {
+            owner = scope:actor
+            NOT = {
+                has_building_with_at_least_one_level = hofburg_palace
+            }
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            has_institution = institution:manufactories
+            OR = {
+                is_leader_of_international_organization = international_organization:hre
+                country_rank >= 3
+            }
+            capital = location:vienna
+        }
+    }
+
+    effect = {
+        location:vienna = {
+            construct_building = {
+                building_type = building_type:hofburg_palace
+                cost_multiplier = 0.1
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 100 #They always want to do this
+    }
+}
+
+Unify_germany = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:Unify_germany_prices
+
+    cooldown = {
+        type = Unify_germany
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            culture = { has_culture_group = culture_group:german_group }
+        }
+    }
+
+    allow = {
+        region:north_german_region = {
+            NOT = {
+                any_ownable_location_in_region = {
+                    percent > 0.25
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+        region:south_german_region = {
+            NOT = {
+                any_ownable_location_in_region = {
+                    percent > 0.35
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            form_country = formable_country:GER_f
+        }
+        every_country = {
+            limit = {
+                has_variable = german_country
+            }
+            remove_variable = german_country
+        }
+    }
+
+
+    ai_will_do = {
+        value = 100 #They always want to do this
+    }
+}
+
+ug_improve_local_goverment = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:ug_improve_local_goverment_prices
+
+    cooldown = {
+        type = ug_improve_local_goverment
+        years = 8
+    }
+
+    potential = {
+        scope:actor = {
+            culture = { has_culture_group = culture_group:german_group }
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            culture = { has_culture_group = culture_group:german_group }
+            is_subject = no
+            is_during_bankruptcy = no
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = location
+        source = actor
+        target_flag = target_location
+        name = "choose_location"
+        none_available_msg_key = "no_locations_available"
+        column = {
+            data = name
+        }
+        column = {
+            data = population
+        }
+        visible = {
+            has_owner = yes
+            owner = scope:actor
+            NOT = {
+                has_location_modifier = improve_local_government
+            }
+            is_capital = no
+        }
+    }
+
+    effect = {
+        scope:target_location = {
+            add_location_modifier = {
+                modifier = improve_local_government
+                years = 25
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 5 #Why not?
+    }
+
+}
+
+ug_pru_organized_troops = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:ug_pru_organized_troops_prices
+
+    cooldown = {
+        type = ug_pru_organized_troops
+        years = 8
+    }
+
+    potential = {
+        scope:actor = {
+            OR = {
+                tag = BRA
+                tag = PRU
+            }
+            culture = { has_culture_group = culture_group:german_group }
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            culture = { has_culture_group = culture_group:german_group }
+            is_subject = no
+            is_during_bankruptcy = no
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = location
+        source = actor
+        target_flag = target_location
+        name = "choose_location"
+        none_available_msg_key = "no_locations_available"
+        column = {
+            data = name
+        }
+        column = {
+            data = population
+        }
+        visible = {
+            has_owner = yes
+            owner = scope:actor
+            NOT = {
+                has_location_modifier = pru_organized_troops
+            }
+            is_capital = no
+        }
+    }
+
+    effect = {
+        scope:target_location = {
+            add_location_modifier = {
+                modifier = pru_organized_troops
+                years = 25
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 5 #Why not?
     }
 
 }

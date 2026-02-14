@@ -80,6 +80,17 @@ thirty_years_war = {
             }
         }
         remove_global_variable = current_religion_war_length
+        if = {
+            limit = {
+                current_year >= 1700
+            }
+            destroy_international_organization = {
+                target = international_organization:catholic_league
+            }
+            destroy_international_organization = {
+                target = international_organization:protestant_union
+            }
+        }
     }
 
     tooltip = {

@@ -36,8 +36,8 @@ bestow_crownland_of_swedish_status = {
         }
         enabled = {
             international_organization:swedish_empire = {
-                special_status_can_be_bestowed = {
-                    type = special_status:crownland_of_swedish
+                country_has_special_status = {
+                    type = special_status:dominion_of_empire
                     country = root
                 }
             }
@@ -45,6 +45,12 @@ bestow_crownland_of_swedish_status = {
     }
 
     effect = {
+        scope:recipient = {
+            make_subject_of = {
+                target = scope:actor
+                type = subject_type:vassal
+            }
+        }
         international_organization:swedish_empire = {
             international_organization_add_special_status = {
                 type = special_status:crownland_of_swedish
@@ -166,5 +172,6 @@ rescind_crownland_of_swedish_status = {
     }
 
     ai_will_do = {
+        value = -50
     }
 }

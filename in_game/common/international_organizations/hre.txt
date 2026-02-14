@@ -104,8 +104,8 @@
 	}
 
 	land_ownership_rule = hre_land_ownership
-	antagonism_modifier_for_taking_land_from_fellow_member = 0.75	  # Members get more Antagonism in the HRE
-	antagonism_modifier_for_taking_land_from_member_as_outsider = 1.5 # Outsiders get even more Antagonism in the HRE
+	antagonism_modifier_for_taking_land_from_fellow_member = 1.0	  # Members get more Antagonism in the HRE
+	antagonism_modifier_for_taking_land_from_member_as_outsider = 1.75 # Outsiders get even more Antagonism in the HRE
 	no_cb_price_modifier_for_fellow_member = 0.75
 
 	modifier = {
@@ -276,6 +276,16 @@
 	}
 
 	on_left = {
+	}
+
+	on_disband = {
+		every_international_organization_member = {
+			limit = {
+				culture = { has_culture_group = culture_group:german_group }
+				NOT = { has_variable = german_country }
+			}
+			set_variable = german_country
+		}
 	}
 	
 	monthly_effect = {

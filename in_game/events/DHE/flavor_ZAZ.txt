@@ -511,6 +511,9 @@ flavor_zaz.2000 = { #A men called Bohdan Khmelnytsky asking for help
 		OR = {
 			is_subject_of = c:PLC
 			is_subject_of = c:POL
+			NOT = {
+				has_truce_with = c:PLC
+			}
 		}
 	}
 
@@ -537,6 +540,7 @@ flavor_zaz.2000 = { #A men called Bohdan Khmelnytsky asking for help
 	option = {
 		name = flavor_zaz.2000.a #Let Him lead us!
 		historical_option = yes
+		ai_chance = 10
 		character:bogdan_chmielnicki = {
 			change_character_estate = estate_type:crown_estate
 		}

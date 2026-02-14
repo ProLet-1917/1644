@@ -354,3 +354,54 @@ recalculate_the_strength_horde_monthly_effect  = {
 		}
 	}
 }
+
+spawn_army_for_hordes_effect = {
+	location:naurskaya = {
+		create_sub_unit_with_owner = {
+			type = a_steppe_horse_archers
+			owner = c:NOG
+			origin = this
+			experience = 0
+		}
+	}
+	location:khiva = {
+		create_sub_unit_with_owner = {
+			type = a_steppe_horse_archers
+			owner = c:KHV
+			origin = this
+			experience = 0
+		}
+	}
+	location:turkestan = {
+		create_sub_unit_with_owner = {
+			type = a_steppe_horse_archers
+			owner = c:KAZ
+			origin = this
+			experience = 0
+		}
+	}
+	location:kamen = {
+		create_sub_unit_with_owner = {
+			type = a_steppe_horse_archers
+			owner = c:TLU
+			origin = this
+			experience = 0
+		}
+	}
+	location:uliastai = {
+		create_sub_unit_with_owner = {
+			type = a_steppe_horse_archers
+			owner = c:ZSG
+			origin = this
+			experience = 0
+		}
+	}
+	location:den_terek = {
+		create_sub_unit_with_owner = {
+			type = a_steppe_horse_archers
+			owner = c:HTG
+			origin = this
+			experience = 0
+		}
+	}
+}

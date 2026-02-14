@@ -259,12 +259,7 @@ swe_invade_poland = {
         name = "choose_province"
         column = { data = name }
         visible = {
-            this = {
-                OR = {
-                    province = scope:target.province_definition:danzig_province
-                    province = scope:target.province_definition:latgalia_province
-                }
-            }
+            owner = c:PLC
         }
     }
 
@@ -394,12 +389,7 @@ rus_invade_poland = {
         name = "choose_province"
         column = { data = name}
         visible = {
-            this = {
-                OR = {
-                    province = scope:target.province_definition:kyiv_province
-                    province = scope:target.province_definition:smolensk_province
-                }
-            }
+            owner = c:PLC
         }
     }
 
