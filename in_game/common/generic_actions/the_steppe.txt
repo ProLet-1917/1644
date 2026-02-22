@@ -2,12 +2,19 @@
     type = situation
     show_message = no
     potential = {
+        scope:actor = {
+            uses_government_power = horde_unity
+        }
     }
 
     allow = {
         scope:actor = {
             at_war = no
             has_raised_levies = no
+            custom_tooltip = {
+                text = current_herd_large_and_euqal_250
+                var:current_herd >= 250
+            }
         }
     }
 
@@ -99,6 +106,10 @@
                 text = ts_horde_claim_anotherhorde_tt
                 scope:actor = {
                     trigger_event_silently = the_steppe.2
+                    change_variable = {
+                        name = current_herd
+                        subtract = 250
+                    }
                 }
             }
         }
@@ -111,6 +122,10 @@
                 text = ts_horde_claim_civ_tt
                 scope:actor = {
                     trigger_event_silently = the_steppe.3
+                    change_variable = {
+                        name = current_herd
+                        subtract = 250
+                    }
                 }
             }
         }
@@ -241,5 +256,200 @@
                 desc = BASE_VALUE
             }
         }
+    }
+}
+
+become_horde_nation = {
+    type = situation
+    show_message = no
+    potential = {
+        scope:actor = {
+            NOT = {
+                uses_government_power = horde_unity
+                country_rank = country_rank:rank_kingdom
+                country_rank = country_rank:rank_empire
+            }
+            has_presence_in = scripted_geography:steppe_geography
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            at_war = no
+            has_raised_levies = no
+            capital ?= {
+                is_in_scripted_geography = scripted_geography:steppe_geography
+            }
+        }
+    }
+
+    automation_tick = never
+    automation_tick_frequency = 12
+    ai_tick = monthly
+    ai_tick_frequency = 12
+    price = price:become_horde_nation_price
+
+    cooldown = {
+        type = become_horde_nation_key
+        years = 20
+    }
+
+    select_trigger = {
+        looking_for_a = situation
+        interaction_source_list = {
+            situation:the_steppe = {
+                add_to_list = source
+            }
+        }
+        target_flag = recipient
+        name = "choose_situation"
+        column = {
+            data = name
+        }
+        visible = {
+            situation:the_steppe = this
+            situation_is_active = yes
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            change_government_type = government_type:steppe_horde
+            monthly_herd_check_effect = yes
+        }
+    }
+
+    ai_will_do = {
+        value = -20
+        if = {
+            limit = {
+                government_type = government_type:tribe
+            }
+            add = 50
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    government_type = government_type:monarchy
+                    government_type = government_type:republic
+                    government_type = government_type:theocracy
+                }
+            }
+            subtract = 50
+        }
+    }
+}
+
+seize_province = {
+    type = owncountry
+    show_message = no
+
+    potential = {
+        scope:actor = {
+            government_type = government_type:steppe_horde
+            any_ownable_location = {
+                integration_level = conquered
+                NOT = {
+                    has_location_modifier = got_seized_location
+                }
+            }
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            any_ownable_location = {
+                integration_level = conquered
+            }
+        }
+    }
+
+    price = price:add_location_to_seize_province_price
+
+    select_trigger = {
+        looking_for_a = location
+        target_flag = target
+        source = actor
+        source_flags = only_actual_locations
+        name = "add_location_to_seize_province"
+        none_available_msg_key = "add_location_to_seize_province_no_locations"
+        column = {
+            data = name
+        }
+        column = {
+            data = population
+        }
+        column = {
+            data = development
+        }
+        visible = {
+            integration_level = conquered
+            NOT = {
+                has_location_modifier = got_seized_location
+            }
+        }
+    }
+
+    effect = {
+        if = {
+            limit = {
+                exists = scope:target
+            }
+            scope:target = {
+                add_location_modifier = {
+                    modifier = got_seized_location
+                    years = 10
+                }
+                random_pop = {
+                    limit = {
+                        NOT = {
+                            religion = owner.dominant_religion
+                            culture = owner.dominant_culture
+                        }
+                    }
+                    save_scope_as = target_pop
+                }
+                destroy_pop = scope:target_pop
+                change_development = {
+                    value = development
+                    multiply = -0.16
+                    min = -20
+                }
+                change_prosperity = {
+                    value = -0.33
+                }
+            }
+            scope:actor = {
+                add_government_power = {
+                    value = scope:target.development
+                    multiply = 0.1
+                    max = 30
+                }
+                add_gold = {
+                    value = scope:target.development
+                    multiply = 3
+                    max = 300
+                }
+                if = {
+                    limit = {
+                        has_variable = current_herd
+                    }
+                    custom_description = {
+                        text = target_location_herd_change
+                        change_variable = {
+                            name = current_herd
+                            add = {
+                                value = scope:target.development
+                                multiply = 2.16
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 50 #Why not?
     }
 }

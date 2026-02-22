@@ -1,13 +1,4 @@
-﻿monthly_country_pulse = {
-    on_actions = {
-        on_dec_cri_c_claim_yedisan
-        on_dec_cri_n_claim_yedisan
-        on_dec_horde_c_sell_herd
-        on_dec_horde_n_sell_herd
-    }
-}
-
-on_dec_cri_c_claim_yedisan = { #Check Requirement
+﻿on_dec_cri_c_claim_yedisan = { #Check Requirement
     trigger = {
         location:teligol = {
             c:TUR ?= owner

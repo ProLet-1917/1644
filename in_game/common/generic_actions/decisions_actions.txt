@@ -832,10 +832,13 @@ Expand_hofburg_palace = {
 
     allow = {
         scope:actor = {
-            has_institution = institution:manufactories
+            has_embraced_institution = institution:manufactories
             OR = {
                 is_leader_of_international_organization = international_organization:hre
-                country_rank >= 3
+                OR = {
+                    country_rank = country_rank:rank_kingdom
+                    country_rank = country_rank:rank_empire
+                }
             }
             capital = location:vienna
         }

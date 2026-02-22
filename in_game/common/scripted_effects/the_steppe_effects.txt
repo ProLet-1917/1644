@@ -1,124 +1,427 @@
 ﻿horde_nations_list_effect = {
-	custom_description = {
-		every_country = {
-   			limit = {
-   				capital = {
-					OR = {
-						region = region:steppes_region
-						region = region:khorasan_region
-						region = region:mongolia_region
-						region = region:xinjiang_region
-						area = area:bursol_area
-						area = area:suzun_area
-						area = area:omsk_area
-						area = area:kulykol_area
-						area = area:bashkiria_area
-						area = area:bolghar_area
-						province_definition = province_definition:samara_province
-						province_definition = province_definition:saratov_province
-						province_definition = province_definition:atkarsk_province
-					}
+	every_country = {
+		limit = {
+			capital = {
+				OR = {
+					region = region:steppes_region
+					region = region:khorasan_region
+					region = region:mongolia_region
+					region = region:xinjiang_region
+					area = area:bursol_area
+					area = area:suzun_area
+					area = area:omsk_area
+					area = area:kulykol_area
+					area = area:bashkiria_area
+					area = area:bolghar_area
+					province_definition = province_definition:samara_province
+					province_definition = province_definition:saratov_province
+					province_definition = province_definition:atkarsk_province
 				}
-				government_type = government_type:steppe_horde
- 			}
-			add_to_global_variable_list = {
-				name = horde_nations_list
-				target = this
 			}
+			government_type = government_type:steppe_horde
+		}
+		add_to_global_variable_list = {
+			name = horde_nations_list
+			target = this
 		}
 	}
 }
 
 horde_nations_list_monthly_check_effect = {
-	custom_description = {
-		clear_global_variable_list = horde_nations_list
-		every_country = {
-   			limit = {
-   				capital = {
-					OR = {
-						region = region:steppes_region
-						region = region:khorasan_region
-						region = region:mongolia_region
-						region = region:xinjiang_region
-						area = area:bursol_area
-						area = area:suzun_area
-						area = area:omsk_area
-						area = area:kulykol_area
-						area = area:bashkiria_area
-						area = area:bolghar_area
-						province_definition = province_definition:samara_province
-						province_definition = province_definition:saratov_province
-						province_definition = province_definition:atkarsk_province
-					}
+	clear_global_variable_list = horde_nations_list
+	every_country = {
+		limit = {
+			capital = {
+				OR = {
+					region = region:steppes_region
+					region = region:khorasan_region
+					region = region:mongolia_region
+					region = region:xinjiang_region
+					area = area:bursol_area
+					area = area:suzun_area
+					area = area:omsk_area
+					area = area:kulykol_area
+					area = area:bashkiria_area
+					area = area:bolghar_area
+					province_definition = province_definition:samara_province
+					province_definition = province_definition:saratov_province
+					province_definition = province_definition:atkarsk_province
 				}
-				government_type = government_type:steppe_horde
- 			}
-			add_to_global_variable_list = {
-				name = horde_nations_list
-				target = this
 			}
+			government_type = government_type:steppe_horde
+		}
+		add_to_global_variable_list = {
+			name = horde_nations_list
+			target = this
+		}
+		set_variable = {
+			name = temp_monthly_horde_check
+			days = 10
 		}
 	}
 }
 
 start_herd_check_effect = {
-	custom_description = {
+	every_country = {
+		limit = {
+			uses_government_power = horde_unity
+		}
+		set_variable = {
+			name = current_herd
+			value = 0
+		}
+		clamp_variable = {
+			name = current_herd
+			max = 100000
+			min = -100000
+		}
+		set_variable = {
+			name = herd_monthly_change
+			value = 0
+		}
+		set_variable = {
+			name = herd_monthly_income
+			value = 0
+		}
+		set_variable = {
+			name = herd_natural_decay
+			value = 0
+		}
+		set_variable = {
+			name = herd_from_locations
+			value = 0
+		}
+		set_variable = {
+			name = herd_decay_from_corruption
+			value = 0
+		}
+	}
+	while = {
+		count = 12
 		every_country = {
-   			limit = {
-   				capital = {
-					OR = {
-						region = region:steppes_region
-						region = region:khorasan_region
-						region = region:mongolia_region
-						region = region:xinjiang_region
-						area = area:bursol_area
-						area = area:suzun_area
-						area = area:omsk_area
-						area = area:kulykol_area
-						area = area:bashkiria_area
-						area = area:bolghar_area
-						province_definition = province_definition:samara_province
-						province_definition = province_definition:saratov_province
-						province_definition = province_definition:atkarsk_province
+			limit = {
+				has_variable = current_herd
+				uses_government_power = horde_unity
+			}
+			change_variable = {
+				name = herd_monthly_change
+				subtract = {
+					value = var:herd_monthly_change
+				}
+			}
+			change_variable = {
+				name = herd_monthly_income
+				subtract = {
+					value = var:herd_monthly_income
+				}
+			}
+			change_variable = {
+				name = herd_natural_decay
+				subtract = {
+					value = var:herd_natural_decay
+				}
+			}
+			change_variable = {
+				name = herd_from_locations
+				subtract = {
+					value = var:herd_from_locations
+				}
+			}
+			change_variable = {
+				name = herd_decay_from_corruption
+				subtract = {
+					value = var:herd_decay_from_corruption
+				}
+			}
+			change_variable = {
+				name = herd_monthly_income
+				add = {
+					value = monthly_income_trade_and_tax
+					multiply = 0.33
+				}
+			}
+			if = {
+				limit = {
+					pop_type_population_in_country = {
+						pop_type = pop_type:herdsman
+						value >= 0
 					}
 				}
-				government_type = government_type:steppe_horde
- 			}
-			set_variable = {
+				change_variable = {
+					name = herd_from_locations
+					add = {
+						value = total_control_scaled_population
+						multiply = percentage_pop_type_in_country:herdsman
+						multiply = 0.5
+					}
+				}
+			}
+			change_variable = {
 				name = current_herd
-				value = 50
-				max = 100000
-				min = 0
+				add = {
+					value = var:herd_monthly_income
+				}
+			}
+			change_variable = {
+				name = current_herd
+				add = {
+					value = var:herd_from_locations
+				}
+			}
+			if = {
+				limit = {
+					var:current_herd >= 0
+				}
+				change_variable = {
+					name = herd_natural_decay
+					add = {
+						value = var:current_herd
+						multiply = 0.01
+					}
+				}
+				change_variable = {
+					name = herd_decay_from_corruption
+					add = {
+						value = var:current_herd
+						multiply = total_control_scaled_population
+						divide = total_population
+						multiply = 0.05
+					}
+				}
+			}
+			change_variable = {
+				name = current_herd
+				subtract = {
+					value = var:herd_natural_decay
+				}
+			}
+			change_variable = {
+				name = current_herd
+				subtract = {
+					value = var:herd_decay_from_corruption
+				}
+			}
+			change_variable = {
+				name = herd_monthly_change
+				add = {
+					value = var:herd_monthly_income
+				}
+			}
+			change_variable = {
+				name = herd_monthly_change
+				add = {
+					value = var:herd_from_locations
+				}
+			}
+			change_variable = {
+				name = herd_monthly_change
+				subtract = {
+					value = var:herd_natural_decay
+				}
+			}
+			change_variable = {
+				name = herd_monthly_change
+				subtract = {
+					value = var:herd_decay_from_corruption
+				}
+			}
+			set_variable = {
+				name = temp_monthly_herd_check
+				days = 10
 			}
 		}
 	}
 }
-
 monthly_herd_check_effect = {
-	custom_description = {
-		every_country = {
-   			limit = {
-   				has_variable = current_herd
- 			}
-			change_variable = {
-				name = current_herd
-				add = {
-					value = monthly_income_trade_and_tax
-					multiply = 0.002
+	every_country = {
+		limit = {
+			has_variable = current_herd
+			uses_government_power = horde_unity
+		}
+		change_variable = {
+			name = herd_monthly_change
+			subtract = {
+				value = var:herd_monthly_change
+			}
+		}
+		change_variable = {
+			name = herd_monthly_income
+			subtract = {
+				value = var:herd_monthly_income
+			}
+		}
+		change_variable = {
+			name = herd_natural_decay
+			subtract = {
+				value = var:herd_natural_decay
+			}
+		}
+		change_variable = {
+			name = herd_from_locations
+			subtract = {
+				value = var:herd_from_locations
+			}
+		}
+		change_variable = {
+			name = herd_decay_from_corruption
+			subtract = {
+				value = var:herd_decay_from_corruption
+			}
+		}
+		change_variable = {
+			name = herd_monthly_income
+			add = {
+				value = monthly_income_trade_and_tax
+				multiply = 0.33
+			}
+		}
+		if = {
+			limit = {
+				pop_type_population_in_country = {
+					pop_type = pop_type:herdsman
+					value >= 0
 				}
 			}
-			#round_variable = { 
-			#	name = current_herd 
-			#	nearest = var:current_herd 
-			#} #Round the var
-			#set_variable = {
-			#	name = current_herd
-			#	value = {
-			#		value = var:current_herd
-			#		ceiling = yes
-			#	}
-			#}
+			change_variable = {
+				name = herd_from_locations
+				add = {
+					value = total_control_scaled_population
+					multiply = percentage_pop_type_in_country:herdsman
+					multiply = 0.5
+				}
+			}
 		}
+		change_variable = {
+			name = current_herd
+			add = {
+				value = var:herd_monthly_income
+			}
+		}
+		change_variable = {
+			name = current_herd
+			add = {
+				value = var:herd_from_locations
+			}
+		}
+		if = {
+			limit = {
+				var:current_herd >= 0
+			}
+			change_variable = {
+				name = herd_natural_decay
+				add = {
+					value = var:current_herd
+					multiply = 0.01
+				}
+			}
+			change_variable = {
+				name = herd_decay_from_corruption
+				add = {
+					value = var:current_herd
+					multiply = total_control_scaled_population
+					divide = total_population
+					multiply = 0.05
+				}
+			}
+		}
+		change_variable = {
+			name = current_herd
+			subtract = {
+				value = var:herd_natural_decay
+			}
+		}
+		change_variable = {
+			name = current_herd
+			subtract = {
+				value = var:herd_decay_from_corruption
+			}
+		}
+		change_variable = {
+			name = herd_monthly_change
+			add = {
+				value = var:herd_monthly_income
+			}
+		}
+		change_variable = {
+			name = herd_monthly_change
+			add = {
+				value = var:herd_from_locations
+			}
+		}
+		change_variable = {
+			name = herd_monthly_change
+			subtract = {
+				value = var:herd_natural_decay
+			}
+		}
+		change_variable = {
+			name = herd_monthly_change
+			subtract = {
+				value = var:herd_decay_from_corruption
+			}
+		}
+		set_variable = {
+			name = temp_monthly_herd_check
+			days = 10
+		}
+		#round_variable = {
+		#	name = current_herd
+		#	nearest = var:current_herd
+		#} #Round the var
+		#set_variable = {
+		#	name = current_herd
+		#	value = {
+		#		value = var:current_herd
+		#		ceiling = yes
+		#	}
+		#}
+	}
+	every_country = {
+		limit = {
+			uses_government_power = horde_unity
+			NOT = { has_variable = current_herd }
+		}
+		set_variable = {
+			name = current_herd
+			value = 25
+		}
+		clamp_variable = {
+			name = current_herd
+			max = 100000
+			min = -100000
+		}
+		set_variable = {
+			name = herd_monthly_change
+			value = 0
+		}
+		set_variable = {
+			name = herd_monthly_income
+			value = 0
+		}
+		set_variable = {
+			name = herd_natural_decay
+			value = 0
+		}
+		set_variable = {
+			name = herd_from_locations
+			value = 0
+		}
+		set_variable = {
+			name = herd_decay_from_corruption
+			value = 0
+		}
+	}
+	every_country = {
+		limit = {
+			NOT = { uses_government_power = horde_unity }
+			has_variable = current_herd
+		}
+		remove_variable = current_herd
+		remove_variable = herd_monthly_change
+		remove_variable = herd_monthly_income
+		remove_variable = herd_natural_decay
+		remove_variable = herd_from_locations
+		remove_variable = herd_decay_from_corruption
 	}
 }
 
