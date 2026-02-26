@@ -110,6 +110,21 @@ give_reformation_institutions = {
 	}
 }
 
+give_global_trade_institutions = {
+	every_owned_location = {
+		change_institution_progress = {
+			type = institution:global_trade
+			value = 20
+		}
+	}
+	capital = {
+		change_institution_progress = {
+			type = institution:global_trade
+			value = 100
+		}
+	}
+}
+
 # 给予军事革命思潮
 give_military_revolution_institution = {
 	every_owned_location = {
@@ -205,14 +220,31 @@ give_institutions_by_tech_level = {
 		# 等级3：Age 3 思潮
 		if = {
 			limit = { var:start_tech_lv_1644 >= 3 }
-			# 判断是否为欧洲地区且不是奥斯曼（只有欧洲包含新大陆，但奥斯曼除外）
+			# ）
 			if = {
 				limit = { 
-					exists = capital 
-					capital.continent = continent:europe
+					exists = capital
+					OR = {
+						capital.continent = continent:europe
+					}
 					NOT = { tag = TUR } # 奥斯曼不包含新大陆
 				}
 				give_discovery_institutions = yes
+			}
+			else_if = {
+				limit = {
+					OR = {
+						tag = NEN
+						tag = NFR
+						tag = WIC
+						tag = NSV
+						tag = NSP
+						tag = VOP
+						tag = VOB
+					}
+				}
+				give_discovery_institutions = yes
+				give_global_trade_institutions = yes
 			}
 			else = {
 				# 其他地区（包括中国、奥斯曼等）不含新大陆

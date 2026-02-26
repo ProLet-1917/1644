@@ -599,7 +599,14 @@ flavor_zaz.2000 = { #A men called Bohdan Khmelnytsky asking for help
 			modifier = under_the_chmielnicki_leader
 			years = 5
 		}
-		add_gold = 360
+		add_gold = 480
+		custom_description = {
+			text = "add_2000_herds"
+			change_variable = {
+				name = current_herd
+				add = 2000
+			}
+		}
 		add_manpower = 2500
 		set_global_variable = rise_of_chemielnicki
 		c:PLC = {

@@ -66,7 +66,13 @@ protestant_union = {
 	}
 	join_defensive_wars_always = { always = yes }
 	#Gets dismantled via an event at the end of the situation
-	auto_disband_trigger = { always = no }
+	auto_disband_trigger = {
+		current_year > 1700
+		NOT = {
+			is_situation_active = situation:thirty_years_war
+			is_situation_active = situation:peace_talk_in_westphalia
+		}
+	}
 	monthly_effect = {
 		if = {
 			limit = { international_organization_has_leader = no }
@@ -299,7 +305,13 @@ catholic_league = {
 	}
 	join_defensive_wars_always = { always = yes }
 	#Gets dismantled via an event at the end of the situation
-	auto_disband_trigger = { always = no }
+	auto_disband_trigger = {
+		current_year > 1700
+		NOT = {
+			is_situation_active = situation:thirty_years_war
+			is_situation_active = situation:peace_talk_in_westphalia
+		}
+	}
 	monthly_effect = {
 		if = {
 			limit = { international_organization_has_leader = no }

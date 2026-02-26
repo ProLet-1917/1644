@@ -2,7 +2,9 @@ levy_cossack_infantry = {
     size = 0.03
 
     allow = {
-        culture = culture:cossack_culture
+        culture = {
+            has_culture_group = culture_group:cossack_group
+        }
     }
 
     allowed_pop_type = peasants
@@ -17,7 +19,9 @@ levy_cossack_cavalry = {
     size = 0.15
 
     allow = {
-        culture = culture:cossack_culture
+        culture = {
+            has_culture_group = culture_group:cossack_group
+        }
     }
 
     allowed_pop_type = nobles

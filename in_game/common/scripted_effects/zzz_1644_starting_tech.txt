@@ -68,10 +68,22 @@ research_advances_by_level = {
 }
 
 set_starting_tech_level_by_region = {
-	# 酋邦政府类型 = 0级
+	# 酋邦政府类型 = 1级
 	if = {
 		limit = {
 			government_type = government_type:tribe
+			NOT = {
+				country_type = pop
+			}
+		}
+		set_variable = { name = start_tech_lv_1644 value = 1 }
+		research_advances_by_level = no
+	}
+	#
+	else_if = {
+		limit = {
+			government_type = government_type:tribe
+			country_type = pop
 		}
 		set_variable = { name = start_tech_lv_1644 value = 0 }
 		research_advances_by_level = no
@@ -93,17 +105,18 @@ set_starting_tech_level_by_region = {
 				capital.region = region:east_china_region
 				capital.region = region:japan_region
 				capital.region = region:korea_region
+				capital.region = region:manchuria_region
 			}
 		}
 		set_variable = { name = start_tech_lv_1644 value = 3 }
 		research_advances_by_level = yes
 	}
-	# 其他中国地区 = 1级
+	# 其他中国地区 = 2级
 	else_if = {
 		limit = {
 			capital ?= { sub_continent = sub_continent:east_asia }
 		}
-		set_variable = { name = start_tech_lv_1644 value = 1 }
+		set_variable = { name = start_tech_lv_1644 value = 2 }
 		research_advances_by_level = yes
 	}
 	#  - 
@@ -114,12 +127,12 @@ set_starting_tech_level_by_region = {
 		set_variable = { name = start_tech_lv_1644 value = 4 }
 		research_advances_by_level = yes
 	}
-	# 游牧政府类型 = 1级
+	# 游牧政府类型 = 2级
 	else_if = {
 		limit = {
 			government_type = government_type:steppe_horde
 		}
-		set_variable = { name = start_tech_lv_1644 value = 1 }
+		set_variable = { name = start_tech_lv_1644 value = 2 }
 		research_advances_by_level = yes
 	}
 	# 高加索地区 = 2级
@@ -131,7 +144,7 @@ set_starting_tech_level_by_region = {
 		set_variable = { name = start_tech_lv_1644 value = 2 }
 		research_advances_by_level = yes
 	}
-	# 乌拉尔、大草原地区 = 1级
+	# 乌拉尔、大草原地区 = 2级
 	else_if = {
 		limit = {
 			exists = capital
@@ -140,7 +153,7 @@ set_starting_tech_level_by_region = {
 				capital.region = region:steppes_region
 			}
 		}
-		set_variable = { name = start_tech_lv_1644 value = 1 }
+		set_variable = { name = start_tech_lv_1644 value = 2 }
 		research_advances_by_level = yes
 	}
 	#  
@@ -187,6 +200,22 @@ set_starting_tech_level_by_region = {
 	else_if = {
 		limit = {
 			capital ?= { sub_continent = sub_continent:north_africa }
+		}
+		set_variable = { name = start_tech_lv_1644 value = 3 }
+		research_advances_by_level = yes
+	}
+	#
+	else_if = {
+		limit = {
+			OR = {
+				tag = NEN
+				tag = NFR
+				tag = WIC
+				tag = NSV
+				tag = NSP
+				tag = VOP
+				tag = VOB
+			}
 		}
 		set_variable = { name = start_tech_lv_1644 value = 3 }
 		research_advances_by_level = yes

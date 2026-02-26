@@ -266,7 +266,7 @@ become_horde_nation = {
         scope:actor = {
             NOT = {
                 uses_government_power = horde_unity
-                country_rank = country_rank:rank_kingdom
+                #country_rank = country_rank:rank_kingdom
                 country_rank = country_rank:rank_empire
             }
             has_presence_in = scripted_geography:steppe_geography
@@ -286,7 +286,7 @@ become_horde_nation = {
     automation_tick = never
     automation_tick_frequency = 12
     ai_tick = monthly
-    ai_tick_frequency = 12
+    ai_tick_frequency = 6
     price = price:become_horde_nation_price
 
     cooldown = {
@@ -435,13 +435,21 @@ seize_province = {
                         has_variable = current_herd
                     }
                     custom_description = {
-                        text = target_location_herd_change
+                        text = "target_location_herd_change"
                         change_variable = {
                             name = current_herd
                             add = {
                                 value = scope:target.development
                                 multiply = 2.16
                             }
+                        }
+                        set_variable = {
+                            name = the_herd_we_gets
+                            value = {
+                                value = scope:target.development
+                                multiply = 2.16
+                            }
+                            days = 1
                         }
                     }
                 }

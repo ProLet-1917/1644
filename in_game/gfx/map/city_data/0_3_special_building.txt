@@ -54,6 +54,14 @@ mesh_list =
 	building_uppsala_cathedral_mesh = 1
 }
 
+mesh_list =
+{
+	name = "monuments_saint_mark_basilica_mesh"
+	scale_settings_large = { bias = 0 min = 0.5 max = 0.8 }
+	should_spawn_flags = no
+	building_saint_mark_basilica_mesh = 1
+}
+
 template unique_buildings
 {
 	code =
@@ -187,6 +195,29 @@ template unique_buildings
 			weight_func = close_to_center_weights
 
 			allow_demote = no
+		}
+
+		A03_saint_mark_basilica = {
+			only_in_location = venice
+			order = 0
+			size = large
+			mesh_list = monuments_saint_mark_basilica_mesh
+			contributors =
+			{
+				always_one = 1.0
+			}
+			filter_func = closest_to_position
+			weight_func = close_to_center_weights
+
+			filter_data = { 8261.55500 2.50000 5979.53500 }
+
+			allow_demote = no
+
+			link_tooltip =
+			{
+				type = work_of_art
+				data = saint_mark_basilica
+			}
 		}
 
 	]]
