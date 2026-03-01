@@ -1,0 +1,50 @@
+pasture = {
+    is_foreign = no
+    max_levels = herdsman_building_cap
+    pop_type = herdsman
+
+    category = herds_category
+    employment_size = herdsman_employment_size
+
+    rural_settlement = yes
+    town = yes
+
+    build_time = herdsman_build_time
+
+    unique_production_methods = {
+        mainly_produce_livestock = {
+            livestock = 0.3
+            wheat = 0.2
+
+            output = 1.2
+
+            produced = livestock
+
+            category = building_maintenance
+        }
+
+        mainly_produce_horses = {
+            horses = 0.3
+            wheat = 0.2
+
+            output = 0.8
+
+            produced = horses
+
+            category = building_maintenance
+        }
+
+        mainly_produce_wools = {
+            wool = 0.3
+            wheat = 0.2
+
+            output = 1.0
+
+            produced = wool
+
+            category = building_maintenance
+        }
+    }
+
+    construction_demand = herdsman_construction
+}

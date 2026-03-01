@@ -88,7 +88,9 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
-			ruler = random
+			ruler = jap_tokugawa_iemitsu
+
+			ruler_term = { character = jap_tokugawa_iemitsu start_date = 1623.1.1 }
 			
 			reforms = {
 				shogunate
@@ -107,6 +109,9 @@ countries = {
 		country_rank = rank_empire
 		capital = toshima_kanto
 		starting_technology_level = 3
+		country_name = "TOK"
+		flag = JAP_tokugawa
+		dynasty = tokugawa_dynasty
 	}
 	
 	##Touhoku
@@ -417,18 +422,31 @@ countries = {
 	}
 
 	##Kinkiku
-	JIC = { #Kuge
+	JIC = {
+		#Kuge
 		own_control_core = {
 			kyoto
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			inherit_ruler_terms = YMT
+
+			ruler = jic_go_komyo_tenno
+			ruler_term = { character = jic_go_mizunoo_tenno start_date = 1611.5.9 end_date = 1629.12.22 }
+			ruler_term = { character = jic_meisho_tenno start_date = 1629.12.22 end_date = 1643.11.14 }
+			ruler_term = { character = jic_go_komyo_tenno start_date = 1643.11.14 }
+
+			reforms = {
+				japanese_imperial_family
+			}
 		}
 		capital = kyoto  # Capital
-		starting_technology_level = 3  
+		starting_technology_level = 3
+		flag = "JAP_monarchy"
 		country_rank = rank_empire
-		}
+	}
 
 	UMY = { #Udamatsuyama
 		own_control_core = {
@@ -1656,7 +1674,6 @@ countries = {
 		capital = mann
 
 		tolerated_cultures = { english }
-		country_rank = rank_county
 		starting_technology_level = 3
 	}
 	
@@ -2430,7 +2447,6 @@ countries = {
 			avignon
 		}
 
-		starting_technology_level = 3
 		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
@@ -2463,7 +2479,6 @@ countries = {
 			la_tour_du_pin 
 		}
 
-		starting_technology_level = 3
 		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
@@ -2494,7 +2509,6 @@ countries = {
 			orleans chartres blois beaugency chateaudun romorantin st_aignan
 		}
 
-		starting_technology_level = 3
 		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
@@ -2528,7 +2542,6 @@ countries = {
 			vannes hennebont josselin ploermel redon rohan
 		}
 
-		starting_technology_level = 3
 		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
@@ -2581,7 +2594,6 @@ countries = {
 		own_control_core = {
 			vic_le_comte
 		}
-		starting_technology_level = 3
 		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
@@ -2615,7 +2627,6 @@ countries = {
 			# own_control_integrated, but culture accepted
 			clermont_en_beauvaisis #C. Clermont-en-Beauvaisis
 		}
-		starting_technology_level = 3
 		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
@@ -2653,7 +2664,6 @@ countries = {
 		own_control_core = {
 			oloron orthez pau #Vic. of Béarn
 		}
-		starting_technology_level = 3
 		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
@@ -2686,7 +2696,7 @@ countries = {
 		own_control_core = {
 			foix pamiers
 		}
-		starting_technology_level = 3
+
 		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
@@ -2758,7 +2768,6 @@ countries = {
 			nevers cercy chateau_chinon donzy montreuillon st_pierre_de_moutier
 		}
 
-		starting_technology_level = 3
 		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy

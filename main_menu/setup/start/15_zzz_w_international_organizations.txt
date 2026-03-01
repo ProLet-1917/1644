@@ -245,4 +245,992 @@ international_organization_manager = {
 
 		dominion_of_empire = { STE }
 	}
+	#################################################################
+	# 				Japanese Shogunate								#
+	#################################################################
+	add_international_organization = {
+		type = japanese_shogunate
+		creation_date = 1603.1.1
+		members = {
+			JAP
+			#Emperors
+			JIC
+			#Daimyos
+			MTU HRO MRO AKA KMD HNJ SHI SDA KMI YON AIZ NIH SMN HAR SRK TAG UMY TOB KSU KBE
+			ATU NSJ AKO HYS SIS AOK TYK IZS TNB MDU FKY YME SNE HCU YUC UWJ ODZ MEK KNR GJO
+			OWR SNX SGV SZA ZOG MTV KRY KRB OBX CYY TUW HMW HLS NWE AMV VYM XTY TTI STM OBI
+			TKB HIY NBK QMM SGQ OOR FQE QRT HRV ZSM FOK YGW QRM QMR FNA OQA VSQ SYQ HYJ JIC
+			SNB NKB
+		}
+
+		japanese_emperor = {
+			JIC
+		}
+
+		shugo_daimyo = {
+			MTU HRO MRO AKA KMD HNJ SHI SDA KMI YON AIZ NIH SMN HAR SRK TAG UMY TOB KSU KBE
+			ATU NSJ AKO HYS SIS AOK TYK IZS TNB MDU FKY YME SNE HCU YUC UWJ ODZ MEK KNR GJO
+			OWR SNX SGV SZA ZOG MTV KRY KRB OBX CYY TUW HMW HLS NWE AMV VYM XTY TTI STM OBI
+			TKB HIY NBK QMM SGQ OOR FQE QRT HRV ZSM FOK YGW QRM QMR FNA OQA VSQ SYQ HYJ JIC
+			SNB NKB
+		}
+
+		leader = JAP
+
+		laws = {
+			appointed_posts_policy
+			sakoku_enabled
+		}
+		areas = {
+			hokurikudou_area kinai_area nankaidou_area saikaidou_area sanindou_area sanyoudou_area ou_area toukaidou_area tousandou_area
+		}
+
+		variables = {
+			shoguns_authority = 75
+		}
+	}
+
+	#################################################################
+	# 				Shinto											#
+	#################################################################
+	add_international_organization = {
+		type = shinto
+		creation_date = 539.12.5
+		members = {
+			JAP
+			JIC
+			MTU HRO MRO AKA KMD HNJ SHI SDA KMI YON AIZ NIH SMN HAR SRK TAG UMY TOB KSU KBE
+			ATU NSJ AKO HYS SIS AOK TYK IZS TNB MDU FKY YME SNE HCU YUC UWJ ODZ MEK KNR GJO
+			OWR SNX SGV SZA ZOG MTV KRY KRB OBX CYY TUW HMW HLS NWE AMV VYM XTY TTI STM OBI
+			TKB HIY NBK QMM SGQ OOR FQE QRT HRV ZSM FOK YGW QRM QMR FNA OQA VSQ SYQ HYJ JIC
+			SNB NKB
+		}
+	}
+
+	#################################################################
+	# 				Autocephalous Patriarchates						#
+	#################################################################
+	add_international_organization = {
+		type = autocephalous_patriarchate
+		creation_date = 330.1.1
+		members = {
+			WAL MOL ZAZ CIR KDA ABH GEO AAI
+		}
+		variables = {
+			religion = religion:orthodox
+			seat = location:constantinople
+		}
+		laws = {
+			dual_nature
+			high_christology
+			byzantine_rites
+			accept_essence_tenet
+			accept_person_tenet
+			accept_prosopon_tenet
+			allow_christological_debates_tenet
+		}
+	}
+
+	add_international_organization = {
+		type = autocephalous_patriarchate
+		creation_date = 330.1.1
+		members = {
+			RUS ERK
+		}
+		variables = {
+			religion = religion:orthodox
+			seat = location:moscow
+		}
+		laws = {
+			dual_nature
+			high_christology
+			byzantine_rites
+			accept_essence_tenet
+			accept_person_tenet
+			accept_prosopon_tenet
+			allow_christological_debates_tenet
+		}
+	}
+
+	add_international_organization = {
+		type = autocephalous_patriarchate
+		creation_date = 451.1.1
+		members = { ETH }
+		variables = {
+			religion = religion:miaphysite
+			seat = location:alexandria
+		}
+		laws = {
+			composite_nature
+			high_christology
+			local_traditions_and_rites
+			accept_essence_tenet
+			accept_person_tenet
+			accept_prosopon_tenet
+			allow_christological_debates_tenet
+			allow_double_sabbath_tenet
+		}
+	}
+
+	#################################################################
+	# 					Tribal Confederation						#
+	#################################################################
+	add_international_organization = {
+		type = tribal_confederation
+		creation_date = 796.1.1
+		members = { OJI BDK ODW }
+	}
+
+	add_international_organization = {
+		type = tribal_confederation
+		creation_date = 1142.1.1
+		members = { ONO KKA ONY GYO ONN }
+	}
+
+	#################################################################
+	# 							Sects								#
+	#################################################################
+
+	add_international_organization = { #Confucianism
+		type = sect
+		creation_date = 1.1.1
+		members = {
+			MNG CSH CXI
+		}
+		laws = {
+			confucianism_policy
+		}
+		icon = confucianism
+		variables = {
+			sect_favor = 70
+			religion = religion:mahayana
+		}
+		areas = {
+			#North China
+			henan_area hebei_area shandong_area haiyou_area
+			#Korea except the northen part
+			gwanseo_area gwandong_area yeongnam_area gyeonggi_area honam_area haeseo_area hoseo_area
+			#East China except Taiwan
+			fujian_area hubei_area hunan_area wuling_area jiangxi_area huaixi_area huaidong_area jiangnan_area zhejiang_area
+			#Japan
+			hokurikudou_area kinai_area nankaidou_area saikaidou_area sanindou_area sanyoudou_area ou_area toukaidou_area tousandou_area
+		}
+		provinces = {
+			#Parts of Beizhili
+			anzhou_province baoan_province baoding_province bazhou_province qingchi changping_province daming_province
+			dingzhou_province guangping_province hejian_province jingzhou_beizhili_province jizhou_province jizhou_zhending_province
+			kaizhou_province luanzhou_province qingzhou_beizhili_province qizhou_province shenzhou_province shunde_province shuntian_province
+			tongzhou_beizhili_province wanquan_province xingzhou_province yizhou_province yongping_province zhaozhou_province zhending_province
+			#Parts of Shanxi
+			baode_province daizhou_province datong_province fenzhou_province huozhou_province jiangzhou_province kelan_province
+			liaozhou_province luan_province pingding_province pingyang_province puzhou_shanxi_province qinzhou_province
+			shizhou_shanxi_province taiyuan_province xiezhou_province xinzhou_province xizhou_province yingzhou_shanxi_province
+			yuzhou_shanxi_province zezhou_province
+			#Parts of Huguang area
+			anlu_province baoqing_province changde_province changsha_province chenzhou_province dean_province
+			fangzhou_province guiyang_province hanyang_province hengzhou_province
+			huangzhou_province jingmen_province jingzhou_province junzhou_province mianyang_province suizhou_province
+			wuchang_province xiangxiang_province xiangyang_province xingguo_province
+			yongzhou_province youzhou_province yuezhou_province
+			#Parts of Gansu area
+			ganzhou_gansu_province xining_province yongchang_gansu_province
+			#Parts of Sichuan
+			baoning_province bazhou_sichuan_province changning_province changzhou_sichuan_province chengdu_province
+			chongqing_province dazhou_province fuzhou_sichuan_province guangan_province guangyuan_province hanzhou_province
+			hezhou_sichuan_province jianzhou_province jianzhou_west_province kuizhou_province longan_province
+			luzhou_sichuan_province meizhou_province pengzhou_province qiongzhou_sichuan_province shunqing_province	suining_province
+			tongchuan_province xuzhou_sichuan_province
+			#Parts of Guanxi
+			rongzhou_wuzhou_province tengzhou_guangxi_province
+			xunzhou_province yulin_guangxi_province
+			#Shaanxi parts
+			binzhou_shaanxi_province fengxiang_province fengzhou_province fuzhou_shaanxi_province gongchang_province hanzhong_province
+			huizhou_shaanxi_province huazhou_shaanxi_province jiazhou_province jiezhou_province jingzhou_shaanxi_province lintao_province
+			minzhou_province ningxia_province pingliang_province qianzhou_province qingyang_province qinzhou_shaanxi_province shangzhou_province
+			suide_province tongzhou_shaanxi_province xian_province xingan_province yanan_province yangzhou_shaanxi_province yaozhou_province
+			yulin_province
+			#Guangdong parts
+			chaozhou_province deqing_province dongguan_province gaozhou_province guangzhou_province heyuan_province huazhou_province
+			huizhou_guangdong_province leizhou_province lianzhou_province nanen_province nanxiong_province panyu_province
+			shaozhou_province xinhui_province xunzhou_guangdong_province yingde_province zhaoqing_province
+			#North Vietnam
+			hai_dong_province nam_sach_province nghe_an_province
+			thang_long_province thien_truong_province
+		}
+	}
+
+	add_international_organization = { #Daoism
+		type = sect
+		creation_date = 1.1.1
+		members = {
+
+		}
+		laws = {
+			daoism_policy
+		}
+		icon = daoism
+		variables = {
+			sect_favor = 60
+			religion = religion:mahayana
+		}
+
+		regions = { north_china_region }
+		areas = {
+			#East China except Taiwan
+			fujian_area hubei_area hunan_area wuling_area jiangxi_area huaixi_area huaidong_area jiangnan_area zhejiang_area
+			#Shouth China except Yunnan
+			guangdong_area haibei_hainan_area guangxi_area liangjiang_area guizhou_area
+			#Sichuan
+			chuanxi_area chuandong_area chuannan_area
+		}
+		provinces = {
+			#Parts of Shaanxi
+			binzhou_shaanxi_province fengxiang_province fengzhou_province fuzhou_shaanxi_province gongchang_province hanzhong_province
+			huizhou_shaanxi_province huazhou_shaanxi_province jiazhou_province jiezhou_province jingzhou_shaanxi_province lintao_province
+			minzhou_province ningxia_province pingliang_province qianzhou_province qingyang_province qinzhou_shaanxi_province shangzhou_province
+			suide_province tongzhou_shaanxi_province xian_province xingan_province yanan_province yangzhou_shaanxi_province yaozhou_province
+			yulin_province
+			#Parts of Guanxi
+			rongzhou_wuzhou_province tengzhou_guangxi_province
+			xunzhou_province yulin_guangxi_province
+		}
+	}
+
+	add_international_organization = { #Pure Land Buddhism
+		type = sect
+		creation_date = 1.1.1
+		icon = pure_land_school
+		members = {
+			LNG
+		}
+		laws = {
+			pure_land_school_policy
+		}
+		variables = {
+			sect_favor = 70
+			religion = religion:mahayana
+		}
+		areas = {
+			#North China
+			henan_area hebei_area shandong_area haiyou_area
+			#Korea except the northen part
+			gwanseo_area gwandong_area yeongnam_area gyeonggi_area honam_area haeseo_area hoseo_area
+			#East China except Taiwan
+			fujian_area hubei_area hunan_area wuling_area jiangxi_area huaixi_area huaidong_area jiangnan_area zhejiang_area
+			#Japan
+			hokurikudou_area kinai_area nankaidou_area saikaidou_area sanindou_area sanyoudou_area ou_area toukaidou_area tousandou_area
+		}
+		provinces = {
+			#Parts of Beizhili
+			anzhou_province baoan_province baoding_province bazhou_province qingchi changping_province daming_province
+			dingzhou_province guangping_province hejian_province jingzhou_beizhili_province jizhou_province jizhou_zhending_province
+			kaizhou_province luanzhou_province qingzhou_beizhili_province qizhou_province shenzhou_province shunde_province shuntian_province
+			tongzhou_beizhili_province wanquan_province xingzhou_province yizhou_province yongping_province zhaozhou_province zhending_province
+			#Parts of Shanxi
+			baode_province daizhou_province datong_province fenzhou_province huozhou_province jiangzhou_province kelan_province
+			liaozhou_province luan_province pingding_province pingyang_province puzhou_shanxi_province qinzhou_province
+			shizhou_shanxi_province taiyuan_province xiezhou_province xinzhou_province xizhou_province yingzhou_shanxi_province
+			yuzhou_shanxi_province zezhou_province
+			#Parts of Huguang area
+			anlu_province baoqing_province changde_province changsha_province chenzhou_province dean_province
+			fangzhou_province guiyang_province hanyang_province hengzhou_province
+			huangzhou_province jingmen_province jingzhou_province junzhou_province mianyang_province suizhou_province
+			wuchang_province xiangxiang_province xiangyang_province xingguo_province
+			yongzhou_province youzhou_province yuezhou_province
+			#Parts of Gansu area
+			ganzhou_gansu_province xining_province yongchang_gansu_province
+			#Parts of Sichuan
+			baoning_province bazhou_sichuan_province changning_province changzhou_sichuan_province chengdu_province
+			chongqing_province dazhou_province fuzhou_sichuan_province guangan_province guangyuan_province hanzhou_province
+			hezhou_sichuan_province jianzhou_province jianzhou_west_province kuizhou_province longan_province
+			luzhou_sichuan_province meizhou_province pengzhou_province qiongzhou_sichuan_province shunqing_province	suining_province
+			tongchuan_province xuzhou_sichuan_province
+			#Parts of Guanxi
+			rongzhou_wuzhou_province tengzhou_guangxi_province
+			xunzhou_province yulin_guangxi_province
+			#Shaanxi parts
+			binzhou_shaanxi_province fengxiang_province fengzhou_province fuzhou_shaanxi_province gongchang_province hanzhong_province
+			huizhou_shaanxi_province huazhou_shaanxi_province jiazhou_province jiezhou_province jingzhou_shaanxi_province lintao_province
+			minzhou_province ningxia_province pingliang_province qianzhou_province qingyang_province qinzhou_shaanxi_province shangzhou_province
+			suide_province tongzhou_shaanxi_province xian_province xingan_province yanan_province yangzhou_shaanxi_province yaozhou_province
+			yulin_province
+			#Guangdong parts
+			chaozhou_province deqing_province dongguan_province gaozhou_province guangzhou_province heyuan_province huazhou_province
+			huizhou_guangdong_province leizhou_province lianzhou_province nanen_province nanxiong_province panyu_province
+			shaozhou_province xinhui_province xunzhou_guangdong_province yingde_province zhaoqing_province
+			#North Vietnam
+			hai_dong_province nam_sach_province nghe_an_province
+			thang_long_province thien_truong_province
+		}
+	}
+
+	add_international_organization = { #Tiantai (Lotus School)
+		type = sect
+		creation_date = 550.1.1
+		icon = tiantai_buddhism
+		members = {
+
+		}
+		laws = {
+			tiantai_policy
+		}
+		variables = {
+			sect_favor = 50
+			religion = religion:mahayana
+		}
+		areas = {
+			#North China
+			henan_area hebei_area shandong_area haiyou_area
+			#Korea except the northen part
+			gwanseo_area gwandong_area yeongnam_area gyeonggi_area honam_area haeseo_area hoseo_area
+			#East China except Taiwan
+			fujian_area hubei_area hunan_area wuling_area jiangxi_area huaixi_area huaidong_area jiangnan_area zhejiang_area
+		}
+		provinces = {
+			#Parts of Beizhili
+			anzhou_province baoan_province baoding_province bazhou_province qingchi changping_province daming_province
+			dingzhou_province guangping_province hejian_province jingzhou_beizhili_province jizhou_province jizhou_zhending_province
+			kaizhou_province luanzhou_province qingzhou_beizhili_province qizhou_province shenzhou_province shunde_province shuntian_province
+			tongzhou_beizhili_province wanquan_province xingzhou_province yizhou_province yongping_province zhaozhou_province zhending_province
+			#Parts of Shanxi
+			baode_province daizhou_province datong_province fenzhou_province huozhou_province jiangzhou_province kelan_province
+			liaozhou_province luan_province pingding_province pingyang_province puzhou_shanxi_province qinzhou_province
+			shizhou_shanxi_province taiyuan_province xiezhou_province xinzhou_province xizhou_province yingzhou_shanxi_province
+			yuzhou_shanxi_province zezhou_province
+			#Parts of Huguang area
+			anlu_province baoqing_province changde_province changsha_province chenzhou_province dean_province
+			fangzhou_province guiyang_province hanyang_province hengzhou_province
+			huangzhou_province jingmen_province jingzhou_province junzhou_province mianyang_province suizhou_province
+			wuchang_province xiangxiang_province xiangyang_province xingguo_province
+			yongzhou_province youzhou_province yuezhou_province
+			#Parts of Gansu area
+			ganzhou_gansu_province xining_province yongchang_gansu_province
+			#Parts of Sichuan
+			baoning_province bazhou_sichuan_province changning_province changzhou_sichuan_province chengdu_province
+			chongqing_province dazhou_province fuzhou_sichuan_province guangan_province guangyuan_province hanzhou_province
+			hezhou_sichuan_province jianzhou_province jianzhou_west_province kuizhou_province longan_province
+			luzhou_sichuan_province meizhou_province pengzhou_province qiongzhou_sichuan_province shunqing_province	suining_province
+			tongchuan_province xuzhou_sichuan_province
+			#Parts of Guanxi
+			rongzhou_wuzhou_province tengzhou_guangxi_province
+			xunzhou_province yulin_guangxi_province
+			#Shaanxi parts
+			binzhou_shaanxi_province fengxiang_province fengzhou_province fuzhou_shaanxi_province gongchang_province hanzhong_province
+			huizhou_shaanxi_province huazhou_shaanxi_province jiazhou_province jiezhou_province jingzhou_shaanxi_province lintao_province
+			minzhou_province ningxia_province pingliang_province qianzhou_province qingyang_province qinzhou_shaanxi_province shangzhou_province
+			suide_province tongzhou_shaanxi_province xian_province xingan_province yanan_province yangzhou_shaanxi_province yaozhou_province
+			yulin_province
+			#Guangdong parts
+			chaozhou_province deqing_province dongguan_province gaozhou_province guangzhou_province heyuan_province huazhou_province
+			huizhou_guangdong_province leizhou_province lianzhou_province nanen_province nanxiong_province panyu_province
+			shaozhou_province xinhui_province xunzhou_guangdong_province yingde_province zhaoqing_province
+		}
+	}
+
+	add_international_organization = { #Tendai
+		type = sect
+		creation_date = 800.1.1
+		icon = tendai_buddhism
+		members = {
+
+		}
+		laws = {
+			tiantai_policy
+			vajrayana_policy
+		}
+		variables = {
+			sect_favor = 60
+			religion = religion:shinto
+		}
+		areas = {
+			#Japan
+			hokurikudou_area kinai_area nankaidou_area saikaidou_area sanindou_area sanyoudou_area ou_area toukaidou_area tousandou_area
+		}
+	}
+
+	add_international_organization = { #Dharma School (Wéishí/Fǎxiàng/Hossō)
+		type = sect
+		creation_date = 1.1.1
+		icon = dharma_school
+		members = {
+
+		}
+		laws = {
+			dharma_school_policy
+		}
+		variables = {
+			sect_favor = 50
+			religion = religion:mahayana
+		}
+		areas = {
+			#North China
+			henan_area hebei_area shandong_area haiyou_area
+			#Korea except the northen part
+			gwanseo_area gwandong_area yeongnam_area gyeonggi_area honam_area haeseo_area hoseo_area
+			#East China except Taiwan
+			fujian_area hubei_area hunan_area wuling_area jiangxi_area huaixi_area huaidong_area jiangnan_area zhejiang_area
+			#Japan
+			hokurikudou_area kinai_area nankaidou_area saikaidou_area sanindou_area sanyoudou_area ou_area toukaidou_area tousandou_area
+		}
+		provinces = {
+			#Parts of Beizhili
+			anzhou_province baoan_province baoding_province bazhou_province qingchi changping_province daming_province
+			dingzhou_province guangping_province hejian_province jingzhou_beizhili_province jizhou_province jizhou_zhending_province
+			kaizhou_province luanzhou_province qingzhou_beizhili_province qizhou_province shenzhou_province shunde_province shuntian_province
+			tongzhou_beizhili_province wanquan_province xingzhou_province yizhou_province yongping_province zhaozhou_province zhending_province
+			#Parts of Shanxi
+			baode_province daizhou_province datong_province fenzhou_province huozhou_province jiangzhou_province kelan_province
+			liaozhou_province luan_province pingding_province pingyang_province puzhou_shanxi_province qinzhou_province
+			shizhou_shanxi_province taiyuan_province xiezhou_province xinzhou_province xizhou_province yingzhou_shanxi_province
+			yuzhou_shanxi_province zezhou_province
+			#Parts of Huguang area
+			anlu_province baoqing_province changde_province changsha_province chenzhou_province dean_province
+			fangzhou_province guiyang_province hanyang_province hengzhou_province
+			huangzhou_province jingmen_province jingzhou_province junzhou_province mianyang_province suizhou_province
+			wuchang_province xiangxiang_province xiangyang_province xingguo_province
+			yongzhou_province youzhou_province yuezhou_province
+			#Parts of Gansu area
+			ganzhou_gansu_province xining_province yongchang_gansu_province
+			#Parts of Sichuan
+			baoning_province bazhou_sichuan_province changning_province changzhou_sichuan_province chengdu_province
+			chongqing_province dazhou_province fuzhou_sichuan_province guangan_province guangyuan_province hanzhou_province
+			hezhou_sichuan_province jianzhou_province jianzhou_west_province kuizhou_province longan_province
+			luzhou_sichuan_province meizhou_province pengzhou_province qiongzhou_sichuan_province shunqing_province	suining_province
+			tongchuan_province xuzhou_sichuan_province
+			#Parts of Guanxi
+			rongzhou_wuzhou_province tengzhou_guangxi_province
+			xunzhou_province yulin_guangxi_province
+			#Shaanxi parts
+			binzhou_shaanxi_province fengxiang_province fengzhou_province fuzhou_shaanxi_province gongchang_province hanzhong_province
+			huizhou_shaanxi_province huazhou_shaanxi_province jiazhou_province jiezhou_province jingzhou_shaanxi_province lintao_province
+			minzhou_province ningxia_province pingliang_province qianzhou_province qingyang_province qinzhou_shaanxi_province shangzhou_province
+			suide_province tongzhou_shaanxi_province xian_province xingan_province yanan_province yangzhou_shaanxi_province yaozhou_province
+			yulin_province
+			#Guangdong parts
+			chaozhou_province deqing_province dongguan_province gaozhou_province guangzhou_province heyuan_province huazhou_province
+			huizhou_guangdong_province leizhou_province lianzhou_province nanen_province nanxiong_province panyu_province
+			shaozhou_province xinhui_province xunzhou_guangdong_province yingde_province zhaoqing_province
+		}
+	}
+
+	add_international_organization = { #Flower Garland (Huáyán/Kegon)
+		type = sect
+		creation_date = 620.1.1
+		icon = flower_garland_school
+		members = {
+			KOR
+		}
+		laws = {
+			flower_garland_school_policy
+			vajrayana_policy
+		}
+		variables = {
+			sect_favor = 60
+			religion = religion:mahayana
+		}
+		areas = {
+			#North China
+			henan_area hebei_area shandong_area haiyou_area
+			#Korea except the northen part
+			gwanseo_area gwandong_area yeongnam_area gyeonggi_area honam_area haeseo_area hoseo_area
+			#East China except Taiwan
+			fujian_area hubei_area hunan_area wuling_area jiangxi_area huaixi_area huaidong_area jiangnan_area zhejiang_area
+			#Japan
+			hokurikudou_area kinai_area nankaidou_area saikaidou_area sanindou_area sanyoudou_area ou_area toukaidou_area tousandou_area
+		}
+		provinces = {
+			#Parts of Beizhili
+			anzhou_province baoan_province baoding_province bazhou_province qingchi changping_province daming_province
+			dingzhou_province guangping_province hejian_province jingzhou_beizhili_province jizhou_province jizhou_zhending_province
+			kaizhou_province luanzhou_province qingzhou_beizhili_province qizhou_province shenzhou_province shunde_province shuntian_province
+			tongzhou_beizhili_province wanquan_province xingzhou_province yizhou_province yongping_province zhaozhou_province zhending_province
+			#Parts of Shanxi
+			baode_province daizhou_province datong_province fenzhou_province huozhou_province jiangzhou_province kelan_province
+			liaozhou_province luan_province pingding_province pingyang_province puzhou_shanxi_province qinzhou_province
+			shizhou_shanxi_province taiyuan_province xiezhou_province xinzhou_province xizhou_province yingzhou_shanxi_province
+			yuzhou_shanxi_province zezhou_province
+			#Parts of Huguang area
+			anlu_province baoqing_province changde_province changsha_province chenzhou_province dean_province
+			fangzhou_province guiyang_province hanyang_province hengzhou_province
+			huangzhou_province jingmen_province jingzhou_province junzhou_province mianyang_province suizhou_province
+			wuchang_province xiangxiang_province xiangyang_province xingguo_province
+			yongzhou_province youzhou_province yuezhou_province
+			#Parts of Gansu area
+			ganzhou_gansu_province xining_province yongchang_gansu_province
+			#Parts of Sichuan
+			baoning_province bazhou_sichuan_province changning_province changzhou_sichuan_province chengdu_province
+			chongqing_province dazhou_province fuzhou_sichuan_province guangan_province guangyuan_province hanzhou_province
+			hezhou_sichuan_province jianzhou_province jianzhou_west_province kuizhou_province longan_province
+			luzhou_sichuan_province meizhou_province pengzhou_province qiongzhou_sichuan_province shunqing_province	suining_province
+			tongchuan_province xuzhou_sichuan_province
+			#Parts of Guanxi
+			rongzhou_wuzhou_province tengzhou_guangxi_province
+			xunzhou_province yulin_guangxi_province
+			#Shaanxi parts
+			binzhou_shaanxi_province fengxiang_province fengzhou_province fuzhou_shaanxi_province gongchang_province hanzhong_province
+			huizhou_shaanxi_province huazhou_shaanxi_province jiazhou_province jiezhou_province jingzhou_shaanxi_province lintao_province
+			minzhou_province ningxia_province pingliang_province qianzhou_province qingyang_province qinzhou_shaanxi_province shangzhou_province
+			suide_province tongzhou_shaanxi_province xian_province xingan_province yanan_province yangzhou_shaanxi_province yaozhou_province
+			yulin_province
+			#Guangdong parts
+			chaozhou_province deqing_province dongguan_province gaozhou_province guangzhou_province heyuan_province huazhou_province
+			huizhou_guangdong_province leizhou_province lianzhou_province nanen_province nanxiong_province panyu_province
+			shaozhou_province xinhui_province xunzhou_guangdong_province yingde_province zhaoqing_province
+			#North Vietnam
+			hai_dong_province nam_sach_province nghe_an_province
+			thang_long_province thien_truong_province
+		}
+	}
+
+	add_international_organization = { #Meditation School (Chán/Zen)
+		type = sect
+		creation_date = 620.1.1
+		icon = meditation_school
+		members = {
+			KOR
+		}
+		laws = {
+			meditation_school_policy
+			vajrayana_policy
+		}
+		variables = {
+			sect_favor = 70
+			religion = religion:mahayana
+		}
+		areas = {
+			#North China
+			henan_area hebei_area shandong_area haiyou_area
+			#Korea except the northen part
+			gwanseo_area gwandong_area yeongnam_area gyeonggi_area honam_area haeseo_area hoseo_area
+			#East China except Taiwan
+			fujian_area hubei_area hunan_area wuling_area jiangxi_area huaixi_area huaidong_area jiangnan_area zhejiang_area
+			#Japan
+			hokurikudou_area kinai_area nankaidou_area saikaidou_area sanindou_area sanyoudou_area ou_area toukaidou_area tousandou_area
+		}
+		provinces = {
+			#Parts of Beizhili
+			anzhou_province baoan_province baoding_province bazhou_province qingchi changping_province daming_province
+			dingzhou_province guangping_province hejian_province jingzhou_beizhili_province jizhou_province jizhou_zhending_province
+			kaizhou_province luanzhou_province qingzhou_beizhili_province qizhou_province shenzhou_province shunde_province shuntian_province
+			tongzhou_beizhili_province wanquan_province xingzhou_province yizhou_province yongping_province zhaozhou_province zhending_province
+			#Parts of Shanxi
+			baode_province daizhou_province datong_province fenzhou_province huozhou_province jiangzhou_province kelan_province
+			liaozhou_province luan_province pingding_province pingyang_province puzhou_shanxi_province qinzhou_province
+			shizhou_shanxi_province taiyuan_province xiezhou_province xinzhou_province xizhou_province yingzhou_shanxi_province
+			yuzhou_shanxi_province zezhou_province
+			#Parts of Huguang area
+			anlu_province baoqing_province changde_province changsha_province chenzhou_province dean_province
+			fangzhou_province guiyang_province hanyang_province hengzhou_province
+			huangzhou_province jingmen_province jingzhou_province junzhou_province mianyang_province suizhou_province
+			wuchang_province xiangxiang_province xiangyang_province xingguo_province
+			yongzhou_province youzhou_province yuezhou_province
+			#Parts of Gansu area
+			ganzhou_gansu_province xining_province yongchang_gansu_province
+			#Parts of Sichuan
+			baoning_province bazhou_sichuan_province changning_province changzhou_sichuan_province chengdu_province
+			chongqing_province dazhou_province fuzhou_sichuan_province guangan_province guangyuan_province hanzhou_province
+			hezhou_sichuan_province jianzhou_province jianzhou_west_province kuizhou_province longan_province
+			luzhou_sichuan_province meizhou_province pengzhou_province qiongzhou_sichuan_province shunqing_province	suining_province
+			tongchuan_province xuzhou_sichuan_province
+			#Parts of Guanxi
+			rongzhou_wuzhou_province tengzhou_guangxi_province
+			xunzhou_province yulin_guangxi_province
+			#Shaanxi parts
+			binzhou_shaanxi_province fengxiang_province fengzhou_province fuzhou_shaanxi_province gongchang_province hanzhong_province
+			huizhou_shaanxi_province huazhou_shaanxi_province jiazhou_province jiezhou_province jingzhou_shaanxi_province lintao_province
+			minzhou_province ningxia_province pingliang_province qianzhou_province qingyang_province qinzhou_shaanxi_province shangzhou_province
+			suide_province tongzhou_shaanxi_province xian_province xingan_province yanan_province yangzhou_shaanxi_province yaozhou_province
+			yulin_province
+			#Guangdong parts
+			chaozhou_province deqing_province dongguan_province gaozhou_province guangzhou_province heyuan_province huazhou_province
+			huizhou_guangdong_province leizhou_province lianzhou_province nanen_province nanxiong_province panyu_province
+			shaozhou_province xinhui_province xunzhou_guangdong_province yingde_province zhaoqing_province
+			#North Vietnam
+			hai_dong_province nam_sach_province nghe_an_province
+			thang_long_province thien_truong_province
+		}
+	}
+
+	add_international_organization = { #Mantra School (Zhēnyán/Shingon)
+		type = sect
+		creation_date = 716.1.1
+		icon = mantra_school
+		members = {
+
+		}
+		laws = {
+			mantra_school_policy
+			vajrayana_policy
+		}
+		variables = {
+			sect_favor = 50
+			religion = religion:mahayana
+		}
+		areas = {
+			#North China
+			henan_area hebei_area shandong_area haiyou_area
+			#East China except Taiwan
+			fujian_area hubei_area hunan_area wuling_area jiangxi_area huaixi_area huaidong_area jiangnan_area zhejiang_area
+			#Japan
+			hokurikudou_area kinai_area nankaidou_area saikaidou_area sanindou_area sanyoudou_area ou_area toukaidou_area tousandou_area
+		}
+		provinces = {
+			#Parts of Beizhili
+			anzhou_province baoan_province baoding_province bazhou_province qingchi changping_province daming_province
+			dingzhou_province guangping_province hejian_province jingzhou_beizhili_province jizhou_province jizhou_zhending_province
+			kaizhou_province luanzhou_province qingzhou_beizhili_province qizhou_province shenzhou_province shunde_province shuntian_province
+			tongzhou_beizhili_province wanquan_province xingzhou_province yizhou_province yongping_province zhaozhou_province zhending_province
+			#Parts of Shanxi
+			baode_province daizhou_province datong_province fenzhou_province huozhou_province jiangzhou_province kelan_province
+			liaozhou_province luan_province pingding_province pingyang_province puzhou_shanxi_province qinzhou_province
+			shizhou_shanxi_province taiyuan_province xiezhou_province xinzhou_province xizhou_province yingzhou_shanxi_province
+			yuzhou_shanxi_province zezhou_province
+			#Parts of Huguang area
+			anlu_province baoqing_province changde_province changsha_province chenzhou_province dean_province
+			fangzhou_province guiyang_province hanyang_province hengzhou_province
+			huangzhou_province jingmen_province jingzhou_province junzhou_province mianyang_province suizhou_province
+			wuchang_province xiangxiang_province xiangyang_province xingguo_province
+			yongzhou_province youzhou_province yuezhou_province
+			#Parts of Gansu area
+			ganzhou_gansu_province xining_province yongchang_gansu_province
+			#Parts of Sichuan
+			baoning_province bazhou_sichuan_province changning_province changzhou_sichuan_province chengdu_province
+			chongqing_province dazhou_province fuzhou_sichuan_province guangan_province guangyuan_province hanzhou_province
+			hezhou_sichuan_province jianzhou_province jianzhou_west_province kuizhou_province longan_province
+			luzhou_sichuan_province meizhou_province pengzhou_province qiongzhou_sichuan_province shunqing_province	suining_province
+			tongchuan_province xuzhou_sichuan_province
+			#Parts of Guanxi
+			rongzhou_wuzhou_province tengzhou_guangxi_province
+			xunzhou_province yulin_guangxi_province
+			#Shaanxi parts
+			binzhou_shaanxi_province fengxiang_province fengzhou_province fuzhou_shaanxi_province gongchang_province hanzhong_province
+			huizhou_shaanxi_province huazhou_shaanxi_province jiazhou_province jiezhou_province jingzhou_shaanxi_province lintao_province
+			minzhou_province ningxia_province pingliang_province qianzhou_province qingyang_province qinzhou_shaanxi_province shangzhou_province
+			suide_province tongzhou_shaanxi_province xian_province xingan_province yanan_province yangzhou_shaanxi_province yaozhou_province
+			yulin_province
+			#Guangdong parts
+			chaozhou_province deqing_province dongguan_province gaozhou_province guangzhou_province heyuan_province huazhou_province
+			huizhou_guangdong_province leizhou_province lianzhou_province nanen_province nanxiong_province panyu_province
+			shaozhou_province xinhui_province xunzhou_guangdong_province yingde_province zhaoqing_province
+		}
+	}
+
+	add_international_organization = { #Shugendō
+		type = sect
+		creation_date = 715.1.1
+		icon = shugendo
+		members = {
+
+		}
+		laws = {
+			shugendo_policy
+			vajrayana_policy
+		}
+		variables = {
+			sect_favor = 40
+			religion = religion:shinto
+		}
+		areas = {
+			#Japan
+			hokurikudou_area kinai_area nankaidou_area saikaidou_area sanindou_area sanyoudou_area ou_area toukaidou_area tousandou_area
+		}
+	}
+
+	add_international_organization = { #Nichiren
+		type = sect
+		creation_date = 1250.1.1
+		icon = nichiren
+		members = {
+
+		}
+		laws = {
+			nichiren_policy
+			tiantai_policy
+		}
+		variables = {
+			sect_favor = 50
+			religion = religion:shinto
+		}
+		areas = {
+			#Japan
+			hokurikudou_area kinai_area nankaidou_area saikaidou_area sanindou_area sanyoudou_area ou_area toukaidou_area tousandou_area
+		}
+	}
+
+	add_international_organization = { #Azhaliism
+		type = sect
+		creation_date = 821.1.1
+		icon = azhaliism
+		members = {
+
+		}
+		laws = {
+			azhaliism_policy
+			vajrayana_policy
+		}
+		variables = {
+			sect_favor = 40
+			religion = religion:mahayana
+		}
+		provinces = { dali_province }
+	}
+
+	add_international_organization = { #Musok
+		type = sect
+		creation_date = 1.1.1
+		icon = musok
+		members = {
+			KOR
+		}
+		laws = {
+			musok_policy
+		}
+		variables = {
+			sect_favor = 40
+			religion = religion:mahayana
+		}
+		regions = { korea_region }
+	}
+
+	add_international_organization = { #Mūlasarvāstivāda
+		type = sect
+		creation_date = 1.1.1
+		icon = mulasarvastivada
+		members = {
+			PLB SUK
+		}
+		laws = {
+			mulasarvastivada_policy
+			vajrayana_policy
+		}
+		variables = {
+			sect_favor = 50
+			religion = religion:mahayana
+		}
+		provinces = {
+			johor_province lower_jambi_province
+		}
+	}
+
+	add_international_organization = { #Nyingma School
+		type = sect
+		creation_date = 1.1.1
+		members = {
+
+		}
+		laws = {
+			nyigma_policy
+			mulasarvastivada_policy
+			vajrayana_policy
+		}
+		variables = {
+			sect_favor = 50
+			religion = religion:tibetan_buddhism
+		}
+		regions = { tibet_region }
+	}
+
+	add_international_organization = { #Kadam School
+		type = sect
+		creation_date = 1030.1.1
+		members = {
+
+
+		}
+		laws = {
+			kadam_policy
+			mulasarvastivada_policy
+			vajrayana_policy
+		}
+		variables = {
+			sect_favor = 50
+			religion = religion:tibetan_buddhism
+		}
+		regions = { tibet_region }
+	}
+	add_international_organization = { #Kagyu School
+		type = sect
+		creation_date = 1050.1.1
+		members = {
+			#Clear
+
+		}
+		laws = {
+			kagyu_policy
+			mulasarvastivada_policy
+			vajrayana_policy
+		}
+		variables = {
+			sect_favor = 70
+			religion = religion:tibetan_buddhism
+		}
+		regions = { tibet_region }
+	}
+	add_international_organization = { #Sakya School
+		type = sect
+		creation_date = 1073.1.1
+		members = {
+			QKH ZNG UUS LTN BTG LGT CDO YSH DRG NCN NBH MAR
+		}
+		laws = {
+			sakya_policy
+			mulasarvastivada_policy
+			vajrayana_policy
+		}
+		variables = {
+			sect_favor = 80
+			religion = religion:tibetan_buddhism
+		}
+		regions = { tibet_region }
+	}
+	add_international_organization = { #Jonang School
+		type = sect
+		creation_date = 1120.1.1
+		members = {
+			#Unclear
+
+		}
+		laws = {
+			jonang_policy
+			mulasarvastivada_policy
+			vajrayana_policy
+		}
+		variables = {
+			sect_favor = 50
+			religion = religion:tibetan_buddhism
+		}
+		regions = { tibet_region }
+	}
+
+	add_international_organization = { #Mahāvihāra
+		type = sect
+		creation_date = 1.1.1
+		icon = mahavihara
+		members = {
+			DBD
+		}
+		laws = {
+			mahavihara_policy
+		}
+		variables = {
+			sect_favor = 70
+			religion = religion:theravada
+		}
+		areas = {
+			arakhan_area irrawady_delta_area
+		}
+		provinces = {
+			pihiti dakhina_desa malaya ruhunu
+		}
+	}
+
+	add_international_organization = { #Burmese Buddhism
+		type = sect
+		creation_date = 1.1.1
+		icon = burmese_buddhism
+		members = {
+			TNG LNA MNI KTG HSE MYA
+		}
+		laws = {
+			burmese_buddhism_policy
+			vajrayana_policy
+		}
+		variables = {
+			sect_favor = 60
+			religion = religion:theravada
+		}
+		provinces = {
+			pagan_province pinya_province pyay_province sagaing_province taungoo_province
+		}
+	}
+
+	add_international_organization = { #Thai Buddhism
+		type = sect
+		creation_date = 1.1.1
+		icon = lankavong
+		members = {
+			ADH
+		}
+		laws = {
+			lankavong_policy
+		}
+		variables = {
+			sect_favor = 50
+			religion = religion:theravada
+		}
+		areas = {
+			chao_phraya_area
+		}
+	}
+
+	add_international_organization = { #Khmer Buddhism
+		type = sect
+		creation_date = 274.1.1
+		icon = khmer_buddhism
+		members = {
+			KHM
+		}
+		laws = {
+			khmer_buddhism_policy
+			vajrayana_policy
+		}
+		variables = {
+			sect_favor = 50
+			religion = religion:theravada
+		}
+		areas = { lower_mekong_area }
+	}
+
+
+	#################################################################
+	# 						Hindu Branches							#
+	#################################################################
+
+	add_international_organization = {
+		type = hindu_branch
+		creation_date = 1.1.1
+		members = {
+
+		}
+		laws = {
+			vaishnavism
+		}
+		icon = vaishnavism
+	}
+
+	add_international_organization = {
+		type = hindu_branch
+		creation_date = 1.1.1
+		members = {
+
+		}
+		laws = {
+			shaivism
+		}
+		icon = shaivism
+	}
+
+	add_international_organization = {
+		type = hindu_branch
+		creation_date = 1.1.1
+		members = {
+
+		}
+		laws = {
+			shaktism
+		}
+		icon = shaktism
+	}
+
+	add_international_organization = {
+		type = hindu_branch
+		creation_date = 1.1.1
+		members = {
+
+		}
+		laws = {
+			smartism
+		}
+		icon = smartism
+	}
 }

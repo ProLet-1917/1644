@@ -881,4 +881,64 @@ character_db = {
 		birth = powhatan
 		tag = TSN
 	}
+
+	jap_tokugawa_iemitsu = { #https://en.wikipedia.org/wiki/Tokugawa_Iemitsu
+		first_name = { name = name_iemitsu }
+		culture = tougoku_culture
+		religion = shinto
+		estate = nobles_estate
+		adm = 65 dip = 55 mil = 63
+		birth_date = 1604.8.12
+		birth = toshima_kanto
+		dynasty = tokugawa_dynasty
+		tag = JAP
+	}
+
+	jap_tokugawa_ietsuna = { #https://en.wikipedia.org/wiki/Tokugawa_Ietsuna
+		first_name = { name = name_ietsuna }
+		culture = tougoku_culture
+		religion = shinto
+		estate = nobles_estate
+		adm = 9 dip = 6 mil = 7
+		birth_date = 1641.9.7
+		birth = toshima_kanto
+		father = jap_tokugawa_iemitsu
+		dynasty = tokugawa_dynasty
+		tag = JAP
+	}
+
+	jic_go_mizunoo_tenno = { #https://en.wikipedia.org/wiki/List_of_emperors_of_Japan#Edo_period_(1603%E2%80%931868)
+		first_name = { name = name_kotohito }
+		culture = saigoku_culture
+		religion = shinto
+		estate = nobles_estate
+		birth_date = 1596.6.29
+		birth = kyoto
+		dynasty = yamato_dynasty
+		tag = JIC
+	}
+
+	jic_meisho_tenno = {
+		first_name = { name = name_okiko }
+		culture = saigoku_culture
+		religion = shinto
+		estate = nobles_estate
+		birth_date = 1624.1.9
+		birth = kyoto
+		dynasty = yamato_dynasty
+		female = yes
+		father = jic_go_mizunoo_tenno
+		tag = JIC
+	}
+	jic_go_komyo_tenno = {
+		first_name = { name = name_tsuguhito }
+		culture = saigoku_culture
+		religion = shinto
+		estate = nobles_estate
+		birth_date = 1633.4.20
+		birth = kyoto
+		dynasty = yamato_dynasty
+		father = jic_go_mizunoo_tenno
+		tag = JIC
+	}
 }

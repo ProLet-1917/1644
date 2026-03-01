@@ -1,0 +1,24 @@
+#Generic Effects
+create_custom_unit_when_game_start = {
+    $location$ = {
+        every_unit_in_location = {
+            destroy_unit = yes
+        }
+        while = {
+            count = $times$
+            create_sub_unit_with_owner = {
+                type = $unit_type$
+                owner = $owner$
+                origin = this
+                experience = $experience$
+            }
+        }
+    }
+}
+
+change_herd_effect = {
+    change_variable = {
+        name = current_herd
+        value = $value$
+    }
+}

@@ -1,6 +1,6 @@
 international_organization_manager = {
 	#################################################################
-	#                               Middle Kingdom (1644)          #
+	#                      Middle Kingdom (1644)      			    #
 	#################################################################
 	add_international_organization = {
 		type = middle_kingdom
@@ -15,6 +15,8 @@ international_organization_manager = {
 			MNG
 			# 其他传统朝贡国和附庸（如果存在）
 			# 可以根据需要添加其他成员，如朝鲜、越南等
+			LZQ CGJ HDG LLZ ZLY ZZL LNG WSG
+			CKL KSY CBG TTQ TRH QNQ LXA CHA
 		}
 		
 		# 天朝控制的核心区域
@@ -46,12 +48,23 @@ international_organization_manager = {
 		# 如果MNG存在，设置为天朝皇帝
 		# 如果MNG不存在，则组织无主，等待统一者
 		leader = MNG
-		
+
+		laws = {
+			centralized_civil_registration_policy
+			single_whip_policy
+			established_provincial_governors
+			free_cefeng_tizhi_policy
+			focus_on_classics
+			haijin_policy
+			restrict_the_tianxia_policy
+		}
+
 		# 天朝权威度初始值（1644年时天朝权威较低）
 		variables = {
-			celestial_authority = 30  # 较低的天朝权威，反映1644年的混乱状态
+			celestial_authority = 15  # 较低的天朝权威，反映1644年的混乱状态
 		}
 	}
+
 	add_international_organization = {
 		type = khoshuud_ulus
 		creation_date = 1642.1.1
@@ -60,12 +73,12 @@ international_organization_manager = {
 		}
 		leader = QKH
 	}
+
 	add_international_organization = {
 		type = oirats_khalkha_alliance
 		creation_date = 1640.1.1
 		members = {
 			QKH HSD ZUN ZSG TSH SES HTG
 		}
-
 	}
 }

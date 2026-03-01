@@ -91,7 +91,7 @@ REPLACE:imperial_prince = {
     can_bestow_trigger = {
         is_member_of_international_organization = international_organization:hre
         government_type = government_type:monarchy
-        NOT = { dominant_culture = culture_group:italian_group }
+        NOT = { dominant_culture = culture.culture_group:italian_group }
         international_organization:hre = {
             NOT = {
                 country_has_special_status = { type = special_status:imperial_prince country = root }
@@ -116,7 +116,7 @@ REPLACE:imperial_prince = {
         OR = {
             NOT = { government_type = government_type:monarchy }
             NOT = { is_member_of_international_organization = international_organization:hre }
-            dominant_culture = culture_group:italian_group
+            dominant_culture = culture.culture_group:italian_group
             has_special_status_in_international_organization = { type = special_status:emperor international_organization = international_organization:hre }
             has_special_status_in_international_organization = { type = special_status:elector international_organization = international_organization:hre }
             has_special_status_in_international_organization = { type = special_status:italia_state international_organization = international_organization:hre }

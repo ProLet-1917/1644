@@ -1658,43 +1658,52 @@ Types HUD_TopbarTypes
 							}
 
 							blockoverride "stat_button" {
-								tooltipwidget = {
-									ContextualTooltipType = {
-										blockoverride "title_text" {
-											text = "Herds"
-										}
 
-										blockoverride "concept_link" {
-											text = "Herds"
-											default_format = "#E"
-										}
+								action_tooltip = {
+									click_type = left
+									click_mode = single
+									title = "SHOW_HERDS_BUILDINGS"
+									on_action = "[OpenLateralViewWithFilter('production', 'herds_category')]"
+									on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
+								}
+							}
 
-										blockoverride "title_icon" {
-											icon = {
-												using = tooltip_title_icon_size
-												texture = "gfx/interface/icons/flat_icons/tabicons/herds_flat_icon.dds"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "Herds"
+									}
+
+									blockoverride "concept_link" {
+										text = "Herds"
+										default_format = "#E"
+									}
+
+									blockoverride "title_icon" {
+										icon = {
+											using = tooltip_title_icon_size
+											texture = "gfx/interface/icons/flat_icons/tabicons/herds_flat_icon.dds"
+										}
+									}
+
+									blockoverride "tooltip_content" {
+										TooltipScrolledStringPairList = {
+											blockoverride "block_scrollarea" { maximumsize = { -1 250 } minimumsize = { -1 30 } }
+											block "content_datacontext" { }
+											blockoverride "block_title" {
+												text = "Per 1000 #E Herds #W will has the following effects:"
 											}
+											textcontext = "[Localize(ShowAutoModifierEffect('the_herd_benifit_modifier'))]"
 										}
 
-										blockoverride "tooltip_content" {
-											TooltipScrolledStringPairList = {
-												blockoverride "block_scrollarea" { maximumsize = { -1 250 } minimumsize = { -1 30 } }
-												block "content_datacontext" {}
-												blockoverride "block_title" {
-													text = "Per 1000 #E Herds #W will has the following effects:"
-												}
-												textcontext = "[Localize(ShowAutoModifierEffect('the_herd_benifit_modifier'))]"
+										ConceptTooltipType = {
+											blockoverride "tooltip_title" {
+
 											}
-
-											ConceptTooltipType = {
-												blockoverride "tooltip_title" {
-
-												}
-												blockoverride "tooltip_content" {
-													TooltipTextBlock = {
-														blockoverride "text" {
-															text = "HERD_INCOME_TT"
-														}
+											blockoverride "tooltip_content" {
+												TooltipTextBlock = {
+													blockoverride "text" {
+														text = "HERD_INCOME_TT"
 													}
 												}
 											}
@@ -1768,7 +1777,7 @@ Types HUD_TopbarTypes
 									}
 								}
 
-								expand = {}
+								expand = { }
 							}
 						}
 

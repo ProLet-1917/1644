@@ -22,7 +22,7 @@ anaesthesia_advance = {
 
 chemotherapy_advance = {
     age = age_7_imperialism
-    requires = anaesthesia
+    requires = anaesthesia_advance
 
     global_population_growth = 0.0010
     local_army_attrition = -0.05
@@ -30,7 +30,7 @@ chemotherapy_advance = {
 
 penicillin_advance = {
     age = age_7_imperialism
-    requires = chemotherapy
+    requires = chemotherapy_advance
 
     global_population_growth = 0.0015
     global_disease_resistance = 0.1
@@ -38,7 +38,7 @@ penicillin_advance = {
 
 sulfanilamide_advance = {
     age = age_7_imperialism
-    requires = chemotherapy
+    requires = chemotherapy_advance
     global_disease_resistance = 0.1
     local_army_attrition = -0.1
     global_population_growth = 0.001
@@ -46,7 +46,7 @@ sulfanilamide_advance = {
 
 x-rays_advance = {
     age = age_7_imperialism
-    requires = chemotherapy
+    requires = chemotherapy_advance
 
     global_population_growth = 0.0015
     local_army_attrition = -0.05
@@ -258,7 +258,7 @@ telephone_assembly_advance = {
     age = age_7_imperialism
     requires = electricity_advance
 
-    land_cost_on_distance_from_capital_modifier = -0.05
+    global_distance_from_capital_speed_propagation = 0.05
     global_institution_growth_modifier = 0.05
     #unlock_building =
 }
@@ -267,7 +267,7 @@ radio_application_advance = {
     age = age_7_imperialism
     requires = telephone_assembly_advance
 
-    land_cost_on_distance_from_capital_modifier = -0.05
+    global_distance_from_capital_speed_propagation = 0.1
     global_institution_growth_modifier = 0.1
 }
 
