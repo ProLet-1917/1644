@@ -95,6 +95,22 @@ start_herd_check_effect = {
 			name = herd_decay_from_corruption
 			value = 0
 		}
+		set_variable = {
+			name = herd_from_modifier
+			value = 0
+		}
+		set_variable = {
+			name = herd_from_multiply_modifier
+			value = 0
+		}
+		set_variable = {
+			name = saved_herds
+			value = 0
+		}
+		set_variable = {
+			name = monthly_herd_income_after_mutiply
+			value = 0
+		}
 	}
 	while = {
 		count = 12
@@ -102,6 +118,12 @@ start_herd_check_effect = {
 			limit = {
 				has_variable = current_herd
 				uses_government_power = horde_unity
+			}
+			change_variable = {
+				name = saved_herds
+				subtract = {
+					value = var:saved_herds
+				}
 			}
 			change_variable = {
 				name = herd_monthly_change
@@ -134,10 +156,52 @@ start_herd_check_effect = {
 				}
 			}
 			change_variable = {
+				name = herd_from_modifier
+				subtract = {
+					value = var:herd_from_modifier
+				}
+			}
+			change_variable = {
+				name = herd_from_multiply_modifier
+				subtract = {
+					value = var:herd_from_multiply_modifier
+				}
+			}
+			change_variable = {
+				name = monthly_herd_income_after_mutiply
+				subtract = {
+					value = var:monthly_herd_income_after_mutiply
+				}
+			}
+			change_variable = {
 				name = herd_monthly_income
 				add = {
 					value = monthly_income_trade_and_tax
 					multiply = 0.33
+				}
+			}
+			change_variable = {
+				name = herd_from_modifier
+				add = {
+					value = modifier:monthly_herd
+				}
+			}
+			change_variable = {
+				name = herd_from_multiply_modifier
+				add = {
+					value = modifier:monthly_herd_modifier
+				}
+			}
+			change_variable = {
+				name = monthly_herd_income_after_mutiply
+				add = {
+					value = var:herd_monthly_income
+				}
+			}
+			change_variable = {
+				name = monthly_herd_income_after_mutiply
+				add = {
+					value = var:herd_from_modifier
 				}
 			}
 			if = {
@@ -157,15 +221,28 @@ start_herd_check_effect = {
 				}
 			}
 			change_variable = {
-				name = current_herd
+				name = monthly_herd_income_after_mutiply
 				add = {
-					value = var:herd_monthly_income
+					value = var:herd_from_locations
+				}
+			}
+			change_variable = {
+				name = monthly_herd_income_after_mutiply
+				multiply = {
+					value = modifier:monthly_herd_income_modifier
+					add = 1
+				}
+			}
+			change_variable = {
+				name = saved_herds
+				add = {
+					value = var:current_herd
 				}
 			}
 			change_variable = {
 				name = current_herd
 				add = {
-					value = var:herd_from_locations
+					value = var:monthly_herd_income_after_mutiply
 				}
 			}
 			if = {
@@ -202,27 +279,21 @@ start_herd_check_effect = {
 				}
 			}
 			change_variable = {
-				name = herd_monthly_change
-				add = {
-					value = var:herd_monthly_income
+				name = current_herd
+				multiply = {
+					value = var:herd_from_multiply_modifier
 				}
 			}
 			change_variable = {
 				name = herd_monthly_change
 				add = {
-					value = var:herd_from_locations
+					value = var:current_herd
 				}
 			}
 			change_variable = {
 				name = herd_monthly_change
 				subtract = {
-					value = var:herd_natural_decay
-				}
-			}
-			change_variable = {
-				name = herd_monthly_change
-				subtract = {
-					value = var:herd_decay_from_corruption
+					value = var:saved_herds
 				}
 			}
 			set_variable = {
@@ -233,11 +304,16 @@ start_herd_check_effect = {
 	}
 }
 monthly_herd_check_effect = {
-	#Add from Modifier? Check HRE for more info
 	every_country = {
 		limit = {
 			has_variable = current_herd
 			uses_government_power = horde_unity
+		}
+		change_variable = {
+			name = saved_herds
+			subtract = {
+				value = var:saved_herds
+			}
 		}
 		change_variable = {
 			name = herd_monthly_change
@@ -270,10 +346,52 @@ monthly_herd_check_effect = {
 			}
 		}
 		change_variable = {
+			name = herd_from_modifier
+			subtract = {
+				value = var:herd_from_modifier
+			}
+		}
+		change_variable = {
+			name = herd_from_multiply_modifier
+			subtract = {
+				value = var:herd_from_multiply_modifier
+			}
+		}
+		change_variable = {
+			name = monthly_herd_income_after_mutiply
+			subtract = {
+				value = var:monthly_herd_income_after_mutiply
+			}
+		}
+		change_variable = {
 			name = herd_monthly_income
 			add = {
 				value = monthly_income_trade_and_tax
 				multiply = 0.33
+			}
+		}
+		change_variable = {
+			name = herd_from_modifier
+			add = {
+				value = modifier:monthly_herd
+			}
+		}
+		change_variable = {
+			name = herd_from_multiply_modifier
+			add = {
+				value = modifier:monthly_herd_modifier
+			}
+		}
+		change_variable = {
+			name = monthly_herd_income_after_mutiply
+			add = {
+				value = var:herd_monthly_income
+			}
+		}
+		change_variable = {
+			name = monthly_herd_income_after_mutiply
+			add = {
+				value = var:herd_from_modifier
 			}
 		}
 		if = {
@@ -293,15 +411,28 @@ monthly_herd_check_effect = {
 			}
 		}
 		change_variable = {
-			name = current_herd
+			name = monthly_herd_income_after_mutiply
 			add = {
-				value = var:herd_monthly_income
+				value = var:herd_from_locations
+			}
+		}
+		change_variable = {
+			name = monthly_herd_income_after_mutiply
+			multiply = {
+				value = modifier:monthly_herd_income_modifier
+				add = 1
+			}
+		}
+		change_variable = {
+			name = saved_herds
+			add = {
+				value = var:current_herd
 			}
 		}
 		change_variable = {
 			name = current_herd
 			add = {
-				value = var:herd_from_locations
+				value = var:monthly_herd_income_after_mutiply
 			}
 		}
 		if = {
@@ -338,27 +469,21 @@ monthly_herd_check_effect = {
 			}
 		}
 		change_variable = {
-			name = herd_monthly_change
-			add = {
-				value = var:herd_monthly_income
+			name = current_herd
+			multiply = {
+				value = var:herd_from_multiply_modifier
 			}
 		}
 		change_variable = {
 			name = herd_monthly_change
 			add = {
-				value = var:herd_from_locations
+				value = var:current_herd
 			}
 		}
 		change_variable = {
 			name = herd_monthly_change
 			subtract = {
-				value = var:herd_natural_decay
-			}
-		}
-		change_variable = {
-			name = herd_monthly_change
-			subtract = {
-				value = var:herd_decay_from_corruption
+				value = var:saved_herds
 			}
 		}
 		set_variable = {
@@ -384,7 +509,7 @@ monthly_herd_check_effect = {
 		}
 		set_variable = {
 			name = current_herd
-			value = 25
+			value = 0
 		}
 		clamp_variable = {
 			name = current_herd
@@ -411,6 +536,22 @@ monthly_herd_check_effect = {
 			name = herd_decay_from_corruption
 			value = 0
 		}
+		set_variable = {
+			name = herd_from_modifier
+			value = 0
+		}
+		set_variable = {
+			name = herd_from_multiply_modifier
+			value = 0
+		}
+		set_variable = {
+			name = saved_herds
+			value = 0
+		}
+		set_variable = {
+			name = monthly_herd_income_after_mutiply
+			value = 0
+		}
 	}
 	every_country = {
 		limit = {
@@ -423,6 +564,10 @@ monthly_herd_check_effect = {
 		remove_variable = herd_natural_decay
 		remove_variable = herd_from_locations
 		remove_variable = herd_decay_from_corruption
+		remove_variable = herd_from_modifier
+		remove_variable = herd_from_multiply_modifier
+		remove_variable = saved_herds
+		remove_variable = monthly_herd_income_after_mutiply
 	}
 }
 

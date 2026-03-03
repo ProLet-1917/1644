@@ -9,6 +9,12 @@ pasture = {
     rural_settlement = yes
     town = yes
 
+    allow = {
+        location.this = {
+            num_pop_type_in_province:herdsman >= 0.01
+        }
+    }
+
     build_time = herdsman_build_time
 
     unique_production_methods = {
