@@ -1,11 +1,14 @@
 war_manager = {
-	civil_war = {
+	war = {
 		war_name = {
 			name = "LATE_MING_PEASANT_WARS"
 			ordinal = 1
 			first = { name = "CSH" }
 		}
-
+		take_country = {
+			type = take_country
+			casus_belli = cb_chinese_unification
+		}
 		start_date = 1627.3.1
 		action = 1644.4.17
 

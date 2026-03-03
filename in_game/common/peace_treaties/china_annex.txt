@@ -2,9 +2,12 @@
 	cost = {
 		add = {
 			desc = "DIPLOREASON_BASE"
-			value = 100
+			value = 1
 		}
 	}
+    category = country
+	antagonism_type = antagonism_peace_rtr_demand_all_occupied_territories
+
 
 	potential = {
 		scope:war = {
@@ -38,7 +41,7 @@
 	}
 	
 	allow = {
-
+		always = yes
 	}
 
 	effect = {
@@ -57,7 +60,8 @@
 	}
 
 	ai_desire = {
-		value = 1000
+		value = 10000
+	
 	}
 }
 
