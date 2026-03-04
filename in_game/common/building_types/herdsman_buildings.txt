@@ -10,7 +10,9 @@ pasture = {
     town = yes
 
     location_potential = {
-        num_pop_type_in_province:herdsman >= 0.01
+        owner = {
+            government_type = government_type:steppe_horde
+        }
     }
 
     build_time = herdsman_build_time
