@@ -175,9 +175,7 @@ template bg_window_message_t3 {
 		texture_density = 2
 		spriteType = corneredstretched
 		spriteborder = { 20 20 }
-		block "margins" {
-			margin = {-3 -3}
-		}
+		margin = {-3 -3}
 
 		# block "thick_tile_color" {
 			modify_texture = {
@@ -384,6 +382,107 @@ template Scrollbar_Vertical {
 	}
 }
 
+template Scrollbar_Show_Hide_Animation {
+	state = {
+		name = _hide
+		bezier = { 1.0 0.0 1.0 0.0 }
+		duration = 0.25
+		alpha = 0.0
+	}
+
+	state = {
+		name = _show
+		bezier = { 0.0 1.0 0.0 1.0 }
+		duration = 0.1
+		alpha = 1.0
+	}
+}
+
+## Vertical scrollbar_messages
+template Scrollbar_Vertical_Small {
+	scrollbar = {
+		name = "vertical_scrollbar_messages"
+		size = { 6 12 }
+		wheelstep = 60
+		direction = vertical
+
+		block "scrollbar_setup" {}
+
+		track = {
+			button = {
+				block "scrollbar_visible" {}
+				using = Scrollbar_Show_Hide_Animation
+				gfxtype = buttongfx
+				size = { 100% -1 }
+
+				using = color_dark_blue_texture
+				spriteType = Corneredtiled
+				spriteborder = { 0 10 }
+				effectname = "NoHighlight"
+				alpha = 0.2
+
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_horizontal_middle_thick_vertical.dds"
+					blend_mode = alphamultiply
+					spriteType = Corneredstretched
+					spriteborder = { 0 12 }
+					alpha = 1
+				}
+			}
+		}
+
+		slider = {
+			button = {
+				block "scrollbar_visible" {}
+				using = Scrollbar_Show_Hide_Animation
+				gfxtype = framedbuttongfx
+				effectname = "NoHighlight"
+
+				texture = "gfx/interface/scrollbars/scrollbar_slider.dds"
+				texture_density = 2
+				spriteType = Corneredtiled
+				spriteborder = { 10 8 }
+
+				size = { 100% -1 }
+				minimumsize = { -1 60 }
+				maximumsize = { -1 -1 }
+
+				modify_texture = {
+					using = overlay_stone_texture
+					blend_mode = overlay
+					alpha = 0.5
+				}
+
+				glow = {
+					name = "drop_shadow"
+					glow_radius = 4
+					color = {0.0 0.0 0.0 1.0}
+					alpha = 0.99
+				}
+
+				upframe = 1
+				overframe = 2
+				downframe = 2
+			}
+		}
+
+		dec_button = {
+			button = {
+				block "scrollbar_visible" {}
+				using = Scrollbar_Show_Hide_Animation
+			}
+		}
+
+		inc_button = {
+			button = {
+				block "scrollbar_visible" {}
+				using = Scrollbar_Show_Hide_Animation
+			}
+		}
+	}
+}
+
 template custom_table_field_background {
 	icon = {
 		ignore_layout = yes
@@ -491,7 +590,7 @@ template custom_version_label {
 	}
 
 	hbox =  {
-		block "version_label_sizing" { set_parent_size_to_minimum = yes }		
+		block "version_label_sizing" { set_parent_size_to_minimum = yes }
 		margin = { 5 5 }
 
 		vbox = {
@@ -525,7 +624,7 @@ template custom_version_label {
 				hbox = {
 					layoutpolicy_horizontal = expanding
 					using = custom_table_field_background
-					
+
 					widget = {
 						layoutpolicy_horizontal = growing
 						layoutpolicy_vertical = growing
@@ -574,19 +673,20 @@ template custom_version_label {
 							fontsize = 12
 							font = Debug
 							minimumsize = { -1 25 }
-							text = "Alpha Build 0046"
+							text = "Alpha Build 0047"
 						}
 						widget = {
 							layoutpolicy_horizontal = growing
 							layoutpolicy_vertical = growing
 						}
-					
+
 					}
 				}
 			}
 		}
 	}
 }
+
 
 types LoadingScreenTypes
 {

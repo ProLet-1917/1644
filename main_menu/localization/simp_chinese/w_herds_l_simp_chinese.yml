@@ -1,0 +1,10 @@
+﻿l_simp_chinese:
+ HERD_INCOME_TT:"#E 每月总变化: #W [Country.MakeScope.GetVariable('herd_monthly_change').GetValue|2]\n\n#E 收入:\n来自税收:#G  [Country.MakeScope.GetVariable('herd_monthly_income').GetValue|2]\n#E 来自牧民n:#G  [Country.MakeScope.GetVariable('herd_from_locations').GetValue|2]\n#E 来自修正:#G  [Country.MakeScope.GetVariable('herd_from_modifier').GetValue|2]\n\n#E 收入修正:#W  [Country.GetModifierValue('monthly_herd_income_modifier')]\n\n#E 支出:\n自然损耗:#R  [Country.MakeScope.GetVariable('herd_natural_decay').GetValue|2]\n#E 腐败:#R  [Country.MakeScope.GetVariable('herd_decay_from_corruption').GetValue|2]\n\n\n#E 总数修正:#W  [Country.MakeScope.GetVariable('herd_from_multiply_modifier').GetValue|2%]"
+ current_herd_large_and_euqal_250:"#E Current Herd #W >= 250"
+ ADD_2000_HERDS_EFFECT:"Get 2000 Herds"
+ THE_HERD_GET_EFFECT:"Get Herds"
+ CHANGE_HERD_EFFECT:"Get $value$ Herds"
+ herdsman:"牧民"
+ herdsman_desc:"These represent the common people whom mainly relying on grazing or working on the ranch."
+ mapmode_herdsmen_name: "牧民"
+ mapmode_herdsmen: "Herdsmen Desc"
