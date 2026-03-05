@@ -1,15 +1,10 @@
-﻿monthly_country_pulse = {
-	on_actions = {
-		on_netherland_netural_list
-		on_netherland_netherland_side_list
-		on_netherland_spain_side_list
-		on_netherland_control_brussels 
-	}
-}
-
-on_netherland_netural_list = {
+﻿on_netherland_netural_list = {
 	trigger = {
+		situation:netherland_independent = {
+			situation_is_active = yes
+		}
 		has_global_variable_list = country_list_of_dutches
+		NOT = { has_global_variable = temp_monthly_netherland_netural_check}
 	}
 	effect = {
 		netherland_independent_netural_country_list_monthly_check_effect = yes
@@ -18,7 +13,11 @@ on_netherland_netural_list = {
 
 on_netherland_netherland_side_list = {
 	trigger = {
+		situation:netherland_independent = {
+			situation_is_active = yes
+		}
 		has_global_variable_list = country_list_of_netherland_sides
+		NOT = { has_global_variable = temp_monthly_netherland_side_check}
 	}
 	effect = {
 		netherland_independent_netherland_country_list_monthly_check_effect = yes
@@ -27,7 +26,11 @@ on_netherland_netherland_side_list = {
 
 on_netherland_spain_side_list = {
 	trigger = {
+		situation:netherland_independent = {
+			situation_is_active = yes
+		}
 		has_global_variable_list = country_list_of_the_spain_sides
+		NOT = { has_global_variable = temp_monthly_spain_side_check}
 	}
 	effect = {
 		netherland_independent_spain_country_list_monthly_check_effect = yes
@@ -39,7 +42,9 @@ on_netherland_control_brussels = {
 		location:brussels ?= {
 			c:NED ?= owner
 		}
-		situation:netherland_independent = { is_active = yes }
+		situation:netherland_independent = {
+			situation_is_active = yes
+		}
 	}
 	effect = {
 		c:NED = {

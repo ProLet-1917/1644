@@ -1,33 +1,118 @@
 ﻿#=======Made by Lvtoumao========
 #This is the main file for Decisions
 #Search "How to add new decision" to get the tutorial
+#---Might be useful---
+#visible = "[EqualTo_string(DiplomaticActionCategory.GetNameKey, 'CATEGORY_DECISIONS_ACTIONS')]"
+#left_click_and_hold_action = { action_name = "steppe_horde_to_monarchy" }
+#---------------------
+@generic_decisions_height = 35
+@generic_decisions_group_x_axis = 450
+@generic_decisions_group_height = 30
+template generic_decisions_icon_small {
+	icon = {
+		size = { @generic_decisions_height @generic_decisions_height }
+		texture = "gfx/interface/decisions/generic_decisions.dds"
+	}
+}
+
+template generic_decisions_icon_group_small {
+	icon = {
+		size = { @generic_decisions_group_height @generic_decisions_group_height }
+		texture = "gfx/interface/decisions/generic_decisions.dds"
+	}
+}
+
+template generic_decisions_icon {
+	icon = {
+		using = tooltip_title_icon_size
+		texture = "gfx/interface/decisions/generic_decisions.dds"
+	}
+}
+
+template decisions_regular {
+	tooltipwidget = {
+		using = decisions_tooltip
+	}
+	text = "Herds"
+	default_format = "#E"
+}
+
+template decisions_group_regular {
+	text = "DECISIONS_GROUP_TT"
+	default_format = "#E"
+}
+
+
+template decisions_tooltip {
+	ConceptTooltipType = {
+		resizeparent = no
+
+		blockoverride "tooltip_title" {
+
+			ConceptTooltipHeader = {
+				blockoverride "title_icon" {
+					icon = {
+						using = tooltip_title_icon_size
+						texture = "gfx/interface/decisions/generic_decisions.dds"
+					}
+				}
+
+				blockoverride "title_text" {
+					text = "DECISIONS_TT"
+				}
+			}
+
+			TooltipLockProgress = {}
+		}
+
+		blockoverride "tooltip_content" {
+			TooltipTextBlock = {
+				blockoverride "text" {
+					text = "DECISIONS_DEC_TT"
+				}
+			}
+		}
+	}
+}
+
 widget = {
 	name = "decisions_panel"
     	datacontext = "[GetPlayer]"
 
-	#visible = { #What a smart coder 
+	#visible = { #What a smart coder
 		#has_global_variable = show_decision_panel
 	visible = "[GetVariableSystem.Exists('decisions_panel')]"
 	#}
    	layer = top
+	layer = lateralview
 	size = { 100% 100% }
 	alwaystransparent = yes
 	using = layoutpolicy_expanding
 
 	window = {
-		using = bg_window_default_alt
+		using = bg_lateralview
 		using = layoutpolicy_expanding
+		using = bg_main_inner_image_alt
 
+		movable = "[GetVariableSystem.Exists('move_decisions_panel')]"
+		allow_outside = no
 		name = "decisions_panel_window"
 		datacontext = "[GetPlayer]"
 		datacontext = "[GetVariableSystem]"
-        
-		size = { 25% 70% }
+
+		@topbar_height = 40
+		@panel_bar_height = 90
+		position = { 0 @[topbar_height + panel_bar_height] }
+		@left_panel_width = 570
+		@total_panel_height = 1080 - @topbar_height - @panel_bar_height
+
+		size = { @left_panel_width @total_panel_height }
 		#alwaystransparent = yes
 		layoutpolicy_horizontal = expanding
 		layoutpolicy_vertical = expanding
 
 		widget = {
+			position = { 0 0 }
 			size = { 100% 40 }
 			parentanchor = hleft|top
 			hbox = {
@@ -37,19 +122,80 @@ widget = {
 						#text = "[GetSituationByKey('decisions_panel').GetName]"
 					}
 				}
+
+				background = {
+					texture = "[GetGraphicalCultureTexture('top_header_bg')]"
+					texture_density = 2
+					spriteType = corneredtiled
+					spriteborder = { 0 0 }
+					alpha = 0.6
+
+					modify_texture = {
+						block "window_header_alt_color_texture" {
+							texture = "gfx/interface/colors/market_blue.dds"
+						}
+						blend_mode = overlay
+						alpha = 1.5
+					}
+
+					modify_texture = {
+						block "window_header_alt_color_texture" {
+							texture = "gfx/interface/colors/market_green.dds"
+						}
+						blend_mode = overlay
+						alpha = 1.2
+					}
+
+					modify_texture = {
+						name = "mask"
+						texture = "gfx/interface/component_masks/mask_fade_horizontal_middle.dds"
+						blend_mode = alphamultiply
+						alpha = 0.8
+					}
+					modify_texture = {
+						name = "mask"
+						texture = "gfx/interface/component_masks/mask_fadehorizontal_middle_thick.dds"
+						blend_mode = alphamultiply
+					}
+				}
+
 			}
 			widget = {
 				parentanchor = right|vcenter
 				size = { 40 40 }
+				position = { -40 10 }
+
+				button_checkbox = {
+					size = { 25 25 }
+					align = right|nobaseline
+					checked = "[NOT(GetVariableSystem.Exists('move_decisions_panel'))]"
+					onclick = "[GetVariableSystem.Toggle('move_decisions_panel')]"
+					down = "[GetVariableSystem.Toggle('move_decisions_panel')]"
+					tooltipwidget = {
+						LeftClickButtonTooltip = {
+							blockoverride "onclick_text" {
+								text = "TOGGLE_MOVEABLE"
+							}
+						}
+					}
+				}
+			}
+
+			widget = {
+				parentanchor = right|vcenter
+				size = { 40 40 }
+				position = { 0 0 }
 
 				ui_direction_button_holder_right = {}
 
-				ui_direction_button_alt = {
+				button_close_alt = {
 					parentanchor = right|vcenter
 					using = bg_button_light_alt_round
 
-					onclick = "[GetVariableSystem.Toggle('decisions_panel')]"
-					down = "[GetVariableSystem.Toggle('decisions_panel')]"
+					blockoverride "close_onclick" {
+						onclick = "[GetVariableSystem.Toggle('decisions_panel')]"
+						down = "[GetVariableSystem.Toggle('decisions_panel')]"
+					}
 
 					blockoverride "button_texture" {
 						texture = "gfx/interface/buttons/flats/close_button_alt.dds"
@@ -61,16 +207,17 @@ widget = {
 						alpha = 0.4
 					}
 
-				}	
+				}
 			}
 			expand = { }
 		}
 
 		vbox = {
-			position = { 0 40 }
+			position = { 0 60 }
 			using = lateralview_margins
 			#using = layoutpolicy_expanding
 			size = { 100% 80% }
+
 			scrollbox = {
 				using = layoutpolicy_expanding
 				blockoverride "scrollbox_content" {
@@ -81,117 +228,653 @@ widget = {
 						vbox = {
 							position = { 0 0 }
 							size = { 100% 100% }
-							minimumsize = { 450 50 }
-							
-						
+							minimumsize = { 450 55 }
+
+
 							layoutpolicy_vertical = expanding
 							set_parent_size_to_minimum = yes
 							spacing = 15
 
-							background = {
-								texture = "gfx/interface/component_tiles/side_menus/side_scrollwidget_bckg.dds"
-								texture_density = 2
-								spriteType = corneredstretched
-								spriteborder = { 20 20 }
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								align = center
+								text = "SPECIAL_DECISIONS_TT"
+								default_format = "#yellow_titles"
+								fontsize = 20
+							}
 
-								using = color_dark_blue
+							using = bg_panel_bar
 
-								modify_texture = {
-									texture = "gfx/interface/component_masks/patterns/cloth_texture.dds"
-									spriteborder = { 250 250 }
-									blend_mode = overlay
-									alpha = 0.2
+							block "select_content" { }
+
+						}
+
+						#Decisions Group
+						vbox = {
+							visible = "[Country.MakeScope.GetVariable('german_country').IsSet]"
+							widget = {
+								size = { @generic_decisions_group_x_axis 120 }
+								background = {
+									texture = "gfx/interface/buttons/card_list_action_button.dds"
+									frame_grid = { 4 1 }
+									spriteType = Corneredstretched
+									texture_density = 2
+									spriteborder = { 40 40 }
+								}
+								action_button_regular = {
+									using = generic_decisions_icon
+									layoutpolicy_horizontal = expanding
+									size = { 100% 42 }
+									text = "Unify_germany"
+									actor = "[Player]"
+									left_click_and_hold_action = { action_name = "Unify_germany" }
+									default_format = "#High"
+									tooltipwidget = {
+										ContextualTooltipType = {
+											blockoverride "title_text" {
+												text = "Unify_germany"
+											}
+											blockoverride "concept_link" {
+												using = decisions_group_regular
+											}
+											blockoverride "tooltip_content" {
+												using = action_tooltip_inner_content
+											}
+
+											blockoverride "title_icon" {
+												using = generic_decisions_icon
+											}
+
+											blockoverride "tooltip_ui_action_block" {
+												TooltipUIActionBlockOld = {
+													visible = "[PdxGuiWidget.HasUIAction]"
+												}
+											}
+										}
 									}
 								}
+								vbox = {
+									position = { 0 42 }
+									scrollbox = {
+										layoutpolicy_vertical = expanding
+										blockoverride "scrollbox_content" {
+											action_button_regular = {
+												using = generic_decisions_icon_group_small
+												size = { 300 @generic_decisions_group_height }
+												text = "ug_improve_local_goverment"
+												actor = "[Player]"
+												left_click_and_hold_action = { action_name = "ug_improve_local_goverment" }
+												default_format = "#High"
+												tooltipwidget = {
+													ContextualTooltipType = {
+														blockoverride "title_text" {
+															text = "ug_improve_local_goverment"
+														}
+														blockoverride "concept_link" {
+															using = decisions_regular
+														}
+														blockoverride "tooltip_content" {
+															using = action_tooltip_inner_content
+														}
 
-								block "select_content" {}
-							
-							}
+														blockoverride "title_icon" {
+															using = generic_decisions_icon
+														}
 
-							#How to add new decision
-							#If You want to add a new decision,You need add 2 button here,One as normal one(fake) and another as do the action one(real)
-							#Effect in scripted_guis folder,Trigger is visible = "[GetPlayer.MakeScope.var('var_name_here').IsSet]"
-							#You can use on action to check the requirement
-							#You can use situation to set start var to show the fake decision panel or on game action(I am not sure this one will work fine)
-							#If you want ai do the decision,you can change on action to make it trigger an event to do the code for ai
-							#You can use tooltip to show the requirement
-							#All file are not need decision in the name,but if they have will be better to check
-							#Full Tutorial will be release later - Lvtoumao Dec.13 2025 1:25am
- 							button_regular = { #This one is fake decision
-								name = "dec_cri_n_claim_yedisan"
-								tooltip = "CRI_N_CLAIM_YEDISAN_TT"
-								using = tooltip_ne
-								size = { 100% 30 }
-								visible = "[GetPlayer.MakeScope.Var('cri_t_claim_yedisan').IsSet]"
-								text = "DEC_CRI_N_CLAIM_YEDISAN"
-								action_tooltip = {
-  									click_type = left
-									title = "CRI_N_CLAIM_YEDISAN"
-								}
+														blockoverride "tooltip_ui_action_block" {
+															TooltipUIActionBlockOld = {
+																visible = "[PdxGuiWidget.HasUIAction]"
+															}
+														}
+													}
+												}
+											}
 
-							}
+											action_button_regular = {
+												using = generic_decisions_icon_group_small
+												size = { 300 @generic_decisions_group_height }
+												text = "ug_pru_organized_troops"
+												actor = "[Player]"
+												left_click_and_hold_action = { action_name = "ug_pru_organized_troops" }
+												default_format = "#High"
+												tooltipwidget = {
+													ContextualTooltipType = {
+														blockoverride "title_text" {
+															text = "ug_pru_organized_troops"
+														}
+														blockoverride "concept_link" {
+															using = decisions_regular
+														}
+														blockoverride "tooltip_content" {
+															using = action_tooltip_inner_content
+														}
 
- 							button_regular = { #This one is true decision
-								name = "dec_cri_claim_yedisan"
-								tooltip = "CRI_CLAIM_YEDISAN_TT"
-								using = tooltip_ne
-								size = { 100% 30 }
-								visible = "[GetPlayer.MakeScope.Var('cri_c_claim_yedisan').IsSet]"
-								#visible = "[And(GetPlayer.MakeScope.Var('cri_c_claim_yedisan').IsSet, Not(GetPlayer.MakeScope.Var('cri_c_claim_yedisan_f').IsSet))]" #Test this Later
-								text = "DEC_CRI_CLAIM_YEDISAN"
-								action_tooltip = {
-  									click_type = left
-									title = "CRI_C_CLAIM_YEDISAN"
-									on_action = "[GetScriptedGui('dec_cri_claim_yedisan').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								}
-							}
+														blockoverride "title_icon" {
+															using = generic_decisions_icon
+														}
 
-							#Horde Decisions
-							button_regular = { #Sell Herd for Money
-								name = "dec_horde_n_sell_herd"
-								tooltip = "DEC_N_HORDE_SELL_HERD_TT"
-								using = tooltip_ne
-								size = { 100% 30 }
-								visible = "[GetPlayer.MakeScope.Var('dec_t_sell_herd').IsSet]"
-								text = "DEC_N_HORDE_SELL_HERD"
-								action_tooltip = {
-									click_type = left
-									title = "N_HORDE_SELL_HERD"
-								}
-							}
-
-							button_regular = { #Sell Herd for Money
-								name = "dec_horde_sell_herd"
-								tooltip = "DEC_HORDE_SELL_HERD_TT"
-								using = tooltip_ne
-								size = { 100% 30 }
-								visible = "[GetPlayer.MakeScope.Var('dec_c_sell_herd').IsSet]"
-								text = "DEC_HORDE_SELL_HERD"
-								action_tooltip = {
-									click_type = left
-									title = "HORDE_SELL_HERD"
-									on_action = "[GetScriptedGui('dec_horde_sell_herd').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								}
-							}
-
- 							button_regular = { #This one is for test
-								name = "dec_add_herd_60"
-								tooltip = "HERD"
-								using = tooltip_ne
-								size = { 100% 30 }
-								visible = no
-								#visible = "[GetPlayer.MakeScope.Var('current_herd').IsSet]"
-								text = "ADD_HERD_60"
-
-								action_tooltip = {
-  									click_type = left
-									title = "HERD"
-									on_action = "[GetScriptedGui('add_herd_60').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+														blockoverride "tooltip_ui_action_block" {
+															TooltipUIActionBlockOld = {
+																visible = "[PdxGuiWidget.HasUIAction]"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
 								}
 							}
-
-							expand = { }
 						}
+
+
+						#How to add new decision
+						#If You want to add a new decision,You need add 2 button here,One as normal one(fake) and another as do the action one(real)
+						#Effect in scripted_guis folder,Trigger is visible = "[GetPlayer.MakeScope.var('var_name_here').IsSet]"
+						#You can use on action to check the requirement
+						#You can use situation to set start var to show the fake decision panel or on game action(I am not sure this one will work fine)
+						#If you want ai do the decision,you can change on action to make it trigger an event to do the code for ai
+						#You can use tooltip to show the requirement
+						#All file are not need decision in the name,but if they have will be better to check
+						#Full Tutorial will be release later - Lvtoumao Dec.13 2025 1:25am
+						#search "action based decisions" for more
+						button_regular = {
+							#This one is fake decision
+							name = "dec_cri_n_claim_yedisan"
+							tooltip = "CRI_N_CLAIM_YEDISAN_TT"
+							using = tooltip_ne
+							size = { 100% @generic_decisions_height }
+							visible = "[GetPlayer.MakeScope.Var('cri_t_claim_yedisan').IsSet]"
+							text = "DEC_CRI_N_CLAIM_YEDISAN"
+							action_tooltip = {
+								click_type = left
+								title = "CRI_N_CLAIM_YEDISAN"
+							}
+
+						}
+
+						button_regular = {
+							#This one is true decision
+							name = "dec_cri_claim_yedisan"
+							tooltip = "CRI_CLAIM_YEDISAN_TT"
+							using = tooltip_ne
+							size = { 100% @generic_decisions_height }
+							visible = "[GetPlayer.MakeScope.Var('cri_c_claim_yedisan').IsSet]"
+							visible = "[And(GetPlayer.MakeScope.Var('cri_c_claim_yedisan').IsSet, Not(GetPlayer.MakeScope.Var('cri_c_claim_yedisan_f').IsSet))]" #Test this Later
+							text = "DEC_CRI_CLAIM_YEDISAN"
+							action_tooltip = {
+								click_type = left
+								title = "CRI_C_CLAIM_YEDISAN"
+								on_action = "[GetScriptedGui('dec_cri_claim_yedisan').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							}
+						}
+
+						#Horde Decisions
+						button_regular = {
+							#Sell Herd for Money
+							name = "dec_horde_n_sell_herd"
+							tooltip = "DEC_N_HORDE_SELL_HERD_TT"
+							using = tooltip_ne
+							size = { 100% @generic_decisions_height }
+							visible = "[GetPlayer.MakeScope.Var('dec_t_sell_herd').IsSet]"
+							text = "DEC_N_HORDE_SELL_HERD"
+							action_tooltip = {
+								click_type = left
+								title = "N_HORDE_SELL_HERD"
+							}
+						}
+
+						button_regular = {
+							#Sell Herd for Money
+							name = "dec_horde_sell_herd"
+							tooltip = "DEC_HORDE_SELL_HERD_TT"
+							using = tooltip_ne
+							size = { 100% @generic_decisions_height }
+							visible = "[GetPlayer.MakeScope.Var('dec_c_sell_herd').IsSet]"
+							text = "DEC_HORDE_SELL_HERD"
+							action_tooltip = {
+								click_type = left
+								title = "HORDE_SELL_HERD"
+								on_action = "[GetScriptedGui('dec_horde_sell_herd').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							}
+						}
+
+						button_regular = {
+							#This one is for test
+							name = "dec_add_herd_60"
+							tooltip = "HERD"
+							using = tooltip_ne
+							size = { 100% @generic_decisions_height }
+							visible = no
+							#visible = "[GetPlayer.MakeScope.Var('current_herd').IsSet]"
+							text = "ADD_HERD_60"
+
+							action_tooltip = {
+								click_type = left
+								title = "HERD"
+								on_action = "[GetScriptedGui('add_herd_60').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							}
+						}
+
+						#If you want add action based decisions then add your action here
+						#And define them in common/generic_actions/decisions_actions.txt
+						#- Lvtoumao Jan.28 2026 10:30pm
+						action_button_regular = {
+							icon = {
+								size = { @generic_decisions_height @generic_decisions_height }
+								texture = "gfx/interface/icons/international_organizations/middle_kingdom.dds"
+							}
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "claim_mandate_of_heaven"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "claim_mandate_of_heaven" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "claim_mandate_of_heaven"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							using = generic_decisions_icon_small
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "create_general_war_commissariat"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "create_general_war_commissariat" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "create_general_war_commissariat"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							using = generic_decisions_icon_small
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "reform_sejm_parliament"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "reform_sejm_parliament" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "reform_sejm_parliament"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							icon = {
+								size = { @generic_decisions_height @generic_decisions_height }
+								texture = "gfx/interface/icons/international_organizations/swedish_empire.dds"
+							}
+							using = generic_decisions_icon_small
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "claim_dominance_over_the_baltic_sea"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "claim_dominance_over_the_baltic_sea" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "claim_dominance_over_the_baltic_sea"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							using = generic_decisions_icon_small
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "unite_ukranie"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "unite_ukranie" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "unite_ukranie"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							using = generic_decisions_icon_small
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "Reform_tibet_empire"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "Reform_tibet_empire" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "Reform_tibet_empire"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							using = generic_decisions_icon
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "Between_the_two_seas"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "Between_the_two_seas" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "Between_the_two_seas"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							using = generic_decisions_icon_small
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "Claim_the_third_rome"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "Claim_the_third_rome" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "Claim_the_third_rome"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							using = generic_decisions_icon_small
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "Expand_hofburg_palace"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "Expand_hofburg_palace" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "Expand_hofburg_palace"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						expand = { }
+					}
+				}
+			}
+
+			scrollbox = {
+				using = layoutpolicy_expanding
+				blockoverride "scrollbox_content" {
+					vbox = {
+						name = "select_decisions"
+						size = { 100% 100% }
+
+						vbox = {
+							position = { 0 0 }
+							size = { 100% 100% }
+							minimumsize = { 450 55 }
+
+
+							layoutpolicy_vertical = expanding
+							set_parent_size_to_minimum = yes
+							spacing = 15
+
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								align = center
+								text = "GENERIC_DECISIONS_TT"
+								default_format = "#yellow_titles"
+								fontsize = 20
+							}
+
+							using = bg_panel_bar
+							#background = {
+							#	texture = "gfx/interface/component_tiles/side_menus/side_scrollwidget_bckg.dds"
+							#	texture_density = 2
+							#	spriteType = corneredstretched
+							#	spriteborder = { 0 0 }
+
+							#	using = color_dark_blue
+							#}
+
+							block "select_content" { }
+
+						}
+
+						#Generic Decisions
+						action_button_regular = {
+							using = generic_decisions_icon_small
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "reform_the_regulars"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "reform_the_regulars" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "reform_the_regulars"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							using = generic_decisions_icon_small
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "declare_golden_age_of_our_country"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "declare_golden_age_of_our_country" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "declare_golden_age_of_our_country"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						expand = { }
 					}
 				}
 			}

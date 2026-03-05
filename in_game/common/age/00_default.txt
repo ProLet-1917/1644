@@ -35,18 +35,22 @@
 	}
 	
 }
+
 age_2_renaissance = {
 	year = 1342		#5 years shorter
 	price_stability = 0.1
 	max_price = 3
 	
 	months_for_exploration_spread = 1800
+
+	unique = {
+		diplomatic_capacity_modifier = 0.25
+		cultural_tradition_modifier = 0.25
+	}
+
 	modifier = {
 		expected_army_size_modifier = 1.0
 		levy_maintenance_modifier = 0.1
-		
-		diplomatic_capacity_modifier = 0.25
-		cultural_tradition_modifier = 0.25
 		
 		lack_of_control_impact_on_warscore = -0.2
 		
@@ -86,12 +90,14 @@ age_3_discovery = {
 	hegemons_allowed = yes
 	
 	months_for_exploration_spread = 1800
+
+	unique = {
+		exploration_mission_speed = 0.25
+		colonial_maintenance_cost = -0.25
+	}
 	modifier = {
 		expected_army_size_modifier = 2.0
 		levy_maintenance_modifier = 0.25
-		
-		exploration_mission_speed = 0.25
-		colonial_maintenance_cost = -0.25
 		
 		lack_of_control_impact_on_warscore = -0.4
 		
@@ -133,12 +139,16 @@ age_4_reformation = {
 	max_price = 5
 	hegemons_allowed = yes
 	months_for_exploration_spread = 1200
+
+	unique = {
+		global_pop_conversion_speed_modifier = 0.33
+		merchant_maintenance_cost = -0.25
+	}
+
 	modifier = {
 		expected_army_size_modifier = 8.0 #vanilla 4.0
 		levy_maintenance_modifier = 0.5
-		
-		global_pop_conversion_speed_modifier = 0.33
-		merchant_maintenance_cost = -0.25
+
 		lack_of_control_impact_on_warscore = -0.6
 		
 		global_navy_levy_size_modifier = -1.0
@@ -182,12 +192,16 @@ age_5_absolutism = {
 	max_price = 5
 	hegemons_allowed = yes
 	months_for_exploration_spread = 600
+
+	unique = {
+		revoke_privilege_cost_modifier = -0.33
+		global_integration_speed_modifier = 0.25
+	}
+
 	modifier = {
 		expected_army_size_modifier = 12.0 #vanilla 8.0
 		levy_maintenance_modifier = 0.75
-		
-		revoke_privilege_cost_modifier = -0.33
-		global_integration_speed_modifier = 0.25
+
 		lack_of_control_impact_on_warscore = -0.8
 		
 		global_war_score_cost = -0.1
@@ -242,12 +256,16 @@ age_6_revolutions = {
 	hegemons_allowed = yes
 	
 	months_for_exploration_spread = 300
+
+	unique = {
+		global_war_score_cost = -0.2
+		subject_loyalty = -30
+	}
+
 	modifier = {
 		expected_army_size_modifier = 20.0 #vanilla 16.0
 		levy_maintenance_modifier = 1.0
-		
-		global_war_score_cost = -0.2
-		subject_loyalty = -30
+
 		lack_of_control_impact_on_warscore = -1.0
 		
 		construction_center_max_level = 5
@@ -271,11 +289,11 @@ age_6_revolutions = {
 	victory_card = 5
 
 	max_ai_privilege_per_estate = {
-		nobles_estate = 0
-		clergy_estate = 0
-		burghers_estate = 0
-		peasants_estate = 0
-		dhimmi_estate = 0
+		nobles_estate = 1
+		clergy_estate = 1
+		burghers_estate = 2
+		peasants_estate = 2
+		dhimmi_estate = 1
 		tribes_estate = 0
 		cossacks_estate = 0
 	}

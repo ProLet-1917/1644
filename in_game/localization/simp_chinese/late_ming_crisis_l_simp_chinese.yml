@@ -5,10 +5,16 @@
 
 
  # 事件 1: 启动
- late_ming_crisis.1.t: "甲申天变"
- late_ming_crisis.1.desc: "甲申之变在即，天下大乱。各方势力都已做好准备，迎接这场决定中国命运的决战。"
- late_ming_crisis.1.a: "苍天已死，黄天当立..."
+late_ming_crisis.1.title:0 "反正？"
+late_ming_crisis.1.desc:0 "当初形势所迫我们不得不投降闯王，然而如今大顺军在清军面前连吃败仗。姜瓖作为前明将领，是否应该抓住机会，赶快反正？"
+#late_ming_crisis.1.historical_info:0 "姜瓖原为明大同总兵，李自成三月至大同时投降，见大顺势衰，遂反叛。"
+late_ming_crisis.1.a:0 "降清"
+late_ming_crisis.1.b:0 "归明"
+late_ming_crisis.1.c:0 "现在还不是时候"
 
+late_ming_crisis.2.title:0 "姜瓖背叛"
+late_ming_crisis.2.desc:0 "大同总兵姜瓖包藏祸心，见我军不利，突然发动叛乱，杀害张天琳、柯天相。我们丧失了大同这个兵家必争之地！"
+late_ming_crisis.2.a:0 "奸贼！恶贼！逆贼！"
 
 
 # Generic Action: 获取统一中国CB
@@ -31,7 +37,7 @@ late_ming_crisis_test_recreate_middle_kingdom_desc: "测试用：使用原版效
  MAJOR_POWERS: "主要势力"
  PARTICIPATING_COUNTRIES: "明末群雄"
  BATTLE_STATISTICS_LATE_MING: "战斗统计"
- BATTLE_STATISTICS_LATE_MING_TOOLTIP: "#T 战斗统计#!显示甲申局势中的战斗统计数据，包括总伤亡、我方阵斩和我方阵亡。"
+ BATTLE_STATISTICS_LATE_MING_TOOLTIP: "#T 战斗统计#!显示明末局势中的战斗总伤亡。"
  TOTAL_CASUALTIES_LATE_MING: "阵亡将士总数"
  TOTAL_CASUALTIES_LATE_MING_TOOLTIP: "#T 阵亡总数#!甲申局势中所有参与方在战斗中阵亡的士兵总数为[SituationView.GetActiveSituation.GetSituation.MakeScope.GetVariable('late_ming_crisis_total_casualties').GetValue]人。"
  MY_KILLS_LATE_MING: "我方阵斩"

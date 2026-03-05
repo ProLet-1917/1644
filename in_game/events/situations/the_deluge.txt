@@ -1,0 +1,190 @@
+namespace = the_deluge
+
+#0.3.0 Lions of the North
+the_deluge.1 = { #Zaporozhian now request we join their war against Poland
+    type = country_event
+    title = "the_deluge.1.t"
+    desc = "the_deluge.1.desc"
+
+    option = { #We accept
+        name = "the_deluge.1.a"
+        historical_option = yes
+        join_war_against = {
+            target = c:PLC
+            war = "c:ZAZ.war_with_country(c:PLC)"
+        }
+        c:ZAZ = {
+            trigger_event_non_silently = the_deluge.2
+        }
+    }
+
+    option = { #We refuse
+        name = "the_deluge.1.b"
+        c:ZAZ = {
+            trigger_event_non_silently = the_deluge.3
+        }
+    }
+}
+
+the_deluge.2 = { #They accepted
+    type = country_event
+    title = "the_deluge.2.t"
+    desc = "the_deluge.2.desc"
+
+    option = {
+        name = "the_deluge.2.b"
+
+    }
+}
+
+the_deluge.3 = { #They refused
+    type = country_event
+    title = "the_deluge.3.t"
+    desc = "the_deluge.3.desc"
+
+    option = {
+        name = "the_deluge.3.b"
+
+    }
+}
+
+the_deluge.4 = {
+    type = country_event
+    title = "the_deluge.4.t"
+    desc = "the_deluge.4.desc"
+
+    option = {
+        #We accept but we need them send us a troop
+        name = "the_deluge.4.a"
+        historical_option = yes
+        c:PRU = {
+            trigger_event_non_silently = the_deluge.7
+        }
+    }
+
+    option = { #We refuse
+        name = "the_deluge.4.b"
+        c:PRU = {
+            declare_war_with_cb = {
+                type = casus_belli:cb_independence_war
+                target = c:PLC
+            }
+        }
+        c:BRA = {
+            join_war_against = {
+                target = c:PLC
+                war = "c:PRU.war_with_country(c:PLC)"
+            }
+        }
+    }
+    option= { #We have to accept,but they must stay in war(if we have)
+        name = "the_deluge.4.c"
+        c:PLC = {
+            cancel_subject = c:PRU
+        }
+        c:PRU = {
+            make_subject_of = {
+                target = c:BRA
+                type = subject_type:dominion
+            }
+        }
+    }
+}
+
+the_deluge.5 = { #Start Event - PLC
+    type = country_event
+    title = "the_deluge.5.t"
+    desc = "the_deluge.5.desc"
+
+    option = {
+        name = "the_deluge.5.a"
+        add_stability = -20
+        add_country_modifier = {
+            modifier = the_deluge
+            years = -1
+        }
+    }
+}
+
+the_deluge.6 = { #Do you want play the army?
+    type = country_event
+    title = "the_deluge.6.t"
+    desc = "the_deluge.6.desc"
+
+    option = {
+        name = "the_deluge.6.a"
+    }
+
+    option = {
+        name = "the_deluge.6.b"
+        trigger = { is_ai = no }
+        change_player = scope:new_army_country
+    }
+}
+
+the_deluge.7 = { #Message from warsaw - Prussia for army
+    type = country_event
+    title = "the_deluge.7.t"
+    desc = "the_deluge.7.desc"
+
+    option = { #We accept
+        name = "the_deluge.7.a"
+        historical_option = yes
+        c:PRU = {
+            if = {
+                limit = {
+                    this.war_with_country(c:ZAZ) = yes
+                }
+                leave_war = {
+                    actor = c:PLC
+                    war = "c:ZAZ.war_with_country(c:PLC)"
+                }
+            }
+        }
+        c:PLC = {
+            cancel_subject = c:PRU
+        }
+        c:PRU = {
+            make_subject_of = {
+                target = c:BRA
+                type = subject_type:dominion
+            }
+        }
+        location:berlin = {
+            while = {
+                count = 4
+                create_sub_unit_with_owner = {
+                    type = a_pikemen
+                    owner = c:PLC
+                    origin = this
+                    experience = 35
+                }
+            }
+            while = {
+                count = 1
+                create_sub_unit_with_owner = {
+                    type = a_heavy_lancers
+                    owner = c:PLC
+                    origin = this
+                    experience = 35
+                }
+            }
+            while = {
+                count = 1
+                create_sub_unit_with_owner = {
+                    type = a_chambered_cannon
+                    owner = c:PLC
+                    origin = this
+                    experience = 35
+                }
+            }
+        }
+    }
+
+    option = { #No
+        name = "the_deluge.7.b"
+        c:PRU = {
+            remove_variable = already_declare_independence
+        }
+    }
+}

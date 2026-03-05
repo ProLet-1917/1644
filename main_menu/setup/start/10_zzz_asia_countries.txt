@@ -122,7 +122,7 @@ countries = {
 
 				# longyou_area ─ 陇右三辅与渭源河谷
 				longxi_gongchang dingxi fuqiang huizhou_gongchang ningyuan_gongchang tongwei zhangxian
-				hezhou #guide 
+				hezhou guide 
 				jishi 
 				huizhou chengzhou xihe_huizhou liangdang lidian
 				jiezhou baimaguan wenxian_gongchang
@@ -1361,6 +1361,7 @@ countries = {
 			}
 		}
 		SES = { #格根车臣 Setsen
+			type = army
 			own_control_core = {
 				khalkh tamsabulag buir_nuur #khalkh
 				sangiin_dalai menen bayan_tumen bars_khot bayantsagaan
@@ -1392,6 +1393,7 @@ countries = {
 			}
 		}
 		TSH = { #土谢图 Tüsheet
+			type = army
 			own_control_core = {
 				dalay doloodyn_gobi saikhandulaan ulaanbadrakh #sharangad_province
 				del_khad galbyn_gobi khatanbulag oiyin_korken ooshiyn_gobi zhavklant_khairkhan #eastern_gobi_province
@@ -1402,7 +1404,7 @@ countries = {
 				baibalyk alyanbulag kharkhul tarvagatai #selenga_province
 				karakorum khar_balgas orkhon tsetserleg #orkhon_province
 				ongiin_khiid gimpil_darjaalan shaazan_khot shaazan_tolgoi suriig #ongiin_province
-				baidrag boontsagaan khangal  orog tuin lake_boontsagaan lake_orog khasagt_khairkhan
+				baidrag boontsagaan khangal  orog tuin
 				zavkhan
 				zagzuugiin_balgas chuluutyn ider lake_sangiin_dalai lake_terkhiin_tsagaan
 			}
@@ -1428,6 +1430,7 @@ countries = {
 			}
 		}
 		ZSG = { #札萨克图 Zasagt
+			type = army
 			own_control_core = {
 				naran biger khalzan_shireg
 				altan_gadas delger_moron
@@ -1459,6 +1462,7 @@ countries = {
 			}
 		}
 		HTG = { #和托辉特 Khotogoid
+			type = army
 			own_control_core = {
 				den_terek khemchik ulug usun
 				kaa balyktyg buren_khem busiyn lake_dood_tsagaan
@@ -1487,7 +1491,8 @@ countries = {
 
 			}
 		}
-		ZUN = { #准噶尔 Dzungar 
+		ZUN = { #准噶尔 Dzungar
+			type = army
 			own_control_core = {
 				turuum ulaamgom tes
 				khovd achit_nuur tsagaan_usun khurgan lake_achit lake_dayan lake_durgun lake_khar lake_khar_us lake_khoton lake_khurgan lake_markakol lake_tolbo
@@ -1537,6 +1542,7 @@ countries = {
 			}
 		}
 		QKH = { #青海厄鲁特 Qinghai_Khoshuud
+			type = army
 			own_control_core = {
 				chabcha buha caka dulan dungkar_amdo guolimu qardam sanjiaocheng #amdo_province
 				amnye_machen
@@ -1575,6 +1581,7 @@ countries = {
 			}
 		}
 		HSD = { #和硕特 Khoshuud
+			type = army
 			own_control_core = {
 				yangjibaliq kutubi ulan_us qanbalik urumqi  #yangjibaliq_province
 				beshbalik dunla guchung mori yuanhu  #beshbalik_province
@@ -2098,6 +2105,7 @@ countries = {
 				daroot_korgon karakol muksu
 				 vanch
 				shighnan gunt murghab oksu  vamar
+				raskam
 			}
 			capital = yarkand
 			include = "eurasian_horde_no_coast_no_pleading"

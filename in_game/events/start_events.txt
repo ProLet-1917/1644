@@ -1,0 +1,35 @@
+namespace = start_events
+
+start_events.1 = { #Austria
+    type = country_event
+    fire_only_once = yes
+    title = start_events.1.title
+    desc = start_events.1.desc
+    historical_info = start_events.1.historical_info
+
+    immediate = {
+
+    }
+
+    option = { #Let we start
+        name = start_events.1.a
+        historical_option = yes #Do we have other option?
+        hidden_effect = {
+            international_organization:hre = {
+                #HRE Reform - It wont change when I define it in setup so I have to put it here
+                add_policy_to_international_organization = policy:landfriede_rank_4_policy
+                add_policy_to_international_organization = policy:hre_early_imperial_diet_policy
+                add_policy_to_international_organization = policy:only_treasury_payment
+                add_policy_to_international_organization = policy:great_imperial_army
+                change_variable = {
+                    name = imperial_authority
+                    add = 22.75
+                }
+                international_organization_remove_special_status = {
+                    type = special_status:imperial_prince
+                    country = c:MLO
+                }
+            }
+        }
+    }
+}

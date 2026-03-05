@@ -146,7 +146,7 @@
 	# 5. 月度逻辑
 	on_monthly = {
 		# # 每月更新中国国家列表，已经在别处更新
-		# collect_china_countries_effect = yes
+		collect_china_countries_effect = yes
 		#为所有参与国添加domination和mandate
 		late_ming_crisis_init_variable = yes
 		
@@ -163,10 +163,125 @@
 			}
 		}
 		
+		#大同叛乱事件
+		if = {
+			limit = {
+				c:CJX ?= {
+					NOR = {
+						has_variable = cjx_rebellion_first
+						has_variable = cjx_refus_rebellion_first
+					}
+				}
+			}
+			if = {
+				limit = {
+					c:QNG ?= { has_variable = chi_domination }
+					c:MNG ?= { has_variable = chi_domination }
+					c:CSH ?= { has_variable = chi_domination }
+					OR = {
+						c:QNG.var:chi_domination > c:CSH.var:chi_domination			
+				 		c:MNG.var:chi_domination > c:CSH.var:chi_domination	
+					}		
+				}
+				random = {
+					chance = 10
+					modifier = {
+						c:CSH.var:chi_domination < 70
+						multiply = 4
+					}
+					modifier = {
+						c:CSH.var:chi_domination < 60
+						multiply = 2
+					}
+					modifier = {
+						c:CSH.var:chi_domination < 50
+						multiply = 2
+					}
+					modifier = {
+						location:xuande.owner = c:QNG#宣府
+						multiply = 4
+					}
+					modifier = {
+						location:yangqu.owner = c:QNG#太原
+						multiply = 4
+					}
+					modifier = {
+						location:ninghua.owner = c:QNG#宁武
+						multiply = 2
+					}
+					modifier = {
+						location:daizhou.owner = c:QNG#代州
+						multiply = 2
+					}
+					modifier = {
+						location:dadu.owner = c:QNG#北京
+						multiply = 4
+					}
+					modifier = {
+						location:changan.owner = c:QNG#西京
+						multiply = 4
+					}
+					c:CJX = {
+						trigger_event_silently = {
+							id = late_ming_crisis.1
+							days = { 3 10 }
+						}
+					}
+				}
+			}
+		}
+
+		#宣府叛乱事件
+		if = {
+			limit = {
+				NOT = { c:CSH ?= { has_variable = csh_lost_xuanfu } }
+			}
+			if = {
+				limit = {
+					c:QNG ?= { has_variable = chi_domination }
+					c:MNG ?= { has_variable = chi_domination }
+					c:CSH ?= { has_variable = chi_domination }
+					c:QNG.var:chi_domination > c:CSH.var:chi_domination
+				}
+				random = {
+					chance = 10
+					modifier = {
+						c:CSH.var:chi_domination < 70
+						multiply = 4
+					}
+					modifier = {
+						c:CSH.var:chi_domination < 60
+						multiply = 2
+					}
+					modifier = {
+						c:CSH.var:chi_domination < 50
+						multiply = 2
+					}
+					modifier = {
+						OR = {
+							location:datong_datong.owner = c:QNG
+							c:CJX ?= { is_subject_of = c:QNG }
+						}
+						multiply = 2
+					}
+					modifier = {
+						location:dadu.owner = c:QNG#北京
+						multiply = 2
+					}
+					c:CSH = {
+						trigger_event_silently = {
+							id = late_ming_crisis.3
+							days = { 1 3 }
+						}
+					}
+				}
+			}
+		}
+
 	}
 
 	# 6. 结束效果
-	on_end = {
+	on_ended = {
 		# 移除所有参与国的局势 modifier
 		every_country = {
 			limit = {

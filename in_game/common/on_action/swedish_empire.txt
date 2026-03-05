@@ -1,0 +1,22 @@
+on_losing_war = {
+    on_actions = {
+        on_swe_losing_war
+    }
+}
+
+on_swe_losing_war = {
+    trigger = {
+        international_organization:swedish_empire = {
+            international_organization_has_leader = yes
+        }
+        scope:loser = c:SWE
+    }
+    effect = {
+        international_organization:swedish_empire = {
+            change_variable = {
+                name = swedish_empire_authority
+                subtract = 30
+            }
+        }
+    }
+}

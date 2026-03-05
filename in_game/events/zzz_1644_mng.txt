@@ -186,23 +186,7 @@ mng_1644.3 = { #北都沦陷（南迁线）
 	}
 }
 
-mng_1644.4 = { #让大明的附属国加入战争
-	type = country_event
-	hidden = yes
-	is_triggered_only = yes
-	
-	immediate = {
-		if = {
-			limit = { tag = MNG }
-			# 让所有附属国加入大明的战争
-			mng_subjects_join_wars = yes
-		}
-	}
-	
-	option = {
-		name = mng_1644.4.a
-	}
-}
+
 
 
 mng_1644.5 = { #立新君
@@ -296,4 +280,15 @@ mng_1644.5 = { #立新君
 	#	add_government_power = government_power_extreme_penalty
 	#	add_prestige = prestige_mild_penalty
 	#}
+}
+
+mng_1644.6 = { #山东河北反正
+	type = country_event
+	title = mng_1644.6.title
+	desc = mng_1644.6.desc
+	historical_info = mng_1644.6.historical_info
+	option = {
+		name = mng_1644.6.a
+    	custom_tooltip = mng_1644.6.tt
+	}
 }

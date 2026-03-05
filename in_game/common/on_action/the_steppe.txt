@@ -1,31 +1,26 @@
-﻿monthly_country_pulse = {
-	on_actions = {
-		on_horde_nations_list
-		on_strength_horde_nations_list
-		on_monthly_herd_check
-	}
-}
-
-on_horde_nations_list = {
+﻿on_horde_nations_list = {
 	trigger = {
 		has_global_variable_list = horde_nations_list
+		NOT = { has_variable = temp_monthly_horde_check}
 	}
 	effect = {
 		horde_nations_list_monthly_check_effect = yes
 	}
 }
 
-on_strength_horde_nations_list = {
-	trigger = {
-		has_global_variable_list = horde_nations_list
-	}
-	effect = {
-		recalculate_the_strength_horde_monthly_effect = yes
-	}
-}
+#on_strength_horde_nations_list = {
+#	trigger = {
+#		has_global_variable_list = horde_nations_list
+#	}
+#	effect = {
+#		recalculate_the_strength_horde_monthly_effect = yes
+#	}
+#}
 on_monthly_herd_check = {
 	trigger = {
-		has_global_variable_list = horde_nations_list
+		has_variable = current_herd
+		uses_government_power = horde_unity
+		NOT = { has_variable = temp_monthly_herd_check}
 	}
 	effect = {
 		monthly_herd_check_effect = yes

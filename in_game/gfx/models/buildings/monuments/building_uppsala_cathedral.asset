@@ -1,0 +1,21 @@
+﻿pdxmesh = {
+	name = "building_uppsala_cathedral_mesh"
+	file = "building_uppsala_cathedral.mesh"
+
+	meshsettings = {
+		name = "building_uppsala_cathedral_lod0_shape01"
+		index = 0
+		texture_diffuse = "building_uppsala_cathedral_01_diffuse.dds"
+		texture_normal = "building_uppsala_cathedral_01_normal.dds"
+		texture_specular = "building_uppsala_cathedral_01_properties.dds"
+		shader = "snap_to_terrain_alpha_to_coverage"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	scale = 0.05
+}
+
+entity = {
+	name = "building_uppsala_cathedral_entity"
+	pdxmesh = "building_uppsala_cathedral_mesh"
+}

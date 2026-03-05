@@ -1,0 +1,153 @@
+situation_panel = {
+
+	##################################### MAIN IMAGE #####################################
+
+	blockoverride "situation_panel_image" {
+		using = two_countries_header_template
+	
+		blockoverride "FirstCountryContext" {
+			datacontext = "[GetCountry('ENG')]"
+		}
+
+		blockoverride "SecondCountryContext" {
+			datacontext = "[GetCountry('ROE')]"
+		}
+
+		# blockoverride "history_button_anchor" {}
+
+		blockoverride "first_character_portrait_anchor" {
+			parentanchor = bottom|left
+		}
+
+		blockoverride "second_character_portrait_anchor" {
+			parentanchor = bottom|right
+		}
+
+		blockoverride "character_religion_visibility" {
+			visible = yes
+		}
+
+		blockoverride "character_name_maximumsize" {
+			maximumsize = { 270 -1 }
+		}
+
+		blockoverride "country_header_extra" {
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				margin = { 10 10 }
+				spacing = 8
+
+				expand = {}
+			}
+		}
+	}
+	##################################### SUBHEADER #####################################
+
+	blockoverride "situation_subheader_content" {}
+
+	##################################### MAIN CONTENT #####################################
+
+	blockoverride "situation_panel_main_content" {
+
+		situation_card_expandable = {
+			blockoverride "header_button_onclick" {
+				onclick = "[LateralView.Vars.Toggle( 'requirements_toggled' )]"
+			}
+			blockoverride "header_text" {
+				text = "END_REQUIREMENTS"
+			}
+			blockoverride "header_icon" {
+				texture = "gfx/interface/icons/disasters/end_requirements_green.dds"
+			}
+			blockoverride "bottom_content" {
+				TooltipRequirementsList = {
+					textcontext = "[SituationView.GetActiveSituation.GetSituation.GetEndConditions]"
+				}
+			}
+			blockoverride "onaction_hint" {
+				action_tooltip = {
+					title = "OPEN_HINT"
+					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_war_of_three_kingdoms')]"
+				}
+			}
+			blockoverride "bottom_content_onclick" {
+				visible = "[LateralView.Vars.Exists( 'requirements_toggled' )]"
+			}
+		}
+
+		situation_fancy_two_line_card = {
+
+			# Parliamentarian side
+			blockoverride "left_flag_properties" {
+				datacontext = "[GetCountry('ENG')]"
+				visible = "[Country.IsValid]"
+			}
+			blockoverride "left_top_text" {
+				text = "[GetCountry('ENG').GetName]"
+			}
+			blockoverride "left_bottom_text" {
+				text = "ENG_STRENGTH_TT"
+			}
+
+			# Royalist side
+			blockoverride "right_flag_properties" {
+				datacontext = "[GetCountry('ROE')]"
+				visible = "[Country.IsValid]"
+			}
+			blockoverride "right_top_text" {
+				text = "[GetCountry('ROE').GetName]"
+			}
+			blockoverride "right_bottom_text" {
+				text = "ROE_STRENGTH_TT"
+			}
+        }
+	}
+
+	##################################### SIDE PARTICIPANTS #####################################
+
+	blockoverride "situation_panel_main_content_bottom" {
+		situation_side_cards = {
+
+			# Parliamentarian bloc
+			blockoverride "left_header_content" {
+				text_single = {
+					align = center
+					text = "PARLIAMENTARIAN_SIDE_TT"
+				}
+			}
+			blockoverride "left_bottom_content" {
+				scrollarea = {
+					size = { -1 190 }
+					scrollwidget = {
+						dynamicgridbox = {
+							datacontext = "[GetWillJoinCountryList(GetCountry('ENG').Self, GetCountry('ROE').Self)]"
+							datamodel = "[WillJoinCountryList.GetJoinDefensive]"
+							item = { country_flag_small = {} }
+						}
+					}
+				}
+			}
+
+			# Royalist bloc
+			blockoverride "right_header_content" {
+				text_single = {
+					align = center
+					text = "ROYALIST_SIDE_TT"
+				}
+			}
+			blockoverride "right_bottom_content" {
+				scrollarea = {
+					size = { -1 190 }
+					scrollwidget = {
+						dynamicgridbox = {
+							datacontext = "[GetWillJoinCountryList(GetCountry('ROE').Self, GetCountry('ENG').Self)]"
+							datamodel = "[WillJoinCountryList.GetJoinDefensive]"
+							item = { country_flag_small = {} }
+						}
+					}
+				}
+			}
+		}
+	}
+}

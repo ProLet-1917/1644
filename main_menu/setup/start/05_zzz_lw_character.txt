@@ -12,9 +12,163 @@ character_db = {
 		dynasty = muradoglu_dynasty
 	}
 
+	tur_bayezid_i = { #https://en.wikipedia.org/wiki/Bayezid_I
+		first_name = { name = Bayezid }
+		father = tur_murad
+		dynasty = ottomans_dynasty
+		birth = bursa
+		birth_date = 1360.1.1
+		death_date = 1403.3.8
+		culture = turkish_culture
+		religion = sunni
+		tag = TUR
+	}
+	tur_mehmed_i = { #https://en.wikipedia.org/wiki/Mehmed_I
+		first_name = { name = name_muhammad }
+		father = tur_bayezid_i
+		dynasty = ottomans_dynasty
+		birth = bursa
+		birth_date = 1386.1.1
+		death_date = 1421.5.26
+		culture = turkish_culture
+		religion = sunni
+		tag = TUR
+	}
+	tur_murad_ii = { #https://en.wikipedia.org/wiki/Murad_II
+		first_name = { name = name_murad }
+		father = tur_mehmed_i
+		dynasty = ottomans_dynasty
+		birth = amasya
+		birth_date = 1404.6.1
+		death_date = 1451.2.3
+		culture = turkish_culture
+		religion = sunni
+		tag = TUR
+	}
+	tur_mehmed_ii = { #https://en.wikipedia.org/wiki/Mehmed_II
+		first_name = { name = name_muhammad }
+		father = tur_murad_ii
+		dynasty = ottomans_dynasty
+		birth = edirne
+		birth_date = 1432.3.30
+		death_date = 1481.5.3
+		culture = turkish_culture
+		religion = sunni
+		tag = TUR
+	}
+	tur_bayezid_ii = { #https://en.wikipedia.org/wiki/Bayezid_II
+		first_name = { name = Bayezid } 
+		father = tur_mehmed_ii
+		dynasty = ottomans_dynasty
+		birth = demotica
+		birth_date = 1447.12.3
+		death_date = 1512.5.26
+		culture = turkish_culture
+		religion = sunni
+		tag = TUR
+	}
+	tur_selim_i = { #https://en.wikipedia.org/wiki/Selim_I
+		first_name = { name = Selim } 
+		father = tur_bayezid_ii
+		dynasty = ottomans_dynasty
+		birth = amasya
+		birth_date = 1470.10.10
+		death_date = 1520.9.22
+		culture = turkish_culture
+		religion = sunni
+		tag = TUR
+	}
+	tur_suleiman_the_magnificent = { #https://en.wikipedia.org/wiki/Suleiman_the_Magnificent
+		first_name = { name = name_salomon } 
+		father = tur_selim_i
+		dynasty = ottomans_dynasty
+		birth = trebizond
+		birth_date = 1494.11.6
+		death_date = 1566.9.6
+		culture = turkish_culture
+		religion = sunni
+		tag = TUR
+	}
+	tur_selim_ii = { #https://en.wikipedia.org/wiki/Selim_II
+		first_name = { name = Selim } 
+		father = tur_suleiman_the_magnificent
+		dynasty = ottomans_dynasty
+		birth = constantinople
+		birth_date = 1524.5.28
+		death_date = 1574.12.15
+		culture = turkish_culture
+		religion = sunni
+		tag = TUR
+	}
+	tur_murad_iii = { #https://en.wikipedia.org/wiki/Murad_III
+		first_name = { name = name_murad }
+		father = tur_selim_ii
+		dynasty = ottomans_dynasty
+		birth = manisa
+		birth_date = 1546.7.4
+		death_date = 1595.1.16
+		culture = turkish_culture
+		religion = sunni
+		tag = TUR
+	}
+	tur_mehmed_iii = { #https://en.wikipedia.org/wiki/Mehmed_III
+		first_name = { name = name_muhammad }
+		father = tur_murad_iii
+		dynasty = ottomans_dynasty
+		birth = manisa
+		birth_date = 1566.5.26
+		death_date = 1603.12.22
+		culture = turkish_culture
+		religion = sunni
+		tag = TUR
+	}
+	tur_ahmed_i = { #https://en.wikipedia.org/wiki/Ahmed_I
+		first_name = { name = name_ahmad }
+		father = tur_mehmed_iii
+		dynasty = ottomans_dynasty
+		birth = manisa
+		birth_date = 1590.4.18
+		death_date = 1617.11.22
+		culture = turkish_culture
+		religion = sunni
+		tag = TUR
+	}
+	tur_mustafa_i = { #https://en.wikipedia.org/wiki/Mustafa_I
+		first_name = { name = name_mustafa }
+		father = tur_mehmed_iii
+		dynasty = ottomans_dynasty
+		birth = constantinople
+		birth_date = 1601.1.1
+		death_date = 1639.1.20
+		culture = turkish_culture
+		religion = sunni
+		tag = TUR
+	}
+	tur_osman_ii = { #https://en.wikipedia.org/wiki/Osman_II
+		first_name = { name = name_osman }
+		father = tur_ahmed_i
+		dynasty = ottomans_dynasty
+		birth = constantinople
+		birth_date = 1604.11.3
+		death_date = 1622.5.20
+		culture = turkish_culture
+		religion = sunni
+		tag = TUR
+	}
+	tur_murad_iv = { #https://en.wikipedia.org/wiki/Murad_IV
+		first_name = { name = name_murad }
+		father = tur_ahmed_i
+		dynasty = ottomans_dynasty
+		birth = constantinople
+		birth_date = 1612.7.27
+		death_date = 1640.2.8
+		culture = turkish_culture
+		religion = sunni
+		tag = TUR
+	}
 	tur_kösem_sultan = {
 		first_name = { name = Kosem }
-		culture = turkish_culture
+		culture = greek_culture
 		religion = sunni
 		estate = nobles_estate
 		adm = 73 dip = 67 mil = 22
@@ -31,13 +185,14 @@ character_db = {
 		adm = 17 dip = 16 mil = 11
 		birth_date = 1616.1.1
 		birth = constantinople
+		father = tur_ahmed_i
 		mother = tur_kösem_sultan
 		tag = TUR
 		dynasty = ottomans_dynasty
 	}
 	tur_turhan_sultan = {
 		first_name = { name = Turhan }
-		culture = turkish_culture
+		culture = muscovite
 		religion = sunni
 		estate = nobles_estate
 		adm = 65 dip = 59 mil = 24
@@ -116,6 +271,42 @@ character_db = {
 		tag = TUR
 		general_trait = accomplished_sailor
 	}
+	tur_muhammad_koprulu = { #http://en.wikipedia.org/wiki/K%C3%B6pr%C3%BCl%C3%BC_Mehmed_Pasha
+		first_name = { name = name_muhammad }
+		culture = turkish_culture
+		religion = sunni
+		estate = nobles_estate
+		adm = 88 #大宰相として汚職の一掃・統制強化、軍の再編などでオスマンの立て直しを主導した人物
+		dip = 72 #対外関係というより「大宰相権限の回復（介入させない条件で就任）」など、政務運営・権力調整の巧さが目立つため、統治ほどは伸ばさない
+		mil = 78 #1657年のダーダネルス戦（封鎖突破）や、その後のテネドス／レムノス回復など、軍事的成果（とくに海軍戦域）で権威を確立した
+		birth_date = 1575.1.1 
+		birth = berat
+		dynasty = koprulu_dynasty
+		tag = TUR
+	}
+	tur_fazil_ahmed_koprulu = { #https://en.wikipedia.org/wiki/K%C3%B6pr%C3%BCl%C3%BCzade_Faz%C4%B1l_Ahmed_Pasha
+		first_name = { name = fazil_ahmed }
+		culture = turkish_culture
+		religion = sunni
+		estate = nobles_estate
+		birth_date = 1635.1.1 
+		father = tur_muhammad_koprulu
+		birth = samsun
+		dynasty = koprulu_dynasty
+		tag = TUR
+	}
+	tur_fazil_mustafa_koprulu = { #https://en.wikipedia.org/wiki/K%C3%B6pr%C3%BCl%C3%BCzade_Faz%C4%B1l_Mustafa_Pasha
+		first_name = { name = fazil_mustafa }
+		culture = turkish_culture
+		religion = sunni
+		estate = nobles_estate
+		birth_date = 1637.1.1 
+		father = tur_muhammad_koprulu
+		birth = samsun
+		dynasty = koprulu_dynasty
+		tag = TUR
+	}
+
 	rus_mikhail_romanov = { #https://en.wikipedia.org/wiki/Michael_of_Russia
 		first_name = { name = name_michael.east_slavic_language }
 		culture = muscovite
@@ -125,7 +316,7 @@ character_db = {
 		birth_date = 1597.1.1
 		birth = moscow
 		spouse = rus_eudoxia_streshneva
-		tag = RUS
+		tag = RUS	
 		dynasty = romanov_dynasty
 	}
 
@@ -666,5 +857,88 @@ character_db = {
 		mother = ned_amalia
 		dynasty = oranje_dynasty
 		tag = HOL
+	}
+
+	ess_maria_clara_spaur = { #https://de.wikipedia.org/wiki/Maria_Clara_von_Spaur,_Pflaum_und_Val%C3%B6r
+		first_name = { name = name_marianne }
+		culture = southern_bavarian
+		religion = catholic
+		estate = nobles_estate
+		adm = 42 dip = 53 mil = 37
+		birth_date = 1590.1.1
+		birth = bolzano
+		female = yes
+		tag = ESS
+	}
+
+	tsn_opechancanough = { #https://en.wikipedia.org/wiki/Opechancanough
+		first_name = { name = name_opechancanough }
+		culture = powhatan_culture
+		religion = midewiwin_religion
+		estate = nobles_estate
+		adm = 45 dip = 39 mil = 62
+		birth_date = 1554.1.1
+		birth = powhatan
+		tag = TSN
+	}
+
+	jap_tokugawa_iemitsu = { #https://en.wikipedia.org/wiki/Tokugawa_Iemitsu
+		first_name = { name = name_iemitsu }
+		culture = tougoku_culture
+		religion = shinto
+		estate = nobles_estate
+		adm = 65 dip = 55 mil = 63
+		birth_date = 1604.8.12
+		birth = toshima_kanto
+		dynasty = tokugawa_dynasty
+		tag = JAP
+	}
+
+	jap_tokugawa_ietsuna = { #https://en.wikipedia.org/wiki/Tokugawa_Ietsuna
+		first_name = { name = name_ietsuna }
+		culture = tougoku_culture
+		religion = shinto
+		estate = nobles_estate
+		adm = 9 dip = 6 mil = 7
+		birth_date = 1641.9.7
+		birth = toshima_kanto
+		father = jap_tokugawa_iemitsu
+		dynasty = tokugawa_dynasty
+		tag = JAP
+	}
+
+	jic_go_mizunoo_tenno = { #https://en.wikipedia.org/wiki/List_of_emperors_of_Japan#Edo_period_(1603%E2%80%931868)
+		first_name = { name = name_kotohito }
+		culture = saigoku_culture
+		religion = shinto
+		estate = nobles_estate
+		birth_date = 1596.6.29
+		birth = kyoto
+		dynasty = yamato_dynasty
+		tag = JIC
+	}
+
+	jic_meisho_tenno = {
+		first_name = { name = name_okiko }
+		culture = saigoku_culture
+		religion = shinto
+		estate = nobles_estate
+		birth_date = 1624.1.9
+		birth = kyoto
+		dynasty = yamato_dynasty
+		female = yes
+		father = jic_go_mizunoo_tenno
+		tag = JIC
+	}
+	jic_go_komyo_tenno = {
+		first_name = { name = name_tsuguhito }
+		culture = saigoku_culture
+		religion = shinto
+		estate = nobles_estate
+		birth_date = 1633.4.20
+		birth = kyoto
+		dynasty = yamato_dynasty
+		father = jic_go_mizunoo_tenno
+		tag = JIC
 	}
 }

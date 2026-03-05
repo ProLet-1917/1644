@@ -1,0 +1,92 @@
+expand_our_influnce = {
+    type = internationalorganization
+
+    potential = {
+        exists = international_organization:swedish_empire
+        scope:actor = {
+            is_leader_of_international_organization = international_organization:swedish_empire
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            is_leader_of_international_organization = international_organization:swedish_empire
+        }
+    }
+
+    ai_tick = monthly
+    ai_tick_frequency = 80
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    cooldown = {
+        type = expand_our_influnce
+        years = 20
+    }
+
+    select_trigger = {
+        looking_for_a = international_organization
+        source = actor
+        target_flag = recipient
+        name = "choose_international_organization"
+        column = {
+            data = name
+        }
+        visible = {
+            international_organization_type = international_organization_type:swedish_empire
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = area
+        target_flag = target_area
+        cache_targets = yes #this list of targets doesn't rely on the previous target so we only need to do it once
+        name = "select_area_to_benefit"
+        column = {
+            data = name
+        }
+        visible = {
+            within_diplomatic_range = scope:actor
+            continent = continent:europe
+            NOT = { has_variable = already_expanded }
+        }
+    }
+
+    effect = {
+        if = {
+            limit = {
+                exists = scope:target_area
+            }
+
+            every_country = {
+                limit = {
+                    capital ?= {
+                        area = scope:target_area
+                    }
+                    is_ai = yes
+                }
+                set_variable = in_swedish_empire_influnce
+            }
+
+            scope:area = {
+                set_variable = already_expanded
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 10
+        if = {
+            limit = {
+                scope:target_area = {
+                    OR = {
+                        region = region:north_german_region
+                        region = region:south_german_region
+                    }
+                }
+            }
+            add = 50
+        }
+    }
+}

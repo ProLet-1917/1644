@@ -1,0 +1,177 @@
+# Crownland of Swedish
+bestow_crownland_of_swedish_status = {
+    type = diplomacy
+    category = CATEGORY_SWE_EMPIRE_ACTIONS
+
+    ai_limit_per_check = 1
+
+    potential = {
+        scope:actor = {
+            this = c:SWE
+        }
+    }
+
+    allow = {
+        international_organization:swedish_empire = {
+            international_organization_has_leader = yes
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = country
+        target_flag = recipient
+        name = "choose_country"
+        column = {
+            data = name
+        }
+        visible = {
+            is_member_of_international_organization = international_organization:swedish_empire
+            is_rebel_country = no
+            international_organization:swedish_empire = {
+                country_has_special_status = {
+                    type = special_status:dominion_of_empire
+                    country = root
+                }
+            }
+        }
+        enabled = {
+            international_organization:swedish_empire = {
+                country_has_special_status = {
+                    type = special_status:dominion_of_empire
+                    country = root
+                }
+            }
+        }
+    }
+
+    effect = {
+        scope:recipient = {
+            make_subject_of = {
+                target = scope:actor
+                type = subject_type:vassal
+            }
+        }
+        international_organization:swedish_empire = {
+            international_organization_add_special_status = {
+                type = special_status:crownland_of_swedish
+                country = scope:recipient
+            }
+        }
+    }
+
+    ai_will_do = {
+        add = {
+            desc = "OUR_OPINION_TOOLTIP"
+            value = "scope:actor.opinion(scope:recipient)"
+        }
+        add = {
+            desc = "THEIR_OPINION_TOOLTIP"
+            value = "scope:recipient.opinion(scope:actor)"
+        }
+        if = {
+            limit = { scope:actor.culture.language = scope:recipient.culture.language }
+            add = {
+                desc = "UPKEEP_SAME_LANGUAGE"
+                value = 25
+            }
+        }
+        if = {
+            limit = {
+                not = {
+                    scope:recipient = {
+                        government_type = government_type:republic
+                    }
+                }
+            }
+            divide = 2
+        }
+    }
+
+    accept = {
+        if = {
+            limit = { exists = scope:recipient }
+            if = {
+                limit = { scope:recipient = { government_type = government_type:theocracy } }
+                subtract = 100
+            }
+            if = {
+                limit = { scope:recipient = { government_type = government_type:monarchy } }
+                subtract = 50
+            }
+            if = {
+                limit = { exists = scope:actor }
+                add = {
+                    desc = "THEIR_OPINION_TOOLTIP"
+                    value = "scope:recipient.opinion(scope:actor)"
+                    if = {
+                        limit = { scope:recipient = { "opinion(scope:actor)" > 0 } }
+                        divide = 10
+                    }
+                    else = {
+                        divide = 5
+                    }
+                }
+                add = {
+                    scope:actor = {
+                        value = modifier:diplomatic_reputation
+                        multiply = 3
+                    }
+                }
+                add = {
+                    scope:recipient = {
+                        value = "trust(scope:actor)"
+                        divide = 5
+                    }
+                }
+            }
+        }
+        else = {
+            value = 0
+        }
+    }
+}
+rescind_crownland_of_swedish_status = {
+    type = diplomacy
+    category = CATEGORY_SWE_EMPIRE_ACTIONS
+
+    potential = {
+        scope:actor = {
+            this = c:SWE
+        }
+    }
+
+    allow = {
+    }
+
+    select_trigger = {
+        looking_for_a = country
+        target_flag = recipient
+        name = "choose_country"
+        column = {
+            data = name
+        }
+        visible = {
+            international_organization:swedish_empire = {
+                country_has_special_status = {
+                    type = special_status:crownland_of_swedish
+                    country = root
+                }
+            }
+        }
+        enabled = {
+        }
+    }
+
+    effect = {
+        international_organization:swedish_empire = {
+            international_organization_remove_special_status = {
+                type = special_status:crownland_of_swedish
+                country = scope:recipient
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = -50
+    }
+}

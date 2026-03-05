@@ -1,0 +1,90 @@
+widget = {
+    name = "custom_nation"
+    input_context = "frontend"
+    size = { 430 100% }
+    movable = no
+    parentanchor = right
+    alwaystransparent = yes
+    position = { 0 40 }
+    layer = custom_nation
+    allow_outside = yes
+    #visible = "[GetVariableSystem.Exists('custom_nation')]"
+    visible = { always = no }
+
+    vbox = {
+        using = layoutpolicy_expanding
+        filter_mouse = all
+        allow_outside = yes
+
+        vbox = {
+            using = layoutpolicy_expanding
+            using = bg_lateralview
+            allow_outside = yes
+
+            # HEADER
+            window_header_alt = {
+                using = bg_main_inner_alt
+                blockoverride "window_header_alt_color_texture" {
+                    using = color_default_brown_texture
+                }
+
+                blockoverride "header_text" {
+                    text = "CUSTOM_COUNTRY_HEADER"
+                }
+            }
+
+            widget = {
+                using = bg_main_inner_notabs_alt
+                using = layoutpolicy_expanding
+                alwaystransparent = no
+                filter_mouse = all
+                allow_outside = yes
+
+                vbox = {
+                    using = layoutpolicy_expanding
+                    margin = { 10 0 }
+                    margin_bottom = 10
+
+                    vbox = {
+                        layoutpolicy_horizontal = expanding
+                        margin = { 0 5 }
+                        background = {
+                            using = color_black_texture
+                            margin_bottom = 2
+                            alpha = 0.7
+                        }
+                        background = {
+                            using = color_bg_blue_texture
+                            modify_texture = {
+                                using = overlay_paper_03
+                                alpha = 0.2
+                                blend_mode = overlay
+                            }
+
+                            modify_texture = {
+                                using = overlay_cloth_texture
+                                alpha = 0.2
+                                blend_mode = overlay
+                            }
+                            modify_texture = {
+                                using = overlay_striped_texture
+                                alpha = 0.2
+                                blend_mode = overlay
+                            }
+                        }
+
+                        button_regular_icon = {
+                            using = layoutpolicy_expanding
+                            name = "rename_country_cn"
+                            tooltip = "rename_country_cn_TT"
+                            using = tooltip_ne
+                            size = { 100% 30 }
+                            text = "rename_country_cn"
+                            on_click = "[OpenRenameCountryDialog(Country.Self)]"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

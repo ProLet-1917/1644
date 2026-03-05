@@ -1,0 +1,199 @@
+kung_of_swedish = {
+	max_countries = 1
+	priority = 15
+	can_bestow_trigger = {
+		is_leader_of_international_organization = scope:recipient
+	}
+	auto_bestowal_trigger = {
+		always = yes
+	}
+	auto_rescind_trigger = {
+		NOT = { is_leader_of_international_organization = scope:recipient }
+	}
+	leader = yes
+	#map_color = 
+	special_status_power = {
+		value = 12
+	}
+
+	modifier = {
+		great_power_score = 50
+	}
+}
+
+kingdom_of_finland = {
+	priority = 12
+	can_bestow_trigger = {
+		this = c:FIN
+		is_subject_of = international_organization:swedish_empire.leader_country
+	}
+
+	auto_bestowal_trigger = {
+
+	}
+
+	auto_rescind_trigger = {
+		OR = {
+			NOT = { is_subject_of = international_organization:swedish_empire.leader_country }
+			NOT = { this = c:FIN }
+		}
+	}
+
+	on_bestowed_effect = {
+		scope:recipient = {
+			international_organization_remove_special_status = {
+				type = scope:source
+				country = root
+			}
+		}
+	}
+
+	on_rescinded_effect = {
+
+	}
+
+	special_status_power = {
+		value = 4
+	}
+
+	modifier = {
+		great_power_score = 20
+		loyalty_to_overlord = 10
+	}
+
+}
+
+crownland_of_swedish = {
+	priority = 10
+	can_bestow_trigger = {
+		is_subject_of = international_organization:swedish_empire.leader_country
+		has_primary_or_accepted_or_tolerated_culture = international_organization:swedish_empire.leader_country.dominant_culture
+		is_member_of_international_organization = scope:recipient
+		government_type = government_type:monarchy
+		NOT = {
+			this = c:FIN
+		}
+	}
+	auto_bestowal_trigger = {
+
+	}
+	auto_rescind_trigger = {
+		OR = {
+			NOT = { is_subject_of = international_organization:swedish_empire.leader_country }
+			NOT = { is_member_of_international_organization = scope:recipient }
+		}
+	}
+
+	on_bestowed_effect = {
+		scope:recipient = {
+			international_organization_remove_special_status = {
+				type = scope:source
+				country = root
+			}
+		}
+	}
+
+	on_rescinded_effect = {
+
+	}
+
+	#map_color =
+
+	special_status_power = {
+		value = 2
+	}
+
+	modifier = {
+		loyalty_to_overlord = 5
+	}
+}
+
+chartered_colony_of_swedish_empire = {
+	priority = 8
+	can_bestow_trigger = {
+		is_subject_of = international_organization:swedish_empire.leader_country
+		is_member_of_international_organization = scope:recipient
+		OR = {
+			subject_type = subject_type:colonial_nation
+			subject_type = subject_type:trade_company
+		}
+	}
+	auto_bestowal_trigger = {
+		is_subject_of = international_organization:swedish_empire.leader_country
+		is_member_of_international_organization = scope:recipient
+		OR = {
+			subject_type = subject_type:colonial_nation
+			subject_type = subject_type:trade_company
+		}
+	}
+	auto_rescind_trigger = {
+
+	}
+
+	on_bestowed_effect = {
+		scope:recipient = {
+			international_organization_remove_special_status = {
+				type = scope:source
+				country = root
+			}
+		}
+	}
+
+	on_rescinded_effect = {
+
+	}
+
+	special_status_power = {
+		value = 0.5
+	}
+
+	#map_color =
+}
+
+dominion_of_empire = {
+	priority = 5
+	modifier = {
+	}
+	can_bestow_trigger = {
+		is_member_of_international_organization = international_organization:swedish_empire
+		NOT = { is_subject_of = international_organization:swedish_empire.leader_country }
+		international_organization:swedish_empire = {
+			NOT = {
+				country_has_special_status = { type = special_status:kung_of_swedish country = root }
+			}
+			NOT = {
+				country_has_special_status = { type = special_status:kingdom_of_finland country = root }
+			}
+			NOT = {
+				country_has_special_status = { type = special_status:crownland_of_swedish country = root }
+			}
+			NOT = {
+				country_has_special_status = { type = special_status:chartered_colony_of_swedish_empire country = root }
+			}
+		}
+	}
+
+	auto_bestowal_trigger = {
+		always = yes
+	}
+
+	auto_rescind_trigger = {
+		OR = {
+			NOT = { is_member_of_international_organization = international_organization:swedish_empire }
+			has_special_status_in_international_organization = { type = special_status:kung_of_swedish international_organization = international_organization:swedish_empire }
+			has_special_status_in_international_organization = { type = special_status:crownland_of_swedish international_organization = international_organization:swedish_empire }
+			has_special_status_in_international_organization = { type = special_status:chartered_colony_of_swedish_empire international_organization = international_organization:swedish_empire }
+		}
+	}
+
+	on_bestowed_effect = {
+	}
+
+	on_rescinded_effect = {
+	}
+	#map_color =
+
+	special_status_power = {
+		value = 1
+	}
+}

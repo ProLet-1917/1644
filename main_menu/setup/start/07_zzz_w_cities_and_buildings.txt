@@ -2,12 +2,100 @@ locations={
 	qarasuvbazar = { rank = town			town_setup = russian_town }
 	breda = { rank = town 			town_setup = lowlands_costal_town }
 	warsaw = { rank = city 			town_setup = polish_town }
+	dresden = { rank = town town_setup = german_town }
+	amberg = { rank = town town_setup = german_town }
+	landshut = { rank = town town_setup = german_town }
+
+	madrid = { rank = city town_setup = iberian_city}
+	bilbao = { rank = town town_setup = iberian_town_port}
+
+	halych = { rank = town town_setup = polish_town }
+	brest_litowsk = { rank = town town_setup = polish_town }
+	pinsk = { rank = town town_setup = polish_town }
+	minsk = { rank = town town_setup = polish_town }
+	mogilev = { rank = town town_setup = ruthenian_town }
+	vitebsk = { rank = town town_setup = ruthenian_town }
+
+	ukek = { rank = town town_setup = russian_town}
+	tambov = { rank = town town_setup = russian_town}
+	ryazan = { rank = town town_setup = russian_town}
+	tula_russia = { rank = town town_setup = russian_town}
+	mozhaysk = { rank = town town_setup = russian_town}
+	vyazma = { rank = town town_setup = russian_town}
+	rzhev = { rank = town town_setup = russian_town}
+	murom = { rank = town town_setup = russian_town}
+	ufa = { rank = town town_setup = russian_town}
+	velikiye_luki = { rank = town town_setup = russian_town}
+	bryansk = { rank = town town_setup = russian_town}
+
+	soderala = { rank = town town_setup = scandinavian_town }
+
+	ruppin = { rank = town town_setup = german_town }
+	essen  = { rank = town town_setup = german_town }
+	emden = { rank = town town_setup = lowlands_town }
 }
 
 building_manager = {
 	# steppes 
 	kurultai = { tag = CRI level = 1 location = qarasuvbazar }
+	kurultai = { tag = KHV level = 1 location = khiva }
+	kurultai = { tag = MYK level = 1 location = kalmyk }
+	kurultai = { tag = KAZ level = 1 location = turkestan }
+	kurultai = { tag = KAZ level = 1 location = tengiz }
+	kurultai = { tag = TLU level = 1 location = kamen }
+	kurultai = { tag = SES level = 1 location = kherlen }
+	kurultai = { tag = SES level = 1 location = tsagaan }
+	kurultai = { tag = TSH level = 1 location = karakorum }
+	kurultai = { tag = TSH level = 1 location = suriig }
+	kurultai = { tag = ZSG level = 1 location = uliastai }
+	kurultai = { tag = HTG level = 1 location = den_terek }
+	kurultai = { tag = ZUN level = 1 location = hoboksar }
+	kurultai = { tag = QKH level = 1 location = chabcha }
+	kurultai = { tag = HSD level = 1 location = beshbalik }
+	kurultai = { tag = BSR level = 1 location = khaqmar }
+	kurultai = { tag = NOG level = 1 location = naurskaya }
 
-	# netherlands
+	# zaporozhian cossacks
+	cossack_host_camp = { tag = ZAZ level = 1 location = kodak }
+	training_fields = { tag = ZAZ level = 1 location = usivka }
 
+	# Other cossacks
+	cossack_host_camp = { tag = ERK level = 1 location = terek }
+
+	#Iberia
+	bastion = { tag = SPA level = 1 location = san_sebastian }
+	castle = { tag = SPA level = 1 location = bilbao }
+	castle = { tag = ARA level = 1 location = huesca }
+	castle = { tag = NAV level = 1 location = pamplona }
+
+	#Special Buildings
+	berlin_palace = { tag = BRA level = 1 location = berlin }
+	#hofburg_palace = { tag = HAB level = 1 location = vienna } #Expand it in decisions
+
+	#Governor
+	local_governor = { tag = SPA level = 1 location = valladolid }
+	local_governor = { tag = FRA level = 1 location = bordeaux }
+	local_governor = { tag = HAB level = 1 location = prague }
+	local_governor = { tag = RUS level = 1 location = tver }
+	local_governor = { tag = RUS level = 1 location = novgorod }
+	naval_governor = { tag = SPA level = 1 location = sevilla }
+	naval_governor = { tag = POR level = 1 location = porto }
+
+	#Basic
+	tar_kiln = { tag = ENG level = 1 location = windsor }
+	tar_kiln = { tag = ENG level = 1 location = guildford }
+	tar_kiln = { tag = ENG level = 1 location = chichester }
+	tar_kiln = { tag = ROE level = 1 location = chippenham }
+	tar_kiln = { tag = ROE level = 1 location = newark }
+	tar_kiln = { tag = SCO level = 1 location = kenmure }
+	tar_kiln = { tag = SCO level = 1 location = ayr }
+
+	lumber_mill = { tag = SCO level = 1 location = selkirk }
+	lumber_mill = { tag = ENG level = 1 location = windsor }
+
+	bog_iron_smelter = { tag = SCO level = 3 location = inverness }
+	bog_iron_smelter = { tag = ENG level = 2 location = hythe }
+	bog_iron_smelter = { tag = ENG level = 2 location = lynn }
+	bog_iron_smelter = { tag = ENG level = 2 location = yarmouth }
+	bog_iron_smelter = { tag = ROE level = 2 location = boston }
 }

@@ -1,0 +1,21 @@
+pdxmesh = {
+	name = "building_hofburg_palace_mesh"
+	file = "building_hofburg_palace.mesh"
+
+	scale = 0.3
+
+	meshsettings = {
+		name = "building_hofburg_palace_lod0Shape"
+		index = 0
+		texture_diffuse = "building_hofburg_palace_diffuse.dds"
+		texture_normal = "building_hofburg_palace_normal.dds"
+		texture_specular = "building_hofburg_palace_properties.dds"
+		shader = "snap_to_terrain_alpha_to_coverage"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "building_hofburg_palace_entity"
+	pdxmesh = "building_hofburg_palace_mesh"
+}
