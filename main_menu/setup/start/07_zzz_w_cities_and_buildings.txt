@@ -33,6 +33,15 @@ locations={
 	ruppin = { rank = town town_setup = german_town }
 	essen  = { rank = town town_setup = german_town }
 	emden = { rank = town town_setup = lowlands_town }
+
+	agra = { rank = city town_setup = indian_sultanate_city}
+
+	makatao = { rank = town town_setup = chinese_coastal_town }
+
+	malacca = { rank = town town_setup = south_east_asia_port_town}
+
+	surat = { rank = town town_setup = british_town_port }
+	madras = { rank = city town_setup = british_town_port}
 }
 
 building_manager = {
@@ -71,6 +80,27 @@ building_manager = {
 	#Special Buildings
 	berlin_palace = { tag = BRA level = 1 location = berlin }
 	#hofburg_palace = { tag = HAB level = 1 location = vienna } #Expand it in decisions
+	dutch_trade_outpost = { tag = VOC level = 1 location = nishisonogi }
+
+	#VOC
+	city_guard = { tag = VOC level = 1 location = sunda_kelapa }
+	dry_dock = { tag = VOC level = 1 location = sunda_kelapa }
+	mason = { tag = VOC level = 2 location = sunda_kelapa }
+	bog_iron_smelter = { tag = VOC level = 2 location = sunda_kelapa }
+	port_authority = { tag = VOC level = 1 location = sunda_kelapa }
+	merchants_quarters = { tag = VOC level = 1 location = sunda_kelapa }
+	wharf = { tag = VOC level = 1 location = sunda_kelapa }
+	wharf = { tag = VOC level = 1 location = malacca }
+	wharf = { tag = VOC level = 1 location = temasek }
+	#BIC
+	city_guard = { tag = BIC level = 1 location = madras }
+	dry_dock = { tag = BIC level = 1 location = madras }
+	port_authority = { tag = BIC level = 1 location = madras }
+	merchants_quarters = { tag = BIC level = 1 location = madras }
+	city_guard = { tag = BIC level = 1 location = surat }
+	dry_dock = { tag = BIC level = 1 location = surat }
+	port_authority = { tag = BIC level = 1 location = surat }
+	merchants_quarters = { tag = BIC level = 1 location = surat }
 
 	#Governor
 	local_governor = { tag = SPA level = 1 location = valladolid }

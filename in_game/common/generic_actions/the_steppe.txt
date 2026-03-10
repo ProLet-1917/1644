@@ -321,21 +321,23 @@ become_horde_nation = {
 
     ai_will_do = {
         value = -20
-        if = {
-            limit = {
-                government_type = government_type:tribe
-            }
-            add = 50
-        }
-        else_if = {
-            limit = {
-                OR = {
-                    government_type = government_type:monarchy
-                    government_type = government_type:republic
-                    government_type = government_type:theocracy
+        add = {
+            if = {
+                limit = {
+                    government_type = government_type:tribe
                 }
+                value = 50
             }
-            subtract = 50
+            else_if = {
+                limit = {
+                    OR = {
+                        government_type = government_type:monarchy
+                        government_type = government_type:republic
+                        government_type = government_type:theocracy
+                    }
+                }
+                value = -50
+            }
         }
     }
 }

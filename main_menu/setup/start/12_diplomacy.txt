@@ -4,21 +4,22 @@ diplomacy_manager = {
     dependency = { first = ENG second = PLE subject_type = fiefdom }
 	dependency = { first = ROE second = MNN subject_type = dominion }
 	dependency = { first = ENG second = NEN subject_type = dominion }
+	dependency = { first = ENG second = BIC subject_type = charted_company }
 
 	#Iberia
-    dependency = { first = SPA second = ARA subject_type = dominion }
-	dependency = { first = SPA second = NAV subject_type = dominion }
-	dependency = { first = SPA second = NAP subject_type = dominion }
+    dependency = { first = SPA second = ARA subject_type = crown_territory }
+	dependency = { first = SPA second = NAV subject_type = crown_territory }
+	dependency = { first = SPA second = NAP subject_type = crown_territory }
 	dependency = { first = ARA second = SAR subject_type = dominion }
 	dependency = { first = ARA second = SIC subject_type = dominion }
-	dependency = { first = SPA second = GRA subject_type = dominion }
+	dependency = { first = SPA second = GRA subject_type = crown_territory }
 	dependency = { first = SPA second = NSP subject_type = vassal }
 	dependency = { first = SPA second = VOP subject_type = vassal }
 	dependency = { first = POR second = VOB subject_type = dominion }
 	#dependency = { first = SPA second = PUL subject_type = vassal }
 	dependency = { first = SPA second = TID subject_type = tributary }
-	dependency = { first = SPA second = FCB subject_type = dominion }
-	dependency = { first = SPA second = MLO subject_type = dominion }
+	dependency = { first = SPA second = FCB subject_type = crown_territory }
+	dependency = { first = SPA second = MLO subject_type = crown_territory }
 	dependency = { first = SPA second = STO subject_type = dominion }
 	dependency = { first = SPA second = CTV subject_type = dominion }
 	dependency = { first = POR second = OPX subject_type = dominion }
@@ -41,7 +42,7 @@ diplomacy_manager = {
 	dependency = { first = FRA second = NFR subject_type = dominion }
 	
 	#Scandinavia
-	dependency = { first = SWE second = FIN subject_type = dominion }
+	dependency = { first = SWE second = FIN subject_type = crown_territory }
 	dependency = { first = SWE second = KRL subject_type = fiefdom }
 	dependency = { first = SWE second = LIV subject_type = vassal }
 	dependency = { first = SWE second = ING subject_type = vassal }
@@ -49,14 +50,15 @@ diplomacy_manager = {
 	#dependency = { first = SWE second = NSV subject_type = colonial_nation } #This will causing game crash.
 	dependency = { first = DAN second = SLV subject_type = fiefdom }
 	dependency = { first = DAN second = HTR subject_type = vassal }
+	dependency = { first = DAN second = DIC subject_type = charted_company }
 	
 	#Dutch
-	dependency = { first = NED second = VOC subject_type = dominion }
-	dependency = { first = NED second = WIC subject_type = dominion }
+	dependency = { first = NED second = VOC subject_type = charted_company }
+	dependency = { first = NED second = WIC subject_type = vassal }
 	dependency = { first = VOC second = TER subject_type = tributary }
 
 	#HRE
-	dependency = { first = HAB second = HUN subject_type = dominion }
+	dependency = { first = HAB second = HUN subject_type = crown_territory }
 	dependency = { first = HAB second = TIR subject_type = vassal }
 	
 ###Southeast Asian Islands

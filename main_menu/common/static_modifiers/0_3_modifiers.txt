@@ -288,3 +288,31 @@ got_seized_location = {
     local_levy_size_modifier = -0.025
     local_nobles_estate_power = -0.025
 }
+
+promoting_religious_tolerance = {
+    game_data = {
+        category = country
+    }
+    tolerance_heathen = 0.5
+    tolerance_heretic = 1.0
+    global_pop_conversion_speed_modifier = -0.05
+    global_pop_assimilation_speed_modifier = 0.025
+}
+
+connect_global_trade = {
+    game_data = {
+        category = country
+    }
+    trade_efficiency = 0.1
+    trade_range_modifier = 0.1
+    global_trades_per_burgher = 0.2
+    merchant_maintenance_cost = -0.1
+}
+
+enabled_dynamic_territorial_occupation = {
+    game_data = {
+        category = location
+    }
+
+    location_enable_dynamic_territorial_occupation = yes
+}

@@ -80,3 +80,28 @@ REPLACE:GBR_f = {
     form_effect = {
     }
 }
+
+SFV_f = {
+	level = 4
+	required_locations_fraction = 0.5
+	rule = historical
+	potential = {
+		culture = { has_culture_group = culture_group:iranian_group }
+	}
+	allow = {
+	}
+	name = SFV
+	flag = SFV
+	adjective = SFV_ADJ
+	tag = SFV
+	color = map_SFV
+	regions = {
+		persia_region
+	}
+	form_effect = {
+		if = {
+			limit = { country_rank_level < 4 }
+			set_country_rank_effect = { rank = country_rank:rank_empire }
+		}
+	}
+}

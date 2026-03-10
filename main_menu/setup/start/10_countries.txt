@@ -2274,7 +2274,7 @@ countries = {
 			#Oman
 			masqat saham
 			#India
-			goa kotte galle
+			goa kotte galle diu bombay bassein chaul nagapattinam 
 		}
 		own_control_colony = {
 			#Africa
@@ -3464,13 +3464,15 @@ countries = {
 	VOC = { #Dutch East India Company
 		own_control_core = {
 			sunda_kelapa sombai kupang malacca temasek siraya lloa makatao lamakera
-		}
-		own_colony = {
 			kulun
+ 			masulipatnam
 		}
+
 		government = {
 			type = republic
 			ruler = random
+
+			heir_selection = republic_4_year_terms
 		}
 		capital = sunda_kelapa
 		country_rank = rank_kingdom
@@ -4762,7 +4764,7 @@ countries = {
 			dhrangadhra limbdi ranpur
 			sihor palitana lathi
 			nagnes dwarka bhanvad gondal morvi
-			chhaya junagarh somnath diu amreli
+			chhaya junagarh somnath amreli
 			lakhpat kapilkot lakhiyarvira kantha
 
 			rander broach baroda nandod
@@ -4781,24 +4783,86 @@ countries = {
 			kabul alishang chak gandamak jalalabad logar kohi_safi
 			ghazni gardez muqur nawah wazakhwa zarghun_shahr karor_2
 			
-			surat dang mayuragiri salagiri chandor udgir bir dahrur qandhar ahmednagar daulatabad jalna nander pathri
+			dang mayuragiri salagiri chandor udgir bir dahrur qandhar ahmednagar daulatabad jalna nander pathri
 			sirpur manikdrug mahur nirmal chennur adilabad asifabad yegaladapa balkonda sukhma mahagaon
 
 			dharampur nasik jawhar sinnar daman
-			janjira chaul kalyan bombay bassein
+			janjira kalyan 
 			singarh raigarh pune junnar chakan
 			sholhapur naldrug ausa parenda chambargonda
 		}
 
 		government = {
 			type = monarchy
-			ruler = random
+			ruler = mug_shihab_timurid
+			heir = mug_muhi_timurid
+
+			heir_selection = favorite_son_elective_succession
+
+			ruler_term = { character = mug_zahir_timurid start_date = 1526.4.20 end_date = 1530.12.26 }
+			ruler_term = { character = mug_nasir_timurid start_date = 1530.12.26 end_date = 1556.1.27 }
+			ruler_term = { character = mug_jalal_timurid start_date = 1556.1.27 end_date = 1605.10.27 }
+			ruler_term = { character = mug_nur_timurid start_date = 1605.10.27 end_date = 1627.10.28 }
+			ruler_term = { character = mug_shihab_timurid start_date = 1627.10.28 }
+
+			reforms = {
+				mug_mughal_diwan
+				indian_sultanate_reform
+				taluqdar_nobility
+			}
+
+			privilege = {
+				elaborate_court_ceremonies
+				nobility_council
+				noble_patronage_of_the_arts
+				rajput_society
+				noble_marriage_rights
+
+				dharmic_dhimmi_communities
+
+				dhimmi_in_administration
+				dhimmi_pact_of_umar
+				dhimmi_promote_tolerance
+				dhimmi_promote_dhimmi_hierarchy
+			}
+
+			parliament = {
+				parliament_type = council
+			}
+
+			centralization_vs_decentralization = 10
+			aristocracy_vs_plutocracy = -30
+			serfdom_vs_free_subjects = 0
+			traditionalist_vs_innovative = 10
+			spiritualist_vs_humanist = 10
+			mercantilism_vs_free_trade = -25
+			offensive_vs_defensive = 0
+			land_vs_naval = -20
+			quality_vs_quantity = -30
+			belligerent_vs_conciliatory = -40
+			capital_economy_vs_traditional_economy = 80
+			individualism_vs_communalism = -20
+			outward_vs_inward = -60
+
+
 		}
 		capital = delhi
 		country_rank = rank_empire
 		starting_technology_level = 4
 		include = "expl_india_muslim"
 		include = "expl_indian_trade_route"
+
+		accepted_cultures = {
+			punjabi
+			awadhi
+			braji
+			bhojpuri_culture
+		}
+		tolerated_cultures = {
+			bengali
+			sindhi
+			gujarati
+		}
 	}
 	
 ###Persia

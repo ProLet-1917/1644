@@ -8461,7 +8461,7 @@ countries = {
 			edirne hayrabolu corlu
 			rodoscuk enez kiyikoy ahtopol constantinople silivri catalca luleburgaz kirklareli
 			malgara alasehir
-			monemvasia mystras oitylo leuktron astros ostrovo  amasra
+			monemvasia mystras astros ostrovo  amasra
 			uskudar silli biga eregli
 			chios vize
 			ormenio
@@ -10286,7 +10286,7 @@ countries = {
 			warangal palampet ramagiri vemulawada medak bhongir molangur korutla adlur tupran mangapet parkal
 			khammamet kalluru kondapalli wazirabad kothagudem nuzvid
 			visakhapatnam vizianagaram pithapuram tuni rampa bobbili madugula
-			rajamahendry pallakolu masulipatnam ellur peddapalli
+			rajamahendry pallakolu ellur peddapalli
 			adanki markapur motupalli
 			kondavidu macherla cumbum vinukonda guntur kanigiri
 			pazhaverkadu durgarazpatnam nellore kavali kandakura gudur kalahasti
@@ -10385,7 +10385,7 @@ countries = {
 		own_control_core = {
 			kayal tirunelveli tenkasi kayattar sankaranayinarkoil
 			madurai ramesvaram vembar thoothukudi thondi aruppukkottai virudhunagar devakottai adams_bridge
-			puddokothai nagapattinam tiruccirapalli thanjavur srirangam jayankondam pennadam
+			puddokothai tiruccirapalli thanjavur srirangam jayankondam pennadam
 			karaikal pattukkottai perambalur tirukoilur kallakurichi
 			salem dharmapuri krishnagiri sendamangalam jagadevipalayam denkanikottai pennagaram biligiriranga
 			erode coimbatore dharapuram karur dindigul kambam batlagundu
@@ -10662,7 +10662,7 @@ countries = {
 
 	VIJ = {
 		own_control_core = {
-			parangipettai pondicherry madras maduranthakam arcot
+			 pondicherry maduranthakam arcot
 			vellore kanchipuram gingee padaividu tiruvannamalai
 		}
 
@@ -11335,6 +11335,122 @@ countries = {
         court_language = powhatan_language
         capital = powhatan
     }
+
+	#British Eastern Indian Company
+	BIC = {
+		own_control_core = {
+			surat madras
+		}
+		government = {
+			type = republic
+			ruler = random
+
+			heir_selection = republic_4_year_terms
+
+			privilege = {
+				#nobles
+				nobles_land_rights
+
+				#burghers
+				formal_guilds
+				market_fairs
+
+				#clergy
+				clergy_literacy_rights
+				clergy_enforced_unity
+
+				#peasants
+				peasants_yeomanry
+				access_to_royal_and_ecclesiastical_courts
+			}
+
+			centralization_vs_decentralization = 20
+			aristocracy_vs_plutocracy = 70
+			serfdom_vs_free_subjects = 30
+			traditionalist_vs_innovative = 50
+			spiritualist_vs_humanist = 60
+			mercantilism_vs_free_trade = 40
+			offensive_vs_defensive = -20
+			land_vs_naval = 60
+			quality_vs_quantity = 30
+			belligerent_vs_conciliatory = -30
+			capital_economy_vs_traditional_economy = -40
+			individualism_vs_communalism = 40
+			outward_vs_inward = 70
+		}
+		capital = madras
+		country_rank = rank_duchy
+		starting_technology_level = 4
+		include = "zzz_expl_european_colonial_powers"
+		include = "catholic_monarchy"
+	}
+
+	#Danish East India Company
+    DIC = {
+		own_control_core = {
+			parangipettai
+		}
+		government = {
+			type = republic
+			ruler = random
+
+			heir_selection = republic_4_year_terms
+
+			privilege = {
+				#nobles
+				nobles_land_rights
+
+				#burghers
+				formal_guilds
+				market_fairs
+
+				#clergy
+				clergy_literacy_rights
+				clergy_enforced_unity
+
+				#peasants
+				peasants_yeomanry
+				access_to_royal_and_ecclesiastical_courts
+			}
+
+			centralization_vs_decentralization = 20
+			aristocracy_vs_plutocracy = 70
+			serfdom_vs_free_subjects = 30
+			traditionalist_vs_innovative = 50
+			spiritualist_vs_humanist = 60
+			mercantilism_vs_free_trade = 40
+			offensive_vs_defensive = -20
+			land_vs_naval = 60
+			quality_vs_quantity = 30
+			belligerent_vs_conciliatory = -30
+			capital_economy_vs_traditional_economy = -40
+			individualism_vs_communalism = 40
+			outward_vs_inward = 70
+		}
+		capital = parangipettai
+		country_rank = rank_duchy
+		starting_technology_level = 4
+		include = "zzz_expl_european_colonial_powers"
+		include = "catholic_monarchy"
+	}
+
+	#Mani
+	MOI = {
+		own_control_core = {
+			oitylo leuktron
+		}
+		include = "eastern_european_monarchy"
+		government = {
+			type = monarchy
+
+			ruler = random
+		}
+		capital = oitylo
+		country_rank = rank_duchy
+		starting_technology_level = 4
+		dynasty = kladas_dynasty
+	}
+
 
 	#Pop based country
 	OBD = {

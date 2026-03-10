@@ -912,6 +912,7 @@ character_db = {
 		culture = saigoku_culture
 		religion = shinto
 		estate = nobles_estate
+		adm = 32 dip = 36 mil = 27
 		birth_date = 1596.6.29
 		birth = kyoto
 		dynasty = yamato_dynasty
@@ -923,6 +924,7 @@ character_db = {
 		culture = saigoku_culture
 		religion = shinto
 		estate = nobles_estate
+		adm = 39 dip = 36 mil = 25
 		birth_date = 1624.1.9
 		birth = kyoto
 		dynasty = yamato_dynasty
@@ -935,10 +937,92 @@ character_db = {
 		culture = saigoku_culture
 		religion = shinto
 		estate = nobles_estate
+		adm = 44 dip = 37 mil = 28
 		birth_date = 1633.4.20
 		birth = kyoto
 		dynasty = yamato_dynasty
 		father = jic_go_mizunoo_tenno
 		tag = JIC
+	}
+	#Mughal Empire #https://en.wikipedia.org/wiki/Mughal_Empire#List_of_emperors
+	mug_zahir_timurid = { #Babur
+		first_name = { name = name_zahra }
+		culture = mongolian_culture
+		religion = sunni
+		estate = nobles_estate
+		adm = 79 dip = 66 mil = 67
+		birth_date = 1483.2.14
+		death_date = 1530.12.26
+		birth = andijan
+		dynasty = timurid_dynasty
+		tag = MUG
+	}
+
+	mug_nasir_timurid = { #Humayun
+		first_name = { name = name_nasr }
+		culture = mongolian_culture
+		religion = sunni
+		estate = nobles_estate
+		adm = 69 dip = 75 mil = 81
+		birth_date = 1508.3.6
+		death_date = 1556.1.27
+		birth = kabul
+		dynasty = timurid_dynasty
+		father = mug_zahir_timurid
+		tag = MUG
+	}
+
+	mug_jalal_timurid = { #Akbar
+		first_name = { name = name_jalal }
+		culture = mongolian_culture
+		religion = sunni
+		estate = nobles_estate
+		adm = 92 dip = 85 mil = 83
+		birth_date = 1542.10.15
+		death_date = 1605.10.27
+		birth = agra
+		dynasty = timurid_dynasty
+		father = mug_nasir_timurid
+		tag = MUG
+	}
+
+	mug_nur_timurid = { #Jahangir
+		first_name = { name = name_nur }
+		culture = dehlavi
+		religion = sunni
+		estate = nobles_estate
+		adm = 66 dip = 65 mil = 72
+		birth_date = 1569.8.31
+		death_date = 1627.10.28
+		birth = agra
+		dynasty = timurid_dynasty
+		father = mug_jalal_timurid
+		tag = MUG
+	}
+
+	mug_shihab_timurid = { #Shan Jahan
+		first_name = { name = name_shihab }
+		culture = dehlavi
+		religion = sunni
+		estate = nobles_estate
+		adm = 94 dip = 83 mil = 92
+		birth_date = 1592.1.5
+		birth = lahore
+		dynasty = timurid_dynasty
+		father = mug_nur_timurid
+		tag = MUG
+	}
+
+	mug_muhi_timurid = {
+		first_name = { name = name_muhi }
+		culture = dehlavi
+		religion = sunni
+		estate = nobles_estate
+		adm = 74 dip = 63 mil = 66
+		birth_date = 1618.11.3
+		birth = ashaval
+		dynasty = timurid_dynasty
+		father = mug_shihab_timurid
+		tag = MUG
 	}
 }
