@@ -1671,12 +1671,11 @@ Types HUD_TopbarTypes
 							tooltipwidget = {
 								ContextualTooltipType = {
 									blockoverride "title_text" {
-										text = "Herds"
+										text = "HERDS_TT"
 									}
 
 									blockoverride "concept_link" {
-										text = "Herds"
-										default_format = "#E"
+										using = herds_regular
 									}
 
 									blockoverride "title_icon" {
@@ -1691,7 +1690,7 @@ Types HUD_TopbarTypes
 											blockoverride "block_scrollarea" { maximumsize = { -1 250 } minimumsize = { -1 30 } }
 											block "content_datacontext" { }
 											blockoverride "block_title" {
-												text = "Per 1000 #E Herds #W will has the following effects:"
+												text = "HERDS_MODIFIER_DEC_TT"
 											}
 											textcontext = "[Localize(ShowAutoModifierEffect('the_herd_benifit_modifier'))]"
 										}
