@@ -1,0 +1,113 @@
+REPLACE:add_location_to_international_organization = {
+    type = owncountry
+
+    ai_prerequisite = {
+        is_member_of_international_organization = international_organization:hre
+        num_of_locations_owned_by_io = {
+            international_organization = international_organization:hre
+            value < "num_locations"
+        }
+        NOT = {
+            has_special_status_in_international_organization = {
+                type = special_status:italia_state
+                international_organization = international_organization:hre
+            }
+        }
+    }
+
+    potential = {
+    }
+
+    allow = {
+
+    }
+
+    price = price:add_location_to_international_organization
+
+    select_trigger = {
+        looking_for_a = location
+        target_flag = target
+        source = actor
+        name = "add_location_to_international_organization_select_location"
+        none_available_msg_key = "add_location_to_international_organization_no_locations"
+        column = {
+            data = name
+        }
+        column = {
+            data = population
+        }
+        visible = {
+            NOT = {
+                scope:target.owner = {
+                    has_special_status_in_international_organization = {
+                        type = special_status:italia_state
+                        international_organization = international_organization:hre
+                    }
+                }
+            }
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = international_organization
+        target_flag = target_1
+        name = "add_location_to_international_organization_select_international_organization"
+        none_available_msg_key = "add_location_to_international_organization_no_ios"
+        column = {
+            data = name
+        }
+        visible = {
+            international_organization_can_own_land = yes
+            international_organization_can_add_land = root
+        }
+        enabled = {
+            location_can_be_added_to_international_organization = scope:target
+        }
+    }
+
+    effect = {
+        if = {
+            limit = {
+                AND = {
+                    exists = scope:target
+                    exists = scope:target_1
+                }
+            }
+            scope:target_1 = {
+                add_location_to_international_organization = scope:target
+                custom_tooltip = add_location_to_international_organization_tt
+            }
+        }
+    }
+
+    ai_will_do = {
+        #inertia
+        add = -10
+
+        #how useful is it for this location to be added?
+        add = {
+            value = "scope:target_1.modifier_utility(scope:target)"
+            multiply = 20
+        }
+
+        add = {
+            #We want locations in if it's the HRE
+            if = {
+                limit = {
+                    scope:target_1 = international_organization:hre
+                }
+                value = 20
+            }
+
+        }
+    }
+
+    #ai_tick = never
+    ai_tick = monthly
+    ai_tick_frequency = 60
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    allow_multiple_targets = yes
+}

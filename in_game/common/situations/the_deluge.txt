@@ -1,0 +1,124 @@
+#============Made by Lvtoumao============
+the_deluge = {
+    monthly_spawn_chance = monthly_spawn_chance_unique
+
+    can_start = {
+        OR = {
+            country_exists = c:PLC
+            country_exists = c:POL
+        }
+        country_exists = c:ZAZ
+        current_year > 1640
+        current_year < 1700
+        has_global_variable = rise_of_chemielnicki
+    }
+
+    can_end = {
+        OR = {
+            current_year > 1700
+            OR = {
+                c:PLC = {
+                    months_since_peace = 150
+                    stability > 45
+                }
+                NOT = { country_exists = c:PLC }
+            }
+            AND = {
+                location:kyiv ?= {
+                    owner != c:PLC
+                }
+                location:smolensk ?= {
+                    owner != c:PLC
+                }
+                c:PRU = {
+                    NOT = {
+                        is_subject_of = c:PLC
+                    }
+                }
+            }
+        }
+    }
+
+    visible = {
+        OR = {
+            this = c:PLC
+            this = c:ZAZ
+            this = c:PRU
+            this = c:RUS
+            this = c:SWE
+            this = c:BRA
+            this = c:CRI
+            this = c:TUR
+            this = c:HAB
+            has_presence_in = region:ruthenia_region
+            has_presence_in = region:baltic_region
+        }
+    }
+
+    on_start = {
+        c:PLC = {
+            trigger_event_non_silently = the_deluge.5
+        }
+    }
+
+    on_monthly = {
+        if = {
+            limit = {
+                location ?= {
+                    owner = c:PLC
+                    NOT = { controller = owner }
+                    NOT = { has_location_modifier = chaos_and_destruction}
+                    save_temporary_scope_as = target_location
+                }
+            }
+            scope:target_location = {
+                add_location_modifier = {
+                    modifier = chaos_and_destruction
+                    years = -1
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                location ?= {
+                    owner = c:PLC
+                    controller = owner
+                    has_location_modifier = chaos_and_destruction
+                    save_temporary_scope_as = target_location
+                }
+            }
+            scope:target_location = {
+                remove_location_modifier = chaos_and_destruction
+            }
+        }
+    }
+
+    on_ended = {
+        every_location_in_the_world = {
+            limit = {
+                has_location_modifier = chaos_and_destruction
+            }
+            remove_location_modifier = chaos_and_destruction
+        }
+        c:PLC = {
+            remove_country_modifier = the_deluge
+        }
+    }
+
+    map_color = {
+        if = {
+            limit = {
+                owner ?= c:PLC
+            }
+            value = rgb { 175 89 102 }
+        }
+        else_if = {
+            limit = {
+                owner ?= {
+                    is_at_war_with = c:PLC
+                }
+            }
+            value = rgb { 102 215 99 }
+        }
+    }
+}

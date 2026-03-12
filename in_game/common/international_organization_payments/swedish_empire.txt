@@ -1,0 +1,129 @@
+#Gold contribution to the Sweden
+swedish_unified_treasury = {
+    get_payer_list = {
+        every_international_organization_member = {
+            limit = {
+                NOT = { is_leader_of_international_organization = root }
+                OR = {
+                    has_special_status_in_international_organization = {
+                        international_organization = international_organization:swedish_empire
+                        type = special_status:crownland_of_swedish
+                    }
+                    has_special_status_in_international_organization = {
+                        international_organization = international_organization:swedish_empire
+                        type = special_status:dominion_of_empire
+                    }
+                }
+            }
+            add_to_local_variable_list = {
+                name = payers
+                target = this
+            }
+        }
+    }
+    get_payee_list = {
+        leader_country ?= {
+            add_to_local_variable_list = {
+                name = payees
+                target = this
+            }
+        }
+    }
+    price = union_contribution_price
+    uses_maintenance = yes
+    price_multiplier = {
+        if = {
+            #nothing happens during a power struggle
+            limit = {
+                international_organization_has_leader = no
+            }
+            value = 0
+        }
+        else = {
+            every_international_organization_member = {
+                limit = {
+                    not = { is_leader_of_international_organization = root }
+                }
+                add = monthly_income_trade_and_tax
+            }
+            multiply = 0.02
+        }
+    }
+    proportion_for_payer = {
+        add = {
+            desc = "swe_imperial_treasury"
+            value = monthly_income_trade_and_tax
+        }
+    }
+    proportion_for_payee = {
+        add = {
+            desc = "swe_imperial_treasury"
+            value = 1
+        }
+    }
+}
+
+swe_simple_treasury = {
+    get_payer_list = {
+        every_international_organization_member = {
+            limit = {
+                NOT = { is_leader_of_international_organization = root }
+                OR = {
+                    has_special_status_in_international_organization = {
+                        international_organization = international_organization:swedish_empire
+                        type = special_status:crownland_of_swedish
+                    }
+
+                    has_special_status_in_international_organization = {
+                        international_organization = international_organization:swedish_empire
+                        type = special_status:kingdom_of_finland
+                    }
+                }
+            }
+            add_to_local_variable_list = {
+                name = payers
+                target = this
+            }
+        }
+    }
+    get_payee_list = {
+        leader_country ?= {
+            add_to_local_variable_list = {
+                name = payees
+                target = this
+            }
+        }
+    }
+    price = union_contribution_price
+    uses_maintenance = yes
+    price_multiplier = {
+        if = {
+            #nothing happens during a power struggle
+            limit = {
+                international_organization_has_leader = no
+            }
+            value = 0
+        }
+        else = {
+            every_international_organization_member = {
+                limit = {
+                    not = { is_leader_of_international_organization = root }
+                }
+                add = monthly_income_trade_and_tax
+            }
+            multiply = 0.01
+        }
+    }
+    proportion_for_payer = {
+        add = {
+            desc = "swe_imperial_treasury"
+            value = monthly_income_trade_and_tax
+        }
+    }
+    proportion_for_payee = {
+        add = {
+            desc = "swe_imperial_treasury"
+            value = 1
+        }
+    }
+}

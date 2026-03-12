@@ -1,0 +1,29 @@
+herdsman = {
+    color = rgb { 228 187 133 }
+
+    promote_to = burghers
+    promote_to = clergy
+    promote_to = nobles
+
+    pop_food_consumption = 1.25
+
+    promotion_factor = 0.33
+
+    grow = yes
+
+    assimilation_conversion_factor = 0.75
+
+    migration_factor = 0.25
+
+    city_graphics = 0.01
+
+    dhimmi_estate = { is_dhimmi = yes }
+
+    peasants_estate = {}
+
+    literacy_impact = {
+        local_food_capacity_modifier = 0.02
+        local_production_efficiency = -0.02
+        local_monthly_food_modifier = -0.02
+    }
+}

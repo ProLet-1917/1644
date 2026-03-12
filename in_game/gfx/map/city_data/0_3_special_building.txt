@@ -1,0 +1,224 @@
+﻿mesh_list = 
+{
+	name = "monuments_great_wall_mesh"
+	scale_settings_large = { bias = 0 min = 0.3 max = 0.5 }
+	should_spawn_flags = no
+	building_great_wall_guan_01_mesh = 1
+}
+
+mesh_list = 
+{
+	name = "monuments_cologne_cathedral_mesh"
+	scale_settings_large = { bias = 0 min = 0.5 max = 0.8 }
+	should_spawn_flags = no
+	building_cologne_cathedral_mesh = 1
+}
+
+mesh_list = 
+{
+	name = "monuments_hagia_sophia_01_mesh"
+	scale_settings_large = { bias = 0 min = 0.5 max = 0.8 }
+	should_spawn_flags = no	
+	building_monument_hagia_sophia_01_mesh = 1
+}
+
+mesh_list =
+{
+	name = "monuments_forbidden_city_01_mesh"
+	scale_settings_large = { bias = 0 min = 0.5 max = 0.8 }
+	should_spawn_flags = no
+	building_forbidden_city_mesh = 1
+}
+
+mesh_list =
+{
+	name = "monuments_hofburg_palace_mesh"
+	scale_settings_large = { bias = 0 min = 0.5 max = 0.8 }
+	should_spawn_flags = no
+	building_hofburg_palace_mesh = 1
+}
+
+mesh_list =
+{
+	name = "monuments_pisa_tower_mesh"
+	scale_settings_large = { bias = 0 min = 0.5 max = 0.8 }
+	should_spawn_flags = no
+	building_pisa_tower_mesh = 1
+}
+
+mesh_list =
+{
+	name = "monuments_uppsala_cathedral_mesh"
+	scale_settings_large = { bias = 0 min = 0.5 max = 0.8 }
+	should_spawn_flags = no
+	building_uppsala_cathedral_mesh = 1
+}
+
+mesh_list =
+{
+	name = "monuments_saint_mark_basilica_mesh"
+	scale_settings_large = { bias = 0 min = 0.5 max = 0.8 }
+	should_spawn_flags = no
+	building_saint_mark_basilica_mesh = 1
+}
+
+template unique_buildings
+{
+	code =
+	[[
+		A03_Great_wall = {
+			only_in_location = funing
+			order = 0
+			size = large
+			mesh_list = monuments_great_wall_mesh
+			contributors =
+			{
+				always_one = 1.0
+			}
+			filter_func = closest_to_position
+			weight_func = close_to_center_weights
+
+			filter_data = { 13143.120000 2.000000 5640.510000 }
+
+			allow_demote = no
+			link_tooltip =
+			{
+				type = work_of_art
+				data = great_wall
+			}
+		}
+
+		A03_cologne_cathedral = {
+			only_in_location = cologne
+			order = 0
+			size = large
+			mesh_list = monuments_cologne_cathedral_mesh
+			add_count_to_mesh_list = large_clergy_meshes
+			contributors =
+			{
+				has_building_with_at_least_one_level:cathedral = 1.0
+			}
+			filter_func = closest_to_position
+			weight_func = close_to_center_weights
+
+			allow_demote = no
+		}
+
+		A03_hagia_sophia = {
+			only_in_location = constantinople
+			order = 0
+			size = large
+			mesh_list = monuments_hagia_sophia_01_mesh
+			contributors =
+			{
+				always_one = 1.0
+			}
+			filter_func = closest_to_position
+			weight_func = close_to_center_weights
+
+			filter_data = { 9005.33500 2.00000 5703.03500 }
+
+			allow_demote = no
+
+			link_tooltip =
+			{
+				type = work_of_art
+				data = hagia_sophia
+			}
+		}
+
+		A03_forbidden_city = {
+			order = 0
+			size = large
+			mesh_list = monuments_forbidden_city_01_mesh
+			contributors =
+			{
+				has_building_with_at_least_one_level:forbidden_city = 1.0
+			}
+			filter_func = closest_to_position
+			weight_func = close_to_center_weights
+
+			filter_data = { 12986.33500 2.00000 5637.53500 }
+
+			allow_demote = no
+		}
+
+		A03_hofburg_palace = {
+			only_in_location = vienna
+			order = 0
+			size = large
+			mesh_list = monuments_hofburg_palace_mesh
+			contributors =
+			{
+				has_building_with_at_least_one_level:hofburg_palace = 1.0
+			}
+			filter_func = closest_to_position
+			weight_func = close_to_center_weights
+
+			allow_demote = no
+		}
+
+		A03_tower_of_pisa = {
+			only_in_location = pisa
+			order = 0
+			size = large
+			mesh_list = monuments_pisa_tower_mesh
+			contributors =
+			{
+				always_one = 1.0
+			}
+			filter_func = closest_to_position
+			weight_func = close_to_center_weights
+
+			filter_data = { 9005.33500 2.00000 5703.03500 }
+
+			allow_demote = no
+
+			link_tooltip =
+			{
+				type = work_of_art
+				data = leaning_tower_of_pisa
+			}
+		}
+
+		A03_uppsala_cathedral = {
+			only_in_location = uppsala
+			order = 0
+			size = large
+			mesh_list = monuments_uppsala_cathedral_mesh
+			add_count_to_mesh_list = large_clergy_meshes
+			contributors =
+			{
+				has_building_with_at_least_one_level:cathedral = 1.0
+			}
+			filter_func = closest_to_position
+			weight_func = close_to_center_weights
+
+			allow_demote = no
+		}
+
+		A03_saint_mark_basilica = {
+			only_in_location = venice
+			order = 0
+			size = large
+			mesh_list = monuments_saint_mark_basilica_mesh
+			contributors =
+			{
+				always_one = 1.0
+			}
+			filter_func = closest_to_position
+			weight_func = close_to_center_weights
+
+			filter_data = { 8261.55500 2.50000 5979.53500 }
+
+			allow_demote = no
+
+			link_tooltip =
+			{
+				type = work_of_art
+				data = saint_mark_basilica
+			}
+		}
+
+	]]
+}

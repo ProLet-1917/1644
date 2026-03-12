@@ -6,10 +6,11 @@ organization_geodiplomatic_theme = {
    	}
 
   	blockoverride "organization_overview_tab_visible" {}
- 	   blockoverride "organization_panel_overview_visible" {
-   	     visible = "[InternationalOrganizationsView.Vars.NotExistOrHasValue( 'organizations', 'overview' )]"
-   	 }
-    	blockoverride "organization_members_tab_down" {
+
+	blockoverride "organization_panel_overview_visible" {
+		visible = "[InternationalOrganizationsView.Vars.NotExistOrHasValue( 'organizations', 'overview' )]"
+	}
+	blockoverride "organization_members_tab_down" {
 		down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'members' )]"
 	}
 
@@ -22,7 +23,7 @@ organization_geodiplomatic_theme = {
     blockoverride "io_main_actions_icon" {
     }
 
-     blockoverride "blockoverride "organization_overview_list_item" {
+     blockoverride "organization_overview_list_item" {
 		card_io_payments = {}
      }
 

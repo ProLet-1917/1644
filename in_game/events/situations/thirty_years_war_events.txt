@@ -1,0 +1,1023 @@
+namespace = thirty_years_war_events
+
+#0.3.0 Lions of the North
+scripted_effect east_pomerania_area = {
+    province_definition:stolp_province = {
+        every_location_in_province_definition = {
+            add_to_list = east_pomerania_area_list
+        }
+    }
+    province_definition:koslin_province = {
+        every_location_in_province_definition = {
+            add_to_list = east_pomerania_area_list
+        }
+    }
+    location:szadzko = {
+        add_to_list = east_pomerania_area_list
+    }
+    location:pyrzyce = {
+        add_to_list = east_pomerania_area_list
+    }
+}
+
+scripted_effect wismar_area = {
+    location:wismar = {
+        add_to_list = wismar_area_list
+    }
+}
+
+scripted_effect gelre_area = {
+    location:geldern = {
+        add_to_list = gelre_area_list
+    }
+}
+
+scripted_effect upper_alsace_area = {
+    location:ferrette = {
+        add_to_list = upper_alsace_area_list
+    }
+    location:belfort = {
+        add_to_list = upper_alsace_area_list
+    }
+    location:ensisheim = {
+        add_to_list = upper_alsace_area_list
+    }
+}
+
+scripted_effect jamtland_area = {
+    province_definition:jamtland_province = {
+        every_location_in_province_definition = {
+            add_to_list = jamtland_area_list
+        }
+    }
+    location:idre = {
+        add_to_list = jamtland_area_list
+    }
+}
+
+scripted_effect amberg_area = {
+    location:amberg = {
+        add_to_list = amberg_area_list
+    }
+    location:roding = {
+        add_to_list = amberg_area_list
+    }
+    location:cham = {
+        add_to_list = amberg_area_list
+    }
+    location:tirschenreuth = {
+        add_to_list = amberg_area_list
+    }
+    location:eschenbach = {
+        add_to_list = amberg_area_list
+    }
+    location:sulzbach = {
+        add_to_list = amberg_area_list
+    }
+    location:neumarkt = {
+        add_to_list = amberg_area_list
+    }
+    location:beilngries = {
+        add_to_list = amberg_area_list
+    }
+}
+
+scripted_effect halberstadt_area = {
+    location:halberstadt = {
+        add_to_list = halberstadt_area_list
+    }
+}
+
+scripted_effect rosello_area = {
+   province_definition:rosello_province = {
+       every_location_in_province_definition = {
+           add_to_list = rosello_list
+       }
+   }
+}
+
+
+
+thirty_years_war_events.1 = { #Historical Peace of Westphalia
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.1.title
+    desc = thirty_years_war_events.1.desc
+
+    fire_only_once = yes
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    immediate = {
+        east_pomerania_area = yes
+        wismar_area = yes
+        gelre_area = yes
+        upper_alsace_area = yes
+        jamtland_area = yes
+        amberg_area = yes
+        halberstadt_area = yes
+        c:HAB = { white_peace = "war_with_country(c:HES)" }
+    }
+
+    option = {
+        name = thirty_years_war_events.1.a
+        situation:thirty_years_war = {
+            end_situation = this
+        }
+        change_imperial_authority = { value = imperial_authority_unique_penalty }
+        international_organization:hre = {
+            add_policy_to_international_organization = policy:hre_religion_christian
+            add_policy_to_international_organization = policy:only_imperial_religion_group_policy
+            international_organization_add_special_status = {
+                type = special_status:elector
+                country = c:PAL
+            }
+            international_organization_chooses_new_leader = international_organization:hre
+        }
+        random_country = {
+            destroy_international_organization = { target = international_organization:protestant_union }
+            destroy_international_organization = { target = international_organization:catholic_league }
+        }
+        #c:KLE = {
+        #    change_religion = religion:lutheran
+        #}
+        #international_organization:union_of_utrecht = {
+        #    add_country_to_international_organization = c:KLE
+        #}
+        international_organization:swedish_empire = {
+            add_country_to_international_organization = c:BRE
+            international_organization_add_special_status = {
+                type = special_status:dominion_of_empire
+                country = c:BRE
+            }
+            international_organization_remove_special_status = {
+                type = special_status:dominion_of_empire
+                country = c:STE
+            }
+            international_organization_add_special_status = {
+                type = special_status:crownland_of_swedish
+                country = c:STE
+            }
+        }
+        c:NED = { trigger_event_non_silently = netherland_independent.8 }
+        c:STE = {
+            make_subject_of = {
+                target = c:SWE
+                type = subject_type:fiefdom
+            }
+        }
+        every_in_list = {
+            list = east_pomerania_area_list
+            limit = { owner = c:STE }
+            change_location_owner = c:BRA
+            change_control = 0.35
+        }
+        every_in_list = {
+            list = gelre_area_list
+            limit = { owner = c:KLE }
+            change_location_owner = c:BRA
+            change_control = 0.2
+        }
+        every_in_list = {
+            list = halberstadt_area_list
+            limit = { owner = c:MAG }
+            change_location_owner = c:BRA
+            change_control = 0.25
+        }
+        every_in_list = {
+            list = wismar_area_list
+            limit = { owner = c:MKL }
+            change_location_owner = c:SWE
+            change_control = 0.15
+        }
+        every_in_list = {
+            list = jamtland_area_list
+            limit = { owner = c:NOR }
+            change_location_owner = c:SWE
+            change_control = 0.15
+        }
+        every_in_list = {
+            list = upper_alsace_area_list
+            limit = { owner = c:TIR }
+            change_location_owner = c:FRA
+            change_control = 0.2
+        }
+        every_in_list = {
+            list = amberg_area_list
+            limit = { owner = c:UPA }
+            change_location_owner = c:BAV
+            change_control = 0.35
+        }
+        c:SPA = {
+            declare_war_with_cb = {
+                target = c:CAT
+                type = casus_belli:cb_conquer_province
+                target_province = c:CAT.province:barcelona_province
+            }
+        }
+        every_country = {
+            limit = {
+                has_country_modifier = ai_in_religion_war
+            }
+            remove_country_modifier = ai_in_religion_war
+        }
+        if = {
+            limit = {
+                any_owned_location = {
+                    owner = {
+                        OR = {
+                            this = c:NED
+                            is_subject_or_below_of = c:NED
+                        }
+                    }
+                }
+            }
+            save_scope_as = target_remove_location
+        }
+        international_organization:hre = {
+            remove_location_from_international_organization = scope:target_remove_location
+        }
+    }
+}
+
+thirty_years_war_events.2 = { #Message from Catholic League
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.2.title
+    desc = thirty_years_war_events.2.desc
+
+    fire_only_once = yes
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    option = {
+        #Accepted
+        name = thirty_years_war_events.2.a
+        international_organization:catholic_league.leader_country = {
+            trigger_event_non_silently = thirty_years_war_events.4
+        }
+        every_country = {
+            limit = {
+                OR = {
+                    is_member_of_international_organization = international_organization:catholic_league
+                    is_member_of_international_organization = international_organization:protestant_union
+                }
+            }
+        }
+        ai_chance = 12
+    }
+
+    option = {
+        #No
+        name = thirty_years_war_events.2.b
+        international_organization:catholic_league.leader_country = {
+            trigger_event_non_silently = thirty_years_war_events.5
+        }
+        ai_chance = 2
+    }
+}
+
+thirty_years_war_events.3 = { #Message from Protestant Union
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.3.title
+    desc = thirty_years_war_events.3.desc
+
+    fire_only_once = yes
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    option = {
+        #Accepted
+        name = thirty_years_war_events.3.a
+        international_organization:catholic_league.leader_country = {
+            trigger_event_non_silently = thirty_years_war_events.4
+        }
+        every_country = {
+            limit = {
+                OR = {
+                    is_member_of_international_organization = international_organization:catholic_league
+                    is_member_of_international_organization = international_organization:protestant_union
+                }
+            }
+        }
+        ai_chance = 10
+    }
+
+    option = {
+        #No
+        name = thirty_years_war_events.3.b
+        international_organization:catholic_league.leader_country = {
+            trigger_event_non_silently = thirty_years_war_events.5
+        }
+        ai_chance = 2
+    }
+}
+
+thirty_years_war_events.4 = { #Prepare to Osnarbruck
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.4.title
+    desc = thirty_years_war_events.4.desc
+
+    fire_only_once = yes
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    option = {
+        #Send our diplomatic delegation
+        name = thirty_years_war_events.4.a
+        set_global_variable = {
+            name = start_peace_talk_in_westphalia
+        }
+        c:HAB = {
+            white_peace = "war_with_country(c:HES)"
+        }
+        if = {
+            limit = {
+                global_var:current_war_balance >= 50
+            }
+            set_global_variable = {
+                name = protestant_winning
+            }
+            every_country = {
+                limit = {
+                    is_member_of_international_organization = international_organization:protestant_union
+                }
+                set_variable = {
+                    name = winning_side
+                }
+            }
+            every_country = {
+                limit = {
+                    is_member_of_international_organization = international_organization:catholic_league
+                }
+                set_variable = {
+                    name = losing_side
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                global_var:current_war_balance < 50
+            }
+            set_global_variable = {
+                name = catholic_winning
+            }
+            every_country = {
+                limit = {
+                    is_member_of_international_organization = international_organization:catholic_league
+                }
+                set_variable = {
+                    name = winning_side
+                }
+            }
+            every_country = {
+                limit = {
+                    is_member_of_international_organization = international_organization:protestant_union
+                }
+                set_variable = {
+                    name = losing_side
+                }
+            }
+        }
+    }
+}
+
+thirty_years_war_events.5 = { #They refused.
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.5.title
+    desc = thirty_years_war_events.5.desc
+
+    fire_only_once = yes
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    option = {
+        #How dare they!
+        name = thirty_years_war_events.5.a
+    }
+}
+
+thirty_years_war_events.6 = {     #Join the Congress
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.6.title
+    desc = thirty_years_war_events.6.desc
+
+    fire_only_once = yes
+
+    illustration_tags = {
+        10 = regular
+    }
+
+    option = {
+        #Send our diplomatic delegation
+        name = thirty_years_war_events.6.a
+    }
+}
+
+thirty_years_war_events.100 = { #Split Pomelania?
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.100.title
+    desc = thirty_years_war_events.100.desc
+
+    fire_only_once = yes
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    option = {
+        historical_option = yes
+        #We Agree
+        name = thirty_years_war_events.100.a
+        east_pomerania_area = yes
+        set_global_variable = {
+            name = split_pomelamia_agreed
+        }
+        remove_global_variable = allow_split_pomelamia
+    }
+
+    option = {
+        #We do not accept
+        name = thirty_years_war_events.100.b
+        set_global_variable = {
+            name = split_pomelamia_refused
+        }
+        remove_global_variable = allow_split_pomelamia
+        ai_chance = 0
+    }
+}
+
+thirty_years_war_events.101 = { #Send what we want
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.101.title
+    desc = thirty_years_war_events.101.desc
+
+    fire_only_once = yes
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    immediate = {
+        every_country = {
+            limit = {
+                has_variable = target_actor
+            }
+            save_scope_as = actor
+        }
+    }
+
+    option = {
+        #How dare them
+        name = thirty_years_war_events.101.a
+    }
+
+    #option = {
+    #    #We do not accept
+    #    name = thirty_years_war_events.101.b
+    #    scope:actor = {
+    #        add_casus_belli = {
+    #            type = casus_belli:cb_conquer_province
+    #            target = root
+    #            province = scope:target_province
+    #        }
+    #        remove_variable = target_actor
+    #    }
+    #    ai_chance = 1
+    #}
+}
+
+thirty_years_war_events.102 = { #We are not using this
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.102.title
+    desc = thirty_years_war_events.102.desc
+
+    fire_only_once = yes
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    option = {
+        #We Agree
+        name = thirty_years_war_events.102.a
+        scope:target_province = {
+            add_to_list = part_of_treaty_of_westphalia
+        }
+        every_in_list = {
+            list = part_of_treaty_of_westphalia
+            limit = { owner = scope:target }
+            change_location_owner = scope:actor
+            change_control = 0.1
+        }
+        scope:target_province = {
+            remove_from_list = part_of_treaty_of_westphalia
+        }
+    }
+}
+
+thirty_years_war_events.103 = { #Phase 2 - Netherlands Question - NED start event
+    #Let we solution netherlands question
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.103.title
+    desc = thirty_years_war_events.103.desc
+
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = NED
+        from = 1640.1.1
+        to = 1700.1.1
+        monthly_chance = 100
+    }
+
+    trigger = {
+        has_global_variable = now_talking_about_lowland_problem
+    }
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    option = {
+        #Let we start
+        name = thirty_years_war_events.103.a
+        trigger_event_non_silently = thirty_years_war_events.104
+    }
+}
+
+thirty_years_war_events.104 = { #What we want?
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.104.title
+    desc = thirty_years_war_events.104.desc
+
+    fire_only_once = yes
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    option = {
+        #Only Independence
+        name = thirty_years_war_events.104.a
+        ai_chance = 10
+        c:SPA = {
+            trigger_event_non_silently = thirty_years_war_events.105
+        }
+    }
+
+    option = {
+        #We demand all lowlands
+        trigger = {
+            global_var:current_war_balance >= 62.5
+        }
+        name = thirty_years_war_events.104.b
+        c:SPA = {
+            trigger_event_non_silently = thirty_years_war_events.106
+        }
+        ai_chance = 6
+    }
+}
+
+thirty_years_war_events.105 = { #Message from Netherland
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.105.title
+    desc = thirty_years_war_events.105.desc
+
+    fire_only_once = yes
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    option = {
+        #We accepted
+        historical_option = yes
+        name = thirty_years_war_events.105.a
+        set_global_variable = {
+            name = spa_accepted_netherland_independence
+        }
+        ai_chance = 50
+    }
+
+    option = {
+        #We do not accept
+        name = thirty_years_war_events.105.b
+        set_global_variable = {
+            name = spa_not_accepted_netherland_independence
+        }
+        ai_chance = 1
+    }
+}
+
+thirty_years_war_events.106 = { #Message from Netherland
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.106.title
+    desc = thirty_years_war_events.106.desc
+
+    fire_only_once = yes
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    option = {
+        #We accepted
+        name = thirty_years_war_events.106.a
+        set_global_variable = {
+            name = spa_accepted_netherland_victory
+        }
+        ai_chance = 10
+    }
+
+    option = {
+        #We do not accept
+        name = thirty_years_war_events.106.b
+        set_global_variable = {
+            name = spa_not_accepted_netherland_independence
+        }
+        ai_chance = 1
+    }
+}
+
+thirty_years_war_events.107 = { #Phase 3 - HRE Question - HAB start event
+    #Let we solution wittersbach question
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.107.title
+    desc = thirty_years_war_events.107.desc
+
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = HAB
+        from = 1640.1.1
+        to = 1700.1.1
+        monthly_chance = 100
+    }
+
+    trigger = {
+        has_global_variable = now_talking_about_wittersbach_problem
+    }
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    option = {
+        #Let we start
+        name = thirty_years_war_events.107.a
+        trigger_event_non_silently = thirty_years_war_events.108
+    }
+}
+
+thirty_years_war_events.108 = { #Confress
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.108.title
+    desc = thirty_years_war_events.108.desc
+
+    fire_only_once = yes
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    option = {
+        #Bavaria got the elector
+        name = thirty_years_war_events.108.a
+        ai_chance = 2
+        trigger = {
+            global_var:current_war_balance >= 60
+        }
+        #Nothing happened
+    }
+
+    option = {
+        #All got the elector
+        trigger = {
+            global_var:current_war_balance < 60
+            global_var:current_war_balance >= 42.5
+        }
+        name = thirty_years_war_events.108.b
+        set_global_variable = {
+            name = westphalia_equal_elector
+        }
+        ai_chance = 2
+    }
+
+    option = {
+        #Catholic win
+        trigger = {
+            global_var:current_war_balance < 42.5
+        }
+        name = thirty_years_war_events.108.c
+        set_global_variable = {
+            name = westphalia_catholic_elector
+        }
+        ai_chance = 2
+    }
+}
+
+thirty_years_war_events.109 = { #Phase 5 - Catalonia - SPA start event
+    #Let we solution catalonia question
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.109.title
+    desc = thirty_years_war_events.109.desc
+
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = SPA
+        from = 1640.1.1
+        to = 1700.1.1
+        monthly_chance = 100
+    }
+
+    trigger = {
+        has_global_variable = now_talking_about_france_spain_problem
+    }
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    option = {
+        #Let we start
+        name = thirty_years_war_events.109.a
+        c:FRA = {
+            trigger_event_non_silently = thirty_years_war_events.110
+        }
+    }
+}
+
+thirty_years_war_events.110 = { #Confress
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.110.title
+    desc = thirty_years_war_events.110.desc
+
+    fire_only_once = yes
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    option = {
+        #Stay now
+        name = thirty_years_war_events.110.a
+        ai_chance = 2
+        trigger = {
+            global_var:current_war_balance >= 60
+        }
+        #Nothing happened
+    }
+
+    option = {
+        #Catalonia split
+        trigger = {
+            global_var:current_war_balance < 60
+            global_var:current_war_balance >= 42.5
+        }
+        name = thirty_years_war_events.110.b
+        set_global_variable = {
+            name = westphalia_split_catalonia
+        }
+        ai_chance = 2
+    }
+
+    option = {
+        #Catholic win
+        trigger = {
+            global_var:current_war_balance < 42.5
+        }
+        name = thirty_years_war_events.110.c
+        set_global_variable = {
+            name = westphalia_catholic_catalonia
+        }
+        ai_chance = 2
+    }
+
+    option = {
+        #Continue war
+        name = thirty_years_war_events.110.d
+        set_global_variable = {
+            name = westphalia_france_spain_war_continue
+        }
+        ai_chance = 2
+    }
+}
+
+thirty_years_war_events.1000 = { #Custom Treaty of Westphalia
+    type = country_event
+    category = situation_event
+    title = thirty_years_war_events.1000.title
+    desc = thirty_years_war_events.1000.desc
+
+    fire_only_once = yes
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    immediate = {
+        east_pomerania_area = yes
+        wismar_area = yes
+        gelre_area = yes
+        upper_alsace_area = yes
+        jamtland_area = yes
+        amberg_area = yes
+        halberstadt_area = yes
+        rosello_area = yes
+    }
+
+    option = {
+        #End of all
+        name = thirty_years_war_events.1000.a
+        international_organization:hre = {
+            add_policy_to_international_organization = policy:hre_religion_christian
+            add_policy_to_international_organization = policy:only_imperial_religion_group_policy
+            international_organization_chooses_new_leader = international_organization:hre
+        }
+        random_country = {
+            destroy_international_organization = { target = international_organization:protestant_union }
+            destroy_international_organization = { target = international_organization:catholic_league }
+        }
+        if = {
+            limit = {
+                has_global_variable = split_pomelamia_agreed
+            }
+            c:STE = {
+                make_subject_of = {
+                    target = c:SWE
+                    type = subject_type:fiefdom
+                }
+            }
+            if = {
+                limit = {
+                    location:berlin = {
+                        owner = c:BRA
+                    }
+                }
+                every_in_list = {
+                    list = east_pomerania_area_list
+                    limit = { owner = c:STE }
+                    change_location_owner = c:BRA
+                    change_control = 0.35
+                }
+            }
+            else_if = {
+                limit = {
+                    location:berlin = {
+                        owner = c:PRU
+                    }
+                }
+                every_in_list = {
+                    list = east_pomerania_area_list
+                    limit = { owner = c:STE }
+                    change_location_owner = c:PRU
+                    change_control = 0.35
+                }
+            }
+        }
+        #Protest win - in stage 3 declare religion peace
+        if = {
+            limit = {
+                has_global_variable = protestant_winning
+            }
+            change_imperial_authority = { value = imperial_authority_unique_penalty }
+        }
+        #Elector
+        if = {
+            limit = {
+                has_global_variable = westphalia_equal_elector
+            }
+            international_organization:hre = {
+                international_organization_add_special_status = {
+                    type = special_status:elector
+                    country = c:PAL
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                has_global_variable = westphalia_catholic_elector
+            }
+            international_organization:hre = {
+                international_organization_add_special_status = {
+                    type = special_status:elector
+                    country = c:PAL
+                }
+                international_organization_remove_special_status = {
+                    type = special_status:elector
+                    country = c:BAV
+                }
+            }
+        }
+        #Protest win - in stage 2
+        if = {
+            limit = {
+                has_global_variable = spa_accepted_netherland_independence
+            }
+            c:NED = { trigger_event_non_silently = netherland_independent.8 }
+        }
+        else_if = {
+            limit = {
+                has_global_variable = spa_accepted_netherland_victory
+            }
+            c:NED = { trigger_event_non_silently = netherland_independent.9 }
+        }
+        else_if = { #Catholic Win - situation still going
+            limit = {
+                has_global_variable = catholic_winning
+            }
+
+        }
+        #France continue war in stage 5
+        if = {
+            limit = {
+                has_global_variable = westphalia_split_catalonia
+            }
+            every_in_list = {
+                list = rosello_list
+                limit = { owner = c:CAT }
+                change_location_owner = c:FRA
+                change_control = 0.12
+            }
+            c:FRA = {
+                cancel_subject = c:CAT
+            }
+            c:CAT = {
+                make_subject_of = {
+                    target = c:SPA
+                    type = subject_type:dominion
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                has_global_variable = westphalia_catholic_catalonia
+            }
+            c:FRA = {
+                cancel_subject = c:CAT
+            }
+            c:CAT = {
+                make_subject_of = {
+                    target = c:SPA
+                    type = subject_type:dominion
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                has_global_variable = westphalia_france_spain_war_continue
+            }
+            c:SPA = {
+                declare_war_with_cb = {
+                    target = c:CAT
+                    type = casus_belli:cb_conquer_province
+                    target_province = c:CAT.province:barcelona_province
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,215 @@
+swedish_empire = { #svenska stormaktstiden https://en.wikipedia.org/wiki/Swedish_Empire
+    has_target = no
+    unique = yes
+    expel_members_who_are_targets_of_other_members = no
+
+    show_leave_message = no
+    has_leader_country = yes
+    leader_type = country
+    leader_change_method = none
+    disband_if_no_leader = yes
+    has_parliament = yes
+    parliament_type = swe_empire_parliament
+
+    join_offensive_wars_always = {
+        always = no
+    }
+
+    join_defensive_wars_always = {
+        always = no
+    }
+
+    create_visible_trigger = {
+        always = no
+    }
+
+    invite_visible_trigger = {
+        always = yes
+    }
+
+    can_declare_war = {
+        always = yes
+    }
+
+    modifier = {
+        block_from_change_to_empire_rank = yes
+    }
+
+    leader_modifier = {
+        great_power_score = 100
+        cannot_be_subjugated = yes
+    }
+
+    gives_military_access_to_all_when_at_war = yes
+
+    can_join_trigger = {
+        OR = {
+            this = c:SWE
+            is_subject_of = c:SWE
+            has_positive_opinion = c:SWE
+        }
+    }
+
+    auto_leave_trigger = {
+        OR = {
+            is_rebel_country = yes
+        }
+    }
+
+    auto_disband_trigger = {
+        var:swedish_empire_authority < 5
+    }
+
+    can_leave_trigger = {
+        NOT = {
+            this = c:SWE
+            is_subject_of = c:SWE
+        }
+    }
+
+    ai_desire_to_join = {
+        subtract = {
+            desc = "BASE"
+            value = 50
+        }
+        if = {
+            limit = {
+                is_subject_of = c:SWE
+            }
+            value = 1000
+        }
+        add = {
+            desc = "game_concept_opinion"
+            value = {
+                value = "root.opinion(scope:actor)"
+                divide = 5      # max ±40 at ±200 opinion
+            }
+        }
+        add = {
+            desc = "game_concept_diplomatic_reputation"
+            value = {
+                value = "scope:actor.modifier:diplomatic_reputation"
+                multiply = 0.2  # +0.25 reasons per 1 diprep
+            }
+        }
+        add = {
+            desc = "expanded_influnce"
+            if = {
+                limit = {
+                    has_variable = in_swedish_empire_influnce
+                }
+                value = 20
+            }
+        }
+        if = {
+            limit = {
+                exists = scope:actor
+                OR = {
+                    culture ?= scope:actor.culture
+                    ruler ?= {
+                        culture ?= scope:actor.culture
+                    }
+                }
+            }
+            add = {
+                desc = "PRIMARY_OR_RULER_CULTURE_EQUAL_TO_LEADER_CULTURE"
+                value = 20
+            }
+        }
+        if = {
+            limit = {
+                exists = scope:actor
+                exists = scope:recipient
+                any_neighbor_country = {
+                    is_threat_to = root
+                    NOT = { is_member_of_international_organization = scope:recipient }
+                    OR = {
+                        is_rival_of = scope:actor
+                        is_enemy_of = scope:actor
+                    }
+                }
+            }
+            add = {
+                desc = "THREATENED_BY_LEADER_RIVALS_OR_ENEMIES"
+                value = 20
+            }
+        }
+        subtract = {
+            desc = "game_concept_tax_base"
+            value = country_tax_base
+            multiply = 0.25
+        }
+    }
+
+    variables = {
+        swedish_empire_authority = {
+            format = "swedish_empire_authority_DISPLAY"
+            change_format = "VARIABLE_CHANGE_FORMAT"
+            min = 0
+            max = 100
+            monthly_change = {
+                add = {
+                    add = {
+                        desc = "IS_GREAT_POWER_TRIGGER"
+                        if = {
+                            limit = {
+                                c:SWE = {
+                                    is_great_power = yes
+                                }
+                            }
+                            value = 0.05
+                        }
+                    }
+                    add = {
+                        desc = "MEMBERS"
+                        value = total_members
+                        multiply = 0.005
+                    }
+                    add = {
+                        desc = "EMPIRE_STABLE"
+                        value = c:SWE.stability
+                        multiply = 0.002
+                    }
+                }
+                subtract = {
+                    desc = "IS_NOT_GREAT_POWER"
+                    if = {
+                        limit = {
+                            c:SWE = {
+                                is_great_power = no
+                            }
+                        }
+                        value = 0.05
+                    }
+                }
+                subtract = {
+                    desc = "NOT_CONTROL_FINLAND"
+                    if = {
+                        limit = {
+                            NOR = {
+                                c:FIN = {
+                                    has_special_status_in_international_organization = {
+                                        type = special_status:kingdom_of_finland
+                                        international_organization = international_organization:swedish_empire
+                                    }
+                                }
+                                c:SWE = {
+                                    own_entire_province = province_definition:finland_province
+                                }
+                            }
+                        }
+                        value = 0.20
+                    }
+                }
+            }
+        }
+    }
+
+    special_statuses_implemented = {
+        kung_of_swedish
+        kingdom_of_finland
+        crownland_of_swedish
+        chartered_colony_of_swedish_empire
+        dominion_of_empire
+    }
+}

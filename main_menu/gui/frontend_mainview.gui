@@ -1,0 +1,1561 @@
+types Frontend
+{
+	type button_dlc_mods = header_button_left {
+		size = { 80 40 }
+		blockoverride "button_icon_stretch_sprite" {}
+		blockoverride "header_button_frame_inner" {visible = no}
+		blockoverride "header_button_icon_size" { size = { 30 30 } }
+		blockoverride "header_button_text_layout" {}
+
+		blockoverride "icon_texture" {
+			texture = "gfx/interface/icons/dlc/dlc_shield.dds"
+			# texture_density = 2
+		}
+
+		name = "mods_gui_button"
+
+		action_tooltip = {
+			title = "MAIN_MENU_MODS_AND_DLCS"
+			on_action = "[FrontEndMainView.ToggleOpenMods]"
+		}
+
+		tooltipwidget = { 
+			SimpleContextualTooltipType = {
+				lowpriotextcontext = "MAIN_MENU_MODS_AND_DLCS_TOOLTIP"
+				blockoverride "title_icon" {
+					icon = {
+						using = tooltip_title_icon_size
+						texture = "gfx/interface/icons/dlc/dlc_shield.dds"												
+					}
+				}
+			}
+		}
+
+		down = "[FrontEndMainView.IsModsOpen]"
+	}
+
+	type FrontEndDLCs = widget {
+		parentanchor = top|right
+		widgetanchor = top|right
+		size = { 80 25% }
+
+		background = {
+			texture = "gfx/interface/sakuya/scroll_main_page_dlc.png"
+			color = { 1 1 1 1 }
+			texture_density = 2
+			# modify_texture = {
+			# 	using = color_brown_leather_texture
+			# }
+			 modify_texture = {
+			 	using = color_intense_brown_texture
+				alpha = 0.6
+			 }
+			modify_texture = {
+				using = overlay_cloth_texture
+				blend_mode = multiply
+				alpha = 0.33
+			}
+		}
+
+		#background = { #边框
+			#texture = "gfx/interface/component_decoration/loading_screen_illustration_frame.dds"
+			#texture_density = 2
+			#spriteType = corneredstretched
+			#spriteBorder = {60 60}
+			#frame_grid = { 2 1 }
+			#margin_left = 3
+			#margin_top = 2
+			#frame = 1
+		#}
+		
+		vbox = {
+			button_dlc_mods = {}
+
+			fixedgridbox = {
+				using = layoutpolicy_expanding
+				datamodel = "[GetGameDLCs]"
+				addcolumn = 100%
+				addrow = 70
+				setitemsizefromcell = yes
+	
+				item = {
+					widget = {
+						size = { 100% 100% }
+						button = {
+							size = { 40 40 }
+							parentanchor = center
+							texture = "[GameDLC.GetIcon]"
+							
+							tooltip = "[GameDLC.GetTooltip]"
+							tooltip_type = widget
+							tooltip_parentanchor = vcenter|right
+							tooltip_widgetanchor = vcenter|left
+	
+							action_tooltip = {
+								title = "[SelectLocalization(GameDLC.IsOwned, 'GAME_DLC_OWNED_CLICK', 'GAME_DLC_NOT_OWNED_CLICK')]"
+								on_action = "[GameDLC.OnClick]"
+							}
+	
+							tooltipwidget = {
+								ExtraContentTooltipType = {
+									# blockoverride "title_header_color" { tintcolor = "[GetColorDLC(DlcEntry.Filename)]"}
+									blockoverride "title_text" { text = "[GameDLC.GetName]" }
+									blockoverride "owned_text" { text = "GAME_DLC_TOOLTIP_OWNED" }
+									blockoverride "activated_text" { text = "GAME_DLC_TOOLTIP_ACTIVATED" }
+									blockoverride "installed_text" { text = "GAME_DLC_TOOLTIP_INSTALLED" }
+									blockoverride "ExtraContentTooltipType_background_texture" { texture = "[GameDLC.GetTooltipBackground]" }
+	
+									blockoverride "flavor_text" {
+										text = "[GameDLC.GetTooltipDesc]"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	type FrontEndNews = widget {
+		size = { 100% 100% }
+		alpha = 0.01
+		visible = no #煞笔广告
+		flowcontainer = {
+			parentanchor = bottom|right
+			widgetanchor = bottom|right
+			position = { -110 -20 }
+			spacing = 10
+
+			alwaystransparent = yes
+			ignoreinvisible = yes
+			visible = yes
+			scissor = yes
+
+			newsfeed_carousel = {
+				name = "newsfeed_slot_main"
+				size = { 451 230 }
+				align = left
+				datacontext = "[FrontEndMainView.AccessMarketingContainer.AccessSlotByName('main')]"
+
+				tooltip_enabled = no
+			}
+
+			newsfeed_carousel = {
+				name = "newsfeed_slot_secondary_1"
+				size = { 245 230 }
+				align = left
+				datacontext = "[FrontEndMainView.AccessMarketingContainer.AccessSlotByName('secondary-1')]"
+
+				tooltip_enabled = no
+
+				blockoverride "offset_x" {
+					position_x = -245
+				}
+
+				blockoverride "current_button_pos" {
+					size = { 245 230 }
+				}
+				blockoverride "next_button_pos" {
+					size = { 245 230 }
+					position = { 245 0 }
+				}
+			}
+
+			newsfeed_carousel = {
+				name = "newsfeed_slot_secondary_2"
+				size = { 245 230 }
+				align = left
+				datacontext = "[FrontEndMainView.AccessMarketingContainer.AccessSlotByName('secondary-2')]"
+
+				tooltip_enabled = no
+
+				blockoverride "offset_x" {
+					position_x = -245
+				}
+				blockoverride "current_button_pos" {
+					size = { 245 230 }
+				}
+				blockoverride "next_button_pos" {
+					size = { 245 230 }
+					position = { 245 0 }
+				}
+
+			}
+		}
+	}
+
+	type steam_logo_button = button {
+		gfxtype = framedbuttongfx
+		effectname = "NoHighlight"
+		upframe = 1
+		overframe = 2
+		downframe = 3
+		disableframe = 4
+		texture = "gfx/interface/buttons/button_small_round.dds"
+		framesize = { 42 42 }
+
+		sdk_load_indicator = {}
+		size = {30 30}
+
+		icon = {
+			size = {20 20}
+			parentanchor = center
+			texture =  "gfx/interface/logos/steam_logo.dds"
+		}
+	}
+
+	type caesar_status_widget = window {
+		name = "account_test"
+		using = SDKStatusWidgetWindowStyle
+		alwaystransparent = yes
+		resizable = no
+		movable = no
+		filter_mouse = none
+
+		widgetanchor = bottom|hcenter
+		parentanchor = bottom|hcenter
+
+		position = { 0 -35 }
+
+		blockoverride "sdk_text_style" { using = sdk_text_style_template }
+		blockoverride "sdk_button_style" { using = sdk_button_style_template }
+		blockoverride "sdk_button_size" { using = sdk_button_size_template }
+		blockoverride "sdk_load_indicator" { using = sdk_load_indicator_template }
+
+		blockoverride "status_widget_background_style" {}
+		
+		
+		flowcontainer = {
+			margin = { 25 50 }
+			margin_bottom = 45
+			direction = vertical
+			spacing = 10
+			
+			resizeparent = yes
+			ignoreinvisible = yes
+			
+			flowcontainer = {
+				parentanchor = top|hcenter
+				widget = {
+					size = { 300 30 }
+					hbox = {
+						size = { 300 -1 }
+						header_button_left = {
+							size = { 31 31 }
+							blockoverride "button_icon_stretch_sprite" {}
+							blockoverride "header_button_frame_inner" {visible = no}
+							blockoverride "header_button_icon_size" { size = { 30 30 } }
+							blockoverride "header_button_text_layout" {}
+							blockoverride "icon_overlay" {}
+			
+							blockoverride "icon_texture" {
+								texture = "gfx/interface/icons/modifier_types/adm.dds"
+								texture_density = 2
+							}
+			
+							tooltipwidget = { BasicFunctionalTooltip = {} }
+							action_tooltip = {
+								click_type = left
+								title = "SHOW_LEGAL_DOCUMENTS"
+								on_action = "[ShowJominiLegalDocuments]"
+							}
+						}
+	
+						expand = {}
+	
+						steam_logo_button = {
+							visible = "[And(Not(StatusWidget.IsAccountConnected), StatusWidget.SupportsConnectAccount)]"
+							tooltipwidget = {
+								LeftClickButtonTooltip = {
+									blockoverride "onclick_text" { text = "ACCOUNT_LINK" } 
+								}
+							}
+							
+							onclick = "[StatusWidget.ConnectAccount]"
+							enabled = "[And(Not(StatusWidget.IsBusy),And(And(StatusIsLoggedIn,Not(StatusWidget.IsAccountConnected)),StatusWidget.SupportsConnectAccount))]"
+		
+							blockoverride "load_indicator" {
+								visible = "[And(StatusIsLoggedIn, Not(And(Not(StatusWidget.IsBusy),And(And(StatusIsLoggedIn,Not(StatusWidget.IsAccountConnected)),StatusWidget.SupportsConnectAccount))))]"
+							}
+						}
+						
+						steam_logo_button = {
+							visible = "[And(StatusWidget.IsAccountConnected, StatusWidget.SupportsConnectAccount)]"
+		
+							tooltipwidget = {
+								LeftClickButtonTooltip = {
+									blockoverride "onclick_text" { text = "ACCOUNT_UNLINK" } 
+								}
+							}
+		
+							onclick = "[StatusWidget.DisconnectAccount]"
+							enabled = "[And(Not(StatusWidget.IsBusy),And(And(StatusIsLoggedIn,StatusWidget.IsAccountConnected),StatusWidget.SupportsConnectAccount))]"
+		
+							blockoverride "load_indicator" {
+								visible = "[Not(And(Not(StatusWidget.IsBusy),And(And(StatusIsLoggedIn, StatusWidget.IsAccountConnected), StatusWidget.SupportsConnectAccount)))]"
+							}
+						}
+					}
+				}
+			}
+			
+
+			flowcontainer = {
+				parentanchor = top|hcenter
+				spacing = 10
+				icon = {
+					texture = "gfx/interface/icons/flat_icons/account.dds"
+					size = { 40 40 }
+
+					modify_texture = {
+						using = color_gold_texture
+						blend_mode = add
+					}
+				}
+				
+				text_multi = {
+					name = "login_status"
+
+					autoresize = yes
+					maximumsize = { 200 -1 }
+					parentanchor = vcenter
+
+					using = Font_Type_Headers
+					default_format = "#high"
+					text = "[StatusGetLoginStatus]"
+					
+					sdk_load_indicator = {
+						position = { 10 0 }
+						parentanchor = right|vcenter
+						widgetanchor = left|vcenter
+						visible = "[StatusIsLoggingIn]"
+					}
+				}
+			}
+
+			flowcontainer = {
+				parentanchor = center
+				spacing = 5
+				ignoreinvisible = yes
+				sdk_button = {
+					text = "CREATE_ACCOUNT"
+					visible = "[Not(StatusIsLoggedIn)]"
+					enabled = "[StatusCanLogin]"
+					onclick = "[StatusWidget.ToggleCreateAccountWindow]"
+					# block "create_account_button_size" {
+						using = button_resize_to_fit_text
+					# }
+				}
+				sdk_button = {
+					text = "LOGIN"
+					onclick = "[StatusWidget.ToggleLoginWindow]"
+					visible = "[Not(StatusIsLoggedIn)]"
+					enabled = "[StatusCanLogin]"
+					using = button_resize_to_fit_text
+				}
+				sdk_button = {
+					maximumsize = { 180 -1 }
+					text = "SOCIAL_PROFILE"
+					tooltip = "SOCIAL_PROFILE_DESC"
+					visible = "[StatusIsLoggedIn]"
+					onclick = "[StatusWidget.ToggleCreateProfileWindow]"
+					# block "social_profile_button_size" {
+						using = button_resize_to_fit_text
+						margin = { 10 5 }
+					# }
+				}
+				sdk_button = {
+					maximumsize = { 125 -1 }
+					text = "LOGOUT"
+					onclick = "[StatusWidget.Logout]"
+					visible = "[StatusIsLoggedIn]"
+					enabled = "[Not(StatusIsLoggingIn)]"
+					using = button_resize_to_fit_text
+					margin = { 10 5 }
+				}
+			}
+		}
+
+		# blockoverride "load_indicator_container" {
+		# 	visible = no
+		# }
+
+		# blockoverride "login_status_text_size" {
+		# 	visible = no
+		# }
+
+		# blockoverride "create_account_button_size" {
+		# 	using = button_resize_to_fit_text
+		# }
+
+		# blockoverride "social_profile_button_size" {
+		# 	using = button_resize_to_fit_text
+		# }
+
+		# blockoverride "account_link_button_size" {
+		# 	using = button_resize_to_fit_text
+		# }
+
+		# blockoverride "account_unlink_button_size" {
+		# 	using = button_resize_to_fit_text
+		# }
+	}
+}
+
+window = {
+	name = "mainmenu_load_window"
+}
+
+widget = {
+	name = "mainmenu_panel"
+	size = { 100% 100% }
+	enabled = "[Or(Not(FrontEndMainView.HasUnviewedLegalDocuments), FrontEndMainView.IsShowingInitialLanguageSelection)]"
+	visible_at_creation = no
+	using = FrontEndAnimation
+	
+	FrontEndBackground = {
+		blockoverride "logo_container" {
+			position = { -90 0 } # Leave some space for DLCs
+		}
+	}
+	widget = {  #白底背景
+		parentanchor = center
+		widgetanchor = center
+		size = { 100% 100% }
+		allow_outside = yes
+		icon = {
+			size = { 100% 100% }
+			color = { 1 1 1 1 }
+			texture = "gfx/interface/sakuya/bko.png"
+		}
+	}
+	widget = {  #太阳光影
+		parentanchor = center
+		widgetanchor = center
+		size = { 100% 100% }
+		allow_outside = yes
+		icon = {
+			size = { 100% 100% }
+			color = { 1 1 1 1 }
+			alpha = 1
+			texture = "gfx/interface/sakuya/bk-sun.png"
+		}
+		state = {
+                trigger_on_create = yes
+                name = 1
+                next = 2
+
+                duration = 3
+                using = Animation_Curve_Default
+                position = { 0 0 }
+				alpha = 0.6
+            }
+            state = {
+                name = 2
+                next = 1
+
+                duration = 3
+                using = Animation_Curve_Default
+                position = { 0 0 }
+				alpha = 0
+            }
+	}
+	widget = {  #MOD logo 1644
+		parentanchor = top|center
+		widgetanchor = center
+		position = { 0 250 }
+		size = { 36% 60% }
+		allow_outside = yes
+		icon = {
+			size = { 100% 100% }
+			color = { 1 1 1 1 }
+			texture = "gfx/interface/sakuya/1644_logo.dds"
+		}
+	}
+	widget = {  #李自成
+		parentanchor = center
+		widgetanchor = center
+		size = { 100% 100% }
+		allow_outside = yes
+		icon = {
+			size = { 100% 100% }
+			color = { 1 1 1 1 }
+			texture = "gfx/interface/sakuya/bk-chuangwang.png"
+		}
+		state = {
+                trigger_on_create = yes
+                name = 1
+                next = 2
+
+                duration = 6
+                using = Animation_Curve_Default
+                position = { 20 0 }
+            }
+            state = {
+                name = 2
+                next = 1
+
+                duration = 6
+                using = Animation_Curve_Default
+                position = { -20 0 }
+            }
+	}
+	
+	widget = { #继续游戏 移植
+		parentanchor = bottom|hcenter
+		widgetanchor = bottom|hcenter
+		position = { 0 -20 }
+		size = { 850 280 }
+		
+		datacontext = "[FrontEndMainView.GetLatestPlaythrough]"
+		hbox = {
+			size = { 850 65 }
+			parentanchor = bottom|hcenter
+			widgetanchor = bottom|hcenter
+			spacing = 5
+			button_wax = { #继续游戏 临时移植 下方可见性我希望当没存档时不可见，但担心有人会说，暂时先注释掉
+				#visible = "[And5(FrontEndMainView.HasLatestPlaythrough, FrontEndMainView.DoesLatestPlaythroughSaveExist, Not(FrontEndMainView.IsFirstTimePlaying), Not(FrontEndMainView.HasUnviewedLegalDocuments), FrontEndMainView.CanStartIndexingSaves)]"
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_yellow.dds"
+				}
+				size = { 420 65 }
+				#parentanchor = center	
+				name = "sakuya_continue_button_bottom"
+				enabled = "[And5(FrontEndMainView.HasLatestPlaythrough, FrontEndMainView.DoesLatestPlaythroughSaveExist, Not(FrontEndMainView.IsFirstTimePlaying), Not(FrontEndMainView.HasUnviewedLegalDocuments), FrontEndMainView.CanStartIndexingSaves)]"
+				onclick = "[FrontEndMainView.HideAllViews]"
+				onclick = "[FrontEndMainView.HideNewGameWelcome]"
+
+				action_tooltip = {
+					click_type = left
+					click_mode = single
+					visible = "[FrontEndMainView.GetLatestPlaythrough.IsIncompatible]"
+					enabled = "[And4(FrontEndMainView.HasLatestPlaythrough, Not(FrontEndMainView.IsFirstTimePlaying), Not(FrontEndMainView.HasUnviewedLegalDocuments), FrontEndMainView.CanStartIndexingSaves)]"
+					title = "CONT_BTN"
+					on_action = "[FrontEndMainView.OnContinue]"
+					clicksoundlater = "UI_button_gameContinue"
+				}
+
+				action_tooltip = {
+					click_type = left
+					click_mode = confirm
+					visible = "[Not(FrontEndMainView.GetLatestPlaythrough.IsIncompatible)]"
+					conditions = "[MakeItFailIf(Not(FrontEndMainView.HasLatestPlaythrough), FrontEndMainView.CanStartIndexingSavesDesc)]"
+					enabled = "[And4(FrontEndMainView.HasLatestPlaythrough, Not(FrontEndMainView.IsFirstTimePlaying), Not(FrontEndMainView.HasUnviewedLegalDocuments), FrontEndMainView.CanStartIndexingSaves)]"
+					title = "CONT_BTN"
+					description = "CONTINUE_BUTTON_CONFIRM"
+					on_action = "[FrontEndMainView.OnContinue]"
+					clicksoundlater = "UI_button_gameContinue"
+				}
+
+				action_tooltip = {
+					click_type = right
+					click_mode = single
+					title = "LG_BTN"
+					conditions = "[MakeItFail(FrontEndMainView.CanStartIndexingSavesDesc)]"
+					enabled = "[And(Not(FrontEndMainView.HasUnviewedLegalDocuments), FrontEndMainView.CanStartIndexingSaves)]"
+					on_action = "[FrontEndMainView.OnLoad]"
+				}
+		
+				flowcontainer = {
+					visible = "[FrontEndMainView.HasLatestPlaythrough]"
+					parentanchor = vcenter|right
+					position = { -15 0 }
+					ignoreinvisible = yes
+					spacing = 5		
+					using = slot_icons_playthroughitem					
+				}
+		
+				modify_texture = {
+					visible = "[PlaythroughItem.IsIncompatible]"
+					using = color_red_texture
+					alpha = 0.5
+				}
+				
+				tooltipwidget = {
+					ContextualTooltipType = {
+						datacontext = "[FrontEndMainView]"
+						blockoverride "title_icon" {
+							ContextualTooltipDefaultIcon =
+							{
+								visible = "[Not(HasCountryFlagCoatOfArms(PlaythroughItem.GetFlag))]"
+							}
+							early_country_flag = {
+								visible = "[HasCountryFlagCoatOfArms(PlaythroughItem.GetFlag)]"
+								size = { 60 40 }
+								
+								blockoverride "tooltip" {
+									tooltip_enabled = no
+									tagtooltip_enabled = no
+								}
+								
+								blockoverride "contextmenu" {
+									contextmenu_enabled = no
+								}
+								
+								blockoverride "flag" {
+									block "flag" {
+										datacontext = "[GetCountryFlagCoatOfArms(PlaythroughItem.GetFlag)]"
+										texture = "[CoatOfArmsWrapper.GetTexture('(int32)144','(int32)96')]"
+										frame = "[CoatOfArmsWrapper.GetFrame('(int32)144','(int32)96')]"
+										framesize = "[CoatOfArmsWrapper.GetFrameSizeOrFallback('(int32)144','(int32)96','(float)0.5')]"
+									}
+									
+									texture_density = 2
+								}
+
+								blockoverride "click" {}
+								blockoverride "double_click" {}
+								blockoverride "hover" {}
+								blockoverride "show_as_icon" { visible = yes }
+								blockoverride "show_as_button" { visible = no }
+							}
+						}
+					
+						blockoverride "title_text" {
+							text = "CONTINUE_AS_COUNTRY"
+						}
+
+						blockoverride "tooltiplockprogress_setup" {
+							visible = "[FrontEndMainView.HasLatestPlaythrough]"
+						}
+		
+						blockoverride "tooltip_content" {
+							save_slot = {
+								layoutpolicy_horizontal = expanding
+								visible = "[FrontEndMainView.HasLatestPlaythrough]"
+								minimumsize = { 250 -1 }
+								size = { -1 70 }
+		
+								blockoverride "header_button" {
+									text_single = {
+										size = { 100% 100% }
+										margin = { 15 0 }
+										autoresize = no
+										name = "name"
+										raw_text = "#BOLD [PlaythroughItem.GetSaveLabel] #! "
+									}
+								}
+		
+								blockoverride "slot_bottom_text" {
+									name = "date"
+									raw_text = "[PlaythroughItem.GetDate]"
+								}
+		
+								blockoverride "slot_icons" {
+									using = slot_icons_playthroughitem
+									
+								}
+							}
+
+							TooltipScrolledRowList = {
+								visible = "[And(FrontEndMainView.CanStartIndexingSaves, FrontEndMainView.HasLatestPlaythrough)]"
+								textcontext = "[FrontEndMainView.GetLatestPlaythroughTooltip]"
+								blockoverride "block_scrollarea" { maximumsize = { -1 800 }}
+							}
+						}
+					}
+				}
+
+				hbox = {
+					using = layoutpolicy_expanding
+					visible = "[Not(And3(FrontEndMainView.HasLatestPlaythrough, Not(FrontEndMainView.HasUnviewedLegalDocuments), FrontEndMainView.CanStartIndexingSaves))]"
+					textbox = {
+						using = button_common_textobj_font
+						using = layoutpolicy_expanding
+						autoresize = no
+						align = center
+						text = "CONT_BTN"
+					}
+				}
+
+				vbox = {
+					expand = {}
+					hbox = {
+						visible = "[And3(FrontEndMainView.HasLatestPlaythrough, Not(FrontEndMainView.HasUnviewedLegalDocuments), FrontEndMainView.CanStartIndexingSaves)]"
+						spacing = 5
+						textbox = {
+							using = button_common_textobj_font
+							autoresize = yes
+							text = "[SelectLocalization(HasCountryFlagCoatOfArms(PlaythroughItem.GetFlag),'CONT_AS_BTN', 'CONT_BTN')]"
+						}
+
+						early_country_flag = {
+							visible = "[HasCountryFlagCoatOfArms(PlaythroughItem.GetFlag)]"
+							size = { 30 20 }
+
+							blockoverride "show_as_button" { visible = no }
+							blockoverride "show_as_icon" { visible = yes }
+							
+							blockoverride "tooltip" {
+								tooltip_enabled = no
+								tagtooltip_enabled = no
+							}
+							
+							blockoverride "contextmenu" {
+								contextmenu_enabled = no
+							}
+							
+							blockoverride "flag" {
+								block "flag" {
+									datacontext = "[GetCountryFlagCoatOfArms(PlaythroughItem.GetFlag)]"
+									texture = "[CoatOfArmsWrapper.GetTexture('(int32)144','(int32)96')]"
+									frame = "[CoatOfArmsWrapper.GetFrame('(int32)144','(int32)96')]"
+									framesize = "[CoatOfArmsWrapper.GetFrameSizeOrFallback('(int32)144','(int32)96','(float)0.5')]"
+								}
+								
+								texture_density = 2
+							}
+
+							blockoverride "click" {}
+							blockoverride "double_click" {}
+							blockoverride "hover" {}
+						}
+					}
+
+					textbox = {
+						using = button_common_textobj_font
+						using = Font_Size_Very_Small
+						autoresize = yes
+						raw_text = "[PlaythroughItem.GetDate]"
+					}
+					expand = {}
+				}
+			}
+			button_wax = { #开始游戏 #临时移植
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_yellow.dds"
+				}
+				size = { 420 65 }
+				name = "sakuya_single_player_button"
+				text = "NG_BTN"
+				enabled = "[Not(FrontEndMainView.HasUnviewedLegalDocuments)]"
+				onclick = "[FrontEndMainView.HideAllViews]"
+
+				action_tooltip = {
+					click_type = left
+					click_mode = single
+					title = "PLAYER_PROFILING_START_NEW_GAME_BT"
+					on_action = "[FrontEndMainView.PromptNewGame]"
+					enabled = "[Not(FrontEndMainView.HasUnviewedLegalDocuments)]"
+					conditions = "[MakeItFail(FrontEndMainView.GetUnviewedLegalDocumentsDesc)]"
+					clicksoundlater = "UI_button_gameNew_confirm"
+				}
+
+				action_tooltip = {
+					click_type = right
+					click_mode = single
+					title = "PLAYER_PROFILING_BT"
+					enabled = "[Not(FrontEndMainView.HasUnviewedLegalDocuments)]"
+					conditions = "[MakeItFail(FrontEndMainView.GetUnviewedLegalDocumentsDesc)]"
+					on_action = "[FrontEndMainView.CheckPlaysetAndStartNewGame('OnSinglePlayer')]"
+					clicksoundlater = "UI_button_gameNew"
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+		}
+		
+		hbox = { #下方4个小按钮
+			size = { 840 50 }
+			parentanchor = bottom|hcenter
+			widgetanchor = bottom|hcenter
+			position = { 0 60 }
+			spacing = 5
+			
+			button_wax = { #主持新游戏
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_yellow.dds"
+				}
+				size = { 206 50 }
+				name = "sakuya_host_button"
+				text = "HG_BTN"
+				enabled = "[And(Not(FrontEndMainView.HasUnviewedLegalDocuments), JominiIsMultiplayerAccessible)]"
+
+				action_tooltip = {
+					click_type = left
+					click_mode = confirm
+					title = "HG_BTN"
+					conditions = "[MakeItFail(FrontEndMainView.GetMultiplayerDesc)]"
+					enabled = "[And(Not(FrontEndMainView.HasUnviewedLegalDocuments), JominiIsMultiplayerAccessible)]"
+					on_action = "[FrontEndMainView.OnHost]"
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+
+			button_wax = { #加载并主持游戏
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_yellow.dds"
+				}
+				size = { 206 50 }
+				name = "sakuya_load_host_button"
+				text = "LHG_BTN"
+				enabled = "[And3(Not(FrontEndMainView.HasUnviewedLegalDocuments), JominiIsMultiplayerAccessible, FrontEndMainView.CanStartIndexingSaves)]"
+
+				action_tooltip = {
+					click_type = left
+					click_mode = single
+					title = "LHG_BTN"
+					conditions = "[MakeItFail(FrontEndMainView.GetMultiplayerDesc)]"
+					enabled = "[And3(Not(FrontEndMainView.HasUnviewedLegalDocuments), JominiIsMultiplayerAccessible, FrontEndMainView.CanStartIndexingSaves)]"
+					on_action = "[FrontEndMainView.OnHostLoad]"
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+
+			button_wax = { #成就
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_yellow.dds"
+				}
+				size = { 206 45 }
+				name = "sakuya_achievements_button"
+				text = "ACHIEVEMENTS_LABEL"
+
+				action_tooltip = {
+					title = "ACHIEVEMENTS_LABEL"
+					on_action = "[FrontEndMainView.OpenAchievements]"
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+			
+			button_wax = { #空按钮（预留）
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_yellow.dds"
+				}
+				size = { 206 50 }
+				text = "SAKUYA_1644_ABOUT_1644"
+				tooltip = "SAKUYA_1644_ABOUT_1644_TT"
+				name = "sakuya_placeholder_button"
+				enabled = no
+			}
+		}
+		
+		hbox = { #第三行4个小按钮
+			size = { 840 50 }
+			parentanchor = bottom|hcenter
+			widgetanchor = bottom|hcenter
+			position = { 0 110 }
+			spacing = 5
+			
+			button_wax = { #加入游戏
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_yellow.dds"
+				}
+				size = { 206 50 }
+				name = "sakuya_join_game_button"
+				text = "JOIN_GAME_BTN"
+				enabled = "[And(Not(FrontEndMainView.HasUnviewedLegalDocuments), JominiIsMultiplayerAccessible)]"
+
+				action_tooltip = {
+					click_type = left
+					click_mode = single
+					title = "JOIN_GAME_BTN"
+					conditions = "[MakeItFail(FrontEndMainView.GetMultiplayerDesc)]"
+					enabled = "[And(Not(FrontEndMainView.HasUnviewedLegalDocuments), JominiIsMultiplayerAccessible)]"
+					on_action = "[FrontEndMainView.OnJoinGame]"
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+			
+			button_wax = { #设置
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_country_blue.dds"
+				}
+				size = { 206 45 }
+				name = "sakuya_settings_button_row3"
+				text = "SETTINGS"
+
+				action_tooltip = {
+					title = "SETTINGS"
+					on_action = "[FrontEndMainView.OnSettings]"
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+			
+			button_wax = { #制作人员
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_country_blue.dds"
+				}
+				size = { 206 45 }
+				name = "sakuya_credits_button"
+				text = "CREDITS"
+
+				action_tooltip = {
+					title = "CREDITS"
+					on_action = "[FrontEndMainView.OnCredits]"
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+			
+			button_wax = { #退出
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_red.dds"
+				}
+				size = { 206 45 }
+				name = "sakuya_exit_button"
+				text = "QUIT"
+
+				action_tooltip = {
+					title = "QUIT"
+					on_action = "[FrontEndMainView.OnQuit]"
+					using = snd_UI_exitGame
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+		}
+	}
+	widget = {  #小背景
+		parentanchor = bottom|left
+		widgetanchor = bottom|hcenter
+		position = { 264 130 }
+		size = { 360 485 }
+		allow_outside = yes
+		icon = {
+			size = { 100% 100% }
+			color = { 1 1 1 1 }
+			alpha = 1
+			texture = "gfx/interface/sakuya/bk_menu.png"
+		}
+		##### Steam账号登录区域 & 协议按钮 #####
+		caesar_status_widget = {
+			position = { 0 -250 }
+		} #Steam账号登录、社交档案、登出等
+	}
+	widget = { #版本标签
+		parentanchor = bottom|left
+		widgetanchor = bottom|hcenter
+		position = { 264 0 }
+		
+		vbox = {
+			resizeparent = yes
+			margin = { 10 10 }
+			spacing = 10
+			
+			using = version_label
+			blockoverride "version_label_sizing" {}
+			blockoverride "version_label_background" { 
+				using = VersionLabelBackground
+			}
+		}
+	}
+	##### 其他系统组件 #####
+	FrontEndPreloadingWidget = {}
+	FrontEndDLCs = {}
+	
+	FrontEndMenu = {
+		visible = no #隐藏左侧菜单
+		blockoverride "frontend_menu_middle_section_size" {
+			layoutpolicy_horizontal = expanding
+			size = {-1 375}
+		}
+		blockoverride "frontend_menu_middle_section" {
+			button_wax = {
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_yellow.dds"
+				}
+				size = { -1 65 }
+				using = FrontEndMiddleSectionButton
+		
+				name = "continue_button"
+		
+				datacontext = "[FrontEndMainView.GetLatestPlaythrough]"
+				enabled = "[And5(FrontEndMainView.HasLatestPlaythrough, FrontEndMainView.DoesLatestPlaythroughSaveExist, Not(FrontEndMainView.IsFirstTimePlaying), Not(FrontEndMainView.HasUnviewedLegalDocuments), FrontEndMainView.CanStartIndexingSaves)]"
+				onclick = "[FrontEndMainView.HideAllViews]"
+				onclick = "[FrontEndMainView.HideNewGameWelcome]"
+
+				action_tooltip = {
+					click_type = left
+					click_mode = single
+					visible = "[FrontEndMainView.GetLatestPlaythrough.IsIncompatible]"
+					enabled = "[And4(FrontEndMainView.HasLatestPlaythrough, Not(FrontEndMainView.IsFirstTimePlaying), Not(FrontEndMainView.HasUnviewedLegalDocuments), FrontEndMainView.CanStartIndexingSaves)]"
+					title = "CONT_BTN"
+					on_action = "[FrontEndMainView.OnContinue]"
+					clicksoundlater = "UI_button_gameContinue"
+				}
+
+				action_tooltip = {
+					click_type = left
+					click_mode = confirm
+					visible = "[Not(FrontEndMainView.GetLatestPlaythrough.IsIncompatible)]"
+					conditions = "[MakeItFailIf(Not(FrontEndMainView.HasLatestPlaythrough), FrontEndMainView.CanStartIndexingSavesDesc)]"
+					enabled = "[And4(FrontEndMainView.HasLatestPlaythrough, Not(FrontEndMainView.IsFirstTimePlaying), Not(FrontEndMainView.HasUnviewedLegalDocuments), FrontEndMainView.CanStartIndexingSaves)]"
+					title = "CONT_BTN"
+					description = "CONTINUE_BUTTON_CONFIRM"
+					on_action = "[FrontEndMainView.OnContinue]"
+					clicksoundlater = "UI_button_gameContinue"
+				}
+		
+				flowcontainer = {
+					visible = "[FrontEndMainView.HasLatestPlaythrough]"
+					parentanchor = vcenter|right
+					position = { -15 0 }
+					ignoreinvisible = yes
+					spacing = 5		
+					using = slot_icons_playthroughitem					
+				}
+		
+				modify_texture = {
+					visible = "[PlaythroughItem.IsIncompatible]"
+					using = color_red_texture
+					alpha = 0.5
+				}
+				
+				tooltipwidget = {
+					ContextualTooltipType = {
+						datacontext = "[FrontEndMainView]"
+						blockoverride "title_icon" {
+							ContextualTooltipDefaultIcon =
+							{
+								visible = "[Not(HasCountryFlagCoatOfArms(PlaythroughItem.GetFlag))]"
+							}
+							early_country_flag = {
+								visible = "[HasCountryFlagCoatOfArms(PlaythroughItem.GetFlag)]"
+								size = { 60 40 }
+								
+								blockoverride "tooltip" {
+									tooltip_enabled = no
+									tagtooltip_enabled = no
+								}
+								
+								blockoverride "contextmenu" {
+									contextmenu_enabled = no
+								}
+								
+								blockoverride "flag" {
+									block "flag" {
+										datacontext = "[GetCountryFlagCoatOfArms(PlaythroughItem.GetFlag)]"
+										texture = "[CoatOfArmsWrapper.GetTexture('(int32)144','(int32)96')]"
+										frame = "[CoatOfArmsWrapper.GetFrame('(int32)144','(int32)96')]"
+										framesize = "[CoatOfArmsWrapper.GetFrameSizeOrFallback('(int32)144','(int32)96','(float)0.5')]"
+									}
+									
+									texture_density = 2
+								}
+
+								blockoverride "click" {}
+								blockoverride "double_click" {}
+								blockoverride "hover" {}
+								blockoverride "show_as_icon" { visible = yes }
+								blockoverride "show_as_button" { visible = no }
+							}
+						}
+					
+						blockoverride "title_text" {
+							text = "CONTINUE_AS_COUNTRY"
+						}
+
+						blockoverride "tooltiplockprogress_setup" {
+							visible = "[FrontEndMainView.HasLatestPlaythrough]"
+						}
+		
+						blockoverride "tooltip_content" {
+							save_slot = {
+								layoutpolicy_horizontal = expanding
+								visible = "[FrontEndMainView.HasLatestPlaythrough]"
+								minimumsize = { 250 -1 }
+								size = { -1 70 }
+		
+								blockoverride "header_button" {
+									text_single = {
+										size = { 100% 100% }
+										margin = { 15 0 }
+										autoresize = no
+										name = "name"
+										raw_text = "#BOLD [PlaythroughItem.GetSaveLabel] #! "
+									}
+								}
+		
+								blockoverride "slot_bottom_text" {
+									name = "date"
+									raw_text = "[PlaythroughItem.GetDate]"
+								}
+		
+								blockoverride "slot_icons" {
+									using = slot_icons_playthroughitem
+									
+								}
+							}
+
+							TooltipScrolledRowList = {
+								visible = "[And(FrontEndMainView.CanStartIndexingSaves, FrontEndMainView.HasLatestPlaythrough)]"
+								textcontext = "[FrontEndMainView.GetLatestPlaythroughTooltip]"
+								blockoverride "block_scrollarea" { maximumsize = { -1 800 }}
+							}
+						}
+					}
+				}
+
+				hbox = {
+					using = layoutpolicy_expanding
+					visible = "[Not(And3(FrontEndMainView.HasLatestPlaythrough, Not(FrontEndMainView.HasUnviewedLegalDocuments), FrontEndMainView.CanStartIndexingSaves))]"
+					textbox = {
+						using = button_common_textobj_font
+						using = layoutpolicy_expanding
+						autoresize = no
+						align = center
+						text = "CONT_BTN"
+					}
+				}
+
+				vbox = {
+					expand = {}
+					hbox = {
+						visible = "[And3(FrontEndMainView.HasLatestPlaythrough, Not(FrontEndMainView.HasUnviewedLegalDocuments), FrontEndMainView.CanStartIndexingSaves)]"
+						spacing = 5
+						textbox = {
+							using = button_common_textobj_font
+							autoresize = yes
+							text = "[SelectLocalization(HasCountryFlagCoatOfArms(PlaythroughItem.GetFlag),'CONT_AS_BTN', 'CONT_BTN')]"
+						}
+
+						early_country_flag = {
+							visible = "[HasCountryFlagCoatOfArms(PlaythroughItem.GetFlag)]"
+							size = { 30 20 }
+
+							blockoverride "show_as_button" { visible = no }
+							blockoverride "show_as_icon" { visible = yes }
+							
+							blockoverride "tooltip" {
+								tooltip_enabled = no
+								tagtooltip_enabled = no
+							}
+							
+							blockoverride "contextmenu" {
+								contextmenu_enabled = no
+							}
+							
+							blockoverride "flag" {
+								block "flag" {
+									datacontext = "[GetCountryFlagCoatOfArms(PlaythroughItem.GetFlag)]"
+									texture = "[CoatOfArmsWrapper.GetTexture('(int32)144','(int32)96')]"
+									frame = "[CoatOfArmsWrapper.GetFrame('(int32)144','(int32)96')]"
+									framesize = "[CoatOfArmsWrapper.GetFrameSizeOrFallback('(int32)144','(int32)96','(float)0.5')]"
+								}
+								
+								texture_density = 2
+							}
+
+							blockoverride "click" {}
+							blockoverride "double_click" {}
+							blockoverride "hover" {}
+						}
+					}
+
+					textbox = {
+						using = button_common_textobj_font
+						using = Font_Size_Very_Small
+						autoresize = yes
+						raw_text = "[PlaythroughItem.GetDate]"
+					}
+					expand = {}
+				}
+			}
+			
+			button_wax = {
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_yellow.dds"
+				}
+				size = { -1 55 }
+				using = FrontEndMiddleSectionButton
+				name = "single_player_button"
+				text = "NG_BTN"
+				enabled = "[Not(FrontEndMainView.HasUnviewedLegalDocuments)]"
+				onclick = "[FrontEndMainView.HideAllViews]"
+
+				action_tooltip = {
+					click_type = left
+					click_mode = single
+					title = "PLAYER_PROFILING_START_NEW_GAME_BT"
+					on_action = "[FrontEndMainView.PromptNewGame]"
+					enabled = "[Not(FrontEndMainView.HasUnviewedLegalDocuments)]"
+					conditions = "[MakeItFail(FrontEndMainView.GetUnviewedLegalDocumentsDesc)]"
+					clicksoundlater = "UI_button_gameNew_confirm"
+				}
+
+				action_tooltip = {
+					click_type = right
+					click_mode = single
+					title = "PLAYER_PROFILING_BT"
+					enabled = "[Not(FrontEndMainView.HasUnviewedLegalDocuments)]"
+					conditions = "[MakeItFail(FrontEndMainView.GetUnviewedLegalDocumentsDesc)]"
+					on_action = "[FrontEndMainView.CheckPlaysetAndStartNewGame('OnSinglePlayer')]"
+					clicksoundlater = "UI_button_gameNew"
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+
+			button_wax = {
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_yellow.dds"
+				}
+				size = { -1 55 }
+				using = FrontEndMiddleSectionButton
+				name = "load_button"
+
+				text = "LG_BTN"
+				enabled = "[And(Not(FrontEndMainView.HasUnviewedLegalDocuments), FrontEndMainView.CanStartIndexingSaves)]"
+
+				action_tooltip = {
+					click_type = left
+					click_mode = single
+					title = "LG_BTN"
+					conditions = "[MakeItFail(FrontEndMainView.CanStartIndexingSavesDesc)]"
+					enabled = "[And(Not(FrontEndMainView.HasUnviewedLegalDocuments), FrontEndMainView.CanStartIndexingSaves)]"
+					on_action = "[FrontEndMainView.OnLoad]"
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+
+			button_wax = {
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_yellow.dds"
+				}
+				size = { -1 55 }
+				using = FrontEndMiddleSectionButton
+
+				name = "host_button"
+				text = "HG_BTN"
+
+				enabled = "[And(Not(FrontEndMainView.HasUnviewedLegalDocuments), JominiIsMultiplayerAccessible)]"
+
+				action_tooltip = {
+					click_type = left
+					click_mode = confirm
+					title = "HG_BTN"
+					# conditions = "[MakeItFail(JominiGetMultiplayerAccessibleString)]"
+					conditions = "[MakeItFail(FrontEndMainView.GetMultiplayerDesc)]"
+					enabled = "[And(Not(FrontEndMainView.HasUnviewedLegalDocuments), JominiIsMultiplayerAccessible)]"
+					on_action = "[FrontEndMainView.OnHost]"
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+			
+			button_wax = {
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_yellow.dds"
+				}
+				size = { -1 55 }
+				using = FrontEndMiddleSectionButton
+
+				name = "load_host_button"
+				text = "LHG_BTN"
+
+				enabled = "[And3(Not(FrontEndMainView.HasUnviewedLegalDocuments), JominiIsMultiplayerAccessible, FrontEndMainView.CanStartIndexingSaves)]"
+
+				action_tooltip = {
+					click_type = left
+					click_mode = single
+					title = "LHG_BTN"
+					# conditions = "[MakeItFail(JominiGetMultiplayerAccessibleString)]"
+					conditions = "[MakeItFail(FrontEndMainView.GetMultiplayerDesc)]"
+					enabled = "[And3(Not(FrontEndMainView.HasUnviewedLegalDocuments), JominiIsMultiplayerAccessible, FrontEndMainView.CanStartIndexingSaves)]"
+					on_action = "[FrontEndMainView.OnHostLoad]"
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+
+			button_wax = {
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_yellow.dds"
+				}
+				size = { -1 55 }
+				using = FrontEndMiddleSectionButton
+
+				name = "join_game_button"
+				text = "JOIN_GAME_BTN"
+
+				enabled = "[And(Not(FrontEndMainView.HasUnviewedLegalDocuments), JominiIsMultiplayerAccessible)]"
+
+				action_tooltip = {
+					click_type = left
+					click_mode = single
+					title = "JOIN_GAME_BTN"
+					conditions = "[MakeItFail(FrontEndMainView.GetMultiplayerDesc)]"
+					enabled = "[And(Not(FrontEndMainView.HasUnviewedLegalDocuments), JominiIsMultiplayerAccessible)]"
+					on_action = "[FrontEndMainView.OnJoinGame]"
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+		}
+
+		blockoverride "frontend_menu_bottom_section" {
+			button_wax = {
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_yellow.dds"
+				}
+
+				block "small_button_size" { size = { -1 45 } }
+				using = FrontEndBottomSectionButton
+				text = "ACHIEVEMENTS_LABEL"
+				
+				action_tooltip = {
+					title = "ACHIEVEMENTS_LABEL"
+					on_action = "[FrontEndMainView.OpenAchievements]"
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+			button_wax = {
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_country_blue.dds"
+				}
+				size = { -1 45 }
+				using = FrontEndBottomSectionButton
+				name = "settings_button"
+				text = "SETTINGS"
+
+				action_tooltip = {
+					title = "SETTINGS"
+					on_action = "[FrontEndMainView.OnSettings]"
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+
+			button_wax = {
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/button_wax_country_blue.dds"
+				}
+				size = { -1 45 }
+				using = FrontEndBottomSectionButton
+
+				name = "credits_button"
+				text = "CREDITS"
+
+				action_tooltip = {
+					title = "CREDITS"
+					on_action = "[FrontEndMainView.OnCredits]"
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+
+			button_wax = {
+				size = { -1 45 }
+				using = FrontEndBottomSectionButton
+
+				name = "exit_button"
+				text = "QUIT"
+
+				action_tooltip = {
+					title = "QUIT"
+					on_action = "[FrontEndMainView.OnQuit]"
+					using = snd_UI_exitGame
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+		}
+		#caesar_status_widget = {} #已移到底部按钮组附近
+	}
+	
+	#FrontEndNews = { visible = "[FrontEndMainView.CanShowMarketing]" } #煞笔广告，彻底禁用
+	
+	#widget = {  #测试段
+		#position = { 610 755 }
+		#size = { 720 30 }
+		#text_single = {
+			#fontsize = 88
+			#text = "SAKUYA_TEST_BTN_1_TEXT_3"
+			#position = { 0 0 }
+		#}
+	#}
+	
+	###### Welcome screen
+	window = {
+		parentanchor = center
+		movable = no
+		
+		visible = "[FrontEndMainView.IsNewGameWelcomeShowing]"
+		visible_at_creation = no
+		using = Animation_Show_Hide_Eased
+		
+		vbox = {
+			set_parent_size_to_minimum = yes
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				using = bg_age_event_title
+
+				widget = {
+					ignore_layout = yes
+					size = { 100% 100% }
+
+					AgeEventDecorationTop = {
+						size = { 64 52 }
+						position = { -15 0 }
+						parentanchor = left|top
+					}
+
+					AgeEventDecorationTop2 = {
+						parentanchor = left|bottom
+						mirror = horizontal
+						position = { -5 0 }
+					}
+				}
+
+				widget = {
+					ignore_layout = yes
+					size = { 100% 100% }
+
+					AgeEventDecorationTop = {
+						size = { 64 52 }
+						position = { 15 0 }
+						parentanchor = right|top
+						mirror = horizontal
+					}
+
+					AgeEventDecorationTop2 = {
+						parentanchor = right|bottom
+						position = { 5 0 }
+					}
+				}
+
+				blockoverride "bg_event_title_texture" {
+					texture = "gfx/interface/component_tiles/bg_big_round_corners_up.dds"
+					texture_density = 2
+					spriteType = corneredstretched
+					spriteBorder = { 40 40 }
+					margin = {3 0}
+					margin_bottom = -2
+				}
+
+				textbox = {
+					layoutpolicy_horizontal = expanding
+					minimumsize = { 400 80 }
+					maximumsize = { 600 80 }
+					autoresize = yes
+					multiline = yes
+					using = Font_Size_Big
+					using = Font_Type_Headers
+					default_format = "#yellow_titles"
+					fontsize = 30
+					fontsize_min = 15
+					align = center|nobaseline
+					text = "PLAYER_PROFILING_WELCOME_HEADER"
+				}
+			}
+
+			vbox = {
+				margin = { 20 20 }
+				using = layoutpolicy_expanding
+				using = bg_age_event_inner
+				using = bg_age_event_frame
+
+				text_multi = {
+					background = {
+						using = tile_frame_squared_texture
+						using = color_bg_brown
+						modify_texture = {
+							using = overlay_cloth_texture
+							blend_mode = overlay
+							alpha = 0.3
+						}
+					}
+
+					using = bg_age_event_mask
+					using = bg_corner_flavor
+					blockoverride "corner_flavor_texture" {
+						texture = "gfx/interface/component_decoration/bg_corner_flavor_06.dds"
+						texture_density = 2
+						spriteType = Corneredstretched
+						spriteborder = { 35 35 }
+						margin = {-2 -2}
+					}
+
+					minimumsize = { 600 -1 }
+					maximumsize = { 600 -1 }
+					margin = { 25 25 }
+					autoresize = yes
+					align = nobaseline
+					text = "PLAYER_PROFILING_WELCOME"
+				}
+				vbox = {
+					layoutpolicy_horizontal = expanding
+					spacing = 10
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						
+						spacing = 5
+
+						button_regular = {
+							# using = button_resize_to_fit_text
+							layoutpolicy_horizontal = expanding
+							text = "PLAYER_PROFILING_START_NEW_GAME_BT"
+
+							action_tooltip = {
+								title = "PLAYER_PROFILING_START_NEW_GAME_BT"
+								on_action = "[FrontEndMainView.CheckPlaysetAndStartNewGame('StartNewGame')]"
+							}
+							
+							tooltipwidget = { BasicFunctionalTooltip = {} }
+						}
+
+
+						button_regular_green = {
+							# using = button_resize_to_fit_text
+							layoutpolicy_horizontal = expanding
+							text = "PLAYER_PROFILING_BT_2"
+
+							action_tooltip = {
+								title = "PLAYER_PROFILING_BT_2"
+								on_action = "[FrontEndMainView.CheckPlaysetAndStartNewGame('OnSinglePlayer')]"
+							}
+
+							tooltipwidget = { BasicFunctionalTooltip = {} }
+						}
+					}
+
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 5
+						margin = { 0 0 }
+
+						checkbox_square_alt = {
+							onclick = "[ToggleSkipWelcomeNewGame]"
+							checked = "[IsWelcomeNewGameSkipped]"
+							tooltip_enabled = no
+						}
+
+						text_multi = {
+							layoutpolicy_horizontal = expanding
+							autoresize = yes
+							size = { -1 30 }
+							text = "SETTING_SKIP_WELCOME_NEW_GAME_POPUP"
+						}
+
+						button_regular = {
+							using = button_resize_to_fit_text
+							text = "CLOSE"
+
+							action_tooltip = {
+								title = "CLOSE"
+								on_action = "[FrontEndMainView.HideNewGameWelcome]"
+							}
+							
+							tooltipwidget = { BasicFunctionalTooltip = {} }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+InitialLanguageSelection = {
+	visible_at_creation = no
+	name = "initial_language_window"
+}

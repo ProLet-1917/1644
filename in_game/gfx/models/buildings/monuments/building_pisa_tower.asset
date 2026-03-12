@@ -1,0 +1,32 @@
+pdxmesh = {
+	name = "building_pisa_tower_mesh"
+	file = "building_pisa_tower.mesh"
+
+	scale = 0.5
+
+	meshsettings = {
+		name = "building_pisa_tower_lod0Shape"
+		index = 0
+		texture_diffuse = "building_pisa_tower_decal_diffuse.dds"
+		texture_normal = "building_pisa_tower_decal_normal.dds"
+		texture_specular = "building_pisa_tower_decal_properties.dds"
+		shader = "snap_to_terrain_alpha_to_coverage"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "building_pisa_tower_decal_lod0Shape"
+		index = 0
+		texture_diffuse = "building_pisa_tower_diffuse.dds"
+		texture_normal = "building_pisa_tower_normal.dds"
+		texture_specular = "building_pisa_tower_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+}
+
+entity = {
+	name = "building_pisa_tower_entity"
+	pdxmesh = "building_pisa_tower_mesh"
+}

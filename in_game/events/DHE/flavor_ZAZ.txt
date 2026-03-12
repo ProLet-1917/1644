@@ -1,0 +1,642 @@
+namespace = flavor_zaz
+
+scripted_effect khmelnytsky_claim = {
+	area:right_bank_ukraine_area = {
+		every_location_in_area = {
+			limit = {
+				owner = c:PLC
+			}
+			add_core = c:ZAZ
+		}
+	}
+	area:left_bank_ukraine_area = {
+		every_location_in_area = {
+			limit = {
+				owner = c:PLC
+			}
+			add_core = c:ZAZ
+		}
+	}
+}
+
+flavor_zaz.1 = { #Rise of Zaporozhie
+	hide_portraits = yes
+	type = country_event
+	title = flavor_zaz.1.title
+	desc = flavor_zaz.1.desc
+	historical_info = flavor_zaz.1.historical_info
+
+	fire_only_once = yes
+	major = yes
+	major_trigger = {
+		region:steppes_region = {
+			any_location_in_region = {
+				top_owner ?= root
+			}
+		}
+	}
+
+	dynamic_historical_event = {
+		tag = POL
+		tag = LIT
+		tag = PLC
+		tag = RUS
+		from = 1500.1.1
+		to = 1600.1.1
+		monthly_chance = 3
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	trigger = {
+		NOT = { dominant_culture = culture:cossack_culture }
+		area:zaporizhzhia_area = { #Previously was has_presence_in, however this was changed to this to be able to make them spawning more viable
+			any_location_in_area = {
+				percent >= 0.1
+				is_ownable =  yes
+				owner ?= root
+			}
+		}
+		country_has_estate = estate_type:cossacks_estate
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+
+		ruler_or_regent ?= {
+			save_scope_as = target_ruler
+		}
+
+		area:zaporizhzhia_area = {
+			every_location_in_area = {
+				add_core = c:ZAZ
+			}
+		}
+	}
+
+	option = {
+		name = flavor_zaz.1.a
+
+		custom_tooltip = zaz_gains_cores_in_all_of_zaporizhzhia_area_tt
+	}
+
+	option = { #Release them as a subject
+		name = flavor_zaz.1.b
+
+		custom_tooltip = zaz_gains_cores_in_all_of_zaporizhzhia_area_tt
+
+		create_country_from_cores_in_our_locations = c:ZAZ
+
+		hidden_effect = {
+			random_owned_location = {
+				limit = {
+					area = area:zaporizhzhia_area
+				}
+				create_dynasty_from_location = random
+				last_dynasty_in_location = { save_scope_as = target_dynasty }
+			}
+			create_character = {
+				age = 25
+				culture = culture:cossack_culture
+				religion = religion:orthodox
+				dynasty = scope:target_dynasty
+				adm = { 50 75 }
+				dip = { 50 75 }
+				mil = { 50 75 }
+				save_scope_as = target_character
+			}
+		}
+
+		hidden_effect = {
+			c:ZAZ = {
+				set_new_ruler = scope:target_character
+				make_subject_of = {
+					target = root
+					type = subject_type:vassal
+				}
+
+				every_owned_location = {
+					change_integration_level = core
+				}
+
+				ordered_owned_location = {
+					order_by = development
+					max = 1
+					save_scope_as = target_location
+				}
+
+				set_capital = scope:target_location
+
+				change_culture = culture:cossack_culture
+
+				change_religion = religion:orthodox
+
+				capital ?= { create_sub_unit_of_category = sub_unit_category:army_infantry }
+
+				change_country_type = army
+			}
+		}
+	}
+}
+
+#Seeking Close Relations with the Patriarch
+flavor_zaz.2 = {
+	type = country_event
+	title = flavor_zaz.2.title
+	desc = flavor_zaz.2.desc
+
+	dynamic_historical_event = {
+		tag = ZAZ
+		from = 1500.1.1
+		to = 1821.1.1
+		monthly_chance = 3
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		religion = religion:orthodox
+		any_international_organizations_member_of = {
+			leader_country != root
+			international_organization_type = international_organization_type:autocephalous_patriarchate
+		}	
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+
+		random_international_organizations_member_of = {
+			limit = {
+				leader_country != root
+				international_organization_type = international_organization_type:autocephalous_patriarchate
+			}
+			save_scope_as = target_international_organization
+
+			leader_country = {
+				save_scope_as = target_country
+				ruler_or_regent ?= {
+					save_scope_as = target_character2
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_zaz.2.a
+		
+		transfer_yearly_gold = {
+			value = 0.15
+			target = scope:target_country
+		}
+
+		add_opinion_mutual_effect = {
+			modifier = zaz_closer_relations_with_church
+			target = scope:target_country
+		}
+	}
+
+	option = {
+		name = flavor_zaz.2.b
+
+		add_religious_influence = religious_influence_weak_penalty
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+#Changing allegiance to Russia
+flavor_zaz.1000 = {
+	type = country_event
+	title = flavor_zaz.1000.title
+	desc = flavor_zaz.1000.desc
+
+	dynamic_historical_event = {
+		tag = ZAZ
+		from = 1640.1.1
+		to = 1700.1.1
+		monthly_chance = 8
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		OR = {
+			AND = {
+				is_subject_of = c:PLC
+				liberty_desire >= 75
+			}
+			c:ZAZ = {
+				is_at_war_with = c:PLC
+			}
+		}
+		country_exists = c:RUS
+		c:RUS ?= {
+			is_subject = no
+			at_war = no
+		}
+		NOT = { has_variable = already_ask_russian_for_help }
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		c:PLC = {
+			save_scope_as = target_country
+			ruler_or_regent ?= {
+				save_scope_as = target_character
+			}
+		}
+
+		c:RUS = {
+			save_scope_as = target_country2
+			ruler_or_regent ?= {
+				save_scope_as = target_character2
+			}
+		}
+
+		save_scope_as = target_country3
+		ruler_or_regent ?= {
+			save_scope_as = target_character3
+		}
+		set_variable = already_ask_russian_for_help
+	}
+
+	option = {
+		name = flavor_zaz.1000.a
+
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 2
+				scope:target_country.stability < -10
+			}
+
+			modifier = {
+				factor = 8
+				scope:target_country2.army_size < scope:target_country.army_size
+			}
+
+			modifier = {
+				factor = 2
+				opinion = {
+					target = scope:target_country
+					value > 0
+				}
+			}
+		}
+		
+		scope:target_country2 = {
+			trigger_event_non_silently = flavor_zaz.1001
+		}
+
+		custom_tooltip = zaz_russia_will_declare_war_if_they_accept_tt
+		#Tributary
+	}
+
+	option = {
+		name = flavor_zaz.1000.b
+
+		ai_chance = {
+			base = 60
+		}
+		
+		add_liberty_desire = liberty_desire_mild_minus
+
+		custom_tooltip = zaz_no_rebellion_tt
+	}
+}
+
+flavor_zaz.1001 = {
+	type = country_event
+	title = flavor_zaz.1001.title
+	desc = flavor_zaz.1001.desc
+	major = yes
+	
+	major_trigger = {
+		OR = {
+			this = scope:target_country3
+			this = scope:target_country
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	
+	option = {
+		name = flavor_zaz.1001.a
+
+		ai_chance = {
+			base = 60
+
+			modifier = {
+				factor = 8
+				scope:target_country2.army_size < scope:target_country.army_size
+			}
+
+			modifier = {
+				factor = 0.2
+				scope:target_country2.army_size > scope:target_country.army_size
+			}
+		}
+		
+		scope:target_country3 = {
+			declare_war_with_cb = {
+				target = scope:target_country
+				type = casus_belli:cb_annex
+			}
+
+			make_subject_of = {
+				target = scope:target_country2
+				type = subject_type:tributary
+			}
+		}
+	}
+
+	option = {
+		name = flavor_zaz.1001.b
+
+		ai_chance = {
+			base = 40
+		}
+		
+		add_opinion_mutual_effect = {
+			modifier = zaz_rejected_independence_support
+			target = scope:target_country3
+		}
+	}
+}
+
+#Request for the Kleinody
+flavor_zaz.1100 = {
+	type = country_event
+	title = flavor_zaz.1100.title
+	desc = flavor_zaz.1100.desc
+
+	dynamic_historical_event = {
+		tag = ZAZ
+		from = 1550.1.1
+		to = 1700.1.1
+		monthly_chance = 2
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		OR = {
+			is_subject_of = c:PLC
+			is_subject_of = c:POL
+		}
+
+		government_type = government_type:monarchy
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		overlord = {
+			save_scope_as = target_country
+			ruler_or_regent ?= {
+				save_scope_as = target_character
+			}
+		}
+
+		save_scope_as = target_country2
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+	}
+
+	option = {
+		name = flavor_zaz.1100.a
+		
+		custom_tooltip = zaz_request_work_of_art_from_overlord_tt
+
+		scope:target_country = { trigger_event_non_silently = flavor_zaz.1101 }
+	}
+
+	option = {
+		name = flavor_zaz.1100.b
+		
+		custom_tooltip = zaz_no_request_from_overlord_tt
+	}
+}
+
+flavor_zaz.1101 = {
+	type = country_event
+	title = flavor_zaz.1101.title
+	desc = flavor_zaz.1101.desc
+	major = yes
+
+	major_trigger = {
+		this = scope:target_country2
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+	}
+	
+	option = {
+		name = flavor_zaz.1101.a
+		
+		scope:target_country2 = {
+			capital ?= {
+				create_art = {
+					key = kleinody
+					quality = 65
+					type = work_of_art_type:regalia
+				}
+			}
+			add_liberty_desire = liberty_desire_mild_minus
+		}
+
+	change_gold_effect = { scale = -2 }
+	}
+
+	option = {
+		name = flavor_zaz.1101.b
+		
+		scope:target_country2 = {
+			add_liberty_desire = liberty_desire_mild_plus
+		}
+	}
+}
+
+#0.3.0 Lions of the North
+#Bohdan Khmelnytsky
+flavor_zaz.2000 = { #A men called Bohdan Khmelnytsky asking for help
+	type = country_event
+	title = flavor_zaz.2000.title
+	desc = flavor_zaz.2000.desc
+	major = yes
+
+	dynamic_historical_event = {
+		tag = ZAZ
+		from = 1648.1.1
+		to = 1666.1.1
+		monthly_chance = 15
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		OR = {
+			is_subject_of = c:PLC
+			is_subject_of = c:POL
+			NOT = {
+				has_truce_with = c:PLC
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+	immediate = {
+		create_named_dynasty = chmielnicki_dynasty
+		create_character = {
+			estate = estate_type:cossacks_estate
+			first_name = name_bogdan
+			#last_name = Chmielnicki
+			dynasty = dynasty:chmielnicki_dynasty
+			birth_date = 1595.12.27
+			birth_location = location:chyhyryn
+			culture = culture:ruthenian
+			religion = religion:orthodox
+			script = bogdan_chmielnicki
+			adm = { 50 70 } dip = { 40 60 } mil = { 75 90 }
+			save_scope_as = target_character
+		}
+	}
+	option = {
+		name = flavor_zaz.2000.a #Let Him lead us!
+		historical_option = yes
+		ai_chance = 10
+		character:bogdan_chmielnicki = {
+			change_character_estate = estate_type:crown_estate
+		}
+		c:ZAZ = {
+			set_new_ruler = character:bogdan_chmielnicki
+		}
+
+		set_variable = enable_cossack_hetmanate
+		add_reform = government_reform:cossack_hetmanate_reform
+
+		capital = {
+			while = {
+				count = 4
+				create_sub_unit_with_owner = {
+					type = a_heavy_lancers
+					owner = root
+					origin = this
+					experience = 95
+				}
+			}
+			while = {
+				count = 2
+				create_sub_unit_with_owner = {
+					type = a_arquebusiers
+					owner = root
+					origin = this
+					experience = 95
+				}
+			}
+			while = {
+				count = 6
+				create_sub_unit_with_owner = {
+					type = a_hunters
+					owner = root
+					origin = this
+					experience = 95
+				}
+			}
+			while = {
+				count = 6
+				create_sub_unit_with_owner = {
+					type = a_pistoleers
+					owner = root
+					origin = this
+					experience = 95
+				}
+			}
+		}
+
+		declare_war_with_cb = {
+			type = casus_belli:cb_independence_war
+			target = c:PLC
+		}
+
+		add_country_modifier = {
+			modifier = under_the_chmielnicki_leader
+			years = 5
+		}
+		add_gold = 480
+		custom_description = {
+			text = "add_2000_herds"
+			change_variable = {
+				name = current_herd
+				add = 2000
+			}
+		}
+		add_manpower = 2500
+		set_global_variable = rise_of_chemielnicki
+		c:PLC = {
+			add_country_modifier = {
+				modifier = war_declared_on_us
+				years = 10
+			}
+		}
+		khmelnytsky_claim = yes
+	}
+
+	option = {
+		name = flavor_zaz.2000.b #Send him back Poland
+		scope:target_character = {
+			move_country = c:PLC
+		}
+		character:bogdan_chmielnicki = {
+			change_character_estate = estate_type:nobles_estate
+		}
+		c:PLC = {
+			set_variable = chmielnicki_back_to_poland
+		}
+	}
+
+	option = {
+		name = flavor_zaz.2000.c #Let him become our general
+
+		character:bogdan_chmielnicki = {
+			change_character_estate = estate_type:nobles_estate
+		}
+		khmelnytsky_claim = yes
+	}
+}

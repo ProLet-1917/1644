@@ -1,4 +1,4 @@
-
+current_age = age_4_reformation
 
 countries = {
     countries = {
@@ -31,6 +31,8 @@ countries = {
 			}
 			capital = bukhara
 			include = "eurasian_horde_no_coast_no_pleading"
+            include = "expl_mongols"
+            include = "expl_silk_road_center"
 			discovered_regions = {
 				tibet_region
 				hindustan_region
@@ -65,6 +67,7 @@ countries = {
 			}
         }
         KHV = {
+            type = army
             own_control_core = {
                 khiva hazarasp urgench kyat_kala nyzvar vezir
                 kath khurgancha pulzhai qonirat shimbay xojeli
@@ -75,6 +78,8 @@ countries = {
             }
             capital = khiva
             include = "eurasian_horde_no_coast_no_pleading"
+            include = "expl_mongols"
+            include = "expl_silk_road_center"
             discovered_regions = {
                 tibet_region
                 hindustan_region
@@ -109,6 +114,7 @@ countries = {
             }
         }
         KAZ = { # 哈萨克汗国
+            type = army
             own_control_core = {
                 turkestan aktas_kystagy baydibek_ata ikan karnak sawran shilik
                 isbijab arsubaniket badam karabulak kazatlyk shymkent
@@ -134,6 +140,8 @@ countries = {
                 zhuban_ana kaip_ata karagau korgan maulimberdy
             }
             include = "eurasian_horde_no_coast_no_pleading"
+            include = "expl_mongols"
+            include = "expl_silk_road_center"
             capital = turkestan
             government = {
                 ruler = kaz_salqam_jahangir
@@ -155,6 +163,7 @@ countries = {
             }
         }
         MYK = { #卡尔梅克/土尔扈特 Kalmyk/Turhūt
+            type = army
             own_control_core = {
                 kalmyk karatobe shyngyrlau aksay_pointic zhympity terekti
                 ryn ushtagan kisikkamys kulagin saryadyn talowski
@@ -176,13 +185,15 @@ countries = {
                 baytak ilek kargaly_aktobe kobda
             }
             include = "eurasian_horde_china"
+            include = "expl_mongols"
+            include = "expl_silk_road_center"
             capital = kalmyk
             government = {
-                ruler myk_kho_orluk
+                ruler = myk_kho_orluk
                 ruler_term = { character = myk_kho_orluk start_date = 1600.1.1 }
                 heir_selection = cognatic_primogeniture
             }
-            court_language = mongolic_language
+            court_language = mongolian_language
             country_rank = rank_kingdom
             accepted_cultures = {
                 oirat_culture
@@ -196,6 +207,7 @@ countries = {
             }
         }
         TLU = { #铁列乌特 Teleut
+            type = army
             own_control_core = {
                 imakia zhelezin lebyazhye maraldy azhbulat
                 bursol bolshoye_yarovoye kulundinskoye kuchukskoye volchikha butyrskoe gorkoye bolshoye_topolnoye
@@ -205,7 +217,7 @@ countries = {
             capital = kamen
             include = "eurasian_tribe"
             include = "expl_mongols"
-            include = "silk_road_center"
+            include = "expl_silk_road_center"
             government = {
                 ruler = random
             }

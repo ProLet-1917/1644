@@ -1,0 +1,42 @@
+namespace = great_eastern
+
+great_eastern.1 = {
+    type = country_event
+    fire_only_once = yes
+    title = great_eastern.1.title
+    desc = great_eastern.1.desc
+
+    trigger = {
+        has_embraced_institution = institution:industrialization
+        capital = {
+            has_building_with_at_least_one_level = naval_supplies_mill
+            has_building_with_at_least_one_level = naval_base
+        }
+    }
+
+    dynamic_historical_event = {
+        tag = ENG
+        tag = GBR
+        tag = FRA
+        tag = SPA
+        tag = GER
+        tag = ITA
+        tag = USA
+        from = 1835.1.1
+        to = 1875.1.1
+        monthly_chance = 1
+    }
+
+    option = {
+        name = great_eastern.1.a
+        add_gold = -2500
+        custom_tooltip = {
+            text = allow_build_great_eastern
+            set_variable = can_build_great_eastern
+        }
+    }
+
+    option = {
+        name = great_eastern.1.b
+    }
+}

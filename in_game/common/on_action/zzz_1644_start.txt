@@ -17,7 +17,7 @@
         # 主要势力开局事件
         c:CSH = {
             trigger_event_silently = csh_1644_start_army.1
-            trigger_event_silently = { id = csh_1644_unification.1 days = 4 }   
+            trigger_event_silently = { id = csh_1644_unification.1 days = 4 }
             unlock_government_reform_effect = { type = chi_peasant_empire_reform }
         }
         c:QNG = {
@@ -35,8 +35,10 @@
         }
         c:MNG = { trigger_event_silently = mng_1644.1 }
         c:CXI = { trigger_event_silently = cxi_1644_start_army.1 }
-        
-   
+
+        # 开局生成大量女角色以防止绝嗣
+
+
         # 开局生成明末军阀军队（江北四镇、左良玉、大同镇）
         c:CGJ = { trigger_event_silently = ming_warlords.1 } # 兴平镇（高杰）
         c:LZQ = { trigger_event_silently = ming_warlords.1 } # 东平镇（刘泽清）
@@ -44,7 +46,7 @@
         c:HDG = { trigger_event_silently = ming_warlords.1 } # 靖南镇（黄得功）
         c:ZLY = { trigger_event_silently = ming_warlords.1 } # 宁南镇（左良玉）
         c:CJX = { trigger_event_silently = ming_warlords.1 } # 大同镇（姜瓖）
-        
+
         every_country = {
             while = {
                 count = 5
@@ -100,17 +102,267 @@
             }
         }
 
-        every_market_in_world = {
-            add_goods_supply = { goods = goods:iron amount = 200 }
-            add_goods_supply = { goods = goods:coal amount = 200 }
-            add_goods_supply = { goods = goods:lumber amount = 150 }
-            add_goods_supply = { goods = goods:tools amount = 80 }
-            add_goods_supply = { goods = goods:copper amount = 100 }
+        every_country = {
+            limit = {
+                is_member_of_international_organization = international_organization:hre
+                government_type = government_type:theocracy
+                NOT = {
+                    has_special_status_in_international_organization = {
+                        type = special_status:imperial_prelate
+                        international_organization = international_organization:hre
+                    }
+                    has_special_status_in_international_organization = {
+                        type = special_status:archbishop_elector
+                        international_organization = international_organization:hre
+                    }
+                    has_special_status_in_international_organization = {
+                        type = special_status:italia_state
+                        international_organization = international_organization:hre
+                    }
+                }
+            }
+            international_organization_add_special_status = {
+                type = special_status:imperial_prelate
+                country = prev
+            }
         }
 
-        every_location_in_the_world = { #This is a temporary solution
-            change_max_raw_material_workers = 3
+        every_country = {
+            limit = {
+                is_member_of_international_organization = international_organization:hre
+                NOT = {
+                    has_special_status_in_international_organization = {
+                        type = special_status:emperor
+                        international_organization = international_organization:hre
+                    }
+                    has_special_status_in_international_organization = {
+                        type = special_status:elector
+                        international_organization = international_organization:hre
+                    }
+                    has_special_status_in_international_organization = {
+                        type = special_status:imperial_prince
+                        international_organization = international_organization:hre
+                    }
+                    has_special_status_in_international_organization = {
+                        type = special_status:italia_state
+                        international_organization = international_organization:hre
+                    }
+                    this = c:MLO
+                }
+                government_type = government_type:monarchy
+            }
+            international_organization_add_special_status = {
+                type = special_status:imperial_prince
+                country = prev
+            }
         }
 
+        #every_market_in_world = {
+        #    add_goods_supply = { goods = goods:iron amount = 150 }
+        #    add_goods_supply = { goods = goods:coal amount = 100 }
+        #    add_goods_supply = { goods = goods:lumber amount = 50 }
+        #    add_goods_supply = { goods = goods:tools amount = 50 }
+        #    add_goods_supply = { goods = goods:copper amount = 80 }
+        #}
+
+        #every_location_in_the_world = { #This is a temporary solution
+        #    change_max_raw_material_workers = 3
+        #}
+
+        continent:europe = {
+            every_location_in_continent = {
+                limit = {
+                    population >= 30
+                }
+                change_max_raw_material_workers = 3
+            }
+            every_location_in_continent = {
+                limit = {
+                    population < 30
+                    population >= 15
+                }
+                change_max_raw_material_workers = 2
+            }
+            every_location_in_continent = {
+                limit = {
+                    population < 15
+                    population >= 8
+                }
+                change_max_raw_material_workers = 1
+            }
+        }
+
+        c:SWE = {
+            add_country_modifier = {
+                months = 360
+                modifier = the_reforms_of_gustav_ii
+            }
+            add_country_modifier = {
+                months = 600
+                modifier = age_of_swedish_empire
+            }
+
+        }
+        location:viborg = {
+            while = {
+                count = 4
+                create_sub_unit_with_owner = {
+                    type = a_pikemen
+                    owner = c:SWE
+                    origin = this
+                    experience = 95
+                }
+            }
+            while = {
+                count = 2
+                create_sub_unit_with_owner = {
+                    type = a_heavy_lancers
+                    owner = c:SWE
+                    origin = this
+                    experience = 95
+                }
+            }
+            while = {
+                count = 1
+                create_sub_unit_with_owner = {
+                    type = a_chambered_cannon
+                    owner = c:SWE
+                    origin = this
+                    experience = 95
+                }
+            }
+        }
+
+        #Define Colonial Nation Here
+        c:NSV = {
+            make_subject_of = {
+                target = c:SWE
+                type = subject_type:colonial_nation
+            }
+        }
+
+        c:NEN = {
+            make_subject_of = {
+                target = c:ENG
+                type = subject_type:colonial_nation
+            }
+        }
+
+        c:NFR = {
+            make_subject_of = {
+                target = c:FRA
+                type = subject_type:colonial_nation
+            }
+        }
+
+        c:NSP = {
+            make_subject_of = {
+                target = c:SPA
+                type = subject_type:colonial_nation
+            }
+        }
+
+        c:VOP = {
+            make_subject_of = {
+                target = c:SPA
+                type = subject_type:colonial_nation
+            }
+        }
+
+        c:VOB = {
+            make_subject_of = {
+                target = c:POR
+                type = subject_type:colonial_nation
+            }
+        }
+
+        c:WIC = {
+            make_subject_of = {
+                target = c:NED
+                type = subject_type:colonial_nation
+            }
+        }
+
+        #c:VOC = {
+        #    make_subject_of = {
+        #        target = c:NED
+        #        type = subject_type:colonial_nation
+        #    }
+        #}
+
+        c:HAB = {
+            set_variable = privilegium_maius_granted
+            #add_reform = government_reform:libertas_affectandi
+            change_heir_selection = heir_selection:austrian_cognatic_primogeniture
+            unlock_government_reform_effect = { type = austrian_archduchy_reform }
+            #add_reform = government_reform:austrian_archduchy_reform
+            trigger_event_non_silently = start_events.1
+            add_country_modifier = {
+                modifier = habsburgs_goldern_century
+                years = 26
+            }
+        }
+
+        c:SPA = {
+            add_country_modifier = {
+                modifier = habsburgs_goldern_century
+                years = 26
+            }
+        }
+
+        c:RUS = {
+            add_country_modifier = {
+                modifier = rise_of_the_russia
+                years = 46
+            }
+        }
+
+        #every_country = {
+        #    limit = {
+        #        OR = {
+        #            is_member_of_international_organization = international_organization:protestant_union
+        #            is_member_of_international_organization = international_organization:catholic_league
+        #        }
+                #is_ai = yes
+        #    }
+        #    hidden_effect = {
+        #        add_country_modifier = {
+        #            modifier = ai_in_religion_war
+        #            months = 180
+        #        }
+        #    }
+        #}
+
+        c:ZAZ = {
+            add_country_modifier = {
+                modifier = new_home_of_the_serfs
+                years = 20
+            }
+        }
+
+        c:PLC = {
+            add_country_modifier = {
+                modifier = the_corruption_in_sejm
+                years = -1
+            }
+            set_variable = unlock_liberum_veto_variable
+        }
+
+        the_fronde_protest_effect = yes
+        spawn_army_for_hordes_effect = yes
+
+        start_herd_check_effect = yes
+
+        scripted_geography:china_geography = {
+            every_location_in_scripted_geography = {
+                limit = {
+                    is_land = yes
+                    has_owner = yes
+                }
+                set_variable = {
+                    name = enable_dynamic_territorial_occupation
+                }
+            }
+        }
     }
 }

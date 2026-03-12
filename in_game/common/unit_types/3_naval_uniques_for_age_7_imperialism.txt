@@ -1,0 +1,32 @@
+n_great_eastern = { #https://en.wikipedia.org/wiki/SS_Great_Eastern
+    category = navy_transport
+    use_ship_names = yes
+    buildable = yes
+    maritime_presence = ship_above_medium_maritime
+    country_potential = {
+        has_variable = can_build_great_eastern
+    }
+    movement_speed = 15
+    hull_size = 240
+    cannons = 10
+    crew_size = 0.500
+    transport_capacity = 5.0
+    food_storage_per_strength = 60
+    maintenance_demand =  transport_6_maintenance
+    construction_demand = transport_6_construction
+    age = "age_7_imperialism"
+}
+n_battleship_great_eastern = {
+    category = navy_heavy_ship
+    use_ship_names = yes
+    buildable = no
+    maritime_presence = ship_large_maritime
+    movement_speed = 16
+    hull_size = 260
+    cannons = 250
+    crew_size = 1.150
+    blockade_capacity = 3.5
+    maintenance_demand =  heavy_ship_6_maintenance
+    construction_demand = heavy_ship_6_construction
+    age = "age_7_imperialism"
+}

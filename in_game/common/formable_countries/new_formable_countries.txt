@@ -1,0 +1,107 @@
+REPLACE:GBR_f = {
+    level = 3
+    required_locations_fraction = 0.75
+
+    rule = historical
+
+    potential = {
+        any_primary_or_accepted_or_tolerated_culture = { has_culture_group = culture_group:british_group }
+    }
+
+    allow = {
+        culture = { has_culture_group = culture_group:british_group }
+        trigger_if = {
+            limit = {
+                country_exists = c:ENG
+                this != c:ENG
+            }
+            custom_tooltip = {
+                text = GBR_f_trigger_eng
+                OR = {
+                    tag = ENG
+                    NOT = { country_exists = c:ENG }
+                    c:ENG = { is_subject_or_below_of = root }
+                }
+            }
+        }
+        trigger_if = {
+            limit = {
+                country_exists = c:SCO
+                this != c:SCO
+            }
+            custom_tooltip = {
+                text = GBR_f_trigger_sco
+                OR = {
+                    tag = SCO
+                    NOT = { country_exists = c:SCO }
+                    c:SCO = { is_subject_or_below_of = root }
+                }
+            }
+        }
+        trigger_if = {
+            limit = {
+                country_exists = c:WLS
+                this != c:WLS
+            }
+            custom_tooltip = {
+                text = GBR_f_trigger_wls
+                OR = {
+                    tag = WLS
+                    NOT = { country_exists = c:WLS }
+                    c:WLS = { is_subject_or_below_of = root }
+                }
+            }
+        }
+        trigger_if = {
+            limit = {
+                country_exists = c:SBL
+                this != c:SBL
+            }
+            custom_tooltip = {
+                text = GBR_f_trigger_sbl
+                OR = {
+                    tag = SBL
+                    NOT = { country_exists = c:SBL }
+                    c:SBL = { is_subject_or_below_of = root }
+                }
+            }
+        }
+    }
+
+    name = GBR
+    flag = GBR
+    adjective = GBR_ADJ
+    tag = GBR
+    color = map_GBR
+
+    regions = {
+        great_britain_region
+    }
+    form_effect = {
+    }
+}
+
+SFV_f = {
+	level = 4
+	required_locations_fraction = 0.5
+	rule = historical
+	potential = {
+		culture = { has_culture_group = culture_group:iranian_group }
+	}
+	allow = {
+	}
+	name = SFV
+	flag = SFV
+	adjective = SFV_ADJ
+	tag = SFV
+	color = map_SFV
+	regions = {
+		persia_region
+	}
+	form_effect = {
+		if = {
+			limit = { country_rank_level < 4 }
+			set_country_rank_effect = { rank = country_rank:rank_empire }
+		}
+	}
+}

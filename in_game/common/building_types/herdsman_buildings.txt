@@ -1,0 +1,104 @@
+pasture = {
+    is_foreign = no
+    max_levels = herdsman_building_cap
+    pop_type = herdsman
+
+    category = herds_category
+    employment_size = herdsman_employment_size
+
+    rural_settlement = yes
+    town = yes
+
+    location_potential = {
+        owner = {
+            government_type = government_type:steppe_horde
+        }
+    }
+
+    build_time = herdsman_build_time
+
+    unique_production_methods = {
+        mainly_produce_livestock = {
+            livestock = 0.3
+            wheat = 0.2
+
+            output = 1.2
+
+            produced = livestock
+
+            category = building_maintenance
+        }
+
+        mainly_produce_horses = {
+            horses = 0.3
+            wheat = 0.2
+
+            output = 0.8
+
+            produced = horses
+
+            category = building_maintenance
+        }
+
+        mainly_produce_wools = {
+            wool = 0.3
+            wheat = 0.2
+
+            output = 1.0
+
+            produced = wool
+
+            category = building_maintenance
+        }
+    }
+
+    construction_demand = herdsman_construction
+}
+
+pastoral_management_office = {
+    is_foreign = no
+    max_levels = 1
+    pop_type = herdsman
+
+    category = herds_category
+    employment_size = herdsman_employment_size
+
+    rural_settlement = yes
+    town = yes
+    city = yes
+
+    expensive = yes
+    build_time = large_capital_build_time
+
+    location_potential = {
+        is_capital = yes
+    }
+
+    country_potential = {
+        government_type = government_type:steppe_horde
+    }
+
+    remove_if = {
+        OR = {
+            is_no_longer_capital = yes
+            location.owner ?= { government_type != government_type:steppe_horde }
+        }
+    }
+
+    capital_country_modifier = {
+        monthly_herd_income_modifier = 0.05
+    }
+
+    unique_production_methods = {
+        pastoral_management_office_maintenance = {
+            furniture = 0.05
+            tools = 0.05
+            books = 0.05
+            paper = 0.1
+
+            category = building_maintenance
+        }
+    }
+
+    construction_demand = early_capital_building_construction
+}

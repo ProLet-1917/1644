@@ -1,0 +1,60 @@
+swe_emergency_recruit = {
+    type = international_organization
+    special_status = kung_of_swedish
+    potential = {
+        international_organization_has_policy = policy:swe_empire_parliament_policy
+    }
+    allow = {
+        NOT = { has_cooldown = swe_emergency_recruit }
+    }
+    chance = 10
+    selectable_for = {
+        is_leader_of_international_organization = scope:recipient
+    }
+    on_debate_passed = {
+        hidden_effect = {
+            add_cooldown = {
+                type = swe_emergency_recruit
+                years = 10
+            }
+        }
+        leader_country ?= {
+            save_scope_as = leader_country_scope
+        }
+        scope:leader_country_scope = {
+            add_manpower = {
+                value = international_organization:swedish_empire.total_members
+                multiply = 0.15
+            }
+        }
+    }
+    on_debate_failed = {
+        custom_tooltip = {
+            text = "lose_swedish_empire_authority"
+        }
+        hidden_effect = {
+            change_variable = {
+                name = swedish_empire_authority
+                subtract = 10
+            }
+        }
+    }
+    wants_this_parliament_issue_bias = {
+        if = {
+            limit = { scope:recipient = { international_organization_has_leader = yes } }
+            # Negative base Value --> Need some positive values for acceptance
+            add = {
+                desc = "VOTE_BASE_VALUE"
+                value = -400
+            }
+            # Default precalculated modifier (Opinion, IA, Dynasty, etc.)
+            add = hre_default_opinion_check
+        }
+        else = {
+            add = {
+                desc = "VOTE_BASE_VALUE"
+                value = 0
+            }
+        }
+    }
+}

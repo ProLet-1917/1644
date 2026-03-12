@@ -199,6 +199,8 @@ types RightPanelTypes
 					button_panel_tab_alt = { ### DECISIONS
 						using = layoutpolicy_expanding
 
+						input_action = "top_left_9"
+						use_global_input_instance = yes
 						onclick = "[GetVariableSystem.Toggle('decisions_panel')]"
 						down = "[GetVariableSystem.Toggle('decisions_panel')]"
 
@@ -211,7 +213,7 @@ types RightPanelTypes
 								blockoverride "title_icon" {
 									icon = {
 										using = tooltip_title_icon_size
-										texture = "gfx/interface/icons/flat_icons/tabicons/info_flat_icon.dds"
+										texture = "gfx/interface/icons/flat_icons/tabicons/decisions_flat_icon.dds"
 									}
 								}
 
@@ -240,7 +242,7 @@ types RightPanelTypes
 						}
 
 						icon = {
-							texture = "gfx/interface/icons/flat_icons/tabicons/info_flat_icon.dds"
+							texture = "gfx/interface/icons/flat_icons/tabicons/decisions_flat_icon.dds"
 							texture_density = 2
 							size = { 24 24 }
 							parentanchor = center
@@ -531,6 +533,101 @@ types RightPanelTypes
 							blockoverride "icon_effect_visible" { visible = no }
 						}
 					}
+
+					button_panel_tab_alt = { ### MUSIC PLAYER
+						name = "music_player_button"
+						down = "[IsLateralViewOpened('music_player')]"
+
+						using = layoutpolicy_expanding
+
+						action_tooltip = {
+							title = "OPEN_MUSIC_PLAYER"
+							on_action = "[ToggleLateralView('music_player')]"
+						}
+						action_tooltip = {
+							click_type = right
+							title = "MUSIC_PLAYER_NEXT"
+							clicksound = "mus_player_next_all"
+						}
+
+						tooltipwidget = {
+							blockoverride "title_button" {
+								hint_button = {
+									blockoverride "hint_button_texture" {
+										texture = "gfx/interface/icons/flat_icons/tabicons/settings_flat_icon.dds"
+									}
+									action_tooltip = {
+										title = "MUSIC_PLAYER_OPEN_SETTINGS"
+										on_action = "[CloseAllTooltips]"
+										on_action = "[OpenMusicSettings]"
+									}
+								}
+								hint_button = {
+									visible = "[IsMusicPlayerPaused]"
+									blockoverride "hint_button_texture" {
+										texture = "gfx/interface/icons/messages_settings/play.dds"
+									}
+									action_tooltip = {
+										title = "MUSIC_PLAYER_PLAY"
+										on_action = "[ToggleMusicPlayerPaused]"
+									}
+									clicksound = "mus_player_resume"
+								}
+								hint_button = {
+									visible = "[Not(IsMusicPlayerPaused)]"
+									blockoverride "hint_button_texture" {
+										texture = "gfx/interface/icons/messages_settings/pause.dds"
+									}
+									action_tooltip = {
+										title = "MUSIC_PLAYER_PAUSE"
+										on_action = "[ToggleMusicPlayerPaused]"
+									}
+									clicksound = "mus_player_pause"
+								}
+								hint_button = {
+									blockoverride "hint_button_texture" {
+										texture = "gfx/interface/icons/messages_settings/next.dds"
+									}
+									action_tooltip = {
+										title = "MUSIC_PLAYER_NEXT"
+										on_action = "[UnPauseMusicPlayer]"
+									}
+									clicksound = "mus_player_next_all"
+								}
+							}
+							ContextualTooltipType = {
+								blockoverride "title_icon" {
+									icon = {
+										using = tooltip_title_icon_size
+										texture = "gfx/interface/icons/flat_icons/tabicons/music.dds"
+									}
+								}
+								blockoverride "title_text" {
+									text = "MUSIC_PLAYER_HEADER"
+									default_format = "#T"
+								}
+
+								blockoverride "tooltip_content" {}
+							}
+						}
+						
+						background = {
+							block "bg_panel_group_tabs_color" {
+								visible = "[IsLateralViewOpened('music_player')]"
+							}
+							using = color_default_brown_texture
+						}
+						icon = {
+							texture = "gfx/interface/icons/flat_icons/tabicons/music.dds"
+							texture_density = 2
+							size = { 24 24 }
+							parentanchor = center
+
+
+							using = button_panel_tab_icon_effect
+							blockoverride "icon_effect_visible" { visible = no }
+						}
+					}
 					
 					button_panel_tab_alt = { ## MENU
 						onclick = "[OnPauseMenu]"
@@ -585,7 +682,7 @@ types RightPanelTypes
 			allow_outside = yes
 
 			vbox = {
-				visible = "[Not(And(RightView.IsShown, And(Not(IsLateralViewFullScreen), Not(IsLateralViewOpened('international_organizations')))))]"
+				visible = "[Not(And(RightView.IsSideAttached, Not(IsLateralViewFullScreen)))]"
 				
 				allow_outside = yes
 				using = layoutpolicy_expanding
@@ -601,7 +698,7 @@ types RightPanelTypes
 
 		# Opened panel
 		vbox = {
-			visible = "[And(RightView.IsShown, Not(IsLateralViewFullScreen))]"
+			visible = "[And(RightView.IsSideAttached, Not(IsLateralViewFullScreen))]"
 
 			allow_outside = yes
 			using = layoutpolicy_expanding

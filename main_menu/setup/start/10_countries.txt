@@ -88,7 +88,9 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
-			ruler = random
+			ruler = jap_tokugawa_iemitsu
+
+			ruler_term = { character = jap_tokugawa_iemitsu start_date = 1623.1.1 }
 			
 			reforms = {
 				shogunate
@@ -107,6 +109,9 @@ countries = {
 		country_rank = rank_empire
 		capital = toshima_kanto
 		starting_technology_level = 3
+		country_name = "TOK"
+		flag = JAP_tokugawa
+		dynasty = tokugawa_dynasty
 	}
 	
 	##Touhoku
@@ -147,6 +152,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = fukushima
 		country_rank = rank_county
@@ -160,6 +169,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = hanawa
 		country_rank = rank_county
@@ -175,6 +188,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = iwate
 		country_rank = rank_county
@@ -188,6 +205,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = akita
 		country_rank = rank_duchy
@@ -201,6 +222,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = yuri
 		country_rank = rank_county
@@ -214,6 +239,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = yuza
 		country_rank = rank_county
@@ -227,6 +256,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = murayama
 		country_rank = rank_county
@@ -241,6 +274,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = miyagi
 		country_rank = rank_kingdom
@@ -254,6 +291,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = minamimogami
 		country_rank = rank_county
@@ -267,6 +308,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = higashiokitama
 		country_rank = rank_duchy
@@ -280,6 +325,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = higashiokitama
 		country_rank = rank_duchy
@@ -293,6 +342,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = adachi
 		country_rank = rank_county
@@ -306,6 +359,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = namekata
 		country_rank = rank_county
@@ -319,6 +376,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = minamimogami
 		country_rank = rank_county
@@ -332,6 +393,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = higashiokitama
 		country_rank = rank_duchy
@@ -345,6 +410,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = higashiokitama
 		country_rank = rank_duchy
@@ -358,6 +427,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = adachi
 		country_rank = rank_county
@@ -371,6 +444,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = namekata
 		country_rank = rank_county
@@ -384,6 +461,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = tamura
 		country_rank = rank_county
@@ -397,6 +478,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = shirakawa
 		country_rank = rank_county
@@ -410,6 +495,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = takano
 		country_rank = rank_county
@@ -417,18 +506,31 @@ countries = {
 	}
 
 	##Kinkiku
-	JIC = { #Kuge
+	JIC = {
+		#Kuge
 		own_control_core = {
 			kyoto
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			inherit_ruler_terms = YMT
+
+			ruler = jic_go_komyo_tenno
+			ruler_term = { character = jic_go_mizunoo_tenno start_date = 1611.5.9 end_date = 1629.12.22 }
+			ruler_term = { character = jic_meisho_tenno start_date = 1629.12.22 end_date = 1643.11.14 }
+			ruler_term = { character = jic_go_komyo_tenno start_date = 1643.11.14 }
+
+			reforms = {
+				japanese_imperial_family
+			}
 		}
 		capital = kyoto  # Capital
-		starting_technology_level = 3  
+		starting_technology_level = 3
+		flag = "JAP_monarchy"
 		country_rank = rank_empire
-		}
+	}
 
 	UMY = { #Udamatsuyama
 		own_control_core = {
@@ -437,6 +539,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = takaichi  # Capital
 		starting_technology_level = 3  
@@ -450,6 +556,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = shima  # Capital
 		starting_technology_level = 3  
@@ -463,6 +573,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = kaisou  # Capital
 		starting_technology_level = 3  
@@ -476,6 +590,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = suzuka  # Capital
 		starting_technology_level = 3  
@@ -489,6 +607,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = ichishi  # Capital
 		starting_technology_level = 3  
@@ -502,6 +624,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = gamou  # Capital
 		starting_technology_level = 3  
@@ -515,6 +641,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = akou  # Capital
 		starting_technology_level = 3  
@@ -528,6 +658,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = shikama  # Capital
 		starting_technology_level = 3  
@@ -541,6 +675,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = shisou  # Capital
 		starting_technology_level = 3  
@@ -554,6 +692,10 @@ countries = {
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = muko  # Capital
 		starting_technology_level = 3  
@@ -562,11 +704,15 @@ countries = {
 
 	TYK = { #Toyooka
 		own_control_core = {
-			keta_tajima __
+			keta_tajima
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = keta_tajima  # Capital
 		starting_technology_level = 3  
@@ -575,11 +721,15 @@ countries = {
 
 	IZS = { #Izushi
 		own_control_core = {
-			yabu __
+			yabu
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = yabu  # Capital
 		starting_technology_level = 3  
@@ -588,11 +738,15 @@ countries = {
 
 	TNB = { #Tangotanabe
 		own_control_core = {
-			kasa __
+			kasa
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = kasa  # Capital
 		starting_technology_level = 3  
@@ -601,11 +755,15 @@ countries = {
 
 	MDU = { #Miyadu
 		own_control_core = {
-			yosa __
+			yosa
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = yosa  # Capital
 		starting_technology_level = 3  
@@ -614,11 +772,15 @@ countries = {
 
 	FKY = { #Fukuchiyama
 		own_control_core = {
-			ikaruga __
+			ikaruga
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = ikaruga  # Capital
 		starting_technology_level = 3  
@@ -628,11 +790,15 @@ countries = {
 
 	NKB = { #Tanbakaibara
 		own_control_core = {
-			hikami __
+			hikami
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = hikami  # Capital
 		starting_technology_level = 3  
@@ -641,11 +807,15 @@ countries = {
 
 	YME = { #Yamake
 		own_control_core = {
-			funai __
+			funai
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = funai  # Capital
 		starting_technology_level = 3  
@@ -654,11 +824,15 @@ countries = {
 
 	SNB = { #Sonobe
 		own_control_core = {
-			kuwada __
+			kuwada
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = kuwada  # Capital
 		starting_technology_level = 3  
@@ -668,11 +842,15 @@ countries = {
 	##Shikoku
 	HCU = { #Tokushima
 		own_control_core = {
-			nakata awa_shikoku naka_shikoku kaifu mima miyoshi_shikoku awaji __
+			nakata awa_shikoku naka_shikoku kaifu mima miyoshi_shikoku awaji
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = nakata  # Capital
 		starting_technology_level = 3  
@@ -681,11 +859,15 @@ countries = {
 
 	YUC = { #Tosa
 		own_control_core = {
-			tosa agawa takaoka hata kami_shikoku aki_shikoku nagaoka __
+			tosa agawa takaoka hata kami_shikoku aki_shikoku nagaoka
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = tosa  # Capital
 		starting_technology_level = 3  
@@ -694,11 +876,15 @@ countries = {
 
 	UWJ = { #Uwajima
 		own_control_core = {
-			uwa __
+			uwa
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = uwa  # Capital
 		starting_technology_level = 3  
@@ -707,11 +893,15 @@ countries = {
 
 	ODZ = { #Ōdu
 		own_control_core = {
-			kita_shikoku ukena __
+			kita_shikoku ukena
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = kita_shikoku  # Capital
 		starting_technology_level = 3  
@@ -721,11 +911,15 @@ countries = {
 	##Chuubu
 	MEK = { #Kaga
 		own_control_core = {
-			kaga nomi noto_jap fugeshi suzu tonami imizu nei niikawa takashima __
+			kaga nomi noto_jap fugeshi suzu tonami imizu nei niikawa takashima
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = kaga  # Capital
 		starting_technology_level = 3  
@@ -734,11 +928,15 @@ countries = {
 	
 	KNR = { #Hidatakayama
 		own_control_core = {
-			kamioono mashita yoshiki __
+			kamioono mashita yoshiki
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = kamioono  # Capital
 		starting_technology_level = 3  
@@ -747,11 +945,15 @@ countries = {
 
 	GJO = { #Gujō
 		own_control_core = {
-			gujou __
+			gujou
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = gujou  # Capital
 		starting_technology_level = 3  
@@ -760,11 +962,15 @@ countries = {
 
 	OWR = { #Owari
 		own_control_core = {
-			aichi niwa nakajima mugi minokamo toki ena   __
+			aichi niwa nakajima mugi minokamo toki ena  
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = aichi  # Capital
 		starting_technology_level = 3  
@@ -773,11 +979,15 @@ countries = {
 
 	SNX = { #Matsushiro
 		own_control_core = {
-			sarashina minochi   __
+			sarashina minochi  
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = sarashina  # Capital
 		starting_technology_level = 3  
@@ -786,11 +996,15 @@ countries = {
 
 	SGV = { #Ueda
 		own_control_core = {
-			chiisagata   __
+			chiisagata  
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = chiisagata  # Capital
 		starting_technology_level = 3  
@@ -799,11 +1013,15 @@ countries = {
 
 	SZA = { #Suzaka
 		own_control_core = {
-			takai   __
+			takai  
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = takai  # Capital
 		starting_technology_level = 3  
@@ -812,11 +1030,15 @@ countries = {
 
 	ZOG = { #Shibata
 		own_control_core = {
-			nutari   __
+			nutari  
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = nutari  # Capital
 		starting_technology_level = 3  
@@ -826,11 +1048,15 @@ countries = {
 	##Kanto
 	MTV = { #Mito
 		own_control_core = {
-			ibaraki niihari haga naka kuji_kanto taga   __
+			ibaraki niihari haga naka kuji_kanto taga  
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = ibaraki  # Capital
 		starting_technology_level = 3  
@@ -839,11 +1065,15 @@ countries = {
 
 	KRY = { #Karasuyama
 		own_control_core = {
-			shioya   __
+			shioya  
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = shioya  # Capital
 		starting_technology_level = 3  
@@ -852,11 +1082,15 @@ countries = {
 
 	KRB = { #Kurobane
 		own_control_core = {
-			nasu   __
+			nasu  
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = nasu  # Capital
 		starting_technology_level = 3  
@@ -865,11 +1099,15 @@ countries = {
 
 	OBX = { #Obata
 		own_control_core = {
-			kanra usui   __
+			kanra usui  
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = kanra  # Capital
 		starting_technology_level = 3  
@@ -879,11 +1117,15 @@ countries = {
 	##Chuugoku
 	CYY = { #Chōshū
 		own_control_core = {
-			abu ootsu toyoura asa yoshiki_suou saba tsuno kumage kuga    __
+			abu ootsu toyoura asa yoshiki_suou saba tsuno kumage kuga   
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = abu  # Capital
 		starting_technology_level = 3  
@@ -892,11 +1134,15 @@ countries = {
 
 	TUW = { #Tsuwano
 		own_control_core = {
-			kanoashi    __
+			kanoashi   
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = kanoashi  # Capital
 		starting_technology_level = 3  
@@ -905,11 +1151,15 @@ countries = {
 
 	HMW = { #Hamada
 		own_control_core = {
-			mino    __
+			mino   
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = mino  # Capital
 		starting_technology_level = 3  
@@ -918,11 +1168,15 @@ countries = {
 
 	HLS = { #Hiroshima
 		own_control_core = {
-			saeki aki takata yamagata toyota sera miyoshi eso nuka     __
+			saeki aki takata yamagata toyota sera miyoshi eso nuka    
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = saeki  # Capital
 		starting_technology_level = 3  
@@ -931,11 +1185,15 @@ countries = {
 
 	NWE = { #Niwase
 		own_control_core = {
-			asakuchi     __
+			asakuchi    
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = asakuchi  # Capital
 		starting_technology_level = 3  
@@ -944,11 +1202,15 @@ countries = {
 
 	AMV = { #Ashimori
 		own_control_core = {
-			kaya     __
+			kaya    
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = kaya  # Capital
 		starting_technology_level = 3  
@@ -957,11 +1219,15 @@ countries = {
 
 	VYM = { #Okayama
 		own_control_core = {
-			joutou tsudaka wake     __
+			joutou tsudaka wake    
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = joutou  # Capital
 		starting_technology_level = 3  
@@ -970,11 +1236,15 @@ countries = {
 
 	XTY = { #Tsuyama
 		own_control_core = {
-			mashima aita kume tomata     __
+			mashima aita kume tomata    
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = mashima  # Capital
 		starting_technology_level = 3  
@@ -983,11 +1253,15 @@ countries = {
 
 	TTI = { #Tottori
 		own_control_core = {
-			houmi takakusa kume_houki aimi hino     __
+			houmi takakusa kume_houki aimi hino    
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = houmi  # Capital
 		starting_technology_level = 3  
@@ -997,11 +1271,15 @@ countries = {
 	##Kyushu
 	STM = { #Satsuma
 		own_control_core = {
-			kagoshima izumi_satsuma satsuma ibusuki hishikari kuwabara soo kimotsuki oosumi gomu kumage_oosumi nishimorokata minamimorokata 				kitamorokata naka_hyuuga     __
+			kagoshima izumi_satsuma satsuma ibusuki hishikari kuwabara soo kimotsuki oosumi gomu kumage_oosumi nishimorokata minamimorokata 				kitamorokata naka_hyuuga    
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = kagoshima  # Capital
 		starting_technology_level = 3  
@@ -1010,11 +1288,15 @@ countries = {
 	
 	STM = { #Satsuma
 		own_control_core = {
-			kagoshima izumi_satsuma satsuma ibusuki hishikari kuwabara soo kimotsuki oosumi gomu kumage_oosumi nishimorokata minamimorokata 				kitamorokata naka_hyuuga     __
+			kagoshima izumi_satsuma satsuma ibusuki hishikari kuwabara soo kimotsuki oosumi gomu kumage_oosumi nishimorokata minamimorokata 				kitamorokata naka_hyuuga    
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = kagoshima  # Capital
 		starting_technology_level = 3  
@@ -1023,11 +1305,15 @@ countries = {
 	
 	OBI = { #Obi
 		own_control_core = {
-			    miyazaki __
+			    miyazaki
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = miyazaki  # Capital
 		starting_technology_level = 3  
@@ -1036,11 +1322,15 @@ countries = {
 
 	TKB = { #Takanabe
 		own_control_core = {
-			    koyu __
+			    koyu
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = koyu  # Capital
 		starting_technology_level = 3  
@@ -1049,11 +1339,15 @@ countries = {
 	
 	HIY = { #Hitoyoshi
 		own_control_core = {
-			    kuma __
+			    kuma
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = kuma  # Capital
 		starting_technology_level = 3  
@@ -1062,11 +1356,15 @@ countries = {
 	
 	NBK = { #Nobeoka
 		own_control_core = {
-			    higashiusuki __
+			    higashiusuki
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = higashiusuki  # Capital
 		starting_technology_level = 3  
@@ -1075,11 +1373,15 @@ countries = {
 
 	QMM = { #Kumamoto
 		own_control_core = {
-			    akita_kumamoto tamana koushi aso mashiki yatsushiro_higo ashikita  __
+			    akita_kumamoto tamana koushi aso mashiki yatsushiro_higo ashikita 
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = akita_kumamoto  # Capital
 		starting_technology_level = 3  
@@ -1088,11 +1390,15 @@ countries = {
 
 	SGQ = { #Saga
 		own_control_core = {
-			    saga kishima takaki  __
+			    saga kishima takaki 
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = saga  # Capital
 		starting_technology_level = 3  
@@ -1101,11 +1407,15 @@ countries = {
 
 	OOR = { #Ōmura
 		own_control_core = {
-			higashisonogi nishisonogi  __
+			higashisonogi nishisonogi 
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = higashisonogi  # Capital
 		starting_technology_level = 3  
@@ -1114,11 +1424,15 @@ countries = {
 
 	FQE = { #Fukue
 		own_control_core = {
-			minamimatsuura  __
+			minamimatsuura 
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = minamimatsuura  # Capital
 		starting_technology_level = 3  
@@ -1127,11 +1441,15 @@ countries = {
 
 	QRT = { #Karatsu
 		own_control_core = {
-			higashimatsuura amakusa  __
+			higashimatsuura amakusa 
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = higashimatsuura  # Capital
 		starting_technology_level = 3  
@@ -1140,11 +1458,15 @@ countries = {
 
 	HRV = { #Hirado
 		own_control_core = {
-			nishimatsuura  __
+			nishimatsuura 
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = nishimatsuura  # Capital
 		starting_technology_level = 3  
@@ -1153,11 +1475,15 @@ countries = {
 		
 	ZSM = { #Tsushima
 		own_control_core = {
-			shimoagata kamiagata  __
+			shimoagata kamiagata 
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = shimoagata  # Capital
 		starting_technology_level = 3  
@@ -1166,11 +1492,15 @@ countries = {
 
 	FOK = { #Fukuoka
 		own_control_core = {
-			hakata mikasa onga asakura  __
+			hakata mikasa onga asakura 
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = hakata  # Capital
 		starting_technology_level = 3  
@@ -1179,11 +1509,15 @@ countries = {
 
 	YGW = { #Yanagawa
 		own_control_core = {
-			mii  __
+			mii 
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = mii  # Capital
 		starting_technology_level = 3  
@@ -1192,11 +1526,15 @@ countries = {
 
 	QRM = { #Yanagawa
 		own_control_core = {
-			kamitsuma  __
+			kamitsuma 
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = kamitsuma  # Capital
 		starting_technology_level = 3  
@@ -1205,11 +1543,15 @@ countries = {
 
 	QMR = { #Mori
 		own_control_core = {
-			kusu  __
+			kusu 
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = kusu  # Capital
 		starting_technology_level = 3  
@@ -1218,11 +1560,15 @@ countries = {
 
 	FNA = { #Funai
 		own_control_core = {
-			naoiri  __
+			naoiri 
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = naoiri  # Capital
 		starting_technology_level = 3  
@@ -1231,11 +1577,15 @@ countries = {
 
 	OQA = { #Oka
 		own_control_core = {
-			oono_bungo  __
+			oono_bungo 
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = oono_bungo  # Capital
 		starting_technology_level = 3  
@@ -1244,11 +1594,15 @@ countries = {
 
 	VSQ = { #Usuki
 		own_control_core = {
-			ooita  __
+			ooita 
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = ooita  # Capital
 		starting_technology_level = 3  
@@ -1257,11 +1611,15 @@ countries = {
 
 	SYQ = { #Saiki
 		own_control_core = {
-			amabe  __
+			amabe 
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = amabe  # Capital
 		starting_technology_level = 3  
@@ -1270,11 +1628,15 @@ countries = {
 
 	HYJ = { #Hiji
 		own_control_core = {
-			hayami  __
+			hayami 
 		}
 		include = "japanese_clan"
 		government = {
 			type = monarchy
+
+			reforms = {
+				daimyo
+			}
 		}
 		capital = hayami  # Capital
 		starting_technology_level = 3  
@@ -1284,7 +1646,7 @@ countries = {
 	##Ryukyu
 	RYY = { #Ryūkyū
 		own_control_core = {
-			oozato urasoe nakijin tokunoshima amami_ooshima iriomote ishigaki miyakojima     __
+			oozato urasoe nakijin tokunoshima amami_ooshima iriomote ishigaki miyakojima    
 		}
 		government = {
 			type = monarchy
@@ -1391,22 +1753,20 @@ countries = {
 				heir_religion_law = heir_same_religion
 			}
 
-			centralization_vs_decentralization = 30
-			aristocracy_vs_plutocracy = -60
-			serfdom_vs_free_subjects = -10
-			traditionalist_vs_innovative = -40
-			spiritualist_vs_humanist = -50
-			mercantilism_vs_free_trade = -25
-			offensive_vs_defensive = 0
-			land_vs_naval = 0
-			quality_vs_quantity = -20
-			belligerent_vs_conciliatory = -25
-
-			capital_economy_vs_traditional_economy = 30
-			individualism_vs_communalism = -25
-			outward_vs_inward = -60
-
-
+			centralization_vs_decentralization = -55
+			aristocracy_vs_plutocracy = -50
+			serfdom_vs_free_subjects = 5
+			traditionalist_vs_innovative = -35
+			spiritualist_vs_humanist = -45
+			mercantilism_vs_free_trade = -20
+			offensive_vs_defensive = -10
+			land_vs_naval = 40
+			quality_vs_quantity = -15
+			belligerent_vs_conciliatory = -40
+			capital_economy_vs_traditional_economy = -15
+			individualism_vs_communalism = -20
+			outward_vs_inward = 30
+		
 		}
 
 		accepted_cultures = {
@@ -1489,21 +1849,19 @@ countries = {
 				heir_religion_law = heir_same_religion
 			}
 
-			centralization_vs_decentralization = 30
-			aristocracy_vs_plutocracy = -60
-			serfdom_vs_free_subjects = -10
-			traditionalist_vs_innovative = -40
-			spiritualist_vs_humanist = -50
-			mercantilism_vs_free_trade = -25
-			offensive_vs_defensive = 0
-			land_vs_naval = 0
-			quality_vs_quantity = -20
-			belligerent_vs_conciliatory = -25
-
-			capital_economy_vs_traditional_economy = 30
-			individualism_vs_communalism = -25
-			outward_vs_inward = -60
-
+			centralization_vs_decentralization = 20
+			aristocracy_vs_plutocracy = 70
+			serfdom_vs_free_subjects = 30
+			traditionalist_vs_innovative = 50
+			spiritualist_vs_humanist = 60
+			mercantilism_vs_free_trade = 40
+			offensive_vs_defensive = -20
+			land_vs_naval = 60
+			quality_vs_quantity = 30
+			belligerent_vs_conciliatory = -30
+			capital_economy_vs_traditional_economy = -40
+			individualism_vs_communalism = 40
+			outward_vs_inward = 70
 
 		}
 
@@ -1545,10 +1903,14 @@ countries = {
 		include = "zzz_expl_european_colonial_powers"
 		starting_technology_level = 4
 		include = "catholic_monarchy"
+		
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = eng_charles_i_stuart
+			regency = consort_regency
+			active_regent = sco_archibald_campbell
+			start_regency_date = 1639.3.21
+			end_regency_date = 1640.9.1
 			heir = eng_charles_ii_stuart
 			
 			ruler_term = { character = eng_james_i_stuart start_date = 1603.3.24 end_date = 1625.3.27 regnal_number = 1 }
@@ -1582,19 +1944,19 @@ countries = {
 				royal_court_customs_law = itinerant_court_policy
 				sco_clan_holdings = inherited_clan_holdings
 			}
-			#Societal Values
-			centralization_vs_decentralization = 60
-			traditionalist_vs_innovative = -50
-			spiritualist_vs_humanist = -50
-			aristocracy_vs_plutocracy = -50
-			serfdom_vs_free_subjects = 0
-			mercantilism_vs_free_trade = -10
-			belligerent_vs_conciliatory = 10
-			quality_vs_quantity = -30
-			offensive_vs_defensive = -20
-			capital_economy_vs_traditional_economy = 90
-			individualism_vs_communalism = -10
-			outward_vs_inward = -20
+			
+			centralization_vs_decentralization = -40
+			traditionalist_vs_innovative = -25
+			spiritualist_vs_humanist = -60
+			aristocracy_vs_plutocracy = -45
+			serfdom_vs_free_subjects = -10
+			mercantilism_vs_free_trade = 5
+			belligerent_vs_conciliatory = -20
+			quality_vs_quantity = 20
+			offensive_vs_defensive = 10
+			capital_economy_vs_traditional_economy = -60
+			individualism_vs_communalism = -30
+			outward_vs_inward = 10
 
 			reforms = {
 				scottish_shires_reform
@@ -1636,12 +1998,26 @@ countries = {
 				names_mary = 2
 				name_william = 3
 			}
+
+			centralization_vs_decentralization = -50
+			aristocracy_vs_plutocracy = -60
+			serfdom_vs_free_subjects = -20
+			traditionalist_vs_innovative = -50
+			spiritualist_vs_humanist = -30
+			mercantilism_vs_free_trade = -10
+			offensive_vs_defensive = 20
+			land_vs_naval = 20
+			quality_vs_quantity = -10
+			belligerent_vs_conciliatory = 10
+			capital_economy_vs_traditional_economy = -70
+			individualism_vs_communalism = -30
+			outward_vs_inward = -40
+
 		}
 		country_rank = rank_county
 		capital = mann
 
 		tolerated_cultures = { english }
-		country_rank = rank_county
 		starting_technology_level = 3
 	}
 	
@@ -1653,12 +2029,11 @@ countries = {
 		our_cores_conquered_by_others = {
 			trim kells mullingar longford ardagh ballymore tullamore wexford new_ross ferns carlow kilkenny cullahill strabane clogher enniskillen belcoo lough_erne monaghan galway clifden athenry tuam kilconnell lough_corrib lough_derg roscommon castlereagh sligo athlone skreen lough_ree dromahair leitrim killeshandra cavan killycolly castlebar burrishoole erris ballaghaderreen lough_mask lough_conn killarney carbery kilbrittain muskerry dunhallow tralee dingle limerick killmallock adare castleconnell ennis bunratty moyarta tipperary nenagh clonmel cashel roscrea moycarn waterford dungarvan carrickbeg
 		}
-
+		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = eng_charles_i_stuart
-			heir = eng_charles_ii_stuart
+			ruler = eng_robert_devereux
 			
 			ruler_term = { character = eng_james_i_stuart start_date = 1603.3.24 end_date = 1625.3.27 regnal_number = 1 }
 			
@@ -1688,12 +2063,21 @@ countries = {
 			reforms = {
 				magna_carta_reform
 			}
+
+			centralization_vs_decentralization = 30
+			aristocracy_vs_plutocracy = 40
+			serfdom_vs_free_subjects = 20
+			traditionalist_vs_innovative = 35
+			spiritualist_vs_humanist = 45
+			mercantilism_vs_free_trade = 30
+			offensive_vs_defensive = -20
+			land_vs_naval = 30
+			quality_vs_quantity = 25
+			belligerent_vs_conciliatory = -35
+			capital_economy_vs_traditional_economy = 30
+			individualism_vs_communalism = 35
+			outward_vs_inward = 40
 		}
-		include = "zzz_expl_european_colonial_powers"
-		capital = dublin
-		accepted_cultures = { anglo_irish }
-		tolerated_cultures = { irish }
-		starting_technology_level = 3
 	}
 	
 	IRE = { # Irish Confederate
@@ -1709,9 +2093,6 @@ countries = {
 			type = monarchy
 			ruler = ire_felim_oneill
 			heir_selection = cognatic_primogeniture
-
-			quality_vs_quantity = 25
-			offensive_vs_defensive = 75
 
 			parliament = {
 				parliament_type = estate_parliament
@@ -1729,12 +2110,29 @@ countries = {
 			reforms = {
 				magna_carta_reform
 			}
+			
+			centralization_vs_decentralization = -35
+			aristocracy_vs_plutocracy = -50
+			serfdom_vs_free_subjects = -10
+			traditionalist_vs_innovative = -55
+			spiritualist_vs_humanist = -70
+			mercantilism_vs_free_trade = -5
+			offensive_vs_defensive = -10
+			land_vs_naval = -20
+			quality_vs_quantity = 15
+			belligerent_vs_conciliatory = -25
+			capital_economy_vs_traditional_economy = -65
+			individualism_vs_communalism = -40
+			outward_vs_inward = -10
+
 		}
+		
 		include = "zzz_expl_european_colonial_powers"
 		capital = dublin
 		accepted_cultures = { anglo_irish }
 		tolerated_cultures = { irish }
 		starting_technology_level = 3
+
 	}
 	
 ###Iberia
@@ -1840,7 +2238,7 @@ countries = {
 		}
 
 		country_rank = rank_kingdom
-		capital = valladolid
+		capital = madrid
 
 		ai_advance_preference_tags = {
 			exploration = 5
@@ -1876,7 +2274,7 @@ countries = {
 			#Oman
 			masqat saham
 			#India
-			goa kotte galle
+			goa kotte galle diu bombay bassein chaul nagapattinam 
 		}
 		own_control_colony = {
 			#Africa
@@ -2374,6 +2772,12 @@ countries = {
 		country_rank = rank_kingdom
 		starting_technology_level = 4
 		include = "zzz_expl_european_colonial_powers"
+		currency_data = {
+			gold = 332.5
+			prestige = 36
+			legitimacy = 33
+			stability = 18
+		}
 	}
 	
 	PRO = {
@@ -2387,7 +2791,6 @@ countries = {
 			avignon
 		}
 
-		starting_technology_level = 3
 		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
@@ -2420,7 +2823,6 @@ countries = {
 			la_tour_du_pin 
 		}
 
-		starting_technology_level = 3
 		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
@@ -2451,7 +2853,6 @@ countries = {
 			orleans chartres blois beaugency chateaudun romorantin st_aignan
 		}
 
-		starting_technology_level = 3
 		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
@@ -2485,9 +2886,9 @@ countries = {
 			vannes hennebont josselin ploermel redon rohan
 		}
 
-		starting_technology_level = 3
 		include = "zzz_expl_european_colonial_powers"
 		government = {
+			type = monarchy
 			heir_selection = cognatic_primogeniture
 
 			regency = consort_regency
@@ -2537,7 +2938,6 @@ countries = {
 		own_control_core = {
 			vic_le_comte
 		}
-		starting_technology_level = 3
 		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
@@ -2571,7 +2971,6 @@ countries = {
 			# own_control_integrated, but culture accepted
 			clermont_en_beauvaisis #C. Clermont-en-Beauvaisis
 		}
-		starting_technology_level = 3
 		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
@@ -2609,7 +3008,6 @@ countries = {
 		own_control_core = {
 			oloron orthez pau #Vic. of Béarn
 		}
-		starting_technology_level = 3
 		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
@@ -2642,7 +3040,7 @@ countries = {
 		own_control_core = {
 			foix pamiers
 		}
-		starting_technology_level = 3
+
 		include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
@@ -2714,9 +3112,9 @@ countries = {
 			nevers cercy chateau_chinon donzy montreuillon st_pierre_de_moutier
 		}
 
-		starting_technology_level = 3
 		include = "zzz_expl_european_colonial_powers"
 		government = {
+			type = monarchy
 			heir_selection = cognatic_primogeniture
 
 			regency = consort_regency
@@ -2839,14 +3237,8 @@ countries = {
 			nikkaluokta torne_trask vastenjaure akkajaure abisko raunala 
 			korpilombo juckasjarvi
 			#Baltic Territories
-			korela kurkijoki konevets joensuu sordavala vartsila ilomantsi lieksa juuka salmi loimola mohko suojarvi yanis_jarvi lake_orivesi lake_suoyarvi lake_otradnoye hoytiainen pielinen viinijarvi koitere nurmes
-			oreshek lisino markovo martyshkino neva toksovo 
-			koporye ivangorod khotchino moloskovitsa soikino yama
-			valjala kuressaare tallinn narva padise paide rakvere rapla toolse vasknarva cesis aluksne gulbene rauna valmiera parnu karksi poltsamaa saarde suure_jaani viljandi lake_vorts hapsal kaina lihula st_martin riga koknese limbazi salaspils sigulda straupe tartu valka vastseliina vonnu
-		}
-		
-		own_control_integrated = {
-			minguannan tappahanna shackamaxon tetamekanch
+			valjala kuressaare tallinn narva padise paide rakvere rapla toolse vasknarva  riga salaspils
+			hapsal kaina lihula st_martin
 		}
 
 		control = {
@@ -2884,6 +3276,86 @@ countries = {
 		country_rank = rank_kingdom
 		starting_technology_level = 4
 		include = "zzz_expl_european_colonial_powers"
+
+		government = {
+
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+
+			#Societal Values
+			centralization_vs_decentralization = -25
+			traditionalist_vs_innovative = -40
+			spiritualist_vs_humanist = 30
+			aristocracy_vs_plutocracy = -20
+			serfdom_vs_free_subjects = -25
+			mercantilism_vs_free_trade = -20
+			belligerent_vs_conciliatory = 5
+			quality_vs_quantity = 0
+			offensive_vs_defensive = -5
+			land_vs_naval = 0
+			capital_economy_vs_traditional_economy = 15
+			individualism_vs_communalism = 15
+			outward_vs_inward = 25
+
+			parliament = {
+				parliament_type = assembly
+			}
+
+			reforms = {
+				swe_age_of_freedom
+				alsno_stadga
+			}
+
+			#Estate Privileges
+			privilege = {
+				#nobles
+				nobles_land_rights
+				noble_marriage_rights
+				primacy_of_nobility
+
+				#clergy
+				clergy_literacy_rights
+				clergy_enforced_unity
+
+				#burghers
+				market_fairs
+				formal_guilds
+				building_roads_rights
+
+				#Commoners
+				allow_hunting
+				communal_lands
+			}
+
+			laws = {
+				recruitment_law = expanded_levies_policy
+				battle_leadership_law = noble_command_policy
+				maritime_law = mandatory_impressment
+				piracy_law = issue_letter_of_marque_policy
+				medieval_levy_law = peasant_levies
+
+				censorship = limited_censorship
+				marriage_law = monogamous_marriage
+				heir_religion_law = heir_same_religion
+
+				administrative_system = central_councils
+				bureaucracy_law = centralized_bureaucracy_policy
+				cabinet_laws = nobles_of_the_robe_policy
+				legal_code_law = civil_law_policy
+				legitimization_of_power_law = machiavellian_rule_policy
+				royal_court_customs_law = aristocratic_court_policy
+
+				immigration_law = open_borders_law
+				colonial_policy = trade_colonies
+				cultural_traditions_law = civil_society
+				education_masses_law = personal_religious_education
+				foreign_cultural_law = allow_foreign_rituals
+				mining_law = burghers_mining_law
+				native_policy = native_trade
+
+				distribution_of_power_law = dop_favor_the_nobles
+			}
+		}
 	}
 	
 	FIN = {
@@ -2895,9 +3367,11 @@ countries = {
 			simo uleaborg brahestad utajarvi siikalatva taivalkoski kuivaniemi ranua pudasjarvi posio
 			mourionska kiemi rovaniemi kittila nunnanen enontakis kasivarren
 		}
+		include = "zzz_expl_european_colonial_powers"
+		include = "lutheran_monarchy"
 		government = {
 			type = monarchy
-			ruler = swe_christina_vasa
+			#ruler = swe_christina_vasa
 			
 			ruler_term = { character = swe_gustav_i_vasa start_date = 1523.6.6 end_date = 1560.9.29 regnal_number = 1 }
 			ruler_term = { character = swe_eric_xiv_vasa start_date = 1560.9.29 end_date = 1568.9.29 regnal_number = 14 }
@@ -2918,7 +3392,6 @@ countries = {
 		capital = abo
 		country_rank = rank_duchy
 		starting_technology_level = 4
-		include = "zzz_expl_european_colonial_powers"
 	}
 	
 	DAN = {
@@ -2950,6 +3423,7 @@ countries = {
 		country_rank = rank_kingdom
 		starting_technology_level = 4
 		include = "zzz_expl_european_colonial_powers"
+		include = "lutheran_monarchy"
 	}
 	
 	NOR = {
@@ -2983,16 +3457,22 @@ countries = {
 		country_rank = rank_kingdom
 		starting_technology_level = 4
 		include = "zzz_expl_european_colonial_powers"
+		include = "lutheran_monarchy"
 	}
 
 ###European Colonial Nations
 	VOC = { #Dutch East India Company
 		own_control_core = {
 			sunda_kelapa sombai kupang malacca temasek siraya lloa makatao lamakera
+			kulun
+ 			masulipatnam
 		}
+
 		government = {
 			type = republic
 			ruler = random
+
+			heir_selection = republic_4_year_terms
 		}
 		capital = sunda_kelapa
 		country_rank = rank_kingdom
@@ -3083,9 +3563,9 @@ countries = {
 			teotenanco mixquiahuala tollan cuauhtitlan xilotepec ixtachichimecapan 
 			kerhiretarhu tetzapotitlan huayacocotla tutotepec metztitlan jalpan tziuhcoac oxtlipan copuz 
 			cocomacan mo_o_ti pechichitane xiriquitzio nat_tha_hi penlamu uza pame otomi 
-			tanchaycha tangamanga hnahnu huaxcama ozuluama panuco tamtoc quechula ocosingo lakam_tun 
-			tenamitl zinacantan pochutla tila tonala_chiapas napinaica jaltenango huehuetan 
-			baak cupilco zahuatan tatahuitalpan mayapan mani hocabail sotuta maxcanu 
+			tanchaycha tangamanga hnahnu huaxcama ozuluama panuco tamtoc quechula
+			tenamitl zinacantan tonala_chiapas napinaica jaltenango huehuetan 
+			cupilco zahuatan tatahuitalpan mayapan mani hocabail sotuta maxcanu 
 			hunucma tho motul dzilam titsimin chichen_itza tases kalotmul zaci kaan_peech calkini edzna 
 			hochob dzibilnocac chakan_putum tixchel xicallanco itzamkanac nadzcaan chactemal 
 			colha nohmul chakanbakan xpuhil dzibanche bakhalal chacchoben tixmul xpaicheil telantunich ekab 
@@ -3111,16 +3591,15 @@ countries = {
 			tlacuitlapan yamanquex zain tepecan yuac nochistlan xochipillan teulinchan xochitepec huaxtla sauzas guaxaban xiconaque cuxtaque
 						
 			#Central America
-			noh_peten namaan yax_mutal pachan wak_kabnal
-			ceibal ixtutz pusilha campin tzoite paliac
-			tzunuun altun_ha lamanai xunantunich uxwitza
+			pusilha campin tzoite paliac
+			tzunuun altun_ha lamanai xunantunich
 			acasaguastlan chiquimula cuauhtemallan guazacapan itzalku
 			
 			xelahuh kakol_kiej itzcuintlan atitlan_guatemala
 			
-			jolom_konob zapaluta tzunun_kaab otzoya chinabajul pismachi
+			zapaluta tzunun_kaab otzoya chinabajul pismachi
 			
-			chama seacal kajyub nito toquegua
+			kajyub nito toquegua
 			
 			talanga tecohtzincalpan comayagua maniani
 			tencoa ocotepec opoa cururu shalatenan
@@ -3274,6 +3753,7 @@ countries = {
 			lafkenmapu lelbunmapu wenteche inapiremapu pebuenmapu
 			pikunwijimapu caurakawin ancud quiquilhue quellon piren
 			juan_fernandez_islands
+			chunsua suamox boiaca duitama
 		}
 		
 		own_control_conquered = {
@@ -4284,7 +4764,7 @@ countries = {
 			dhrangadhra limbdi ranpur
 			sihor palitana lathi
 			nagnes dwarka bhanvad gondal morvi
-			chhaya junagarh somnath diu amreli
+			chhaya junagarh somnath amreli
 			lakhpat kapilkot lakhiyarvira kantha
 
 			rander broach baroda nandod
@@ -4303,24 +4783,86 @@ countries = {
 			kabul alishang chak gandamak jalalabad logar kohi_safi
 			ghazni gardez muqur nawah wazakhwa zarghun_shahr karor_2
 			
-			surat dang mayuragiri salagiri chandor udgir bir dahrur qandhar ahmednagar daulatabad jalna nander pathri
+			dang mayuragiri salagiri chandor udgir bir dahrur qandhar ahmednagar daulatabad jalna nander pathri
 			sirpur manikdrug mahur nirmal chennur adilabad asifabad yegaladapa balkonda sukhma mahagaon
 
 			dharampur nasik jawhar sinnar daman
-			janjira chaul kalyan bombay bassein
+			janjira kalyan 
 			singarh raigarh pune junnar chakan
 			sholhapur naldrug ausa parenda chambargonda
 		}
 
 		government = {
 			type = monarchy
-			ruler = random
+			ruler = mug_shihab_timurid
+			heir = mug_muhi_timurid
+
+			heir_selection = favorite_son_elective_succession
+
+			ruler_term = { character = mug_zahir_timurid start_date = 1526.4.20 end_date = 1530.12.26 }
+			ruler_term = { character = mug_nasir_timurid start_date = 1530.12.26 end_date = 1556.1.27 }
+			ruler_term = { character = mug_jalal_timurid start_date = 1556.1.27 end_date = 1605.10.27 }
+			ruler_term = { character = mug_nur_timurid start_date = 1605.10.27 end_date = 1627.10.28 }
+			ruler_term = { character = mug_shihab_timurid start_date = 1627.10.28 }
+
+			reforms = {
+				mug_mughal_diwan
+				indian_sultanate_reform
+				taluqdar_nobility
+			}
+
+			privilege = {
+				elaborate_court_ceremonies
+				nobility_council
+				noble_patronage_of_the_arts
+				rajput_society
+				noble_marriage_rights
+
+				dharmic_dhimmi_communities
+
+				dhimmi_in_administration
+				dhimmi_pact_of_umar
+				dhimmi_promote_tolerance
+				dhimmi_promote_dhimmi_hierarchy
+			}
+
+			parliament = {
+				parliament_type = council
+			}
+
+			centralization_vs_decentralization = 10
+			aristocracy_vs_plutocracy = -30
+			serfdom_vs_free_subjects = 0
+			traditionalist_vs_innovative = 10
+			spiritualist_vs_humanist = 10
+			mercantilism_vs_free_trade = -25
+			offensive_vs_defensive = 0
+			land_vs_naval = -20
+			quality_vs_quantity = -30
+			belligerent_vs_conciliatory = -40
+			capital_economy_vs_traditional_economy = 80
+			individualism_vs_communalism = -20
+			outward_vs_inward = -60
+
+
 		}
 		capital = delhi
 		country_rank = rank_empire
 		starting_technology_level = 4
 		include = "expl_india_muslim"
 		include = "expl_indian_trade_route"
+
+		accepted_cultures = {
+			punjabi
+			awadhi
+			braji
+			bhojpuri_culture
+		}
+		tolerated_cultures = {
+			bengali
+			sindhi
+			gujarati
+		}
 	}
 	
 ###Persia
@@ -4411,8 +4953,6 @@ countries = {
 			bost baghran deh_kundi gereshk kajran musa_qala tarinkot
 			farah anardara doroh lash_joveyn sarbisheh shahr_sabz
 			garmsir banader khanashin maiwand pangvay
-			ghazni gardez muqur nawah wazakhwa zarghun_shahr
-			kabul alishang chak gandamak jalalabad logar kohi_safi
 			kandahar arghestan chaman deychopan maruf qalat_ghilji
 			zabol chehl_dokhtaran dowzdab nehbandan shusef
 			zaranj bahramchah delaram khash_sistan qala_fateh qarnin rudbar_sistan hamun_gowd_zerah hamun_pushak hamun_saberi dasht_khash dasht_margoh dasht_tarakun

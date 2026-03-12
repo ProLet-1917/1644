@@ -1,0 +1,112 @@
+demand_to_cede_land = {
+    type = situation
+
+    potential = {
+        scope:actor = {
+            has_variable = winning_side
+        }
+        situation:peace_talk_in_westphalia = {
+            situation_is_active = yes
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            has_variable = now_in_talking
+            is_subject = no
+        }
+        NOT = {
+            has_game_rule = treaty_of_westphalia_historical
+        }
+    }
+
+    ai_tick = monthly
+    ai_tick_frequency = 3
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    cooldown = {
+        type = demand_to_cede_land
+        months = 3
+    }
+
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = "choose_situation"
+        column = { data = name }
+        visible = {
+            situation:peace_talk_in_westphalia = this
+            situation_is_active = yes
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = country
+        target_flag = target
+        name = "choose_country"
+        column = { data = name }
+        visible = {
+            has_variable = now_be_talking
+            is_neighbor_of = scope:actor
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = province
+        target_flag = target_province
+        name = "choose_province"
+        column = { data = name }
+        column = { data = population }
+        visible = {
+            this = {
+                owner = scope:target
+                NOT = {
+                    scope:target.capital.province = scope:target_province
+                }
+                "border_distance_to(scope:actor)" < 50
+            }
+        }
+    }
+
+    effect = {
+        scope:target = {
+            trigger_event_non_silently = thirty_years_war_events.101
+        }
+        scope:target_province = {
+            every_location_in_province = {
+                limit = {
+                    owner ?= scope:target
+                }
+                change_location_owner = scope:actor
+                change_control = 0.1
+            }
+        }
+        change_global_variable = {
+            name = losing_side_benifit
+            add = 1
+        }
+    }
+
+    ai_will_do = {
+        value = 100
+        if = {
+            limit = {
+                scope:actor = c:SWE
+                scope:target = c:NOR
+                OR = {
+                    scope:target_province = scope:target.province:jamtland_province
+                    scope:target_province = scope:target.province:dalarna_province
+                }
+            }
+            add = 30
+        }
+        add = {
+            desc = "DISTANCE_TO_TARGET"
+            value = "scope:target_province.distance_to(scope:actor.capital)"
+            multiply = -0.008
+        }
+    }
+
+}

@@ -1,0 +1,172 @@
+namespace = flavor_pru
+
+#0.3.0 Lions of the North
+#Prussia Unite
+flavor_pru.1 = {
+    type = country_event
+    title = flavor_pru.1.title
+    desc = flavor_pru.1.desc
+    historical_info = flavor_pru.1.historical_info
+
+    major = yes
+
+    dynamic_historical_event = {
+        tag = PRU
+        tag = BRA
+        from = 1650.1.1
+        to = 1715.1.1
+        monthly_chance = 10
+    }
+
+    fire_only_once = yes
+
+    trigger = {
+        OR = {
+            c:PRU = {
+                is_subject_or_below_of = c:BRA
+                owns = location:konigsberg
+                NOT = { owns = location:berlin }
+            }
+            c:BRA = {
+                is_subject_or_below_of = c:PRU
+                owns = location:berlin
+                NOT = { owns = location:konigsberg }
+            }
+        }
+        government_type = government_type:monarchy
+    }
+
+    option = { #Let us unite
+        name = flavor_pru.1.a
+        historical_option = yes
+        if = {
+            limit = {
+                c:PRU = {
+                    is_subject_or_below_of = c:BRA
+                }
+            }
+            annex_country_diplomatically = { country = c:PRU }
+            form_country = formable_country:PRU_f
+            add_accepted_culture = culture:prussian
+        }
+        if  = {
+            limit = {
+                c:BRA = {
+                    is_subject_or_below_of = c:PRU
+                }
+            }
+            annex_country_diplomatically = { country = c:BRA }
+            add_accepted_culture = culture:brandenburgish
+        }
+        add_prestige = prestige_mild_bonus
+    }
+
+    option = { #Maybe not
+        name = flavor_pru.1.b
+        add_prestige = prestige_mild_bonus
+    }
+}
+
+flavor_pru.2 = { #An Army owned Country
+    type = country_event
+    title = flavor_pru.2.title
+    desc = flavor_pru.2.desc
+
+    dynamic_historical_event = {
+        tag = PRU
+        tag = BRA
+        from = 1700.1.1
+        to = 1770.1.1
+        monthly_chance = 4
+    }
+
+    fire_only_once = yes
+
+    trigger = {
+        societal_value:quality_vs_quantity < -25
+    }
+
+    option = { #Let we embrace the reform
+        name = flavor_pru.2.a
+        ai_chance = 20
+        set_variable = {
+            name = pru_allow_an_army_owned_country
+        }
+        add_reform = government_reform:an_army_owned_country
+        add_army_tradition = army_tradition_radical_bonus
+    }
+
+    option = { #Maybe not
+        name = flavor_pru.2.b
+        ai_chance = 1
+    }
+}
+
+flavor_pru.3 = { #Inviting the oppressed Protestants to our country
+    type = country_event
+    title = flavor_pru.3.title
+    desc = flavor_pru.3.desc
+
+    dynamic_historical_event = {
+        tag = PRU
+        tag = BRA
+        from = 1650.1.1
+        to = 1800.1.1
+        monthly_chance = 10
+    }
+
+    trigger = {
+        region:north_german_region = {
+            any_location_in_region = {
+                religion_population = {
+                    religion = religion:lutheran
+                    value > 0
+                }
+                owner = {
+                    religion = religion:catholic
+                }
+            }
+        }
+    }
+
+    immediate = {
+        region:north_german_region = {
+            every_location_in_region = {
+                limit = {
+                    religion_population = {
+                        religion = religion:lutheran
+                        value > 0
+                    }
+                    owner = {
+                        religion = religion:catholic
+                    }
+                }
+                add_to_list = transfer_lutheran_pops
+            }
+        }
+    }
+
+    option = { #Invite them
+        name = flavor_pru.3.a
+        ai_chance = 10
+        ordered_in_list = {
+            list = transfer_lutheran_pops
+            order_by = population
+            max = 6
+            random_pop = {
+                limit = { religion = religion:lutheran }
+                transfer_pop = {
+                    target = root.capital
+                    operator = divide
+                    value = 25
+                }
+            }
+        }
+    }
+
+    option = { #Nah Nah
+        name = flavor_pru.3.b
+        ai_chance = 1
+    }
+}
+

@@ -1,0 +1,21 @@
+pdxmesh = {
+	name = "building_saint_mark_basilica_mesh"
+	file = "building_saint_mark_basilica.mesh"
+
+	scale = 0.275
+
+	meshsettings = {
+		name = "building_saint_mark_basilica"
+		index = 0
+		texture_diffuse = "building_saint_mark_basilica_diffuse.dds"
+		texture_normal = "building_saint_mark_basilica_normal.dds"
+		texture_specular = "building_saint_mark_basilica_properties.dds"
+		shader = "snap_to_terrain_alpha_to_coverage"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "building_saint_mark_basilica_entity"
+	pdxmesh = "building_saint_mark_basilica_mesh"
+}

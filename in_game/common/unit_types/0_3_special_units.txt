@@ -1,0 +1,52 @@
+levy_cossack_infantry = {
+    category = army_infantry
+    copy_from = a_age_3_discovery_infantry
+
+    initiative = 2
+    strength_damage_taken = -0.1
+    morale_damage_taken = -0.1
+
+    buildable = no
+    levy = yes
+
+    maintenance_demand = infantry_maintenance
+    construction_demand = infantry_construction
+
+    max_strength = 1.0
+
+    combat_power = 1.5
+
+    location_potential = {
+        dominant_culture = culture:cossack_culture
+    }
+
+    gfx_tags = { medium_tag }
+
+}
+
+levy_cossack_cavalry = {
+    category = army_cavalry
+    copy_from = a_age_3_discovery_cavalry
+
+    initiative = 5
+    strength_damage_taken = -0.1
+    morale_damage_done = 0.1
+    morale_damage_taken = -0.1
+
+    buildable = no
+    levy = yes
+
+    maintenance_demand = cavalry_maintenance
+    construction_demand = cavalry_construction
+
+    max_strength = 1.0
+
+    combat_power = 6
+
+    location_potential = {
+        dominant_culture = culture:cossack_culture
+    }
+
+    gfx_tags = { medium_tag }
+
+}

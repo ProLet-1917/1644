@@ -1,0 +1,76 @@
+on_location_occupied = {
+    on_actions = {
+        dynamic_territorial_occupation_check
+    }
+}
+
+on_siege_won = {
+    on_actions = {
+        dynamic_territorial_occupation_check
+    }
+}
+
+yearly_country_pulse = {
+    on_actions = {
+        dynamic_territorial_occupation_yearly_check
+    }
+}
+
+dynamic_territorial_occupation_check = {
+    trigger = {
+        scope:target = {
+            has_variable = enable_dynamic_territorial_occupation
+            is_province_capital = yes
+        }
+        NOT = { owns = scope:target }
+        scope:target.owner = {
+            modifier:enable_dynamic_territorial_occupation = yes
+            save_temporary_scope_as = original_owner
+        }
+    }
+    effect = {
+        if = {
+            limit = {
+                scope:target.controller = {
+                    modifier:enable_dynamic_territorial_occupation = yes
+                    save_temporary_scope_as = new_owner
+                }
+            }
+            scope:target.province = {
+                every_location_in_province = {
+                    change_location_owner = scope:new_owner
+                }
+            }
+        }
+    }
+}
+
+dynamic_territorial_occupation_yearly_check = {
+    trigger = {
+        any_location_in_the_world = {
+            has_variable = enable_dynamic_territorial_occupation
+            owner != controller
+            is_province_capital = yes
+            save_temporary_scope_as = scope_target
+        }
+    }
+    effect = {
+        if = {
+            limit = {
+                scope:target.owner = {
+                    modifier:enable_dynamic_territorial_occupation = yes
+                    save_temporary_scope_as = original_owner
+                }
+                scope:target.controller = {
+                    modifier:enable_dynamic_territorial_occupation = yes
+                    save_temporary_scope_as = new_owner
+                }
+            }
+            scope:target.province = {
+                every_location_in_province = {
+                    change_location_owner = scope:new_owner
+                }
+            }
+        }
+    }
+}

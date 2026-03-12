@@ -1,11 +1,89 @@
 ﻿
 
+research_advances_by_level = {
+	if = {
+		limit = { has_variable = start_tech_lv_1644 }
+
+
+		if = {
+			limit = { var:start_tech_lv_1644 >= 1 }
+			research_age_1_advances = yes
+		}
+
+
+		# 等级2：Age 2 科技（根据思潮分配）
+		if = {
+			limit = { var:start_tech_lv_1644 >= 2 }
+			# 所有地区都有的科技
+			research_age_2_banking_advances = yes
+			research_age_2_professional_armies_advances = yes
+			research_age_2_renaissance_development_advances = yes
+			# 只有欧洲有文艺复兴
+			if = {
+				limit = { exists = capital capital.continent = continent:europe }
+				research_age_2_renaissance_advances = yes
+			}
+		}
+
+
+		# 等级3：Age 3 科技（根据思潮分配）
+		if = {
+			limit = { var:start_tech_lv_1644 >= 3 }
+			# 所有地区都有的科技
+			research_age_3_printing_press_advances = yes
+			research_age_3_pike_and_shot_advances = yes
+			research_age_3_trade_through_owned_disc_advances = yes
+			# 只有欧洲（排除奥斯曼）有新大陆
+			if = {
+				limit = {
+					exists = capital
+					AND = {
+						capital.continent = continent:europe
+						NOT = { tag = TUR } # 奥斯曼不包含新大陆
+					}
+				}
+				research_age_3_new_world_advances = yes
+			}
+			# 中国地区单独给予攻城炮兵科技
+			if = {
+				limit = { zzz_1644_is_china_region_country = yes }
+				research_age_4_artillery_institution_advances = yes
+			}
+		}
+
+
+		# 等级4：Age 4 科技
+		if = {
+			limit = { var:start_tech_lv_1644 >= 4 }
+			research_age_4_advances = yes
+
+			# 瑞典特殊处理：研究军事革命科技
+			if = {
+				limit = { tag = SWE }
+				unlock_advance_effect = { type = military_revolution_advance }
+				research_advance = advance_type:military_revolution_advance
+			}
+		}
+	}
+}
 
 set_starting_tech_level_by_region = {
-	# 酋邦政府类型 = 0级
+	# 酋邦政府类型 = 1级
 	if = {
 		limit = {
 			government_type = government_type:tribe
+			NOT = {
+				country_type = pop
+			}
+		}
+		set_variable = { name = start_tech_lv_1644 value = 1 }
+		research_advances_by_level = no
+	}
+	#
+	else_if = {
+		limit = {
+			government_type = government_type:tribe
+			country_type = pop
 		}
 		set_variable = { name = start_tech_lv_1644 value = 0 }
 		research_advances_by_level = no
@@ -27,17 +105,18 @@ set_starting_tech_level_by_region = {
 				capital.region = region:east_china_region
 				capital.region = region:japan_region
 				capital.region = region:korea_region
+				capital.region = region:manchuria_region
 			}
 		}
 		set_variable = { name = start_tech_lv_1644 value = 3 }
 		research_advances_by_level = yes
 	}
-	# 其他中国地区 = 1级
+	# 其他中国地区 = 2级
 	else_if = {
 		limit = {
 			capital ?= { sub_continent = sub_continent:east_asia }
 		}
-		set_variable = { name = start_tech_lv_1644 value = 1 }
+		set_variable = { name = start_tech_lv_1644 value = 2 }
 		research_advances_by_level = yes
 	}
 	#  - 
@@ -48,12 +127,12 @@ set_starting_tech_level_by_region = {
 		set_variable = { name = start_tech_lv_1644 value = 4 }
 		research_advances_by_level = yes
 	}
-	# 游牧政府类型 = 1级
+	# 游牧政府类型 = 2级
 	else_if = {
 		limit = {
 			government_type = government_type:steppe_horde
 		}
-		set_variable = { name = start_tech_lv_1644 value = 1 }
+		set_variable = { name = start_tech_lv_1644 value = 2 }
 		research_advances_by_level = yes
 	}
 	# 高加索地区 = 2级
@@ -65,7 +144,7 @@ set_starting_tech_level_by_region = {
 		set_variable = { name = start_tech_lv_1644 value = 2 }
 		research_advances_by_level = yes
 	}
-	# 乌拉尔、大草原地区 = 1级
+	# 乌拉尔、大草原地区 = 2级
 	else_if = {
 		limit = {
 			exists = capital
@@ -74,7 +153,7 @@ set_starting_tech_level_by_region = {
 				capital.region = region:steppes_region
 			}
 		}
-		set_variable = { name = start_tech_lv_1644 value = 1 }
+		set_variable = { name = start_tech_lv_1644 value = 2 }
 		research_advances_by_level = yes
 	}
 	#  
@@ -121,6 +200,22 @@ set_starting_tech_level_by_region = {
 	else_if = {
 		limit = {
 			capital ?= { sub_continent = sub_continent:north_africa }
+		}
+		set_variable = { name = start_tech_lv_1644 value = 3 }
+		research_advances_by_level = yes
+	}
+	#
+	else_if = {
+		limit = {
+			OR = {
+				tag = NEN
+				tag = NFR
+				tag = WIC
+				tag = NSV
+				tag = NSP
+				tag = VOP
+				tag = VOB
+			}
 		}
 		set_variable = { name = start_tech_lv_1644 value = 3 }
 		research_advances_by_level = yes
@@ -2031,72 +2126,5 @@ research_age_4_advances = {
 	# assault_ability_reformation -> maurician_infantry
 	unlock_advance_effect = { type = maurician_infantry }
 	research_advance = advance_type:maurician_infantry
-}
-
-research_advances_by_level = {
-	if = {
-		limit = { has_variable = start_tech_lv_1644 }
-		
-
-		if = {
-			limit = { var:start_tech_lv_1644 >= 1 }
-			research_age_1_advances = yes
-		}
-		
-
-		# 等级2：Age 2 科技（根据思潮分配）
-		if = {
-			limit = { var:start_tech_lv_1644 >= 2 }
-			# 所有地区都有的科技
-			research_age_2_banking_advances = yes
-			research_age_2_professional_armies_advances = yes
-			research_age_2_renaissance_development_advances = yes
-			# 只有欧洲有文艺复兴
-			if = {
-				limit = { exists = capital capital.continent = continent:europe }
-				research_age_2_renaissance_advances = yes
-			}
-		}
-		
-
-		# 等级3：Age 3 科技（根据思潮分配）
-		if = {
-			limit = { var:start_tech_lv_1644 >= 3 }
-			# 所有地区都有的科技
-			research_age_3_printing_press_advances = yes
-			research_age_3_pike_and_shot_advances = yes
-			research_age_3_trade_through_owned_disc_advances = yes
-			# 只有欧洲（排除奥斯曼）有新大陆
-			if = {
-				limit = {
-					exists = capital
-						AND = {
-							capital.continent = continent:europe
-							NOT = { tag = TUR } # 奥斯曼不包含新大陆
-						}
-				}
-				research_age_3_new_world_advances = yes
-			}
-			# 中国地区单独给予攻城炮兵科技
-			if = {
-				limit = { zzz_1644_is_china_region_country = yes }
-				research_age_4_artillery_institution_advances = yes
-			}
-		}
-		
-
-		# 等级4：Age 4 科技
-		if = {
-			limit = { var:start_tech_lv_1644 >= 4 }
-			research_age_4_advances = yes
-			
-			# 瑞典特殊处理：研究军事革命科技
-			if = {
-				limit = { tag = SWE }
-				unlock_advance_effect = { type = military_revolution_advance }
-				research_advance = advance_type:military_revolution_advance
-			}
-		}
-	}
 }
 

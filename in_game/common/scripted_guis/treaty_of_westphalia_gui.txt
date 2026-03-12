@@ -1,0 +1,90 @@
+pay_war_reparations = {
+    effect = {
+        if = {
+            limit = {
+                has_global_variable = protestant_winning
+            }
+            c:HAB = {
+                add_gold = {
+                    value = c:HAB.monthly_income_trade_and_tax
+                    multiply = -3
+                }
+            }
+            c:SPA = {
+                add_gold = {
+                    value = c:SPA.monthly_income_trade_and_tax
+                    multiply = -1.5
+                }
+            }
+            c:SWE = {
+                add_gold = {
+                    value = c:HAB.monthly_income_trade_and_tax
+                    multiply = 1.5
+                }
+            }
+            c:FRA = {
+                add_gold = {
+                    value = c:HAB.monthly_income_trade_and_tax
+                    multiply = 1.5
+                }
+            }
+            c:NED = {
+                add_gold = {
+                    value = c:SPA.monthly_income_trade_and_tax
+                    multiply = 1.5
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                has_global_variable = catholic_winning
+            }
+            c:FRA = {
+                add_gold = {
+                    value = c:FRA.monthly_income_trade_and_tax
+                    multiply = -4
+                }
+            }
+            c:HAB = {
+                add_gold = {
+                    value = c:FRA.monthly_income_trade_and_tax
+                    multiply = 1.5
+                }
+            }
+            c:SPA = {
+                add_gold = {
+                    value = c:FRA.monthly_income_trade_and_tax
+                    multiply = 1.5
+                }
+            }
+            c:SAX = {
+                add_gold = {
+                    value = c:FRA.monthly_income_trade_and_tax
+                    multiply = 0.5
+                }
+            }
+            c:BAV = {
+                add_gold = {
+                    value = c:FRA.monthly_income_trade_and_tax
+                    multiply = 0.25
+                }
+            }
+            c:DAN = {
+                add_gold = {
+                    value = c:FRA.monthly_income_trade_and_tax
+                    multiply = 0.25
+                }
+            }
+        }
+        remove_global_variable = allow_war_reparations
+    }
+}
+
+split_pomelamia = {
+    effect = {
+        c:STE = {
+            trigger_event_non_silently = thirty_years_war_events.100
+        }
+        remove_global_variable = allow_split_pomelamia
+    }
+}
