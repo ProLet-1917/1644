@@ -1,8 +1,10 @@
 ﻿REPLACE:superiority_chinese_unification = {
-	type = take_capital
+	type = take_country
 	attacker = {
 		conquer_cost = 0.1
 		subjugate_cost = 0.1
+		call_in_overlord = yes
+		call_in_subjects = yes
 		antagonism = 3
 		allowed_locations = {
 			OR = {
@@ -17,6 +19,8 @@
 	defender = {
 		conquer_cost = 0.1
 		subjugate_cost = 0.1
+		call_in_overlord = yes
+		call_in_subjects = yes
 		antagonism = 3
 		allowed_locations = {
 			OR = {
