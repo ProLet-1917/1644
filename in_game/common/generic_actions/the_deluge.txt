@@ -119,7 +119,7 @@ ask_russia_join_the_war = {
                     has_positive_opinion = c:RUS
                 }
             }
-            add = c:ZAZ.opinion(c:RUS)
+            add = "c:ZAZ.opinion(c:RUS)"
         }
     }
 }
@@ -130,10 +130,8 @@ the_deluge_declare_independence = {
     show_message = no
     potential = {
         scope:actor = {
-            this = {
-                is_subject_of = c:PLC
-                subject_type = subject_type:vassal
-            }
+            is_subject_of = c:PLC
+            subject_type = subject_type:vassal
         }
     }
 
@@ -150,7 +148,7 @@ the_deluge_declare_independence = {
     automation_tick = never
     automation_tick_frequency = 12
     ai_tick = monthly
-    ai_tick_frequency = 3
+    ai_tick_frequency = 12
     price = 1
 
     select_trigger = {
@@ -476,12 +474,12 @@ organized_intervention_forces = {
     automation_tick = never
     automation_tick_frequency = 12
     ai_tick = monthly
-    ai_tick_frequency = 6
-    price = 1
+    ai_tick_frequency = 12
+    price = price:organized_intervention_forces_price
 
     cooldown = {
         type = organized_intervention_forces_key
-        years = 5
+        years = 8
     }
 
     select_trigger = {
@@ -520,9 +518,7 @@ organized_intervention_forces = {
         visible = {
             OR = {
                 this = c:PLC
-                this = {
-                    is_at_war_with = c:PLC
-                }
+                is_at_war_with = c:PLC
             }
         }
     }
@@ -549,15 +545,15 @@ organized_intervention_forces = {
             }
             change_variable = {
                 name = army_inf_scale
-                multiply = 0.05
+                multiply = 0.01
             }
             change_variable = {
                 name = army_cav_scale
-                multiply = 0.025
+                multiply = 0.005
             }
             change_variable = {
                 name = army_art_scale
-                multiply = 0.01
+                multiply = 0.002
             }
             capital = {
                 create_army_country_in_location = {
@@ -630,11 +626,19 @@ organized_intervention_forces = {
                         experience = 50
                     }
                 }
+                change_building_level_in_location = {
+                    building = building_type:adventurer_camp
+                    value = 1
+                    owner = scope:new_army_country
+                }
             }
             #after giving them the army we need to recalc the country active status
             force_recalc_country_active_status = scope:new_army_country
             #Give them enough money to sustain their army for some years
-            add_gold = { value = scope:actor.monthly_income_total }
+            add_gold = {
+                value = scope:actor.monthly_income_total
+                multiply = 2
+            }
             #Add Military Access
             create_relation = {
                 first = scope:new_army_country

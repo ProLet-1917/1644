@@ -1,0 +1,707 @@
+steel_factory = {
+    is_foreign = no
+    pop_type = laborers
+    max_levels = factory_max_level
+
+    employment_size = factory_employment
+
+    category = basic_industry_category
+    town = yes
+    city = yes
+
+
+    build_time = factory_build_time
+
+    unique_production_methods = {
+        steel_factory_maintenance = {
+            iron = 4.0
+            coal = 2.0
+            produced = steel
+            output = 6.5
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+
+        electricity_replace_others = {
+            iron = 4.0
+            electricity = 2.0
+            produced = steel
+            output = 8
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+
+        diesel_replace_others = {
+            iron = 4.0
+            diesel = 2.0
+            produced = steel
+            output = 8.5
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+    }
+
+    obsolete = steel_mill
+
+    construction_demand = factory_construction
+}
+
+ammunition_factory = {
+    is_foreign = no
+    pop_type = laborers
+    max_levels = factory_max_level
+
+    employment_size = factory_employment
+
+    category = basic_industry_category
+    town = yes
+    city = yes
+
+    build_time = factory_build_time
+
+    unique_production_methods = {
+        ammunition_factory_maintenance = {
+            copper = 1.0
+            steel = 1.0
+            lumber = 0.2
+            coal = 0.6
+            lead = 0.1
+            saltpeter = 0.2
+            produced = firearms
+            output = 8
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+
+    }
+
+    obsolete = firearms_manufactory
+
+    construction_demand = factory_construction
+}
+
+artillery_factory = {
+    is_foreign = no
+    pop_type = laborers
+    max_levels = factory_max_level
+
+    employment_size = factory_employment
+
+    category = basic_industry_category
+    town = yes
+    city = yes
+
+    build_time = factory_build_time
+
+    unique_production_methods = {
+        artillery_factory_maintenance = {
+            copper = 2.0
+            steel = 0.2
+            lumber = 0.5
+            coal = 0.2
+            lead = 0.1
+            saltpeter = 0.2
+            produced = cannons
+            output = 6
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+    }
+
+    obsolete = cannon_foundry
+
+    construction_demand = factory_construction
+}
+
+power_plant = {
+    is_foreign = no
+    pop_type = laborers
+    max_levels = factory_max_level
+
+    employment_size = factory_employment
+
+    category = basic_industry_category
+    town = yes
+    city = yes
+
+    build_time = factory_build_time
+
+    unique_production_methods = {
+        thermal_power_generation_maintenance = {
+            coal = 2.5
+            copper = 0.2
+            tools = 0.2
+            produced = electricity
+            output = 8
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+
+        oil_power_generation = {
+            oil = 1.5
+            copper = 0.2
+            tools = 0.2
+            produced = electricity
+            output = 8.5
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+
+        diesel_power_generation = {
+            diesel = 1.2
+            copper = 0.2
+            tools = 0.2
+            produced = electricity
+            output = 8
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+
+        lumber_power_generation = {
+            lumber = 4.0
+            copper = 0.2
+            tools = 0.2
+            produced = electricity
+            output = 4.5
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+    }
+
+    construction_demand = factory_construction
+}
+
+mechanization_factory = {
+    is_foreign = no
+    pop_type = laborers
+    max_levels = factory_max_level
+
+    employment_size = factory_employment
+
+    category = basic_industry_category
+    town = yes
+    city = yes
+
+    build_time = factory_build_time
+
+    unique_production_methods = {
+        mechanization_factory_maintenance = {
+            steel = 2.5
+            electricity = 1.0
+            lumber = 0.5
+            tools = 0.2
+            engine = 1.0
+            glass = 0.3
+            telephone = 0.2
+            rubber = 0.4
+            diesel = 0.2
+            produced = mobile_car
+            output = 1
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+    }
+
+    construction_demand = factory_construction
+}
+
+telephone_assembly_factory = {
+    is_foreign = no
+    pop_type = laborers
+    max_levels = factory_max_level
+
+    employment_size = factory_employment
+
+    category = basic_industry_category
+    town = yes
+    city = yes
+
+    build_time = factory_build_time
+
+    unique_production_methods = {
+        telephone_assembly_maintenance = {
+            lumber = 0.5
+            iron = 0.5
+            electricity = 1.0
+            tools = 0.2
+            copper = 0.5
+            lead = 0.1
+            produced = telephone
+            output = 4
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+    }
+
+    construction_demand = factory_construction
+}
+
+oil_refinery = {
+    is_foreign = no
+    pop_type = laborers
+    max_levels = factory_max_level
+
+    employment_size = factory_employment
+
+    category = basic_industry_category
+    town = yes
+    city = yes
+
+    build_time = factory_build_time
+
+    unique_production_methods = {
+        oil_refinery_coal_maintenance = {
+            coal = 1.0
+            tools = 0.2
+            oil = 2.0
+            produced = diesel
+            output = 2
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+
+        oil_refinery_electricity_maintenance = {
+            electricity = 1.0
+            tools = 0.2
+            oil = 2.0
+            produced = diesel
+            output = 2
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+    }
+
+    construction_demand = factory_construction
+}
+
+synthetic_oil_factory = {
+    is_foreign = no
+    pop_type = laborers
+    max_levels = factory_max_level
+
+    employment_size = factory_employment
+
+    category = basic_industry_category
+    town = yes
+    city = yes
+
+    build_time = factory_build_time
+
+    unique_production_methods = {
+        synthetic_oil_by_coal = {
+            coal = 2.0
+            tools = 0.2
+            produced = diesel
+            output = 1.2
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+
+        synthetic_oil_by_lumber = {
+            lumber = 4.0
+            tools = 0.2
+            produced = diesel
+            output = 0.8
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+    }
+
+    construction_demand = factory_construction
+}
+
+engine_factory = {
+    is_foreign = no
+    pop_type = laborers
+    max_levels = factory_max_level
+
+    employment_size = factory_employment
+
+    category = basic_industry_category
+    town = yes
+    city = yes
+
+    build_time = factory_build_time
+
+    unique_production_methods = {
+        steam_engine_maintenance = {
+            coal = 1.0
+            steel = 2.5
+            tools = 0.2
+            copper = 0.1
+            produced = engine
+            output = 1.2
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+
+        improved_steam_engine_maintenance = {
+            coal = 1.0
+            steel = 2.5
+            tools = 0.2
+            copper = 0.1
+            produced = engine
+            output = 1.5
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+
+        oil_engine_maintenance = {
+            oil = 0.8
+            diesel = 0.2
+            steel = 2.0
+            tools = 0.3
+            copper = 0.1
+            produced = engine
+            output = 1.8
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+
+        electricity_engine_maintenance = {
+            electricity = 1.0
+            steel = 2.0
+            tools = 0.3
+            copper = 0.1
+            produced = engine
+            output = 1.0
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+    }
+
+    construction_demand = factory_construction
+}
+
+paper_factory = {
+    is_foreign = no
+    pop_type = laborers
+    max_levels = factory_max_level
+
+    employment_size = factory_employment
+
+    category = basic_industry_category
+    town = yes
+    city = yes
+
+    build_time = factory_build_time
+
+    unique_production_methods = {
+        paper_factory_maintenance = {
+            lumber = 3.0
+            electricity = 0.5
+            produced = paper
+            output = 6
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+    }
+
+    obsolete = paper_mill
+
+    construction_demand = factory_construction
+}
+
+tools_factory = {
+    is_foreign = no
+    pop_type = laborers
+    max_levels = factory_max_level
+
+    employment_size = factory_employment
+
+    category = basic_industry_category
+    town = yes
+    city = yes
+
+    build_time = factory_build_time
+
+    unique_production_methods = {
+        tools_factory_maintenance = {
+            electricity = 1.0
+            steel =  3.0
+            produced = tools
+            output = 6
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+
+        rubber_made_tools = {
+            electricity = 1.0
+            rubber = 0.5
+            steel =  3.0
+            produced = tools
+            output = 8
+
+            debug_max_profit = 1.25
+            category = factory_input
+        }
+    }
+
+    obsolete = iron_mill
+
+    construction_demand = factory_construction
+}
+
+cloth_factory = {
+    is_foreign = no
+    pop_type = laborers
+    max_levels = factory_max_level
+
+    employment_size = factory_employment
+
+    category = basic_industry_category
+    town = yes
+    city = yes
+
+    build_time = factory_build_time
+
+    unique_production_methods = {
+        cotton_factory_maintenance = {
+            electricity = 0.5
+            cotton = 2.0
+            dyes = 0.2
+            produced = cloth
+            output = 5
+
+            debug_max_profit = 1.0
+
+            category = factory_input
+        }
+
+        wool_factory_maintenance = {
+            electricity = 0.5
+            wool = 3.5
+            dyes = 0.2
+            produced = cloth
+            output = 4
+
+            debug_max_profit = 1.0
+
+            category = factory_input
+        }
+
+        fiber_crops_factory_maintenance = {
+            fiber_crops = 2.0
+            electricity = 0.5
+            dyes = 0.2
+            produced = cloth
+            output = 3.5
+            debug_max_profit = 1.0
+
+            category = factory_input
+        }
+
+        chemical_textile_factory_maintenance = {
+            oil = 0.4
+            electricity = 0.5
+            dyes = 0.2
+            produced = cloth
+            output = 3.5
+            debug_max_profit = 1.0
+
+            category = factory_input
+        }
+    }
+
+    obsolete = textile_mill
+
+    construction_demand = factory_construction
+}
+
+furniture_factory = {
+    is_foreign = no
+    pop_type = laborers
+    max_levels = factory_max_level
+
+    employment_size = factory_employment
+
+    category = basic_industry_category
+    town = yes
+    city = yes
+
+    build_time = factory_build_time
+
+    unique_production_methods = {
+        furniture_mill_maintenance = {
+            lumber = 3.5
+            dyes = 0.5
+            tools = 0.3
+            electricity = 0.5
+
+            produced = furniture
+            output = 6
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+
+        rubber_made_furniture = {
+            lumber = 3.5
+            dyes = 0.5
+            tools = 0.3
+            rubber = 0.5
+            electricity = 0.5
+
+            produced = furniture
+            output = 7.5
+
+            debug_max_profit = 1.0
+            category = factory_input
+        }
+    }
+
+    obsolete = furniture_mill
+
+    construction_demand = factory_construction
+}
+
+glass_factory = {
+    is_foreign = no
+    pop_type = laborers
+    max_levels = factory_max_level
+
+    employment_size = factory_employment
+
+    category = basic_industry_category
+    town = yes
+    city = yes
+
+    build_time = factory_build_time
+
+    unique_production_methods = {
+        glass_factory_maintenance = {
+            lumber = 0.2
+            sand = 3.0
+            stone = 0.1
+            tools = 0.5
+            electricity = 0.5
+            alum = 0.05
+
+            produced = glass
+            output = 5.5
+
+            debug_max_profit = 1.0
+
+            category = factory_input
+        }
+    }
+
+    obsolete = glass_mill
+
+    construction_demand = factory_construction
+}
+
+large_cinema_house = {
+    is_foreign = no
+    pop_type = burghers
+    max_levels = 1
+
+    category = cultural_category
+
+    employment_size = large_cultural_employment
+
+    town = yes
+    city = yes
+
+    expensive = yes
+
+    build_time = large_cultural_building_time
+
+    modifier = {
+        local_cultural_tradition = 0.5
+        local_cultural_influence = 0.5
+        local_unrest = -0.10
+    }
+
+    unique_production_methods = {
+        cinema_house_maintenance = {
+            cloth = 0.6
+            wine = 0.6
+            paper = 0.6
+            lacquerware = 0.2
+            fine_cloth = 0.1
+            electricity = 0.5
+
+            category = building_maintenance
+        }
+
+    }
+
+
+    construction_demand = large_cinema_construction
+}
+
+financial_center = {
+    is_foreign = no
+    max_levels = market_max_level
+    pop_type = burghers
+
+    category = trade_category
+
+    employment_size = trade_employment
+
+    town = yes
+    city = yes
+
+
+    build_time = financial_center_build_time
+
+
+    unique_production_methods = {
+        financial_center_maintenance = {
+            cloth = 0.2
+            jewelry = 0.1
+            paper = 0.2
+            salt = 0.1
+            beeswax = 0.05
+
+            category = building_maintenance
+        }
+
+        electricity_replace_beeswax = {
+            cloth = 0.2
+            jewelry = 0.1
+            paper = 0.2
+            salt = 0.1
+            electricity = 0.1
+
+            category = building_maintenance
+        }
+
+    }
+    construction_demand = town_building_construction
+
+    modifier = {
+        local_pop_assimilation_speed_modifier = 0.01
+        local_burghers_estate_power = 0.15
+
+        local_market_access = 0.02
+
+        local_merchant_power = 8
+        local_trades_per_burgher = 1.6
+        local_merchant_capacity = 8
+    }
+
+    obsolete = commerce_center
+}

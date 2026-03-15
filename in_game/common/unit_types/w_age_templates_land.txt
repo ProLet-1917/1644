@@ -1,0 +1,63 @@
+
+a_age_7_imperialism_infantry = {
+    category = army_infantry
+    buildable = no
+    max_strength = 4.0
+    combat_power = 4
+    age = "age_7_imperialism"
+
+}
+
+a_age_7_imperialism_cavalry = {
+    category = army_cavalry
+    buildable = no
+    max_strength = 1.5
+    combat_power = 5
+    impact = {
+        jungle = 0.10
+        wetlands = 0.10
+        mountains = 0.10
+    }
+    combat = {
+        jungle = -0.10
+        wetlands = -0.10
+        mountains = -0.10
+    }
+    age = "age_7_imperialism"
+}
+
+a_age_7_imperialism_armors = {
+    category = army_cavalry
+    buildable = no
+    max_strength = 1.0
+    combat_power = 10
+    impact = {
+        jungle = 0.15
+        wetlands = 0.20
+        mountains = 0.20
+    }
+    combat = {
+        jungle = -0.15
+        wetlands = -0.20
+        mountains = -0.20
+    }
+    age = "age_7_imperialism"
+}
+
+a_age_7_imperialism_artillery = {
+    category = army_artillery
+    buildable = no
+    max_strength = 1.5
+    combat_power = 12
+    bombard_efficiency = 0.5
+    artillery_barrage = 12
+    age = "age_7_imperialism"
+}
+
+a_age_7_imperialism_auxiliary = {
+    category = army_auxiliary
+    buildable = no
+    max_strength = 0.5
+    combat_power = 0.5
+    age = "age_7_imperialism"
+}

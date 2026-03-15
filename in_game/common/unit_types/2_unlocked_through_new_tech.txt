@@ -1,0 +1,109 @@
+
+a_skirmish_infantrys = {
+    category = army_infantry
+    copy_from = a_age_7_imperialism_infantry
+
+
+    strength_damage_done = -0.1
+    morale_damage_taken = 0.2
+
+    max_strength = 4.0
+    combat_power = 4
+
+    light = yes
+
+    #root = location. Checks location_potential first so don't need that scripting in
+    mercenaries_per_location = {
+        pop_type = peasants
+        multiply = 0.05
+    }
+
+    gfx_tags = { rifle_tag medium_tag }
+    color = unit_rifle_green
+    age = "age_7_imperialism"
+}
+
+a_trench_infantrys = {
+    category = army_infantry
+    copy_from = a_age_7_imperialism_infantry
+
+    #root = location. Checks location_potential first so don't need that scripting in
+    mercenaries_per_location = {
+        pop_type = laborers
+        multiply = 0.01
+    }
+
+    max_strength = 4.0
+    combat_power = 4
+
+    maintenance_demand =  modern_infantry_maintenance
+    construction_demand = modern_infantry_maintenance
+
+    gfx_tags = { musket_tag medium_tag }
+    age = "age_7_imperialism"
+}
+
+a_early_armors = {
+    category = army_cavalry
+    copy_from = a_age_7_imperialism_armors
+    gfx_tags = { heavy_tag }
+
+    movement_speed = 1
+    max_strength = 1.0
+    combat_power = 10
+    impact = {
+        jungle = 0.15
+        wetlands = 0.20
+        mountains = 0.20
+    }
+    combat = {
+        jungle = -0.15
+        wetlands = -0.20
+        mountains = -0.20
+    }
+    upgrades_to = a_modern_armors
+    maintenance_demand =  armors_maintenance
+    construction_demand = armors_construction
+    age = "age_7_imperialism"
+}
+
+a_modern_armors = {
+    category = army_cavalry
+    copy_from = a_age_7_imperialism_armors
+    gfx_tags = { heavy_tag }
+
+    combat_power = 12
+    combat_speed = 3
+    movement_speed = 2
+    max_strength = 1.0
+    impact = {
+        jungle = 0.15
+        wetlands = 0.20
+        mountains = 0.20
+    }
+    combat = {
+        jungle = -0.15
+        wetlands = -0.20
+        mountains = -0.20
+    }
+    maintenance_demand =  armors_maintenance
+    construction_demand = armors_construction
+    age = "age_7_imperialism"
+}
+
+a_siege_artillerys = {
+    category = army_artillery
+    copy_from = a_age_7_imperialism_artillery
+
+    #root = location. Checks location_potential first so don't need that scripting in
+    mercenaries_per_location = {
+        pop_type = burghers
+        multiply = 0.01
+    }
+
+    max_strength = 1.5
+    combat_power = 12
+    bombard_efficiency = 0.5
+    artillery_barrage = 12
+    age = "age_7_imperialism"
+}

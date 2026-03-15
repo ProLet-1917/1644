@@ -125,6 +125,27 @@ give_global_trade_institutions = {
 	}
 }
 
+give_global_trade_institutions_europe = {
+	every_owned_location = {
+		limit = {
+			OR = {
+				location_rank:town = yes
+				location_rank:city = yes
+				sub_continent:eastern_europe = yes
+			}
+		}
+		change_institution_progress = {
+			type = institution:global_trade
+			value = 100
+		}
+	}
+	capital = {
+		change_institution_progress = {
+			type = institution:global_trade
+			value = 100
+		}
+	}
+}
 # 给予军事革命思潮
 give_military_revolution_institution = {
 	every_owned_location = {
@@ -245,6 +266,23 @@ give_institutions_by_tech_level = {
 				}
 				give_discovery_institutions = yes
 				give_global_trade_institutions = yes
+			}
+			else_if = {
+				limit = {
+					tag = PLC
+					tag = RUS
+					tag = TUR
+					tag = PRU
+					tag = HUN
+					tag = TRA
+					tag = WAL
+					tag = MOL
+					tag = KUR
+					tag = LIV
+					tag = ING
+					tag = MOI
+				}
+				give_global_trade_institutions_europe = yes
 			}
 			else = {
 				# 其他地区（包括中国、奥斯曼等）不含新大陆

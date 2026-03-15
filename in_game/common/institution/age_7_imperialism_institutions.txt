@@ -13,17 +13,13 @@ power_revolution = {
             }
             AND = {
                 has_game_rule = institution_spawn_plausible
-                has_institution = institution:enlightenment
+                has_institution = institution:industrialization
                 OR = {
                     continent = continent:europe
                 }
-                has_building_with_at_least_one_level = university
-                is_capital = yes
-                average_location_literacy > 35
 
-                owner = {
-                    societal_value:centralization_vs_decentralization > 45
-                }
+                num_pop_type:burghers > 25
+                total_building_levels > 160
             }
         }
     }
@@ -70,21 +66,21 @@ ideology = {
             }
             AND = {
                 has_game_rule = institution_spawn_plausible
-                has_institution = institution:industrialization
+                has_institution = institution:enlightenment
 
                 OR = {
                     continent = continent:europe
                 }
 
-                num_pop_type:burghers > 25
-                total_building_levels > 160
+                has_building_with_at_least_one_level = university
+                is_capital = yes
+                average_location_literacy > 35
 
                 owner = {
-                    societal_value:capital_economy_vs_traditional_economy < -55
+                    societal_value:centralization_vs_decentralization > 45
                 }
             }
         }
-
     }
 
     promote_chance = {

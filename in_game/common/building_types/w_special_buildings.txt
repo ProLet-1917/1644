@@ -32,3 +32,44 @@ hofburg_palace = {
     }
     construction_demand = capital_building_construction
 }
+
+adventurer_camp = {
+    is_special = yes
+    is_foreign = yes
+    need_good_relation = yes
+    pop_type = soldiers
+
+    category = military_category
+
+    max_levels = 1
+    employment_size = adventurer_camp_employment
+
+    rural_settlement = no
+    town = yes
+    city = yes
+
+
+    country_potential = {
+        has_reform = government_reform:landless_adventurer_reform
+    }
+
+    build_time = adventurer_build_time
+
+    modifier = {
+        local_manpower = 20
+        scaled_gold_to_building_owner = 0.025
+    }
+
+    unique_production_methods = {
+        adventurer_camp_maintenance = {
+            tools = 0.1
+            weaponry = 0.2
+            firearms = 0.1
+            cloth = 0.1
+            beer = 0.1
+            category = building_maintenance
+        }
+    }
+
+    construction_demand = adventurer_construction
+}
