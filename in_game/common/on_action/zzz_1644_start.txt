@@ -368,6 +368,8 @@
 
         start_herd_check_effect = yes
 
+        monthly_corruption_check_effect = yes
+
         scripted_geography:china_geography = {
             every_location_in_scripted_geography = {
                 limit = {
@@ -377,6 +379,13 @@
                 set_variable = {
                     name = enable_dynamic_territorial_occupation
                 }
+            }
+        }
+
+        c:MNG = {
+            set_variable = {
+                name = corruption
+                value = 82.5
             }
         }
     }

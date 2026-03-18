@@ -78,7 +78,7 @@ claim_mandate_of_heaven = {
                 }
             }
             OR = {
-                location:changan = {
+                location:jingzhao = {
                     OR = {
                         owner = scope:actor
                         owner = {
@@ -1165,6 +1165,95 @@ connect_global_trade = {
         scope:actor = {
             add_country_modifier = {
                 modifier = connect_global_trade
+                years = -1
+            }
+        }
+    }
+
+
+    ai_will_do = {
+        value = 20
+    }
+}
+
+unified_united_province = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:unified_united_province_prices
+
+    cooldown = {
+        type = unified_united_province
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            this = c:NED
+            NOT = {
+                has_country_modifier = unified_united_province
+            }
+        }
+    }
+
+    allow = {
+        current_year >= 1645
+        situation:netherland_independent = {
+            situation_is_active = no
+        }
+        scope:actor = {
+            area:holland_area = {
+                NOT = {
+                    any_location_in_area = {
+                        percent > 0.8
+                        AND = {
+                            NOT = { owner = scope:actor }
+                            owner = {
+                                NOT = { is_subject_of = scope:actor }
+                            }
+                        }
+                    }
+                }
+            }
+            area:friesland_area = {
+                NOT = {
+                    any_location_in_area = {
+                        percent > 0.8
+                        AND = {
+                            NOT = { owner = scope:actor }
+                            owner = {
+                                NOT = { is_subject_of = scope:actor }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            every_subject = {
+                limit = {
+                    capital = {
+                        OR = {
+                            area = area:friesland_area
+                            area = area:holland_area
+                        }
+                    }
+                    is_ai = yes
+                }
+                overlord = {
+                    annex_country = { country = PREV }
+                }
+            }
+            add_country_modifier = {
+                modifier = unified_united_province
                 years = -1
             }
         }

@@ -56,10 +56,15 @@ adventurer_camp = {
     build_time = adventurer_build_time
 
     modifier = {
-        local_manpower = 20
-        scaled_gold_to_building_owner = 0.025
+        manpower_to_building_owner = 0.01
+        local_manpower = 0.001
+        scaled_gold_to_building_owner = 0.02
+        can_recruit_regiment_in_this_location = yes
     }
 
+    foreign_country_modifier = {
+
+    }
     unique_production_methods = {
         adventurer_camp_maintenance = {
             tools = 0.1

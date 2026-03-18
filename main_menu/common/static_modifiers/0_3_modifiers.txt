@@ -3,6 +3,8 @@ the_reforms_of_gustav_ii = {
         category = country
     }
 
+    corruption_monthly_income = -0.05
+
     global_levy_size_modifier = 0.15
     levy_combat_efficiency_modifier = 0.1
     global_levy_recruitment_speed_modifier = 0.25
@@ -105,11 +107,12 @@ the_corruption_in_sejm = {
     tax_income_efficiency = -0.05
     land_cost_on_distance_from_capital_speed_propagation = -0.10
     global_max_control = -0.05
-    global_nobles_estate_power = 0.16
-    global_peasants_estate_power = -0.16
+    global_nobles_estate_power = 0.15
+    global_peasants_estate_power = -0.15
     peasants_estate_target_satisfaction = -0.05
     global_levy_size_modifier = -0.05
     global_levy_recruitment_speed_modifier = -0.33
+    corruption_monthly_income = 0.10
 }
 
 the_fronde_protest = {
@@ -315,6 +318,17 @@ enabled_dynamic_territorial_occupation = {
     }
 
     location_enable_dynamic_territorial_occupation = yes
+}
+
+unified_united_province = {
+    game_data = {
+        category = country
+    }
+
+    global_trades_per_burgher = 0.05
+    trade_efficiency = 0.05
+    burghers_estate_target_satisfaction = 0.025
+    mercenary_maintenance_cost = -0.15
 }
 
 debug_forced_dynamic_territorial_occupation = {

@@ -1,0 +1,223 @@
+template corruption_regular {
+    tooltipwidget = {
+        using = corruption_tooltip
+    }
+    datacontext = "[Country]"
+    text = "CORRUPTION_TT"
+    default_format = "#E"
+}
+
+template corruption_tooltip {
+    ConceptTooltipType = {
+        resizeparent = no
+
+        blockoverride "tooltip_title" {
+
+            ConceptTooltipHeader = {
+                blockoverride "title_icon" {
+                    icon = {
+                        using = tooltip_title_icon_size
+                        texture = "gfx/interface/icons/modifier_types/_default.dds"
+                    }
+                }
+
+                blockoverride "title_text" {
+                    datacontext = "[Country]"
+                    text = "CORRUPTION_TT"
+                }
+            }
+
+            TooltipLockProgress = {}
+        }
+
+        blockoverride "tooltip_content" {
+            TooltipTextBlock = {
+                blockoverride "text" {
+                    text = "CORRUPTION_DEC_TT"
+                }
+            }
+        }
+    }
+}
+
+template corruption_economy_silder {
+    #corruption investment
+    adjustable_budget_card = {
+        layoutpolicy_horizontal = expanding
+        size = { -1 55 }
+        blockoverride "header_color" {
+            using = color_economy_texture
+        }
+
+        visible = "[GetPlayer.MakeScope.GetVariable('corruption').IsSet]"
+
+        blockoverride "top_widget" {
+            hbox = {
+                margin = { 5 0 }
+                spacing = 5
+
+                icon = {
+                    size = { 24 24 }
+                    texture = "gfx/interface/icons/modifier_types/_default.dds"
+                    texture_density = 2
+                }
+
+                text_single = {
+                    using = layoutpolicy_expanding
+                    autoresize = no
+                    align = left|nobaseline
+                    text = "EXPENSE_CORRUPTION"
+                }
+
+                text_single = {
+                    autoresize = yes
+                    align = right|nobaseline
+                    raw_text = "[Country.GetVariable('corruption_investment').GetValue]"
+                }
+
+                #tooltipwidget = {
+                #	using = StabilityExpenseSettingParentTooltip
+                #	blockoverride "content_datacontext" {
+                #		datacontext = "[Player.GetEconomy]"
+                #	}
+                #}
+            }
+        }
+
+        blockoverride "bottom_widget" {
+            hbox = {
+                margin = { 5 0 }
+                spacing = 5
+
+                widget = {
+                    using = layoutpolicy_expanding
+
+                    ranged_slider = {
+                        layoutpolicy_horizontal = expanding
+                        parentanchor = left|vcenter
+                        size = { 120 10 }
+
+                        direction = horizontal
+
+                        step = 0.01
+                        #wheelstep = 0.01
+
+                        min = 0
+                        max = 1
+
+                        value = "[Player.MakeScope.GetVariable('corruption_investment').GetValue]"
+                        onchangefinish = "[GetScriptedGui('corruption_investment_change').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+                        track = { EconomySlider_TrackRange = {} }
+                        track_range = { EconomySlider_TrackRange = {} }
+                        track_highlight = { EconomySlider_TrackHighlight = {} }
+
+                        slider = {
+                            #EconomySlider_Slider = {
+                            #    enabled = "[Player.MakeScope.GetVariable('corruption_investment').IsSet]"
+
+                            #    action_tooltip = {
+                            #        click_mode = single
+                            #        click_type = left
+                            #        click_modifier = default
+                            #        title = "DEC_NUMBER"
+                            #    }
+
+                            #    click_modifiers = {
+                            #        ondefault = "[GetScriptedGui('corruption_investment_dec').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                            #    }
+                            #}
+                            EconomySlider_Slider = {
+
+                            }
+                        }
+                        dec_button = {
+                            EconomySlider_DecButton = {
+                                enabled = "[Player.MakeScope.GetVariable('corruption_investment').IsSet]"
+
+                                action_tooltip = {
+                                    click_mode = single
+                                    click_type = left
+                                    click_modifier = default
+                                    title = "DEC_NUMBER"
+                                }
+
+                                click_modifiers = {
+                                    ondefault = "[GetScriptedGui('corruption_investment_dec').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                }
+                            }
+                        }
+                        inc_button = {
+                            EconomySlider_IncButton= {
+                                enabled = "[Player.MakeScope.GetVariable('corruption_investment').IsSet]"
+
+                                action_tooltip = {
+                                    click_mode = single
+                                    click_type = left
+                                    click_modifier = default
+                                    title = "DEC_NUMBER"
+                                }
+
+                                click_modifiers = {
+                                    ondefault = "[GetScriptedGui('corruption_investment_inc').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                }
+                            }
+                        }
+                    }
+                    #economy_slider = {
+                    #    parentanchor = left|vcenter
+                    #    size = { 120 10 }
+                    #    min = 0
+                    #    max = 1
+                    #    value = "[FixedPointToFloat(Country.GetVariable('corruption_investment').GetValue)]"
+                    #    onvaluechanged = "[Country.GetVariable('corruption_investment_change').SetValue]"
+                    #    onchangefinish = "[GetScriptedGui('corruption_investment_change').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                    #    enabled = "[Not(IsPlayerAIEnabled('finances'))]"
+                    #    blockoverride "economy_slider_dec_button_config" {
+                    #        enabled = "[GetPlayer.MakeScope.GetVariable('corruption').IsSet]"
+                    #    }
+                    #    blockoverride "economy_slider_inc_button_config" {
+                    #        enabled = "[GetPlayer.MakeScope.GetVariable('corruption').IsSet]"
+                    #    }
+                    #}
+                    #tooltipwidget = {
+                    #	using = StabilityExpenseSettingParentTooltip
+                    #	blockoverride "content_datacontext" {
+                    #		datacontext = "[Player.GetEconomy]"
+                    #	}
+                    #}
+                }
+
+                text_single = {
+                    autoresize = no
+                    align = center|nobaseline
+                    size = { 60 20 }
+                    raw_text = "[Country.GetVariable('corruption_investment').GetValue]"
+                    tooltipwidget = {
+                        ContextualTooltipType = {
+                            #blockoverride "title_text" {
+                            #	text = "MODIFIER_TYPE_NAME_stability_investment"
+                            #}
+                            blockoverride "title_icon" {
+                                icon = {
+                                    using = tooltip_title_icon_size
+                                    texture = "gfx/interface/icons/modifier_types/_default.dds"
+                                }
+                            }
+
+
+                            blockoverride "concept_link" {
+                                using = corruption_regular
+                            }
+                            #blockoverride "tooltip_content" {
+                            #	TooltipStringPairList = {
+                            #		textcontext = "[EconomyView.GetStabilityInvestmentTooltip]"
+                            #	}
+                            #}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

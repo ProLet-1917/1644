@@ -1,0 +1,41 @@
+monthly_corruption_check_effect = {
+    every_country = {
+        limit = {
+            modifier:allow_corruption = yes
+            NOT = { has_variable = corruption }
+        }
+        set_variable = {
+            name = corruption
+            value = 0
+        }
+        #set_variable = {
+        #    name = corruption_investment
+        #    value = 0
+        #}
+        #set_variable = {
+        #    name = corruption_investment_change
+        #    value = 0
+        #}
+    }
+    every_country = {
+        limit = {
+            has_variable = corruption
+        }
+        change_variable = {
+            name = corruption
+            add = {
+                value = modifier:corruption_monthly_income
+            }
+        }
+        clamp_variable = {
+            name = corruption
+            max = 100
+            min = 0
+        }
+        #clamp_variable = {
+        #    name = corruption_investment
+        #    max = 1
+        #    min = 0
+        #}
+    }
+}
