@@ -23,14 +23,14 @@ dynamic_territorial_occupation_check = {
             is_province_capital = yes
         }
         NOT = { owns = scope:target }
-        scope:target.owner = {
-            modifier:enable_dynamic_territorial_occupation = yes
-            save_temporary_scope_as = original_owner
-        }
     }
     effect = {
         if = {
             limit = {
+                scope:target.owner = {
+                    modifier:enable_dynamic_territorial_occupation = yes
+                    save_temporary_scope_as = original_owner
+                }
                 scope:target.controller = {
                     modifier:enable_dynamic_territorial_occupation = yes
                     save_temporary_scope_as = new_owner
@@ -38,6 +38,40 @@ dynamic_territorial_occupation_check = {
             }
             scope:target.province = {
                 every_location_in_province = {
+                    limit = {
+                        OR = {
+                            has_fort = no
+                            this.controller = scope:new_owner
+                        }
+                    }
+                    change_location_owner = scope:new_owner
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    scope:target.owner = {
+                        modifier:enable_forced_dynamic_territorial_occupation = yes
+                        save_temporary_scope_as = original_owner
+                    }
+                    scope:target.controller = {
+                        modifier:enable_forced_dynamic_territorial_occupation = yes
+                        save_temporary_scope_as = new_owner
+                    }
+                }
+            }
+            scope:target.controller = {
+                save_temporary_scope_as = new_owner
+            }
+            scope:target.province = {
+                every_location_in_province = {
+                    limit = {
+                        OR = {
+                            has_fort = no
+                            this.controller = scope:new_owner
+                        }
+                    }
                     change_location_owner = scope:new_owner
                 }
             }
@@ -68,6 +102,40 @@ dynamic_territorial_occupation_yearly_check = {
             }
             scope:target.province = {
                 every_location_in_province = {
+                    limit = {
+                        OR = {
+                            has_fort = no
+                            this.controller = scope:new_owner
+                        }
+                    }
+                    change_location_owner = scope:new_owner
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    scope:target.owner = {
+                        modifier:enable_forced_dynamic_territorial_occupation = yes
+                        save_temporary_scope_as = original_owner
+                    }
+                    scope:target.controller = {
+                        modifier:enable_forced_dynamic_territorial_occupation = yes
+                        save_temporary_scope_as = new_owner
+                    }
+                }
+            }
+            scope:target.controller = {
+                save_temporary_scope_as = new_owner
+            }
+            scope:target.province = {
+                every_location_in_province = {
+                    limit = {
+                        OR = {
+                            has_fort = no
+                            this.controller = scope:new_owner
+                        }
+                    }
                     change_location_owner = scope:new_owner
                 }
             }

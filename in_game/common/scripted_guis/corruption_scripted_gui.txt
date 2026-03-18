@@ -1,0 +1,40 @@
+corruption_investment_change = {
+    effect = {
+        change_variable = {
+            name = corruption_investment
+            add = var:corruption_investment_change
+        }
+        clamp_variable = {
+            name = corruption_investment
+            max = 1
+            min = 0
+        }
+    }
+}
+
+corruption_investment_dec = {
+    effect = {
+        change_variable = {
+            name = corruption_investment_change
+            subtract = var:corruption_investment_change
+        }
+        change_variable = {
+            name = corruption_investment_change
+            subtract = 0.01
+        }
+    }
+}
+
+corruption_investment_inc = {
+    effect = {
+        change_variable = {
+            name = corruption_investment_change
+            subtract = var:corruption_investment_change
+        }
+        change_variable = {
+            name = corruption_investment_change
+            add = 0.01
+        }
+    }
+}
+

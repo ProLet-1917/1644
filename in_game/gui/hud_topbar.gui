@@ -948,7 +948,118 @@ Types HUD_TopbarTypes
 							}
 						}
 
+						### STAT PLAYER - CORRUPTION
+						stat_player = {
+							name = "stat_corruption"
+							using = layoutpolicy_expanding
+							visible = "[GetPlayer.MakeScope.GetVariable('corruption').IsSet]"
 
+							tooltipmeta = {
+								texture = "gfx/interface/icons/modifier_types/_default.dds"
+							}
+
+							blockoverride "decreasing_value_gradient_visible" {
+								visible = no
+							}
+
+							blockoverride "stat_button" {
+
+								#action_tooltip = {
+								#	click_type = left
+								#	click_mode = single
+								#	title = "SHOW_HERDS_BUILDINGS"
+								#	on_action = "[OpenLateralViewWithFilter('production', 'herds_category')]"
+								#	on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
+								#}
+							}
+
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										datacontext = "[Country]"
+										text = "CORRUPTION_TOOLTIP_HEADER"
+									}
+
+									blockoverride "concept_link" {
+										using = corruption_regular
+									}
+
+									blockoverride "title_icon" {
+										icon = {
+											using = tooltip_title_icon_size
+											texture = "gfx/interface/icons/modifier_types/_default.dds"
+										}
+									}
+
+									blockoverride "tooltip_content" {
+
+										TooltipScrolledStringPairList = {
+											blockoverride "block_scrollarea" { maximumsize = { -1 300 } minimumsize = { -1 30 } }
+											block "content_datacontext" { }
+											blockoverride "block_title" {
+												text = "CORRUPTION_MODIFIER_DEC_TT"
+											}
+											textcontext = "[Localize(GetAutoModifier('corruption_modifier').GetDesc)]"
+										}
+
+                                        TooltipStringPairList = {
+											blockoverride "block_title" {
+												text = "CORRUPTION_CHANGE_TT"
+											}
+                                            textcontext = "[Country.GetDescriptionFor('corruption_monthly_income')]"
+                                        }
+									}
+								}
+							}
+
+							vbox = {
+								margin_left = 3
+								margin_right = 6
+
+								hbox = {
+									using = layoutpolicy_expanding
+									using = text_single_positive_negative
+
+									# ESTATE ICON
+									icon = {
+										size = { 24 24 }
+										texture = "gfx/interface/icons/modifier_types/_default.dds"
+									}
+
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										spacing = 2
+
+										text_single = {
+											maximumsize = { -1 18 }
+											autoresize = yes
+											align = left|nobaseline
+											using = Font_Size_Small
+											text = "[Country.MakeScope.GetVariable('corruption').GetValue|0]"
+										}
+
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											spacing = 2
+
+											text_single = {
+												maximumsize = { -1 12 }
+												autoresize = yes
+												align = left|nobaseline
+												using = Font_Size_Very_Small
+												text = "[Country.GetModifierValueNoFormat('corruption_monthly_income')]"
+											}
+
+											expand = { }
+										}
+
+										expand = { }
+									}
+								}
+
+								expand = { }
+							}
+						}
 
 						### STAT PLAYER - PRESTIGE
 						stat_player = {
@@ -1671,7 +1782,8 @@ Types HUD_TopbarTypes
 							tooltipwidget = {
 								ContextualTooltipType = {
 									blockoverride "title_text" {
-										text = "HERDS_TT"
+										datacontext = "[Country]"
+										text = "HERDS_TOOLTIP_HEADER"
 									}
 
 									blockoverride "concept_link" {

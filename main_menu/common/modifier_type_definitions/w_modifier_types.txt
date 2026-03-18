@@ -34,3 +34,33 @@ location_enable_dynamic_territorial_occupation = {
     }
     should_show_in_modifiers_tab = no
 }
+
+enable_forced_dynamic_territorial_occupation = {
+    boolean = yes
+    color = good
+    game_data = {
+        category = country
+    }
+}
+
+allow_corruption = {
+    boolean = yes
+    color = good
+    game_data = {
+        category = country
+    }
+}
+
+corruption_monthly_income = {
+    color = bad
+    game_data = {
+        category = all
+    }
+}
+
+corruption_investment = {
+    color = neutral
+    game_data = {
+        category = country
+    }
+}

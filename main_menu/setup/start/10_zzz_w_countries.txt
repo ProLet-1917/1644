@@ -8465,7 +8465,7 @@ countries = {
 			uskudar silli biga eregli
 			chios vize
 			ormenio
-    			balikesir balya edremit manyas mihalic susurluk
+			balikesir balya edremit manyas mihalic susurluk
 			ayvacik bandirma bayramic can canakkale gonen lapseki
 			dursunbey harmancik
 			manisa akhisar demirci gordes kula
@@ -8479,7 +8479,7 @@ countries = {
 			cankiri bayat cerkes kursunlu tosya
 			iskilip sabanozu ulus yenicepazari
 			safranbolu pyli foca
-			mesudiye kills bitlis hizan sirnak
+			mesudiye kills bitlis sirnak
 
 			farsala
 			elassona al_sinn
@@ -8598,27 +8598,26 @@ countries = {
 
 			benghazi ajdabiya al_bayda al_khuimat barca derna mechili msus qaminis suluntah tmimi
 			awjila el_agheila
-			cemisgezek kuzucan pertek hillah kufa al_udayb qadisiyyah   midyat
+			hillah kufa al_udayb qadisiyyah   midyat
 			dunaysir
 			araban hasakah makisin mardin tunanir  barqaid sinjar bara_iraq nusaybin ras_ayn al_qatif al_jubayl al_uqayr
 			ash_shuaybah qurain
 			nita_arabiaal_uyayna jannah sayhat
 
-			harput adakli keban palu
+			harput adakli keban
 			malazgirt hinis karakilise tekman tutak varto
 			ahlat bargiri ercis
 			diyarbekir ergani
 			erzurum tercan
 			cermik
 			mosul qayyarah tal_afar
-			egil sivrice akhaltsikhe ardahan
+			akhaltsikhe ardahan
 			hasankale ispir khupati rize
 			artanuji khikhani oltu parkhali savsat
 			ani kars kagizman tmogvi
 			al_sim Tikrit tharthar samarra khalis khanaqin mandali balad_ruz baqubah ukbara
-			ar_rabb van zakho bingol genc tortum panaskerti mus bitlits tatvan
-			hazro heni kulp sason
-			mayyafariqin savur hasankeyf kozluk siirt cizre eruh sirnk duhok balad akre amadiya Hakkari erbil rawanduz
+			ar_rabb bingol genc tortum panaskerti mus
+			mayyafariqin savur hasankeyf kozluk siirt akre erbil
 			altun_kupri chamchamal daquq kirkuk tuz_khurma ustra bukelon nevesinje veligosti tripol tripolitsa karytaina demetrias
 			far salad larissa karditsa trikala grevena siatista elassina tyrnavos stomio devol elbasan tirana stefani ladik larende   dinosijek
 			baja_hungary
@@ -8675,7 +8674,7 @@ countries = {
 			hali al_qunfudhah al_shuqayq  bariq dhi_ain muhayil rijal_almaa
 			jazan al_haqu al_khosuf farasan sabt_bani_bishr sabya abha abil samakh tabalah tanomah
 
-			azok tana veliky_beckerek modos pancevo kovin recas timisoara gura_galbenei taman mapa sukhumi hosap catak bahcesaray baskale hakkari semdinli
+			azok tana veliky_beckerek modos pancevo kovin recas timisoara gura_galbenei taman mapa sukhumi hakkari semdinli
 
 			#Libya
 			misratah bani_walid ras_lanuf sirte tarhuna tawurgha in_amenas
@@ -8687,6 +8686,8 @@ countries = {
      	}
 		include = "expl_eastern_europe"
 		include = "expl_muslim_mediterranean"
+        include = "expl_india_muslim"
+        include = "expl_indian_trade_route"
 		include = "turkish_beylik"
 
 		starting_technology_level = 3
@@ -11449,6 +11450,360 @@ countries = {
 		country_rank = rank_duchy
 		starting_technology_level = 4
 		dynasty = kladas_dynasty
+	}
+
+	#Kurdish
+	#Çemişgezek - CEM
+	CEM = {
+		own_control_core = {
+			cemisgezek kuzucan pertek
+		}
+
+		include = "expl_middle_east"
+		include = "muslim_tribe_no_coast"
+
+
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			armenian_culture
+		}
+
+		capital = cemisgezek
+		dynasty = malkishi_dynasty
+		religious_school = maturidi_school #Widespread among the Turks together with Hanafi
+	}
+
+	#Egil - EGL
+	EGL = {
+		own_control_core = {
+			sivrice egil palu
+		}
+
+		include = "expl_middle_east"
+		include = "muslim_tribe_no_coast"
+
+
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = egl_isa
+		}
+
+		tolerated_cultures = {
+			armenian_culture
+		}
+
+		capital = sivrice
+		religious_school = maturidi_school #Widespread among the Turks together with Hanafi
+	}
+
+	#Hazro - HZR
+	HZR = {
+		own_control_core = {
+			hazro heni kulp sason
+		}
+
+		include = "expl_middle_east"
+		include = "muslim_tribe_no_coast"
+
+
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			armenian_culture
+		}
+
+		capital = hazro
+		dynasty = zraqi_dynasty
+		religious_school = maturidi_school #Widespread among the Turks together with Hanafi
+	}
+
+	#Jolemark - JLM
+	JLM = {
+		own_control_core = {
+			van bahcesaray baskale catak hosap
+		}
+
+		include = "expl_middle_east"
+		include = "muslim_tribe_no_coast"
+
+
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+		}
+
+		tolerated_cultures = {
+			armenian_culture
+			syriac_culture
+		}
+
+		capital = van
+		dynasty = jolemark_dynasty
+		religious_school = maturidi_school #Widespread among the Turks together with Hanafi
+	}
+
+	#Bitlis - BIT
+	BIT = {
+		own_control_core = {
+			bitlis tatvan hizan
+		}
+
+		include = "expl_middle_east"
+		include = "muslim_tribe_no_coast"
+
+
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = bit_dia_al_din
+		}
+
+		tolerated_cultures = {
+			armenian_culture
+		}
+
+		capital = bitlis
+		religious_school = maturidi_school #Widespread among the Turks together with Hanafi
+	}
+
+	#Bohtan - BHT
+	BHT = {
+		own_control_core = {
+			cizre eruh sirnak
+		}
+
+		include = "expl_middle_east"
+		include = "kurdish_yazid_tribe_no_coast"
+
+
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = bht_izz_al_din
+
+		}
+
+		tolerated_cultures = {
+			armenian_culture
+		}
+
+		capital = cizre
+	}
+
+	#Dasni - DSN
+	DSN = {
+		own_control_core = {
+			duhok balad zakho
+		}
+
+		include = "expl_middle_east"
+		include = "kurdish_yazid_tribe_no_coast"
+
+
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = dsn_ala_al_din_kurk_ibn_ibrahim
+
+		}
+
+		tolerated_cultures = {
+			syriac_culture			
+		}
+
+		capital = duhok
+	}
+
+	#Hakkari - HKK
+	HKK = {
+		own_control_core = {
+			hakkari amadiya
+		}
+
+		include = "expl_middle_east"
+		include = "muslim_tribe_no_coast"
+
+
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = hkk_xars_al_din
+		}
+
+		tolerated_cultures = {
+			syriac_culture
+		}
+
+		capital = hakkari
+		religious_school = maturidi_school #Widespread among the Turks together with Hanafi
+	}
+
+	#Sohri - SOH
+	SOH = {
+		own_control_core = {
+			rawanduz
+		}
+
+		include = "expl_middle_east"
+		include = "muslim_tribe_no_coast"
+
+
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = soh_husam
+		}
+
+		tolerated_cultures = {
+			armenian_culture
+		}
+
+		capital = rawanduz
+		religious_school = maturidi_school #Widespread among the Turks together with Hanafi
+	}
+
+	#Zerzari - ZZR
+	ZZR = {
+		own_control_core = {
+			semdinli
+		}
+
+		include = "expl_middle_east"
+		include = "muslim_tribe_no_coast"
+
+
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = zzr_najm_al_din
+		}
+
+		tolerated_cultures = {
+			armenian_culture
+		}
+
+		capital = semdinli
+		religious_school = maturidi_school #Widespread among the Turks together with Hanafi
+	}
+
+	#Iran Control Kurdish
+	#Domboli - DML
+	DML = {
+		own_control_core = {
+			khoy salmas urmia 
+		}
+
+		include = "expl_middle_east"
+		include = "kurdish_yazid_tribe_no_coast"
+
+
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = dml_kalti
+
+		}
+
+		tolerated_cultures = {
+			armenian_culture
+		}
+
+		capital = khoy
+		dynasty = domboli_dynasty
+	}
+
+	#Sabuli - SLI
+	SLI = {
+		own_control_core = {
+			mahabad piranshahr osnavieh 
+		}
+
+		include = "expl_middle_east"
+		include = "muslim_tribe_no_coast"
+
+
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = sli_burek_ibn_izz_al_din_resu_ibn_mahmud
+
+			laws = {
+				sharia_law = hanafi_policy
+			}
+		}
+
+		capital = mahabad
+		religious_school = hanafi_school
+		government = { mysticism_vs_jurisprudence = -15 }
+		
+	}
+
+	#Hasbani - HBN
+	HBN = {
+		own_control_core = {
+			malekan miandoab sain bukan
+		}
+
+		include = "expl_middle_east"
+		include = "muslim_tribe_no_coast"
+
+
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = hbn_abdallah_ibn_shahab_al_din_zani
+
+			laws = {
+				sharia_law = hanafi_policy
+			}
+		}
+
+		tolerated_cultures = {
+			adhari_culture
+			azeri_culture
+		}
+
+		capital = ujan
+		religious_school = hanafi_school
+		government = { mysticism_vs_jurisprudence = -15 }
+		
+	}
+
+	#Ardalan - ARD
+	ARD = {
+		own_control_core = {
+			sanandaj hawraman marivan sulaymaniyah sahrazur mawet 
+		}
+
+		include = "expl_middle_east"
+		include = "muslim_tribe_no_coast"
+
+
+		government = {
+			type = tribe
+			heir_selection = tribal_oldest_male
+			ruler = random
+
+			laws = {
+				sharia_law = hanafi_policy
+			}
+		}
+
+		capital = sanandaj
+		religious_school = hanafi_school
+		government = { mysticism_vs_jurisprudence = -15 }
+		
 	}
 
 

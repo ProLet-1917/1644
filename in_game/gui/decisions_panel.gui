@@ -2,8 +2,7 @@
 #This is the main file for Decisions
 #Search "How to add new decision" to get the tutorial
 #---Might be useful---
-#visible = "[EqualTo_string(DiplomaticActionCategory.GetNameKey, 'CATEGORY_DECISIONS_ACTIONS')]"
-#left_click_and_hold_action = { action_name = "steppe_horde_to_monarchy" }
+
 #---------------------
 @generic_decisions_height = 35
 @generic_decisions_group_x_axis = 450
@@ -742,6 +741,39 @@ widget = {
 								ContextualTooltipType = {
 									blockoverride "title_text" {
 										text = "Expand_hofburg_palace"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							using = generic_decisions_icon_small
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "unified_united_province"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "unified_united_province" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "unified_united_province"
 									}
 									blockoverride "concept_link" {
 										using = decisions_regular

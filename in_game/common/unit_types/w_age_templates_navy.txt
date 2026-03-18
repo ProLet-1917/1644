@@ -1,0 +1,64 @@
+n_age_7_imperialism_light_ship = {
+    category = navy_galley
+    use_ship_names = yes
+    buildable = no
+    maritime_presence = ship_very_large_maritime
+    movement_speed = 20
+    combat_speed = 20
+    crew_size = 0.250
+    hull_size = 100
+    cannons = 50
+    blockade_capacity = 0.8
+    maintenance_demand =  light_ship_maintenance
+    construction_demand = light_ship_construction
+    age = "age_7_imperialism"
+}
+
+n_age_7_imperialism_cruiser_ship = {
+    category = navy_light_ship
+    use_ship_names = yes
+    buildable = no
+    maritime_presence = ship_very_large_maritime
+    movement_speed = 16
+    combat_speed = 16
+    crew_size = 0.5
+    hull_size = 225
+    cannons = 200
+    blockade_capacity = 1.5
+    maintenance_demand =  cruiser_ship_maintenance
+    construction_demand = cruiser_ship_construction
+    age = "age_7_imperialism"
+}
+
+n_age_7_imperialism_heavy_ship = {
+    category = navy_heavy_ship
+    use_ship_names = yes
+    buildable = no
+    maritime_presence = ship_very_large_maritime
+    movement_speed = 12
+    combat_speed = 12
+    crew_size = 1.250
+    hull_size = 500
+    cannons = 360
+    blockade_capacity = 2.5
+    maintenance_demand =  heavy_ship_maintenance
+    construction_demand = heavy_ship_construction
+    age = "age_7_imperialism"
+}
+
+n_age_7_imperialism_transport_ship = {
+    category = navy_transport
+    use_ship_names = yes
+    buildable = no
+    maritime_presence = ship_small_mid_maritime
+    movement_speed = 12
+    combat_speed = 12
+    crew_size = 0.15
+    hull_size = 60
+    cannons = 10
+    transport_capacity = 4.0
+    food_storage_per_strength = 60
+    maintenance_demand =  transport_7_maintenance
+    construction_demand = transport_7_construction
+    age = "age_7_imperialism"
+}

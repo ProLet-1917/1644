@@ -133,7 +133,7 @@ the_deluge.7 = { #Message from warsaw - Prussia for army
         c:PRU = {
             if = {
                 limit = {
-                    this.war_with_country(c:ZAZ) = yes
+                    "this.war_with_country(c:ZAZ)" = yes
                 }
                 leave_war = {
                     actor = c:PLC
@@ -152,7 +152,7 @@ the_deluge.7 = { #Message from warsaw - Prussia for army
         }
         location:berlin = {
             while = {
-                count = 4
+                count = 2
                 create_sub_unit_with_owner = {
                     type = a_pikemen
                     owner = c:PLC
