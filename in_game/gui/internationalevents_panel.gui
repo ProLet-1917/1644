@@ -1,0 +1,169 @@
+#=======Made by Lvtoumao========
+#International Events
+
+#---------------------
+@Interevent_Title_Height = 40
+template internationalevents_tooltip {
+    tooltipwidget = {
+        ConceptTooltipType = {
+            resizeparent = no
+
+            blockoverride "tooltip_title" {
+
+                ConceptTooltipHeader = {
+                    blockoverride "title_icon" {
+                        icon = {
+                            using = tooltip_title_icon_size
+                            texture = "gfx/interface/icons/modifier_types/_default.dds"
+                        }
+                    }
+
+                    blockoverride "title_text" {
+                        text = "INTERNATIONAL_EVENTS_TT"
+                    }
+                }
+
+                TooltipLockProgress = { }
+            }
+
+            blockoverride "concept_link" {
+                text = "[international_event|e]"
+            }
+        }
+    }
+}
+
+types Internationalevents_Panel {
+    type Interevent_Title = widget {
+        position = { 0 0 }
+        size = { 100% 40 }
+        parentanchor = hleft|top
+
+        using = color_default_brown_texture
+
+        hbox = {
+            header_title = {
+                block "title_text" {
+                    text = "INTERNATIONAL_EVENTS_TT"
+                }
+
+                using = internationalevents_tooltip
+            }
+
+            block "title_background" {
+                background = {
+                    using = color_dark_blue_texture
+                    alpha = 0.9
+                }
+
+                background = {
+                    texture = "[GetGraphicalCultureTexture('top_header_bg')]"
+                    texture_density = 2
+                    spriteType = corneredtiled
+                    spriteborder = { 0 0 }
+                    alpha = 0.6
+
+                    modify_texture = {
+                        block "window_header_alt_color_texture" {
+                            using = color_dark_blue_texture
+                        }
+                        blend_mode = overlay
+                    }
+
+                    modify_texture = {
+                        name = "mask"
+                        texture = "gfx/interface/component_masks/mask_fade_horizontal_middle.dds"
+                        blend_mode = alphamultiply
+                        alpha = 0.8
+                    }
+                    modify_texture = {
+                        name = "mask"
+                        texture = "gfx/interface/component_masks/mask_fadehorizontal_middle_thick.dds"
+                        blend_mode = alphamultiply
+                    }
+                }
+            }
+
+            block "close_button" {
+                widget = {
+                    #parentanchor = right|vcenter
+                    size = { 40 @Interevent_Title_Height }
+                    position = { 0 0 }
+
+                    ui_direction_button_holder_right = { }
+
+                    button_close_alt = {
+                        parentanchor = right|vcenter
+                        using = bg_button_light_alt_round
+
+                        blockoverride "close_onclick" {
+                            onclick = "[GetVariableSystem.Toggle('open_international_events_panel')]"
+                            down = "[GetVariableSystem.Toggle('open_international_events_panel')]"
+                        }
+
+                        blockoverride "button_texture" {
+                            texture = "gfx/interface/buttons/flats/close_button_alt.dds"
+                            texture_density = 2
+                        }
+
+                        blockoverride "glow_visible" {
+                            visible = "[IsOutlinerShown]"
+                            alpha = 0.4
+                        }
+
+                    }
+                }
+            }
+
+            expand = { }
+        }
+    }
+
+    type Interevent_Mainpanel = widget {
+        position = { 0 @Interevent_Title_Height }
+        size = { 100% @[500 - Interevent_Title_Height] }
+        parentanchor = hleft|top
+
+        block "panel_backgroud" {
+            using = bg_lateralview
+            using = bg_main_inner_image_alt
+        }
+    }
+}
+
+widget = {
+    name = "internationalevents_panel"
+    datacontext = "[GetPlayer]"
+    visible = "[GetVariableSystem.Exists('decisions_panel')]"
+    #visible = "[AND(GetGlobalVariable('the_olympic_games_has_been_reopened').IsSet, NOT(GetVariableSystem.Exists('decisions_panel')))]"
+    layer = top
+    layer = lateralview
+    size = { 100% 100% }
+    alwaystransparent = yes
+    using = layoutpolicy_expanding
+
+
+
+    window = {
+        using = layoutpolicy_expanding
+        movable = yes
+        allow_outside = no
+        name = "international_events_panel_window"
+        datacontext = "[GetPlayer]"
+        datacontext = "[GetVariableSystem]"
+        layoutpolicy_horizontal = expanding
+        layoutpolicy_vertical = expanding
+        visible = "[GetVariableSystem.Exists('open_international_events_panel')]"
+        size = { 800 500 }
+
+        Interevent_Title = {
+            blockoverride "title_text" {
+                text = "TEST"
+            }
+        }
+
+        Interevent_Mainpanel = { }
+
+        expand = { }
+    }
+}

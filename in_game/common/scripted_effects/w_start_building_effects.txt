@@ -1,0 +1,147 @@
+w_start_building_create_effect = {
+    continent:europe = {
+        every_location_in_continent = {
+            limit = {
+                population >= 30
+                OR = {
+                    is_adjacent_to_lake = yes
+                    topography = wetlands
+                }
+                NOT = {
+                    raw_material = goods:iron
+                }
+            }
+            change_building_level_in_location = {
+                building = building_type:bog_iron_smelter
+                value = 3
+            }
+        }
+        every_location_in_continent = {
+            limit = {
+                population >= 30
+                OR = {
+                    vegetation = woods
+                    vegetation = forest
+                    vegetation = farmland
+                    vegetation = jungle
+                }
+                NOT = {
+                    raw_material = goods:lumber
+                }
+            }
+            change_building_level_in_location = {
+                building = building_type:lumber_mill
+                value = 2
+            }
+        }
+        every_location_in_continent = {
+            limit = {
+                population >= 30
+                OR = {
+                    vegetation = sparse
+                    vegetation = farmland
+                    vegetation = grasslands
+                }
+            }
+            change_building_level_in_location = {
+                building = building_type:sheep_farms
+                value = 2
+            }
+        }
+        every_location_in_continent = {
+            limit = {
+                population >= 30
+                NOT = {
+                    raw_material = goods:sand
+                }
+            }
+            change_building_level_in_location = {
+                building = building_type:sand_pit
+                value = 1
+            }
+        }
+        every_location_in_continent = {
+            limit = {
+                population < 30
+                population >= 15
+                OR = {
+                    is_adjacent_to_lake = yes
+                    topography = wetlands
+                }
+                NOT = {
+                    raw_material = goods:iron
+                }
+            }
+            change_building_level_in_location = {
+                building = building_type:bog_iron_smelter
+                value = 2
+            }
+        }
+        every_location_in_continent = {
+            limit = {
+                population < 30
+                population >= 15
+                OR = {
+                    vegetation = woods
+                    vegetation = forest
+                    vegetation = farmland
+                    vegetation = jungle
+                }
+                NOT = {
+                    raw_material = goods:lumber
+                }
+            }
+            change_building_level_in_location = {
+                building = building_type:lumber_mill
+                value = 1
+            }
+        }
+        every_location_in_continent = {
+            limit = {
+                population < 30
+                population >= 15
+                OR = {
+                    vegetation = sparse
+                    vegetation = farmland
+                    vegetation = grasslands
+                }
+            }
+            change_building_level_in_location = {
+                building = building_type:sheep_farms
+                value = 1
+            }
+        }
+        every_location_in_continent = {
+            limit = {
+                population < 15
+                population >= 8
+                OR = {
+                    is_adjacent_to_lake = yes
+                    topography = wetlands
+                }
+                NOT = {
+                    raw_material = goods:iron
+                }
+            }
+            change_building_level_in_location = {
+                building = building_type:bog_iron_smelter
+                value = 1
+            }
+        }
+        every_location_in_continent = {
+            limit = {
+                population < 15
+                population >= 8
+                OR = {
+                    vegetation = sparse
+                    vegetation = farmland
+                    vegetation = grasslands
+                }
+            }
+            change_building_level_in_location = {
+                building = building_type:sheep_farms
+                value = 1
+            }
+        }
+    }
+}

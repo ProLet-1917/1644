@@ -1265,3 +1265,65 @@ unified_united_province = {
     }
 }
 
+reform_the_byzantine_empire = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:reform_the_byzantine_empire_prices
+
+    cooldown = {
+        type = reform_the_byzantine_empire
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            has_or_had_tag = MOI
+            NOT = { tag = BYZ }
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            location:constantinople = {
+                OR = {
+                    owner = scope:actor
+                    owner = {
+                        is_subject_of = scope:actor
+                    }
+                }
+            }
+            location:thessaloniki = {
+                OR = {
+                    owner = scope:actor
+                    owner = {
+                        is_subject_of = scope:actor
+                    }
+                }
+            }
+            num_locations_owned_or_owned_by_subjects >= 50
+            custom_tooltip = {
+                text = "we_already_choose_roman_path"
+                has_variable = choose_roman_path
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            form_country = formable_country:BYZ_f
+            set_country_rank = country_rank:rank_empire
+        }
+    }
+
+
+    ai_will_do = {
+        value = 20
+    }
+}
+

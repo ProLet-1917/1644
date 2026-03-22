@@ -1,0 +1,92 @@
+moi_military_society_advance = {
+    age = age_3_discovery
+
+    potential = {
+        has_or_had_tag = MOI
+    }
+
+    military_tactics = 0.1
+    levy_combat_efficiency_modifier = 0.05
+
+    requires = pike_square
+}
+
+moi_universal_society_advance = {
+    age = age_3_discovery
+
+    potential = {
+        has_or_had_tag = MOI
+    }
+
+    add_accepted_culture_cost_modifier = -0.1
+    add_tolerated_culture_cost_modifier = -0.1
+    monthly_towards_universality = societal_value_minor_monthly_move
+
+    requires = print_culture
+}
+
+klephts_advance = {
+    age = age_4_reformation
+
+    potential = {
+        has_or_had_tag = MOI
+    }
+
+    unlock_unit = a_klephts
+
+    requires = flintlock_gun
+}
+
+country_among_the_mountains_advance = {
+    age = age_4_reformation
+
+    potential = {
+        has_or_had_tag = MOI
+    }
+
+    mountains_proximity_impact = -0.20
+    hills_proximity_impact = -0.33
+    plateau_proximity_impact = -0.33
+
+    requires = gov_reform_reformation_a
+}
+
+moi_naval_tradition_advance = {
+    age = age_4_reformation
+
+    potential = {
+        has_or_had_tag = MOI
+    }
+
+    naval_damage_done = 0.1
+    naval_morale_modifier = 0.1
+
+    requires = recruitment_improvements_reformation
+}
+
+moi_oblique_order = {
+    age = age_5_absolutism
+
+    potential = {
+        has_or_had_tag = MOI
+    }
+
+    army_infantry_power = 0.1
+    military_tactics = 0.1
+
+    requires = army_doctrine_law_advance
+}
+
+moi_spartan_style_training_advance = {
+    age = age_6_revolutions
+
+    potential = {
+        has_or_had_tag = MOI
+    }
+
+    discipline = 0.1
+    land_morale_modifier = 0.1
+
+    requires = corps_organisation
+}
+

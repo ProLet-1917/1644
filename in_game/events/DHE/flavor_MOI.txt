@@ -1,0 +1,790 @@
+namespace = flavor_moi
+
+flavor_moi.1 = {
+    type = country_event
+    title = flavor_moi.1.title
+    desc = flavor_moi.1.desc
+    fire_only_once = yes
+    historical_info = flavor_moi.1.historical_info
+
+    dynamic_historical_event = {
+        tag = MOI
+        from = 1644.1.1
+        to = 1684.1.1
+        monthly_chance = 20
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        name = flavor_moi.1.a
+        add_country_modifier = {
+            modifier = resistance_in_the_mountains
+            years = 50
+        }
+    }
+}
+
+flavor_moi.2 = {
+    type = country_event
+    title = flavor_moi.2.title
+    desc = flavor_moi.2.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = MOI
+        from = 1644.1.1
+        to = 1744.1.1
+        monthly_chance = 10
+    }
+
+    trigger = {
+        location:kythira = {
+            owner = c:VEN
+        }
+        OR = {
+            c:VEN = {
+                is_allied_with = {
+                    target = this
+                }
+            }
+            c:VEN = {
+                has_positive_opinion = this
+            }
+            c:VEN = {
+                is_at_war_with = c:TUR
+            }
+        }
+    }
+
+    option = {
+        name = flavor_moi.2.a
+        c:VEN = {
+            trigger_event_non_silently = flavor_moi.3
+        }
+    }
+
+    option = {
+        name = flavor_moi.2.b
+    }
+}
+
+flavor_moi.3 = {
+    type = country_event
+    title = flavor_moi.3.title
+    desc = flavor_moi.3.desc
+
+    option = {
+        name = flavor_moi.3.a
+        add_gold = 50
+        location:kythira = {
+            change_location_owner = c:MOI
+            change_control = 75
+        }
+        c:MOI = {
+            trigger_event_non_silently = flavor_moi.4
+        }
+        ai_chance = {
+            factor = 1
+            modifier = {
+                factor = 10
+                trigger = {
+                    c:MOI = {
+                        is_ai = no
+                    }
+                }
+            }
+        }
+    }
+
+    option = {
+        name = flavor_moi.3.b
+        ai_chance = {
+            factor = 1
+        }
+        c:MOI = {
+            trigger_event_non_silently = flavor_moi.5
+        }
+    }
+}
+
+flavor_moi.4 = {
+    type = country_event
+    title = flavor_moi.4.title
+    desc = flavor_moi.4.desc
+
+    option = {
+        name = flavor_moi.4.a
+        add_gold = -50
+    }
+}
+
+flavor_moi.5 = {
+    type = country_event
+    title = flavor_moi.5.title
+    desc = flavor_moi.5.desc
+
+    option = {
+        name = flavor_moi.5.a
+    }
+}
+
+flavor_moi.6 = {
+    type = country_event
+    title = flavor_moi.6.title
+    desc = flavor_moi.6.desc
+    fire_only_once = yes
+    historical_info = flavor_moi.6.historical_info
+
+    dynamic_historical_event = {
+        tag = MOI
+        from = 1655.1.1
+        to = 1918.1.1
+        monthly_chance = 2
+    }
+
+    trigger = {
+        c:MOI = {
+            total_sub_unit_type_count:a_klephts >= 1
+        }
+    }
+
+    option = {
+        name = flavor_moi.6.a
+        capital = {
+            create_art = {
+                quality = 80
+                type = work_of_art_type:poem
+                key = klephtic_songs
+            }
+        }
+    }
+}
+
+flavor_moi.7 = {
+    type = country_event
+    title = flavor_moi.7.title
+    desc = flavor_moi.7.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = MOI
+        from = 1665.1.1
+        to = 1918.1.1
+        monthly_chance = 10
+    }
+
+    trigger = {
+        location:mystras = {
+            owner = c:MOI
+            NOT = { location_rank = location_rank:city }
+        }
+    }
+
+    option = {
+        name = flavor_moi.7.a
+        location:mystras = {
+            if = {
+                limit = {
+                    location_rank = location_rank:rural_settlement
+                }
+                change_location_rank = location_rank:town
+            }
+            else_if = {
+                limit = {
+                    location_rank = location_rank:town
+                }
+                change_location_rank = location_rank:city
+            }
+        }
+        add_gold = -20
+    }
+
+    option = {
+        name = flavor_moi.7.b
+    }
+}
+
+flavor_moi.8 = {
+    type = country_event
+    title = flavor_moi.8.title
+    desc = flavor_moi.8.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = MOI
+        from = 1665.1.1
+        to = 1918.1.1
+        monthly_chance = 10
+    }
+
+    trigger = {
+        location:kalamata = {
+            owner = c:MOI
+            NOT = { location_rank = location_rank:city }
+        }
+    }
+
+    option = {
+        name = flavor_moi.8.a
+        location:kalamata = {
+            if = {
+                limit = {
+                    location_rank = location_rank:rural_settlement
+                }
+                change_location_rank = location_rank:town
+            }
+            else_if = {
+                limit = {
+                    location_rank = location_rank:town
+                }
+                change_location_rank = location_rank:city
+            }
+        }
+        add_gold = -25
+    }
+
+    option = {
+        name = flavor_moi.8.b
+    }
+}
+
+flavor_moi.9 = {
+    type = country_event
+    title = flavor_moi.9.title
+    desc = flavor_moi.9.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = MOI
+        from = 1644.1.1
+        to = 1918.1.1
+        monthly_chance = 10
+    }
+
+    trigger = {
+        OR = {
+            location:kalamata = {
+                owner = c:MOI
+            }
+            location:mystras = {
+                owner = c:MOI
+            }
+            location:kythira = {
+                owner = c:MOI
+            }
+        }
+    }
+
+    option = {
+        name = flavor_moi.9.a
+        custom_tooltip = {
+            text = "follow_romans_path"
+        }
+        hidden_effect = {
+            set_variable = {
+                name = choose_roman_path
+            }
+        }
+    }
+
+    option = {
+        name = flavor_moi.9.b
+        custom_tooltip = {
+            text = "follow_greek_path"
+        }
+        hidden_effect = {
+            set_variable = {
+                name = choose_greek_path
+            }
+        }
+    }
+}
+
+flavor_moi.10 = {
+    type = country_event
+    title = flavor_moi.10.title
+    desc = flavor_moi.10.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = MOI
+        from = 1650.1.1
+        to = 1918.1.1
+        monthly_chance = 10
+    }
+
+    trigger = {
+        location:kythira = {
+            owner = c:MOI
+            location_rank = location_rank:rural_settlement
+        }
+    }
+
+    option = {
+        name = flavor_moi.10.a
+        location:kythira = {
+            change_location_rank = location_rank:town
+        }
+        add_gold = -10
+    }
+
+    option = {
+        name = flavor_moi.10.b
+    }
+}
+
+flavor_moi.11 = {
+    type = country_event
+    title = flavor_moi.11.title
+    desc = flavor_moi.11.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = MOI
+        from = 1645.1.1
+        to = 1918.1.1
+        monthly_chance = 2
+    }
+
+    historical_info = flavor_moi.11.historical_info
+
+    trigger = {
+        location:corinth.owner = root
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+        unlock_building_effect = {
+            type = hexamilion_wall
+        }
+    }
+
+    option = {
+        name = flavor_moi.11.a
+
+        location:corinth = {
+            construct_building = {
+                building_type = building_type:hexamilion_wall
+            }
+        }
+
+        change_societal_value = {
+            type = offensive_vs_defensive
+            value = societal_value_move_to_right
+        }
+
+        ai_chance = 5
+    }
+
+    option = {
+        name = flavor_moi.11.b
+
+        change_societal_value = {
+            type = offensive_vs_defensive
+            value = societal_value_move_to_left
+        }
+
+        ai_chance = 2
+    }
+}
+
+flavor_moi.12 = {
+    type = country_event
+    title = flavor_moi.12.title
+    desc = flavor_moi.12.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = MOI
+        from = 1645.1.1
+        to = 1918.1.1
+        monthly_chance = 2
+    }
+
+    trigger = {
+        num_locations_owned_or_owned_by_subjects_or_below >= 20
+    }
+
+    option = {
+        name = flavor_moi.12.a
+        set_variable = unlocked_rebuild_the_theme_system
+
+        add_reform = government_reform:rebuild_the_theme_system
+
+        ai_chance = 5
+    }
+
+    option = {
+        name = flavor_moi.12.b
+
+        ai_chance = 1
+    }
+}
+
+flavor_moi.13 = {
+    type = country_event
+    title = flavor_moi.13.title
+    desc = flavor_moi.13.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = MOI
+        from = 1665.1.1
+        to = 1918.1.1
+        monthly_chance = 2
+    }
+
+    historical_info = flavor_moi.13.historical_info
+
+    trigger = {
+        location:pontikokastro.owner = root
+        has_variable = choose_greek_path
+    }
+
+    option = {
+        name = flavor_moi.13.a
+        custom_tooltip = {
+            text = "reopening_of_the_olympic_games"
+        }
+        hidden_effect = {
+            set_global_variable = {
+                name = the_olympic_games_has_been_reopened
+            }
+        }
+        ai_chance = 5
+    }
+
+    option = {
+        name = flavor_moi.13.b
+        ai_chance = 1
+    }
+}
+
+flavor_moi.14 = {
+    type = country_event
+    title = flavor_moi.14.title
+    desc = flavor_moi.14.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = MOI
+        from = 1644.1.1
+        to = 1918.1.1
+        monthly_chance = 100
+    }
+
+    trigger = {
+        location:corinth.owner = root
+    }
+
+
+    option = {
+        name = flavor_moi.14.a
+
+        add_prestige = 5
+    }
+}
+
+flavor_moi.15 = {
+    type = country_event
+    title = flavor_moi.15.title
+    desc = flavor_moi.15.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = MOI
+        from = 1644.1.1
+        to = 1918.1.1
+        monthly_chance = 100
+    }
+
+    trigger = {
+        location:athens.owner = root
+    }
+
+
+    option = {
+        name = flavor_moi.15.a
+
+        add_prestige = 5
+    }
+}
+
+flavor_moi.16 = {
+    type = country_event
+    title = flavor_moi.16.title
+    desc = flavor_moi.16.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = MOI
+        from = 1644.1.1
+        to = 1918.1.1
+        monthly_chance = 100
+    }
+
+    trigger = {
+        location:larissa.owner = root
+    }
+
+
+    option = {
+        name = flavor_moi.16.a
+
+        add_prestige = 5
+    }
+}
+
+flavor_moi.17 = {
+    type = country_event
+    title = flavor_moi.17.title
+    desc = flavor_moi.17.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = MOI
+        from = 1644.1.1
+        to = 1918.1.1
+        monthly_chance = 100
+    }
+
+    trigger = {
+        location:thessaloniki.owner = root
+    }
+
+
+    option = {
+        name = flavor_moi.17.a
+
+        add_prestige = 10
+    }
+}
+
+flavor_moi.18 = {
+    type = country_event
+    title = flavor_moi.18.title
+    desc = flavor_moi.18.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = MOI
+        from = 1644.1.1
+        to = 1918.1.1
+        monthly_chance = 100
+    }
+
+    trigger = {
+        location:constantinople.owner = root
+    }
+
+
+    option = {
+        name = flavor_moi.18.a
+
+        add_prestige = 25
+    }
+
+    option = {
+        name = flavor_moi.18.b
+
+        add_prestige = 25
+
+        set_capital = location:constantinople
+    }
+}
+
+flavor_moi.19 = {
+    type = country_event
+    title = flavor_moi.19.title
+    desc = flavor_moi.19.desc
+
+    fire_only_once = yes
+    dynamic_historical_event = {
+        tag = MOI
+        tag = BYZ
+        from = 1644.1.1
+        to = 1918.1.1
+        monthly_chance = 10
+    }
+
+    trigger = {
+        area:thrace_area = {
+            any_ownable_location_in_region = {
+                has_owner = yes
+                NOT = {
+                    owner = {
+                        culture = culture:turkish_culture
+                    }
+                }
+                count = all
+            }
+        }
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        name = flavor_moi.19.a
+
+        add_government_power = government_power_extreme_bonus
+    }
+}
+
+flavor_moi.20 = {
+    type = country_event
+    title = flavor_moi.20.title
+    desc = flavor_moi.20.desc
+
+    fire_only_once = yes
+    dynamic_historical_event = {
+        tag = MOI
+        from = 1644.1.1
+        to = 1918.1.1
+        monthly_chance = 1
+    }
+
+    trigger = {
+        location:monemvasia.owner = root
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+    immediate = {
+        character:greek_pagan_larper = { save_scope_as = target_character }
+        ruler_or_regent = { save_scope_as = target_character2 }
+        ordered_country_in_diplomatic_range = {
+            limit = {
+                country_type = location
+                this != root
+            }
+            order_by = average_country_literacy
+            check_range_bounds = no
+            max = 1
+            save_scope_as = target_country
+        }
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        name = flavor_moi.20.a
+
+        add_estate_satisfaction = {
+            type = estate_type:clergy_estate
+            value = estate_satisfaction_ultimate_penalty
+        }
+
+        change_societal_value = {
+            type = spiritualist_vs_humanist
+            value = societal_value_huge_move_to_right
+        }
+        add_stability = stability_ultimate_penalty
+        custom_tooltip = {
+            text = everyone_converts_tt
+            ruler_or_regent ?= {
+                change_character_religion = religion:hellenism_religion
+                every_child = {
+                    limit = {
+                        is_heir = no
+                    }
+                    change_character_religion = religion:hellenism_religion
+                }
+            }
+            heir ?= {
+                change_character_religion = religion:hellenism_religion
+            }
+            consort ?= {
+                change_character_religion = religion:hellenism_religion
+            }
+        }
+        capital = {
+            ordered_pop = {
+                limit = {
+                    NOT = { religion = religion:hellenism_religion }
+                }
+                max = 1
+                order_by = pop_size
+                check_range_bounds = no
+                split_pop = {
+                    fraction = 0.10
+                    religion = religion:hellenism_religion
+                }
+            }
+            custom_tooltip = {
+                text = every_true_faith_pop_loses_20_satisfaction_tt
+                every_pop = {
+                    limit = {
+                        owner = root
+                        religion = root.religion
+                    }
+                    add_pop_satisfaction = pop_satisfaction_severe_penalty
+                }
+            }
+        }
+        change_religion = religion:hellenism_religion
+    }
+
+    option = {
+        name = flavor_moi.20.b
+
+        add_stability = 5
+        ai_chance = 10
+    }
+}
+
+flavor_moi.21 = {
+    type = country_event
+    title = flavor_moi.21.title
+    desc = flavor_moi.21.desc
+
+    fire_only_once = yes
+    dynamic_historical_event = {
+        tag = MOI
+        tag = BYZ
+        from = 1644.1.1
+        to = 1918.1.1
+        monthly_chance = 10
+    }
+
+    trigger = {
+        area:macedonia_area = {
+            any_ownable_location_in_region = {
+                has_owner = yes
+                NOT = {
+                    owner = {
+                        culture = culture:turkish_culture
+                    }
+                }
+                count = all
+            }
+        }
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        name = flavor_moi.21.a
+
+        add_government_power = government_power_extreme_bonus
+    }
+}

@@ -80,7 +80,7 @@ widget = {
 
 	#visible = { #What a smart coder
 		#has_global_variable = show_decision_panel
-	visible = "[GetVariableSystem.Exists('decisions_panel')]"
+		visible = "[GetVariableSystem.Exists('decisions_panel')]"
 	#}
    	layer = top
 	layer = lateralview
@@ -115,6 +115,7 @@ widget = {
 			size = { 100% 40 }
 			parentanchor = hleft|top
 			hbox = {
+
 				header_title = {
 					block "header_text" {
 						text = "DECISION_PANEL_TT"
@@ -774,6 +775,39 @@ widget = {
 								ContextualTooltipType = {
 									blockoverride "title_text" {
 										text = "unified_united_province"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							using = generic_decisions_icon_small
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "reform_the_byzantine_empire"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "reform_the_byzantine_empire" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "reform_the_byzantine_empire"
 									}
 									blockoverride "concept_link" {
 										using = decisions_regular
