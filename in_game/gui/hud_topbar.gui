@@ -993,6 +993,13 @@ Types HUD_TopbarTypes
 
 									blockoverride "tooltip_content" {
 
+                                        TooltipStringPairList = {
+											blockoverride "block_title" {
+												text = "CORRUPTION_CHANGE_TT"
+											}
+                                            textcontext = "[Country.GetDescriptionFor('corruption_monthly_income')]"
+                                        }
+
 										TooltipScrolledStringPairList = {
 											blockoverride "block_scrollarea" { maximumsize = { -1 300 } minimumsize = { -1 30 } }
 											block "content_datacontext" { }
@@ -1002,12 +1009,14 @@ Types HUD_TopbarTypes
 											textcontext = "[Localize(GetAutoModifier('corruption_modifier').GetDesc)]"
 										}
 
-                                        TooltipStringPairList = {
-											blockoverride "block_title" {
-												text = "CORRUPTION_CHANGE_TT"
-											}
-                                            textcontext = "[Country.GetDescriptionFor('corruption_monthly_income')]"
-                                        }
+										#TooltipScrolledStringPairList = {
+										#	blockoverride "block_scrollarea" { maximumsize = { -1 300 } minimumsize = { -1 30 } }
+										#	block "content_datacontext" { }
+										#	blockoverride "block_title" {
+										#		text = "N_CORRUPTION_MODIFIER_DEC_TT"
+										#	}
+										#	textcontext = "[Localize(GetAutoModifier('negative_corruption_modifier').GetDesc)]"
+										#}
 									}
 								}
 							}

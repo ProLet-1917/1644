@@ -10,6 +10,7 @@ corruption_modifier = {
 
     potential_trigger = {
         modifier:allow_corruption = yes
+        var:corruption >= 0
     }
 
     #stability_investment = -0.5
@@ -23,11 +24,34 @@ corruption_modifier = {
     tax_income_efficiency = -0.2
     global_estate_max_tax = -0.1
     estate_enrichment = 0.2
-    #global_estate_target_satisfaction = 0.10
+    global_estate_target_satisfaction = 0.10
 
     #global_distance_from_capital_speed_propagation = -0.2
     global_max_control = -0.2
     monthly_legitimacy = -0.2
+}
+
+negative_corruption_modifier = {
+
+    category = country
+    type = country
+
+    scales_with = {
+        value = var:corruption
+        multiply = -0.01
+    }
+
+    potential_trigger = {
+        modifier:allow_corruption = yes
+        var:corruption < 0
+    }
+
+    global_crown_estate_power = 0.2
+
+    trade_efficiency = 0.1
+    tax_income_efficiency = 0.1
+    global_estate_max_tax = 0.1
+    global_max_control = 0.05
 }
 
 INJECT:country_base_values = {

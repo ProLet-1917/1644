@@ -11441,13 +11441,39 @@ countries = {
 			oitylo leuktron
 		}
 		include = "eastern_european_monarchy"
+        include = "zzz_expl_european_colonial_powers"
 		government = {
 			type = monarchy
-
+			heir_selection = cognatic_primogeniture
 			ruler = random
+
+			centralization_vs_decentralization = 30
+			aristocracy_vs_plutocracy = -35
+			serfdom_vs_free_subjects = 35
+			traditionalist_vs_innovative = 10
+			spiritualist_vs_humanist = -40
+			mercantilism_vs_free_trade = 15
+			offensive_vs_defensive = 25
+			land_vs_naval = 35
+			quality_vs_quantity = 10
+			belligerent_vs_conciliatory = 10
+			capital_economy_vs_traditional_economy = 35
+			individualism_vs_communalism = -50
+			outward_vs_inward = -10
+			universality_vs_exclusivity = -20
+
+			reforms = {
+				klephts_society
+			}
+
+            privilege = {
+				peasants_allowed_weapons_privilege
+				moi_protect_klephts_right
+			}
+
 		}
-		capital = oitylo
-		country_rank = rank_duchy
+		capital = leuktron
+		country_rank = rank_county
 		starting_technology_level = 4
 		dynasty = kladas_dynasty
 	}

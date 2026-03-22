@@ -131,8 +131,9 @@ give_global_trade_institutions_europe = {
 			OR = {
 				location_rank:town = yes
 				location_rank:city = yes
-				sub_continent:eastern_europe = yes
+				sub_continent = sub_continent:eastern_europe
 			}
+			NOT = { region = region:caucasus_region }
 		}
 		change_institution_progress = {
 			type = institution:global_trade
@@ -251,6 +252,14 @@ give_institutions_by_tech_level = {
 					NOT = { tag = TUR } # 奥斯曼不包含新大陆
 				}
 				give_discovery_institutions = yes
+				give_global_trade_institutions_europe = yes
+			}
+			else_if = {
+				limit = {
+					tag = TUR
+				}
+				give_age_3_institutions_without_new_world = yes
+				give_global_trade_institutions_europe = yes
 			}
 			else_if = {
 				limit = {
@@ -266,23 +275,6 @@ give_institutions_by_tech_level = {
 				}
 				give_discovery_institutions = yes
 				give_global_trade_institutions = yes
-			}
-			else_if = {
-				limit = {
-					tag = PLC
-					tag = RUS
-					tag = TUR
-					tag = PRU
-					tag = HUN
-					tag = TRA
-					tag = WAL
-					tag = MOL
-					tag = KUR
-					tag = LIV
-					tag = ING
-					tag = MOI
-				}
-				give_global_trade_institutions_europe = yes
 			}
 			else = {
 				# 其他地区（包括中国、奥斯曼等）不含新大陆

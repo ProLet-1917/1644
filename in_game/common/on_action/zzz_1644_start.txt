@@ -184,29 +184,6 @@
         #    change_max_raw_material_workers = 3
         #}
 
-        continent:europe = {
-            every_location_in_continent = {
-                limit = {
-                    population >= 30
-                }
-                change_max_raw_material_workers = 3
-            }
-            every_location_in_continent = {
-                limit = {
-                    population < 30
-                    population >= 15
-                }
-                change_max_raw_material_workers = 2
-            }
-            every_location_in_continent = {
-                limit = {
-                    population < 15
-                    population >= 8
-                }
-                change_max_raw_material_workers = 1
-            }
-        }
-
         c:SWE = {
             add_country_modifier = {
                 months = 360
@@ -369,6 +346,8 @@
         start_herd_check_effect = yes
 
         monthly_corruption_check_effect = yes
+
+        w_start_building_create_effect = yes
 
         scripted_geography:china_geography = {
             every_location_in_scripted_geography = {
