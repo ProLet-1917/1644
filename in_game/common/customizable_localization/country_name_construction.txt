@@ -119,6 +119,10 @@
 		localization_key = country_name_construction_sultanate
 		trigger = {
 			religion.group = religion_group:muslim
+			NOT = {
+				is_subject = yes
+				subject_type = subject_type:eyalet
+			}
 		}
 	}
 
@@ -142,8 +146,8 @@
 	text = {
 		localization_key = country_name_construction_archduke
 		trigger = {
-
 			OR = {
+
 				country_rank_is_duchy = yes
 				country_rank_is_kingdom = yes
 			}
@@ -151,6 +155,15 @@
 				tag = HAB
 				has_reform = government_reform:austrian_archduchy_reform
 			}
+		}
+	}
+
+	text = {
+		localization_key = country_name_construction_eyalet
+
+		trigger = {
+			is_subject = yes
+			subject_type = subject_type:eyalet
 		}
 	}
 

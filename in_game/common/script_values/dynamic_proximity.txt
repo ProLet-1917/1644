@@ -1,0 +1,148 @@
+best_region_capital = {
+    value = population
+    if = {
+        limit = {
+            is_port = yes
+        }
+        multiply = {
+            value = 1
+            add = {
+                value = modifier:harbor_suitability
+                multiply = 5
+            }
+        }
+    }
+    if = {
+        limit = {
+            location_rank = location_rank:town
+        }
+        multiply = {
+            value = 1.25
+        }
+    }
+    if = {
+        limit = {
+            location_rank = location_rank:city
+        }
+        multiply = {
+            value = 1.75
+        }
+    }
+    if = {
+        limit = {
+            has_road_to = capital
+        }
+        multiply = {
+            value = 1.2
+        }
+    }
+    if = {
+        limit = {
+            province_capital = yes
+        }
+        multiply = {
+            value = 1.25
+        }
+    }
+    if = {
+        limit = {
+            capital = yes
+        }
+        multiply = {
+            value = -1
+        }
+    }
+    if = {
+        limit = {
+            is_target_in_variable_list = {
+                name = regions_capital
+                target = owner.region
+            }
+        }
+        multiply = {
+            value = -1
+        }
+    }
+    multiply = {
+        value = 1
+        add = {
+            value = average_satisfaction
+        }
+    }
+}
+
+best_area_capital = {
+    value = population
+    if = {
+        limit = {
+            is_port = yes
+        }
+        multiply = {
+            value = 1
+            add = {
+                value = modifier:harbor_suitability
+                multiply = 5
+            }
+        }
+    }
+    if = {
+        limit = {
+            location_rank = location_rank:town
+        }
+        multiply = {
+            value = 1.25
+        }
+    }
+    if = {
+        limit = {
+            location_rank = location_rank:city
+        }
+        multiply = {
+            value = 1.75
+        }
+    }
+    if = {
+        limit = {
+            has_road_to = capital
+        }
+        multiply = {
+            value = 1.2
+        }
+    }
+    if = {
+        limit = {
+            province_capital = yes
+        }
+        multiply = {
+            value = 1.25
+        }
+    }
+    if = {
+        limit = {
+            or = {
+                capital = yes
+                modifier:is_region_capital = yes
+            }
+        }
+        multiply = {
+            value = -1
+        }
+    }
+    if = {
+        limit = {
+            is_target_in_variable_list = {
+                name = areas_capital
+                target = owner.area
+            }
+        }
+        multiply = {
+            value = -1
+        }
+    }
+    multiply = {
+        value = 1
+        add = {
+            value = average_satisfaction
+        }
+    }
+}

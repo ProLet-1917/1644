@@ -62,7 +62,10 @@ flavor_moi.2 = {
     option = {
         name = flavor_moi.2.a
         c:VEN = {
-            trigger_event_non_silently = flavor_moi.3
+            trigger_event_non_silently = {
+                id = flavor_moi.3
+                days = 2
+            }
         }
     }
 
@@ -81,7 +84,7 @@ flavor_moi.3 = {
         add_gold = 50
         location:kythira = {
             change_location_owner = c:MOI
-            change_control = 75
+            change_control = 0.75
         }
         c:MOI = {
             trigger_event_non_silently = flavor_moi.4
@@ -613,7 +616,7 @@ flavor_moi.19 = {
 
     trigger = {
         area:thrace_area = {
-            any_ownable_location_in_region = {
+            any_ownable_location_in_area = {
                 has_owner = yes
                 NOT = {
                     owner = {
@@ -761,7 +764,7 @@ flavor_moi.21 = {
 
     trigger = {
         area:macedonia_area = {
-            any_ownable_location_in_region = {
+            any_ownable_location_in_area = {
                 has_owner = yes
                 NOT = {
                     owner = {
