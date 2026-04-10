@@ -1,0 +1,119 @@
+sublime_ottoman_state_treasury = {
+    get_payer_list = {
+        every_international_organization_member = {
+            limit = {
+                NOT = { is_leader_of_international_organization = root }
+                NOT = {
+                    has_special_status_in_international_organization = {
+                        international_organization = international_organization:sublime_ottoman_state
+                        type = special_status:the_padishah_of_io
+                    }
+                }
+            }
+            add_to_local_variable_list = {
+                name = payers
+                target = this
+            }
+        }
+    }
+    get_payee_list = {
+        leader_country ?= {
+            add_to_local_variable_list = {
+                name = payees
+                target = this
+            }
+        }
+    }
+    price = sublime_ottoman_state_treasury_price
+    uses_maintenance = yes
+    price_multiplier = {
+        if = {
+            #nothing happens during a power struggle
+            limit = {
+                international_organization_has_leader = no
+            }
+            value = 0
+        }
+        else = {
+            every_international_organization_member = {
+                limit = {
+                    not = { is_leader_of_international_organization = root }
+                }
+                add = monthly_income_trade_and_tax
+            }
+            multiply = 0.02
+        }
+    }
+    proportion_for_payer = {
+        add = {
+            desc = "sublime_ottoman_state_treasury"
+            value = monthly_income_trade_and_tax
+        }
+    }
+    proportion_for_payee = {
+        add = {
+            desc = "sublime_ottoman_state_treasury"
+            value = 1
+        }
+    }
+}
+
+sublime_ottoman_state_army_contribute = {
+    get_payer_list = {
+        every_international_organization_member = {
+            limit = {
+                NOT = { is_leader_of_international_organization = root }
+                NOT = {
+                    has_special_status_in_international_organization = {
+                        international_organization = international_organization:sublime_ottoman_state
+                        type = special_status:the_padishah_of_io
+                    }
+                }
+            }
+            add_to_local_variable_list = {
+                name = payers
+                target = this
+            }
+        }
+    }
+    get_payee_list = {
+        leader_country ?= {
+            add_to_local_variable_list = {
+                name = payees
+                target = this
+            }
+        }
+    }
+    price = sublime_ottoman_state_manpower_price
+    uses_maintenance = yes
+    price_multiplier = {
+        if = {
+            #nothing happens during a power struggle
+            limit = {
+                international_organization_has_leader = no
+            }
+            value = 0
+        }
+        else = {
+            every_international_organization_member = {
+                limit = {
+                    not = { is_leader_of_international_organization = root }
+                }
+                add = monthly_income_trade_and_tax
+            }
+            multiply = 0.02
+        }
+    }
+    proportion_for_payer = {
+        add = {
+            desc = "sublime_ottoman_state_army_contribute"
+            value = monthly_income_trade_and_tax
+        }
+    }
+    proportion_for_payee = {
+        add = {
+            desc = "sublime_ottoman_state_army_contribute"
+            value = 1
+        }
+    }
+}

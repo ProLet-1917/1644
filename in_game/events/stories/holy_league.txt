@@ -1,0 +1,60 @@
+namespace = holy_league
+
+#Holy League(1683)
+
+#Start Event
+
+holy_league.1 = { #Ottoman in mid 17th Century
+    type = country_event
+    title = holy_league.1.title
+    desc = holy_league.1.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = TUR
+        from = 1644.1.1
+        to = 1664.1.1
+        monthly_chance = 100
+    }
+
+    trigger = {
+        current_year >= 1644
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        historical_option = yes
+        name = holy_league.1.a
+
+        custom_tooltip = {
+            text = "unlock_ottomans_decisions"
+            set_variable = {
+                name = unlock_ottomans_vienna_decisions
+            }
+            set_variable = {
+                name = finished_ottomans_vienna_decisions
+                value = 0
+            }
+        }
+    }
+
+    option = {
+        name = holy_league.1.b
+        custom_tooltip = {
+            text = "unlock_ottomans_decisions"
+            set_variable = {
+                name = unlock_ottomans_internal_decisions
+            }
+            set_variable = {
+                name = finished_ottomans_internal_decisions
+                value = 0
+            }
+        }
+    }
+}
+
+
+

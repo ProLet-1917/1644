@@ -1327,3 +1327,46 @@ reform_the_byzantine_empire = {
     }
 }
 
+advance_towards_vienna = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 3
+
+    automation_tick = never
+    automation_tick_frequency = 3
+
+    price = price:advance_towards_vienna_prices
+
+    cooldown = {
+        type = advance_towards_vienna
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            has_or_had_tag = TUR
+            has_variable = unlock_ottomans_vienna_decisions
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            custom_tooltip = {
+                text = "has_finished_five_ottomans_vienna_decisions"
+                var:finished_ottomans_vienna_decisions >= 5
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+
+        }
+    }
+
+
+    ai_will_do = {
+        value = 20
+    }
+}
