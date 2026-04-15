@@ -8,7 +8,10 @@ late_ming_crisis.1 = {
 	#historical_info = late_ming_crisis.1.historical_info
 	trigger = {
 		c:CJX ?= {
-			is_subject_of = c:CSH
+			OR = {
+				is_subject_of = c:CSH
+				is_subject = no
+			}
 		}
 		c:CSH ?= {
 			NOT = {
@@ -269,34 +272,134 @@ late_ming_crisis.4 = { #河北山东叛乱
 				subtract = 5
 			}
 		}
+		create_character = {#朱帅钦
+			first_name = name_shuaiqin
+			dynasty = dynasty:rtr_ming_zhu_dynasty
+			religion = religion:sanjiao
+			culture = culture:han_culture
+			age = { 20 60 }
+			female = no
+			estate = estate_type:nobles_estate
+			script = chi_zhu_shuaiqin
+		}
+		create_character = {#谢升
+			first_name = name_sheng1_5347
+			last_name = name_xie4_8b1d
+			religion = religion:sanjiao
+			culture = culture:han_culture
+			birth_date = 1579.1.1
+			birth = location:lingzhou_dezhou
+			female = no
+			estate = estate_type:nobles_estate
+			script = chi_xie_sheng
+			adm = 90
+			dip = 85
+		}
 		ji_list_add = yes
-	}
- 	option = {
- 		name = late_ming_crisis.4.a	
 		every_in_list = {
 			list = list_of_ji_locations
 			limit = { owner = c:CSH }
-			change_location_owner = c:CJI
-			change_control = control_radical_bonus
+			add_core = c:CJI
+		}
+		c:CSH = {
+			create_country_from_cores_in_our_locations = c:CJI
 		}
 		c:CJI = {
+			set_new_ruler = character:chi_zhu_shuaiqin
 			set_capital = location:lingzhou_dezhou
-			create_character = {#朱帅锬
-				first_name = name_shuaitan
-				dynasty = rtr_ming_zhu_dynasty
-				religion = sanjiao
-				culture = han_culture
-				age = { 20 60 }
-				female = no
-				save_scope_as = new_ji_ruler
-			}
-			set_new_ruler = scope:new_ji_ruler
+			change_country_flag = CHI_Ming_Sanchen
+			set_country_rank = country_rank:rank_kingdom
+			change_religion = religion:sanjiao
 		}
+		chi_xie_sheng = {
+			move_country = c:CJI
+		}
+	}
+ 	option = {
+ 		name = late_ming_crisis.4.a	
 		c:MNG = {#通知大明
 			trigger_event_silently = {
 				id = mng_1644.6
-				days = { 5 20 }
+				days = { 10 30 }
 			}
 		}
  	}
+}
+late_ming_crisis.5 = {#交了白卷
+	title = late_ming_crisis.5.title
+	desc = late_ming_crisis.5.desc
+	historical_info = late_ming_crisis.5.historical_info
+	trigger = {
+		c:CSH ?= {
+			owns = location:dadu
+			capital = location:dadu
+		}
+	}
+	immediate = {
+		set_variable = csh_back_to_shaanxi
+	}
+	option = {#撤回陕西
+		name = late_ming_crisis.5.a
+		historical_option = yes
+		c:CSH = {
+			set_capital = location:jingzhao
+			change_variable = {
+				name = chi_mandate
+				subtract = 5
+			}
+			change_variable = {
+				name = chi_domination
+				subtract = 5
+			}
+		}
+	}
+	option = {#战至最后一刻，自刎归天！
+		name = late_ming_crisis.5.b
+		c:CSH = {
+			#保持北京为首都
+		}
+	}
+}
+late_ming_crisis.6 = {#朱帅钦降清
+	title = late_ming_crisis.6.title
+	desc = late_ming_crisis.6.desc
+	historical_info = late_ming_crisis.6.historical_info
+	trigger = {
+		exists = c:CJI
+		exists = c:QNG
+	}
+	immediate = {
+		set_global_variable = cji_try_surrender_to_qng 
+	}
+	option = {#归降大清
+		name = late_ming_crisis.6.a
+		historical_option = yes
+		c:QNG = {
+			annex_country = {
+				country = c:CJI
+				reason = Diplomatic
+				transfer = yes
+			}
+		}
+		trigger_event_silently = {
+			id = qng_1644_unification.11
+			days = { 3 10 }
+		}
+		chi_xie_sheng = {
+			move_country = c:QNG
+		}
+	}
+	option = {#誓死抵抗
+		name = late_ming_crisis.6.b
+		#c:CJI = {
+		#	change_variable = {
+		#		name = chi_domination
+		#		subtract = 10
+		#	}
+		#	change_variable = {
+		#		name = chi_mandate
+		#		subtract = 10
+		#	}
+		#}
+	}
 }

@@ -139,7 +139,10 @@ mng_1644.2 = { #甲申之难（不南迁线）
 	desc = mng_1644.2.desc
 	historical_info = mng_1644.2.historical_info
 	immediate = {
-		c:MNG = { set_new_ruler = interregnum }
+		c:MNG = { 
+			set_new_ruler = interregnum 
+			set_regent = chi_shi_kefa
+		}
 		if = {
 			limit = {
 				exists = character:chi_zhu_youjian
@@ -222,7 +225,7 @@ mng_1644.5 = { #立新君
 			    }
 			    change_variable = {
 				    name = chi_mandate
-				    subtract = 5
+				    add = 5
 			    }
 		    }
         }
