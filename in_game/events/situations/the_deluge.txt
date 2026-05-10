@@ -32,7 +32,7 @@ the_deluge.2 = { #They accepted
     desc = "the_deluge.2.desc"
 
     option = {
-        name = "the_deluge.2.b"
+        name = "the_deluge.2.a"
 
     }
 }
@@ -43,7 +43,7 @@ the_deluge.3 = { #They refused
     desc = "the_deluge.3.desc"
 
     option = {
-        name = "the_deluge.3.b"
+        name = "the_deluge.3.a"
 
     }
 }
@@ -98,7 +98,7 @@ the_deluge.5 = { #Start Event - PLC
 
     option = {
         name = "the_deluge.5.a"
-        add_stability = -20
+        add_stability = -15
         add_country_modifier = {
             modifier = the_deluge
             years = -1
@@ -140,6 +140,7 @@ the_deluge.7 = { #Message from warsaw - Prussia for army
                     war = "c:ZAZ.war_with_country(c:PLC)"
                 }
             }
+            add_gold = -100
         }
         c:PLC = {
             cancel_subject = c:PRU
@@ -187,4 +188,15 @@ the_deluge.7 = { #Message from warsaw - Prussia for army
             remove_variable = already_declare_independence
         }
     }
+}
+
+the_deluge.8 = { #Someone send the intervention forces
+    type = country_event
+    title = "the_deluge.8.t"
+    desc = "the_deluge.8.desc"
+
+    option = {
+        name = "the_deluge.8.a"
+    }
+
 }

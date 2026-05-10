@@ -101,7 +101,7 @@ late_ming_crisis.1 = {
 late_ming_crisis.2 = { #通知大顺
  	title = late_ming_crisis.2.title
  	desc = late_ming_crisis.2.desc
- 	is_trigger_only = yes
+ 	fire_only_once = yes
 	immediate = {
 		c:CSH = {
 			set_variable = csh_lost_datong
@@ -126,7 +126,7 @@ scripted_effect xuanfu_list_add = {
 late_ming_crisis.3 = { #宣府叛乱
  	title = late_ming_crisis.3.title
  	desc = late_ming_crisis.3.desc
- 	is_trigger_only = yes
+ 	fire_only_once = yes
 	trigger = {
 		c:CSH ?= {
 			owns = location:xuande
@@ -257,7 +257,7 @@ scripted_effect ji_list_add = {
 late_ming_crisis.4 = { #河北山东叛乱
  	title = late_ming_crisis.4.title
  	desc = late_ming_crisis.4.desc
- 	is_trigger_only = yes
+ 	fire_only_once = yes
 	trigger = {
 		c:CSH ?= {
 			owns = location:lingzhou_dezhou
@@ -288,7 +288,7 @@ late_ming_crisis.4 = { #河北山东叛乱
 			religion = religion:sanjiao
 			culture = culture:han_culture
 			birth_date = 1579.1.1
-			birth = location:lingzhou_dezhou
+			birth_location = location:lingzhou_dezhou
 			female = no
 			estate = estate_type:nobles_estate
 			script = chi_xie_sheng
@@ -311,7 +311,7 @@ late_ming_crisis.4 = { #河北山东叛乱
 			set_country_rank = country_rank:rank_kingdom
 			change_religion = religion:sanjiao
 		}
-		chi_xie_sheng = {
+		character:chi_xie_sheng = {
 			move_country = c:CJI
 		}
 	}
@@ -385,7 +385,7 @@ late_ming_crisis.6 = {#朱帅钦降清
 			id = qng_1644_unification.11
 			days = { 3 10 }
 		}
-		chi_xie_sheng = {
+		character:chi_xie_sheng = {
 			move_country = c:QNG
 		}
 	}

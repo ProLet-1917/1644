@@ -14,14 +14,6 @@ mesh_list =
 	building_cologne_cathedral_mesh = 1
 }
 
-mesh_list = 
-{
-	name = "monuments_hagia_sophia_01_mesh"
-	scale_settings_large = { bias = 0 min = 0.5 max = 0.8 }
-	should_spawn_flags = no	
-	building_monument_hagia_sophia_01_mesh = 1
-}
-
 mesh_list =
 {
 	name = "monuments_forbidden_city_01_mesh"
@@ -102,29 +94,6 @@ template unique_buildings
 			weight_func = close_to_center_weights
 
 			allow_demote = no
-		}
-
-		A03_hagia_sophia = {
-			only_in_location = constantinople
-			order = 0
-			size = large
-			mesh_list = monuments_hagia_sophia_01_mesh
-			contributors =
-			{
-				always_one = 1.0
-			}
-			filter_func = closest_to_position
-			weight_func = close_to_center_weights
-
-			filter_data = { 9005.33500 2.00000 5703.03500 }
-
-			allow_demote = no
-
-			link_tooltip =
-			{
-				type = work_of_art
-				data = hagia_sophia
-			}
 		}
 
 		A03_forbidden_city = {

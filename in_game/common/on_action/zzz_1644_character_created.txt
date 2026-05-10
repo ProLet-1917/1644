@@ -9,9 +9,9 @@ on_character_created = {
 				exists = dynasty
 			}
 			# 强制设置王朝命名类型为default（无论当前是什么类型）
-			dynasty = {
-				set_dynasty_name_type = default
-			}
+			#dynasty = {
+				#set_dynasty_name_type = default
+			#}
 			# 检查是否与宗族中其他人重名
 			# 注意：EU5 可能没有直接的名字比较触发器，这里先实现基本框架
 			# 如果发现重名，可以在这里添加处理逻辑（如重新生成名字等）
@@ -45,9 +45,9 @@ on_character_birth = {
 				}
 			}
 			# 强制设置王朝命名类型为default（无论当前是什么类型）
-			scope:character.dynasty = {
-				set_dynasty_name_type = default
-			}
+			#scope:character.dynasty = {
+			#	set_dynasty_name_type = default
+			#}
 			# 检查是否与宗族中其他人重名
 			# 注意：EU5 可能没有直接的名字比较触发器，这里先实现基本框架
 			if = {

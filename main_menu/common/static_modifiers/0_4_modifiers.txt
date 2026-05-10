@@ -8,7 +8,7 @@ resistance_in_the_mountains = {
     levy_recovery_modifier = 0.20
 }
 
-is_region_capital = {
+is_region_capital = { #Unused
     game_data = {
         category = location
     }
@@ -16,10 +16,32 @@ is_region_capital = {
     is_region_capital = yes
 }
 
-is_area_capital = {
+is_area_capital = { #Unused
     game_data = {
         category = location
     }
 
     is_area_capital = yes
 }
+
+fortify_the_defenses = {
+    game_data = {
+        category = location
+    }
+
+    local_garrison_size = 0.1
+    local_defensive = 0.33
+}
+
+corrupted_janissaries = {
+    game_data = {
+        category = country
+    }
+    army_heavy_infantry_power = -0.1
+    army_maintenance_efficiency = -0.1
+    discipline = -0.1
+    global_manpower_modifier = -0.1
+    corruption_monthly_income = 0.05
+}
+
+

@@ -3,7 +3,7 @@
 	ai_selection_desire = 1000
 	additional_war_enthusiasm_attacker = 0.5
 	additional_war_enthusiasm_defender = 0.2
-	visible = {
+	create_visible = {
 		# 只有中国境内的国家才能看到这个CB
 		capital = {
 			OR = {
@@ -15,7 +15,7 @@
 			}
 		}
 	}
-	allow_creation = {
+	create_enabled = {
 		# 使用CB的国家必须在中国境内
 		capital ?= {
 			OR = {
@@ -48,7 +48,7 @@
 			}
 		}
 	}
-	allow_declaration = {
+	declare_enabled = {
 		always = yes
 	}
 
@@ -57,7 +57,7 @@
 
 REPLACE:cb_claim_mandate_of_heaven = {
 	speed = 10
-	visible = {
+	create_visible = {
 		exists = international_organization:middle_kingdom
 		scope:target = { is_leader_of_international_organization = international_organization:middle_kingdom }
 		OR = {
@@ -75,7 +75,7 @@ REPLACE:cb_claim_mandate_of_heaven = {
 			}
 		}
 	}
-	allow_creation = {
+	create_enabled = {
 	}
 
 	war_goal_type = take_capital

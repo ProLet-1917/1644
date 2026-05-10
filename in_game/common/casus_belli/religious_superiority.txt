@@ -1,14 +1,17 @@
 ﻿cb_religious_superiority = {
-	visible = {
+	create_visible = {
 		always = no #Automatically available to the leaders of the IOs
 	}
-    additional_war_enthusiasm = 0.6
+	additional_war_enthusiasm = 0.6
 	war_goal_type = religious_superiority_wargoal
-	allow_separate_peace = no
-	ai_will_do = {
-		add = {
-			desc = "CB_REASON_IMPORTANT_CB"
-			value = 1000	#AI should ALWAYS want to declare this war
-		}
+	custom_tags = { cannot_be_enforced_peace_on }
+	#ai_will_do = {
+	#	add = {
+	#		desc = "CB_REASON_IMPORTANT_CB"
+	#		value = 1000	#AI should ALWAYS want to declare this war
+	#	}
+	#}
+	required_peace_treaties = {
+		religious_supremacy
 	}
 }

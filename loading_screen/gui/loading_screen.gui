@@ -85,7 +85,7 @@ template version_label {
 							fontsize = 12
 							font = Debug
 							minimumsize = { -1 25 }
-							text = "[StringPair.GetLeft]"
+							text = "[StringViewPair.GetLeft.GetStringView]"
 						}
 
 						widget = {
@@ -95,7 +95,9 @@ template version_label {
 					}
 				}
 			}
-
+		}
+		
+		# block "version_label_right_column" {
 			vbox = {
 				datamodel = "[StringPairList.GetRows]"
 				item = {
@@ -115,12 +117,12 @@ template version_label {
 							fontsize = 12
 							font = Debug
 							minimumsize = { -1 25 }
-							text = "[StringPair.GetRight]"
+							text = "[StringViewPair.GetRight.GetStringView]"
 						}
 					}
 				}
 			}
-		}
+		# }
 	}
 	hbox =  {
 		block "version_label_sizing" { set_parent_size_to_minimum = yes }
@@ -154,7 +156,7 @@ template version_label {
 							fontsize = 12
 							font = Debug
 							minimumsize = { -1 25 }
-							text = "Alpha Build 0055"
+							text = "Alpha Build 0056"
 						}
 						widget = {
 							layoutpolicy_horizontal = growing

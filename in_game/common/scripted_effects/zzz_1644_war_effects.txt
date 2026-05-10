@@ -170,20 +170,20 @@ subject_join_overlord_wars_against_csh_mng = {
 		}
 	}
 	# 如果没有任何相关战争被处理，打一个标记用于调试
-	if = {
-		limit = {
-			check_variable = {
-				name = wsg_debug_joined_as_attacker
-				value = 0
-			}
-			check_variable = {
-				name = wsg_debug_joined_as_defender
-				value = 0
-			}
-		}
-		set_variable = {
-			name = wsg_debug_no_relevant_war
-			value = 1
-		}
-	}
+	#if = {
+	#	limit = {
+	#		check_variable = {
+	#			name = wsg_debug_joined_as_attacker
+	#			value = 0
+	#		}
+	#		check_variable = {
+	#			name = wsg_debug_joined_as_defender
+	#			value = 0
+	#		}
+	#	}
+	#	set_variable = {
+	#		name = wsg_debug_no_relevant_war
+	#		value = 1
+	#	}
+	#}
 }

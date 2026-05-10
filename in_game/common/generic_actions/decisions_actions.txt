@@ -192,7 +192,7 @@ reform_sejm_parliament = {
     }
     allow = {
         scope:actor = {
-            "estate_power(estate_type:nobles_estate)" <= 0.25
+            "estate_power(estate_type:nobles_estate)" <= 0.35
             "estate_power(estate_type:crown_estate)" >= 0.35
             stability >= 25
         }
@@ -1283,7 +1283,10 @@ reform_the_byzantine_empire = {
 
     potential = {
         scope:actor = {
-            has_or_had_tag = MOI
+            OR = {
+                has_or_had_tag = MOI
+                has_dlc = "0_4_echo_of_the_empire"
+            }
             NOT = { tag = BYZ }
         }
     }
@@ -1345,7 +1348,10 @@ advance_towards_vienna = {
 
     potential = {
         scope:actor = {
-            has_or_had_tag = TUR
+            OR = {
+                has_or_had_tag = TUR
+                has_dlc = "0_4_echo_of_the_empire"
+            }
             has_variable = unlock_ottomans_vienna_decisions
         }
     }
@@ -1354,14 +1360,23 @@ advance_towards_vienna = {
         scope:actor = {
             custom_tooltip = {
                 text = "has_finished_five_ottomans_vienna_decisions"
-                var:finished_ottomans_vienna_decisions >= 5
+                var:finished_ottomans_vienna_decisions >= 4
             }
         }
     }
 
     effect = {
         scope:actor = {
-
+            add_casus_belli =  {
+                target = c:HAB
+                type = casus_belli:cb_conquer_province
+                province = c:HAB.province:unter_dem_wienerwald_province
+            }
+            declare_war_with_cb = {
+                target = c:HAB
+                type = casus_belli:cb_conquer_province
+                province = c:HAB.province:unter_dem_wienerwald_province
+            }
         }
     }
 
@@ -1370,3 +1385,181 @@ advance_towards_vienna = {
         value = 20
     }
 }
+
+control_the_crete = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 3
+
+    automation_tick = never
+    automation_tick_frequency = 3
+
+    price = price:control_the_crete_prices
+
+    cooldown = {
+        type = control_the_crete
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            OR = {
+                has_or_had_tag = TUR
+                has_dlc = "0_4_echo_of_the_empire"
+            }
+            has_variable = unlock_ottomans_vienna_decisions
+            NOT = {
+                has_variable = has_control_the_crete
+            }
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            province_definition:crete_province = {
+                NOT = {
+                    any_ownable_location_in_province_definition = {
+                        AND = {
+                            NOT = { owner = scope:actor }
+                            owner = {
+                                NOT = { is_subject_of = scope:actor }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            change_variable = {
+                name = unlock_ottomans_vienna_decisions
+                add = 1
+            }
+            hidden_effect = {
+                set_variable = {
+                    name = has_control_the_crete
+                }
+            }
+        }
+    }
+
+
+    ai_will_do = {
+        value = 20
+    }
+}
+
+control_the_malta = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 3
+
+    automation_tick = never
+    automation_tick_frequency = 3
+
+    price = price:control_the_malta_prices
+
+    cooldown = {
+        type = control_the_malta
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            OR = {
+                has_or_had_tag = TUR
+                has_dlc = "0_4_echo_of_the_empire"
+            }
+            has_variable = unlock_ottomans_vienna_decisions
+            NOT = {
+                has_variable = has_control_the_malta
+            }
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            location:malta = {
+                NOT = {
+                    AND = {
+                        NOT = { owner = scope:actor }
+                        owner = {
+                            NOT = { is_subject_of = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            change_variable = {
+                name = unlock_ottomans_vienna_decisions
+                add = 1
+            }
+            hidden_effect = {
+                set_variable = {
+                    name = has_control_the_malta
+                }
+            }
+        }
+    }
+
+
+    ai_will_do = {
+        value = 20
+    }
+}
+
+reform_the_janissaries = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:reform_the_janissaries_prices
+
+    cooldown = {
+        type = reform_the_janissaries
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            OR = {
+                has_or_had_tag = TUR
+                has_dlc = "0_4_echo_of_the_empire"
+            }
+            has_country_modifier = corrupted_janissaries
+        }
+    }
+    allow = {
+        scope:actor = {
+            "estate_power(estate_type:nobles_estate)" <= 0.4
+            "estate_power(estate_type:dhimmi_estate)" <= 0.25
+            "estate_power(estate_type:crown_estate)" >= 0.25
+            stability >= 25
+            total_sub_unit_type_count:a_reformation_janissaries <= 1
+        }
+    }
+    effect = {
+        scope:actor = {
+            remove_country_modifier = corrupted_janissaries
+            change_variable = {
+                name = unlock_ottomans_vienna_decisions
+                add = 1
+            }
+        }
+    }
+
+    ai_will_do = { value = 100 }	#They always want to do this
+}
+

@@ -14,6 +14,16 @@ flavor_moi.1 = {
         monthly_chance = 20
     }
 
+    trigger = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
+        c:MOI = {
+            is_subject = no
+        }
+    }
+
     immediate = {
         event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
     }
@@ -56,6 +66,7 @@ flavor_moi.2 = {
             c:VEN = {
                 is_at_war_with = c:TUR
             }
+            has_dlc = "0_4_echo_of_the_empire"
         }
     }
 
@@ -158,6 +169,10 @@ flavor_moi.6 = {
     }
 
     trigger = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
         c:MOI = {
             total_sub_unit_type_count:a_klephts >= 1
         }
@@ -189,6 +204,10 @@ flavor_moi.7 = {
     }
 
     trigger = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
         location:mystras = {
             owner = c:MOI
             NOT = { location_rank = location_rank:city }
@@ -233,6 +252,10 @@ flavor_moi.8 = {
     }
 
     trigger = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
         location:kalamata = {
             owner = c:MOI
             NOT = { location_rank = location_rank:city }
@@ -277,6 +300,10 @@ flavor_moi.9 = {
     }
 
     trigger = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
         OR = {
             location:kalamata = {
                 owner = c:MOI
@@ -329,6 +356,10 @@ flavor_moi.10 = {
     }
 
     trigger = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
         location:kythira = {
             owner = c:MOI
             location_rank = location_rank:rural_settlement
@@ -364,6 +395,10 @@ flavor_moi.11 = {
     historical_info = flavor_moi.11.historical_info
 
     trigger = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
         location:corinth.owner = root
     }
 
@@ -418,6 +453,10 @@ flavor_moi.12 = {
     }
 
     trigger = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
         num_locations_owned_or_owned_by_subjects_or_below >= 20
     }
 
@@ -453,6 +492,10 @@ flavor_moi.13 = {
     historical_info = flavor_moi.13.historical_info
 
     trigger = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
         location:pontikokastro.owner = root
         has_variable = choose_greek_path
     }
@@ -490,6 +533,10 @@ flavor_moi.14 = {
     }
 
     trigger = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
         location:corinth.owner = root
     }
 
@@ -523,6 +570,10 @@ flavor_moi.15 = {
     }
 
     trigger = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
         location:athens.owner = root
     }
 
@@ -565,6 +616,10 @@ flavor_moi.16 = {
     }
 
     trigger = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
         location:larissa.owner = root
     }
 
@@ -599,6 +654,10 @@ flavor_moi.17 = {
     }
 
     trigger = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
         location:thessaloniki.owner = root
     }
 
@@ -633,6 +692,10 @@ flavor_moi.18 = {
     }
 
     trigger = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
         location:constantinople.owner = root
     }
 
@@ -667,6 +730,10 @@ flavor_moi.19 = {
     }
 
     trigger = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
         area:thrace_area = {
             any_ownable_location_in_area = {
                 has_owner = yes
@@ -710,6 +777,10 @@ flavor_moi.20 = {
     }
 
     trigger = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
         location:monemvasia.owner = root
     }
 
@@ -815,6 +886,12 @@ flavor_moi.21 = {
     }
 
     trigger = {
+        OR = {
+            hidden_trigger = {
+                has_or_had_tag = MOI
+            }
+            has_dlc = "0_4_echo_of_the_empire"
+        }
         area:macedonia_area = {
             any_ownable_location_in_area = {
                 has_owner = yes

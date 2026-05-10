@@ -5,6 +5,10 @@
 			set_starting_tech_level_by_region = yes
 			# 根据科技等级给予思潮
 			give_institutions_by_tech_level = yes
+            set_variable = {
+                name = decisions_panel
+                value = 0
+            }
         }
         # 清除默认佣兵队长（仅针对主要国家）
         c:QNG = { trigger_event_silently = cleanup_1644.1 }
@@ -323,6 +327,10 @@
                 years = -1
             }
             set_variable = unlock_liberum_veto_variable
+            set_variable = {
+                name = corruption
+                value = 36.5
+            }
         }
 
         the_fronde_protest_effect = yes
@@ -349,8 +357,16 @@
         c:MNG = {
             set_variable = {
                 name = corruption
-                value = 82.5
+                value = 52.5
             }
         }
+
+        c:TUR = {
+            add_country_modifier = {
+                modifier = corrupted_janissaries
+                years = -1
+            }
+        }
+        set_global_variable = hagia_sophia_now_mosque
     }
 }

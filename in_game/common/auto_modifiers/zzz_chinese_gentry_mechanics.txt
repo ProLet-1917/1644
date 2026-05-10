@@ -24,8 +24,9 @@ chinese_gentry_examination_system = {
 	
 	# 仅限中国文化组国家且拥有科举特权
 	potential_trigger = {
-		culture = { has_culture_group = culture_group:chinese_group }
-		has_estate_privilege = estate_privilege:gentry_examination_patronage
+		always = no
+		#culture = { has_culture_group = culture_group:chinese_group }
+		#has_estate_privilege = estate_privilege:gentry_examination_patronage
 	}
 	
 	# 修正效果：科举制度提升人才选拔效率
