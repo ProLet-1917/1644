@@ -1,8 +1,4 @@
-﻿# 1644 通用战争脚本效果
-# 让附属国加入宗主的战争
-# 通用：让附属国加入宗主的所有战争
-# 使用方法：在附属国成为附庸后调用
-# 例如：ROOT = { subject_join_overlord_wars = yes }
+﻿# 让附属国加入宗主的战争
 subject_join_overlord_wars = {
 	overlord ?= {
 		# 保存宗主为作用域
@@ -52,7 +48,6 @@ subject_join_overlord_wars = {
 						}
 					}
 					ROOT = {
-						set_variable = { name = debug_trying_defender value = 1 }
 						join_war_as_defender = {
 							war = scope:overlord_war
 						}
@@ -175,20 +170,20 @@ subject_join_overlord_wars_against_csh_mng = {
 		}
 	}
 	# 如果没有任何相关战争被处理，打一个标记用于调试
-	if = {
-		limit = {
-			check_variable = {
-				name = wsg_debug_joined_as_attacker
-				value = 0
-			}
-			check_variable = {
-				name = wsg_debug_joined_as_defender
-				value = 0
-			}
-		}
-		set_variable = {
-			name = wsg_debug_no_relevant_war
-			value = 1
-		}
-	}
+	#if = {
+	#	limit = {
+	#		check_variable = {
+	#			name = wsg_debug_joined_as_attacker
+	#			value = 0
+	#		}
+	#		check_variable = {
+	#			name = wsg_debug_joined_as_defender
+	#			value = 0
+	#		}
+	#	}
+	#	set_variable = {
+	#		name = wsg_debug_no_relevant_war
+	#		value = 1
+	#	}
+	#}
 }

@@ -1,0 +1,239 @@
+corruption_modifier = {
+
+    category = country
+    type = country
+
+    scales_with = {
+        value = var:corruption
+        multiply = 0.01
+    }
+
+    potential_trigger = {
+        modifier:allow_corruption = yes
+        var:corruption >= 0
+    }
+
+    #stability_investment = -0.5
+    global_crown_estate_power = -1.0
+
+    #global_manpower_modifier = -0.2
+    levy_recovery_modifier = -0.5
+    #global_sailors_modifier = -0.2
+
+    trade_income = -0.2
+    tax_income_efficiency = -0.2
+    global_estate_max_tax = -0.1
+    estate_enrichment = 0.2
+    global_estate_target_satisfaction = 0.10
+
+    #global_distance_from_capital_speed_propagation = -0.2
+    global_max_control = -0.2
+    monthly_legitimacy = -0.2
+}
+
+negative_corruption_modifier = {
+
+    category = country
+    type = country
+
+    scales_with = {
+        value = var:corruption
+        multiply = -0.01
+    }
+
+    potential_trigger = {
+        modifier:allow_corruption = yes
+        var:corruption < 0
+    }
+
+    global_crown_estate_power = 0.2
+
+    trade_income = 0.1
+    tax_income_efficiency = 0.1
+    global_estate_max_tax = 0.1
+    global_max_control = 0.05
+}
+
+INJECT:country_base_values = {
+    corruption_monthly_income = -0.05
+}
+
+INJECT:positive_stability_impact = {
+    corruption_monthly_income = -0.05
+}
+
+INJECT:negative_stability_impact = {
+    corruption_monthly_income = 0.2
+}
+
+INJECT:complacency_impact = {
+    corruption_monthly_income = 0.2
+}
+
+corruption_form_high_government_power = {
+    category = country
+    type = country
+
+    limit = {
+        government_power > 50
+    }
+
+    scales_with = {
+        value = government_power
+        multiply = 0.01
+    }
+
+    potential_trigger = {
+        modifier:allow_corruption = yes
+    }
+
+    corruption_monthly_income = -0.05
+}
+
+corruption_from_low_government_power = {
+    category = country
+    type = country
+
+    limit = {
+        government_power < 50
+    }
+
+    scales_with = {
+        value = government_power
+        multiply = -0.01
+        add = 1
+    }
+
+    potential_trigger = {
+        modifier:allow_corruption = yes
+    }
+
+    corruption_monthly_income = 0.2
+}
+
+non_controlled_population = {
+    category = country
+    type = country
+
+    scales_with = {
+        value = non_controlled_population_value
+    }
+
+    potential_trigger = {
+        modifier:allow_corruption = yes
+        NOT = {
+            has_reform = government_reform:landless_adventurer_reform
+        }
+    }
+
+    corruption_monthly_income = 0.2
+}
+
+corruption_from_army_maintenance = {
+    category = country
+    type = country
+
+    scales_with = {
+        value = army_maintenance
+        subtract = 0.5
+    }
+
+    potential_trigger = {
+        modifier:allow_corruption = yes
+    }
+
+    corruption_monthly_income = -0.10
+}
+
+corruption_from_navy_maintenance = {
+    category = country
+    type = country
+
+    scales_with = {
+        value = navy_maintenance
+        subtract = 0.5
+    }
+
+    potential_trigger = {
+        modifier:allow_corruption = yes
+    }
+
+    corruption_monthly_income = -0.10
+}
+
+corruption_from_cultural_maintenance = {
+    category = country
+    type = country
+
+    scales_with = {
+        value = cultural_maintenance
+    }
+
+    potential_trigger = {
+        modifier:allow_corruption = yes
+    }
+
+    corruption_monthly_income = 0.02
+}
+
+corruption_from_diplomacy_maintenance = {
+    category = country
+    type = country
+
+    scales_with = {
+        value = diplomatic_maintenance
+    }
+
+    potential_trigger = {
+        modifier:allow_corruption = yes
+    }
+
+    corruption_monthly_income = 0.02
+}
+
+corruption_from_court_maintenance = {
+    category = country
+    type = country
+
+    scales_with = {
+        value = court_maintenance
+    }
+
+    potential_trigger = {
+        modifier:allow_corruption = yes
+    }
+
+    corruption_monthly_income = 0.02
+}
+
+#corruption_investment_cost_modifier = {
+#    category = country
+#    type = country
+
+#    scales_with = {
+#        value = var:corruption_investment
+#        multiply = corruption_investment_based_cost
+#    }
+
+#    potential_trigger = {
+#        modifier:allow_corruption = yes
+#    }
+
+#    monthly_gold_expense = 1
+#}
+
+corruption_decay_modifier = {
+    category = country
+    type = country
+
+    scales_with = {
+        value = var:corruption
+        multiply = 0.01
+    }
+
+    potential_trigger = {
+        modifier:allow_corruption = yes
+    }
+
+    corruption_monthly_income = -0.5
+}

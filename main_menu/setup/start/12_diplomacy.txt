@@ -59,6 +59,7 @@ diplomacy_manager = {
 
 	#HRE
 	dependency = { first = HAB second = HUN subject_type = crown_territory }
+	dependency = { first = HAB second = CRO subject_type = crown_territory }
 	dependency = { first = HAB second = TIR subject_type = vassal }
 	
 ###Southeast Asian Islands
@@ -171,11 +172,51 @@ diplomacy_manager = {
 
 
 	#Ottoman
-	dependency = {first = TUR second = WAL subject_type = vassal }
-	dependency = {first = TUR second = TRA subject_type = vassal }
-	dependency = {first = TUR second = MOL subject_type = vassal }
-	dependency = {first = TUR second = GEO subject_type = vassal }
-	dependency = {first = TUR second = CRI subject_type = tributary }
+	dependency = { first = TUR second = WAL subject_type = vassal }
+	dependency = { first = TUR second = TRA subject_type = vassal }
+	dependency = { first = TUR second = MOL subject_type = vassal }
+	dependency = { first = TUR second = GEO subject_type = vassal }
+	dependency = { first = TUR second = CRI subject_type = tributary }
+	dependency = { first = TUR second = CEM subject_type = tributary }
+	dependency = { first = TUR second = EGL subject_type = tributary }
+	dependency = { first = TUR second = HZR subject_type = tributary }
+	dependency = { first = TUR second = BIT subject_type = tributary }
+	dependency = { first = TUR second = BHT subject_type = tributary }
+	dependency = { first = TUR second = JLM subject_type = tributary }
+	dependency = { first = TUR second = DSN subject_type = tributary }
+	dependency = { first = TUR second = HKK subject_type = tributary }
+	dependency = { first = TUR second = ZZR subject_type = tributary }
+	dependency = { first = TUR second = SOH subject_type = tributary }
+	dependency = { first = TUR second = MEC subject_type = vassal }
+	dependency = { first = TUR second = AMR subject_type = tributary }
+	dependency = { first = TUR second = AAL subject_type = tributary }
+	dependency = { first = TUR second = HUT subject_type = tributary }
+	dependency = { first = TUR second = FDL subject_type = tributary }
+	dependency = { first = TUR second = AAD subject_type = tributary }
+	dependency = { first = TUR second = SHM subject_type = tributary }
+	dependency = { first = TUR second = ANZ subject_type = tributary }
+	dependency = { first = TUR second = MUT subject_type = tributary }
+	dependency = { first = TUR second = AZF subject_type = tributary }
+	dependency = { first = TUR second = ZIB subject_type = tributary }
+	dependency = { first = TUR second = KLB subject_type = tributary }
+	dependency = { first = TUR second = BNL subject_type = tributary }
+	dependency = { first = TUR second = MRH subject_type = tributary }
+	dependency = { first = TUR second = YAS subject_type = tributary }
+	dependency = { first = TUR second = HRB subject_type = tributary }
+	dependency = { first = TUR second = SBY subject_type = tributary }
+	dependency = { first = TUR second = DWS subject_type = tributary }
+	dependency = { first = TUR second = QHT subject_type = tributary }
+	dependency = { first = TUR second = TUN subject_type = tributary }
+	dependency = { first = TUR second = ALG subject_type = march }
+	dependency = { first = TUR second = MEA subject_type = eyalet }
+	dependency = { first = TUR second = VAN subject_type = eyalet }
+	dependency = { first = TUR second = TRP subject_type = eyalet }
+	dependency = { first = TUR second = TME subject_type = eyalet }
+	dependency = { first = TUR second = BDN subject_type = eyalet }
+	dependency = { first = TUR second = EGR subject_type = eyalet }
+	dependency = { first = TUR second = KNJ subject_type = eyalet }
+	dependency = { first = TUR second = EGY subject_type = eyalet }
+	dependency = { first = TUR second = LAH subject_type = eyalet }
 
 	#Ryūkyū
 	dependency = { first = STM second = RYY subject_type = vassal }
@@ -192,11 +233,15 @@ diplomacy_manager = {
 	#Caucasus
 	dependency = { first = SFV second = AAI subject_type = vassal }
 	dependency = { first = SFV second = SKI subject_type = vassal }
-	dependency = { first = SFV second = RUT subject_type = vassal }
-	dependency = { first = SFV second = LEK subject_type = vassal }
-	dependency = { first = SFV second = AVR subject_type = vassal }
-	dependency = { first = SFV second = KAI subject_type = vassal }
-	dependency = { first = SFV second = TRK subject_type = vassal }
+	dependency = { first = SFV second = RUT subject_type = tributary }
+	dependency = { first = SFV second = LEK subject_type = tributary }
+	dependency = { first = SFV second = AVR subject_type = tributary }
+	dependency = { first = SFV second = KAI subject_type = tributary }
+	dependency = { first = SFV second = TRK subject_type = tributary }
+	dependency = { first = SFV second = HBN subject_type = vassal }
+	dependency = { first = SFV second = SLI subject_type = vassal }
+	dependency = { first = SFV second = DML subject_type = vassal }
+	dependency = { first = SFV second = ARD subject_type = march }
 
 	#Italy
 	dependency = { first = VEN second = CRT subject_type = vassal }
@@ -204,8 +249,13 @@ diplomacy_manager = {
 	scripted_mutual = { first = HAB second = SPA type = alliance }
 	scripted_mutual = { first = HAB second = MAI type = alliance }
 	scripted_mutual = { first = HAB second = KOL type = alliance }
+	scripted_mutual = { first = HAB second = BAV type = alliance }
+	scripted_mutual = { first = HAB second = SAX type = alliance }
 	scripted_mutual = { first = ENG second = POR type = alliance }
+	scripted_mutual = { first = ENG second = NED type = alliance }
 	scripted_mutual = { first = BRA second = SWE type = alliance }
+	scripted_mutual = { first = FRA second = VEN type = alliance }
+	scripted_mutual = { first = KNI second = VEN type = alliance }
 
 	#Hansa
 	dependency = { first = HSA second = LUB subject_type = hanseatic_member }

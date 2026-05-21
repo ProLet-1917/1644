@@ -1,0 +1,17 @@
+non_controlled_population_value = {
+    add = {
+        value = total_population
+        subtract = total_control_scaled_population
+    }
+    divide = total_population
+    max = 1
+    min = 0
+}
+
+corruption_investment_based_cost = {
+    add = {
+        value = country_economical_base
+        multiply = 0.075
+    }
+}
+

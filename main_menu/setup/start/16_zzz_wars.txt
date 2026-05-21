@@ -5,7 +5,10 @@ war_manager = {
 			ordinal = 1
 			first = { name = "CSH" }
 		}
-
+		take_country = {
+			type = take_country
+			casus_belli = cb_chinese_unification
+		}
 		start_date = 1627.3.1
 		action = 1644.4.17
 
@@ -76,10 +79,9 @@ war_manager = {
 			second = { name = "MNG" }
 		}
 
-		take_province = {
-			type = superiority_chinese_unification
+		take_country = {
+			type = take_country
 			casus_belli = cb_chinese_unification
-			location = chengdu
 		}
 
 		start_date = 1644.1.1

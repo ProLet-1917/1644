@@ -1,6 +1,37 @@
 ﻿country_name_construction = {
 	type = country
 	text = {
+		localization_key = country_name_construction_ROM_republic # Senatus Populusque Romanus
+		trigger = {
+			tag = ROM
+			government_type = government_type:republic
+
+			OR = {
+				court_language ?= language:latin_language
+				culture.language = language:latin_language
+			}
+		}
+	}
+	text = {
+		localization_key = country_name_construction_BYZ_greek # Basileía Rhōmaíōn
+		trigger = {
+			has_game_rule = byz_name_greek
+
+			OR = {
+				tag = BYZ
+				tag = ROM
+			}
+
+			country_rank = country_rank:rank_empire
+			government_type = government_type:monarchy
+
+			OR = {
+				court_language ?= language:greek_language
+				culture.language = language:greek_language
+			}
+		}
+	}
+	text = {
 		localization_key = country_name_construction_name
 		trigger = {
 			OR = {
@@ -142,8 +173,8 @@
 	text = {
 		localization_key = country_name_construction_archduke
 		trigger = {
-
 			OR = {
+
 				country_rank_is_duchy = yes
 				country_rank_is_kingdom = yes
 			}
@@ -151,6 +182,15 @@
 				tag = HAB
 				has_reform = government_reform:austrian_archduchy_reform
 			}
+		}
+	}
+
+	text = {
+		localization_key = country_name_construction_eyalet
+
+		trigger = {
+			is_subject = yes
+			subject_type = subject_type:eyalet
 		}
 	}
 

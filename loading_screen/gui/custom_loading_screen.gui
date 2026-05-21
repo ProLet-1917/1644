@@ -607,7 +607,7 @@ template custom_version_label {
 						fontsize = 12
 						font = Debug
 						minimumsize = { -1 25 }
-						text = "[StringPair.GetLeft]"
+						text = "[StringViewPair.GetLeft.GetStringView]"
 					}
 
 					widget = {
@@ -624,7 +624,7 @@ template custom_version_label {
 				hbox = {
 					layoutpolicy_horizontal = expanding
 					using = custom_table_field_background
-
+					
 					widget = {
 						layoutpolicy_horizontal = growing
 						layoutpolicy_vertical = growing
@@ -637,7 +637,7 @@ template custom_version_label {
 						fontsize = 12
 						font = Debug
 						minimumsize = { -1 25 }
-						text = "[StringPair.GetRight]"
+						text = "[StringViewPair.GetRight.GetStringView]"
 					}
 				}
 			}
@@ -658,7 +658,7 @@ template custom_version_label {
 							fontsize = 12
 							font = Debug
 							minimumsize = { -1 25 }
-							text = "Anno 1644 0.3.2"
+							text = "Anno 1644 0.3.6"
 						}
 						widget = {
 							layoutpolicy_horizontal = growing

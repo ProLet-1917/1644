@@ -78,7 +78,7 @@ claim_mandate_of_heaven = {
                 }
             }
             OR = {
-                location:changan = {
+                location:jingzhao = {
                     OR = {
                         owner = scope:actor
                         owner = {
@@ -192,7 +192,7 @@ reform_sejm_parliament = {
     }
     allow = {
         scope:actor = {
-            "estate_power(estate_type:nobles_estate)" <= 0.25
+            "estate_power(estate_type:nobles_estate)" <= 0.35
             "estate_power(estate_type:crown_estate)" >= 0.35
             stability >= 25
         }
@@ -1166,6 +1166,256 @@ connect_global_trade = {
             add_country_modifier = {
                 modifier = connect_global_trade
                 years = -1
+            }
+        }
+    }
+
+
+    ai_will_do = {
+        value = 20
+    }
+}
+
+unified_united_province = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:unified_united_province_prices
+
+    cooldown = {
+        type = unified_united_province
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            this = c:NED
+            NOT = {
+                has_country_modifier = unified_united_province
+            }
+        }
+    }
+
+    allow = {
+        current_year >= 1645
+        situation:netherland_independent = {
+            situation_is_active = no
+        }
+        scope:actor = {
+            area:holland_area = {
+                NOT = {
+                    any_location_in_area = {
+                        percent > 0.8
+                        AND = {
+                            NOT = { owner = scope:actor }
+                            owner = {
+                                NOT = { is_subject_of = scope:actor }
+                            }
+                        }
+                    }
+                }
+            }
+            area:friesland_area = {
+                NOT = {
+                    any_location_in_area = {
+                        percent > 0.8
+                        AND = {
+                            NOT = { owner = scope:actor }
+                            owner = {
+                                NOT = { is_subject_of = scope:actor }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            every_subject = {
+                limit = {
+                    capital = {
+                        OR = {
+                            area = area:friesland_area
+                            area = area:holland_area
+                        }
+                    }
+                    is_ai = yes
+                }
+                overlord = {
+                    annex_country = { country = PREV }
+                }
+            }
+            add_country_modifier = {
+                modifier = unified_united_province
+                years = -1
+            }
+        }
+    }
+
+
+    ai_will_do = {
+        value = 20
+    }
+}
+
+reform_the_byzantine_empire = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:reform_the_byzantine_empire_prices
+
+    cooldown = {
+        type = reform_the_byzantine_empire
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            has_or_had_tag = MOI
+            NOT = { tag = BYZ }
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            location:constantinople = {
+                OR = {
+                    owner = scope:actor
+                    owner = {
+                        is_subject_of = scope:actor
+                    }
+                }
+            }
+            location:thessaloniki = {
+                OR = {
+                    owner = scope:actor
+                    owner = {
+                        is_subject_of = scope:actor
+                    }
+                }
+            }
+            num_locations_owned_or_owned_by_subjects >= 50
+            custom_tooltip = {
+                text = "we_already_choose_roman_path"
+                has_variable = choose_roman_path
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            form_country = formable_country:BYZ_f
+            set_country_rank = country_rank:rank_empire
+        }
+    }
+
+
+    ai_will_do = {
+        value = 20
+    }
+}
+
+advance_towards_vienna = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 3
+
+    automation_tick = never
+    automation_tick_frequency = 3
+
+    price = price:advance_towards_vienna_prices
+
+    cooldown = {
+        type = advance_towards_vienna
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            has_or_had_tag = TUR
+            has_variable = unlock_ottomans_vienna_decisions
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            custom_tooltip = {
+                text = "has_finished_five_ottomans_vienna_decisions"
+                var:finished_ottomans_vienna_decisions >= 5
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+
+        }
+    }
+
+
+    ai_will_do = {
+        value = 20
+    }
+}
+
+control_the_crete = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 3
+
+    automation_tick = never
+    automation_tick_frequency = 3
+
+    price = price:control_the_crete_prices
+
+    cooldown = {
+        type = control_the_crete_prices
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            has_or_had_tag = TUR
+            has_variable = unlock_ottomans_vienna_decisions
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            province_definition:crete_province = {
+                NOT = {
+                    any_ownable_location_in_province_definition = {
+                        AND = {
+                            NOT = { owner = scope:actor }
+                            owner = {
+                                NOT = { is_subject_of = scope:actor }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            change_variable = {
+                name = unlock_ottomans_vienna_decisions
+                add = 1
             }
         }
     }

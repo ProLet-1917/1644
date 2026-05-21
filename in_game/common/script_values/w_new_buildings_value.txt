@@ -26,3 +26,36 @@ herdsman_building_cap = {
 }
 herdsman_employment_size = 1.0
 herdsman_build_time = 180
+
+factory_max_level = {
+    add = {
+        desc = "BUILDING_LEVEL_BASE"
+        value = 5
+    }
+    add = {
+        desc = "BUILDING_LEVEL_DEVELOPMENT"
+        value = development
+        multiply = 1
+    }
+    add = {
+        desc = "BUILDING_LEVEL_POPULATION"
+        value = population
+        multiply = 0.25
+    }
+    if = {
+        limit = {
+            location_rank = location_rank:city
+        }
+        add = {
+            desc = "BUILDING_LEVEL_IS_CITY"
+            value = 25
+        }
+    }
+}
+factory_employment = 0.75
+factory_build_time = 1460
+financial_center_build_time = 1095
+
+adventurer_camp_employment = 0.5
+
+adventurer_build_time = 365

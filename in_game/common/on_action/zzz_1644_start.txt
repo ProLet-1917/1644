@@ -5,22 +5,10 @@
 			set_starting_tech_level_by_region = yes
 			# 根据科技等级给予思潮
 			give_institutions_by_tech_level = yes
-            # #设置自动征服 - 给所有首都在中国的国家
-            # if = {
-            #     limit = {
-            #         exists = capital
-            #         OR = {
-            #             capital.region = region:west_china_region
-            #             capital.region = region:east_china_region
-            #             capital.region = region:north_china_region
-            #             capital.region = region:south_china_region
-            #             capital.region = region:manchuria_region #满洲
-            #         }
-            #     }
-            # }
-
-            # 开局生成大量女角色以防止绝嗣（为每个国家触发）
-            #trigger_event_silently = zzz_1644_generate_female_characters.1
+            set_variable = {
+                name = decisions_panel
+                value = 0
+            }
         }
         # 清除默认佣兵队长（仅针对主要国家）
         c:QNG = { trigger_event_silently = cleanup_1644.1 }
@@ -53,6 +41,7 @@
         c:CXI = { trigger_event_silently = cxi_1644_start_army.1 }
 
         # 开局生成大量女角色以防止绝嗣
+
 
         # 开局生成明末军阀军队（江北四镇、左良玉、大同镇）
         c:CGJ = { trigger_event_silently = ming_warlords.1 } # 兴平镇（高杰）
@@ -183,29 +172,6 @@
         #every_location_in_the_world = { #This is a temporary solution
         #    change_max_raw_material_workers = 3
         #}
-
-        continent:europe = {
-            every_location_in_continent = {
-                limit = {
-                    population >= 30
-                }
-                change_max_raw_material_workers = 3
-            }
-            every_location_in_continent = {
-                limit = {
-                    population < 30
-                    population >= 15
-                }
-                change_max_raw_material_workers = 2
-            }
-            every_location_in_continent = {
-                limit = {
-                    population < 15
-                    population >= 8
-                }
-                change_max_raw_material_workers = 1
-            }
-        }
 
         c:SWE = {
             add_country_modifier = {
@@ -361,12 +327,20 @@
                 years = -1
             }
             set_variable = unlock_liberum_veto_variable
+            set_variable = {
+                name = corruption
+                value = 36.5
+            }
         }
 
         the_fronde_protest_effect = yes
         spawn_army_for_hordes_effect = yes
 
         start_herd_check_effect = yes
+
+        monthly_corruption_check_effect = yes
+
+        w_start_building_create_effect = yes
 
         scripted_geography:china_geography = {
             every_location_in_scripted_geography = {
@@ -379,5 +353,14 @@
                 }
             }
         }
+
+        c:MNG = {
+            set_variable = {
+                name = corruption
+                value = 82.5
+            }
+        }
+
+        set_global_variable = hagia_sophia_now_mosque
     }
 }

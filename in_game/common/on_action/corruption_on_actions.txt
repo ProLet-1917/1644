@@ -1,0 +1,13 @@
+on_corruption_monthly_check = {
+    trigger = {
+        has_variable = corruption
+        NOT = { has_global_variable = temp_monthly_corruption_check}
+    }
+    effect = {
+        set_global_variable = {
+            name = temp_monthly_corruption_check
+            days = 10
+        }
+        monthly_corruption_check_effect = yes
+    }
+}

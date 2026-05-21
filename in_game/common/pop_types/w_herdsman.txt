@@ -4,6 +4,7 @@ herdsman = {
     promote_to = burghers
     promote_to = clergy
     promote_to = nobles
+    promote_to = soldiers
 
     pop_food_consumption = 1.25
 
@@ -18,12 +19,13 @@ herdsman = {
     city_graphics = 0.01
 
     dhimmi_estate = { is_dhimmi = yes }
+    tribes_estate = { is_gaelic_clans = yes }
 
     peasants_estate = {}
 
     literacy_impact = {
         local_food_capacity_modifier = 0.02
-        local_production_efficiency = -0.02
-        local_monthly_food_modifier = -0.02
+        local_pop_promotion_speed_modifier = 1.0
+        local_levy_recruitment_speed_modifier = 0.5
     }
 }

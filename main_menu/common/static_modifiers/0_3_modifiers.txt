@@ -3,6 +3,8 @@ the_reforms_of_gustav_ii = {
         category = country
     }
 
+    corruption_monthly_income = -0.05
+
     global_levy_size_modifier = 0.15
     levy_combat_efficiency_modifier = 0.1
     global_levy_recruitment_speed_modifier = 0.25
@@ -10,13 +12,13 @@ the_reforms_of_gustav_ii = {
 
     global_estate_target_satisfaction = 0.05
 
-    army_maintenance_cost = -0.1
-    navy_maintenance_cost = -0.05
+    army_maintenance_efficiency = -0.1
+    navy_maintenance_efficiency = -0.05
 
     tax_income_efficiency = 0.1
     nobles_estate_max_tax = 0.1
 
-    army_infantry_power = 0.05
+    army_heavy_infantry_power = 0.05
     army_artillery_power = 0.15
     army_movement_speed = 0.05
 }
@@ -49,7 +51,7 @@ under_the_chmielnicki_leader = {
     }
 
     amount_looted_modifier = 0.33
-    army_maintenance_cost = -0.67
+    army_maintenance_efficiency = -0.67
     levy_recovery_modifier = 0.2
     levy_combat_efficiency_modifier = 0.1
     global_levy_size_modifier = 0.25
@@ -90,12 +92,11 @@ the_deluge = {
     stability_cost = 0.2
     global_levy_size_modifier = -0.10
     levy_combat_efficiency_modifier = -0.10
-    land_morale_modifier = -0.1
+    land_morale_modifier = -0.05
     discipline = -0.05
-    army_infantry_power = -0.05
-    army_cavalry_power = -0.05
-    army_artillery_power = -0.05
+    corruption_monthly_income = 0.05
 }
+
 the_corruption_in_sejm = {
     game_data = {
         category = country
@@ -105,11 +106,12 @@ the_corruption_in_sejm = {
     tax_income_efficiency = -0.05
     land_cost_on_distance_from_capital_speed_propagation = -0.10
     global_max_control = -0.05
-    global_nobles_estate_power = 0.16
-    global_peasants_estate_power = -0.16
+    global_nobles_estate_power = 0.15
+    global_peasants_estate_power = -0.15
     peasants_estate_target_satisfaction = -0.05
     global_levy_size_modifier = -0.05
     global_levy_recruitment_speed_modifier = -0.33
+    corruption_monthly_income = 0.10
 }
 
 the_fronde_protest = {
@@ -149,16 +151,16 @@ habsburgs_goldern_century = {
     levy_combat_efficiency_modifier = 0.05
     subject_pays_vassal_cost_modifier = 0.05
     subject_loyalty = 25
-    trade_efficiency = 0.05
+    trade_income = 0.05
     trade_range_modifier = 0.05
-    army_maintenance_cost = 0.1
+    army_maintenance_efficiency = 0.1
     army_initiative = 0.05
     discipline = 0.05
     research_speed_modifier = 0.02
     global_population_growth = 0.0005
     global_max_control = 0.05
     land_cost_on_distance_from_capital_speed_propagation = 0.2
-    court_spending_cost = 0.05
+    court_spending_cost_modifier = 0.05
 }
 
 rise_of_the_russia = {
@@ -174,7 +176,7 @@ rise_of_the_russia = {
     tax_income_efficiency = 0.02
     power_projection = 20
     aggressiveness_modifier = 0.25
-    antagonism_tolerance = 0.16
+    antagonism_received_modifier = -0.16
     expected_warscore_modifier = 0.25
     bias_for_militarist_policies = 16
 }
@@ -196,7 +198,7 @@ general_war_commissariat = {
     game_data = {
         category = country
     }
-    army_maintenance_cost = -0.05
+    army_maintenance_efficiency = -0.05
     global_food_capacity_modifier = 0.05
     army_logistics_distance_modifier = 0.05
 }
@@ -215,7 +217,7 @@ reform_the_regulars = {
     game_data = {
         category = country
     }
-    army_maintenance_cost = -0.02
+    army_maintenance_efficiency = -0.02
     army_reinforce_cost = -0.02
     military_tactics = 0.01
     army_initiative = 0.01
@@ -228,7 +230,7 @@ golden_age_of_our_country = {
     }
     power_projection = 25
     land_morale_modifier = 0.1
-    army_maintenance_cost = -0.05
+    army_maintenance_efficiency = -0.05
     research_speed_modifier = 0.05
     cultures_capacity_modifier = 0.1
     global_pop_assimilation_speed_modifier = 0.05
@@ -240,7 +242,7 @@ between_the_two_seas = {
     game_data = {
         category = country
     }
-    trade_efficiency = 0.05
+    trade_income = 0.05
     power_projection = 20
     monthly_towards_naval = 0.02
     monthly_towards_innovative = 0.02
@@ -254,8 +256,8 @@ the_third_rome = {
     great_power_score = 100
     global_pop_assimilation_speed_modifier = 0.05
     tax_income_efficiency = 0.05
-    army_maintenance_cost = -0.05
-    army_infantry_power = 0.1
+    army_maintenance_efficiency = -0.05
+    army_heavy_infantry_power = 0.1
 }
 
 improve_local_government = {
@@ -303,10 +305,10 @@ connect_global_trade = {
     game_data = {
         category = country
     }
-    trade_efficiency = 0.1
+    trade_income = 0.1
     trade_range_modifier = 0.1
     global_trades_per_burgher = 0.2
-    merchant_maintenance_cost = -0.1
+    merchant_maintenance_efficiency = -0.1
 }
 
 enabled_dynamic_territorial_occupation = {
@@ -315,4 +317,31 @@ enabled_dynamic_territorial_occupation = {
     }
 
     location_enable_dynamic_territorial_occupation = yes
+}
+
+unified_united_province = {
+    game_data = {
+        category = country
+    }
+
+    global_trades_per_burgher = 0.05
+    trade_income = 0.05
+    burghers_estate_target_satisfaction = 0.025
+    merchant_maintenance_efficiency = -0.15
+}
+
+debug_forced_dynamic_territorial_occupation = {
+    game_data = {
+        category = country
+    }
+
+    enable_forced_dynamic_territorial_occupation = yes
+}
+
+debug_global_laborers_desired_pop_scaled = {
+    game_data = {
+        category = country
+    }
+
+    global_laborers_desired_pop_scaled = 0.5
 }

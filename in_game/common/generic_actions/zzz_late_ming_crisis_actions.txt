@@ -1,425 +1,396 @@
 ﻿# 明朝危机局势 - 获取统一中国CB的按钮
 late_ming_crisis_grant_unification_cb = {
-	type = situation
-	
-	potential = {
-		scope:actor = {
-			can_see_situation = situation:late_ming_crisis
-		}
-		# 确保明末危机局势是激活的
-		situation:late_ming_crisis = {
-			situation_is_active = yes
-		}
-	}
+    type = situation
 
-	allow = {
-		scope:actor = {
-			capital ?= {
-				OR = {
-					region = region:west_china_region
-					region = region:east_china_region
-					region = region:north_china_region
-					region = region:south_china_region
-					region = region:manchuria_region
-				}
-			}
-		}
-	}
+    potential = {
+        scope:actor = {
+            can_see_situation = situation:late_ming_crisis
+        }
+        # 确保明末危机局势是激活的
+        situation:late_ming_crisis = {
+            situation_is_active = yes
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            capital ?= {
+                OR = {
+                    region = region:west_china_region
+                    region = region:east_china_region
+                    region = region:north_china_region
+                    region = region:south_china_region
+                    region = region:manchuria_region
+                }
+            }
+        }
+    }
 
 	ai_tick = monthly
 	ai_tick_frequency = 6
 	automation_tick = never
 	automation_tick_frequency = 3
-
-	select_trigger = {
-		looking_for_a = situation
-		target_flag = recipient
-		name = "choose_situation"
-		column = {
-			data = name
-		}
-		visible = {
-			situation:late_ming_crisis = this
-			situation_is_active = yes
-		}
-	}
 
 	select_trigger = {
 		looking_for_a = country
 		source_global_list = china_countries_list
 		target_flag = target
 		name = "choose_country"
-		column = {
-			data = name
-		}
-		column = {
-			data = military_strength
-		}
-		visible = {
-			NOT = { this = scope:actor }
-			# 检查目标是否是邻居 且不是root的附庸
-			scope:actor = {
-				NOT = { is_subject_or_below_of = root }
-				any_neighbor_country = {
-					this = root
-				}
-			}
-		}
-	}
+		none_available_msg_key = "no_countries_available"
+        column = {
+            data = name
+        }
+        column = {
+            data = army_size
+        }
+        visible = {
+            NOT = { this = scope:actor }
+            # 检查目标是否是actor的邻居，且actor不是目标的附庸
+            scope:actor = {
+                NOT = { is_subject_or_below_of = this }
+            }
+            # 检查this是否是scope:actor的邻居
+            this = {
+                is_neighbor_of = scope:actor
+            }
+        }
+    }
 
-	effect = {
-		if = {
-			limit = {
-				exists = scope:target
-			}
-			scope:actor = {
-				remove_truce_with = scope:target
-				add_casus_belli = {
-					target = scope:target
-					type = casus_belli:cb_chinese_unification
-				}
-				# 为目标国家的所有省份添加核心
-				scope:target = {
-					every_owned_location = {
-						scope:actor = {
-							add_core = prev
-						}
-					}
-				}
-				# 自动宣战
-				if = {
-					limit = {
-						NOT = { scope:target = scope:actor }
-						NOT = { is_at_war_with = scope:target }
-						NOT = { is_fighting_war_together_with = scope:target }
-					}
-					declare_war_with_cb = {
-						target = scope:target
-						type = casus_belli:cb_chinese_unification
-					}
-				}
-			}
-		}
-	}
+    effect = {
+        if = {
+            limit = {
+                exists = scope:target
+            }
+            scope:actor = {
+                # Debug: 保存军力比较结果（在effect中执行，会在action执行时设置）
+                set_variable = {
+                    name = zzz_1644_debug_military_strength
+                    value = {
+                        value = "relative_military_strength(scope:target)"
+                    }
+                }
+                remove_truce_with = scope:target
+                add_casus_belli = {
+                    target = scope:target
+                    type = casus_belli:cb_chinese_unification
+                }
+                # 为目标国家的所有省份添加核心
+                scope:target = {
+                    every_owned_location = {
+                        scope:actor = {
+                            add_core = prev
+                        }
+                    }
+                }
+                # 自动宣战
+                if = {
+                    limit = {
+                        NOT = { scope:target = scope:actor }
+                        NOT = { is_at_war_with = scope:target }
+                        NOT = { is_fighting_war_together_with = scope:target }
+                    }
+                    declare_war_with_cb = {
+                        target = scope:target
+                        type = casus_belli:cb_chinese_unification
+                    }
+                }
+            }
+        }
+    }
 
-	ai_will_do = {
-		# 基础分数
-		add = 50
-		
-		# 检查目标是否是邻居
-		if = {
-			limit = {
-				exists = scope:target
-				scope:actor = {
-					any_neighbor_country = {
-						this = scope:target
-					}
-				}
-				# 如果已经拥有对该目标的CB，降低优先级
-				scope:actor = {
-					NOT = { 
-						has_casus_belli_of_type_on = {
-							type = casus_belli:cb_chinese_unification
-							target = scope:target
-						}
-					}
-				}
-				# 检查宗主国对附庸国有大量军事优势（至少2倍）
-				scope:actor = {
-					relative_military_strength = {
-						target = scope:target
-						value > 2.0
-					}
-				}
-			}
-			value = 150
-		}
-		
-		# 如果已有CB，降低分数
-		if = {
-			limit = {
-				scope:actor = {
-					has_casus_belli_of_type_on = {
-						type = casus_belli:cb_chinese_unification
-						target = scope:target
-					}
-				}
-			}
-			value = -200
-		}
-	}
+    ai_will_do = {
+        # 基础分数
+        add = 50
+
+        # 检查目标是否是邻居
+        if = {
+            limit = {
+                exists = scope:target
+                scope:actor = {
+                    any_neighbor_country = {
+                        this = scope:target
+                    }
+                }
+                # 如果已经拥有对该目标的CB，降低优先级
+                scope:actor = {
+                    NOT = {
+                        has_casus_belli_of_type_on = {
+                            type = casus_belli:cb_chinese_unification
+                            target = scope:target
+                        }
+                    }
+                }
+                # 检查actor对target有大量军事优势（至少2倍）
+                "scope:actor.relative_military_strength(scope:target)" > 1.5
+            }
+            value = 150
+        }
+
+        # 如果军力不足（<= 1.5），大幅降低分数，避免弱国攻击强国
+        if = {
+            limit = {
+                exists = scope:target
+                "scope:actor.relative_military_strength(scope:target)" <= 1.5
+            }
+            value = -500
+        }
+
+        # 如果已有CB，降低分数
+        if = {
+            limit = {
+                scope:actor = {
+                    has_casus_belli_of_type_on = {
+                        type = casus_belli:cb_chinese_unification
+                        target = scope:target
+                    }
+                }
+            }
+            value = -200
+        }
+    }
 }
 
 # 讨伐不臣 - 对附庸获取统一中国CB
 late_ming_crisis_subjugate_disobedient = {
-	type = situation
-	
-	potential = {
-		scope:actor = {
-			can_see_situation = situation:late_ming_crisis
-		}
-		# 确保明末危机局势是激活的
-		situation:late_ming_crisis = {
-			situation_is_active = yes
-		}
-	}
+    type = situation
 
-	allow = {
-		scope:actor = {
-			capital ?= {
-				OR = {
-					region = region:west_china_region
-					region = region:east_china_region
-					region = region:north_china_region
-					region = region:south_china_region
-					region = region:manchuria_region
-				}
-			}
-		}
-	}
+    potential = {
+        scope:actor = {
+            can_see_situation = situation:late_ming_crisis
+        }
+        # 确保明末危机局势是激活的
+        situation:late_ming_crisis = {
+            situation_is_active = yes
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            capital ?= {
+                OR = {
+                    region = region:west_china_region
+                    region = region:east_china_region
+                    region = region:north_china_region
+                    region = region:south_china_region
+                    region = region:manchuria_region
+                }
+            }
+        }
+    }
 
 	ai_tick = monthly
-	ai_tick_frequency = 6	
-
-	select_trigger = {
-		looking_for_a = situation
-		target_flag = recipient
-		name = "choose_situation"
-		column = {
-			data = name
-		}
-		visible = {
-			situation:late_ming_crisis = this
-			situation_is_active = yes
-		}
-	}
+	ai_tick_frequency = 6
 
 	select_trigger = {
 		looking_for_a = country
 		target_flag = target
 		name = "choose_country"
-		column = {
-			data = name
-		}
-		column = {
-			data = military_strength
-		}
-		visible = {
-			NOT = { this = scope:actor }
-			# 检查目标是否是actor的附庸
-			is_subject_or_below_of = scope:actor
-			# 使用scripted trigger检查是否在中国区域
-			zzz_1644_is_china_region_country = yes
-		}
-	}
+        column = {
+            data = name
+        }
+        column = {
+            data = military_strength
+        }
+        visible = {
+            NOT = { this = scope:actor }
+            # 检查目标是否是actor的附庸
+            is_subject_or_below_of = scope:actor
+            # 使用scripted trigger检查是否在中国区域
+            zzz_1644_is_china_region_country = yes
+        }
+    }
 
-	effect = {
-		if = {
-			limit = {
-				exists = scope:target
-				NOT = { scope:target = scope:actor }
-				scope:target = {
-					is_subject_or_below_of = scope:actor
-				}
-			}
-			# 解除附庸关系
-			scope:actor = {
-				cancel_subject = scope:target
-			}
-			# 取消和平协议并添加统一中国CB
-			scope:actor = {
-				remove_truce_with = scope:target
-				add_casus_belli = {
-					target = scope:target 
-					type = casus_belli:cb_chinese_unification
-				}
-				# 为目标国家的所有省份添加核心
-				scope:target = {
-					every_owned_location = {
-						scope:actor = {
-							add_core = prev
-						}
-					}
-				}
-				# 自动宣战
-				if = {
-					limit = {
-						NOT = { scope:target = scope:actor }
-						NOT = { is_at_war_with = scope:target }
-						NOT = { is_fighting_war_together_with = scope:target }
-					}
-					declare_war_with_cb = {
-						target = scope:target
-						type = casus_belli:cb_chinese_unification
-					}
-				}
-			}
-		}
-	}
+    effect = {
+        if = {
+            limit = {
+                exists = scope:target
+                NOT = { scope:target = scope:actor }
+                scope:target = {
+                    is_subject_or_below_of = scope:actor
+                }
+            }
+            # 解除附庸关系
+            scope:actor = {
+                cancel_subject = scope:target
+            }
+            # 取消和平协议并添加统一中国CB
+            scope:actor = {
+                # Debug: 保存军力比较结果（在effect中执行，会在action执行时设置）
+                set_variable = {
+                    name = zzz_1644_debug_military_strength
+                    value = {
+                        value = "relative_military_strength(scope:target)"
+                    }
+                }
+                remove_truce_with = scope:target
+                add_casus_belli = {
+                    target = scope:target
+                    type = casus_belli:cb_chinese_unification
+                }
+                # 为目标国家的所有省份添加核心
+                scope:target = {
+                    every_owned_location = {
+                        scope:actor = {
+                            add_core = prev
+                        }
+                    }
+                }
+                # 自动宣战
+                if = {
+                    limit = {
+                        NOT = { scope:target = scope:actor }
+                        NOT = { is_at_war_with = scope:target }
+                        NOT = { is_fighting_war_together_with = scope:target }
+                    }
+                    declare_war_with_cb = {
+                        target = scope:target
+                        type = casus_belli:cb_chinese_unification
+                    }
+                }
+            }
+        }
+    }
 
-	ai_will_do = {
-		# 基础分数
-		add = 50
-		
-		# 检查目标是否是附庸，且满足军事优势和低好感度条件
-		if = {
-			limit = {
-				exists = scope:target
-				scope:target = {
-					is_subject_or_below_of = scope:actor
-				}
-				# 检查宗主国对附庸国有大量军事优势（至少2倍）
-				scope:actor = {
-					relative_military_strength = {
-						target = scope:target
-						value > 2.0
-					}
-				}
-				# 检查附庸国对宗主国有低好感度（低于20）
-				scope:target = {
-					opinion = {
-						target = scope:actor
-						value < 20
-					}
-				}
-				# 如果已经拥有对该目标的CB，降低优先级
-				scope:actor = {
-					NOT = { 
-						has_casus_belli_of_type_on = {
-							type = casus_belli:cb_chinese_unification
-							target = scope:target
-						}
-					}
-				}
-			}
-			value = 150
-		}
-		
-		# 如果不满足军事优势或好感度条件，大幅降低分数
-		if = {
-			limit = {
-				exists = scope:target
-				OR = {
-					# 军事优势不足
-					scope:actor = {
-						relative_military_strength = {
-							target = scope:target
-							value <= 2.0
-						}
-					}
-					# 好感度不低
-					scope:target = {
-						opinion = {
-							target = scope:actor
-							value >= 20
-						}
-					}
-				}
-			}
-			value = -500
-		}
-		
-		# 如果已有CB，降低分数
-		if = {
-			limit = {
-				scope:actor = {
-					has_casus_belli_of_type_on = {
-						type = casus_belli:cb_chinese_unification
-						target = scope:target
-					}
-				}
-			}
-			value = -200
-		}
-	}
+    ai_will_do = {
+        # 基础分数
+        add = 50
+
+        # 检查目标是否是附庸，且满足军事优势和低好感度条件
+        if = {
+            limit = {
+                exists = scope:target
+                scope:target = {
+                    is_subject_or_below_of = scope:actor
+                }
+                # 检查宗主国对附庸国有大量军事优势（至少2倍）
+                "scope:actor.relative_military_strength(scope:target)" > 1.5
+                # 检查附庸国对宗主国有低好感度（低于20）
+                scope:target = {
+                    opinion = {
+                        target = scope:actor
+                        value < 20
+                    }
+                }
+                # 如果已经拥有对该目标的CB，降低优先级
+                scope:actor = {
+                    NOT = {
+                        has_casus_belli_of_type_on = {
+                            type = casus_belli:cb_chinese_unification
+                            target = scope:target
+                        }
+                    }
+                }
+            }
+            value = 150
+        }
+
+        # 如果不满足军事优势或好感度条件，大幅降低分数
+        if = {
+            limit = {
+                exists = scope:target
+                OR = {
+                    # 军事优势不足
+                    "scope:actor.relative_military_strength(scope:target)" <= 1.5
+                    # 好感度不低
+                    scope:target = {
+                        opinion = {
+                            target = scope:actor
+                            value >= 20
+                        }
+                    }
+                }
+            }
+            value = -500
+        }
+
+        # 如果已有CB，降低分数
+        if = {
+            limit = {
+                scope:actor = {
+                    has_casus_belli_of_type_on = {
+                        type = casus_belli:cb_chinese_unification
+                        target = scope:target
+                    }
+                }
+            }
+            value = -200
+        }
+    }
 }
 
 # 重建天朝 - 在明末危机局势中重建天朝组织
 late_ming_crisis_restore_celestial_empire = {
-	type = situation
-	
-	potential = {
-		scope:actor = {
-			can_see_situation = situation:late_ming_crisis
-		}
-		# 确保明末危机局势是激活的
-		situation:late_ming_crisis = {
-			situation_is_active = yes
-		}
-	}
+    type = situation
 
-	allow = {
-		scope:actor = {
-			zzz_1644_is_china_region_country = yes
-			OR = {
-				NOT = { exists = international_organization:middle_kingdom }
-				NOT = { is_leader_of_international_organization = international_organization:middle_kingdom }
-			}
-			# 需要占领所有主要城市以证明统一
-			zzz_1644_owns_major_cn_cities = yes
-		}
-	}
+    potential = {
+        scope:actor = {
+            can_see_situation = situation:late_ming_crisis
+        }
+        # 确保明末危机局势是激活的
+        situation:late_ming_crisis = {
+            situation_is_active = yes
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            zzz_1644_is_china_region_country = yes
+            OR = {
+                NOT = { exists = international_organization:middle_kingdom }
+                NOT = { is_leader_of_international_organization = international_organization:middle_kingdom }
+            }
+            # 需要占领所有主要城市以证明统一
+            zzz_1644_owns_major_cn_cities = yes
+        }
+    }
 
 	ai_tick = monthly
 	ai_tick_frequency = 6
 	automation_tick = never
 	automation_tick_frequency = 3
 
-	select_trigger = {
-		looking_for_a = situation
-		target_flag = recipient
-		name = "choose_situation"
-		column = {
-			data = name
-		}
-		visible = {
-			situation:late_ming_crisis = this
-			situation_is_active = yes
-		}
-	}
-
 	effect = {
-		scope:actor = {
-			# 等同于成立CHI国家
-			zzz_1644_form_china_effect = yes
-		}
-	}
+        scope:actor = {
+            # 等同于成立CHI国家
+            zzz_1644_form_china_effect = yes
+        }
+    }
 
-	ai_will_do = {
-		# 基础分数
-		add = 100
-		
-		# 如果已经统一了中国（拥有多个关键城市），提高优先级
-		if = {
-			limit = {
-				scope:actor = {
-					owns = location:dadu
-					owns = location:chengdu
-					owns = location:jingzhao
-					owns = location:jiangxia
-					owns = location:shangyuan
-					stability > 50
-				}
-			}
-			value = 200
-		}
-		
-		# 如果已经是天朝领袖，降低优先级
-		if = {
-			limit = {
-				scope:actor = {
-					is_leader_of_international_organization = international_organization:middle_kingdom
-				}
-			}
-			value = -500
-		}
-	}
+    ai_will_do = {
+        # 基础分数
+        add = 100
+
+        # 如果已经统一了中国（拥有多个关键城市），提高优先级
+        if = {
+            limit = {
+                scope:actor = {
+                    owns = location:dadu
+                    owns = location:chengdu
+                    owns = location:jingzhao
+                    owns = location:jiangxia
+                    owns = location:shangyuan
+                    stability > 50
+                }
+            }
+            value = 200
+        }
+
+        # 如果已经是天朝领袖，降低优先级
+        if = {
+            limit = {
+                scope:actor = {
+                    is_leader_of_international_organization = international_organization:middle_kingdom
+                }
+            }
+            value = -500
+        }
+    }
 }
 
 # 测试按钮：重建天朝组织（不改变tag，仅用于测试）
 # late_ming_crisis_test_recreate_middle_kingdom = {
 # 	type = situation
-# 	
+#
 # 	potential = {
 # 		scope:actor = {
 # 			can_see_situation = situation:late_ming_crisis
@@ -429,7 +400,7 @@ late_ming_crisis_restore_celestial_empire = {
 # 			situation_is_active = yes
 # 		}
 # 	}
-# 
+#
 # 	allow = {
 # 		scope:actor = {
 # 			zzz_1644_is_china_region_country = yes
@@ -439,10 +410,10 @@ late_ming_crisis_restore_celestial_empire = {
 # 			}
 # 		}
 # 	}
-# 
+#
 # 	ai_tick = never
 # 	automation_tick = never
-# 
+#
 # 	select_trigger = {
 # 		looking_for_a = situation
 # 		target_flag = recipient
@@ -455,7 +426,7 @@ late_ming_crisis_restore_celestial_empire = {
 # 			situation_is_active = yes
 # 		}
 # 	}
-# 
+#
 # 	effect = {
 # 		scope:actor = {
 # 			# 测试用：使用原版rtr_recreate_middle_kingdom（包含完整国家效果：改变tag、核心化、接受文化等）
@@ -464,7 +435,7 @@ late_ming_crisis_restore_celestial_empire = {
 # 			set_country_rank_effect = { rank = country_rank:rank_empire }
 # 		}
 # 	}
-# 
+#
 # 	ai_will_do = {
 # 		add = -1000  # AI不会使用测试按钮
 # 	}

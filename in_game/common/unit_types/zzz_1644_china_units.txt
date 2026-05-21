@@ -17,8 +17,8 @@
 #   medicaments   - 药品
 #   salt          - 盐
 a_1644_chinese_zhanbing = {
-	category = army_infantry
-	copy_from = a_age_3_discovery_infantry
+	#category = army_infantry
+	copy_from = a_age_3_discovery_light_infantry
 	buildable = yes
 
 	combat_power = 1.2
@@ -37,8 +37,8 @@ a_1644_chinese_zhanbing = {
 }
 
 a_1644_chinese_musketeers = {
-	category = army_infantry
-	copy_from = a_age_4_reformation_infantry
+	#category = army_infantry
+	copy_from = a_age_4_reformation_heavy_infantry
 	buildable = yes
 
 	# 火器营（孙元化登州火器）
@@ -96,8 +96,8 @@ REPLACE:a_red_cannon = {
 
 # 八旗骑兵 
 REPLACE:a_banner_cavalry = {
-	category = army_cavalry
-	copy_from = a_age_4_reformation_cavalry
+	#category = army_cavalry
+	copy_from = a_age_4_reformation_light_cavalry
 	buildable = yes
 	levy = no
 	
@@ -112,8 +112,8 @@ REPLACE:a_banner_cavalry = {
 
 # 乌真超哈 - 汉军八旗
 a_ujen_cooha = {
-	category = army_infantry
-	copy_from = a_age_4_reformation_infantry
+	#category = army_infantry
+	copy_from = a_age_4_reformation_heavy_infantry
 	buildable = no
 	levy = yes
 	
@@ -127,8 +127,8 @@ a_ujen_cooha = {
 # 甲喇（jalan）是八旗战术单位，每甲喇5牛录约1500人
 # 作为征召单位，代表八旗披甲人的临时动员
 levy_banner_jalan = {
-	category = army_infantry
-	copy_from = a_age_3_discovery_infantry
+	#category = army_infantry
+	copy_from = a_age_3_discovery_heavy_infantry
 	buildable = no
 	levy = yes
 	
@@ -147,8 +147,8 @@ levy_banner_jalan = {
 # 八旗甲喇 - 征召骑兵
 # 骑兵版本的征召甲喇，机动性强但装备简陋
 levy_banner_cavalry = {
-	category = army_cavalry
-	copy_from = a_age_4_reformation_cavalry
+	#category = army_cavalry
+	copy_from = a_age_4_reformation_heavy_cavalry
 	buildable = no
 	levy = yes
 	
@@ -161,8 +161,8 @@ levy_banner_cavalry = {
 
 # 骑营
 a_1644_chinese_cavalry = {
-	category = army_cavalry
-	copy_from = a_age_4_reformation_cavalry
+	#category = army_cavalry
+	copy_from = a_age_4_reformation_light_cavalry
 	buildable = yes
 
 	country_potential = {
@@ -173,8 +173,8 @@ a_1644_chinese_cavalry = {
 
 # 关宁铁骑
 a_1644_guanning_cavalry = {
-	category = army_cavalry
-	copy_from = a_age_4_reformation_cavalry
+	#category = army_cavalry
+	copy_from = a_age_4_reformation_heavy_cavalry
 	buildable = yes
 	
 	max_strength = 0.3

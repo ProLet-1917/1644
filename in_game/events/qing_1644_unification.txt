@@ -536,6 +536,44 @@ qng_1644_unification.7 = {
 				}
 			}
 		}
+		# 对济宣战
+		c:CJI ?= {
+			save_scope_as = target_cji
+			if = {
+				limit = {
+					exists = this
+					is_subject = no
+					ROOT = {
+						NOT = {
+							is_at_war_with = this
+						}
+						NOT = {
+							is_subject_of = this
+						}
+					}
+				}
+				ROOT = {
+					add_casus_belli = {
+						target = scope:target_cji
+						type = casus_belli:cb_chinese_unification
+					}
+					declare_war_with_cb = {
+						target = scope:target_cji
+						type = casus_belli:cb_chinese_unification
+					}
+				}
+				# 让大西的所有附属国加入战争（在宣战后执行）
+				#every_subject = {
+				#	limit = {
+				#		exists = this
+				#	}
+				#	save_scope_as = subject_to_join
+				#	scope:subject_to_join = {
+				#		subject_join_overlord_wars = yes
+				#	}
+				#}
+			}
+		}
 		# 让大清的所有附属国加入大清的战争
 		every_subject = {
 			limit = {
@@ -635,5 +673,15 @@ qng_1644_unification.10 = {
 	historical_info = qng_1644_unification.10.historical_info
 	option = {
 		name = qng_1644_unification.10.a
+	}
+}
+
+qng_1644_unification.11 = {
+	#山东河北投降
+	title = qng_1644_unification.11.title
+	desc = qng_1644_unification.11.desc
+	historical_info = qng_1644_unification.11.historical_info
+	option = {
+		name = qng_1644_unification.11.a
 	}
 }

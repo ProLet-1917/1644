@@ -2,11 +2,20 @@
 	year = 1
 	price_stability = 0.1
 	max_price = 3
-	
+	known_goods_demand_threshold = 100
+
 	modifier = {
-		lack_of_control_impact_on_warscore = -0.1
+		lack_of_control_impact_on_warscore = 0.1
 	}
-	
+
+	goods_demand = {
+		global_liquor_pop_demand    = -0.75	# spirits rare — monastic/alchemical curiosity only
+		global_tobacco_pop_demand   = -0.75	# unknown outside Americas in Old World
+		global_coffee_pop_demand    = -0.5	# confined to East African/Yemeni monastic use
+		global_sugar_pop_demand     = -0.25	# luxury spice, very limited supply
+		global_tea_pop_demand       = -0.25	# confined to East Asia; negligible Old World demand
+	}
+
 	efficiency = 1.0
 	
 	victory_card = 0
@@ -19,7 +28,7 @@
 		clergy_estate = 8
 		burghers_estate = 9
 		peasants_estate = 5
-		dhimmi_estate = 6
+		dhimmi_estate = 7
 		tribes_estate = 5
 		cossacks_estate = 5
 	}
@@ -35,29 +44,37 @@
 	}
 	
 }
-
 age_2_renaissance = {
 	year = 1342		#5 years shorter
 	price_stability = 0.1
 	max_price = 3
-	
-	months_for_exploration_spread = 1800
+	known_goods_demand_threshold = 80
 
+	months_for_exploration_spread = 1800
+	
 	unique = {
 		diplomatic_capacity_modifier = 0.25
 		cultural_tradition_modifier = 0.25
 	}
-
 	modifier = {
 		expected_army_size_modifier = 1.0
 		levy_maintenance_modifier = 0.1
-		
-		lack_of_control_impact_on_warscore = -0.2
-		
+
+		lack_of_control_impact_on_warscore = 0.2
+
 		global_navy_levy_size_modifier = -0.2
 
 		antagonism_religion_influence = 0.1
 	}
+
+	goods_demand = {
+		global_liquor_pop_demand    = -0.5	# brandy appears in Italian cities; still marginal
+		global_tobacco_pop_demand   = -0.75	# still unknown in Old World
+		global_coffee_pop_demand    = -0.5	# same as Age 1
+		global_sugar_pop_demand     = -0.1	# Madeira/Canary Islands sugar beginning
+		global_tea_pop_demand       = -0.25	# same as Age 1
+	}
+
 	mercenaries = 0.25
 	efficiency = 0.8
 	
@@ -88,27 +105,34 @@ age_3_discovery = {
 	price_stability = 0.08
 	max_price = 4
 	hegemons_allowed = yes
-	
-	months_for_exploration_spread = 1800
+	known_goods_demand_threshold = 60
 
+	months_for_exploration_spread = 1800
 	unique = {
 		exploration_mission_speed = 0.25
 		colonial_maintenance_cost = -0.25
 	}
+
 	modifier = {
 		expected_army_size_modifier = 2.0
 		levy_maintenance_modifier = 0.25
-		
-		lack_of_control_impact_on_warscore = -0.4
-		
+
+		lack_of_control_impact_on_warscore = 0.4
+
 		global_navy_levy_size_modifier = -0.75
-		
-		levy_combat_efficiency_modifier = -0.1
 
 		antagonism_religion_influence = 0.15
 	}
-	
-	war_score_from_battles = -0.2
+
+	goods_demand = {
+		global_liquor_pop_demand    = 0		# aquavit in Scandinavia, brandy normalizing
+		global_tobacco_pop_demand   = -0.25	# introduced post-1492 but extremely rare
+		global_coffee_pop_demand    = -0.25	# spreading through Islamic world; not yet in Europe
+		global_sugar_pop_demand     = 0.25	# Atlantic island plantations; prices falling
+		global_tea_pop_demand       = -0.1	# Silk Road trickle to Middle East
+	}
+
+	war_score_from_battles = -0.05
 	efficiency = 0.6
 	
 	victory_card = 2
@@ -138,28 +162,36 @@ age_4_reformation = {
 	price_stability = 0.06
 	max_price = 5
 	hegemons_allowed = yes
+	known_goods_demand_threshold = 40
 	months_for_exploration_spread = 1200
 
 	unique = {
 		global_pop_conversion_speed_modifier = 0.33
-		merchant_maintenance_cost = -0.25
+		merchant_maintenance_efficiency = 0.50
 	}
 
 	modifier = {
-		expected_army_size_modifier = 8.0 #vanilla 4.0
+		expected_army_size_modifier = 4.0
 		levy_maintenance_modifier = 0.5
 
-		lack_of_control_impact_on_warscore = -0.6
-		
+		lack_of_control_impact_on_warscore = 0.6
+
 		global_navy_levy_size_modifier = -1.0
-		
-		levy_combat_efficiency_modifier = -0.2
 
 		antagonism_religion_influence = 0.2
 		antagonism_culture_influence = 0.1
 		antagonism_government_type_influence = 0.1
 	}
-	war_score_from_battles = -0.4
+
+	goods_demand = {
+		global_liquor_pop_demand    = 0.5	# spirits culture spreading across Europe
+		global_tobacco_pop_demand   = 0.5	# tobacco craze sweeping Europe by 1530s–40s
+		global_coffee_pop_demand    = 0		# Ottoman coffee houses established
+		global_sugar_pop_demand     = 0.75	# Caribbean sugar revolution underway
+		global_tea_pop_demand       = 0		# reaching Europe via Portuguese; still a curiosity
+	}
+
+	war_score_from_battles = -0.1
 	efficiency = 0.4
 	victory_card = 3
 
@@ -186,10 +218,11 @@ age_4_reformation = {
 
 
 }
+
 age_5_absolutism = {
 	year = 1649 #1637 vanilla
 	price_stability = 0.04
-	max_price = 5
+	max_price = 6
 	hegemons_allowed = yes
 	months_for_exploration_spread = 600
 
@@ -219,6 +252,14 @@ age_5_absolutism = {
 		antagonism_culture_influence = 0.2
 		antagonism_government_type_influence = 0.2
 		antagonism_societal_value_influence = 0.1
+	}
+
+	goods_demand = {
+		global_liquor_pop_demand    = 1.0	# gin, rum, cognac all established luxury goods
+		global_tobacco_pop_demand   = 1.0	# major plantation good; colonial economies built on it
+		global_coffee_pop_demand    = 0.5	# coffee houses in London, Paris, Amsterdam
+		global_sugar_pop_demand     = 1.25	# mass consumption in Europe
+		global_tea_pop_demand       = 0.5	# Dutch/English East India Company tea trade
 	}
 	
 	war_score_from_battles = -0.6
@@ -252,7 +293,7 @@ age_5_absolutism = {
 age_6_revolutions = {
 	year = 1737
 	price_stability = 0.02
-	max_price = 5
+	max_price = 8
 	hegemons_allowed = yes
 	
 	months_for_exploration_spread = 300
@@ -279,6 +320,14 @@ age_6_revolutions = {
 		antagonism_culture_influence = 0.1
 		antagonism_societal_value_influence = 0.2
 		antagonism_government_type_influence = 0.25
+	}
+
+	goods_demand = {
+		global_liquor_pop_demand    = 1.5	# gin era, rum trade, vodka mainstream in East
+		global_tobacco_pop_demand   = 1.5	# dominant luxury commodity globally
+		global_coffee_pop_demand    = 1.25	# major global luxury good
+		global_sugar_pop_demand     = 1.75	# near-staple food additive
+		global_tea_pop_demand       = 1.5	# enormous demand; British colonial policy built on it
 	}
 	
 	mercenaries = -0.9

@@ -60,6 +60,7 @@ types RightPanelTypes
 						using = Font_Type_Headers
 						align = center
 						autoresize = yes
+						max_width = 200
 						default_format = "#yellow_titles"
 
 						widget = {
@@ -251,6 +252,7 @@ types RightPanelTypes
 							blockoverride "icon_effect_visible" { visible = no }
 						}
 					}
+
 
 					button_panel_tab_alt = { ### LEDGER
 						using = layoutpolicy_expanding
@@ -546,8 +548,8 @@ types RightPanelTypes
 						}
 						action_tooltip = {
 							click_type = right
-							title = "MUSIC_PLAYER_NEXT"
-							clicksound = "mus_player_next_all"
+							title = "MUSIC_PLAYER_NEXT_TRACK"
+							on_action = "[TriggerMusicPlayerNext]"
 						}
 
 						tooltipwidget = {
@@ -589,10 +591,10 @@ types RightPanelTypes
 										texture = "gfx/interface/icons/messages_settings/next.dds"
 									}
 									action_tooltip = {
-										title = "MUSIC_PLAYER_NEXT"
+										title = "MUSIC_PLAYER_NEXT_TRACK"
 										on_action = "[UnPauseMusicPlayer]"
+										on_action = "[TriggerMusicPlayerNext]"
 									}
-									clicksound = "mus_player_next_all"
 								}
 							}
 							ContextualTooltipType = {

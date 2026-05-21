@@ -7,7 +7,7 @@
 		current_year >= 1627
 		current_year <= 1650
 		exists = c:MNG
-
+		NOT = { c:MNG = { owns = location:dadu } }
 	}
 
 	# 2. 结束条件
@@ -15,12 +15,14 @@
 		OR = {
 			current_year > 1661
 			
-			# # 参与者中有国家同时拥有九个关键城市且稳定度>40
-			# # 且局势已运行至少1年（避免开局立即结束）
-			# AND = {
-			# 	current_year >= 1645
-			# 	late_ming_crisis_unification_achieved = yes
-			# }
+			# 重建天朝：如果有国家成为了天朝组织的领袖，局势结束
+			AND = {
+				current_year >= 1645
+				exists = international_organization:middle_kingdom
+				international_organization:middle_kingdom = {
+					international_organization_has_leader = yes
+				}
+			}
 		}
 	}
 
@@ -32,8 +34,6 @@
 			capital.region = region:north_china_region
 			capital.region = region:south_china_region
 			capital.region = region:manchuria_region
-			capital.region = region:japan_region
-			capital.region = region:korea_region
 			capital.region = region:mongolia_region
 			capital.region = region:xinjiang_region
 		}
@@ -218,8 +218,12 @@
 						multiply = 4
 					}
 					modifier = {
-						location:changan.owner = c:QNG#西京
+						location:jingzhao.owner = c:QNG#西京
 						multiply = 4
+					}
+					modifier = {
+						c:CSH.var:chi_domination > 75
+						divide = 2
 					}
 					c:CJX = {
 						trigger_event_silently = {
@@ -268,9 +272,152 @@
 						location:dadu.owner = c:QNG#北京
 						multiply = 2
 					}
+					modifier = {
+						c:CSH.var:chi_domination > 75
+						divide = 2
+					}
 					c:CSH = {
 						trigger_event_silently = {
 							id = late_ming_crisis.3
+							days = { 1 3 }
+						}
+					}
+				}
+			}
+		}
+
+		#河北山东叛乱事件
+		if = {
+			limit = { NOT = { has_global_variable = csh_rebellion_of_hebe_shandong } }
+			if = {
+				limit = {
+					c:QNG ?= { has_variable = chi_domination }
+					c:MNG ?= { has_variable = chi_domination }
+					c:CSH ?= { has_variable = chi_domination }
+					c:CSH.var:chi_mandate < c:MNG.var:chi_mandate
+				}
+				random = {
+					chance = 25
+					modifier = {
+						c:CSH.var:chi_mandate < 50
+						multiply = 2
+					}
+					modifier = {
+						c:CSH.var:chi_mandate < 40
+						multiply = 2
+					}
+					modifier = {
+						location:dadu.owner != c:CSH#北京
+						multiply = 2
+					}
+					modifier = {
+						c:QNG.var:chi_domination > c:CSH.var:chi_domination	
+						multiply = 2
+					}
+					modifier = {
+						c:CSH.var:chi_domination > 75
+						divide = 2
+					}
+					c:CSH = {
+						trigger_event_silently = {
+							id = late_ming_crisis.4
+							days = { 1 3 }
+						}
+					}
+				}
+			}
+		}
+
+		#放弃北京
+		if = {
+			limit = { NOT = { c:CSH = { has_variable = csh_back_to_shaanxi } } }
+			if = {
+				limit = {
+					c:QNG ?= { has_variable = chi_domination }
+					c:MNG ?= { has_variable = chi_domination }
+					c:CSH ?= { 
+						has_variable = chi_domination 
+						has_variable = csh_attack_beijing
+					}
+					OR = {
+						c:QNG.var:chi_domination > c:CSH.var:chi_domination			
+				 		c:MNG.var:chi_domination > c:CSH.var:chi_domination	
+					}
+				}
+				random = {
+					chance = 5
+					modifier = {
+						c:CSH = { has_variable = csh_lost_xuanfu }
+						multiply = 4
+					}
+					modifier = {
+						OR = {
+							location:funing.owner = c:QNG
+							c:WSG ?= { is_subject_of = c:QNG }
+						}
+						multiply = 4
+					}
+					modifier = {
+						has_global_variable = csh_rebellion_of_hebe_shandong
+						multiply = 4
+					}
+					modifier = {
+						c:CJX ?= { is_subject_of = c:QNG }
+						multiply = 2
+					}
+					modifier = {
+						c:CSH.var:chi_domination < 60
+						multiply = 2
+					}
+					modifier = {
+						c:CSH.var:chi_domination > 75
+						divide = 2
+					}
+					modifier = {
+						c:CSH.var:chi_mandate < 25
+						multiply = 2
+					}
+					c:CSH = {
+						trigger_event_silently = {
+							id = late_ming_crisis.5
+							days = { 1 3 }
+						}
+					}
+				}
+			}
+		}
+
+		#济王投降
+		if = {
+			limit = {
+				NOT = { has_global_variable = cji_try_surrender_to_qng }
+			}
+			if ={
+				limit = {
+					c:QNG ?= { has_variable = chi_domination }
+					c:MNG ?= { has_variable = chi_domination }
+					c:CSH ?= { has_variable = chi_domination }
+					c:QNG.var:chi_domination > c:MNG.var:chi_domination
+				}
+				random = {
+					chance = 10
+					modifier = {
+						location:dadu.owner = c:QNG
+						multiply = 2
+					}
+					modifier = {
+						c:QNG.var:chi_domination > 80
+						multiply = 2
+					}
+					modifier = {
+						c:CJI = {
+							is_at_war_with = c:QNG
+						}
+						multiply = 2
+					}
+					c:CJI = {
+						trigger_event_silently = {
+							id = late_ming_crisis.6
 							days = { 1 3 }
 						}
 					}
