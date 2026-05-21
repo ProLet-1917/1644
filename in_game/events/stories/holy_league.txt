@@ -284,75 +284,79 @@ holy_league.6 = {
             has_dlc = "0_4_echo_of_the_empire"
         }
         current_year >= 1674
-        c:HUN = {
-            is_subject_of = c:HAB
-        }
+        #OR = {
+            c:HUN = {
+                is_subject_of = c:HAB
+            }
+        #}
     }
 
     immediate = {
         event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
-        create_character = {
-            estate = estate_type:nobles_estate
-            first_name = name_emmerich.english_language
-            dynasty = dynasty:thokoly_dynasty
-            birth_date = 1657.9.25
-            birth_location = location:kezhma
-            culture = culture:hungarian
-            religion = religion:lutheran
-            script = emeric_thokoly
-            adm = { 45 60 } dip = { 40 55 } mil = { 60 75 }
-            save_scope_as = target_character
-        }
-
-        create_rebel = {
-            category = estate
-            estate = nobles_estate
-            name = upper_hungary
-            save_scope_as = upper_hungary
-        }
-
-        every_owned_location = {
-            limit = {
-                OR = {
-                    province_definition = province_definition:zemplen_province
-                    province_definition = province_definition:szepes_province
-                }
+        c:HUN = {
+            create_character = {
+                estate = estate_type:nobles_estate
+                first_name = name_emmerich.english_language
+                dynasty = dynasty:thokoly_dynasty
+                birth_date = 1657.9.25
+                birth_location = location:kezhma
+                culture = culture:hungarian
+                religion = religion:lutheran
+                script = emeric_thokoly
+                adm = { 45 60 } dip = { 40 55 } mil = { 60 75 }
+                save_scope_as = target_character
             }
-            every_pop = {
+
+            create_rebel = {
+                category = estate
+                estate = nobles_estate
+                name = upper_hungary
+                save_scope_as = upper_hungary
+            }
+
+            every_owned_location = {
                 limit = {
-                    owner = root
-                    pop_type = pop_type:nobles
-                }
-                add_pop_satisfaction = pop_satisfaction_ultimate_penalty
-                change_pop_allegiance = scope:upper_hungary
-            }
-        }
-
-        scope:emeric_thokoly = { change_character_allegiance = scope:upper_hungary }
-        scope:upper_hungary = {
-            start_civil_war = {
-                if = {
-                    limit = {
-                        root = { at_war = yes }
+                    OR = {
+                        province_definition = province_definition:zemplen_province
+                        province_definition = province_definition:szepes_province
                     }
-                    every_province = {
-                        raise_levies = {
-                            instant = yes
-                            type = army
+                }
+                every_pop = {
+                    limit = {
+                        owner = c:HUN
+                        pop_type = pop_type:nobles
+                    }
+                    add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+                    change_pop_allegiance = scope:upper_hungary
+                }
+            }
+
+            scope:emeric_thokoly = { change_character_allegiance = scope:upper_hungary }
+            scope:upper_hungary = {
+                start_civil_war = {
+                    if = {
+                        limit = {
+                            root = { at_war = yes }
+                        }
+                        every_province = {
+                            raise_levies = {
+                                instant = yes
+                                type = army
+                            }
                         }
                     }
                 }
             }
-        }
 
-        scope:upper_hungary.capital = {
-            while = {
-                count = 2
-                create_sub_unit_with_owner = {
-                    type = a_heavy_lancers
-                    owner = root
-                    origin = this
-                    experience = 75
+            scope:upper_hungary.capital = {
+                while = {
+                    count = 2
+                    create_sub_unit_with_owner = {
+                        type = a_heavy_lancers
+                        owner = root
+                        origin = this
+                        experience = 75
+                    }
                 }
             }
         }
@@ -364,11 +368,11 @@ holy_league.6 = {
         add_gold = -250
         if = {
             limit = {
-                has_variable = finished_ottomans_vienna_decisions
+                has_variable = unlock_ottomans_vienna_decisions
             }
             change_variable = {
-                name = unlock_ottomans_vienna_decisions
-                add = 2
+                name = finished_ottomans_vienna_decisions
+                add = 3 #To Do: Balance this
             }
         }
         scope:upper_hungary.capital = {
@@ -398,10 +402,10 @@ holy_league.6 = {
 
         if = {
             limit = {
-                has_variable = finished_ottomans_vienna_decisions
+                has_variable = unlock_ottomans_vienna_decisions
             }
             change_variable = {
-                name = unlock_ottomans_vienna_decisions
+                name = finished_ottomans_vienna_decisions
                 add = 1
             }
         }
@@ -465,7 +469,7 @@ holy_league.8 = {
         tag = TUR
         from = 1645.1.1
         to = 1665.1.1
-        monthly_chance = 10
+        monthly_chance = 15
     }
 
     historical_info = holy_league.8.historical_info
@@ -503,7 +507,7 @@ holy_league.8 = {
                 has_variable = finished_ottomans_vienna_decisions
             }
             change_variable = {
-                name = unlock_ottomans_vienna_decisions
+                name = finished_ottomans_vienna_decisions
                 add = 1
             }
         }
@@ -511,6 +515,26 @@ holy_league.8 = {
         change_variable = {
             name = corruption
             subtract = 10
+        }
+        character:koprulu_mehmed = {
+            add_character_modifier = {
+                modifier = excellent_minister
+                years = -1
+                mode = add_and_extend
+            }
+            if = {
+                limit = {
+                    root = { country_can_promote_head_of_cabinet = yes }
+                }
+                custom_tooltip = {
+                    text = becomes_head_of_cabinet_tt
+                    root = {
+                        promote_to_head_of_cabinet_effect = {
+                            target = character:koprulu_mehmed
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -522,7 +546,7 @@ holy_league.8 = {
                 has_variable = finished_ottomans_vienna_decisions
             }
             change_variable = {
-                name = unlock_ottomans_vienna_decisions
+                name = finished_ottomans_vienna_decisions
                 add = 1
             }
         }
@@ -531,9 +555,214 @@ holy_league.8 = {
     }
 }
 #Vienna
+holy_league.9 = {
+    type = country_event
+    title = holy_league.9.title
+    desc = holy_league.9.desc
+    fire_only_once = yes
 
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+        save_scope_as = ottomans
+    }
+
+    option = {
+        historical_option = yes
+        name = holy_league.9.a
+        c:HAB = {
+            trigger_event_non_silently = {
+                id = holy_league.10
+                days = { 5 15 }
+            }
+        }
+    }
+}
+#Austria
+holy_league.10 = {
+    type = country_event
+    title = holy_league.10.title
+    desc = holy_league.10.desc
+    fire_only_once = yes
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+        "war_with_country(scope:ottomans)" = {
+            save_scope_as = the_last_crusade
+        }
+    }
+
+    option = {
+        historical_option = yes
+        name = holy_league.10.a
+        trigger_event_non_silently = {
+            id = holy_league.11
+            days = { 3 10 }
+        }
+        trigger_event_non_silently = {
+            id = holy_league.12
+            days = { 10 20 }
+        }
+    }
+}
+
+holy_league.11 = {
+    type = country_event
+    title = holy_league.11.title
+    desc = holy_league.11.desc
+    fire_only_once = yes
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        historical_option = yes
+        name = holy_league.11.a
+        add_gold = -50
+        location:vienna = {
+            add_location_modifier = {
+                modifier = temporary_defense_fence
+                years = 5
+            }
+        }
+    }
+
+    option = {
+        name = holy_league.11.b
+    }
+}
 #Pope
+holy_league.12 = {
+    type = country_event
+    title = holy_league.12.title
+    desc = holy_league.12.desc
+    fire_only_once = yes
 
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        historical_option = yes
+        name = holy_league.12.a
+        join_war_with = {
+            target = c:HAB
+            war = scope:the_last_crusade
+            call_in_subjects = yes
+        }
+        every_country = {
+            limit = {
+                OR = {
+                    is_member_of_international_organization = international_organization:catholic_church
+                    is_allied_with = {
+                        target = c:HAB
+                    }
+                    is_allied_with = {
+                        target = c:PAP
+                    }
+                }
+            }
+            trigger_event_non_silently = holy_league.13
+        }
+    }
+
+    option = {
+        name = holy_league.12.b
+    }
+}
 #Western Europe
+holy_league.13 = {
+    type = country_event
+    title = holy_league.13.title
+    desc = holy_league.13.desc
+    fire_only_once = yes
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        name = holy_league.13.a
+        join_war_with = {
+            target = c:HAB
+            war = scope:the_last_crusade
+            call_in_subjects = yes
+        }
+        ai_chance = {
+            base = -30
+            if = {
+                limit = {
+                    is_allied_with = {
+                        target = c:HAB
+                    }
+                }
+                add = 50
+            }
+            if = {
+                limit = {
+                    is_allied_with = {
+                        target = c:PAP
+                    }
+                }
+                add = 30
+            }
+            if = {
+                limit = {
+                    has_game_rule = historical_ai_choices
+                    this = c:PLC
+                }
+                add = 100
+            }
+            if = {
+                limit = {
+                    has_game_rule = historical_ai_choices
+                    this = c:VEN
+                }
+                add = 100
+            }
+            if = {
+                limit = {
+                    has_special_status_in_international_organization = {
+                        type = special_status:elector
+                        international_organization = international_organization:hre
+                    }
+                }
+                add = 25
+            }
+            if = {
+                limit = {
+                    has_special_status_in_international_organization = {
+                        type = special_status:imperial_prince
+                        international_organization = international_organization:hre
+                    }
+                }
+                add = 15
+            }
+            add = {
+                value = "root.opinion(c:HAB)"
+                divide = 5
+            }
+        }
+    }
+
+    option = {
+        name = holy_league.13.b
+        ai_chance = {
+            base = 10
+            if = {
+                limit = {
+                    has_game_rule = historical_ai_choices
+                    this = c:FRA
+                }
+                add = 100
+            }
+        }
+    }
+}
+#Defend the Vienna
+
+#Russia
+
+
 
 

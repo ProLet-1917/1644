@@ -1,0 +1,163 @@
+﻿# area preference definitions - pure data, no country or allowed fields.
+# Use add_area_preference = <key> in on_game_start, missions, or events to assign them.
+#
+# example = {
+#	preference_type = exploration / conquest
+#	modifier = 2 (can be below 1 to reduce desire)
+#	area = atlantic_north_atlantic_current_area
+#	region = east_coast_region
+#	continent = bla_bla
+#	sub_continent = bla
+#}
+england_explore_usa = {
+    preference_type = exploration
+    modifier = 2
+
+    area = atlantic_north_atlantic_current_area
+    area = atlantic_irminger_area
+    area = labrador_sea_area
+    area = atlantic_labrador_area
+    area = azores_sea_area
+
+    region = canada_region
+    region = east_coast_region
+}
+
+england_conquer_india = {
+    preference_type = conquest
+    modifier = 3
+
+    region = deccan_region
+    region = bengal_region
+}
+
+england_explore_africa = {
+    preference_type = exploration
+    modifier = 2
+
+    area = nw_africa_coast_area
+    area = west_africa_coastline
+    area = gulf_of_africa_sea
+    area = central_africa_coastline_area
+    area = southern_africa_coast_area
+    area = mozambique_channel_area
+    area = somali_sea_area
+    area = indian_horn_area
+    area = deccan_sea_zones_area
+}
+
+england_conquer_britain = {
+    preference_type = conquest
+    modifier = 5
+    region = great_britain_region
+}
+
+portugal_explore_brazil = {
+    preference_type = exploration
+    modifier = 3
+    region = brazil_region
+}
+
+mani_conquer_anatolia = {
+    preference_type = conquest
+    modifier = 5
+    region = anatolia_region
+}
+
+mani_conquer_balkans = {
+    preference_type = conquest
+    modifier = 5
+    region = balkan_region
+}
+
+spain_conquer_cataluna = {
+    preference_type = conquest
+    modifier = 5
+    area = catalonia_area
+}
+
+spain_conquer_north_africa = {
+    preference_type = conquest
+    modifier = 1
+    region = maghreb_region
+}
+
+france_conquer_lorraine = {
+    preference_type = conquest
+    modifier = 2
+    area = picardy_area
+    area = lorraine_area
+    area = alsace_area
+}
+
+france_explore_america = {
+    preference_type = exploration
+    modifier = 5
+    region = canada_region
+    region = great_plains_region
+}
+
+prussia_conquer_germany = {
+    preference_type = conquest
+    modifier = 2
+    region = north_german_region
+    region = south_german_region
+}
+
+prussia_conquer_silesia = {
+    preference_type = conquest
+    modifier = 5
+    area = silesia_area
+}
+
+russia_conquer_ruthenia = {
+    preference_type = conquest
+    modifier = 1.5
+    region = ruthenia_region
+}
+
+russia_conquer_baltic = {
+    preference_type = conquest
+    modifier = 2.5
+    region = russian_region
+    area = baltic_area
+    area = karelia_area
+}
+
+russia_explore_siberia = {
+    preference_type = exploration
+    modifier = 3
+    region = east_siberia_region
+    area = lower_amur_area
+    area = middle_amur_area
+}
+
+netherlands_conquer_lowland = {
+    preference_type = conquest
+    modifier = 5
+    area = friesland_area
+    area = holland_area
+    area = brabant_area
+    area = wallonia_area
+    area = flanders_area
+    province_definition = lower_artois_province
+    province_definition = upper_artois_province
+}
+
+voc_conquer_indonesia = {
+    preference_type = conquest
+    modifier = 3
+    region = indonesia_region
+}
+
+austria_conquer_carpathia = {
+    preference_type = conquest
+    modifier = 5
+    region = carpathia_region
+}
+
+savoy_conquer_italy = {
+    preference_type = conquest
+    modifier = 3
+    region = italy_region
+}

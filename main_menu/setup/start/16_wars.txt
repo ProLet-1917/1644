@@ -11,23 +11,25 @@ war_manager = {
 		
 		start_date = 1642.8.1
 		action = 1644.4.17
+
 		attacker = {
+			country = ROE
+			request = {
+				reason = Target
+			}
+		}
+
+		defender = {
 			country = ENG
 			request = {
 				reason = Instigator
 			}
 		}
-		attacker = {
+
+		defender = {
 			country = SCO
 			request = {
 				reason = alliance
-			}
-		}
-		
-		defender = {
-			country = ROE
-			request = {
-				reason = Target
 			}
 		}
 	}
@@ -43,24 +45,26 @@ war_manager = {
 		
 		start_date = 1641.10.12
 		action = 1644.4.17
+
 		attacker = {
-			country = IRE
-			request = {
-				reason = Instigator
-			}
-		}
-		
-		defender = {
 			country = PLE
 			request = {
 				reason = Target
 			}
 		}
-		defender = {
+
+		attacker = {
 			country = ENG
 			request = {
 				caller = PLE
 				reason = Subject
+			}
+		}
+
+		defender = {
+			country = IRE
+			request = {
+				reason = Instigator
 			}
 		}
 	}

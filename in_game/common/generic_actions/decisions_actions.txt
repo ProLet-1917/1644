@@ -1375,8 +1375,9 @@ advance_towards_vienna = {
             declare_war_with_cb = {
                 target = c:HAB
                 type = casus_belli:cb_conquer_province
-                province = c:HAB.province:unter_dem_wienerwald_province
+
             }
+            trigger_event_non_silently = holy_league.9
         }
     }
 
@@ -1435,7 +1436,7 @@ control_the_crete = {
     effect = {
         scope:actor = {
             change_variable = {
-                name = unlock_ottomans_vienna_decisions
+                name = finished_ottomans_vienna_decisions
                 add = 1
             }
             hidden_effect = {
@@ -1499,7 +1500,7 @@ control_the_malta = {
     effect = {
         scope:actor = {
             change_variable = {
-                name = unlock_ottomans_vienna_decisions
+                name = finished_ottomans_vienna_decisions
                 add = 1
             }
             hidden_effect = {
@@ -1538,6 +1539,7 @@ reform_the_janissaries = {
                 has_or_had_tag = TUR
                 has_dlc = "0_4_echo_of_the_empire"
             }
+            has_variable = unlock_ottomans_vienna_decisions
             has_country_modifier = corrupted_janissaries
         }
     }
@@ -1554,7 +1556,7 @@ reform_the_janissaries = {
         scope:actor = {
             remove_country_modifier = corrupted_janissaries
             change_variable = {
-                name = unlock_ottomans_vienna_decisions
+                name = finished_ottomans_vienna_decisions
                 add = 1
             }
         }

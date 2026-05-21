@@ -1,0 +1,232 @@
+#This is 3 new advance trees for those do already researched all the advance.
+#Age 2
+early_institutionalized_tools = {
+    age = age_2_renaissance
+
+    depth = 0
+
+    starting_technology_level = 2
+
+    global_tools_output_modifier = 0.05
+    global_rgo_build_time = -0.01
+
+}
+legacy_apprenticeship = {
+    age = age_2_renaissance
+
+    requires = early_institutionalized_tools
+
+    starting_technology_level = 2
+
+    global_production_efficiency = 0.02
+    trade_range_modifier = 0.05
+}
+
+wooden_lifting_machine = {
+    age = age_2_renaissance
+
+    requires = legacy_apprenticeship
+
+    starting_technology_level = 2
+
+    building_upkeep_costs = -0.01
+    global_urban_build_buildings_cost = -0.05
+}
+
+mercenary_contract = {
+    age = age_2_renaissance
+
+    requires = early_institutionalized_tools
+
+    starting_technology_level = 2
+
+    mercenary_maintenance_efficiency = 0.05
+    mercenary_range_modifier = 0.05
+}
+
+early_levies_training = {
+    age = age_2_renaissance
+
+    requires = mercenary_contract
+
+    starting_technology_level = 2
+
+    levy_combat_efficiency_modifier = 0.05
+}
+
+early_collegiate_system = {
+    age = age_2_renaissance
+
+    requires = legacy_apprenticeship
+
+    starting_technology_level = 2
+
+    research_speed = 0.02
+}
+
+early_academic_discussion = {
+    age = age_2_renaissance
+
+    requires = early_collegiate_system
+
+    starting_technology_level = 2
+
+    research_speed_modifier = 0.05
+    country_cabinet_efficiency = 0.01
+}
+
+early_monetary_management = {
+    age = age_2_renaissance
+
+    requires = early_institutionalized_tools
+
+    starting_technology_level = 2
+
+    minting_inflation_threshold = 0.01
+}
+
+#Age 3
+discovery_regional_trade_networt = {
+    age = age_3_discovery
+
+    depth = 0
+
+    starting_technology_level = 3
+
+    trade_land_efficiency = 0.05
+    trade_sea_efficiency = 0.05
+}
+
+temporary_bureaucratic_institutions = {
+    age = age_3_discovery
+
+    requires = discovery_regional_trade_networt
+
+    starting_technology_level = 3
+
+    estate_power_from_cabinet = -0.05
+    global_crown_estate_power = 0.05
+    character_cabinet_efficiency = 0.02
+}
+
+discovery_collegiate_system = {
+    age = age_3_discovery
+
+    requires = temporary_bureaucratic_institutions
+
+    starting_technology_level = 3
+
+    research_speed = 0.02
+}
+
+standard_mercenary_contract = {
+    age = age_3_discovery
+
+    requires = temporary_bureaucratic_institutions
+
+    starting_technology_level = 3
+
+    mercenary_maintenance_efficiency = 0.10
+    hire_mercenary_leader_cost_modifier = -0.10
+}
+
+discovery_levies_training = {
+    age = age_3_discovery
+
+    requires = temporary_bureaucratic_institutions
+
+    starting_technology_level = 3
+
+    levy_combat_efficiency_modifier = 0.05
+}
+
+early_government_administration = {
+    age = age_3_discovery
+
+    requires = temporary_bureaucratic_institutions
+
+    starting_technology_level = 3
+
+    province_integration_speed = 0.05
+    global_pop_promotion_speed_modifier = 0.05
+    global_paper_pop_demand = 0.05
+}
+
+#Age 4
+reformation_academic_discussion = {
+    age = age_4_reformation
+
+    depth = 0
+
+    starting_technology_level = 6
+
+    global_books_pop_demand = 0.05
+    research_speed = 0.05
+}
+
+multiple_regional_trade_networt = {
+    age = age_4_reformation
+
+    requires = reformation_academic_discussion
+
+    starting_technology_level = 6
+
+    trade_sea_efficiency = 0.1
+    trade_range_modifier = 0.25
+}
+
+reformation_apprenticeship = {
+    age = age_4_reformation
+
+    requires = reformation_academic_discussion
+
+    starting_technology_level = 6
+
+    global_production_efficiency = 0.05
+}
+
+reformation_currency_manage = {
+    age = age_4_reformation
+
+    requires = reformation_apprenticeship
+
+    starting_technology_level = 6
+
+    minting_inflation_threshold = 0.02
+}
+
+reformation_bureaucratic_institutions = {
+    age = age_4_reformation
+
+    requires = reformation_academic_discussion
+
+    starting_technology_level = 6
+
+    character_cabinet_efficiency = 0.05
+    global_crown_estate_power = 0.05
+    maintain_bureaucracy_price_cost_modifier = -0.1
+}
+
+reformation_levies_training = {
+    age = age_4_reformation
+
+    requires = reformation_academic_discussion
+
+    starting_technology_level = 6
+
+    levy_combat_efficiency_modifier = 0.05
+}
+
+reformation_standard_army_training = {
+    age = age_4_reformation
+
+    requires = reformation_levies_training
+
+    starting_technology_level = 6
+
+    land_morale_modifier = 0.05
+    land_morale_movement_cost = -0.0001
+}
+
+
+
