@@ -938,6 +938,72 @@ widget = {
 							}
 						}
 
+						action_button_regular = {
+							using = generic_decisions_icon_small
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "control_the_malta"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "control_the_malta" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "control_the_malta"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							using = generic_decisions_icon_small
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "reform_the_janissaries"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "reform_the_janissaries" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "reform_the_janissaries"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
 						expand = { }
 					}
 				}

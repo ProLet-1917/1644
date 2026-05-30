@@ -12470,7 +12470,8 @@ flavor_tur.198 = {
 			name = klephts
 			home = root.capital
 			categories = {
-				army_infantry = 30
+				army_light_infantry = 9
+				army_heavy_infantry = 21
 			}
 			leader = scope:target_character2
 			cost_multiplier = 0.5
@@ -13859,7 +13860,7 @@ flavor_tur.219 = {
 			name = armatoles
 			home = root.capital
 			categories = {
-				army_infantry = 20
+				army_heavy_infantry = 20
 			}
 			leader = scope:target_character2
 			cost_multiplier = 0.5
@@ -14289,7 +14290,7 @@ flavor_tur.1003 = {
 				ruler_or_regent = { save_scope_as = target_character }
 				while =  {
 					count = 2
-					capital = { create_sub_unit_of_category = sub_unit_category:army_infantry }
+					capital = { create_sub_unit_of_category = sub_unit_category:army_heavy_infantry }
 				}
 				change_country_type = army
 			}

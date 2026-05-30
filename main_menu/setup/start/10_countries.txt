@@ -1760,7 +1760,7 @@ countries = {
 
 		court_language = norman_dialect
 		country_rank = rank_kingdom
-		capital = london
+		capital = york
 
 		ai_advance_preference_tags = {
 			exploration = 5
@@ -2630,7 +2630,7 @@ countries = {
 	}
 	
 ###French Region
-	FRA = {
+	FRA = { # France
 		own_control_core = {
 			angers bauge beaupreau chateau_gontier le_lude loudun passavant saumur
 			mayenne laval sainte_suzanne villaines
@@ -2747,20 +2747,50 @@ countries = {
 				names_louis = 14
 			}
 			
+			reforms = {
+				french_feudal_nobility
+				gabelle
+			}
+
 			laws = {
 				feudal_de_jure_law = by_tradition
 				legal_code_law = civil_law_policy
 			}
+
+			privilege = {
+				formal_guilds
+				clergy_literacy_rights
+				auxilium_et_consilium
+				primacy_of_nobility
+				noble_armies
+				villes_franches
+				great_offices_of_the_crown_of_france
+			}
 		}
+
+		accepted_cultures = {
+			arpitan
+			picard
+			burgundian
+			auvergnat
+			champenais
+			limousin
+			poitevin
+			saintongeais
+			berrichon
+			norman
+			angevin
+		}
+
 		capital = paris
 		country_rank = rank_kingdom
 		starting_technology_level = 4
 		include = "zzz_expl_european_colonial_powers"
 		currency_data = {
-			gold = 332.5
-			prestige = 36
-			legitimacy = 33
-			stability = 18
+			gold = 422.5
+			prestige = 37.5
+			legitimacy = 45
+			stability = 25
 		}
 		dynasty = bourbon_conde_dynasty
 	}
@@ -5014,7 +5044,6 @@ countries = {
 			badis tizgane amergo al_mazamma
 			ras_kebdana ghassasa temsamane tabarida
 			ksar_el_kebir tazroute ouezzane
-			fez meknes la_mamora sale azrou volubilis tefelfelt baht
 			anfa azemmour bejaad thagia rabat settat mrirah
 			asfi mazaghan tit boulaouane miatbir aguz
 			tednest ait_daoud tafedna mogador
@@ -5022,26 +5051,36 @@ countries = {
 			taroudant tidsi tiout tiznit massa_MOR tafraout ifni noul_lamta agadir
 			bzou demnate azilal
 			tadla khenifra chichaoua
-			guercif ameskour terrest tezerghe namalata taza sefrou
+			guercif tezerghe namalata taza sefrou
 			jarawah_abu_al_aysh oujda
 			jerada taourirt debdou echemmaia sidi_bennour
-			nedroma tegeget kalaat_sraghna midelt
+			nedroma tegeget kalaat_sraghna 
 			aouint_yghomane afso ifrane
 			#additions
 			tamdoult assa beni_sabih foum_zguid igiliz taghjijt tata_MOR tiout tissint tizounine
 			ouarzazate agdez ait_benhaddou skoura tagmadert taznakht
-			ijilmasa boumalne_dades er_rich ksar_es_souk tazzarine todgha
-			tabelbala
 			laayoune smara tantan tindouf
 			idjil dakhla al_kuwayra aousserd bojador
-			sijilmasa taghaza taoudenni araouane
+			taghaza taoudenni araouane
+		}
+
+		our_cores_conquered_by_others = {
+			sale fez meknes la_mamora azrou volubilis tefelfelt baht
+			sijilmasa boumalne_dades er_rich ksar_es_souk tazzarine todgha
+			tabelbala
+			taghit bechar
+			midelt ameskour terrest
 		}
 
 		country_rank = rank_kingdom
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = mor_al_shaykh_saadi
+
+			ruler_term = { character = mor_al_shaykh_saadi start_date = 1636.2.21 }
+
+			mysticism_vs_jurisprudence = -5 
 		}
 
 		tolerated_cultures = {
@@ -5052,11 +5091,16 @@ countries = {
 			mustaarabi
 		}
 
-		religious_school = maliki_school
-		government = { mysticism_vs_jurisprudence = -5 }
+		discovered_areas = {
+			western_sahara_area
+		}
 
-		capital = fez
+		religious_school = maliki_school
+		starting_technology_level = 3
+
+		capital = marrakesh
 		
+		include = "expl_west_africa_muslim"
 		include = "expl_muslim_mediterranean"
 	}
 }

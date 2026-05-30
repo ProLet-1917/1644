@@ -29,9 +29,9 @@ cxi_1644_start_army.1 = {
 			location:fengjie ?= {
 				if = {
 					limit = { owner = root }
-					# 大西步兵：15 * 1000 = 15000 人
+					# 大西步兵：8 * 1500 = 12000 人
 					while = {
-						count = 15
+						count = 8
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_zhanbing
 							owner = root
@@ -39,9 +39,9 @@ cxi_1644_start_army.1 = {
 							experience = 80
 						}
 					}
-					# 大西骑兵：30 * 300 = 9000 人
+					# 大西骑兵：4 * 800 = 3200 人
 					while = {
-						count = 30
+						count = 4
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_cavalry
 							owner = root
@@ -50,7 +50,7 @@ cxi_1644_start_army.1 = {
 						}
 					}
 					while = {
-						count = 3
+						count = 1
 						create_sub_unit_with_owner = {
 							type = a_1644_late_ming_artillery
 							owner = root
@@ -58,7 +58,7 @@ cxi_1644_start_army.1 = {
 							experience = 80
 						}
 					}
-					# 红夷炮：1 营(4 门/营) = 4门（时代4红衣大炮）
+					# 红夷炮：1 营(16 门/营) = 16门（时代4红衣大炮）
 					while = {
 						count = 1
 						create_sub_unit_with_owner = {

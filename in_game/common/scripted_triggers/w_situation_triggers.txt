@@ -1,0 +1,73 @@
+
+ai_country_should_colonize = {	#Root should be the country
+    OR = {
+        country_tax_base > 100
+        yearly_gold > 0
+        tag = SWE
+        tag = POR
+        tag = KUR
+        tag = KNI
+        tag = NED
+        is_subject_type = colonial_nation
+        is_subject_type = charted_company
+    }
+
+
+    OR = {
+        has_game_rule = all_countries_colonize
+        trigger_if = {
+            limit = {
+                has_game_rule = western_colonisation_only
+            }
+            this != c:PAP
+            root != c:PAP
+            not = { has_preference_tag = "warfare" }
+            OR = {
+                capital.continent = continent:europe
+                and = {
+                    is_subject = yes
+                    overlord = {
+                        capital.continent = continent:europe
+                    }
+                }
+            }
+
+        }
+    }
+
+    OR = {
+        is_subject = no
+        is_subject_type = colonial_nation
+        is_subject_type = charted_company
+    }
+}
+
+country_can_start_exploration_trigger = {
+    modifier:may_explore = yes
+    OR = {
+        is_ai = no
+        AND = {
+            country_tax_base > 30
+            OR = {
+                has_game_rule = all_countries_explore
+                trigger_if = {
+                    limit = {
+                        has_game_rule = western_exploration_only
+                    }
+                    this != c:PAP
+                    root != c:PAP
+                    not = { has_preference_tag = "warfare" }
+                    OR = {
+                        capital.continent = continent:europe
+                        and = {
+                            is_subject = yes
+                            overlord = {
+                                capital.continent = continent:europe
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

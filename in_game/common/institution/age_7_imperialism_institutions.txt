@@ -1,0 +1,150 @@
+power_revolution = {
+    age = age_7_imperialism
+
+    can_spawn = {
+        OR = {
+            AND = {
+                has_game_rule = institution_spawn_random_city
+                location_rank = location_rank:city
+            }
+            AND = {
+                has_game_rule = institution_spawn_fixed_historical
+                this = location:london
+            }
+            AND = {
+                has_game_rule = institution_spawn_plausible
+                has_institution = institution:industrialization
+                OR = {
+                    continent = continent:europe
+                }
+
+                num_pop_type:burghers > 25
+                total_building_levels > 160
+            }
+        }
+    }
+
+    promote_chance = {
+        add = {
+            value = average_location_literacy
+        }
+
+        add = {
+            value = num_pop_type:burghers
+            multiply = 10
+        }
+        add = {
+            value = num_pop_type:nobles
+            multiply = 10
+        }
+    }
+
+    #hardcoded spreads for optimisations..
+    spread_from_friendly_coast_border_location = institution_base_spread_from_friendly_neighbor_with_late
+    spread_from_any_coast_border_location = institution_base_spread_from_neighbor_with_late
+    spread_from_any_import = institution_trade_spread_value_late
+    spread_from_any_export = institution_trade_spread_value_late
+
+    spread_from_was_possible_spawn = institution_spread_from_was_possible_spawn_late
+    spread_scale_on_control_if_owner_embraced = 2
+    spread_embraced_to_capital = institution_total_embraced_to_capital_late
+    spread_to_market_member = institution_spread_to_market_member_late
+}
+
+ideology = {
+    age = age_7_imperialism
+
+    can_spawn = {
+        OR = {
+            AND = {
+                has_game_rule = institution_spawn_random_city
+                location_rank = location_rank:city
+            }
+            AND = {
+                has_game_rule = institution_spawn_fixed_historical
+                this = location:brussels
+            }
+            AND = {
+                has_game_rule = institution_spawn_plausible
+                has_institution = institution:enlightenment
+
+                OR = {
+                    continent = continent:europe
+                }
+
+                has_building_with_at_least_one_level = university
+                is_capital = yes
+                average_location_literacy > 35
+
+                owner = {
+                    societal_value:centralization_vs_decentralization > 45
+                }
+            }
+        }
+    }
+
+    promote_chance = {
+        add = {
+            value = average_location_literacy
+        }
+
+        add = {
+            value = owner.total_population
+        }
+    }
+
+    #hardcoded spreads for optimisations..
+    spread_from_friendly_coast_border_location = institution_base_spread_from_friendly_neighbor_with_late
+    spread_from_any_coast_border_location = institution_base_spread_from_neighbor_with_late
+    spread_from_any_import = institution_trade_spread_value_late
+    spread_from_any_export = institution_trade_spread_value_late
+    spread_from_was_possible_spawn = institution_spread_from_was_possible_spawn_late
+    spread_scale_on_control_if_owner_embraced = 2
+    spread_embraced_to_capital = institution_total_embraced_to_capital_late
+    spread_to_market_member = institution_spread_to_market_member_late
+}
+
+the_theory_on_war = {
+    age = age_7_imperialism
+
+    can_spawn = {
+        OR = {
+            AND = {
+                has_game_rule = institution_spawn_random_city
+                location_rank = location_rank:city
+            }
+            AND = {
+                has_game_rule = institution_spawn_fixed_historical
+                this = location:berlin
+            }
+            AND = {
+                has_game_rule = institution_spawn_plausible
+                has_institution = institution:levee_en_masse
+                owner ?= { capital = root }
+                population > 200
+
+                owner = {
+                    societal_value:quality_vs_quantity > 0
+                }
+            }
+        }
+
+    }
+
+    promote_chance = {
+        add = {
+            value = average_location_literacy
+        }
+
+        add = num_pop_type:soldiers
+    }
+    #hardcoded spreads for optimisations..
+    spread_from_friendly_coast_border_location = institution_base_spread_from_friendly_neighbor_with_late
+    spread_from_any_coast_border_location = institution_base_spread_from_neighbor_with_late
+    spread_from_any_import = institution_trade_spread_value_late
+    spread_from_any_export = institution_trade_spread_value_late
+    spread_from_was_possible_spawn = institution_spread_from_was_possible_spawn_late
+    spread_scale_on_control_if_owner_embraced = 2
+    spread_embraced_to_capital = institution_total_embraced_to_capital_late
+    spread_to_market_member = institution_spread_to_market_member_late
+}

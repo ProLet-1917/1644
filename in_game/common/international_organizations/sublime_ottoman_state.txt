@@ -1,0 +1,86 @@
+sublime_ottoman_state = {
+    has_target = no
+    unique = yes
+    expel_members_who_are_targets_of_other_members = no
+
+    show_leave_message = no
+    has_leader_country = yes
+    leader_type = country
+    leader_change_method = none
+    disband_if_no_leader = yes
+
+    join_offensive_wars_always = {
+        always = no
+    }
+
+    join_defensive_wars_always = {
+        always = no
+    }
+
+    create_visible_trigger = {
+        always = no
+    }
+
+    invite_visible_trigger = {
+        always = yes
+    }
+
+    can_declare_war = {
+        always = yes
+    }
+
+    modifier = {
+        block_from_change_to_empire_rank = yes
+    }
+
+    leader_modifier = {
+        subject_loyalty = 20
+        great_power_score = 50
+        cannot_be_subjugated = yes
+    }
+
+    gives_military_access_to_all_when_at_war = yes
+
+    can_join_trigger = {
+        OR = {
+            this = c:TUR
+            is_subject_of = c:TUR
+        }
+    }
+
+    auto_leave_trigger = {
+        OR = {
+            is_rebel_country = yes
+            NOR = {
+                this = c:TUR
+                is_subject_of = c:TUR
+            }
+        }
+    }
+
+    can_leave_trigger = {
+        NOR = {
+            this = c:TUR
+            is_subject_of = c:TUR
+        }
+    }
+
+    ai_desire_to_join = {
+        subtract = {
+            desc = "BASE"
+            value = 50
+        }
+    }
+
+    special_statuses_implemented = {
+        the_padishah_of_io
+        eyalet_of_io
+        autonomous_territory_of_io
+        tributary_of_io
+    }
+
+    payments_implemented = {
+        sublime_ottoman_state_treasury
+        sublime_ottoman_state_army_contribute
+    }
+}

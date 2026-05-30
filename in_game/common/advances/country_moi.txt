@@ -2,7 +2,10 @@ moi_military_society_advance = {
     age = age_3_discovery
 
     potential = {
-        has_or_had_tag = MOI
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
     }
 
     military_tactics = 0.1
@@ -15,7 +18,10 @@ moi_universal_society_advance = {
     age = age_3_discovery
 
     potential = {
-        has_or_had_tag = MOI
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
     }
 
     add_accepted_culture_cost_modifier = -0.1
@@ -29,7 +35,10 @@ klephts_advance = {
     age = age_4_reformation
 
     potential = {
-        has_or_had_tag = MOI
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
     }
 
     unlock_unit = a_klephts
@@ -37,11 +46,29 @@ klephts_advance = {
     requires = flintlock_gun
 }
 
+reformed_klephts_advance = {
+    age = age_5_absolutism
+
+    potential = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
+    }
+
+    unlock_unit = a_klephts_2
+
+    requires = regiment_reinforcement_speed_absolutism
+}
+
 country_among_the_mountains_advance = {
     age = age_4_reformation
 
     potential = {
-        has_or_had_tag = MOI
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
     }
 
     mountains_proximity_impact = -0.20
@@ -55,7 +82,10 @@ moi_naval_tradition_advance = {
     age = age_4_reformation
 
     potential = {
-        has_or_had_tag = MOI
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
     }
 
     naval_damage_done = 0.1
@@ -68,7 +98,10 @@ moi_oblique_order = {
     age = age_5_absolutism
 
     potential = {
-        has_or_had_tag = MOI
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
     }
 
     army_heavy_infantry_power = 0.1
@@ -82,7 +115,10 @@ moi_spartan_style_training_advance = {
     age = age_6_revolutions
 
     potential = {
-        has_or_had_tag = MOI
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
     }
 
     discipline = 0.1

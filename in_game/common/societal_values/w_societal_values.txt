@@ -1,0 +1,29 @@
+universality_vs_exclusivity = {
+    allow = {
+        OR = {
+            has_or_had_tag = MOI
+            has_or_had_tag = BYZ
+            has_dlc = "0_4_echo_of_the_empire"
+        }
+    }
+
+    left_modifier = { #Universality
+        cultures_capacity_modifier = 0.25
+        add_accepted_culture_cost_modifier = -0.5
+        add_tolerated_culture_cost_modifier = -0.5
+        antagonism_culture_influence = -0.1
+        pop_join_rebel_threshold = -0.025
+        global_levy_size_modifier = 0.1
+    }
+
+    right_modifier = { #Exclusivity
+        cultural_influence_modifier = 0.2
+        cultural_tradition_modifier = 0.2
+        annexation_speed_modifier = 0.1
+        global_estate_target_satisfaction = 0.05
+        global_war_score_cost = -0.05
+        levy_combat_efficiency_modifier = 0.1
+    }
+
+    opinion_importance_multiplier = 0.1
+}

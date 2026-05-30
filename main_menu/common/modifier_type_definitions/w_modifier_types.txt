@@ -31,8 +31,16 @@ location_enable_dynamic_territorial_occupation = {
     color = good
     game_data = {
         category = location
+        should_show_in_modifiers_tab = no
     }
-    should_show_in_modifiers_tab = no
+}
+
+enable_forced_dynamic_territorial_occupation = {
+    boolean = yes
+    color = good
+    game_data = {
+        category = country
+    }
 }
 
 allow_corruption = {
@@ -54,5 +62,39 @@ corruption_investment = {
     color = neutral
     game_data = {
         category = country
+    }
+}
+
+monthly_towards_universality={
+    color=neutral
+    game_data={
+        category=country
+        min=0
+        is_societal_value_change = yes
+    }
+}
+
+monthly_towards_exclusivity={
+    color=neutral
+    game_data={
+        category=country
+        min=0
+        is_societal_value_change = yes
+    }
+}
+
+is_region_capital = {
+    boolean = yes
+    color = good
+    game_data = {
+        category = location
+    }
+}
+
+is_area_capital = {
+    boolean = yes
+    color = good
+    game_data = {
+        category = location
     }
 }

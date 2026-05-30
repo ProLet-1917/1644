@@ -30,9 +30,9 @@ qng_1644_banner_army.1 = {
 			location:shenyang ?= {
 				if = {
 					limit = { owner = root }
-					# 炮兵：25 营（4 门/营）= 100门（时代4红衣大炮）
+					# 炮兵：5 营（16 门/营）= 80门（时代4红衣大炮）
 					while = {
-						count = 25
+						count = 5
 						create_sub_unit_with_owner = {
 							type = a_red_cannon
 							owner = root
@@ -40,7 +40,7 @@ qng_1644_banner_army.1 = {
 							experience = 90
 						}
 					}
-					# 乌真超哈：10 * 1000 = 10000 人
+					# 乌真超哈：10 * 1500 = 15000 人
 					while = {
 						count = 10
 						create_sub_unit_with_owner = {
@@ -50,9 +50,9 @@ qng_1644_banner_army.1 = {
 							experience = 90
 						}
 					}
-					# 八旗骑兵：20 * 600 = 12000 人
+					# 八旗骑兵：12 * 800 = 9600 人
 					while = {
-						count = 20
+						count = 12
 						create_sub_unit_with_owner = {
 							type = a_banner_cavalry
 							owner = root

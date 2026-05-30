@@ -1,0 +1,97 @@
+a_klephts = {
+    is_special = yes
+    copy_from = a_age_4_reformation_light_infantry
+    build_time_modifier = 0.5
+
+    strength_damage_done = 0.1
+    morale_damage_done = 0.1
+
+    buildable = yes
+
+    mercenaries_per_location = {
+        pop_type = peasants
+        multiply = 0.01
+    }
+
+    country_potential = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
+    }
+
+    location_trigger = {
+        OR = {
+            integration_level = integrated
+            integration_level = core
+        }
+        owner ?= {
+            OR = {
+                has_primary_or_accepted_culture = root.dominant_culture
+                has_primary_or_accepted_culture = culture:greek_culture
+            }
+        }
+    }
+
+    impact = {
+        jungle = -0.05
+        hills = -0.1
+        mountains = -0.15
+    }
+    combat = {
+        jungle = 0.1
+        hills = 0.15
+        mountains = 0.20
+    }
+
+    gfx_tags = { medium_tag }
+}
+
+a_klephts_2 = {
+    is_special = yes
+    copy_from = a_age_5_absolutism_light_infantry
+    build_time_modifier = 0.5
+
+    strength_damage_done = 0.1
+    morale_damage_done = 0.1
+
+    buildable = yes
+
+    mercenaries_per_location = {
+        pop_type = peasants
+        multiply = 0.01
+    }
+
+    country_potential = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
+    }
+
+    location_trigger = {
+        OR = {
+            integration_level = integrated
+            integration_level = core
+        }
+        owner ?= {
+            OR = {
+                has_primary_or_accepted_culture = root.dominant_culture
+                has_primary_or_accepted_culture = culture:greek_culture
+            }
+        }
+    }
+
+    impact = {
+        jungle = -0.05
+        hills = -0.1
+        mountains = -0.15
+    }
+    combat = {
+        jungle = 0.1
+        hills = 0.15
+        mountains = 0.20
+    }
+
+    gfx_tags = { medium_tag }
+}

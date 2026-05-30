@@ -385,7 +385,7 @@
 	#(root is the location, scope:disease is the disease, 
 	# scope:disease_outbreak is the specific outbreak, 
 	# scope:current_presence is the current disease presence in the location)
-	location_infection_spread_threshold = {
+	location_spread_threshold = {
 		value = 0.30 #30% of the people need to be infected to spread to neighbors
 		if = {#Reduce the spread in difficult terrain locations or rural
 			limit = {

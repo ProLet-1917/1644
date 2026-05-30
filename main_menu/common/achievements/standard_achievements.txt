@@ -25,6 +25,17 @@ Over_three_houndreds_years = {
     }
 }
 
+Beyond_the_ancestors = {
+    possible = {
+        has_or_had_tag = TUR
+    }
+
+    happened = {
+        owns = location:vienna
+        owns = location:rome
+    }
+}
+
 #Achievements Medium
 
 An_Early_empire = {
@@ -84,5 +95,16 @@ Triple_crown = {
     happened = {
         is_leader_of_international_organization = international_organization:middle_kingdom
         is_leader_of_international_organization = international_organization:hre
+    }
+}
+
+Returning_like_lightning = {
+    possible = {
+        has_or_had_tag = MOI
+    }
+    happened = {
+        tag = ROM
+        owns = location:rome
+        owns = location:constantinople
     }
 }

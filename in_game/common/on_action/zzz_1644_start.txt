@@ -334,13 +334,16 @@
         }
 
         the_fronde_protest_effect = yes
+        c:FRA = {
+            unlock_government_reform_effect = { type = gabelle }
+        }
         spawn_army_for_hordes_effect = yes
 
         start_herd_check_effect = yes
 
         monthly_corruption_check_effect = yes
 
-        w_start_building_create_effect = yes
+        #w_start_building_create_effect = yes
 
         scripted_geography:china_geography = {
             every_location_in_scripted_geography = {
@@ -357,10 +360,43 @@
         c:MNG = {
             set_variable = {
                 name = corruption
-                value = 82.5
+                value = 52.5
             }
         }
 
+        c:TUR = {
+            add_country_modifier = {
+                modifier = corrupted_janissaries
+                years = -1
+            }
+        }
         set_global_variable = hagia_sophia_now_mosque
+
+        c:SLE = {
+            unlock_government_reform_effect = { type = pirate_brethren_reform }
+            add_reform = government_reform:pirate_brethren_reform
+            unlock_policy_effect = { type = state_piracy_policy }
+            add_policy = policy:state_piracy_policy
+            add_policy = policy:council_of_captains
+            add_policy = policy:articles_of_agreement
+            add_policy = policy:smugglers_haven
+            add_policy = policy:authority_of_the_captain
+            add_policy = policy:loyal_pirate_crews
+            add_policy = policy:ship_boarding
+            add_policy = policy:benefits_for_privateers
+            add_policy = policy:port_logs
+        }
+
+        c:TFL.capital = {
+            while = {
+                count = 2
+                create_sub_unit_with_owner = {
+                    type = a_heavy_lancers
+                    owner = c:TFL
+                    origin = this
+                    experience = 50
+                }
+            }
+        }
     }
 }

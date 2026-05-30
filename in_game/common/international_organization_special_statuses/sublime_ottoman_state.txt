@@ -1,0 +1,148 @@
+the_padishah_of_io = {
+    max_countries = 1
+    priority = 15
+    can_bestow_trigger = {
+        is_leader_of_international_organization = scope:recipient
+    }
+    auto_bestowal_trigger = {
+        always = yes
+    }
+    auto_rescind_trigger = {
+        NOT = { is_leader_of_international_organization = scope:recipient }
+    }
+    leader = yes
+    map_color = rgb { 85 221 192 }
+    special_status_power = {
+        value = 12
+    }
+
+    modifier = {
+        great_power_score = 50
+    }
+}
+
+eyalet_of_io = {
+    priority = 8
+    can_bestow_trigger = {
+        is_subject_of = international_organization:sublime_ottoman_state.leader_country
+        is_member_of_international_organization = scope:recipient
+        subject_type = subject_type:eyalet
+    }
+    auto_bestowal_trigger = {
+        is_subject_of = international_organization:sublime_ottoman_state.leader_country
+        is_member_of_international_organization = scope:recipient
+        subject_type = subject_type:eyalet
+    }
+    auto_rescind_trigger = {
+
+    }
+
+    on_bestowed_effect = {
+        scope:recipient = {
+            international_organization_remove_special_status = {
+                type = scope:source
+                country = root
+            }
+        }
+    }
+
+    on_rescinded_effect = {
+
+    }
+
+    special_status_power = {
+        value = 0.5
+    }
+
+    map_color = rgb { 155 103 192 }
+
+    modifier = {
+        great_power_score = 10
+    }
+}
+
+autonomous_territory_of_io = {
+    priority = 5
+    can_bestow_trigger = {
+        is_subject_of = international_organization:sublime_ottoman_state.leader_country
+        is_member_of_international_organization = scope:recipient
+        NOT = {
+            subject_type = subject_type:eyalet
+            subject_type = subject_type:tributary
+        }
+    }
+    auto_bestowal_trigger = {
+        is_subject_of = international_organization:sublime_ottoman_state.leader_country
+        is_member_of_international_organization = scope:recipient
+        NOT = {
+            subject_type = subject_type:eyalet
+            subject_type = subject_type:tributary
+        }
+    }
+    auto_rescind_trigger = {
+
+    }
+
+    on_bestowed_effect = {
+        scope:recipient = {
+            international_organization_remove_special_status = {
+                type = scope:source
+                country = root
+            }
+        }
+    }
+
+    on_rescinded_effect = {
+
+    }
+
+    special_status_power = {
+        value = 0.5
+    }
+
+    map_color = rgb { 191 85 72 }
+
+    modifier = {
+
+    }
+}
+
+tributary_of_io = {
+    priority = 2
+    can_bestow_trigger = {
+        is_subject_of = international_organization:sublime_ottoman_state.leader_country
+        is_member_of_international_organization = scope:recipient
+        subject_type = subject_type:tributary
+    }
+    auto_bestowal_trigger = {
+        is_subject_of = international_organization:sublime_ottoman_state.leader_country
+        is_member_of_international_organization = scope:recipient
+        subject_type = subject_type:tributary
+    }
+    auto_rescind_trigger = {
+
+    }
+
+    on_bestowed_effect = {
+        scope:recipient = {
+            international_organization_remove_special_status = {
+                type = scope:source
+                country = root
+            }
+        }
+    }
+
+    on_rescinded_effect = {
+
+    }
+
+    special_status_power = {
+        value = 0
+    }
+
+    map_color = rgb { 218 202 23 }
+
+    modifier = {
+
+    }
+}

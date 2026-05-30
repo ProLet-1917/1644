@@ -1,0 +1,878 @@
+#The 7th Age: Age of Imperialism
+#Made by Lvtoumao
+#Power revolution
+power_revolution_advance = {
+    age = age_7_imperialism
+
+    global_raw_material_output = 0.25
+    global_construction_speed = 0.2
+    depth = 0
+
+    allow = { has_embraced_institution = institution:power_revolution }
+}
+
+anaesthesia_advance = {
+    age = age_7_imperialism
+    requires = power_revolution_advance
+
+    global_population_growth = 0.0010
+    character_life_expectancy = 5
+
+}
+
+chemotherapy_advance = {
+    age = age_7_imperialism
+    requires = anaesthesia_advance
+
+    global_population_growth = 0.0010
+    local_army_attrition = -0.05
+}
+
+penicillin_advance = {
+    age = age_7_imperialism
+    requires = chemotherapy_advance
+
+    global_population_growth = 0.0015
+    global_disease_resistance = 0.1
+}
+
+sulfanilamide_advance = {
+    age = age_7_imperialism
+    requires = chemotherapy_advance
+    global_disease_resistance = 0.1
+    local_army_attrition = -0.1
+    global_population_growth = 0.001
+}
+
+x-rays_advance = {
+    age = age_7_imperialism
+    requires = chemotherapy_advance
+
+    global_population_growth = 0.0015
+    local_army_attrition = -0.05
+    character_life_expectancy = 5
+}
+
+steam_engine_factory_advance = {
+    age = age_7_imperialism
+    requires = power_revolution_advance
+
+    unlock_building = engine_factory
+}
+clean_coal_advance = {
+    age = age_7_imperialism
+    requires = power_revolution_advance
+
+    global_coal_output_modifier = 0.2
+}
+
+steel_factory_advance = {
+    age = age_7_imperialism
+    requires = clean_coal_advance
+
+    unlock_building = steel_factory
+}
+
+structural_steel_construction_advance = {
+    age = age_7_imperialism
+    requires = steel_factory_advance
+
+    max_constructions_at_same_time = 4
+    global_construction_speed = 0.05
+}
+
+ammunition_factory_advance = {
+    age = age_7_imperialism
+    requires = steel_factory_advance
+
+    unlock_building = ammunition_factory
+}
+
+artillery_factory_advance = {
+    age = age_7_imperialism
+    requires = steel_factory_advance
+
+    unlock_building = artillery_factory
+}
+
+steel_railroad_advance = {
+    age = age_7_imperialism
+    requires = steel_factory_advance
+
+    army_movement_speed = 0.2
+    land_cost_on_distance_from_capital_speed_propagation = 0.10
+    trade_income = 0.05
+}
+
+modernize_high_speed_railroad_advance = {
+    age = age_7_imperialism
+    requires = steel_railroad_advance
+
+    unlock_road_type = high_speed_railroad
+    trade_income = 0.05
+}
+
+bessemer_steel_advance = {
+    age = age_7_imperialism
+    requires = clean_coal_advance
+
+    global_steel_output_modifier = 0.2
+    global_iron_output_modifier = 0.2
+}
+
+cordite_advance = {
+    age = age_7_imperialism
+    requires = bessemer_steel_advance
+
+    global_firearms_output_modifier = 0.1
+    army_artillery_power = 0.1
+    army_heavy_infantry_power = 0.1
+}
+
+open_hearth_furnace_advance = { #https://en.wikipedia.org/wiki/Open-hearth_furnace
+    age = age_7_imperialism
+    requires = bessemer_steel_advance
+    global_steel_output_modifier = 0.25
+}
+
+stainless_steel_advance = {
+    age = age_7_imperialism
+    requires = open_hearth_furnace_advance
+    global_steel_output_modifier = 0.25
+}
+
+harvey_steel_advance = {
+    age = age_7_imperialism
+    requires = open_hearth_furnace_advance
+    global_steel_output_modifier = 0.15
+    navy_heavy_ship_power = 0.1
+    navy_galley_power = 0.1
+    navy_light_ship_power = 0.1
+    navy_repair_cost = 0.05
+    navy_maintenance_efficiency = 0.05
+}
+
+electricity_advance = {
+    age = age_7_imperialism
+    requires = power_revolution_advance
+
+    supply_limit = 0.5
+    unlock_building = power_plant
+    unlock_production_method = electricity_replace_coal
+    unlock_production_method = electricity_replace_beeswax
+}
+
+electric_rolling_techniques_advance = {
+    age = age_7_imperialism
+    requires = electricity_advance
+
+    global_copper_output_modifier = 0.15
+    global_steel_output_modifier = 0.15
+    global_iron_output_modifier = 0.15
+    global_tin_output_modifier = 0.15
+}
+
+electric_arc_furnace_advance = {
+    age = age_7_imperialism
+    requires = electric_rolling_techniques_advance
+
+    global_copper_output_modifier = 0.15
+    global_steel_output_modifier = 0.15
+    global_iron_output_modifier = 0.15
+    global_tin_output_modifier = 0.15
+}
+
+high_and_low_pressure_steam_engine_advance = {
+    age = age_7_imperialism
+    requires = electricity_advance
+
+    global_max_rgo_size_modifier = 0.1
+    global_raw_material_output = 0.1
+    unlock_production_method = improved_steam_engine_maintenance
+}
+
+mobile_engine_advance = {
+    age = age_7_imperialism
+    requires = high_and_low_pressure_steam_engine_advance
+
+    global_road_building_time = -0.15
+    road_cost_on_distance_from_capital = -0.05
+}
+
+agricultural_harvesting_machinery_advance = {
+    age = age_7_imperialism
+    requires = mobile_engine_advance
+
+    expand_rgo_farming_cost_modifier = 0.02
+    global_monthly_food_modifier = 0.1
+}
+
+large_construction_machinery_advance = {
+    age = age_7_imperialism
+    requires = high_and_low_pressure_steam_engine_advance
+
+    global_construction_speed = 0.1
+    global_build_buildings_cost = 0.02
+    global_road_building_time = 0.1
+    global_max_rgo_size_modifier_in_rural = 0.05
+    global_max_rgo_size_modifier_in_non_rural = 0.1
+}
+
+modern_paper_factory_advance = {
+    age = age_7_imperialism
+    requires = large_construction_machinery_advance
+
+    unlock_building = paper_factory
+}
+
+modern_tools_factory_advance = {
+    age = age_7_imperialism
+    requires = large_construction_machinery_advance
+
+    unlock_building = tools_factory
+}
+
+modern_cloth_factory_advance = {
+    age = age_7_imperialism
+    requires = large_construction_machinery_advance
+
+    unlock_building = cloth_factory
+}
+
+modern_furniture_factory_advance = {
+    age = age_7_imperialism
+    requires = large_construction_machinery_advance
+
+    unlock_building = furniture_factory
+}
+
+modern_glass_factory_advance = {
+    age = age_7_imperialism
+    requires = large_construction_machinery_advance
+
+    unlock_building = glass_factory
+}
+
+rubber_using_advance = {
+    age = age_7_imperialism
+    requires = modern_tools_factory_advance
+
+    unlock_production_method = rubber_made_tools
+    unlock_production_method = rubber_made_furniture
+}
+
+combustion_engine_advance = {
+    age = age_7_imperialism
+    requires = high_and_low_pressure_steam_engine_advance
+
+    global_raw_material_output = 0.15
+}
+
+turbine_engine_advance = {
+    age = age_7_imperialism
+    requires = combustion_engine_advance
+
+    navy_movement_speed = 0.4
+    navy_maintenance_efficiency = 0.02
+    navy_repair_cost = 0.01
+}
+
+electrical_power_generation_advance = {
+    age = age_7_imperialism
+    requires = combustion_engine_advance
+
+    global_raw_material_output = 0.15
+    unlock_production_method = oil_refinery_electricity_maintenance
+}
+
+oil_refinery_advance = {
+    age = age_7_imperialism
+    requires = clean_coal_advance
+
+    unlock_building = oil_refinery
+    unlock_production_method = diesel_replace_others
+    unlock_production_method = chemical_textile_factory_maintenance
+    unlock_production_method = oil_power_generation
+    unlock_production_method = diesel_power_generation
+}
+
+synthetic_oil_factory_advance = {
+    age = age_7_imperialism
+    requires = oil_refinery_advance
+
+    unlock_building = synthetic_oil_factory
+}
+
+wood_based_synthetic_oil_method_advance = {
+    age = age_7_imperialism
+    requires = oil_refinery_advance
+
+    unlock_production_method = synthetic_oil_by_lumber
+}
+
+mechanization_factory_advance = {
+    age = age_7_imperialism
+    requires = electrical_power_generation_advance
+
+    army_movement_speed = 0.1
+    unlock_building = mechanization_factory
+}
+
+mechanical_production_advance = {
+    age = age_7_imperialism
+    requires = clean_coal_advance
+
+    building_upkeep_costs = -0.1
+}
+
+assembly_line_advance = {
+    age = age_7_imperialism
+    requires = mechanical_production_advance
+
+    building_upkeep_costs = -0.25
+}
+
+telephone_assembly_advance = {
+    age = age_7_imperialism
+    requires = electricity_advance
+
+    global_distance_from_capital_speed_propagation = 0.05
+    global_institution_growth_modifier = 0.05
+    unlock_building = telephone_assembly_factory
+}
+
+radio_application_advance = {
+    age = age_7_imperialism
+    requires = telephone_assembly_advance
+
+    global_distance_from_capital_speed_propagation = 0.1
+    global_institution_growth_modifier = 0.1
+}
+
+fertilizer_advance = {
+    age = age_7_imperialism
+    requires = clean_coal_advance
+    icon = expanded_supply_trains
+
+    global_monthly_food_modifier = 0.2
+}
+
+large_scale_farms_advance = {
+    age = age_7_imperialism
+    requires = fertilizer_advance
+
+    global_monthly_food_modifier = 0.15
+    global_livestock_output_modifier = 0.15
+    global_fish_output_modifier = 0.15
+}
+#Ideology
+ideology_advance = {
+    age = age_7_imperialism
+    depth = 0
+
+    global_estate_target_satisfaction = 0.05
+    global_crown_estate_power = 0.25
+
+    allow = { has_embraced_institution = institution:ideology }
+}
+
+nationalism_advance = {
+    age = age_7_imperialism
+    requires = ideology_advance
+
+    cultural_influence = 0.2
+    cultural_tradition = 0.2
+    global_pop_assimilation_speed = 0.05
+    monthly_rebel_growth = 0.0015
+    pop_join_rebel_threshold = 0.1
+    monthly_slave_rebel_growth = 0.1
+    monthly_nobles_estate_rebel_growth = -0.0015
+    monthly_clergy_estate_rebel_growth = -0.0015
+}
+
+manifest_destiny_advance = {
+    age = age_7_imperialism
+    requires = nationalism_advance
+
+    morale_recovery_in_friendly = 0.15
+    land_morale_modifier = 0.25
+    monthly_war_exhaustion = -0.05
+}
+
+secret_police_advance = {
+    age = age_7_imperialism
+    requires = manifest_destiny_advance
+
+    rebel_monthly_progress = -0.05
+    pop_join_rebel_threshold = -0.05
+}
+
+modern_diplomacy_advance = {
+    age = age_7_imperialism
+    requires = manifest_destiny_advance
+
+    diplomatic_capacity_modifier = 0.1
+    diplomatic_range = 200
+    diplomatic_reputation = 0.05
+    monthly_diplomats = 0.05
+}
+
+social_science_advance = {
+    age = age_7_imperialism
+    requires = manifest_destiny_advance
+
+    global_migration_speed_modifier = 0.05
+    global_max_control = 0.025
+}
+
+modern_education_advance = {
+    age = age_7_imperialism
+    requires = nationalism_advance
+
+    global_max_literacy = 0.1
+    research_speed_modifier = 0.1
+    research_speed = 0.25
+}
+
+quality_education_advance = {
+    age = age_7_imperialism
+    requires = modern_education_advance
+
+    global_max_literacy = 0.1
+    global_monthly_literacy = 0.05
+}
+
+modern_research_facility_advance = {
+    age = age_7_imperialism
+    requires = modern_education_advance
+
+    research_speed_modifier = 0.1
+    research_speed = 0.5
+}
+
+financial_center_advance = {
+    age = age_7_imperialism
+    requires = nationalism_advance
+
+    unlock_building = financial_center
+}
+
+modern_bank_advance = {
+    age = age_7_imperialism
+    requires = financial_center_advance
+
+    tax_income_efficiency = 0.05
+    minting_inflation_threshold = 0.02
+}
+
+modern_national_bank_advance = {
+    age = age_7_imperialism
+    requires = modern_bank_advance
+
+    tax_income_efficiency = 0.05
+    minting_inflation_threshold = 0.05
+}
+
+modern_customs_office_advance = {
+    age = age_7_imperialism
+    requires = modern_national_bank_advance
+
+    trade_income = 0.1
+    trade_land_efficiency = 0.1
+    trade_sea_efficiency = 0.2
+}
+
+central_bank_money_bill_printing_advance = {
+    age = age_7_imperialism
+    requires = modern_national_bank_advance
+
+    tax_income_efficiency = 0.1
+    minting_inflation_threshold = 0.01
+    monthly_inflation = -0.001
+}
+
+investment_banks_advance = {
+    age = age_7_imperialism
+    requires = modern_bank_advance
+
+    building_upkeep_costs = -0.05
+    global_construction_speed = 0.05
+}
+
+corporate_governance_advance = {
+    age = age_7_imperialism
+    requires = investment_banks_advance
+
+    building_upkeep_costs = -0.10
+    global_trades_per_burgher = 0.05
+}
+
+international_exchange_standard_advance = {
+    age = age_7_imperialism
+    requires = investment_banks_advance
+
+    trade_income = 0.05
+    total_loan_capacity_modifier = 0.1
+    minting_income_factor = 0.05
+}
+
+monior_market_behaviour_advance = {
+    age = age_7_imperialism
+    requires = modern_bank_advance
+
+    control_the_food_market_cost_modifier = -0.05
+    food_purchase_cost = -0.10
+}
+
+organized_factory_advance = {
+    age = age_7_imperialism
+    requires = financial_center_advance
+
+    global_raw_material_output = 0.05
+    global_production_efficiency = 0.05
+}
+
+shift_system_advance = {
+    age = age_7_imperialism
+    requires = organized_factory_advance
+
+    global_production_efficiency = 0.25
+}
+
+citizen_rights_advance = {
+    age = age_7_imperialism
+    requires = ideology_advance
+
+    peasants_estate_target_satisfaction = 0.05
+    tolerance_heathen = 1
+}
+
+organized_sports_advance = {
+    age = age_7_imperialism
+    requires = citizen_rights_advance
+
+    cultural_tradition_modifier = 0.05
+    prestige_decay = -0.05
+}
+
+civilian_government_advance = {
+    age = age_7_imperialism
+    requires = citizen_rights_advance
+
+    government_reform_slots = 1
+}
+
+identification_documents_advance = {
+    age = age_7_imperialism
+    requires = citizen_rights_advance
+
+    tax_income_efficiency = 0.10
+    province_integration_speed = 0.10
+}
+
+camera_advance = {
+    age = age_7_imperialism
+    requires = ideology_advance
+
+    cultural_influence_modifier = 0.05
+    cultural_tradition_modifier = 0.05
+}
+
+film_advance = {
+    age = age_7_imperialism
+    requires = camera_advance
+
+    cultural_influence_modifier = 0.25
+}
+
+large_cinema = {
+    age = age_7_imperialism
+    requires = film_advance
+
+    unlock_building = large_cinema_house
+}
+
+political_agitation_advance = {
+    age = age_7_imperialism
+    requires = camera_advance
+
+    global_crown_estate_power = 0.10
+    global_max_literacy = 0.05
+}
+
+#The theory on War
+the_theory_on_war_advance = {
+    age = age_7_imperialism
+    depth = 0
+
+    discipline = 0.1
+    military_tactics = 0.5
+    allow = { has_embraced_institution = institution:the_theory_on_war }
+}
+
+flexible_firepower_advance = {
+    age = age_7_imperialism
+    requires = the_theory_on_war_advance
+
+    army_artillery_power = 0.05
+    army_heavy_infantry_power = 0.05
+    artillery_bonus_vs_fort = 1
+}
+
+field_works_advance = {
+    age = age_7_imperialism
+    requires = flexible_firepower_advance
+
+    military_tactics = 0.10
+}
+
+general_staff_organization_advance = {
+    age = age_7_imperialism
+    requires = flexible_firepower_advance
+
+    train_general_cost_modifier = -0.25
+    train_admiral_cost_modifier = -0.25
+    land_morale_modifier = 0.025
+    naval_morale_modifier = 0.025
+}
+
+enlistment_offices_advance = {
+    age = age_7_imperialism
+    requires = general_staff_organization_advance
+
+    global_levy_size_modifier = 0.1
+    global_manpower_modifier = 0.25
+}
+
+war_propaganda_advance = {
+    age = age_7_imperialism
+    requires = enlistment_offices_advance
+
+    global_levy_size_modifier = 0.1
+    global_manpower_modifier = 0.25
+}
+
+trench_works_advance = {
+    age = age_7_imperialism
+    requires = general_staff_organization_advance
+
+    military_tactics = 0.25
+}
+
+trench_infantry_advance = {
+    age = age_7_imperialism
+    requires = trench_works_advance
+
+    unlock_unit = a_trench_infantrys
+}
+
+siege_artillery_advance = {
+    age = age_7_imperialism
+    requires = trench_works_advance
+
+    unlock_unit = a_siege_artillerys
+}
+
+early_armor_advance = {
+    age = age_7_imperialism
+    requires = trench_works_advance
+
+    unlock_unit = a_early_armors
+}
+
+modern_armor_advance = {
+    age = age_7_imperialism
+    requires = early_armor_advance
+
+    unlock_unit = a_modern_armors
+}
+
+flamethrower_advance = {
+    age = age_7_imperialism
+    requires = trench_works_advance
+
+    army_initiative = 0.1
+}
+
+skirmish_infantry_advance = {
+    age = age_7_imperialism
+    requires = flexible_firepower_advance
+
+    unlock_unit = a_skirmish_infantrys
+}
+
+handcranked_machine_gun_advance = {
+    age = age_7_imperialism
+    requires = flexible_firepower_advance
+
+    army_heavy_infantry_power = 0.1
+}
+
+automatic_machine_gun_advance = {
+    age = age_7_imperialism
+    requires = handcranked_machine_gun_advance
+
+    army_heavy_infantry_power = 0.2
+}
+
+military_aviation_advance = {
+    age = age_7_imperialism
+    requires = automatic_machine_gun_advance
+
+    #unlock_aviation_units
+}
+
+interceptor_advance = {
+    age = age_7_imperialism
+    requires = military_aviation_advance
+
+
+}
+
+fighter_advance = {
+    age = age_7_imperialism
+    requires = military_aviation_advance
+
+}
+
+close_air_supportor_advance = {
+    age = age_7_imperialism
+    requires = fighter_advance
+
+}
+
+bomber_advance = {
+    age = age_7_imperialism
+    requires = military_aviation_advance
+
+}
+
+iron_made_ships_advance = {
+    age = age_7_imperialism
+    requires = the_theory_on_war_advance
+
+    global_iron_output_modifier = 0.05
+    global_steel_output_modifier = 0.05
+    naval_damage_taken = -0.8
+}
+
+ironclad_advance = {
+    age = age_7_imperialism
+    requires = iron_made_ships_advance
+
+    unlock_unit = n_ironclad
+}
+
+pre_dreadnoughts_advance = {
+    age = age_7_imperialism
+    requires = ironclad_advance
+
+    unlock_unit = n_pre_dreadnoughts
+}
+
+early_fire_control_advance = {
+    age = age_7_imperialism
+    requires = ironclad_advance
+
+    naval_damage_done = 0.25
+}
+
+dreadnoughts_advance = {
+    age = age_7_imperialism
+    requires = pre_dreadnoughts_advance
+
+    unlock_unit = n_dreadnoughts
+    unlock_unit = n_battlecruisers
+}
+
+late_dreadnoughts_advance = {
+    age = age_7_imperialism
+    requires = dreadnoughts_advance
+
+    unlock_unit = n_late_dreadnoughts
+}
+
+modern_fire_control_advance = {
+    age = age_7_imperialism
+    requires = pre_dreadnoughts_advance
+
+    naval_damage_done = 0.25
+}
+
+monitor_advance = {
+    age = age_7_imperialism
+    requires = iron_made_ships_advance
+
+    unlock_unit = n_monitor
+}
+
+destroyer_advance = {
+    age = age_7_imperialism
+    requires = monitor_advance
+
+    unlock_unit = n_destroyer
+}
+
+early_armor_cruiser_advance = {
+    age = age_7_imperialism
+    requires = iron_made_ships_advance
+
+    unlock_unit = n_early_armor_cruiser
+}
+
+scout_cruiser_advance = {
+    age = age_7_imperialism
+    requires = early_armor_cruiser_advance
+
+    unlock_unit = n_scout_cruiser
+}
+heavy_cruiser_advance = {
+    age = age_7_imperialism
+    requires = early_armor_cruiser_advance
+
+    unlock_unit = n_heavy_cruiser
+}
+
+self_propelled_torpedoes_advance = {
+    age = age_7_imperialism
+    requires = iron_made_ships_advance
+
+    naval_damage_done = 0.25
+}
+
+torpedo_boat_advance = {
+    age = age_7_imperialism
+    requires = self_propelled_torpedoes_advance
+
+    unlock_unit = n_torpedo_boat
+}
+
+modern_transport_advance = {
+    age = age_7_imperialism
+    requires = self_propelled_torpedoes_advance
+
+    unlock_unit = n_modern_transport
+}
+
+#submarine_advance = { #Need change
+#    age = age_7_imperialism
+#    requires = torpedo_boat_advance
+#
+#    unlock_unit = n_submarine
+#}
+
+sailor_schools_advance = {
+    age = age_7_imperialism
+    requires = iron_made_ships_advance
+
+    global_sailors_modifier = 0.2
+    naval_morale_modifier = 0.2
+}
+
+naval_university_advance = {
+    age = age_7_imperialism
+    requires = sailor_schools_advance
+
+    naval_unit_attrition = -0.15
+    naval_damage_taken = -0.2
+}

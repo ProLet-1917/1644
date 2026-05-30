@@ -5442,6 +5442,7 @@ countries = {
 		own_control_core = {
 			timbuktu kabara goundam gourma_rharous tindirma
 			bourem bamba tondibi gao ansongo
+			walata nema
 		}
 
 		starting_technology_level = 3
@@ -6862,6 +6863,156 @@ countries = {
 		capital = kibiro
 	}
 #North Africa
+	SLE = { #Sale https://en.wikipedia.org/wiki/Republic_of_Sal%C3%A9
+		type = navy
+
+		own_control_core = {
+			sale
+		}
+
+		government = {
+			type = republic
+			heir_selection = pirate_elective
+			ruler = random
+
+			reforms = {
+				pirate_brethren_reform
+			}
+
+			laws = {
+				piracy_law = state_piracy_policy
+			}
+		}
+
+        discovered_areas = {
+            western_sahara_area
+        }
+
+		religious_school = shadhili_school
+        starting_technology_level = 3
+
+		capital = sale
+
+		include = "expl_muslim_mediterranean"
+
+	}
+
+	FEZ = { #Fez https://en.wikipedia.org/wiki/Zawiya_Dila%27iya
+		own_control_core = {
+			fez meknes la_mamora azrou volubilis tefelfelt baht
+		}
+
+		our_cores_conquered_by_others = {
+			sijilmasa boumalne_dades er_rich ksar_es_souk tazzarine todgha
+			tabelbala
+			taghit bechar
+			midelt ameskour terrest
+			tetouan basra_al_hamra larache taunat
+			badis tizgane amergo al_mazamma
+			ras_kebdana ghassasa temsamane tabarida
+			ksar_el_kebir tazroute ouezzane
+			anfa azemmour bejaad thagia rabat settat mrirah
+			asfi mazaghan tit boulaouane miatbir aguz
+			tednest ait_daoud tafedna mogador
+			marrakesh aghmat tinmel naffis hanimmei tamdegost
+			taroudant tidsi tiout tiznit massa_MOR tafraout ifni noul_lamta agadir
+			bzou demnate azilal
+			tadla khenifra chichaoua
+			guercif tezerghe namalata taza sefrou
+			jarawah_abu_al_aysh oujda
+			jerada taourirt debdou echemmaia sidi_bennour
+			nedroma tegeget kalaat_sraghna
+			aouint_yghomane afso ifrane
+			tamdoult assa beni_sabih foum_zguid igiliz taghjijt tata_MOR tiout tissint tizounine
+			ouarzazate agdez ait_benhaddou skoura tagmadert taznakht
+			laayoune smara tantan tindouf
+			idjil dakhla al_kuwayra aousserd bojador
+			taghaza taoudenni araouane
+		}
+
+		country_rank = rank_duchy
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = fez_ibn_mohammed_dila
+
+            ruler_term = { character = fez_ibn_mohammed_dila start_date = 1637.6.10 }
+
+			mysticism_vs_jurisprudence = -5
+		}
+
+        discovered_areas = {
+            western_sahara_area
+        }
+
+		capital = fez
+
+		include = "expl_muslim_mediterranean"
+	}
+
+	TFL = { #Tafilalt https://en.wikipedia.org/wiki/Alawi_dynasty
+		own_control_core = {
+			sijilmasa boumalne_dades er_rich ksar_es_souk tazzarine todgha
+			tabelbala
+			taghit bechar
+			midelt ameskour terrest
+		}
+
+		our_cores_conquered_by_others = {
+			tetouan basra_al_hamra larache taunat
+			badis tizgane amergo al_mazamma
+			ras_kebdana ghassasa temsamane tabarida
+			ksar_el_kebir tazroute ouezzane
+			anfa azemmour bejaad thagia rabat settat mrirah
+			asfi mazaghan tit boulaouane miatbir aguz
+			tednest ait_daoud tafedna mogador
+			marrakesh aghmat tinmel naffis hanimmei tamdegost
+			taroudant tidsi tiout tiznit massa_MOR tafraout ifni noul_lamta agadir
+			bzou demnate azilal
+			tadla khenifra chichaoua
+			guercif tezerghe namalata taza sefrou
+			jarawah_abu_al_aysh oujda
+			jerada taourirt debdou echemmaia sidi_bennour
+			nedroma tegeget kalaat_sraghna
+			aouint_yghomane afso ifrane
+			tamdoult assa beni_sabih foum_zguid igiliz taghjijt tata_MOR tiout tissint tizounine
+			ouarzazate agdez ait_benhaddou skoura tagmadert taznakht
+			laayoune smara tantan tindouf
+			idjil dakhla al_kuwayra aousserd bojador
+			taghaza taoudenni araouane
+			sale fez meknes la_mamora azrou volubilis tefelfelt baht
+		}
+
+        country_rank = rank_duchy
+		starting_technology_level = 3
+
+        government = {
+            type = monarchy
+            heir_selection = cognatic_primogeniture
+            ruler = tfl_ibn_sharif_alawi
+
+			ruler_term = { character = tfl_ibn_sharif_alawi start_date = 1640.4.23 }
+            mysticism_vs_jurisprudence = -5
+        }
+
+		currency_data = {
+			gold = 225
+			prestige = 35
+			stability = 40
+            manpower = 8
+		}
+
+		discovered_areas = {
+			western_sahara_area
+		}
+
+        capital = sijilmasa
+
+        include = "expl_muslim_mediterranean"
+	}
+
 	TUN = { #Tunis
 		own_control_core = {
 			ajim medenine zarzis feriana kasserine sbiba subaytila thala
@@ -6898,9 +7049,6 @@ countries = {
 			}
 
 			land_vs_naval = 30
-			laws = {
-				piracy_law = state_piracy_policy
-			}
 			privilege = {
 				#Nobles
 				noble_sponsored_navy
@@ -6918,6 +7066,7 @@ countries = {
 			laws = {
 				amazigh_familial_connections = reliance_on_local_tribes
 				sharia_law = maliki_policy
+                piracy_law = state_piracy_policy
 			}
 		}
 		religious_school = maliki_school
@@ -6973,7 +7122,12 @@ countries = {
 			miliana al_khadra_ALG chlef ksar_el_kaoua mazouna yellel
 			arshgul arzew ksar_ibn_senane nedroma tamazaghrane
 			tlemcen madinat_alawiyyin mascara saida tessala
-			ras_al_ain maqqara msila asir_ALG ksar_el_boukhari tissemsilt tahert qal_at_ibn_salama
+			ras_al_ain maqqara msila asir_ALG ksar_el_boukhari
+			tissemsilt tahert charef djelfa zenina
+            el_bayadh ain_sefra brezina el_abiodh_sidi_cheikh medrissa naama qal_at_ibn_salama qutb
+			biskra bades bir_el_alter sidi_okba madila tolga
+            amdoukal bou_saada el_kantara
+			laghouat ain_madhi messaad ouled_djellal
 		}
 
 		starting_technology_level = 3

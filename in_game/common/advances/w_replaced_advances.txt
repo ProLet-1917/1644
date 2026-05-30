@@ -1,3 +1,39 @@
+#replace vanilla advances here
+REPLACE:slave_raiding_wars = {
+    age = age_1_traditions
+
+    potential = {
+        original_capital ?= { continent = continent:africa }
+    }
+
+    starting_technology_level = 1
+
+    auto_slave_raid = yes
+
+    requires = agriculture_advance
+
+}
+
+REPLACE:the_sahel_trade = {
+    age = age_1_traditions
+    icon = trade_caravans
+
+    potential = {
+        original_capital ?= {
+            OR = {
+                sub_continent = sub_continent:west_africa
+                region = region:maghreb_region
+            }
+        }
+    }
+
+    starting_technology_level = 1
+
+    requires = slave_raiding_wars
+    trade_land_efficiency = 0.66
+    allow_tributary_subject = yes
+}
+
 REPLACE:scientific_revolution_advance = {
     age = age_5_absolutism
 

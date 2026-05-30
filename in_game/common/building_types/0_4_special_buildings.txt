@@ -1,0 +1,62 @@
+klephts_camp = {
+    is_special = yes
+    is_foreign = yes
+    need_good_relation = no
+    pop_type = soldiers
+
+    category = military_category
+
+    max_levels = 2
+    employment_size = klephts_camp_employment
+
+    rural_settlement = yes
+    town = no
+    city = no
+
+
+    country_potential = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
+    }
+
+    location_potential = {
+        culture_percentage = {
+            culture = c:MOI.dominant_culture
+            value > 0.5
+        }
+        OR = {
+            topography = plateau
+            topography = hills
+            topography = mountains
+            vegetation = forest
+        }
+    }
+
+    build_time = adventurer_build_time
+
+    modifier = {
+        manpower_to_building_owner = 0.005
+        scaled_gold_to_building_owner = 0.05
+        local_prosperity_decay = 0.05
+        #local_pop_assimilation_speed = 0.005
+        local_pop_assimilation_speed_modifier =  -0.25
+    }
+
+    foreign_country_modifier = {
+
+    }
+
+    unique_production_methods = {
+        klephts_camp_maintenance = {
+            weaponry = 0.02
+            firearms = 0.01
+            cloth = 0.05
+            beer = 0.05
+            category = building_maintenance
+        }
+    }
+
+    construction_demand = klephts_camp_construction
+}
