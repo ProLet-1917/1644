@@ -1,0 +1,253 @@
+REPLACE:local_governor = {
+    is_foreign = no
+    pop_type = nobles
+    max_levels = 1
+    important_for_UI = yes
+
+    employment_size = large_noble_employment
+
+    category = government_category
+
+    rural_settlement = no
+    town = yes
+    city = yes
+    megalopolis = yes
+
+    allow = {
+        custom_tooltip = {
+            text = local_governor_tt
+            scope:actor = {
+                total_building_levels_including_construction:local_governor < {
+                    value = modifier:num_local_governors
+                    subtract = total_building_levels_including_construction:lieutenancy
+                }
+            }
+        }
+        owner = scope:actor #not in subjects
+        trigger_if = {
+            limit = { has_building = building_type:seljuk_mint }
+            NOT = { has_building = building_type:seljuk_mint }
+        }
+    }
+
+    location_potential = {
+        has_road_to_capital = yes
+        owner.capital != this
+        is_province_capital = yes
+    }
+
+    on_construction_ended = {
+        if = {
+            limit = {
+                NOT = {
+                    has_variable = can_hire_local_governor
+                }
+            }
+            location = {
+                set_variable = can_hire_local_governor
+            }
+        }
+    }
+
+    on_built = {
+        if = {
+            limit = {
+                NOT = {
+                    has_variable = can_hire_local_governor
+                }
+            }
+            location = {
+                set_variable = can_hire_local_governor
+            }
+        }
+    }
+
+    on_destroyed = {
+        location = {
+            remove_variable = can_hire_local_governor
+            remove_variable = already_has_a_local_governor
+            remove_variable = working_on_local_governor_actions #if have
+            remove_local_governor_actions_when_death = yes
+        }
+    }
+
+    remove_if = {
+        location = { has_road_to_capital = no }
+        NOT = { owner = { at_war = yes } }
+        NOT = { owner = { in_civil_war = yes } }
+    }
+
+    expensive = yes
+
+    automation_build_allowed = no
+    ai_forbid_shutdown = yes
+    forbidden_for_estates = yes
+    important_for_AI = yes
+
+    build_time = government_build_time
+
+
+    unique_production_methods = {
+        local_governor_maintenance = {
+            tools = 1
+            masonry = 1
+            weaponry = 0.5
+            firearms = 0.5
+            paper = 3
+            books = 1
+            goods_gold = 1
+            furniture = 2
+            fine_cloth = 1
+
+            category = building_maintenance
+        }
+
+        local_governor_maintenance = {
+            tools = 1
+            masonry = 1
+            weaponry = 0.5
+            firearms = 0.5
+            paper = 3
+            books = 1
+            silver = 1.2
+            furniture = 2
+            fine_cloth = 1
+
+            category = building_maintenance
+        }
+    }
+
+
+    construction_demand = local_governor_construction
+
+    modifier = {
+        local_proximity_source = 50
+        allow_hire_local_governor = yes
+    }
+}
+
+REPLACE:lieutenancy = {
+    is_special = yes
+    is_foreign = no
+    pop_type = nobles
+    max_levels = 1
+    forbidden_for_estates = yes
+
+    category = government_category
+
+    employment_size = normal_noble_employment
+
+    town = yes
+    city = yes
+    megalopolis = yes
+
+    expensive = yes
+    build_time = government_build_time
+
+    location_potential = {
+        has_road_to_capital = yes
+        owner.capital != this
+        is_province_capital = yes
+    }
+
+    country_potential = {
+        culture = { has_culture_group = culture_group:iberian_group }
+
+        OR = {
+            government_type = government_type:monarchy
+            government_type = government_type:theocracy
+            government_type = government_type:republic
+        }
+    }
+
+    allow = {
+        custom_tooltip = {
+            text = lieutenancy_tt
+            scope:actor = {
+                total_building_levels_including_construction:local_governor < {
+                    value = modifier:num_local_governors
+                    subtract = total_building_levels_including_construction:lieutenancy
+                }
+            }
+        }
+        owner = scope:actor
+    }
+
+    on_construction_ended = {
+        if = {
+            limit = {
+                NOT = {
+                    has_variable = can_hire_local_governor
+                }
+            }
+            location = {
+                set_variable = can_hire_local_governor
+            }
+        }
+    }
+
+    on_built = {
+        if = {
+            limit = {
+                NOT = {
+                    has_variable = can_hire_local_governor
+                }
+            }
+            location = {
+                set_variable = can_hire_local_governor
+            }
+        }
+    }
+
+    on_destroyed = {
+        location = {
+            remove_variable = can_hire_local_governor
+            remove_variable = already_has_a_local_governor
+            remove_variable = working_on_local_governor_actions #if have
+            remove_local_governor_actions_when_death = yes
+        }
+    }
+
+    remove_if = {
+        location = { has_road_to_capital = no }
+        NOT = { owner = { at_war = yes } }
+        NOT = { owner = { in_civil_war = yes } }
+    }
+
+    modifier = {
+        local_proximity_source = 40
+        local_crown_estate_power = 1
+        allow_hire_local_governor = yes
+    }
+
+    unique_production_methods = {
+        lieutenancy_maintenance = {
+            tools = 1
+            masonry = 1
+            weaponry = 0.5
+            firearms = 0.5
+            paper = 2
+            books = 0.5
+            goods_gold = 1
+            furniture = 1
+            fine_cloth = 0.5
+
+            category = building_maintenance
+        }
+
+        lieutenancy_maintenance = {
+            tools = 1
+            masonry = 1
+            weaponry = 0.5
+            firearms = 0.5
+            paper = 2
+            books = 0.5
+            silver = 1.2
+            furniture = 1
+            fine_cloth = 0.5
+
+            category = building_maintenance
+        }
+    }
+    construction_demand = local_governor_construction
+}

@@ -14,28 +14,33 @@ the_deluge = {
     }
 
     can_end = {
-        OR = {
-            current_year > 1700
-            OR = {
-                c:PLC = {
-                    months_since_peace = 150
-                    stability > 45
-                }
-                NOT = { country_exists = c:PLC }
-            }
-            AND = {
-                location:kyiv ?= {
-                    owner != c:PLC
-                }
-                location:smolensk ?= {
-                    owner != c:PLC
-                }
-                c:PRU = {
-                    NOT = {
-                        is_subject_of = c:PLC
+        end_reason = {
+            trigger = {
+                OR = {
+                    current_year > 1700
+                    OR = {
+                        c:PLC = {
+                            months_since_peace = 150
+                            stability > 45
+                        }
+                        NOT = { country_exists = c:PLC }
+                    }
+                    AND = {
+                        location:kyiv ?= {
+                            owner != c:PLC
+                        }
+                        location:smolensk ?= {
+                            owner != c:PLC
+                        }
+                        c:PRU = {
+                            NOT = {
+                                is_subject_of = c:PLC
+                            }
+                        }
                     }
                 }
             }
+            desc = "nothing"
         }
     }
 

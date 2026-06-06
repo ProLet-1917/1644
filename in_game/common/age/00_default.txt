@@ -4,6 +4,8 @@
 	max_price = 3
 	known_goods_demand_threshold = 100
 
+	burgher_max_trade_range = 600
+
 	modifier = {
 		lack_of_control_impact_on_warscore = 0.1
 	}
@@ -51,6 +53,8 @@ age_2_renaissance = {
 	known_goods_demand_threshold = 80
 
 	months_for_exploration_spread = 1800
+
+	burgher_max_trade_range = 700
 	
 	unique = {
 		diplomatic_capacity_modifier = 0.25
@@ -108,6 +112,7 @@ age_3_discovery = {
 	known_goods_demand_threshold = 60
 
 	months_for_exploration_spread = 1800
+	burgher_max_trade_range = 800
 	unique = {
 		exploration_mission_speed = 0.25
 		colonial_maintenance_cost = -0.25
@@ -164,6 +169,7 @@ age_4_reformation = {
 	hegemons_allowed = yes
 	known_goods_demand_threshold = 40
 	months_for_exploration_spread = 1200
+	burgher_max_trade_range = 900
 
 	unique = {
 		global_pop_conversion_speed_modifier = 0.33
@@ -186,9 +192,12 @@ age_4_reformation = {
 	goods_demand = {
 		global_liquor_pop_demand    = 0.5	# spirits culture spreading across Europe
 		global_tobacco_pop_demand   = 0.5	# tobacco craze sweeping Europe by 1530s–40s
-		global_coffee_pop_demand    = 0		# Ottoman coffee houses established
+		global_coffee_pop_demand    = 0.1		# Ottoman coffee houses established
 		global_sugar_pop_demand     = 0.75	# Caribbean sugar revolution underway
-		global_tea_pop_demand       = 0		# reaching Europe via Portuguese; still a curiosity
+		global_tea_pop_demand       = 0.1		# reaching Europe via Portuguese; still a curiosity
+		global_cloth_pop_demand		= 0.5
+		global_furniture_pop_demand	= 0.5
+		global_firearms_pop_demand	= 0.2
 	}
 
 	war_score_from_battles = -0.1
@@ -225,6 +234,7 @@ age_5_absolutism = {
 	max_price = 6
 	hegemons_allowed = yes
 	months_for_exploration_spread = 600
+	burgher_max_trade_range = 1000
 
 	unique = {
 		revoke_privilege_cost_modifier = -0.33
@@ -262,6 +272,9 @@ age_5_absolutism = {
 		global_coffee_pop_demand    = 0.5	# coffee houses in London, Paris, Amsterdam
 		global_sugar_pop_demand     = 1.25	# mass consumption in Europe
 		global_tea_pop_demand       = 0.5	# Dutch/English East India Company tea trade
+		global_cloth_pop_demand		= 0.75
+		global_furniture_pop_demand	= 0.75
+		global_firearms_pop_demand	= 0.25
 	}
 	
 	war_score_from_battles = -0.6
@@ -297,7 +310,8 @@ age_6_revolutions = {
 	price_stability = 0.02
 	max_price = 8
 	hegemons_allowed = yes
-	
+
+	burgher_max_trade_range = 1200
 	months_for_exploration_spread = 300
 
 	unique = {
@@ -332,6 +346,9 @@ age_6_revolutions = {
 		global_coffee_pop_demand    = 1.25	# major global luxury good
 		global_sugar_pop_demand     = 1.75	# near-staple food additive
 		global_tea_pop_demand       = 1.5	# enormous demand; British colonial policy built on it
+		global_cloth_pop_demand		= 1.0
+		global_furniture_pop_demand	= 1.0
+		global_firearms_pop_demand	= 0.3
 	}
 	
 	mercenaries = -0.9
@@ -367,7 +384,8 @@ age_7_imperialism = {
 	price_stability = 0.01
 	max_price = 10
 	hegemons_allowed = yes
-	
+
+	burgher_max_trade_range = 2000
 	months_for_exploration_spread = 150
 
 	unique = {
@@ -403,6 +421,9 @@ age_7_imperialism = {
 		global_coffee_pop_demand    = 1.5	# major global luxury good
 		global_sugar_pop_demand     = 2.0	# near-staple food additive
 		global_tea_pop_demand       = 1.75	# enormous demand; British colonial policy built on it
+		global_cloth_pop_demand		= 1.0
+		global_furniture_pop_demand	= 1.0
+		global_firearms_pop_demand	= 0.2
 	}
 	
 	mercenaries = -0.95

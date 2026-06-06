@@ -19,7 +19,7 @@ countries = {
 
 
 
-				
+
 
 				# hebei_area ─ 大名、邯郸、怀庆等卫所区
 				fuyang shexian_cizhou wuan
@@ -30,9 +30,9 @@ countries = {
 				jixian huixian qizhou xinxiang
 				anyang linzhou linzhang tangyin
 
-				zhending fuping  yuanshi_zhending huolu  lingshou pingshan_zhending jingxing 
+				zhending fuping  yuanshi_zhending huolu  lingshou pingshan_zhending jingxing
 
-				
+
 
 				# henan_area ─ 洛阳、开封与南阳等豫中腹地
 				wanqiu dancheng xiangcheng shangshui nandun xihua
@@ -56,8 +56,8 @@ countries = {
 
 
 				# datong_area ─ 大同、河套与朔方屏障
-				
-				
+
+
 				lingxian_shanxi guangling hunyuan feihu lingqiu
 
 				# shanxi_area ─ 晋阳、潞安与汾河流域
@@ -94,14 +94,14 @@ countries = {
 				xicheng hanyin ningshan pingli shiquan xunyang ziyang_xingan goupingguan
 				yangzhou xixiang yangyuan foping
 				huayuan fuping_xian sanyuan tongguan_tongchuan
-			
+
 
 				# gansu_area ─ 甘州、肃州与青海河西走廊西段
-				shandan  
-				ganzhou hongshui liyuan 
-				# shazhou anding_suzhou dangcheng 
+				shandan
+				ganzhou hongshui liyuan
+				# shazhou anding_suzhou dangcheng
 				#kuyu_shazhou guazhou niuquanzi yangguan mazongshan hala_nur
-				suzhou_gansu gaotai 
+				suzhou_gansu gaotai
 				xining datong_xining gushan haomen nianbo zhuanglang
 				yongchang_ganzhou anyuan gulang jinchang xiliang baiting zhenfan
 
@@ -122,8 +122,8 @@ countries = {
 
 				# longyou_area ─ 陇右三辅与渭源河谷
 				longxi_gongchang dingxi fuqiang huizhou_gongchang ningyuan_gongchang tongwei zhangxian
-				hezhou guide 
-				jishi 
+				hezhou guide
+				jishi
 				huizhou chengzhou xihe_huizhou liangdang lidian
 				jiezhou baimaguan wenxian_gongchang
 				didao kangu lanzhou lutang weiyuan_lintao
@@ -145,15 +145,15 @@ countries = {
 
 				qiaoxian
 
-
+				jinta
 			}
 			# 整合省份：已整合，文化可能被接受，税收正常
 			own_control_integrated = {
-				
+
 			}
 			# 征服省份：有整合度系统，影响税收产出，影响人口满意度
 			own_control_conquered = {
-				
+
 			}
 
 			include = "zzz_csh"
@@ -194,7 +194,7 @@ countries = {
 			country_name = "CSH"
 
 			currency_data = {
-				gold = 0 #国库 大顺穷
+				gold = 600 #国库
 				stability = 30 #稳定度
 				prestige = 60 #声望
 				government_power = 40 #正统性
@@ -232,8 +232,8 @@ countries = {
 				huifacheng golmin_salggiyan hoifa juxeri lefu sunggari
 
 				#东戈壁
-				jingzhou_dorbod bathahalak chahar muumyangan ulan_hua ulanchab  #dorbod_province 
-				erenkhot avga baganuur khobootsar shuluun_khoboot_tsagaan sonod #erenkhot_province 
+				jingzhou_dorbod bathahalak chahar muumyangan ulan_hua ulanchab  #dorbod_province
+				erenkhot avga baganuur khobootsar shuluun_khoboot_tsagaan sonod #erenkhot_province
 
 				# songnen_area ─ 嫩江平原与科尔沁草原
 				taizhou_jurchen buteha chol hurle
@@ -292,11 +292,13 @@ countries = {
 			}
 			# 整合省份：已整合，文化可能被接受，税收正常
 			own_control_integrated = {
-				
+
 			}
 			# 征服省份：有整合度系统，影响税收产出，影响人口满意度
 			own_control_conquered = {
-				
+				urad bagh bayankhot bayannurhong alxa
+				oiyin_korken zag_suujiyn_gobi banzart_khairkhan noyon_uul
+				naraan_chilaun khara_khoto tost_uul gaxun_gobi shargyn_gobi shira_qulusun
 			}
 			include = "zzz_qng"
 			include = "expl_mongols"
@@ -326,19 +328,19 @@ countries = {
 					start_date = 1643.10.8
 					# end_date = 1661.2.5
 				}
-				
+
 			}
 			accepted_cultures = {
 				solon_culture
 				evenk_culture
 				mongolian_culture
-				
+				han_culture
+
 			}
 			tolerated_cultures = {
-				liaodong_culture
-				yan_culture
+				#liaodong_culture
+				#yan_culture
 				monguor_culture
-				han_culture
 
 			}
 			currency_data = {
@@ -1450,7 +1452,7 @@ countries = {
 			type = army
 			own_control_core = {
 				dalay doloodyn_gobi saikhandulaan ulaanbadrakh #sharangad_province
-				del_khad galbyn_gobi khatanbulag oiyin_korken ooshiyn_gobi zhavklant_khairkhan #eastern_gobi_province
+				del_khad galbyn_gobi khatanbulag ooshiyn_gobi zhavklant_khairkhan #eastern_gobi_province
 				choyrin_datsan bayan gazrin_chuluu takhilyn ulziit #choyr_province
 				ulaan bogd khadat ukhaa_khudag #ulaan_province
 				urga kedun khar_bukhyn kharuukh manzushir tuul khan_khentii1 #tuul_province
@@ -2088,7 +2090,7 @@ countries = {
 		}
 		KSY = { #绰斯甲布土司 khro skyabs
 			own_control_core = {
-				rahor dzamtang nubzur
+				rahor dzamtang nubzur yungdrung geshitsa durgyeling
 			}
 			include = "asia_advanced_no_pagan_tribe"
 			capital = rahor
@@ -2160,6 +2162,9 @@ countries = {
 				 vanch
 				shighnan gunt murghab oksu  vamar
 				raskam
+				niuquanzi
+				miran anding_suzhou yangguan shazhou guazhou
+				kuyu_shazhou chijin
 			}
 			capital = yarkand
 			include = "eurasian_horde_no_coast_no_pleading"

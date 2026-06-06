@@ -22,8 +22,8 @@ a_1644_chinese_zhanbing = {
 	buildable = yes
 
 	combat_power = 1.2
-	# 步营 1000人（晚明战兵）
-	max_strength = 1.0
+	# 步营 1500人（晚明战兵）
+	max_strength = 1.5
 	
 	# # 定位：晚明战兵，火器配备不足，整体素质弱于专业火器营
 	# # 略微降低输出与士气，作为廉价主力
@@ -42,7 +42,7 @@ a_1644_chinese_musketeers = {
 	buildable = yes
 
 	# 火器营（孙元化登州火器）
-	max_strength = 1.5
+	max_strength = 2.0
 	
 	# 补给与征募需求（引用原版模板，避免解析异常）
 	maintenance_demand = heavy_infantry_maintenance
@@ -64,7 +64,7 @@ a_1644_late_ming_artillery = {
 	copy_from = a_age_3_discovery_artillery
 	buildable = yes
 
-	# 一营约 100 人（4 门炮）
+	# 一营约 600 人（24 门炮）
 	# 晚明火炮包括佛郎机、将军炮、威远炮等传统火炮
 	initiative = 1
 
@@ -74,14 +74,14 @@ a_1644_late_ming_artillery = {
 	gfx_tags = { age_2_renaissance }
 }
 
-# 红衣大炮：重定义（每营约 200 人，对应 4 门火炮）
+# 红衣大炮：重定义（每营约 800 人，对应 16 门火炮）
 REPLACE:a_red_cannon = {
 	category = army_artillery
 	copy_from = a_age_4_reformation_artillery
 	buildable = yes
 
-	# 一营 200 人（4 门炮 + 支援）
-	max_strength = 0.2
+	# 一营 800 人（16 门炮 + 支援）
+	max_strength = 0.8
 	initiative = 1
 	morale_damage_done = 0.1
 
@@ -101,7 +101,7 @@ REPLACE:a_banner_cavalry = {
 	buildable = yes
 	levy = no
 	
-	max_strength = 0.6
+	max_strength = 0.8
 	initiative = 3
 	morale_damage_done = 0.1
 	strength_damage_done = 0.1
@@ -135,7 +135,7 @@ levy_banner_jalan = {
 	frontage = -0.2
 	combat_power = 1.3
 
-	max_strength = 0.6
+	max_strength = 1.5
 	initiative = 1
 	morale_damage_done = 0.1
 	morale_damage_taken = -0.1
@@ -152,7 +152,7 @@ levy_banner_cavalry = {
 	buildable = no
 	levy = yes
 	
-	max_strength = 0.3
+	max_strength = 0.8
 	initiative = 2
 	
 	country_potential = { tag = QNG }
@@ -177,7 +177,7 @@ a_1644_guanning_cavalry = {
 	copy_from = a_age_4_reformation_heavy_cavalry
 	buildable = yes
 	
-	max_strength = 0.3
+	max_strength = 0.8
 	initiative = 1
 	morale_damage_done = 0.05
 	strength_damage_done = 0.05

@@ -1,0 +1,41 @@
+on_dynasty_stability_monthly_check = {
+    trigger = {
+        has_variable = dynasty_stability
+        NOT = { has_global_variable = temp_monthly_dynasty_stability_check}
+    }
+    effect = {
+        set_global_variable = {
+            name = temp_monthly_dynasty_stability_check
+            days = 10
+        }
+        monthly_dynasty_stability_check_effect = yes
+    }
+}
+
+on_chinese_warlord_monthly_check = {
+    trigger = {
+        is_chinese_country = yes
+        NOT = {
+            OR = {
+                has_reform = government_reform:the_chinese_emperor
+                has_reform = government_reform:the_chinese_warlords
+            }
+        }
+    }
+    effect = {
+        if = {
+            limit = {
+                NOT = {
+                    country_rank = country_rank:rank_empire
+                }
+            }
+            add_reform = government_reform:the_chinese_warlords
+        }
+        #else_if = {
+        #    limit = {
+        #        country_rank = country_rank:rank_empire
+        #    }
+        #    add_reform = government_reform:the_chinese_emperor
+        #}
+    }
+}

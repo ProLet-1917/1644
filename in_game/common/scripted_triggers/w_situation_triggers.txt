@@ -14,13 +14,18 @@ ai_country_should_colonize = {	#Root should be the country
 
 
     OR = {
-        has_game_rule = all_countries_colonize
         trigger_if = {
+            limit = {
+                has_game_rule = all_countries_colonize
+            }
+            always = yes
+        }
+        trigger_else_if = {
             limit = {
                 has_game_rule = western_colonisation_only
             }
+            this = c:RUS
             this != c:PAP
-            root != c:PAP
             not = { has_preference_tag = "warfare" }
             OR = {
                 capital.continent = continent:europe
@@ -31,8 +36,13 @@ ai_country_should_colonize = {	#Root should be the country
                     }
                 }
             }
-
         }
+        #trigger_else_if = {
+        #    limit = {
+        #        has_game_rule = all_countries_colonize_except_special
+        #    }
+        #    this != c:PAP
+        #}
     }
 
     OR = {
@@ -49,13 +59,18 @@ country_can_start_exploration_trigger = {
         AND = {
             country_tax_base > 30
             OR = {
-                has_game_rule = all_countries_explore
                 trigger_if = {
                     limit = {
-                        has_game_rule = western_exploration_only
+                        has_game_rule = all_countries_colonize
                     }
+                    always = yes
+                }
+                trigger_else_if = {
+                    limit = {
+                        has_game_rule = western_colonisation_only
+                    }
+                    this = c:RUS
                     this != c:PAP
-                    root != c:PAP
                     not = { has_preference_tag = "warfare" }
                     OR = {
                         capital.continent = continent:europe
@@ -67,6 +82,12 @@ country_can_start_exploration_trigger = {
                         }
                     }
                 }
+                #trigger_else_if = {
+                #    limit = {
+                #        has_game_rule = all_countries_colonize_except_special
+                #    }
+                #    this != c:PAP
+                #}
             }
         }
     }

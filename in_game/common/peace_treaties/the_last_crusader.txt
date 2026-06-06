@@ -1,0 +1,143 @@
+the_last_crusader = {
+    cost = {
+        add = {
+            desc = "DIPLOREASON_BASE"
+            value = 50
+        }
+    }
+
+    potential = {
+        scope:war = {
+            is_no_cb_war = no
+            casus_belli ?= casus_belli:cb_the_last_crusade
+        }
+    }
+
+    allow = {
+        scope:loser = {
+            is_war_leader_of = scope:war
+        }
+        scope:winner = {
+            is_war_leader_of = scope:war
+        }
+    }
+
+    effect = {
+        if = {
+            limit = {
+                scope:loser = c:TUR
+            }
+            area:transdanubia_area = {
+                every_location_in_area = {
+                    add_to_list = list_of_hungary_region
+                }
+            }
+            area:north_alfold_area = {
+                every_location_in_area = {
+                    add_to_list = list_of_hungary_region
+                }
+            }
+            area:south_alfold_area = {
+                every_location_in_area = {
+                    add_to_list = list_of_hungary_region
+                }
+            }
+            area:slovakia_area = {
+                every_location_in_area = {
+                    add_to_list = list_of_hungary_region
+                }
+            }
+            every_in_list = {
+                list = list_of_hungary_region
+                limit = { owner = c:TUR }
+                change_location_owner = c:HAB
+                change_control = control_mild_bonus
+            }
+            c:TUR = {
+                trigger_event_non_silently = holy_league.19
+                every_subject = {
+                    limit = {
+                        capital ?= {
+                            region = region:carpathia_region
+                        }
+                        subject_type = subject_type:eyalet
+                    }
+                    add_to_list = eyalet_in_hungary
+                }
+            }
+            every_in_list = {
+                list = eyalet_in_hungary
+                transfer_subject = c:HAB
+            }
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    scope:loser = c:HAB
+                    scope:loser = c:PAP
+                }
+            }
+            area:transdanubia_area = {
+                every_location_in_area = {
+                    add_to_list = list_of_hungary_region
+                }
+            }
+            area:north_alfold_area = {
+                every_location_in_area = {
+                    add_to_list = list_of_hungary_region
+                }
+            }
+            area:south_alfold_area = {
+                every_location_in_area = {
+                    add_to_list = list_of_hungary_region
+                }
+            }
+            area:slovakia_area = {
+                every_location_in_area = {
+                    add_to_list = list_of_hungary_region
+                }
+            }
+            every_in_list = {
+                list = list_of_hungary_region
+                limit = { owner = c:HAB }
+                change_location_owner = c:TUR
+                change_control = control_mild_bonus
+            }
+            area:austria_area = {
+                every_location_in_area = {
+                    add_to_list = list_of_austria_area
+                }
+            }
+            every_in_list = {
+                list = list_of_austria_area
+                limit = { owner = c:HAB }
+                change_location_owner = c:TUR
+                change_control = control_mild_bonus
+            }
+            if = {
+                limit = {
+                    c:CRO = {
+                        is_subject_of = c:HAB
+                    }
+                }
+                c:CRO = {
+                    transfer_subject = c:TUR
+                }
+            }
+            if = {
+                limit = {
+                    c:HUN = {
+                        is_subject_of = c:HAB
+                    }
+                }
+                c:HUN = {
+                    transfer_subject = c:HUN
+                }
+            }
+        }
+    }
+
+    ai_desire = {
+        value = 1000
+    }
+}

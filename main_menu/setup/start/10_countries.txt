@@ -1760,7 +1760,7 @@ countries = {
 
 		court_language = norman_dialect
 		country_rank = rank_kingdom
-		capital = london
+		capital = york
 
 		ai_advance_preference_tags = {
 			exploration = 5
@@ -2630,25 +2630,25 @@ countries = {
 	}
 	
 ###French Region
-	FRA = {
+	FRA = { # France
 		own_control_core = {
 			angers bauge beaupreau chateau_gontier le_lude loudun passavant saumur
 			mayenne laval sainte_suzanne villaines
 			le_mans beaumont_au_maine chateau_du_loir sable st_calais
 			mortagne alluyes belleme senonches
 
-			clermont allegre brioude riom thiers vic_le_comte vodable
+			thiers vic_le_comte
 			bourbon huriel jaligny molins montlucon st_gerand vichy
 			chambon herment montaigut tour_auvergne
 			aurillac mauriac saint_flour
 
 			chaumont choiseul grancey la_mothe_en_bassigny langres vaucouleurs
-			meaux broyes chateau_thierry nogent_sur_seine provins
+			meaux broyes chateau_thierry provins
 			troyes brienne villemaur
 			vitry_en_pertois joinville bar_sur_aube rosnay
 			reims chalons_champagne epernay menehould vertus
 			rethel chateau_porcien grandpre mouzon
-			sens bar_sur_seine joigny saint_florentin tonnerre
+			sens bar_sur_seine saint_florentin tonnerre
 
 			auch lectoure lisle_jourdain mirande nogaro
 			pau oloron orthez tarbes
@@ -2664,7 +2664,7 @@ countries = {
 			rodez entraigues millau peyrusse st_affrique villefranche
 
 			beauvais chaumont_vexin clermont_en_beauvaisis crepy senlis
-			nemours brie_comte_robert melun
+			brie_comte_robert melun
 			paris corbeil mantes monfort_lamaury montmorency
 			soissons braine coucy laon noyon roucy
 
@@ -2686,13 +2686,13 @@ countries = {
 			lyon feurs montbrison riverie roanne saint_etienne
 
 			caen bayeux domfront falaise pont_douilly vire
-			fecamp arques aumale longueville tancarville
+			fecamp arques longueville tancarville
 			coutances cherbourg avranches mortain st_sauveur
 			evreux alencon argentan bernay harcourt laigle
 			rouen gisors lisieux louviers pont_audemer
 
 			chateauroux boussac issoudun lignieres
-			blois chateaudun romorantin st_aignan vendome
+			blois chateaudun romorantin st_aignan
 			chartres auneau dreux etampes
 			bourges gien sancerre sancoins vierzon
 			orleans beaugency montargis sully vitry_aux_loges
@@ -2700,16 +2700,43 @@ countries = {
 
 			amiens breteuil corbie
 			abbeville calais boulogne_sur_mer montreuil
-			guise hirson marle ribemont
+			hirson marle ribemont
 			saint_quentin nesle peronne
 
-			angouleme cognac chabanais
 			thouars beauvoir fontenay la_roche_sur_yon mauleon_poitou montaigu parthenay talmont
 			poitiers aulnay chatellerault lusignan montmorillon niort
 			saintes montendre la_rochelle oleron royan st_jean_dangely rochefort jonzac
 			
 			valence condorcet die vienne
 			metz fresnes verdun clermont_en_argonne toul vic_sur_seille
+			aix_en_provence arles brignoles marseille toulon tarascon #Province
+			apt barcelonnette forcalquier sisteron
+			barjols castellane digne draguignan frejus grasse
+			cuneo
+			grenoble gap briancon pragelato #Dau
+			romans la_mure saint_marceilin
+			mevouillon villars
+			la_tour_du_pin
+			brest carhaix chateaulin chatelaudren le_faou quimper #D. Brittany
+			quimperle saint_brieuc st_pol_de_leon treguier
+			nantes blain chateaubriant guerande machecoul
+			rennes dol fougeres monfort_sur_meu saint_malo vitre
+			vannes hennebont josselin ploermel redon rohan
+			bourbon molins huriel montlucon vichy #D. Bourbon
+			jaligny st_gerand
+			clermont_en_beauvaisis #C. Clermont-en-Beauvaisis
+			oloron orthez pau #Vic. of Béarn
+			foix pamiers #C. Foix
+			parthenay #C. Poitou
+			auxerre aignay arnay chatillon_sur_seine semur_en_auxois #D. Burgundy
+			autun macon montcenis semur_en_brionnais
+			dijon auxonne beaune chalon_sur_saone louhans
+			castres albi lautrec mirepoix narbonne agde beziers lodeve #Languedoc
+			saint_pons lagoon_of_bages_sigean nimes french_ales melgueil montpellier
+			st_ambroix carcassonne fenouillet limoux toulouse castelnaudary lavaur
+			verdun_sur_garonne villemur
+            mauleon saint_jean_pied_de_port
+			chateau_chinon #S. Chateau-Chinon
 		}
 		
 		own_control_colony = {
@@ -2747,61 +2774,69 @@ countries = {
 				names_louis = 14
 			}
 			
+			reforms = {
+				french_feudal_nobility
+				gabelle
+			}
+
 			laws = {
 				feudal_de_jure_law = by_tradition
 				legal_code_law = civil_law_policy
 			}
+
+			privilege = {
+				formal_guilds
+				clergy_literacy_rights
+				auxilium_et_consilium
+				primacy_of_nobility
+				noble_armies
+				villes_franches
+				great_offices_of_the_crown_of_france
+			}
 		}
+
+		accepted_cultures = {
+			arpitan
+			picard
+			burgundian
+			auvergnat
+			champenais
+			limousin
+			poitevin
+			saintongeais
+			berrichon
+			norman
+			angevin
+		}
+
 		capital = paris
 		country_rank = rank_kingdom
 		starting_technology_level = 4
 		include = "zzz_expl_european_colonial_powers"
 		currency_data = {
-			gold = 332.5
-			prestige = 36
-			legitimacy = 33
-			stability = 18
+			gold = 422.5
+			prestige = 37.5
+			legitimacy = 45
+			stability = 25
 		}
 		dynasty = bourbon_conde_dynasty
 	}
 	
 	PRO = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
+			avignon
 			aix_en_provence arles brignoles marseille toulon tarascon
 			apt barcelonnette forcalquier sisteron
 			barjols castellane digne draguignan frejus grasse
 			cuneo
 		}
-		our_cores_conquered_by_others = {
-			avignon
-		}
 
 		include = "zzz_expl_european_colonial_powers"
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-
-			regency = consort_regency
-			active_regent = fra_anne_of_austria
-			start_regency_date = 1643.5.15
-			end_regency_date = 1651.9.1
-			heir = fra_louis_xiv_bourbon
-			
-			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
-			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
-		}
-
-		tolerated_cultures = {
-			vivaro_alpine
-		}
-
-		capital = marseille
 		country_rank = rank_county
-		starting_technology_level = 4
 	}
 	
 	DAU = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			grenoble gap briancon pragelato
 			romans la_mure saint_marceilin 
 			mevouillon villars 
@@ -2809,28 +2844,7 @@ countries = {
 		}
 
 		include = "zzz_expl_european_colonial_powers"
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-
-			regency = consort_regency
-			active_regent = fra_anne_of_austria
-			start_regency_date = 1643.5.15
-			end_regency_date = 1651.9.1
-			heir = fra_louis_xiv_bourbon
-			
-			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
-			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
-		}
-
-		tolerated_cultures = {
-			vivaro_alpine
-			auvergnat
-		}
-
-		country_rank = rank_county
 		capital = grenoble
-		starting_technology_level = 4
 	}
 	
 	ORL = {
@@ -2864,7 +2878,7 @@ countries = {
 	}
 	
 	BRI = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			brest carhaix chateaulin chatelaudren le_faou quimper quimperle saint_brieuc st_pol_de_leon treguier
 			nantes blain chateaubriant guerande machecoul
 			rennes dol fougeres monfort_sur_meu saint_malo vitre
@@ -2872,340 +2886,70 @@ countries = {
 		}
 
 		include = "zzz_expl_european_colonial_powers"
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-
-			regency = consort_regency
-			active_regent = fra_anne_of_austria
-			start_regency_date = 1643.5.15
-			end_regency_date = 1651.9.1
-			heir = fra_louis_xiv_bourbon
-			
-			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
-			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
-			
-			regnal_numbers = {
-				name_henry = 5
-				names_louis = 14
-			}
-			
-			centralization_vs_decentralization = 30
-			aristocracy_vs_plutocracy = -35
-			serfdom_vs_free_subjects = -35
-			traditionalist_vs_innovative = 10
-			spiritualist_vs_humanist = -50
-			mercantilism_vs_free_trade = 45
-			offensive_vs_defensive = 30
-			land_vs_naval = 30
-			quality_vs_quantity = 20
-			belligerent_vs_conciliatory = 10
-			capital_economy_vs_traditional_economy = 75
-			individualism_vs_communalism = -50
-			outward_vs_inward = -10
-			reforms = {
-				french_ducal_vassal_reform
-			}
-
-		}
-		court_language = angevin_dialect
 		capital = vannes
-		country_rank = rank_duchy
-
-		tolerated_cultures = {
-			breton
-			poitevin
-		}
-		starting_technology_level = 4
 	}
-	
-	AUV = {
-		own_control_core = {
-			vic_le_comte
-		}
-		include = "zzz_expl_european_colonial_powers"
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-			
-			regency = consort_regency
-			active_regent = fra_anne_of_austria
-			start_regency_date = 1643.5.15
-			end_regency_date = 1651.9.1
-			heir = fra_louis_xiv_bourbon
-
-			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
-			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
-			
-			regnal_numbers = {
-				name_henry = 5
-				names_louis = 14
-			}
-			reforms = {
-				french_appanage_reform
-			}
-		}
-		capital = vic_le_comte
-		starting_technology_level = 4
-	}
-	
+		
 	BOU = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			bourbon molins huriel montlucon vichy
 			jaligny st_gerand
 			# own_control_integrated, but culture accepted
 			clermont_en_beauvaisis #C. Clermont-en-Beauvaisis
 		}
 		include = "zzz_expl_european_colonial_powers"
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-
-			regency = consort_regency
-			active_regent = fra_anne_of_austria
-			start_regency_date = 1643.5.15
-			end_regency_date = 1651.9.1
-			heir = fra_louis_xiv_bourbon
-			
-			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
-			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
-			
-			regnal_numbers = {
-				name_henry = 5
-				names_louis = 14
-			}
-			reforms = {
-				french_appanage_reform
-			}
-		}
-
-		tolerated_cultures = {
-			limousin
-			picard
-		}
-
-		country_rank = rank_duchy
 		capital = bourbon
-		starting_technology_level = 4
 	}
 	
 	BRR = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			oloron orthez pau #Vic. of Béarn
 		}
 		include = "zzz_expl_european_colonial_powers"
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-
-			regency = consort_regency
-			active_regent = fra_anne_of_austria
-			start_regency_date = 1643.5.15
-			end_regency_date = 1651.9.1
-			heir = fra_louis_xiv_bourbon
-			
-			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
-			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
-			
-			regnal_numbers = {
-				name_henry = 5
-				names_louis = 14
-			}
-
-			reforms = {
-				french_ducal_vassal_reform
-			}
-		}
-
 		capital = pau
-		starting_technology_level = 4
 	}
 	
 	FOI = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			foix pamiers
 		}
 
 		include = "zzz_expl_european_colonial_powers"
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-
-			regency = consort_regency
-			active_regent = fra_anne_of_austria
-			start_regency_date = 1643.5.15
-			end_regency_date = 1651.9.1
-			heir = fra_louis_xiv_bourbon
-			
-			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
-			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
-			
-			regnal_numbers = {
-				name_henry = 5
-				names_louis = 14
-			}
-			reforms = {
-				french_ducal_vassal_reform
-			}
-		}
-
-		tolerated_cultures = {
-			gascon
-		}
-
 		capital = foix
-		starting_technology_level = 4
 	}
 	
 	POI = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			parthenay
 		}
 		include = "zzz_expl_european_colonial_powers"
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-
-			regency = consort_regency
-			active_regent = fra_anne_of_austria
-			start_regency_date = 1643.5.15
-			end_regency_date = 1651.9.1
-			heir = fra_louis_xiv_bourbon
-			
-			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
-			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
-			
-			regnal_numbers = {
-				name_henry = 5
-				names_louis = 14
-			}
-			laws = {
-				feudal_de_jure_law = by_tradition
-				legal_code_law = civil_law_policy
-			}
-		}
 		capital = parthenay
-		country_rank = rank_county
-		starting_technology_level = 4
 	}
 	
 	BUR = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			auxerre aignay arnay avallon chatillon_sur_seine semur_en_auxois
 			autun macon montcenis semur_en_brionnais
 			dijon auxonne beaune chalon_sur_saone louhans
-			nevers cercy chateau_chinon donzy montreuillon st_pierre_de_moutier
 		}
 
 		include = "zzz_expl_european_colonial_powers"
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-
-			regency = consort_regency
-			active_regent = fra_anne_of_austria
-			start_regency_date = 1643.5.15
-			end_regency_date = 1651.9.1
-			heir = fra_louis_xiv_bourbon
-			
-			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
-			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
-			
-			regnal_numbers = {
-				name_henry = 5
-				names_louis = 14
-			}
-			centralization_vs_decentralization = 30
-			aristocracy_vs_plutocracy = -35
-			serfdom_vs_free_subjects = 35
-			traditionalist_vs_innovative = 25
-			spiritualist_vs_humanist = -50
-			mercantilism_vs_free_trade = 45
-			offensive_vs_defensive = -90
-			land_vs_naval = -60
-			quality_vs_quantity = -30
-			belligerent_vs_conciliatory = -20
-			capital_economy_vs_traditional_economy = 70
-			individualism_vs_communalism = -20
-			outward_vs_inward = -20
-
-			reforms = {
-				french_appanage_reform
-			}
-		}
-
-		tolerated_cultures = {
-			arpitan
-		}
-
 		capital = dijon
-		country_rank = rank_duchy
-		starting_technology_level = 4
 	}
 	
 	DOC = {
-		own_control_core = {
-			castres albi lautrec mirepoix narbonne agde beziers lodeve saint_pons lagoon_of_bages_sigean nimes french_ales melgueil montpellier st_ambroix uzes carcassonne fenouillet limoux toulouse castelnaudary lavaur verdun_sur_garonne villemur
+		our_cores_conquered_by_others = {
+			castres albi lautrec mirepoix narbonne agde beziers lodeve saint_pons lagoon_of_bages_sigean nimes french_ales melgueil montpellier st_ambroix carcassonne fenouillet limoux toulouse castelnaudary lavaur verdun_sur_garonne villemur
 		}
 		include = "zzz_expl_european_colonial_powers"
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-
-			regency = consort_regency
-			active_regent = fra_anne_of_austria
-			start_regency_date = 1643.5.15
-			end_regency_date = 1651.9.1
-			heir = fra_louis_xiv_bourbon
-			
-			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
-			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
-			
-			regnal_numbers = {
-				name_henry = 5
-				names_louis = 14
-			}
-
-			laws = {
-				feudal_de_jure_law = by_tradition
-				legal_code_law = civil_law_policy
-			}
-		}
 		capital = narbonne
-		country_rank = rank_duchy
-		starting_technology_level = 4
 	}
 	
 	BNV = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			mauleon saint_jean_pied_de_port
 		}
 		include = "zzz_expl_european_colonial_powers"
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-
-			regency = consort_regency
-			active_regent = fra_anne_of_austria
-			start_regency_date = 1643.5.15
-			end_regency_date = 1651.9.1
-			heir = fra_louis_xiv_bourbon
-			
-			ruler_term = { character = fra_henry_iv_bourbon start_date = 1589.8.2 end_date = 1610.5.14 regnal_number = 4 }
-			ruler_term = { character = fra_louis_xiii_bourbon start_date = 1610.5.14 end_date = 1643.5.14 regnal_number = 13 }
-			
-			regnal_numbers = {
-				name_henry = 5
-				names_louis = 14
-			}
-			laws = {
-				feudal_de_jure_law = by_tradition
-				legal_code_law = civil_law_policy
-			}
-		}
 		capital = saint_jean_pied_de_port
-		country_rank = rank_kingdom
-		starting_technology_level = 4
 	}
 	
 ###Scandinavia
@@ -5014,7 +4758,6 @@ countries = {
 			badis tizgane amergo al_mazamma
 			ras_kebdana ghassasa temsamane tabarida
 			ksar_el_kebir tazroute ouezzane
-			fez meknes la_mamora sale azrou volubilis tefelfelt baht
 			anfa azemmour bejaad thagia rabat settat mrirah
 			asfi mazaghan tit boulaouane miatbir aguz
 			tednest ait_daoud tafedna mogador
@@ -5022,26 +4765,36 @@ countries = {
 			taroudant tidsi tiout tiznit massa_MOR tafraout ifni noul_lamta agadir
 			bzou demnate azilal
 			tadla khenifra chichaoua
-			guercif ameskour terrest tezerghe namalata taza sefrou
+			guercif tezerghe namalata taza sefrou
 			jarawah_abu_al_aysh oujda
 			jerada taourirt debdou echemmaia sidi_bennour
-			nedroma tegeget kalaat_sraghna midelt
+			nedroma tegeget kalaat_sraghna 
 			aouint_yghomane afso ifrane
 			#additions
 			tamdoult assa beni_sabih foum_zguid igiliz taghjijt tata_MOR tiout tissint tizounine
 			ouarzazate agdez ait_benhaddou skoura tagmadert taznakht
-			ijilmasa boumalne_dades er_rich ksar_es_souk tazzarine todgha
-			tabelbala
 			laayoune smara tantan tindouf
 			idjil dakhla al_kuwayra aousserd bojador
-			sijilmasa taghaza taoudenni araouane
+			taghaza taoudenni araouane
+		}
+
+		our_cores_conquered_by_others = {
+			sale fez meknes la_mamora azrou volubilis tefelfelt baht
+			sijilmasa boumalne_dades er_rich ksar_es_souk tazzarine todgha
+			tabelbala
+			taghit bechar
+			midelt ameskour terrest
 		}
 
 		country_rank = rank_kingdom
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = mor_al_shaykh_saadi
+
+			ruler_term = { character = mor_al_shaykh_saadi start_date = 1636.2.21 }
+
+			mysticism_vs_jurisprudence = -5 
 		}
 
 		tolerated_cultures = {
@@ -5052,11 +4805,16 @@ countries = {
 			mustaarabi
 		}
 
-		religious_school = maliki_school
-		government = { mysticism_vs_jurisprudence = -5 }
+		discovered_areas = {
+			western_sahara_area
+		}
 
-		capital = fez
+		religious_school = maliki_school
+		starting_technology_level = 3
+
+		capital = marrakesh
 		
+		include = "expl_west_africa_muslim"
 		include = "expl_muslim_mediterranean"
 	}
 }

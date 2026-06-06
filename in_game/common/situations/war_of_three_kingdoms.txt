@@ -25,39 +25,42 @@
 	# 終了条件
 	################################
 	can_end = {
-		OR = {
-			################################
-			# 1. 共和制ENGによる完全制圧
-			################################
-			AND = {
-				c:ENG = {
-					government_type = government_type:republic
-				}
-				NOT = { country_exists = c:ROE }
-				NOT = { country_exists = c:IRE }
-
+		end_reason = {
+			trigger = {
 				OR = {
-					NOT = { country_exists = c:SCO }
+					################################
+					# 1. 共和制ENGによる完全制圧
+					################################
 					AND = {
-						country_exists = c:SCO
-						c:SCO = { is_subject_or_below_of = c:ENG }
+						c:ENG = {
+							government_type = government_type:republic
+						}
+						NOT = { country_exists = c:ROE }
+						#NOT = { country_exists = c:IRE }
+
+						#OR = {
+						#	NOT = { country_exists = c:SCO }
+						#	AND = {
+						#		country_exists = c:SCO
+						#		c:SCO = { is_subject_or_below_of = c:ENG }
+						#	}
+						#}
+					}
+					################################
+					# 2. 王党派勝利
+					################################
+					NOT = { country_exists = c:ENG }
+					################################
+					# 3. 1660年到達（両陣営存続）
+					################################
+					AND = {
+						current_year >= 1660
+						country_exists = c:ENG
+						country_exists = c:ROE
 					}
 				}
 			}
-
-			################################
-			# 2. 王党派勝利
-			################################
-			NOT = { country_exists = c:ENG }
-			
-			################################
-			# 3. 1660年到達（両陣営存続）
-			################################
-			AND = {
-				current_date >= 1660.1.1
-				country_exists = c:ENG
-				country_exists = c:ROE
-			}
+			desc = "nothing"
 		}
 	}
 

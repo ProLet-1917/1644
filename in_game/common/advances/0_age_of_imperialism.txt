@@ -148,7 +148,7 @@ harvey_steel_advance = {
     navy_heavy_ship_power = 0.1
     navy_galley_power = 0.1
     navy_light_ship_power = 0.1
-    navy_repair_cost = 0.05
+    navy_repair_efficiency = 0.1
     navy_maintenance_efficiency = 0.05
 }
 
@@ -212,7 +212,7 @@ large_construction_machinery_advance = {
     requires = high_and_low_pressure_steam_engine_advance
 
     global_construction_speed = 0.1
-    global_build_buildings_cost = 0.02
+    global_build_buildings_efficiency = 0.1
     global_road_building_time = 0.1
     global_max_rgo_size_modifier_in_rural = 0.05
     global_max_rgo_size_modifier_in_non_rural = 0.1
@@ -274,7 +274,7 @@ turbine_engine_advance = {
 
     navy_movement_speed = 0.4
     navy_maintenance_efficiency = 0.02
-    navy_repair_cost = 0.01
+    navy_repair_efficiency = 0.1
 }
 
 electrical_power_generation_advance = {
@@ -322,14 +322,14 @@ mechanical_production_advance = {
     age = age_7_imperialism
     requires = clean_coal_advance
 
-    building_upkeep_costs = -0.1
+    building_upkeep_efficiency = 0.1
 }
 
 assembly_line_advance = {
     age = age_7_imperialism
     requires = mechanical_production_advance
 
-    building_upkeep_costs = -0.25
+    building_upkeep_efficiency = 0.15
 }
 
 telephone_assembly_advance = {
@@ -495,7 +495,7 @@ investment_banks_advance = {
     age = age_7_imperialism
     requires = modern_bank_advance
 
-    building_upkeep_costs = -0.05
+    building_upkeep_efficiency = 0.1
     global_construction_speed = 0.05
 }
 
@@ -503,7 +503,7 @@ corporate_governance_advance = {
     age = age_7_imperialism
     requires = investment_banks_advance
 
-    building_upkeep_costs = -0.10
+    building_upkeep_efficiency = 0.1
     global_trades_per_burgher = 0.05
 }
 
@@ -521,7 +521,7 @@ monior_market_behaviour_advance = {
     requires = modern_bank_advance
 
     control_the_food_market_cost_modifier = -0.05
-    food_purchase_cost = -0.10
+    food_purchase_efficiency = 0.1
 }
 
 organized_factory_advance = {

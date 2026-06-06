@@ -594,7 +594,7 @@ qng_1644_unification.8 = {
 	#明朝藩属投降大清（触发事件，在MNG上）
 	type = country_event
 	hidden = no
-	title = ""
+	title = "qng_1644_unification.8.title"
 	hidden = yes
 	trigger = {
 		# 大清存在且在战争中
@@ -629,7 +629,7 @@ qng_1644_unification.8 = {
 				if = {
 					limit = {
 						scope:defecting_subject = {
-							is_subject_type = subject_type:cn_march_governor
+							is_subject_type = cn_march_governor
 						}
 					}
 					# 取消对明朝的附庸关系

@@ -14376,12 +14376,22 @@ flavor_tur.1004 = {
 	option = {
 		name = flavor_tur.1004.a
 
-		cancel_subject = scope:target_country
-
-		declare_war_with_cb = {
-			target = scope:target_country
-			type = casus_belli:cb_conquer_province
-			target_province = scope:target_country.province
+		if = {
+			limit = {
+				can_declare_legal_war_on = { target = scope:target_country }
+			}
+			declare_war_with_cb = {
+				target = scope:target_country
+				type = casus_belli:cb_conquer_province
+				target_province = scope:target_country.province
+			}
+		}
+		else = {
+			add_casus_belli = {
+				target = scope:target_country
+				type = casus_belli:cb_conquer_province
+				province = scope:target_country.province
+			}
 		}
 
 		scope:target_character2 = {
@@ -14409,13 +14419,26 @@ flavor_tur.1004 = {
 
 	option = {
 		name = flavor_tur.1004.c
+		high_risk_option = yes
 
 		cancel_subject = scope:target_country
 
-		declare_war_with_cb = {
-			target = scope:target_country
-			type = casus_belli:cb_conquer_province
-			target_province = scope:target_country.province
+		if = {
+			limit = {
+				can_declare_legal_war_on = { target = scope:target_country }
+			}
+			declare_war_with_cb = {
+				target = scope:target_country
+				type = casus_belli:cb_conquer_province
+				target_province = scope:target_country.province
+			}
+		}
+		else = {
+			add_casus_belli = {
+				target = scope:target_country
+				type = casus_belli:cb_conquer_province
+				province = scope:target_country.province
+			}
 		}
 
 		scope:target_character2 = {

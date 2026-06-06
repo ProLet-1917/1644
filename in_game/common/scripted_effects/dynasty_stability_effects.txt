@@ -1,0 +1,33 @@
+monthly_dynasty_stability_check_effect = {
+    every_country = {
+        limit = {
+            modifier:allow_dynasty_stability = yes
+            NOT = { has_variable = dynasty_stability }
+        }
+        set_variable = {
+            name = dynasty_stability
+            value = 0
+        }
+    }
+    every_country = {
+        limit = {
+            has_variable = dynasty_stability
+        }
+        change_variable = {
+            name = dynasty_stability
+            add = {
+                value = modifier:dynasty_stability_monthly_income
+            }
+        }
+        clamp_variable = {
+            name = dynasty_stability
+            max = 1000
+            min = -1000
+        }
+        #clamp_variable = {
+        #    name = corruption_investment
+        #    max = 1
+        #    min = 0
+        #}
+    }
+}

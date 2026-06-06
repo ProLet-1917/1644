@@ -50,14 +50,29 @@ character_db = {
 		tag = CAM
 	}
 
+	bll_henri_de_la_tour = {
+		first_name = { name = name_henry }
+		culture = low_franconian
+		religion = lutheran
+		estate = nobles_estate
+		adm = 55 dip = 47 mil = 66
+		birth_date = 1555.9.28
+		death_date = 1623.3.25
+		birth = bouillon
+		father = bll_frederic_maurice_de_la_tour
+		dynasty = de_la_tour_dynasty
+		tag = BLL
+	}
+
 	bll_frederic_maurice_de_la_tour = {
 		first_name = { name = name_frederick }
 		culture = low_franconian
 		religion = catholic
 		estate = nobles_estate
-		adm = 35 dip = 36 mil = 32
-		birth_date = 1606.1.1
+		adm = 35 dip = 46 mil = 42
+		birth_date = 1605.10.22
 		birth = bouillon
+		father = bll_henri_de_la_tour
 		dynasty = de_la_tour_dynasty
 		tag = BLL
 	}
@@ -68,11 +83,24 @@ character_db = {
 		religion = lutheran
 		estate = nobles_estate
 		adm = 25 dip = 22 mil = 23
-		birth_date = 1636.1.1
+		birth_date = 1636.6.21
 		birth = bouillon
 		father = bll_frederic_maurice_de_la_tour
 		dynasty = de_la_tour_dynasty
 		tag = BLL
+	}
+
+	fra_henri_de_la_tour = { #https://en.wikipedia.org/wiki/Henri_de_La_Tour_d%27Auvergne,_Viscount_of_Turenne
+		first_name = { name = name_henry }
+		culture = low_franconian
+		religion = lutheran
+		estate = nobles_estate
+		adm = 65 dip = 57 mil = 83
+		birth_date = 1611.9.11
+		birth = bouillon
+		father = bll_henri_de_la_tour
+		dynasty = de_la_tour_dynasty
+		tag = FRA
 	}
 
 	bnt_philipp_konrad_von_gotterswick = {
@@ -270,8 +298,8 @@ character_db = {
 		culture = high_alemannic
 		religion = calvinist
 		estate = nobles_estate
-		adm = 32 dip = 29 mil = 31
-		birth_date = 1595.1.1
+		adm = 42 dip = 39 mil = 41
+		birth_date = 1595.4.6
 		birth = neuchatel
 		dynasty = dunois_dynasty
 		tag = NEU
@@ -1009,6 +1037,7 @@ character_db = {
 		birth_date = 1630.1.1
 		birth = mantova
 		tag = MAN
+		dynasty = gonzaga_dynasty
 	}
 	pap_urbanus_viii = {
 		first_name = { name = name_urban }
@@ -1182,6 +1211,7 @@ character_db = {
 		tag = KBR
 		dynasty = diallo_dynasty
 	}
+
 	seg_barama_golo_coulibaly = {
 		first_name = { name = name_barlaam }
 		culture = mandinka
@@ -1193,6 +1223,7 @@ character_db = {
 		tag = SEG
 		dynasty = coulibaly_dynasty
 	}
+
 	seg_kaladyan_coulibaly = {
 		first_name = { name = name_kalapana }
 		culture = mandinka
@@ -1205,6 +1236,7 @@ character_db = {
 		tag = SEG
 		dynasty = coulibaly_dynasty
 	}
+
 	ful_tabakali_denianke = {
 		first_name = { name = name_eve.mande_language }
 		culture = fulbe
@@ -1216,6 +1248,7 @@ character_db = {
 		tag = FUL
 		dynasty = denianke_dynasty
 	}
+
 	tra_ahmad_ibn_daman = {
 		first_name = { name = name_ahmad }
 		culture = godala_culture
@@ -1226,6 +1259,7 @@ character_db = {
 		birth = awlil
 		tag = TRA
 	}
+
 	jol_mba_ndiaye = {
 		first_name = { name = name_mubarak }
 		culture = wolof
@@ -1237,6 +1271,7 @@ character_db = {
 		tag = JOL
 		dynasty = ndiaye_dynasty
 	}
+
 	kab_saamanka_dala_jeenung = {
 		first_name = { name = name_salomon }
 		culture = balanta
@@ -1248,6 +1283,7 @@ character_db = {
 		tag = KAB
 		dynasty = jeenung_dynasty
 	}
+
 	dei_muhanmmad_askiya = {
 		first_name = { name = name_muhammad }
 		culture = songhai
@@ -1259,6 +1295,7 @@ character_db = {
 		tag = DEI
 		dynasty = askiya_dynasty
 	}
+
 	kbo_umar_sayfawa = {
 		first_name = { name = name_uma }
 		culture = kanembu_culture
@@ -1270,6 +1307,7 @@ character_db = {
 		tag = KBO
 		dynasty = sayfawa_dynasty
 	}
+
 	kbo_ali_sayfawa = {
 		first_name = { name = name_ali }
 		culture = kanembu_culture
@@ -1282,6 +1320,7 @@ character_db = {
 		tag = KBO
 		dynasty = sayfawa_dynasty
 	}
+
 	zan_yusuf_mahdali = {
 		first_name = { name = name_joseph.arabic_language }
 		culture = swahili_culture
@@ -1292,6 +1331,7 @@ character_db = {
 		birth = kilwa_kisiwani
 		tag = ZAN
 	}
+
 	aju_umur_gareen = {
 		first_name = { name = name_uma }
 		culture = somali_culture
@@ -1301,5 +1341,156 @@ character_db = {
 		birth_date = 1583.1.1
 		birth = merca
 		tag = AJU
+	}
+
+	tfl_ibn_sharif_alawi = { #https://en.wikipedia.org/wiki/Muhammad_ibn_Sharif
+		first_name = { name = name_sharif.maghrebi_dialect }
+		culture = moroccan
+		religion = sunni
+		estate = nobles_estate
+		adm = 78 dip = 75 mil = 88
+		birth_date = 1603.5.8 #Actually we don't know when he born
+		birth = sijilmasa
+		tag = TFL
+		dynasty = alawi_dynasty
+	}
+
+	fez_ibn_mohammed_dila = { #https://en.wikipedia.org/wiki/Mohammed_al-Hajj_ibn_Mohammed_al-Dila%27i
+		first_name = { name = name_muhammad }
+		culture = moroccan
+		religion = sunni
+		estate = nobles_estate
+		adm = 58 dip = 49 mil = 55
+		birth_date = 1595.4.17 #Actually we don't know when he born
+		birth = fez
+		tag = FEZ
+		dynasty = dila_dynasty
+	}
+
+    mor_al_shaykh_saadi = { #https://en.wikipedia.org/wiki/Muhammad_al-Shaykh_al-Saghir
+		first_name = { name = name_sharif.maghrebi_dialect }
+		culture = moroccan
+		religion = sunni
+		estate = nobles_estate
+		adm = 35 dip = 44 mil = 35
+		birth_date = 1609.7.15 #Actually we don't know when he born
+		birth = marrakesh
+		tag = MOR
+		dynasty = saadi_dynasty
+	}
+
+	nmo_charles_amadeus_of_savoy = {
+		first_name = { name = name_charles }
+		culture = french
+		religion = catholic
+		estate = nobles_estate
+		adm = 43 dip = 45 mil = 57
+		birth_date = 1624.4.12
+		birth = paris
+		tag = NMO
+		dynasty = savoy_dynasty
+	}
+
+	vdm_cesar_de_bourbon = {
+		first_name = { name = name_caesar.french_language }
+		culture = french
+		religion = catholic
+		estate = nobles_estate
+		adm = 51 dip = 55 mil = 58
+		birth_date = 1594.6.3
+		birth = paris
+		father = fra_henry_iv_bourbon
+		tag = VDM
+		dynasty = bourbon_dynasty
+	}
+
+    vdm_louis_de_bourbon = {
+		first_name = { name = name_louis }
+		culture = french
+		religion = catholic
+		estate = nobles_estate
+		adm = 51 dip = 35 mil = 43
+		birth_date = 1612.10.15
+		birth = paris
+		father = vdm_cesar_de_bourbon
+		tag = VDM
+		dynasty = bourbon_dynasty
+	}
+
+	ang_charles_de_valois = {
+		first_name = { name = name_charles }
+		culture = french
+		religion = catholic
+		estate = nobles_estate
+		adm = 51 dip = 35 mil = 51
+		birth_date = 1573.4.28
+		birth = grenoble
+		tag = ANG
+		dynasty = valois_dynasty
+	}
+
+	ang_louis_de_valois = {
+		first_name = { name = name_louis }
+		culture = french
+		religion = catholic
+		estate = nobles_estate
+		adm = 47 dip = 55 mil = 53
+		birth_date = 1596.4.28
+		birth = paris
+		father = ang_charles_de_valois
+		tag = ANG
+		dynasty = valois_dynasty
+	}
+
+	ang_marie_de_valois = {
+		first_name = { name = name_louis }
+		culture = french
+		religion = catholic
+		estate = nobles_estate
+		adm = 27 dip = 25 mil = 23
+		female = yes
+		birth_date = 1631.7.5
+		birth = paris
+		father = ang_louis_de_valois
+		tag = ANG
+		dynasty = valois_dynasty
+	}
+
+	gui_henri_ii_de_lorraine = {
+		first_name = { name = name_henry }
+		culture = french
+		religion = catholic
+		estate = nobles_estate
+		adm = 67 dip = 45 mil = 53
+		birth_date = 1614.4.4
+		birth = paris
+		tag = GUI
+		dynasty = lorraine_dynasty
+	}
+
+    uze_emmanuel_de_crussol = {
+		first_name = { name = name_emmanuel }
+		culture = french
+		religion = catholic
+		estate = nobles_estate
+		adm = 47 dip = 55 mil = 53
+		birth_date = 1570.7.31
+		birth = paris
+		tag = UZE
+		dynasty = cruilles_dynasty
+	}
+
+    mot_anne_marie_louise_de_orlean = {
+		first_name = { name = name_anna.french_language }
+		culture = french
+		religion = catholic
+		estate = nobles_estate
+		adm = 64 dip = 72 mil = 38
+		birth_date = 1627.5.29
+		birth = paris
+		female = yes
+		father = fra_gaston_orleans_bourbon
+		tag = MOT
+		dynasty = bourbon_dynasty
 	}
 }

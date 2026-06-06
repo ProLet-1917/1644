@@ -1,7 +1,7 @@
 
 a_skirmish_infantrys = {
     copy_from = a_age_7_imperialism_infantry
-
+    category = army_light_infantry
 
     strength_damage_done = -0.1
     morale_damage_taken = 0.2
@@ -23,6 +23,7 @@ a_skirmish_infantrys = {
 
 a_trench_infantrys = {
     copy_from = a_age_7_imperialism_infantry
+    category = army_light_infantry
 
     #root = location. Checks location_potential first so don't need that scripting in
     mercenaries_per_location = {
@@ -42,6 +43,7 @@ a_trench_infantrys = {
 
 a_early_armors = {
     copy_from = a_age_7_imperialism_armors
+    category = army_heavy_cavalry
     gfx_tags = { heavy_tag }
 
     movement_speed = 1
@@ -65,6 +67,7 @@ a_early_armors = {
 
 a_modern_armors = {
     copy_from = a_age_7_imperialism_armors
+    category = army_heavy_cavalry
     gfx_tags = { heavy_tag }
 
     combat_power = 12

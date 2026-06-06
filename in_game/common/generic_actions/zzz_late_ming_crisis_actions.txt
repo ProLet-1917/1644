@@ -27,7 +27,7 @@ late_ming_crisis_grant_unification_cb = {
     }
 
 	ai_tick = monthly
-	ai_tick_frequency = 6
+	ai_tick_frequency = 3
 	automation_tick = never
 	automation_tick_frequency = 3
 
@@ -100,52 +100,62 @@ late_ming_crisis_grant_unification_cb = {
 
     ai_will_do = {
         # 基础分数
-        add = 50
+        value = 25
 
         # 检查目标是否是邻居
-        if = {
-            limit = {
-                exists = scope:target
-                scope:actor = {
-                    any_neighbor_country = {
-                        this = scope:target
+        add = {
+            if = {
+                limit = {
+                    exists = scope:target
+                    scope:actor = {
+                        any_neighbor_country = {
+                            this = scope:target
+                        }
                     }
+                    # 如果已经拥有对该目标的CB，降低优先级
+                    scope:actor = {
+                        NOT = {
+                            has_casus_belli_of_type_on = {
+                                type = casus_belli:cb_chinese_unification
+                                target = scope:target
+                            }
+                        }
+                    }
+                    # 检查actor对target有大量军事优势
+                    "scope:actor.relative_military_strength(scope:target)" > 1
                 }
-                # 如果已经拥有对该目标的CB，降低优先级
-                scope:actor = {
-                    NOT = {
+                value = 50
+            }
+
+            # 如果军力不足（<= 1），大幅降低分数，避免弱国攻击强国
+            if = {
+                limit = {
+                    exists = scope:target
+                    "scope:actor.relative_military_strength(scope:target)" <= 1
+                }
+                value = -30
+            }
+
+            # 如果已有CB，降低分数
+            if = {
+                limit = {
+                    scope:actor = {
                         has_casus_belli_of_type_on = {
                             type = casus_belli:cb_chinese_unification
                             target = scope:target
                         }
                     }
                 }
-                # 检查actor对target有大量军事优势（至少2倍）
-                "scope:actor.relative_military_strength(scope:target)" > 1.5
+                value = -20
             }
-            value = 150
         }
-
-        # 如果军力不足（<= 1.5），大幅降低分数，避免弱国攻击强国
-        if = {
-            limit = {
-                exists = scope:target
-                "scope:actor.relative_military_strength(scope:target)" <= 1.5
-            }
-            value = -500
+        add = {
+            value = stability
+            multiply = 0.1
         }
-
-        # 如果已有CB，降低分数
-        if = {
-            limit = {
-                scope:actor = {
-                    has_casus_belli_of_type_on = {
-                        type = casus_belli:cb_chinese_unification
-                        target = scope:target
-                    }
-                }
-            }
-            value = -200
+        add = {
+            value = war_exhaustion
+            multiply = -0.5
         }
     }
 }
@@ -179,7 +189,7 @@ late_ming_crisis_subjugate_disobedient = {
     }
 
 	ai_tick = monthly
-	ai_tick_frequency = 6
+	ai_tick_frequency = 3
 
 	select_trigger = {
 		looking_for_a = country
@@ -253,67 +263,77 @@ late_ming_crisis_subjugate_disobedient = {
 
     ai_will_do = {
         # 基础分数
-        add = 50
+        value = 25
 
         # 检查目标是否是附庸，且满足军事优势和低好感度条件
-        if = {
-            limit = {
-                exists = scope:target
-                scope:target = {
-                    is_subject_or_below_of = scope:actor
-                }
-                # 检查宗主国对附庸国有大量军事优势（至少2倍）
-                "scope:actor.relative_military_strength(scope:target)" > 1.5
-                # 检查附庸国对宗主国有低好感度（低于20）
-                scope:target = {
-                    opinion = {
-                        target = scope:actor
-                        value < 20
+        add = {
+            if = {
+                limit = {
+                    exists = scope:target
+                    scope:target = {
+                        is_subject_or_below_of = scope:actor
+                    }
+                    # 检查宗主国对附庸国有大量军事优势（至少2倍）
+                    "scope:actor.relative_military_strength(scope:target)" > 1
+                    # 检查附庸国对宗主国有低好感度（低于20）
+                    scope:target = {
+                        opinion = {
+                            target = scope:actor
+                            value < 20
+                        }
+                    }
+                    # 如果已经拥有对该目标的CB，降低优先级
+                    scope:actor = {
+                        NOT = {
+                            has_casus_belli_of_type_on = {
+                                type = casus_belli:cb_chinese_unification
+                                target = scope:target
+                            }
+                        }
                     }
                 }
-                # 如果已经拥有对该目标的CB，降低优先级
-                scope:actor = {
-                    NOT = {
+                value = 50
+            }
+
+            # 如果不满足军事优势或好感度条件，大幅降低分数
+            if = {
+                limit = {
+                    exists = scope:target
+                    OR = {
+                        # 军事优势不足
+                        "scope:actor.relative_military_strength(scope:target)" <= 1
+                        # 好感度不低
+                        scope:target = {
+                            opinion = {
+                                target = scope:actor
+                                value >= 20
+                            }
+                        }
+                    }
+                }
+                value = -30
+            }
+
+            # 如果已有CB，降低分数
+            if = {
+                limit = {
+                    scope:actor = {
                         has_casus_belli_of_type_on = {
                             type = casus_belli:cb_chinese_unification
                             target = scope:target
                         }
                     }
                 }
+                value = -20
             }
-            value = 150
         }
-
-        # 如果不满足军事优势或好感度条件，大幅降低分数
-        if = {
-            limit = {
-                exists = scope:target
-                OR = {
-                    # 军事优势不足
-                    "scope:actor.relative_military_strength(scope:target)" <= 1.5
-                    # 好感度不低
-                    scope:target = {
-                        opinion = {
-                            target = scope:actor
-                            value >= 20
-                        }
-                    }
-                }
-            }
-            value = -500
+        add = {
+            value = stability
+            multiply = 0.1
         }
-
-        # 如果已有CB，降低分数
-        if = {
-            limit = {
-                scope:actor = {
-                    has_casus_belli_of_type_on = {
-                        type = casus_belli:cb_chinese_unification
-                        target = scope:target
-                    }
-                }
-            }
-            value = -200
+        add = {
+            value = war_exhaustion
+            multiply = -0.5
         }
     }
 }

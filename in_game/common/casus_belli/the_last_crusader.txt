@@ -1,0 +1,15 @@
+cb_the_last_crusade = {
+    create_visible = {
+        always = no #Automatically available to the leaders of the IOs
+    }
+    additional_war_enthusiasm = 0.1
+    war_goal_type = religious_superiority_wargoal
+    custom_tags = { cannot_be_enforced_peace_on  }
+
+    allow_separate_peace = no
+    allow_white_peace = no
+
+    required_peace_treaties = {
+        the_last_crusader
+    }
+}

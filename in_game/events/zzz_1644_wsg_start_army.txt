@@ -21,9 +21,9 @@ wsg_1644_start_army.1 = {
 		location:ningyuan_jinzhou ?= {
 			if = {
 				limit = { owner = root }
-				# 宁远步军：15 * 1000 = 15000 人（时代3）
+				# 宁远步军：8 * 1500 = 12000 人（时代3）
 				while = {
-					count = 15
+					count = 8
 					create_sub_unit_with_owner = {
 						type = a_1644_chinese_zhanbing
 						owner = root
@@ -31,9 +31,9 @@ wsg_1644_start_army.1 = {
 						experience = 90
 					}
 				}
-				# 西法火器营：3 * 1000 = 3000 人（时代4）
+				# 西法火器营：1 * 2000 = 2000 人（时代4）
 				while = {
-					count = 2
+					count = 1
 					create_sub_unit_with_owner = {
 						type = a_1644_chinese_musketeers
 						owner = root
@@ -41,9 +41,9 @@ wsg_1644_start_army.1 = {
 						experience = 90
 					}
 				}
-				# 关宁铁骑：33 * 300 = 10000 人（约）
+				# 关宁铁骑：5 * 800 = 4000 人（约）
 				while = {
-					count = 33
+					count = 5
 					create_sub_unit_with_owner = {
 						type = a_1644_guanning_cavalry
 						owner = root
@@ -51,9 +51,9 @@ wsg_1644_start_army.1 = {
 						experience = 95
 					}
 				}
-				# 红夷炮：10 营(4 门/营) = 40门（时代4红衣大炮）
+				# 红夷炮：2 营(16 门/营) = 32门（时代4红衣大炮）
 				while = {
-					count = 10
+					count = 2
 					create_sub_unit_with_owner = {
 						type = a_red_cannon
 						owner = root

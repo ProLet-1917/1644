@@ -610,7 +610,8 @@ countries = {
 		government = {
 			ruler = bll_frederic_maurice_de_la_tour
 
-			ruler_term = { character = bll_frederic_maurice_de_la_tour start_date = 1644.1.1 regnal_number = 1 }
+			ruler_term = { character = bll_frederic_maurice_de_la_tour start_date = 1557.1.1 end_date = 1623.3.25 regnal_number = 1 }
+			ruler_term = { character = bll_frederic_maurice_de_la_tour start_date = 1623.3.25 regnal_number = 1 }
 
 		}
 
@@ -1679,9 +1680,13 @@ countries = {
 			outward_vs_inward = -50
 		}
 
-		tolerated_cultures = {
-			rhine_alemannic
+		accepted_cultures = {
 			southern_bavarian
+			czech
+		}
+
+		tolerated_cultures = {
+			moravian
 			slovene
 		}
 
@@ -5305,12 +5310,14 @@ countries = {
 
 		accepted_cultures = {
 			greater_polish
-			silesian
+			aukstaitian
+			mazovian
 		}
 
 		tolerated_cultures = {
-			kashubian
+			silesian
 			ashkenazi
+			polesian_culture
 		}
 
 		#Setup to accurately portray the starting situation
@@ -5442,6 +5449,7 @@ countries = {
 		own_control_core = {
 			timbuktu kabara goundam gourma_rharous tindirma
 			bourem bamba tondibi gao ansongo
+			walata nema
 		}
 
 		starting_technology_level = 3
@@ -6862,6 +6870,156 @@ countries = {
 		capital = kibiro
 	}
 #North Africa
+	SLE = { #Sale https://en.wikipedia.org/wiki/Republic_of_Sal%C3%A9
+		type = navy
+
+		own_control_core = {
+			sale
+		}
+
+		government = {
+			type = republic
+			heir_selection = pirate_elective
+			ruler = random
+
+			reforms = {
+				pirate_brethren_reform
+			}
+
+			laws = {
+				piracy_law = state_piracy_policy
+			}
+		}
+
+        discovered_areas = {
+            western_sahara_area
+        }
+
+		religious_school = shadhili_school
+        starting_technology_level = 3
+
+		capital = sale
+
+		include = "expl_muslim_mediterranean"
+
+	}
+
+	FEZ = { #Fez https://en.wikipedia.org/wiki/Zawiya_Dila%27iya
+		own_control_core = {
+			fez meknes la_mamora azrou volubilis tefelfelt baht
+		}
+
+		our_cores_conquered_by_others = {
+			sijilmasa boumalne_dades er_rich ksar_es_souk tazzarine todgha
+			tabelbala
+			taghit bechar
+			midelt ameskour terrest
+			tetouan basra_al_hamra larache taunat
+			badis tizgane amergo al_mazamma
+			ras_kebdana ghassasa temsamane tabarida
+			ksar_el_kebir tazroute ouezzane
+			anfa azemmour bejaad thagia rabat settat mrirah
+			asfi mazaghan tit boulaouane miatbir aguz
+			tednest ait_daoud tafedna mogador
+			marrakesh aghmat tinmel naffis hanimmei tamdegost
+			taroudant tidsi tiout tiznit massa_MOR tafraout ifni noul_lamta agadir
+			bzou demnate azilal
+			tadla khenifra chichaoua
+			guercif tezerghe namalata taza sefrou
+			jarawah_abu_al_aysh oujda
+			jerada taourirt debdou echemmaia sidi_bennour
+			nedroma tegeget kalaat_sraghna
+			aouint_yghomane afso ifrane
+			tamdoult assa beni_sabih foum_zguid igiliz taghjijt tata_MOR tiout tissint tizounine
+			ouarzazate agdez ait_benhaddou skoura tagmadert taznakht
+			laayoune smara tantan tindouf
+			idjil dakhla al_kuwayra aousserd bojador
+			taghaza taoudenni araouane
+		}
+
+		country_rank = rank_duchy
+		starting_technology_level = 3
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = fez_ibn_mohammed_dila
+
+            ruler_term = { character = fez_ibn_mohammed_dila start_date = 1637.6.10 }
+
+			mysticism_vs_jurisprudence = -5
+		}
+
+        discovered_areas = {
+            western_sahara_area
+        }
+
+		capital = fez
+
+		include = "expl_muslim_mediterranean"
+	}
+
+	TFL = { #Tafilalt https://en.wikipedia.org/wiki/Alawi_dynasty
+		own_control_core = {
+			sijilmasa boumalne_dades er_rich ksar_es_souk tazzarine todgha
+			tabelbala
+			taghit bechar
+			midelt ameskour terrest
+		}
+
+		our_cores_conquered_by_others = {
+			tetouan basra_al_hamra larache taunat
+			badis tizgane amergo al_mazamma
+			ras_kebdana ghassasa temsamane tabarida
+			ksar_el_kebir tazroute ouezzane
+			anfa azemmour bejaad thagia rabat settat mrirah
+			asfi mazaghan tit boulaouane miatbir aguz
+			tednest ait_daoud tafedna mogador
+			marrakesh aghmat tinmel naffis hanimmei tamdegost
+			taroudant tidsi tiout tiznit massa_MOR tafraout ifni noul_lamta agadir
+			bzou demnate azilal
+			tadla khenifra chichaoua
+			guercif tezerghe namalata taza sefrou
+			jarawah_abu_al_aysh oujda
+			jerada taourirt debdou echemmaia sidi_bennour
+			nedroma tegeget kalaat_sraghna
+			aouint_yghomane afso ifrane
+			tamdoult assa beni_sabih foum_zguid igiliz taghjijt tata_MOR tiout tissint tizounine
+			ouarzazate agdez ait_benhaddou skoura tagmadert taznakht
+			laayoune smara tantan tindouf
+			idjil dakhla al_kuwayra aousserd bojador
+			taghaza taoudenni araouane
+			sale fez meknes la_mamora azrou volubilis tefelfelt baht
+		}
+
+        country_rank = rank_duchy
+		starting_technology_level = 3
+
+        government = {
+            type = monarchy
+            heir_selection = cognatic_primogeniture
+            ruler = tfl_ibn_sharif_alawi
+
+			ruler_term = { character = tfl_ibn_sharif_alawi start_date = 1640.4.23 }
+            mysticism_vs_jurisprudence = -5
+        }
+
+		currency_data = {
+			gold = 225
+			prestige = 35
+			stability = 40
+            manpower = 8
+		}
+
+		discovered_areas = {
+			western_sahara_area
+		}
+
+        capital = sijilmasa
+
+        include = "expl_muslim_mediterranean"
+	}
+
 	TUN = { #Tunis
 		own_control_core = {
 			ajim medenine zarzis feriana kasserine sbiba subaytila thala
@@ -6898,9 +7056,6 @@ countries = {
 			}
 
 			land_vs_naval = 30
-			laws = {
-				piracy_law = state_piracy_policy
-			}
 			privilege = {
 				#Nobles
 				noble_sponsored_navy
@@ -6918,6 +7073,7 @@ countries = {
 			laws = {
 				amazigh_familial_connections = reliance_on_local_tribes
 				sharia_law = maliki_policy
+                piracy_law = state_piracy_policy
 			}
 		}
 		religious_school = maliki_school
@@ -6973,7 +7129,12 @@ countries = {
 			miliana al_khadra_ALG chlef ksar_el_kaoua mazouna yellel
 			arshgul arzew ksar_ibn_senane nedroma tamazaghrane
 			tlemcen madinat_alawiyyin mascara saida tessala
-			ras_al_ain maqqara msila asir_ALG ksar_el_boukhari tissemsilt tahert qal_at_ibn_salama
+			ras_al_ain maqqara msila asir_ALG ksar_el_boukhari
+			tissemsilt tahert charef djelfa zenina
+            el_bayadh ain_sefra brezina el_abiodh_sidi_cheikh medrissa naama qal_at_ibn_salama qutb
+			biskra bades bir_el_alter sidi_okba madila tolga
+            amdoukal bou_saada el_kantara
+			laghouat ain_madhi messaad ouled_djellal
 		}
 
 		starting_technology_level = 3
@@ -8759,11 +8920,11 @@ countries = {
 
 		accepted_cultures = {
 			turkish_culture
+            greek_culture
+            turkoman_culture
 		}
 
 		tolerated_cultures = {
-			greek_culture
-			turkoman_culture
 			#arab_culture
 			armenian_culture
 			serbian
@@ -9077,9 +9238,9 @@ countries = {
 
 		currency_data = {
 			gold = 5200
-			stability = 17
+			stability = 33
 			prestige = 50
-			government_power = 40
+			government_power = 65
 			war_exhaustion = 0
 			army_tradition = 20
 		}
@@ -9159,10 +9320,12 @@ countries = {
 
 		}
 		accepted_cultures = {
-
+			novgorodian
+			smolenskian_culture
+			ryazanian
 		}
 		tolerated_cultures = {
-
+			severian
 		}
 	}
 
@@ -12049,6 +12212,327 @@ countries = {
 		
 	}
 
+	AMD = { #Amdo
+		own_control_core = {
+			muxihe metsang takden dartang shukjung serta droge
+		}
+
+		include = "asia_advanced_no_pagan_tribe"
+
+		tolerated_cultures = {
+			khampa_culture
+		}
+
+		capital = droge
+		government = {
+			ruler = random
+		}
+	}
+
+	CHH = { #Chiang Hung
+		own_control_core = {
+			mong_yawng
+			muang_sing
+		}
+
+		include = "south_east_asia_monarchy_no_mandala_no_coast"
+
+		capital = mong_yawng
+
+		tolerated_cultures = {
+			jino_culture
+			wa_culture
+		}
+
+		government = {
+			ruler = random
+		}
+	}
+
+    MUA = { #Muang Sua
+        own_control_core = {
+            ban_luang_cheng muang_thaeng phongsali
+        }
+
+        own_control_integrated = {
+        }
+
+        include = "south_east_asia_monarchy_no_coast"
+        government = {
+            ruler = random
+        }
+
+        tolerated_cultures = {
+            muong_culture
+        }
+
+        country_rank = rank_duchy
+        capital = ban_luang_cheng
+    }
+
+	MUO = { #Muong
+
+		own_control_core = {
+			muang_sam_tai muang_lang xam_neua muang_et
+		}
+
+		include = "south_east_asia_monarchy_no_coast"
+
+		government = {
+			ruler = random
+		}
+
+		capital = muang_et
+	}
+	#France Rework
+	#Nemours (Appanage)
+	NMO = {
+		own_control_core = {
+			nemours joigny nogent_sur_seine
+        }
+
+		include = "zzz_expl_european_colonial_powers"
+        include = "catholic_monarchy_no_coast"
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = nmo_charles_amadeus_of_savoy
+
+			ruler_term = { character = nmo_charles_amadeus_of_savoy start_date = 1641.9.16 regnal_number = 1 }
+
+			reforms = {
+				french_ducal_vassal_reform
+			}
+		}
+
+		country_rank = rank_duchy
+		capital = nemours
+		starting_technology_level = 4
+	}
+
+	#Vendome (Appanage)
+	VDM = {
+		own_control_core = {
+			vendome
+		}
+
+		starting_technology_level = 4
+		include = "zzz_expl_european_colonial_powers"
+		include = "catholic_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = vdm_cesar_de_bourbon
+			heir = vdm_louis_de_bourbon
+
+			ruler_term = { character = vdm_cesar_de_bourbon start_date = 1598.1.1 regnal_number = 1 }
+
+			regnal_numbers = {
+				name_burchard = 6
+				name_reginald = 1
+				#Bodon = 1
+				name_adela = 1
+				name_godfrey = 3
+				name_fulk = 1
+				name_john = 5
+				name_peter = 1
+			}
+		}
+
+		tolerated_cultures = {
+			languedocien
+		}
+
+		capital = vendome
+	}
+
+	#Angoulême (Appanage)
+    ANG = {
+		own_control_core = {
+			angouleme cognac chabanais
+		}
+
+		include = "zzz_expl_european_colonial_powers"
+		include = "catholic_monarchy_no_coast"
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = ang_charles_de_valois
+
+			ruler_term = { character = ang_charles_de_valois start_date = 1619.1.11 regnal_number = 4 }
+
+			reforms = {
+				french_ducal_vassal_reform
+			}
+		}
+
+		country_rank = rank_duchy
+		capital = angouleme
+		starting_technology_level = 4
+    }
+	#Guise (Appanage)
+	GUI = {
+		own_control_core = {
+			guise
+		}
+
+		include = "zzz_expl_european_colonial_powers"
+		include = "catholic_monarchy_no_coast"
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = gui_henri_ii_de_lorraine
+
+			ruler_term = { character = gui_henri_ii_de_lorraine start_date = 1640.9.30 regnal_number = 2 }
+
+			reforms = {
+				french_ducal_vassal_reform
+			}
+		}
+
+		country_rank = rank_duchy
+		capital = guise
+		starting_technology_level = 4
+	}
+	#Nevers (Appanage)
+	NEV = {
+		own_control_core = {
+			nevers donzy
+			st_pierre_de_moutier montreuillon cercy
+			avallon
+		}
+
+		starting_technology_level = 4
+		include = "zzz_expl_european_colonial_powers"
+		include = "catholic_monarchy_no_coast"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = man_carlo_gonzaga
+			reforms = {
+				french_ducal_vassal_reform
+			}
+
+			ruler_term = { character = man_carlo_gonzaga start_date = 1637.9.22 regnal_number = 4 }
+
+
+			regnal_numbers = {
+				#Seguin = 2
+				name_godfrey = 1
+				name_rudolf = 1
+				#Gerberga = 1
+				#Landri = 1
+				name_reginald = 2
+				name_william = 5
+				name_wido = 1
+				name_agnes = 2
+				name_peter = 1
+				name_matilda = 2
+				name_harvey = 1
+				name_wigo = 1
+				name_walter = 1
+				name_yolande = 1
+				name_john = 1
+				name_robert = 1
+				name_louis = 2
+				name_charles = 4
+			}
+		}
+        country_rank = rank_duchy
+		capital = nevers
+	}
+
+	#Aumale (Vassal, Fief Mouvant)
+	AUM = {
+		own_control_core = {
+			aumale
+		}
+
+		starting_technology_level = 4
+		include = "zzz_expl_european_colonial_powers"
+		include = "catholic_monarchy"
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = nmo_charles_amadeus_of_savoy
+			reforms = {
+				french_ducal_vassal_reform
+			}
+
+			ruler_term = { character = nmo_charles_amadeus_of_savoy start_date = 1641.9.16 regnal_number = 1 }
+
+			regnal_numbers = {
+				#Guérimfred = 1
+				name_hugh = 1
+				name_enguerrand = 1
+				name_adelaide = 1
+				name_stephen = 1
+				name_william = 3
+				name_hedwig = 1
+				name_reginald = 1
+				name_simeon = 1
+				name_philip = 1
+				name_matilda = 1
+				name_joanna = 1
+				name_ferdinand = 2
+				name_john = 2
+			}
+		}
+		capital = aumale
+	}
+	#Uzes (Appanage)
+	UZE = {
+		own_control_core = {
+			uzes
+		}
+
+		include = "zzz_expl_european_colonial_powers"
+		include = "catholic_monarchy_no_coast"
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = uze_emmanuel_de_crussol
+
+			ruler_term = { character = uze_emmanuel_de_crussol start_date = 1584.9.15 regnal_number = 1 }
+
+			reforms = {
+				french_ducal_vassal_reform
+			}
+		}
+
+		country_rank = rank_duchy
+		capital = uzes
+		starting_technology_level = 4
+	}
+	#Montpensier (Appanage)
+	MOT = {
+		own_control_core = {
+			clermont allegre brioude riom vic_le_comte vodable
+		}
+
+		include = "zzz_expl_european_colonial_powers"
+		include = "catholic_monarchy_no_coast"
+
+		government = {
+			type = monarchy
+			heir_selection = cognatic_primogeniture
+			ruler = mot_anne_marie_louise_de_orlean
+
+			ruler_term = { character = mot_anne_marie_louise_de_orlean start_date = 1627.6.4 regnal_number = 1 }
+
+			reforms = {
+				french_ducal_vassal_reform
+			}
+		}
+
+		country_rank = rank_duchy
+		capital = clermont
+		starting_technology_level = 4
+	}
 
 	#Pop based country
 	OBD = {

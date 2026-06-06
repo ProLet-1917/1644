@@ -10,7 +10,12 @@ the_steppe = { #The land from Ukraine to Mongolia
 	}
 
 	can_end = {
-		current_year > 1930
+		end_reason = {
+			trigger = {
+				current_year > 1930
+			}
+			desc = "time_passed"
+		}
 	}
 
 	visible = {

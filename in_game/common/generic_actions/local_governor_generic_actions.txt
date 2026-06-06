@@ -1,0 +1,498 @@
+promote_to_local_governor = {
+    type = owncountry
+    show_message = no
+
+    potential = {
+        scope:actor = {
+            any_ownable_location = {
+                has_variable = can_hire_local_governor
+            }
+        }
+        location = {
+            NOT = {
+                has_variable = already_has_a_local_governor
+            }
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            any_ownable_location = {
+                modifier:allow_hire_local_governor = yes
+            }
+        }
+    }
+
+    #price = price:promote_to_local_governor_price
+
+    select_trigger = {
+        looking_for_a = character
+        source = actor
+        target_flag = recipient
+        name = "settle_the_frontier_select_character"
+        none_available_msg_key = "settle_the_frontier_no_character"
+        column = { data = character_info }
+        visible = {
+            is_adult = yes
+            is_courtier = yes
+            is_female = no
+            is_artist = no
+            NOT = {
+                has_character_modifier = local_governor
+            }
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = location
+        target_flag = target
+        source = actor
+        source_flags = only_actual_locations
+        name = "add_location_to_seize_province"
+        none_available_msg_key = "add_location_to_seize_province_no_locations"
+        column = {
+            data = name
+        }
+        column = {
+            data = population
+        }
+        column = {
+            data = development
+        }
+        visible = {
+            modifier:allow_hire_local_governor = yes
+            NOT = {
+                has_variable = already_has_a_local_governor
+            }
+        }
+    }
+
+    effect = {
+        scope:target = {
+            set_variable = {
+                name = already_has_a_local_governor
+                value = scope:recipient
+            }
+        }
+        scope:recipient = {
+
+            add_character_modifier = {
+                modifier = local_governor
+                years = -1
+            }
+            add_character_modifier = {
+                modifier = banned_from_cabinet
+                years = -1
+            }
+            add_character_modifier = {
+                modifier = block_leading_armies_or_navies
+                years = -1
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 50 #Why not?
+        add = {
+            value = scope:recipient.total_abilities
+            subtract = 100
+        }
+    }
+}
+
+rulling_nearby_land = {
+    type = owncountry
+    show_message = no
+
+    potential = {
+        scope:actor = {
+            any_ownable_location = {
+                has_variable = already_has_a_local_governor
+            }
+        }
+    }
+
+    allow = {
+        location = {
+            has_variable = already_has_a_local_governor
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = character
+        source = actor
+        target_flag = recipient
+        name = "settle_the_frontier_select_character"
+        none_available_msg_key = "settle_the_frontier_no_character"
+        column = { data = character_info }
+        visible = {
+            has_character_modifier = local_governor
+            NOT = {
+                has_variable = working_on_local_governor_actions
+            }
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = location
+        target_flag = target
+        source = actor
+        source_flags = only_actual_locations
+        name = "choose_location"
+        column = {
+            data = name
+        }
+        column = {
+            data = population
+        }
+        column = {
+            data = development
+        }
+        visible = {
+            this = {
+                var:already_has_a_local_governor = scope:recipient
+            }
+        }
+    }
+
+    effect = {
+        scope:recipient = {
+            set_variable = {
+                name = working_on_local_governor_actions
+            }
+        }
+        set_local_governor_control = yes
+    }
+
+    ai_will_do = {
+        value = 25
+    }
+}
+
+spread_culture = {
+    type = owncountry
+    show_message = no
+
+    potential = {
+        scope:actor = {
+            any_ownable_location = {
+                has_variable = already_has_a_local_governor
+            }
+        }
+    }
+
+    allow = {
+        location = {
+            has_variable = already_has_a_local_governor
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = character
+        source = actor
+        target_flag = recipient
+        name = "settle_the_frontier_select_character"
+        none_available_msg_key = "settle_the_frontier_no_character"
+        column = { data = character_info }
+        visible = {
+            has_character_modifier = local_governor
+            NOT = {
+                has_variable = working_on_local_governor_actions
+            }
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = location
+        target_flag = target
+        source = actor
+        source_flags = only_actual_locations
+        name = "choose_location"
+        column = {
+            data = name
+        }
+        column = {
+            data = population
+        }
+        column = {
+            data = development
+        }
+        visible = {
+            this = {
+                var:already_has_a_local_governor = scope:recipient
+            }
+        }
+    }
+
+    effect = {
+        scope:recipient = {
+            set_variable = {
+                name = working_on_local_governor_actions
+            }
+        }
+        set_local_governor_culture = yes
+    }
+}
+
+spread_religion = {
+    type = owncountry
+    show_message = no
+
+    potential = {
+        scope:actor = {
+            any_ownable_location = {
+                has_variable = already_has_a_local_governor
+            }
+        }
+    }
+
+    allow = {
+        location = {
+            has_variable = already_has_a_local_governor
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = character
+        source = actor
+        target_flag = recipient
+        name = "settle_the_frontier_select_character"
+        none_available_msg_key = "settle_the_frontier_no_character"
+        column = { data = character_info }
+        visible = {
+            has_character_modifier = local_governor
+            NOT = {
+                has_variable = working_on_local_governor_actions
+            }
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = location
+        target_flag = target
+        source = actor
+        source_flags = only_actual_locations
+        name = "choose_location"
+        column = {
+            data = name
+        }
+        column = {
+            data = population
+        }
+        column = {
+            data = development
+        }
+        visible = {
+            this = {
+                var:already_has_a_local_governor = scope:recipient
+            }
+        }
+    }
+
+    effect = {
+        scope:recipient = {
+            set_variable = {
+                name = working_on_local_governor_actions
+            }
+        }
+        set_local_governor_religion = yes
+    }
+}
+
+held_holiday_celebration = {
+    type = owncountry
+    show_message = no
+
+    potential = {
+        scope:actor = {
+            any_ownable_location = {
+                has_variable = already_has_a_local_governor
+            }
+        }
+    }
+
+    allow = {
+        location = {
+            has_variable = already_has_a_local_governor
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = character
+        source = actor
+        target_flag = recipient
+        name = "settle_the_frontier_select_character"
+        none_available_msg_key = "settle_the_frontier_no_character"
+        column = { data = character_info }
+        visible = {
+            has_character_modifier = local_governor
+            NOT = {
+                has_variable = working_on_local_governor_actions
+            }
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = location
+        target_flag = target
+        source = actor
+        source_flags = only_actual_locations
+        name = "choose_location"
+        column = {
+            data = name
+        }
+        column = {
+            data = population
+        }
+        column = {
+            data = development
+        }
+        visible = {
+            this = {
+                var:already_has_a_local_governor = scope:recipient
+            }
+        }
+    }
+
+    effect = {
+        scope:recipient = {
+            set_variable = {
+                name = working_on_local_governor_actions
+            }
+        }
+        set_local_governor_people = yes
+    }
+}
+
+local_governor_organize_troops = {
+    type = owncountry
+    show_message = no
+
+    potential = {
+        scope:actor = {
+            any_ownable_location = {
+                has_variable = already_has_a_local_governor
+            }
+        }
+    }
+
+    allow = {
+        location = {
+            has_variable = already_has_a_local_governor
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = character
+        source = actor
+        target_flag = recipient
+        name = "settle_the_frontier_select_character"
+        none_available_msg_key = "settle_the_frontier_no_character"
+        column = { data = character_info }
+        visible = {
+            has_character_modifier = local_governor
+            NOT = {
+                has_variable = working_on_local_governor_actions
+            }
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = location
+        target_flag = target
+        source = actor
+        source_flags = only_actual_locations
+        name = "choose_location"
+        column = {
+            data = name
+        }
+        column = {
+            data = population
+        }
+        column = {
+            data = development
+        }
+        visible = {
+            this = {
+                var:already_has_a_local_governor = scope:recipient
+            }
+        }
+    }
+
+    effect = {
+        scope:recipient = {
+            set_variable = {
+                name = working_on_local_governor_actions
+            }
+        }
+        set_local_governor_levies = yes
+    }
+}
+
+local_governor_production_plan = {
+    type = owncountry
+    show_message = no
+
+    potential = {
+        scope:actor = {
+            any_ownable_location = {
+                has_variable = already_has_a_local_governor
+            }
+        }
+    }
+
+    allow = {
+        location = {
+            has_variable = already_has_a_local_governor
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = character
+        source = actor
+        target_flag = recipient
+        name = "settle_the_frontier_select_character"
+        none_available_msg_key = "settle_the_frontier_no_character"
+        column = { data = character_info }
+        visible = {
+            has_character_modifier = local_governor
+            NOT = {
+                has_variable = working_on_local_governor_actions
+            }
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = location
+        target_flag = target
+        source = actor
+        source_flags = only_actual_locations
+        name = "choose_location"
+        column = {
+            data = name
+        }
+        column = {
+            data = population
+        }
+        column = {
+            data = development
+        }
+        visible = {
+            this = {
+                var:already_has_a_local_governor = scope:recipient
+            }
+        }
+    }
+
+    effect = {
+        scope:recipient = {
+            set_variable = {
+                name = working_on_local_governor_actions
+            }
+        }
+        set_local_governor_production = yes
+    }
+}
+
+
+

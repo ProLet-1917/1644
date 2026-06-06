@@ -13,6 +13,9 @@ late_ming_crisis_init_variable = {
                 set_variable = {
                     name = chi_domination
                     value = 0
+                }
+                clamp_variable = {
+                    name = chi_domination
                     max = 100  # 可选：设置最大值
                     min = -100    # 可选：设置最小值
                 }
@@ -24,8 +27,11 @@ late_ming_crisis_init_variable = {
                 set_variable = {
                     name = chi_mandate
                     value = 0
-                    max = 100  
-                    min = -100
+                }
+                clamp_variable = {
+                    name = chi_mandate
+                    max = 100  # 可选：设置最大值
+                    min = -100    # 可选：设置最小值
                 }
             }
             # 初始化我方击杀和阵亡计数器（如果不存在）
@@ -53,7 +59,10 @@ late_ming_crisis_combat_victory_effect = {
                 }
                 change_variable = {
                     name = chi_domination
-                    add = scope:war_score
+                    add = {
+                        add = scope:war_score
+                        multiply = 0.1
+                    }
                 }
             }
         }
@@ -71,7 +80,10 @@ late_ming_crisis_combat_defeat_effect = {
                 }
                 change_variable = {
                     name = chi_domination
-                    subtract = scope:war_score
+                    subtract = {
+                        add = scope:war_score
+                        multiply = 0.1
+                    }
                 }
             }
         }

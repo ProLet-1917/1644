@@ -15,8 +15,8 @@ scripted_trigger is_livonian_or_associated = {
 }
 
 scripted_trigger can_target_livonian_lands = {
-	great_power_score > {
-		value = ROOT.great_power_score
+	country_economical_base > {
+		value = ROOT.country_economical_base
 	}
 }
 
@@ -270,7 +270,7 @@ flavor_plc.4 = {
 
 	trigger = {
 		exists = character:jan_dlugosz
-		great_power_score >= 600
+		total_population >= 2000
 		societal_value:aristocracy_vs_plutocracy <= -90
 	}
 

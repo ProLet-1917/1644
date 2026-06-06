@@ -1,0 +1,85 @@
+the_chinese_emperor = {
+    major = yes
+    government = monarchy
+    potential = {
+        OR = {
+            is_chinese_country = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        country_rank = country_rank:rank_empire
+    }
+
+    allow = {
+        OR = {
+            is_chinese_country = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        country_rank = country_rank:rank_empire
+    }
+
+    locked = {
+        is_locked_mechanic = {
+            mechanic = government_reform
+            type = the_chinese_emperor
+        }
+    }
+
+    on_activate = {
+        remove_reform = government_reform:the_chinese_warlords
+    }
+
+    country_modifier = {
+        allow_tributary_subject = yes
+        monthly_prestige = 0.05
+        government_reform_slots = 2
+        cultures_capacity = 8
+        dynasty_stability_monthly_income = 0.05
+        allow_dynasty_stability = yes
+    }
+
+    years = 2
+}
+
+the_chinese_warlords = {
+    major = yes
+    government = monarchy
+    potential = {
+        OR = {
+            is_chinese_country = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        NOT = {
+            country_rank = country_rank:rank_empire
+        }
+    }
+
+    allow = {
+        OR = {
+            is_chinese_country = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        NOT = {
+            has_reform = government_reform:the_chinese_emperor
+        }
+    }
+
+    locked = {
+        is_locked_mechanic = {
+            mechanic = government_reform
+            type = the_chinese_warlords
+        }
+    }
+
+    country_modifier = {
+        allow_tributary_subject = yes
+        cultures_capacity = 3
+        monthly_prestige = 0.02
+        army_maintenance_efficiency = 0.1
+        global_manpower_modifier = 0.05
+        government_reform_slots = 1
+        dynasty_stability_monthly_income = -0.05
+        allow_dynasty_stability = yes
+    }
+
+    years = 2
+}

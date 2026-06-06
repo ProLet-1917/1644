@@ -45,19 +45,19 @@ holy_league.1 = { #Ottoman in mid 17th Century
         }
     }
 
-    option = {
-        name = holy_league.1.b
-        custom_tooltip = {
-            text = "unlock_ottomans_decisions"
-            set_variable = {
-                name = unlock_ottomans_internal_decisions
-            }
-            set_variable = {
-                name = finished_ottomans_internal_decisions
-                value = 0
-            }
-        }
-    }
+    #option = {
+    #    name = holy_league.1.b
+    #    custom_tooltip = {
+    #        text = "unlock_ottomans_decisions"
+    #        set_variable = {
+    #            name = unlock_ottomans_internal_decisions
+    #        }
+    #        set_variable = {
+    #            name = finished_ottomans_internal_decisions
+    #            value = 0
+    #        }
+    #    }
+    #}
 }
 
 holy_league.2 = { #Candia War
@@ -370,9 +370,12 @@ holy_league.6 = {
             limit = {
                 has_variable = unlock_ottomans_vienna_decisions
             }
-            change_variable = {
-                name = finished_ottomans_vienna_decisions
-                add = 3 #To Do: Balance this
+            custom_tooltip = {
+                text = "finish_two_ottomans_vienna_decision"
+                change_variable = {
+                    name = finished_ottomans_vienna_decisions
+                    add = 2 #To Do: Balance this
+                }
             }
         }
         scope:upper_hungary.capital = {
@@ -404,9 +407,12 @@ holy_league.6 = {
             limit = {
                 has_variable = unlock_ottomans_vienna_decisions
             }
-            change_variable = {
-                name = finished_ottomans_vienna_decisions
-                add = 1
+            custom_tooltip = {
+                text = "finish_one_ottomans_vienna_decision"
+                change_variable = {
+                    name = finished_ottomans_vienna_decisions
+                    add = 1 #To Do: Balance this
+                }
             }
         }
     }
@@ -450,6 +456,124 @@ holy_league.7 = { #Candia War
                 province = c:KNI.province:noto_province
             }
         }
+    }
+}
+#Relation with France?
+holy_league.14 = {
+    type = country_event
+    title = holy_league.14.title
+    desc = holy_league.14.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = TUR
+        from = 1645.1.1
+        to = 1700.1.1
+        monthly_chance = 5
+    }
+
+    trigger = {
+        OR = {
+            has_or_had_tag = TUR
+            has_dlc = "0_4_echo_of_the_empire"
+        }
+        current_year >= 1645
+        NOT = {
+            has_variable = has_already_sign_allies_with_france
+        }
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        name = holy_league.14.a
+        historical_option = yes
+        c:FRA = {
+            trigger_event_non_silently = holy_league.15
+        }
+        add_diplomats = -1
+    }
+
+    option = {
+        name = holy_league.14.b
+        add_prestige = 5
+    }
+}
+
+holy_league.15 = {
+    type = country_event
+    title = holy_league.15.title
+    desc = holy_league.15.desc
+    fire_only_once = yes
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        name = holy_league.15.a
+        historical_option = yes
+        c:TUR = {
+            trigger_event_non_silently = holy_league.16
+        }
+        add_diplomats = -1
+    }
+
+    option = {
+        name = holy_league.15.b
+        c:TUR = {
+            trigger_event_non_silently = holy_league.17
+        }
+        add_prestige = 5
+    }
+}
+
+holy_league.16 = {
+    type = country_event
+    title = holy_league.16.title
+    desc = holy_league.16.desc
+    fire_only_once = yes
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        name = holy_league.16.a
+        create_alliance = { target = c:FRA }
+        if = {
+            limit = {
+                has_variable = finished_ottomans_vienna_decisions
+            }
+            custom_tooltip = {
+                text = "finish_two_ottomans_vienna_decision"
+                change_variable = {
+                    name = finished_ottomans_vienna_decisions
+                    add = 2
+                }
+            }
+        }
+    }
+}
+
+holy_league.17 = {
+    type = country_event
+    title = holy_league.17.title
+    desc = holy_league.17.desc
+    fire_only_once = yes
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+    }
+
+    illustration_tags = {
+        10 = angry
+    }
+
+    option = {
+        name = holy_league.17.a
     }
 }
 #Relation with Poland?
@@ -506,9 +630,12 @@ holy_league.8 = {
             limit = {
                 has_variable = finished_ottomans_vienna_decisions
             }
-            change_variable = {
-                name = finished_ottomans_vienna_decisions
-                add = 1
+            custom_tooltip = {
+                text = "finish_one_ottomans_vienna_decision"
+                change_variable = {
+                    name = finished_ottomans_vienna_decisions
+                    add = 1
+                }
             }
         }
         add_stability = 10
@@ -654,6 +781,7 @@ holy_league.12 = {
             limit = {
                 OR = {
                     is_member_of_international_organization = international_organization:catholic_church
+                    is_member_of_international_organization = international_organization:hre
                     is_allied_with = {
                         target = c:HAB
                     }
@@ -762,6 +890,72 @@ holy_league.13 = {
 #Defend the Vienna
 
 #Russia
+
+#Ottomans Victory
+holy_league.18 = {
+    type = country_event
+    title = holy_league.18.title
+    desc = holy_league.18.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = TUR
+        from = 1645.1.1
+        to = 1918.1.1
+        monthly_chance = 25
+    }
+
+    trigger = {
+        OR = {
+            has_or_had_tag = TUR
+            has_dlc = "0_4_echo_of_the_empire"
+        }
+        current_year >= 1645
+        location:vienna = {
+            owner = c:TUR
+            controller = c:TUR
+        }
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        name = holy_league.18.a
+        historical_option = yes
+        c:TUR = {
+            add_country_modifier = {
+                modifier = victory_over_the_holy_league
+                years = 50
+            }
+        }
+    }
+}
+
+#Holy League Victory
+holy_league.19 = {
+    type = country_event
+    title = holy_league.19.title
+    desc = holy_league.19.desc
+    fire_only_once = yes
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        name = holy_league.19.a
+        historical_option = yes
+        c:TUR = {
+            add_country_modifier = {
+                modifier = loose_hegemony
+                years = 50
+            }
+        }
+    }
+}
+
 
 
 

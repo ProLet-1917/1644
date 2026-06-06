@@ -110,10 +110,19 @@ prussia_conquer_silesia = {
     area = silesia_area
 }
 
-russia_conquer_ruthenia = {
+russia_conquer_europe = {
     preference_type = conquest
-    modifier = 1.5
+    modifier = 1.05
     region = ruthenia_region
+    region = steppes_region
+    region = caucasus_region
+}
+
+russia_conquer_asia = {
+    preference_type = conquest
+    modifier = 2.25
+    region = caucasus_region
+    region = khorasan_region
 }
 
 russia_conquer_baltic = {
@@ -128,6 +137,11 @@ russia_explore_siberia = {
     preference_type = exploration
     modifier = 3
     region = east_siberia_region
+    region = alaska_region
+    region = west_siberia_region
+    region = ural_region
+    region = russian_region
+    region = steppes_region
     area = lower_amur_area
     area = middle_amur_area
 }
@@ -140,8 +154,8 @@ netherlands_conquer_lowland = {
     area = brabant_area
     area = wallonia_area
     area = flanders_area
-    province_definition = lower_artois_province
-    province_definition = upper_artois_province
+    #province_definition = lower_artois_province
+    #province_definition = upper_artois_province
 }
 
 voc_conquer_indonesia = {
@@ -160,4 +174,36 @@ savoy_conquer_italy = {
     preference_type = conquest
     modifier = 3
     region = italy_region
+}
+
+ottomans_conquer_europe = {
+    preference_type = conquest
+    modifier = 3.5
+    area = podolia_area
+    area = aegean_archipelago_area
+    area = sicily_area
+    area = slovakia_area
+    area = picardy_area
+    #province_definition = noto_province
+    #province_definition = crete_province
+}
+
+unify_china = {
+    preference_type = conquest
+    modifier = 10
+    region = north_china_region
+    region = south_china_region
+    region = west_china_region
+    region = east_china_region
+    region = manchuria_region
+}
+
+france_natural_border = {
+    preference_type = conquest
+    modifier = 2.5
+    area = franche_comte_area
+    area = wallonia_area
+    area = flanders_area
+    area = brabant_area
+    area = rhineland_area
 }

@@ -15,7 +15,13 @@ peace_talk_in_westphalia = { #1648 May.-Oct.
 	}
 
 	can_end = {
-		var:peace_talk_in_westphalia_phase = 5
+		end_reason = {
+			trigger = {
+				var:peace_talk_in_westphalia_phase = 5
+			}
+			desc = "congress_finished"
+		}
+
 	}
 
 	visible = {

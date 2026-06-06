@@ -1,0 +1,18 @@
+local_governor_control_value = {
+    value = scope:target.var:already_has_a_local_governor.mil
+}
+
+local_governor_number = {
+    value = 0
+
+    add = {
+        value = total_locations_owned
+        divide = 250
+    }
+
+    add = {
+        value = total_primary_culture_population
+        add = total_accepted_culture_population
+        divide = 2500
+    }
+}

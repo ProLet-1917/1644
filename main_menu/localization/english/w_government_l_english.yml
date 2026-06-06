@@ -1,0 +1,11 @@
+﻿l_english:
+ chi_reintegrate_area: "Reintegrate the [GetFormableCountry('CHI').GetNameWithNoTooltip]"
+ chi_reintegrate_area_desc: "When we have retaken a [area|e] within [ShowScriptedGeographyName('china_geography')], we need to [integrate|e] it before it will be a part of our [country|e]."
+ chi_reintegrate_area_action: "Reintegrate [SCOPE.sArea('target').GetNameWithNoTooltip]."
+ chi_reintegrate_area_active: "Reintegrating [SCOPE.sArea('target').GetNameWithHighlightOnly]"
+ chi_reintegrate_area_action_progress: "[Cabinet.GetActionNumProgress|%]"
+ chi_reintegrate_area_action_progress_wordier: "$chi_reintegrate_area_active$"
+ chi_reintegrate_area_progress_wordier: "[integration|e] will be finished on [SCOPE.sArea('target').FindFirstNonIntegrated(SCOPE.sCountry('actor').Self).GetIntegrationETA]"
+ chi_reintegrate_area_progress_long_wordier: "@province_integration_speed! [SCOPE.sArea('target').FindFirstNonIntegrated(SCOPE.sCountry('actor').Self).GetIntegrationETA] \n\n@province_integration_speed! #W [Cabinet.GetActionNumProgress|%]#!"
+ chi_reintegrate_area_action_progress_tooltip: "[integration|e] at #W [SCOPE.sCabinet('cabinet').GetActionNumProgress|%]#!\nIntegration should be done on [SCOPE.sArea('target').FindFirstNonIntegrated(SCOPE.sCountry('actor').Self).GetIntegrationETA|Y]"
+ location_located_in_china_region: "Is a [conquered|e] [location|e] within [ShowScriptedGeographyName('china_geography')]"

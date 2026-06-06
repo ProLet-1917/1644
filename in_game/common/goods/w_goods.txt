@@ -1,0 +1,23 @@
+REPLACE:furniture  = {
+	category = produced
+	color = goods_furniture
+	default_market_price = 3
+
+	transport_cost = 0.5
+
+	demand_add = {
+		all = 0.00125
+	}
+	demand_multiply = {
+		upper = 10
+		nobles = 4
+		clergy = 2
+		burghers = 2.5
+		slaves = 0
+		tribesmen = 0
+	}
+	
+	wealth_impact_threshold = {
+		all = 1.0
+	}
+}

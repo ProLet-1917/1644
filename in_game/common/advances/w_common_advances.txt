@@ -7,7 +7,7 @@ early_institutionalized_tools = {
 
     starting_technology_level = 2
 
-    global_tools_output_modifier = 0.05
+    global_tools_output_modifier = 0.2
     global_rgo_build_time = -0.01
 
 }
@@ -22,6 +22,28 @@ legacy_apprenticeship = {
     trade_range_modifier = 0.05
 }
 
+coarse_wollens = {
+    age = age_2_renaissance
+    icon = zmw_merchant_taxes
+
+    requires = legacy_apprenticeship
+
+    starting_technology_level = 2
+
+    global_wool_output_modifier = 0.75
+}
+early_blast_furnace = {
+    age = age_2_renaissance
+    icon = serbian_mining
+
+    requires = early_institutionalized_tools
+
+    starting_technology_level = 2
+
+    global_iron_output_modifier = 0.75
+    #global_coal_output_modifier = 0.25
+}
+
 wooden_lifting_machine = {
     age = age_2_renaissance
 
@@ -29,8 +51,8 @@ wooden_lifting_machine = {
 
     starting_technology_level = 2
 
-    building_upkeep_costs = -0.01
-    global_urban_build_buildings_cost = -0.05
+    building_upkeep_efficiency = 0.05
+    global_urban_build_buildings_efficiency = 0.05
 }
 
 mercenary_contract = {

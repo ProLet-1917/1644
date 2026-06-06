@@ -26,17 +26,15 @@ diplomacy_manager = {
 	
 	#France
 	dependency = { first = FRA second = ORL subject_type = appanage }
-	dependency = { first = FRA second = BRR subject_type = fiefdom }
-	dependency = { first = FRA second = FOI subject_type = fiefdom }
-	dependency = { first = FRA second = BNV subject_type = fiefdom }
-	dependency = { first = FRA second = DOC subject_type = dominion }
-	dependency = { first = FRA second = PRO subject_type = dominion }
-	dependency = { first = FRA second = DAU subject_type = dominion }
-	dependency = { first = FRA second = BRI subject_type = dominion }
-	dependency = { first = FRA second = AUV subject_type = dominion }
-	dependency = { first = FRA second = BOU subject_type = dominion }
-	dependency = { first = FRA second = POI subject_type = dominion }
-	dependency = { first = FRA second = BUR subject_type = dominion }
+	dependency = { first = FRA second = NMO subject_type = appanage }
+	dependency = { first = FRA second = VDM subject_type = appanage }
+	dependency = { first = FRA second = ANG subject_type = appanage }
+	dependency = { first = FRA second = GUI subject_type = appanage }
+	dependency = { first = FRA second = NEV subject_type = appanage }
+	dependency = { first = FRA second = AUM subject_type = appanage }
+	dependency = { first = FRA second = UZE subject_type = appanage }
+	dependency = { first = FRA second = MOT subject_type = appanage }
+	#dependency = { first = FRA second = BNV subject_type = fiefdom }
 	dependency = { first = FRA second = CAT subject_type = vassal }
 	#dependency = { first = FRA second = LOR subject_type = vassal }
 	dependency = { first = FRA second = NFR subject_type = dominion }
@@ -61,6 +59,10 @@ diplomacy_manager = {
 	dependency = { first = HAB second = HUN subject_type = crown_territory }
 	dependency = { first = HAB second = CRO subject_type = crown_territory }
 	dependency = { first = HAB second = TIR subject_type = vassal }
+
+	#North Africa
+	dependency = { first = MOR second = TMB subject_type = tributary }
+	dependency = { first = FEZ second = SLE subject_type = tributary }
 	
 ###Southeast Asian Islands
 	dependency = { first = MTM second = PLB subject_type = vassal }

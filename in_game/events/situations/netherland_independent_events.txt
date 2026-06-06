@@ -169,7 +169,7 @@ netherland_independent.8 = { #Peace talk request from netherlands
 		}
 		destroy_international_organization = {
 			target = international_organization:union_of_utrecht			
-            	}
+		}
 	}
 }
 
@@ -183,6 +183,7 @@ netherland_independent.9 = { #Treaty of Trier
 	option = {
 		name = "netherland_independent.9.a"
 		#white_peace = "war_with_country(c:HAB)"
+		set_global_variable = peace_talk_about_dutches_end
 		every_country = {
 			limit = {
 				is_member_of_international_organization = international_organization:union_of_utrecht
@@ -230,6 +231,6 @@ netherland_independent.9 = { #Treaty of Trier
 		}
 		destroy_international_organization = {
 			target = international_organization:union_of_utrecht			
-            	}
+        }
 	}
 }

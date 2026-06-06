@@ -12,17 +12,22 @@
 
 	# 2. 结束条件
 	can_end = {
-		OR = {
-			current_year > 1661
-			
-			# 重建天朝：如果有国家成为了天朝组织的领袖，局势结束
-			AND = {
-				current_year >= 1645
-				exists = international_organization:middle_kingdom
-				international_organization:middle_kingdom = {
-					international_organization_has_leader = yes
+		end_reason = {
+			trigger = {
+				OR = {
+					current_year >= 1685
+
+					# 重建天朝：如果有国家成为了天朝组织的领袖，局势结束
+					AND = {
+						current_year >= 1645
+						exists = international_organization:middle_kingdom
+						international_organization:middle_kingdom = {
+							international_organization_has_leader = yes
+						}
+					}
 				}
 			}
+			desc = "new_dynasty_formed"
 		}
 	}
 

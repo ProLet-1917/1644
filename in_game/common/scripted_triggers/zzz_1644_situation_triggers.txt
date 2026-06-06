@@ -49,3 +49,18 @@ late_ming_crisis_unification_achieved = {
 	}
 }
 
+is_chinese_country = {
+	AND = {
+		OR = {
+			capital.region = region:west_china_region
+			capital.region = region:east_china_region
+			capital.region = region:north_china_region
+			capital.region = region:south_china_region
+			capital.region = region:manchuria_region
+		}
+		OR = {
+			has_primary_or_accepted_culture = culture:han_culture
+		}
+	}
+}
+

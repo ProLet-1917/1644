@@ -237,3 +237,21 @@ corruption_decay_modifier = {
 
     corruption_monthly_income = -0.5
 }
+
+corruption_from_dynasty_stability = {
+    category = country
+    type = country
+
+    scales_with = {
+        value = var:dynasty_stability
+        multiply = 0.001
+    }
+
+    potential_trigger = {
+        modifier:allow_corruption = yes
+        modifier:allow_dynasty_stability = yes
+    }
+
+    corruption_monthly_income = 0.01
+}
+

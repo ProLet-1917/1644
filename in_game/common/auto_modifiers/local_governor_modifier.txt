@@ -1,0 +1,15 @@
+num_local_governors_by_locations_owned = {
+
+    category = country
+    type = country
+
+    scales_with = {
+        multiply = local_governor_number
+    }
+
+    potential_trigger = {
+        country_rank_level >= 2
+    }
+
+    num_local_governors = 1
+}

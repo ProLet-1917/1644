@@ -878,6 +878,9 @@ Unify_germany = {
         scope:actor = {
             culture = { has_culture_group = culture_group:german_group }
         }
+        international_organization:hre = {
+            exists = no
+        }
     }
 
     allow = {
@@ -946,6 +949,9 @@ ug_improve_local_goverment = {
     potential = {
         scope:actor = {
             culture = { has_culture_group = culture_group:german_group }
+        }
+        international_organization:hre = {
+            exists = no
         }
     }
 
@@ -1354,6 +1360,9 @@ advance_towards_vienna = {
             }
             has_variable = unlock_ottomans_vienna_decisions
         }
+        NOT = {
+            has_global_variable = holy_league_already_start
+        }
     }
 
     allow = {
@@ -1369,15 +1378,17 @@ advance_towards_vienna = {
         scope:actor = {
             add_casus_belli =  {
                 target = c:HAB
-                type = casus_belli:cb_conquer_province
-                province = c:HAB.province:unter_dem_wienerwald_province
+                type = casus_belli:cb_the_last_crusade
             }
             declare_war_with_cb = {
                 target = c:HAB
-                type = casus_belli:cb_conquer_province
+                type = casus_belli:cb_the_last_crusade
 
             }
             trigger_event_non_silently = holy_league.9
+            set_global_variable = {
+                name = holy_league_already_start
+            }
         }
     }
 
@@ -1434,14 +1445,17 @@ control_the_crete = {
     }
 
     effect = {
-        scope:actor = {
-            change_variable = {
-                name = finished_ottomans_vienna_decisions
-                add = 1
-            }
-            hidden_effect = {
-                set_variable = {
-                    name = has_control_the_crete
+        custom_tooltip = {
+            text = "finish_one_ottomans_vienna_decision"
+            scope:actor = {
+                change_variable = {
+                    name = finished_ottomans_vienna_decisions
+                    add = 1
+                }
+                hidden_effect = {
+                    set_variable = {
+                        name = has_control_the_crete
+                    }
                 }
             }
         }
@@ -1498,14 +1512,17 @@ control_the_malta = {
     }
 
     effect = {
-        scope:actor = {
-            change_variable = {
-                name = finished_ottomans_vienna_decisions
-                add = 1
-            }
-            hidden_effect = {
-                set_variable = {
-                    name = has_control_the_malta
+        custom_tooltip = {
+            text = "finish_one_ottomans_vienna_decision"
+            scope:actor = {
+                change_variable = {
+                    name = finished_ottomans_vienna_decisions
+                    add = 1
+                }
+                hidden_effect = {
+                    set_variable = {
+                        name = has_control_the_malta
+                    }
                 }
             }
         }
@@ -1553,12 +1570,64 @@ reform_the_janissaries = {
         }
     }
     effect = {
-        scope:actor = {
-            remove_country_modifier = corrupted_janissaries
-            change_variable = {
-                name = finished_ottomans_vienna_decisions
-                add = 1
+        custom_tooltip = {
+            text = "finish_one_ottomans_vienna_decision"
+            scope:actor = {
+                remove_country_modifier = corrupted_janissaries
+                change_variable = {
+                    name = finished_ottomans_vienna_decisions
+                    add = 1
+                }
             }
+        }
+    }
+
+    ai_will_do = { value = 100 }	#They always want to do this
+}
+
+claim_the_seat_of_chinese_emperor = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:claim_the_seat_of_chinese_emperor_prices
+
+    cooldown = {
+        type = claim_the_seat_of_chinese_emperor
+        years = 20
+    }
+
+    potential = {
+        scope:actor = {
+            NOT = {
+                has_reform = government_reform:the_chinese_emperor
+            }
+            OR = {
+                has_reform = government_reform:the_chinese_warlords
+                has_dlc = "0_5_dawn_of_the_new_era"
+            }
+        }
+    }
+    allow = {
+        scope:actor = {
+            has_reform = government_reform:the_chinese_warlords
+            OR = {
+                country_rank = country_rank:rank_kingdom
+                country_rank = country_rank:rank_duchy
+                country_rank = country_rank:rank_county
+            }
+            num_locations_owned_or_owned_by_subjects >= 200
+        }
+    }
+    effect = {
+        scope:actor = {
+            add_reform = government_reform:the_chinese_emperor
+            remove_reform = government_reform:the_chinese_warlords
+            set_country_rank = country_rank:rank_empire
         }
     }
 

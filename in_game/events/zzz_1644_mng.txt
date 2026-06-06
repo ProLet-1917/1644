@@ -30,7 +30,7 @@ mng_1644.1 = { #南迁之议
    				if = { 
        				# 步营：5
        				while = {
-            			count = 5
+            			count = 4
            				create_sub_unit_with_owner = {
                 			type = a_1644_chinese_zhanbing
                 			owner = c:CSH
@@ -40,7 +40,7 @@ mng_1644.1 = { #南迁之议
         			}
         			# 骑营：10
         			while = {
-            			count = 10
+            			count = 2
             			create_sub_unit_with_owner = {
                 			type = a_1644_chinese_cavalry
                 			owner = c:CSH
@@ -88,17 +88,8 @@ mng_1644.1 = { #南迁之议
 		 			limit = { owner = root }
 					# 步营：5 * 1000 = 5000 人
 		 			while = {
-						count = 5
+						count = 4
 		 				create_sub_unit_with_owner = {
-							type = a_1644_chinese_zhanbing
-							owner = root
-							origin = this
-							experience = 60
-						}
-					}
-					while = {
-						count = 3
-						create_sub_unit_with_owner = {
 							type = a_1644_chinese_zhanbing
 							owner = root
 							origin = this
@@ -107,7 +98,7 @@ mng_1644.1 = { #南迁之议
 					}
 					# 骑营：2 营 600 人
 					while = {
-						count = 2
+						count = 1
 						create_sub_unit_with_owner = {
 							type = a_1644_chinese_cavalry
 							owner = root

@@ -1,0 +1,82 @@
+on_character_death = {
+    on_actions = {
+        on_local_governor_death
+    }
+}
+
+on_local_governor_death = {
+    trigger = {
+        scope:target = { has_character_modifier = local_governor }
+    }
+    effect = {
+        every_location_in_the_world = {
+            limit = {
+                var:already_has_a_local_governor = scope:target
+            }
+            remove_variable = already_has_a_local_governor
+            remove_variable = working_on_local_governor_actions #if have
+            remove_local_governor_actions_when_death = yes
+        }
+    }
+}
+
+on_capital_moved = {
+    on_actions = {
+        on_re_calc_governor
+    }
+}
+
+on_re_calc_governor = {
+    trigger = {
+        always = yes
+    }
+
+    effect = {
+        root = {
+            every_owned_location = {
+                limit = {
+                    has_variable = can_hire_local_governor
+                }
+                if = {
+                    limit = {
+                        NOT = {
+                            has_road_to = scope:new_capital
+                        }
+                    }
+                    remove_variable = can_hire_local_governor
+                    remove_variable = already_has_a_local_governor
+                    remove_variable = working_on_local_governor_actions #if have
+                    remove_local_governor_actions = yes
+                }
+            }
+        }
+    }
+}
+
+on_monthly_re_calc_governor = {
+    trigger = {
+        NOT = {
+            has_global_variable = has_re_calc_governored
+        }
+    }
+
+    effect = {
+        every_location_in_the_world = {
+            limit = {
+                NOR = {
+                    has_building = building_type:local_governor
+                    has_building = building_type:lieutenancy
+                }
+                has_variable = can_hire_local_governor
+            }
+            remove_variable = can_hire_local_governor
+            remove_variable = already_has_a_local_governor
+            remove_variable = working_on_local_governor_actions #if have
+            remove_local_governor_actions = yes
+        }
+        set_global_variable = {
+            name = has_re_calc_governored
+            days = 10
+        }
+    }
+}

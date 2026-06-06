@@ -1,0 +1,11 @@
+﻿l_simp_chinese:
+ chi_reintegrate_area: "重新整合[GetFormableCountry('CHI').GetNameWithNoTooltip]"
+ chi_reintegrate_area_desc: "当我们重新夺回[ShowScriptedGeographyName('china_geography')]内的一个[area|e]后，需要对其进行[integrate|e]，才能使其成为我们[country|e]的一部分。"
+ chi_reintegrate_area_action: "重新整合[SCOPE.sArea('target').GetNameWithNoTooltip]。"
+ chi_reintegrate_area_active: "正在重新整合[SCOPE.sArea('target').GetNameWithHighlightOnly]"
+ chi_reintegrate_area_action_progress: "[Cabinet.GetActionNumProgress|%]"
+ chi_reintegrate_area_action_progress_wordier: "$chi_reintegrate_area_active$"
+ chi_reintegrate_area_progress_wordier: "[integration|e]将于[SCOPE.sArea('target').FindFirstNonIntegrated(SCOPE.sCountry('actor').Self).GetIntegrationETA]完成"
+ chi_reintegrate_area_progress_long_wordier: "@province_integration_speed! [SCOPE.sArea('target').FindFirstNonIntegrated(SCOPE.sCountry('actor').Self).GetIntegrationETA] \n\n@province_integration_speed! #W [Cabinet.GetActionNumProgress|%]#!"
+ chi_reintegrate_area_action_progress_tooltip: "[integration|e]进度：#W [SCOPE.sCabinet('cabinet').GetActionNumProgress|%]#！\n预计于[SCOPE.sArea('target').FindFirstNonIntegrated(SCOPE.sCountry('actor').Self).GetIntegrationETA|Y]完成整合"
+ location_located_in_china_region: "是一个位于[ShowScriptedGeographyName('china_geography')]内的[conquered|e][location|e]"
