@@ -1,0 +1,88 @@
+﻿namespace = flavor_hsa
+
+flavor_hsa.3 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_hsa.3.title
+	desc = flavor_hsa.3.desc
+	outcome = neutral
+	trigger = {
+		tag = HSA
+		has_parliament = yes
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler_or_regent ?= { save_scope_as = target_character }
+	}
+
+	option = {
+		name = flavor_hsa.3.a
+
+		trigger = {
+			country_has_estate = estate_type:nobles_estate
+			modifier:nobles_estate_can_participate_in_parliament = yes
+		}
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = matters_of_the_nobles_modifier
+				years = -1
+				mode = replace
+			}
+		}
+
+	}
+	option = {
+		name = flavor_hsa.3.b
+
+		trigger = {
+			country_has_estate = estate_type:burghers_estate
+			modifier:burghers_estate_can_participate_in_parliament = yes
+		}
+
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = matters_of_the_burghers_modifier
+				years = -1
+				mode = replace
+			}
+		}
+
+	}
+	option = {
+		name = flavor_hsa.3.c
+
+		trigger = {
+			country_has_estate = estate_type:peasants_estate
+			modifier:peasants_estate_can_participate_in_parliament = yes
+		}
+
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = matters_of_the_peasants_modifier
+				years = -1
+				mode = replace
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_hsa.3.d
+
+
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = matters_of_the_crown_modifier
+				years = -1
+				mode = replace
+			}
+		}
+
+	}
+}

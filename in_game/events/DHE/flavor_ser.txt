@@ -1,0 +1,121 @@
+﻿namespace = flavor_ser
+
+flavor_ser.140 = { #The Father of Modern Serbian Literature
+	type = country_event
+	title = flavor_ser.140.title
+	desc = flavor_ser.140.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/enlightenment.dds"
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SER
+		from = 1757.1.1
+		to = 1811.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		culture:serbian = {
+			cultural_influence > 20
+			cultural_tradition > 20
+		}
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_dositheos
+			last_name = obradovic
+			birth_date = 1739.2.17
+			culture = culture:serbian
+			birth_location = location:timisoara
+			save_scope_as = target_character
+			estate = estate_type:clergy_estate
+			artist_skill = 0.70
+			artist = writer
+			create_in_limbo = yes
+		}
+		random_owned_location = {
+			limit = {
+				dominant_culture = culture:serbian
+			}
+
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_ser.140.a
+		historical_option = yes
+		scope:target_character = { move_country = root }
+		culture = {
+			add_cultural_influence = cultural_influence_extreme_bonus
+			add_cultural_tradition = cultural_tradition_extreme_bonus
+		}
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_right
+		}
+	}
+
+	option = {
+		name = flavor_ser.140.b
+		scope:target_character = { move_country = root }
+		culture = {
+			add_cultural_influence = cultural_influence_mild_bonus
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+		scope:target_location = {
+			create_art = {
+				artist = scope:target_character
+				quality = {
+					integer_range = {
+						min = 50
+						max = 90
+					}
+				}
+				type = work_of_art_type:poem
+			}
+		}
+	}
+}
+
+flavor_ser.240 = { #The Illyrian Movement
+	type = country_event
+	title = flavor_ser.240.title
+	desc = flavor_ser.240.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/enlightenment.dds"
+
+	historical_info = flavor_ser.240.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = SER
+		from = 1780.1.1
+		to = 1836.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		dominant_culture = {
+			has_culture_group = culture_group:slavic_group
+		}
+		has_embraced_institution = institution:enlightenment
+	}
+
+	option = {
+		name = flavor_ser.240.a
+		add_stability = stability_extreme_penalty
+		culture = {
+			add_cultural_tradition = cultural_tradition_severe_bonus
+			add_cultural_influence = cultural_influence_severe_bonus
+		}
+	}
+
+	option = {
+		name = flavor_ser.240.b
+		add_stability = stability_extreme_bonus
+	}
+}

@@ -1,0 +1,137 @@
+﻿namespace = flavor_mal
+
+#The Transformation of the Malian Military
+flavor_mal.3 = {
+	type = country_event
+	title = flavor_mal.3.title
+	desc = flavor_mal.3.desc
+	outcome = neutral
+	fire_only_once = yes
+	
+	dynamic_historical_event = {
+		tag = MAL
+		from = 1644.1.1
+		to = 1850.1.1
+		monthly_chance = 1
+	}
+	
+	trigger = {
+		has_advance = sofa_levies_advance
+		any_country_sub_unit = {
+			count >= 8
+			sub_unit_type = unit_type:a_sofa_infantry
+		}
+	}
+	
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+	}
+
+	#We should let the Sofa fight our wars
+	option = {
+		name = flavor_mal.3.a
+		historical_option = yes
+		add_manpower = { value = root.monthly_manpower multiply = 4 }
+		change_societal_value = {
+			type = quality_vs_quantity
+			value = societal_value_move_to_right
+		}
+	}
+	
+	#We must reduce the influence of the Sofa
+	option = {
+		name = flavor_mal.3.b
+		add_army_tradition = army_tradition_extreme_bonus
+		change_societal_value = {
+			type = quality_vs_quantity
+			value = societal_value_move_to_left
+		}
+	}
+}
+
+#Reclaiming Takedda
+flavor_mal.22 = {
+	type = country_event
+	title = flavor_mal.22.title
+	desc = flavor_mal.22.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_copper.dds"
+
+	fire_only_once = yes
+
+	trigger = {
+		location:takedda.owner ?= root
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	dynamic_historical_event = {
+		tag = MAL
+		from = 1644.4.1
+		to = 1918.1.1
+		monthly_chance = 10
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		location:takedda = {
+			save_scope_as = target_location
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	#Restore its copper mines
+	option = {
+		name = flavor_mal.22.a
+
+		scope:target_location = {
+			change_max_raw_material_workers = 2
+		}
+
+		add_migration = {
+			owner = this
+			from = root.capital.province_definition
+			to = scope:target_location.province_definition
+			amount = 0.5
+			type = pop_type:peasants
+			months = 10
+		}
+	}
+
+	#Enforce our rule there
+	option = {
+		name = flavor_mal.22.b
+
+		scope:target_location = {
+			if = {
+				limit = {
+					has_building = building_type:castle
+				}
+				change_building_level_in_location = {
+					building = building_type:castle
+					value = 1
+				}
+			}
+			else = {
+				construct_building = {
+					building_type = building_type:castle
+					cost_multiplier = 0.2
+					cost_multiplier_reason = military_cheap_sponsorship
+				}
+			}
+		}
+	}
+}

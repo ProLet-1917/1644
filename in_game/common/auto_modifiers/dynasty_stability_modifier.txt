@@ -129,13 +129,12 @@ corruption_effect_dynasty_stability_modifier = {
 
     scales_with = {
         value = var:corruption
-        multiply = -0.01
-        subtract = 0.5
+        multiply = -1
     }
 
     potential_trigger = {
         modifier:allow_dynasty_stability = yes
     }
 
-    dynasty_stability_monthly_income = 0.1
+    dynasty_stability_monthly_income = 0.01
 }

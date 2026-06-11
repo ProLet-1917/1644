@@ -1,5 +1,3405 @@
-﻿# Empty override file
-# Original file: events\DHE\flavor_CAS.txt
-# This file disables all events from the original file
+﻿namespace = flavor_cas
 
-namespace = flavor_cas
+flavor_cas.7 = { #Giulio Alberoni
+	type = country_event
+	title = flavor_cas.7.title
+	desc = flavor_cas.7.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1694.1.1
+		to = 1752.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:nobles_estate }
+
+		create_character = {
+			first_name = name_julius
+			last_name = Alberoni
+			religion = religion:catholic
+			estate = estate_type:clergy_estate
+			birth_date = 1664.5.21
+			female = no
+			birth_location = location:piacenza
+			culture = culture:emilian
+			adm = 69
+			dip = 81
+			mil = 32
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_cas.7.a
+		historical_option = yes
+
+		add_legitimacy = legitimacy_weak_bonus
+		scope:target_character = { move_country = root }
+	}
+
+	option = {
+		name = flavor_cas.7.b
+		scope:target_character = { banish_character = yes }
+	}
+}
+
+flavor_cas.8 = { #José Moñino #PRISON
+	type = country_event
+	fire_only_once = yes
+	title = flavor_cas.8.title
+	desc = flavor_cas.8.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1758.1.1
+		to = 1808.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+
+		create_character = {
+			first_name = name_joseph
+			last_name = Monino
+			religion = religion:catholic
+			estate = estate_type:burghers_estate
+			birth_date = 1728.10.21
+			female = no
+			birth_location = location:murcia
+			culture = culture:castilian
+			adm = 83
+			dip = 71
+			mil = 28
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_cas.8.a
+		historical_option = yes
+
+		add_legitimacy = legitimacy_weak_bonus
+		scope:target_character = { move_country = root }
+		add_country_modifier = { modifier = reform_of_law years = 5 mode = add_and_extend }
+	}
+
+	option = {
+		name = flavor_cas.8.b
+		scope:target_character = { banish_character = yes }
+	}
+}
+
+flavor_cas.9 = { #Constitution of 1812
+	type = country_event
+	title = flavor_cas.9.title
+	desc = flavor_cas.9.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1780.1.1
+		to = 1850.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_government_estate_effect = yes
+	}
+	
+	trigger = {
+		government_type = government_type:monarchy
+		legitimacy <= 60
+		has_ruler = yes
+		has_law = distribution_of_power_law
+		NOT = {
+			parliament_type = parliament_type:constitutional_parliament
+		}
+		modifier:has_a_parliamentary_system = yes
+	}
+
+	option = {
+		name = flavor_cas.9.a
+
+		set_parliament_type = parliament_type:constitutional_parliament
+		add_legitimacy = legitimacy_severe_bonus
+	}
+
+	option = {
+		name = flavor_cas.9.b
+
+		add_stability = stability_extreme_penalty
+	}
+}
+
+flavor_cas.49 = { #Nueva Recopilación
+	type = country_event
+	title = flavor_cas.49.title
+	desc = flavor_cas.49.desc
+	outcome = neutral
+	historical_info = flavor_cas.49.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1644.1.1
+		to = 1660.1.1
+		monthly_chance = 4
+	}
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	trigger = {
+		ruler_or_regent ?= {
+			OR = {
+				has_trait = lawgiver
+				adm >= 65
+			}
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:clergy_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+
+		unlock_policy_effect = {
+			type = nueva_recopilacion_policy
+		}
+	}
+
+	option = {
+		name = flavor_cas.49.a
+
+		add_policy = policy:nueva_recopilacion_policy
+
+		change_societal_value = {
+			type = centralization_vs_decentralization
+			value = societal_value_move_to_left
+		}
+	}
+
+	option = {
+		name = flavor_cas.49.b
+
+		add_stability = stability_mild_bonus
+		change_societal_value = {
+			type = centralization_vs_decentralization
+			value = societal_value_move_to_right
+		}
+	}
+}
+
+flavor_cas.50 = { #Novísima Recopilación
+	type = country_event
+	title = flavor_cas.50.title
+	desc = flavor_cas.50.desc
+	outcome = neutral
+	historical_info = flavor_cas.50.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1700.1.1
+		to = 1850.1.1
+		monthly_chance = 3
+	}
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	trigger = {
+		has_policy = nueva_recopilacion_policy
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_cas.50.a
+
+		custom_tooltip = {
+			text = spa_alter_nueva_recopilacion_policy_tt
+			set_variable = spa_altered_nueva_recopilacion
+		}
+	}
+
+	option = {
+		name = flavor_cas.50.b
+
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_extreme_bonus
+		}
+
+		add_stability = stability_mild_bonus
+	}
+}
+
+flavor_cas.63 = { #Artillery Academy of Segovia
+	type = country_event
+	title = flavor_cas.63.title
+	desc = flavor_cas.63.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/artillery_institution.dds"
+
+	fire_only_once = yes
+
+	historical_info = flavor_cas.63.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1764.1.1
+		to = 1800.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:segovia
+		has_advance = artillery_institution_advance
+		has_embraced_institution = institution:artillery_institution
+	}
+
+	option = {
+		name = flavor_cas.63.a
+		historical_option = yes
+		add_army_tradition = army_tradition_severe_bonus
+		location:segovia = {
+			construct_building = {
+				building_type = building_type:segovia_artillery_academy
+			}
+		}
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_right }
+	}
+
+	option = {
+		name = flavor_cas.63.b
+		add_army_tradition = army_tradition_severe_penalty
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
+	}
+}
+
+flavor_cas.64 = { #The Royal Botanical Expedition to New Granada
+	type = country_event
+	title = flavor_cas.64.title
+	desc = flavor_cas.64.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/new_world.dds"
+	
+	fire_only_once = yes
+
+	historical_info = flavor_cas.64.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1783.1.1
+		to = 1816.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		has_presence_in = region:colombia_region
+	}
+
+	option = {
+		name = flavor_cas.64.a
+		historical_option = yes
+		change_gold_effect = { scale = -6 }
+		add_research_progress = research_progress_severe_bonus
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_right }
+	}
+
+	option = {
+		name = flavor_cas.64.b
+		add_research_progress = research_progress_severe_penalty
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
+	}
+}
+
+flavor_cas.67 = { #José Antonio Gaztañeta and the Rebirth of the Navy
+	type = country_event
+	title = flavor_cas.67.title
+	desc = flavor_cas.67.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/units/navy_heavy_ship_6.dds"
+	
+	fire_only_once = yes
+
+	historical_info = flavor_cas.67.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1690.1.1
+		to = 1710.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		has_ports = yes
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_joseph.name_anthony
+			last_name = Gaztaneta
+			birth_date = 1656.8.11
+			birth_location = location:san_sebastian
+			estate = estate_type:peasants_estate
+			adm = { 20 70 }
+			dip = { 20 70 }
+			mil = { 60 90 }
+			culture = culture:basque
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		random_port_in_country = {
+			save_scope_as = target_location
+		}
+		set_variable = {
+			name = total_gained_ships_variable
+			value = {
+				add = 3
+				add = {
+					value = {
+						add = expected_navy_size
+						multiply = 0.05
+					}
+				}
+				add = {
+					value = {
+						add = navy_tradition
+						multiply = 0.1
+					}
+				}
+				add = {
+					value = {
+						add = num_of_non_rural_ports
+						multiply = 0.1
+					}
+				}
+				max = {
+					value = expected_navy_size
+					multiply = 0.1
+				}
+				ceiling = yes
+			}
+		}
+	}
+
+	option = {
+		name = flavor_cas.67.a
+		historical_option = yes
+		change_gold_effect = { scale = -6
+		}
+		add_navy_tradition = navy_tradition_severe_bonus
+		change_societal_value = {
+			type = land_vs_naval
+			value = societal_value_large_move_to_right
+		}
+		custom_tooltip = {
+			text = flavor_cas.67.a.tt
+			while = {
+				limit = {
+					var:total_gained_ships_variable > 0
+				}
+				change_variable = {
+					name = total_gained_ships_variable
+					subtract = 1
+				}
+				scope:target_location = {
+					create_sub_unit_of_category = sub_unit_category:navy_heavy_ship
+				}
+			}
+		}
+		scope:target_character = {
+			move_country = root
+		}
+		scope:target_character = {
+			add_random_trait_from_category = admiral
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add
+			}
+		}
+	}
+
+	option = {
+		name = flavor_cas.67.b
+		add_navy_tradition = navy_tradition_severe_penalty
+		change_societal_value = {
+			type = land_vs_naval
+			value = societal_value_large_move_to_left
+		}
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+	}
+
+	after = {
+		remove_variable = total_gained_ships_variable
+	}
+}
+
+flavor_cas.68 = { #Naval Reforms of Jorge Juan y Santacilia
+	type = country_event
+	title = flavor_cas.68.title
+	desc = flavor_cas.68.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/units/navy_light_ship_6.dds"
+	
+	fire_only_once = yes
+
+	historical_info = flavor_cas.68.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1745.1.1
+		to = 1760.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		has_ports = yes
+	}
+
+	immediate = {
+
+		create_character = {
+			first_name = name_george
+			dynasty = dynasty:juan_y_santacilia_dynasty
+			birth_date = 1713.1.5
+			birth_location = location:elche
+			estate = estate_type:nobles_estate
+			adm = { 30 80 }
+			dip = { 30 80 }
+			mil = { 60 90 }
+			culture = culture:castilian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_cas.68.a
+		historical_option = yes
+		change_gold_effect = { scale = -4
+		}
+		add_navy_tradition = navy_tradition_mild_bonus
+		change_societal_value = {
+			type = land_vs_naval
+			value = societal_value_move_to_right
+		}
+		scope:target_character = {
+			move_country = root
+		}
+		scope:target_character = {
+			add_random_trait_from_category = admiral
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add
+			}
+		}
+	}
+
+	option = {
+		name = flavor_cas.68.b
+		add_navy_tradition = navy_tradition_mild_penalty
+		change_societal_value = {
+			type = land_vs_naval
+			value = societal_value_move_to_left
+		}
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+	}
+}
+
+flavor_cas.69 = { #Claudio Coello
+	type = country_event
+	title = flavor_cas.69.title
+	desc = flavor_cas.69.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/enlightenment.dds"
+	
+	fire_only_once = yes
+
+	historical_info = flavor_cas.68.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1680.1.1
+		to = 1693.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:el_escorial
+		location:el_escorial = {
+			has_building = building_type:el_escorial_palace
+		}
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_claude
+			last_name = Coello
+			birth_date = 1642.3.2
+			birth_location = location:madrid
+			culture = culture:portuguese
+			estate = estate_type:burghers_estate
+			artist_skill = { 0.65 0.85 }
+			artist = painter
+			create_in_limbo = yes
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_cas.69.a
+		historical_option = yes
+		change_gold_effect = { scale = -4 }
+		scope:target_character = {
+			move_country = root
+		}
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+	}
+
+	option = {
+		name = flavor_cas.69.b
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_penalty
+		}
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+	}
+}
+
+flavor_cas.70 = { #Bartolomé Esteban Murillo
+	type = country_event
+	title = flavor_cas.70.title
+	desc = flavor_cas.70.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+
+	fire_only_once = yes
+
+	historical_info = flavor_cas.70.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1660.1.1
+		to = 1680.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:sevilla
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_bartholomew.name_stephen
+			last_name = Murillo
+			birth_date = 1617.12.25
+			birth_location = location:sevilla
+			estate = estate_type:burghers_estate
+			artist_skill = { 0.65 0.85 }
+			culture = culture:castilian
+			save_scope_as = target_character
+			create_in_limbo = yes
+			artist = painter
+		}
+	}
+
+	option = {
+		name = flavor_cas.70.a
+		historical_option = yes
+		change_gold_effect = { scale = -3 }
+		change_societal_value = {
+			type = spiritualist_vs_humanist
+			value = societal_value_move_to_left
+		}
+		scope:target_character = {
+			move_country = root
+		}
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+
+	option = {
+		name = flavor_cas.70.b
+		change_societal_value = {
+			type = spiritualist_vs_humanist
+			value = societal_value_move_to_right
+		}
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_penalty
+		}
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+	}
+}
+
+flavor_cas.71 = { #Blas de Lezo y Olavarrieta
+	type = country_event
+	title = flavor_cas.71.title
+	desc = flavor_cas.71.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/units/navy_heavy_ship_5.dds" 
+	
+	fire_only_once = yes
+
+	historical_info = flavor_cas.71.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1735.1.1
+		to = 1741.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		owns = location:san_sebastian
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_blaise
+			last_name = de_Lezo_y_Olavarrieta
+			birth_date = 1689.2.3
+			birth_location = location:san_sebastian
+			estate = estate_type:burghers_estate
+			adm = 45
+			dip = 30
+			mil = 90
+			culture = culture:basque
+			save_scope_as = target_character
+			script = spa_blas_de_lezo
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_cas.71.a
+		historical_option = yes
+		scope:target_character = {
+			move_country = root
+		}
+		scope:target_character = {
+			add_random_trait_from_category = admiral
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add
+			}
+		}
+	}
+
+	option = {
+		name = flavor_cas.71.b
+		scope:target_character = {
+			move_country = root
+		}
+		scope:target_character = {
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+			remove_character_modifier = refuses_to_serve_in_cabinet
+		}
+	}
+}
+
+flavor_cas.74 = { #Alejandro Malaspina
+	type = country_event
+	title = flavor_cas.74.title
+	desc = flavor_cas.74.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	image = "gfx/interface/illustrations/institutions/enlightenment.dds"
+	historical_info = flavor_cas.74.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1790.1.1
+		to = 1810.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		has_presence_in = continent:america
+		has_presence_in = continent:asia
+		has_embraced_institution = institution:enlightenment
+	}
+
+	immediate = {
+
+		create_character = {
+			first_name = name_alexander
+			dynasty = dynasty:malaspina_dynasty
+			birth_date = 1754.11.5
+			birth_location = location:massa
+			estate = estate_type:nobles_estate
+			adm = { 50 80 }
+			dip = { 50 80 }
+			mil = { 20 40 }
+			culture = culture:tuscan
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_cas.74.a
+		historical_option = yes
+		change_gold_effect = { scale = -4 }
+		scope:target_character = {
+			move_country = root
+		}
+		scope:target_character = {
+			add_random_trait_from_category = explorer
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add
+			}
+		}
+		change_societal_value = {
+			type = outward_vs_inward
+			value = societal_value_move_to_left
+		}
+	}
+
+	option = {
+		name = flavor_cas.74.b
+		add_prestige = prestige_mild_penalty
+		change_societal_value = {
+			type = outward_vs_inward
+			value = societal_value_move_to_right
+		}
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+	}
+}
+
+flavor_cas.75 = { #Bernardo de Gálvez
+	type = country_event
+	title = flavor_cas.75.title
+	desc = flavor_cas.75.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_cas.75.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1780.1.1
+		to = 1795.1.1
+		monthly_chance = 10
+	}
+	illustration_tags = {
+ 		10 = regular
+ 		10 = interior
+	}
+	
+	trigger = {
+		has_presence_in = continent:america
+		any_rival = {
+			has_presence_in = continent:america
+		}
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_bernard
+			dynasty = dynasty:de_galvez_dynasty
+			birth_date = 1746.7.23
+			birth_location = location:velez_malaga
+			estate = estate_type:nobles_estate
+			adm = { 50 70 }
+			dip = { 50 70 }
+			mil = { 70 90 }
+			culture = culture:castilian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		random_rival = {
+			limit = {
+				has_presence_in = continent:america
+			}
+			save_scope_as = target_rival
+		}
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+	}
+
+	option = {
+		name = flavor_cas.75.a
+		historical_option = yes
+		change_gold_effect = { scale = -4 }
+		scope:target_character = {
+			move_country = root
+		}
+		add_army_tradition = army_tradition_mild_bonus
+		scope:target_character = {
+			add_random_trait_from_category = general
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add
+			}
+		}
+		change_societal_value = {
+			type = belligerent_vs_conciliatory
+			value = societal_value_move_to_left
+		}
+	}
+
+	option = {
+		name = flavor_cas.75.b
+		add_army_tradition = army_tradition_mild_penalty
+		change_societal_value = {
+			type = belligerent_vs_conciliatory
+			value = societal_value_move_to_right
+		}
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+	}
+}
+
+flavor_cas.76 = { #The Heroism of Cosme Damián Churruca #GRAVEYARD
+	type = country_event
+	title = flavor_cas.76.title
+	desc = flavor_cas.76.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/situation/golden_age_of_piracy.dds"
+	
+	fire_only_once = yes
+
+	historical_info = flavor_cas.76.historical_info
+
+	trigger = {
+		current_year > 1790
+		current_year < 1805
+		scope:lost_navy_units > 0
+		scope:actor = {
+			OR = {
+				owner = { tag = CAS }
+				owner = { tag = SPA }
+			}
+		}
+	}
+
+	immediate = {
+		location:san_sebastian = { create_dynasty_from_location = Churruca }
+		create_character = {
+			first_name = name_cosmas.name_damian
+			last_name = Churruca
+			birth_date = 1761.9.27
+			birth_location = location:san_sebastian
+			estate = estate_type:nobles_estate
+			adm = { 50 70 }
+			dip = { 50 70 }
+			mil = { 70 90 }
+			culture = culture:basque
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		kill_character = {
+			target = scope:target_character
+			reason = self_defence
+		}
+		scope:actor.unit_location = { save_scope_as = target_location }
+	}
+
+	option = {
+		name = flavor_cas.76.a
+		historical_option = yes
+		add_navy_tradition = navy_tradition_severe_bonus
+		add_country_modifier = { modifier = spa_inspiring_heroism years = 10 mode = add }
+	}
+}
+
+flavor_cas.77 = { #The Breakthrough of the Elhuyar Brothers
+	type = country_event
+	title = flavor_cas.77.title
+	desc = flavor_cas.77.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/enlightenment.dds"
+	
+	fire_only_once = yes
+
+	historical_info = flavor_cas.77.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1780.1.1
+		to = 1805.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		has_embraced_institution = institution:enlightenment
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_faustus
+			last_name = de_elhuyar
+			birth_date = 1755.11.11
+			birth_location = location:logrono
+			estate = estate_type:burghers_estate
+			artist_skill = { 0.7 0.85 }
+			artist = scientist
+			culture = culture:castilian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		create_character = {
+			first_name = name_john.name_joseph
+			last_name = de_elhuyar
+			birth_date = 1754.6.15
+			birth_location = location:logrono
+			estate = estate_type:burghers_estate
+			artist_skill = { 0.7 0.85 }
+			artist = scientist
+			culture = culture:castilian
+			save_scope_as = target_character2
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_cas.77.a
+		historical_option = yes
+		change_gold_effect = { scale = -6 }
+		add_research_progress = research_progress_severe_bonus
+		scope:target_character = {
+			move_country = root
+		}
+		scope:target_character2 = {
+			move_country = root
+		}
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_large_move_to_right
+		}
+	}
+
+	option = {
+		name = flavor_cas.77.b
+		add_prestige = prestige_severe_penalty
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_large_move_to_left
+		}
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+			kill_character_silently = scope:target_character2
+		}
+	}
+}
+
+flavor_cas.78 = { #The Balmis Expedition
+	type = country_event
+	title = flavor_cas.78.title
+	desc = flavor_cas.78.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/enlightenment.dds"
+	
+	fire_only_once = yes
+
+	historical_info = flavor_cas.78.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1800.1.1
+		to = 1820.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		has_embraced_institution = institution:enlightenment
+		has_presence_in = continent:america
+		has_presence_in = continent:asia
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_francis.name_xavier
+			last_name = de_balmis
+			birth_date = 1755.11.11
+			birth_location = location:alicante
+			estate = estate_type:burghers_estate
+			artist_skill = { 0.8 0.9 }
+			artist = scientist
+			culture = culture:castilian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_cas.78.a
+		historical_option = yes
+		change_gold_effect = { scale = -3 }
+		add_research_progress = research_progress_mild_bonus
+		scope:target_character = {
+			move_country = root
+		}
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_right
+		}
+	}
+
+	option = {
+		name = flavor_cas.78.b
+		change_gold_effect = { scale = -1 }
+		add_research_progress = research_progress_weak_bonus
+		scope:target_character = {
+			move_country = root
+		}
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_minor_move_to_right
+		}
+	}
+
+	option = {
+		name = flavor_cas.78.c
+		add_prestige = prestige_mild_penalty
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+	}
+}
+
+flavor_cas.79 = { #Industrial Reforms of Pedro Rodriguez
+	type = country_event
+	title = flavor_cas.79.title
+	desc = flavor_cas.79.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/industrialization.dds"
+	
+	fire_only_once = yes
+
+	historical_info = flavor_cas.79.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1760.1.1
+		to = 1780.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		has_embraced_institution = institution:enlightenment
+		has_embraced_institution = institution:industrialization
+	}
+
+	immediate = {
+		location:tineo = { create_dynasty_from_location = Rodriguez }
+		create_character = {
+			first_name = name_peter
+			dynasty = dynasty:Rodriguez
+			birth_date = 1723.7.1
+			birth_location = location:tineo
+			estate = estate_type:nobles_estate
+			adm = { 50 80 }
+			dip = { 50 80 }
+			mil = { 20 40 }
+			culture = culture:leonese
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_cas.79.a
+		historical_option = yes
+		change_gold_effect = { scale = -4 }
+		scope:target_character = {
+			move_country = root
+		}
+		add_research_progress = research_progress_mild_bonus
+		change_societal_value = {
+			type = mercantilism_vs_free_trade
+			value = societal_value_move_to_left
+		}
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_right
+		}
+	}
+
+	option = {
+		name = flavor_cas.79.b
+		change_societal_value = {
+			type = mercantilism_vs_free_trade
+			value = societal_value_move_to_right
+		}
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+	}
+}
+
+flavor_cas.80 = { #Gaspar Melchor de Jovellanos
+	type = country_event
+	title = flavor_cas.80.title
+	desc = flavor_cas.80.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/enlightenment.dds"
+	
+	fire_only_once = yes
+
+	historical_info = flavor_cas.80.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1780.1.1
+		to = 1800.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		has_embraced_institution = institution:enlightenment
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_casper.name_melchior
+			last_name = de_Jovellanos
+			birth_date = 1744.1.5
+			birth_location = location:oviedo
+			estate = estate_type:burghers_estate
+			adm = { 75 90 }
+			dip = { 75 90 }
+			mil = { 20 40 }
+			culture = culture:leonese
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_cas.80.a
+		historical_option = yes
+		add_stability = stability_mild_bonus
+		change_societal_value = {
+			type = mercantilism_vs_free_trade
+			value = societal_value_move_to_right
+		}
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+	}
+
+	option = {
+		name = flavor_cas.80.b
+		add_stability = stability_mild_penalty
+		scope:target_character = {
+			move_country = root
+		}
+		change_societal_value = {
+			type = mercantilism_vs_free_trade
+			value = societal_value_move_to_left
+		}
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_right
+		}
+	}
+}
+
+flavor_cas.83 = { #Canonization of Fernando III	#GRAVEYARD
+	type = country_event
+	title = flavor_cas.83.title
+	desc = flavor_cas.83.desc
+	outcome = neutral
+	fire_only_once = yes
+
+	historical_info = flavor_cas.83.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1650.1.1
+		to = 1750.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+ 		10 = regular
+ 		10 = interior
+	}
+
+	trigger = {
+		religion = religion:catholic
+		character:cas_fernando_iii_burgundy ?= { is_saint = no }
+	}
+	
+	immediate = {
+		character:cas_fernando_iii_burgundy ?= { save_scope_as = target_ruler }
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+
+	option = {
+		name = flavor_cas.83.a
+		historical_option = yes
+		scope:target_ruler = {
+			make_saint = root
+		}
+		add_religious_influence = religious_influence_severe_bonus
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_bonus }
+		change_societal_value = { type = spiritualist_vs_humanist value = societal_value_move_to_left }
+	}
+
+	option = {
+		name = flavor_cas.83.b
+		add_prestige = prestige_severe_bonus
+		add_religious_influence = religious_influence_severe_penalty
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_penalty }
+		change_societal_value = { type = spiritualist_vs_humanist value = societal_value_move_to_right }
+	}
+}
+
+flavor_cas.84 = { #Spain and the Imperial Crown
+	type = country_event
+	title = flavor_cas.84.title
+	desc = flavor_cas.84.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/international_organization_types/hre.dds"
+		
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 100
+	}
+
+	fire_only_once = yes
+
+	historical_info = flavor_cas.84.historical_info
+
+	immediate = {
+		ruler = {
+			save_scope_as = target_ruler
+		}
+	}
+
+	trigger = {
+		exists = international_organization:hre
+		is_leader_of_international_organization = international_organization:hre
+		has_ruler = yes
+	}
+
+	option = {
+		name = flavor_cas.84.a
+		historical_option = yes
+		add_legitimacy = legitimacy_severe_bonus
+		add_prestige = prestige_severe_bonus
+	}
+}
+
+flavor_cas.102 = { #The Nueva Planta Decrees
+	hide_portraits = yes
+	fire_only_once = yes
+	title = flavor_cas.102.title
+	desc = flavor_cas.102.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1700.1.1
+		to = 1836.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	historical_info = flavor_cas.102.historical_info
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+		#event_illustration_estate_background_effect = { background = type:crown_estate }
+		ruler = {
+			save_scope_as = target_character
+		}
+	}
+
+	trigger = {
+		government_type = government_type:monarchy
+		has_ruler = yes
+	}
+
+	option = {
+		name = flavor_cas.102.a
+		historical_option = yes
+		add_stability = stability_severe_penalty
+		unlock_government_reform_effect = { type = nueva_planta }
+		change_societal_value = { type = centralization_vs_decentralization value = societal_value_large_move_to_left }
+		change_societal_value = { type = absolutism_vs_liberalism value = societal_value_large_move_to_left }
+		custom_tooltip = {
+			text = flavor_cas.102.a.tt
+			area:aragon_area = {
+				every_location_in_area = {
+					limit = {
+						owner ?= root
+					}
+					add_location_modifier = { modifier = spa_implemented_nueva_planta years = 20 mode = add }
+				}
+			}
+			area:catalonia_area = {
+				every_location_in_area = {
+					limit = {
+						owner ?= root
+					}
+					add_location_modifier = { modifier = spa_implemented_nueva_planta years = 20 mode = add }
+				}
+			}
+			area:valencia_area = {
+				every_location_in_area = {
+					limit = {
+						owner ?= root
+					}
+					add_location_modifier = { modifier = spa_implemented_nueva_planta years = 20 mode = add }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_cas.102.b
+		add_stability = stability_mild_bonus
+		change_societal_value = { type = centralization_vs_decentralization value = societal_value_move_to_right }
+		change_societal_value = { type = absolutism_vs_liberalism value = societal_value_move_to_right }
+	}
+}
+
+flavor_cas.103 = { #Francisco de Zurbarán
+	type = country_event
+	title = flavor_cas.103.title
+	desc = flavor_cas.103.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	historical_info = flavor_cas.103.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1644.1.1
+		to = 1664.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		religion = religion:catholic
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		create_character = {
+			first_name = name_francis
+			last_name = Zurbaran_SPA
+			birth_date = 1598.11.7
+			birth_location = location:badajoz
+			estate = estate_type:clergy_estate
+			artist_skill = { 0.65 0.85 }
+			artist = painter
+			culture = culture:castilian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_cas.103.a
+		historical_option = yes
+		change_gold_effect = { scale = -3 }
+		scope:target_character = {
+			move_country = root
+		}
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+		change_societal_value = { type = spiritualist_vs_humanist value = societal_value_move_to_left }
+	}
+
+	option = {
+		name = flavor_cas.103.b
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_penalty }
+		change_societal_value = { type = spiritualist_vs_humanist value = societal_value_move_to_right }
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+	}
+}
+
+flavor_cas.111 = { #The Rise of Potosí
+	type = country_event
+	title = flavor_cas.111.title
+	desc = flavor_cas.111.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_cas.111.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		location:ccantumarcani = {
+			raw_material = goods:silver
+			owner ?= {
+				OR = {
+					this = root
+					this = { is_subject_of = root }
+				}
+			}
+		}
+	}
+
+	immediate = {
+		location:ccantumarcani = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_cas.111.a
+		location:ccantumarcani = {
+			change_development = development_severe_bonus
+			change_max_raw_material_workers = 3
+		}
+		add_migration = {
+			owner = this
+			from = root.capital.province_definition
+			to = scope:target_location.province_definition
+			culture = root.culture
+			amount = 0.05
+			months = 100
+		}
+	}
+}
+
+flavor_cas.112 = { #Adopting the Mita System
+	type = country_event
+	title = flavor_cas.112.title
+	desc = flavor_cas.112.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_cas.112.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		region:andes_region = {
+			any_location_in_region = {
+				OR = {
+					owner ?= root
+					owner ?= {
+						is_subject_of = root
+					}
+				}
+				raw_material = goods:silver
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+	}
+
+	option = {
+		name = flavor_cas.112.a
+		historical_option = yes
+		add_stability = stability_severe_penalty
+		unlock_estate_privilege_effect = { type = cas_mita_system }
+		grant_estate_privilege = estate_privilege:cas_mita_system
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_penalty }
+	}
+
+	option = {
+		name = flavor_cas.112.b
+		add_stability = stability_mild_bonus
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+	}
+}
+
+flavor_cas.114 = { #Royal Factories
+	type = country_event
+	title = flavor_cas.114.title
+	desc = flavor_cas.114.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_cas.114.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1650.1.1
+		to = 1836.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	trigger = {
+		has_embraced_institution = institution:manufactories
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_cas.114.a
+		historical_option = yes
+		unlock_government_reform_effect = { type = royal_factories_reform }
+		add_reform = government_reform:royal_factories_reform
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_move_to_left }
+	}
+
+	option = {
+		name = flavor_cas.114.b
+		unlock_estate_privilege_effect = { type = royal_factories_privilege }
+		grant_estate_privilege = estate_privilege:royal_factories_privilege
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_move_to_left }
+		add_estate_satisfaction = {
+			type = estate_type:burghers_estate
+			value = estate_satisfaction_severe_bonus
+		}
+	}
+
+	option = {
+		name = flavor_cas.114.c
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_move_to_right }
+	}
+}
+
+flavor_cas.115 = { #The Arbitristas
+	type = country_event
+	title = flavor_cas.115.title
+	desc = flavor_cas.115.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_cas.115.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_cas.115.a
+		historical_option = yes
+		add_research_progress = research_progress_mild_bonus
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_large_move_to_right }
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_large_move_to_left }
+		add_estate_satisfaction = { type = estate_type:nobles_estate
+			value = estate_satisfaction_severe_penalty
+		}
+	}
+
+	option = {
+		name = flavor_cas.115.b
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_move_to_right }
+		add_estate_satisfaction = { type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+}
+
+flavor_cas.116 = { #The Casticismo
+	type = country_event
+	title = flavor_cas.116.title
+	desc = flavor_cas.116.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_cas.116.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1650.1.1
+		to = 1850.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	trigger = {
+		has_embraced_institution = institution:enlightenment
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_cas.116.a
+		historical_option = yes
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_penalty
+		}
+		add_research_progress = research_progress_mild_bonus
+		change_societal_value = { type = outward_vs_inward value = societal_value_move_to_left }
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_right }
+	}
+
+	option = {
+		name = flavor_cas.116.b
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+		change_societal_value = { type = outward_vs_inward value = societal_value_move_to_right }
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
+	}
+}
+
+flavor_cas.117 = { #Library of the Monastery of San Lorenzo
+	type = country_event
+	title = flavor_cas.117.title
+	desc = flavor_cas.117.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_cas.117.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:el_escorial
+		location:el_escorial = {
+			has_building = building_type:el_escorial_palace
+		}
+		has_ruler = yes
+	}
+
+	immediate = {
+		location:el_escorial = {
+			save_scope_as = target_location
+		}
+		ruler ?= { save_scope_as = target_ruler }
+	}
+
+	option = {
+		name = flavor_cas.117.a
+		historical_option = yes
+		change_gold_effect = { scale = -6 }
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+		location:el_escorial = {
+			change_prosperity = prosperity_mild_bonus
+			change_development = development_mild_bonus
+		}
+		location:el_escorial = {
+			if = {
+				limit = {
+					NOT = {
+						has_building = building_type:library
+					}
+				}
+				construct_building = {
+					building_type = building_type:library
+				}
+			}
+			else = {
+				owner = {
+					add_research_progress = research_progress_mild_bonus
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_cas.117.b
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_penalty
+		}
+	}
+}
+
+flavor_cas.118 = { #Sevilla Bullfighting School
+	type = country_event
+	title = flavor_cas.118.title
+	desc = flavor_cas.118.desc
+	outcome = neutral
+	fire_only_once = yes
+
+	historical_info = flavor_cas.118.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1800.1.1
+		to = 1900.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:sevilla
+		location:sevilla = {
+			NOT = { has_building = building_type:sevilla_bullfighting_school }
+		}
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	immediate = {
+		location:sevilla = {
+			save_scope_as = target_location
+		}
+	}
+	
+	option = {
+		name = flavor_cas.118.a
+		historical_option = yes
+		location:sevilla = {
+			construct_building = {
+				building_type = building_type:sevilla_bullfighting_school
+				cost_multiplier = 0.25
+				cost_multiplier_reason = "burghers_expensive_sponsorship"
+			}
+		}
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+		"estate(estate_type:burghers_estate)" = {
+			estate_add_gold = {
+				value = {
+					add = root.monthly_income_total
+					multiply = -4
+				}
+			}
+		}
+		add_estate_satisfaction = {
+			type = estate_type:burghers_estate
+			value = estate_satisfaction_severe_penalty
+		}
+	}
+
+	option = {
+		name = flavor_cas.118.b
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_penalty
+		}
+		add_estate_satisfaction = { type = estate_type:burghers_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+}
+
+flavor_cas.119 = { #Opposition to the Sevilla Bullfighting School
+	type = country_event
+	title = flavor_cas.119.title
+	desc = flavor_cas.119.desc
+	outcome = neutral
+	fire_only_once = yes
+
+	historical_info = flavor_cas.119.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1800.1.1
+		to = 1900.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		location:sevilla = {
+			owner ?= root
+			has_building = building_type:sevilla_bullfighting_school
+		}
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_cas.119.a
+		historical_option = yes
+		location:sevilla = {
+			destroy_building = "building(building_type:sevilla_bullfighting_school|owner)"
+		}
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_penalty
+		}
+		add_estate_satisfaction = { type = estate_type:burghers_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+
+	option = {
+		name = flavor_cas.119.b
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+		add_estate_satisfaction = { type = estate_type:burghers_estate
+			value = estate_satisfaction_severe_penalty
+		}
+	}
+}
+
+flavor_cas.125 = { #Pirates of the Caribbean
+	type = country_event
+	title = flavor_cas.125.title
+	desc = flavor_cas.125.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/situation/golden_age_of_piracy.dds"
+	
+	fire_only_once = yes
+
+	historical_info = flavor_cas.125.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1650.1.1
+		to = 1850.1.1
+		monthly_chance = 5
+	}
+		
+	immediate = {
+		region:caribbean_region = {
+			random_location_in_region = {
+				limit = {
+					owner ?= {
+						has_reform = government_reform:pirate_brethren_reform
+					}
+				}
+				owner = {
+					save_scope_as = pirate_country
+				}
+			}
+		}
+		region:caribbean_region = {
+			random_location_in_region = {
+				limit = {
+					OR = {
+						owner ?= root
+						owner ?= {
+							is_subject_of = root
+						}
+					}
+				}
+				save_scope_as = target_location
+			}
+		}
+	}
+
+	trigger = {
+		has_presence_in = region:caribbean_region
+		region:caribbean_region = {
+			any_location_in_region = {
+				owner ?= {
+					has_reform = government_reform:pirate_brethren_reform
+				}
+			}
+		}
+		region:caribbean_region = {
+			any_location_in_region = {
+				count > 1
+				OR = {
+					owner ?= root
+					owner ?= {
+						is_subject_of = root
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_cas.125.a
+		historical_option = yes
+		if = {
+			limit = {
+				scope:target_location = {
+					NOR = {
+						has_building = building_type:castle
+						has_building = building_type:bastion
+					}
+				}
+			}
+			scope:target_location = {
+				construct_building = {
+					building_type = building_type:castle
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:target_location = {
+					has_building_with_at_least_one_level = castle
+				}
+			}
+			scope:target_location = {
+				destroy_building = "building(building_type:castle|owner)"
+				construct_building = {
+					building_type = building_type:bastion
+				}
+			}
+		}
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+	}
+
+	option = {
+		name = flavor_cas.125.b
+		add_navy_tradition = navy_tradition_mild_penalty
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+	}
+}
+
+flavor_cas.126 = { #A Cuisine Reborn
+	type = country_event
+	title = flavor_cas.126.title
+	desc = flavor_cas.126.desc
+	outcome = neutral
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_potato.dds"
+
+	fire_only_once = yes
+
+	historical_info = flavor_cas.126.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1700.1.1
+		to = 1850.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		OR = {
+			produced_in_country:potato > 1
+			any_subject = {
+				is_subject_type = colonial_nation
+				produced_in_country:potato > 1
+			}
+		}
+		OR = {
+			produced_in_country:rice > 1
+			any_subject = {
+				is_subject_type = colonial_nation
+				produced_in_country:rice > 1
+			}
+		}
+		OR = {
+			produced_in_country:maize > 1
+			any_subject = {
+				is_subject_type = colonial_nation
+				produced_in_country:maize > 1
+			}
+		}
+	}
+
+	option = {
+		name = flavor_cas.126.a
+		historical_option = yes
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+		change_societal_value = { type = outward_vs_inward value = societal_value_move_to_left }
+	}
+}
+
+flavor_cas.127 = { #Josefa Amar y Borbón
+	type = country_event
+	title = flavor_cas.127.title
+	desc = flavor_cas.127.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/enlightenment.dds"
+	
+	fire_only_once = yes
+
+	historical_info = flavor_cas.127.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1780.1.1
+		to = 1800.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:zaragoza
+		has_embraced_institution = institution:enlightenment
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_josephine
+			last_name = amar_y_borbon
+			birth_date = 1749.2.4
+			birth_location = location:zaragoza
+			estate = estate_type:burghers_estate
+			female = yes
+			artist_skill = { 0.65 0.8 }
+			artist = writer
+			culture = culture:aragonese
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_cas.127.a
+		historical_option = yes
+		scope:target_character = {
+			move_country = root
+		}
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_right }
+	}
+
+	option = {
+		name = flavor_cas.127.b
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+	}
+}
+
+flavor_cas.128 = { #María de Zayas y Sotomayor
+	type = country_event
+	title = flavor_cas.128.title
+	desc = flavor_cas.128.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/printing_press.dds"
+	
+	fire_only_once = yes
+
+	historical_info = flavor_cas.128.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1644.1.1
+		to = 1655.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:madrid
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_mary
+			last_name = de_zayas_y_sotomayor
+			birth_date = 1590.9.12
+			birth_location = location:madrid
+			estate = estate_type:burghers_estate
+			female = yes
+			artist_skill = { 0.65 0.8 }
+			artist = writer
+			culture = culture:castilian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_cas.128.a
+		historical_option = yes
+		scope:target_character = {
+			move_country = root
+		}
+		add_research_progress = research_progress_mild_bonus
+		add_stability = stability_mild_penalty
+	}
+
+	option = {
+		name = flavor_cas.128.b
+		add_research_progress = research_progress_mild_penalty
+		add_stability = stability_mild_bonus
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+	}
+}
+
+flavor_cas.129 = { #Francisca de Pedraza
+	type = country_event
+	title = flavor_cas.129.title
+	desc = flavor_cas.129.desc
+	outcome = neutral
+	fire_only_once = yes
+
+	historical_info = flavor_cas.129.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1644.1.1
+		to = 1660.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = 	location:alcala_de_henares
+		location:alcala_de_henares = {
+			has_building = building_type:university
+		}
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_frances
+			last_name = de_pedraza
+			min_age = 25
+			birth_location = location:madrid
+			estate = estate_type:peasants_estate
+			female = yes
+			adm = { 20 45 }
+			dip = { 20 45 }
+			mil = { 20 40 }
+			culture = culture:castilian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		location:alcala_de_henares = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_cas.129.a
+		historical_option = yes
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_bonus
+		}
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+	}
+
+	option = {
+		name = flavor_cas.129.b
+		scope:target_character = {
+			move_country = root
+		}
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_right }
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_severe_penalty
+		}
+	}
+}
+
+flavor_cas.131 = { #The Catastro of Ensenada
+	type = country_event
+	title = flavor_cas.131.title
+	desc = flavor_cas.131.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/banking.dds"
+	
+	fire_only_once = yes
+
+	historical_info = flavor_cas.131.historical_info
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1750.1.1
+		to = 1790.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+
+		create_character = {
+			first_name = name_zenon
+			dynasty = dynasty:de_somodevilla_y_bengoechea_dynasty
+			birth_date = 1702.4.20
+			birth_location = location:logrono
+			estate = estate_type:nobles_estate
+			adm = { 70 85 }
+			dip = { 50 85 }
+			mil = { 20 40 }
+			culture = culture:castilian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_cas.131.a
+		historical_option = yes
+		scope:target_character = {
+			move_country = root
+		}
+		add_country_modifier = {
+			modifier = spa_castrato_of_ensenada
+			years = 10
+			mode = add
+		}
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_severe_penalty
+		}
+		add_estate_satisfaction = { type = estate_type:nobles_estate
+			value = estate_satisfaction_severe_penalty
+		}
+	}
+
+	option = {
+		name = flavor_cas.131.b
+		add_legitimacy = legitimacy_severe_penalty
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_bonus
+		}
+		add_estate_satisfaction = { type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_bonus
+		}
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+	}
+}
+
+flavor_cas.132 = { # The Rise of the Alhóndigas
+	type = country_event
+	title = flavor_cas.132.title
+	desc = flavor_cas.132.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_wheat.dds"
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1650.1.1
+		to = 1850.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		region:iberia_region = {
+			any_location_in_region = {
+				count >= 5
+				owner ?= root
+				has_building = building_type:granary
+				raw_material = goods:wheat
+			}
+		}
+	}
+
+	option = {
+		name = flavor_cas.132.a
+		historical_option = yes
+		change_gold_effect = { scale = -5 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate
+			value = estate_satisfaction_mild_bonus
+		}
+		custom_tooltip = {
+			text = flavor_cas.132.a.tt
+			region:iberia_region = {
+				every_location_in_region = {
+					limit = {
+						owner ?= root
+						raw_material = goods:wheat
+					}
+					change_prosperity = prosperity_severe_bonus
+					add_location_modifier = {
+						modifier = spa_efficient_market_system
+						years = 10
+						mode = add
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_cas.132.b
+		add_estate_satisfaction = { type = estate_type:peasants_estate
+			value = estate_satisfaction_severe_penalty
+		}
+	}
+}
+
+flavor_cas.133 = { # The Esquilache Riots
+	type = country_event
+	title = flavor_cas.133.title
+	desc = flavor_cas.133.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1766.1.1
+		to = 1866.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_cas.133.a
+		historical_option = yes
+		change_societal_value = {
+			type = outward_vs_inward
+			value = societal_value_move_to_left
+		}
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_right
+		}
+		add_estate_satisfaction = { type = estate_type:peasants_estate
+			value = estate_satisfaction_severe_penalty
+		}
+	}
+
+	option = {
+		name = flavor_cas.133.b
+		change_societal_value = {
+			type = outward_vs_inward
+			value = societal_value_move_to_right
+		}
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+		add_estate_satisfaction = { type = estate_type:peasants_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+}
+
+flavor_cas.134 = { # Siglo de Oro
+	type = country_event
+	title = flavor_cas.134.title
+	desc = flavor_cas.134.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_advance = spa_siglo_de_oro
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_cas.134.a
+		historical_option = yes
+		add_research_progress = research_progress_mild_bonus
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_right
+		}
+	}
+}
+
+flavor_cas.1101 = { #Expulsion of the Jesuits
+	type = country_event
+	title = flavor_cas.1101.title
+	desc = flavor_cas.1101.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1700.1.1
+		to = 1837.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+
+	trigger = {
+		has_policy = jesuits_allowed
+		government_type = government_type:monarchy
+		any_subject = {
+			capital.continent = continent:america
+		}
+	}
+
+	option = {
+		name = flavor_cas.1101.a
+		historical_option = yes
+		add_gold = { value = root.estate_tax_base:clergy_estate multiply = 4 }
+		add_gold_to_estate = {
+			estate_type = estate_type:clergy_estate
+			value = { value = root.estate_tax_base:clergy_estate multiply = -4 }
+		}
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_penalty	}
+		add_policy = policy:jesuits_not_allowed
+	}
+	option = {
+		name = flavor_cas.1101.b
+		add_religious_influence = religious_influence_mild_bonus
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+	}
+}
+
+flavor_cas.1502 = { #The Sun never sets on the spanish empire
+	type = country_event
+	title = flavor_cas.1502.title
+	desc = flavor_cas.1502.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_government_estate_effect = yes
+		var:future_trade_center = { save_scope_as = trade_center_location }
+	}
+
+	trigger = {
+		capital.continent = continent:europe
+		has_presence_in = continent:america
+		has_presence_in = continent:africa
+		has_presence_in = continent:asia
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_tt_world_port_established
+			has_variable = world_port_established
+		}
+	}
+
+	option = {
+		name = flavor_cas.1502.a
+
+		add_prestige = prestige_extreme_bonus
+		add_legitimacy = legitimacy_extreme_bonus
+		add_stability = stability_extreme_bonus
+	}
+}
+
+flavor_cas.1503 = { #Archives of the Indies Building
+	type = country_event
+	title = flavor_cas.1503.title
+	desc = flavor_cas.1503.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1765.1.1
+		to = 1837.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:burghers_estate }
+		var:future_trade_center = { save_scope_as = trade_center_location }
+
+		create_character = {
+			first_name = name_john
+			last_name = bautista_munoz
+			religion = religion:catholic
+			estate = estate_type:clergy_estate
+			birth_date = 1745.6.12
+			female = no
+			birth_location = location:valencia
+			culture = culture:castilian
+			adm = 82
+			dip = 67
+			mil = 36
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+			save_scope_as = target_character
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	trigger = {
+		has_ruler = yes
+		has_reform = government_reform:casa_de_contratacion
+		owns = var:future_trade_center
+	}
+
+	option = {
+		name = flavor_cas.1503.a
+		historical_option = yes
+
+		scope:trade_center_location = {
+			construct_building = {
+				building_type = building_type:archive_of_the_indies
+			}
+		}
+		remove_reform = government_reform:casa_de_contratacion
+		lock_government_reform_effect = { type = casa_de_contratacion }
+	}
+	option = {
+		name = flavor_cas.1503.b
+		add_stability = stability_mild_bonus
+		add_prestige = prestige_mild_penalty
+		scope:target_character = {
+			move_country = scope:exile_destination
+		}
+	}
+}
+
+flavor_cas.2000 = { #Francisco de Goya La maja vestida
+	type = country_event
+	title = flavor_cas.2000.title
+	desc = flavor_cas.2000.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1780.1.1
+		to = 1805.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_francis.name_joseph
+			last_name = de_goya
+			adm = 71
+			dip = 79
+			mil = 19
+			artist = painter
+			birth_date = 1746.3.30
+			artist_skill = 0.86
+			birth_location = location:daroca
+			save_scope_as = target_artist
+			estate = estate_type:burghers_estate
+			script = spa_de_goya_script
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+		ruler = {
+			save_scope_as = target_ruler
+		}
+	}
+
+	trigger = {
+		has_ruler = yes
+	}
+
+	option = {
+		name = flavor_cas.2000.a
+
+		add_legitimacy = legitimacy_mild_bonus
+		change_gold_effect = { scale = -2 }
+		capital = {
+			create_art = {
+				artist = scope:target_artist
+				quality = 91
+				type = work_of_art_type:painting
+				key =  maja_vestida
+			}
+		}
+	}
+
+	option = {
+		name = flavor_cas.2000.b
+
+		scope:target_artist = {
+			move_country = scope:exile_destination
+		}
+	}
+}
+
+flavor_cas.2001 = { #Francisco de Goya Los fusilamientos del tres de mayo
+	hide_portraits = yes
+	type = country_event
+	title = flavor_cas.2001.title
+	desc = flavor_cas.2001.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1780.1.1
+		to = 1828.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		ruler = {
+			save_scope_as = target_ruler
+		}
+		character:spa_de_goya_script = {
+			save_scope_as = target_artist
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+	}
+
+	trigger = {
+		has_ruler = yes
+		at_war = yes
+		character:spa_de_goya_script ?= {
+			is_alive = yes
+			owner = root
+		}
+	}
+
+	option = {
+		name = flavor_cas.2001.a
+
+		add_prestige = prestige_mild_bonus
+		capital = {
+			create_art = {
+				artist = scope:target_artist
+				quality = 93
+				type = work_of_art_type:painting
+				key =  el_tres_de_mayo_de_1808_en_madrid
+			}
+		}
+	}
+
+	option = {
+		name = flavor_cas.2001.b
+
+		scope:target_artist = {
+			move_country = scope:exile_destination
+		}
+	}
+}
+
+flavor_cas.2100 = { #Diego Velázquez Las Meninas
+	hide_portraits = yes
+	type = country_event
+	title = flavor_cas.2100.title
+	desc = flavor_cas.2100.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1644.1.1
+		to = 1660.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_diego
+			last_name = Velazquez
+			adm = 54
+			dip = 78
+			mil = 13
+			artist = painter
+			birth_date = 1599.5.1 #baptized 1599.6.6 Birthdate unknown
+			artist_skill = 0.87
+			birth_location = location:sevilla
+			save_scope_as = target_artist
+			estate = estate_type:burghers_estate
+			script = spa_velazquez_script
+		}
+		random_neighbor_country = {
+			save_scope_as = exile_destination
+		}
+		ruler = {
+			save_scope_as = target_ruler
+		}
+	}
+
+	trigger = {
+		has_ruler = yes
+		owns = location:sevilla
+	}
+
+	option = {
+		name = flavor_cas.2100.a
+
+		change_gold_effect = { scale = -2 }
+		add_prestige = prestige_mild_bonus
+		capital = {
+			create_art = {
+				artist = scope:target_artist
+				quality = 91
+				type = work_of_art_type:painting
+				key =  las_meninas
+			}
+		}
+	}
+
+	option = {
+		name = flavor_cas.2100.b
+
+		add_prestige = prestige_mild_penalty
+		scope:target_artist = {
+			move_country = scope:exile_destination
+		}
+	}
+}
+
+flavor_cas.2101 = { #Diego Velázquez Las Lanzas
+	hide_portraits = yes
+	type = country_event
+	title = flavor_cas.2101.title
+	desc = flavor_cas.2101.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		ruler = {
+			save_scope_as = target_ruler
+		}
+		character:spa_velazquez_script = {
+			save_scope_as = target_artist
+		}
+	}
+
+	option = {
+		name = flavor_cas.2101.a
+
+		add_prestige = prestige_mild_bonus
+		change_gold_effect = { scale = -2 }
+		capital = {
+			create_art = {
+				artist = scope:target_artist
+				quality = 89
+				type = work_of_art_type:painting
+				key =  las_lanzas
+			}
+		}
+	}
+
+	option = {
+		name = flavor_cas.2101.b
+
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+flavor_cas.2600 = { #The Bourbon Reforms
+	type = country_event
+	title = flavor_cas.2600.title
+	desc = flavor_cas.2600.desc
+	outcome = neutral
+
+	historical_info = flavor_cas.2600.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1700.1.1
+		to = 1918.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler = {
+			save_scope_as = target_ruler
+		}
+	}
+
+	trigger = {
+		has_ruler = yes
+		societal_value:centralization_vs_decentralization < 25
+		ruler ?= {
+			OR = {
+				adm >= 70
+				total_abilities >= 130
+			}
+		}
+		government_type = government_type:monarchy
+		has_presence_in = continent:america
+	}
+
+	option = {
+		name = flavor_cas.2600.a
+		historical_option = yes
+		scope:target_ruler = {
+			add_adm = 5
+		}
+		add_stability = stability_severe_penalty
+		add_government_power = government_power_severe_bonus
+		change_societal_value = { type = centralization_vs_decentralization value = societal_value_huge_move_to_left }
+		add_country_modifier = {
+			modifier = spa_reform_momentum
+			years = 20
+			mode = add
+		}
+		custom_tooltip = flavor_cas.2600.a.tt
+		set_variable = spa_enable_bourbon_reforms
+	}
+
+	option = {
+		name = flavor_cas.2600.b
+		add_stability = stability_mild_bonus
+		add_government_power = government_power_mild_penalty
+		change_societal_value = { type = centralization_vs_decentralization value = societal_value_move_to_right }
+	}
+}
+
+flavor_cas.2601 = { #Removing Corrupt Advisors
+	hide_portraits = yes
+	type = country_event
+	title = flavor_cas.2601.title
+	desc = flavor_cas.2601.desc
+	outcome = neutral
+
+	historical_info = flavor_cas.2601.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1700.1.1
+		to = 1918.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+		ruler = {
+			save_scope_as = target_ruler
+		}
+		random_cabinet_character = {
+			limit = {
+				total_abilities >= 100
+				birth_location != root.capital
+				birth_location.owner ?= root
+			}
+			save_scope_as = target_advisor
+		}
+		scope:target_advisor = {
+			birth_location = {
+				save_scope_as = corrupt_advisor_location
+			}
+		}
+	}
+
+	trigger = {
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_tt_spa_enable_bourbon_reforms
+			has_variable = spa_enable_bourbon_reforms
+		}
+		any_cabinet_character = {
+			total_abilities >= 130
+			birth_location != root.capital
+			birth_location.owner ?= root
+		}
+		government_type = government_type:monarchy
+	}
+
+	option = {
+		name = flavor_cas.2601.a
+		historical_option = yes
+		add_government_power = government_power_mild_bonus
+		scope:target_advisor = {
+			banish_character = yes
+		}
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_penalty }
+	}
+
+	option = {
+		name = flavor_cas.2601.b
+		add_government_power = government_power_severe_bonus
+		kill_character = {
+			target = scope:target_advisor
+			reason = beheading
+			killer = ruler
+		}
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_ultimate_penalty }
+	}
+
+	option = {
+		name = flavor_cas.2601.c
+		add_government_power = government_power_severe_penalty
+		scope:corrupt_advisor_location = {
+			change_development  = development_severe_bonus
+			change_prosperity = prosperity_severe_bonus
+		}
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_bonus }
+	}
+}
+
+flavor_cas.2602 = { #The Intendancy System
+	hide_portraits = yes
+	type = country_event
+	title = flavor_cas.2602.title
+	desc = flavor_cas.2602.desc
+	outcome = neutral
+
+	historical_info = flavor_cas.2602.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1700.1.1
+		to = 1918.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler = {
+			save_scope_as = target_ruler
+		}
+	}
+
+	trigger = {
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_tt_spa_enable_bourbon_reforms
+			has_variable = spa_enable_bourbon_reforms
+		}
+		government_type = government_type:monarchy
+	}
+
+	option = {
+		name = flavor_cas.2602.a
+		historical_option = yes
+		unlock_government_reform_effect = { type = intendancy_system }
+		if = {
+			limit = {
+				num_open_reform_slots >= 1
+			}
+			add_reform = government_reform:intendancy_system
+		}
+		change_societal_value = { type = centralization_vs_decentralization value = societal_value_large_move_to_left }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_penalty }
+	}
+
+	option = {
+		name = flavor_cas.2602.b
+		add_government_power = government_power_severe_penalty
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+	}
+
+}
+
+flavor_cas.2603 = { #Imposing the Intendancy System on the Colonies
+	hide_portraits = yes
+	type = country_event
+	title = flavor_cas.2603.title
+	desc = flavor_cas.2603.desc
+	outcome = neutral
+
+	historical_info = flavor_cas.2603.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1700.1.1
+		to = 1918.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler = {
+			save_scope_as = target_ruler
+		}
+	}
+
+	trigger = {
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_tt_spa_enable_bourbon_reforms
+			has_variable = spa_enable_bourbon_reforms
+		}
+		government_type = government_type:monarchy
+		any_subject = {
+			is_subject_type = colonial_nation
+			capital.continent = continent:america
+		}
+		has_reform = government_reform:intendancy_system
+	}
+
+	option = {
+		name = flavor_cas.2603.a
+		historical_option = yes
+		custom_tooltip = {
+			text = flavor_cas.2603.a.tt
+			every_subject = {
+				limit = {
+					is_subject_type = colonial_nation
+				}
+				unlock_government_reform_effect = { type = intendancy_system }
+				add_reform = government_reform:intendancy_system
+				add_liberty_desire = liberty_desire_severe_plus
+			}
+		}
+	}
+
+	option = {
+		name = flavor_cas.2603.b
+		add_government_power = government_power_severe_penalty
+	}
+}
+
+flavor_cas.2604 = { #Colonial Dissent
+	type = country_event
+	title = flavor_cas.2604.title
+	desc = flavor_cas.2604.desc
+	outcome = neutral
+
+	historical_info = flavor_cas.2604.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = SPA
+		from = 1700.1.1
+		to = 1918.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	trigger = {
+		any_subject = {
+			is_subject_type = colonial_nation
+			capital ?= { continent = continent:america }
+			has_reform = government_reform:intendancy_system
+			liberty_desire > 50
+		}
+	}
+
+	option = {
+		name = flavor_cas.2604.a
+		historical_option = yes
+		add_government_power = government_power_mild_bonus
+		custom_tooltip = {
+			text = flavor_cas.2604.a.tt
+			every_subject = {
+				limit = {
+					is_subject_type = colonial_nation
+					has_reform = government_reform:intendancy_system
+				}
+				add_liberty_desire = liberty_desire_severe_plus
+			}
+		}
+	}
+
+	option = {
+		name = flavor_cas.2604.b
+		add_government_power = government_power_severe_penalty
+		custom_tooltip = {
+			text = flavor_cas.2604.a.tt
+			every_subject = {
+				limit = {
+					is_subject_type = colonial_nation
+					has_reform = government_reform:intendancy_system
+				}
+				remove_reform = government_reform:intendancy_system
+				add_liberty_desire = liberty_desire_mild_minus
+			}
+		}
+	}
+}
+
+flavor_cas.2605 = { #American Wars of Independence - Subject
+	hide_portraits = yes
+	fire_only_once = yes
+	type = country_event
+	title = flavor_cas.2605.title
+	desc = flavor_cas.2605.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/disaster/aspiration_for_liberty.dds"
+	
+	historical_info = flavor_cas.2605.historical_info
+
+	immediate = {
+		save_scope_as = colonial_country
+		ruler = {
+			save_scope_as = colonial_ruler
+		}
+		overlord = {
+			save_scope_as = overlord_country
+			ruler = {
+				save_scope_as = overlord_ruler
+			}
+		}
+	}
+
+	trigger = {
+		OR = {
+			is_subject_of = c:SPA
+			is_subject_of = c:CAS
+		}
+		is_subject_type = colonial_nation
+		has_ruler = yes
+		overlord = {
+			has_ruler = yes
+			has_reform = government_reform:intendancy_system
+		}
+		liberty_desire > 50
+	}
+
+	option = {
+		name = flavor_cas.2605.a
+		historical_option = yes
+		add_government_power = government_power_severe_bonus
+		leave_all_wars_with = scope:overlord_country
+		if = {
+			limit = {
+				can_declare_legal_war_on = { target = scope:overlord_country }
+			}
+			declare_war_with_cb = {	target = scope:overlord_country	type = casus_belli:cb_independence_war }
+		}
+		else = {
+			add_casus_belli = {
+				target = scope:overlord_country
+				type = casus_belli:cb_independence_war
+			}
+		}
+		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_left }
+		scope:overlord_country = {
+			trigger_event_non_silently = { id = flavor_cas.2606 }
+		}
+	}
+
+	option = {
+		name = flavor_cas.2605.b
+		add_government_power = government_power_extreme_penalty
+		add_liberty_desire = liberty_desire_extreme_minus
+		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_right }
+	}
+}
+
+flavor_cas.2606 = { #American Wars of Independence - Spain
+	fire_only_once = yes
+	type = country_event
+	title = flavor_cas.2606.title
+	desc = flavor_cas.2606.desc
+	outcome = neutral
+
+	historical_info = flavor_cas.2605.historical_info
+
+	option = {
+		name = flavor_cas.2605.a
+		add_stability = stability_mild_penalty
+		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_left }
+	}
+}

@@ -5,6 +5,11 @@ locations={
 	dresden = { rank = town town_setup = german_town }
 	amberg = { rank = town town_setup = german_town }
 	landshut = { rank = town town_setup = german_town }
+	ingolstadt = { rank = town town_setup = german_town }
+	lebus = { rank = town town_setup = german_town }
+	wiener_neustadt = { rank = town town_setup = german_town }
+
+	nancy = { rank = town town_setup = german_town }
 
 	madrid = { rank = city town_setup = iberian_city}
 	bilbao = { rank = town town_setup = iberian_town_port}
@@ -46,10 +51,28 @@ locations={
 	patras = { rank = town town_setup = greek_town_port }
 
 	sale = { rank = town town_setup = maghreb_coastal_town }
+
+	masulipatnam = { rank = town town_setup = tradeport_town }
+	kupang = { rank = town town_setup = tradeport_town }
+	mombasa = { rank = town town_setup = tradeport_town }
+	chindre = { rank = town town_setup = tradeport_town }
+	maputo = { rank = town town_setup = tradeport_town }
+	mbegela = { rank = town town_setup = tradeport_town }
+	luanda = { rank = town town_setup = tradeport_town }
+	guantanamo = { rank = town town_setup = tradeport_town }
+	boston = { rank = town town_setup = tradeport_town }
+	menahkwesk = { rank = town town_setup = tradeport_town }
+	apollonia = { rank = town town_setup = tradeport_town }
+	portudal = { rank = town town_setup = tradeport_town }
+	cabo_corso = { rank = town town_setup = tradeport_town }
+
+	debra_berhan = { rank = town town_setup = east_african_town}
+
+	ngazargamu = { rank = town town_setup = east_african_town }
 }
 
 building_manager = {
-	# steppes 
+	# steppes
 	kurultai = { tag = CRI level = 1 location = qarasuvbazar }
 	kurultai = { tag = KHV level = 1 location = khiva }
 	kurultai = { tag = MYK level = 1 location = kalmyk }
@@ -85,8 +108,45 @@ building_manager = {
 	berlin_palace = { tag = BRA level = 1 location = berlin }
 	#hofburg_palace = { tag = HAB level = 1 location = vienna } #Expand it in decisions
 	dutch_trade_outpost = { tag = VOC level = 1 location = nishisonogi }
+	llotja_seda = { tag = ARA level = 1 location = valencia }
+	munich_residenz_renaissance_expansion = { tag = BAV level = 1 location = munich }
+	general_archive_of_simancas = { tag = SPA level = 1 location = valladolid }
+	el_escorial_palace = { tag = SPA level = 1 location = el_escorial }
+	school_of_salamanca = { tag = SPA level = 1 location = salamanca }
+	royal_audience_and_chancery = { tag = SPA level = 1 location = valladolid }
+	royal_audience_and_chancery = { tag = SPA level = 1 location = ciudad_real }
+	globe_theatre = { tag = ENG level = 1 location = london }
+	ambras_castle = { tag = HAB level = 1 location = innsbruck }
+	schwaz_mine = { tag = HAB level = 1 location = schwaz }
+	college_of_poets = { tag = HAB level = 1 location = vienna }
+	wisselbank = { tag = NED level = 1 location = amsterdam }
+	hsa_burgtor = { tag = HSA level = 1 location = lubeck }
+	walls_of_lucca = { tag = LUC level = 1 location = lucca }
+	ablaq_palace = { tag = EGY level = 1 location = cairo }
+	al_azhar_madrasa = { tag = EGY level = 1 location = cairo }
+	kremlin = { tag = RUS level = 2 location = moscow }
+	stroganov_school_of_iconic_art = { tag = RUS level = 1 location = moscow }
+	novodevichy_convent = { tag = RUS level = 1 location = moscow }
+	medical_school = { tag = NAP level = 1 location = salerno }
+	adm_vatican_library = { tag = PAP level = 1 location = rome }
+	quirinal_palace = { tag = PAP level = 1 location = rome }
+	ribeira_das_naus = { tag = POR level = 1 location = lisbon }
+	sco_palace_of_holyroodhouse = { tag = SCO level = 1 location = edinburgh }
+	imperial_halic_shipyards = { tag = TUR level = 1 location = constantinople }
+	aqueduct_system = { tag = TUR level = 1 location = constantinople } # It need you have the Fate of the Phoenix dlc
+	fortezza_di_sant_andrea = { tag = VEN level = 1 location = venice }
+	teatro_san_cassiano = { tag = VEN level = 1 location = venice }
+	doges_palace = { tag = VEN level = 1 location = venice }
+	venetian_arsenal = { tag = VEN level = 1 location = venice }
+	piazza_san_marco = { tag = VEN level = 1 location = venice }
+	magistrato_alla_sanita = { tag = VEN level = 1 location = venice }
+	the_cipher_secretary = { tag = VEN level = 1 location = venice }
+	walls_of_ston = { tag = RAG level = 1 location = dubrovnik }
+	ranganathaswamy_temple_building = { tag = MAB level = 1 location = srirangam }
+	venkateswara_temple = { tag = DEC level = 1 location = tirupati }
 
 	#VOC
+
 	city_guard = { tag = VOC level = 1 location = sunda_kelapa }
 	dry_dock = { tag = VOC level = 1 location = sunda_kelapa }
 	mason = { tag = VOC level = 2 location = sunda_kelapa }
@@ -96,7 +156,9 @@ building_manager = {
 	wharf = { tag = VOC level = 1 location = sunda_kelapa }
 	wharf = { tag = VOC level = 1 location = malacca }
 	wharf = { tag = VOC level = 1 location = temasek }
+
 	#BIC
+
 	city_guard = { tag = BIC level = 1 location = madras }
 	dry_dock = { tag = BIC level = 1 location = madras }
 	port_authority = { tag = BIC level = 1 location = madras }
@@ -115,6 +177,9 @@ building_manager = {
 	local_governor = { tag = RUS level = 1 location = novgorod }
 	local_governor = { tag = RUS level = 1 location = kursk }
 	local_governor = { tag = RUS level = 1 location = kazan }
+	local_governor = { tag = RUS level = 1 location = tambov }
+	local_governor = { tag = PLC level = 1 location = kyiv }
+	local_governor = { tag = PLC level = 1 location = minsk }
 	lieutenancy = { tag = SPA level = 1 location = sevilla }
 	naval_governor = { tag = POR level = 1 location = porto }
 
@@ -193,4 +258,21 @@ building_manager = {
 	city_walls = { tag = SWE level = 1 location = riga }
 
 	dry_dock = { tag = SLE level = 1 location = sale }
+
+	university = { tag = BAV level = 1 location = ingolstadt }
+	university = { tag = HAB level = 1 location = prague }
+	university = { tag = BRA level = 1 location = konigsberg }
+	university = { tag = BRA level = 1 location = lebus }
+	university = { tag = DAN level = 1 location = kobenhavn }
+	university = { tag = FRA level = 1 location = poitiers }
+	university = { tag = GEN level = 1 location = genoa }
+	university = { tag = HAB level = 1 location = vienna }
+	university = { tag = NED level = 1 location = leiden }
+	university = { tag = PLC level = 1 location = kyiv }
+
+	kings_manor = { tag = ROE level = 1 location = york }
+
+	trade_office = { tag = LUC level = 1 location = london }
+
+	irrigation_systems = { tag = NAV level = 1 location = tudela }
 }

@@ -1,0 +1,502 @@
+﻿namespace = ireland
+
+scripted_trigger country_is_bardic_trigger = {
+	has_reform = government_reform:celtic_traditions_reform
+}
+
+scripted_trigger location_has_active_bardic_school_trigger = {
+	has_building_with_at_least_one_level = bardic_school
+	owner = { country_is_bardic_trigger = yes }
+}
+
+scripted_trigger country_has_bards_trigger = {
+	country_is_bardic_trigger = yes
+
+	any_core_location = { num_pop_type:burghers > 0.01 }
+
+	# Is there any nearby Bardic School?
+	OR = {
+		any_owned_location = { location_has_active_bardic_school_trigger = yes }
+
+		any_neighbor_country = { 
+			country_is_bardic_trigger = yes
+			any_owned_location = { location_has_active_bardic_school_trigger = yes }
+		}
+
+		capital.region = {
+			any_location_in_region = { location_has_active_bardic_school_trigger = yes }
+		}
+	}
+}
+
+scripted_trigger bard_10_neighbor_country_trigger = {
+    country_is_bardic_trigger = yes
+	uses_government_power = legitimacy
+	legitimacy > 10
+	has_ruler = yes
+	NOT = { ruler = root.ruler }
+}
+
+scripted_effect bard_10_neighbor_country_effect = {
+	add_legitimacy = legitimacy_mild_penalty
+	add_opinion = { target = scope:bard_country modifier = opinion_scathing_bardic_satire }
+}
+
+# Bard writes scathing poetry about other ruler.
+ireland.10 = {
+	type = country_event	
+	title = ireland.10.title
+	desc = ireland.10.desc
+	outcome = neutral
+	
+	trigger = {
+		has_ruler = yes
+		country_has_bards_trigger = yes
+
+		any_neighbor_country = {
+			bard_10_neighbor_country_trigger = yes
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		save_scope_as = bard_country
+		ruler = { save_scope_as = bard_ruler }
+		random_neighbor_country = {
+			save_scope_as = neighbor_country
+			limit = {
+				bard_10_neighbor_country_trigger = yes
+			}
+			ruler = {
+				save_scope_as = neighbor_ruler
+			}
+		}
+	}
+
+	# Release the insult!
+	option = {
+		name = ireland.10.a
+		scope:neighbor_country = {
+			show_as_tooltip = {
+				bard_10_neighbor_country_effect = yes
+			}
+			trigger_event_silently = ireland.11
+		}
+		
+		change_societal_value = {
+			type = belligerent_vs_conciliatory
+			value = societal_value_move_to_left
+		}
+	}
+
+	# Withold the insult!
+	option = {
+		name = ireland.10.b
+		add_legitimacy = legitimacy_weak_bonus
+		
+		change_societal_value = {
+			type = belligerent_vs_conciliatory
+			value = societal_value_move_to_right
+		}
+	}
+}
+
+ireland.11 = {
+	type = country_event	
+	title = ireland.11.title
+	desc = ireland.11.desc
+	outcome = neutral
+	
+	illustration_tags = {
+        10 = angry
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	# Release the insult!
+	option = {
+		name = ireland.11.a
+		bard_10_neighbor_country_effect = yes
+	}
+}
+
+# Clergy denounces Celtic traditions
+ireland.20 = {
+	type = country_event	
+	title = ireland.20.title
+	desc = ireland.20.desc
+	outcome = neutral
+	
+	trigger = {
+		religion.group = religion_group:christian
+		NOT = { court_language = liturgical_language }
+
+		has_reform = government_reform:celtic_traditions_reform
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+
+	option = {
+		name = ireland.20.a
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+		remove_reform = government_reform:celtic_traditions_reform
+	}
+
+	option = {
+		name = ireland.20.b
+		add_gold = 					{ value = root.monthly_income_trade_and_tax multiply = -6 }
+		add_gold_to_estate = {
+			estate_type = estate_type:clergy_estate
+			value = {
+				value = root.monthly_income_trade_and_tax 
+				multiply = 6
+			}
+		}
+
+	}
+
+	option = {
+		name = ireland.20.c
+		change_societal_value = { type = mysticism_vs_jurisprudence value = societal_value_tiny_move_to_left }
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_penalty
+		}
+	}
+}
+
+# Clergy Regency dismantles Celtic traditions
+ireland.30 = {
+	type = country_event	
+	title = ireland.30.title
+	desc = ireland.30.desc
+	outcome = neutral
+	
+	trigger = {
+		has_regent = yes
+		regency_type = regency_type:clergy_estate_regency
+		has_reform = government_reform:celtic_traditions_reform
+		is_country_religion_pagan = no
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+
+	option = {
+		name = ireland.30.a
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+		remove_reform = government_reform:celtic_traditions_reform
+	}
+
+	option = {
+		name = ireland.30.b
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_penalty
+		}
+	}
+}
+
+# More Irish than the Irish Themselves
+ireland.40 = {
+	type = country_event	
+	title = ireland.40.title
+	desc = ireland.40.desc
+	outcome = neutral
+
+	trigger = {			
+		capital.region = region:ireland_region
+		has_ruler = yes
+		ruler.owner = this
+		NOT = { culture = culture:irish }
+		OR = {
+			NOT = { court_language = language:gaelic_language }
+			AND = {
+				government_type = government_type:monarchy
+				NOT = { has_reform = government_reform:celtic_traditions_reform }
+				num_reforms < modifier:government_reform_slots
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		root.culture = { 
+			save_scope_as = settler_culture
+			if = {
+				limit = { this = culture:anglo_irish }
+				culture:english = { save_scope_as = judgmental_culture }
+			}
+			else = {
+				save_scope_as = judgmental_culture
+			}
+		}
+		
+		culture:irish = { save_scope_as = native_culture }
+	}
+
+	option = {
+		name = ireland.40.a
+
+		change_culture = scope:native_culture
+		if = { 
+			limit = { NOT = { court_language = scope:native_culture.language } }
+			set_court_language = scope:native_culture.dialect
+		}
+		
+		if = {
+			limit = {
+				OR = {
+					government_type = government_type:monarchy
+					government_type = government_type:tribe
+				}
+				NOT = { has_reform = government_reform:celtic_traditions_reform }
+				OR = {
+					any_neighbor_country = {
+						culture = scope:native_culture
+						has_reform = government_reform:celtic_traditions_reform
+					}
+					AND = {
+						is_subject = yes
+						overlord = {
+							culture = scope:native_culture
+							has_reform = government_reform:celtic_traditions_reform
+						}
+					}
+				}
+			}
+			add_reform = government_reform:celtic_traditions_reform
+		}
+
+		if = {
+			limit = {
+				government_type = government_type:monarchy
+				OR = {
+					any_neighbor_country = {
+						culture = scope:native_culture
+						government_type = government_type:tribe
+					}
+					AND = {
+						is_subject = yes
+						overlord = {
+							culture = scope:native_culture
+							government_type = government_type:tribe
+						}
+					}
+				}
+			}
+			change_government_type = government_type:tribe
+		}
+		
+		if = {
+			limit = { 
+				OR = {
+					government_type = government_type:monarchy
+					government_type = government_type:tribe
+				}
+				NOT = { succession_law = heir_selection:tanistry_elective }
+				OR = {
+					any_neighbor_country = {
+						culture = scope:native_culture
+						succession_law = heir_selection:tanistry_elective
+					}
+					AND = {
+						is_subject = yes
+						overlord = {
+							culture = scope:native_culture
+							succession_law = heir_selection:tanistry_elective
+						}
+					}
+				}
+			}
+			change_heir_selection = heir_selection:tanistry_elective
+		}
+
+		if = {
+			limit = { 
+				is_subject = yes
+			}
+			every_overlord_or_above = {
+				limit = {
+					OR = {
+						culture = scope:settler_culture
+						AND = {
+							culture.language = scope:settler_culture.language
+							NOT = { culture.language = scope:native_culture.language }
+						}
+
+					}
+				}
+				add_opinion = { target = ROOT modifier = opinion_gone_native }
+			}
+		}
+		if = {
+			limit = { 
+				has_ruler = yes
+				ruler = { 
+					culture = scope:settler_culture
+				}
+			}
+			ruler = {
+				change_character_culture = scope:native_culture
+				every_descendant = {
+					limit = { 
+						dynasty = root.ruler.dynasty 
+						culture = scope:settler_culture
+					}
+					change_character_culture = scope:native_culture
+				}
+			}
+		}
+	}
+
+	option = {
+		name = ireland.40.b
+	}
+}
+
+scripted_trigger ireland_50_target_location_trigger = {
+	is_port = yes	
+	NOT = { has_building = building_type:gallowglass_sept }
+	#prosperity > -0.1
+	#owner = { stability > 0 }
+}
+
+scripted_trigger ireland_50_origin_location_trigger = {
+	has_building_with_at_least_one_level = gallowglass_sept
+	#prosperity < -0.25
+	#owner = { stability < 0 }
+	within_naval_range_of = root
+	any_pop = { ireland_50_gallowglass_pop_trigger = yes }
+	dominant_culture = culture:norse_gael
+}
+
+scripted_trigger ireland_50_gallowglass_pop_trigger = {
+	culture = culture:norse_gael
+	pop_type = pop_type:peasants
+}
+
+# Dispossessed Gallowglass
+ireland.50 = {
+	type = country_event	
+	title = ireland.50.title
+	desc = ireland.50.desc
+	outcome = neutral
+	
+	trigger = {
+		culture:norse_gael = { 
+			cultural_view = { 
+				target = root.culture 
+				value > neutral 
+			} 
+		}
+		any_owned_location = { ireland_50_target_location_trigger = yes }
+		any_location_in_the_world = { ireland_50_origin_location_trigger = yes }
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		random_owned_location = {
+			limit = { ireland_50_target_location_trigger = yes }
+			save_scope_as = target_location
+		}
+		random_location_in_the_world = {
+			limit = { ireland_50_origin_location_trigger = yes }
+			save_scope_as = origin_location
+			random_pop = {
+				limit = { ireland_50_gallowglass_pop_trigger = yes }
+				save_scope_as = origin_pop
+			}
+			dominant_culture = { save_scope_as = gallowglass_culture }
+		}
+		hidden_effect = {
+			create_character = {
+				age = 35
+				female = no
+				mil = 75
+				
+				birth_location = scope:target_location
+				culture = scope:gallowglass_culture
+
+				add_trait = trait:ruthless
+				
+				save_scope_as = captain
+			}
+		}
+	}
+
+	option = {
+		# Come aboard!
+		name = ireland.50.a
+		scope:captain = { move_country = root }
+
+		scope:target_location = {
+			construct_building = { 
+				building_type = building_type:gallowglass_sept
+				cost_multiplier = 0
+				instant = yes
+				cost_multiplier_reason = "game_concept_event"
+			}
+		}
+
+		add_migration = {
+			owner = root
+			from = scope:origin_location.province.province_definition
+			to = scope:target_location.province.province_definition
+			type = pop_type:peasants
+			amount = 0.01
+			months = 12
+		}
+		add_migration = {
+			owner = root
+			from = scope:origin_location.province.province_definition
+			to = scope:target_location.province.province_definition
+			type = pop_type:nobles
+			amount = 0.001
+			months = 12
+		}
+	}
+
+	option = {
+		# turn them away
+		name = ireland.50.b
+		hidden_effect = {
+			kill_character_silently = scope:captain
+		}
+	}
+}

@@ -1,0 +1,692 @@
+﻿namespace = flavor_kni
+
+flavor_kni.12 = { #The Knights of the New World
+	type = country_event
+	title = flavor_kni.12.title
+	desc = flavor_kni.12.desc
+	outcome = neutral
+	fire_only_once = yes
+	historical_info = flavor_kni.12.historical_info
+
+	dynamic_historical_event = {
+		tag = KNI
+		from = 1644.1.1
+		to = 1750.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_global_variable = new_world_discovered
+		has_presence_in = region:caribbean_region
+		region:caribbean_region = {
+			any_location_in_region = {
+				owner ?= root
+				province_definition != root.capital.province_definition
+			}
+		}
+		religion.group = religion_group:christian
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		region:caribbean_region = {
+			random_location_in_region = {
+				limit = {
+					owner ?= root
+					province_definition != root.capital.province_definition
+				}
+				save_scope_as = target_location
+			}
+		}
+	}
+
+	option = {
+		name = flavor_kni.12.a
+		historical_option = yes
+		change_societal_value = { type = outward_vs_inward value = societal_value_huge_move_to_left }
+		change_societal_value = { type = land_vs_naval value = societal_value_huge_move_to_right }
+		add_migration = {
+			owner = this
+			from = capital.province_definition
+			to = scope:target_location.province_definition
+			culture = scope:target_country.culture
+			amount = 0.05
+			months = 80
+			type = pop_type:peasants
+		}
+	}
+
+	option = {
+		name = flavor_kni.12.b
+		change_societal_value = { type = outward_vs_inward value = societal_value_move_to_right }
+		change_societal_value = { type = land_vs_naval value = societal_value_move_to_left }
+	}
+}
+
+flavor_kni.13 = { #Philippe de Longvilliers de Poincy
+	type = country_event
+	title = flavor_kni.13.title
+	desc = flavor_kni.13.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_kni.13.historical_info
+
+	dynamic_historical_event = {
+		tag = KNI
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 4
+	}
+
+	trigger = {
+		has_global_variable = new_world_discovered
+		has_presence_in = region:caribbean_region
+		region:caribbean_region = {
+			any_location_in_region = {
+				owner ?= root
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		
+		create_character = {
+			first_name = name_philip
+			dynasty = dynasty:de_Longvilliers_de_Poincy
+			birth_date = 1584.1.1
+			birth_location = location:poitiers
+			estate = estate_type:nobles_estate
+			adm = { 60 90 }
+			dip = { 60 90 }
+			mil = { 60 90 }
+			culture = culture:poitevin
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_kni.13.a
+		historical_option = yes
+		change_gold_effect = { scale = -4 }
+		scope:target_character = {
+			move_country = root
+		}
+	}
+
+	option = {
+		name = flavor_kni.13.b
+		add_prestige = prestige_mild_penalty
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_kni.15 = { #Natives Attack Our Colonies
+	type = country_event
+	title = flavor_kni.15.title
+	desc = flavor_kni.15.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_kni.15.historical_info
+
+	dynamic_historical_event = {
+		tag = KNI
+		from = 1644.1.1
+		to = 1750.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		has_presence_in = region:caribbean_region
+		region:caribbean_region = {
+			any_location_in_region = {
+				owner ?= root
+				dominant_culture = culture:carib
+			}
+		}
+		root.culture != culture:carib
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		region:caribbean_region = {
+			random_location_in_region = {
+				limit = {
+					owner ?= root
+					dominant_culture = culture:carib
+				}
+				save_scope_as = target_location
+			}
+		}
+	}
+
+	option = {
+		name = flavor_kni.15.a
+		historical_option = yes
+		add_prestige = prestige_mild_penalty
+		scope:target_location = {
+			change_prosperity = prosperity_ultimate_penalty
+			change_development = development_mild_penalty
+			ordered_pop = {
+				limit = {
+					NOT = { culture = culture:carib }
+					owner = root
+				}
+				order_by = pop_size
+				check_range_bounds = no
+				max = 3
+				add_pop_size = {
+					value = pop_size
+					multiply = -0.5
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_kni.15.b
+		add_prestige = prestige_mild_bonus
+		scope:target_location = {
+			change_prosperity = prosperity_severe_penalty
+			change_development = development_weak_penalty
+		}
+		scope:target_location = {
+			ordered_pop = {
+				limit = {
+					culture = culture:carib
+					owner = root
+				}
+				order_by = pop_size
+				check_range_bounds = no
+				max = 3
+				add_pop_size = {
+					value = pop_size
+					multiply = -0.5
+				}
+			}
+		}
+		culture:carib = {
+			change_cultural_view = {
+				target = root.culture
+				change = -1
+			}
+		}
+	}
+}
+
+scripted_trigger is_valid_colonial_target = {
+	OR = {
+		capital ?= {
+			continent = continent:europe
+		}
+		AND = {
+			is_subject_type = colonial_nation
+			top_overlord ?= {
+				capital ?= {
+					continent = continent:europe
+				}
+			}
+		}
+	}
+}
+
+#Expanding the Caribbean Possessions
+flavor_kni.1000 = {
+	type = country_event
+	title = flavor_kni.1000.title
+	desc = flavor_kni.1000.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_kni.1000.historical_info
+
+	dynamic_historical_event = {
+		tag = KNI
+		from = 1650.1.1
+		to = 1750.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		region:caribbean_region = {
+			any_present_country = {
+				count >= 1
+				is_valid_colonial_target = yes
+			}
+		}
+		region:caribbean_region = {
+			any_location_in_region = {
+				has_owner = yes
+				owner != root
+				owner = {
+					NOT = {
+						is_subject_of = ROOT
+					}
+				}
+				is_coastal = yes
+				is_discovered_by = root
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		save_scope_as = from_country
+		region:caribbean_region = {
+			ordered_present_country = {
+				order_by = "opinion(root)"
+				max = 1
+				limit = {
+					NOT = {
+						is_subject_of = ROOT
+					}
+					is_valid_colonial_target = yes
+				}
+				save_scope_as = target_country
+			}
+		}
+
+		set_local_variable = {
+			name = cost_of_location_set
+			value = 0
+		}
+
+		region:caribbean_region = {
+			random_location_in_region = {
+				limit = {
+					owner ?= scope:target_country
+				}
+				save_scope_as = target_location
+				change_local_variable = {
+					name = cost_of_location_set
+					add = population
+				}
+			}
+		}
+
+		change_local_variable = {
+			name = cost_of_location_set
+			multiply = 50
+		}
+	}
+
+	option = {
+		name = flavor_kni.1000.a
+
+		custom_tooltip = kni_if_target_agrees
+
+		show_as_tooltip = {
+			scope:target_country = {
+				add_gold = local_var:cost_of_location_set
+			}
+			add_gold = {
+				value = local_var:cost_of_location_set
+				multiply = -1
+			}
+			scope:target_location = {
+				change_location_owner = ROOT
+			}
+		}
+
+		scope:target_country = {
+			trigger_event_non_silently = {
+				id = flavor_kni.1001
+			}
+		}
+	}
+
+	option = {
+		name = flavor_kni.1000.b
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+# Target Country Gets the Event
+flavor_kni.1001 = {
+	type = country_event
+	title = flavor_kni.1001.title
+	desc = flavor_kni.1001.desc
+	outcome = neutral
+
+	historical_info = flavor_kni.1000.historical_info
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_kni.1001.a
+		add_gold = local_var:cost_of_location_set
+		scope:from_country = {
+			add_gold = {
+				value = local_var:cost_of_location_set
+				multiply = -1
+			}
+		}
+		scope:target_location = {
+			change_location_owner = scope:from_country
+		}
+
+		scope:from_country = {
+			trigger_event_non_silently = {
+				id = flavor_kni.1002
+			}
+		}
+	}
+
+	option = {
+		name = flavor_kni.1001.b
+		add_prestige = prestige_mild_penalty
+		scope:from_country = {
+			trigger_event_non_silently = {
+				id = flavor_kni.1003
+			}
+		}
+	}
+}
+
+# Target Country Agrees
+flavor_kni.1002 = {
+	type = country_event
+	title = flavor_kni.1002.title
+	desc = flavor_kni.1002.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_kni.1002.a
+		custom_tooltip = flavor_kni.1002.a.t
+	}
+}
+
+# Target Country Disagrees
+flavor_kni.1003 = {
+	type = country_event
+	title = flavor_kni.1003.title
+	desc = flavor_kni.1003.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = angry
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_kni.1003.a
+		custom_tooltip = flavor_kni.1003.a.t
+	}
+}
+
+#The Sale of the Colonies
+flavor_kni.2000 = {
+	type = country_event
+	title = flavor_kni.2000.title
+	desc = flavor_kni.2000.desc
+	outcome = neutral
+
+	historical_info = flavor_kni.2000.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = KNI
+		from = 1650.1.1
+		to = 1750.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		OR = {
+			num_loans > 5
+			monthly_balance < 0
+		}
+		region:caribbean_region = {
+			any_present_country = {
+				count >= 1
+				is_valid_colonial_target = yes
+				is_during_bankruptcy = no
+				this != root
+			}
+		}
+		has_presence_in = region:caribbean_region
+		region:caribbean_region = {
+			any_location_in_region = {
+				owner ?= root
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		save_scope_as = from_country
+		region:caribbean_region = {
+			ordered_present_country = {
+				order_by = "opinion(root)"
+				max = 1
+				limit = {
+					is_valid_colonial_target = yes
+					is_during_bankruptcy = no
+					this != root
+				}
+				save_scope_as = target_country
+			}
+		}
+
+		set_local_variable = {
+			name = cost_of_location_set
+			value = 0
+		}
+
+		region:caribbean_region = {
+			every_location_in_region = {
+				limit = {
+					owner ?= root
+					population > 0
+				}
+				add_to_list = locations_to_sell
+				change_local_variable = {
+					name = cost_of_location_set
+					add = {
+						value = population
+						multiply = 30
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_kni.2000.a
+		historical_option = yes
+		custom_tooltip = flavor_kni.2000.a.t
+
+		show_as_tooltip = {
+			scope:target_country = {
+				add_gold = {
+					value = local_var:cost_of_location_set
+					multiply = -1
+				}
+			}
+			add_gold = local_var:cost_of_location_set
+			every_in_list = {
+				list = locations_to_sell
+				change_location_owner = scope:target_country
+			}
+		}
+
+		scope:target_country = {
+			trigger_event_non_silently = {
+				id = flavor_kni.2001
+			}
+		}
+
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				num_loans > 5
+			}
+		}
+	}
+
+	option = {
+		name = flavor_kni.2000.b
+		add_prestige = prestige_mild_penalty
+		ai_chance = {
+			factor = 9
+		}
+	}
+}
+
+#Target Country Gets Event
+flavor_kni.2001 = {
+	type = country_event
+	title = flavor_kni.2001.title
+	desc = flavor_kni.2001.desc
+	outcome = neutral
+
+	historical_info = flavor_kni.2000.historical_info
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_kni.2001.a
+		historical_option = yes
+		add_gold = {
+			value = local_var:cost_of_location_set
+			multiply = -1
+		}
+		scope:from_country = {
+			add_gold = local_var:cost_of_location_set
+		}
+		every_in_list = {
+			list = locations_to_sell
+			change_location_owner = scope:target_country
+		}
+		scope:from_country = {
+			trigger_event_non_silently = {
+				id = flavor_kni.2002
+			}
+		}
+		ai_chance = {
+			factor = 9
+			modifier = {
+				factor = 0.5
+				num_loans > 5
+			}
+		}
+	}
+
+	option = {
+		name = flavor_kni.2001.b
+		add_prestige = prestige_mild_penalty
+		scope:from_country = {
+			trigger_event_non_silently = {
+				id = flavor_kni.2003
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Target Country Agrees
+flavor_kni.2002 = {
+	type = country_event
+	title = flavor_kni.2002.title
+	desc = flavor_kni.2002.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_kni.2002.a
+		custom_tooltip = flavor_kni.2002.a.t
+	}
+}
+
+# Target Country Disagrees
+flavor_kni.2003 = {
+	type = country_event
+	title = flavor_kni.2003.title
+	desc = flavor_kni.2003.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = angry
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_kni.2003.a
+		custom_tooltip = flavor_kni.2003.a.t
+	}
+}

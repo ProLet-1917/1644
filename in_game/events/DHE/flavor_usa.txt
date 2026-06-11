@@ -1,0 +1,1365 @@
+﻿namespace = flavor_usa
+
+flavor_usa.1 = {
+	type = country_event
+	title = flavor_usa.1.title
+	desc = flavor_usa.1.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+
+		is_active_parliament = yes
+	}
+
+	option = {
+		name = flavor_usa.1.a
+		
+		change_societal_value = { type = centralization_vs_decentralization value = societal_value_minor_move_to_right }
+		change_parliament_issue_support = 0.2
+	}
+	option = {
+		name = flavor_usa.1.b
+		
+		change_societal_value = { type = centralization_vs_decentralization value = societal_value_minor_move_to_left }
+		change_parliament_issue_support = -0.2
+	}
+}
+
+flavor_usa.2 = {
+	type = country_event
+	title = flavor_usa.2.title
+	desc = flavor_usa.2.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+		is_active_parliament = yes
+		
+	}
+
+	option = {
+		name = flavor_usa.2.a
+		
+		add_prestige = prestige_mild_bonus
+		change_parliament_issue_support = 0.5
+	}
+}
+
+flavor_usa.3 = {
+	type = country_event
+	title = flavor_usa.3.title
+	desc = flavor_usa.3.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+
+		has_presence_in = area:ohio_area
+		has_presence_in = area:michigan_area
+		has_presence_in = area:illinois_area
+		has_presence_in = area:wisconsin_area
+		has_presence_in = area:superior_area
+	}
+
+	option = {
+		name = flavor_usa.3.a
+
+		custom_tooltip = {
+			text = flavor_usa.3.a.tt
+			every_owned_location = {
+				limit = {
+					OR = {
+						area = area:ohio_area
+						area = area:michigan_area
+						area = area:illinois_area
+						area = area:wisconsin_area
+						area = area:superior_area
+					}
+				}
+				change_development = development_weak_bonus
+				change_control = control_mild_penalty
+			}
+		}
+	}
+	option = {
+		name = flavor_usa.3.b
+		
+		custom_tooltip = {
+			text = flavor_usa.3.b.tt
+			every_owned_location = {
+				limit = {
+					OR = {
+						area = area:ohio_area
+						area = area:michigan_area
+						area = area:illinois_area
+						area = area:wisconsin_area
+						area = area:superior_area
+					}
+				}
+				change_development = development_weak_penalty
+				change_control = control_mild_bonus
+			}
+		}
+	}
+}
+
+
+flavor_usa.4 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_usa.4.title
+	desc = flavor_usa.4.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		character:eng_thomas_paine ?= {
+			save_scope_as = target_artist
+		}
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		current_year >= 1760
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+
+		
+	}
+
+	option = {
+		name = flavor_usa.4.a
+
+		add_government_power = government_power_mild_bonus
+		add_prestige = prestige_mild_bonus
+
+		if = {
+			limit = {
+				exists = scope:target_artist
+				scope:target_artist = {
+					is_alive = yes
+					owner = root
+				}
+			}
+			scope:target_artist = {
+				add_artist_skill = 0.1
+			}
+			capital = {
+				create_art = {
+					artist = scope:target_artist
+					quality = 90
+					type = work_of_art_type:treatise
+					key = common_sense
+				}
+			}
+		}
+	}
+}
+
+flavor_usa.5 = {
+	type = country_event
+	title = flavor_usa.5.title
+	desc = flavor_usa.5.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		create_character = {
+			first_name = name_benjamin
+			last_name = Franklin
+			adm = { 70 100 }
+			dip = { 80 100 }
+			mil = { 20 60 }
+			birth_location = location:shawmut
+			culture = culture:english
+			religion = root.religion
+			birth_date = 1706.1.17
+			estate = estate_type:burghers_estate
+			save_scope_as = target_character
+		}
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		current_year >= 1740
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+	}
+
+	option = {
+		name = flavor_usa.5.a
+
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+flavor_usa.6 = {
+	type = country_event
+	title = flavor_usa.6.title
+	desc = flavor_usa.6.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_fur.dds"
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+
+		
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		current_year >= 1740
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+
+		produced_in_country:fur > 0
+	}
+
+	option = {
+		name = flavor_usa.6.a
+		change_gold_effect = { scale = -4 }
+		custom_tooltip = {
+			text = flavor_usa.6.a.tt
+			every_owned_location = {
+				limit = {
+					raw_material = goods:fur
+				}
+				change_max_raw_material_workers = 1
+			}
+		}
+		change_societal_value = {
+			type = capital_economy_vs_traditional_economy
+			value = societal_value_minor_move_to_right
+		}
+	}
+	option = {
+		name = flavor_usa.6.b
+
+		change_societal_value = {
+			type = capital_economy_vs_traditional_economy
+			value = societal_value_minor_move_to_left
+		}
+	}
+}
+
+flavor_usa.7 = {
+	type = country_event
+	title = flavor_usa.7.title
+	desc = flavor_usa.7.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+
+		NOT = {
+			has_policy = native_integration
+		}
+		has_advance = native_policy_advance
+	}
+
+	option = {
+		name = flavor_usa.7.a
+		historical_option = yes
+		
+		add_policy = policy:native_integration
+	}
+	option = {
+		name = flavor_usa.7.b
+
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+flavor_usa.8 = {
+	type = country_event
+	title = flavor_usa.8.title
+	desc = flavor_usa.8.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+
+		owns = location:shawmut
+	}
+
+	option = {
+		name = flavor_usa.8.a
+		historical_option = yes
+
+		location:shawmut = {
+			construct_building = {
+				building_type = building_type:usa_academy_of_arts_and_sciences
+			}
+		}
+		
+	}
+	option = {
+		name = flavor_usa.8.b
+		
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
+	}
+}
+
+flavor_usa.9 = {
+	type = country_event
+	title = flavor_usa.9.title
+	desc = flavor_usa.9.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+
+		random_owned_location = {
+			save_scope_as = unrest_location
+		}
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+
+		"estate(estate_type:peasants_estate)" = { estate_tax_rate > 0.6 }
+	}
+
+	option = {
+		name = flavor_usa.9.a
+
+		custom_tooltip = {
+			text = flavor_usa.9.a.tt
+			scope:unrest_location.province = {
+				every_location_in_province = {
+					limit = {
+						owner = root
+					}
+					change_control = control_weak_bonus
+					every_pop = {
+						limit = {
+							owner = root
+						}
+						add_pop_satisfaction = pop_satisfaction_severe_penalty
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = flavor_usa.9.b
+
+		custom_tooltip = {
+			text = flavor_usa.9.b.tt
+			scope:unrest_location.province = {
+				every_location_in_province = {
+					limit = {
+						owner = root
+					}
+					change_control = control_mild_penalty
+					every_pop = {
+						limit = {
+							owner = root
+						}
+						add_pop_satisfaction = pop_satisfaction_mild_bonus
+					}
+				}
+			}
+		}
+	}
+}
+
+flavor_usa.10 = {
+	type = country_event
+	title = flavor_usa.10.title
+	desc = flavor_usa.10.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		location:shawmut = {
+			save_scope_as = unrest_location
+		}
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+		
+		owns = location:shawmut
+	}
+
+	option = {
+		name = flavor_usa.10.a
+
+		change_gold_effect = { scale = -3 }
+		
+		add_country_modifier = {
+			modifier = usa_postal_roads_expansion
+			years = 5
+			mode = add_and_extend
+		}
+	}
+	option = {
+		name = flavor_usa.10.b
+		
+		add_stability = stability_weak_penalty
+	}
+}
+
+flavor_usa.11 = {
+	type = country_event
+	title = flavor_usa.11.title
+	desc = flavor_usa.8.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+
+		owns = location:shackamaxon
+	}
+
+	option = {
+		name = flavor_usa.11.a
+
+		location:shackamaxon = {
+			construct_building = {
+				building_type = building_type:usa_philosophical_society
+			}
+		}
+	}
+	option = {
+		name = flavor_usa.8.b
+
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
+	}
+}
+
+flavor_usa.12 = {
+	type = country_event
+	title = flavor_usa.12.title
+	desc = flavor_usa.12.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		location:manhattan = {
+			save_scope_as = target_location
+		}
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+
+		owns = location:manhattan
+	}
+
+	option = {
+		name = flavor_usa.12.a
+		
+		custom_tooltip = {
+			text = flavor_usa.12.a.tt
+			scope:target_location = {
+				change_prosperity = prosperity_mild_penalty
+				every_pop = {
+					add_pop_size = {
+						value = pop_size
+						multiply = -0.05
+					}
+				}
+				ordered_buildings_in_location = {
+					order_by = building_level
+					max = {
+						value = 1
+	
+						add = {
+							value = location.num_buildings
+							divide = 10
+						}
+					}
+				
+					location = { major_destroy_building_levels_in_location = yes }
+				}
+			}
+		}
+		change_gold_effect = { scale = -2 }
+	}
+	option = {
+		name = flavor_usa.12.b
+		
+		custom_tooltip = {
+			text = flavor_usa.12.b.tt
+			scope:target_location = {
+				change_prosperity = prosperity_mild_penalty
+				change_development = development_mild_penalty
+				every_pop = {
+					add_pop_size = {
+						value = pop_size
+						multiply = -0.05
+					}
+				}
+				ordered_buildings_in_location = {
+					order_by = building_level
+					max = {
+						value = 1
+	
+						add = {
+							value = location.num_buildings
+							divide = 10
+						}
+					}
+				
+					location = { major_destroy_building_levels_in_location = yes }
+				}
+			}
+		}
+	}
+}
+
+flavor_usa.13 = {
+	type = country_event
+	title = flavor_usa.13.title
+	desc = flavor_usa.13.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+
+		create_character = {
+			first_name = name_meriwether
+			last_name = last_name_lewis
+			adm = { 70 100 }
+			dip = { 80 100 }
+			mil = { 70 100 }
+			birth_location = location:massinacak
+			birth_date = 1774.8.18
+			trait_category = explorer
+			estate = estate_type:burghers_estate
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		create_character = {
+			first_name = name_william
+			last_name = Clark
+			adm = { 70 100 }
+			dip = { 80 100 }
+			mil = { 70 100 }
+			birth_location = location:nanzatico
+			birth_date = 1770.8.1
+			trait_category = explorer
+			estate = estate_type:burghers_estate
+			save_scope_as = target_character_2
+			create_in_limbo = yes
+		}
+	}
+
+	trigger = {
+		current_year >= 1800
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+
+		has_presence_in = region:great_plains_region
+		region:west_coast_region = {
+			any_location_in_region = {
+				NOT = {
+					is_discovered_by = root
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_usa.13.a
+		historical_option = yes
+
+		scope:target_character = { move_country = root }
+		scope:target_character_2 = { move_country = root }
+		change_gold_effect = { scale = -3 }
+		region:west_coast_region = {
+			every_location_in_region = {
+				discover_location = root
+			}
+		}
+	}
+	option = {
+		name = flavor_usa.13.b
+
+		scope:target_character = { move_country = root }
+		scope:target_character_2 = { move_country = root }
+		add_prestige = prestige_weak_bonus
+	}
+}
+
+flavor_usa.14 = {
+	type = country_event
+	title = flavor_usa.14.title
+	desc = flavor_usa.14.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		capital = {
+			save_scope_as = target_location
+		}
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+	}
+
+	option = {
+		name = flavor_usa.14.a
+
+		scope:target_location = {
+			construct_building = {
+				building_type = building_type:usa_national_bank
+			}
+		}
+	}
+	option = {
+		name = flavor_usa.14.b
+
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_move_to_right }
+	}
+}
+
+flavor_usa.15 = {
+	type = country_event
+	title = flavor_usa.15.title
+	desc = flavor_usa.15.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_cotton.dds"
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	trigger = {
+		current_year >= 1790
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+	}
+
+	option = {
+		name = flavor_usa.15.a
+
+		change_gold_effect = { scale = -3 }
+		
+		custom_tooltip = {
+			text = flavor_usa.15.a.tt
+			every_owned_location = {
+				limit = {
+					OR = {
+						raw_material = goods:cotton
+					}
+				}
+				add_location_modifier = {
+					modifier = cotton_gin
+					years = 100
+					mode = add_and_extend
+				}
+			}
+		}
+	}
+	option = {
+		name = flavor_usa.15.b
+		
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_move_to_right }
+	}
+}
+
+flavor_usa.16 = {
+	type = country_event
+	title = flavor_usa.16.title
+	desc = flavor_usa.16.desc
+	outcome = neutral
+	
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		capital = {
+			save_scope_as = target_location
+		}
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+	}
+
+	option = {
+		name = flavor_usa.16.a
+
+		scope:target_location = {
+			construct_building = {
+				building_type = building_type:usa_national_mint
+			}
+		}
+	}
+	option = {
+		name = flavor_usa.16.b
+
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_move_to_right }
+	}
+}
+
+flavor_usa.17 = {
+	type = country_event
+	title = flavor_usa.17.title
+	desc = flavor_usa.17.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+
+		random_country_at_war_with = {
+			limit = {
+				culture = { is_culture_native_american =yes }
+			}
+			save_scope_as = target_country
+		}
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+
+		any_country_at_war_with = {
+			culture = { is_culture_native_american =yes }
+		}
+	}
+
+	option = {
+		name = flavor_usa.17.a
+
+		drop_antagonism_bomb = {
+			target = root.capital
+			modifier = antagonism_planned_invasion
+		}
+	}
+}
+
+flavor_usa.18 = {
+	type = country_event
+	title = flavor_usa.18.title
+	desc = flavor_usa.18.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+
+		random_owned_location = {
+			save_scope_as = unrest_location
+		}
+		create_rebel = {
+			category = estate
+			name = shays_rebellion
+			save_scope_as = target_shays_rebellion
+			estate = peasants_estate
+		}
+		create_character = {
+			first_name = name_daniel
+			last_name = Shays
+			adm = { 40 90 }
+			dip = { 40 80 }
+			mil = { 60 90 }
+			birth_location = location:shawmut
+			birth_date = 1747.8.1
+			estate = estate_type:peasants_estate
+			save_scope_as = target_character
+		}
+	}
+
+	trigger = {
+		current_year >= 1767
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+
+		num_loans >= 2
+		"estate(estate_type:peasants_estate)" = { estate_tax_rate > 0.6 }
+	}
+
+	option = {
+		name = flavor_usa.9.a
+
+		show_as_tooltip = {
+			create_rebel = {
+				category = estate
+				name = shays_rebellion
+				save_scope_as = target_shays_rebellion
+				estate = peasants_estate
+			}
+		}
+		scope:unrest_location.province = {
+			every_location_in_province = {
+				limit = {
+					owner = root
+				}
+				change_control = control_weak_bonus
+				every_pop = {
+					limit = {
+						owner = root
+					}
+					add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+					change_pop_allegiance = scope:target_shays_rebellion
+				}
+			}
+		}
+		scope:target_character = {
+			change_character_allegiance = scope:target_shays_rebellion
+		}
+	}
+}
+
+flavor_usa.19 = {
+	type = country_event
+	title = flavor_usa.19.title
+	desc = flavor_usa.19.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+		has_advance = recruitment_law_advance
+	}
+
+	option = {
+		name = flavor_usa.19.a
+		
+		add_policy = policy:elite_training_policy
+	}
+	option = {
+		name = flavor_usa.19.b
+		
+		add_policy = policy:levee_en_masse_policy
+	}
+}
+
+flavor_usa.20 = {
+	type = country_event
+	title = flavor_usa.20.title
+	desc = flavor_usa.20.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+
+		capital.market = {
+			market_food_percentage > 0.99
+		}
+		stability > 99
+	}
+
+	option = {
+		name = flavor_usa.20.a
+		
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+flavor_usa.1000 = {
+	type = country_event
+	title = flavor_usa.1000.title
+	desc = flavor_usa.1000.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		random_international_organizations_member_of = {
+			limit = {
+				international_organization_type = international_organization_type:colonial_federation
+				leader_country = root
+			}
+			save_scope_as = target_io
+		}
+	}
+
+	trigger = {
+		is_situation_active = situation:colonial_revolution
+		culture = {
+			has_culture_group = culture_group:british_group
+		}
+		is_subject = no
+		exists = capital
+		capital.region = region:east_coast_region
+
+		is_leader_of_international_organization_of_type = {
+			type = colonial_federation
+		}
+	}
+
+	option = {
+		name = flavor_usa.1000.a
+		historical_option = yes
+
+		add_stability = stability_mild_penalty
+		add_prestige = prestige_weak_bonus
+		trigger_event_non_silently = {
+			id = flavor_usa.1001
+			days = 30
+		}
+	}
+
+	option = {
+		name = flavor_usa.100.b
+
+		add_stability = stability_mild_bonus
+	}
+}
+
+flavor_usa.1001 = {
+	type = country_event
+	title = flavor_usa.1001.title
+	desc = flavor_usa.1001.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		trigger_event_silently = {
+			id = flavor_usa.1002
+			days = 20
+		}
+
+		random_international_organizations_member_of = {
+			limit = {
+				international_organization_type = international_organization_type:colonial_federation
+				leader_country = root
+			}
+			save_scope_as = target_io
+		}
+	}
+
+	option = {
+		name = flavor_usa.1001.a
+		historical_option = yes
+
+		scope:target_io = {
+			every_international_organization_member = {
+				add_country_modifier = {
+					modifier = reform_of_law
+					years = 5
+					mode = add_and_extend
+				}
+				change_societal_value = { type = centralization_vs_decentralization value = societal_value_huge_move_to_right }
+			}
+		}
+	}
+	option = {
+		name = flavor_usa.1001.b
+
+		scope:target_io = {
+			every_international_organization_member = {
+				change_societal_value = { type = centralization_vs_decentralization value = societal_value_huge_move_to_left }
+			}
+		}
+	}
+}
+
+flavor_usa.1002 = {
+	type = country_event
+	title = flavor_usa.1002.title
+	desc = flavor_usa.1002.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		random_international_organizations_member_of = {
+			limit = {
+				international_organization_type = international_organization_type:colonial_federation
+				leader_country = root
+			}
+			save_scope_as = target_io
+		}
+	}
+
+	option = {
+		name = flavor_usa.1002.a
+		historical_option = yes
+		
+		add_stability = stability_mild_bonus
+		trigger_event_non_silently = {
+			id = flavor_usa.1003
+			days = 20
+		}
+	}
+
+	option = {
+		name = flavor_usa.1002.b
+
+		add_stability = stability_severe_penalty
+		scope:target_io = {
+			every_international_organization_member = {
+				add_policy = policy:slavery_outlawed
+			}
+		}
+		custom_tooltip = {
+			text = flavor_usa.1002.b.tt
+			every_pop = {
+				limit = {
+					owner = root
+					pop_type = pop_type:slaves
+					pop_type = pop_type:peasants
+				}
+				add_pop_satisfaction = pop_satisfaction_mild_bonus
+			}
+		}
+	}
+}
+
+flavor_usa.1003 = {
+	type = country_event
+	title = flavor_usa.1003.title
+	desc = flavor_usa.1003.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		random_international_organizations_member_of = {
+			limit = {
+				international_organization_type = international_organization_type:colonial_federation
+				leader_country = root
+			}
+			save_scope_as = target_io
+		}
+	}
+
+	option = {
+		name = flavor_usa.1003.a
+
+		scope:target_io = {
+			every_international_organization_member = {
+				add_policy = policy:civil_law_policy
+			}
+		}
+		
+	}
+	option = {
+		name = flavor_usa.1003.b
+		
+		scope:target_io = {
+			every_international_organization_member = {
+				add_policy = policy:common_law_policy
+			}
+		}
+	}
+	option = {
+		name = flavor_usa.1003.c
+		
+		scope:target_io = {
+			every_international_organization_member = {
+				add_policy = policy:traditional_law_policy
+			}
+		}
+	}
+	option = {
+		name = flavor_usa.1003.d
+		
+		 add_prestige = prestige_weak_bonus
+	}
+}
+

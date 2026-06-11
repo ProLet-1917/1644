@@ -1,0 +1,836 @@
+﻿namespace = colonial_charter
+
+colonial_charter.1 = {
+	hide_portraits = yes
+	type = country_event	
+
+	title = colonial_charter.1.title
+	desc = colonial_charter.1.desc
+	
+	
+	
+	
+	trigger = {
+		scope:target.province_definition = {
+			any_location_in_province_definition = {
+				has_owner = no
+				is_ownable = yes
+				is_land = yes
+				any_neighbor_location = {
+					owner ?= root
+				}
+			}
+		}
+
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		scope:target.province_definition = {
+			random_location_in_province_definition = {
+				limit = { 
+					has_owner = no
+					is_ownable = yes
+					is_land = yes
+					any_neighbor_location = {
+						owner ?= root
+					}
+				}
+				save_scope_as = new_colony
+			}
+		}
+
+	}
+	
+	
+	
+	option = {
+		name = colonial_charter.1.a
+		scope:new_colony = {
+			add_pop = {
+				culture = root.culture
+				religion = root.religion
+				type = pop_type:peasants
+				size = 0.2
+			}
+		}
+	}
+
+	option = {
+		name = colonial_charter.1.b
+		scope:new_colony = {
+			add_pop = {
+				culture = root.culture
+				religion = root.religion
+				type = pop_type:peasants
+				size = 0.05
+			}
+		}
+		add_gold = {
+			value = {
+				scope:target.province_definition = {
+					every_location_in_province_definition = {
+						add = this.population
+					}
+				}
+				add = "capital.distance_to(scope:new_colony)"
+			}
+			divide = 100
+			multiply = 10
+		}
+	}
+}
+
+
+
+colonial_charter.3 = {
+	hide_portraits = yes
+	type = country_event
+	title = colonial_charter.3.title
+	desc = colonial_charter.3.desc
+
+	
+		
+	trigger = {
+		scope:target.province_definition ?= {
+			any_location_in_province_definition = {
+				has_owner = no
+				is_ownable = yes
+				is_land = yes
+				any_neighbor_location = {
+					owner ?= root
+				}
+			}
+		}
+
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		scope:target.province_definition = {
+			random_location_in_province_definition = {
+				limit = { 
+					has_owner = no
+					is_ownable = yes
+					is_land = yes
+					any_neighbor_location = {
+						owner ?= root
+					}
+					
+				}
+				save_scope_as = new_colony
+			}
+		}
+	}
+	
+	
+	option = {
+		name = colonial_charter.3.a
+		scope:new_colony = {
+			add_pop = {
+				culture = root.culture
+				religion = root.religion
+				type = pop_type:peasants
+				size = 0.1
+			}
+			add_pop = {
+				culture = root.culture
+				religion = root.religion
+				type = pop_type:nobles
+				size = 0.01
+			}
+		}
+	}
+}
+
+colonial_charter.4 = {
+	hide_portraits = yes
+	type = country_event
+	title = colonial_charter.4.title
+	desc = colonial_charter.4.desc
+	
+	trigger = {
+		scope:target ?= {
+			province_definition ?= {
+				any_location_in_province_definition = {
+					has_owner = no
+					is_ownable = yes
+					any_pop = {
+						culture = root.culture
+						religion = root.religion
+					}
+				}
+			}
+		 }
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+
+	immediate = {
+		scope:target.province_definition = {
+			random_location_in_province_definition = {
+				limit = { 
+					has_owner = no
+					is_ownable = yes
+					any_pop = {
+						culture = root.culture
+						religion = root.religion
+					}
+				}
+				save_scope_as = death_place
+			}
+		}
+
+	}
+	
+	option = {
+		name = colonial_charter.4.a
+		scope:death_place = {
+			every_pop = {
+				limit = {
+					culture = root.culture
+					religion = root.religion
+				}
+				add_pop_size = {
+					value = pop_size
+					multiply = -0.1
+				}
+			}
+		}
+	}
+	option = {
+		name = colonial_charter.4.b
+		add_gold = {
+			value = {
+				scope:target.province_definition = {
+					every_location_in_province_definition = {
+						add = this.population
+					}
+				}
+				add = "capital.distance_to(scope:death_place)"
+			}
+			divide = 1000
+			multiply = -10
+		}
+	}
+}
+
+
+
+colonial_charter.5 = {
+	hide_portraits = yes
+	type = country_event
+	title = colonial_charter.5.title
+	desc = colonial_charter.5.desc
+	trigger = {
+		has_policy = native_trade
+		
+		
+		scope:target ?= {
+			province_definition ?= {
+				any_location_in_province_definition = {
+					any_pop = {
+						culture != root.culture
+						religion != root.religion
+					}
+				}
+			}
+		 }
+	}
+	
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+	
+	immediate = {
+		scope:target.province_definition = {
+			random_location_in_province_definition = {
+				limit = { 
+					any_pop = {
+						culture != root.culture
+						religion != root.religion
+					}
+				}
+				save_scope_as = convert_place
+			}
+		}
+
+	}
+
+	option = {
+		name = colonial_charter.5.a
+		
+		scope:convert_place = {
+			every_pop = {
+				limit = {
+					culture != root.culture
+					religion != root.religion
+				}
+				split_pop = {
+					fraction = 0.10
+					religion = root.religion
+				}
+			}
+		}
+	}
+}
+
+colonial_charter.6 = {
+	hide_portraits = yes
+	type = country_event
+	title = colonial_charter.6.title
+	desc = colonial_charter.6.desc
+
+	trigger = {
+		any_province = {
+			region = root.capital.region
+			population > 10.0
+			count > 0
+		}
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+	
+	immediate = {
+		random_province = {
+			limit = {
+				region = root.capital.region
+				population > 10.0
+			}
+			save_scope_as = origin
+		}
+	}
+
+	option = {
+		name = colonial_charter.6.a
+		
+		add_migration = {
+			owner = this
+			from = scope:origin.province_definition
+			to = scope:target.province_definition
+			type = pop_type:peasants
+			amount = 0.025
+			months = 120
+		}
+	}
+}
+
+colonial_charter.7 = {
+	type = country_event
+	title = colonial_charter.7.title
+	desc = colonial_charter.7.desc
+	trigger = {
+		has_policy = settled_colonies
+		
+		scope:target = {
+			province_definition = {
+				any_location_in_province_definition = {
+					NOT = { has_location_modifier = encomienda_system }
+				}
+			}
+		}
+	}
+	
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}	
+
+
+	option = {
+		name = colonial_charter.7.a
+		scope:target = {
+			province_definition = {
+				every_location_in_province_definition = {
+					add_location_modifier = { modifier = encomienda_system years = 10 mode = add_and_extend }  
+				}
+			}
+		}
+	}
+}
+
+colonial_charter.8 = {
+	type = country_event
+	title = colonial_charter.8.title
+	desc = colonial_charter.8.desc
+	trigger = {
+		has_policy = settled_colonies
+		scope:target.province_definition = {
+			any_location_in_province_definition = {
+				has_building_with_at_least_one_level = missionary_building
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+	
+	immediate = {
+
+		scope:target.province_definition = {
+			random_location_in_province_definition = {
+				limit = {
+					has_building_with_at_least_one_level = missionary_building
+				}
+				save_scope_as = missionary_location
+			}
+		}
+	}
+
+	option = {
+		name = colonial_charter.8.a
+		scope:missionary_location = {
+			every_pop = {
+				limit = {
+					NOT = { religion = root.religion }
+				}
+				split_pop = {
+					fraction = 0.10
+					religion = root.religion
+				}
+			}
+		}
+	}
+}
+
+colonial_charter.9 = {
+	type = country_event
+	title = colonial_charter.9.title
+	desc = colonial_charter.9.desc
+	trigger = {
+		any_colonial_charter = {
+			count > 5
+		}
+	}
+
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+	
+	option = {
+		name = colonial_charter.9.a
+		destroy_colonial_charter = scope:target
+	}
+	option = {
+		name = colonial_charter.9.b
+		add_gold = { 
+			value = {
+				scope:target.province_definition = {
+					every_location_in_province_definition = {
+						add = this.population
+					}
+				}
+				add = "capital.distance_to(scope:missionary_location)"
+			}
+			divide = 100
+			multiply = -10
+		}
+	}
+}
+
+colonial_charter.10 = {
+	type = country_event
+	title = colonial_charter.10.title
+	desc = colonial_charter.10.desc
+
+	trigger = {
+		scope:target.province_definition ?= {
+			any_location_in_province_definition = {
+				is_ownable = yes
+			}
+		}
+	}
+
+	immediate = {
+		scope:target.province_definition = {
+			random_location_in_province_definition = {
+				limit = {
+					is_ownable = yes
+				}
+				save_scope_as = target_location
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	option = {
+		name = colonial_charter.10.a
+		add_gold = {
+			value = {
+				scope:target.province_definition = {
+					every_location_in_province_definition = {
+						limit = {
+							is_ownable = yes
+						}
+						add = this.population
+					}
+				}
+				add = "capital.distance_to(scope:target_location)"
+			}
+			divide = 100
+			multiply = -10
+		}
+	}
+
+	option = {
+		name = colonial_charter.10.b
+		trigger = {
+			prestige >= prestige_weak_bonus
+		}
+		add_prestige = prestige_weak_penalty
+	}
+}
+
+
+
+
+
+
+
+#################################
+# The special finished event!
+#################################
+
+
+
+colonial_charter.100 = {
+	hide_portraits = yes
+	type = country_event	
+
+	title = colonial_charter.100.title
+	desc = colonial_charter.100.desc
+
+	immediate = {
+		if = {
+			limit = {
+				scope:target = {
+					any_location_in_province = {
+						is_city = yes
+						count = 0
+					}
+				}
+			}
+			scope:target = {
+				ordered_location_in_province = {
+					max = 1
+					order_by = best_capital_for_colony
+					
+					save_scope_as = new_town
+				}
+			}
+			
+		}
+	
+		ordered_subject = {
+			limit = {
+				is_subject_type = colonial_nation
+				capital = {
+					region = scope:target.region
+				}
+			}
+			order_by = total_population
+			max = 1
+
+			save_scope_as = potential_join_big_regional_subject
+		}
+	
+	
+		if = {
+			limit = {
+				scope:target = {
+					any_location_in_province = {
+						any_coast_border_location = {
+							has_owner = yes
+							owner = { 
+								is_subject_of = ROOT 
+								is_subject_type = colonial_nation
+								NAND = { exists = scope:potential_join_big_regional_subject	this = scope:potential_join_big_regional_subject }
+							}
+						}
+					}
+				}
+			}
+			scope:target = {
+				random_location_in_province = {
+					limit = {
+						any_coast_border_location = {
+							has_owner = yes
+							owner = { 
+								is_subject_of = ROOT 
+								is_subject_type = colonial_nation
+								NAND = { exists = scope:potential_join_big_regional_subject	this = scope:potential_join_big_regional_subject }
+							}
+						}
+					}
+					random_coast_border_location = {
+						limit = {
+							has_owner = yes
+							owner = { 
+								is_subject_of = ROOT 
+								is_subject_type = colonial_nation 
+								NAND = { exists = scope:potential_join_big_regional_subject	this = scope:potential_join_big_regional_subject }
+							}
+						}
+						owner = { save_scope_as = potential_join_1 }
+		
+					}
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				scope:target = {
+					any_location_in_province = {
+						any_coast_border_location = {
+							has_owner = yes
+							owner = { 
+								is_subject_of = ROOT 
+								is_subject_type = colonial_nation 
+								NAND = { exists = scope:potential_join_big_regional_subject	this = scope:potential_join_big_regional_subject }
+								NAND = { exists = scope:potential_join_1	this = scope:potential_join_1 }
+							}
+						}
+					}
+				}
+			}
+			scope:target = {
+				random_location_in_province = {
+					limit = {
+						any_coast_border_location = {
+							has_owner = yes
+							owner = { 
+								is_subject_of = ROOT 
+								is_subject_type = colonial_nation
+								NAND = { exists = scope:potential_join_big_regional_subject	this = scope:potential_join_big_regional_subject }
+							}
+						}
+					}
+					random_coast_border_location = {
+						limit = {
+							has_owner = yes
+							owner = { 
+								is_subject_of = ROOT 
+								is_subject_type = colonial_nation 
+								NAND = { exists = scope:potential_join_big_regional_subject	this = scope:potential_join_big_regional_subject }
+								NAND = { exists = scope:potential_join_1	this = scope:potential_join_1 }
+							}
+						}
+						owner = { save_scope_as = potential_join_2 }
+		
+					}
+				}
+			}
+		}
+
+		scope:target = {
+			capital = { save_scope_as = target_location }
+		}
+	}
+		
+	option = {
+		name = colonial_charter.100.a
+		trigger = {
+			scope:target = { is_overseas_for_owner = yes  }
+		}
+		
+		if = {
+			limit = {
+				exists = scope:new_town
+			}
+			scope:new_town = {
+				change_location_rank = location_rank:town
+				cc_setup_new_town = yes
+			}
+		}
+		
+		scope:target = { 
+			create_location_country_from_province = {
+				subject_type = subject_type:colonial_nation
+			
+				hidden_effect = {
+					setup_colonial_nation = yes
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = colonial_charter.100.e
+		high_risk_option = yes
+		trigger = {
+			is_human = yes
+			scope:target = { is_overseas_for_owner = yes  }
+		}
+		if = {
+			limit = {
+				exists = scope:new_town
+			}
+			scope:new_town = {
+				change_location_rank = location_rank:town
+				cc_setup_new_town = yes
+			}
+		}
+		scope:target = { 
+			create_location_country_from_province = {
+				subject_type = subject_type:colonial_nation
+				hidden_effect = {
+					setup_colonial_nation = yes
+				}
+				save_scope_as = target_country
+			}
+		}
+		custom_tooltip = {
+			text = colonial_charter.100.e.tt
+			change_player = scope:target_country
+		}
+
+		# needed when ai and human is playing together
+		ai_chance = {
+			factor = -1
+		}
+	}
+
+	option = {
+		name = colonial_charter.100.b
+		trigger = { 
+			 exists = scope:potential_join_1
+		}
+		
+		if = {
+			limit = {
+				exists = scope:new_town
+			}
+			scope:new_town = {
+				change_location_rank = location_rank:town
+				cc_setup_new_town = yes
+			}
+		}
+		
+		scope:target = { 
+			change_province_owner = scope:potential_join_1
+		}
+	}
+	
+	option = {
+		name = colonial_charter.100.c
+		trigger = { 
+			 exists = scope:potential_join_2
+		}
+		
+		if = {
+			limit = {
+				exists = scope:new_town
+			}
+			scope:new_town = {
+				change_location_rank = location_rank:town
+				cc_setup_new_town = yes
+			}
+		}
+		
+		scope:target = { 
+			change_province_owner = scope:potential_join_2
+		}
+	}
+	
+	option = {
+		name = colonial_charter.100.f
+		ai_chance = {
+			factor = 1000 #make the AI join the largest guy
+		}
+
+		trigger = { 
+			 exists = scope:potential_join_big_regional_subject
+		}
+		
+		if = {
+			limit = {
+				exists = scope:new_town
+			}
+			scope:new_town = {
+				change_location_rank = location_rank:town
+				cc_setup_new_town = yes
+			}
+		}
+
+		scope:target = { 
+			change_province_owner = scope:potential_join_big_regional_subject
+		}
+	}
+
+	option = {
+		name = colonial_charter.100.d
+
+		ai_chance = {
+			factor = 1
+			modifier = {
+				trigger = {
+					scope:target = { is_overseas_for_owner = yes }
+				}
+				factor = -1
+			}
+		}
+
+		scope:target = { 
+			every_location_in_province = {
+				limit = {
+					NOR = {
+						integration_level = core
+						integration_level = integrated
+					}
+				}
+				change_integration_level = integrated
+			}
+		}
+	}
+
+	after = {
+		trigger_event_silently = treaty_of_tordesillas.1
+	}
+}
+
+
+
+
+colonial_charter.200 = {
+	type = country_event
+	title = colonial_charter.200.title
+	desc = colonial_charter.200.desc
+
+	immediate = {
+		scope:target = {
+			random_location_in_province_definition = {
+				save_scope_as = target_location
+			}
+		}
+	}
+
+	option = {
+		name = colonial_charter.200.a
+		add_prestige = prestige_weak_penalty	#you are already punished hard enough by losing that colonial charter, no reason to add more penalties
+	}
+}

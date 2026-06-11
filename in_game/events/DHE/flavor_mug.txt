@@ -1,0 +1,462 @@
+﻿namespace = flavor_mug
+
+flavor_mug.6 = { #GRAVEYARD?
+	type = country_event
+	title = flavor_mug.6.title
+	desc = flavor_mug.6.desc
+	outcome = neutral
+	historical_info = flavor_mug.6.historical_info
+
+	trigger = {
+		location:agra.owner ?= root
+	}
+
+	immediate = {
+		ruler ?= {
+			save_scope_as = target_character2
+		}
+
+		location:agra = {
+			save_scope_as = target_location
+		}
+
+		create_character = {
+			estate = estate_type:burghers_estate
+			first_name = name_ahmad
+			last_name = lahori
+			culture = culture:farsi_culture
+			religion = religion:sunni
+			artist = architect
+			artist_skill = 0.9
+			birth_date = 1570.3.7
+			birth_location = location:lahore
+			save_scope_as = target_artist
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_mug.6.a
+
+		scope:target_artist = { move_country = root }
+		scope:target_location = {
+			create_art = {
+				artist = scope:target_artist
+				key = taj_mahal
+				quality = 100 #It is the Taj Mahal
+				type = work_of_art_type:monument
+			}
+		}
+
+		capital.market = {
+			add_temporary_demand = {
+				type = demand:taj_mahal_maintenance
+				months = 60
+			}
+		}
+
+		change_gold_effect = { scale = -3 }
+	}
+
+	option = {
+		name = flavor_mug.6.b
+
+		add_prestige = prestige_extreme_penalty
+		scope:target_artist = { banish_character = yes }
+	}
+}
+
+#Peacock Throne
+flavor_mug.8 = {
+	type = country_event
+	title = flavor_mug.8.title
+	desc = flavor_mug.8.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/government/throne_rooms/throne_room_deccan.dds"
+
+	dynamic_historical_event = {
+		tag = MUG
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 2
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		is_during_bankruptcy = no
+		at_war = no
+		has_any_active_disaster = no
+	}
+
+	immediate = {
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_mug.8.a
+
+		capital ?= {
+			create_art = {
+				artist = scope:target_character
+				key = peacock_throne
+				quality = 90
+				type = work_of_art_type:regalia
+			}
+
+			market = {
+				add_temporary_demand = {
+					type = demand:peacock_throne_maintenance
+					months = 60
+				}
+			}
+		}
+
+		change_gold_effect = { scale = -2 }
+
+		add_prestige = prestige_extreme_bonus
+	}
+
+	option = {
+		name = flavor_mug.8.b
+
+		add_prestige = prestige_extreme_penalty
+	}
+}
+
+#Ibādat Khāna
+flavor_mug.10 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_mug.10.title
+	desc = flavor_mug.10.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = MUG
+		from = 1644.1.1
+		to = 1850.1.1
+		monthly_chance = 2
+	}
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	trigger = {
+		total_effective_building_levels:ibadat_khana < 1
+		religion = { has_religious_schools = yes }
+		religious_school = religious_school:din_i_ilahi_school
+	}
+
+	immediate = {
+		event_illustration_peasants_foreign_religion_pop_type_effect = yes
+		capital ?= {
+			save_scope_as = target_location
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_mug.10.a
+
+		scope:target_location = {
+			construct_building = {
+				building_type = building_type:ibadat_khana
+				cost_multiplier = 0.5
+				cost_multiplier_reason = clergy_cheap_sponsorship
+			}
+		}
+
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_penalty
+		}
+	}
+
+	option = {
+		name = flavor_mug.10.b
+
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_severe_bonus
+		}
+	}
+}
+
+#Red Fort of Delhi
+flavor_mug.11 = {
+	type = country_event
+	title = flavor_mug.11.title
+	desc = flavor_mug.11.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = MUG
+		from = 1644.1.1
+		to = 1850.1.1
+		monthly_chance = 2
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		location:delhi.owner ?= root
+	}
+
+	immediate = {
+		location:delhi = {
+			save_scope_as = target_location
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_mug.11.a
+
+		scope:target_location = {
+			construct_building = {
+				building_type = building_type:red_fort
+			}
+
+			change_development = development_mild_bonus
+		}
+	}
+
+	option = {
+		name = flavor_mug.11.b
+
+		change_societal_value = {
+			type = offensive_vs_defensive
+			value = societal_value_large_move_to_left
+		}
+	}
+}
+
+#Rajput Marriages
+flavor_mug.13 = {
+	type = country_event
+	title = flavor_mug.13.title
+	desc = flavor_mug.13.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/government/throne_rooms/throne_room_deccan.dds" #COURT MUG
+
+	dynamic_historical_event = {
+		tag = MUG
+		from = 1644.1.1
+		to = 1850.1.1
+		monthly_chance = 12
+	}
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		language_percentage_in_country = {
+			language = language:rajasthani_language
+			value >= 0.05
+		}
+
+		language_percentage_in_country = {
+			language = language:rajasthani_language
+			value <= 0.30
+		}
+	}
+
+	immediate = {
+		event_illustration_peasants_foreign_religion_pop_type_effect = yes
+	}
+
+	option = {
+		name = flavor_mug.13.a
+
+		unlock_parliament_issue_effect = {
+			type = mug_promote_rajput_officials
+		}
+	}
+
+	option = {
+		name = flavor_mug.13.b
+
+		custom_tooltip = {
+			text = mug_all_rajput_pops_lose_satisfaction_tt
+			every_owned_location = {
+				limit = {
+					any_pop = {
+						owner = root
+						culture.language = language:rajasthani_language
+					}
+				}
+				every_pop = {
+					limit = {
+						owner = root
+						culture.language = language:rajasthani_language
+					}
+					add_pop_satisfaction = pop_satisfaction_extreme_penalty
+				}
+			}
+		}
+
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_extreme_bonus
+		}
+	}
+}
+
+#Grand Trunk Road
+flavor_mug.14 = {
+	type = country_event
+	title = flavor_mug.14.title
+	desc = flavor_mug.14.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = MUG
+		from = 1650.1.1
+		to = 1850.1.1
+		monthly_chance = 2
+	}
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		has_advance = modern_road_advance
+
+		location:lahore = {
+			owner ?= root
+			is_connected_to = location:khulna
+			NOT = {
+				has_road_of_type_to = {
+					target = location:khulna
+					type = road_type:modern_road
+				}
+			}
+		}
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:burghers   background = pop_type:burghers }
+		location:lahore = {
+			save_scope_as = target_location
+		}
+
+		location:khulna = {
+			save_scope_as = target_location2
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_mug.14.a
+
+		scope:target_location = {
+			add_road_to = {
+				target = scope:target_location2
+				type = modern_road
+			}
+		}
+
+		unlock_cabinet_action_effect = {
+			type = maintain_trunk_road_cabinet_action
+		}
+	}
+
+	option = {
+		name = flavor_mug.14.b
+
+		change_societal_value = {
+			type = centralization_vs_decentralization
+			value = societal_value_large_move_to_right
+		}
+
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+}
+
+#Founding of Mukshudabad
+flavor_mug.15 = {
+	type = country_event
+	title = flavor_mug.15.title
+	desc = flavor_mug.15.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = MUG
+		from = 1700.1.1
+		to = 1850.1.1
+		monthly_chance = 10
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+
+		location:chandrabad = {
+			save_scope_as = target_location
+		}
+	}
+
+	trigger = {
+		location:chandrabad.owner ?= root
+	}
+
+	option = {
+		name = flavor_mug.15.a
+
+		scope:target_location = {
+			change_location_rank_effect = { location_rank = location_rank:city }
+			change_development = development_mild_bonus
+		}
+
+		change_gold_effect = { scale = -2 }
+	}
+
+	option = {
+		name = flavor_mug.15.b
+
+		add_prestige = prestige_mild_penalty
+
+		custom_tooltip = {
+			text = mug_location_pops_gain_unrest_tt
+			scope:target_location = {
+				every_pop = {
+					limit = {
+						owner = root
+					}
+					add_pop_satisfaction = pop_satisfaction_severe_penalty
+				}
+			}
+		}
+	}
+}

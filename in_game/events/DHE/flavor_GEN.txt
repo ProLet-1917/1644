@@ -1,0 +1,793 @@
+﻿namespace = flavor_gen
+
+#The decision of Genoa
+flavor_gen.12 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_gen.12.title
+	desc = flavor_gen.12.desc
+	outcome = neutral
+	
+	dynamic_historical_event = {
+		tag = GEN
+		from = 1644.1.1
+		to = 1699.1.1
+		monthly_chance = 5
+	}
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+	
+	trigger = {
+		government_type = government_type:republic
+		region:italy_region = {
+			any_location_in_region = {
+				OR = {
+					AND = {
+						country_exists = c:FRA
+						owner ?= c:FRA
+					}
+					AND = {
+						country_exists = c:CAS
+						owner ?= c:CAS
+					}
+				}
+			}
+			
+		}
+	}
+
+	option = {
+		name = flavor_gen.12.a
+		historical_option = yes
+		c:FRA = {
+			add_opinion = { target = root modifier = gen_andrea_doria_reform }
+		}
+		add_prestige = prestige_weak_bonus
+	}
+	option = {
+		name = flavor_gen.12.b
+		c:CAS = {
+			add_opinion = { target = root modifier = gen_andrea_doria_reform }
+		}
+		add_religious_influence = religious_influence_mild_bonus
+	}
+}
+
+#The House of Doria Condottieri
+flavor_gen.20 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_gen.20.title
+	desc = flavor_gen.20.desc
+	outcome = neutral
+	dynamic_historical_event = {
+		tag = GEN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 5
+	}
+	trigger = {
+		any_rented_out_mercenary = {
+			any_mercenary_sub_unit = {
+				sub_unit_type = unit_type:a_genoese_crossbowmen
+			}
+		}
+		owns = location:genoa
+	}
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		create_character = {
+			dynasty = dynasty:doria_dynasty
+			estate = estate_type:nobles_estate
+			mil = 90
+			min_age = 30
+			birth_location = location:genoa
+			culture = root.culture
+			religion = root.religion
+			save_scope_as = doria_commander
+		}
+		random_rented_out_mercenary = {
+			limit = {
+				any_mercenary_sub_unit = {
+					sub_unit_type = unit_type:a_genoese_crossbowmen
+				}
+			}
+			save_scope_as = merc_army
+		}
+	}
+	#Let him command our troops.
+	option = {
+		name = flavor_gen.20.a
+		historical_option = yes
+		scope:merc_army = {
+			every_mercenary_sub_unit = {
+				add_subunit_experience = 10
+			}
+			owner = {
+				scope:doria_commander = { move_country = PREV }
+			}
+		}
+		add_gold = { value = scope:merc_army.monthly_cost add = 10 multiply = 6 }
+		add_army_tradition = army_tradition_mild_bonus
+	}
+	#We need his experience for all of our armies.
+	option = {
+		name = flavor_gen.20.b
+		scope:doria_commander = {
+			add_trait = trait:unsuited_for_army_command
+			add_trait = trait:unsuited_for_naval_command
+		}
+		add_army_tradition = army_tradition_extreme_bonus
+	}
+}
+
+#The Genoese Crossbowmen
+flavor_gen.21 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_gen.21.title
+	desc = flavor_gen.21.desc
+	outcome = neutral
+	dynamic_historical_event = {
+		tag = GEN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 1
+	}
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	trigger = {
+		any_unit = {
+			any_sub_unit = {
+				sub_unit_type = unit_type:a_genoese_crossbowmen
+			}
+			count = 1
+		}
+	}
+	#They shall shape the battlefields of our time.
+	option = {
+		name = flavor_gen.21.a
+		historical_option = yes
+		add_army_tradition = army_tradition_extreme_bonus
+	}
+	#The crossbowmen bring glory to [ROOT.GetCountry.GetName].
+	option = {
+		name = flavor_gen.21.b
+		add_prestige = prestige_extreme_bonus
+	}
+}
+
+#The Troubles of Corsica - Start
+flavor_gen.33 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_gen.33.title
+	desc = flavor_gen.33.desc
+	outcome = neutral
+	dynamic_historical_event = {
+		tag = GEN
+		from = 1700.1.1
+		to = 1837.1.1
+		monthly_chance = 1
+	}
+	trigger = {
+		owns_corsica = yes
+		any_owned_location = {
+			is_corsica = yes
+			num_pop_type:nobles > 0.5
+			any_pop = {
+				culture = culture:corsican
+				pop_type = pop_type:nobles
+			}
+		}
+		NOT = { country_exists = c:COR }
+	}
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		location:bastia = {
+			create_dynasty_from_location = giafferi_dynasty
+		}
+		create_character = {
+			first_name = Luiggi
+			dynasty = dynasty:giafferi_dynasty
+			estate = estate_type:nobles_estate
+			adm = 44
+			dip = 34
+			mil = 52
+			age = 30
+			birth_location = location:bastia
+			save_scope_as = luiggi_giafferi
+		}
+		create_corsican_rebels = yes
+	}
+	#End these revolts.
+	option = {
+		name = flavor_gen.33.a
+		historical_option = yes
+		scope:luiggi_giafferi = {
+			change_character_allegiance = scope:corsican_independence_fighter
+		}
+		custom_tooltip = {
+			text = arrigo_della_rocca_support_nobles_joining
+			every_owned_location = {
+				limit = {
+					is_corsica = yes
+				}
+				every_pop = {
+					limit = {
+						owner = root
+						culture = culture:corsican
+						pop_type = pop_type:nobles
+					}
+					add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+					change_pop_allegiance = scope:corsican_independence_fighter
+				}
+			}
+		}
+		hidden_effect = {
+			set_variable = { name = corsican_revolt }
+		}
+	}
+	#Grant them their independence.
+	option = {
+		name = flavor_gen.33.b
+		every_owned_location = {
+			limit = {
+				is_corsica = yes
+			}
+			add_core = c:COR
+			if = {
+				limit = {
+					is_core_of = root
+				}
+				remove_core = root
+			}
+			change_location_owner = c:COR
+		}
+		c:COR = {
+			set_new_ruler = scope:luiggi_giafferi
+			change_government_type = government_type:republic
+		}
+	}
+}
+
+#The Troubles of Corsica - It got worse
+flavor_gen.34 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_gen.34.title
+	desc = flavor_gen.34.desc
+	outcome = neutral
+	dynamic_historical_event = {
+		tag = GEN
+		from = 1750.1.1
+		to = 1837.1.1
+		monthly_chance = 1
+	}
+	trigger = {
+		custom_tooltip = {
+			text = variable_corsican_revolt_tt
+			has_variable = corsican_revolt
+		}
+		owns_corsica = yes
+		any_owned_location = {
+			is_corsica = yes
+			any_pop = {
+				culture = culture:corsican
+			}
+		}
+		NOT = { country_exists = c:COR }
+	}
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		create_character = {
+			first_name = name_paschal
+			dynasty = dynasty:paoli_dynasty
+			estate = estate_type:peasants_estate
+			adm = 60
+			dip = 50
+			mil = 75
+			age = 25
+			birth_location = location:bastia
+			save_scope_as = pasquale_paoli
+			script = pasquale_paoli
+		}
+		create_corsican_rebels = yes
+	}
+	#Crush the revolutionaries!
+	option = {
+		name = flavor_gen.34.a
+		historical_option = yes
+		scope:pasquale_paoli = {
+			change_character_allegiance = scope:corsican_independence_fighter
+		}
+		custom_tooltip = {
+			text = flavor_gen.45.a.tt
+			every_owned_location = {
+				limit = {
+					is_corsica = yes
+				}
+				every_pop = {
+					limit = {
+						owner = root
+					}
+					add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+					change_pop_allegiance = scope:corsican_independence_fighter
+				}
+			}
+		}
+		hidden_effect = {
+			set_variable = { name = corsican_republic }
+		}
+	}
+	#Grant them their independence.
+	option = {
+		name = flavor_gen.34.b
+		every_owned_location = {
+			limit = {
+				is_corsica = yes
+			}
+			add_core = c:COR
+			if = {
+				limit = {
+					is_core_of = root
+				}
+				remove_core = root
+			}
+			change_location_owner = c:COR
+		}
+		c:COR = {
+			set_new_ruler = scope:pasquale_paoli
+			change_government_type = government_type:republic
+		}
+	}
+	after = {
+		remove_variable = corsican_revolt
+	}
+}
+
+#The Troubles of Corsica - Rise of the Corsican Republic
+flavor_gen.35 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_gen.35.title
+	desc = flavor_gen.35.desc
+	outcome = neutral
+	dynamic_historical_event = {
+		tag = GEN
+		from = 1755.1.1
+		to = 1837.1.1
+		monthly_chance = 1
+	}
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	trigger = {
+		custom_tooltip = {
+			text = variable_corsican_republic_tt
+			has_variable = corsican_republic
+		}
+		owns_corsica = yes
+		any_owned_location = {
+			is_corsica = yes
+			any_pop = {
+				culture = culture:corsican
+			}
+		}
+		exists = character:pasquale_paoli
+		character:pasquale_paoli = { is_alive = yes }
+		NOT = { country_exists = c:COR }
+	}
+	#This island is more curse than blessing...
+	option = {
+		name = flavor_gen.35.a
+		historical_option = yes
+		every_owned_location = {
+			limit = {
+				is_corsica = yes
+			}
+			add_core = c:COR
+			change_control = control_radical_penalty
+			every_pop = {
+				limit = {
+					owner = root
+				}
+				add_pop_satisfaction = pop_satisfaction_radical_penalty
+			}
+		}
+		custom_tooltip = {
+			text = can_sell_corsica_via_diplo_action
+			set_variable = { name = yeet_corsica }
+			set_global_variable = {
+				name = saved_pumonte
+				value = location:ajaccio.province
+			}
+		}
+	}
+	#Grant them their independence.
+	option = {
+		name = flavor_gen.35.b
+		every_owned_location = {
+			limit = {
+				is_corsica = yes
+			}
+			add_core = c:COR
+			if = {
+				limit = {
+					is_core_of = root
+				}
+				remove_core = root
+			}
+			change_location_owner = c:COR
+		}
+		c:COR = {
+			if = {
+				limit = {
+					exists = character:pasquale_paoli
+					character:pasquale_paoli = { is_alive = yes }
+				}
+				set_new_ruler = character:pasquale_paoli
+			}
+			change_government_type = government_type:republic
+		}
+	}
+	after = {
+		remove_variable = corsican_republic
+	}
+}
+
+#The Troubles of Corsica - Sell Corsica
+flavor_gen.36 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_gen.36.title
+	desc = flavor_gen.36.desc
+	outcome = neutral
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+	#Good riddance!
+	option = {
+		name = flavor_gen.36.a
+		historical_option = yes
+		scope:corsica_buyer = {
+			transfer_yearly_gold = {
+				value = 3
+				target = root
+			}
+		}
+	}
+}
+
+#Bartolomeo Bianco
+flavor_gen.39 = {
+	type = country_event
+	title = flavor_gen.39.title
+	desc = flavor_gen.39.desc
+	outcome = neutral
+	
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = GEN
+		from = 1644.1.1
+		to = 1664.1.1
+		monthly_chance = 5
+	}
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+	trigger = {
+		owns = location:genoa
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_bartholomew
+			last_name = Bianco
+			estate = estate_type:burghers_estate
+			adm = 17
+			dip = 18
+			mil = 18
+			birth_date = 1590.1.1
+			birth_location = location:como
+			artist_skill = 0.70
+			artist = architect
+			save_scope_as = artist_character
+			create_in_limbo = yes
+		}
+	}
+
+	#Excellent
+	option = {
+		name = flavor_gen.39.a
+		scope:artist_character = {
+			move_country = root
+		}
+	}
+}
+
+#Bernardo Strozzi
+flavor_gen.40 = {
+	type = country_event
+	title = flavor_gen.40.title
+	desc = flavor_gen.40.desc
+	outcome = neutral
+	
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = GEN
+		from = 1596.1.1
+		to = 1644.8.2
+		monthly_chance = 5
+	}
+	
+	trigger = {
+		owns = location:genoa
+	}
+	
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+	
+	immediate = {
+		create_character = {
+			first_name = name_bernard
+			last_name = Strozzi
+			estate = estate_type:burghers_estate
+			adm = 17
+			dip = 18
+			mil = 18
+			birth_date = 1581.5.7
+			birth_location = location:genoa
+			artist_skill = 0.90
+			artist = painter
+			save_scope_as = artist_character
+			create_in_limbo = yes
+		}
+	}
+
+	#Excellent
+	option = {
+		name = flavor_gen.40.a
+		scope:artist_character = {
+			move_country = root
+		}
+	}
+}
+
+#Giovanni Benedetto Castiglione
+flavor_gen.41 = {
+	type = country_event
+	title = flavor_gen.41.title
+	desc = flavor_gen.41.desc
+	outcome = neutral
+	
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = GEN
+		from = 1645.1.1
+		to = 1664.5.5
+		monthly_chance = 5
+	}
+	
+	trigger = {
+		owns = location:genoa
+		has_advance = genoese_school
+	}
+	
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+	
+	immediate = {
+		create_character = {
+			first_name = name_john
+			last_name = Castiglione
+			estate = estate_type:burghers_estate
+			adm = 17
+			dip = 18
+			mil = 18
+			birth_date = 1609.3.23
+			birth_location = location:genoa
+			artist_skill = 0.80
+			artist = painter
+			save_scope_as = artist_character
+			create_in_limbo = yes
+		}
+	}
+
+	#Excellent
+	option = {
+		name = flavor_gen.41.a
+		scope:artist_character = {
+			move_country = root
+		}
+	}
+}
+
+#Valerio Castello
+flavor_gen.42 = {
+	type = country_event
+	title = flavor_gen.42.title
+	desc = flavor_gen.42.desc
+	outcome = neutral
+	
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = GEN
+		from = 1645.1.1
+		to = 1659.10.1
+		monthly_chance = 5
+	}
+	
+	trigger = {
+		owns = location:genoa
+		has_advance = genoese_school
+	}
+
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+
+	immediate = {
+		create_character = {
+			first_name = Valerio
+			last_name = Castello
+			estate = estate_type:burghers_estate
+			adm = 17
+			dip = 18
+			mil = 18
+			birth_date = 1624.5.7
+			birth_location = location:genoa
+			artist_skill = 0.60
+			artist = painter
+			save_scope_as = artist_character
+			create_in_limbo = yes
+		}
+	}
+
+	#Excellent
+	option = {
+		name = flavor_gen.42.a
+		scope:artist_character = {
+			move_country = root
+		}
+	}
+}
+
+#Alessandro Magnasco
+flavor_gen.43 = {
+	type = country_event
+	title = flavor_gen.43.title
+	desc = flavor_gen.43.desc
+	outcome = neutral
+	
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = GEN
+		from = 1735.1.1
+		to = 1749.3.12
+		monthly_chance = 5
+	}
+	
+	trigger = {
+		owns = location:genoa
+		has_advance = genoese_school
+	}
+
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_alexander
+			last_name = Magnasco
+			estate = estate_type:burghers_estate
+			adm = 17
+			dip = 18
+			mil = 18
+			birth_date = 1667.2.4
+			birth_location = location:genoa
+			artist_skill = 0.90
+			artist = painter
+			save_scope_as = artist_character
+			create_in_limbo = yes
+		}
+	}
+
+	#Excellent
+	option = {
+		name = flavor_gen.43.a
+		scope:artist_character = {
+			move_country = root
+		}
+	}
+}
+
+#Sampiero strikes!
+flavor_gen.45 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_gen.45.title
+	desc = flavor_gen.45.desc
+	outcome = neutral
+	dynamic_historical_event = {
+		tag = GEN
+		from = 1520.1.1
+		to = 1567.1.1
+		monthly_chance = 10
+	}
+	trigger = {
+		custom_tooltip = {
+			text = variable_exiled_sampieru_tt
+			has_variable = exiled_sampieru
+		}
+		owns_corsica = yes
+		exists = character:sampieru_corso
+		character:sampieru_corso = { is_alive = yes }
+	}
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		character:sampieru_corso ?= {
+			save_scope_as = sampieru_corso
+			move_country = root
+		}
+		create_corsican_rebels = yes
+	}
+	#The Corsicans are rising once again
+	option = {
+		name = flavor_gen.45.a
+		historical_option = yes
+		if = {
+			limit = {
+				exists = character:sampieru_corso
+				character:sampieru_corso = { is_alive = yes }
+			}
+			character:sampieru_corso = {
+				change_character_allegiance = scope:corsican_independence_fighter
+			}
+		}
+		custom_tooltip = {
+			text = flavor_gen.45.a.tt
+			every_owned_location = {
+				limit = {
+					is_corsica = yes
+				}
+				every_pop = {
+					limit = {
+						owner = root
+						culture = culture:corsican
+					}
+					add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+					change_pop_allegiance = scope:corsican_independence_fighter
+				}
+			}
+		}
+	}
+}

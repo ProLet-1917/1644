@@ -1,0 +1,408 @@
+﻿namespace = flavor_bav
+
+# Founding of the Bavarian Academy of Sciences
+flavor_bav.23 = {
+    type = country_event
+    title = flavor_bav.23.title
+    desc = flavor_bav.23.desc
+	outcome = neutral
+
+    fire_only_once = yes
+    dynamic_historical_event = {
+        tag = BAV
+        from = 1700.1.1
+        to = 1800.1.1
+        monthly_chance = 2
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+    trigger = {
+		has_ruler = yes
+        capital = {
+			development >= 30
+		}
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		save_scope_as = target_country
+		ruler ?= {
+			save_scope_as = target_ruler
+		}
+		capital = {
+			save_scope_as = target_city
+		}
+	}
+
+    option = {
+        name = flavor_bav.23.a
+
+		capital = {
+			construct_building = {
+				building_type = building_type:bavarian_academy_of_sciences
+			}
+		}
+        add_research_progress = research_progress_mild_bonus
+    }
+    option = {
+        name = flavor_bav.23.b
+
+		add_army_tradition = army_tradition_mild_bonus
+		add_country_modifier = { modifier = military_improvements years = 10 mode = add_and_extend }
+		change_gold_effect = { scale = -6.00 }
+    }
+}
+
+# Herrenchiemsee Abbey Baroque Reconstruction
+flavor_bav.33 = {
+    type = country_event
+    title = flavor_bav.33.title
+    desc = flavor_bav.33.desc
+	outcome = neutral
+
+    fire_only_once = yes
+    dynamic_historical_event = {
+        tag = BAV
+        from = 1644.1.1
+        to = 1735.1.1
+        monthly_chance = 5
+    }
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    trigger = {
+        is_member_of_international_organization = international_organization:hre
+        capital = { this = location:munich }
+        has_ruler = yes
+        ruler = { adm >= 50 }
+    }
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+        save_scope_as = target_country
+        ruler ?= { save_scope_as = target_ruler }
+    }
+
+    option = {
+        name = flavor_bav.33.a
+		location:munich = {
+			construct_building = {
+				building_type = building_type:herrenchiemsee_abbey
+			}
+		}
+        add_prestige = prestige_mild_bonus
+    }
+    option = {
+        name = flavor_bav.33.b
+ 		change_gold_effect = { scale = 2.00 }
+       	add_prestige = prestige_weak_penalty
+    }
+}
+
+#Ingolstadt , the City of 100 towers
+flavor_bav.1102 = {
+	type = country_event
+
+	title = flavor_bav.1102.title
+	desc = flavor_bav.1102.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = BAV
+		from = 1644.1.1
+		to = 1694.1.1
+		monthly_chance = 4
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	trigger = {
+		owns = location:ingolstadt
+		location:ingolstadt = {
+			integration_level = core
+			has_building = building_type:bastion
+			NOT = { has_building = building_type:star_fort }
+		}
+		has_advance = star_fort_advance
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_bav.1102.a
+		historical_option = yes
+
+		location:ingolstadt = {
+			destroy_building = "building(building_type:bastion|owner)"
+			construct_building = {
+				building_type = building_type:star_fort
+				cost_multiplier = 1.2
+				cost_multiplier_reason = "military_expensive_sponsorship"
+			}
+		}
+		change_societal_value = { type = offensive_vs_defensive value = societal_value_minor_move_to_right }
+	}
+	option = {
+		name = flavor_bav.1102.b
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+#The Theatinerkirche
+flavor_bav.1200 = {
+	type = country_event
+
+	title = flavor_bav.1200.title
+	desc = flavor_bav.1200.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = BAV
+		from = 1660.1.1
+		to = 1750.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	trigger = {
+		government_type = government_type:monarchy
+		has_regent = no
+		has_consort = yes
+		consort = { is_female = yes }
+		has_heir = no
+		religion.group = religion_group:christian
+		owns = location:munich
+		location:munich = {
+			integration_level = core
+			NOT = { has_building = building_type:cathedral }
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler ?= {
+			save_scope_as = ruler_scope
+		}
+		consort = {
+			save_scope_as = consort_scope
+		}
+		create_character = { #https://en.wikipedia.org/wiki/Agostino_Barelli
+			first_name = name_augustine
+			last_name = Barelli
+			birth_date = 1627.10.26
+			birth_location = location:bologna
+			culture = culture:emilian
+			religion = religion:catholic
+			estate = estate_type:burghers_estate
+			artist = architect
+			artist_skill = 0.76
+			script = agostino_barelli_script
+			save_scope_as = agostino_barelli_scope
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_bav.1200.a
+		historical_option = yes
+		if = {
+			limit = {
+				location:munich = {
+					NOT = { has_building = building_type:cathedral }
+				}
+			}
+			location:munich = {
+				construct_building = {
+					building_type = building_type:cathedral
+					cost_multiplier = 1.1
+					cost_multiplier_reason = "clergy_expensive_sponsorship"
+				}
+			}
+		}
+		else = {
+			change_gold_effect = { scale = -4.00 }
+			location:munich = {
+				create_art = {
+					artist = scope:agostino_barelli_scope
+					quality = 72
+					type = work_of_art_type:monument
+					key = theatinerkirche_art
+				}
+			}
+			trigger_event_silently = {
+				id = flavor_bav.1201
+				years = 1
+			}
+		}
+		add_prestige = prestige_mild_bonus
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+
+		scope:agostino_barelli_scope = { move_country = root }
+	}
+	option = {
+		name = flavor_bav.1200.b
+
+		add_prestige = prestige_mild_penalty
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_penalty }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_weak_penalty }
+		scope:agostino_barelli_scope = { move_country = location:bologna.owner }
+	}
+}
+
+#An architectural argument
+flavor_bav.1201 = {
+	type = country_event
+
+	title = flavor_bav.1201.title
+	desc = flavor_bav.1201.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	trigger = {
+		owns = location:munich
+		exists = character:agostino_barelli_script
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:clergy_estate }
+
+		create_character = { #https://en.wikipedia.org/wiki/Enrico_Zuccalli
+			first_name = name_henry
+			last_name = Zuccalli
+			birth_date = 1642.1.1
+			birth_location = location:bellinzona
+			culture = culture:lombard
+			religion = religion:catholic
+			estate = estate_type:burghers_estate
+			artist = architect
+			artist_skill = 0.77
+			script = henry_zuccalli_script
+			save_scope_as = henry_zuccalli_scope
+		}
+		character:agostino_barelli_script = {
+			save_scope_as = agostino_barelli_scope
+		}
+		if = {
+			limit = { exists = work_of_art:theatinerkirche_art }
+			destroy_art = work_of_art:theatinerkirche_art
+		}
+	}
+
+	option = {
+		name = flavor_bav.1201.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		scope:agostino_barelli_scope = { move_country = location:bologna.owner }
+		scope:henry_zuccalli_scope = { move_country = root }
+		location:munich = {
+			create_art = {
+				artist = scope:henry_zuccalli_scope
+				quality = {
+					integer_range = {
+						min = {
+							value = 100
+							multiply = scope:henry_zuccalli_scope.artist_skill
+						}
+						max = 95
+					}
+				}
+				type = work_of_art_type:monument
+				key = theatinerkirche_art
+			}
+		}
+	}
+	option = {
+		name = flavor_bav.1201.b
+
+		add_prestige = prestige_mild_penalty
+		scope:henry_zuccalli_scope = { move_country = location:bellinzona.owner }
+		location:munich = {
+			create_art = {
+				artist = scope:agostino_barelli_scope
+				quality = {
+					integer_range = {
+						min = {
+							value = 100
+							multiply = scope:agostino_barelli_scope.artist_skill
+						}
+						max = 95
+					}
+				}
+				type = work_of_art_type:monument
+				key = theatinerkirche_art
+			}
+		}
+	}
+}
+
+# Baroque Expansion of the Residenz
+flavor_bav.1402 = {
+    type = country_event
+    title = flavor_bav.1402.title
+    desc = flavor_bav.1402.desc
+	outcome = neutral
+
+    fire_only_once = yes
+    dynamic_historical_event = {
+        tag = BAV
+        from = 1690.1.1
+        to = 1800.1.1
+        monthly_chance = 3
+    }
+
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+
+    trigger = {
+        capital = {
+			this = location:munich
+			has_building = building_type:munich_residenz_renaissance_expansion
+		}
+		has_ruler = yes
+        ruler = { adm >= 50 }
+		has_embraced_institution = institution:enlightenment
+    }
+
+	immediate = {
+		save_scope_as = target_country
+		capital = { save_scope_as = target_location }
+		ruler ?= { save_scope_as = target_ruler }
+	}
+
+    option = {
+        name = flavor_bav.1402.a
+		location:munich = {
+			construct_building = {
+				building_type = building_type:munich_residenz_baroque_expansion
+			}
+		}
+        add_prestige = prestige_mild_bonus
+    }
+    option = {
+        name = flavor_bav.1402.b
+		change_gold_effect = { scale = 2.00 }
+        add_prestige = prestige_mild_penalty
+    }
+}

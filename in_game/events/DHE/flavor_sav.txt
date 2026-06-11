@@ -1,0 +1,44 @@
+﻿namespace = flavor_sav
+
+flavor_sav.1 = { #The Palace of Venaria
+	type = country_event
+	title = flavor_sav.1.title
+	desc = flavor_sav.1.desc
+	outcome = neutral
+	
+	fire_only_once = yes
+	
+	dynamic_historical_event = {
+		tag = SAV
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 10
+	}
+	
+	trigger = {
+		owns = location:turin
+		location:turin = {
+			OR = {
+				has_building = building_type:noble_villa
+				has_building = building_type:burgher_mansion
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	
+	option = {
+		name = flavor_sav.1.a
+		location:turin = {
+			change_development = development_mild_bonus
+			change_prosperity = prosperity_severe_bonus
+		}
+	}
+}

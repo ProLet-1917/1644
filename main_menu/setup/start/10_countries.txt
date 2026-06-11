@@ -1802,6 +1802,8 @@ countries = {
 
 			reforms = {
 				magna_carta_reform
+				navy_board_reform
+                petition_of_rights
 			}
 			privilege = {
 				#nobles
@@ -1822,6 +1824,7 @@ countries = {
 				#peasants
 				peasants_yeomanry
 				access_to_royal_and_ecclesiastical_courts
+				ordinance_of_laborers
 			}
 			laws = {
 				distribution_of_power_law = dop_law_english_parliament
@@ -1831,6 +1834,9 @@ countries = {
 				feudal_de_jure_law = by_tradition
 				marriage_law = monogamous_marriage
 				heir_religion_law = heir_same_religion
+				cabinet_laws = yorkist_tradition_policy
+                enclosure_movement = enclosure_allowed
+                eng_order_of_the_garter_law = eng_order_of_the_garter_nobility_policy
 			}
 
 			centralization_vs_decentralization = 20
@@ -1944,6 +1950,14 @@ countries = {
 
 			reforms = {
 				scottish_shires_reform
+			}
+
+            laws = {
+
+			}
+
+            privilege = {
+				sco_statutes_of_iona
 			}
 		}
 		court_language = norman_dialect
@@ -2193,6 +2207,8 @@ countries = {
 			reforms = {
 				crown_castile_reform
 				feudal_nobility
+                royal_council_of_castile
+                casa_de_contratacion
 			}
 
 			privilege = {
@@ -2212,6 +2228,9 @@ countries = {
 				medieval_levy_law = alarde
 				mesta_council_law = quadrillas_organization
 				royal_court_customs_law = itinerant_court_policy
+				inquisition_law = spa_inquisition_policy
+				society_of_jesus = jesuits_allowed
+				colonial_policy = encomienda_system_policy
 			}
 
 			aristocracy_vs_plutocracy = -40
@@ -2278,6 +2297,7 @@ countries = {
 			reforms = {
 				portuguese_monarchy_reform
 				feudal_nobility
+                por_ordinances
 			}
 			privilege = {
 
@@ -2296,6 +2316,8 @@ countries = {
 				medieval_levy_law = noble_levies
 				piracy_law = anti_piracy_policy
 				royal_court_customs_law = itinerant_court_policy
+				colonial_policy = portuguese_governorate_general
+				nobles_rights_laws = por_lei_mental
 			}
 
 			centralization_vs_decentralization = 15
@@ -2373,10 +2395,12 @@ countries = {
 
 			privilege = {
 				#Noble Privileges
-				general_privilege
+
+                ara_sindicat_ara_remenca
 			}
 			laws = {
 				royal_court_customs_law = itinerant_court_policy
+                maritime_law = ara_consulate_sea
 			}
 
 		}
@@ -2419,7 +2443,7 @@ countries = {
 			
 			regnal_numbers = {
 				name_philip = 4
-				names_charles = 2
+				name_charles = 2
 			}
 
 			reforms = {
@@ -2771,7 +2795,7 @@ countries = {
 			
 			regnal_numbers = {
 				name_henry = 5
-				names_louis = 14
+				name_louis = 14
 			}
 			
 			reforms = {
@@ -2782,9 +2806,15 @@ countries = {
 			laws = {
 				feudal_de_jure_law = by_tradition
 				legal_code_law = civil_law_policy
+				fra_taille = permanent_tax
+				fra_fouage_tax = allowed_fouage_tax
+				french_colonial_ambition_focus = french_mercantile_colonies
+				fra_reformation_tolerance_edicts = edict_of_nantes
 			}
 
 			privilege = {
+                nobles_land_rights
+				noble_leaders_only
 				formal_guilds
 				clergy_literacy_rights
 				auxilium_et_consilium
@@ -2816,7 +2846,7 @@ countries = {
 		currency_data = {
 			gold = 422.5
 			prestige = 37.5
-			legitimacy = 45
+			legitimacy = 40
 			stability = 25
 		}
 		dynasty = bourbon_conde_dynasty
@@ -3070,7 +3100,7 @@ countries = {
 				administrative_system = central_councils
 				bureaucracy_law = centralized_bureaucracy_policy
 				cabinet_laws = nobles_of_the_robe_policy
-				legal_code_law = civil_law_policy
+				legal_code_law = court_of_appeals
 				legitimization_of_power_law = machiavellian_rule_policy
 				royal_court_customs_law = aristocratic_court_policy
 
@@ -4538,6 +4568,7 @@ countries = {
 				mug_mughal_diwan
 				indian_sultanate_reform
 				taluqdar_nobility
+				subah_organization_reform
 			}
 
 			privilege = {
@@ -4573,7 +4604,9 @@ countries = {
 			individualism_vs_communalism = -20
 			outward_vs_inward = -60
 
-
+			laws = {
+				recruitment_law = mansabdar_system
+			}
 		}
 		capital = delhi
 		country_rank = rank_empire

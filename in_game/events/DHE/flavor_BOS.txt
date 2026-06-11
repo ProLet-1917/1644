@@ -1,0 +1,50 @@
+﻿namespace = flavor_bos
+
+flavor_bos.4 = { #Council of Strojnici
+	title = flavor_bos.4.title
+	desc = flavor_bos.4.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		random_owned_location = {
+			limit = {
+				has_building = building_type:monastery
+			}
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_bos.4.a
+		add_stability = stability_mild_bonus
+	}
+
+	option = {
+		name = flavor_bos.4.b
+		change_societal_value = { type = spiritualist_vs_humanist value = societal_value_move_to_left }
+	}
+
+	option = {
+		name = flavor_bos.4.c
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+
+	option = {
+		name = flavor_bos.4.d
+		trigger = {
+			exists = scope:target_location
+		}
+		scope:target_location = {
+			change_development = development_mild_bonus
+		}
+	}
+}

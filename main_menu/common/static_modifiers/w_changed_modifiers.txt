@@ -1,0 +1,86 @@
+REPLACE:location_base_values = {
+    game_data = {
+        category = location
+    }
+
+    local_population_capacity = 10000
+
+    local_devastation_recovery = 0.005
+    local_monthly_control = 0.0005
+
+
+    max_regiments_trained_at_same_time = 1
+    max_constructions_at_same_time = 1
+
+
+    local_pop_promotion_speed = 0.02
+    local_pop_demotion_speed = 0.08
+
+    local_food_capacity = 50
+
+    local_frontage_allowed = 10
+
+    local_migration_attraction = 0.1
+    local_garrison_growth = 0.01
+
+    max_attrition = 10
+    supply_limit = 15
+
+    hostile_disembark_time_modifier = 0.25
+
+    local_max_rgo_size = 2
+
+    local_monthly_prosperity = 0.0025
+
+    local_trade_embark_disembark_efficiency = -0.1
+
+
+    local_clergy_desired_pop_scaled = 0.005
+    local_nobles_desired_pop_scaled = 0.0025
+
+}
+
+REPLACE:possible_promotion_percentage = {
+    game_data = {
+        category = location
+    }
+    local_peasants_estate_power = 10.0
+    local_pop_promotion_speed_scaled = 0.00025
+    local_burghers_estate_power = -1
+    local_nobles_estate_power = -1
+    local_clergy_estate_power = -1
+}
+
+REPLACE:is_occupied = {
+    game_data = {
+        category = location
+    }
+    local_monthly_prosperity = -0.025
+    local_monthly_control = -0.002
+
+    hostile_food_multiplier = -0.8
+
+    local_garrison_growth = -1.0
+
+    local_construction_speed = -0.25
+    local_building_establishment_reduction = 0.005
+    local_mercenaries_modifier = 0.5
+}
+
+# scales with how much
+REPLACE:available_free_land = {
+    game_data = {
+        category = location
+    }
+    #local_migration_attraction = 0.1
+    local_population_growth = 0.001
+}
+
+# when its <10% capacity & <10k
+REPLACE:abundant_free_land = {
+    game_data = {
+        category = location
+    }
+    #local_migration_attraction = 0.2
+    local_population_growth = 0.001
+}

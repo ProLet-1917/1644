@@ -1,0 +1,123 @@
+﻿namespace = flavor_lub
+
+flavor_lub.2 = {
+	type = country_event
+	title = flavor_lub.2.title
+	desc = flavor_lub.2.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_lub.2.a
+		
+		transfer_yearly_gold = {
+			value = 0.5
+			target = c:LUB
+		}
+		c:LUB.capital = {
+			construct_building = {
+				building_type = building_type:hsa_burgtor
+			}
+			change_prosperity = prosperity_severe_bonus
+		}
+		c:LUB = { 
+			trigger_event_non_silently = flavor_lub.3
+			set_variable = hsa_accepted_variable
+		}
+		add_prestige = prestige_extreme_bonus
+		add_opinion_mutual_effect = {
+			target = scope:target_country2
+			modifier = opinion_financed_burgtor_modifier
+		}
+		if = {
+			limit = {
+				scope:target_country2 = { is_subject_of = root }
+			}
+			scope:target_country2 = { add_liberty_desire = liberty_desire_severe_minus }
+		}
+	}
+
+	option = {
+		name = flavor_lub.2.b
+
+		c:LUB = { 
+			trigger_event_non_silently = flavor_lub.3
+			set_variable = hsa_refused_variable
+		}
+		add_opinion_mutual_effect = {
+			target = scope:target_country2
+			modifier = opinion_refused_to_finance_burgtor_modifier
+		}
+		if = {
+			limit = {
+				scope:target_country2 = { is_subject_of = root }
+			}
+			scope:target_country2 = { add_liberty_desire = liberty_desire_severe_plus }
+		}
+	}
+}
+
+flavor_lub.3 = {
+	type = country_event
+	title = flavor_lub.3.title
+	desc = flavor_lub.3.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_lub.3.a
+		trigger = { has_variable = hsa_accepted_variable }
+		hidden_effect = { remove_variable = hsa_accepted_variable }
+		show_as_tooltip = {
+			capital = {
+				construct_building = {
+					building_type = building_type:hsa_burgtor
+				}
+				change_prosperity = prosperity_severe_bonus
+			}
+			add_opinion_mutual_effect = {
+				target = scope:target_country
+				modifier = opinion_financed_burgtor_modifier
+			}
+			if = {
+				limit = { is_subject_of = scope:target_country }
+				add_liberty_desire = liberty_desire_severe_minus
+			}
+		}
+	}
+
+	option = {
+		name = flavor_lub.3.b
+
+		trigger = {
+			has_variable = hsa_refused_variable
+		}
+		hidden_effect = { remove_variable = hsa_refused_variable }
+		show_as_tooltip = {
+			add_opinion_mutual_effect = {
+				target = scope:target_country
+				modifier = opinion_refused_to_finance_burgtor_modifier
+			}
+			if = {
+				limit = { is_subject_of = scope:target_country }
+				add_liberty_desire = liberty_desire_severe_plus
+			}
+		}
+	}
+}

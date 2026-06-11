@@ -350,6 +350,8 @@ NAI = {
 	AI_ALLOWED_FORT_BUDGET = 0.08 # % of income allowed fort maintenance, normalized to full slider value
 	AI_ALLOWED_BUILDING_MAINTENANCE = 0.30 # % of income allowed for building maintenance excluding forts, only used to close or reopen buildings during crisis
 
+	AI_BUILDING_MAINTENANCE_LEEWAY = 1.20 # How much above the maintenance budget AI can be before they start closing buildings
+
 	AI_STEAL_MERCHANT_CAPACITY_PROFIT_MARGIN = 1.25 # AI will remove merchant capacity from low profit and move it to high profit if its this much more profitable
 	AI_STEAL_MERCHANT_CAPACITY_RATIO = 0.1 # How much in % that AI can move their trade capacity from low to high profit per month
 	AI_MINIMUM_TRADE_SIZE = 0.5 # AI will avoid to make trades smaller than this whenever possible
@@ -511,8 +513,8 @@ NAI = {
 	ROAD_MARKET_VALUE_FLOW_FACTOR_FOR_ESTATES = 0.5 # how much AI cares about building roads that increase the flow towards market capital, when estates build roads
 
 	AI_ROAD_TAX_ESTIMATE_MULTIPLIER = 1.5 # AI score multiplier for building roads towards taxbase
-	AI_POPULATION_PROPAGATION_UTIL = 300 # AI willingness to build roads towards population (% share of country) 
-	AI_TAXBASE_PROPAGATION_UTIL = 1 # AI willingness to build roads towards taxbase
+	AI_POPULATION_PROPAGATION_UTIL = 25 # AI willingness to build roads towards population (% share of country)
+	AI_TAXBASE_PROPAGATION_UTIL = 0.5 # AI willingness to build roads towards taxbase
 
 	MONTHLY_INFLATION_COST_PER_TAX_BASE = 0.33
 
@@ -613,7 +615,7 @@ NAI = {
 	RELEVANT_NAVY_MIN_RAW_STRENGTH = 0.025 # How many levies to even worth considering raising
 
 	AI_MAXIMUM_ARMY_VS_NAVY_BUDGET_ALLOCATION = 0.75 # maximum allocation budget for land vs navy based on society value
-	AI_MAINTENANCE_BUDGET_RATIO = 0.33 # 0.20 # How much of monthly income is allocated for maintenance budget of armies and navies
+	AI_MAINTENANCE_BUDGET_RATIO = 0.275 # 0.20 # How much of monthly income is allocated for maintenance budget of armies and navies
 	AI_MAINTENANCE_BUDGET_RATIO_AGE_INCREASE = 0.025	#how much every age adds.
 
 	SUPPLY_DEPOT_RANGE = 2 #how far away a supply depot can be to be used by a unit
@@ -992,15 +994,18 @@ NAI = {
 	AI_POP_FOOD_CONSUMPTION_MODIFIER_UTILITY = -0.05
 	AI_GARRISON_SIZE_UTILITY = 0.05
 	AI_DIPLOMATIC_CAPACITY_UTILITY = 0.05
-	AI_DIPLOMAT_UTILITY = 0.1 # utility for having diplomats, increased x10 when needed for import diplo actions like peacing out
+	AI_DIPLOMAT_UTILITY = 0.0075 # utility for having diplomats, increased x10 when needed for import diplo actions like peacing out
 	AI_ANNEX_UTILITY = 1 # utility for base annexation speed per ongoing annexation, diminishing quadratic 
-	AI_ANNEX_UTILITY_OTHER_SUBJECTS = 0.05 #utility for base annexation speed for every other vassal not being annexed, important due to modifiers related to relatvie subject tax base on crown power
+	AI_ANNEX_UTILITY_OTHER_SUBJECTS = 0.125 #utility for base annexation speed for every other vassal not being annexed, important due to modifiers related to relatvie subject tax base on crown power
 	AI_LOCAL_TRADES_PER_BURGHER_UTILITY = 0.001
 	AI_SUBJECTS_LOYALTY_UTILITY = 0.1
 	AI_ESTATE_ROADS_UTILITY = 10
 	AI_MERCENARY_COST_UTILITY = -0.35
 	AI_LOGISTIC_DISTANCE_UTILITY = 0.005
 	AI_LAND_MORALE_MODIFIER_UTILITY = 0.25
+	AI_LAND_MORALE_UTILITY = 0.15
+	AI_LAND_MORALE_ATTRITION_UTILITY = -4.5
+	AI_LAND_MORALE_MOVEMENT_COST_UTILITY = -50
 
 	AI_GOVERNMENT_SIZE_UTILITY = 0.5
 	AI_SATISFACTION_RECOVERY_UTILITY = 5
@@ -1016,7 +1021,7 @@ NAI = {
 	AI_CALL_FOR_PEACE_CHANCE_MULTIPLIER = 0.25
 	AI_CONQUER_TREATY_DESIRE_FROM_WORTH_MULT = 5
 	AI_CONQUER_TREATY_DESIRE_NOT_WARGOAL_MULT = 0.5
-	AI_CHILD_EDUCATION_CHANGE_THRESHOLD = 200
+	AI_CHILD_EDUCATION_CHANGE_THRESHOLD = 5
 	AI_CONQUER_TREATY_DESIRE_WARGOAL_BASE = 2.5
 	AI_CONQUER_TREATY_DESIRE_SAME_PROVINCE = 15 # 3
 	AI_CONQUER_LOCATION_TREATY_BASE_SCORE = 3				# base score for AI to pick locations in war goal

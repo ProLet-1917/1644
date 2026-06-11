@@ -676,21 +676,11 @@
 						# Emperor Abilities
 						add = {
 							desc = "EMPEROR_ABILITIES"
-							add = {
-								value = "leader_country.ruler_or_heir_if_regent.adm"
-								subtract = 50
-								multiply = 0.001
-							}
-							add = {
-								value = "leader_country.ruler_or_heir_if_regent.dip"
-								subtract = 50
-								multiply = 0.001
-							}
-							add = {
-								value = "leader_country.ruler_or_heir_if_regent.mil"
-								subtract = 50
-								multiply = 0.001
-							}
+							value = "leader_country.ruler_or_heir_if_regent.adm"
+							add = "leader_country.ruler_or_heir_if_regent.dip"
+							add = "leader_country.ruler_or_heir_if_regent.mil"
+							subtract = 150
+							multiply = 0.001
 						}
 						#monthly bonus from modifiers
 						add = {
@@ -931,62 +921,32 @@
 		}
 	}
 	
-	ai_issue_voting_bias = {		
-		#passing policies is what makes the empire great, so if the leader can enact one, they will
+	ai_issue_voting_bias = {
+		# HRE members lean toward the Emperor's pick when they like the Emperor
+		# and Imperial Authority is high. Bias must apply to one candidate at a
+		# time (the proposed one) so the predicted-vote tooltip and the live AI
+		# vote agree, instead of canceling across all candidates during preview.
 		add = {
-			desc = "POLICY_BIAS_LEADER_ALWAYS_WANTS"
+			desc = "POLICY_BIAS_VOTE_WITH_EMPEROR"
 			if = {
 				limit = {
+					exists = scope:vote
 					scope:recipient = {
-						leader_country ?= scope:actor
+						international_organization_has_leader = yes
 					}
+					not = { scope:actor = scope:recipient.leader_country }
+					# Pre-proposal preview: bias only the policy being previewed as the proposal.
+					exists = scope:previewed_vote
+					scope:previewed_vote = scope:vote
 				}
-				#this should end up with 20 for yes and -20 for no from the leader
-				if = {
-					limit = {
-						is_set = scope:vote
-					}
-					value = 1
+				value = {
+					value = "scope:actor.opinion(scope:recipient.leader_country)"
+					min = 0
+					divide = 100
+					multiply = scope:recipient.var:imperial_authority
+					divide = 100
+					multiply = hre_emperor_alignment_vote_bias_weight
 				}
-				else = {
-					value = -1
-				}
-				multiply = 20
-			}
-		}
-		
-		#opinion of leader
-		add = {
-			desc = "POLICY_BIAS_OPINION_OF_EMPEROR"
-			if = {
-				limit = { not = { scope:actor = scope:recipient.leader_country } }
-				scope:recipient = {
-					leader_country = {
-						if = {
-							limit = {
-								is_set = scope:vote
-							}
-							value = 1
-						}
-						else = {
-							value = -1
-						}
-						multiply = {
-							scope:actor = {
-								value = this_opinion_of_prev
-							}
-						}
-						multiply = 0.1 
-					}
-				}
-			}
-		}
-		#Emperor modifiers
-		add = {
-			desc = "MODIFIER_TYPE_NAME_reasons_to_vote"
-			if = {
-				limit = { not = { scope:actor = scope:recipient.leader_country } }
-				value = scope:recipient.leader_country.modifier:reasons_to_vote
 			}
 		}
 	}

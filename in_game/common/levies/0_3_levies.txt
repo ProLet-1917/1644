@@ -1,32 +1,22 @@
 levy_cossack_infantry = {
-    size = 0.03
+    size = levy_generic_infantry_size
 
-    allow = {
-        culture = {
-            has_culture_group = culture_group:cossack_group
-        }
-    }
+    allowed_culture = cossack_culture
 
     allowed_pop_type = peasants
     allowed_pop_type = tribesmen
     allowed_pop_type = laborers
-    allowed_pop_type = herdsman
 
     unit = levy_cossack_infantry
 }
 
 levy_cossack_cavalry = {
-    size = 0.15
+    size = levy_generic_noble_cavalry_size
 
-    allow = {
-        culture = {
-            has_culture_group = culture_group:cossack_group
-        }
-    }
+    allowed_culture = cossack_culture
 
     allowed_pop_type = nobles
     allowed_pop_type = soldiers
-    allowed_pop_type = burghers
     allowed_pop_type = herdsman
 
     unit = levy_cossack_cavalry

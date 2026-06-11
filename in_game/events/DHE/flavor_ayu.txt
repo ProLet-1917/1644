@@ -1,0 +1,388 @@
+﻿namespace = flavor_ayu
+
+flavor_ayu.4 = { #Economic Reforms
+	type = country_event
+	title = flavor_ayu.4.title
+	desc = flavor_ayu.4.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = AYU
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 5
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		has_ruler = yes
+		ruler.adm >= 80
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler = { save_scope_as = target_ruler }
+	}
+
+	option = { #Reform
+		name = flavor_ayu.4.a
+		change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_tiny_move_to_left }
+		add_inflation = inflation_extreme_bonus
+		custom_tooltip = {
+			text = flavor_ayu.4.a.tt
+			ordered_owned_location = {
+				limit = {
+					is_capital = no
+				}
+				order_by = population
+				max = {
+					value = 1
+					add = {
+						value = num_provinces
+						divide = 5
+					}
+				}
+				change_development  = development_weak_bonus
+			}
+		}
+	}
+
+	option = { #Nah
+		name = flavor_ayu.4.b
+		add_stability = stability_extreme_bonus
+	}
+}
+
+flavor_ayu.5 = { #The Foundation of the Modern Thai State
+	type = country_event
+	title = flavor_ayu.5.title
+	desc = flavor_ayu.5.desc
+	outcome = neutral
+
+	historical_info = flavor_ayu.5.historical_info
+
+	dynamic_historical_event = {
+		tag = AYU
+		from = 1750.1.1
+		to = 1800.1.1
+		monthly_chance = 5
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		has_ruler = yes
+		ruler.total_abilities >= 170
+		owns = location:ayodhya
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler = { save_scope_as = target_ruler }
+		location:ayodhya = { save_scope_as = target_location }
+	}
+
+	option = { #Found it
+		name = flavor_ayu.5.a
+		historical_option = yes
+		add_prestige = prestige_extreme_bonus
+		ordered_owned_location = {
+			order_by = population
+			max = 5
+			change_development  = development_weak_bonus
+		}
+		scope:target_location = {
+			rename_location = bangkok
+			if = {
+				limit = { 
+					NOT = { location_rank = location_rank:city }
+				}
+				change_location_rank_effect = { location_rank = location_rank:city }
+			}
+		}
+		location:bight_ayodhya = { rename_location = bight_bangkok }
+		if = {
+			limit = {
+				NOT = { capital = scope:target_location }
+			}
+			set_capital = scope:target_location
+		}
+	}
+
+	option = { #Let's stay as we are
+		name = flavor_ayu.5.b
+		add_stability = stability_extreme_bonus
+	}
+}
+
+flavor_ayu.6 = { #Wat Chaiwatthanaram
+	type = country_event
+	title = flavor_ayu.6.title
+	desc = flavor_ayu.6.desc
+	outcome = neutral
+
+	historical_info = flavor_ayu.6.historical_info
+
+	dynamic_historical_event = {
+		tag = AYU
+		from = 1644.1.1
+		to = 1750.1.1
+		monthly_chance = 5
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		has_ruler = yes
+		ruler.total_abilities >= 200
+		OR = {
+			religion = religion:theravada
+			religion = religion:mahayana
+			religion = religion:tibetan_buddhism
+		}
+		capital = location:ayodhya
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ruler = { save_scope_as = target_ruler }
+		location:ayodhya = { save_scope_as = target_location }
+	}
+
+	option = {
+		name = flavor_ayu.6.a
+		historical_option = yes
+		location:ayodhya = {
+			construct_building = {
+				building_type = building_type:wat_chaiwatthanaram_temple_building
+				cost_multiplier = 0.9
+				cost_multiplier_reason = "royal_sponsorship"
+			}
+		}
+	}
+	option = {
+		name = flavor_ayu.6.b
+		add_government_power = government_power_weak_penalty
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_weak_penalty }
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+flavor_ayu.7 = { #Furthening Horizons
+	type = country_event
+	title = flavor_ayu.7.title
+	desc = flavor_ayu.7.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = AYU
+		from = 1644.1.1
+		to = 1750.1.1
+		monthly_chance = 5
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		has_ruler = yes
+		ruler.total_abilities >= 150
+		capital.market = {
+			any_merchant_in_market = {
+				capital.sub_continent = sub_continent:western_europe
+				opinion = { target = root value >= 100 }
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+		ruler = { save_scope_as = target_ruler }
+		capital.market = {
+			random_merchant_in_market = {
+				limit = {
+					capital.sub_continent = sub_continent:western_europe
+					opinion = { target = root value >= 100 }
+				}
+				save_scope_as = target_country
+			}
+		}
+	}
+
+	option = { #Increase trade regulations
+		name = flavor_ayu.7.a
+		change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_minor_move_to_left }
+		scope:target_country = {
+			add_casus_belli = {	target = root type = casus_belli:cb_trade_conflict }
+		}
+	}
+
+	option = { #Allow trade to flow freely
+		name = flavor_ayu.7.b
+		change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_minor_move_to_right }
+		add_research_progress = research_progress_weak_bonus
+		add_legitimacy = legitimacy_severe_penalty
+	}
+}
+
+flavor_ayu.8 = { #The Buddha's Footprint
+	type = country_event
+	title = flavor_ayu.8.title
+	desc = flavor_ayu.8.desc
+	outcome = neutral
+
+	historical_info = flavor_ayu.8.historical_info
+
+	dynamic_historical_event = {
+		tag = AYU
+		from = 1644.1.1
+		to = 1750.1.1
+		monthly_chance = 5
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		has_ruler = yes
+		owns = location:saraburi
+		OR = {
+			religion = religion:theravada
+			religion = religion:mahayana
+			religion = religion:tibetan_buddhism
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ruler = { save_scope_as = target_ruler }
+		location:saraburi = { save_scope_as = target_location }
+	}
+
+	option = {
+		name = flavor_ayu.8.a
+		historical_option = yes
+		location:saraburi = {
+			if = {
+				limit = {
+					OR = {
+						location_rank = location_rank:town
+						location_rank = location_rank:city
+					}
+					NOT = { has_building_with_at_least_one_level = temple }
+				}
+				construct_building = {
+					building_type = building_type:temple
+					cost_multiplier = 1
+					cost_multiplier_reason = "royal_sponsorship"
+				}
+			}
+			else = {
+				change_development = development_mild_bonus
+			}
+		}
+		add_karma = karma_mild_bonus
+		change_societal_value = { type = spiritualist_vs_humanist value = societal_value_tiny_move_to_left }
+	}
+
+	option = {
+		name = flavor_ayu.8.b
+		add_prestige = prestige_weak_bonus
+		change_societal_value = { type = spiritualist_vs_humanist value = societal_value_minor_move_to_right }
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_minor_move_to_right }
+	}
+}
+
+flavor_ayu.9 = { #Constantine Phaulkon
+	type = country_event
+	title = flavor_ayu.9.title
+	desc = flavor_ayu.9.desc
+	outcome = neutral
+
+	historical_info = flavor_ayu.9.historical_info
+
+	dynamic_historical_event = {
+		tag = AYU
+		from = 1675.1.1
+		to = 1700.1.1
+		monthly_chance = 10
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		has_ruler = yes
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+		ruler = { save_scope_as = target_ruler }
+		create_character = {
+			first_name = name_constantine
+			last_name = name_falcon.greek_language
+			birth_location = location:cephalonia
+			birth_date = 1647.1.1 #Exact date unknown
+			adm = { 85 95 }
+			dip = { 85 95 }
+			mil = { 85 95 }
+			culture = culture:greek_culture
+			religion = religion:orthodox
+			estate = estate_type:burghers_estate
+			create_in_limbo = yes
+			save_scope_as = target_character
+		}
+		if = {
+			limit = {
+				religion:anglican = { is_religion_enabled = yes }
+			}
+			scope:target_character = {
+				change_character_religion = religion:anglican #As he was actually anglican when he arrived at Siam
+			}
+		}
+	}
+
+	option = { #Invite him
+		name = flavor_ayu.9.a
+		historical_option = yes
+		scope:target_character = { move_country = root }
+		add_estate_satisfaction = { type = estate_type:nobles_estate	value = estate_satisfaction_mild_penalty }
+		add_legitimacy = legitimacy_mild_penalty
+	}
+
+	option = { #No need
+		name = flavor_ayu.9.b
+		add_stability = stability_mild_bonus
+		scope:target_character = {
+			banish_character = yes
+		}
+	}
+}

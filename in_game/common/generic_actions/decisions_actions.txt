@@ -117,10 +117,20 @@ claim_mandate_of_heaven = {
     }
     effect = {
         scope:actor = {
-            change_government_type = government_type:monarchy
+            if = {
+                limit = {
+                    government_type != government_type:monarchy
+                }
+                change_government_type = government_type:monarchy
+            }
+            form_country = formable_country:CHI_f
             rtr_recreate_middle_kingdom = yes
-            #set_country_rank_effect = { rank = country_rank:rank_empire }
-            set_country_rank = country_rank:rank_empire
+            if = {
+                limit = {
+                    country_rank != country_rank:rank_empire
+                }
+                set_country_rank = country_rank:rank_empire
+            }
         }
     }
 

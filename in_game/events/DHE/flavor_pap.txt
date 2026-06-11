@@ -1,0 +1,802 @@
+﻿namespace = flavor_pap
+
+#######################
+# Age of Renaissance
+#######################
+#Passetto di Borgo
+# Can happen every 5 years
+flavor_pap.11 = {
+	type = country_event
+	title = flavor_pap.11.title
+	desc = flavor_pap.11.desc
+	outcome = neutral
+
+	trigger = {
+		tag = PAP
+		scope:target = {
+			location_key = rome
+			NOT = { controller = c:PAP }
+			is_capital = yes
+		}
+		NOT = { has_country_modifier = pap_passetto_di_borgo_timer }
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		hidden_effect = {
+			add_country_modifier = { modifier = pap_passetto_di_borgo_timer months = 60 mode = add_and_extend }
+			if = {
+				limit = { has_ruler = yes }
+				ruler ?= { save_scope_as = target_character }
+			}
+			else = {
+				regent ?= { save_scope_as = target_character }
+			}
+		}
+	}
+
+	option = {
+		name = flavor_pap.11.a
+		add_prestige = prestige_weak_penalty
+		add_government_power = government_power_extreme_penalty
+	}
+	
+	option = {
+		name = flavor_pap.11.b
+		add_government_power = government_power_extreme_bonus
+		random_list = {
+			10 = {
+				kill_character = {
+					target = ruler
+					reason = execution
+				}
+			}
+			90 = {
+			}
+		}
+	}
+}
+
+#Sack of Rome
+# Can happen every 5 years
+# root = country, scope:target = location
+flavor_pap.12 = {
+	type = country_event
+	title = flavor_pap.12.title
+	desc = flavor_pap.12.desc
+	outcome = neutral
+
+	trigger = {
+		tag = PAP
+		war_exhaustion >= 2.00
+		scope:target = {
+			location_key = rome
+			owner = c:PAP
+			controller = c:PAP
+			is_looted = yes
+		}
+		NOT = { has_country_modifier = pap_rome_loot_timer }
+	}
+	
+	illustration_tags = {
+        10 = armed
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		hidden_effect = { add_country_modifier = { modifier = pap_rome_loot_timer months = 60 mode = add_and_extend } }
+	}
+
+	option = {
+		name = flavor_pap.12.a
+		change_gold_effect = { scale = -6 }
+		location:rome = {
+			add_location_modifier = { modifier = roman_garisson months = 60 mode = add_and_extend }
+		}
+	}
+
+	option = {
+		name = flavor_pap.12.b
+		change_gold_effect = { scale = -6 }
+		add_war_exhaustion = war_exhaustion_weak_bonus
+		location:rome = {
+			change_prosperity = prosperity_weak_bonus
+		}
+	}
+}
+
+#Simony Judged
+flavor_pap.17 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_pap.17.title
+	desc = flavor_pap.17.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = PAP
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 20
+	}
+
+	trigger = {
+		religion:catholic = {
+			reform_desire >= 0.50
+			has_religion_modifier = tolerated_simony_religion
+		}
+		NOT = { religion:lutheran = { is_religion_enabled = yes} }
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+
+	option = {
+		name = flavor_pap.17.a
+
+		add_stability = stability_extreme_penalty
+		religion:catholic = { add_reform_desire = reform_desire_severe_decrease }
+		add_government_power = government_power_extreme_bonus
+		custom_tooltip = disables_simony
+
+		religion:catholic = {
+			remove_religion_modifier = tolerated_simony_religion
+			add_religion_modifier = banned_simony_religion
+		}
+		international_organization:catholic_church = {
+			add_policy_to_international_organization = policy:banned_simony
+		}
+	}
+
+	option = {
+		name = flavor_pap.17.b
+
+		add_government_power = government_power_extreme_penalty
+		religion:catholic = {
+			remove_religion_modifier = tolerated_simony_religion
+			add_religion_modifier = endorsed_simony_religion
+		}
+		international_organization:catholic_church = {
+			add_policy_to_international_organization = policy:endorsed_simony
+		}
+	}
+}
+
+#Veneration of Relics - allow or disallow?
+flavor_pap.18 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_pap.18.title
+	desc = flavor_pap.18.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = PAP
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 5
+	}
+	
+	trigger = {
+		religion:catholic = { reform_desire >= 0.25 }
+		NOT = { religion:lutheran = { is_religion_enabled = yes} }
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+	
+	option = {
+		name = flavor_pap.18.a
+		add_stability = stability_extreme_penalty
+		religion:catholic = { add_reform_desire = reform_desire_severe_decrease }
+		add_government_power = government_power_extreme_bonus
+		custom_tooltip = disables_veneration_of_relics
+
+		international_organization:catholic_church = {
+			add_policy_to_international_organization = policy:no_veneration
+		}
+	}
+	
+	option = {
+		name = flavor_pap.18.b
+
+		add_government_power = government_power_extreme_penalty
+		religion:catholic = { add_reform_desire = reform_desire_weak_increase }
+	}
+
+	option = {
+		name = flavor_pap.18.c
+
+		add_stability = stability_weak_penalty
+		religion:catholic = { add_reform_desire = reform_desire_weak_decrease }
+		international_organization:catholic_church = {
+			add_policy_to_international_organization = policy:limited_veneration
+		}
+	}
+}
+
+#The Kingdom of God on Earth
+flavor_pap.20 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_pap.20.title
+	desc = flavor_pap.20.desc
+	outcome = neutral
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = PAP
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 100
+	}
+	trigger = {
+		has_ruler = yes
+		has_reform = government_reform:papacy_reform
+		region:italy_region = {
+			any_location_in_region = {
+				OR = {
+					is_ownable = no
+					top_owner ?= root
+				}
+				count = all
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ruler ?= {
+			save_scope_as = target_character
+		}
+
+		ordered_pop = {
+			max = 1
+			order_by = pop_size
+			limit = {
+				pop_type = pop_type:clergy
+			}
+			save_scope_as = target_pop
+		}
+		ordered_pop = {
+			max = 1
+			order_by = pop_size
+			limit = {
+				pop_type = pop_type:clergy
+			}
+			save_scope_as = target_pop_bckg
+		}
+	}
+
+	option = {
+		name = flavor_pap.20.a
+		trigger = {
+			not = {has_reform = government_reform:kingdom_of_god_reform}
+		}
+
+		#Kingdom of God reform
+		unlock_government_reform_effect = { type = kingdom_of_god_reform }
+		if = {
+			#If we have all the slots already full
+			limit = {
+				num_reforms = modifier:government_reform_slots
+			}
+			add_country_modifier = { modifier = kingdom_of_god_slot_modifier }
+		}
+		add_reform = government_reform:kingdom_of_god_reform
+	}
+
+	option = {
+		name = flavor_pap.20.b
+		add_prestige = prestige_severe_bonus
+		add_government_power = government_power_severe_bonus
+	}
+}
+
+flavor_pap.25 = { #Fortifying Castel Sant'Angelo
+	type = country_event
+	title = flavor_pap.25.title
+	desc = flavor_pap.25.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_pap.25.historical_info
+
+	dynamic_historical_event = {
+		tag = PAP
+		from = 1644.1.1
+		to = 1850.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:rome
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		location:rome = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_pap.25.a
+		historical_option = yes
+		add_army_tradition = army_tradition_mild_bonus
+		location:rome = {
+			construct_building = {
+				building_type = building_type:castel_sant_angelo
+			}
+		}
+	}
+
+	option = {
+		name = flavor_pap.25.b
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+#Draining the Pontine Marshes
+flavor_pap.35 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_pap.35.title
+	desc = flavor_pap.35.desc
+	outcome = neutral
+
+	historical_info = flavor_pap.35.historical_info
+
+	dynamic_historical_event = {
+		tag = PAP
+		tag = ITA
+		from = 1644.1.1
+		to = 1900.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:velletri
+		owns = location:terracina
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+	
+	option = {
+		name = flavor_pap.35.a
+		historical_option = yes
+		change_gold_effect = { scale = -12 }
+		location:velletri = {
+			change_prosperity = prosperity_mild_bonus
+			change_development = development_mild_bonus
+			add_location_modifier = { modifier = pap_drained_marshes years = -1 mode = add }
+		}
+		location:terracina = {
+			change_prosperity = prosperity_mild_bonus
+			change_development = development_mild_bonus
+			add_location_modifier = { modifier = pap_drained_marshes years = -1 mode = add }
+		}
+		custom_tooltip = flavor_pap.35.a.tt
+	}
+
+	option = {
+		name = flavor_pap.35.b
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+#Commissioning the First Theater
+flavor_pap.42 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_pap.42.title
+	desc = flavor_pap.42.desc
+	outcome = neutral
+	fire_only_once = yes
+
+	historical_info = flavor_pap.42.historical_info
+
+	dynamic_historical_event = {
+		tag = PAP
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		owns = location:rome
+		location:rome = {
+			NOT = {
+				has_building = building_type:theater
+			}
+		}
+		character:pap_bernini_script ?= {
+			is_alive = yes
+			owner = ROOT
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		character:pap_bernini_script ?= { save_scope_as = bernini }
+		location:rome = { save_scope_as = target_location }
+	}
+
+	option = {
+		name = flavor_pap.42.a
+		historical_option = yes
+		change_gold_effect = { scale = -5 }
+		scope:bernini = {
+			add_artist_skill = 0.1
+		}
+		if = {
+			limit = {
+				scope:bernini = {
+					NOT = {
+						has_trait = prominent
+					}
+				}
+			}
+			scope:bernini = {
+				add_trait = trait:prominent
+			}
+		}
+		else = {
+			add_research_progress = research_progress_mild_bonus
+		}
+		location:rome = {
+			construct_building = {
+				building_type = building_type:theater
+			}
+		}
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_penalty }
+	}
+
+	option = {
+		name = flavor_pap.42.b
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_penalty
+			add_cultural_influence = cultural_influence_mild_penalty
+		}
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+	}
+}
+
+#when you own rome and PAP doesn't exist. Give it back, you godless fuckers
+flavor_pap.9000 = {
+	type = country_event
+	title = flavor_pap.9000.title
+	desc = flavor_pap.9000.desc
+	outcome = neutral
+
+	trigger = {
+		exists = international_organization:catholic_church
+		location:rome = {
+			owner ?= root
+		}
+		religion = religion:catholic
+		exists = c:PAP 
+		NOT = { tag = ITA }
+		is_real_country = yes	#rebels and revolutionaries should not trigger it just yet..
+		is_rebel_country = no
+		NOT = { tag = ROM }
+		NOT = { country_exists = c:PAP }
+		NOT = { var:no_support ?= yes }
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+	
+	on_trigger_fail = {
+		random_country = {
+			limit = {
+				can_give_land_to_pope_trigger = yes
+			}
+			trigger_event_silently = {
+				id = flavor_pap.9001
+			}
+		}
+	}
+
+	option = {
+		name = flavor_pap.9000.a # We will never support such a state
+		ai_chance = { factor = 25 }
+		add_prestige = prestige_mild_penalty
+		add_stability = stability_severe_penalty
+		custom_tooltip = {
+			text = every_catholic_hates_us_tt
+			every_country = {
+				limit = {
+					religion = religion:catholic
+					NOT = { this = ROOT }
+				}
+				add_opinion = {
+					target = ROOT
+					modifier = opinion_declined_independent_state_support
+				}
+			}
+		}
+		set_variable = {
+			name = no_support
+			value = yes
+		}
+		random_country = {
+			limit = {
+				is_human = no
+				can_give_land_to_pope_trigger = yes
+			}
+			trigger_event_silently = {
+				id = flavor_pap.9001
+			}
+		}
+	}
+	option = {
+		name = flavor_pap.9000.b # Rome is rightfully theirs
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0
+				location:rome = {
+					integration_level = core
+				}
+			}
+		}
+		reinstate_the_pope = {
+			target_province = location:rome
+		}
+		add_prestige = prestige_extreme_bonus
+		international_organization:catholic_church = {
+			set_leader_country = c:PAP
+		}
+	}
+}
+
+#they didn't give it back. PAP is on the loose and wants your land
+flavor_pap.9001 = {
+	type = country_event
+	title = flavor_pap.9001.title
+	desc = flavor_pap.9001.desc
+	outcome = neutral
+
+	trigger = {
+		exists = international_organization:catholic_church
+		exists = c:PAP 
+		NOT = { country_exists = c:PAP }
+		NOT = { country_exists = c:ITA }
+		can_give_land_to_pope_trigger = yes
+		location:rome = {
+			owner ?= {
+				OR = {
+					NOT = { religion = religion:catholic }
+					var:no_support ?= yes
+				}
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		hidden_effect = {
+			random_owned_location = {
+				limit = {
+					is_capital = no
+					dominant_religion = religion:catholic
+					continent = continent:europe
+					any_neighbor_location = {
+						NOT = {
+							owner ?= root
+						}
+					}
+				}
+				save_scope_as = papal_province
+			}
+		}
+	}
+
+	option = {
+		name = flavor_pap.9001.a
+		ai_chance = { factor = 100 }
+		if = {
+			limit = {
+				NOT = { country_exists = c:PAP }
+			}
+			reinstate_the_pope = {
+				target_province = scope:papal_province
+			}
+			add_religious_influence = religious_influence_extreme_bonus
+			add_prestige = prestige_extreme_bonus
+			international_organization:catholic_church = {
+				set_leader_country = c:PAP
+			}
+		}
+	}
+	option = {
+		name = flavor_pap.9001.b
+		ai_chance = { factor = 0 }
+		set_variable = {
+			name = refused_papacy
+			value = yes
+		}
+		add_prestige = prestige_ultimate_penalty
+	}
+}
+
+flavor_pap.9002 = {
+	type = country_event
+	title = flavor_pap.9002.title
+	desc = flavor_pap.9002.desc
+	outcome = neutral
+
+	trigger = {
+		exists = international_organization:catholic_church
+		country_exists = c:PAP
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		location:rome = { save_scope_as = target_location }
+	}
+
+	option = {
+		name = flavor_pap.9002.a
+
+		ai_will_select = {
+			value = 1
+
+			add = {
+				value = modifier:tolerance_own
+				multiply = 2
+			}
+
+			add = {
+				value = num_cardinals
+			}
+
+			add = {
+				value = societal_value:spiritualist_vs_humanist
+				multiply = -0.1
+			}
+		}
+
+		if = {
+			limit = { country_exists = c:PAP }
+		}
+		location:rome = {
+			change_location_owner = c:PAP
+		}
+
+		custom_tooltip = {
+			text = accepted_to_return_rome_tt
+			religion:catholic = {
+				every_country_in_religion = {
+					limit = { this != root }
+					add_opinion = {
+						target = ROOT
+						modifier = returned_rome
+					}
+				}
+			}
+		}
+		
+	}
+	option = {
+		name = flavor_pap.9002.b
+
+		ai_will_select = {		#AI can have a little bit of opportunism as a treat
+			value = 5
+		}
+		
+		custom_tooltip = {
+			text = declined_to_return_rome_tt
+			religion:catholic = {
+				every_country_in_religion = {
+					limit = { this != root }
+					add_opinion = {
+						target = ROOT
+						modifier = declined_return_rome
+					}
+				}
+			}
+		}
+	}
+}
+
+#Rome has fallen to non-Christians. Catholics are outraged.
+flavor_pap.9003 = {
+	type = country_event
+	title = flavor_pap.9003.title
+	desc = flavor_pap.9003.desc
+	outcome = negative
+
+	trigger = {
+		location:rome = { owner = root }
+		NOT = { religion.group = religion_group:christian }
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:clergy_estate }
+		hidden_effect = {
+			religion:catholic = {
+				every_country_in_religion = {
+					add_antagonism = {
+						target = root
+						modifier = antagonism_seized_papal_capital
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_pap.9003.a
+		ai_chance = { factor = 100 }
+		custom_tooltip = {
+			text = catholics_outraged_over_infidel_rome_tt
+		}
+	}
+}

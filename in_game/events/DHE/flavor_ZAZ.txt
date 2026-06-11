@@ -19,129 +19,6 @@ scripted_effect khmelnytsky_claim = {
 	}
 }
 
-flavor_zaz.1 = { #Rise of Zaporozhie
-	hide_portraits = yes
-	type = country_event
-	title = flavor_zaz.1.title
-	desc = flavor_zaz.1.desc
-	historical_info = flavor_zaz.1.historical_info
-
-	fire_only_once = yes
-	major = yes
-	major_trigger = {
-		region:steppes_region = {
-			any_location_in_region = {
-				top_owner ?= root
-			}
-		}
-	}
-
-	dynamic_historical_event = {
-		tag = POL
-		tag = LIT
-		tag = PLC
-		tag = RUS
-		from = 1500.1.1
-		to = 1600.1.1
-		monthly_chance = 3
-	}
-
-	illustration_tags = {
-		10 = regular
-		10 = exterior
-	}
-
-	trigger = {
-		NOT = { dominant_culture = culture:cossack_culture }
-		area:zaporizhzhia_area = { #Previously was has_presence_in, however this was changed to this to be able to make them spawning more viable
-			any_location_in_area = {
-				percent >= 0.1
-				is_ownable =  yes
-				owner ?= root
-			}
-		}
-		country_has_estate = estate_type:cossacks_estate
-	}
-
-	immediate = {
-		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
-
-		ruler_or_regent ?= {
-			save_scope_as = target_ruler
-		}
-
-		area:zaporizhzhia_area = {
-			every_location_in_area = {
-				add_core = c:ZAZ
-			}
-		}
-	}
-
-	option = {
-		name = flavor_zaz.1.a
-
-		custom_tooltip = zaz_gains_cores_in_all_of_zaporizhzhia_area_tt
-	}
-
-	option = { #Release them as a subject
-		name = flavor_zaz.1.b
-
-		custom_tooltip = zaz_gains_cores_in_all_of_zaporizhzhia_area_tt
-
-		create_country_from_cores_in_our_locations = c:ZAZ
-
-		hidden_effect = {
-			random_owned_location = {
-				limit = {
-					area = area:zaporizhzhia_area
-				}
-				create_dynasty_from_location = random
-				last_dynasty_in_location = { save_scope_as = target_dynasty }
-			}
-			create_character = {
-				age = 25
-				culture = culture:cossack_culture
-				religion = religion:orthodox
-				dynasty = scope:target_dynasty
-				adm = { 50 75 }
-				dip = { 50 75 }
-				mil = { 50 75 }
-				save_scope_as = target_character
-			}
-		}
-
-		hidden_effect = {
-			c:ZAZ = {
-				set_new_ruler = scope:target_character
-				make_subject_of = {
-					target = root
-					type = subject_type:vassal
-				}
-
-				every_owned_location = {
-					change_integration_level = core
-				}
-
-				ordered_owned_location = {
-					order_by = development
-					max = 1
-					save_scope_as = target_location
-				}
-
-				set_capital = scope:target_location
-
-				change_culture = culture:cossack_culture
-
-				change_religion = religion:orthodox
-
-				capital ?= { create_sub_unit_of_category = sub_unit_category:army_light_infantry }
-
-				change_country_type = army
-			}
-		}
-	}
-}
-
 #Seeking Close Relations with the Patriarch
 flavor_zaz.2 = {
 	type = country_event
@@ -150,8 +27,8 @@ flavor_zaz.2 = {
 
 	dynamic_historical_event = {
 		tag = ZAZ
-		from = 1500.1.1
-		to = 1821.1.1
+		from = 1644.1.1
+		to = 1850.1.1
 		monthly_chance = 3
 	}
 
@@ -222,9 +99,9 @@ flavor_zaz.1000 = {
 
 	dynamic_historical_event = {
 		tag = ZAZ
-		from = 1640.1.1
+		from = 1644.1.1
 		to = 1700.1.1
-		monthly_chance = 8
+		monthly_chance = 5
 	}
 
 	fire_only_once = yes
@@ -405,7 +282,7 @@ flavor_zaz.1100 = {
 
 	dynamic_historical_event = {
 		tag = ZAZ
-		from = 1550.1.1
+		from = 1644.1.1
 		to = 1700.1.1
 		monthly_chance = 2
 	}

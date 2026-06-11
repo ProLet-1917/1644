@@ -1,0 +1,202 @@
+﻿#Note:  logic assumes that anything below a rank in the list is worse
+megalopolis = {
+	
+	rank_modifier = {
+		local_burghers_desired_pop = 4.0
+		local_laborers_desired_pop = 4.0
+		local_soldiers_desired_pop = 1.00
+		local_nobles_desired_pop = 0.200
+		local_clergy_desired_pop = 0.400
+	
+		local_max_control = 0.2
+		#local_population_capacity = 400
+		#local_population_capacity_modifier = 0.5
+		
+		local_food_capacity = 1000
+		
+		local_construction_speed = 0.5
+		
+		local_trade_center_power = 0.05
+
+		local_possible_town_rights = 3
+		
+		local_integration_speed_modifier = -0.75
+		
+		local_monthly_food_modifier = -0.1
+		
+		local_pop_promotion_speed_modifier = 0.50
+		
+		free_building_levels = 200
+		
+		max_constructions_at_same_time = 2
+		local_max_rgo_size_modifier = -0.5
+
+		local_peasant_enfranchisment = 0.5
+
+		movement_cost = 0.4
+		local_frontage_allowed = -3
+
+		local_mills_build_buildings_efficiency = 0.33
+
+	}
+	
+	country_modifier = {
+		monthly_doom = 0.06
+		fort_limit = 2
+	}
+	
+	capital_country_modifier = {
+		global_max_bureaucracy_slots = 1
+		capital_movement_cost_modifier = 1.0
+	}
+	
+	allow = {
+		location_rank = location_rank:city
+		population >= 400.000
+		modifier:cannot_upgrade_location = no
+		is_market_center = yes
+		is_capital = yes
+		owner ?= { is_subject = no }
+	}
+	max_rank = yes
+	
+	build_time = 1825 # 5 years
+	
+	color = color_rank_empire
+	is_established_city = yes
+	
+	construction_demand = build_megalopolis_demand
+	
+	frame_tier = 4
+	show_in_label = yes
+
+}
+city = {
+	
+	rank_modifier = {
+		local_burghers_desired_pop = 1.0
+		local_laborers_desired_pop = 1.0
+		local_soldiers_desired_pop = 0.25
+		local_nobles_desired_pop = 0.05
+		local_clergy_desired_pop = 0.1
+		
+		local_trade_center_power = 0.025
+	
+		local_max_control = 0.1
+		#local_population_capacity = 100
+		#local_population_capacity_modifier = 0.25
+		
+		local_food_capacity = 500
+		
+		local_construction_speed = 0.25
+		
+		local_possible_town_rights = 2
+		
+		local_integration_speed_modifier = -0.5
+		
+		
+		local_pop_promotion_speed_modifier = 0.25
+		
+		free_building_levels = 100
+		
+		local_peasant_enfranchisment = 0.25
+		
+		max_constructions_at_same_time = 1
+
+		
+		movement_cost = 0.2
+		local_frontage_allowed = -2
+
+		local_mills_build_buildings_efficiency = 0.20
+
+	}
+	
+	country_modifier = {
+		monthly_doom = 0.03
+		fort_limit = 1
+	}
+	
+	allow = {
+		location_rank = location_rank:town
+		population >= 30
+		modifier:cannot_upgrade_location = no
+	}
+	
+	build_time = 730
+	
+	color = color_rank_kingdom
+	is_established_city = yes
+	
+	construction_demand = build_city_demand
+	
+	frame_tier = 3
+	show_in_label = yes
+
+}
+
+town = {
+	
+	rank_modifier = {
+		local_burghers_desired_pop = 0.2
+		local_laborers_desired_pop = 0.2
+		local_soldiers_desired_pop = 0.1
+
+		local_nobles_desired_pop = 0.025
+		local_clergy_desired_pop = 0.05
+		
+		local_max_control = 0.05
+		#local_population_capacity = 20
+		#local_population_capacity_modifier = 0.10
+		local_food_capacity = 250
+		local_integration_speed_modifier = -0.25
+		
+		local_possible_town_rights = 1
+		
+		free_building_levels = 25
+		
+		local_peasant_enfranchisment = 0.1
+
+		movement_cost = 0.1
+		local_frontage_allowed = -1
+	}
+	
+	country_modifier = {
+		monthly_doom = 0.01
+	}
+	
+	allow = {
+		population >= 5
+		modifier:cannot_upgrade_location = no
+	}
+	
+	color = color_rank_duchy
+	is_established_city = yes
+	
+	build_time = 365
+	construction_demand = build_town_demand
+
+	frame_tier = 2
+	show_in_label = yes
+
+}
+
+rural_settlement = {
+	rank_modifier = {
+		local_max_rgo_size_modifier = 1.0
+		local_monthly_food_modifier = 0.1
+		
+		local_population_growth = 0.001
+		
+		local_peasant_enfranchisment = -0.2
+	}
+	
+	country_modifier = {
+		monthly_doom = 0.005
+	}
+	
+	color = color_rank_county
+
+	frame_tier = 1
+	show_in_label = no
+
+}

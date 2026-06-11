@@ -177,17 +177,6 @@
         #    change_max_raw_material_workers = 3
         #}
 
-        c:SWE = {
-            add_country_modifier = {
-                months = 360
-                modifier = the_reforms_of_gustav_ii
-            }
-            add_country_modifier = {
-                months = 600
-                modifier = age_of_swedish_empire
-            }
-
-        }
         location:viborg = {
             while = {
                 count = 4
@@ -275,33 +264,6 @@
         #    }
         #}
 
-        c:HAB = {
-            set_variable = privilegium_maius_granted
-            #add_reform = government_reform:libertas_affectandi
-            change_heir_selection = heir_selection:austrian_cognatic_primogeniture
-            unlock_government_reform_effect = { type = austrian_archduchy_reform }
-            #add_reform = government_reform:austrian_archduchy_reform
-            trigger_event_non_silently = start_events.1
-            add_country_modifier = {
-                modifier = habsburgs_goldern_century
-                years = 26
-            }
-        }
-
-        c:SPA = {
-            add_country_modifier = {
-                modifier = habsburgs_goldern_century
-                years = 26
-            }
-        }
-
-        c:RUS = {
-            add_country_modifier = {
-                modifier = rise_of_the_russia
-                years = 46
-            }
-        }
-
         #every_country = {
         #    limit = {
         #        OR = {
@@ -325,22 +287,6 @@
             }
         }
 
-        c:PLC = {
-            add_country_modifier = {
-                modifier = the_corruption_in_sejm
-                years = -1
-            }
-            set_variable = unlock_liberum_veto_variable
-            set_variable = {
-                name = corruption
-                value = 36.5
-            }
-        }
-
-        the_fronde_protest_effect = yes
-        c:FRA = {
-            unlock_government_reform_effect = { type = gabelle }
-        }
         spawn_army_for_hordes_effect = yes
 
         start_herd_check_effect = yes
@@ -362,23 +308,6 @@
             }
         }
 
-        c:MNG = {
-            set_variable = {
-                name = corruption
-                value = 52.5
-            }
-            set_variable = {
-                name = dynasty_stability
-                value = -550.5
-            }
-        }
-
-        c:TUR = {
-            add_country_modifier = {
-                modifier = corrupted_janissaries
-                years = -1
-            }
-        }
         set_global_variable = hagia_sophia_now_mosque
 
         c:SLE = {
@@ -416,6 +345,275 @@
                 }
             }
             set_variable = can_hire_local_governor
+        }
+
+        set_global_variable = new_world_discovered
+        set_global_variable = isawiyya_founded
+
+        c:ARA = {
+            unlock_policy_effect = { type = ara_consulate_sea }
+            set_variable = { name = ara_sindicat_ara_remenca_flag value = 1 }
+            unlock_policy_effect = { type = ara_royal_ordinances_policy }
+            unlock_estate_privilege_effect = { type = justicia_de_aragon }
+            unlock_estate_privilege_effect = { type = formalized_oath }
+        }
+
+        c:AYU = {
+            unlock_government_reform_effect = { type = ayu_chatusadom }
+            location:ayodhya = {
+                rename_location = ayutthaya
+            }
+        }
+
+        c:BAV = {
+            unlock_policy_effect = { type = bav_codex_bavarica }
+            add_country_modifier = { modifier = bav_reinheitsgebot }
+        }
+
+        c:BEN = {
+            unlock_building_effect = { type = eghabho_nore_mansion }
+        }
+
+        c:BRA = {
+            location:lebus = {
+                rename_location = frankfurt_an_der_oder
+            }
+            set_variable = bra_kreditwerk_reformed
+        }
+
+        c:CSH = {
+            unlock_government_reform_effect = {
+                type = chi_peasant_empire_reform
+            }
+        }
+
+        c:ENG = {
+            set_variable = { name = yorkist_tradition value = 1 }
+            unlock_government_reform_effect = { type = petition_of_rights }
+            set_active_chivalric_order = chivalric_order:order_of_the_garter
+            set_variable = { name = eng_ordinance_of_laborers_flag value = 1 }
+            set_variable = { name = stannary_law value = 1 }
+            set_variable = { name = benevolence_tax value = 1 }
+            set_variable = { name = navy_board value = 1}
+        }
+
+        c:ETH = {
+            unlock_government_reform_effect = { type = eth_wandering_court }
+            unlock_unit_effect = {
+                type = a_naft_throwers
+            }
+        }
+
+        c:FRA = {
+            unlock_government_reform_effect = { type = gabelle }
+            set_variable = { name = enable_taille_tax value = 1 }
+            add_country_modifier = { modifier = fra_academie_francaise years = 4 mode = add }
+            add_country_modifier = { modifier = fra_richelieu_nobility_influence_reduced years = 10 mode = add }
+            add_country_modifier = { modifier = fra_richelieu_peace_of_ales years = 3 mode = add }
+            add_country_modifier = { modifier = fra_richelieu_gabelle_taille_tax years = 6 mode = add }
+            set_variable = { name = academie_francaise_built value = 1 }
+            set_variable = { name = enabled_fouage_tax value = 1 }
+            set_variable = { name = fra_colonial_affairs_enabled value = 1 }
+            set_variable = enable_fra_tolerance_edicts
+            set_variable = { name = enable_fra_colonial_ambitions value = 1 }
+            unlock_law_effect = { type = fra_fouage_tax }
+            unlock_estate_privilege_effect = { type = fra_papacy_pragmatic_sanctions }
+            unlock_policy_effect = { type = french_east_india_company }
+            unlock_policy_effect = { type = edict_of_nantes }
+        }
+
+        c:HAB = {
+            set_variable = privilegium_maius_granted
+            set_variable = grant_austrian_monastery_reform_melk
+            set_variable = vienna_concordat_accepted
+            unlock_government_reform_effect = { type = austrian_archduchy_reform }
+            unlock_government_reform_effect = { type = reichshofrat_reform }
+            unlock_law_effect = { type = hab_military_frontier }
+            unlock_policy_effect = { type = dop_rudolfine_house_rules }
+            unlock_policy_effect = { type = mandate_of_ofen }
+            #add_reform = government_reform:austrian_archduchy_reform
+            trigger_event_non_silently = start_events.1
+            add_country_modifier = {
+                modifier = habsburgs_goldern_century
+                years = 26
+            }
+        }
+
+        c:JOE = {
+            unlock_government_reform_effect = { type = samsa_system }
+            unlock_government_reform_effect = { type = kor_daedongbeob }
+            unlock_law_effect = { type = kor_currency }
+            unlock_government_reform_effect = { type = kor_sadae_reform }
+        }
+
+        c:MAL = {
+            unlock_government_reform_effect = { type = malian_tribute_system }
+        }
+
+        c:MNG = {
+            set_variable = {
+                name = corruption
+                value = 52.5
+            }
+            set_variable = {
+                name = dynasty_stability
+                value = -550.5
+            }
+            unlock_policy_effect = {
+                type = chi_ming_dynasty_code_policy
+            }
+            unlock_government_reform_effect = {
+                type = single_whip_law
+            }
+        }
+
+        c:MUG = {
+            set_religious_school = religious_school:din_i_ilahi_school
+            unlock_law_effect = {
+                type = dahsala_system
+            }
+            unlock_policy_effect = {
+                type = mansabdar_system
+            }
+            unlock_government_reform_effect = {
+                type = subah_organization_reform
+            }
+        }
+
+        c:NED = {
+            set_variable = { name = ned_shipbuilding_industry value = 1 }
+            add_religious_aspect = religious_aspect:gomarism
+            set_variable = ned_buffed_polders_flag
+            set_variable = ned_seven_provinces_flag
+            set_variable = ned_sponsored_baroque_architecture_flag
+        }
+
+        c:NOR = {
+            add_country_modifier = { modifier = nor_hollendertiden years = 16 mode = add_and_extend }
+        }
+
+        c:PLC = {
+            add_country_modifier = {
+                modifier = the_corruption_in_sejm
+                years = -1
+            }
+            set_variable = unlock_liberum_veto_variable
+            set_variable = {
+                name = corruption
+                value = 36.5
+            }
+            unlock_estate_privilege_effect = { type = statutes_of_piotrkow }
+            unlock_government_reform_effect = { type = warsaw_confederation }
+            set_variable = had_sejm_event_variable
+            set_variable = {
+                name = unlock_privilege_of_koszyce
+                value = yes
+            }
+            set_variable = unlock_nihil_novi
+        }
+
+        c:POR = {
+            set_variable = { name = por_casa_de_india value = 1 }
+            unlock_policy_effect = { type = portuguese_governorate_general }
+            unlock_law_effect = {
+                type = por_estudo_geral_law
+            }
+            unlock_policy_effect = {
+                type = por_lei_mental
+            }
+            unlock_government_reform_effect = {
+                type = por_ordinances
+            }
+        }
+
+        c:RAG = {
+            set_variable = has_unlocked_walls_of_ston
+        }
+
+        c:RUS = {
+            add_country_modifier = {
+                modifier = rise_of_the_russia
+                years = 46
+            }
+            set_variable = { name = vestiarium value = 1 }
+            set_variable = {
+                name = stroganov_school_of_iconic_art
+                value = 1
+            }
+            set_variable = {
+                name = kremlin_stone_upgrade
+                value = 1
+            }
+            set_variable = { name = posolsky_prikaz_established value = 1 }
+        }
+
+        c:SCO = {
+            unlock_estate_privilege_effect = { type = sco_statutes_of_iona }
+        }
+
+        c:SFV = {
+            add_country_modifier = { modifier = ira_shiite_immigration years = 35 mode = add_and_extend }
+        }
+
+        c:SPA = {
+            unlock_estate_privilege_effect = { type = cas_fuero_viejo }
+            unlock_government_reform_effect = { type = royal_council_of_castile }
+            add_country_modifier = {
+                modifier = habsburgs_goldern_century
+                years = 26
+            }
+            unlock_policy_effect = { type = ordenamiento_de_alcala_policy }
+            set_variable = cas_unlock_salamanca_events
+            location:tenochtitlan = {
+                rename_location = mexico_city
+            }
+            location:rimaq = {
+                rename_location = ciudad_de_los_reyes
+            }
+            set_variable = spa_holy_inquisition
+            unlock_policy_effect = { type = spa_inquisition_policy }
+            unlock_building_effect = { type = jesuit_college }
+            unlock_policy_effect = { type = encomienda_system_policy }
+            unlock_government_reform_effect = { type = casa_de_contratacion }
+            set_variable = {
+                name = future_trade_center
+                value = location:sevilla
+            }
+        }
+
+        c:SWE = {
+            add_country_modifier = {
+                months = 360
+                modifier = the_reforms_of_gustav_ii
+            }
+            add_country_modifier = {
+                months = 600
+                modifier = age_of_swedish_empire
+            }
+            unlock_policy_effect = { type = court_of_appeals }
+        }
+
+        c:TUR = {
+            add_country_modifier = {
+                modifier = corrupted_janissaries
+                years = -1
+            }
+            set_variable = { name = expanded_timariot_system value = 1 }
+            set_variable = { name = ottoman_imperial_harem value = 1 }
+            set_variable = { name = eunuch_viziers value = 1 }
+            unlock_building_effect = {
+                type = tur_kodjabashi_office
+            }
+        }
+
+        c:VEN = {
+            unlock_government_reform_effect = { type = signoria_of_venice }
+            unlock_government_reform_effect = { type = promissione_ducale_reform }
+            unlock_government_reform_effect = { type = standardized_relazioni_reform }
+            unlock_law_effect = { type = venetian_papal_relation_law }
+            unlock_policy_effect = { type = venetian_oarsmen_conscription }
+            set_variable = unlocked_venetian_school_of_music_characters
+            set_variable = unlocked_piazza_san_marco
         }
     }
 }

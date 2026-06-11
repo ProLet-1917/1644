@@ -1,0 +1,45 @@
+﻿namespace = flavor_oyo
+
+flavor_oyo.1 = {
+	type = country_event
+	title = flavor_oyo.1.title
+	desc = flavor_oyo.1.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = OYO
+		from = 1644.4.1
+		to = 1900.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		has_embraced_institution = institution:pike_and_shot
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}	
+	}
+
+	option = {
+		name = flavor_oyo.1.a
+		
+        unlock_unit_effect = { type = a_esho_cavalry_oyo }
+	}
+
+	option = {
+		name = flavor_oyo.1.b
+		
+		add_army_tradition = army_tradition_mild_bonus
+	}
+}

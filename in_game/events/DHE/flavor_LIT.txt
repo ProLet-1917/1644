@@ -1,0 +1,585 @@
+﻿namespace = flavor_lit
+#Kazimierz Siemienowicz
+flavor_lit.28 = {
+	type = country_event
+	title = flavor_lit.28.title
+	desc = flavor_lit.28.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = LIT
+		tag = PLC
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 3
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		owns = location:raseiniai
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		
+		create_character = {
+			estate = estate_type:nobles_estate
+			first_name = name_casimir
+			dynasty = dynasty:siemienowicz_dynasty
+			birth_date = 1600.4.3
+			birth_location = location:raseiniai
+			culture = culture:aukstaitian
+			religion = religion:catholic
+			adm = 75
+			dip = 50
+			mil = 75
+			add_trait = trait:cannoneer
+			script = kazimierz_siemienowicz
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+	}
+
+	option = {
+		name = flavor_lit.28.a
+
+		change_gold_effect = { scale = -2 }
+
+		scope:target_character = {
+			move_country = root
+			add_adm = 10
+			add_dip = 10
+			add_mil = 10
+		}
+
+		add_army_tradition = army_tradition_mild_bonus
+	}
+
+	option = {
+		name = flavor_lit.28.b
+
+		capital ?= {
+			create_art = {
+				artist = scope:target_character
+				key = artis_magnae_artilleriae
+				quality = 75
+				type = work_of_art_type:treatise
+			}
+		}
+
+		scope:target_character = {
+			move_country = root
+			add_character_modifier = {
+				mode = add_and_extend
+				modifier = permanently_banned_from_cabinet
+				years = -1
+			}
+
+			add_character_modifier = {
+				mode = add_and_extend
+				modifier = block_leading_armies_or_navies
+				years = -1
+			}
+		}
+	}
+
+	option = {
+		name = flavor_lit.28.c
+
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_bonus
+		}
+
+		scope:target_character = {
+			banish_character = yes
+		}
+	}
+}
+
+#Kontušo Juosta
+flavor_lit.29 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_lit.29.title
+	desc = flavor_lit.29.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_fine_cloth.dds"
+
+	dynamic_historical_event = {
+		tag = LIT
+		tag = PLC
+		from = 1644.1.1
+		to = 1750.1.1
+		monthly_chance = 3
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		capital.market ?= {
+			market_possible_goods_trade_surplus = { goods = goods:fine_cloth country = root value > 25 }
+		}
+	}
+
+	immediate = {
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_lit.29.a
+
+		capital.market ?= {
+			add_temporary_demand = {
+				type = demand:lit_new_clothing_style
+				years = 25
+			}
+		}
+
+		add_prestige = prestige_mild_bonus
+
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+
+	option = {
+		name = flavor_lit.29.b
+
+		change_societal_value = {
+			type = aristocracy_vs_plutocracy
+			value = societal_value_move_to_right
+		}
+
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+#Palemonids
+flavor_lit.30 = {
+	type = country_event
+	title = flavor_lit.30.title
+	desc = flavor_lit.30.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = LIT
+		from = 1435.1.1
+		to = 1485.1.1
+		monthly_chance = 3
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		NOT = { owns_or_non_sovereign_subject_owns = location:rome }
+		ruler_or_heir_if_regent ?= {
+			dynasty ?= dynasty:gediminid_dynasty
+		}
+		religion.group = religion_group:christian
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			estate = estate_type:clergy_estate
+			first_name = name_john
+			last_name = dlugosz
+			birth_date = 1415.12.1
+			birth_location = location:krakow
+			artist = writer
+			artist_skill = 0.7
+			culture = culture:lesser_polish
+			religion = religion:catholic
+			script = jan_dlugosz_character
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+	}
+
+	option = {
+		name = flavor_lit.30.a
+
+		add_government_power = government_power_extreme_bonus
+
+		add_prestige = prestige_mild_bonus
+
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_extreme_penalty
+		}
+
+		scope:target_character = { move_country = root }
+		capital ?= {
+			create_art = {
+				artist = scope:target_character
+				key = tale_of_the_palemonids
+				quality = 70
+				type = work_of_art_type:chronicle
+			}
+		}
+
+		change_gold_effect = { scale = -1 }
+	}
+
+	option = {
+		name = flavor_lit.30.b
+
+		trigger = {
+			scope:target_character2 = { #Meant to make this option be a little rare
+				has_trait = zealot
+				has_trait = righteous
+				has_trait = glory_seeker
+			}
+		}
+
+		scope:target_character = { move_country = root }
+		capital ?= {
+			create_art = {
+				artist = scope:target_character
+				key = tale_of_the_palemonids
+				quality = 70
+				type = work_of_art_type:chronicle
+			}
+		}
+		add_casus_belli = {
+			target = location:rome.owner
+			type = casus_belli:cb_conquer_province
+			province = location:rome.province
+		}
+
+		add_stability = stability_extreme_penalty
+	}
+
+	option = {
+		name = flavor_lit.30.c
+
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_bonus
+		}
+   		kill_character_silently = scope:target_character
+	}
+}
+
+#Franciszek Smuglewicz
+flavor_lit.39 = {
+	type = country_event
+	title = flavor_lit.39.title
+	desc = flavor_lit.39.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = LIT
+		tag = PLC
+		from = 1770.1.1
+		to = 1810.1.1
+		monthly_chance = 3
+	}
+
+	fire_only_once = yes
+
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+
+	trigger = {
+		court_dialect = dialect:lithuanian_dialect
+	}
+
+	immediate = {
+		create_character = {
+			estate = estate_type:burghers_estate
+			first_name = name_francis
+			last_name = smuglewicz
+			birth_location = location:warsaw
+			religion = religion:catholic
+			culture = culture:greater_polish
+			birth_date = 1745.10.6
+			artist = painter
+			artist_skill = 0.8
+			adm = 43
+			dip = 33
+			mil = 12
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+	}
+
+	option = {
+		name = flavor_lit.39.a
+
+		culture = {
+			add_cultural_influence = cultural_influence_mild_bonus
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+
+		change_societal_value = {
+			type = spiritualist_vs_humanist
+			value = societal_value_move_to_right
+		}
+
+		change_gold_effect = { scale = -2 }
+		scope:target_character = { move_country = root }
+	}
+
+	option = {
+		name = flavor_lit.39.b
+
+		scope:target_character = {
+			banish_character = yes
+		}
+
+		change_societal_value = {
+			type = spiritualist_vs_humanist
+			value = societal_value_move_to_left
+		}
+	}
+}
+
+###Pulse events for conversion of Romuva###
+
+#Peasants still follow Romuva in $LOCATION$
+flavor_lit.40 = {
+	type = country_event
+	title = flavor_lit.40.title
+	desc = flavor_lit.40.desc
+	outcome = neutral
+
+	trigger = {
+		tag = LIT
+		"religion_percentage_in_country(religion:romuva)" >= 0.05
+		religion != religion:romuva
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ordered_owned_location = {
+			limit = {
+				any_pop = {
+					religion = religion:romuva
+				}
+			}
+			order_by = population
+			max = 1
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_lit.40.a
+
+		custom_tooltip = {
+			text = lit_convert_percentage_of_pops_in_location_tt
+			scope:target_location = {
+				every_pop = {
+					limit = {
+						owner ?= root
+						religion != root.religion
+					}
+					split_pop = {
+						fraction = 0.05
+						religion = root.religion
+					}
+				}
+			}
+		}
+
+		custom_tooltip = {
+			text = lit_all_romuva_pop_become_unhappy_tt
+			every_owned_location = {
+				limit = {
+					any_pop = {
+						owner ?= root
+						religion = religion:romuva
+					}
+				}
+				every_pop = {
+					limit = {
+						owner ?= root
+						religion = religion:romuva
+					}
+					add_pop_satisfaction = pop_satisfaction_weak_penalty
+				}
+			}
+		}
+
+		add_religious_influence_if_valid = {
+			VALUE = religious_influence_weak_penalty
+		}
+	}
+
+	option = {
+		name = flavor_lit.40.b
+
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_weak_penalty
+		}
+	}
+}
+
+#Romuva Religious Site Remaining
+flavor_lit.41 = {
+	type = country_event
+	title = flavor_lit.41.title
+	desc = flavor_lit.41.desc
+	outcome = neutral
+
+	trigger = {
+		tag = LIT
+		"religion_percentage_in_country(religion:romuva)" >= 0.05
+		religion != religion:romuva
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:peasants_estate }
+		random_owned_location = {
+			limit = {
+				NOT = {
+					has_location_modifier = lit_destruction_of_romuva_sites
+				}
+				any_pop = {
+					religion = religion:romuva
+				}
+			}
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_lit.41.a
+
+		scope:target_location = {
+			add_location_modifier = {
+				mode = add_and_extend
+				modifier = lit_destruction_of_romuva_sites
+				months = 120
+			}
+		}
+	}
+
+	option = {
+		name = flavor_lit.41.b
+
+		custom_tooltip = {
+			text = lit_romuva_pops_in_location_gain_satisfaction_tt
+			scope:target_location = {
+				every_pop = {
+					limit = {
+						owner ?= root
+						religion = religion:romuva
+					}
+					add_pop_satisfaction = pop_satisfaction_mild_bonus
+				}
+			}
+		}
+	}
+}
+
+#Conversion of Nobles to Romuva
+flavor_lit.42 = {
+	type = country_event
+	title = flavor_lit.42.title
+	desc = flavor_lit.42.desc
+	outcome = neutral
+
+	trigger = {
+		tag = LIT
+		any_owned_location = {
+			any_pop = {
+				pop_type = pop_type:nobles
+				religion = religion:romuva
+			}
+		}
+		religion != religion:romuva
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_lit.42.a
+
+		custom_tooltip = {
+			text = lit_convert_percent_of_nobles_to_religion_tt
+			every_owned_location = {
+				limit = {
+					any_pop = {
+						owner ?= root
+						pop_type = pop_type:nobles
+						religion = religion:romuva
+					}
+				}
+				every_pop = {
+					limit = {
+						owner ?= root
+						pop_type = pop_type:nobles
+						religion = religion:romuva
+					}
+					split_pop = {
+						fraction = 0.05
+						religion = root.religion
+					}
+				}
+			}
+		}
+
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_penalty
+		}
+	}
+
+	option = {
+		name = flavor_lit.42.b
+
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+}
+
+##End of Romuva Conversion Pulse Events##

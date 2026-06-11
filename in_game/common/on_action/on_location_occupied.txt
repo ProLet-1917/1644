@@ -1,6 +1,7 @@
 on_location_occupied = {
     on_actions = {
         dynamic_territorial_occupation_check
+        on_plundering
     }
 }
 
@@ -137,6 +138,51 @@ dynamic_territorial_occupation_yearly_check = {
                         }
                     }
                     change_location_owner = scope:new_owner
+                }
+            }
+        }
+    }
+}
+
+on_plundering = {
+    trigger = {
+        scope:target = {
+            has_owner = yes
+        }
+    }
+    effect = {
+        scope:target.controller = {
+            save_temporary_scope_as = new_controller
+        }
+        scope:target = {
+            add_pop_size = {
+                value = {
+                    value = {
+                        value = {
+                            value = scope:target.population
+                            subtract = {
+                                value = "culture_population(scope:new_controller.culture)"
+                                multiply = 0.5
+                            }
+                            subtract = {
+                                value = "religion_population(scope:new_controller.religion)"
+                                multiply = 0.5
+                            }
+                        }
+                        multiply = {
+                            value = modifier:population_got_plunder_basic
+                        }
+                        if = {
+                            limit = {
+                                scope:character.army_size <= 20
+                            }
+                            divide = {
+                                value = scope:character.army_size
+                                divide = 20
+                            }
+                        }
+                    }
+                    multiply = -1
                 }
             }
         }

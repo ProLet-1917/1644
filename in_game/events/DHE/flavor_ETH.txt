@@ -1,0 +1,860 @@
+﻿namespace = flavor_eth
+
+
+flavor_eth.60 = { #Debre Berhan Plundered
+	type = country_event
+	title = flavor_eth.60.title
+	desc = flavor_eth.60.desc
+	outcome = neutral
+	
+	trigger = {
+		tag = ETH
+		capital = location:debra_berhan
+		scope:target = {
+			location_key = debra_berhan
+		}
+	}
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	option = {
+		name = flavor_eth.60.a
+		add_stability = stability_mild_penalty
+		location:debra_berhan = {
+			change_prosperity = prosperity_extreme_penalty
+		}
+	}
+}
+
+flavor_eth.70 = { #Gondar - A new Capital
+	type = country_event
+	title = flavor_eth.70.title
+	desc = flavor_eth.70.desc
+	outcome = neutral
+		
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ETH
+		from = 1644.1.1
+		to = 1750.1.1
+		monthly_chance = 5
+	}
+	
+	trigger = {
+		owns = location:gonder
+		location:gonder = { integration_level = core }
+		NOT = { capital = location:gonder }
+	}
+	illustration_tags = {
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_background_effect = { background = estate_type:clergy_estate }
+		ruler = { 
+			save_scope_as = target_character 
+		}
+	}
+
+	option = {
+		name = flavor_eth.70.a
+		set_capital = location:gonder
+	}
+	option = {
+		name = flavor_eth.70.b
+		add_stability = stability_mild_bonus
+	}
+}
+
+flavor_eth.100 = { #The Monastic Orders
+	type = country_event
+	title = flavor_eth.100.title
+	desc = flavor_eth.100.desc
+	outcome = neutral
+		
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ETH
+		from = 1644.1.1
+		to = 1900.1.1
+		monthly_chance = 2
+	}
+		
+	trigger = {
+		tag = ETH
+		religion = religion:miaphysite
+		any_owned_location = {
+			has_building_with_at_least_one_level = miaphysite_monastery
+			count > 10
+		}
+	}
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+	option = {
+		name = flavor_eth.100.a
+		historical_option = yes
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_penalty }
+
+		ordered_owned_location = {
+			order_by = population
+			limit = {
+				has_building_with_at_least_one_level = miaphysite_monastery
+			}
+			max = {
+				value = 1
+				add = {
+					value = num_provinces
+					multiply = 0.2
+				}
+			}
+			change_building_level_in_location = { building = building_type:miaphysite_monastery 	value = -1 }
+		}
+
+	}
+	option = {
+		name = flavor_eth.100.b
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+		add_prestige = prestige_mild_penalty
+
+	}
+}
+
+flavor_eth.120 = { #The Kebra Nagast
+	hide_portraits = yes
+	type = country_event
+	title = flavor_eth.120.title
+	desc = flavor_eth.120.desc
+	outcome = neutral
+	
+	
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ETH
+		from = 1644.1.1
+		to = 1837.1.1
+		monthly_chance = 5
+	}
+	
+	trigger = {
+		religion = religion:miaphysite
+		owns = location:axum
+		has_regent = no
+		has_ruler = yes
+		ruler = { dynasty = dynasty:solomonid_dynasty }
+		any_owned_location = {
+			any_work_of_art_in_location = {
+				this = work_of_art:kebra_nagast
+			}
+		}
+	}
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler = {
+			save_scope_as = scope_ruler
+		}
+	}
+
+	option = {
+		name = flavor_eth.120.a
+		ruler = {
+			random_list = {
+				10 = {
+					trigger = {
+						OR = {
+							NOT = { has_trait = calm }
+							NOT = { has_trait = cruel }
+							NOT = { has_trait = malevolent }
+						}
+					}
+					add_trait = trait:calm
+				}
+				10 = {
+					trigger = {
+						OR = {
+							NOT = { has_trait = bold_fighter }
+							NOT = { has_trait = careful }
+							NOT = { has_trait = free_thinker }
+							NOT = { has_trait = naive }
+						}
+					}
+					add_trait = trait:careful
+				}
+				10 = {
+					trigger = {
+						OR = {
+							NOT = { has_trait = cruel }
+							NOT = { has_trait = just }
+						}
+					}
+					add_trait = trait:just
+				}
+				10 = {
+					trigger = {
+						OR = {
+							NOT = { has_trait = cruel }
+							NOT = { has_trait = kind_hearted }
+							NOT = { has_trait = malevolent }
+						}
+					}
+					add_trait = trait:kind_hearted
+				}
+				10 = {
+					trigger = {
+						NOT = { has_trait = righteous }
+					}
+					add_trait = trait:righteous
+				}
+				10 = {
+					trigger = {
+						OR = {
+							NOT = { has_trait = free_thinker }
+							NOT = { has_trait = pious }
+							NOT = { has_trait = tolerant }
+							NOT = { has_trait = zealot }
+						}
+					}
+					add_trait = trait:tolerant
+				}
+				10 = {
+					trigger = {
+						OR = {
+							NOT = { has_trait = greedy }
+							NOT = { has_trait = midas_touched }
+						}
+					}
+					add_trait = trait:midas_touched
+				}
+				10 = {
+					trigger = {
+						OR = {
+							NOT = { has_trait = architectural_visionary }
+							NOT = { has_trait = obsessive_perfectionist }
+						}
+					}
+					add_trait = trait:architectural_visionary
+				}
+				10 = {
+					trigger = {
+						NOT = { has_trait = well_connected }
+					}
+					add_trait = trait:well_connected 
+				}
+			}
+		}
+	}
+	option = {
+		name = flavor_eth.120.b
+		ruler = {
+			random_list = {
+				10 = {
+					trigger = {
+						OR = {
+							NOT = { has_trait = benevolent }
+							NOT = { has_trait = malevolent }
+						}
+					}
+					add_trait = trait:benevolent
+				}
+				10 = {
+					trigger = {
+						NOT = { has_trait = embezzler }
+						NOT = { has_trait = incorruptible }
+					}
+					add_trait = trait:incorruptible
+				}
+				10 = {
+					trigger = {
+						OR = {
+							NOT = { has_trait = intricate_web_weaver }
+							NOT = { has_trait = loose_lips }
+						}
+						NOT = {
+						}
+					}
+					add_trait = trait:intricate_web_weaver
+				}
+				10 = {
+					trigger = {
+						NOT = { has_trait = lawgiver }
+					}
+					add_trait = trait:lawgiver
+				}
+				10 = {
+					trigger = {
+						OR = {
+							NOT = { has_trait = loose_lips }
+							NOT = { has_trait = secretive }
+						}
+					}
+					add_trait = trait:secretive
+				}
+			}
+		}
+	}
+	option = {
+		name = flavor_eth.120.c
+		ruler = {
+			random_list = {
+				10 = {
+					trigger = {
+						OR = {
+							NOT = { has_trait = bold_fighter }
+							NOT = { has_trait = careful }
+							NOT = { has_trait = craven }
+						}
+					}
+					add_trait = trait:bold_fighter
+				}
+				10 = {
+					trigger = {
+						NOT = { has_trait = conqueror }
+					}
+					add_trait = trait:conqueror
+				}
+				10 = {
+					trigger = {
+						NOT = { has_trait = expansionist }
+					}
+					add_trait = trait:expansionist
+				}
+				10 = {
+					trigger = {
+						NOT = { has_trait = craven }
+						NOT = { has_trait = inspiring_leader }
+					}
+					add_trait = trait:inspiring_leader
+				}
+				10 = {
+					trigger = {
+						NOT = { has_trait = martial_educator }
+					}
+					add_trait = trait:martial_educator
+				}
+				10 = {
+					trigger = {
+						NOT = { has_trait = strict }
+					}
+					add_trait = trait:strict
+				}
+				10 = {
+					trigger = {
+						NOT = { has_trait = tactical_genius }
+					}
+					add_trait = trait:tactical_genius
+				}
+			}
+		}
+	}
+}
+
+flavor_eth.130 = { #The Lalibela Cross
+	type = country_event
+	title = flavor_eth.130.title
+	desc = flavor_eth.130.desc
+	outcome = neutral
+	
+	
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ETH
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 5
+	}
+	
+	trigger = {
+		religion = religion:miaphysite
+		owns = location:lalibela
+		location:lalibela = {
+			any_work_of_art_in_location = {
+				this = work_of_art:lalibela_cross
+			}
+		}
+	}
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+	option = {
+		name = flavor_eth.130.a
+		add_prestige = prestige_extreme_bonus
+		location:lalibela = {
+			every_work_of_art_in_location = {
+				limit = {
+					this = work_of_art:lalibela_cross
+				}
+				move_art_and_owner = { location = root.capital country = root }
+			}
+		}
+		custom_tooltip = flavor_eth.130.a.tt
+		hidden_effect =  {
+			c:ETH = {
+				every_pop = {
+					limit = {
+						owner = root
+						culture = culture:agaw_culture
+					}
+					add_pop_satisfaction = pop_satisfaction_severe_penalty
+				}
+			}
+		}
+	}
+	option = {
+		name = flavor_eth.130.b
+		add_prestige = prestige_weak_bonus
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_weak_bonus
+		}
+	}
+	option = {
+		name = flavor_eth.130.c
+		add_prestige = prestige_extreme_bonus
+		change_gold_effect = { scale = -1 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+}
+
+flavor_eth.160 = { #Event 1 if ruler is Scholar - The Book of Light
+	type = country_event
+	title = flavor_eth.160.title
+	desc = flavor_eth.160.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ETH
+		from = 1644.4.1
+		to = 1800.1.1
+		monthly_chance = 1
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		ruler ?= {
+			has_trait = scholar
+		}
+		religion = religion:miaphysite
+	}
+	illustration_tags = {
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_background_effect = { background = estate_type:nobles_estate }
+		ruler ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_eth.160.a
+		
+		capital = {
+			create_art = {
+				artist = scope:target_character
+				key = book_of_light
+				quality = 50
+				type = work_of_art_type:treatise
+			}
+		}
+
+		scope:target_character = {
+			add_character_modifier = {
+				mode = add_and_extend
+				modifier = eth_writing_book
+			}
+		}
+
+		trigger_event_silently = {
+			id = flavor_eth.161
+			years = {
+				1
+				2
+			}
+		}
+	}
+
+	option = {
+		name = flavor_eth.160.b
+		
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+flavor_eth.161 = { #Event 2 if ruler is Scholar - The Book of Nativity
+	type = country_event
+	title = flavor_eth.161.title
+	desc = flavor_eth.161.desc
+	outcome = neutral
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+	trigger = {
+		scope:target_character = {
+			is_alive = yes
+		}
+	}
+
+	option = {
+		name = flavor_eth.161.a
+
+		capital = {
+			create_art = {
+				artist = scope:target_character
+				key = book_of_nativity
+				quality = 70
+				type = work_of_art_type:treatise
+			}
+		}
+		
+		trigger_event_silently = {
+			id = flavor_eth.162
+			years = {
+				1
+				2
+			}
+		}
+	}
+}
+
+flavor_eth.162 = { #Event 3 if ruler is Scholar - The Book of Trinity
+	type = country_event
+	title = flavor_eth.162.title
+	desc = flavor_eth.162.desc
+	outcome = neutral
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	trigger = {
+		scope:target_character = {
+			is_alive = yes
+		}
+	}
+
+	option = {
+		name = flavor_eth.162.a
+		
+		capital = {
+			create_art = {
+				artist = scope:target_character
+				key = books_of_trinity
+				quality = 75
+				type = work_of_art_type:treatise
+			}
+		}
+
+		scope:target_character = {
+			remove_character_modifier = eth_writing_book
+		}
+	}
+}
+
+flavor_eth.163 = { #Debere Meshwa'e
+	type = country_event
+	title = flavor_eth.163.title
+	desc = flavor_eth.163.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ETH
+		from = 1644.1.1
+		to = 1900.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		religion = religion:miaphysite
+		any_owned_location = {
+			topography = mountains
+		}
+	}
+
+	fire_only_once = yes
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ordered_owned_location = {
+			order_by = population
+			limit = {
+				topography = mountains
+			}
+			max = 1
+			save_scope_as = target_location
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_eth.163.a
+		
+		scope:target_location = {
+			construct_building = {
+				building_type = building_type:debere_meshwae
+			}
+		}
+	}
+
+	option = {
+		name = flavor_eth.163.b
+
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_penalty
+		}
+		
+	}
+}
+
+flavor_eth.164 = { #European Influence in the Court
+	type = country_event
+	title = flavor_eth.164.title
+	desc = flavor_eth.164.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ETH
+		from = 1644.1.1
+		to = 1900.1.1
+		monthly_chance = 1
+	}
+
+	fire_only_once = yes
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	trigger = {
+		government_type = government_type:monarchy
+	}
+
+	option = {
+		name = flavor_eth.164.a
+		
+		unlock_policy_effect = { type = foreign_court_customs_policy }
+		add_policy = policy:foreign_court_customs_policy
+
+		culture = {
+			add_cultural_influence = cultural_influence_extreme_penalty
+			add_cultural_tradition = cultural_tradition_extreme_penalty
+		}
+
+		add_prestige = prestige_mild_penalty
+	}
+
+	option = {
+		name = flavor_eth.164.b
+		
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+flavor_eth.165 = { #Confession of Faith, written by the monarch if they are a scholar or just overall religious
+	type = country_event
+	title = flavor_eth.165.title
+	desc = flavor_eth.165.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ETH
+		from = 1644.1.1
+		to = 1900.1.1
+		monthly_chance = 5
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		ruler ?= {
+			has_trait = scholar
+			has_trait = zealot
+			religion = religion:miaphysite
+		}
+		religion = religion:miaphysite
+	}
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+		ruler ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_eth.165.a
+		
+		capital ?= {
+			create_art = {
+				artist = scope:target_character
+				key = confession_of_faith
+				quality = 0.6
+				type = work_of_art_type:treatise
+			}
+		}
+
+		add_religious_influence = religious_influence_mild_bonus
+
+		change_gold_effect = { scale = -1 }
+	}
+
+	option = {
+		name = flavor_eth.165.b
+		
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+scripted_effect build_miaphysite_monastery = {
+	if = {
+		limit = {
+			not = {has_building = building_type:miaphysite_monastery}
+		}
+		construct_building = {
+			building_type = building_type:miaphysite_monastery
+		}
+	}
+}
+
+flavor_eth.220 = { #Saint George Church at Lalibela
+	type = country_event
+	title = flavor_eth.220.title
+	desc = flavor_eth.220.desc
+	outcome = neutral
+		
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ETH
+		from = 1644.1.1
+		to = 1900.1.1
+		monthly_chance = 2
+	}
+	
+	trigger = {
+		at_war = no
+		owns = location:lalibela
+		religion = religion:miaphysite
+	}
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		location:lalibela = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_eth.220.a
+		historical_option = yes
+		change_gold_effect = { scale = -3 }
+		add_religious_influence = religious_influence_severe_bonus
+
+		location:lalibela = {
+			create_holy_site = {
+				name = rock_hewn_churches_at_lalibela
+				type = shrine
+				importance = 1
+				location = this
+				religions = { religion:miaphysite }
+			}
+		}
+	}
+
+	option = {
+		name = flavor_eth.220.b
+		add_prestige = prestige_mild_penalty
+		add_religious_influence = religious_influence_weak_penalty
+	}
+}
+
+flavor_eth.230 = { #Codyfing the Double Sabbath
+	type = country_event
+	title = flavor_eth.230.title
+	desc = flavor_eth.230.desc
+	outcome = neutral
+		
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ETH
+		from = 1644.1.1
+		to = 1900.1.1
+		monthly_chance = 2
+	}
+	
+	trigger = {
+		at_war = no
+		religion = religion:miaphysite
+		has_estate_privilege = estate_privilege:double_sabbath
+		
+		#Is a member of an autocephalous_patriarchate
+		is_member_of_international_organization_of_type = {
+			type = autocephalous_patriarchate
+		}
+		#That Patriarcate does not have the Double Sabbath tenet and is not Alexandria
+		autocephalous_patriarchate = {
+			NOR = {
+				international_organization_has_policy = policy:allow_double_sabbath_tenet
+				var:seat ?= location:alexandria
+			}
+		}
+	}
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+	}
+	option = {
+		name = flavor_eth.230.a
+		historical_option = yes
+		autocephalous_patriarchate = {
+			add_policy_to_international_organization = policy:allow_double_sabbath_tenet
+		}
+		revoke_estate_privilege = estate_privilege:double_sabbath
+		add_stability = stability_weak_bonus
+	}
+
+	option = {
+		name = flavor_eth.230.b
+		add_prestige = prestige_mild_bonus
+		add_stability = stability_weak_penalty
+	}
+}

@@ -1,0 +1,1543 @@
+﻿namespace = flavor_iro
+
+flavor_iro.20 = { # Reforging of the Great Law of Peace
+	type = country_event
+	title = flavor_iro.20.title
+	desc = flavor_iro.20.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 100 # Should trigger the moment conditions are met
+	}
+
+	trigger = {
+		has_ruler = yes
+		at_war = no
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+		unlock_government_reform_effect = { type = iro_reforged_law_of_peace }	
+	}	
+	
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}	
+
+	option = { # We shall lead the The [Haudenosaunee] confederation from now on!
+		name = flavor_iro.20.a	
+		add_prestige = prestige_extreme_bonus
+		add_stability = stability_extreme_bonus
+		add_reform = government_reform:iro_reforged_law_of_peace
+	}
+	after = {
+		remove_variable = enabled_iroquois_unique_interactions
+	}	
+}
+
+flavor_iro.30 = { # Shikellamy and Pennsylvania
+	type = country_event
+	title = flavor_iro.30.title
+	desc = flavor_iro.30.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1700.1.1
+		to = 1750.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_ruler = yes
+		area:pennsylvania_area = {
+			any_location_in_area = {
+				OR = {
+					owner ?= { is_subject_of = root }
+					owner ?= root
+				}	
+				count > 5			
+			}
+		}		
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+		create_character = {
+			first_name = shikellamy
+			adm = 60
+			dip = 50
+			mil = 61
+			culture = culture:onondowaga_culture
+			birth_date = 1680.1.1
+			birth_location = location:canadaigua # He was Huron or Onodowaga
+			religion = religion:iroquoian_totemism
+			save_scope_as = target_character
+			script = shikellamy_overseer
+			estate = estate_type:nobles_estate
+			create_in_limbo = yes
+		}	
+	}	
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+	option = { # Appoint him as Chief over <region_name>
+		name = flavor_iro.30.a	
+		historical_option = yes		
+		set_variable = promoted_shikellamy
+		scope:target_character = {
+			move_country = ROOT						
+		}		
+		area:pennsylvania_area = {
+			every_location_in_area = {
+				limit = {
+					owner ?= root
+				}
+				add_location_modifier = {
+					modifier = iro_shikellamy_pennsylvania
+					years = modifier_duration_years_normal
+					mode = add
+				}				
+			}	
+		}				
+	}
+	option = { # Forbid him from managing these lands
+		name = flavor_iro.30.b	
+		kill_character_silently = scope:target_character
+		add_prestige = prestige_mild_bonus
+		add_stability = stability_mild_bonus
+	}
+}
+
+flavor_iro.31 = { # Shikellamy and the Walking Purchase
+	type = country_event
+	title = flavor_iro.31.title
+	desc = flavor_iro.31.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1700.1.1
+		to = 1776.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_ruler = yes
+		exists = character:shikellamy_overseer
+		custom_tooltip = {
+			text = variable_promoted_shikellamy_tt
+			has_variable = promoted_shikellamy
+		}
+		character:shikellamy_overseer ?= {
+			is_alive = yes
+			owner = ROOT
+		}
+		area:pennsylvania_area = {
+			any_location_in_area = {
+				OR = {
+					owner ?= { is_subject_of = root }
+					owner ?= root
+				}
+				any_neighbor_location = {
+					is_discovered_by = root
+					owner ?= {
+						has_colonial_charters = yes
+						religion.group = religion_group:christian
+					}
+				}				
+			}
+		}
+		NOT = {
+			province_definition:delaware_province = {
+				any_location_in_province_definition = {
+					owner ?= ROOT
+				}
+			}		
+		}	
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+		character:shikellamy_overseer ?= {
+			save_scope_as = target_character
+		}
+		random_neighbor_country = {
+			limit = {
+				has_colonial_charters = yes
+				religion.group = religion_group:christian
+			}
+			save_scope_as = colonial_nation_target
+		}					
+	}	
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+	option = { # Agree to the Purchase with <colonial_name>
+		name = flavor_iro.31.a	
+		historical_option = yes	
+		add_opinion = { target = scope:colonial_nation_target modifier = iro_walking_sale }
+		reverse_add_opinion = { target = scope:colonial_nation_target modifier = iro_walking_sale }	
+		add_gold = {
+			value = scope:colonial_nation_target.monthly_income_trade_and_tax
+			multiply = 4
+		}	
+		province_definition:delaware_province = {
+			every_location_in_province_definition = {
+				limit = {
+					NOT = { owner ?= scope:colonial_nation_target }
+				}
+				add_core = scope:colonial_nation_target
+			}
+		}			
+	}
+	
+	option = { # We cannot agree to this proposal!
+		name = flavor_iro.31.b	
+		add_prestige = prestige_mild_penalty
+		add_stability = stability_mild_bonus
+		add_opinion = { target = scope:colonial_nation_target modifier = refused_iro_walking_sale }	
+		reverse_add_opinion = { target = scope:colonial_nation_target modifier = refused_iro_walking_sale }			
+	}
+}
+
+flavor_iro.32 = { # Arrival of the Moravian Missionaries
+	type = country_event
+	title = flavor_iro.32.title
+	desc = flavor_iro.32.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1700.1.1
+		to = 1776.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_ruler = yes
+		exists = character:shikellamy_overseer
+		custom_tooltip = {
+			text = variable_promoted_shikellamy_tt
+			has_variable = promoted_shikellamy
+		}
+		character:shikellamy_overseer ?= {
+			is_alive = yes
+			owner = ROOT
+		}
+		any_neighbor_country = {
+			has_colonial_charters = yes
+			religion.group = religion_group:christian	
+		}	
+		area:pennsylvania_area = {
+			any_location_in_area = {
+				OR = {
+					owner ?= { is_subject_of = root }
+					owner ?= root
+				}
+				any_neighbor_location = {
+					is_discovered_by = root
+					owner ?= {
+						has_colonial_charters = yes
+						religion.group = religion_group:christian
+					}
+				}				
+			}
+		}				
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+		character:shikellamy_overseer ?= {
+			save_scope_as = target_character
+		}
+		area:pennsylvania_area = {
+			random_location_in_area = {
+				limit = {
+					owner ?= root
+					any_neighbor_location = {
+						owner ?= {
+							has_colonial_charters = yes
+							religion.group = religion_group:christian
+						}
+					}
+				}
+				save_scope_as = missionaries_arrival_location_iro
+			}
+		}
+		random_neighbor_country = {
+			limit = {
+				has_colonial_charters = yes
+				religion.group = religion_group:christian
+			}
+			save_scope_as = colonial_nation_target
+		}			
+	}	
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+	option = { # Allow the missionaries to stay
+		name = flavor_iro.32.a	
+		historical_option = yes		
+		set_variable = invited_moravian_missionaries	
+		scope:missionaries_arrival_location_iro = {
+			change_prosperity = prosperity_mild_bonus
+			every_pop = {
+				limit = {
+					owner ?= root
+					pop_type = pop_type:peasants
+				}
+				split_pop = { fraction = 0.10 religion = religion:lutheran }
+			}	
+		} 
+	}
+	option = { # Forbid the missionaries from staying in the village!
+		name = flavor_iro.32.b		
+		add_tribal_cohesion = tribal_cohesion_mild_bonus
+		add_stability = stability_mild_bonus	
+	}
+}
+
+flavor_iro.33 = { # <Character> converts to Christianity from Missionaries
+	type = country_event
+	title = flavor_iro.33.title
+	desc = flavor_iro.33.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1700.1.1
+		to = 1776.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_invited_moravian_missionaries_tt
+			has_variable = invited_moravian_missionaries
+		}
+		custom_tooltip = {
+			text = variable_promoted_shikellamy_tt
+			has_variable = promoted_shikellamy
+		}
+		exists = character:shikellamy_overseer
+		character:shikellamy_overseer ?= {
+			is_alive = yes
+			owner = ROOT
+		}
+		any_neighbor_country = {
+			has_colonial_charters = yes
+			religion.group = religion_group:christian	
+		}			
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+		character:shikellamy_overseer ?= {
+			add_trait = trait:tolerant
+			change_character_religion = religion:lutheran
+			save_scope_as = target_character
+		}			
+	}	
+	
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}	
+
+	option = { # <Character> conversion may bring up closer to the missionaries
+		name = flavor_iro.33.a	
+		historical_option = yes		
+		add_country_modifier = { modifier = iro_shikellamy_missionaries_connections years = 10 mode = add }		
+	}
+	option = { # Force him to resign
+		name = flavor_iro.33.b		
+		add_country_modifier = { modifier = iro_expelled_shikellamy years = 10 mode = add }	
+		kill_character_silently = scope:target_character	
+	}
+
+	after = {
+		remove_variable = promoted_shikellamy
+		remove_variable = invited_moravian_missionaries
+	}
+}
+
+# Misc events inspired by historical Iroquois interactions
+
+flavor_iro.40 = { # Strong Tribal Unity
+	type = country_event
+	title = flavor_iro.40.title
+	desc = flavor_iro.40.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1337.1.1
+		to = 1737.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_ruler = yes
+		tribal_cohesion > 75
+		stability > 50
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+	}	
+	
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}	
+
+	option = { # Our enemies should be wary of our unquestionable unity
+		name = flavor_iro.40.a			
+		add_country_modifier = { modifier = iro_strong_tribal_unity years = 25 mode = add }			
+	}
+}
+
+flavor_iro.41 = { # Trading in Firearms
+	type = country_event
+	title = flavor_iro.41.title
+	desc = flavor_iro.41.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_firearms.dds"
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1644.1.1
+		to = 1776.1.1
+		monthly_chance = 10
+	}
+
+
+	trigger = {
+		has_ruler = yes
+		any_neighbor_country = {
+			has_colonial_charters = yes
+			religion.group = religion_group:christian	
+			has_embraced_institution = institution:new_world
+			opinion = { target = root value > 33 }
+		}			
+	}
+	
+	immediate = {
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+		random_neighbor_country = {
+			limit = {
+				has_colonial_charters = yes
+				religion.group = religion_group:christian	
+				has_embraced_institution = institution:new_world
+				opinion = { target = root value > 33 }
+			}
+			save_scope_as = neighbor_country
+		}		
+	}	
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+
+	option = { # Aim to trade for their weapons
+		name = flavor_iro.41.a		
+		add_army_tradition = army_tradition_severe_bonus
+		add_country_modifier = { modifier = trading_in_firearms_iro years = 10 mode = add }
+	}
+	option = { # We do not need these strange weapons of war
+		name = flavor_iro.41.b	
+		add_tribal_cohesion = tribal_cohesion_mild_bonus
+		add_prestige = prestige_mild_bonus		
+	}
+}
+
+flavor_iro.42 = { # Colonists Impressed with <culture_name> Unity
+	type = country_event
+	title = flavor_iro.42.title
+	desc = flavor_iro.42.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1644.1.1
+		to = 1776.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_ruler = yes
+		any_neighbor_country = {
+			has_colonial_charters = yes
+			religion.group = religion_group:christian	
+			has_embraced_institution = institution:new_world
+			opinion = { target = root value >= 100 }
+		}			
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+		random_neighbor_country = {
+			limit = {
+				has_colonial_charters = yes
+				religion.group = religion_group:christian	
+				has_embraced_institution = institution:new_world
+				opinion = { target = root value >= 100 }
+			}
+			save_scope_as = neighbor_country
+			create_character = {
+				estate = estate_type:nobles_estate
+				adm = { 30 50 }
+				dip = { 30 50 }
+				mil = { 30 50 }
+				min_age = 30
+				save_scope_as = colonial_settler
+			}
+		}		
+	}	
+	
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}	
+
+	option = { # Invite the settler to return to <capital> anytime
+		name = flavor_iro.42.a	
+		historical_option = yes		
+		add_country_modifier = { modifier = iro_welcoming_to_outsiders years = 10 mode = add } 
+	}
+	option = { # Forbid <settler> from returning to avoid any future transgressions
+		name = flavor_iro.42.b	
+		add_prestige = prestige_mild_bonus
+		add_country_modifier = { modifier = iro_forbade_foreign_contact years = 20 mode = add } 	
+	}
+}
+
+flavor_iro.43 = { # Adoption of Prisoners
+	type = country_event
+	title = flavor_iro.43.title
+	desc = flavor_iro.43.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1644.1.1
+		to = 1776.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_ruler = yes
+		at_war = yes
+		any_country_at_war_with = {
+			NOT = { culture = root.culture }
+		}			
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+		random_country_at_war_with = {
+			limit = {
+				NOT = { culture = root.culture }
+			}
+			save_scope_as = prisoner_origin_country
+		}		
+	}	
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+	option = { # Offer them the chance to join the tribe
+		name = flavor_iro.43.a	
+		historical_option = yes		
+		capital = {
+			add_pop = {
+				culture = scope:prisoner_origin_country.culture
+				religion = scope:prisoner_origin_country.religion
+				type = pop_type:peasants
+				size = { 0.06 0.10 }
+			}
+		}
+	}
+	option = { # They must remain prisoners for now
+		name = flavor_iro.43.b	
+		add_stability = stability_mild_bonus
+	}
+}
+
+flavor_iro.44 = { # Shared Brotherhood # Unlocks Advance
+	type = country_event
+	title = flavor_iro.44.title
+	desc = flavor_iro.44.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1644.1.1
+		to = 1776.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_ruler = yes	
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+	}	
+	
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}	
+
+	option = { # Our shared brotherhood has allowed the Confederacy to remain strong
+		name = flavor_iro.44.a	
+		historical_option = yes		
+		unlock_advance_effect = { type = shared_brotherhood }
+	}
+}
+
+flavor_iro.45 = { # Welcoming of the Skarure # Tuscarora
+	type = country_event
+	title = flavor_iro.45.title
+	desc = flavor_iro.45.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1644.1.1
+		to = 1776.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_ruler = yes
+		any_owned_location = {
+			dominant_culture = culture:skarureh_culture
+		}				
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }			
+	}	
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+	option = { # Welcome the Skarureh as the sixth nation!
+		name = flavor_iro.45.a	
+		historical_option = yes		
+		add_accepted_culture = culture:skarureh_culture
+		culture = {
+			add_cultural_influence = cultural_influence_severe_bonus
+		}		
+	}
+
+	option = { # The Skarureh must integrate with <root.culture>
+		name = flavor_iro.45.b	
+		add_stability = stability_mild_bonus
+	}	
+}
+
+flavor_iro.46 = { # Benefits of the Three Sisters
+	type = country_event
+	title = flavor_iro.46.title
+	desc = flavor_iro.46.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = KKA
+		tag = ONY
+		tag = ONO
+		tag = GYO
+		tag = ONN
+		from = 1644.1.1
+		to = 1680.1.1
+		monthly_chance = 4
+	}
+
+	trigger = {
+		has_ruler = yes
+		has_advance = three_sisters
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	option = { # Reap the benefits of the harvest
+		name = flavor_iro.46.a
+		capital = {
+			add_location_modifier = {
+				modifier = iro_three_sisters_harvest
+				years = modifier_duration_years_normal
+				mode = add
+			}
+		}
+	}
+	option = { # Share the bountiful harvest throughout <country_name>
+		name = flavor_iro.46.b
+		add_country_modifier = { modifier = iro_sharing_of_three_sisters_harvest years = 10 mode = add }
+	}
+}
+
+flavor_iro.47 = { # Matriarchal Agriculture
+	type = country_event
+	title = flavor_iro.47.title
+	desc = flavor_iro.47.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = KKA
+		tag = ONY
+		tag = ONO
+		tag = GYO
+		tag = ONN
+		from = 1644.1.1
+		to = 1736.1.1
+		monthly_chance = 4
+	}
+
+	trigger = {
+		has_ruler = yes
+		has_advance = three_sisters
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+	}	
+	
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}	
+
+	option = { # Reward her with the title
+		name = flavor_iro.47.a	
+		historical_option = yes	
+		add_country_modifier = { modifier = iro_matriarchal_agriculture years = 10 mode = add }		
+		culture = {
+			add_cultural_influence = cultural_influence_extreme_bonus
+		}						
+	}
+}
+
+flavor_iro.50 = { # Exchange of Fur
+	type = country_event
+	title = flavor_iro.50.title
+	desc = flavor_iro.50.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_fur.dds"
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1644.1.1
+		to = 1776.1.1
+		monthly_chance = 10
+	}
+
+
+	trigger = {
+		has_ruler = yes
+		any_neighbor_country = {
+			has_colonial_charters = yes
+			religion.group = religion_group:christian	
+			has_embraced_institution = institution:new_world
+			opinion = { target = root value >= 25 }
+		}			
+	}
+	
+	immediate = {
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+		random_neighbor_country = {
+			limit = {
+				has_colonial_charters = yes
+				religion.group = religion_group:christian	
+				has_embraced_institution = institution:new_world
+				opinion = { target = root value >= 25 }
+			}
+			save_scope_as = neighbor_country
+		}		
+	}	
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+
+	option = { # Offer fur to the colonizers
+		name = flavor_iro.50.a		
+		historical_option = yes
+		add_gold = {
+			value = scope:neighbor_country.monthly_income_trade_and_tax
+			multiply = 6
+		}
+		add_country_modifier = { modifier = iro_trading_of_furs years = 10 mode = add } 
+		add_opinion = { target = scope:neighbor_country modifier = trading_in_furs_iro }
+		reverse_add_opinion = { target = scope:neighbor_country modifier = trading_in_furs_iro }
+		set_variable = can_fire_beaver_wars
+	}
+	option = { # Overhunting of the beavers may risk environmental disruption
+		name = flavor_iro.50.b	
+		add_stability = stability_severe_bonus
+	}
+}
+
+flavor_iro.51 = { # Beaver Wars
+	type = country_event
+	title = flavor_iro.51.title
+	desc = flavor_iro.51.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_fur.dds"
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1644.1.1
+		to = 1776.1.1
+		monthly_chance = 10
+	}
+
+
+	trigger = {
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_can_fire_beaver_wars_tt
+			has_variable = can_fire_beaver_wars
+		}
+		produced_in_country:fur > 8
+		any_neighbor_country = {
+			has_colonial_charters = yes
+			religion.group = religion_group:christian	
+			has_embraced_institution = institution:new_world
+		}				
+	}
+	
+	immediate = {
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+		random_neighbor_country = {
+			limit = {
+				has_colonial_charters = yes
+				religion.group = religion_group:christian	
+				has_embraced_institution = institution:new_world
+			}
+			save_scope_as = neighbor_colonial
+		}			
+	}	
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+
+	option = { # We must move to control the beaver supply
+		name = flavor_iro.51.a			
+		custom_tooltip = {
+			text = enables_beaver_wars_cb
+			set_variable = can_use_beaver_wars_cb
+		}		
+	}
+
+	option = { # We must move to control the beaver supply
+		name = flavor_iro.51.b			
+		add_stability = stability_mild_bonus
+	}	
+}
+
+flavor_iro.52 = { # Depletion of the beaver population
+	type = country_event
+	title = flavor_iro.52.title
+	desc = flavor_iro.52.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_fur.dds"
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1644.1.1
+		to = 1776.1.1
+		monthly_chance = 10
+	}
+
+
+	trigger = {
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_can_fire_beaver_wars_tt
+			has_variable = can_fire_beaver_wars
+		}
+		custom_tooltip = {
+			text = variable_can_use_beaver_wars_cb_tt
+			has_variable = can_use_beaver_wars_cb
+		}
+		produced_in_country:fur > 18
+	}
+	
+	immediate = {
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+		random_neighbor_country = {
+			limit = {
+				has_colonial_charters = yes
+				religion.group = religion_group:christian	
+				has_embraced_institution = institution:new_world
+			}
+			save_scope_as = neighbor_colonial
+		}		
+	}	
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+
+	option = { # We must move to control the beaver supply
+		name = flavor_iro.52.a	
+		remove_country_modifier = iro_trading_of_furs		
+		add_country_modifier = { modifier = iro_beavers_depleted years = 50 mode = add } 
+		custom_tooltip = {
+			text = disables_beaver_wars_cb
+			remove_variable = can_use_beaver_wars_cb
+			remove_variable = can_fire_beaver_wars
+		}		
+	}
+	
+}
+
+flavor_iro.60 = { # Grand Council of the Iroquois # Reform Unlock
+	type = country_event
+	title = flavor_iro.60.title
+	desc = flavor_iro.60.desc
+	outcome = neutral
+		
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1644.1.1
+		to = 1776.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_ruler = yes				
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		unlock_government_reform_effect = { type = iro_council_of_the_fifty }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }		
+	}
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+	option = { # <ruler> must rely on the guidance of the council of fifty
+		name = flavor_iro.60.a	
+		historical_option = yes		
+		add_reform = government_reform:iro_council_of_the_fifty
+		add_stability = stability_mild_bonus		
+	}
+	option = { # Disobey the guidance of the council
+		name = flavor_iro.60.b		
+		add_prestige = prestige_mild_bonus
+		add_stability = stability_mild_penalty	
+		add_estate_satisfaction = { 
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_severe_penalty
+		}	
+	}
+}
+
+flavor_iro.61 = { # Council of the Fifty Intervenes in Colonial Diplomacy
+	type = country_event
+	title = flavor_iro.61.title
+	desc = flavor_iro.61.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1644.1.1
+		to = 1776.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		OR = {
+			has_ruler = yes
+			has_regent = yes
+		}
+		has_reform = government_reform:iro_council_of_the_fifty
+		any_neighbor_country = {
+			has_colonial_charters = yes
+			religion.group = religion_group:christian
+			has_embraced_institution = institution:new_world
+		}	
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		random_neighbor_country = {
+			limit = {
+				has_colonial_charters = yes
+				religion.group = religion_group:christian	
+				has_embraced_institution = institution:new_world
+			}
+			save_scope_as = neighbor_country
+		}	
+		ruler_or_regent ?= {
+            save_scope_as = our_ruler
+        }	
+	}
+	
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}	
+
+	option = { # Allow the council to be more assertive in diplomacy
+		name = flavor_iro.61.a	
+		historical_option = yes	
+		add_country_modifier = { modifier = iro_assertive_council_of_fifty years = 10 mode = add } 
+		add_stability = stability_mild_bonus			
+	}
+	option = { # Refute the advice of the council!
+		name = flavor_iro.61.b		
+		add_country_modifier = { modifier = iro_disregarded_council_of_fifty_diplomacy years = 10 mode = add } 
+		add_estate_satisfaction = { 
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_penalty
+		}	
+	}
+}
+
+flavor_iro.62 = { # Champlain aids the Hurons
+	type = country_event
+	title = flavor_iro.62.title
+	desc = flavor_iro.62.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1644.1.1
+		to = 1660.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_ruler = yes
+		has_global_variable = iro_champlain_huron_contact
+		character:samuel_de_champlain ?= { is_alive = yes }
+		OR = { # One of these tribes should exist in case wiped out in between Champlain expedition
+			country_exists = c:ARN
+			country_exists = c:ATG
+			country_exists = c:AGW
+			country_exists = c:TRT
+		}
+	}
+	
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+		character:samuel_de_champlain ?= {
+			save_scope_as = target_character
+		}			
+	}	
+	
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}	
+
+	option = { # Curses!
+		name = flavor_iro.62.a	
+		historical_option = yes	
+		if = {
+			limit = { 
+				country_exists = c:ARN
+				c:ARN ?= {
+					capital = {
+						is_discovered_by = c:FRA
+					}
+				}
+			}
+			c:ARN ?= {
+				add_country_modifier = { modifier = iro_champlain_aided_the_hurons years = 10 mode = add } 
+			}
+		}	
+		if = {
+			limit = { 
+				country_exists = c:ATG
+				c:ATG ?= {
+					capital = {
+						is_discovered_by = c:FRA
+					}
+				}
+			}
+			c:ATG ?= {
+				add_country_modifier = { modifier = iro_champlain_aided_the_hurons years = 10 mode = add } 
+			}
+		}
+		if = {
+			limit = { 
+				country_exists = c:AGW
+				c:AGW ?= {
+					capital = {
+						is_discovered_by = c:FRA
+					}
+				}
+			}
+			c:AGW ?= {
+				add_country_modifier = { modifier = iro_champlain_aided_the_hurons years = 10 mode = add } 
+			}
+		}
+		if = {
+			limit = { 
+				country_exists = c:TRT
+				c:TRT ?= {
+					capital = {
+						is_discovered_by = c:FRA
+					}
+				}
+			}
+			c:TRT ?= {
+				add_country_modifier = { modifier = iro_champlain_aided_the_hurons years = 10 mode = add } 
+			}
+		}										
+	}
+	after = {
+		remove_global_variable = iro_champlain_huron_contact
+	}
+}
+
+flavor_iro.63 = { # Destruction of Wendake
+	type = country_event
+	title = flavor_iro.63.title
+	desc = flavor_iro.63.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1644.1.1
+		to = 1776.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_ruler = yes
+		own_entire_province = province_definition:wendake_province
+		at_war = no		
+	}
+	
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+	}	
+	
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}	
+
+	option = { # Destroy the city of the Hurons!
+		name = flavor_iro.63.a
+		add_prestige = prestige_extreme_bonus
+		add_tribal_cohesion = tribal_cohesion_mild_bonus
+		province_definition:wendake_province = {
+			every_location_in_province_definition = {
+				limit = {
+					owner ?= root
+				}
+				change_prosperity = prosperity_extreme_penalty
+				change_development = development_severe_penalty
+			}
+		}
+	}
+	option = { # Our enemies our now our brothers, we put past hostilities aside
+		name = flavor_iro.63.b
+		add_prestige = prestige_weak_bonus
+		province_definition:wendake_province = {
+			every_location_in_province_definition = {
+				limit = {
+					owner ?= root
+					integration_level = conquered
+					integration_progress > 0
+				}
+				change_integration_progress = 50
+			}
+			every_location_in_province_definition = {
+				limit = {
+					owner ?= root
+					integration_level = core
+				}
+				change_development = development_mild_bonus
+			}
+		}		
+	}
+}
+
+flavor_iro.64 = { # Growth of Villages Along Lake Ontario
+	type = country_event
+	title = flavor_iro.64.title
+	desc = flavor_iro.64.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1650.1.1
+		to = 1776.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_ruler = yes
+		own_entire_area = area:haudenosaunee_area
+		at_war = no		
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+	}	
+	
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}	
+
+	option = { # Found the new villages!
+		name = flavor_iro.64.a
+		area:haudenosaunee_area = {
+			every_location_in_area = {
+				limit = {
+					owner ?= root
+					is_adjacent_to_lake = yes
+				}
+				change_prosperity = prosperity_mild_bonus
+				change_development = development_severe_bonus
+			}
+		}
+	}
+	option = { # Conslidate growth to the capital
+		name = flavor_iro.64.b
+		add_prestige = prestige_mild_bonus
+		capital = {
+			change_development = development_ultimate_bonus
+		}				
+	}
+}
+
+flavor_iro.65 = { # Expedition of Simon Le Moyne and Sainte Marie de Ganentaa
+	type = country_event
+	title = flavor_iro.65.title
+	desc = flavor_iro.65.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1644.1.1
+		to = 1670.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_ruler = yes
+		country_exists = c:FRA
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+		create_character = {
+			first_name = name_simeon
+			last_name = le_moyne
+			adm = { 50 66 }
+			dip = { 40 60 }
+			mil = { 10 20 }
+			birth_date = 1604.10.22
+			birth_location = location:beauvais
+			culture = culture:french
+			religion = religion:catholic
+			save_scope_as = target_character
+			script = simon_le_loyne
+			estate = estate_type:clergy_estate
+			create_in_limbo = yes
+		}				
+	}	
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+	option = { # Allow the Jesuits to stay
+		name = flavor_iro.65.a	
+		historical_option = yes
+		scope:target_character = {
+			move_country = ROOT						
+		}	
+		add_research_progress = research_progress_mild_bonus
+		capital = {
+			add_location_modifier = {
+				modifier = sainte_marie_de_gannentaha
+				years = modifier_duration_years_normal
+				mode = add
+			}
+			every_pop = {
+				limit = {
+					pop_type = pop_type:peasants
+					owner ?= root
+				}
+				split_pop = { fraction = 0.33 religion = religion:catholic }
+			}
+		}		
+	}
+	option = { # Forbid the Jesuit from preaching!
+		name = flavor_iro.65.b	
+		kill_character_silently = scope:target_character
+		add_stability = stability_mild_bonus
+		add_tribal_cohesion = tribal_cohesion_mild_bonus
+	}
+}
+
+flavor_iro.66 = { # Outbreak of Smallpox due to Simon le moyne
+	type = country_event
+	title = flavor_iro.66.title
+	desc = flavor_iro.66.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1644.1.1
+		to = 1776.1.1
+		monthly_chance = 8
+	}
+
+	trigger = {
+		has_ruler = yes
+		exists = character:simon_le_loyne
+		character:simon_le_loyne ?= {
+			is_alive = yes
+			owner = ROOT
+		}	
+		country_exists = c:FRA	
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+		character:simon_le_loyne ?= {
+			save_scope_as = target_character
+		}			
+	}	
+	
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}	
+
+	option = { # He must leave the capital
+		name = flavor_iro.66.a	
+		historical_option = yes	
+		add_stability = stability_weak_bonus		
+		capital = {
+			spawn_disease = {
+				disease = disease:smallpox
+				value = 0.5
+			}
+			remove_location_modifier = sainte_marie_de_gannentaha		
+		}
+		scope:target_character = {
+			move_country = c:FRA
+		}		
+	}
+	option = { # Perhaps he can treat those affected by smallpox
+		name = flavor_iro.66.b			
+		add_stability = stability_severe_penalty
+		capital = {
+			spawn_disease = {
+				disease = disease:smallpox
+				value = 1
+			}
+			add_location_modifier = {
+				modifier = iro_simon_treatments
+				years = modifier_duration_years_normal
+				mode = add
+			}			
+		}			
+	}
+}
+
+flavor_iro.70 = { # Forming of a New Delegation
+	type = country_event
+	title = flavor_iro.70.title
+	desc = flavor_iro.70.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = IRO
+		from = 1644.1.1
+		to = 1776.1.1
+		monthly_chance = 8
+	}
+
+	trigger = {
+		has_ruler = yes
+		has_reform = government_reform:iro_council_of_the_fifty
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = our_ruler
+        }	
+	}	
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+	option = { # Welcome the new members to the inner circle.
+		name = flavor_iro.70.a	
+		historical_option = yes			
+		add_tribal_cohesion = tribal_cohesion_severe_bonus
+		create_character = {
+			culture = culture:kanienkehaka_culture
+			adm = { 30 45 }
+			dip = { 36 49 }
+			mil = { 50 65 }
+			min_age = 36
+		}	
+		create_character = {
+			culture = culture:onyotaaka_culture
+			adm = { 60 70 }
+			dip = { 36 49 }
+			mil = { 35 45 }
+			min_age = 36
+		}	
+		create_character = {
+			culture = culture:gayogohono_culture
+			adm = { 32 45 }
+			dip = { 65 78 }
+			mil = { 30 50 }
+			min_age = 36
+		}						
+	}
+	option = { # There is no need to welcome an expanded delegation.
+		name = flavor_iro.70.b			
+		add_stability = stability_weak_penalty
+		add_prestige = prestige_severe_bonus
+	}
+}

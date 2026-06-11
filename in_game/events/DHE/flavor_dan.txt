@@ -1,0 +1,1995 @@
+﻿namespace = flavor_dan
+
+flavor_dan.9 = { #Skane Fish Market comes to an end
+	type = country_event
+	title = flavor_dan.9.title
+	desc = flavor_dan.9.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	trigger = {
+		current_year >= 1500
+		current_month > 7
+		current_month < 11
+		owns = location:malmo
+		location:malmo = {
+			has_location_modifier = skane_herring_market
+			rgo_workers >= 5
+		}
+	}
+
+	option = {
+		name = flavor_dan.9.a
+		location:malmo = {
+			remove_location_modifier = skane_herring_market
+		}
+		add_prestige = prestige_mild_penalty
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+	}
+}
+
+flavor_dan.10 = { #Great Fire of Copenhagen of 1728 #DEVASTATION
+	type = country_event
+	title = flavor_dan.10.title
+	desc = flavor_dan.10.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1720.1.1
+		to = 1730.1.1
+		monthly_chance = 2
+	}
+
+	immediate = {
+		location:kobenhavn = {
+			save_scope_as = target_location
+		}
+	}
+
+	trigger = {
+		owns = location:kobenhavn
+	}
+
+	option = {
+		name = flavor_dan.10.a
+		historical_option = yes
+		custom_tooltip = flavor_dan.10.a.tt
+		hidden_effect = {
+			scope:target_location = {
+				change_prosperity = prosperity_mild_penalty
+				every_pop = {
+					add_pop_size = {
+						value = pop_size
+						multiply = -0.05
+					}
+				}
+				ordered_buildings_in_location = {
+					order_by = building_level
+					max = {
+						value = 1
+
+						add = {
+							value = location.num_buildings
+							divide = 10
+						}
+					}
+
+					location = { major_destroy_building_levels_in_location = yes }
+				}
+			}
+		}
+		change_gold_effect = { scale = -2 }
+
+	}
+	option = {
+		name = flavor_dan.10.b
+		custom_tooltip = flavor_dan.10.b.tt
+		hidden_effect = {
+			scope:target_location = {
+				change_prosperity = prosperity_mild_penalty
+				change_development = development_mild_penalty
+				every_pop = {
+					add_pop_size = {
+						value = pop_size
+						multiply = -0.05
+					}
+				}
+				ordered_buildings_in_location = {
+					order_by = building_level
+					max = {
+						value = 1
+
+						add = {
+							value = location.num_buildings
+							divide = 10
+						}
+					}
+
+					location = { major_destroy_building_levels_in_location = yes }
+				}
+			}
+		}
+	}
+}
+
+flavor_dan.15 = { #Niels Juel offers service
+	type = country_event
+	title = flavor_dan.15.title
+	desc = flavor_dan.15.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1649.1.1
+		to = 1690.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+		10 = armed
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_nicholas
+			last_name = Juel
+			adm =78
+			dip = 86
+			mil = 95
+			birth_date = 1629.5.8
+			birth_location = location:oslo
+			culture = culture:danish
+			estate = estate_type:nobles_estate
+			script = dan_niels_juel
+			add_trait = trait:ruthless_blockader
+			save_scope_as = target_character
+		}
+	}
+
+	trigger = {
+		owns_or_non_sovereign_subject_owns = location:oslo #double check with Kalmar Union Work
+	}
+
+	option = {
+		name = flavor_dan.15.a
+		historical_option = yes
+
+		add_navy_tradition = navy_tradition_mild_bonus
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+		}
+	}
+
+	option = {
+		name = flavor_dan.15.b
+
+		add_prestige = prestige_mild_bonus
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = block_leading_armies_or_navies
+				years = -1
+				mode = add_and_extend
+			}
+		}
+	}
+}
+
+flavor_dan.16 = { #1660 state of emergency
+	hide_portraits = yes
+	type = country_event
+	title = flavor_dan.16.title
+	desc = flavor_dan.16.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1744.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+			}
+			save_scope_as = target_privilege
+		}
+		ruler ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	trigger = {
+		has_regent = no
+		government_type = government_type:monarchy
+		has_advance = absolute_rulership
+		months_since_war <= 120
+	}
+
+	option = {
+		name = flavor_dan.16.a
+		historical_option = yes
+		change_societal_value = { type = aristocracy_vs_plutocracy value = societal_value_move_to_right }
+		add_legitimacy = legitimacy_mild_bonus
+		change_gold_effect = { scale = -1 }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_extreme_penalty }
+		if = {
+			limit = {
+				exists = scope:target_privilege
+			}
+			revoke_estate_privilege = scope:target_privilege
+		}
+	}
+
+	option = {
+		name = flavor_dan.16.b
+		add_stability = stability_weak_bonus
+		change_societal_value = { type = aristocracy_vs_plutocracy value = societal_value_move_to_left }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_extreme_bonus }
+	}
+}
+
+flavor_dan.17 = { #Peder Griffenfeld
+	type = country_event
+	title = flavor_dan.17.title
+	desc = flavor_dan.17.desc
+	outcome = neutral
+
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1673.1.1
+		to = 1693.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_peter
+			last_name = Griffenfeld
+			adm = 82
+			dip = 85
+			mil = 56
+			birth_date = 1635.8.24
+			birth_location = location:kobenhavn
+			estate = estate_type:burghers_estate
+			culture = culture:danish
+			save_scope_as = target_character
+			script = dan_griffenfeld
+			create_in_limbo = yes
+		}
+	}
+
+	trigger = {
+		owns = location:kobenhavn
+		societal_value:aristocracy_vs_plutocracy >= 0
+	}
+
+	option = {
+		name = flavor_dan.17.a
+		historical_option = yes
+
+		scope:target_character = { move_country = root }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+		change_societal_value = { type = individualism_vs_communalism value = societal_value_move_to_left }
+	}
+
+	option = {
+		name = flavor_dan.17.b
+
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		change_societal_value = { type = aristocracy_vs_plutocracy value = societal_value_move_to_left }
+
+		scope:target_character = { banish_character = yes }
+	}
+}
+
+flavor_dan.21 = { #Peter Tordenskjold
+	type = country_event
+	title = flavor_dan.21.title
+	desc = flavor_dan.21.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1715.1.1
+		to = 1725.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		create_character = {
+			first_name = name_peter
+			nickname = nick_tordenskjold
+			last_name = jansen_wessel
+			adm = 71
+			dip = 53
+			mil = 93
+			birth_date = 1690.10.28
+			birth_location = location:nidaros
+			add_trait = trait:naval_showman
+			estate = estate_type:nobles_estate
+			culture = culture:danish
+			save_scope_as = target_character
+			script = dan_nor_tordenskold
+			create_in_limbo = yes
+		}
+	}
+
+	trigger = {
+		owns_or_non_sovereign_subject_owns = location:nidaros
+		owns = location:kobenhavn
+	}
+
+	option = {
+		name = flavor_dan.21.a
+		historical_option = yes
+
+		add_navy_tradition = navy_tradition_weak_penalty
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			move_country = root
+		}
+	}
+
+	option = {
+		name = flavor_dan.21.b
+
+		add_navy_tradition = navy_tradition_weak_bonus
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
+		
+		scope:target_character = { banish_character = yes }
+	}
+}
+
+flavor_dan.22 = { #Hans Christian Andersen
+	type = country_event
+	title = flavor_dan.22.title
+	desc = flavor_dan.22.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1819.1.1
+		to = 1839.1.1
+		monthly_chance = 4
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_john.name_christian
+			last_name = andersen
+			adm = 72
+			dip = 78
+			mil = 23
+			birth_date = 1805.4.2
+			birth_location = location:odense
+			artist_skill = 0.93
+			artist = writer
+			estate = estate_type:burghers_estate
+			culture = culture:danish
+			script = dan_hc_andersen
+			save_scope_as = target_artist
+		}
+	}
+
+	trigger = {
+		owns = location:kobenhavn
+		owns = location:odense
+		location:kobenhavn = {
+			has_building = building_type:theater
+		}
+	}
+
+	option = {
+		name = flavor_dan.22.a
+		historical_option = yes
+
+		culture = {
+			add_cultural_tradition = cultural_tradition_extreme_bonus
+		}
+		location:kobenhavn = {
+			create_art = {
+				artist = scope:target_artist
+				quality = 92
+				type = work_of_art_type:novel
+				key = fairy_tales_for_childred
+			}
+		}
+	}
+}
+
+flavor_dan.23 = { #Ludvig Holberg
+	type = country_event
+	title = flavor_dan.23.title
+	desc = flavor_dan.23.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1714.1.1
+		to = 1754.1.1
+		monthly_chance = 4
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		create_character = {
+			first_name = name_louis
+			last_name = Holberg
+			adm = 67
+			dip = 68
+			mil = 32
+			birth_date = 1684.12.3
+			birth_location = location:bergen
+			artist_skill = 0.85
+			artist = writer
+			estate = estate_type:burghers_estate
+			culture = culture:danish
+			script = dan_ludvig_holberg
+			save_scope_as = target_artist
+		}
+	}
+
+	trigger = {
+		owns = location:kobenhavn
+		owns_or_non_sovereign_subject_owns = location:bergen
+		location:kobenhavn = {
+			has_building = building_type:theater
+		}
+	}
+
+	option = {
+		name = flavor_dan.23.a
+		historical_option = yes
+
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+		location:kobenhavn = {
+			create_art = {
+				artist = scope:target_artist
+				quality = 84
+				type = work_of_art_type:play
+				key = erasmus_montanus
+			}
+		}
+	}
+}
+
+flavor_dan.26 = { #Chronica Jutensis
+	type = country_event
+	title = flavor_dan.26.title
+	desc = flavor_dan.26.desc
+	outcome = neutral
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_books.dds"
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 2
+	}
+
+	historical_info = flavor_dan.26.historical_info
+
+	trigger = {
+		own_entire_area = area:denmark_area
+	}
+
+	immediate = {
+		capital = {
+			create_art = {
+				quality = 75
+				location = root.capital
+				type = work_of_art_type:chronicle
+				key = chronica_jutensis
+			}
+		}
+	}
+
+	option = {
+		name = flavor_dan.26.a
+		show_as_tooltip = {
+			capital = {
+				create_art = {
+					quality = 75
+					location = root.capital
+					type = work_of_art_type:chronicle
+					key = chronica_jutensis
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_dan.26.b
+		change_gold_effect = { scale = -4 }
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+		show_as_tooltip = {
+			capital = {
+				create_art = {
+					quality = 75
+					location = root.capital
+					type = work_of_art_type:chronicle
+					key = chronica_jutensis
+				}
+			}
+		}
+	}
+
+}
+
+flavor_dan.27 = { #Resettling Greenland
+	type = country_event
+	title = flavor_dan.27.title
+	desc = flavor_dan.27.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1700.1.1
+		to = 1800.1.1
+		monthly_chance = 2
+	}
+
+	historical_info = flavor_dan.27.historical_info
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:peasants background = pop_type:burghers }
+		random_province = {
+			limit = {
+				area = area:greenland_area
+			}
+			save_scope_as = target_province
+		}
+	}
+
+	trigger = {
+		own_entire_area = area:greenland_area
+	}
+
+	option = {
+		name = flavor_dan.27.a
+		historical_option = yes
+		change_gold_effect = { scale = -2 }
+		add_migration = {
+			owner = root
+			from = capital.province_definition
+			to = scope:target_province.province_definition
+			type = pop_type:peasants
+			amount = 0.2
+			months = 120
+		}
+
+	}
+
+	option = {
+		name = flavor_dan.27.b
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+flavor_dan.28 = { #The Rediscovery of Vinland
+	type = country_event
+	title = flavor_dan.28.title
+	desc = flavor_dan.28.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/new_world.dds"
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 2
+	}
+
+	historical_info = flavor_dan.28.historical_info
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	trigger = {
+		region:canada_region = {
+			any_location_in_region = {
+				is_coastal = yes
+				is_discovered_by = root
+			}
+		}
+	}
+
+	option = {
+		name = flavor_dan.28.a
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+flavor_dan.29 = { #The Kastellet
+	type = country_event
+	title = flavor_dan.29.title
+	desc = flavor_dan.29.desc
+	outcome = neutral
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1664.1.1
+		to = 1864.1.1
+		monthly_chance = 10
+	}
+
+	historical_info = flavor_dan.29.historical_info
+
+	trigger = {
+		owns = location:kobenhavn
+		location:kobenhavn = {
+			is_capital = yes
+		}
+	}
+
+	immediate = {
+		location:kobenhavn = {
+		save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_dan.29.a
+		historical_option = yes
+		add_army_tradition = army_tradition_mild_bonus
+		location:kobenhavn = {
+			construct_building = {
+				building_type = building_type:kastellet
+			}
+		}
+	}
+
+	option = {
+		name = flavor_dan.29.b
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+flavor_dan.30 = { #Preserving Gesta Danorum
+	hide_portraits = yes
+	type = country_event
+	title = flavor_dan.30.title
+	desc = flavor_dan.30.desc
+	outcome = neutral
+	fire_only_once = yes
+	image = "gfx/interface/illustrations/institutions/printing_press.dds"
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 10
+	}
+
+	immediate = {
+		random_work_of_art = {
+			limit = { this = work_of_art:gesta_danorum }
+			save_scope_as = target_art
+		}
+	}
+
+	trigger = {
+		owns = location:roskilde
+		location:roskilde = {
+			any_work_of_art_in_location = {
+				this = work_of_art:gesta_danorum
+			}
+		}
+		has_embraced_institution = institution:printing_press
+	}
+
+	option = {
+		name = flavor_dan.30.a
+		change_gold_effect = { scale = -8 }
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+		location:roskilde = {
+            random_work_of_art_in_location = {
+                limit = {
+                    this = work_of_art:gesta_danorum
+                }
+                change_art_quality = 15
+            }
+        }
+	}
+
+	option = {
+		name = flavor_dan.30.b
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+flavor_dan.31 = { #Kronborg
+	type = country_event
+	title = flavor_dan.31.title
+	desc = flavor_dan.31.desc
+	outcome = neutral
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 10
+	}
+
+	historical_info = flavor_dan.31.historical_info
+
+	trigger = {
+		owns = location:helsingor
+	}
+
+	immediate = {
+		location:helsingor = {
+		save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_dan.31.a
+		historical_option = yes
+		location:helsingor = {
+			construct_building = {
+				building_type = building_type:kronborg
+			}
+		}
+	}
+
+	option = {
+		name = flavor_dan.31.b
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+flavor_dan.36 = { #Legacy of the North Sea Empire
+	type = country_event
+	title = flavor_dan.36.title
+	desc = flavor_dan.36.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		location:london = {
+			owner = root
+			controller = root
+			is_capital = no
+		}
+		NOT = {
+			capital = { region = region:great_britain_region }
+		}
+		at_war = no
+	}
+
+	immediate = {
+		location:london = {
+		save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_dan.36.a
+		set_capital = location:london
+		location:london = {
+			change_development = development_mild_bonus
+			change_prosperity = prosperity_severe_bonus
+		}
+	}
+
+	option = {
+		name = flavor_dan.36.b
+		capital = {
+			change_development = development_mild_bonus
+			change_prosperity = prosperity_severe_bonus
+		}
+	}
+}
+
+flavor_dan.37 = { #Decline of the Hanseatic League
+	type = country_event
+	title = flavor_dan.37.title
+	desc = flavor_dan.37.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	trigger = {
+		owns = location:lubeck
+		owns = location:hamburg
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_dan.37.a
+		change_gold_effect = { scale = 6 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_extreme_bonus }
+		add_country_modifier = { modifier = dan_defeated_hansa years = 10	mode = add_and_extend }
+	}
+}
+
+flavor_dan.38 = { #Lion from the North
+	type = country_event
+	title = flavor_dan.38.title
+	desc = flavor_dan.38.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	trigger = {
+		owns = location:oslo
+		owns = location:stockholm
+		country_rank = country_rank:rank_empire
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+	}
+
+	option = {
+		name = flavor_dan.38.a
+		add_country_modifier = { modifier = dan_lion_from_the_north years = 10	mode = add_and_extend }
+	}
+}
+
+flavor_dan.39 = { #Danish Colonial Empire
+	type = country_event
+	title = flavor_dan.39.title
+	desc = flavor_dan.39.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 1
+	}
+
+	historical_info = flavor_dan.39.historical_info
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_peasants_foreign_religion_pop_type_effect = yes
+	}
+
+	trigger = {
+		has_presence_in = continent:america
+		has_presence_in = continent:africa
+		has_presence_in = continent:asia
+	}
+
+	option = {
+		name = flavor_dan.39.a
+		add_prestige = prestige_extreme_bonus
+		add_legitimacy = legitimacy_extreme_bonus
+		add_stability = stability_extreme_bonus
+	}
+}
+
+flavor_dan.41 = { #Danish Golden Age of Painting
+	type = country_event
+	title = flavor_dan.41.title
+	desc = flavor_dan.41.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+
+	historical_info = flavor_dan.41.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1800.1.1
+		to = 1900.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		at_war = no
+		stability >= 40
+		is_during_bankruptcy = no
+		has_any_active_disaster = no
+		in_civil_war = no
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_dan.41.a
+		culture = {
+			add_cultural_influence = cultural_influence_severe_bonus
+			add_cultural_tradition = cultural_tradition_severe_bonus
+		}
+	}
+}
+
+flavor_dan.42 = { #Demolition of the Absalon's Castle
+	type = country_event
+	title = flavor_dan.42.title
+	desc = flavor_dan.42.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	immediate = {
+		location:kobenhavn = {
+		save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_dan.42.a
+		add_prestige = prestige_mild_penalty
+		location:kobenhavn = {
+			destroy_building = "building(building_type:castle|owner)"
+		}
+	}
+}
+
+flavor_dan.43 = { #Founding of Christianstad
+	type = country_event
+	title = flavor_dan.43.title
+	desc = flavor_dan.43.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		has_ruler = yes
+		owns = location:solvesborg
+		location:solvesborg = {
+			OR = {
+				location_rank = location_rank:rural_settlement
+				location_rank = location_rank:town
+			}
+		}
+		ruler = {
+			character_name = name_christian
+		}
+	}
+	immediate = {
+		location:solvesborg = {
+		save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_dan.43.a
+		change_gold_effect = { scale = -8 }
+		location:solvesborg = {
+			rename_location = christianstad
+			change_location_rank_effect = { location_rank = location_rank:city }
+			change_development = development_mild_bonus
+			change_prosperity = prosperity_severe_bonus
+		}
+		add_migration = {
+			owner = this
+			from = location:roskilde.province_definition
+			to = location:solvesborg.province_definition
+			culture = culture:danish
+			type = pop_type:burghers
+			amount = 0.05
+			months = 24
+		}
+		set_variable = dan_can_further_expand_christianstad
+	}
+
+	option = {
+		name = flavor_dan.43.b
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+flavor_dan.44 = { #The Trinity Chruch of Christianstad
+	type = country_event
+	title = flavor_dan.44.title
+	desc = flavor_dan.44.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 10
+	}
+
+	historical_info = flavor_dan.44.historical_info
+
+	immediate = {
+		create_character = {
+			first_name = name_laurence
+			last_name = van_Steenwinckel
+			birth_date = 1585.4.9
+			birth_location = location:kobenhavn
+			estate = estate_type:burghers_estate
+			adm = { 20 70 }
+			dip = { 20 70 }
+			mil = { 20 70 }
+			artist_skill = 0.8
+			culture = culture:danish
+			artist = architect
+			save_scope_as = steenwinckel
+			create_in_limbo = yes
+		}
+		location:solvesborg = {
+			save_scope_as = target_location
+		}
+	}
+
+	trigger = {
+		has_ruler = yes
+		owns = location:solvesborg
+		custom_tooltip = {
+			text = variable_dan_can_further_expand_christianstad_tt
+			has_variable = dan_can_further_expand_christianstad
+		}
+	}
+
+	option = {
+		name = flavor_dan.44.a
+        scope:steenwinckel = {
+            move_country = root
+        }
+		change_gold_effect = { scale = -8 }
+		add_religious_influence_if_valid = { VALUE = religious_influence_mild_bonus }
+		location:solvesborg = {
+			create_art = {
+				quality = 80
+				type = work_of_art_type:monument
+				key = christianstad_trinity_church
+				artist = scope:steenwinckel
+			}
+		}
+	}
+
+	option = {
+		name = flavor_dan.44.b
+		change_gold_effect = { scale = -4 }
+		location:solvesborg = {
+			create_art = {
+				quality = 60
+				type = work_of_art_type:monument
+				key = christianstad_trinity_church
+			}
+		}
+		scope:target_character = { banish_character = yes }
+	}
+
+	option = {
+		name = flavor_dan.44.c
+		add_prestige = prestige_mild_penalty
+		scope:target_character = { banish_character = yes }
+	}
+
+	after = {
+		remove_variable = dan_can_further_expand_christianstad
+	}
+}
+
+flavor_dan.46 = { #Expanding the Royal Life Guards
+	type = country_event
+	title = flavor_dan.46.title
+	desc = flavor_dan.46.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 10
+	}
+	
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	trigger = {
+		has_advance = dan_royal_life_guards
+		has_ruler = yes
+		government_type = government_type:monarchy
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+	}
+
+	option = {
+		name = flavor_dan.46.a
+		historical_option = yes
+		change_gold_effect = { scale = -8 }
+		add_army_tradition = army_tradition_severe_bonus
+		change_societal_value = { type = offensive_vs_defensive value = societal_value_move_to_right }
+	}
+
+	option = {
+		name = flavor_dan.46.b
+		add_army_tradition = army_tradition_mild_penalty
+	}
+}
+
+flavor_dan.47 = { #The Scanian Regiment
+	type = country_event
+	title = flavor_dan.47.title
+	desc = flavor_dan.47.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/military_revolution.dds"
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_advance = dan_scanian_regiment
+	}
+
+	option = {
+		name = flavor_dan.47.a
+		historical_option = yes
+		change_gold_effect = { scale = -12 }
+		change_societal_value = { type = quality_vs_quantity value = societal_value_minor_move_to_left }
+		custom_tooltip = {
+			text = flavor_dan.47.a.tt
+			set_variable = dan_scanian_regiment_events
+		}
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_penalty
+		}
+	}
+
+	option = {
+		name = flavor_dan.47.b
+		add_army_tradition = army_tradition_mild_penalty
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+}
+
+flavor_dan.50 = { #The King's Law
+	type = country_event
+	title = flavor_dan.50.title
+	desc = flavor_dan.50.desc
+	outcome = neutral
+
+	historical_info = flavor_dan.50.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1744.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		current_age = age_5_absolutism
+		ruler ?= { total_abilities >= 170 }
+		has_ruler = yes
+		government_type = government_type:monarchy
+	}
+
+	option = {
+		name = flavor_dan.50.a
+		historical_option = yes
+		add_stability = stability_mild_penalty
+		unlock_government_reform_effect = { type = dan_the_kings_law }
+		change_societal_value = { type = centralization_vs_decentralization value = societal_value_move_to_left }
+	}
+
+	option = {
+		name = flavor_dan.50.b
+		add_stability = stability_mild_bonus
+		change_societal_value = { type = centralization_vs_decentralization value = societal_value_move_to_right }
+	}
+}
+
+flavor_dan.51 = { #Rebuilding Jomsborg
+	type = country_event
+	title = flavor_dan.51.title
+	desc = flavor_dan.51.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_dan.51.historical_info
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		has_ruler = yes
+		owns = location:wolgast
+		location:wolgast = {
+			OR = {
+				location_rank = location_rank:rural_settlement
+				location_rank = location_rank:town
+			}
+		}
+	}
+	immediate = {
+		location:wolgast = {
+		save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_dan.51.a
+		change_gold_effect = { scale = -1 }
+		location:wolgast = {
+			rename_location = jomsborg
+			change_location_rank_effect = { location_rank = location_rank:city }
+			change_development = development_mild_bonus
+			change_prosperity = prosperity_severe_bonus
+		}
+	}
+
+	option = {
+		name = flavor_dan.51.b
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+flavor_dan.52 = { #The Nyhavn Canal
+	type = country_event
+	title = flavor_dan.52.title
+	desc = flavor_dan.52.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_dan.52.historical_info
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1670.1.1
+		to = 1870.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:kobenhavn
+		at_war = no
+	}
+
+	immediate = {
+		location:kobenhavn = {
+		save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_dan.52.a
+		historical_option = yes
+		change_gold_effect = { scale = -6 }
+		location:kobenhavn = {
+			change_development = development_mild_bonus
+			change_prosperity = prosperity_severe_bonus
+		}
+	}
+
+	option = {
+		name = flavor_dan.52.b
+		change_gold_effect = { scale = -3 }
+		location:kobenhavn = {
+			change_development = development_weak_bonus
+			change_prosperity = prosperity_very_weak_bonus
+		}
+	}
+
+	option = {
+		name = flavor_dan.52.c
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+flavor_dan.53 = { #Appointment of General Building Master
+	type = country_event
+	title = flavor_dan.53.title
+	desc = flavor_dan.53.desc
+	outcome = neutral
+
+	historical_info = flavor_dan.53.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1660.1.1
+		to = 1670.1.1
+		monthly_chance = 10
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		has_ruler = yes
+	}
+
+	immediate = {
+		create_character = {
+			birth_date = 1630.2.1
+			birth_location = location:bergen
+			first_name = name_lambert
+			last_name = van_Haven
+			estate = estate_type:burghers_estate
+			adm = { 20 70 }
+			dip = { 20 70 }
+			mil = { 20 70 }
+			artist_skill = 0.95
+			artist = architect
+			culture = culture:danish
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		ruler = { save_scope_as = target_ruler }
+		event_illustration_government_estate_effect = yes
+	}
+
+	option = {
+		name = flavor_dan.53.a
+		change_gold_effect = { scale = -6 }
+		scope:target_character = {
+			add_trait = trait:prominent
+            move_country = root
+		}
+	}
+
+	option = {
+		name = flavor_dan.53.b
+		add_prestige = prestige_mild_penalty
+		scope:target_character = { banish_character = yes }
+	}
+}
+
+flavor_dan.54 = { #Christian Frederik Hansen
+	type = country_event
+	title = flavor_dan.54.title
+	desc = flavor_dan.54.desc
+	outcome = neutral
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_masonry.dds"
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1780.1.1
+		to = 1800.1.1
+		monthly_chance = 10
+	}
+
+	immediate = {
+		create_character = {
+			birth_date = 1756.2.29
+			birth_location = location:kobenhavn
+			first_name = name_christian.name_frederick
+			last_name = Hansen
+			estate = estate_type:burghers_estate
+			adm = { 20 70 }
+			dip = { 20 70 }
+			mil = { 20 70 }
+			artist_skill = 0.9
+			artist = architect
+			culture = culture:danish
+			save_scope_as = target_character
+			create_in_limbo = yes
+			script = dan_hasen_script
+		}
+	}
+
+	option = {
+		name = flavor_dan.54.a
+		add_research_progress = research_progress_mild_bonus
+		scope:target_character = {
+            move_country = root
+			add_trait = trait:prominent
+		}
+	}
+}
+
+flavor_dan.55 = { #Christiansborg Palace
+	type = country_event
+	title = flavor_dan.55.title
+	desc = flavor_dan.55.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1785.1.1
+		to = 1820.1.1
+		monthly_chance = 10
+	}
+
+	immediate = {
+		location:kobenhavn = {
+		save_scope_as = target_location
+		}
+		character:dan_hasen_script ?= { save_scope_as = frederik_hansen }
+	}
+
+	trigger = {
+		character:dan_hasen_script ?= { is_alive = yes }
+		owns = location:kobenhavn
+		government_type = government_type:monarchy
+	}
+
+	option = {
+		name = flavor_dan.55.a
+		historical_option = yes
+		change_gold_effect = { scale = -12 }
+		scope:frederik_hansen ?= {
+			add_artist_skill = 0.03
+		}
+		location:kobenhavn = {
+			create_art = {
+				quality = 80
+				artist = scope:frederik_hansen
+				type = work_of_art_type:palace
+				key = christiansborg_palace
+			}
+		}
+	}
+
+	option = {
+		name = flavor_dan.55.b
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+flavor_dan.56 = { #Berthel Thorvaldsen
+	type = country_event
+	title = flavor_dan.56.title
+	desc = flavor_dan.56.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1795.1.1
+		to = 1815.1.1
+		monthly_chance = 10
+	}
+
+	historical_info = flavor_dan.56.historical_info
+
+	immediate = {
+		create_character = {
+			birth_date = 1770.11.19
+			birth_location = location:kobenhavn
+			first_name = name_berthold
+			last_name = Thorvaldsen
+			estate = estate_type:peasants_estate
+			adm = { 20 70 }
+			dip = { 20 70 }
+			mil = { 20 70 }
+			artist_skill = 0.95
+			artist = sculptor
+			culture = culture:danish
+			save_scope_as = target_character
+			create_in_limbo = yes
+			script = dan_thorvaldsen_script
+		}
+
+		set_global_variable = {
+			name = berthel_thorvaldsen
+			value = scope:target_character
+		}
+	}
+
+	option = {
+		name = flavor_dan.56.a
+		culture = {
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+		scope:target_character = {
+            move_country = root
+			add_trait = trait:prominent
+		}
+	}
+
+ 	option = {
+		name = flavor_dan.56.b
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+		add_legitimacy = legitimacy_mild_bonus
+ 	}
+}
+
+flavor_dan.57 = { #Thorvaldsen's Museum
+	type = country_event
+	title = flavor_dan.57.title
+	desc = flavor_dan.57.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1795.1.1
+		to = 1815.1.1
+		monthly_chance = 10
+	}
+
+	historical_info = flavor_dan.57.historical_info
+
+	immediate = {
+		character:dan_thorvaldsen_script ?= { save_scope_as = thorvaldsen }
+		location:kobenhavn = {
+		save_scope_as = target_location
+		}
+	}
+
+	trigger = {
+		global_var:berthel_thorvaldsen = {
+			is_alive = no
+		}
+		location:kobenhavn = {
+			any_work_of_art_in_location = {
+				this = work_of_art:christiansborg_palace
+			}
+		}
+	}
+
+	option = {
+		name = flavor_dan.57.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+		change_gold_effect = { scale = -8 }
+		work_of_art:christiansborg_palace = {
+			change_art_quality = 15
+		}
+	}
+
+	option = {
+		name = flavor_dan.57.b
+		add_prestige = prestige_weak_bonus
+		culture = {
+			add_cultural_tradition = cultural_tradition_weak_bonus
+		}
+		change_gold_effect = { scale = -3 }
+	}
+
+	option = {
+		name = flavor_dan.57.c
+		add_prestige = prestige_mild_penalty
+	}
+
+	after = {
+		remove_variable = berthel_thorvaldsen
+	}
+}
+
+flavor_dan.58 = { #Royal Academy of Fine Arts
+	type = country_event
+	title = flavor_dan.58.title
+	desc = flavor_dan.58.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1750.1.1
+		to = 1850.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:kobenhavn
+	}
+
+	option = {
+		name = flavor_dan.58.a
+		location:kobenhavn = {
+			change_building_level_in_location = {
+				building = building_type:university
+				value = 1
+			}
+		}
+	}
+
+	option = {
+		name = flavor_dan.58.b
+		location:kobenhavn = {
+			change_building_level_in_location = {
+				building = building_type:university
+				value = 1
+			}
+		}
+	change_gold_effect = { scale = -3 }
+		add_research_progress = research_progress_mild_bonus
+	}
+
+	option = {
+		name = flavor_dan.58.c
+		add_research_progress = research_progress_mild_penalty
+	}
+}
+
+flavor_dan.62 = { #Royal Porcelain Factory
+	type = country_event
+	title = flavor_dan.62.title
+	desc = flavor_dan.62.desc
+	outcome = neutral
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_pottery.dds"
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1775.1.1
+		to = 1875.1.1
+		monthly_chance = 10
+	}
+
+	historical_info = flavor_dan.62.historical_info
+
+	trigger = {
+		any_owned_location = {
+			count >= 20
+			OR = {
+				has_building = building_type:porcelain_guild
+				has_building = building_type:porcelain_manufactory
+			}
+		}
+		any_market_with_merchants = {
+			location.region = region:south_china_region
+			has_merchant = root
+		}
+	}
+
+	option = {
+		name = flavor_dan.62.a
+		change_gold_effect = { scale = 4 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+		every_market_with_merchants = {
+			limit = {
+				location.continent = continent:europe
+			}
+			add_temporary_demand = { type = demand:porcelain_from_china months = 60 }
+		}
+	}
+}
+
+flavor_dan.65 = { #Royal Life Guards' Mutiny
+	type = country_event
+	title = flavor_dan.65.title
+	desc = flavor_dan.65.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1750.1.1
+		to = 1850.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	trigger = {
+		has_advance = dan_royal_life_guards
+		government_type = government_type:monarchy
+		stability < -20
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:nobles}
+	}
+
+	option = {
+		name = flavor_dan.65.a
+		capital = { every_pop = {	add_pop_satisfaction = pop_satisfaction_severe_penalty	} }
+	}
+
+	option = {
+		name = flavor_dan.65.b
+		change_gold_effect = { scale = -3 }
+		add_army_tradition = army_tradition_mild_penalty
+	}
+}
+
+flavor_dan.66 = { #Expanding the Copenhagen Dockyard
+	type = country_event
+	title = flavor_dan.66.title
+	desc = flavor_dan.66.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		location:kobenhavn = {
+			has_building = building_type:copenhagen_dockyard
+		}
+		owns = location:kobenhavn
+		societal_value:land_vs_naval > 25
+		monthly_sailors > 1
+	}
+
+	immediate = {
+		location:kobenhavn = {
+		save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_dan.66.a
+		add_sailors = { value = monthly_sailors multiply = -6 }
+		add_navy_tradition = navy_tradition_severe_bonus
+	}
+
+	option = {
+		name = flavor_dan.66.b
+		change_gold_effect = { scale = -6 }
+		add_navy_tradition = navy_tradition_severe_bonus
+	}
+
+	option = {
+		name = flavor_dan.66.c
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+flavor_dan.67 = { #The Elmelunde Frescos
+	type = country_event
+	title = flavor_dan.67.title
+	desc = flavor_dan.67.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		location:vordingborg = {
+			has_building = building_type:temple
+		}
+		owns = location:vordingborg
+	}
+
+	immediate = {
+		location:vordingborg = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_dan.67.a
+		culture = {
+			add_cultural_tradition = cultural_tradition_weak_bonus
+		}
+		location:vordingborg = {
+			create_art = {
+				quality = 60
+				type = work_of_art_type:painting
+				key = elmelunde_frescoes
+			}
+		}
+	}
+}
+
+flavor_dan.68 = { #Dominium Maris Baltici
+	type = country_event
+	title = flavor_dan.68.title
+	desc = flavor_dan.68.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 10
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	trigger = {
+		navy_size >= 50
+		navy_tradition >= 60
+		area:eastern_baltic_sea = {
+			is_area_coastal_sea = yes
+			any_adjacent_ports_to_area = {
+				OR = {
+					has_owner = no
+					owner ?= root
+					owner ?= {
+						navy_size < root.navy_size
+					}
+				}
+				count = all
+			}
+		}
+	}
+
+	immediate = {
+		event_illustration_government_estate_effect = yes
+	}
+
+	option = {
+		name = flavor_dan.68.a
+		add_navy_tradition = navy_tradition_extreme_bonus
+		add_country_modifier = {
+			modifier = dan_dominium_maris_baltici
+			years = 10
+			mode = add_and_extend
+		}
+	}
+}

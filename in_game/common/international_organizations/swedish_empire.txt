@@ -138,6 +138,18 @@ swedish_empire = { #svenska stormaktstiden https://en.wikipedia.org/wiki/Swedish
             value = country_tax_base
             multiply = 0.25
         }
+        if = {
+            limit = {
+                OR = {
+                    country_rank = country_rank:rank_kingdom
+                    country_rank = country_rank:rank_empire
+                }
+            }
+            subtract = {
+                desc = "powerful"
+                value = 200
+            }
+        }
     }
 
     variables = {

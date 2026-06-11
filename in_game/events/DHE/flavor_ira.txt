@@ -1,0 +1,1665 @@
+﻿namespace = flavor_ira
+
+#Political Turmoil
+flavor_ira.4 = {
+	type = country_event
+	title = flavor_ira.4.title
+	desc = flavor_ira.4.desc
+	outcome = neutral
+	historical_info = flavor_ira.4.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SFV
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 5
+	}
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+	trigger = {
+		trigger_if = {
+			limit = { has_ruler = yes }
+			ruler ?= { total_abilities < 120 }
+		}
+		trigger_else = {
+			regent ?= { total_abilities < 180 }
+		}
+		has_advance = ira_the_qizilbash
+		country_has_estate = estate_type:tribes_estate
+		has_or_had_great_ruler = yes
+		NOT = {
+			character_is_the_great_ruler = {
+				target = ruler_or_regent
+			}
+		}
+		OR = {
+			"estate_power(estate_type:tribes_estate)" > 0.5
+			any_country_sub_unit = {
+				sub_unit_type = unit_type:a_discovery_qizilbash
+				percent >= 0.1
+			}
+		}
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler_or_regent ?= { save_scope_as = target_character }
+		save_scope_as = target_country
+		make_the_great_scope = { save_scope_as = great_ruler }
+	}
+
+	option = {
+		name = flavor_ira.4.a
+		historical_option = yes
+		add_stability = stability_extreme_penalty
+		add_manpower = { value = root.monthly_manpower multiply = -5 }
+	}
+	option = {
+		name = flavor_ira.4.b
+		change_gold_effect = { scale = -12.00 }
+		add_estate_satisfaction = { type = estate_type:tribes_estate value = estate_satisfaction_severe_penalty }
+		custom_tooltip = {
+			text = flavor_ira.4.b.tt
+			every_unit = {
+				limit = { any_sub_unit = { sub_unit_type = unit_type:a_discovery_qizilbash } }
+				destroy_every_sub_unit_of_type = {
+					sub_unit_type = unit_type:a_discovery_qizilbash
+				}
+			}
+		}
+	}
+}
+
+#Persian Miniature Painting
+flavor_ira.5 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_ira.5.title
+	desc = flavor_ira.5.desc
+	outcome = neutral
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1644.1.1
+		to = 1800.1.1
+		monthly_chance = 5
+	}
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+	trigger = {
+		religion.group = religion_group:muslim
+		any_artist = {
+			artist_type = painter
+		}
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		save_scope_as = target_country
+	}
+
+	option = {
+		name = flavor_ira.5.a
+		custom_tooltip = {
+			text = flavor_ira.5.a.tt
+			ordered_artist = {
+				limit = { artist_type = painter }
+				order_by = artist_skill
+				max = 3
+				check_range_bounds = no
+				start_work_of_art = {
+					work_of_art_type = work_of_art_type:miniature_painting
+				}
+			}
+		}
+		add_gold = {
+			value = root.monthly_income_trade_and_tax
+			multiply = {
+				value = 12
+				multiply = root.num_artists
+				max = 36
+			}
+			multiply = -1
+		}
+	}
+	option = {
+		name = flavor_ira.5.b
+		#Effects are in the after section, they will be shown anyway
+	}
+	after = {
+		add_prestige = prestige_severe_bonus
+		culture = { add_cultural_influence = cultural_influence_mild_bonus }
+	}
+}
+
+#The [Root.Culture.GetName] Influence
+flavor_ira.9 = {
+	type = country_event
+	title = flavor_ira.9.title
+	desc = flavor_ira.9.desc
+	outcome = neutral
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1644.1.1
+		to = 1800.1.1
+		monthly_chance = 5
+	}
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+	trigger = {
+		num_works_of_art > 10
+		num_artists > 10
+		is_during_bankruptcy = no
+		monthly_balance > 0
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		save_scope_as = target_country
+	}
+	option = {
+		name = flavor_ira.9.a
+		add_prestige = prestige_severe_bonus
+		culture = {
+			add_cultural_influence = cultural_influence_severe_bonus
+			add_cultural_tradition = cultural_tradition_severe_bonus
+		}
+	}
+}
+
+#Turkmen Recruits Flock to the Banners
+flavor_ira.14 = {
+	type = country_event
+	title = flavor_ira.14.title
+	desc = flavor_ira.14.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 10
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		culture_percentage_in_country = {
+			culture = culture:turkmen_culture
+			value > 0
+		}
+	}
+	
+	illustration_tags = {
+        10 = armed
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+	}
+	
+	option = {
+		name = flavor_ira.14.a
+		add_yearly_manpower = 1
+		if = {
+			limit = { country_has_estate = estate_type:tribes_estate}
+			add_estate_satisfaction = { type = estate_type:tribes_estate value = estate_satisfaction_weak_bonus }
+		}
+	}
+
+	option = {
+		name = flavor_ira.14.b
+		if = {
+			limit = { country_has_estate = estate_type:tribes_estate}
+			add_estate_satisfaction = { type = estate_type:tribes_estate value = estate_satisfaction_weak_penalty }
+		}
+		culture = { add_cultural_tradition = cultural_tradition_weak_bonus }
+		add_prestige = prestige_weak_bonus
+	}
+}
+##The New Persian Horse
+flavor_ira.15 = {
+	type = country_event
+	title = flavor_ira.15.title
+	desc = flavor_ira.15.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_horses.dds"
+
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 5
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		produced_in_country:horses > 0
+	}
+
+	option = {
+		name = flavor_ira.15.a
+		add_country_modifier = { modifier = ira_selective_horse_breeding years = modifier_duration_years_normal mode = add_and_extend }
+	}
+
+	option = {
+		name = flavor_ira.15.b
+		add_country_modifier = { modifier = ira_intensive_horse_breeding years = modifier_duration_years_normal mode = add_and_extend }
+	}
+}
+
+#Shahnameh of Shah $RULER$
+flavor_ira.16 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_ira.16.title
+	desc = flavor_ira.16.desc
+	outcome = neutral
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 5
+	}
+	fire_only_once = yes
+	trigger = {
+		has_ruler = yes
+		num_artists > 0
+		any_artist = {
+			artist_type = writer
+			artist_skill > 0.8
+		}
+	}
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+			save_scope_as = target_ruler
+		}
+		random_artist = {
+			limit = {
+				artist_type = writer
+				artist_skill > 0.8
+			}
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_ira.16.a
+		capital = {
+			create_art = {
+				artist = scope:target_character
+				quality = 80
+				type = work_of_art_type:chronicle
+				key = shahnameh
+			}
+		}
+		culture = {
+			add_cultural_tradition = cultural_tradition_severe_bonus
+		}
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = ira_well_renowned_artist
+				years = modifier_duration_permanent
+				mode = add_and_extend
+			}
+		}
+	}
+}
+
+#Chinese Blue-and-White Porcelains
+flavor_ira.17  = {
+	type = country_event
+	title = flavor_ira.17.title
+	desc = flavor_ira.17.desc
+	outcome = neutral
+	fire_only_once = yes
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_porcelain.dds"
+
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1644.1.1
+		to = 1800.1.1
+		monthly_chance = 5
+	}
+	trigger = {
+		has_ruler = yes
+		capital = {
+			market ?= {
+				NOT = { is_import_banned = goods:porcelain }
+			}
+		}
+		any_related_country = {
+			type = alliance
+			capital.sub_continent = sub_continent:east_asia
+			has_ruler = yes
+			capital = {
+				market ?= {
+					NOT = { is_export_banned = goods:porcelain }
+					is_produced_in_market = goods:porcelain
+				}
+			}
+		}
+	}
+	immediate = {
+		save_scope_as = root_country
+		ruler ?= { save_scope_as = root_character }
+		capital.market = { save_scope_as = root_market }
+		random_related_country = {
+			type = alliance
+			limit = {
+				capital.sub_continent = sub_continent:east_asia
+				capital = {
+					market ?= {
+						NOT = { is_export_banned = goods:porcelain }
+						is_produced_in_market = goods:porcelain
+					}
+				}
+			}
+			save_scope_as = target_country
+			ruler ?= { save_scope_as = target_character }
+		}
+	}
+	option = {
+		name = flavor_ira.17.a
+		scope:root_market = {
+			add_goods_supply = {
+				goods = goods:porcelain
+				amount = market_goods_severe_gain
+			}
+		}
+		add_prestige = prestige_mild_bonus
+		scope:target_country = { add_prestige = prestige_mild_bonus }
+	}
+}
+
+#The Persian Rugs
+flavor_ira.18 = {
+	type = country_event
+	title = flavor_ira.18.title
+	desc = flavor_ira.18.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_silk.dds"
+
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1644.1.1
+		to = 1750.1.1
+		monthly_chance = 5
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		OR = {
+			produced_in_country:silk > 10
+			produced_in_country:fine_cloth > 10
+			produced_in_country:dyes > 10
+		}
+	}
+
+
+	option = {	#Monopolize the Rug Market
+		name = flavor_ira.18.a
+		if = {
+			limit = {
+				current_age_or_later = { age = age_4_reformation }
+			}
+			change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_minor_move_to_left }
+		}
+		add_country_modifier = { modifier = ira_rug_monopoly years = modifier_duration_years_long mode = add_and_extend }
+	}
+
+	option = {	#Flood the Rug Market
+		name = flavor_ira.18.b
+		if = {
+			limit = {
+				current_age_or_later = { age = age_4_reformation }
+			}
+			change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_minor_move_to_right }
+		}
+		add_country_modifier = { modifier = ira_increased_rug_trade years = modifier_duration_years_long mode = add_and_extend }
+	}
+
+	option = {	#Keep it moderate
+		name = flavor_ira.18.c
+		add_country_modifier = { modifier = ira_steady_rug_production years = modifier_duration_years_long mode = add_and_extend }
+	}
+}
+
+#Rise of the Persian Arquebus
+flavor_ira.19 = {
+	type = country_event
+	title = flavor_ira.19.title
+	desc = flavor_ira.19.desc
+	outcome = neutral
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 5
+	}
+	illustration_tags = {
+        10 = armed
+        10 = exterior
+    }
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+	}
+	trigger = {
+		has_embraced_institution = institution:artillery_institution
+		has_advance = ira_the_tofangchi
+		any_country_sub_unit = {
+			sub_unit_type = unit_type:a_tofangchi
+			count > 10
+		}
+	}
+	#A new gunpowder time has arrived!
+	option = {
+		name = flavor_ira.19.a
+		qizilbash_estate_satisfaction = { value = estate_satisfaction_severe_penalty }
+		add_army_tradition = army_tradition_severe_bonus
+		custom_tooltip = {
+			text = flavor_ira.19.a.tt
+			every_country_sub_unit = {
+				limit = { sub_unit_type = unit_type:a_tofangchi }
+				add_subunit_experience = subunit_experience_severe_bonus
+			}
+		}
+	}
+	#We cannot abandon our traiditions!
+	option = {
+		name = flavor_ira.19.b
+		trigger = { country_has_estate = estate_type:tribes_estate }
+		qizilbash_estate_satisfaction = { value = estate_satisfaction_severe_bonus }
+		add_army_tradition = army_tradition_mild_penalty
+		add_stability = stability_mild_bonus
+	}
+}
+
+#The Supreme Emerald Lion
+flavor_ira.20 = {
+	type = country_event
+	title = flavor_ira.20.title
+	desc = flavor_ira.20.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 5
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		has_ruler = yes
+		region:persia_region = {
+			any_location_in_region = {
+				has_owner = yes
+				owner = root
+				count = all
+			}
+		}
+		sub_continent:south_asia = {
+			any_location_in_sub_continent = {
+				has_owner = yes
+				owner = root
+				count >= 200
+			}
+		}
+		sub_continent:middle_east = {
+			any_location_in_sub_continent = {
+				NOT = { region = region:persia_region }
+				has_owner = yes
+				owner = root
+				count >= 250
+			}
+		}
+		continent:europe = {
+			any_location_in_continent = {
+				has_owner = yes
+				owner = root
+				count >= 100
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = armed
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler = { save_scope_as = target_ruler }
+	}
+
+	option = {
+		name = flavor_ira.20.a
+		add_prestige = prestige_ultimate_bonus
+		add_country_modifier = { modifier = ira_the_emerald_lion years = modifier_duration_years_century mode = add_and_extend }
+	}
+}
+
+#Redecorating Constantinople
+flavor_ira.21 = {
+	type = country_event
+	title = flavor_ira.21.title
+	desc = flavor_ira.21.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 5
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		location:constantinople = {
+			owner = root
+			this != root.capital
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		capital = { save_scope_as = target_capital }
+		location:constantinople = { save_scope_as = target_location }
+	}
+
+	#Expand its development
+	option = {
+		name = flavor_ira.21.a
+		location:constantinople = {
+			add_location_modifier = { modifier = ira_second_capital years = modifier_duration_years_normal mode = add_and_extend }
+		}
+	}
+
+	#Siphon its development
+	option = {
+		name = flavor_ira.21.b
+		location:constantinople = {
+			change_prosperity = prosperity_severe_penalty
+		}
+		change_gold_effect = { scale = 1 }
+	}
+}
+
+#Evolution of the Qizilbash
+flavor_ira.25 = {
+	type = country_event
+	title = flavor_ira.25.title
+	desc = flavor_ira.25.desc
+	outcome = neutral
+	trigger = {
+		has_advance = ira_the_qizilbash
+		current_age_or_later = { age = age_4_reformation }
+		NOT = { has_unlocked_unit_trigger = { type = a_reformation_qizilbash } }
+	}
+	
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+	
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+	}
+	
+	option = {
+		name = flavor_ira.25.a
+		unlock_unit_effect = { type = a_reformation_qizilbash }
+	}
+}
+
+#Military reforms of Tahmasp
+flavor_ira.31 = {
+	type = country_event
+	title = flavor_ira.31.title
+	desc = flavor_ira.31.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 3
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		ruler_or_regent ?= {
+			OR = {
+				mil >= 80
+				has_trait = military_theorist
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_ira.31.a
+
+		trigger = {
+			any_owned_location = {
+				has_land_military_building = yes
+			}
+		}
+
+		custom_tooltip = {
+			text = ira_grant_prosperity_to_armory_building_locations
+			every_owned_location = {
+				limit = {
+					has_land_military_building = yes
+				}
+				change_prosperity = prosperity_mild_bonus
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ira.31.b
+
+		add_army_tradition = army_tradition_extreme_bonus
+		change_societal_value = {
+			type = quality_vs_quantity
+			value = societal_value_huge_move_to_left
+		}
+	}
+
+	option = {
+		name = flavor_ira.31.c
+
+		add_army_tradition = army_tradition_extreme_bonus
+		change_societal_value = {
+			type = quality_vs_quantity
+			value = societal_value_huge_move_to_right
+		}
+	}
+}
+
+#Patronage of the Arts from the Safavids
+flavor_ira.34 = {
+	type = country_event
+	title = flavor_ira.34.title
+	desc = flavor_ira.34.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = SFV
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 1
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		ruler ?= {
+			has_dynasty = yes
+			OR = {
+				adm >= 80
+				has_trait = scholar
+			}
+		}
+		religion.group = religion_group:muslim
+		prestige >= 50
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_ira.34.a
+
+		change_societal_value = {
+			type = spiritualist_vs_humanist
+			value = societal_value_move_to_right
+		}
+
+		unlock_estate_privilege_effect = {
+			type = ira_iranian_art_patronage
+		}
+
+		change_gold_effect = { scale = -2 }
+
+		add_research_progress = research_progress_mild_bonus
+	}
+
+	option = {
+		name = flavor_ira.34.b
+
+		add_prestige = prestige_mild_penalty
+
+		change_societal_value = {
+			type = spiritualist_vs_humanist
+			value = societal_value_move_to_left
+		}
+
+		change_societal_value = { type = mysticism_vs_jurisprudence value = societal_value_move_to_left }
+
+	}
+}
+
+#Currency Reform of Tahmasp
+flavor_ira.35 = {
+	type = country_event
+	title = flavor_ira.35.title
+	desc = flavor_ira.35.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 2
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		inflation >= 0.05
+		ruler ?= {
+			OR = {
+				adm >= 80
+				has_trait = midas_touched
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_ira.35.a
+
+		capital.market ?= {
+			add_temporary_demand = {
+				type = demand:ira_currency_reforms
+				years = 10
+			}
+		}
+
+		add_inflation = inflation_extreme_bonus
+
+		add_estate_satisfaction = {
+			type = estate_type:burghers_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+
+	option = {
+		name = flavor_ira.35.b
+
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+}
+
+#Ali Qapu Palace
+flavor_ira.38 = {
+	type = country_event
+	title = flavor_ira.38.title
+	desc = flavor_ira.38.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 2
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		capital ?= location:isfahan
+		culture = { has_culture_group = culture_group:iranian_group }
+		government_type = government_type:monarchy
+		ruler ?= {
+			has_dynasty = yes
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		location:isfahan = {
+			save_scope_as = target_location
+		}
+
+		ruler ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_ira.38.a
+
+		scope:target_location = {
+			create_art = {
+				artist = scope:target_character
+				key = ali_qapu_palace
+				quality = 95
+				type = work_of_art_type:palace
+			}
+		}
+
+		add_government_power = government_power_mild_bonus
+
+		change_gold_effect = { scale = -4 }
+	}
+
+	option = {
+		name = flavor_ira.38.b
+
+		add_prestige = prestige_extreme_penalty
+		add_government_power = government_power_mild_penalty
+	}
+}
+
+#Alcohol Ban
+flavor_ira.39 = {
+	type = country_event
+	title = flavor_ira.39.title
+	desc = flavor_ira.39.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 2
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		religion.group = religion_group:muslim
+		OR = {
+			ruler_or_regent ?= {
+				has_trait = zealot
+			}
+			societal_value:spiritualist_vs_humanist <= -20
+		}
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		unlock_law_effect = {
+			type = ira_alcohol_ban
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_ira.39.a
+
+		add_policy = policy:ban_on_alcohol
+
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_bonus
+		}
+
+		add_estate_satisfaction = {
+			type = estate_type:dhimmi_estate
+			value = estate_satisfaction_mild_penalty
+		}
+
+		change_societal_value = { type = mysticism_vs_jurisprudence value = societal_value_move_to_left }
+	}
+
+	option = {
+		name = flavor_ira.39.b
+
+		add_policy = policy:no_restriction_on_alcohol
+
+		add_estate_satisfaction = {
+			type = estate_type:dhimmi_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+}
+
+#Farangi-Sazi (western painting) art style
+flavor_ira.41 = {
+	type = country_event
+	title = flavor_ira.41.title
+	desc = flavor_ira.41.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 2
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		any_other_great_power = {
+			capital ?= {
+				continent = continent:europe
+			}
+			prev.prestige > prestige
+			prev.culture.cultural_influence > culture.cultural_influence
+		}
+
+		capital ?= {
+			continent != continent:europe
+		}
+
+		religion.group = religion_group:muslim
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ordered_other_great_power = {
+			order_by = prestige
+			limit = {
+				capital ?= {
+					continent = continent:europe
+				}
+			}
+			max = 1
+			save_scope_as = target_country
+			ruler_or_regent ?= {
+				save_scope_as = target_character
+			}
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+	}
+
+	option = {
+		name = flavor_ira.41.a
+
+		culture ?= {
+			add_cultural_influence = cultural_influence_mild_bonus
+			add_cultural_tradition = cultural_tradition_mild_penalty
+		}
+
+		scope:target_country.culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+
+		change_societal_value = {
+			type = outward_vs_inward
+			value = societal_value_move_to_left
+		}
+
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_penalty
+		}
+	}
+
+	option = {
+		name = flavor_ira.41.b
+
+		culture ?= {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+}
+
+flavor_ira.42 = {
+	type = country_event
+	title = flavor_ira.42.title
+	desc = flavor_ira.42.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1690.1.1
+		to = 1735.1.1
+		monthly_chance = 3
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		NOT = {
+			any_cabinet_character = {
+				modifier:is_head_of_cabinet = yes
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_muhammad
+			last_name = qazvini
+			estate = estate_type:burghers_estate
+			adm = 80
+			dip = 60
+			mil = 30
+			culture = culture:farsi_culture
+			religion = religion:sunni
+			birth_location = location:qazvin
+			birth_date = 1670.5.3 #Unknown birthdate
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+	}
+
+	option = {
+		name = flavor_ira.42.a
+
+		scope:target_character = {
+			add_adm = 5
+			add_dip = 15
+			add_mil = 10
+			move_country = root
+		}
+		promote_to_head_of_cabinet_effect = {
+			target = scope:target_character
+		}
+
+		change_gold_effect = { scale = -1 }
+	}
+
+	option = {
+		name = flavor_ira.42.b
+
+		add_government_power = government_power_mild_penalty
+
+		kill_character_silently = {
+			target = scope:target_character
+		}
+	}
+}
+
+#Qajar Tribes
+flavor_ira.45 = {
+	type = country_event
+	title = flavor_ira.45.title
+	desc = flavor_ira.45.desc
+	outcome = neutral
+	historical_info = flavor_ira.45.historical_info
+
+	dynamic_historical_event = {
+		tag = IRA
+		from = 1770.1.1
+		to = 1821.1.1
+		monthly_chance = 3
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		government_type = government_type:monarchy
+	}
+
+	illustration_tags = {
+        10 = armed
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		location:astarabad = {
+			create_dynasty_from_location = qajar_dynasty
+		}
+
+		create_character = {
+			first_name = name_agha.name_muhammad
+			dynasty = dynasty:qajar_dynasty
+			estate = estate_type:nobles_estate
+			culture = culture:turkoman_culture
+			religion = religion:sunni
+			birth_location = location:astarabad
+			birth_date = 1722.3.14
+			adm = 65
+			dip = 40
+			mil = 75
+			save_scope_as = target_character
+			script = agha_muhammad_qajar
+			create_in_limbo = yes
+		}
+
+		create_character = {
+			first_name = name_fath.name_ali
+			dynasty = dynasty:qajar_dynasty
+			estate = estate_type:nobles_estate
+			culture = culture:turkoman_culture
+			religion = religion:sunni
+			birth_location = location:damghan
+			father = character:agha_muhammad_qajar
+			birth_date = 1750.5.12
+			adm = 55
+			dip = 90
+			mil = 60
+			save_scope_as = target_character2
+			script = fath_ali_qajar
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_ira.45.a
+
+		add_government_power = government_power_mild_penalty
+
+		custom_tooltip = {
+			text = ira_qajar_dynasty_may_claim_crown
+			set_variable = ira_qajar_dynasty_rebellion_flag
+		}
+	}
+
+	option = {
+		name = flavor_ira.45.b
+
+		add_all_estate_satisfaction = {
+			value = estate_satisfaction_mild_penalty
+		}
+
+		scope:target_character = {
+			banish_character = yes
+		}
+
+		scope:target_character2 = {
+			banish_character = yes
+		}
+	}
+}
+
+flavor_ira.46 = {
+	type = country_event
+	title = flavor_ira.46.title
+	desc = flavor_ira.46.desc
+	outcome = neutral
+	historical_info = flavor_ira.46.historical_info
+
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1770.1.1
+		to = 1821.1.1
+		monthly_chance = 1
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		custom_tooltip = {
+			text = variable_ira_qajar_dynasty_rebellion_flag_tt
+			has_variable = ira_qajar_dynasty_rebellion_flag
+		}
+		government_type = government_type:monarchy
+		OR = {
+			character:agha_muhammad_qajar = {
+				is_alive = yes
+			}
+			character:fath_ali_qajar = {
+				is_alive = yes
+			}
+		}
+		ruler_or_regent != character:agha_muhammad_qajar
+		ruler_or_regent != character:fath_ali_qajar
+
+		legitimacy <= 60
+		stability <= 5
+	}
+
+	illustration_tags = {
+        10 = armed
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		if = {
+			limit = {
+				character:agha_muhammad_qajar = {
+					is_alive = yes
+				}
+			}
+
+			character:agha_muhammad_qajar = {
+				save_scope_as = rebellion_ruler
+			}
+
+			character:fath_ali_qajar = {
+				save_scope_as = rebellion_heir
+			}
+		}
+
+		else = {
+			character:fath_ali_qajar = {
+				save_scope_as = rebellion_ruler
+			}
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = current_ruler
+		}
+
+		create_rebel = {
+			category = pretender
+			name = qajar_pretenders
+			save_scope_as = target_rebel
+		}
+
+		set_variable = {
+			name = current_ruler_power_variable
+			value = {
+				add = {
+					value = "estate_power(estate_type:crown_estate)"
+					multiply = 5
+				}
+				add = {
+					value = government_power
+					divide = 2
+				}
+			}
+		}
+		set_variable = {
+			name = num_rebelling_locations
+			value = 0
+		}
+		if = {
+			limit = {
+				var:current_ruler_power_variable < 100
+			}
+			while = {
+				limit = { var:current_ruler_power_variable < 100 }
+				ordered_owned_location = {
+					limit = {
+						is_capital = no
+						NOT = { has_variable = already_supports_rebel_variable }
+					}
+					order_by = {
+						value = population
+						multiply = -1
+					}
+					max = 1
+					owner = {
+						change_variable = {
+							name = current_ruler_power_variable
+							add = 2
+						}
+						change_variable = {
+							name = num_rebelling_locations
+							add = 1
+						}
+					}
+					set_variable = {
+						name = already_supports_rebel_variable
+						months = 2
+					}
+					every_pop = {
+						limit = {
+							owner = root
+						}
+						add_pop_satisfaction = pop_satisfaction_extreme_penalty
+						change_pop_allegiance = scope:target_rebel
+					}
+				}
+			}
+		}
+
+		scope:rebellion_ruler = {
+			change_character_allegiance = scope:target_rebel
+		}
+
+		if = {
+			limit = {
+				exists = scope:rebellion_heir
+			}
+			scope:current_ruler = {
+				change_character_allegiance = scope:target_rebel
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ira.46.a
+
+		set_new_ruler = scope:rebellion_ruler
+
+		add_stability = stability_severe_penalty
+
+		scope:current_ruler = {
+			banish_character = yes
+		}
+
+		destroy_rebel = scope:target_rebel
+	}
+
+	option = {
+		name = flavor_ira.46.b
+
+		scope:target_rebel = {
+			add_rebel_progress = 0.75
+		}
+	}
+
+	after = {
+		remove_variable = ira_qajar_dynasty_rebellion_flag
+		remove_variable = current_ruler_power_variable
+		remove_variable = num_rebelling_locations
+	}
+}
+
+#Qajar Art
+
+flavor_ira.51 = {
+	type = country_event
+	title = flavor_ira.51.title
+	desc = flavor_ira.51.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = IRA
+		from = 1700.1.1
+		to = 1850.1.1
+		monthly_chance = 3
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		government_type = government_type:monarchy
+		ruler_or_regent ?= {
+			has_dynasty = yes
+			dynasty ?= dynasty:qajar_dynasty
+			OR = {
+				dip >= 90
+				has_trait = scholar
+			}
+		}
+	}
+	
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	
+	option = {
+		name = flavor_ira.51.a
+
+		culture ?= {
+			add_cultural_influence = cultural_influence_severe_bonus
+			add_cultural_tradition = cultural_tradition_severe_bonus
+		}
+	}
+
+	option = {
+		name = flavor_ira.51.b
+
+		add_prestige = prestige_extreme_bonus
+
+		add_all_estate_satisfaction = {
+			value = estate_satisfaction_extreme_bonus
+		}
+	}
+
+	option = {
+		name = flavor_ira.51.c
+
+		create_character = {
+			adm = {
+				30
+				70
+			}
+			dip = {
+				30
+				70
+			}
+			mil = {
+				30
+				70
+			}
+			artist = painter
+			artist_skill = {
+				0.6
+				0.9
+			}
+			age = 30
+		}
+
+		add_legitimacy = legitimacy_extreme_bonus
+	}
+}
+
+### Persia-Ottoman Events ###
+#Turko-Persian Tension
+flavor_ira.1000 = {
+	type = country_event
+	title = flavor_ira.1000.title
+	desc = flavor_ira.1000.desc
+	outcome = neutral
+	historical_info = flavor_ira.1000.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SFV
+		tag = IRA
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 5
+	}
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+	trigger = {
+		has_ruler = yes
+		trigger_if = {
+			limit = {
+				is_situation_active = situation:rise_of_the_ottomans
+				situation:rise_of_the_ottomans = {
+					custom_tooltip = {
+						text = variable_strongest_beylik_variable_tt
+						has_variable = strongest_beylik_variable
+					}
+				}
+			}
+			situation:rise_of_the_ottomans = {
+				var:strongest_beylik_variable = {
+					has_ruler = yes
+					is_neighbor_of = ROOT
+					is_free_or_tributary_trigger = yes
+					NOT = { is_allied_with = { target = ROOT } }
+					NOT = { is_at_war_with = ROOT }
+					OR = {
+						is_rival_of = ROOT
+						is_enemy_of = ROOT
+						country_rank_level > 2
+					}
+				}
+			}
+		}
+		trigger_else = {
+			c:TUR = {
+				has_ruler = yes
+				is_neighbor_of = ROOT
+				is_free_or_tributary_trigger = yes
+				NOT = { is_allied_with = { target = ROOT } }
+				NOT = { is_at_war_with = ROOT }
+				OR = {
+					is_rival_of = ROOT
+					is_enemy_of = ROOT
+					country_rank_level > 2
+				}
+			}
+		}
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		save_scope_as = root_country
+		get_ottomans_equivalent_scope = {
+			save_scope_as = target_country
+		}
+		ruler ?= { save_scope_as = root_character }
+		scope:target_country = { ruler ?= { save_scope_as = target_character } }
+	}
+
+	option = {
+		name = flavor_ira.1000.a
+		historical_option = yes
+		add_historical_rival_scripted = {
+			target = scope:target_country
+			trigger_recipient_event = no
+		}
+		custom_tooltip = flavor_ira.1000.a.tt
+		add_effect_scaling_with_societal_value = {
+			societal_value = belligerent_vs_conciliatory
+			effect = stability
+			operator = divide
+			value = 10
+		}
+		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_large_move_to_left }
+		scope:target_country = {
+			show_as_tooltip = {
+				add_historical_rival_scripted = {
+					target = scope:root_country
+			trigger_recipient_event = no
+				}
+			}
+			trigger_event_silently = flavor_ira.1001
+		}
+	}
+	option = {
+		name = flavor_ira.1000.b
+		add_effect_scaling_with_societal_value = {
+			societal_value = belligerent_vs_conciliatory
+			effect = stability
+			operator = divide
+			value = -5
+		}
+		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_large_move_to_right }
+	}
+}
+flavor_ira.1001 = {
+	type = country_event
+	title = flavor_ira.1000.title
+	desc = flavor_ira.1000.desc
+	outcome = neutral
+	historical_info = flavor_ira.1000.historical_info
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	option = {
+		name = flavor_ira.1001.a
+		add_historical_rival_scripted = {
+			target = scope:root_country
+			trigger_recipient_event = no
+		}
+	}
+}

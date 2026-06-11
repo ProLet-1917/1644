@@ -72,7 +72,6 @@ REPLACE:ruined_great_wall_of_china = {
 	}
 }
 
-# 1644模组：降低县衙纸张需求
 REPLACE:zhixian = {
 	is_foreign = no
 	max_levels = 2
@@ -98,7 +97,7 @@ REPLACE:zhixian = {
 	
 	unique_production_methods = {
 		zhixian_1644_maintenance = {
-			paper = 0.25
+			paper = 0.3
 			weaponry = 0.1
 			tools = 0.05
 			fine_cloth = 0.05
@@ -109,11 +108,11 @@ REPLACE:zhixian = {
 	construction_demand = zhixian_construction
 
 	modifier = {
-		local_max_control = 0.15  # 
+		local_max_control = 0.05  #
 		local_monthly_control = 0.005  # 每月+0.5%控制力
-		local_proximity_source = 15
-		local_monthly_development_modifier = 0.025  # 发展度增长提升
-		local_nobles_estate_power = 0.10
+		local_proximity_source = 25
+		local_monthly_development_modifier = 0.010  # 发展度增长提升
+		local_nobles_estate_power = 0.25
 	}
 }
 

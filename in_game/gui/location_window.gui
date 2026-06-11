@@ -10714,9 +10714,7 @@ select_menu_left = {
 		name = "location_view_select_province"
 	}
 
-	blockoverride "close_button" {
-		onclick = "[LocationViewSelectProvince.OnClose]"
-	}
+	blockoverride "close_on_action" { on_action = "[LocationViewSelectProvince.OnClose]" }
 
 	blockoverride "select_content" {
 		select_menu_header = {

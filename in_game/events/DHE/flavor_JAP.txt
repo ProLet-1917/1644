@@ -1,0 +1,782 @@
+﻿namespace = flavor_jap
+
+flavor_jap.1 = { #The Sakoku Law
+	type = country_event
+	title = flavor_jap.1.title
+	desc = flavor_jap.1.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/international_organization_types/japanese_shogunate.dds"
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = JAP
+		from = 1644.1.1
+		to = 1800.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		exists = international_organization:japanese_shogunate
+		international_organization:japanese_shogunate = {
+			leader_country ?= root
+			international_organization_has_policy = policy:sakoku_enabled
+		}
+		NOT = { is_situation_active = situation:sengoku }
+	}
+
+	option = {
+		name = flavor_jap.1.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+	}
+	option = {
+		name = flavor_jap.1.b
+		international_organization:japanese_shogunate = {
+			add_policy_to_international_organization = policy:sakoku_disabled
+		}
+		add_stability = stability_mild_penalty
+	}
+}
+
+flavor_jap.2 = { #Rangaku
+	type = country_event
+	title = flavor_jap.2.title
+	desc = flavor_jap.2.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = JAP
+		from = 1644.1.1
+		to = 1800.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	trigger = {
+		is_subject = no
+		owns = location:nishisonogi	# nagasaki
+		country_exists = c:NED
+		location:nishisonogi = {
+			has_location_modifier = jap_dejima_island
+		}
+		OR = {
+			NOT = {
+				exists = international_organization:japanese_shogunate
+			}
+			AND = {
+				international_organization:japanese_shogunate = {
+					leader_country ?= root
+					international_organization_has_policy = policy:sakoku_enabled
+				}
+				receiving_scripted_relation = {
+					target = c:NED
+					type = relation_type:exclusive_trade_rights_with_isolated
+				}
+			}
+		}
+	}
+
+	immediate = {
+		c:NED ?= { save_scope_as = target_country }
+		location:nishisonogi = { save_scope_as = target_location }
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_jap.2.a
+		historical_option = yes
+		custom_tooltip = flavor_jap.2.a.tt
+		set_variable = { name = jap_rangaku value = 1 }
+	}
+	option = {
+		name = flavor_jap.2.b
+		add_stability = stability_mild_bonus
+	}
+}
+
+flavor_jap.7 = { #Buke Shohatto
+	type = country_event
+	title = flavor_jap.7.title
+	desc = flavor_jap.7.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = JAP
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 10
+	}
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	trigger = {
+		has_ruler = yes
+		exists = international_organization:japanese_shogunate
+		international_organization:japanese_shogunate.leader_country ?= root
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler = { save_scope_as = target_character }
+	}
+
+	option = {
+		name = flavor_jap.7.a
+		historical_option = yes
+		international_organization:japanese_shogunate ?= {
+			international_organization_unlock_law_effect = { type = jap_buke_shohatto }
+			add_policy_to_international_organization = policy:jap_buke_shohatto_enforced
+			every_international_organization_member = {
+				limit = {
+					culture = { has_culture_group = culture_group:japanese_group }
+					NOT = { this = root }
+				}
+				trigger_event_silently = { id = flavor_jap.8 }
+			}
+		}
+	}
+	option = {
+		name = flavor_jap.7.b
+		international_organization:japanese_shogunate ?= {
+			international_organization_unlock_law_effect = { type = jap_buke_shohatto }
+			add_policy_to_international_organization = policy:jap_buke_shohatto_guidelines
+			every_international_organization_member = {
+				limit = {
+					culture = { has_culture_group = culture_group:japanese_group }
+					NOT = { this = root }
+				}
+				trigger_event_silently = { id = flavor_jap.8 }
+			}
+		}
+	}
+	option = {
+		name = flavor_jap.7.c
+		add_stability = stability_severe_penalty
+	}
+
+}
+
+flavor_jap.8 = { #Buke Shohatto (daimyo)
+	type = country_event
+	title = flavor_jap.8.title
+	desc = flavor_jap.8.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/international_organization_types/japanese_shogunate.dds"
+
+	immediate = {
+		ruler = { save_scope_as = target_character }
+	}
+
+	option = {
+		name = flavor_jap.8.a
+		add_prestige = prestige_mild_penalty
+		add_opinion = { target = c:JAP modifier = opinion_mildly_displeased }
+	}
+}
+
+flavor_jap.9 = { #Gokaidō
+	type = country_event
+	title = flavor_jap.9.title
+	desc = flavor_jap.9.desc
+	outcome = neutral
+
+	historical_info = flavor_jap.9.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = JAP
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	trigger = {
+		exists = international_organization:japanese_shogunate
+		international_organization:japanese_shogunate.leader_country ?= root
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_jap.9.a
+		historical_option = yes
+		add_country_modifier = { modifier = jap_gokaido years = 20 mode = add }
+	}
+	option = {
+		name = flavor_jap.9.b
+		add_prestige = prestige_weak_penalty
+	}
+}
+
+flavor_jap.10 = { #Kyōhō Reforms
+	type = country_event
+	title = flavor_jap.10.title
+	desc = flavor_jap.10.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/banking.dds"
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = JAP
+		from = 1720.1.1
+		to = 1740.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		has_ruler = yes
+	}
+
+	immediate = {
+		ruler = { save_scope_as = target_character }
+	}
+
+	option = {
+		name = flavor_jap.10.a
+		change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_move_to_right }
+	}
+	option = {
+		name = flavor_jap.10.b
+		change_societal_value = { type = quality_vs_quantity value = societal_value_move_to_left }
+	}
+	option = {
+		name = flavor_jap.10.c
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_move_to_left }
+	}
+}
+
+flavor_jap.11 = { #Genroku
+	type = country_event
+	title = flavor_jap.11.title
+	desc = flavor_jap.11.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = JAP
+		from = 1688.1.1
+		to = 1704.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	trigger = {
+		at_war = no
+		num_loans <= 0
+		stability > 10
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_jap.11.a
+		add_stability = stability_extreme_bonus
+		culture = {
+			add_cultural_tradition = cultural_tradition_extreme_bonus
+			add_cultural_influence = cultural_influence_extreme_bonus
+		}
+	}
+}
+
+
+flavor_jap.12 = { #Kokugaku
+	type = country_event
+	title = flavor_jap.12.title
+	desc = flavor_jap.12.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = JAP
+		from = 1650.1.1
+		to = 1750.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	trigger = {
+		religious_unity < 1.0
+		culture = { has_culture_group = culture_group:japanese_group }
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+
+	option = {
+		name = flavor_jap.12.a
+		culture = {
+			add_cultural_tradition = cultural_tradition_ultimate_bonus
+		}
+	}
+}
+
+# New Dynamic Historical Events
+
+flavor_jap.154 = { # Kyoto Shosidai
+	type = country_event
+	title = flavor_jap.154.title
+	desc = flavor_jap.154.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = JAP
+		from = 1644.1.1
+		to = 1868.1.1
+		monthly_chance = 6
+	}
+
+	trigger = {
+		has_ruler = yes
+	}
+
+	immediate = {
+		ruler ?= {
+			save_scope_as = our_ruler
+		}
+		location:kyoto = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = { # Establish the office!
+		name = flavor_jap.154.a
+		historical_option = yes
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = jap_kyoto_shoshidai years = 20 mode = add }
+	}
+	option = { # It would be a waste of resources
+		name = flavor_jap.154.b
+		add_stability = stability_mild_bonus
+	}
+}
+
+flavor_jap.155 = { # Institutionalisation of the Hatamoto
+	type = country_event
+	title = flavor_jap.155.title
+	desc = flavor_jap.155.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = JAP
+		from = 1644.1.1
+		to = 1868.1.1
+		monthly_chance = 6
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	trigger = {
+		has_ruler = yes
+	}
+
+	immediate = {
+		ruler ?= {
+			save_scope_as = our_ruler
+		}
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = { # Institutionalize the Hatamoto
+		name = flavor_jap.155.a
+		historical_option = yes
+		change_societal_value = {
+			type = centralization_vs_decentralization
+			value = societal_value_large_move_to_left
+		}
+		add_stability = stability_mild_bonus
+	}
+	option = { # Maintain the balance between Gokenin and Hatamato
+		name = flavor_jap.155.b
+		add_legitimacy = legitimacy_mild_bonus
+		change_societal_value = {
+			type = centralization_vs_decentralization
+			value = societal_value_move_to_right
+		}
+	}
+}
+
+flavor_jap.160 = { # Establishment of Yoshiwara District
+	type = country_event
+	title = flavor_jap.160.title
+	desc = flavor_jap.160.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = JAP
+		from = 1644.1.1
+		to = 1890.1.1
+		monthly_chance = 4
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+
+	trigger = {
+		has_ruler = yes
+		owns = location:toshima_kanto
+		location:toshima_kanto = {
+			OR = {
+				location_rank ?= location_rank:town
+				location_rank ?= location_rank:city
+			}
+		}
+		gold > 500
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate  background = estate_type:burghers_estate }
+		ruler ?= {
+			save_scope_as = our_ruler
+		}
+	}
+
+
+	option = { # Establish the district!
+		name = flavor_jap.160.a
+		historical_option = yes
+		add_gold = -250
+		location:toshima_kanto = {
+			add_location_modifier = {
+ 				modifier = jap_yoshiwara_district
+ 				years = -1
+ 				mode = add
+ 			}
+		}
+	}
+	option = { # The city does not need the district
+		name = flavor_jap.160.b
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+flavor_jap.161 = { # Kinchu Narabini Kuge Shohatto # Laws for the Imperial Courts and Court Officials
+	type = country_event
+	title = flavor_jap.161.title
+	desc = flavor_jap.161.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = JAP
+		from = 1644.1.1
+		to = 1868.1.1
+		monthly_chance = 12
+	}
+
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+
+	trigger = {
+		has_ruler = yes
+		country_exists = c:YMT
+		c:YMT ?= {
+			has_ruler = yes
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+			save_scope_as = our_ruler
+		}
+		c:YMT ?= {
+			ruler ?= {
+				save_scope_as = ymt_ruler
+			}
+		}
+	}
+
+
+
+
+	option = { # Enact the laws on the Imperial family
+		name = flavor_jap.161.a
+		historical_option = yes
+		add_prestige = prestige_extreme_bonus
+		add_country_modifier = { modifier = jap_restricted_imperial_family years = 20 mode = add }
+		c:YMT ?= {
+			trigger_event_non_silently = flavor_jap.163
+			add_country_modifier = { modifier = jap_ymt_restricted_imperial_family years = 50 mode = add }
+		}
+	}
+	option = { # Avoid weakening the imperial family
+		name = flavor_jap.161.b
+		add_prestige = prestige_mild_penalty
+		add_legitimacy = legitimacy_mild_bonus
+	}
+}
+
+flavor_jap.163 = { # Institutionalization of the Kinchu Narabini Kuge Shohatto # For Yamato
+	type = country_event
+	title = flavor_jap.163.title
+	desc = flavor_jap.163.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+			save_scope_as = our_ruler
+		}
+		c:JAP ?= {
+			ruler ?= {
+				save_scope_as = jap_ruler
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	option = { # Horrible!
+		name = flavor_jap.163.a
+		historical_option = yes
+		add_prestige = prestige_extreme_penalty
+		add_legitimacy = legitimacy_extreme_penalty
+		show_as_tooltip = {
+			add_country_modifier = { modifier = jap_ymt_restricted_imperial_family years = 50 mode = add }
+		}
+	}
+}
+
+flavor_jap.170 = { # Kansei Reforms
+	type = country_event
+	title = flavor_jap.170.title
+	desc = flavor_jap.170.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = JAP
+		from = 1780.1.1
+		to = 1850.1.1
+		monthly_chance = 6
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+
+	trigger = {
+		has_ruler = yes
+		stability <= 10
+		at_war = no
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler ?= {
+			save_scope_as = our_ruler
+		}
+	}
+
+
+	option = { # Enact the reforms!
+		name = flavor_jap.170.a
+		historical_option = yes
+		add_stability = stability_mild_bonus
+		add_legitimacy = legitimacy_severe_penalty
+		add_country_modifier = { modifier = jap_kansei_reforms years = 20 mode = add }
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+	option = { # Forbid the reforms
+		name = flavor_jap.170.b
+		add_stability = stability_weak_penalty
+		add_legitimacy = legitimacy_extreme_bonus
+		add_prestige = prestige_weak_penalty
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_penalty
+		}
+	}
+}
+
+flavor_jap.180 = { # Appointment of Ko no Moronao as Shitsuji # For Clan Ko
+	type = country_event
+	title = flavor_jap.180.title
+	desc = flavor_jap.180.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+
+	immediate = {		
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		c:JAP ?= {
+			ruler ?= {
+				save_scope_as = jap_ruler
+			}
+		}
+		ruler ?= {
+			save_scope_as = our_ruler
+		}
+		character:jap_kou_no_moronao ?= { save_scope_as = kou_no_moronao } # Mostly to prevent event errors
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	option = { # Accept the office of Shitsuji
+		name = flavor_jap.180.a
+		historical_option = yes
+		c:JAP ?= {
+			trigger_event_non_silently = flavor_jap.182
+		}
+		add_prestige = prestige_extreme_bonus
+		add_legitimacy = legitimacy_mild_bonus
+		scope:our_ruler = {
+			add_character_modifier = {
+				modifier = jap_shitsuji_deputy
+				years = -1
+				mode = add
+			}
+		}
+	}
+	option = { # Reject the office
+		name = flavor_jap.180.b
+		c:JAP ?= {
+			trigger_event_non_silently = flavor_jap.181
+		}
+		add_stability = stability_extreme_bonus
+		add_legitimacy = legitimacy_mild_bonus
+		add_prestige = prestige_severe_penalty
+	}
+}
+
+flavor_jap.181 = { # Ko no Moronao Declines Appointment # For Japan
+	type = country_event
+	title = flavor_jap.181.title
+	desc = flavor_jap.181.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+			save_scope_as = our_ruler
+		}
+		character:jap_kou_no_moronao ?= { save_scope_as = kou_no_moronao }
+		create_character = {
+			adm = { 20 33 }
+			dip = { 20 33 }
+			mil = { 20 33 }
+			min_age = 35
+			save_scope_as = target_character
+		}
+	}
+
+	option = { # Let us hope the official can maintain the office
+		name = flavor_jap.181.a
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = jap_shitsuji_deputy
+				years = -1
+				mode = add
+			}
+		}
+		add_prestige = prestige_mild_penalty
+		add_country_modifier = { modifier = jap_lower_court_shitsuji years = 10 mode = add }
+	}
+}
+
+flavor_jap.182 = { # Ko no Moronao Accepts Appointment # For Japan
+	type = country_event
+	title = flavor_jap.182.title
+	desc = flavor_jap.182.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+			save_scope_as = our_ruler
+		}
+		character:jap_kou_no_moronao ?= { save_scope_as = kou_no_moronao }
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+
+	option = { # [kou_no_moronao.GetNameWithNoTooltip] shall serve as a fine Shitsuji.
+		name = flavor_jap.182.a
+		add_stability = stability_weak_penalty
+		add_country_modifier = { modifier = jap_moronao_shitsuji years = 10 mode = add }
+		set_variable = { name = jap_tadayoshi_may_rebel years = 20 }
+		show_as_tooltip = {
+			scope:kou_no_moronao = {
+				add_character_modifier = {
+					modifier = jap_shitsuji_deputy
+					years = -1
+					mode = add
+				}
+			}
+		}
+	}
+}
