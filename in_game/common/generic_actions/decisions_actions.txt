@@ -920,6 +920,9 @@ Unify_germany = {
                 }
             }
         }
+        international_organization:hre = {
+            exists = no
+        }
     }
 
     effect = {
@@ -970,6 +973,9 @@ ug_improve_local_goverment = {
             culture = { has_culture_group = culture_group:german_group }
             is_subject = no
             is_during_bankruptcy = no
+        }
+        international_organization:hre = {
+            exists = no
         }
     }
 
@@ -1034,6 +1040,9 @@ ug_pru_organized_troops = {
             }
             culture = { has_culture_group = culture_group:german_group }
         }
+        international_organization:hre = {
+            exists = no
+        }
     }
 
     allow = {
@@ -1041,6 +1050,9 @@ ug_pru_organized_troops = {
             culture = { has_culture_group = culture_group:german_group }
             is_subject = no
             is_during_bankruptcy = no
+        }
+        international_organization:hre = {
+            exists = no
         }
     }
 
@@ -1599,7 +1611,7 @@ claim_the_seat_of_chinese_emperor = {
     type = owncountry
     show_message = no
     ai_tick = monthly
-    ai_tick_frequency = 12
+    ai_tick_frequency = 24
 
     automation_tick = never
     automation_tick_frequency = 12
@@ -1618,19 +1630,24 @@ claim_the_seat_of_chinese_emperor = {
             }
             OR = {
                 has_reform = government_reform:the_chinese_warlords
+                has_reform = government_reform:fanwang_reform
                 has_dlc = "0_5_dawn_of_the_new_era"
             }
         }
     }
     allow = {
         scope:actor = {
-            has_reform = government_reform:the_chinese_warlords
+            OR = {
+                has_reform = government_reform:the_chinese_warlords
+                has_reform = government_reform:fanwang_reform
+            }
             OR = {
                 country_rank = country_rank:rank_kingdom
                 country_rank = country_rank:rank_duchy
                 country_rank = country_rank:rank_county
             }
             num_locations_owned_or_owned_by_subjects >= 200
+            is_subject = no
         }
     }
     effect = {
@@ -1638,9 +1655,46 @@ claim_the_seat_of_chinese_emperor = {
             add_reform = government_reform:the_chinese_emperor
             remove_reform = government_reform:the_chinese_warlords
             set_country_rank = country_rank:rank_empire
+            trigger_event_non_silently = flavor_all_chi.1
         }
     }
 
-    ai_will_do = { value = 100 }	#They always want to do this
+    ai_will_do = {
+        value = -50
+        if = {
+            limit = {
+                total_locations_owned >= 300
+            }
+            add = {
+                value = total_locations_owned
+                subtract = 200
+                multiply = 0.5
+            }
+        }
+        if = {
+            limit = {
+                ruler = {
+                    total_abilities <= 150
+                }
+            }
+            add = {
+                value = 300
+                subtract = total_abilities
+                multiply = 0.25
+            }
+        }
+        if = {
+            limit = {
+                ruler = {
+                    total_abilities > 150
+                }
+            }
+            subtract = {
+                value = total_abilities
+                subtract = 150
+                multiply = 0.25
+            }
+        }
+    }	#They always want to do this
 }
 

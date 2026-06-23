@@ -7,7 +7,7 @@ a_skirmish_infantrys = {
     morale_damage_taken = 0.2
 
     max_strength = 4.0
-    #combat_power = 4
+    combat_power = 4
 
 
     #root = location. Checks location_potential first so don't need that scripting in
@@ -32,7 +32,7 @@ a_trench_infantrys = {
     }
 
     max_strength = 4.0
-    #combat_power = 4
+    combat_power = 4
 
     maintenance_demand =  modern_infantry_maintenance
     construction_demand = modern_infantry_maintenance
@@ -48,7 +48,7 @@ a_early_armors = {
 
     movement_speed = 1
     max_strength = 1.0
-    combat_power = 2
+    combat_power = 8
     impact = {
         jungle = 0.15
         wetlands = 0.20
@@ -70,7 +70,7 @@ a_modern_armors = {
     category = army_heavy_cavalry
     gfx_tags = { heavy_tag }
 
-    combat_power = 6
+    combat_power = 12
     combat_speed = 2
     movement_speed = 2
     max_strength = 1.0
@@ -100,7 +100,7 @@ a_siege_artillerys = {
     }
 
     max_strength = 1.5
-    #combat_power = 12
+    combat_power = 12
     bombard_efficiency = 0.5
     artillery_barrage = 12
     age = "age_7_imperialism"

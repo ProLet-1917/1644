@@ -409,7 +409,9 @@ flavor_zaz.2000 = { #A men called Bohdan Khmelnytsky asking for help
 		10 = regular
 		10 = exterior
 	}
+
 	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
 		create_named_dynasty = chmielnicki_dynasty
 		create_character = {
 			estate = estate_type:cossacks_estate
@@ -425,6 +427,7 @@ flavor_zaz.2000 = { #A men called Bohdan Khmelnytsky asking for help
 			save_scope_as = target_character
 		}
 	}
+
 	option = {
 		name = flavor_zaz.2000.a #Let Him lead us!
 		historical_option = yes
@@ -487,7 +490,7 @@ flavor_zaz.2000 = { #A men called Bohdan Khmelnytsky asking for help
 			modifier = under_the_chmielnicki_leader
 			years = 5
 		}
-		add_gold = 480
+		add_gold = 2500
 		custom_description = {
 			text = "add_2000_herds"
 			change_variable = {

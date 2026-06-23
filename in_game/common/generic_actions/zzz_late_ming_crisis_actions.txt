@@ -26,10 +26,21 @@ late_ming_crisis_grant_unification_cb = {
         }
     }
 
-	ai_tick = monthly
-	ai_tick_frequency = 3
+	ai_tick = daily
+	ai_tick_frequency = 30
 	automation_tick = never
 	automation_tick_frequency = 3
+
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = "choose_situation"
+        column = {data = name}
+        visible = {
+            situation:late_ming_crisis = this
+            situation_is_active = yes
+        }
+    }
 
 	select_trigger = {
 		looking_for_a = country
@@ -100,7 +111,7 @@ late_ming_crisis_grant_unification_cb = {
 
     ai_will_do = {
         # 基础分数
-        value = 25
+        base = 25
 
         # 检查目标是否是邻居
         add = {
@@ -153,9 +164,9 @@ late_ming_crisis_grant_unification_cb = {
             value = stability
             multiply = 0.1
         }
-        add = {
+        subtract = {
             value = war_exhaustion
-            multiply = -0.5
+            multiply = 0.5
         }
     }
 }
@@ -190,6 +201,17 @@ late_ming_crisis_subjugate_disobedient = {
 
 	ai_tick = monthly
 	ai_tick_frequency = 3
+
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = "choose_situation"
+        column = {data = name}
+        visible = {
+            situation:late_ming_crisis = this
+            situation_is_active = yes
+        }
+    }
 
 	select_trigger = {
 		looking_for_a = country
@@ -368,6 +390,17 @@ late_ming_crisis_restore_celestial_empire = {
 	ai_tick_frequency = 6
 	automation_tick = never
 	automation_tick_frequency = 3
+
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = "choose_situation"
+        column = {data = name}
+        visible = {
+            situation:late_ming_crisis = this
+            situation_is_active = yes
+        }
+    }
 
 	effect = {
         scope:actor = {

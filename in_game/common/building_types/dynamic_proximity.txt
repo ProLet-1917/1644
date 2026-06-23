@@ -20,6 +20,7 @@ REPLACE:local_governor = {
                 total_building_levels_including_construction:local_governor < {
                     value = modifier:num_local_governors
                     subtract = total_building_levels_including_construction:lieutenancy
+                    subtract = total_building_levels_including_construction:zhixian
                 }
             }
         }
@@ -83,6 +84,7 @@ REPLACE:local_governor = {
     ai_forbid_shutdown = yes
     forbidden_for_estates = yes
     important_for_AI = yes
+    ai_ignore_maintenance = yes
 
     build_time = government_build_time
 
@@ -102,7 +104,7 @@ REPLACE:local_governor = {
             category = building_maintenance
         }
 
-        local_governor_maintenance = {
+        local_governor_silver_maintenance = {
             tools = 1
             masonry = 1
             weaponry = 0.5
@@ -150,6 +152,11 @@ REPLACE:lieutenancy = {
         is_province_capital = yes
     }
 
+    important_for_AI = yes
+    AI_ignore_available_worker_flag = yes
+    ai_ignore_maintenance = yes
+    ai_forbid_shutdown = yes
+
     country_potential = {
         culture = { has_culture_group = culture_group:iberian_group }
 
@@ -167,6 +174,7 @@ REPLACE:lieutenancy = {
                 total_building_levels_including_construction:local_governor < {
                     value = modifier:num_local_governors
                     subtract = total_building_levels_including_construction:lieutenancy
+                    subtract = total_building_levels_including_construction:zhixian
                 }
             }
         }

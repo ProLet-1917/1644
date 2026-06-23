@@ -26,12 +26,21 @@ the_chinese_emperor = {
 
     on_activate = {
         remove_reform = government_reform:the_chinese_warlords
+        if = {
+            limit = {
+                current_year >= 1645
+                NOT = {
+                    has_variable = claim_dynasty_name
+                }
+            }
+            trigger_event_non_silently = flavor_all_chi.1
+        }
     }
 
     country_modifier = {
         allow_tributary_subject = yes
         monthly_prestige = 0.05
-        government_reform_slots = 2
+        government_reform_slots = 1
         cultures_capacity = 8
         dynasty_stability_monthly_income = 0.05
         allow_dynasty_stability = yes
@@ -60,6 +69,7 @@ the_chinese_warlords = {
         }
         NOT = {
             has_reform = government_reform:the_chinese_emperor
+            has_reform = government_reform:fanwang_reform
         }
     }
 
@@ -80,6 +90,66 @@ the_chinese_warlords = {
         dynasty_stability_monthly_income = -0.05
         allow_dynasty_stability = yes
         enable_forced_dynamic_territorial_occupation = yes
+    }
+
+    years = 2
+}
+
+yingzhuangzhi = {
+
+    government = monarchy
+
+    potential = {
+        OR = {
+            has_or_had_tag = CXI
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    allow = {
+        OR = {
+            has_or_had_tag = CXI
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    country_modifier = {
+        global_peasant_enfranchisment = 0.10
+        peasants_estate_max_tax = 0.05
+        peasants_estate_target_satisfaction = 0.05
+        global_nobles_estate_power = -0.05
+    }
+
+    years = 2
+}
+
+fanwang_reform = {
+    government = monarchy
+
+    potential = {
+        is_subject_type = fanwang
+    }
+    allow = {
+        overlord ?= {
+            OR = {
+                has_reform = government_reform:the_chinese_emperor
+            }
+        }
+        is_subject = yes
+    }
+
+    locked = {
+        is_locked_mechanic = {
+            mechanic = government_reform
+            type = fanwang_reform
+        }
+    }
+
+    country_modifier = {
+        government_reform_slots = 1
+        loyalty_to_overlord = 10
+        nobles_estate_levy_size = 0.1
+        allow_dynasty_stability = yes
     }
 
     years = 2

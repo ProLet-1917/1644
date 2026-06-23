@@ -3,12 +3,14 @@
 # 检查国家是否在中国区域（用于简化重复的区域检查）
 zzz_1644_is_china_region_country = {
 	exists = capital
-	OR = {
-		capital.region = region:west_china_region
-		capital.region = region:east_china_region
-		capital.region = region:north_china_region
-		capital.region = region:south_china_region
-		capital.region = region:manchuria_region
+	capital ?= {
+		OR = {
+			region = region:west_china_region
+			region = region:east_china_region
+			region = region:north_china_region
+			region = region:south_china_region
+			region = region:manchuria_region
+		}
 	}
 	any_owned_location = {
 		OR = {
@@ -59,8 +61,9 @@ is_chinese_country = {
 			capital.region = region:manchuria_region
 		}
 		OR = {
-			has_primary_or_accepted_culture = culture:han_culture
+			has_primary_or_accepted_or_tolerated_culture = culture:han_culture
 		}
+		is_rebel_country = no
 	}
 }
 

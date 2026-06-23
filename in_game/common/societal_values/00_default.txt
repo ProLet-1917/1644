@@ -122,15 +122,15 @@ aristocracy_vs_plutocracy = { #
 ##############################################
 serfdom_vs_free_subjects = {
 	left_modifier = {
-		global_raw_material_output = 0.10
-		levy_recovery_modifier = 0.5
+		global_raw_material_output = 0.125
+		levy_recovery_modifier = 0.30
 		
 		nobles_estate_target_satisfaction = large_permanent_target_satisfaction
 
-		fort_maintenance_efficiency = 0.4
-
-		peasants_estate_levy_size = 0.25
+		peasants_estate_levy_size = 0.20
 		global_peasant_enfranchisment = -0.33
+
+		global_build_buildings_efficiency = 0.2
 		
 		control_importance_modifier = 0.1
 		court_language_is_common_language_importance_modifier = -0.75
@@ -143,6 +143,7 @@ serfdom_vs_free_subjects = {
 		peasants_estate_target_satisfaction = large_permanent_target_satisfaction
 
 		global_devastation_recovery = 0.01
+		building_upkeep_efficiency = 0.1
 
 		#peasants_estate_levy_size = -0.25
 		global_peasant_enfranchisment = 0.33
@@ -323,7 +324,7 @@ capital_economy_vs_traditional_economy = {
 	
 		
 		global_monthly_food_modifier = 0.2
-		global_build_buildings_efficiency = -0.1
+		building_upkeep_efficiency = -0.1
 		court_language_is_market_language_importance_modifier = -1.5
 		bias_for_capitalist_policies = -100
 	}

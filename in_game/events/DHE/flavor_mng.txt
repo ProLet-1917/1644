@@ -1,0 +1,369 @@
+namespace = flavor_mng
+
+#Hong Guang Di
+flavor_mng.1 = {
+    type = country_event
+    title = flavor_mng.1.title
+    desc = flavor_mng.1.desc
+    fire_only_once = yes
+    historical_info = flavor_mng.1.historical_info
+
+    dynamic_historical_event = {
+        tag = MNG
+        from = 1644.1.1
+        to = 1654.1.1
+        monthly_chance = 100
+    }
+
+    trigger = {
+        OR = {
+            has_or_had_tag = MNG
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        has_variable = hongguangchao
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+        change_variable = {
+            name = dynasty_stability
+            add = 50
+        }
+        remove_variable = hongguangchao
+        if = {
+            limit = {
+                capital != location:shangyuan
+            }
+            set_capital = location:shangyuan
+        }
+    }
+
+    option = {
+        name = flavor_mng.1.a
+        custom_tooltip = emperor_in_nanjing
+        set_global_variable = {
+            name = ming_emperor_in_nanjing
+        }
+    }
+}
+
+#Lost Nanjing
+flavor_mng.2 = {
+    type = country_event
+    title = flavor_mng.2.title
+    desc = flavor_mng.2.desc
+    fire_only_once = yes
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+        change_variable = {
+            name = dynasty_stability
+            subtract = 150
+        }
+    }
+
+    option = {
+        name = flavor_mng.2.a
+        custom_tooltip = lost_nanjing
+        set_variable = mng_lost_nanjing
+        kill_character = c:MNG.ruler
+        kill_character = c:MNG.heir
+        set_new_ruler = character:interregnum
+    }
+}
+
+# Long Wu Di
+flavor_mng.3 = {
+    type = country_event
+    title = flavor_mng.3.title
+    desc = flavor_mng.3.desc
+    fire_only_once = yes
+    historical_info = flavor_mng.3.historical_info
+
+    dynamic_historical_event = {
+        tag = MNG
+        from = 1644.1.1
+        to = 1655.1.1
+        monthly_chance = 100
+    }
+
+    trigger = {
+        OR = {
+            has_or_had_tag = MNG
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        custom_tooltip = {
+            text = lost_nanjing
+            has_variable = mng_lost_nanjing
+        }
+        location:minxian = {
+            OR = {
+                owner = root
+                owner = {
+                    is_subject_or_below_of = root
+                }
+            }
+        }
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+        change_variable = {
+            name = dynasty_stability
+            subtract = 50
+        }
+        create_character = {
+            first_name = name_yujian
+            birth_date = 1602.5.25
+            birth_location = location:nanyang
+            culture = culture:han_culture
+            religion = religion:sanjiao
+            adm = 69
+            dip = 57
+            mil = 72
+            dynasty = dynasty:rtr_ming_zhu_dynasty
+            script = mng_zhu_yujian
+            add_trait = trait:fierce_negotiator # 铁腕谈判家
+            add_trait = trait:benevolent # 仁爱
+            add_trait = trait:industrious # 勤勉
+        }
+    }
+
+    option = {
+        name = flavor_mng.3.a
+        custom_tooltip = emperor_in_fuzhou
+        set_new_ruler = character:mng_zhu_yujian
+        set_global_variable = {
+            name = ming_emperor_in_fuzhou
+        }
+        if = {
+            limit = {
+                location:minxian.owner != c:MNG
+            }
+            location:minxian = {
+                change_location_owner = c:MNG
+            }
+        }
+        set_capital = location:minxian
+    }
+}
+
+scripted_effect list_of_lu_locations = {
+    area:zhejiang_area = {
+        every_location_in_area = {
+            add_to_list = list_of_lu_locations
+        }
+    }
+}
+# Lu Wang - Zhu yi hai
+flavor_mng.4 = {
+    type = country_event
+    title = flavor_mng.4.title
+    desc = flavor_mng.4.desc
+    fire_only_once = yes
+    historical_info = flavor_mng.4.historical_info
+
+    dynamic_historical_event = {
+        tag = MNG
+        from = 1644.1.1
+        to = 1655.1.1
+        monthly_chance = 75
+    }
+
+    trigger = {
+        OR = {
+            has_or_had_tag = MNG
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        custom_tooltip = {
+            text = lost_nanjing
+            has_variable = mng_lost_nanjing
+        }
+        OR = {
+            location:hangzhou = {
+                OR = {
+                    owner = root
+                    owner = {
+                        is_subject_or_below_of = root
+                    }
+                }
+            }
+            location:shaoxing = {
+                OR = {
+                    owner = root
+                    owner = {
+                        is_subject_or_below_of = root
+                    }
+                }
+            }
+        }
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+        change_variable = {
+            name = dynasty_stability
+            subtract = 50
+        }
+        create_character = {
+            first_name = name_yihai
+            dynasty = dynasty:rtr_ming_zhu_dynasty
+            culture = culture:han_culture
+            religion = religion:sanjiao
+            adm = 45
+            dip = 70
+            mil = 50
+            birth_date = 1618.7.6
+            birth_location = location:ziyang
+            add_trait = trait:charismatic_negotiator # 魅力型谈判者
+            add_trait = trait:kind_hearted # 善良
+            add_trait = trait:inspiring_leader # 鼓舞人心的领袖
+            add_trait = trait:level_headed
+            script = mng_zhu_yihai
+        }
+        list_of_lu_locations = yes
+        every_in_list = {
+            list = list_of_lu_locations
+            limit = { owner = c:MNG }
+            add_core = c:CLU
+        }
+        create_country_from_cores_in_our_locations = c:CLU
+        c:CLU = {
+            set_new_ruler = character:mng_zhu_yihai
+            if = {
+                limit = {
+                    location:hangzhou = {
+                        OR = {
+                            owner = c:MNG
+                            owner = {
+                                is_subject_or_below_of = c:MNG
+                            }
+                        }
+                    }
+                }
+                set_capital = location:hangzhou
+            }
+            else_if = {
+                limit = {
+                    location:shaoxing = {
+                        OR = {
+                            owner = c:MNG
+                            owner = {
+                                is_subject_or_below_of = c:MNG
+                            }
+                        }
+                    }
+                }
+                set_capital = location:shaoxing
+            }
+            change_country_flag = CHI_Ming_Sanchen
+            set_country_rank = country_rank:rank_kingdom
+            change_religion = religion:sanjiao
+            add_reform = government_reform:the_chinese_warlords
+            save_scope_as = luwang
+        }
+    }
+
+    option = {
+        name = flavor_mng.4.a
+        historical_option = yes
+        c:MNG = {
+            declare_war_with_cb = {
+                target_country = scope:luwang
+                type = casus_belli:cb_chinese_unification
+            }
+        }
+    }
+
+    option = {
+        name = flavor_mng.4.b
+        trigger = {
+            is_ai = no
+        }
+        c:MNG = {
+            declare_war_with_cb = {
+                target_country = scope:luwang
+                type = casus_belli:cb_chinese_unification
+            }
+        }
+        change_player = scope:luwang
+    }
+}
+
+# LongWu Beifa
+flavor_mng.5 = {
+    type = country_event
+    title = flavor_mng.5.title
+    desc = flavor_mng.5.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = MNG
+        from = 1645.1.1
+        to = 1675.1.1
+        monthly_chance = 20
+    }
+
+    trigger = {
+        OR = {
+            has_or_had_tag = MNG
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        ruler = character:mng_zhu_yujian
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+        change_variable = {
+            name = dynasty_stability
+            add = 100
+        }
+    }
+
+    option = {
+        name = flavor_mng.5.a
+        add_country_modifier = {
+            modifier = longwu_beifa
+            years = 20
+        }
+    }
+}
+
+#Guangfu Nanjing
+flavor_mng.6 = {
+    type = country_event
+    title = flavor_mng.6.title
+    desc = flavor_mng.6.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = MNG
+        from = 1645.1.1
+        to = 1700.1.1
+        monthly_chance = 100
+    }
+
+    trigger = {
+        OR = {
+            has_or_had_tag = MNG
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        has_variable = mng_lost_nanjing
+        location:shangyuan = {
+            owner = root
+        }
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        name = flavor_mng.5.a
+        change_variable = {
+            name = dynasty_stability
+            add = 100
+        }
+    }
+}
+

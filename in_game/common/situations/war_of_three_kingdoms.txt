@@ -15,7 +15,7 @@
 	################################
 	can_start = {
 		current_date >= 1644.4.1
-		OR = {
+		AND = {
 			country_exists = c:ROE
 			country_exists = c:ENG
 		}
@@ -25,42 +25,37 @@
 	# 終了条件
 	################################
 	can_end = {
-		end_reason = {
-			trigger = {
-				OR = {
-					################################
-					# 1. 共和制ENGによる完全制圧
-					################################
-					AND = {
-						c:ENG = {
-							government_type = government_type:republic
-						}
-						NOT = { country_exists = c:ROE }
-						#NOT = { country_exists = c:IRE }
-
-						#OR = {
-						#	NOT = { country_exists = c:SCO }
-						#	AND = {
-						#		country_exists = c:SCO
-						#		c:SCO = { is_subject_or_below_of = c:ENG }
-						#	}
-						#}
-					}
-					################################
-					# 2. 王党派勝利
-					################################
-					NOT = { country_exists = c:ENG }
-					################################
-					# 3. 1670年到達（両陣営存続）
-					################################
-					AND = {
-						current_year >= 1670
-						country_exists = c:ENG
-						country_exists = c:ROE
-					}
+		OR = {
+			################################
+			# 1. 共和制ENGによる完全制圧
+			################################
+			AND = {
+				c:ENG = {
+					government_type = government_type:republic
 				}
+				NOT = { country_exists = c:ROE }
+				#NOT = { country_exists = c:IRE }
+
+				#OR = {
+				#	NOT = { country_exists = c:SCO }
+				#	AND = {
+				#		country_exists = c:SCO
+				#		c:SCO = { is_subject_or_below_of = c:ENG }
+				#	}
+				#}
 			}
-			desc = "nothing"
+			################################
+			# 2. 王党派勝利
+			################################
+			NOT = { country_exists = c:ENG }
+			################################
+			# 3. 1670年到達（両陣営存続）
+			################################
+			AND = {
+				current_year >= 1675
+				country_exists = c:ENG
+				country_exists = c:ROE
+			}
 		}
 	}
 

@@ -17,6 +17,11 @@ bestow_crownland_of_swedish_status = {
         }
     }
 
+    cooldown = {
+        type = bestow_crownland_of_swedish_status
+        months = 60
+    }
+
     select_trigger = {
         looking_for_a = country
         target_flag = recipient
@@ -141,6 +146,11 @@ rescind_crownland_of_swedish_status = {
     }
 
     allow = {
+    }
+
+    cooldown = {
+        type = rescind_crownland_of_swedish_status
+        months = 60
     }
 
     select_trigger = {

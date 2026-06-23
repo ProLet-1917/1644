@@ -837,14 +837,20 @@ holy_league.13 = {
             if = {
                 limit = {
                     has_game_rule = historical_ai_choices
-                    this = c:PLC
+                    root = c:PLC
                 }
                 add = 100
             }
             if = {
                 limit = {
+                    root = c:PLC
+                }
+                add = 50
+            }
+            if = {
+                limit = {
                     has_game_rule = historical_ai_choices
-                    this = c:VEN
+                    root = c:VEN
                 }
                 add = 100
             }
@@ -880,7 +886,7 @@ holy_league.13 = {
             if = {
                 limit = {
                     has_game_rule = historical_ai_choices
-                    this = c:FRA
+                    root = c:FRA
                 }
                 add = 100
             }

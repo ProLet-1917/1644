@@ -76,7 +76,7 @@ war_manager = {
 			name = "CXI_CONQUEST_OF_SICHUAN"
 			ordinal = 1
 			first = { name = "CXI" }
-			second = { name = "MNG" }
+			second = { name = "SHU" }
 		}
 
 		take_country = {
@@ -93,16 +93,17 @@ war_manager = {
 		}
 
 		defender = {
-			country = MNG
+			country = SHU
 			request = { reason = Target }
 		}
-		defender = {
-			country = ZLY # 左良玉
-			request = {
-				caller = MNG
-				reason = Subject
-			}
-		}
+
+		#defender = {
+		#	country = ZLY # 左良玉
+		#	request = {
+		#		caller = MNG
+		#		reason = Subject
+		#	}
+		#}
 	}
 
 }

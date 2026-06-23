@@ -30,4 +30,11 @@ monthly_dynasty_stability_check_effect = {
         #    min = 0
         #}
     }
+    every_country = {
+        limit = {
+            modifier:allow_dynasty_stability = no
+            has_variable = dynasty_stability
+        }
+        remove_variable = dynasty_stability
+    }
 }

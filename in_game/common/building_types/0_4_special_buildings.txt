@@ -32,16 +32,27 @@ klephts_camp = {
             topography = mountains
             vegetation = forest
         }
+        c:MOI = {
+            NOT = { is_subject_of = this.owner }
+        }
     }
 
     build_time = adventurer_build_time
 
-    modifier = {
+    raw_modifier = {
         manpower_to_building_owner = 0.005
-        scaled_gold_to_building_owner = 0.05
+        local_max_control = -0.025
         local_prosperity_decay = 0.05
         #local_pop_assimilation_speed = 0.005
         local_pop_assimilation_speed_modifier =  -0.25
+    }
+
+    modifier = {
+        scale = {
+            value = location_tax_base
+        }
+        gold_to_building_owner = 0.05
+        monthly_gold_income = -0.05
     }
 
     foreign_country_modifier = {
@@ -50,10 +61,9 @@ klephts_camp = {
 
     unique_production_methods = {
         klephts_camp_maintenance = {
-            weaponry = 0.02
-            firearms = 0.01
-            cloth = 0.05
-            beer = 0.05
+            weaponry = 0.01
+            cloth = 0.02
+            beer = 0.02
             category = building_maintenance
         }
     }

@@ -1,0 +1,99 @@
+namespace = flavor_all_chi
+
+#Choose Name of your Dynasty
+flavor_all_chi.1 = {
+    type = country_event
+    title = flavor_all_chi.1.title
+    desc = flavor_all_chi.1.desc
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate   background = estate_type:nobles_estate }
+        set_variable = claim_dynasty_name
+    }
+
+    option = {
+        name = flavor_all_chi.1.a
+        ai_chance = {
+            value = 2
+        }
+        change_country_name = CSO
+    }
+
+    option = {
+        name = flavor_all_chi.1.b
+        ai_chance = {
+            value = 1
+            modifier = {
+                trigger = {
+                    OR = {
+                        capital.area = area:zhejiang_area
+                        capital.area = area:jiangnan_area
+                    }
+                }
+                multiply = 5
+            }
+        }
+        change_country_name = WUU
+    }
+
+    option = {
+        name = flavor_all_chi.1.c
+        ai_chance = {
+            value = 2
+        }
+        change_country_name = CHE
+    }
+
+    option = {
+        name = flavor_all_chi.1.d
+        trigger = {
+            culture = culture:jurchen_culture
+        }
+        ai_chance = {
+            value = 1
+            modifier = {
+                trigger = {
+                    culture = culture:jurchen_culture
+                }
+                multiply = 20
+            }
+        }
+        change_country_name = QNG
+    }
+
+    option = {
+        name = flavor_all_chi.1.e
+        ai_chance = {
+            value = 1
+            modifier = {
+                trigger = {
+                    OR = {
+                        capital.area = area:shandong_area
+                    }
+                }
+                multiply = 5
+            }
+        }
+        change_country_name = CQI
+    }
+
+    option = {
+        name = flavor_all_chi.1.f
+        ai_chance = {
+            value = 1
+            modifier = {
+                trigger = {
+                    ruler.dynasty = dynasty:rtr_ming_zhu_dynasty
+                }
+                multiply = 50
+            }
+            modifier = {
+                trigger = {
+                    culture = culture:jurchen_culture
+                }
+                subtract = 50
+            }
+        }
+        change_country_name = MNG
+    }
+}

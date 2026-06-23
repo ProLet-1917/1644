@@ -109,12 +109,10 @@ REPLACE:confucian_school = {
 
     build_time = cultural_building_time
 
-
-
     country_potential = {
         OR = {
             culture = { has_culture_group = culture_group:confucian_group }
-            religion = religion:sanjiao
+            religion ?= religion:sanjiao
             any_international_organizations_member_of = {
                 international_organization_type = international_organization_type:sect
                 international_organization_has_policy = policy:confucianism_policy
@@ -194,4 +192,47 @@ REPLACE:confucian_academy = {
 
 
     construction_demand = academy_construction
+}
+
+REPLACE:settlement_building = {
+    audio_tier = 1
+    is_foreign = no
+    max_levels = 1
+    pop_type = peasants
+
+
+    category = infrastructure_category
+
+    employment_size = tiny_rural_peasant_produce_employment
+
+
+    rural_settlement = yes
+    town = no
+    city = no
+    megalopolis = no
+
+
+    location_potential = {
+        location_population_percentage < 0.05
+    }
+    remove_if = {
+        location = {
+            location_population_percentage > 0.1
+        }
+    }
+
+
+    possible_production_methods = {
+        colony_maintenance
+    }
+    construction_demand = colony_construction
+
+
+    build_time = village_build_time
+
+    modifier = {
+        local_migration_attraction = 0.5
+        local_population_growth = 0.002
+    }
+
 }

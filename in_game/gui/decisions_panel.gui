@@ -208,12 +208,11 @@ widget = {
 				size = { 40 40 }
 				position = { -40 10 }
 
-				button_checkbox = {
+				checkbox_diamond_alt = {
 					size = { 25 25 }
 					align = right|nobaseline
-					checked = "[NOT(GetVariableSystem.Exists('move_decisions_panel'))]"
 					onclick = "[GetVariableSystem.Toggle('move_decisions_panel')]"
-					down = "[GetVariableSystem.Toggle('move_decisions_panel')]"
+					down = "[GetVariableSystem.Exists('move_decisions_panel')]"
 					tooltipwidget = {
 						LeftClickButtonTooltip = {
 							blockoverride "onclick_text" {
@@ -235,10 +234,7 @@ widget = {
 					parentanchor = right|vcenter
 					using = bg_button_light_alt_round
 
-					blockoverride "close_onclick" {
-						onclick = "[GetVariableSystem.Toggle('decisions_panel')]"
-						down = "[GetVariableSystem.Toggle('decisions_panel')]"
-					}
+					blockoverride "close_on_action" { on_action = "[GetVariableSystem.Toggle('decisions_panel')]" }
 
 					blockoverride "button_texture" {
 						texture = "gfx/interface/buttons/flats/close_button_alt.dds"

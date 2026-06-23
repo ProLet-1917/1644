@@ -3,7 +3,7 @@ REPLACE:location_base_values = {
         category = location
     }
 
-    local_population_capacity = 10000
+    local_population_capacity = 1000
 
     local_devastation_recovery = 0.005
     local_monthly_control = 0.0005
@@ -58,7 +58,7 @@ REPLACE:is_occupied = {
     local_monthly_prosperity = -0.025
     local_monthly_control = -0.002
 
-    hostile_food_multiplier = -0.8
+    hostile_food_multiplier = -0.6
 
     local_garrison_growth = -1.0
 
@@ -73,7 +73,7 @@ REPLACE:available_free_land = {
         category = location
     }
     #local_migration_attraction = 0.1
-    local_population_growth = 0.001
+    local_population_growth = 0.002
 }
 
 # when its <10% capacity & <10k
@@ -82,5 +82,39 @@ REPLACE:abundant_free_land = {
         category = location
     }
     #local_migration_attraction = 0.2
-    local_population_growth = 0.001
+    local_population_growth = 0.002
+}
+
+#multiplies with devastation in location (0 to -1)
+REPLACE:devastation = {
+    game_data = {
+        category = location
+    }
+    local_monthly_food_modifier = 0.5
+    local_raw_material_output = 0.5
+    local_production_efficiency = 0.5
+    local_population_growth = 0.005
+    local_monthly_literacy = 0.05
+    local_pop_promotion_speed_modifier = 0.5
+    local_migration_attraction = 1
+    local_monthly_development = 0.004
+    local_life_expectancy = 10
+    local_mercenaries_modifier = -0.5
+    local_construction_speed = 0.5
+
+    local_building_establishment_reduction = 0.01
+}
+
+
+#multiplies with prosperity in location (0 to 1)
+REPLACE:prosperity = {
+    game_data = {
+        category = location
+    }
+    local_monthly_development = 0.004
+    local_migration_attraction = 0.1
+    local_life_expectancy = 10
+    local_population_growth = 0.005
+
+    local_mercenaries_modifier = -0.5
 }

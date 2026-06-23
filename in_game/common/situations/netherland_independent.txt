@@ -14,40 +14,34 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 	}
 
 	can_end = {
-		end_reason = {
-			trigger = {
-				OR = {
+		OR = {
+			OR = {
+				current_year > 1700
+				NOT = {
 					OR = {
-						current_year > 1700
-						NOT = {
-							OR = {
-								country_exists = c:NED
-								country_exists = c:HOL
-							}
-						}
-						NOT = { country_exists = c:SPA }
+						country_exists = c:NED
+						country_exists = c:HOL
 					}
-					#situation:war_of_religions = { #It ended in 1648
-					#	situation_is_active = no
-					#	situation_has_ended = yes
-					#}
-					#var:peace_talk_in_westphalia_phase > 3
-					custom_tooltip = {
-						text = netherland_peace_talk_tt
-						has_global_variable = peace_talk_about_dutches_end
-					}
-					custom_tooltip = {
-						text = netherland_control_brussel_tt
-						location:brussels ?= {
-							c:NED ?= owner
-						}
-					}
-					c:NED = { is_subject_or_below_of = c:SPA }
-					c:SPA = { is_subject_or_below_of = c:NED }
 				}
-
+				NOT = { country_exists = c:SPA }
 			}
-			desc = "nothing"
+			#situation:war_of_religions = { #It ended in 1648
+			#	situation_is_active = no
+			#	situation_has_ended = yes
+			#}
+			#var:peace_talk_in_westphalia_phase > 3
+			custom_tooltip = {
+				text = netherland_peace_talk_tt
+				has_global_variable = peace_talk_about_dutches_end
+			}
+			custom_tooltip = {
+				text = netherland_control_brussel_tt
+				location:brussels ?= {
+					c:NED ?= owner
+				}
+			}
+			c:NED = { is_subject_or_below_of = c:SPA }
+			c:SPA = { is_subject_or_below_of = c:NED }
 		}
 	}
 

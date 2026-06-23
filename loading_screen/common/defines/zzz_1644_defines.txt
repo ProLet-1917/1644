@@ -403,7 +403,7 @@ NAI = {
 	AI_ALLOWED_PARALLEL_SAME_TYPE_CONSTRUCTION_MINIMUM = 3 # minimum allowed of parallel construction of the same type of building
 	AI_ALLOWED_PARALLEL_TOTAL_CONSTRUCTION_RATIO = 0.05 # Allowed to start new constructions in 5% of our locations each monthly tick
 	AI_MAX_NEW_BUILDINGS_PER_LOCATION = 3 # AI will not start a new ramping building if doing so would put more than this many ramping/in-flight buildings at the same location
-	AI_PROXIMITY_SOURCE_MINIMUM_DISTANCE = 75 # minimum map distance between proximity source buildings
+	AI_PROXIMITY_SOURCE_MINIMUM_DISTANCE = 100 # minimum map distance between proximity source buildings
 
 	AI_PERFORMANCE_UTILITY_LOCATIONS_TO_SAMPLE = 20 # Maximum number of sample locations for AI modifier utility for performance costly modifiers
 	AI_PERFORMANCE_CABINET_ACTION_LOCATION_SAMPLE_SIZE = 20 # Maximum number of sample locations for AI cabinet actions
@@ -411,6 +411,7 @@ NAI = {
 	AI_PERFORMANCE_CABINET_ACTION_AREA_SAMPLE_SIZE = 1 # Maximum number of sample areas for AI cabinet actions
 	AI_PERFORMANCE_CABINET_ACTION_MONTHS_BETWEEN_UPDATES = 36 # Number of months between each AI update to change cabinet actions
 	AI_PERFORMANCE_REFORMS_MONTHS_BETWEEN_UPDATES = 36 # 24 # Number of months between each AI update to change government reforms
+	AI_PERFORMANCE_BUREAUCRACY_MONTHS_BETWEEN_UPDATES = 36 # 24 # Number of months between each AI update to add or remove bureaucracies
 	AI_PERFORMANCE_POLICIES_MONTHS_BETWEEN_UPDATES = 9 # 6 # Number of months between each AI update to change policies of laws
 	AI_PERFORMANCE_ESTATE_PRIVILEGES_MONTHS_BETWEEN_UPDATES = 18 # 12 # Number of months between each AI update to change estate privileges
 	AI_PERFORMANCE_ESTATE_PRIVILEGES_UNUSED_TAX_MONTHS_BETWEEN_UPDATES = 2 # Number of months between each AI update to change estate privileges
@@ -435,6 +436,14 @@ NAI = {
 
 	AI_ESTATE_SATISFACTION_TAX_TARGET = 0.5 # AI will adjust tax sliders to have this minimum estate satisfaction
 	AI_REVOKE_PRIVILEGE_STABILITY_THRESHOLD = -45 # 50 # ai needs at least this much stability left after revoking a privilege
+
+	AI_VALUE_CREATION_UTILITY = 0.1 # Conversion factor from goods value creation to gold, e.g. when building RGO in 0% control
+
+	AI_PROXIMITY_CANDIDATE_MIGRATION_UTIL = 50 # Extra util score for migrating pops to our proximity candidate
+	AI_PROXIMITY_CANDIDATE_ROAD_CONNECTION_UTIL = 0.05 # extra util score for connecting the proximity candidate to capital road
+	AI_PROXIMITY_CANDIDATE_RANK_UPGRADE_UTIL = 2 # extra score for upgrade the city rank of the proximity candidate
+	AI_LOCAL_GOVERNOR_TAX_BASE_THRESHOLD = 75 # if AI has lower than this tax base they wont bother trying to find a place for local governor
+	AI_PROXIMITY_CANDIDATE_UPDATE_CHANCE = 0.2 # 20% chance per building update to check for good locations for local governors
 
 	AI_ESTATE_SATISFACTION_TARGET_FOR_GRANTING_PRIVILEGES = 0.50 # 0.55 # when below this target satisfaction (excluding temp modifiers) we want to grant a privilege
 	AI_ESTATE_SATISFACTION_TARGET_FOR_REVOKING_PRIVILEGES = 0.70 # 0.75 # When above this target satisfaction (excluding temp modifiers) we want to revoke a privilege
@@ -715,6 +724,9 @@ NAI = {
 	AI_ATTACH_MIN_FRONTAGE_ROOM     = 1.0  # Don't attach to an ally army that has less than 1 frontage unit free
 	AI_FRONTAGE_FILL_TARGET         = 0.90 # Stop assigning allies to an objective once 90% of battle frontage is covered
 
+	AI_REMOVE_BUREAUCRACY_THRESHOLD = 5 # AI utility threshold needed for removing a bureaucracy
+	AI_GRANT_BUREAUCRACY_THRESHOLD = 5  # AI utility threshold needed for granting a bureaucracy
+
 	# Used for AI assignment of units to objectives
 	AI_MILITARY_ARMY_ASSIGNMENT_PROXIMITY_FACTOR = -1 # Negative score for army targets further away
 	AI_MILITARY_NAVY_ASSIGNMENT_PROXIMITY_FACTOR = -0.1 # negative score for navy targets further away
@@ -746,8 +758,34 @@ NAI = {
 	AI_ANNEX_SUBJECT_DISTANCE_THRESHOLD = 50 # How far it can be between borders until AI does not want to annex a subject
 	AI_ANNEX_SUBJECT_BORDERING_CONTROL_NEEDED = 0.35 # AI will only subjugate another country if they have at least this much bordering control
 
-	CONQUER_DESIRE_POPULATION_FACTOR = 0.33 # 0.25 #How the population of the location influences the conquer desire
-	CONQUER_DESIRE_TAX_BASE_FACTOR = 0.85 # 1 #How the tax base of the location influences the conquer desire
+	CONQUER_DESIRE_POPULATION_FACTOR = 0.033 # 0.25 #How the population of the location influences the conquer desire
+	CONQUER_DESIRE_TAX_BASE_FACTOR = 0.18 #Per-gold multiplier on potential tax base — 18g = 4, 90g = 20, no per-term cap (saturates against AI_CONQUER_DESIRE_MAX)
+	CONQUER_DESIRE_BASE_SCORE = 15 #Flat base score every candidate location gets
+	CONQUER_DESIRE_CITY_BONUS = 2.5 #Bonus when the location has city status
+	CONQUER_DESIRE_COASTAL_BONUS = 5 #Bonus when the location is coastal and we have no coast
+	CONQUER_DESIRE_CORE_BONUS = 100 #Bonus when the location is our core
+	CONQUER_DESIRE_CB_BONUS = 25 #Bonus when we have an active casus belli on the owner (no core). CB-age weighting deferred — flat value for now.
+	CONQUER_DESIRE_EXCLAVED_BONUS = 80 #Bonus when the location's area is surrounded by us/our subjects/impassable
+	CONQUER_DESIRE_SAME_CULTURE_BONUS = 1.25 #Per-rank base bonus for matching primary culture (Duchy+); scaled by rank multiplier
+	CONQUER_DESIRE_ACCEPTED_CULTURE_BONUS = 3.75 #Per-rank base bonus for accepted culture (Kingdom+); scaled by rank multiplier
+	CONQUER_DESIRE_COMMON_LANGUAGE_BONUS = 3.5 #Per-rank base bonus for shared language (Kingdom+); scaled by rank multiplier
+	CONQUER_DESIRE_CAPITAL_REGION_BONUS = 4.5 #Per-rank base bonus for being in our capital region (Kingdom+); scaled by rank multiplier
+	CONQUER_DESIRE_HERETIC_BONUS = 8 #Flat bonus when target location's religion differs from ours but shares our religion group; scaled by ai_conquer_desire_religion_mult country modifier
+	CONQUER_DESIRE_HEATHEN_BONUS = 15 #Flat bonus when target location's religion is in a different religion group from ours; scaled by ai_conquer_desire_religion_mult country modifier
+	CONQUER_DESIRE_AREA_COMPLETE_BONUS = 35 #Maximum area-completion bonus when we already own 100% of the area; ramps linearly from 0 at AREA_RAMP_START
+	CONQUER_DESIRE_AREA_RAMP_START = 0.55 #Ownership ratio at which area-completion bonus starts ramping up (we get nothing below this; full bonus at 100%)
+	CONQUER_DESIRE_REGION_BONUS = 25 #Maximum region-completion bonus when we already own 100% of the region; ramps linearly from 0 at REGION_RAMP_START
+	CONQUER_DESIRE_REGION_RAMP_START = 0.45 #Ownership ratio at which region-completion bonus starts ramping up
+	CONQUER_DESIRE_DISTANCE_FLOOR = 0.0 #In-range distance multiplier floor — value at distance equal to AllowedDistance (0 = hard gate, score zeroes at AllowedDistance)
+	CONQUER_DESIRE_DISTANCE_FLOOR_NEAR_HOME = 0.0 #Floor lift for cores / bordering-capital / scripted-preference loosening (0 = no lift, even cores can decay to 0)
+	CONQUER_DESIRE_DISTANCE_TAIL_FLOOR = 0.0 #Hard floor for the exponential tail beyond AllowedDistance (0 = far-away locations can decay fully)
+	CONQUER_DESIRE_DISTANCE_TAIL_DECAY = 0.5 #Multiplier applied each AllowedDistance step beyond the gate (0.5 = halve per step)
+	CONQUER_DESIRE_DISTANCE_LOOSEN_FACTOR = 2.25 #When scripted area preference > 1, distances up to this multiple of AllowedDistance retain the floor
+	CONQUER_DESIRE_DYNASTIC_UNION_MULT = 0.4 #Reach multiplier applied when target has a marriage union with us
+	CONQUER_DESIRE_DYNASTIC_MARRIAGE_MULT = 0.75 #Reach multiplier applied when target has a royal marriage with us
+	CONQUER_DESIRE_THREAT_MIN = 0.2 #Reach multiplier floor when target is overwhelmingly stronger than us
+	CONQUER_DESIRE_THREAT_MAX = 1.5 #Reach multiplier ceiling when target is overwhelmingly weaker than us
+
 	TARGET_SAFE_ANTAGONISM_FOR_AI = 50 #How much antagonism Ai is willing to take before getting a too much antagonism modifier
 	EXPECTED_WAR_SCORE_BASE = 25 #How much warscore Ai expects to get in a war
 	EARLY_PEACE_TIME_MONTHS = 4 #How many months need to pass for Ai to lose the early war peace acceptance modifier

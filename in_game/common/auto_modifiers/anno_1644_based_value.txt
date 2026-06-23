@@ -244,3 +244,15 @@ REPLACE:country_base_values = {
 
 }
 
+REPLACE:war_exhaustion_impact = {
+    scales_with = war_exhaustion
+
+    land_morale_modifier = -0.025
+    naval_morale_modifier = -0.025
+
+
+    global_production_efficiency = scaled_production_efficiency_penalty
+    import_efficiency = scaled_trade_efficiency_penalty
+    global_population_growth = -0.00005
+}
+

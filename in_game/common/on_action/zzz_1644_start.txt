@@ -153,9 +153,13 @@
                         type = special_status:italia_state
                         international_organization = international_organization:hre
                     }
-                    this = c:MLO
+                    has_special_status_in_international_organization = {
+                        type = special_status:imperial_prelate
+                        international_organization = international_organization:hre
+                    }
+                    root = c:MLO
                 }
-                government_type = government_type:monarchy
+                #government_type = government_type:monarchy
             }
             international_organization:hre = {
                 international_organization_add_special_status = {
@@ -408,9 +412,9 @@
             unlock_government_reform_effect = { type = gabelle }
             set_variable = { name = enable_taille_tax value = 1 }
             add_country_modifier = { modifier = fra_academie_francaise years = 4 mode = add }
-            add_country_modifier = { modifier = fra_richelieu_nobility_influence_reduced years = 10 mode = add }
+            #add_country_modifier = { modifier = fra_richelieu_nobility_influence_reduced years = 10 mode = add }
             add_country_modifier = { modifier = fra_richelieu_peace_of_ales years = 3 mode = add }
-            add_country_modifier = { modifier = fra_richelieu_gabelle_taille_tax years = 6 mode = add }
+            #add_country_modifier = { modifier = fra_richelieu_gabelle_taille_tax years = 6 mode = add }
             set_variable = { name = academie_francaise_built value = 1 }
             set_variable = { name = enabled_fouage_tax value = 1 }
             set_variable = { name = fra_colonial_affairs_enabled value = 1 }
@@ -432,7 +436,7 @@
             unlock_policy_effect = { type = dop_rudolfine_house_rules }
             unlock_policy_effect = { type = mandate_of_ofen }
             #add_reform = government_reform:austrian_archduchy_reform
-            trigger_event_non_silently = start_events.1
+            trigger_event_silently = start_events.1
             add_country_modifier = {
                 modifier = habsburgs_goldern_century
                 years = 26

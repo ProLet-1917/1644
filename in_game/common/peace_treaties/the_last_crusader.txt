@@ -16,9 +16,17 @@ the_last_crusader = {
     allow = {
         scope:loser = {
             is_war_leader_of = scope:war
+            OR = {
+                this = c:TUR
+                this = c:HAB
+            }
         }
         scope:winner = {
             is_war_leader_of = scope:war
+            OR = {
+                this = c:TUR
+                this = c:HAB
+            }
         }
     }
 
@@ -53,14 +61,19 @@ the_last_crusader = {
                 change_location_owner = c:HAB
                 change_control = control_mild_bonus
             }
-            c:TUR = {
+            c:HAB = {
                 trigger_event_non_silently = holy_league.19
+            }
+            c:TUR = {
                 every_subject = {
                     limit = {
                         capital ?= {
                             region = region:carpathia_region
                         }
-                        subject_type = subject_type:eyalet
+                        OR = {
+                            subject_type = subject_type:eyalet
+                            this = c:TRA
+                        }
                     }
                     add_to_list = eyalet_in_hungary
                 }
@@ -137,6 +150,7 @@ the_last_crusader = {
         }
     }
 
+    ai_force_add = yes #bypass alliance war score split etc
     ai_desire = {
         value = 1000
     }

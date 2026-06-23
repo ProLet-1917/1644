@@ -131,8 +131,8 @@ mng_1644.2 = { #甲申之难（不南迁线）
 	historical_info = mng_1644.2.historical_info
 	immediate = {
 		c:MNG = { 
-			set_new_ruler = interregnum 
-			set_regent = chi_shi_kefa
+			set_new_ruler = character:interregnum
+			set_regent = character:chi_shi_kefa
 		}
 		if = {
 			limit = {
@@ -176,7 +176,7 @@ mng_1644.3 = { #北都沦陷（南迁线）
 		# 减少威望
 		add_prestige = prestige_extreme_penalty
 		# 减少金钱
-		add_gold = -10000
+		add_gold = -5000
 	}
 }
 
@@ -188,7 +188,13 @@ mng_1644.5 = { #立新君
 	title = mng_1644.5.title
 	desc = mng_1644.5.desc
 	historical_info = mng_1644.5.historical_info
-	
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+		set_capital = location:shangyuan
+		set_variable = hongguangchao
+	}
+
 	option = { #拥立福王朱由崧（正统性最高，支持率最高）
 		name = mng_1644.5.a
 		historical_option = yes

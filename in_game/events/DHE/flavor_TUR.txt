@@ -7523,7 +7523,8 @@ flavor_tur.185 = {
 				change_religion = root.religion
 				change_religion_for_ruler_and_family = { country = this religion = root.religion }
 				change_culture = root.culture
-				make_subject_of = { target = root type = subject_type:vassal }
+				overlord = root
+				subject_type = subject_type:vassal
 			}
 		}
 	}
