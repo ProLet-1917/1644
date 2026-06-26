@@ -1529,4 +1529,171 @@ character_db = {
 		tag = SHU
 		dynasty = rtr_ming_zhu_dynasty
 	}
+
+	#Palaiologos Dynasty
+	byz_manuel_ii_palaiologos = { #https://en.wikipedia.org/wiki/Manuel_II_Palaiologos
+		first_name = { name = name_emmanuel }
+		culture = greek_culture
+		religion = orthodox
+		estate = nobles_estate
+		adm = 65 dip = 70 mil = 40
+		birth_date = 1350.6.27
+		death_date = 1425.7.21
+		birth = constantinople
+		father = byz_john_v_palaiologos
+		tag = BYZ
+		dynasty = palaiologos_dynasty
+	}
+
+	byz_john_viii_palaiologos = { #https://en.wikipedia.org/wiki/John_VIII_Palaiologos
+		first_name = { name = name_john }
+		culture = greek_culture
+		religion = orthodox
+		estate = nobles_estate
+		adm = 55 dip = 58 mil = 39
+		birth_date = 1392.12.18
+		death_date = 1448.10.31
+		birth = constantinople
+		father = byz_manuel_ii_palaiologos
+		tag = BYZ
+		dynasty = palaiologos_dynasty
+	}
+
+	byz_constantine_xi_palaiologos = { #https://en.wikipedia.org/wiki/Constantine_XI_Palaiologos
+		first_name = { name = name_constantine }
+		culture = greek_culture
+		religion = orthodox
+		estate = nobles_estate
+		adm = 71 dip = 64 mil = 79
+		birth_date = 1404.2.8
+		death_date = 1453.5.29
+		birth = constantinople
+		father = byz_manuel_ii_palaiologos
+		tag = BYZ
+		dynasty = palaiologos_dynasty
+	}
+
+	byz_thomas_palaiologos = { #https://en.wikipedia.org/wiki/Thomas_Palaiologos
+		first_name = { name = name_thomas }
+		culture = greek_culture
+		religion = orthodox
+		estate = nobles_estate
+		adm = 46 dip = 39 mil = 44
+		birth_date = 1409.8.12
+		death_date = 1465.5.12
+		birth = constantinople
+		father = byz_manuel_ii_palaiologos
+		tag = BYZ
+		dynasty = palaiologos_dynasty
+	}
+
+	#Palaiologos Dynasty? https://en.wikipedia.org/wiki/Paleologus_of_Pesaro
+	byz_john_fr_palaiologos = { #Maybe does not exist
+		first_name = { name = name_john }
+		culture = greek_culture
+		religion = orthodox
+		estate = nobles_estate
+		adm = 36 dip = 37 mil = 31
+		birth_date = 1455.5.5
+		death_date = 1512.10.10
+		birth = monemvasia
+		father = byz_thomas_palaiologos
+		tag = BYZ
+		dynasty = palaiologos_dynasty
+	}
+
+	pes_theodore_palaiologos = {
+		first_name = { name = name_theodore }
+		culture = romagnol
+		religion = catholic
+		estate = nobles_estate
+		adm = 42 dip = 43 mil = 50
+		birth_date = 1504.9.1
+		death_date = 1540.7.10
+		birth = pesaro
+		father = byz_john_fr_palaiologos
+		tag = PES
+		dynasty = palaiologos_dynasty
+	}
+
+	pes_prosper_palaiologos = {
+		first_name = { name = name_prosper }
+		culture = romagnol
+		religion = catholic
+		estate = nobles_estate
+		adm = 32 dip = 41 mil = 38
+		birth_date = 1526.12.5
+		death_date = 1580.8.10
+		birth = pesaro
+		father = pes_theodore_palaiologos
+		tag = PES
+		dynasty = palaiologos_dynasty
+	}
+
+	pes_camilio_palaiologos = {
+		first_name = { name = name_camillo }
+		culture = romagnol
+		religion = catholic
+		estate = nobles_estate
+		adm = 38 dip = 45 mil = 36
+		birth_date = 1544.9.12
+		death_date = 1609.8.15
+		birth = pesaro
+		father = pes_prosper_palaiologos
+		tag = PES
+		dynasty = palaiologos_dynasty
+	}
+
+	eng_theodore_palaiologos = { #https://en.wikipedia.org/wiki/Theodore_Paleologus
+		first_name = { name = name_theodore }
+		culture = romagnol
+		religion = catholic
+		estate = nobles_estate
+		adm = 44 dip = 47 mil = 65
+		birth_date = 1560.12.15
+		death_date = 1636.1.21
+		birth = pesaro
+		father = pes_camilio_palaiologos
+		tag = ENG
+		dynasty = palaiologos_dynasty
+	}
+
+	eng_theodore_jr_palaiologos = { #https://en.wikipedia.org/wiki/Theodore_Paleologus_(Junior)
+		first_name = { name = name_theodore }
+		culture = english
+		religion = anglican
+		estate = nobles_estate
+		adm = 48 dip = 52 mil = 63
+		birth_date = 1609.4.8
+		birth = lincoln
+		father = eng_theodore_palaiologos
+		tag = ENG
+		dynasty = palaiologos_dynasty
+	}
+
+	roe_john_palaiologos = { #https://en.wikipedia.org/wiki/John_Paleologus
+		first_name = { name = name_john }
+		culture = english
+		religion = anglican
+		estate = nobles_estate
+		adm = 45 dip = 38 mil = 52
+		birth_date = 1611.6.29
+		birth = lincoln
+		father = eng_theodore_palaiologos
+		tag = ROE
+		dynasty = palaiologos_dynasty
+	}
+
+	roe_ferdinand_palaiologos = { #https://en.wikipedia.org/wiki/Ferdinand_Paleologus
+		first_name = { name = name_ferdinand }
+		culture = english
+		religion = anglican
+		estate = nobles_estate
+		adm = 62 dip = 58 mil = 56
+		birth_date = 1619.6.3
+		birth = plymouth
+		father = eng_theodore_palaiologos
+		tag = ROE
+		dynasty = palaiologos_dynasty
+	}
 }

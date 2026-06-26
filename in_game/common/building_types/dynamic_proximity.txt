@@ -26,8 +26,20 @@ REPLACE:local_governor = {
         }
         owner = scope:actor #not in subjects
         trigger_if = {
-            limit = { has_building = building_type:seljuk_mint }
-            NOT = { has_building = building_type:seljuk_mint }
+            limit = {
+                OR = {
+                    has_building = building_type:seljuk_mint
+                    has_building = building_type:lieutenancy
+                    has_building = building_type:zhixian
+                }
+            }
+            NOT = {
+                OR = {
+                    has_building = building_type:seljuk_mint
+                    has_building = building_type:lieutenancy
+                    has_building = building_type:zhixian
+                }
+            }
         }
     }
 
@@ -179,6 +191,22 @@ REPLACE:lieutenancy = {
             }
         }
         owner = scope:actor
+        trigger_if = {
+            limit = {
+                OR = {
+                    has_building = building_type:seljuk_mint
+                    has_building = building_type:local_governor
+                    has_building = building_type:zhixian
+                }
+            }
+            NOT = {
+                OR = {
+                    has_building = building_type:seljuk_mint
+                    has_building = building_type:local_governor
+                    has_building = building_type:zhixian
+                }
+            }
+        }
     }
 
     on_construction_ended = {

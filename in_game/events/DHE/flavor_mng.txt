@@ -60,12 +60,15 @@ flavor_mng.2 = {
             name = dynasty_stability
             subtract = 150
         }
+        remove_global_variable = ming_emperor_in_nanjing
     }
 
     option = {
         name = flavor_mng.2.a
         custom_tooltip = lost_nanjing
-        set_variable = mng_lost_nanjing
+        c:MNG = {
+            set_variable = mng_lost_nanjing
+        }
         kill_character = c:MNG.ruler
         kill_character = c:MNG.heir
         set_new_ruler = character:interregnum

@@ -757,7 +757,7 @@ Types HUD_TopbarTypes
 									}
 
 									blockoverride "concept_link" {
-										using = dynasty_stability_regular
+										text = "[dynasty_stability|e]"
 									}
 
 									blockoverride "title_icon" {
@@ -783,6 +783,13 @@ Types HUD_TopbarTypes
 												text = "dynasty_stability_MODIFIER_DEC_TT"
 											}
 											textcontext = "[Localize(GetAutoModifier('dynasty_stability_modifier').GetDesc)]"
+										}
+
+										textbox = {
+											margin = { 10 0 }
+											using = text_single_template
+											minimumsize = { -1 30 }
+											text = "negative_dynasty_stability_MODIFIER_DEC_TT"
 										}
 
 										#TooltipScrolledStringPairList = {

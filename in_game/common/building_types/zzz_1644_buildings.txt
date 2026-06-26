@@ -110,7 +110,7 @@ REPLACE:zhixian = {
 
 	allow = {
 		custom_tooltip = {
-			text = lieutenancy_tt
+			text = zhixian_tt
 			scope:actor = {
 				total_building_levels_including_construction:local_governor < {
 					value = modifier:num_local_governors
@@ -120,6 +120,22 @@ REPLACE:zhixian = {
 			}
 		}
 		owner = scope:actor
+		trigger_if = {
+			limit = {
+				OR = {
+					has_building = building_type:local_governor
+					has_building = building_type:lieutenancy
+					has_building = building_type:seljuk_mint
+				}
+			}
+			NOT = {
+				OR = {
+					has_building = building_type:seljuk_mint
+					has_building = building_type:lieutenancy
+					has_building = building_type:local_governor
+				}
+			}
+		}
 	}
 
 	on_construction_ended = {
