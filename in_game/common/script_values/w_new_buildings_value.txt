@@ -54,10 +54,30 @@ factory_max_level = {
 }
 factory_employment = 0.75
 factory_build_time = 1460
+farm_build_time = 730
 financial_center_build_time = 1095
 
 adventurer_camp_employment = 0.5
 
 adventurer_build_time = 365
 
-klephts_camp_employment = 0.25
+klephts_camp_employment = 0.5
+
+farm_max_level = {
+    add = {
+        desc = "BUILDING_LEVEL_BASE"
+        value = 5
+    }
+    add = {
+        desc = "BUILDING_LEVEL_POPULATION"
+        value = "province_pop_type_population(pop_type:peasants)"
+        multiply = 0.8
+    }
+    add = {
+        desc = "BUILDING_LEVEL_DEVELOPMENT"
+        value = development
+        multiply = 0.2
+    }
+}
+
+commercial_farm_employment = 1.0

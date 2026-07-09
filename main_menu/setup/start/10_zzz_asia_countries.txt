@@ -19,7 +19,7 @@ countries = {
 
 
 
-				
+
 
 				# hebei_area ─ 大名、邯郸、怀庆等卫所区
 				fuyang shexian_cizhou wuan
@@ -30,9 +30,9 @@ countries = {
 				jixian huixian qizhou xinxiang
 				anyang linzhou linzhang tangyin
 
-				zhending fuping  yuanshi_zhending huolu  lingshou pingshan_zhending jingxing 
+				zhending fuping  yuanshi_zhending huolu  lingshou pingshan_zhending jingxing
 
-				
+
 
 				# henan_area ─ 洛阳、开封与南阳等豫中腹地
 				wanqiu dancheng xiangcheng shangshui nandun xihua
@@ -56,8 +56,8 @@ countries = {
 
 
 				# datong_area ─ 大同、河套与朔方屏障
-				
-				
+
+
 				lingxian_shanxi guangling hunyuan feihu lingqiu
 
 				# shanxi_area ─ 晋阳、潞安与汾河流域
@@ -94,14 +94,14 @@ countries = {
 				xicheng hanyin ningshan pingli shiquan xunyang ziyang_xingan goupingguan
 				yangzhou xixiang yangyuan foping
 				huayuan fuping_xian sanyuan tongguan_tongchuan
-			
+
 
 				# gansu_area ─ 甘州、肃州与青海河西走廊西段
-				shandan  
-				ganzhou hongshui liyuan 
-				# shazhou anding_suzhou dangcheng 
+				shandan
+				ganzhou hongshui liyuan
+				# shazhou anding_suzhou dangcheng
 				#kuyu_shazhou guazhou niuquanzi yangguan mazongshan hala_nur
-				suzhou_gansu gaotai 
+				suzhou_gansu gaotai
 				xining datong_xining gushan haomen nianbo zhuanglang
 				yongchang_ganzhou anyuan gulang jinchang xiliang baiting zhenfan
 
@@ -122,8 +122,8 @@ countries = {
 
 				# longyou_area ─ 陇右三辅与渭源河谷
 				longxi_gongchang dingxi fuqiang huizhou_gongchang ningyuan_gongchang tongwei zhangxian
-				hezhou guide 
-				jishi 
+				hezhou guide
+				jishi
 				huizhou chengzhou xihe_huizhou liangdang lidian
 				jiezhou baimaguan wenxian_gongchang
 				didao kangu lanzhou lutang weiyuan_lintao
@@ -145,15 +145,15 @@ countries = {
 
 				qiaoxian
 
-
+				jinta
 			}
 			# 整合省份：已整合，文化可能被接受，税收正常
 			own_control_integrated = {
-				
+
 			}
 			# 征服省份：有整合度系统，影响税收产出，影响人口满意度
 			own_control_conquered = {
-				
+
 			}
 
 			include = "zzz_csh"
@@ -194,11 +194,11 @@ countries = {
 			country_name = "CSH"
 
 			currency_data = {
-				gold = 0 #国库 大顺穷
-				stability = 30 #稳定度
-				prestige = 60 #声望
-				government_power = 40 #正统性
-				army_tradition = 50 #军队传统
+				gold = 9600 #国库
+				stability = 27.5 #稳定度
+				prestige = 75 #声望
+				government_power = 82.5 #正统性
+				army_tradition = 66 #军队传统
 			}
 		}
 
@@ -232,8 +232,8 @@ countries = {
 				huifacheng golmin_salggiyan hoifa juxeri lefu sunggari
 
 				#东戈壁
-				jingzhou_dorbod bathahalak chahar muumyangan ulan_hua ulanchab  #dorbod_province 
-				erenkhot avga baganuur khobootsar shuluun_khoboot_tsagaan sonod #erenkhot_province 
+				jingzhou_dorbod bathahalak chahar muumyangan ulan_hua ulanchab  #dorbod_province
+				erenkhot avga baganuur khobootsar shuluun_khoboot_tsagaan sonod #erenkhot_province
 
 				# songnen_area ─ 嫩江平原与科尔沁草原
 				taizhou_jurchen buteha chol hurle
@@ -292,11 +292,13 @@ countries = {
 			}
 			# 整合省份：已整合，文化可能被接受，税收正常
 			own_control_integrated = {
-				
+
 			}
 			# 征服省份：有整合度系统，影响税收产出，影响人口满意度
 			own_control_conquered = {
-				
+				urad bagh bayankhot bayannurhong alxa
+				oiyin_korken zag_suujiyn_gobi banzart_khairkhan noyon_uul
+				naraan_chilaun khara_khoto tost_uul gaxun_gobi shargyn_gobi shira_qulusun
 			}
 			include = "zzz_qng"
 			include = "expl_mongols"
@@ -326,27 +328,27 @@ countries = {
 					start_date = 1643.10.8
 					# end_date = 1661.2.5
 				}
-				
+
 			}
 			accepted_cultures = {
 				solon_culture
 				evenk_culture
 				mongolian_culture
-				
-			}
-			tolerated_cultures = {
-				liaodong_culture
-				yan_culture
-				monguor_culture
 				han_culture
 
 			}
+			tolerated_cultures = {
+				#liaodong_culture
+				#yan_culture
+				monguor_culture
+
+			}
 			currency_data = {
-				gold = 30000 #国库 先给花不完的钱
+				gold = 26550 #国库
 				stability = 60 #稳定度
-				prestige = 60 #声望
-				government_power = 80 #正统性
-				army_tradition = 100 #军队传统
+				prestige = 75 #声望
+				government_power = 96 #正统性
+				army_tradition = 95 #军队传统
 			}
 			court_language = jurchen_language
 			country_rank = rank_empire
@@ -556,18 +558,18 @@ countries = {
 				gaoyao gaoming guangning_zhaoqing sanshui sihui
 
 				# liangjiang_area ─ 广西右江盆地
-				baishan anding_mashan duyang yongshun
+				baishan
 				lingfang shanglin qianjiang_binzhou
-				guishun xiaozhenan zhenan_guishun
 				ningpu yongning_hengzhou qianlong
-				nandan bama donglan zhishan nadi liuzhai
+				bama
 				xuanhua_nanning langning wuyuan_nanning
 				yishan anhua_huanjiang hechi sien xincheng_xincheng libo
-				sicheng xilin wangmu lucheng luodian tongle
-				siming pingxiang_pingxiang shangsi qianlong_siming
+				sicheng xilin wangmu luodian tongle
+				shangsi
 				chongshan longzhou_longzhou mingying doukang guwan
-				laian_tianzhou baise sienzhou tianzhou tangxing
-				xilong bada ceheng machang zhenfeng
+				tangxing
+				bada
+				baise
 
 				# guangxi_area ─ 桂林漓江与两广交界
 				lingui lingchuan yining xingan yongfu
@@ -586,7 +588,6 @@ countries = {
 				# guizhou_area ─ 黔中山地
 				annan xinxing_annan xincheng_annan
 				puding guangsuoling dingnan_anshun kangzuo xibao zhenning
-				bozhou wujiang_bozhou zizhou renhuai shaxi
 				duyun bazhai_duyun dushan pingzhu lantu
 				guizhou_guizhou jinzhu xintian bafan suidong longli weiqing
 				liping xiajiang guzhou qingjiang_liping tonggu_liping taigong yongcong
@@ -594,63 +595,14 @@ countries = {
 				puan_puan huangcaoba anlong lemin
 				shuitejiang dejiang wuchuan_sinan yanhe longquanping shiqian yinjiang
 				taipengruodong qiongshui panqiao zhenyuan_sizhou
-				dizhai caoni cengtai dafang dagu_shunyuan shuixi longchang jinji
+				dizhai longchang
 				tongren wuluo tixi
-				huangping baini wengshui rongshan
-				shuicheng pingba zhijin huozhu
-				zhengan zhenzhou suiyang bochuan
+				pingba
 
 				# dali_area ─ 滇西茶马古道
-				
 
 				# yunnan_area ─ 云南高原与南盘江
-				
 
-				
-				# chuanxi_area ─ 川西
-				langzhong cangxi nanbu
-				huacheng zengkou nanjiang tongjiang 
-				chengdu pixian shuangliu xindu jintang
-				liujiang huaying linshui qujiang_guangan yuechi dazhu
-				miangu jiachuan zhaohua
-				deyang anzhou shifang mianzhu
-				puan zhangming mianzhou zitong
-				jianzhou zixian neijiang renshou jingyan ziyang_zizhong
-				pingwu jiangyou qingchuan
-				wenchuan wenshan shiquan_maozhou baoning_maozhou
-				pengzhou jinyuan guanzhou
-				xiaoxi pengxi lezhi anyue suining
-				nanchong yingshan_shunqing xichong yilong xiangru
-				songzhou_songpan dazhasi gurkyang heishui maerkang hongyuan muge fuzhou_songpan qiongxi rinpung
-				qixian_tongchuan shehong yanting zhongjiang
-
-				
-				# chuannan_area ─ 川南
-				runyan mala pingchuan zuosuo
-				changning_changning luoji yunlian rongxian
-				dechang huili huichuan_dechang mingyi
-				
-				longyou_jiading emei jiajiang rongzhou weiyuan_jiading qianwei
-				hanyuan suzhou lugu qiongbu shimian zhenxi_lizhou
-				mahu lizhou_mahu leibo mabian muchuan
-				meizhou qingshen danleng pengshan
-				qiongzhou pujiang_qiongzhou dayi
-				jianchang_sichuan kuozhou puge beishe
-				
-				yibin fushun nanxi qingfu xuanhua
-				yandao rongjing diaomen lushan_yazhou mingshan
-				yongning gulin luojiao mangbu guihua
-
-				#川东
-				dazu rongchang yongchuan
-				baxian banan bishan qijiang jiangjin nanchuan
-				tongchuan_dazhou xinning_dazhou dongxiang_dazhou mingtong taiping
-				fuzhou_sichuan changshou_changshou wulong
-				shizhao tongliang dingyuan
-				luzhou naxi hejiang jiangan
-				youyang xiushan pengshui qianjiang_shaoqing
-				linjiang dianjiang fengdu shizhu
-				wanzhou liangshan
 			}
 			include = "zzz_mng"
 			include = "expl_mongols"
@@ -787,8 +739,13 @@ countries = {
 			capital = dadu
 			flag = "CHI_Ming_Sanchen"
 			country_name = "MNG"
-
-
+			currency_data = {
+				gold = -5750 #国库
+				stability = -12.5 #稳定度
+				prestige = 22.5 #声望
+				government_power = 95 #正统性
+				army_tradition = 16.5 #军队传统
+			}
 		}
 
 		#大西 - CXI
@@ -826,7 +783,7 @@ countries = {
 			flag = "CXI"
 			country_name = "CXI"
 			currency_data ={
-				gold = 4000 #国库
+				gold = 6500 #国库
 				stability = 30 #稳定度
 				prestige = 50 #声望
 				government_power = 40 #正统性
@@ -1042,7 +999,9 @@ countries = {
 				individualism_vs_communalism = 40
 				serfdom_vs_free_subjects = 10
 				reforms = {
-					son_in_law_rule
+					kor_sadae_reform
+					samsa_system
+					kor_daedongbeob
 				}
 				laws = {
 					legal_code_law = goryeon_code_policy
@@ -1054,7 +1013,7 @@ countries = {
 				}
 				privilege = {
 					#Nobles
-					noble_armies
+					
 					#Clergy
 					tax_exemption
 					#Peasants
@@ -1279,6 +1238,7 @@ countries = {
 				putian fuqing xianyou
 				nanping datian shaxian jiangle shunchang yongan_sha youxi
 				longxi zhaoan huafeng longyan pinghe nansheng zhangpu changtai zhangping
+				penghu
 			}
 			capital = jinjiang
 			include = "zzz_cn_military_gvn"
@@ -1313,37 +1273,22 @@ countries = {
 				heyang jiangchuan lunan xinxing
 				#以下可能细化为土司
 				#滇东
-				jinglong daolong gengdang mengban_jihong menghai mengla yot_ou
-				guangnan bangban boai fuzhou_guangnan zhehong
-				guangxi shizong qiubei mile wucao
-				nalou situo luokong muong_te phong_tho
-				kainan baodian zheledian
-				jianshui ami xisha tonghai shiping
+				boai
+				guangxi qiubei mile wucao
+				jianshui ami tonghai shiping
 				pingdian malongtalang xie
-				mengzi bazhai lihua jiaha mengding_mengzi jiaohua nanlang weimo xisa
-				nanning kedu luoxiong zhanyi malong_qujing luoshan_qujing luliang
-				sime niuwu puri_simao
-				yuanjiang_yuanjiang talang tongguan_yuanjiang
-				weiyuan mengtong mengban_weiyuan
+				mengzi jiaha jiaohua weimo
+				nanning kedu zhanyi malong_qujing luliang
 				hequ_wuding luquan rende yuanmou
-				wusa zhaoban heizhang
-				wumeng daguan luozuoguan yongshan
 				dongchuan qiaojia tangdan zhehai
 				#滇西
-				beisheng langqu jinshajiang yongning_baisheng ningfan
 				taihe_dali menghua yunlong binchuan yangbei wujing yunnan langqiong
-				heqing jianchuan
-				lanzhou_lanzhou zhiziluo adeqiu zhuluo gongshan luzhang
-				tongan_lijiang linxi dadandang jujin nixi xiaodandang
-				mangshi longchuan luchuan_mangshi
-				mengding gengma mengdong mengmeng
-				mulian matman menglei pangyang musuo yinshaluo
-				shunning midu dingbian_shunning baotong youdian
+				jianchuan
+				luzhang
+				gengma
+				midu dingbian_shunning baotong
 				tengchong wadian zhenxi nandan_tengcheng nandian
-				yaozhou dayao juque
-				yongchang_yongchang zhenkang shidian kongwei yongping_yongchang rouyuan lujiang
-
-				muli kheong waerhdje
+				yongchang_yongchang zhenkang yongping_yongchang
 			}
 
 			own_control_integrated = {
@@ -1450,7 +1395,7 @@ countries = {
 			type = army
 			own_control_core = {
 				dalay doloodyn_gobi saikhandulaan ulaanbadrakh #sharangad_province
-				del_khad galbyn_gobi khatanbulag oiyin_korken ooshiyn_gobi zhavklant_khairkhan #eastern_gobi_province
+				del_khad galbyn_gobi khatanbulag ooshiyn_gobi zhavklant_khairkhan #eastern_gobi_province
 				choyrin_datsan bayan gazrin_chuluu takhilyn ulziit #choyr_province
 				ulaan bogd khadat ukhaa_khudag #ulaan_province
 				urga kedun khar_bukhyn kharuukh manzushir tuul khan_khentii1 #tuul_province
@@ -1924,7 +1869,7 @@ countries = {
 			}
 			capital = nan
 		}
-		ADH = { #阿瑜陀耶
+		AYU = { #阿瑜陀耶
 			own_control_core = {
 				ayodhya suphanburi chaisri kanchanaburi ratchaburi wang_pho dong_lakhon mueng_thung_yai
 				dong_si_maha_phot lopburi muang_khuan_kra_buri phanat prachinburi rayong saraburi 
@@ -1946,6 +1891,10 @@ countries = {
 				ruler = adh_prast_thong
 				ruler_term = { character = adh_prast_thong start_date = 1629.1.1 }
 				heir_selection = cognatic_primogeniture
+
+                reforms = {
+					ayu_chatusadom
+				}
 			}
 			court_language = tai_language
 			country_rank = rank_kingdom
@@ -1953,7 +1902,6 @@ countries = {
 				lawa_culture
 				mon_culture
 			}
-			country_name = "ADH"
 			currency_data = {
 				gold = 300 #国库
 				stability = 40 #稳定度
@@ -2088,7 +2036,7 @@ countries = {
 		}
 		KSY = { #绰斯甲布土司 khro skyabs
 			own_control_core = {
-				rahor dzamtang nubzur
+				rahor dzamtang nubzur yungdrung geshitsa durgyeling
 			}
 			include = "asia_advanced_no_pagan_tribe"
 			capital = rahor
@@ -2160,6 +2108,9 @@ countries = {
 				 vanch
 				shighnan gunt murghab oksu  vamar
 				raskam
+				niuquanzi
+				miran anding_suzhou yangguan shazhou guazhou
+				kuyu_shazhou chijin
 			}
 			capital = yarkand
 			include = "eurasian_horde_no_coast_no_pleading"

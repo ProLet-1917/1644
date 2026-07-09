@@ -5,7 +5,7 @@
 	# 1. 触发条件
 	can_start = {
 		current_year >= 1627
-		current_year <= 1650
+		current_year <= 1665
 		exists = c:MNG
 		NOT = { c:MNG = { owns = location:dadu } }
 	}
@@ -13,8 +13,8 @@
 	# 2. 结束条件
 	can_end = {
 		OR = {
-			current_year > 1661
-			
+			current_year >= 1685
+
 			# 重建天朝：如果有国家成为了天朝组织的领袖，局势结束
 			AND = {
 				current_year >= 1645
@@ -392,7 +392,7 @@
 			limit = {
 				NOT = { has_global_variable = cji_try_surrender_to_qng }
 			}
-			if ={
+			if = {
 				limit = {
 					c:QNG ?= { has_variable = chi_domination }
 					c:MNG ?= { has_variable = chi_domination }
@@ -424,7 +424,6 @@
 				}
 			}
 		}
-
 	}
 
 	# 6. 结束效果

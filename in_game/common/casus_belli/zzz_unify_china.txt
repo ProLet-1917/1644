@@ -52,6 +52,17 @@
 		always = yes
 	}
 
+	ai_wait_with_sending_peace = {
+		calc_true_if = {
+			amount < 2
+			scope:war.war_length >= 120
+			root.war_exhaustion >= 10
+			root = {
+				is_during_bankruptcy = yes
+			}
+		}
+	}
+
 	war_goal_type = superiority_chinese_unification
 }
 

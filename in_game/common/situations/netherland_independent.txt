@@ -17,7 +17,7 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 		OR = {
 			OR = {
 				current_year > 1700
-				NOT = { 
+				NOT = {
 					OR = {
 						country_exists = c:NED
 						country_exists = c:HOL
@@ -31,14 +31,14 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 			#}
 			#var:peace_talk_in_westphalia_phase > 3
 			custom_tooltip = {
-  				text = netherland_peace_talk_tt
-				has_global_variable = peace_talk_about_dutches_end  				
+				text = netherland_peace_talk_tt
+				has_global_variable = peace_talk_about_dutches_end
 			}
 			custom_tooltip = {
-  				text = netherland_control_brussel_tt
+				text = netherland_control_brussel_tt
 				location:brussels ?= {
 					c:NED ?= owner
-				}				
+				}
 			}
 			c:NED = { is_subject_or_below_of = c:SPA }
 			c:SPA = { is_subject_or_below_of = c:NED }

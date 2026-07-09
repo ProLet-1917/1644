@@ -1,0 +1,47 @@
+﻿namespace = flavor_ben
+
+#Benin Slave Trade
+flavor_ben.6 = {
+	type = country_event
+	title = flavor_ben.6.title
+	desc = flavor_ben.6.desc
+	outcome = neutral
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = BEN
+		from = 1644.1.1
+		to = 1850.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	
+	trigger = {
+		total_effective_building_levels:slave_center >= 20	
+	}
+
+	option = {
+		name = flavor_ben.6.a
+		
+		custom_tooltip = {
+			text = ben_slave_building_upgrade_tt
+			set_variable = ben_more_levels_of_slaves_building_flag
+		}
+	}
+
+	option = {
+		name = flavor_ben.6.b
+		
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_huge_move_to_right
+		}
+	}
+}

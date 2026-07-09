@@ -1,0 +1,142 @@
+#Common Levies
+levy_a_mounted_rifles = {
+    size = levy_generic_light_cavalry_size
+    unit = a_mounted_rifles
+
+    allowed_pop_type = soldiers
+    allowed_pop_type = burghers
+}
+
+levy_a_reserve_levy = {
+    size = levy_generic_heavy_infantry_size
+    unit = a_reserve_levy
+
+    allowed_pop_type = soldiers
+    allowed_pop_type = burghers
+}
+
+REPLACE:levy_conscripts = {
+    size = levy_generic_infantry_size
+    unit = a_conscripts
+
+    allowed_pop_type = peasants
+    allowed_pop_type = laborers
+
+}
+
+levy_a_volunteer_cavalry = {
+    size = levy_generic_light_cavalry_size
+    unit = a_volunteer_cavalry
+
+    allowed_pop_type = soldiers
+    allowed_pop_type = burghers
+}
+
+levy_a_guard_levy = {
+    size = levy_generic_heavy_infantry_size
+    unit = a_guard_levy
+
+    allowed_pop_type = soldiers
+    allowed_pop_type = burghers
+}
+
+REPLACE:levy_a_militiamen = {
+    size = levy_generic_infantry_size
+    unit = a_militiamen
+
+    allowed_pop_type = peasants
+    allowed_pop_type = laborers
+}
+
+levy_a_stradioti = {
+    size = levy_generic_light_cavalry_size
+    unit = a_stradioti
+
+    allowed_pop_type = soldiers
+    allowed_pop_type = burghers
+    allowed_pop_type = peasants
+    allowed_pop_type = laborers
+}
+
+levy_a_spearmen_levy = {
+    size = levy_generic_heavy_infantry_size
+    unit = a_spearmen_levy
+
+    allowed_pop_type = soldiers
+    allowed_pop_type = burghers
+    allowed_pop_type = peasants
+    allowed_pop_type = laborers
+}
+
+REPLACE:levy_a_flintlock_levy = {
+    size = levy_generic_infantry_size
+    unit = a_flintlock_levy
+
+    allowed_pop_type = peasants
+    allowed_pop_type = laborers
+}
+
+levy_a_mounted_militia = {
+    size = levy_generic_light_cavalry_size
+    unit = a_mounted_militia
+
+    allowed_pop_type = soldiers
+    allowed_pop_type = burghers
+}
+
+levy_a_billmen_levy = {
+    size = levy_generic_heavy_infantry_size
+    unit = a_billmen_levy
+
+    allowed_pop_type = soldiers
+    allowed_pop_type = burghers
+}
+
+REPLACE:levy_a_matchlock_levy = {
+    size = levy_generic_infantry_size
+    unit = a_matchlock_levy
+
+    allowed_pop_type = peasants
+    allowed_pop_type = laborers
+}
+
+levy_late_crusader_knights = {
+    size = levy_generic_noble_cavalry_size
+
+    allowed_pop_type = clergy
+
+    allow = {
+        location ?= { has_building_with_at_least_one_level = order_stronghold }
+        religion = religion:catholic
+    }
+
+    unit = a_late_crusader_knights_levy
+}
+
+levy_a_men_at_arms = {
+    size = levy_generic_infantry_size
+
+    allowed_pop_type = soldiers
+
+    unit = a_men_at_arms_levy
+}
+
+levy_a_footmen = {
+    size = levy_generic_infantry_size
+
+    allowed_pop_type = soldiers
+
+    unit = a_footmen_levy
+}
+
+levy_chieftains = {
+    size = levy_generic_noble_cavalry_size
+
+    allowed_pop_type = nobles
+
+    unit = a_chieftains
+}
+
+
+
+

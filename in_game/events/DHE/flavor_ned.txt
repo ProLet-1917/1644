@@ -1,0 +1,1774 @@
+﻿namespace = flavor_ned
+
+#Harlingen up in Flames
+flavor_ned.1 = {
+	hide_portraits = yes
+	type = country_event
+
+	title = flavor_ned.1.title
+	desc = flavor_ned.1.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1771.2.7
+		to = 1780.1.1
+		monthly_chance = 15
+	}
+
+	trigger = {
+		owns = location:harlingen
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+
+		location:harlingen = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		historical_option = yes
+		name = flavor_ned.1.a
+
+		scope:target_location = {
+			change_development = development_mild_penalty
+			every_pop = {
+				add_pop_size = {
+					value = pop_size
+					multiply = -0.05
+				}
+			}
+		}
+	}
+}
+
+#Frederick Coyett
+flavor_ned.3 = {
+	type = country_event
+
+	title = flavor_ned.3.title
+	desc = flavor_ned.3.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1680.1.1
+		monthly_chance = 2
+	}
+
+	historical_info = flavor_ned.3.historical_info
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		create_character = {
+			first_name = name_frederick
+			last_name = Coyett
+			culture = culture:swedish
+			birth_location = location:stockholm
+			save_scope_as = target_character2
+			religion = location:stockholm.owner.religion
+			birth_date = 1615.1.1
+			adm = 62
+			dip = 55
+			mil = 46
+			estate = estate_type:burghers_estate
+			create_in_limbo = yes
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+
+		save_scope_as = target_country2
+
+		ordered_known_country = {
+			limit = {
+				religion = root.religion
+			}
+			order_by = prestige
+			max = 1
+			save_scope_as = target_country
+		}
+	}
+
+	option = {
+		historical_option = yes
+		name = flavor_ned.3.a
+
+		scope:target_character2 = {
+			move_country = root
+			add_adm = 10
+		}
+	}
+
+	option = {
+		name = flavor_ned.3.b
+
+		scope:target_character2 = {
+			move_country = scope:target_country
+		}
+	}
+}
+
+#Pieter Post
+flavor_ned.4 = {
+	type = country_event
+
+	title = flavor_ned.4.title
+	desc = flavor_ned.4.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	trigger = {
+		custom_tooltip = {
+			text = variable_ned_sponsored_baroque_architecture_flag_tt
+			has_variable = ned_sponsored_baroque_architecture_flag
+		}
+	}
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1660.1.1
+		monthly_chance = 2
+	}
+
+	historical_info = flavor_ned.4.historical_info
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		create_character = {
+			first_name = name_peter
+			last_name = Post
+			culture = root.culture
+			birth_location = root.capital
+			save_scope_as = target_character
+			religion = location:stockholm.owner.religion
+			birth_date = 1608.5.1
+			artist = architect
+			artist_skill = 0.75
+			adm = 54
+			dip = 62
+			mil = 23
+			estate = estate_type:burghers_estate
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		historical_option = yes
+		name = flavor_ned.4.a
+
+		scope:target_character = { move_country = root }
+		location:the_hague = {
+			create_art = {
+				quality = 75
+				type = work_of_art_type:palace
+				key = huis_ten_bosch
+				artist = scope:target_character
+			}
+		}
+
+		change_gold_effect = { scale = -2 }
+
+		add_prestige = prestige_mild_bonus
+	}
+
+	option = {
+		name = flavor_ned.4.b
+
+		add_prestige = prestige_mild_penalty
+		scope:target_character = { banish_character = yes }
+	}
+}
+
+#Founding Kaapkolonie
+flavor_ned.6 = {
+	hide_portraits = yes
+	type = country_event
+
+	title = flavor_ned.6.title
+	desc = flavor_ned.6.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1800.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		owns = location:goringhaikona
+	}
+
+	historical_info = flavor_ned.6.historical_info
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+
+		location:goringhaikona = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_ned.6.a
+
+		scope:target_location = {
+			if = {
+				limit = {
+					NOT = { location_rank = location_rank:city }
+				}
+				change_location_rank_effect = { location_rank = location_rank:city }
+			}
+
+			change_development = development_severe_bonus
+		}
+
+		add_gold = {
+			value = root.monthly_income_trade_and_tax
+			multiply = -2
+		}
+
+		add_migration = {
+			owner = this
+			from = root.capital.province_definition
+			to = scope:target_location.province_definition
+			culture = root.culture
+			amount = 0.05
+			months = 100
+		}
+	}
+
+	option = {
+		name = flavor_ned.6.b
+
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+#Founding Niew-Amsterdam
+flavor_ned.7 = {
+	hide_portraits = yes
+	type = country_event
+
+	title = flavor_ned.7.title
+	desc = flavor_ned.7.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1800.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		owns = location:manhattan
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+
+		location:manhattan = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_ned.7.a
+
+		scope:target_location = {
+			if = {
+				limit = {
+					NOT = { location_rank = location_rank:city }
+				}
+				change_location_rank_effect = { location_rank = location_rank:city }
+			}
+
+			change_development = development_severe_bonus
+		}
+
+		change_gold_effect = { scale = -2 }
+
+		add_migration = {
+			owner = this
+			from = root.capital.province_definition
+			to = scope:target_location.province_definition
+			culture = root.culture
+			amount = 0.05
+			months = 100
+		}
+	}
+
+	option = {
+		name = flavor_ned.7.b
+
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+#Sea Beggars
+flavor_ned.8 = {
+	type = country_event
+
+	title = flavor_ned.8.title
+	desc = flavor_ned.8.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1800.1.1
+		monthly_chance = 2
+	}
+
+	historical_info = flavor_ned.8.historical_info
+
+	image = "gfx/interface/illustrations/units/navy_heavy_ship_3.dds"
+
+	immediate = {
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+
+		save_scope_as = target_country
+	}
+
+	option = {
+		name = flavor_ned.8.a
+
+		unlock_policy_effect = {
+			type = sea_beggars_policy
+		}
+	}
+
+	option = {
+		name = flavor_ned.8.b
+
+		change_societal_value = {
+			type = belligerent_vs_conciliatory
+			value = societal_value_move_to_right
+		}
+	}
+}
+
+#Claims in Ceylon
+flavor_ned.9 = {
+	hide_portraits = yes
+	type = country_event
+
+	title = flavor_ned.9.title
+	desc = flavor_ned.9.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1800.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		has_discovered_area = area:sailan_area
+		NOT = { has_presence_in = area:sailan_area }
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+
+		location:kurunegala.owner = {
+			save_scope_as = target_country
+			ruler_or_regent ?= {
+				save_scope_as = target_character2
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ned.9.a
+
+		add_casus_belli = {
+			target = scope:target_country
+			type = casus_belli:cb_conquer_province
+			province = location:kurunegala.province
+		}
+
+		add_stability = {
+			value = stability_mild_penalty
+			add = {
+				value = societal_value:outward_vs_inward
+				divide = 50
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ned.9.b
+	}
+}
+
+#Five Dutch Admiralties
+flavor_ned.10 = {
+	type = country_event
+
+	title = flavor_ned.10.title
+	desc = flavor_ned.10.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1800.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		capital = {
+			has_building_with_at_least_one_level = admiralty
+		}
+		owns = location:harlingen
+		owns = location:hoorn
+		owns = location:rotterdam
+		owns = location:middelburg
+		owns = location:amsterdam
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_ned.10.a
+
+		if = {
+			limit = {
+				location:harlingen = {
+					is_capital = no
+				}
+			}
+			location:harlingen = {
+				construct_building = {
+					building_type = building_type:friesland_admiralty
+					cost_multiplier = 0.5
+					cost_multiplier_reason = "burghers_cheap_sponsorship"
+				}
+			}
+		}
+		if = {
+			limit = {
+				location:hoorn = {
+					is_capital = no
+				}
+			}
+			location:hoorn = {
+				construct_building = {
+					building_type = building_type:west_friesland_admiralty
+					cost_multiplier = 0.5
+					cost_multiplier_reason = "burghers_cheap_sponsorship"
+				}
+			}
+		}
+		if = {
+			limit = {
+				location:rotterdam = {
+					is_capital = no
+				}
+			}
+			location:rotterdam = {
+				construct_building = {
+					building_type = building_type:rotterdam_admiralty
+					cost_multiplier = 0.5
+					cost_multiplier_reason = "burghers_cheap_sponsorship"
+				}
+			}
+		}
+		if = {
+			limit = {
+				location:middelburg = {
+					is_capital = no
+				}
+			}
+			location:middelburg = {
+				construct_building = {
+					building_type = building_type:zeeland_admiralty
+					cost_multiplier = 0.5
+					cost_multiplier_reason = "burghers_cheap_sponsorship"
+				}
+			}
+		}
+		if = {
+			limit = {
+				location:amsterdam = {
+					is_capital = no
+				}
+			}
+			location:amsterdam = {
+				construct_building = {
+					building_type = building_type:amsterdam_admiralty
+					cost_multiplier = 0.5
+					cost_multiplier_reason = "burghers_cheap_sponsorship"
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ned.10.b
+
+		set_variable = unified_dutch_admiralties
+		custom_tooltip = NED_UNLOCKS_UNIFIED_ADMIRALTIES_GOV_REFORM
+	}
+}
+
+#Anton van Leeuwenhoek
+flavor_ned.13 = {
+	type = country_event
+
+	title = flavor_ned.13.title
+	desc = flavor_ned.13.desc
+	outcome = neutral
+
+	historical_info = flavor_ned_13.historical_info
+
+	fire_only_once = yes
+
+	trigger = {
+		gold >= {
+			value = root.monthly_income_trade_and_tax
+			multiply = 2
+		}
+	}
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1650.1.1
+		to = 1680.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_anthony
+			last_name = van_leeuwenhoek
+			artist = scientist
+			birth_date = 1632.10.24
+			artist_skill = 0.95
+			adm = 54
+			dip = 63
+			mil = 9
+			culture = root.culture
+			birth_location = location:amsterdam
+			save_scope_as = target_artist
+			estate = estate_type:burghers_estate
+			create_in_limbo = yes
+		}
+
+		save_scope_as = target_country2
+	}
+
+	option = {
+		name = flavor_ned.13.a
+
+		scope:target_artist = { move_country = root }
+		add_research_progress = research_progress_severe_bonus
+		add_estate_satisfaction = {
+			type = estate_type:burghers_estate
+			value = estate_satisfaction_extreme_bonus
+		}
+		change_gold_effect = { scale = -2 }
+	}
+
+	option = {
+		name = flavor_ned.13.b
+
+		add_prestige = prestige_mild_penalty
+
+		scope:target_artist = { banish_character = yes }
+	}
+}
+
+#We do a little bit of cannibalism
+flavor_ned.14 = {
+	hide_portraits = yes
+	type = country_event
+
+	title = flavor_ned.14.title
+	desc = flavor_ned.14.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1800.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_regular_elections = yes
+		at_war = yes
+		capital = {
+			controller != root
+		}
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:nobles_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+			if = {
+				limit = {
+					first_spouse ?= {
+						is_alive = yes
+					}
+				}
+				first_spouse ?= {
+					save_scope_as = target_character2
+				}
+			}
+		}
+		capital = {
+			save_scope_as = target_location
+			controller = {
+				save_scope_as = target_country
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ned.14.a
+
+		kill_character = {
+			target = scope:target_character
+			reason = cannibalism
+		}
+
+		if = {
+			limit = {
+				exists = scope:target_character2
+			}
+			kill_character = {
+				target = scope:target_character2
+				reason = cannibalism
+			}
+		}
+	}
+}
+
+#Golden Age of Dutch Culture
+flavor_ned.16 = {
+	hide_portraits = yes
+	type = country_event
+
+	title = flavor_ned.16.title
+	desc = flavor_ned.16.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1672.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	trigger = {
+		prestige >= 80
+		culture = {
+			cultural_influence >= 100
+			cultural_tradition >= 100
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+
+		save_scope_as = target_country
+	}
+
+	option = {
+		name = flavor_ned.16.a
+
+		add_prestige = prestige_mild_bonus
+		add_stability = stability_mild_bonus
+	}
+}
+
+#Dutch Cloth Industry
+flavor_ned.17 = {
+	type = country_event
+
+	title = flavor_ned.17.title
+	desc = flavor_ned.17.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_dyes.dds"
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 4
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	trigger = {
+		capital.market = {
+			market_possible_goods_trade_surplus = {
+				goods = goods:dyes
+				country = root
+				value > 30
+			}
+		}
+		any_owned_location = {
+			count >= 2
+			OR = {
+				area = area:holland_area
+				area = area:friesland_area
+				area = area:brabant_area
+				area = area:flanders_area
+				area = area:wallonia_area
+			}
+			has_building = building_type:fine_cloth_manufactory
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+
+		save_scope_as = target_country
+
+		ordered_owned_location = {
+			limit = {
+				OR = {
+					area = area:holland_area
+					area = area:friesland_area
+					area = area:brabant_area
+					area = area:flanders_area
+					area = area:wallonia_area
+				}
+				has_building = building_type:fine_cloth_manufactory
+			}
+			order_by = population
+			max = 1
+			check_range_bounds = no
+			save_scope_as = target_location
+		}
+
+		ordered_owned_location = {
+			limit = {
+				OR = {
+					area = area:holland_area
+					area = area:friesland_area
+					area = area:brabant_area
+					area = area:flanders_area
+					area = area:wallonia_area
+				}
+				has_building = building_type:fine_cloth_manufactory
+			}
+			order_by = population
+			position = 2
+			check_range_bounds = no
+			save_scope_as = target_location2
+		}
+	}
+
+	option = {
+		name = flavor_ned.17.a
+
+		scope:target_location = {
+			change_development = development_severe_bonus
+			every_pop = {
+				limit = {
+					owner = root
+					pop_type = pop_type:burghers
+				}
+				add_pop_satisfaction = pop_satisfaction_ultimate_bonus
+			}
+		}
+
+		change_gold_effect = { scale = -5 }
+	}
+
+	option = {
+		name = flavor_ned.17.b
+
+		scope:target_location2 = {
+			change_development = development_severe_bonus
+			every_pop = {
+				limit = {
+					owner = root
+					pop_type = pop_type:burghers
+				}
+				add_pop_satisfaction = pop_satisfaction_ultimate_bonus
+			}
+		}
+
+		change_gold_effect = { scale = -5 }
+	}
+
+	option = {
+		name = flavor_ned.17.c
+
+		scope:target_location = {
+			change_development = development_mild_bonus
+			every_pop = {
+				limit = {
+					owner = root
+					pop_type = pop_type:burghers
+				}
+				add_pop_satisfaction = pop_satisfaction_severe_bonus
+			}
+		}
+		scope:target_location2 = {
+			change_development = development_mild_bonus
+			every_pop = {
+				limit = {
+					owner = root
+					pop_type = pop_type:burghers
+				}
+				add_pop_satisfaction = pop_satisfaction_severe_bonus
+			}
+		}
+
+		change_gold_effect = { scale = -8 }
+	}
+
+	option = {
+		name = flavor_ned.17.d
+
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_penalty
+		}
+	}
+}
+
+#Lust for Spice
+flavor_ned.18 = {
+	type = country_event
+
+	title = flavor_ned.18.title
+	desc = flavor_ned.18.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 20
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	trigger = {
+		is_great_power = yes
+		navy_size >= 100
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+		capital.market = {
+			save_scope_as = target_market
+		}
+	}
+
+	option = {
+		name = flavor_ned.18.a
+
+		capital.market = {
+			add_temporary_demand = { type = demand:dutch_spice_lust scale = 1 months = 600 }
+		}
+
+		custom_tooltip = {
+			text = NED_SECURE_SPICE_FOR_BONUSES
+			set_variable = ned_spice_greed_flag
+		}
+	}
+}
+
+#Freedom of Thought
+flavor_ned.19 = {
+	type = country_event
+
+	title = flavor_ned.19.title
+	desc = flavor_ned.19.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		any_known_country = {
+			count >= 10
+			OR = {
+				religion = religion:lutheran
+				religion = religion:anglican
+				religion = religion:hussite #Although technically not part of the reformation, I think it is fair to include them
+				religion = religion:calvinist
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_ned.19.a
+
+		change_societal_value = {
+			type = spiritualist_vs_humanist
+			value = societal_value_move_to_right
+		}
+
+		add_prestige = prestige_mild_bonus
+	}
+
+	option = {
+		name = flavor_ned.19.b
+
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_right
+		}
+
+		add_research_progress = research_progress_mild_bonus
+	}
+
+	option = {
+		name = flavor_ned.19.c
+
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_bonus
+		}
+
+		add_government_power = government_power_mild_bonus
+	}
+}
+
+#The Spice MUST Flow
+flavor_ned.20 = {
+	hide_portraits = yes
+	type = country_event
+
+	title = flavor_ned.20.title
+	desc = flavor_ned.20.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_pepper.dds"
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		custom_tooltip = {
+			text = variable_ned_spice_greed_flag_tt
+			has_variable = ned_spice_greed_flag
+		}
+		capital.market = {
+			market_possible_goods_trade_surplus = {
+				goods = goods:pepper
+				country = root
+				value >= 5
+			}
+		}
+	}
+
+	immediate = {
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+
+		save_scope_as = target_country
+	}
+
+	option = {
+		name = flavor_ned.20.a
+
+		if = {
+			limit = {
+				capital.market = {
+					has_temporary_demand = demand:dutch_spice_lust
+				}
+			}
+			capital.market = {
+				remove_temporary_demand = demand:dutch_spice_lust
+			}
+		}
+
+		add_estate_satisfaction = {
+			type = estate_type:burghers_estate
+			value = estate_satisfaction_extreme_bonus
+		}
+	}
+}
+
+#Pierre Bayle
+flavor_ned.21 = {
+	hide_portraits = yes
+	type = country_event
+
+	title = flavor_ned.21.title
+	desc = flavor_ned.21.desc
+	outcome = neutral
+
+	historical_info = flavor_ned.21.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1670.1.1
+		to = 1700.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		ordered_known_country = {
+			limit = {
+				this != ROOT
+				trigger_if = {
+					limit = { country_exists = c:FRA }
+					this != c:FRA
+				}
+			}
+			order_by = prestige
+			max = 1
+			save_scope_as = target_country
+		}
+
+		create_character = {
+			first_name = name_peter
+			last_name = Bayle
+			artist = philosopher
+			birth_date = 1647.11.18
+			artist_skill = 0.85
+			adm = 83
+			dip = 92
+			mil = 95
+			culture = culture:french
+			birth_location = location:paris
+			save_scope_as = target_character
+			religion = religion:calvinist
+			estate = estate_type:burghers_estate
+			create_in_limbo = yes
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+	}
+
+	option = {
+		name = flavor_ned.21.a
+
+		scope:target_character = { move_country = root }
+		capital = {
+			create_art = {
+				artist = scope:target_character
+				quality = 75
+				type = work_of_art_type:treatise
+				key = dictionnaire_historique_et_critique
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ned.21.b
+
+		scope:target_character = {
+			move_country = scope:target_country
+		}
+	}
+}
+
+#Michiel de Ruyter
+flavor_ned.22 = {
+	type = country_event
+
+	title = flavor_ned.22.title
+	desc = flavor_ned.22.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1650.1.1
+		monthly_chance = 10
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+
+		create_character = {
+			first_name = name_michael
+			last_name = de_ruyter
+			birth_date = 1607.3.24
+			adm = 83
+			dip = 92
+			mil = 95
+			culture = root.culture
+			birth_location = location:middelburg
+			save_scope_as = target_character2
+			script = ned_michiel_de_ruyter
+			estate = estate_type:burghers_estate
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_ned.22.a
+
+		change_societal_value = {
+			type = land_vs_naval
+			value = societal_value_move_to_right
+		}
+		add_navy_tradition = navy_tradition_severe_bonus
+		scope:target_character2 = {
+			move_country = root
+		}
+	}
+
+	option = {
+		name = flavor_ned.22.b
+
+		change_societal_value = {
+			type = land_vs_naval
+			value = societal_value_move_to_left
+		}
+		add_army_tradition = army_tradition_severe_bonus
+		scope:target_character2 = {
+			move_country = root
+		}
+	}
+
+	option = {
+		name = flavor_ned.22.c
+
+		scope:target_character2 = {
+			move_country = root
+			add_character_modifier = {
+				modifier = de_ruyter
+				months = 120
+				mode = add_and_extend
+			}
+		}
+	}
+}
+
+#Rembrandt Harmenszoon van Rijn
+flavor_ned.27 = {
+	type = country_event
+
+	title = flavor_ned.27.title
+	desc = flavor_ned.27.desc
+	outcome = neutral
+
+	historical_info = flavor_ned.27.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1680.1.1
+		monthly_chance = 5
+	}
+
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+
+	immediate = {
+		ordered_known_country = {
+			limit = {
+				this != ROOT
+			}
+			order_by = prestige
+			max = 1
+			save_scope_as = target_country
+		}
+
+		create_character = {
+			first_name = name_rembrandt
+			last_name = van_rijn
+			culture = root.culture
+			birth_location = location:leiden
+			save_scope_as = target_character
+			religion = root.religion
+			birth_date = 1606.6.15
+			artist = painter
+			artist_skill = 1
+			adm = 54
+			dip = 62
+			mil = 23
+			estate = estate_type:burghers_estate
+			create_in_limbo = yes
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+	}
+
+	option = {
+		name = flavor_ned.27.a
+
+		historical_option = yes
+
+		change_gold_effect = { scale = -2 }
+
+		custom_tooltip = NED_WE_WILL_FUND_REMBRANDT
+
+		hidden_effect = {
+			scope:target_character = {
+				move_country = root
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ned.27.b
+
+		scope:target_character = {
+			move_country = scope:target_country
+		}
+	}
+}
+
+#Menno van Coehoorn
+flavor_ned.28 = {
+	type = country_event
+
+	title = flavor_ned.28.title
+	desc = flavor_ned.28.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1660.1.1
+		to = 1710.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		ordered_known_country = {
+			limit = {
+				this != ROOT
+			}
+			order_by = army_size
+			max = 1
+			save_scope_as = target_country
+		}
+
+		create_character = {
+			first_name = name_menno
+			last_name = van_coehoorn
+			culture = root.culture
+			birth_location = root.capital
+			save_scope_as = target_character
+			religion = root.religion
+			birth_date = 1641.3.17
+			adm = 92
+			dip = 88
+			mil = 76
+			estate = estate_type:peasants_estate
+			create_in_limbo = yes
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+	}
+
+	option = {
+		name = flavor_ned.28.a
+
+		change_gold_effect = { scale = -2 }
+
+		scope:target_character = {
+			move_country = root
+		}
+
+		change_societal_value = {
+			type = offensive_vs_defensive
+			value = societal_value_move_to_left
+		}
+	}
+
+	option = {
+		name = flavor_ned.28.b
+
+		change_gold_effect = { scale = -2 }
+
+		scope:target_character = {
+			move_country = root
+		}
+
+		change_societal_value = {
+			type = offensive_vs_defensive
+			value = societal_value_move_to_right
+		}
+	}
+
+	option = {
+		name = flavor_ned.28.c
+
+   		kill_character_silently = scope:target_character
+		add_army_tradition = army_tradition_mild_penalty
+	}
+}
+
+#Patriottentijd
+flavor_ned.32 = {
+	hide_portraits = yes
+	type = country_event
+
+	title = flavor_ned.32.title
+	desc = flavor_ned.32.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1720.1.1
+		to = 1780.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	trigger = {
+		has_reform = government_reform:seven_provinces
+	}
+
+	immediate = {
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+		root.capital.area = {
+			save_scope_as = target_area
+		}
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+	}
+
+	option = {
+		name = flavor_ned.32.a
+
+		custom_tooltip = {
+			text = ned_all_peasants_in_capital_become_disloyal
+			every_owned_location = {
+				limit = {
+					area = scope:target_area
+					owner = ROOT
+				}
+				every_pop = {
+					limit = {
+						owner = root
+						pop_type = pop_type:peasants
+					}
+					add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+				}
+			}
+		}
+	}
+}
+
+#Glorious Revolution - Prelude, British Monarch is unpopular
+flavor_ned.1000 = {
+	type = country_event
+
+	title = flavor_ned.1000.title
+	desc = flavor_ned.1000.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = GBR
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	trigger = {
+		country_exists = c:NED
+		c:NED = {
+			is_subject = no
+			has_regent = no
+		}
+		legitimacy <= 50
+		is_subject = no
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+		c:NED = {
+			ruler_or_regent ?= {
+				save_scope_as = target_character2
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ned.1000.a
+
+		custom_tooltip = {
+			text = NED_UNLESS_IF_WE_SECURE_LEGITIMACY_ENGLISH_NOBLES_WILL_INVITE_DUTCH_RULER
+			set_variable = ned_glorious_revolution_warning
+			c:NED = { trigger_event_silently = { id = flavor_ned.1001 years = 5 } }
+		}
+	}
+}
+
+#Glorious Revolution - Immortal Seven
+flavor_ned.1001 = {
+	type = country_event
+
+	title = flavor_ned.1001.title
+	desc = flavor_ned.1001.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	trigger = {
+		trigger_if = {
+			limit = { country_exists = c:GBR }
+			c:GBR = {
+				is_subject = no
+				legitimacy <= 80
+				has_variable = ned_glorious_revolution_warning
+			}
+		}
+		trigger_else = {
+			country_exists = c:ENG
+			c:ENG = {
+				is_subject = no
+				legitimacy <= 80
+				has_variable = ned_glorious_revolution_warning
+			}
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+		if = {
+			limit = { country_exists = c:GBR }
+			c:GBR = {
+				save_scope_as = target_country
+				ruler_or_regent ?= {
+					save_scope_as = target_character2
+				}
+			}
+		}
+		else = {
+			c:ENG = {
+				save_scope_as = target_country
+				ruler_or_regent ?= {
+					save_scope_as = target_character2
+				}
+			}
+		}
+
+		set_variable = glorious_revolution_immortal_seven_flag
+	}
+
+	option = {
+		name = flavor_ned.1001.a
+
+		add_casus_belli = {
+			target = scope:target_country
+			type = casus_belli:cb_claim_throne
+		}
+
+		scope:target_country = {
+			add_opinion = {
+				target = ROOT
+				modifier = opinion_sided_with_immortal_seven
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ned.1001.b
+
+		scope:target_country = {
+			add_opinion = {
+				target = ROOT
+				modifier = opinion_did_not_claim_throne
+			}
+		}
+	}
+}
+
+#Glorious Revolution - Union Formed
+flavor_ned.1002 = {
+	type = country_event
+
+	title = flavor_ned.1002.title
+	desc = flavor_ned.1002.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 35
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	trigger = {
+		custom_tooltip = {
+			text = variable_glorious_revolution_immortal_seven_flag_tt
+			has_variable = glorious_revolution_immortal_seven_flag
+		}
+		OR = {
+			in_union_with = c:ENG
+			in_union_with = c:GBR
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+
+		if = {
+			limit = {
+				in_union_with = c:GBR
+			}
+
+			c:GBR = {
+				save_scope_as = target_country
+			}
+		}
+		else_if = {
+			limit = {
+				in_union_with = c:ENG
+			}
+			c:ENG = {
+				save_scope_as = target_country
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ned.1002.a
+
+		unlock_parliament_issue_effect = { type = appease_english_population }
+	}
+}
+
+#Glorious Revolution - Integrating Britain into the Dutch crown, alt-history
+#on_action trigger
+flavor_ned.1003 = {
+	hide_portraits = yes
+	type = country_event
+
+	title = flavor_ned.1003.title
+	desc = flavor_ned.1003.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_ned.1003.a
+
+		unlock_parliament_issue_effect = { type = increase_control_in_britain }
+	}
+}

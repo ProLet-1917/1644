@@ -1,0 +1,398 @@
+﻿namespace = flavor_mor
+
+#Guich Garrisons
+flavor_mor.31 = {
+	type = country_event
+	title = flavor_mor.31.title
+	desc = flavor_mor.31.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = MOR
+		from = 1644.1.1
+		to = 1900.1.1
+		monthly_chance = 2
+	}
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:peasants background = pop_type:peasants }
+	}
+
+	trigger = {
+		culture_group_percentage_in_country = {
+			culture_group = culture_group:amazigh_group
+			value > 0.25
+		}
+		has_advance = jaysh_armies_advance
+	}
+
+	option = {
+		name = flavor_mor.31.a
+
+		unlock_building_effect = {
+			type = guich_garrison
+		}
+
+		change_societal_value = {
+			type = offensive_vs_defensive
+			value = societal_value_move_to_left
+		}
+	}
+
+	option = {
+		name = flavor_mor.31.b
+
+		change_societal_value = {
+			type = offensive_vs_defensive
+			value = societal_value_move_to_right
+		}
+
+		culture = {
+			add_cultural_influence = cultural_influence_mild_bonus
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+	}
+}
+
+flavor_mor.32 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_mor.32.title
+	desc = flavor_mor.32.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = MOR
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 2
+	}
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	trigger = {
+		any_work_of_art_in_country = {
+			this = work_of_art:ben_youssef_mosque
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		work_of_art:ben_youssef_mosque ?= {
+			save_scope_as = target_work_of_art
+		}
+
+		random_owned_location = {
+			limit = {
+				any_work_of_art_in_location = {
+					this = work_of_art:ben_youssef_mosque
+				}
+			}
+			save_scope_as = target_location
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_mor.32.a
+
+		scope:target_location = {
+			change_development = development_mild_bonus
+		}
+
+		scope:target_work_of_art = {
+			change_art_quality = 10
+		}
+
+		change_gold_effect = { scale = -2 }
+	}
+
+	option = {
+		name = flavor_mor.32.b
+
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+flavor_mor.33 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_mor.33.title
+	desc = flavor_mor.33.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = MOR
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 3
+	}
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	trigger = {
+		location:marrakesh.owner ?= root
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		location:marrakesh = {
+			save_scope_as = target_location
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+
+		create_character = {
+			estate = estate_type:clergy_estate
+			age = 20
+			artist = architect
+			artist_skill = {
+				0.65
+				0.75
+			}
+			save_scope_as = target_artist
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_mor.33.a
+
+		scope:target_location = {
+			create_art = {
+				artist = scope:target_artist
+				key = el_badi_palace
+				quality = 75
+				type = work_of_art_type:palace
+			}
+		}
+
+		change_gold_effect = { scale = -1 }
+		scope:target_artist = { move_country = root }
+	}
+
+	option = {
+		name = flavor_mor.33.b
+
+		add_prestige = prestige_mild_penalty
+		scope:target_artist = { banish_character = yes }
+	}
+
+	option = {
+		name = flavor_mor.33.c
+
+		trigger = {
+			ruler_or_regent ?= {
+				has_trait = obsessive_perfectionist
+			}
+		}
+
+		scope:target_artist = { move_country = root }
+		scope:target_location = {
+			create_art = {
+				artist = scope:target_artist
+				key = el_badi_palace
+				quality = 90
+				type = work_of_art_type:palace
+			}
+		}
+
+		change_gold_effect = { scale = -3 }
+
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+#African Slaves for Sugar Production
+flavor_mor.1100 = {
+	type = country_event
+	title = flavor_mor.1100.title
+	desc = flavor_mor.1100.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_slaves_goods.dds"
+
+	dynamic_historical_event = {
+		tag = MOR
+		from = 1644.1.1
+		to = 1850.1.1
+		monthly_chance = 2
+	}
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		any_owned_location = {
+			region = region:maghreb_region
+			raw_material = goods:sugar
+		}
+
+		any_known_country = {
+			num_pop_type_in_country:slaves > 5
+			capital ?= {
+				region = region:guinea_region
+				market ?= {
+					is_produced_in_market = goods:slaves_goods
+				}
+			}
+		}
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:slaves   background = pop_type:slaves }
+
+		save_scope_as = prev_country
+
+		random_known_country = {
+			limit = {
+				num_pop_type_in_country:slaves > 5
+				capital ?= {
+					region = region:guinea_region
+					market ?= {
+						is_produced_in_market = goods:slaves_goods
+					}
+				}
+			}
+
+			save_scope_as = target_country
+
+			ordered_owned_location = {
+				order_by = population
+				max = 1
+				limit = {
+					any_pop = {
+						pop_type = pop_type:slaves
+					}
+				}
+				save_scope_as = target_location
+			}
+		}
+
+		ordered_owned_location = {
+			order_by = development
+			max = 1
+			limit = {
+				region = region:maghreb_region
+				raw_material = goods:sugar
+			}
+			save_scope_as = target_location2
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_mor.1100.a
+
+		show_as_tooltip = {
+			add_migration = {
+				amount = 0.05
+				months = 120
+				from = scope:target_location.province_definition
+				owner = scope:target_country
+				to_location = scope:target_location2
+				type = pop_type:slaves
+			}
+
+			transfer_yearly_gold = {
+				target = scope:target_country
+				value = 1
+			}
+		}
+
+		scope:target_country = {
+			trigger_event_silently = flavor_mor.1101
+		}
+
+		custom_tooltip = mor_they_must_accept_offer_tt
+	}
+
+	option = {
+		name = flavor_mor.1100.b
+
+		custom_tooltip = mor_no_slave_purchase_tt
+
+		change_societal_value = {
+			type = belligerent_vs_conciliatory
+			value = societal_value_minor_move_to_left
+		}
+	}
+}
+
+flavor_mor.1101 = {
+	type = country_event
+	title = flavor_mor.1101.title
+	desc = flavor_mor.1101.desc
+	outcome = neutral
+	major = yes
+	major_trigger = {
+		this = scope:prev_country
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:slaves   background = pop_type:slaves }
+	}
+
+	option = {
+		name = flavor_mor.1101.a
+
+
+		add_migration = {
+			amount = 0.05
+			months = 120
+			from = scope:target_location.province_definition
+			owner = root
+			to_location = scope:target_location2
+			type = pop_type:slaves
+		}
+
+		scope:prev_country = {
+			transfer_yearly_gold = {
+				target = root
+				value = 1
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mor.1101.b
+
+		add_opinion_mutual_effect = {
+			modifier = mor_rejected_slave_force
+			target = scope:prev_country
+		}
+	}
+}

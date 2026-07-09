@@ -80,7 +80,7 @@ protestant_union = {
 				limit = { total_members > 0 }
 				ordered_international_organization_member = {
 					limit = { can_lead_international_organization = PREV }
-					order_by = great_power_score
+					order_by = country_economical_base
 					max = 1
 					check_range_bounds = no
 					save_scope_as = potential_new_leader
@@ -97,7 +97,7 @@ protestant_union = {
 		}
 	}
 	modifier = {
-
+		monthly_war_exhaustion = -0.1
 	}
 	leader_modifier = {
 		monthly_prestige = 0.05
@@ -320,7 +320,7 @@ catholic_league = {
 				limit = { total_members > 0 }
 				ordered_international_organization_member = {
 					limit = { can_lead_international_organization = PREV }
-					order_by = great_power_score
+					order_by = country_economical_base
 					max = 1
 					check_range_bounds = no
 					save_scope_as = potential_new_leader
@@ -337,7 +337,7 @@ catholic_league = {
 		}
 	}
 	modifier = {
-
+		monthly_war_exhaustion = -0.1
 	}
 	leader_modifier = {
 		monthly_prestige = 0.05

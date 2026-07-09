@@ -1,0 +1,945 @@
+﻿namespace = flavor_mei
+
+flavor_mei.2 = { #Schiller
+	type = country_event
+	title = flavor_mei.2.title
+	desc = flavor_mei.2.desc
+	outcome = neutral
+	fire_only_once = yes
+	
+	dynamic_historical_event = {
+		tag = SAX
+		from = 1779.1.1
+		to = 1800.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		create_character = {
+			first_name = name_frederick
+			last_name = schiller
+			birth_date = 1759.11.10
+			female = no
+			culture = culture:swabian
+			birth_location = location:vaihingen
+			artist = writer
+			artist_skill = 1
+			save_scope_as = target_character
+			script = friedrich_schiller
+			estate = estate_type:burghers_estate
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_mei.2.a
+		historical_option = yes
+
+		change_gold_effect = { scale = -2 }
+		scope:target_character = { move_country = root }
+		capital = {
+			create_art = {
+				artist = scope:target_character
+				type = work_of_art_type:play
+				quality = 100
+				key = the_robbers
+			}
+			create_art = {
+				artist = scope:target_character
+				type = work_of_art_type:play
+				quality = 84
+				key = wallenstein_woa
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mei.2.b
+		scope:target_character = { banish_character = yes }
+	}
+}
+
+flavor_mei.10 = { #Johann Sebastian Bach
+	type = country_event
+	title = flavor_mei.10.title
+	desc = flavor_mei.10.desc
+	outcome = neutral
+	fire_only_once = yes
+	
+	dynamic_historical_event = {
+		tag = SAX
+		from = 1710.1.1
+		to = 1750.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		culture:saxon = {
+			cultural_influence > 40
+			cultural_tradition > 40
+		}
+		owns = location:leipzig
+	}
+
+	illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		create_character = {
+			first_name = name_john.name_sebastian
+			last_name = bach
+			birth_date = 1685.3.31
+			birth_location = location:eisenach
+			artist_skill = 0.97
+			artist = composer
+			estate = estate_type:burghers_estate
+			save_scope_as = target_character
+			script = mei_bach
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_mei.10.a
+		historical_option = yes
+		change_gold_effect = { scale = -1.00 }
+		scope:target_character = { move_country = root }
+	}
+	option = {
+		name = flavor_mei.10.b
+		random_list = {
+			75 = {
+				scope:target_character = { move_country = root }
+			}
+			25 = {
+				scope:target_character = { banish_character = yes }
+			}
+		}
+	}
+
+	historical_info = flavor_mei.10.historical_info
+}
+
+flavor_mei.30 = { #Gottfried Wilhelm Leibniz
+	type = country_event
+	title = flavor_mei.30.title
+	desc = flavor_mei.30.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SAX
+		from = 1675.1.1
+		to = 1725.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		owns = location:leipzig
+	}
+
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_godfrey.name_william
+			last_name = leibniz
+			birth_date = 1646.7.1
+			birth_location = location:leipzig
+			artist_skill = 0.80
+			artist = philosopher
+			save_scope_as = target_character
+			estate = estate_type:burghers_estate
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_mei.30.a
+		historical_option = yes
+		change_gold_effect = { scale = -2.00 }
+		scope:target_character = { move_country = root }
+		location:dresden = {
+			create_art = {
+				type = work_of_art_type:treatise
+				quality = 80
+				artist = scope:target_character
+				key = theodicee
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mei.30.b
+		scope:target_character = { banish_character = yes }
+	}
+
+	historical_info = flavor_mei.30.historical_info
+}
+
+flavor_mei.60 = { #A Christmas Gift
+	type = country_event
+	title = flavor_mei.60.title
+	desc = flavor_mei.60.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	trigger = {
+		owns = location:dresden
+		current_year >= 1434
+		current_month = 12
+	}
+
+	illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_mei.60.a
+		change_gold_effect = { scale = 1.00 }
+
+	}
+
+	option = {
+		name = flavor_mei.60.b
+		location:dresden = {
+			every_pop = {
+				limit = {
+					owner = root
+				}
+				add_pop_satisfaction = pop_satisfaction_severe_bonus
+			}
+		}
+	}
+
+	historical_info = flavor_mei.60.historical_info
+}
+
+flavor_mei.80 = { #The Sorrows of Young Werther
+	type = country_event
+	title = flavor_mei.80.title
+	desc = flavor_mei.80.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SAX
+		from = 1770.1.1
+		to = 1790.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		culture:saxon = {
+			cultural_influence > 40
+			cultural_tradition > 40
+		}
+	}
+
+	image = "gfx/interface/illustrations/institutions/enlightenment.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_john.name_wolfgang
+			last_name = von_goethe
+			birth_date = 1749.8.28
+			culture = culture:westphalian
+			birth_location = location:frankfurt
+			artist = writer
+			artist_skill = 0.95
+			save_scope_as = target_character
+			script = mei_johann_wolfgang_goethe
+			estate = estate_type:burghers_estate
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_mei.80.a
+		historical_option = yes
+		scope:target_character = { move_country = root }
+		change_gold_effect = { scale = -2.00 }
+		capital = {
+			create_art = {
+				artist = scope:target_character
+				type = work_of_art_type:play
+				quality = 76
+				key = sorrows_of_young_werther
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mei.80.b
+		scope:target_character = { banish_character = yes }
+	}
+
+	historical_info = flavor_mei.80.historical_info
+}
+
+flavor_mei.90 = { #The Tragedy of Faust
+	type = country_event
+	title = flavor_mei.90.title
+	desc = flavor_mei.90.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SAX
+		from = 1770.1.1
+		to = 1870.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		character:johann_wolfgang_goethe ?= {
+			is_alive = yes
+			owner = root
+		}
+		owns = location:weimar
+	}
+
+	image = "gfx/interface/illustrations/institutions/enlightenment.dds"
+
+	immediate = {
+		character:johann_wolfgang_goethe ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_mei.90.a
+		historical_option = yes
+		location:weimar = {
+			create_art = {
+				type = work_of_art_type:play
+				quality = 99
+				artist = scope:target_character
+				key = faust
+			}
+		}
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+	}
+
+	historical_info = flavor_mei.90.historical_info
+}
+
+flavor_mei.110 = { #The Zwinger
+	hide_portraits = yes
+	type = country_event
+	title = flavor_mei.110.title
+	desc = flavor_mei.110.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = SAX
+		from = 1700.1.1
+		to = 1750.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		owns = location:dresden
+		has_regent = no
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler = {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_mei.110.a
+		historical_option = yes
+		change_gold_effect = { scale = -5.00 }
+		add_prestige = prestige_severe_bonus
+		location:dresden = {
+			construct_building = {
+				building_type = building_type:zwinger
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mei.110.b
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+	}
+	historical_info = flavor_mei.110.historical_info
+}
+
+flavor_mei.140 = { #Heinrich von Brühl
+	type = country_event
+	title = flavor_mei.140.title
+	desc = flavor_mei.140.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_mei.140.historical_info
+
+	dynamic_historical_event = {
+		tag = SAX
+		from = 1740.1.1
+		to = 1763.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:erfurt
+		has_ruler = yes
+		ruler ?= {
+			total_abilities <= 100
+		}
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		
+		create_character = {
+			first_name = name_henry
+			dynasty = dynasty:von_bruhl
+			adm = { 80 95 }
+			dip = { 95 100 }
+			mil = { 60 70 }
+			birth_date = 1700.8.13
+			birth_location = location:erfurt
+			culture = culture:saxon
+			estate = estate_type:nobles_estate
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		ruler_or_regent ?= {
+			save_scope_as = target_ruler
+		}
+	}
+
+	option = {
+		name = flavor_mei.140.a
+		historical_option = yes
+		scope:target_ruler = {
+			add_adm = -5
+			add_dip = -5
+		}
+		scope:target_character = {
+			move_country = root
+		}
+		promote_to_head_of_cabinet_effect = {
+			target = scope:target_character
+		}
+		add_legitimacy = legitimacy_mild_penalty
+		add_estate_satisfaction = { type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+
+	option = {
+		name = flavor_mei.140.b
+		add_legitimacy = legitimacy_mild_bonus
+		add_estate_satisfaction = { type = estate_type:nobles_estate
+			value = estate_satisfaction_severe_penalty
+		}
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_mei.150 = { #Gottfried Silbermann
+	type = country_event
+	title = flavor_mei.150.title
+	desc = flavor_mei.150.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_mei.150.historical_info
+
+	dynamic_historical_event = {
+		tag = SAX
+		from = 1710.1.1
+		to = 1730.1.1
+		monthly_chance = 1
+	}
+
+	image = "gfx/interface/illustrations/institutions/confessionalism.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_godfrey
+			last_name = Silbermann
+			birth_date = 1683.1.14
+			birth_location = location:sayda
+			culture = culture:saxon
+			estate = estate_type:peasants_estate
+			artist_skill = { 0.65 0.8 }
+			artist = sculptor
+			create_in_limbo = yes
+			save_scope_as = target_character
+		}
+	}
+
+	trigger = {
+		owns = location:sayda
+	}
+
+	option = {
+		name = flavor_mei.150.a
+		historical_option = yes
+		change_gold_effect = { scale = -3 }
+		add_religious_influence_if_valid = { VALUE = religious_influence_mild_bonus }
+		scope:target_character = {
+			move_country = root
+		}
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+
+	option = {
+		name = flavor_mei.150.b
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_penalty
+		}
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+	}
+}
+
+flavor_mei.160 = { #University of Wittenberg
+    type = country_event
+    title = flavor_mei.160.title
+    desc = flavor_mei.160.desc
+	outcome = neutral
+
+	historical_info = flavor_mei.160.historical_info
+
+    fire_only_once = yes
+    dynamic_historical_event = {
+        tag = SAX
+        from = 1502.1.1
+        to = 1530.1.1
+        monthly_chance = 1
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+    trigger = {
+        owns = location:wittenberg
+		location:wittenberg = {
+			OR = {
+				location_rank = location_rank:town
+				location_rank = location_rank:city
+			}
+		}
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		location:wittenberg = { save_scope_as = target_location }
+	}
+
+    option = {
+        name = flavor_mei.160.a
+		historical_option = yes
+		if = {
+			limit = {
+				scope:target_location = {
+					NOT = {
+						has_building = building_type:university
+					}
+				}
+			}
+			scope:target_location = {
+				construct_building = {
+					building_type = building_type:university
+					cost_multiplier = 0.5
+					cost_multiplier_reason = "clergy_cheap_sponsorship"
+				}
+			}
+		}
+		else = {
+			add_research_progress = research_progress_severe_bonus
+		}
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_right }
+    }
+
+    option = {
+        name = flavor_mei.160.b
+		add_research_progress = research_progress_weak_penalty
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
+    }
+}
+
+flavor_mei.170 = { #University of Freiberg
+	type = country_event
+	title = flavor_mei.170.title
+	desc = flavor_mei.170.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = SAX
+		from = 1750.1.1
+		to = 1850.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	trigger = {
+		owns = location:freiberg
+		location:freiberg = {
+			has_location_modifier = freiberg_base
+			OR = {
+				location_rank = location_rank:town
+				location_rank = location_rank:city
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mei.170.a
+		historical_option = yes
+		location:freiberg = {
+			remove_location_modifier = freiberg_base
+		}
+		if = {
+			limit = {
+				location:freiberg = {
+					NOT = {
+						has_building = building_type:university
+					}
+				}
+			}
+			location:freiberg = {
+				construct_building = {
+					building_type = building_type:university
+				}
+			}
+		}
+		add_research_progress = research_progress_severe_bonus
+		set_variable = mei_werner_event
+	}
+
+	option = {
+		name = flavor_mei.170.b
+		change_gold_effect = { scale = -2 }
+		location:freiberg = {
+			change_prosperity = prosperity_mild_bonus
+			change_development = development_mild_bonus
+		}
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
+	}
+
+	option = {
+		name = flavor_mei.170.c
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+flavor_mei.210 = { #The Meissen Porcelain Factory
+	type = country_event
+	title = flavor_mei.210.title
+	desc = flavor_mei.210.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_mei.210.historical_info
+
+	dynamic_historical_event = {
+		tag = SAX
+		from = 1710.1.1
+		to = 1860.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_porcelain.dds"
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	trigger = {
+		owns = location:meissen
+		location:meissen = {
+			OR = {
+				location_rank = location_rank:town
+				location_rank = location_rank:city
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mei.210.a
+		historical_option = yes
+		if = {
+			limit = {
+				location:meissen = {
+					NOT = {
+						has_building = building_type:porcelain_manufactory
+					}
+				}
+			}
+			location:meissen = {
+				construct_building = {
+					building_type = building_type:porcelain_manufactory
+					cost_multiplier = 0.75
+					cost_multiplier_reason = "royal_sponsorship"
+				}
+			}
+			location:meissen = {
+				change_development = development_weak_bonus
+				change_prosperity = prosperity_weak_bonus
+			}
+		}
+		else = {
+			change_gold_effect = { scale = -2 }
+			location:meissen = {
+				change_development = development_severe_bonus
+				change_prosperity = prosperity_severe_bonus
+			}
+		}
+		every_market_with_merchants = {
+			limit = {
+				location.continent = continent:europe
+			}
+			add_temporary_demand = { type = demand:porcelain_from_china months = 60 }
+		}
+	}
+
+	option = {
+		name = flavor_mei.210.b
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_move_to_right }
+	}
+}
+
+flavor_mei.220 = { #Johann Melchior Dinglinger
+	type = country_event
+	title = flavor_mei.220.title
+	desc = flavor_mei.220.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_mei.220.historical_info
+
+	dynamic_historical_event = {
+		tag = SAX
+		from = 1700.1.1
+		to = 1730.1.1
+		monthly_chance = 1
+	}
+
+	image = "gfx/interface/illustrations/institutions/manufactories.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_john.name_melchior
+			last_name = Dinglinger
+			birth_date = 1664.12.26
+			birth_location = location:biberach
+			culture = culture:swabian
+			estate = estate_type:burghers_estate
+			artist_skill = { 0.9 1 }
+			artist = sculptor
+			create_in_limbo = yes
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_mei.220.a
+		historical_option = yes
+		change_gold_effect = { scale = -5 }
+		add_prestige = prestige_severe_bonus
+		scope:target_character = {
+			move_country = root
+			add_trait = trait:prominent
+		}
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+	}
+
+	option = {
+		name = flavor_mei.220.b
+		add_prestige = prestige_severe_penalty
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_mei.230 = { #The Theory of Neptunism
+	type = country_event
+	title = flavor_mei.230.title
+	desc = flavor_mei.230.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_mei.230.historical_info
+
+	dynamic_historical_event = {
+		tag = SAX
+		from = 1780.1.1
+		to = 1850.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		custom_tooltip = {
+			text = variable_mei_werner_event_tt
+			has_variable = mei_werner_event
+		}
+		owns = location:freiberg
+	}
+
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_abraham.name_gottlob
+			last_name = Werner
+			birth_date = 1749.9.25
+			birth_location = location:boleslawiec
+			culture = culture:saxon
+			estate = estate_type:burghers_estate
+			artist_skill = { 0.7 0.9 }
+			artist = scientist
+			create_in_limbo = yes
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_mei.230.a
+		historical_option = yes
+		add_prestige = prestige_mild_penalty
+		scope:target_character = {
+			move_country = root
+		}
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_minor_move_to_right }
+	}
+
+	option = {
+		name = flavor_mei.230.b
+		add_prestige = prestige_mild_bonus
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_minor_move_to_left }
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+
+	after = {
+		hidden_effect = {
+			remove_variable = mei_werner_event
+		}
+	}
+}
+
+flavor_mei.240 = { #The Arrival of Hasse
+	type = country_event
+	title = flavor_mei.240.title
+	desc = flavor_mei.240.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_mei.240.historical_info
+
+	dynamic_historical_event = {
+		tag = SAX
+		from = 1780.1.1
+		to = 1840.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:dresden
+	}
+
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_john.name_adolf
+			last_name = Hasse
+			birth_date = 1749.9.25
+			birth_location = location:hamburg
+			culture = culture:saxon
+			estate = estate_type:burghers_estate
+			artist_skill = { 0.75 0.9 }
+			artist = composer
+			create_in_limbo = yes
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_mei.240.a
+		historical_option = yes
+		change_gold_effect = { scale = -3 }
+		add_prestige = prestige_mild_bonus
+		scope:target_character = {
+			move_country = root
+		}
+	}
+
+	option = {
+		name = flavor_mei.240.b
+		add_prestige = prestige_mild_penalty
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}

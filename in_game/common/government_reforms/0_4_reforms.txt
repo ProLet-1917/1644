@@ -62,3 +62,29 @@ klephts_society = {
 
     years = 2
 }
+
+legacy_of_the_romans = {
+    age = age_1_traditions
+
+    major = yes
+
+    potential = {
+        OR = {
+            has_or_had_tag = MOI
+            has_dlc = "0_4_echo_of_the_empire"
+        }
+        NOT = {
+            has_variable = choose_greek_path
+        }
+    }
+
+    country_modifier = {
+        global_max_bureaucracy_slots = 1
+        government_reform_slots = 1
+        army_maintenance_efficiency = 0.1
+        navy_maintenance_efficiency = 0.05
+        monthly_towards_universality = societal_value_minor_monthly_move
+    }
+
+    years = 2
+}

@@ -1,0 +1,534 @@
+﻿namespace = flavor_hun
+
+flavor_hun.140 = {
+	type = country_event
+	title = flavor_hun.140.title
+	desc = flavor_hun.140.desc
+	outcome = neutral
+	historical_info = flavor_hun.140.historical_info
+	fire_only_once = yes
+	
+	dynamic_historical_event = {
+		tag = HUN
+		from = 1644.1.1
+		to = 1664.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		government_type = government_type:monarchy
+		any_character = {
+			is_adult = yes
+			is_female = yes
+			is_ruler = no
+			is_consort = no
+			is_heir = no
+			culture = root.culture
+			has_dynasty = yes
+		}
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		random_character = {
+			limit = {
+				is_adult = yes
+				is_female = yes
+				is_ruler = no
+				is_consort = no
+				is_heir = no
+				culture = root.culture
+				has_dynasty = yes
+			}
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_hun.140.a
+		historical_option = yes
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+		kill_character = {
+			target = scope:target_character
+			reason = execution
+		}
+	}
+	option = {
+		name = flavor_hun.140.b
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_penalty }
+	}
+}
+
+flavor_hun.260 = {
+	type = country_event
+	title = flavor_hun.260.title
+	desc = flavor_hun.260.desc
+	outcome = neutral
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HUN
+		from = 1644.1.1
+		to = 1800.1.1
+		monthly_chance = 10
+	}
+
+	illustration_tags = {
+        10 = armed
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:nobles_estate }
+	}
+
+	trigger = {
+		culture = culture:hungarian
+		"culture_percentage_in_country(culture:wallachian)" >  0
+
+		any_owned_location = {
+			dominant_culture = culture:wallachian
+		}
+	}
+
+	option = {
+		name = flavor_hun.260.a
+
+		ordered_owned_location = {
+			limit = {
+				dominant_culture = culture:wallachian
+			}
+			order_by = population
+			max = {
+				value = 1
+				add = {
+					value = num_provinces
+					multiply = 0.1
+				}
+			}
+			check_range_bounds = no
+			every_pop = {	add_pop_satisfaction = pop_satisfaction_severe_penalty	}
+		}
+	}
+}
+
+flavor_hun.310 = {
+	type = country_event
+	title = flavor_hun.310.title
+	desc = flavor_hun.310.desc
+	outcome = neutral
+	fire_only_once = yes
+	
+	dynamic_historical_event = {
+		tag = HUN
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 10
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+	}
+
+	trigger = {
+		any_owned_location = {
+			prosperity < -0.25
+		}
+		manpower_percentage < 0.7
+
+	}
+
+	option = {
+		name = flavor_hun.310.a
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+		add_manpower = { value = root.monthly_manpower multiply = 6 }
+	}
+	option = {
+		name = flavor_hun.310.b
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+	}
+}
+
+flavor_hun.430 = { #The Crooked Holy Crown of Hungary
+	hide_portraits = yes
+	type = country_event
+	title = flavor_hun.430.title
+	desc = flavor_hun.430.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	trigger = {
+		current_year > 1600
+		tag = HUN
+		government_type = government_type:monarchy
+		has_ruler = yes
+		#Does Hungary have the crown?
+		any_owned_location = {
+			any_work_of_art_in_location = {
+				this = work_of_art:holy_crown_of_hungary
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:nobles_estate }
+		work_of_art:holy_crown_of_hungary = {
+			save_scope_as = scope_holy_crown_of_hungary
+		}
+		#Culprit
+		random_cabinet_character = {
+			save_scope_as = culprit
+		}
+		ruler = {
+			save_scope_as = ruler_scope
+		}
+	}
+
+
+	option = {
+		name = flavor_hun.430.a
+
+		change_gold_effect = { scale = -5 }
+		add_legitimacy = legitimacy_weak_penalty
+	}
+
+	option = {
+		name = flavor_hun.430.b
+
+		change_gold_effect = { scale = -10 }
+		add_prestige = prestige_weak_bonus
+		add_legitimacy = legitimacy_weak_penalty
+	}
+
+	option = {
+		name = flavor_hun.430.c
+		damage_the_crown = yes
+		add_prestige = prestige_severe_penalty
+		add_legitimacy = legitimacy_weak_penalty
+
+	}
+
+	option = {
+		name = flavor_hun.430.d
+		trigger = {
+			ruler = {
+				OR = {
+					has_trait = cruel
+					has_trait = malevolent
+				}
+			}
+			#There is at least a cabinet member
+			any_cabinet_character = {
+				count > 0
+			}
+		}
+		scope:culprit = {
+			kill_character = this
+		}
+		damage_the_crown = yes
+		add_legitimacy = legitimacy_weak_penalty
+
+	}
+}
+
+flavor_hun.440 = { #Broken Tradition
+	type = country_event
+	title = flavor_hun.440.title
+	desc = flavor_hun.440.desc
+	outcome = neutral
+	trigger = {
+		tag = HUN
+		government_type = government_type:monarchy
+
+		not = {root = work_of_art:holy_crown_of_hungary.location.owner}
+
+		exists = work_of_art:holy_crown_of_hungary_crooked
+		not = { work_of_art:holy_crown_of_hungary_crooked.location.owner ?= root}
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		if = {
+			limit  = {
+				exists = work_of_art:holy_crown_of_hungary_crooked
+			}
+			work_of_art:holy_crown_of_hungary_crooked = {
+				save_scope_as = scope_holy_crown_of_hungary
+			}
+		}
+		else = {
+			work_of_art:holy_crown_of_hungary = {
+				save_scope_as = scope_holy_crown_of_hungary
+			}
+		}
+
+		ruler = {
+			save_scope_as = ruler_scope
+		}
+	}
+
+	option = {
+		name = flavor_hun.440.a
+		add_casus_belli =  {
+			type = casus_belli:cb_conquer_province
+			province = scope:scope_holy_crown_of_hungary.location.province
+			target = scope:scope_holy_crown_of_hungary.location.owner
+		}
+
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_extreme_penalty }
+		add_prestige = prestige_weak_penalty
+		add_legitimacy = legitimacy_ultimate_penalty
+	}
+}
+
+flavor_hun.480 = { #Austrian Noble Revolt
+	hide_portraits = yes
+	type = country_event
+	title = flavor_hun.480.title
+	desc = flavor_hun.480.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HUN
+		from = 1700.1.1
+		to = 1836.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	trigger = {
+		NOT = { country_exists = c:HAB }
+		area:austria_area = {
+			any_location_in_area = {
+				owner = root
+			}
+		}
+		any_owned_location = {
+			dominant_culture ?= culture:danube_bavarian
+			average_satisfaction < 0.5
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		create_rebel = {
+			category = nationalist
+			culture = culture:danube_bavarian
+			name = austrian_nobles
+			save_scope_as = austrian_nobles
+		}
+	}
+
+	option = {
+		name = flavor_hun.480.a
+		change_societal_value = { type = centralization_vs_decentralization	value = societal_value_move_to_left	}
+		custom_tooltip = {
+			text = austrian_nobles_joining
+			every_owned_location = {
+				every_pop = {
+					limit = {
+						owner = root
+						culture = culture:danube_bavarian
+					}
+					add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+					change_pop_allegiance = scope:austrian_nobles
+				}
+			}
+		}
+		add_government_power = government_power_severe_bonus
+	}
+	option = {
+		name = flavor_hun.480.b
+		change_societal_value = { type = centralization_vs_decentralization	value = societal_value_move_to_right }
+		destroy_rebel = scope:austrian_nobles
+		create_country_from_cores_in_our_locations = c:HAB
+		c:HAB = {
+			make_subject_of = { target = root type = subject_type:vassal }
+		}
+		add_government_power = government_power_severe_penalty
+	}
+}
+
+flavor_hun.530 = { #Slovak National Awakening
+	type = country_event
+	fire_only_once = yes
+	title = flavor_hun.530.title
+	desc = flavor_hun.530.desc
+	outcome = neutral
+
+	historical_info = flavor_hun.530.historical_info
+
+	dynamic_historical_event = {
+		tag = HUN
+		from = 1750.1.1
+		to = 1810.1.1
+		monthly_chance = 10
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	trigger = {
+		area:slovakia_area = {
+			any_location_in_area = {
+				owner = root
+				local_cultural_unity < 1
+				any_pop = {
+					culture = culture:slovak
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_hun.530.a
+		add_stability = stability_extreme_penalty
+		change_societal_value = { type = centralization_vs_decentralization value = societal_value_move_to_right }
+		custom_tooltip = {
+			text = hungary_accepted_slovak_autonomy
+			every_owned_location = {
+				limit = {
+					any_pop = {
+						owner = root
+						culture = culture:slovak
+					}
+				}
+				every_pop = {
+					limit = {
+						owner = root
+						culture = culture:slovak
+					}
+					add_pop_satisfaction = pop_satisfaction_extreme_bonus
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_hun.530.b
+		historical_option = yes
+		add_stability = stability_extreme_bonus
+		change_societal_value = { type = centralization_vs_decentralization value = societal_value_move_to_left }
+		custom_tooltip = {
+			text = hungary_rejected_slovak_autonomy
+			every_owned_location = {
+				limit = {
+					any_pop = {
+						owner = root
+						culture = culture:slovak
+					}
+				}
+				every_pop = {
+					limit = {
+						owner = root
+						culture = culture:slovak
+					}
+					add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+				}
+			}
+		}
+	}
+}
+
+flavor_hun.570 = { #Adam František Kollár
+	hide_portraits = yes
+	type = country_event
+	title = flavor_hun.570.title
+	desc = flavor_hun.570.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = HUN
+		from = 1760.1.1
+		to = 1780.1.1
+		monthly_chance = 10
+	}
+
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_adam.name_francis
+			last_name = kollar_last_name
+			birth_date = 1718
+			birth_location = location:oravsky_podzamok
+			adm = 65
+			dip = 85
+			mil = 10
+			culture = culture:slovak
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		international_organization:hre.leader_country = {
+			save_scope_as = target_emperor
+		}
+	}
+
+	trigger = {
+		area:slovakia_area = {
+			any_location_in_area = {
+				owner = root
+				local_cultural_unity < 1
+				any_pop = {
+					culture = culture:slovak
+				}
+			}
+		}
+		exists = international_organization:hre
+		exists = international_organization:hre.leader_country
+	}
+
+	option = {
+		name = flavor_hun.570.a
+		add_government_power = government_power_mild_bonus
+		scope:target_character = {
+			move_country = root
+		}
+	}
+
+	option = {
+		name = flavor_hun.570.b
+		add_opinion = {
+			target = scope:target_emperor
+			modifier = opinion_good_relations
+		}
+		scope:target_character = {
+			move_country = scope:target_emperor
+		}
+	}
+}

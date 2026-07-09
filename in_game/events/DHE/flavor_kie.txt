@@ -1,0 +1,588 @@
+﻿namespace = flavor_kie
+
+flavor_kie.2 = {
+	type = country_event
+	title = flavor_kie.2.title
+	desc = flavor_kie.2.desc
+	outcome = neutral
+	historical_info = flavor_kie.2.historical_info
+
+	dynamic_historical_event = {
+		tag = KIE
+		from = 1644.1.1
+		to = 1900.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:nobles_estate }
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_kie.2.a
+
+		historical_option = yes
+		
+		unlock_estate_privilege_effect = {
+			type = ukr_kholop_protection
+		}
+
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_move_to_right
+		}
+	}
+
+	option = {
+		name = flavor_kie.2.b
+
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_move_to_left
+		}
+
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+
+	option = {
+		name = flavor_kie.2.c
+
+		trigger = {
+			ruler_or_regent ?= {
+				has_trait = malevolent
+			}
+		}
+
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_large_move_to_left
+		}
+
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_extreme_bonus
+		}
+
+		add_estate_satisfaction = {
+			type = estate_type:peasants_estate
+			value = estate_satisfaction_mild_penalty
+		}
+	}
+
+	option = {
+		name = flavor_kie.2.d
+
+		trigger = {
+			ruler_or_regent ?= {
+				has_trait = benevolent
+			}
+		}
+
+		unlock_estate_privilege_effect = {
+			type = ukr_kholop_protection
+		}
+
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_large_move_to_right
+		}
+
+		add_estate_satisfaction = {
+			type = estate_type:peasants_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+}
+
+#Gedeon Chetvertinsky
+flavor_kie.3 = {
+	type = country_event
+	title = flavor_kie.3.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					tag = RUS
+				}
+				desc = flavor_kie.3.desc_RUS
+			}
+			triggered_desc = {
+				trigger = {
+					tag = ZAZ
+				}
+				desc = flavor_kie.3.desc_ZAZ
+			}
+			triggered_desc = {
+				trigger = { always = yes }
+				desc = flavor_kie.3.desc
+			}
+		}
+	}
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = KIE
+		tag = RUS
+		tag = ZAZ
+		from = 1680.1.1
+		to = 1730.1.1
+		monthly_chance = 3
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		owns = location:kyiv
+		religion = religion:orthodox
+		country_rank_level >= 3
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			estate = estate_type:clergy_estate
+			first_name = name_gideon
+			last_name = chetvertinsky
+			birth_date = 1648.5.3
+			adm = 75
+			dip = 80
+			mil = 30
+			culture = culture:ruthenian
+			religion = religion:orthodox
+			birth_location = location:kyiv
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+
+		location:kyiv ?= {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_kie.3.a
+
+		change_gold_effect = { scale = -1 }
+
+		scope:target_character = {
+			move_country = ROOT
+		}
+	}
+
+	option = {
+		name = flavor_kie.3.b
+
+		kill_character_silently = {
+			target = scope:target_character
+		}
+
+		add_prestige = prestige_mild_penalty
+	}
+
+	option = {
+		name = flavor_kie.3.c
+
+		trigger = {
+			tag = ZAZ
+		}
+
+		scope:target_character = {
+			move_country = ROOT
+		}
+
+		add_diplomats = diplomats_mild_bonus
+		scope:target_location ?= {
+			change_development = development_mild_bonus
+			change_prosperity = prosperity_mild_bonus
+			change_control = control_mild_bonus
+		}
+	}
+
+	option = {
+		name = flavor_kie.3.d
+
+		trigger = {
+			tag = RUS
+			NOT = {
+				culture = culture:ruthenian
+			}
+		}
+
+		scope:target_character = {
+			move_country = ROOT
+		}
+
+		culture:ruthenian = {
+			add_cultural_influence = cultural_influence_mild_penalty
+			add_cultural_tradition = cultural_tradition_mild_penalty
+		}
+
+		culture = {
+			add_cultural_influence = cultural_influence_mild_bonus
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+
+		add_religious_influence = religious_influence_mild_bonus
+	}
+}
+
+flavor_kie.4 = {
+	type = country_event
+	title = flavor_kie.4.title
+	desc = flavor_kie.4.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = KIE
+		tag = RUS
+		tag = PLC
+		from = 1680.1.1
+		to = 1710.1.1
+		monthly_chance = 3
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		owns = location:kyiv
+		religion = religion:orthodox
+		has_advance = art_school_advance
+	}
+
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+
+	immediate = {
+		create_character = {
+			estate = estate_type:clergy_estate
+			first_name = name_john
+			last_name = rutkovych
+			birth_date = 1650.3.2
+			artist = iconographer
+			artist_skill = 0.75
+			culture = culture:ruthenian
+			religion = religion:orthodox
+			birth_location = location:kyiv
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+
+		location:kyiv = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_kie.4.a
+
+		scope:target_character = {
+			move_country = root
+		}
+
+		scope:target_location = {
+			create_art = {
+				artist = scope:target_character
+				key = gabriel_the_archangel
+				quality = 75
+				type = work_of_art_type:icon
+			}
+		}
+
+		culture = {
+			add_cultural_influence = cultural_influence_mild_bonus
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+
+		change_gold_effect = { scale = -2 }
+	}
+
+	option = {
+		name = flavor_kie.4.b
+
+		trigger = {
+			owns = location:zhovkva
+			location:zhovkva = {
+				NOR = {
+					OR = {
+						has_building = building_type:art_school
+						has_building = building_type:arts_academy
+					}
+					location_rank = location_rank:town
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				location:zhovkva = {
+					NOT = { location_rank = location_rank:town }
+				}
+			}
+			location:zhovkva = { change_location_rank_effect = { location_rank = location_rank:town } }
+		}
+		if = {
+			limit = {
+				has_advance = arts_academy_advance
+				location:zhovkva = {
+					NOT = { has_building = building_type:arts_academy }
+				}
+			}
+			location:zhovkva = {
+				if = {
+					limit = { has_building = building_type:art_school }
+					hidden_effect = { destroy_building = "building(building_type:art_school|owner)" }
+				}
+				construct_building = {
+					building_type = building_type:arts_academy
+					cost_multiplier = 0.5
+					cost_multiplier_reason = "game_concept_event"
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_advance = art_school_advance
+				location:zhovkva = {
+					NOT = { has_building = building_type:art_school }
+				}
+			}
+			location:zhovkva = {
+				construct_building = {
+					building_type = building_type:art_school
+					cost_multiplier = 0.5
+					cost_multiplier_reason = "game_concept_event"
+				}
+			}
+		}
+   		kill_character_silently = scope:target_character
+	}
+
+	option = {
+		name = flavor_kie.4.c
+
+		add_prestige = prestige_mild_penalty
+		kill_character_silently = scope:target_character
+	}
+}
+
+#St Andrew's Church
+flavor_kie.5 = {
+	type = country_event
+	title = flavor_kie.5.title
+	desc = flavor_kie.5.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = KIE
+		tag = RUS
+		from = 1730.1.1
+		to = 1760.1.1
+		monthly_chance = 3
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		owns = location:kyiv
+		religion = religion:orthodox
+		trigger_if = {
+			limit = {
+				tag = RUS
+				exists = character:mos_francesco_rastrelli
+			}
+			character:mos_francesco_rastrelli = {
+				is_alive = yes
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:clergy_estate }
+		if = {
+			limit = {
+				tag = RUS
+				exists = character:mos_francesco_rastrelli
+				character:mos_francesco_rastrelli = {
+					is_alive = yes
+				}
+			}
+			character:mos_francesco_rastrelli = {
+				save_scope_as = target_character
+			}
+		}
+		else = {
+			create_character = {
+				estate = estate_type:burghers_estate
+				artist = architect
+				artist_skill = 0.9
+				adm = { 10 30 }
+				dip = { 20 40 }
+				mil = { 20 40 }
+				birth_date = 1700.1.1
+				save_scope_as = target_character
+			}
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+
+		location:kyiv = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_kie.5.a
+
+		scope:target_location = {
+			create_art = {
+				artist = scope:target_character
+				key = st_andrew_church
+				quality = 70
+				type = work_of_art_type:monument
+			}
+		}
+
+		change_gold_effect = { scale = -2 }
+
+		add_religious_influence_if_valid = {
+			VALUE = religious_influence_mild_penalty
+		}
+	}
+
+	option = {
+		name = flavor_kie.5.b
+
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+#Anton Losenko
+flavor_kie.9 = {
+	type = country_event
+	title = flavor_kie.9.title
+	desc = flavor_kie.9.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = KIE
+		tag = RUS
+		from = 1755.1.1
+		to = 1790.1.1
+		monthly_chance = 3
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		owns_or_non_sovereign_subject_owns = location:hlukhiv
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			estate = estate_type:burghers_estate
+			first_name = name_anthony
+			last_name = losenko
+			artist = painter
+			artist_skill = 0.8
+			adm = 33
+			dip = 40
+			mil = 14
+			culture = culture:ruthenian
+			birth_date = 1737.8.10
+			birth_location = location:hlukhiv
+			save_scope_as = target_character
+			script = kie_anton_losenko
+			create_in_limbo = yes
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+	}
+
+	option = {
+		name = flavor_kie.9.a
+
+		scope:target_character ?= {
+			move_country = root
+		}
+
+		change_societal_value = {
+			type = individualism_vs_communalism
+			value = societal_value_move_to_left
+		}
+
+		change_gold_effect = { scale = -2 }
+	}
+
+	option = {
+		name = flavor_kie.9.b
+
+		trigger = {
+			ruler_or_regent ?= {
+				has_trait = architectural_visionary
+			}
+		}
+
+		scope:target_character ?= {
+			move_country = root
+		}
+
+		capital ?= {
+			create_art = {
+				artist = scope:target_character
+				key = kie_collection_of_paintings_from_anton_losenko
+				quality = 75
+				type = work_of_art_type:painting
+			}
+		}
+
+		change_gold_effect = { scale = -3 }
+	}
+
+	option = {
+		name = flavor_kie.9.c
+
+		change_societal_value = {
+			type = individualism_vs_communalism
+			value = societal_value_move_to_right
+		}
+
+		kill_character_silently = scope:target_character
+	}
+}

@@ -1,0 +1,601 @@
+﻿namespace = flavor_hol
+
+#Synod of Dort
+flavor_hol.2 = {
+	type = country_event
+	title = flavor_hol.2.title
+	desc = flavor_hol.2.desc
+	outcome = neutral
+	historical_info = flavor_hol.2.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1684.1.1
+		monthly_chance = 2
+	}
+	trigger = {
+		owns = location:dordrecht
+		religion:calvinist = {
+			is_religion_enabled = yes
+			has_unlocked_religious_aspect_trigger = { type = gomarism }
+			has_unlocked_religious_aspect_trigger = { type = arminianism }
+		}
+		OR = {
+			has_religious_aspect = religious_aspect:gomarism
+			has_religious_aspect = religious_aspect:arminianism
+		}
+	}
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		location:dordrecht = { save_scope_as = target_location }
+		character:jacobus_arminius = { save_scope_as = loc_jacobus_arminius }
+		character:franciscus_gomarus = { save_scope_as = loc_franciscus_gomarus }
+	}
+	option = {
+		name = flavor_hol.2.a
+		historical_option = yes
+		if = {
+			limit = { has_religious_aspect = religious_aspect:arminianism }
+			remove_religious_aspect = religious_aspect:arminianism
+		}
+		custom_tooltip = {
+			text = flavor_hol.2.a.tt
+			set_variable = { name = blocked_religious_aspect_arminianism value = yes }
+			set_variable = { name = unlocked_instituionalized_gomarism value = yes }
+			if = {
+				limit = { has_religious_aspect = religious_aspect:gomarism }
+				remove_religious_aspect = religious_aspect:gomarism
+			}
+			add_religious_aspect = religious_aspect:instituionalized_gomarism
+		}
+	}
+	option = {
+		name = flavor_hol.2.b
+		if = {
+			limit = { has_religious_aspect = religious_aspect:gomarism }
+			remove_religious_aspect = religious_aspect:gomarism
+		}
+		custom_tooltip = {
+			text = flavor_hol.2.b.tt
+			set_variable = { name = blocked_religious_aspect_gomarism value = yes }
+			set_variable = { name = unlocked_instituionalized_arminianism value = yes }
+			if = {
+				limit = { has_religious_aspect = religious_aspect:arminianism }
+				remove_religious_aspect = religious_aspect:arminianism
+			}
+			add_religious_aspect = religious_aspect:instituionalized_arminianism
+		}
+	}
+	option = {
+		name = flavor_hol.2.c
+		add_stability = stability_extreme_bonus
+	}
+}
+
+#Statenvertaling
+flavor_hol.3 = {
+	type = country_event
+	title = flavor_hol.3.title
+	desc = flavor_hol.3.desc
+	outcome = neutral
+	historical_info = flavor_hol.3.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1664.1.1
+		monthly_chance = 2
+	}
+	trigger = {
+		owns = location:dordrecht
+		has_religious_aspect = religious_aspect:translated_bibles
+		NOT = { culture.dialect = dialect:low_german_dialect }
+	}
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+
+		create_character = {
+			first_name = name_john # alternative Johannes
+			last_name = Bogerman
+			estate = estate_type:burghers_estate
+			birth_date = 1576.1.1
+			birth_location = location:emden
+			culture = culture:frisian
+			religion = religion:calvinist
+			artist_skill = 0.79
+			artist = writer
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+	option = {
+		name = flavor_hol.3.a
+		historical_option = yes
+		change_gold_effect = { scale = -6 }
+		location:dordrecht = {
+			create_art = {
+				artist = scope:target_character
+				quality = 77
+				type = work_of_art_type:prayer_book
+				key = statenbijbel
+			}
+		}
+		scope:target_character = { move_country = root }
+		add_research_progress = research_progress_mild_bonus
+		change_societal_value = { type = spiritualist_vs_humanist value = societal_value_minor_move_to_right }
+	}
+	option = {
+		name = flavor_hol.3.b
+		add_prestige = prestige_weak_penalty
+		scope:target_character = { banish_character = yes }
+	}
+}
+
+#Christiaan Huygens
+flavor_hol.12 = {
+	type = country_event
+	title = flavor_hol.12.title
+	desc = flavor_hol.12.desc
+	outcome = neutral
+	historical_info = flavor_hol.12.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NED
+		from = 1647.1.1
+		to = 1687.1.1
+		monthly_chance = 2
+	}
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		random_owned_location = {
+			create_dynasty_from_location = huygens_dynasty
+		}
+		create_character = {
+			first_name = name_christian
+			dynasty = dynasty:huygens_dynasty
+			adm = 77
+			dip = 47
+			mil = 17
+			birth_date = 1629.4.14
+			birth_location = location:the_hague
+			estate = estate_type:nobles_estate
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+	option = {
+		name = flavor_hol.12.a
+		historical_option = yes
+		root = {
+			change_gold_effect = { scale = -1 }
+		}
+		add_research_progress = research_progress_mild_bonus
+		scope:target_character = { move_country = root }
+	}
+	option = {
+		name = flavor_hol.12.b
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_left }
+		custom_tooltip = {
+			text = target_character_disappears
+			kill_character_silently = scope:target_character 
+		}
+	}
+}
+
+#The Bank of Amsterdam & The International Capital Market
+flavor_hol.13 = {
+	type = country_event
+	title = flavor_hol.13.title
+	desc = flavor_hol.13.desc
+	outcome = neutral
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NED
+		from = 1740.1.1
+		to = 1790.1.1
+		monthly_chance = 2
+	}
+	trigger = {
+		owns = location:amsterdam
+		num_loans > 0
+		monthly_balance < 0
+		location:amsterdam = {
+			has_building = building_type:wisselbank
+		}
+	}
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+	option = {
+		name = flavor_hol.13.a
+		historical_option = yes
+		add_inflation = inflation_ultimate_penalty
+	}
+	option = {
+		name = flavor_hol.13.b
+		add_country_modifier = { modifier = ned_bank_crisis years = 10 mode = add_and_extend }
+		location:amsterdam = {
+			destroy_building = "building(building_type:wisselbank|owner)"
+		}
+	}
+}
+
+#De Witt
+flavor_hol.16 = {
+	type = country_event
+	title = flavor_hol.16.title
+	desc = flavor_hol.16.desc
+	outcome = neutral
+	historical_info = flavor_hol.16.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NED
+		from = 1650.1.1
+		to = 1672.1.1
+		monthly_chance = 4
+	}
+	trigger = {
+		owns = location:dordrecht
+	}
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_john
+			last_name = de_witt
+			adm = 95
+			dip = 90
+			mil = 90
+			birth_date = 1625.9.24
+			birth_location = location:dordrecht
+			estate = estate_type:nobles_estate
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+	option = {
+		name = flavor_hol.16.a
+		historical_option = yes
+		add_government_power = government_power_weak_penalty
+		change_gold_effect = { scale = -2 }
+		scope:target_character = { move_country = root }
+	}
+	option = {
+		name = flavor_hol.16.b
+		add_government_power = government_power_extreme_bonus
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+#Creation of the Amsterdam Stock Exchange
+flavor_hol.17 = {
+	type = country_event
+	title = flavor_hol.17.title
+	desc = flavor_hol.17.desc
+	outcome = neutral
+	historical_info = flavor_hol.17.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1800.1.1
+		monthly_chance = 50
+	}
+	trigger = {
+		owns = location:amsterdam
+		location:amsterdam = {
+			has_building = building_type:wisselbank
+		}
+	}
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+	option = {
+		name = flavor_hol.17.a
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_move_to_left }
+	}
+	option = {
+		name = flavor_hol.17.b
+		add_research_progress = research_progress_severe_bonus
+	}
+}
+
+#French-<Culture Name> Tensions
+flavor_hol.18 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_hol.18.title
+	desc = flavor_hol.18.desc
+	outcome = neutral
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NED
+		from = 1650.1.1
+		to = 1800.1.1
+		monthly_chance = 50
+	}
+	trigger = {
+		owns = location:amsterdam
+		exists = international_organization:hre
+		religion = religion:calvinist
+		country_exists = c:FRA
+		c:FRA = {
+			religion = religion:catholic
+			is_neighbor_of = root
+			"religion_percentage_in_country(religion:calvinist)" > 0
+		}
+	}
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		c:FRA = { save_scope_as = target_country }
+		save_scope_as = root_country
+	}
+	option = {
+		name = flavor_hol.18.a
+		save_scope_as = from
+		c:FRA = {
+			trigger_event_silently = { id = flavor_hol.19 }
+			every_rival = {
+				limit = {
+					NOT = {	this = root	}
+				}
+				add_opinion = { target = root modifier = ned_anti_french_policy }
+			}
+			add_opinion = { target = root modifier = fra_dutch_friction }
+		}
+	}
+	option = {
+		name = flavor_hol.18.b
+		c:FRA = {
+			add_opinion = { target = root modifier = ned_friendly_towards_france }
+		}
+		hidden_effect = {
+			add_opinion = { target = c:FRA modifier = ned_friendly_towards_france }
+		}
+	}
+}
+
+#Le Prisonnier de Hollande
+flavor_hol.19 = {
+	type = country_event
+	title = flavor_hol.19.title
+	desc = flavor_hol.19.desc
+	outcome = neutral
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	option = {
+		name = flavor_hol.19.a
+		custom_tooltip = flavor_hol.19.a.tt
+	}
+}
+
+#Hensius
+flavor_hol.21 = {
+	type = country_event
+	title = flavor_hol.21.title
+	desc = flavor_hol.21.desc
+	outcome = neutral
+	historical_info = flavor_hol.21.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NED
+		from = 1688.1.1
+		to = 1720.1.1
+		monthly_chance = 3
+	}
+	trigger = {
+		owns = location:amsterdam
+		has_ruler = yes
+	}
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_anthony
+			last_name = heinsius
+			estate = estate_type:burghers_estate
+			adm = 95
+			dip = 95
+			mil = 95
+			birth_date = 1641.11.23
+			birth_location = location:amsterdam
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+			save_scope_as = target_character
+		}
+	}
+	option = {
+		name = flavor_hol.21.a
+		historical_option = yes
+		add_government_power = government_power_extreme_bonus
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = hol_brilliant_minister
+				years = -1
+				mode = add_and_extend
+			}
+		}
+	}
+}
+
+#Arumer Zwarte Hoop
+flavor_hol.22 = {
+	type = country_event
+	title = flavor_hol.22.title
+	desc = flavor_hol.22.desc
+	outcome = neutral
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NED
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 1
+	}
+	trigger = {
+		"culture_percentage_in_country(culture:frisian)" > 0
+		army_size > 0
+		any_owned_location = {
+			area = area:friesland_area
+			any_unit_in_location = {
+				count >= 1
+				owner = root
+			}
+		}
+	}
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		create_rebel = {
+			category = nationalist
+			name = frisian_independence_fighter
+			save_scope_as = target_rebel
+			culture = culture:frisian
+		}
+	}
+	option = {
+		name = flavor_hol.22.a
+		custom_tooltip = {
+			text = flavor_hol.22.a.tt
+			every_owned_location = {
+				every_pop = {
+					limit = {
+						owner = root
+						culture = culture:frisian
+					}
+					add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+					change_pop_allegiance = scope:target_rebel
+				}
+			}
+		}
+		add_navy_tradition = navy_tradition_severe_penalty
+	}
+}
+
+#Baruch Spinoza - The Prince of Philosophers
+flavor_hol.23 = {
+	type = country_event
+	title = flavor_hol.23.title
+	desc = flavor_hol.23.desc
+	outcome = neutral
+	historical_info = flavor_hol.23.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NED
+		from = 1655.1.1
+		to = 1677.1.1
+		monthly_chance = 1
+	}
+	trigger = {
+		owns = location:amsterdam
+		societal_value:traditionalist_vs_innovative > 20
+	}
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_baruch
+			last_name = Spinoza
+			birth_date = 1632.2.21
+			estate = estate_type:burghers_estate
+			culture = culture:sephardi
+			religion = religion:judaism
+			birth_location = location:amsterdam
+			artist_skill = 0.97
+			artist = philosopher
+			save_scope_as = target_character
+		}
+	}
+	option = {
+		name = flavor_hol.23.a
+		add_prestige = prestige_mild_bonus
+		add_research_progress = {
+			value = 0.05
+			multiply = root.societal_value:traditionalist_vs_innovative
+		}
+	}
+}
+
+#Dutch Golden Age Painting
+flavor_hol.27 = {
+	type = country_event
+	title = flavor_hol.27.title
+	desc = flavor_hol.27.desc
+	outcome = neutral
+	historical_info = flavor_hol.27.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NED
+		from = 1600.1.1
+		to = 1700.1.1
+		monthly_chance = 5
+	}
+	trigger = {
+		at_war = no
+		stability >= 40
+		monthly_balance >= 200
+		is_during_bankruptcy = no
+		has_any_active_disaster = no
+		in_civil_war = no
+	}
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	option = {
+		name = flavor_hol.27.a
+		historical_option = yes
+		culture = {
+			add_cultural_influence = cultural_influence_severe_bonus
+			add_cultural_tradition = cultural_tradition_severe_bonus
+		}
+	}
+}

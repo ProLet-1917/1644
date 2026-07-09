@@ -1,0 +1,9552 @@
+﻿namespace = flavor_eng
+
+# The Board of Admiralty
+flavor_eng.8 = {
+	type = country_event
+	title = flavor_eng.8.title
+	desc = flavor_eng.8.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		has_reform = government_reform:navy_board_reform
+
+		OR = {
+			AND = {
+				has_embraced_institution = institution:military_revolution
+				capital = {
+					NOT = { has_building_with_at_least_one_level = admiralty }
+				}
+			}
+			AND = {
+				government_type = government_type:republic
+				NOT = { has_policy = board_of_admirals_policy }
+			}
+		}
+
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		capital = {
+			save_scope_as = target_location
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.8.a
+		historical_option = yes
+
+		if = {
+			limit = {
+				government_type = government_type:republic
+				NOT = { has_policy = board_of_admirals_policy }
+			}
+			add_policy = policy:board_of_admirals_policy
+		}
+		else = {
+			if = {
+				limit = {
+					NOT = { has_advance = admiralty_advance }
+				}
+				research_advance = advance_type:admiralty_advance
+			}
+			capital = {
+				construct_building = {
+					building_type = building_type:admiralty
+				}
+			}
+		}
+
+		add_navy_tradition = navy_tradition_mild_bonus
+
+	}
+
+	option = {
+		name = flavor_eng.8.b
+
+		change_societal_value = {
+			type = land_vs_naval
+			value = societal_value_move_to_left
+		}
+
+		add_army_tradition = army_tradition_mild_bonus
+
+	}
+
+	historical_info = flavor_eng.8.historical_info
+
+}
+
+# The Ill-Manered Traders
+flavor_eng.21 = {
+	type = country_event
+	title = flavor_eng.21.title
+	desc = flavor_eng.21.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		location:london = {
+			owner = root
+			controller = root
+			NOT = { has_building_with_at_least_one_level = stock_exchange }
+			is_market_center = yes
+		}
+
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		location:london = {
+			save_scope_as = target_location
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.21.a
+		historical_option = yes
+
+		location:london = {
+			change_building_level_in_location = {
+				 building = building_type:stock_exchange value = 1
+			}
+		}
+
+		change_societal_value = {
+			type = capital_economy_vs_traditional_economy
+			value = societal_value_move_to_left
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.21.b
+
+		location:london = {
+			market = {
+				add_temporary_demand = {
+					type = demand:bawdy_trading
+					months = 100
+				}
+			}
+			every_pop = {
+				limit = {
+					owner = root
+					pop_type = pop_type:burghers
+				}
+				add_pop_satisfaction = pop_satisfaction_ultimate_bonus
+			}
+		}
+
+		change_societal_value = {
+			type = mercantilism_vs_free_trade
+			value = societal_value_move_to_right
+		}
+
+	}
+
+	historical_info = flavor_eng.21.historical_info
+
+}
+
+flavor_eng.26 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_eng.26.title
+	desc = flavor_eng.26.desc
+	outcome = neutral
+	historical_info = flavor_eng.26.historical_info
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1844.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		owns = location:london
+		has_reform = government_reform:the_protectorate
+		OR = {	#Find any rival or enemy who has relevant income to us in a vital market
+			location:amsterdam.market ?= {
+				any_merchant_in_market = { rival_or_enemy_with_relative_income_in_market = yes }
+			}
+			location:london.market ?= {
+				any_merchant_in_market = { rival_or_enemy_with_relative_income_in_market = yes }
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler_or_regent ?= { save_scope_as = target_character1 }
+		location:london.market = {
+			random_merchant_in_market = {
+				limit = { rival_or_enemy_with_relative_income_in_market = yes }
+				save_scope_as = target_country
+				ruler_or_regent ?= { save_scope_as = target_character2 }
+			}
+		}
+		location:amsterdam.market = {
+			random_merchant_in_market = {
+				limit = { rival_or_enemy_with_relative_income_in_market = yes }
+				save_scope_as = target_country
+				ruler_or_regent ?= { save_scope_as = target_character2 }
+			}
+		}
+	}
+
+
+	option = {
+		name = flavor_eng.26.a
+		historical_option = yes
+
+
+		if = {
+			limit = {
+				scope:target_country = {
+					NOT = { is_embargoed_by = root }
+				}
+			}
+			create_relation = {
+				first = scope:recipient
+				second = scope:target
+				type = relation_type:embargo_nation
+				years = 25
+			}
+			change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_move_to_left }
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_casus_belli_of_type_on = { type = casus_belli:cb_trade_conflict target = scope:target_country }
+				}
+			}
+			add_casus_belli = {
+				target = scope:target_country
+				type = casus_belli:cb_trade_conflict
+			}
+			change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_move_to_left }
+		}
+		else = {
+			change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_large_move_to_left }
+		}
+
+		unlock_policy_effect = { type = act_of_navigation }
+	}
+	option = {
+		name = flavor_eng.26.b
+		change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_move_to_right }
+
+		add_country_modifier = {
+			modifier = open_trade_markets_modifier
+			years = 20
+			mode = replace
+		}
+
+		add_estate_satisfaction = {
+			type = estate_type:burghers_estate
+			value = estate_satisfaction_extreme_penalty
+		}
+	}
+}
+
+flavor_eng.27 = {
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+	title = flavor_eng.27.title
+	desc = flavor_eng.27.desc
+	outcome = neutral
+	historical_info = flavor_eng.27.historical_info
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1750.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		OR = {
+			religion = religion:lutheran
+			religion = religion:calvinist
+			religion = religion:anglican
+		}
+		NOT = { has_reform = government_reform:religious_tolerance }
+		has_ruler = yes
+		ruler ?= {
+			OR = {
+				religion = religion:lutheran
+				religion = religion:calvinist
+				religion = religion:anglican
+			}
+		}
+		"religion_percentage_in_country(religion:catholic)" > 0
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ruler = { save_scope_as = target_character }
+		if = {
+			limit = {
+				any_rival = { religion = religion:catholic }
+			}
+			ordered_rival = {
+				limit = { religion = religion:catholic }
+				order_by = country_economical_base
+				check_range_bounds = no
+				max = 1
+				save_scope_as = target_country
+			}
+		}
+		else_if = {
+			limit = {
+				any_enemy = { religion = religion:catholic }
+			}
+			ordered_enemy = {
+				limit = { religion = religion:catholic }
+				order_by = country_economical_base
+				check_range_bounds = no
+				max = 1
+				save_scope_as = target_country
+			}
+		}
+	}
+
+	option = {
+		name = flavor_eng.27.a
+
+		historical_option = yes
+
+		add_stability = stability_mild_bonus
+		add_reform = government_reform:religious_tolerance
+
+		change_societal_value = {
+			type = spiritualist_vs_humanist
+			value = societal_value_large_move_to_right
+		}
+
+	}
+	option = {
+		name = flavor_eng.27.b
+
+
+		add_government_power = government_power_ultimate_penalty
+		if = {
+			limit = { exists = scope:target_country }
+			scope:target_country = {
+				add_casus_belli = {
+					target = root
+					type = casus_belli:cb_heretic
+				}
+			}
+		}
+		else_if = {
+			limit = { exists = capital }
+			drop_antagonism_bomb = {
+				target = capital
+				modifier = antagonism_fortifying
+			}
+		}
+	}
+	option = {
+		name = flavor_eng.27.c
+
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_ultimate_penalty
+		}
+
+		ordered_pop = {
+			limit = {
+				owner = root
+				location.region = root.capital.region
+				religion = root.religion
+			}
+			order_by = pop_size
+			check_range_bounds = no
+			max = 5
+			split_pop = {
+				fraction = { 0.1 0.5 }
+				religion = religion:catholic
+			}
+		}
+	}
+}
+
+flavor_eng.28 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_eng.28.title
+	desc = flavor_eng.28.desc
+	outcome = neutral
+	fire_only_once = yes
+	historical_info = flavor_eng.28.historical_info
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1650.1.1
+		to = 1750.1.1
+		monthly_chance = 4
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	trigger = {
+		location:london = {
+			owner ?= root
+			is_capital = yes
+		}
+		has_embraced_institution = institution:banking
+		OR = {
+			AND = {
+				at_war = yes
+				war_exhaustion_percentage > 0.25
+			}
+			num_loans > 0
+		}
+		has_advance = central_bank_advance
+		societal_value:capital_economy_vs_traditional_economy < -50
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler_or_regent ?= { save_scope_as = target_character }
+	}
+
+	option = {
+		name = flavor_eng.28.a
+
+		unlock_government_reform_effect = { type = bank_of_england_reform }
+		add_reform = government_reform:bank_of_england_reform
+		if = {
+			limit = {
+				location:london = {
+					NOT = { has_building = building_type:central_bank }
+				}
+			}
+			location:london = {
+				change_building_level_in_location = {
+					building = building_type:central_bank
+					value = 1
+					owner = root
+				}
+			}
+		}
+		else = {
+			change_gold_effect = { scale = 3.00 }
+		}
+	}
+
+	option = {
+		name = flavor_eng.28.b
+
+		unlock_government_reform_effect = { type = bank_of_england_reform }
+		change_societal_value = {
+			type = capital_economy_vs_traditional_economy
+			value = societal_value_move_to_left
+		}
+	}
+}
+
+flavor_eng.29 = {
+	type = country_event
+	title = flavor_eng.29.title
+	desc = flavor_eng.29.desc
+	outcome = neutral
+	historical_info = flavor_eng.29.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1700.1.1
+		to = 1730.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		OR = {
+			has_ruler = yes
+			has_regent = yes
+		}
+		NOT = {
+			ruler ?= { dynasty ?= dynasty:stewart_dynasty }
+		}
+
+		dynasty:stewart_dynasty = {
+			dynasty_head ?= {
+				is_ruler = no
+				is_adult = yes
+			}
+		}
+		NOT = { country_exists = c:SCO }
+
+		own_entire_province = province_definition:ross_province
+		own_entire_province = province_definition:moray_province
+
+		any_owned_location = {
+			area = area:scottish_highlands_area
+			province ?= {
+				culture_percentage = {
+					culture = culture:highland
+					value > 0.5
+				}
+			}
+		}
+
+	}
+
+	illustration_tags = {
+        10 = armed
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_rebel = {
+			category = pretender
+			name = jacobite_uprising
+			save_scope_as = jacobite_uprising
+		}
+
+		dynasty:stewart_dynasty = {
+			dynasty_head ?= {
+				save_scope_as = target_character
+			}
+		}
+		ruler_or_regent ?= { save_scope_as = target_sitting_ruler }
+	}
+
+
+	option = {
+		name = flavor_eng.29.a
+
+		scope:target_character = {
+			move_country = root
+			change_character_allegiance = scope:jacobite_uprising
+		}
+
+
+		custom_tooltip = {
+			text = jacobite_uprising_joining
+			area:scottish_highlands_area = {
+				every_location_in_area = {
+					limit = { owner ?= root }
+					every_pop = {
+						limit = {
+							owner = root
+							culture = culture:highland
+						}
+						add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+						change_pop_allegiance = scope:jacobite_uprising
+					}
+				}
+			}
+
+		}
+
+		add_stability = stability_extreme_penalty
+	}
+}
+
+flavor_eng.30 = {
+	type = country_event
+	title = flavor_eng.30.title
+	desc = flavor_eng.30.desc
+	outcome = neutral
+	historical_info = flavor_eng.30.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1700.1.1
+		to = 1745.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		owns = location:lynn
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		create_character = {
+			first_name = name_robert
+			dynasty = dynasty:walpole_dynasty
+			adm = { 80 100 }
+			dip = { 80 100 }
+			mil = { 80 100 }
+			estate = estate_type:nobles_estate
+			birth_location = location:lynn
+			culture = culture:english
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+			birth_date = 1676.8.26
+			script = eng_robert_walpole
+			create_in_limbo = yes
+			save_scope_as = robert_walpole
+		}
+	}
+
+	option = {
+		name = flavor_eng.30.a
+
+		scope:robert_walpole = { move_country = root }
+	}
+}
+
+flavor_eng.31 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_eng.31.title
+	desc = flavor_eng.31.desc
+	outcome = neutral
+	historical_info = flavor_eng.31.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1700.1.1
+		to = 1800.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		trigger_if = {
+			limit = { tag_exists = SPA }
+			c:SPA ?= {
+				NOT = { has_truce_with = root }
+				NOT = { is_at_war_with = root }
+				OR = {
+					is_enemy_of = root
+					is_rival_of = root
+				}
+			}
+		}
+		trigger_else = {
+			c:CAS ?= {
+				NOT = { has_truce_with = root }
+				NOT = { is_at_war_with = root }
+				OR = {
+					is_enemy_of = root
+					is_rival_of = root
+				}
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		ruler_or_regent = { save_scope_as = target_character1 }
+		if = {
+			limit = {
+				tag_exists = SPA
+				country_exists = c:SPA
+			}
+			c:SPA = {
+				save_scope_as = target_country
+				ruler_or_regent = { save_scope_as = target_character2 }
+			}
+		}
+		else = {
+			c:CAS = {
+				save_scope_as = target_country
+				ruler_or_regent = { save_scope_as = target_character2 }
+			}
+		}
+	}
+
+	option = {
+		name = flavor_eng.31.a
+		add_government_power = government_power_weak_bonus
+		add_casus_belli = {	target = scope:target_country	type = casus_belli:cb_insulted_us	}
+		scope:target_country = { add_opinion = { target = root modifier = eng_captain_jenkins_incident } }
+	}
+	option = {
+		name = flavor_eng.31.b
+		add_government_power = government_power_weak_penalty
+	}
+}
+
+flavor_eng.32 = {
+	type = country_event
+	title = flavor_eng.32.title
+	desc = flavor_eng.32.desc
+	outcome = neutral
+	historical_info = flavor_eng.32.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1740.1.1
+		to = 1770.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = armed
+	}
+
+	trigger = {
+		dynasty:stewart_dynasty ?= {
+			dynasty_head ?= {
+				is_ruler = no
+				is_adult = yes
+			}
+		}
+		ruler ?= {
+			dynasty ?= { this != dynasty:stewart_dynasty }
+		}
+
+		OR = {
+			at_war = yes
+			war_exhaustion_percentage > 0.25
+		}
+
+		NOT = { country_exists = c:SCO }
+
+		own_entire_province = province_definition:ross_province
+		own_entire_province = province_definition:moray_province
+
+		area:scottish_highlands_area = {
+			any_province_in_area = {
+				culture_percentage = {
+					culture = culture:highland
+					value >  0
+				}
+			}
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		create_rebel = {
+			category = pretender
+			name = jacobite_uprising
+			save_scope_as = jacobite_uprising
+		}
+
+		dynasty:stewart_dynasty = {
+			dynasty_head ?= {
+				save_scope_as = target_character
+				move_country = root
+			}
+		}
+	}
+
+	option = {
+		name = flavor_eng.32.a
+		dynasty:stewart_dynasty = {
+			dynasty_head ?= {
+				change_character_allegiance = scope:jacobite_uprising
+			}
+		}
+
+
+		custom_tooltip = {
+			text = jacobite_uprising_joining
+			every_owned_location = {
+				limit = {
+					area = area:scottish_highlands_area
+				}
+				every_pop = {
+					limit = {
+						owner = root
+						culture = culture:highland
+					}
+					add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+					change_pop_allegiance = scope:jacobite_uprising
+				}
+			}
+
+		}
+
+		add_stability = stability_extreme_penalty
+	}
+}
+
+flavor_eng.33 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_eng.33.title
+	desc = flavor_eng.33.desc
+	outcome = neutral
+	historical_info = flavor_eng.33.historical_info
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1728.1.1
+		to = 1740.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		owns = location:london
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_william
+			last_name = Pitt
+			nickname = nick_the_elder
+			adm = { 78 95 }
+			dip = { 78 95 }
+			mil = { 78 95 }
+			estate = estate_type:nobles_estate
+			birth_location = location:london
+			culture = culture:english
+
+			birth_date = 1708.7.30
+			create_in_limbo = yes
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+			script = eng_william_pitt_the_older
+			save_scope_as = pitt_the_older
+		}
+
+		if = {
+			limit = {
+				any_character = {
+					age_in_years >= 20
+					age_in_years < 40
+					is_married = no
+					is_female = yes	#We do not want a male pregnancy in this DHE
+					is_ruler = no
+					is_regent = no
+					has_dynasty = no
+					is_pregnant = no
+				}
+			}
+			random_character = {
+				limit = {
+					age_in_years >= 20
+					age_in_years < 40
+					is_married = no
+					is_female = yes
+					is_ruler = no
+					is_regent = no
+					has_dynasty = no
+					is_pregnant = no
+				}
+				marry_character = scope:pitt_the_older
+				save_scope_as = target_mom
+			}
+		}
+		else = {
+			create_character = {
+				age = 20
+				female = yes
+				save_scope_as = target_mom
+			}
+		}
+	}
+
+	option = {
+		name = flavor_eng.33.a
+
+		scope:pitt_the_older = {
+			move_country = root
+			marry_character = scope:target_mom
+			hidden_effect = { impregnate = scope:target_mom }
+		}
+	}
+}
+
+flavor_eng.34 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_eng.34.title
+	desc = flavor_eng.34.desc
+	outcome = neutral
+	historical_info = flavor_eng.34.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1750.1.1
+		to = 1760.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+	trigger = {
+		any_subject = {
+			is_subject_type = trade_company
+			capital.sub_continent = sub_continent:south_asia
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler_or_regent = { save_scope_as = target_character1 }
+		random_subject = {
+			limit = {
+				is_subject_type = trade_company
+				capital.sub_continent = sub_continent:south_asia
+			}
+			save_scope_as = target_country
+			ruler_or_regent = { save_scope_as = target_character2 }
+		}
+	}
+
+	option = {
+		name = flavor_eng.34.a
+		add_prestige = prestige_radical_bonus
+	}
+}
+
+flavor_eng.35 = {
+	type = country_event
+	title = flavor_eng.35.title
+	desc = flavor_eng.35.desc
+	outcome = neutral
+	fire_only_once = yes
+	historical_info = flavor_eng.35.historical_info
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1728.1.1
+		to = 1790.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		character:eng_william_pitt_the_older ?= {
+			is_alive = yes
+			owner = root
+			num_of_children > 0
+			any_child ?= {
+				age_in_years > 5
+				age_in_years < 12
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		character:eng_william_pitt_the_older = {
+			ordered_child = {
+				limit = {
+					age_in_years > 5
+					age_in_years < 12
+				}
+				order_by = total_abilities
+				max = 1
+				check_range_bounds = no
+				save_scope_as = target_child
+				root = {
+					set_variable = {
+						value = prev
+						name = eng_william_pitt_the_younger
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_eng.35.a
+
+		scope:target_child = {
+			set_child_education = child_education:expensive_in_depth_education
+			hidden_effect = {
+				if = {	#Trait clean up just in case
+					limit = { num_of_traits > 0 }
+					remove_traits_of_category = child
+				}
+			}
+			add_trait = trait:child_prodigy
+		}
+	}
+}
+
+flavor_eng.36 = {
+	type = country_event
+	title = flavor_eng.36.title
+	desc = flavor_eng.36.desc
+	outcome = neutral
+	historical_info = flavor_eng.36.historical_info
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		location:lisbon.owner = { save_scope_as = target_country }
+	}
+
+	option = {
+		name = flavor_eng.36.a
+		scope:target_country = {
+			add_opinion = { target = root modifier = accepted_meuthen_agreement }
+		}
+	}
+	option = {
+		name = flavor_eng.36.b
+		scope:target_country = {
+			add_opinion = { target = root modifier = denounced_meuthen_agreement }
+		}
+	}
+}
+
+flavor_eng.38 = {
+	type = country_event
+	title = flavor_eng.38.title
+	desc = flavor_eng.38.desc
+	outcome = neutral
+	historical_info = flavor_eng.38.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1674.1.1
+		monthly_chance = 4
+	}
+
+	trigger = {
+		owns = location:london
+	}
+
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_thomas
+			last_name = Hobbes
+			estate = estate_type:clergy_estate
+			birth_date = 1588.4.15
+			birth_location = location:bristol
+			artist_skill = { 0.85 0.95 }
+			artist = philosopher
+			save_scope_as = target_artist
+			script = eng_hobbes
+		}
+		location:london = {
+			create_art = {
+				artist = scope:target_artist
+				quality = { 85 95 }
+				type = work_of_art_type:treatise
+				key = the_leviathan
+			}
+		}
+	}
+
+	option = {
+		name = flavor_eng.38.a
+		culture = { add_cultural_influence = cultural_influence_mild_bonus }
+		change_societal_value = {
+			type = centralization_vs_decentralization
+			value = societal_value_large_move_to_left
+		}
+
+	}
+}
+
+flavor_eng.39 = {
+	type = country_event
+	title = flavor_eng.39.title
+	desc = flavor_eng.39.desc
+	outcome = neutral
+	historical_info = flavor_eng.39.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		tag = SCO
+		from = 1776.1.1
+		to = 1796.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		owns = location:edinburgh
+		owns = location:london
+		NOT = { exists = character:adam_smith }
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		create_character = {
+			first_name = name_adam
+			last_name = Smith
+			estate = estate_type:burghers_estate
+			birth_date = 1723.6.5
+			birth_location = location:edinburgh
+			artist_skill = { 0.9 1 }
+			artist = philosopher
+			save_scope_as = target_character
+			script = gbr_adam_smith
+		}
+
+		location:london = {
+			create_art = {
+				artist = scope:target_artist
+				quality = 97
+				type = work_of_art_type:treatise
+				key = wealth_of_nations
+			}
+		}
+	}
+
+	option = {
+		name = flavor_eng.39.a
+		change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_large_move_to_right }
+		show_as_tooltip = {
+			location:london = {
+				create_art = {
+					artist = scope:target_artist
+					quality = 97
+					type = work_of_art_type:treatise
+					key = wealth_of_nations
+				}
+			}
+		}
+	}
+
+
+}
+
+flavor_eng.41 = {
+	type = country_event
+	title = flavor_eng.41.title
+	desc = flavor_eng.41.desc
+	outcome = neutral
+
+	historical_info = flavor_eng.41.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1680.1.1
+		to = 1700.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		owns = location:bristol
+		societal_value:traditionalist_vs_innovative > 25
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		create_character = {
+			first_name = name_john
+			last_name = Locke
+			estate = estate_type:burghers_estate
+			birth_date = 1632.8.29
+			birth_location = location:bristol
+			artist_skill = { 0.75 0.95 }
+			artist = philosopher
+			save_scope_as = target_character
+		}
+	}
+
+
+	option = {
+		name = flavor_eng.41.a
+
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_right }
+	}
+}
+
+flavor_eng.42 = {
+	type = country_event
+	title = flavor_eng.42.title
+	desc = flavor_eng.42.desc
+	outcome = neutral
+	historical_info = flavor_eng.42.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1672.1.1
+		to = 1727.1.1
+		monthly_chance = 5
+	}
+
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_isaac
+			last_name = Newton
+			estate = estate_type:burghers_estate
+			artist = scientist
+			artist_skill = { 0.9 1 }
+			birth_date = 1642.1.1
+			birth_location = location:lincoln
+			script = eng_isaac_newton
+			save_scope_as = isaac_newton
+		}
+	}
+
+	option = {
+		name = flavor_eng.42.a
+
+		add_prestige = prestige_extreme_bonus
+	}
+}
+
+# Stannary Courts
+flavor_eng.66 = {
+	hide_portraits = yes
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.66.title
+	desc = flavor_eng.66.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1750.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		own_entire_province = province_definition:devon_province
+		own_entire_province = province_definition:cornwall_province
+		custom_tooltip = {
+			text = variable_tt_stannary_law
+			has_variable = stannary_law
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		province_definition:devon_province = {
+			save_scope_as = devon
+		}
+
+		province_definition:cornwall_province = {
+			save_scope_as = cornwall
+		}
+
+		character:eng_john_lackland ?= { save_scope_as = john_lackland }
+
+	}
+
+	option = {
+		name = flavor_eng.66.a
+		historical_option = yes
+
+		location:launceston = {
+			construct_building = {
+				building_type = building_type:stannary_court
+				cost_multiplier = 0.5
+				cost_multiplier_reason = "game_concept_event"
+			}
+		}
+
+		custom_tooltip = {
+			text = flavor_eng.66.a.custom
+			every_owned_location = {
+				limit = {
+					OR = {
+						province_definition = province_definition:cornwall_province
+						province_definition = province_definition:devon_province
+					}
+					NOT = {
+						this = location:launceston
+					}
+				}
+				construct_building = {
+					building_type = building_type:stannary_court
+					cost_multiplier = 0.5
+					cost_multiplier_reason = "game_concept_event"
+				}
+			}
+		}
+
+
+	}
+
+	historical_info = flavor_eng.66.historical_info
+
+}
+
+# End of Stannary Courts
+flavor_eng.67 = {
+	hide_portraits = yes
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.67.title
+	desc = flavor_eng.67.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1650.1.1
+		to = 1850.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		own_entire_province = province_definition:devon_province
+		own_entire_province = province_definition:cornwall_province
+		total_effective_building_levels:stannary_court > 0
+
+		custom_tooltip = {
+			text = variable_tt_stannary_law
+			has_variable = stannary_law
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		province_definition:devon_province = {
+			save_scope_as = devon
+		}
+
+		province_definition:cornwall_province = {
+			save_scope_as = cornwall
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.67.a
+		historical_option = yes
+
+		remove_variable = stannary_law
+
+		province_definition:cornwall_province = {
+			every_location_in_province_definition = {
+				destroy_building = "building(building_type:stannary_court|owner)"
+			}
+		}
+
+		province_definition:devon_province = {
+			every_location_in_province_definition = {
+				destroy_building = "building(building_type:stannary_court|owner)"
+			}
+		}
+
+	}
+
+	historical_info = flavor_eng.67.historical_info
+
+}
+
+# Plantation of Ulster
+flavor_eng.144 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.144.title
+	desc = flavor_eng.144.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1684.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		area:ulster_area = {
+			any_location_in_area = {
+				dominant_culture ?= { has_culture_group = culture_group:hibernian_group }
+				OR = {
+					owner ?= root
+					owner ?= { is_subject_of = root }
+				}
+				NOT = { dominant_religion = root.religion }
+			}
+		}
+
+		NOT = { religion = religion:catholic }
+
+		region:great_britain_region = {
+			any_location_in_region = { owner ?= root num_pop_type:nobles > 0 }
+		}
+
+	}
+	
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		root = { save_scope_as = target_root_country }
+
+		if = {
+			limit = {
+				province_definition:northumberland_province = {
+					any_location_in_province_definition = {
+						num_pop_type:nobles > 0
+						OR = {
+							owner ?= root
+							owner ?= { is_subject_of = root }
+						}
+					}
+				}
+			}
+			province_definition:northumberland_province = {
+				random_location_in_province_definition = {
+					save_scope_as = emigration_province_1
+				}
+			}
+		}
+		else = {
+			random_province = {
+				limit = {
+					region = region:great_britain_region
+					any_location_in_province = { num_pop_type:nobles > 0 }
+				}
+				save_scope_as = emigration_province_1
+			}
+		}
+
+		if = {
+			limit = {
+				province_definition:lothian_province = {
+					any_location_in_province_definition = {
+						num_pop_type:nobles > 0
+						OR = {
+							owner ?= root
+							owner ?= { is_subject_of = root }
+						}
+					}
+				}
+			}
+			province_definition:lothian_province = {
+				random_location_in_province_definition = {
+					save_scope_as = emigration_province_2
+				}
+			}
+		}
+		else = {
+			random_province = {
+				limit = {
+					region = region:great_britain_region
+					any_location_in_province = { num_pop_type:nobles > 0 }
+				}
+				save_scope_as = emigration_province_2
+			}
+		}
+
+		capital = { save_scope_as = target_location }
+
+		root = { save_scope_as = target_root_country }
+
+	}
+
+	option = {
+		name = flavor_eng.144.a
+		historical_option = yes
+
+		culture:anglo_irish = { add_cultural_influence = cultural_influence_severe_bonus }
+
+		custom_tooltip = {
+			text = flavor_eng.144.a.custom1
+			area:ulster_area = {
+				every_province_in_area = {
+					limit = {
+						any_location_in_province = {
+							dominant_culture = { has_culture_group = culture_group:hibernian_group }
+							OR = {
+								owner ?= root
+								owner ?= { is_subject_of = root }
+							}
+							NOT = { dominant_religion = root.religion }
+						}
+					}
+					add_migration = {
+						owner = root
+						from = scope:emigration_province_1.province_definition
+						to = this.province_definition
+						religion = root.religion
+						type = pop_type:peasants
+						amount = 0.25
+						months = 24
+					}
+					add_migration = {
+						owner = root
+						from = scope:emigration_province_1.province_definition
+						to = this.province_definition
+						religion = root.religion
+						type = pop_type:nobles
+						amount = 0.01
+						months = 24
+					}
+					add_migration = {
+						owner = root
+						from = scope:emigration_province_2.province_definition
+						to = this.province_definition
+						religion = root.religion
+						type = pop_type:peasants
+						amount = 0.25
+						months = 24
+					}
+					add_migration = {
+						owner = root
+						from = scope:emigration_province_2.province_definition
+						to = this.province_definition
+						religion = root.religion
+						type = pop_type:nobles
+						amount = 0.01
+						months = 24
+					}
+					every_location_in_province = {
+						every_pop = {
+							limit = {
+								NOT = { religion = root.religion }
+								NOT = { culture = culture:anglo_irish }
+							}
+							split_pop = {
+								fraction = 0.15
+								culture = culture:anglo_irish
+								religion = root.religion
+							}
+						}
+					}
+				}
+			}
+		}
+
+		custom_tooltip = {
+			text = flavor_eng.144.a.custom2
+			area:ulster_area = {
+				every_location_in_area = {
+					limit = {
+						OR = {
+							owner ?= root
+							owner ?= { is_subject_of = root }
+						}
+					}
+					every_pop = {
+						limit = {
+							owner = root
+							culture = culture:irish
+						}
+						add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+					}
+				}
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.144.b
+
+		culture:anglo_irish = { add_cultural_influence = cultural_influence_severe_penalty }
+
+		area:ulster_area = {
+			every_location_in_area = {
+				limit = {
+					OR = {
+						owner ?= root
+						owner ?= { is_subject_of = root }
+					}
+				}
+				every_pop = {
+					limit = {
+						owner = root
+						culture = culture:irish
+					}
+					add_pop_satisfaction = pop_satisfaction_mild_bonus
+				}
+			}
+		}
+
+	}
+
+	historical_info = flavor_eng.144.historical_info
+
+}
+
+# Levant Trade Company
+flavor_eng.145 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.145.title
+	desc = flavor_eng.145.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		has_discovered = location:constantinople
+
+		country_exists = c:TUR
+		location:constantinople = {
+			owner = c:TUR
+		}
+
+		NOT = {
+			capital.market = {
+				any_import = {
+					from_market = location:constantinople.market
+				}
+			}
+			capital.market = {
+				any_export = {
+					to_market = location:constantinople.market
+				}
+			}
+		}
+
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		location:constantinople = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.145.a
+
+		change_gold_effect = { scale = -3 }
+
+		location:constantinople.market = {
+			ordered_location_in_market = {
+				limit = {
+					owner ?= {
+						NOT = { this = root }
+					}
+					NOT = { location_rank ?= location_rank:rural_settlement }
+				}
+				order_by = population
+				max = 8
+
+				change_building_level_in_location = {
+					building = building_type:trade_office
+					value = 1
+					owner = root
+				}
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.145.b
+
+		location:constantinople.owner = {
+			add_opinion = {
+				target = root
+				modifier = opinion_insult
+			}
+		}
+
+	}
+
+	historical_info = flavor_eng.145.historical_info
+
+}
+
+# De Magnete
+flavor_eng.157 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.157.title
+	desc = flavor_eng.157.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1674.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		societal_value:traditionalist_vs_innovative >= 20
+
+		location:cambridge = { owner = root has_building = building_type:university }
+
+		religion:lutheran = {
+			is_religion_enabled = yes
+		}
+
+	}
+	
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_william
+			last_name = Gilbert
+			estate = estate_type:burghers_estate
+			adm = 65
+			dip = 45
+			mil = 15
+			birth_date = 1544
+			artist_skill = 0.8
+			artist = philosopher
+			religion = religion:lutheran
+			birth_location = location:colchester
+			script = eng_william_gilbert
+			save_scope_as = william_gilbert
+		}
+
+		location:cambridge = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.157.a
+		historical_option = yes
+		trigger= {
+			NOT = { has_policy = de_heretico_comburendo }
+		}
+
+		custom_tooltip = flavor_eng.157.tt1
+
+		add_prestige = prestige_mild_bonus
+
+		add_research_progress = research_progress_mild_bonus
+
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_severe_penalty
+		}
+
+		if = {
+			limit = { has_policy = strict_censorship }
+			add_estate_satisfaction = { type = estate_type:clergy_estate
+				value = estate_satisfaction_severe_penalty
+			}
+			custom_tooltip = flavor_eng.157.tt2
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.157.b
+		trigger= {
+			has_policy = de_heretico_comburendo
+			religion = religion:catholic
+		}
+
+		character:eng_william_gilbert ?= {
+			kill_character = {
+				target = this
+				reason = burned_alive
+				killer = ruler_or_regent
+			}
+		}
+
+		custom_tooltip = flavor_eng.157.tt3
+
+	}
+
+	option = {
+		name = flavor_eng.157.c
+		trigger= {
+			NOT = { has_policy = de_heretico_comburendo }
+		}
+
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_bonus }
+
+	}
+
+}
+
+# The Golden Speech
+flavor_eng.158 = {
+	type = country_event
+	title = flavor_eng.158.title
+	desc = flavor_eng.158.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		modifier:has_a_parliamentary_system = yes
+
+		dynasty_exists = tudor_dynasty
+		ruler ?= {
+			dynasty ?= dynasty:tudor_dynasty
+		}
+
+		OR = {
+			AND = {
+				has_heir = no
+				ruler = {
+					age_in_years > 40
+				}
+			}
+			government_power <= 75
+			stability <= 50
+			NOT = { dominant_religion = root.religion }
+		}
+
+	}
+	
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		capital = { save_scope_as = target_location }
+
+		ruler = { save_scope_as = target_character }
+
+	}
+
+	option = {
+		name = flavor_eng.158.a
+		historical_option = yes
+
+		ruler = { add_trait = trait:inspiring_leader }
+
+		add_government_power = government_power_weak_bonus
+
+		add_prestige = prestige_weak_bonus
+
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_bonus }
+
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_bonus }
+
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+
+		custom_tooltip = flavor_eng.158.tt1
+
+	}
+
+	option = {
+		name = flavor_eng.158.b
+
+		add_government_power = government_power_severe_bonus
+
+		add_prestige = prestige_severe_bonus
+
+	}
+
+	option = {
+		name = flavor_eng.158.c
+
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_bonus }
+
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_bonus }
+
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_bonus }
+
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_bonus }
+
+	}
+
+}
+
+# A Counterblaste to Tobacco
+flavor_eng.159 = {
+	type = country_event
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_tobacco.dds"
+
+	fire_only_once = yes
+
+	title = flavor_eng.159.title
+	desc = flavor_eng.159.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1684.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		capital.market = { is_traded_in_market = goods:tobacco }
+
+		has_regent = no
+
+	}
+
+	immediate = {
+
+		capital = { save_scope_as = target_location }
+
+		ruler = { save_scope_as = target_character }
+
+	}
+
+	option = {
+		name = flavor_eng.159.a
+		historical_option = yes
+
+		change_gold_effect = { scale = 6 }
+
+		ruler = { add_character_modifier = { modifier = tax_tobacco months = -1 mode = add_and_extend } }
+
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_penalty }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
+
+		custom_tooltip = flavor_eng.159.tt1
+
+	}
+
+	option = {
+		name = flavor_eng.159.b
+
+		add_country_modifier = { modifier = tobacco_imports_banned years = 3 mode = add_and_extend }
+
+		capital.market = {
+			add_temporary_demand = {
+				type = demand:eng_compensating_addictions
+				months = 36
+			}
+		}
+
+		region:caribbean_region = {
+			ordered_location_in_region = {
+				order_by = population
+				max = 3
+				limit = {
+					top_owner = scope:actor
+					any_buildings_in_location = {
+						count = all
+						building_produced_goods = goods:tobacco
+					}
+				}
+				change_prosperity = prosperity_weak_penalty
+				random_list = {
+					50 = {
+						change_building_level_in_location = {
+							building = building_type:tobacco_plantation
+							value = -1
+						}
+						custom_tooltip = flavor_eng.159.tt3
+					}
+					50 = {
+
+					}
+				}
+			}
+		}
+
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_penalty }
+
+		custom_tooltip = flavor_eng.159.tt2
+		custom_tooltip = flavor_eng.159.tt4
+
+	}
+
+	option = {
+		name = flavor_eng.159.c
+
+		capital.market = {
+			add_temporary_demand = {
+				type = demand:eng_growing_addiction
+				months = 60
+			}
+		}
+
+		custom_tooltip = flavor_eng.159.tt5
+
+
+	}
+
+	historical_info = flavor_eng.159.historical_info
+
+}
+
+# The Great Contract
+flavor_eng.164 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.164.title
+	desc = flavor_eng.164.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1684.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		has_ruler = yes
+		ruler = {
+			num_of_children >= 3
+		}
+		court_maintenance >= 0.2
+
+	}
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		capital = { save_scope_as = target_location }
+
+		if = {
+			limit = {
+				exists = character:eng_william_cecil
+				character:eng_william_cecil ?= {
+					is_alive = yes
+					in_cabinet = yes
+				}
+			}
+			character:eng_william_cecil ?= {
+				save_scope_as = target_character
+			}
+		}
+		else_if = {
+			limit = {
+				exists = character:eng_william_cecil
+				any_character = {
+					is_close_relative = character:eng_william_cecil
+					in_cabinet = yes
+				}
+			}
+			random_character = {
+				limit = {
+					is_close_relative = character:eng_william_cecil
+					in_cabinet = yes
+				}
+				save_scope_as = target_character
+			}
+		}
+		else = {
+			ruler = { save_scope_as = target_character }
+		}
+
+
+		root = { save_scope_as = target_root_country }
+
+	}
+
+	option = {
+		name = flavor_eng.164.a
+		historical_option = yes
+
+		ruler = {
+			add_character_modifier = {
+				modifier = lack_of_agreement
+				months = -1
+				mode = add_and_extend
+			}
+			add_adm = -10
+		}
+
+
+		custom_tooltip = flavor_eng.164.tt1
+		custom_tooltip = flavor_eng.164.tt2
+
+
+	}
+
+	option = {
+		name = flavor_eng.164.b
+		trigger = {
+			exists = character:eng_william_cecil
+			OR = {
+				character:eng_william_cecil ?= {
+					is_alive = yes
+					in_cabinet = yes
+				}
+				any_character = {
+					is_close_relative = character:eng_william_cecil
+					in_cabinet = yes
+				}
+			}
+		}
+
+		change_gold_effect = { scale = 3 }
+
+		ruler = { add_character_modifier = { modifier = great_contract_compromise months = -1 mode = add_and_extend } }
+
+
+		custom_tooltip = flavor_eng.164.tt3
+
+
+	}
+
+	option = {
+		name = flavor_eng.164.c
+
+		change_gold_effect = { scale = 6 }
+
+		ruler = { add_character_modifier = { modifier = great_contract months = -1 mode = add_and_extend } }
+
+	}
+
+	historical_info = flavor_eng.164.historical_info
+
+}
+
+# Cotswold Olimpick Games
+flavor_eng.168 = {
+	hide_portraits = yes
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.168.title
+	desc = flavor_eng.168.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+
+		own_entire_province = province_definition:gloucestershire_province
+
+	}
+	
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		ruler ?= { save_scope_as = target_character }
+
+		province_definition:gloucestershire_province = {
+			random_location_in_province_definition = {
+				limit = {
+					location_rank = location_rank:rural_settlement
+				}
+				save_scope_as = target_location
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.168.a
+		historical_option = yes
+
+		scope:target_location.market = {
+			add_temporary_demand = {
+				type = demand:cotswold_olimpick_games
+				months = 6
+			}
+		}
+
+		add_country_modifier = {
+			modifier = cotswold_olimpick_games
+			months = -1
+			mode = add_and_extend
+		}
+
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+
+		add_stability = stability_mild_bonus
+
+		province_definition:gloucestershire_province = {
+			every_location_in_province_definition = {
+				limit = {
+					owner ?= ROOT
+				}
+				every_pop = {
+					limit = {
+						owner = root
+						NOT = {
+							pop_type = pop_type:clergy
+						}
+					}
+					add_pop_satisfaction = pop_satisfaction_extreme_bonus
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				estate_satisfaction:nobles_estate >= 0.5
+			}
+			add_gold_to_estate = {
+				estate_type = estate_type:nobles_estate
+				value = { value = root.monthly_income_trade_and_tax multiply = -3 }
+			}
+			custom_tooltip = flavor_eng.168.tt2
+		}
+		else = {
+			add_gold = {
+				value = root.monthly_income_trade_and_tax
+				multiply = -3
+			}
+		}
+
+		if = {
+			limit = {
+				religion = religion:anglican
+			}
+			add_estate_satisfaction = { type = estate_type:clergy_estate
+				value = estate_satisfaction_severe_penalty
+			}
+			custom_tooltip = flavor_eng.168.tt1
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.168.b
+
+		scope:target_location.market = {
+			add_temporary_demand = {
+				type = demand:cotswold_olimpick_games
+				months = 6
+			}
+		}
+
+		culture = {
+			add_cultural_tradition = cultural_tradition_weak_bonus
+		}
+
+		add_stability = stability_weak_bonus
+
+		province_definition:gloucestershire_province = {
+			every_location_in_province_definition = {
+				limit = {
+					owner ?= ROOT
+				}
+				every_pop = {
+					limit = {
+						owner = root
+						NOT = {
+							pop_type = pop_type:clergy
+						}
+					}
+					add_pop_satisfaction = pop_satisfaction_mild_bonus
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				estate_satisfaction:nobles_estate >= 0.5
+			}
+			add_gold_to_estate = {
+				estate_type = estate_type:nobles_estate
+				value = { value = root.monthly_income_trade_and_tax multiply = -3 }
+			}
+			custom_tooltip = flavor_eng.168.tt3
+		}
+		else = {
+			add_gold = {
+				value = root.monthly_income_trade_and_tax
+				multiply = -3
+			}
+		}
+
+		if = {
+			limit = {
+				religion = religion:anglican
+			}
+			add_estate_satisfaction = { type = estate_type:clergy_estate
+				value = estate_satisfaction_severe_penalty
+			}
+			custom_tooltip = flavor_eng.168.tt1
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.168.c
+
+		culture = {
+			add_cultural_influence = cultural_tradition_mild_penalty
+		}
+
+		if = {
+			limit = {
+				religion = religion:anglican
+			}
+			add_estate_satisfaction = { type = estate_type:clergy_estate
+				value = estate_satisfaction_severe_bonus
+			}
+			custom_tooltip = flavor_eng.168.tt2
+		}
+
+	}
+
+	historical_info = flavor_eng.168.historical_info
+
+}
+
+# Tonnage and Poundage
+flavor_eng.172 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_eng.172.title
+	desc = flavor_eng.172.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1684.1.1
+		monthly_chance = 4
+	}
+
+	trigger = {
+
+		modifier:has_a_parliamentary_system = yes
+
+		is_active_parliament = yes
+
+		at_war = no
+
+		has_regent = no
+
+	}
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		character:eng_edward_ii = { save_scope_as = edward_ii }
+
+		capital = { save_scope_as = target_location }
+
+		ruler = { save_scope_as = target_character }
+
+		root = { save_scope_as = target_root_country }
+
+	}
+
+	option = {
+		name = flavor_eng.172.a
+		historical_option = yes
+
+		ruler = {
+			add_character_modifier = {
+				modifier = abusing_royal_prerogative
+				years = -1
+				mode = add_and_extend
+			}
+		}
+
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+
+		add_government_power = government_power_weak_penalty
+
+		custom_tooltip = flavor_eng.172.tt1
+
+	}
+
+	option = {
+		name = flavor_eng.172.b
+		trigger = { ruler = { dip >= 50 } }
+
+		ruler = {
+			add_character_modifier = {
+				modifier = tonnage_and_poundage_denied
+				years = 1
+				mode = add_and_extend
+			}
+		}
+
+		add_government_power = government_power_mild_bonus
+
+		custom_tooltip = flavor_eng.172.tt2
+
+	}
+
+	option = {
+		name = flavor_eng.172.c
+
+		ruler = {
+			add_character_modifier = {
+				modifier = tonnage_and_poundage_denied
+				years = -1
+				mode = add_and_extend
+			}
+		}
+
+		custom_tooltip = flavor_eng.172.tt3
+
+	}
+
+	historical_info = flavor_eng.172.historical_info
+
+}
+
+# Christopher Wren
+flavor_eng.174 = {
+	type = country_event
+
+	title = flavor_eng.174.title
+	desc = flavor_eng.174.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1660.1.1
+		to = 1700.1.1
+		monthly_chance = 1
+	}
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+	trigger = {
+
+		location:salisbury = { owner = root }
+
+		location:oxford = {
+			has_building_with_at_least_one_level = university
+		}
+
+	}
+
+	immediate = {
+
+		create_character = {
+			first_name = name_christopher
+			last_name = Wren
+			estate = estate_type:nobles_estate
+			adm = 35
+			dip = 44
+			mil = 10
+			birth_date = 1632.1.1
+			birth_location = location:salisbury
+			artist_skill = 1
+			artist = architect
+			script = eng_christopher_wren
+			save_scope_as = christopher_wren
+		}
+
+		location:salisbury = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.174.a
+		historical_option = yes
+
+		scope:christopher_wren = { add_trait = trait:prominent }
+
+		custom_tooltip = flavor_eng.174.tt1
+		custom_tooltip = flavor_eng.174.tt2
+
+	}
+
+	option = {
+	name = flavor_eng.174.b
+
+	add_research_progress = research_progress_extreme_bonus
+
+	custom_tooltip = flavor_eng.174.tt1
+	custom_tooltip = flavor_eng.174.tt3
+
+	}
+
+	option = {
+		name = flavor_eng.174.c
+
+		add_prestige = prestige_mild_bonus
+
+		hidden_effect = { kill_character_silently = scope:christopher_wren }
+
+	}
+
+	historical_info = flavor_eng.174.historical_info
+
+}
+
+# St:Paul's Cathedral
+flavor_eng.175 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.175.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					has_variable = great_fire_of_london
+				}
+				desc = flavor_eng.175.desc_great_fire
+			}
+			triggered_desc = {
+				trigger = { always = yes }
+				desc = flavor_eng.175.desc
+			}
+		}
+	}
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1667.1.1
+		to = 1700.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		character:eng_christopher_wren ?= { is_alive = yes has_trait = prominent }
+
+		location:london = {
+			owner = root
+			controller = root
+		}
+
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		location:london = { save_scope_as = target_location }
+
+		character:eng_christopher_wren ?= { save_scope_as = christopher_wren }
+
+	}
+
+	option = {
+		name = flavor_eng.175.a
+		historical_option = yes
+
+		change_gold_effect = { scale = -6 }
+
+		location:london = {
+			create_art = {
+				quality = 90
+				artist = scope:christopher_wren
+				type = work_of_art_type:monument
+				key = st_pauls
+			}
+			market = {
+				add_temporary_demand = {
+					type = demand:st_pauls_construction
+					months = 120
+				}
+			}
+		}
+
+		scope:christopher_wren = {
+			add_artist_skill = 0.03
+		}
+
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_bonus }
+
+		custom_tooltip = flavor_eng.175.tt1
+
+	}
+
+	option = {
+		name = flavor_eng.175.b
+
+		add_prestige = prestige_weak_bonus
+
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_penalty }
+
+		custom_tooltip = flavor_eng.175.tt2
+
+
+	}
+
+	historical_info = flavor_eng.175.historical_info
+
+}
+
+# Great Fire of London
+flavor_eng.176 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.176.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					has_variable = eastern_winds
+				}
+				desc = flavor_eng.176.desc_eastern_winds
+			}
+			triggered_desc = {
+				trigger = { always = yes }
+				desc = flavor_eng.176.desc
+			}
+		}
+	}
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1666.1.1
+		to = 1667.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+
+		location:london = {
+			owner = root
+			controller = root
+			market = {
+				is_traded_in_market = goods:lumber
+			}
+			any_buildings_in_location = {
+				OR = {
+					building_type = building_type:market_warehouse
+					building_category = consumer_goods_category
+				}
+			}
+		}
+
+	}
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		if = {
+			limit = {
+				character:eng_samuel_pepys ?= {
+				is_alive = yes
+				}
+			}
+			character:eng_samuel_pepys = {
+				save_scope_as = samuel_pepys
+			}
+		}
+
+		set_variable = { name = great_fire_of_london value = 1 }
+
+		location:london = {
+			save_scope_as = target_location
+		}
+
+		random_list = {
+			50 = {
+			}
+			50 = {
+				set_variable = eastern_winds
+			}
+		}
+
+		region:great_britain_region = {
+			random_location_in_region = {
+				limit = {
+					owner ?= root
+					NOT = { this = location:london }
+					OR = {
+						location_rank = location_rank:city
+						location_rank = location_rank:town
+					}
+				}
+				save_scope_as = emigration_province
+			}
+		}
+
+		save_scope_as = target_root_country
+
+	}
+
+	option = {
+		name = flavor_eng.176.a
+		historical_option = yes
+
+		if = {
+			limit = {
+				has_variable = eastern_winds
+			}
+			location:london = {
+				change_development  = -10
+
+				ordered_buildings_in_location = {
+					order_by = building_level
+					max = {
+						value = 1
+						add = {
+							value = num_buildings
+							divide = 4
+						}
+					}
+
+					location = { minor_destroy_building_levels_in_location = yes }
+				}
+			}
+		}
+		else = {
+			root = { add_government_power = government_power_mild_penalty }
+					custom_tooltip = flavor_eng.176.tt1
+			location:london = {
+				change_development  = -20
+
+				ordered_buildings_in_location = {
+					order_by = building_level
+					max = {
+						value = 1
+						add = {
+							value = num_buildings
+							divide = 8
+						}
+					}
+
+					location = { minor_destroy_building_levels_in_location = yes }
+				}
+			}
+		}
+
+		add_migration = {
+			owner = this
+			from = scope:target_location.province_definition
+			to = scope:emigration_province.province_definition
+			type = pop_type:peasants
+			amount = 0.25
+			months = 12
+		}
+
+		add_migration = {
+			owner = this
+			from = scope:target_location.province_definition
+			to = scope:emigration_province.province_definition
+			type = pop_type:burghers
+			amount = 0.5
+			months = 12
+		}
+
+		custom_tooltip = flavor_eng.176.tt2
+		custom_tooltip = flavor_eng.176.tt3
+
+		if = {
+			limit = {
+				character:eng_samuel_pepys ?= {
+					is_alive = yes
+			    }
+			}
+			change_variable = { name = samuel_pepys_diary_entries add = 1 }
+			custom_tooltip = flavor_eng.176.tt4
+		}
+
+	}
+
+historical_info = flavor_eng.176.historical_info
+
+}
+
+# The Wicked Bible
+flavor_eng.179 = {
+
+	type = country_event
+	title = flavor_eng.179.title
+	desc = flavor_eng.179.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1664.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		region:great_britain_region = {
+			any_location_in_region = {
+				owner ?= root
+				has_building_with_at_least_one_level = printing_press_shop
+			}
+		}
+
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		region:great_britain_region = {
+			random_location_in_region = {
+				limit = {
+					owner ?= root
+					has_building_with_at_least_one_level = printing_press_shop
+				}
+				save_scope_as = target_location
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.179.a
+
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+
+		change_gold_effect = { scale = 1 }
+
+	}
+
+	option = {
+		name = flavor_eng.179.b
+
+		change_societal_value = {
+			type = spiritualist_vs_humanist
+			value = societal_value_move_to_right
+		}
+
+		if = {
+			limit = { has_policy = strict_censorship }
+			add_estate_satisfaction = { type = estate_type:clergy_estate
+				value = estate_satisfaction_severe_penalty
+			}
+			custom_tooltip = flavor_eng.179.tt1
+		}
+
+		scope:target_location = {
+			destroy_building = "building(building_type:printing_press_shop|owner)"
+			every_pop = {
+				limit = {
+					owner = root
+					pop_type = pop_type:clergy
+				}
+				add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+			}
+		}
+
+		custom_tooltip = flavor_eng.179.tt2
+
+	}
+
+	historical_info = flavor_eng.179.historical_info
+
+}
+
+# John Milton
+flavor_eng.180 = {
+	type = country_event
+
+	title = flavor_eng.180.title
+	desc = flavor_eng.180.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1660.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+
+		owns = location:london
+
+		OR = {
+			has_policy = limited_censorship
+			has_policy = strict_censorship
+			has_policy = de_heretico_comburendo
+		}
+
+		modifier:has_a_parliamentary_system = yes
+		is_active_parliament = yes
+
+	}
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_john
+			last_name = Milton
+			adm = 30
+			dip = 25
+			mil = 12
+			birth_date = 1608.1.1
+			birth_location = location:london
+			artist_skill = 0.9
+			estate = estate_type:burghers_estate
+			artist = writer
+			script = eng_john_milton
+			save_scope_as = john_milton
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.180.a
+		historical_option = yes
+
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_extreme_penalty
+		}
+
+		if = {
+			limit = {
+				NOT = {
+					has_policy = limited_censorship
+				}
+			}
+			add_policy = policy:limited_censorship
+		}
+		else = {
+			add_policy = policy:no_censorship
+		}
+
+		custom_tooltip = flavor_eng.180.tt1
+
+	}
+
+	option = {
+		name = flavor_eng.180.b
+
+		if = {
+			limit = { has_policy = strict_censorship }
+			add_estate_satisfaction = { type = estate_type:clergy_estate
+				value = estate_satisfaction_severe_penalty
+			}
+			custom_tooltip = flavor_eng.180.tt3
+		}
+
+		add_estate_satisfaction = { type = estate_type:nobles_estate
+			value = estate_satisfaction_severe_bonus
+		}
+
+		hidden_effect = { kill_character_silently = scope:john_milton }
+
+		add_country_modifier = {
+			modifier = parliament_influenced
+			years = 10
+			mode = add_and_extend
+		}
+
+		custom_tooltip = flavor_eng.180.tt4
+
+	}
+
+	option = {
+	name = flavor_eng.180.c
+	trigger= {
+		has_policy = de_heretico_comburendo
+	}
+
+		character:eng_john_milton ?= {
+			kill_character = {
+				target = this
+				reason = burned_alive
+				killer = ruler
+			}
+		}
+
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+
+		if = {
+			limit = {
+				OR = {
+					government_type = government_type:republic
+					has_variable = concluded_ecw_variable
+				}
+			}
+			add_country_modifier = {
+				modifier = parliament_desires_change
+				years = 10
+				mode = add_and_extend
+			}
+			custom_tooltip = flavor_eng.180.tt5
+		}
+
+		custom_tooltip = flavor_eng.180.tt6
+
+	}
+
+	historical_info = flavor_eng.180.historical_info
+
+}
+
+# Hudson's Bay Company
+flavor_eng.181 = {
+	type = country_event
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_fur.dds"
+
+	title = flavor_eng.181.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					area:lower_canada_area = {
+						any_location_in_area = {
+							market = { is_produced_in_market = goods:fur }
+							OR = {
+								owner ?= { capital.sub_continent = sub_continent:western_europe }
+								owner.overlord ?= { capital.sub_continent = sub_continent:western_europe }
+							}
+						}
+					}
+				}
+				desc = flavor_eng.181.desc_european_presence
+			}
+			triggered_desc = {
+				trigger = { always = yes }
+				desc = flavor_eng.181.desc
+			}
+		}
+	}
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1659.1.1
+		to = 1750.1.1
+		monthly_chance = 4
+	}
+
+
+	trigger = {
+
+		area:james_bay_lowlands_area = {
+			any_location_in_area = {
+				raw_material ?= goods:fur
+				is_discovered_by = root
+				location_rank = location_rank:rural_settlement
+				is_coastal_within_range = yes
+				NOT = { has_building = building_type:overseas_trading_post }
+			}
+		}
+
+		capital.market = {
+			any_import = {
+				goods = goods:fur
+			}
+		}
+
+	}
+
+	immediate = {
+
+		area:james_bay_lowlands_area = {
+			random_location_in_area = {
+				save_scope_as = target_location
+			}
+		}
+
+		area:lower_canada_area = {
+			if = {
+				limit = {
+					any_location_in_area = {
+						market = { is_produced_in_market = goods:fur }
+						OR = {
+							owner ?= { capital.sub_continent = sub_continent:western_europe }
+							owner.overlord ?= { capital.sub_continent = sub_continent:western_europe }
+						}
+					}
+				}
+				random_location_in_area = {
+					limit = {
+						market = { is_produced_in_market = goods:fur }
+						OR = {
+							owner ?= { capital.sub_continent = sub_continent:western_europe }
+							owner.overlord ?= { capital.sub_continent = sub_continent:western_europe }
+						}
+					}
+					owner ?= {
+						overlord ?= { save_scope_as = target_country } save_scope_as = target_country
+					}
+				}
+			}
+		}
+
+		save_scope_as = target_root_country
+
+	}
+
+	option = {
+		name = flavor_eng.181.a
+		historical_option = yes
+
+		change_gold_effect = { scale = -6 }
+
+		area:james_bay_lowlands_area = {
+			ordered_location_in_area = {
+				limit = {
+					location_rank = location_rank:rural_settlement
+					is_coastal = yes
+					raw_material = goods:fur
+					is_coastal_within_range = yes
+					NOT = { has_building = building_type:overseas_trading_post }
+				}
+				order_by = population
+				max = 8
+
+				change_building_level_in_location = {
+					building = building_type:overseas_trading_post
+					value = 1
+					owner = root
+				}
+			}
+		}
+
+		scope:target_country ?= {
+			hidden_effect = {
+				trigger_event_silently = { id = flavor_eng.182 days = 0 }
+			}
+		}
+
+		custom_tooltip = flavor_eng.181.tt1
+
+	}
+
+	option = {
+		name = flavor_eng.181.b
+
+		area:james_bay_lowlands_area = {
+			ordered_location_in_area = {
+				limit = {
+					location_rank = location_rank:rural_settlement
+					is_coastal = yes
+					raw_material = goods:fur
+					is_coastal_within_range = yes
+					NOT = { has_building = building_type:overseas_trading_post }
+				}
+				order_by = population
+				max = 4
+
+				change_building_level_in_location = {
+					building = building_type:overseas_trading_post
+					value = 1
+					owner = root
+				}
+			}
+		}
+
+		scope:target_country ?= {
+			hidden_effect = {
+				trigger_event_silently = { id = flavor_eng.182 days = 0 }
+			}
+		}
+
+		custom_tooltip = flavor_eng.181.tt2
+
+	}
+
+	option = {
+		name = flavor_eng.181.c
+
+		add_prestige = prestige_weak_bonus
+
+	}
+
+	historical_info = flavor_eng.181.historical_info
+
+}
+
+# A Fur-ocious Competitor
+flavor_eng.182 = {
+	type = country_event
+
+	title = flavor_eng.182.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					area:james_bay_lowlands_area = {
+						any_location_in_area = {
+							is_discovered_by = root
+						}
+					}
+				}
+				desc = flavor_eng.182.desc_james_bay_discovered
+			}
+			triggered_desc = {
+				trigger = { always = yes }
+				desc = flavor_eng.182.desc
+			}
+		}
+	}
+	outcome = neutral
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		area:lower_canada_area = {
+			random_location_in_area = {
+				limit = {
+					OR = {
+						owner ?= root
+						owner ?= { is_subject_of = root }
+					}
+				}
+				save_scope_as = target_location
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.182.a
+		historical_option = yes
+		trigger = {
+			area:james_bay_lowlands_area = {
+				any_location_in_area = {
+					is_discovered_by = root
+					location_rank = location_rank:rural_settlement
+					is_coastal_within_range = yes
+					NOT = { has_building = building_type:overseas_trading_post }
+				}
+		   }
+		}
+
+		add_opinion = {
+			target = scope:target_root_country
+			modifier = opinion_mildly_displeased
+		}
+
+		change_gold_effect = { scale = -6 }
+
+		area:james_bay_lowlands_area = {
+			ordered_location_in_area = {
+				limit = {
+					location_rank = location_rank:rural_settlement
+					is_coastal = yes
+					raw_material = goods:fur
+					is_coastal_within_range = yes
+					NOT = { has_building = building_type:overseas_trading_post }
+				}
+				order_by = population
+				max = 8
+
+				change_building_level_in_location = {
+					building = building_type:overseas_trading_post
+					value = 1
+					owner = root
+				}
+			}
+		}
+
+		custom_tooltip = flavor_eng.182.tt1
+
+	}
+
+	option = {
+		name = flavor_eng.182.b
+
+		add_casus_belli = {	target = scope:target_root_country type = casus_belli:cb_disrupting_trade }
+
+	}
+
+	option = {
+		name = flavor_eng.182.c
+		trigger = {
+			NOT = {
+				area:james_bay_lowlands_area = {
+					any_location_in_area = {
+						is_discovered_by = root
+						location_rank = location_rank:rural_settlement
+					}
+				}
+			}
+		}
+
+		change_gold_effect = { scale = -3 }
+
+		discover_area = area:james_bay_lowlands_area
+
+	}
+
+	historical_info = flavor_eng.181.historical_info
+
+}
+
+# The Great Migration
+flavor_eng.186 = {
+	type = country_event
+
+	title = flavor_eng.186.title
+	desc = flavor_eng.186.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1664.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		region:east_coast_region = {
+			any_location_in_region = {
+				count > 3
+				is_coastal = yes
+				controller ?= owner
+				OR = {
+					owner ?= { is_subject_of = root }
+					owner ?= root
+				}
+			}
+		}
+
+		NOT = { dominant_religion = religion:calvinist }
+
+		"religion_percentage_in_country(religion:calvinist)" > 0.1
+
+		region:great_britain_region = {
+			any_location_in_region = {
+				count > 10
+				owner ?= root
+				controller = root
+				any_pop = {
+					religion = religion:calvinist
+					pop_satisfaction <= 0.25
+				}
+			}
+		}
+
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		region:east_coast_region = {
+			random_location_in_region ?= {
+				limit = {
+					is_coastal = yes
+					OR = {
+						owner ?= { is_subject_of = root }
+						owner ?= root
+					}
+				}
+				save_scope_as = target_location_north_america
+			}
+		}
+
+		region:caribbean_region = {
+			random_location_in_region ?= {
+				limit = {
+					is_coastal = yes
+					OR = {
+						owner ?= { is_subject_of = root }
+						owner ?= root
+					}
+				}
+				save_scope_as = target_location_caribbean
+				root = { set_variable = { name = target_location_caribbean value = 1 } }
+			}
+		}
+
+		region:ireland_region = {
+			random_location_in_region ?= {
+				limit = {
+					OR = {
+						owner ?= { is_subject_of = root }
+						NOT = { owner ?= root }
+					}
+				}
+				save_scope_as = target_location_ireland
+				root = { set_variable = { name = target_location_ireland value = 1 } }
+			}
+		}
+
+		area:holland_area = {
+			random_location_in_area ?= {
+				limit = {
+					NOT = {
+						OR = {
+							owner ?= { is_subject_of = root }
+							owner ?= root
+						}
+					}
+					any_pop = {
+						religion = religion:calvinist
+					}
+				}
+				save_scope_as = target_location_holland
+				root = { set_variable = { name = target_location_holland value = 1 } }
+			}
+		}
+
+		root = { save_scope_as = target_root_country }
+
+	}
+
+	option = {
+		name = flavor_eng.186.a
+		historical_option = yes
+
+			custom_tooltip = {
+			text = flavor_eng.186.a.custom
+			region:great_britain_region = {
+				every_location_in_region = {
+					limit = {
+						owner ?= root
+						any_pop = {
+							religion = religion:calvinist
+							pop_satisfaction <= 0.25
+						}
+					}
+					scope:target_location_caribbean.province_definition ?= {
+						add_migration = {
+							owner = root
+							from = prev.province_definition
+							to = this
+							religion = religion:calvinist
+							amount = 0.5
+							months = 240
+						}
+					}
+					scope:target_location_north_america.province_definition ?= {
+						add_migration = {
+							owner = root
+							from = scope:emigration_province.province_definition
+							to = this
+							religion = religion:calvinist
+							amount = 0.5
+							months = 240
+						}
+					}
+					scope:target_location_ireland.province_definition ?= {
+						add_migration = {
+							owner = root
+							from = scope:emigration_province.province_definition
+							to = this
+							religion = religion:calvinist
+							amount = 0.5
+							months = 240
+						}
+					}
+					scope:target_location_holland.province_definition ?= {
+						add_migration = {
+							owner = root
+							from = scope:emigration_province.province_definition
+							to = this
+							religion = religion:calvinist
+							amount = 0.5
+							months = 240
+						}
+					}
+				}
+			}
+		}
+
+		custom_tooltip = flavor_eng.186.tt1
+
+		if = {
+			limit = {
+				has_variable = target_location_caribbean
+			}
+			custom_tooltip = flavor_eng.186.tt2
+		}
+
+		if = {
+			limit = {
+				has_variable = target_location_holland
+			}
+			custom_tooltip = flavor_eng.186.tt3
+		}
+
+		if = {
+			limit = {
+				has_variable = target_location_ireland
+			}
+			custom_tooltip = flavor_eng.186.tt4
+		}
+
+	}
+
+	option = {
+	name = flavor_eng.186.b
+
+
+		change_societal_value = {
+			type = spiritualist_vs_humanist
+			value = societal_value_move_to_right
+		}
+
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_extreme_penalty
+		}
+
+		add_prestige = prestige_severe_penalty
+
+	}
+
+	historical_info = flavor_eng.186.historical_info
+
+}
+
+# The Sailing and Fighting Instructions
+flavor_eng.187 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.187.title
+	desc = flavor_eng.187.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1644.1.1
+		to = 1674.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		navy_size > 50
+
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		create_character = {
+			first_name = name_robert
+			last_name = Blake
+			estate = estate_type:burghers_estate
+			adm = 65
+			dip = 25
+			mil = 90
+			birth_date = 1598
+			birth_location = location:bristol
+			script = eng_robert_blake
+			save_scope_as = robert_blake
+		}
+
+		location:bristol = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.187.a
+		historical_option = yes
+
+		scope:robert_blake = {
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+		}
+
+		unlock_advance_effect = { type = sailing_and_fighting_instructions }
+
+		custom_tooltip = flavor_eng.187.tt1
+
+		custom_tooltip = enable_sailing_and_fighting_instructions_advance
+
+	}
+
+	option = {
+		name = flavor_eng.187.b
+
+		scope:robert_blake = {
+			add_random_trait_from_category = admiral
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+		}
+
+		custom_tooltip = flavor_eng.187.tt2
+
+	}
+
+	option = {
+		name = flavor_eng.187.c
+
+		hidden_effect = { kill_character_silently = scope:robert_blake }
+
+		add_prestige = prestige_mild_bonus
+
+		custom_tooltip = flavor_eng.187.tt3
+
+	}
+
+	historical_info = flavor_eng.187.historical_info
+
+}
+
+# The execution of Anne Greene
+flavor_eng.188 = {
+	type = country_event
+
+	title = flavor_eng.188.title
+	desc = flavor_eng.188.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1641.1.1
+		to = 1671.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		OR = {
+			"estate_power(estate_type:clergy_estate)" >= 0.35
+			societal_value:traditionalist_vs_innovative <= -10
+		}
+
+		location:oxford = {
+			owner = root
+			controller = root
+		}
+
+	}
+
+	illustration_tags = {
+		10 = exterior
+	}
+	
+	immediate = {
+		event_illustration_estate_background_effect = { background = estate_type:clergy_estate }
+		location:oxford = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		historical_option = yes
+		name = flavor_eng.188.a
+
+		add_research_progress = research_progress_mild_bonus
+
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_penalty }
+
+		trigger_event_silently = { id = flavor_eng.189 }
+
+		custom_tooltip = flavor_eng.188.tt1
+
+	}
+
+	option = {
+		name = flavor_eng.188.b
+
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+
+	}
+
+	historical_info = flavor_eng.188.historical_info
+
+}
+
+# The Angel Coffehouse
+flavor_eng.190 = {
+	type = country_event
+
+	title = flavor_eng.190.title
+	desc = flavor_eng.190.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1650.1.1
+		to = 1690.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		capital.market = {
+			is_traded_in_market = goods:coffee
+		}
+
+		location:oxford = { owner = root }
+
+	}
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		set_variable = { name = coffee_house_established value = 1 }
+
+		location:oxford = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		historical_option = yes
+		name = flavor_eng.190.a
+
+		scope:target_location = {
+			market = {
+				add_temporary_demand = {
+					type = demand:the_angel
+					months = 60
+				}
+			}
+			change_prosperity = prosperity_weak_bonus
+		}
+
+		add_research_progress = research_progress_mild_bonus
+		custom_tooltip = flavor_eng.190.tt
+
+	}
+
+	option = {
+		name = flavor_eng.190.b
+
+		change_societal_value = {
+			type = outward_vs_inward
+			value = societal_value_move_to_right
+		}
+
+	}
+
+	historical_info = flavor_eng.190.historical_info
+
+}
+
+# Punch and Judy
+flavor_eng.191 = {
+	type = country_event
+
+	title = flavor_eng.191.title
+	desc = flavor_eng.191.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1662.1.1
+		to = 1720.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		culture = {
+			cultural_tradition >= 30
+		}
+
+		location:london = { owner = root }
+
+	}
+	
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		if = {
+			limit = {
+				character:eng_samuel_pepys ?= {
+				is_alive = yes
+				}
+			}
+			character:eng_samuel_pepys = {
+				save_scope_as = samuel_pepys
+			}
+		}
+
+		location:london = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		historical_option = yes
+		name = flavor_eng.191.a
+
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+
+		location:london = {
+			every_pop = {
+				limit = {
+					owner = root
+					pop_type = pop_type:peasants
+				}
+				add_pop_satisfaction = pop_satisfaction_ultimate_bonus
+			}
+		}
+
+		if = {
+			limit = {
+				character:eng_samuel_pepys ?= {
+					is_alive = yes
+			    }
+			}
+			change_variable = { name = samuel_pepys_diary_entries add = 1 }
+			custom_tooltip = flavor_eng.191.tt
+		}
+	}
+
+	option = {
+		name = flavor_eng.191.b
+
+		change_gold_effect = { scale = -3 }
+
+		culture = {
+			add_cultural_influence = cultural_influence_mild_bonus
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+
+	}
+
+	historical_info = flavor_eng.191.historical_info
+
+}
+
+# The Diligence of Samuel Pepys
+flavor_eng.192 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.192.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					has_reform = government_reform:navy_board_reform
+				}
+				desc = flavor_eng.192.desc_navy_board
+			}
+			triggered_desc = {
+				trigger = { always = yes }
+				desc = flavor_eng.192.desc
+			}
+		}
+	}
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1653.1.1
+		to = 1693.1.1
+		monthly_chance = 1
+	}
+	image = "gfx/interface/illustrations/units/navy_light_ship_6.dds"
+	trigger = {
+
+		location:london = {
+			owner = root
+		}
+
+		OR = {
+			has_reform = government_reform:navy_board_reform
+			OR = {
+				capital = {
+					has_building_with_at_least_one_level = admiralty
+				}
+				has_policy = board_of_admirals_policy
+			}
+		}
+
+	}
+
+	immediate = {
+
+		create_character = {
+			first_name = name_samuel
+			last_name = Pepys
+			estate = estate_type:nobles_estate
+			adm = 80
+			dip = 55
+			mil = 60
+			birth_date = 1633
+			birth_location = location:london
+			script = eng_samuel_pepys
+			save_scope_as = samuel_pepys
+		}
+
+		set_variable = { name = samuel_pepys_diary_entries value = 0 }
+
+		location:london = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.192.a
+		historical_option = yes
+
+		custom_tooltip = {
+			text = enable_overhauled_admiralty_reform
+			set_variable = { name = overhauled_admiralty value = 1 }
+		}
+
+		scope:samuel_pepys = {
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+		}
+
+		custom_tooltip = flavor_eng.192.tt1
+
+
+	}
+
+	option = {
+		name = flavor_eng.192.b
+
+		add_country_modifier = {
+			modifier = samuel_pepys_diligence
+			months = -1
+			mode = add_and_extend
+		}
+
+		custom_tooltip = flavor_eng.192.tt2
+
+		if = {
+			limit = {
+				current_age = age_5_absolutism
+				has_reform = government_reform:navy_board_reform
+				NOT = { has_advance = naval_professionalism }
+			}
+			research_advance = advance_type:naval_professionalism
+			custom_tooltip = flavor_eng.192.tt3
+		}
+
+
+		custom_tooltip = flavor_eng.192.tt4
+
+	}
+
+	option = {
+		name = flavor_eng.192.c
+
+		scope:samuel_pepys = {
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+			add_random_trait_from_category = admiral
+		}
+
+		add_navy_tradition = navy_tradition_extreme_bonus
+
+	}
+
+}
+
+# The Principia
+flavor_eng.193 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.193.title
+	desc = flavor_eng.193.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1687.1.1
+		to = 1730.1.1
+		monthly_chance = 5
+	}
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+	trigger = {
+
+		character:eng_isaac_newton ?= { is_alive = yes }
+
+	}
+
+	immediate = {
+
+		character:eng_isaac_newton = { save_scope_as = isaac_newton }
+
+		capital = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.193.a
+		historical_option = yes
+
+			scope:target_location = {
+				create_art = {
+					artist = scope:isaac_newton
+					quality = 100
+					location = scope:target_location
+					type = work_of_art_type:novel
+					key = the_principia
+				}
+			}
+
+			scope:isaac_newton = {
+				add_artist_skill = 0.03
+			}
+
+			add_research_progress = research_progress_mild_bonus
+
+			if = {
+				limit = {
+					has_variable = coffee_house_established
+				}
+				custom_tooltip = flavor_eng.193.tt
+				add_research_progress = research_progress_weak_bonus
+			}
+	}
+
+	option = {
+		name = flavor_eng.193.b
+
+		change_gold_effect = { scale = -6 }
+
+		scope:target_location = {
+			create_art = {
+				artist = scope:isaac_newton
+				quality = 100
+				location = scope:target_location
+				type = work_of_art_type:novel
+				key = the_principia
+			}
+		}
+
+		scope:isaac_newton = {
+			add_artist_skill = 0.03
+		}
+
+		add_research_progress = research_progress_extreme_bonus
+
+		if = {
+			limit = {
+				has_variable = coffee_house_established
+			}
+			custom_tooltip = flavor_eng.193.tt
+			add_research_progress = research_progress_weak_bonus
+
+		}
+
+	}
+
+		option = {
+		name = flavor_eng.193.c
+
+		add_prestige = prestige_mild_bonus
+
+		}
+
+	historical_info = flavor_eng.193.historical_info
+
+}
+
+# The Exclusion Crisis
+flavor_eng.195 = {
+	hide_portraits = yes
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.195.title
+	desc = flavor_eng.195.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1679.1.1
+		to = 1750.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		NOT = { religion = religion:catholic }
+
+		government_type = government_type:monarchy
+
+		modifier:has_a_parliamentary_system = yes
+		is_active_parliament = yes
+
+		has_regent = no
+
+		ruler = {
+			NOT = { religion = religion:catholic }
+			dynasty = {
+				any_character_in_dynasty = {
+					is_close_relative = root.ruler
+					religion = religion:catholic
+				}
+			}
+		}
+
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ruler = {
+			dynasty = {
+				random_character_in_dynasty = {
+					limit = {
+						is_close_relative = root.ruler
+						religion = religion:catholic
+					}
+					save_scope_as = catholic_relative
+				}
+			}
+		}
+
+		ruler = { save_scope_as = target_character }
+
+		capital = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.195.a
+		historical_option = yes
+
+			add_country_modifier = {
+				modifier = opposed_parliament
+				years = 10
+				mode = add_and_extend
+			}
+
+			add_prestige = prestige_mild_bonus
+
+	}
+
+	option = {
+		name = flavor_eng.195.b
+		trigger = { ruler = { OR = { has_trait = charismatic_negotiator dip > 75 } } }
+
+		add_prestige = prestige_mild_bonus
+
+		custom_tooltip = flavor_eng.195.tt
+
+	}
+
+	option = {
+		name = flavor_eng.195.c
+
+		set_variable = { name = act_of_settlement value = 1 }
+		if = {
+			limit = { policy:heir_same_religion = { is_available_for = root } }
+			add_policy = policy:heir_same_religion
+		}
+
+		add_government_power = government_power_severe_penalty
+
+	}
+
+	historical_info = flavor_eng.195.historical_info
+
+}
+
+# Restoration comedy
+flavor_eng.196 = {
+	hide_portraits = yes
+	type = country_event
+
+	title = flavor_eng.196.title
+	desc = flavor_eng.196.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1660.1.1
+		to = 1710.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		government_type = government_type:monarchy
+
+		OR = {
+			has_policy = no_censorship
+			AND = {
+				societal_value:traditionalist_vs_innovative >= 10
+				NOT = {
+					has_policy = limited_censorship
+					has_policy = strict_censorship
+					has_policy = de_heretico_comburendo
+				}
+			}
+		}
+
+	}
+	
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		if = {
+			limit = {
+				character:eng_samuel_pepys ?= {
+				is_alive = yes
+				}
+			}
+			character:eng_samuel_pepys = {
+				save_scope_as = samuel_pepys
+			}
+		}
+
+		location:london = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		historical_option = yes
+		name = flavor_eng.196.a
+
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_right
+		}
+
+		set_variable = { name = restoration_comedy_allowed value = 1 }
+
+		custom_tooltip = flavor_eng.196.tt1
+
+		if = {
+			limit = {
+				character:eng_samuel_pepys ?= {
+					is_alive = yes
+			    }
+			}
+			change_variable = { name = samuel_pepys_diary_entries add = 1 }
+			custom_tooltip = flavor_eng.196.tt2
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.196.b
+
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+
+	}
+
+	historical_info = flavor_eng.196.historical_info
+
+}
+
+# Aphra Behn
+flavor_eng.197 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.197.title
+	desc = flavor_eng.197.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1660.1.1
+		to = 1690.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		owns = location:canterbury
+
+		OR = {
+			region:great_britain_region = {
+				any_location_in_region = {
+					owner ?= root
+					has_building_with_at_least_one_level = theater
+				}
+			}
+			location:london = { has_building_with_at_least_one_level = globe_theatre owner = root }
+		}
+
+		custom_tooltip = {
+			text = variable_tt_restoration_comedy_allowed
+			has_variable = restoration_comedy_allowed
+		}
+
+	}
+
+	illustration_tags = {
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_background_effect = { background = estate_type:nobles_estate }
+		create_character = {
+			first_name = Aphra
+			last_name = Behn
+			estate = estate_type:peasants_estate
+			adm = 34
+			dip = 41
+			mil = 12
+			birth_date = 1640.12.1 #Baptism date
+			artist_skill = 0.75
+			artist = writer
+			female = yes
+			religion = root.religion
+			birth_location = location:canterbury
+			script = eng_aphra_behn
+			save_scope_as = aphra_behn
+		}
+
+		location:london = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.197.a
+		historical_option = yes
+
+		custom_tooltip = flavor_eng.197.tt1
+
+		if = {
+			limit = {
+				has_policy = strict_censorship
+			}
+			add_estate_satisfaction = { type = estate_type:clergy_estate
+				value = estate_satisfaction_severe_penalty
+			}
+			custom_tooltip = flavor_eng.197.tt2
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.197.b
+
+		change_societal_value = {
+			type = spiritualist_vs_humanist
+			value = societal_value_move_to_left
+		}
+
+		scope:aphra_behn = {
+			add_artist_skill = 0.1
+		}
+
+		custom_tooltip = flavor_eng.197.tt1
+		custom_tooltip = flavor_eng.197.tt3
+
+	}
+
+	option = {
+		name = flavor_eng.197.c
+
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+
+		hidden_effect = { kill_character_silently = scope:aphra_behn }
+
+	}
+
+	historical_info = flavor_eng.197.historical_info
+
+}
+
+# The Royal Society
+flavor_eng.198 = {
+	type = country_event
+
+	title = flavor_eng.198.title
+	desc = flavor_eng.198.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1660.1.1
+		to = 1750.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		capital = {
+			owner = root
+			controller = root
+			average_location_literacy > 50
+		}
+
+		OR = {
+			any_character = {
+				owner = root
+				artist_type = philosopher
+				artist_skill >= 0.75
+			}
+			character:eng_christopher_wren ?= { is_alive = yes }
+			character:eng_robert_boyle ?= { is_alive = yes }
+		}
+
+	}
+
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+
+	immediate = {
+		root = { save_scope_as = target_root_country }
+
+		capital = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.198.a
+		historical_option = yes
+
+		set_variable = { name = royal_society value = 1 }
+
+		capital = {
+			construct_building = {
+				building_type = building_type:royal_society
+			}
+		}
+
+		custom_tooltip = flavor_eng.198.tt1
+
+	}
+
+	option = {
+		name = flavor_eng.198.b
+		trigger = {
+			region:great_britain_region = {
+				any_location_in_region = {
+					count >= 3
+					owner ?= root
+					has_building_with_at_least_one_level = university
+				}
+			}
+		}
+
+		while = {
+			count = 3
+			region:great_britain_region = {
+				random_location_in_region = {
+					limit = {
+						owner ?= root
+						has_building_with_at_least_one_level = university
+					}
+					change_prosperity = prosperity_weak_bonus
+				}
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.198.c
+
+		add_prestige = prestige_mild_bonus
+
+	}
+
+	historical_info = flavor_eng.198.historical_info
+
+}
+
+# Philosophical Transactions
+flavor_eng.199 = {
+	type = country_event
+
+	title = flavor_eng.199.title
+	desc ={
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = {
+						location:london = {
+							has_building_with_at_least_one_level = printing_press_shop
+						}
+					}
+				}
+				desc = flavor_eng.199.desc_no_printer
+			}
+			triggered_desc = {
+				trigger = { always = yes }
+				desc = flavor_eng.199.desc
+			}
+		}
+	}
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1665.1.1
+		to = 1800.1.1
+		monthly_chance = 1
+	}
+	image = "gfx/interface/illustrations/institutions/printing_press.dds"
+	trigger = {
+
+		capital = {
+			has_building_with_at_least_one_level = royal_society
+			controller = root
+		}
+
+		NOT = { has_policy = strict_censorship }
+
+
+	}
+
+	immediate = {
+
+		location:london = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.199.a
+		historical_option = yes
+		trigger = {
+			location:london = {
+				has_building_with_at_least_one_level = printing_press_shop
+			}
+		}
+
+		add_country_modifier = {
+			modifier = philosophical_transactions
+			months = -1
+			mode = add_and_extend
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.199.b
+		trigger = {
+			has_advance = printing_press_shop_advance
+			NOT = {
+				location:london = {
+					has_building_with_at_least_one_level = printing_press_shop
+				}
+			}
+		}
+
+		add_country_modifier = {
+			modifier = philosophical_transactions
+			months = -1
+			mode = add_and_extend
+		}
+
+		location:london = {
+			construct_building = {
+				building_type = building_type:printing_press_shop
+			}
+		}
+
+		change_gold_effect = { scale = -6 }
+
+		custom_tooltip = flavor_eng.199.tt1
+
+	}
+
+	option = {
+		name = flavor_eng.199.c
+
+		add_research_progress = research_progress_mild_bonus
+
+		custom_tooltip = flavor_eng.199.tt2
+
+	}
+
+	historical_info = flavor_eng.199.historical_info
+
+}
+
+# London is Paved with Gold
+flavor_eng.204 = {
+	type = country_event
+
+	title = flavor_eng.204.title
+	desc = flavor_eng.204.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1700.1.1
+		to = 1800.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		capital.area = {
+			any_location_in_area = { location_paved_with_gold_trigger = yes }
+		}
+	}
+	
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		capital.area = { 
+			ordered_location_in_area = {
+				limit = { location_paved_with_gold_trigger = yes }
+				max = 1
+				order_by = {
+					value = population
+					multiply = development
+				}
+				save_scope_as = target_location
+			}
+		}
+	}
+
+	# encourage the rumors
+	option = {
+		name = flavor_eng.204.a
+		scope:target_location = {
+			add_location_modifier = {
+				modifier = eng_paved_with_gold_rumor
+				years = 20
+				mode = add_and_extend
+			}
+		}
+	}
+
+	# keep the serfs to their fields
+	option = {
+		name = flavor_eng.204.b
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_move_to_left
+		}
+	}
+
+	# actually pave the streets with gold
+	option = {
+		name = flavor_eng.204.c
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_move_to_right
+		}
+		scope:target_location = {
+			market = {
+				add_temporary_demand = {
+					type = demand:eng_paved_with_gold
+					months = 240
+				}
+			}
+
+			add_location_modifier = {
+				modifier = eng_paved_with_gold_actually
+				years = 10
+				mode = add_and_extend
+			}
+		}
+	}
+}
+
+# Robert Boyle
+flavor_eng.205 = {
+	type = country_event
+
+	title = flavor_eng.205.title
+	desc = flavor_eng.205.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1654.1.1
+		to = 1690.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		location:waterford = {
+			OR = {
+				owner ?= root
+				owner ?= { is_subject_of = root }
+			}
+		}
+
+		religion:anglican = {
+			is_religion_enabled = yes
+		}
+
+	}
+
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_robert
+			last_name = Boyle
+			estate = estate_type:nobles_estate
+			adm = 78
+			dip = 65
+			mil = 10
+			birth_date = 1627.1.1
+			birth_location = location:waterford
+			religion = religion:anglican
+			artist_skill = 0.9
+			artist = philosopher
+			script = eng_robert_boyle
+			save_scope_as = robert_boyle
+		}
+
+		location:oxford = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.205.a
+		historical_option = yes
+
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_right
+		}
+
+		custom_tooltip = flavor_eng.205.tt1
+		custom_tooltip = flavor_eng.205.tt2
+
+	}
+
+	option = {
+		name = flavor_eng.205.b
+
+		add_research_progress = research_progress_mild_bonus
+
+		custom_tooltip = flavor_eng.205.tt1
+		custom_tooltip = flavor_eng.205.tt2
+
+	}
+
+	option = {
+		name = flavor_eng.205.c
+
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_bonus }
+
+
+		hidden_effect = { kill_character_silently = scope:robert_boyle }
+
+	}
+
+	historical_info = flavor_eng.205.historical_info
+
+}
+
+# Eleanor Gwyn
+flavor_eng.206 = {
+	hide_portraits = yes
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.206.title
+	desc = flavor_eng.206.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1670.1.1
+		to = 1680.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+
+		OR = {
+			region:great_britain_region = {
+				any_location_in_region = {
+					owner ?= root
+					has_building_with_at_least_one_level = theater
+				}
+			}
+			location:london = {
+				has_building_with_at_least_one_level = globe_theatre
+				owner = root
+				controller = root
+			}
+		}
+
+		custom_tooltip = {
+			text = variable_tt_restoration_comedy_allowed
+			has_variable = restoration_comedy_allowed
+		}
+
+		has_regent = no
+
+		ruler = {
+			is_female = no
+			is_adult = yes
+		}
+
+	}
+	
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_eleanor
+			last_name = Gwyn
+			estate = estate_type:peasants_estate
+			adm = 22
+			dip = 30
+			mil = 12
+			birth_date = 1650.1.1
+			female = yes
+			religion = root.religion
+			birth_location = location:hereford
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+			script = eng_eleanor_gwyn
+			save_scope_as = eleanor_gwyn
+		}
+
+		create_character = {
+			first_name = name_charles
+			dynasty = dynasty:beauclerk_dynasty
+			estate = estate_type:nobles_estate
+			adm = 32
+			dip = 20
+			mil = 31
+			age = 1
+			mother = scope:eleanor_gwyn
+			father = root.ruler
+			birth_location = location:london
+			religion = root.religion
+			culture = culture:english
+			save_scope_as = charles_beauclerk
+			script = eng_charles_beauclerk
+		}
+
+		location:london = { save_scope_as = target_location }
+
+		root = { save_scope_as = target_root_country }
+
+	}
+
+	option = {
+		name = flavor_eng.206.a
+		historical_option = yes
+
+		scope:eleanor_gwyn = {
+			add_character_modifier = {
+				modifier = influential_figurine
+				years = -1
+				mode = add_and_extend
+			}
+		}
+
+		change_societal_value = {
+			type = individualism_vs_communalism
+			value = societal_value_move_to_left
+		}
+
+		custom_tooltip = flavor_eng.206.tt1
+		custom_tooltip = flavor_eng.206.tt2
+		custom_tooltip = flavor_eng.206.tt3
+		custom_tooltip = flavor_eng.206.tt4
+
+	}
+
+	option = {
+		name = flavor_eng.206.b
+
+		hidden_effect = { kill_character_silently = scope:eleanor_gwyn }
+
+		hidden_effect = { kill_character_silently = scope:charles_beauclerk }
+
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+
+		custom_tooltip = {
+			text = flavor_eng.206.b.custom
+			location:london = {
+				every_pop = {
+					limit = {
+						owner = root
+						OR = {
+							pop_type = pop_type:peasants
+							pop_type = pop_type:burghers
+							pop_type = pop_type:nobles
+						}
+					}
+					add_pop_satisfaction = pop_satisfaction_ultimate_bonus
+				}
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.206.c
+
+		culture = {
+			add_cultural_tradition = cultural_influence_mild_penalty
+		}
+
+		add_country_modifier = {
+			modifier = absense_of_influential_figurine
+			years = 10
+			mode = add_and_extend
+		}
+
+		hidden_effect = { kill_character_silently = scope:eleanor_gwyn }
+
+		hidden_effect = { kill_character_silently = scope:charles_beauclerk }
+
+		custom_tooltip = flavor_eng.206.tt5
+
+	}
+
+	historical_info = flavor_eng.206.historical_info
+
+}
+
+# The Frost Fair
+flavor_eng.210 = {
+	type = country_event
+
+	title = flavor_eng.210.title
+	desc = flavor_eng.210.desc
+	outcome = neutral
+	historical_info = flavor_eng.210.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1680.1.1
+		to = 1690.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+
+		OR = {
+			current_month < 4
+			current_month > 10
+		}
+
+		location:london = {
+			owner = root
+			controller = root
+		}
+
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		location:london = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.210.a
+		historical_option = yes
+
+		change_gold_effect = { scale = -3 }
+
+		scope:target_location.market = {
+			add_temporary_demand = {
+				type = demand:frost_fair
+				months = 12
+			}
+		}
+
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.210.b
+
+		add_prestige = prestige_mild_bonus
+
+	}
+
+}
+
+# The Savery Engine
+flavor_eng.211 = {
+	type = country_event
+
+	title = flavor_eng.211.title
+	desc = flavor_eng.211.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1698.1.1
+		to = 1725.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		capital = {
+			has_building_with_at_least_one_level = royal_society
+			controller = root
+		}
+
+		region:great_britain_region = {
+			any_location_in_region = {
+				count >= 3
+				location_rank ?= location_rank:city
+				owner ?= root
+			}
+		}
+
+	}
+
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+
+	immediate = {
+
+		create_character = {
+			first_name = name_thomas
+			last_name = Savery
+			estate = estate_type:nobles_estate
+			adm = 45
+			dip = 45
+			mil = 22
+			birth_date = 1650.1.1
+			religion = root.religion
+			birth_location = location:exeter
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+			script = eng_thomas_savery
+			save_scope_as = thomas_savery
+		}
+
+		location:london = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.211.a
+		historical_option = yes
+
+		while = {
+			count = 3
+			region:great_britain_region = {
+				random_location_in_region = {
+					limit = {
+						location_rank ?= location_rank:city
+						owner ?= root
+					}
+					change_prosperity = prosperity_severe_bonus
+				}
+			}
+		}
+
+		custom_tooltip = flavor_eng.211.tt1
+
+	}
+
+	option = {
+		name = flavor_eng.211.b
+		trigger = {
+			region:great_britain_region = {
+				any_location_in_region = {
+					count > 3
+					has_good_mining_raw_material = yes
+					owner ?= root
+				}
+			}
+		}
+
+		while = {
+			count = 3
+			region:great_britain_region = {
+				random_location_in_region = {
+					limit = {
+						has_good_mining_raw_material = yes
+						owner ?= root
+					}
+					change_max_raw_material_workers = 3
+					change_prosperity = prosperity_weak_bonus
+				}
+			}
+		}
+
+		custom_tooltip = flavor_eng.211.tt1
+
+	}
+
+	option = {
+		name = flavor_eng.211.c
+
+		add_research_progress = research_progress_mild_bonus
+
+		hidden_effect = { kill_character_silently = scope:thomas_savery }
+
+		custom_tooltip = flavor_eng.211.tt2
+
+	}
+
+}
+
+# The Union of the Crowns
+flavor_eng.212 = {
+	type = country_event
+
+	title = flavor_eng.212.title
+	desc = flavor_eng.212.desc
+	outcome = neutral
+	fire_only_once = yes
+
+	trigger = {
+
+		has_global_variable = union_of_the_crowns_possible
+
+		ruler = {
+			has_variable = inheriting_monarch
+		}
+
+		any_character = {
+			count = 1
+			has_variable = dying_monarch
+			is_alive = no
+		}
+
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		random_character = {
+			limit = {
+				has_variable = inheriting_monarch
+			}
+			save_scope_as = inheriting_monarch
+			owner = {
+				save_scope_as = inheriting_country
+			}
+		}
+
+		random_character = {
+			limit = {
+				has_variable = dying_monarch
+			}
+			save_scope_as = dying_monarch
+			owner = {
+				save_scope_as = inherited_country
+			}
+		}
+
+		make_subject_of = { target = scope:inherited_country type = subject_type:dominion }
+
+		scope:inherited_country.capital = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.212.a
+		historical_option = yes
+
+		add_prestige = prestige_severe_bonus
+		add_stability = stability_severe_bonus
+
+	}
+
+}
+
+# The growth of joint-stock companies
+flavor_eng.213 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.213.title
+	desc = flavor_eng.213.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1700.1.1
+		to = 1750.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		any_subject = {
+			count >= 3
+			is_subject_type = colonial_nation
+		}
+
+	}
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		capital = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.213.a
+		historical_option = yes
+
+		change_societal_value = {
+			type = capital_economy_vs_traditional_economy
+			value = societal_value_move_to_left
+		}
+
+		change_societal_value = {
+			type = mercantilism_vs_free_trade
+			value = societal_value_move_to_left
+		}
+
+		add_stability = stability_mild_penalty
+
+	}
+
+	option = {
+		name = flavor_eng.213.b
+
+		change_societal_value = {
+			type = capital_economy_vs_traditional_economy
+			value = societal_value_move_to_right
+		}
+
+		change_societal_value = {
+			type = mercantilism_vs_free_trade
+			value = societal_value_move_to_right
+		}
+
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_penalty }
+
+	}
+
+}
+
+# The First Novel
+flavor_eng.214 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.214.title
+	desc = flavor_eng.214.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1719.1.1
+		to = 1731.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		has_discovered_area = area:juan_fernandez_area
+
+		location:london = { owner = root }
+
+	}
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+	immediate = {
+
+		create_character = {
+			first_name = name_daniel
+			last_name = Defoe
+			estate = estate_type:burghers_estate
+			adm = 22
+			dip = 37
+			mil = 66
+			artist = writer
+			artist_skill = 0.77
+			birth_date = 1660.1.1
+			birth_location = location:london
+			script = eng_daniel_defoe
+			save_scope_as = daniel_defoe
+		}
+
+		capital = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.214.a
+		historical_option = yes
+
+		scope:target_location = {
+			create_art = {
+				artist = scope:daniel_defoe
+				quality = 90
+				location = scope:target_location
+				type = work_of_art_type:novel
+				key = robinson_crusoe
+			}
+		}
+
+		scope:daniel_defoe = {
+			add_artist_skill = 0.03
+		}
+
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+
+		custom_tooltip = flavor_eng.214.tt1
+
+	}
+
+	option = {
+		name = flavor_eng.214.b
+
+		ruler = { add_trait = trait:well_advised }
+
+		hidden_effect = { kill_character_silently = scope:daniel_defoe }
+
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_move_to_right
+		}
+
+		custom_tooltip = flavor_eng.214.tt2
+
+	}
+
+	historical_info = flavor_eng.214.historical_info
+
+}
+
+# The South Sea Bubble
+flavor_eng.215 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.215.title
+	desc = flavor_eng.215.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1710.1.1
+		to = 1740.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		any_subject = {
+			is_subject_type = trade_company
+			num_loans > 1
+		}
+
+		societal_value:capital_economy_vs_traditional_economy <= 20
+
+	}
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		root = { save_scope_as = target_root_country }
+
+		character:eng_robert_walpole ?= {
+			 save_scope_as = robert_walpole
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.215.a
+		historical_option = yes
+
+		capital = {
+			change_prosperity = prosperity_weak_penalty
+		}
+
+		custom_tooltip = flavor_eng.215.tt1
+
+		change_societal_value = {
+			type = capital_economy_vs_traditional_economy
+			value = societal_value_move_to_right
+		}
+
+		if = {
+			limit = {
+				character:eng_robert_walpole ?= {
+					is_alive = yes
+					in_cabinet = yes
+				}
+			}
+			add_country_modifier = {
+				modifier = south_sea_bubble
+				years = 1
+				mode = add_and_extend
+			}
+			custom_tooltip = flavor_eng.215.tt2
+		}
+		else = {
+			add_government_power = government_power_mild_penalty
+			add_country_modifier = {
+				modifier = south_sea_bubble
+				years = 5
+				mode = add_and_extend
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.215.b
+
+		change_societal_value = {
+			type = capital_economy_vs_traditional_economy
+			value = societal_value_move_to_left
+		}
+
+		change_gold_effect = { scale = -6 }
+
+		random_subject = {
+			limit = {
+				is_subject_type = trade_company
+				num_loans > 1
+			}
+			add_country_modifier = {
+				modifier = restructuring
+				years = 10
+				mode = add_and_extend
+			}
+		}
+
+	}
+
+	historical_info = flavor_eng.215.historical_info
+
+}
+
+# The Spitalfield Riots
+flavor_eng.216 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.216.title
+	desc = flavor_eng.216.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1765.1.1
+		to = 1800.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		owns = location:london
+
+		location:london = {
+
+			has_building_with_at_least_one_level = fine_cloth_guild
+
+			market = {
+				goods:fine_cloth = {
+				price_in_market = { market = location:london.market value <= 3 }
+				}
+
+				any_import = {
+					goods = goods:fine_cloth
+					from_market.location.sub_continent = sub_continent:western_europe
+				}
+			}
+
+		}
+
+	}
+	
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		location:london = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.216.a
+		historical_option = yes
+
+		scope:target_location = {
+			change_prosperity = prosperity_weak_penalty
+			destroy_building = "building(building_type:fine_cloth_guild|owner)"
+		}
+
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_penalty }
+
+		custom_tooltip = flavor_eng.216.tt1
+
+		if = {
+			limit = {
+				area:eastern_australia_area = {
+					any_location_in_area = {
+						OR = {
+							owner ?= root
+							owner ?= { is_subject_of = root }
+						}
+					}
+				}
+			}
+			custom_tooltip = {
+				text = flavor_eng.216.a.custom
+				area:eastern_australia_area = {
+					random_location_in_area = {
+						limit = {
+							OR = {
+								owner ?= root
+								owner ?= { is_subject_of = root }
+							}
+						}
+						add_migration = {
+							owner = root
+							from = location:london.province_definition
+							to = this.province_definition
+							type = pop_type:peasants
+							amount = 0.01
+							months = 12
+						}
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_eng.216.b
+
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_move_to_right }
+
+		add_country_modifier = { modifier = fine_cloth_imports_banned years = 1 mode = add_and_extend }
+
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_penalty }
+
+	}
+
+	option = {
+		name = flavor_eng.216.c
+		trigger = { OR = { ruler = { has_trait = charismatic_negotiator dip > 75 } } }
+
+		add_country_modifier = {
+			modifier = improved_working_conditions_silk_weavers
+			years = 5
+			mode = add_and_extend
+		}
+		custom_tooltip = flavor_eng.216.tt2
+
+	}
+
+	historical_info = flavor_eng.216.historical_info
+
+}
+
+# The Gin Craze
+flavor_eng.217 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.217.title
+	desc = flavor_eng.217.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_liquor.dds"
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1720.1.1
+		to = 1750.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		region:great_britain_region = {
+			any_location_in_region = {
+				count >= 10
+				owner ?= root
+				prosperity > 0.5
+			}
+		}
+
+		OR = {
+			region:great_britain_region = {
+				any_location_in_region = {
+					count >= 3
+					owner ?= root
+					has_building_with_at_least_one_level = distillers_guild
+				}
+			}
+
+			OR = {
+				capital.market = {
+					NOT = {
+						any_import = {
+							goods = goods:liquor
+							from_market.location.sub_continent = sub_continent:western_europe
+						}
+					}
+				}
+				has_country_modifier = liquor_imports_banned
+			}
+		}
+
+	}
+
+	immediate = {
+
+		location:london = { save_scope_as = target_location }
+
+		root = { save_scope_as = target_root_country }
+
+		region:great_britain_region = {
+			every_location_in_region = {
+				limit = {
+					prosperity > 0.5
+					owner ?= root
+				}
+				change_control = control_mild_penalty
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.217.a
+		historical_option = yes
+
+		capital.market = {
+			add_temporary_demand = {
+				type = demand:reduced_gin_consumption
+				months = 60
+			}
+		}
+
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_penalty }
+
+		add_country_modifier = {
+			modifier = regulated_gin_production
+			years = 10
+			mode = add_and_extend
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.217.b
+		trigger = { modifier:has_a_parliamentary_system = yes }
+
+		custom_tooltip = {
+		text = flavor_eng.217.b.custom
+			region:great_britain_region = {
+				while = {
+					count = 10
+					random_location_in_region = {
+						limit = {
+							prosperity > 0.5
+							owner ?= root
+						}
+						change_control = control_severe_bonus
+					}
+				}
+			}
+		}
+
+		custom_tooltip = flavor_eng.217.tt1
+
+		add_country_modifier = {
+			modifier = heavily_restricted_gin_production
+			months = -1
+			mode = add_and_extend
+		}
+
+
+		if = {
+			limit = {
+				NOT = { has_country_modifier = liquor_imports_banned }
+			}
+			root = {
+				add_country_modifier = {
+					modifier = liquor_imports_banned
+					years = 10
+					mode = add_and_extend
+				}
+			}
+			custom_tooltip = flavor_eng.217.tt2
+		}
+
+	}
+
+
+	option = {
+		name = flavor_eng.217.c
+
+		custom_tooltip = {
+			text = flavor_eng.217.c.custom
+			region:great_britain_region = {
+				while = {
+					count = 10
+					random_location_in_region = {
+						limit = {
+							prosperity > 0.5
+							owner ?= root
+						}
+						change_control = control_severe_penalty
+					}
+				}
+			}
+		}
+
+		capital.market = {
+			add_temporary_demand = {
+				type = demand:excessive_gin_consumption
+				months = 60
+			}
+		}
+
+		custom_tooltip = flavor_eng.217.tt3
+
+	}
+
+	historical_info = flavor_eng.217.historical_info
+
+}
+
+# The Diners Club
+flavor_eng.218 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.218.title
+	desc = flavor_eng.218.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1760.1.1
+		to = 1780.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		owns = location:plymouth
+
+		any_artist = {
+			owner = root
+			artist_type = painter
+			artist_skill >= 0.5
+		}
+
+		location:london = {
+			prosperity >= 0.75
+			owner = root
+		}
+
+	}
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+	immediate = {
+
+		location:london = { save_scope_as = target_location }
+
+		random_artist = {
+			limit = {
+				owner = root
+				artist_type = painter
+				artist_skill >= 50
+			}
+			save_scope_as = random_artist
+		}
+
+		create_character = {
+			first_name = name_joshua
+			last_name = Reynolds
+			estate = estate_type:burghers_estate
+			adm = 80
+			dip = 80
+			mil = 0
+			birth_date = 1723.1.1
+			birth_location = location:plymouth
+			artist_skill = 0.8
+			artist = painter
+			save_scope_as = joshua_reynolds
+			script = eng_joshua_reynolds
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.218.a
+		historical_option = yes
+
+		location:london = {
+			add_location_modifier = { modifier = the_dining_club months = -1 mode = add_and_extend }
+		}
+
+		every_artist = {
+			limit = {
+				owner = root
+				OR = {
+					artist_type = writer
+					artist_type = painter
+					artist_type = philosopher
+				}
+			}
+			add_artist_skill = 0.05
+		}
+
+		custom_tooltip = flavor_eng.218.tt1
+		custom_tooltip = flavor_eng.218.tt2
+
+	}
+
+	option = {
+		name = flavor_eng.218.b
+		trigger = {
+			any_cabinet_character = {
+				count > 1
+			}
+		}
+
+		location:london = {
+			add_location_modifier = { modifier = the_dining_club months = -1 mode = add_and_extend }
+		}
+
+		every_artist = {
+			limit = {
+				owner = root
+				OR = {
+					artist_type = writer
+					artist_type = painter
+					artist_type = philosopher
+				}
+			}
+			add_artist_skill = 0.05
+		}
+
+		custom_tooltip = flavor_eng.218.tt1
+		custom_tooltip = flavor_eng.218.tt2
+
+		change_gold_effect = { scale = -3 }
+
+		every_character = {
+			limit = {
+				in_cabinet = yes
+				owner = root
+			}
+			add_dip = 10
+			add_adm = 10
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.218.c
+
+		hidden_effect = { kill_character_silently = scope:joshua_reynolds }
+
+		add_prestige = prestige_mild_bonus
+
+	}
+
+	historical_info = flavor_eng.218.historical_info
+
+}
+
+# Royal Academy of Arts
+flavor_eng.219 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.219.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					character:eng_joshua_reynolds ?= { is_alive = yes }
+				}
+				desc = flavor_eng.219.desc_joshua_reynolds
+			}
+			triggered_desc = {
+				trigger = { always = yes }
+				desc = flavor_eng.219.desc_random_artist
+			}
+		}
+	}
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1768.1.1
+		to = 1800.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		location:london = {
+			owner = root
+			controller = root
+		}
+
+		has_regent = no
+
+		government_type = government_type:monarchy
+
+		OR = {
+			any_character = {
+				owner = root
+				OR = {
+					artist_type = painter
+					artist_type = architect
+				}
+				artist_skill >= 0.75
+			}
+			character:eng_joshua_reynolds ?= { is_alive = yes }
+		}
+
+		region:great_britain_region = {
+			any_location_in_region = {
+				count >= 1
+				owner ?= root
+				has_building_with_at_least_one_level = arts_academy
+			}
+		}
+
+	}
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+	immediate = {
+
+		random_character = {
+			limit = {
+				owner = root
+				OR = {
+					artist_type = painter
+					artist_type = architect
+				}
+				artist_skill >= 0.75
+			}
+			save_scope_as = random_artist
+		}
+
+		capital = { save_scope_as = target_location }
+
+		character:eng_joshua_reynolds = { save_scope_as = joshua_reynolds }
+
+	}
+
+	option = {
+		name = flavor_eng.219.a
+		historical_option = yes
+
+		set_variable = { name = royal_academy_of_arts value = 1 }
+
+		capital = {
+			construct_building = {
+				building_type = building_type:royal_academy_of_arts
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.219.b
+
+		location:london = {
+			add_location_modifier = { modifier = increased_educational_spending months = 120 mode = add_and_extend }
+		}
+
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_bonus }
+
+		add_prestige = prestige_mild_bonus
+
+	}
+
+	historical_info = flavor_eng.219.historical_info
+
+}
+
+# The Enclosure Act
+flavor_eng.220 = {
+	hide_portraits = yes
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.220.title
+	desc = flavor_eng.220.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1768.1.1
+		to = 1800.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		is_active_parliament = yes
+
+		has_policy = enclosure_allowed
+
+		region:great_britain_region = {
+			any_location_in_region = {
+				OR = {
+					location_rank = location_rank:town
+					location_rank = location_rank:city
+				}
+				count >= 3
+				has_institution = institution:industrialization
+				owner = root
+			}
+		}
+
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		location:london = { save_scope_as = target_location }
+
+		create_rebel = {
+			category = estate
+			estate = peasants_estate
+			name = enclosure_riots
+			save_scope_as = enclosure_riots
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.220.a
+		historical_option = yes
+
+		custom_tooltip = {
+			text = enable_enclosure_act_policy
+			set_variable = { name = enclosure_act value = 1 }
+		}
+		add_policy = policy:enclosure_act
+
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_penalty }
+
+		custom_tooltip = {
+			text = flavor_eng.220.a.custom
+			region:great_britain_region = {
+				while = {
+					count = 10
+					random_location_in_region = {
+						limit = {
+							location_rank ?= location_rank:rural_settlement
+							owner ?= root
+						}
+						change_prosperity = prosperity_weak_penalty
+						every_pop = {
+							limit = {
+								owner = root
+								pop_type = pop_type:peasants
+							}
+							add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+							change_pop_allegiance = scope:enclosure_riots
+						}
+					}
+				}
+			}
+		}
+
+		custom_tooltip = flavor_eng.220.tt
+
+	}
+
+	option = {
+		name = flavor_eng.220.b
+
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
+
+		add_country_modifier = {
+			modifier = obstructing_industrialization
+			years = 10
+			mode = add_and_extend
+		}
+
+	}
+
+	historical_info = flavor_eng.220.historical_info
+
+}
+
+# The Bow Street Runners
+flavor_eng.221 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.221.title
+	desc = flavor_eng.221.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1745.1.1
+		to = 1810.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		location:london = {
+			owner = root
+			OR = {
+				prosperity <= 0.25
+				local_control <= 0.5
+			}
+
+		}
+
+	}
+	
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+	
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		location:london = { save_scope_as = target_location }
+	}
+
+	option = {
+		name = flavor_eng.221.a
+		historical_option = yes
+
+		change_gold_effect = { scale = -3 }
+
+		location:london = {
+			add_location_modifier = {
+				modifier = bow_street_runners
+				months = -1
+				mode = add_and_extend
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.221.b
+
+		location:london = {
+			add_location_modifier = {
+				modifier = rampant_crime
+				months = 120
+				mode = add_and_extend
+			}
+			change_prosperity = prosperity_weak_penalty
+		}
+
+	}
+
+	historical_info = flavor_eng.221.historical_info
+
+}
+
+# The Jenny Spinner Riots
+flavor_eng.222 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.222.title
+	desc = flavor_eng.222.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1779.1.1
+		to = 1810.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		custom_tooltip = {
+			text = variable_tt_spinning_jenny_flag
+			has_variable = spinning_jenny_flag
+		}
+		region:great_britain_region = {
+			any_location_in_region = {
+				count >= 5
+				owner ?= root
+				has_building_with_at_least_one_level = cloth_guild
+			}
+		}
+
+		region:great_britain_region = {
+			any_location_in_region = {
+				owner ?= root
+				has_building_with_at_least_one_level = cloth_guild
+				OR = {
+					location_unemployed_population_for_building_type = {
+						building_type = building_type:cloth_guild
+						value >= 100
+					}
+					market = {
+						market_possible_goods_trade_surplus = {
+							goods = goods:cloth
+							country = root
+							value > 50
+						}
+					}
+				}
+			}
+		}
+
+
+	}
+	
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		location:london = { save_scope_as = target_location }
+
+		region:great_britain_region = {
+			every_location_in_region = {
+				limit = {
+					owner ?= root
+					has_building_with_at_least_one_level = cloth_guild
+				}
+				add_location_modifier = {
+					modifier = jenny_spinner_riots
+					months = 12
+					mode = add_and_extend
+				}
+			}
+		}
+
+		root = { save_scope_as = target_root_country }
+
+	}
+
+	option = {
+		name = flavor_eng.222.a
+		historical_option = yes
+
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_move_to_left }
+
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_move_to_left }
+
+		custom_tooltip = {
+			text = flavor_eng.222.a.custom
+			region:great_britain_region = {
+				every_location_in_region = {
+					limit = {
+						owner ?= root
+						has_building_with_at_least_one_level = cloth_guild
+					}
+					every_pop = {
+						limit = {
+							owner = root
+							pop_type = pop_type:peasants
+						}
+						add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+					}
+				}
+			}
+		}
+
+		custom_tooltip = flavor_eng.222.tt1
+		custom_tooltip = flavor_eng.222.tt2
+		custom_tooltip = flavor_eng.222.tt3
+
+	}
+
+	option = {
+		name = flavor_eng.222.b
+
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_move_to_right }
+
+		add_country_modifier = {
+			modifier = improved_working_conditions_cloth_makers
+			months = -1
+			mode = add_and_extend
+		}
+
+		custom_tooltip = {
+			text = flavor_eng.222.b.custom
+			region:great_britain_region = {
+				every_location_in_region = {
+					limit = {
+						owner ?= root
+						has_building_with_at_least_one_level = cloth_guild
+					}
+					remove_location_modifier = jenny_spinner_riots
+					every_pop = {
+						limit = {
+							owner = root
+							pop_type = pop_type:peasants
+						}
+						add_pop_satisfaction = pop_satisfaction_extreme_bonus
+					}
+				}
+			}
+		}
+
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_penalty }
+
+		custom_tooltip = flavor_eng.222.tt3
+		custom_tooltip = flavor_eng.222.tt4
+		custom_tooltip = flavor_eng.222.tt5
+
+	}
+
+	option = {
+		name = flavor_eng.222.c
+		trigger = { ruler = { has_trait = silver_tongue } }
+
+		region:great_britain_region = {
+			every_location_in_region = {
+				limit = {
+					has_location_modifier = jenny_spinner_riots
+				}
+				remove_location_modifier = jenny_spinner_riots
+			}
+		}
+
+		custom_tooltip = flavor_eng.222.tt5
+
+	}
+
+	historical_info = flavor_eng.222.historical_info
+
+}
+
+# Horatio Nelson
+flavor_eng.223 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.223.title
+	desc = flavor_eng.223.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1779.1.1
+		to = 1810.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		OR = {
+			societal_value:land_vs_naval >= -20
+			has_policy = board_of_admirals_policy
+			capital = {
+				has_building_with_at_least_one_level = admiralty
+			}
+		}
+
+		location:norwich = { owner = root }
+
+	}
+	image = "gfx/interface/illustrations/units/navy_heavy_ship.dds"
+	immediate = {
+
+		location:norwich = { save_scope_as = target_location }
+
+		create_character = {
+			first_name = name_horatius
+			last_name = Nelson
+			estate = estate_type:nobles_estate
+			adm = 24
+			dip = 37
+			mil = 100
+			birth_location = location:norwich
+			birth_date = 1758.1.1
+			culture = culture:english
+			script = eng_horatio_nelson
+			save_scope_as = horatio_nelson
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.223.a
+		historical_option = yes
+
+		scope:horatio_nelson = {
+			add_random_trait_from_category = admiral
+		}
+
+		custom_tooltip = flavor_eng.223.tt1
+
+	}
+
+	option = {
+		name = flavor_eng.223.b
+
+		add_navy_tradition = navy_tradition_extreme_bonus
+
+		scope:horatio_nelson = {
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+		}
+
+		custom_tooltip = flavor_eng.223.tt2
+
+	}
+
+	option = {
+		name = flavor_eng.223.c
+
+		hidden_effect = { kill_character_silently = scope:horatio_nelson }
+
+		add_prestige = prestige_mild_bonus
+
+	}
+
+	historical_info = flavor_eng.223.historical_info
+
+}
+
+# The Common Sense of Thomas Paine
+flavor_eng.224 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.224.title
+	desc = flavor_eng.224.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1760.1.1
+		to = 1790.1.1
+		monthly_chance = 1
+	}
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+	trigger = {
+
+		any_subject = {
+			is_subject_type = colonial_nation
+			capital.region = region:east_coast_region
+		}
+
+		societal_value:serfdom_vs_free_subjects >= 20
+
+	}
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		location:norwich = { save_scope_as = target_location }
+
+		create_character = {
+			first_name = name_thomas
+			last_name = Paine
+			adm = 34
+			dip = 31
+			mil = 25
+			birth_location = location:lynn
+			birth_date = 1737.1.1
+			artist_skill = 0.75
+			artist = writer
+			estate = estate_type:burghers_estate
+			culture = culture:english
+			script = eng_thomas_paine
+			save_scope_as = thomas_paine
+		}
+
+		root = { save_scope_as = target_root_country }
+
+	}
+
+	option = {
+		name = flavor_eng.224.a
+		historical_option = yes
+
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_move_to_left }
+
+		if = {
+			limit = {
+				government_type = government_type:monarchy
+			}
+			add_government_power = government_power_mild_penalty
+			custom_tooltip = flavor_eng.224.tt1
+		}
+
+		random_subject = {
+			limit = {
+				is_subject_type = colonial_nation
+				capital.region = region:east_coast_region
+			}
+			add_liberty_desire = liberty_desire_extreme_plus
+			save_scope_as = thirteen_colonies
+		}
+
+		if = {
+			limit = {
+				capital = {
+					has_building_with_at_least_one_level = royal_society
+				}
+			}
+			scope:thirteen_colonies = {
+				character:eng_thomas_paine ?= { move_country = prev }
+			}
+			custom_tooltip = flavor_eng.224.tt2
+		}
+		else_if = {
+			limit = {
+				NOT = { has_policy = strict_censorship }
+				NOT = { has_policy = de_heretico_comburendo }
+			}
+			custom_tooltip = flavor_eng.224.tt3
+		}
+		else = {
+			hidden_effect = { kill_character_silently = scope:thomas_paine }
+			custom_tooltip = flavor_eng.224.tt4
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.224.b
+
+		if = {
+			limit = {
+				government_type = government_type:monarchy
+			}
+			add_government_power = government_power_severe_penalty
+			custom_tooltip = flavor_eng.224.tt1
+		}
+
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_move_to_right }
+
+		custom_tooltip = flavor_eng.224.tt5
+
+	}
+
+	historical_info = flavor_eng.224.historical_info
+
+}
+
+# The Rights of Man
+flavor_eng.225 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.225.title
+	desc = flavor_eng.225.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1780.1.1
+		to = 1800.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+
+		character:eng_thomas_paine ?= { is_alive = yes }
+
+		government_type = government_type:monarchy
+
+		OR = {
+			modifier:has_a_parliamentary_system = yes
+			NOR = {
+				societal_value:aristocracy_vs_plutocracy >= 40
+				societal_value:aristocracy_vs_plutocracy <= -40
+			}
+		}
+
+	}
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		capital = { save_scope_as = target_location }
+
+		character:eng_thomas_paine ?= { save_scope_as = thomas_paine }
+
+		character:eng_thomas_paine ?= {
+			if = {
+				limit = {
+					NOT = { owner = root }
+				}
+				character:eng_thomas_paine ?= { move_country = root }
+			}
+		}
+
+		sub_continent:western_europe = {
+			random_location_in_sub_continent = {
+				limit = {
+					has_owner = yes
+					NOT = { owner ?= root }
+				}
+				owner = {
+					save_scope_as = target_country
+				}
+			}
+		}
+
+		root = { save_scope_as = target_root_country }
+
+	}
+
+	option = {
+		name = flavor_eng.225.a
+		historical_option = yes
+
+		scope:target_country = {
+			character:eng_thomas_paine ?= { move_country = prev }
+		}
+
+		custom_tooltip = flavor_eng.225.tt1
+
+		custom_tooltip = {
+			text = flavor_eng.225.a.custom
+			region:great_britain_region = {
+				every_location_in_region = {
+					limit = {
+						owner ?= root
+					}
+					every_pop = {
+						limit = {
+							owner = root
+							pop_type = pop_type:peasants
+						}
+						add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+					}
+				}
+			}
+		}
+
+		add_stability = stability_weak_penalty
+
+		add_government_power = government_power_severe_penalty
+
+	}
+
+	option = {
+		name = flavor_eng.225.b
+
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_penalty }
+
+		add_government_power = government_power_mild_bonus
+
+		custom_tooltip = {
+			text = enable_representative_parliament_reform
+			set_variable = { name = representative_government value = 1 }
+		}
+
+		custom_tooltip = flavor_eng.225.tt2
+
+	}
+
+	historical_info = flavor_eng.225.historical_info
+
+}
+
+# James Cook
+flavor_eng.226 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.226.title
+	desc = flavor_eng.226.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1765.1.1
+		to = 1780.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		NOT = { has_discovered_area = area:eastern_australia_area }
+
+	}
+	image = "gfx/interface/illustrations/units/navy_heavy_ship_6.dds"
+	immediate = {
+
+		capital = { save_scope_as = target_location }
+
+		create_character = {
+			first_name = name_james
+			last_name = Cook
+			adm = 55
+			dip = 85
+			mil = 75
+			birth_date = 1728.1.1
+			birth_location = location:stockton
+			estate = estate_type:peasants_estate
+			save_scope_as = james_cook
+			script = eng_james_cook
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.226.a
+		historical_option = yes
+
+		scope:james_cook = {
+			add_random_trait_from_category = explorer
+		}
+
+		custom_tooltip = flavor_eng.226.tt1
+		custom_tooltip = flavor_eng.226.tt2
+
+	}
+
+	option = {
+		name = flavor_eng.226.b
+
+		scope:james_cook = {
+			add_random_trait_from_category = admiral
+		}
+
+		custom_tooltip = flavor_eng.226.tt3
+
+	}
+
+	option = {
+		name = flavor_eng.226.c
+
+		hidden_effect = { kill_character_silently = scope:james_cook }
+
+		add_prestige = prestige_mild_bonus
+
+	}
+
+	historical_info = flavor_eng.226.historical_info
+
+}
+
+# The Explorations of James Cook
+flavor_eng.227 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.227.title
+	desc = flavor_eng.227.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1765.1.1
+		to = 1780.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		any_exploration_from_country = {
+			OR = {
+				area = area:kuki_airani_area
+				area = area:eastern_australia_high_sea_zones_area
+			}
+
+			leader = character:eng_james_cook
+		}
+
+		OR = {
+			area:kuki_airani_area = {
+				any_location_in_area = {
+					any_neighbor_location = {
+						is_coastal = yes
+						is_discovered_by = root
+						OR = {
+							location_rank = location_rank:town
+							location_rank = location_rank:city
+						}
+						NOT = { has_building = building_type:overseas_trading_post }
+					}
+				}
+			}
+			area:eastern_australia_high_sea_zones_area = {
+				any_location_in_area = {
+					any_neighbor_location = {
+						is_coastal = yes
+						is_discovered_by = root
+						OR = {
+							location_rank = location_rank:town
+							location_rank = location_rank:city
+						}
+						NOT = { has_building = building_type:overseas_trading_post }
+					}
+				}
+			}
+		}
+
+		at_war = no
+
+	}
+	
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		random_area = {
+			limit = {
+				any_location_in_area = {
+					OR = {
+						region = region:melanesia_region
+						region = region:polynesia_region
+						area = area:eastern_australia_high_sea_zones_area
+						region = region:new_zealand_region
+					}
+					any_neighbor_location = {
+						is_coastal = yes
+						is_discovered_by = root
+						OR = {
+							location_rank = location_rank:town
+							location_rank = location_rank:city
+						}
+						NOT = { has_building = building_type:overseas_trading_post }
+					}
+				}
+			}
+			save_scope_as = target_area
+		}
+
+		scope:target_area = {
+			random_location_in_area = {
+				limit = {
+					is_coastal = yes
+					is_discovered_by = root
+					OR = {
+						location_rank = location_rank:town
+						location_rank = location_rank:city
+					}
+					NOT = { has_building = building_type:overseas_trading_post }
+				}
+				save_scope_as = target_location
+			}
+		}
+
+		character:eng_james_cook ?= { save_scope_as = james_cook }
+
+	}
+
+	option = {
+		name = flavor_eng.227.a
+		historical_option = yes
+
+		add_research_progress = research_progress_mild_bonus
+
+	}
+
+	option = {
+		name = flavor_eng.227.b
+		trigger = {
+			has_discovered_area = area:eastern_australia_area
+			area:eastern_australia_area = {
+				any_location_in_area = {
+					count < 1
+					OR = {
+						owner ?= root
+						owner ?= { top_overlord = root }
+					}
+				}
+			}
+		}
+
+		area:eastern_australia_area = {
+			random_location_in_area = {
+				limit = {
+					is_coastal = yes
+					is_land = yes
+					NOT = { has_building = building_type:overseas_trading_post }
+				}
+				market = {
+					ordered_location_in_market = {
+						limit = {
+							owner != root
+						}
+						order_by = population
+						max = 1
+
+						change_building_level_in_location = {
+							building = building_type:overseas_trading_post
+							value = 1
+							owner = root
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.227.c
+
+		scope:target_area = {
+			random_location_in_area = {
+				random_neighbor_location = {
+					limit = {
+						is_coastal = yes
+						is_discovered_by = root
+						OR = {
+							location_rank = location_rank:town
+							location_rank = location_rank:city
+						}
+						NOT = { has_building = building_type:overseas_trading_post }
+					}
+					market = {
+						ordered_location_in_market = {
+							limit = {
+								owner != root
+							}
+							order_by = population
+							max = 4
+
+							change_building_level_in_location = {
+								building = building_type:overseas_trading_post
+								value = 1
+								owner = root
+							}
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.227.d
+
+		change_gold_effect = { scale = -3 }
+
+		character:eng_james_cook = {
+			add_character_modifier = {
+				modifier = extended_expedition
+				years = 1
+				mode = add_and_extend
+			}
+		}
+
+		add_research_progress = research_progress_severe_bonus
+
+		scope:target_area = {
+			random_location_in_area = {
+				random_neighbor_location = {
+					limit = {
+						is_coastal = yes
+						is_discovered_by = root
+						OR = {
+							location_rank = location_rank:town
+							location_rank = location_rank:city
+						}
+						NOT = { has_building = building_type:overseas_trading_post }
+					}
+					market = {
+						ordered_location_in_market = {
+							limit = {
+								owner != root
+							}
+							order_by = population
+							max = 4
+
+							change_building_level_in_location = {
+								building = building_type:overseas_trading_post
+								value = 1
+								owner = root
+							}
+						}
+					}
+				}
+			}
+		}
+
+		custom_tooltip = flavor_eng.227.tt
+
+	}
+
+	historical_info = flavor_eng.227.historical_info
+
+}
+
+# The Income Tax
+flavor_eng.228 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.228.title
+	desc = flavor_eng.228.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1795.1.1
+		to = 1820.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		var:eng_william_pitt_the_younger ?= { 
+			is_alive = yes 
+			in_cabinet = yes 
+		}
+
+		OR = {
+			monthly_balance < 0
+			num_loans > 1
+		}
+
+		at_war = yes
+
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		save_scope_as = target_root_country
+
+		capital = { save_scope_as = target_location }
+
+		set_variable = taxation_law
+
+		var:eng_william_pitt_the_younger = {
+			save_scope_as = william_pitt_the_younger
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.228.a
+		historical_option = yes
+
+		custom_tooltip = {
+			text = flavor_eng.228.custom
+		}
+
+		add_policy = policy:income_tax
+
+		hidden_effect = {
+			add_country_modifier = {
+				modifier = temporary_income_tax
+				years = 5
+				mode = add_and_extend
+			}
+		}
+
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_penalty }
+
+	}
+
+	option = {
+		name = flavor_eng.228.b
+
+		custom_tooltip = flavor_eng.228.custom
+
+		add_policy = policy:trade_tax
+
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_penalty }
+
+	}
+
+	option = {
+		name = flavor_eng.228.c
+
+		custom_tooltip = {
+			text = flavor_eng.228.custom
+		}
+
+		add_policy = policy:traditional_tax
+
+		add_government_power = government_power_severe_penalty
+
+		custom_tooltip = flavor_eng.228.tt
+
+	}
+
+	historical_info = flavor_eng.228.historical_info
+
+}
+
+# The Diary of Samuel Pepys
+flavor_eng.229 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.229.title
+	desc = flavor_eng.229.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1795.1.1
+		to = 1820.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		custom_tooltip = {
+			text = variable_tt_samuel_pepys_diary_entries
+			has_variable = samuel_pepys_diary_entries
+		}
+
+		var:samuel_pepys_diary_entries > 0
+
+	}
+	image = "gfx/interface/illustrations/institutions/printing_press.dds"
+	immediate = {
+
+		character:eng_samuel_pepys = {
+			save_scope_as = samuel_pepys
+		}
+
+		root = { save_scope_as = target_root_country }
+
+	}
+
+	option = {
+		name = flavor_eng.229.a
+		historical_option = yes
+
+		if = {
+			limit = {
+				var:samuel_pepys_diary_entries = 1
+			}
+			culture = {
+				add_cultural_tradition = cultural_tradition_mild_bonus
+			}
+			custom_tooltip = flavor_eng.229.tt1
+		}
+		else_if = {
+			limit = {
+				var:samuel_pepys_diary_entries = 2
+			}
+			culture = {
+				add_cultural_tradition = cultural_tradition_mild_bonus
+				add_cultural_influence = cultural_influence_weak_bonus
+			}
+			custom_tooltip = flavor_eng.229.tt2
+		}
+		else_if = {
+			limit = {
+				var:samuel_pepys_diary_entries = 3
+			}
+			culture = {
+				add_cultural_tradition = cultural_tradition_mild_bonus
+				add_cultural_influence = cultural_influence_mild_bonus
+			}
+			custom_tooltip = flavor_eng.229.tt3
+		}
+		else_if = {
+			limit = {
+				var:samuel_pepys_diary_entries = 4
+			}
+			culture = {
+				add_cultural_tradition = cultural_tradition_severe_bonus
+				add_cultural_influence = cultural_influence_mild_bonus
+			}
+			custom_tooltip = flavor_eng.229.tt4
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.229.b
+
+		change_societal_value = {
+			type = belligerent_vs_conciliatory
+			value = societal_value_move_to_right
+		}
+
+	}
+
+	historical_info = flavor_eng.229.historical_info
+
+}
+
+# The Factory Act
+flavor_eng.230 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.230.title
+	desc = flavor_eng.230.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1775.1.1
+		to = 1820.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		region:great_britain_region = {
+			any_location_in_region = {
+				count >= 5
+				owner ?= root
+				OR = {
+					has_building_with_at_least_one_level = fine_cloth_mill
+					has_building_with_at_least_one_level = textile_mill
+					has_building_with_at_least_one_level = steel_mill
+				}
+			}
+		}
+
+	}
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		capital = { save_scope_as = target_location }
+
+		set_variable = { name = factory_working_conditions_law value = 1 }
+
+	}
+
+	option = {
+		name = flavor_eng.230.a
+		historical_option = yes
+
+		custom_tooltip = {
+			text = flavor_eng.230.custom
+		}
+
+		add_policy = policy:decent_conditions
+
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_penalty }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_penalty }
+
+	}
+
+	option = {
+		name = flavor_eng.230.b
+
+		custom_tooltip = {
+			text = flavor_eng.230.custom
+		}
+
+		add_policy = policy:fair_conditions
+
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_penalty }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
+
+	}
+
+	option = {
+		name = flavor_eng.230.c
+
+		custom_tooltip = {
+			text = flavor_eng.230.custom
+		}
+
+		add_policy = policy:unregulated_conditions
+
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_penalty }
+
+	}
+
+	historical_info = flavor_eng.230.historical_info
+
+}
+
+# Richard Arkwright
+flavor_eng.231 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.231.title
+	desc = flavor_eng.231.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1775.1.1
+		to = 1800.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		region:great_britain_region = {
+			any_location_in_region = {
+				count >= 3
+				owner ?= root
+				has_building_with_at_least_one_level = textile_mill
+			}
+		}
+
+		societal_value:traditionalist_vs_innovative >= 20
+
+	}
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_cotton.dds"
+	immediate = {
+
+		create_character = {
+			first_name = name_richard
+			last_name = Arkwright
+			adm = 27
+			dip = 31
+			mil = 10
+			birth_location = location:lancaster
+			birth_date = 1732.1.1
+			estate = estate_type:burghers_estate
+			script = eng_richard_arkwright
+			save_scope_as = richard_arkwright
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+		}
+
+		capital = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.231.a
+		historical_option = yes
+
+		set_variable = { name = unlocked_advance_water_frame value = 1 }
+
+		custom_tooltip = flavor_eng.231.tt1
+
+		custom_tooltip = enable_water_frame_advance
+
+	}
+
+	option = {
+		name = flavor_eng.231.b
+
+		add_research_progress = research_progress_mild_bonus
+
+		custom_tooltip = flavor_eng.231.tt1
+		custom_tooltip = flavor_eng.231.tt2
+
+	}
+
+	historical_info = flavor_eng.231.historical_info
+
+}
+
+# Abraham Darby
+flavor_eng.232 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.232.title
+	desc = flavor_eng.232.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1709.1.1
+		to = 1738.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		region:great_britain_region = {
+			any_location_in_region = {
+				count >= 3
+				owner ?= root
+				has_building_with_at_least_one_level = iron_foundry
+			}
+		}
+
+		societal_value:traditionalist_vs_innovative >= 20
+
+	}
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_coal.dds"
+	immediate = {
+
+		create_character = {
+			first_name = name_abraham
+			last_name = Darby
+			adm = 28
+			dip = 25
+			mil = 25
+			birth_location = location:worcester
+			birth_date = 1678.1.1
+			estate = estate_type:peasants_estate
+			script = eng_abraham_darby
+			save_scope_as = abraham_darby
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+		}
+
+		capital = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.232.a
+		historical_option = yes
+
+		set_variable = { name = unlocked_advance_coke_smelting value = 1 }
+
+		set_variable = { name = the_iron_bridge value = 1 }
+
+		custom_tooltip = enable_coke_smelting_advance
+
+		location:shrewsbury.market = {
+			add_temporary_demand = {
+				type = demand:coke_smelting
+				months = -1
+			}
+		}
+
+		custom_tooltip = flavor_eng.232.tt1
+		custom_tooltip = flavor_eng.232.tt2
+
+	}
+
+	option = {
+		name = flavor_eng.232.b
+
+		add_prestige = prestige_mild_bonus
+
+		custom_tooltip = flavor_eng.232.tt1
+
+	}
+
+	historical_info = flavor_eng.232.historical_info
+
+}
+
+# The Tea Act
+flavor_eng.233 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.233.title
+	desc = flavor_eng.233.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_tea.dds"
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1773.1.1
+		to = 1800.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		any_subject = {
+			is_subject_type = colonial_nation
+			capital.region = region:east_coast_region
+			any_owned_location = {
+				count > 10
+			}
+			capital.market = {
+				NOT = {
+					any_import = {
+						goods = goods:tea
+						from_market.location.region = region:great_britain_region
+					}
+				}
+			}
+		}
+
+		any_subject = {
+			is_subject_type = trade_company
+			capital.market = { is_produced_in_market = goods:tea }
+			capital.sub_continent = sub_continent:south_asia
+		}
+
+	}
+
+	immediate = {
+
+		random_subject = {
+			limit = {
+				is_subject_type = trade_company
+				capital.market = { is_produced_in_market = goods:tea }
+				capital.sub_continent = sub_continent:south_asia
+			}
+			capital = { save_scope_as = east_india_trade_company }
+		}
+
+		random_subject = {
+			limit = {
+				is_subject_type = colonial_nation
+				capital.region = region:east_coast_region
+				capital.market = {
+					NOT = {
+						any_import = {
+							goods = goods:tea
+							from_market.location.region = region:great_britain_region
+						}
+					}
+				}
+			}
+			save_scope_as = thirteen_colonies
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.233.a
+		historical_option = yes
+
+		change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_move_to_left }
+
+		scope:thirteen_colonies = {
+
+			add_country_modifier = {
+				modifier = tea_imports_banned
+				years = 10
+				mode = add_and_extend
+			}
+
+			add_liberty_desire = liberty_desire_severe_plus
+
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.233.b
+
+		change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_move_to_right }
+
+		scope:east_india_trade_company = {
+
+			add_country_modifier = {
+				modifier = no_market_for_goods
+				years = 10
+				mode = add_and_extend
+			}
+
+		}
+
+	}
+
+	historical_info = flavor_eng.233.historical_info
+
+}
+
+# The Experienced English Housekeeper
+flavor_eng.234 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.234.title
+	desc = flavor_eng.234.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1769.1.1
+		to = 1789.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		location:blackburn = { owner = root }
+
+		region:great_britain_region = {
+			any_location_in_region = {
+				owner ?= root
+				has_building_with_at_least_one_level = printing_press_shop
+			}
+		}
+
+	}
+	
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		create_character = {
+			first_name = name_elizabeth
+			last_name = Raffald
+			adm = 35
+			dip = 25
+			mil = 5
+			birth_date = 1733
+			female = yes
+			birth_location = location:pontefract
+			artist_skill = 0.85
+			artist = writer
+			estate = estate_type:peasants_estate
+			script = eng_elizabeth_raffald
+			save_scope_as = elizabeth_raffald
+		}
+
+		location:blackburn = { save_scope_as = target_location }
+
+		root = { save_scope_as = target_root_country }
+
+	}
+
+	option = {
+		name = flavor_eng.234.a
+		historical_option = yes
+
+		culture = {
+			add_cultural_tradition = cultural_tradition_severe_bonus
+		}
+
+		location:blackburn.market = {
+			add_temporary_demand = {
+				type = demand:the_experienced_english_housekeeper
+				months = 12
+			}
+		}
+
+		custom_tooltip = flavor_eng.234.tt1
+
+		if = {
+			limit = {
+				any_subject = {
+					is_subject_type = colonial_nation
+					capital.region = region:east_coast_region
+				}
+			}
+			random_subject = {
+				limit = {
+					is_subject_type = colonial_nation
+					capital.region = region:east_coast_region
+				}
+				capital.market = {
+					add_temporary_demand = {
+						type = demand:the_experienced_english_housekeeper
+						months = 12
+					}
+				}
+			}
+			custom_tooltip = flavor_eng.234.tt2
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.234.b
+
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
+
+		add_prestige = prestige_mild_bonus
+
+	}
+
+	historical_info = flavor_eng.234.historical_info
+
+}
+
+# The Boston Massacre
+flavor_eng.235 = {
+	hide_portraits = yes
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.235.title
+	desc = flavor_eng.235.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1770.1.1
+		to = 1790.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+
+		province_definition:massachusetts_province = {
+			any_location_in_province_definition = {
+				owner ?= {
+					any_owned_location = {
+						count > 10
+					}
+					is_subject_type = colonial_nation
+					is_subject_of = root
+					liberty_desire >= 25
+				}
+			}
+		}
+
+		any_army = {
+			owner = root
+			unit_location = {
+				province_definition = province_definition:massachusetts_province
+			}
+		}
+
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+	
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:peasants background = pop_type:soldiers }
+		province_definition:massachusetts_province = {
+			random_location_in_province_definition = {
+				limit = {
+					owner = {
+						any_owned_location = {
+							count > 10
+						}
+						is_subject_type = colonial_nation
+						is_subject_of = root
+						liberty_desire >= 25
+					}
+				}
+				save_scope_as = target_location
+				owner = {
+					save_scope_as = thirteen_colonies
+				}
+			}
+		}
+
+		random_subject = {
+			limit = {
+				is_subject_type = trade_company
+				capital.market = { is_produced_in_market = goods:tea }
+				capital.sub_continent = sub_continent:south_asia
+			}
+			capital = { save_scope_as = east_india_trade_company }
+		}
+
+		root = { save_scope_as = target_root_country }
+
+	}
+
+	option = {
+		name = flavor_eng.235.a
+		historical_option = yes
+
+		scope:thirteen_colonies = {
+			add_liberty_desire = liberty_desire_severe_plus
+			if = {
+				limit = {
+					has_country_modifier = tea_imports_banned
+				}
+				remove_country_modifier = tea_imports_banned
+				custom_tooltip = flavor_eng.235.tt1
+			}
+		}
+
+		scope:east_india_trade_company ?= {
+
+			add_country_modifier = {
+				modifier = no_market_for_goods
+				years = 10
+				mode = add_and_extend
+			}
+
+		}
+
+		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_right }
+
+	}
+
+	option = {
+		name = flavor_eng.235.b
+
+		scope:thirteen_colonies = {
+			add_liberty_desire = liberty_desire_severe_plus
+			if = {
+				limit = {
+					has_country_modifier = tea_imports_banned
+				}
+				add_liberty_desire = liberty_desire_mild_plus
+				custom_tooltip = flavor_eng.235.tt2
+			}
+			if = {
+				limit = {
+					any_army = {
+						count > 3
+						owner = root
+						unit_location = {
+							province_definition = province_definition:massachusetts_province
+						}
+					}
+				}
+				add_liberty_desire = liberty_desire_severe_plus
+				custom_tooltip = flavor_eng.235.tt3
+			}
+		}
+
+		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_left }
+		add_prestige = prestige_mild_penalty
+
+	}
+
+	historical_info = flavor_eng.235.historical_info
+
+}
+
+# The First Fleet
+flavor_eng.236 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.236.title
+	desc = flavor_eng.236.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1770.1.1
+		to = 1800.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		area:eastern_australia_area = {
+			any_location_in_area = {
+				OR = {
+					owner ?= { is_subject_of = root }
+					owner ?= root
+				}
+			}
+		}
+
+		location:london = {
+			owner = root
+			controller = root
+			local_control < max_control
+		}
+
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		area:eastern_australia_area = {
+			random_location_in_area = {
+				limit = {
+					OR = {
+						owner ?= { is_subject_of = root }
+						owner ?= root
+					}
+				}
+				save_scope_as = target_location
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.236.a
+		historical_option = yes
+
+		area:eastern_australia_area = {
+			random_location_in_area = {
+				limit = {
+					OR = {
+						owner ?= root
+						owner ?= { is_subject_of = root }
+					}
+				}
+				add_migration = {
+					owner = root
+					from = location:london.province_definition
+					to = this.province_definition
+					type = pop_type:peasants
+					amount = 0.05
+					months = 1
+				}
+			}
+		}
+
+		location:london = {
+			change_control = control_severe_bonus
+		}
+
+		change_gold_effect = { scale = -6 }
+
+	}
+
+	option = {
+		name = flavor_eng.236.b
+
+		location:london = {
+			add_location_modifier = {
+				modifier = overcrowded_prisons
+				months = 120
+				mode = add_and_extend
+			}
+		}
+
+		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_right }
+
+	}
+
+	historical_info = flavor_eng.236.historical_info
+
+}
+
+# The London Monster
+flavor_eng.237 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.237.title
+	desc = flavor_eng.237.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1785.1.1
+		to = 1790.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+
+		location:london = {
+			local_control <= 0.5
+			owner = root
+		}
+
+	}
+	
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		location:london = {
+			save_scope_as = target_location
+		}
+
+		location:london = {
+			every_pop = {
+				limit = {
+					owner = root
+					pop_type = pop_type:nobles
+				}
+				add_pop_size = {
+				value = pop_size
+				multiply = -0.01
+				}
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.237.a
+		historical_option = yes
+
+		change_gold_effect = { scale = -3 }
+
+		location:london = {
+			every_pop = {
+				limit = {
+					owner = root
+					pop_type = pop_type:nobles
+				}
+				add_pop_satisfaction = pop_satisfaction_mild_bonus
+			}
+			change_control = control_mild_bonus
+		}
+
+		custom_tooltip = flavor_eng.237.tt1
+		custom_tooltip = flavor_eng.237.tt2
+
+	}
+
+	option = {
+		name = flavor_eng.237.b
+		trigger = {
+			location:london = {
+				has_location_modifier = bow_street_runners
+			}
+		}
+
+		location:london = {
+			every_pop = {
+				limit = {
+					owner = root
+					pop_type = pop_type:nobles
+				}
+				add_pop_satisfaction = pop_satisfaction_severe_bonus
+			}
+			change_control = control_severe_bonus
+		}
+
+		custom_tooltip = flavor_eng.237.tt1
+		custom_tooltip = flavor_eng.237.tt3
+
+	}
+
+	option = {
+		name = flavor_eng.237.c
+
+		location:london = {
+			every_pop = {
+				limit = {
+					owner = root
+					pop_type = pop_type:nobles
+				}
+				add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+			}
+			change_control = control_mild_penalty
+		}
+
+		custom_tooltip = flavor_eng.237.tt1
+		custom_tooltip = flavor_eng.237.tt4
+
+	}
+
+	historical_info = flavor_eng.237.historical_info
+
+}
+
+# The Combination Act
+flavor_eng.238 = {
+	hide_portraits = yes
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.238.title
+	desc = flavor_eng.238.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1790.1.1
+		to = 1820.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+
+		region:great_britain_region = {
+			any_location_in_region = {
+				count >= 5
+				OR = {
+					location_rank ?= location_rank:town
+					location_rank ?= location_rank:city
+					location_rank = location_rank:megalopolis
+				}
+				has_midgame_manufactory_building = yes
+				owner ?= root
+			}
+		}
+
+		has_policy = unregulated_conditions
+
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		region:great_britain_region = {
+			random_location_in_region = {
+				limit = {
+					OR = {
+						location_rank = location_rank:town
+						location_rank = location_rank:city
+					}
+					has_midgame_manufactory_building = yes
+					owner ?= root
+				}
+				save_scope_as = target_location
+			}
+		}
+
+
+		set_variable = { name = trade_unions_law value = 1 }
+
+		create_rebel = {
+			category = estate
+			estate = peasants_estate
+			name = disgruntled_factory_workers
+			save_scope_as = disgruntled_factory_workers
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.238.a
+		historical_option = yes
+
+		custom_tooltip = {
+			text = flavor_eng.238.custom
+		}
+
+		add_policy = policy:trade_unions_prohibited
+
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_bonus }
+
+		custom_tooltip = {
+			text = flavor_eng.238.a.custom
+			region:great_britain_region = {
+				while = {
+					count >= 10
+					random_location_in_region = {
+						limit = {
+							OR = {
+								location_rank = location_rank:town
+								location_rank = location_rank:city
+							}
+							OR = {
+								has_midgame_manufactory_building = yes
+								has_institution = institution:industrialization
+							}
+							owner ?= root
+						}
+						every_pop = {
+							limit = {
+								pop_type = pop_type:peasants
+							}
+							change_pop_allegiance = scope:disgruntled_factory_workers
+						}
+					}
+				}
+			}
+		}
+
+		add_country_modifier = {
+			modifier = eng_disgruntled_factory_workers_rebellion
+			years = 5
+			mode = add_and_extend
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.238.b
+
+		custom_tooltip = {
+			text = flavor_eng.238.custom
+		}
+
+		add_policy = policy:trade_unions_allowed
+
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_penalty }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_penalty }
+
+		destroy_rebel = scope:disgruntled_factory_workers
+
+	}
+
+	historical_info = flavor_eng.238.historical_info
+
+}
+
+# The Rosetta Stone
+flavor_eng.239 = {
+	hide_portraits = yes
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.239.title
+	desc = flavor_eng.239.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1799.1.1
+		to = 1820.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		region:egypt_region = {
+			any_location_in_region = {
+				OR = {
+					owner ?= { is_subject_of = root }
+					owner ?= root
+				}
+			}
+		}
+
+	}
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+	immediate = {
+		
+		region:egypt_region = {
+			random_location_in_region = {
+				limit = {
+					OR = {
+						owner ?= { is_subject_of = root }
+						owner ?= root
+					}
+				}
+				save_scope_as = target_location
+				owner.ruler = {
+					save_scope_as = target_character
+				}
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.239.a
+		historical_option = yes
+
+		add_research_progress = research_progress_extreme_bonus
+
+		culture:greek_culture = { add_cultural_tradition = cultural_tradition_mild_bonus }
+		culture:lower_egyptian_culture = { add_cultural_tradition = cultural_tradition_mild_bonus }
+
+	}
+
+	option = {
+		name = flavor_eng.239.b
+
+		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_right }
+
+		add_prestige = prestige_mild_bonus
+
+	}
+
+	historical_info = flavor_eng.239.historical_info
+
+}
+
+# The Iron Bridge
+flavor_eng.240 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.240.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					province_definition:shropshire_province = {
+						any_location_in_province_definition = {
+							count >= 3
+							has_midgame_manufactory_building = yes
+						}
+					}
+				}
+				desc = flavor_eng.240.desc_industrial_region
+			}
+			triggered_desc = {
+				trigger = { always = yes }
+				desc = flavor_eng.240.desc
+			}
+		}
+	}
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1770.1.1
+		to = 1820.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+
+		region:great_britain_region = {
+			any_location_in_region = {
+				count >= 10
+				OR = {
+					location_rank ?= location_rank:town
+					location_rank ?= location_rank:city
+					location_rank = location_rank:megalopolis
+				}
+				has_institution = institution:industrialization
+				owner ?= root
+			}
+		}
+
+		OR = {
+			region:great_britain_region = {
+				any_location_in_region = {
+					count >= 1
+					has_building_with_at_least_one_level = iron_foundry
+					owner ?= root
+				}
+			}
+			custom_tooltip = {
+				text = variable_the_iron_bridge_tt
+				has_variable = the_iron_bridge
+			}
+		}
+
+
+		own_entire_province = province_definition:shropshire_province
+
+	}
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+	immediate = {
+
+		province_definition:shropshire_province = {
+			random_location_in_province_definition = {
+				save_scope_as = target_location
+			}
+		}
+
+		create_character = {
+			first_name = name_thomas
+			last_name = Pritchard
+			adm = 31
+			dip = 20
+			mil = 22
+			birth_date = 1723
+			birth_location = location:shrewsbury
+			artist_skill = 0.8
+			artist = architect
+			estate = estate_type:burghers_estate
+			script = eng_thomas_pritchard
+			save_scope_as = thomas_pritchard
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.240.a
+		historical_option = yes
+
+		scope:target_location = {
+			create_art = {
+				artist = scope:thomas_pritchard
+				quality = 85
+				type = work_of_art_type:monument
+				key = the_iron_bridge
+			}
+		}
+
+		scope:target_location.market = {
+			add_temporary_demand = {
+				type = demand:iron_bridge_construction
+				months = 48
+			}
+		}
+
+		custom_tooltip = flavor_eng.240.tt1
+
+	}
+
+	option = { #improve textile mills
+		name = flavor_eng.240.b
+		trigger = {
+			region:great_britain_region = {
+				any_location_in_region = {
+					has_building_with_at_least_one_level = textile_mill
+					owner ?= root
+				}
+			}
+		}
+
+		add_country_modifier = {
+			modifier = invested_in_textile_production
+			months = -1
+			mode = add_and_extend
+		}
+
+		hidden_effect = { kill_character_silently = scope:thomas_pritchard }
+
+	}
+
+	option = { #improve farming
+		name = flavor_eng.240.c
+		trigger = {
+			region:great_britain_region = {
+				any_location_in_region = {
+					has_building_with_at_least_one_level = farming_village
+					owner ?= root
+				}
+			}
+		}
+
+		add_country_modifier = {
+			modifier = invested_in_farming_output
+			months = -1
+			mode = add_and_extend
+		}
+
+		hidden_effect = { kill_character_silently = scope:thomas_pritchard }
+
+	}
+
+	option = { #Improve nothing
+	name = flavor_eng.240.d
+
+	add_prestige = prestige_mild_bonus
+
+	hidden_effect = { kill_character_silently = scope:thomas_pritchard }
+
+	}
+
+	historical_info = flavor_eng.240.historical_info
+
+}
+
+# The Gordon Riots
+flavor_eng.241 = {
+	hide_portraits = yes
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.241.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					region:great_britain_region = {
+						any_location_in_region = {
+							count > 3
+							owner ?= root
+							is_capital = no
+							province ?= {
+								religion_percentage = {
+									religion = religion:catholic
+									value >= 0.05
+								}
+							}
+						}
+					}
+				}
+				desc = flavor_eng.241.desc_catholic_army
+			}
+			triggered_desc = {
+				trigger = { always = yes }
+				desc = flavor_eng.241.desc
+			}
+		}
+	}
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1765.1.1
+		to = 1800.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		NOT = { religion = religion:catholic }
+
+		location:london = {
+			owner = root
+			province ?= {
+				religion_percentage = {
+					religion = religion:catholic
+					value >= 0.2
+				}
+			}
+		}
+
+		OR = {
+
+			any_cabinet_character = {
+				religion = religion:catholic
+			}
+
+			region:great_britain_region = {
+				any_location_in_region = {
+					count > 3
+					owner ?= root
+					is_capital = no
+					province ?= {
+						religion_percentage = {
+							religion = religion:catholic
+							value >= 0.05
+						}
+					}
+				}
+			}
+
+		}
+
+	}
+	
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:peasants_estate }
+		create_rebel = {
+			category = estate
+			estate = peasants_estate
+			name = protestant_association
+			save_scope_as = protestant_association
+		}
+
+		root = { save_scope_as = target_root_country }
+
+		location:london = {
+			save_scope_as = target_location
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.241.a
+		historical_option = yes
+
+		add_prestige = prestige_mild_penalty
+
+		location:london = {
+			change_prosperity = prosperity_weak_penalty
+			every_pop = {
+				limit = {
+					owner = root
+					NOT = { religion = religion:catholic }
+				}
+				add_pop_size = {
+					value = pop_size
+					multiply = -0.05
+				}
+				change_pop_allegiance = scope:protestant_association
+			}
+		}
+
+		add_country_modifier = {
+			modifier = eng_gordon_riots
+			years = 10
+			mode = add_and_extend
+		}
+
+		custom_tooltip = flavor_eng.241.tt1
+		custom_tooltip = flavor_eng.241.tt2
+
+	}
+
+	option = {
+		name = flavor_eng.241.b
+
+		add_government_power = government_power_mild_penalty
+
+		location:london = {
+			change_prosperity = prosperity_severe_penalty
+			every_pop = {
+				limit = {
+					owner = root
+					religion = religion:catholic
+				}
+				add_pop_size = {
+					value = pop_size
+					multiply = -0.1
+				}
+				add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+			}
+		}
+
+		custom_tooltip = {
+			text = flavor_eng.241.b.custom
+			every_country = {
+				limit = {
+					dominant_religion = religion:catholic
+					OR = {
+						capital = { sub_continent = sub_continent:western_europe }
+						capital = { sub_continent = sub_continent:eastern_europe }
+					}
+				}
+				add_opinion = {
+					target = root
+					modifier = opressing_catholic_population
+				}
+			}
+		}
+
+		custom_tooltip = flavor_eng.241.tt4
+
+	}
+
+	historical_info = flavor_eng.241.historical_info
+
+}
+
+# The Gaspee Affair
+flavor_eng.242 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.242.title
+	desc = flavor_eng.242.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1770.1.1
+		to = 1790.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+
+		any_subject = {
+			is_subject_type = colonial_nation
+			capital.region = region:east_coast_region
+			liberty_desire >= 25
+		}
+
+	}
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+		random_subject = {
+			limit = {
+				is_subject_type = colonial_nation
+				capital.region = region:east_coast_region
+			}
+			save_scope_as = target_country
+			capital = {
+				save_scope_as = target_location
+			}
+			ruler = {
+				 save_scope_as = target_character
+			}
+		}
+
+		root = { save_scope_as = target_root_country }
+
+	}
+
+	option = {
+		name = flavor_eng.242.a
+		historical_option = yes
+
+		add_prestige = prestige_mild_bonus
+
+		random_subject = {
+			limit = {
+				is_subject_type = colonial_nation
+				capital.region = region:east_coast_region
+			}
+			add_country_modifier = {
+				modifier = committees_of_correspondence
+				years = 10
+				mode = add_and_extend
+			}
+		}
+
+		custom_tooltip = flavor_eng.242.tt1
+		custom_tooltip = flavor_eng.242.tt2
+
+	}
+
+	option = {
+		name = flavor_eng.242.b
+
+		add_prestige = prestige_mild_penalty
+
+		add_country_modifier = {
+			modifier = smugglers_dominating
+			years = 10
+			mode = add_and_extend
+		}
+
+		custom_tooltip = flavor_eng.242.tt3
+
+	}
+
+	option = {
+		name = flavor_eng.242.c
+		trigger = {
+			ruler = { dip >= 75 }
+		}
+
+		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_right }
+
+		random_subject = {
+			limit = {
+				is_subject_type = colonial_nation
+				capital.region = region:east_coast_region
+			}
+			add_liberty_desire = liberty_desire_mild_minus
+		}
+
+		custom_tooltip = flavor_eng.242.tt4
+
+	}
+
+	historical_info = flavor_eng.242.historical_info
+
+}
+
+# Elizabeth Montagu
+flavor_eng.243 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.243.title
+	desc = flavor_eng.243.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1750.1.1
+		to = 1780.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		OR = {
+			AND = {
+				custom_tooltip = {
+					text = variable_restoration_comedy_allowed_tt
+					has_variable = restoration_comedy_allowed
+				}
+				societal_value:traditionalist_vs_innovative >= 0
+			}
+			societal_value:traditionalist_vs_innovative >= 20
+		}
+
+	}
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+	immediate = {
+
+		create_character = {
+			first_name = name_elizabeth
+			last_name = Montagu
+			estate = estate_type:nobles_estate
+			adm = 41
+			dip = 66
+			mil = 15
+			birth_date = 1718.1.1
+			artist_skill = 0.9
+			artist = writer
+			female = yes
+			birth_location = location:york
+			script = eng_elizabeth_montagu
+			save_scope_as = elizabeth_montagu
+		}
+
+		location:york = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.243.a
+		historical_option = yes
+
+		custom_tooltip = flavor_eng.243.tt1
+
+	}
+
+	option = {
+		name = flavor_eng.243.b
+
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+
+		hidden_effect = { kill_character_silently = scope:elizabeth_montagu }
+
+	}
+
+	historical_info = flavor_eng.243.historical_info
+
+}
+
+# Blue Stockings Society
+flavor_eng.244 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.244.title
+	desc = flavor_eng.244.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1750.1.1
+		to = 1800.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+
+		character:eng_elizabeth_montagu ?= { is_alive = yes }
+
+		location:salisbury = { owner = root }
+
+	}
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		location:salisbury = { save_scope_as = target_location }
+
+		character:eng_elizabeth_montagu = {
+			save_scope_as = elizabeth_montagu
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.244.a
+		historical_option = yes
+
+		add_country_modifier = {
+			modifier = blue_stockings_society
+			months = -1
+			mode = add_and_extend
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.244.b
+
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+
+		add_prestige = prestige_mild_bonus
+
+	}
+
+	historical_info = flavor_eng.244.historical_info
+
+}
+
+# The London Beer Flood
+flavor_eng.245 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.245.title
+	desc = flavor_eng.245.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_silver.dds"
+
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1800.1.1
+		to = 1820.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		location:london = {
+			owner = root
+			has_building_with_at_least_one_level = brewery
+		}
+
+	}
+
+	immediate = {
+
+		location:london = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.245.a
+		historical_option = yes
+
+		location:london = {
+			every_pop = {
+				limit = {
+					OR = {
+						pop_type = pop_type:burghers
+						pop_type = pop_type:peasants
+					}
+				}
+				add_pop_size = {
+					value = pop_size
+					multiply = -0.001
+				}
+			}
+		}
+
+		change_gold_effect = { scale = -6 }
+
+		custom_tooltip = flavor_eng.245.tt1
+
+	}
+
+	option = {
+		name = flavor_eng.245.b
+
+		location:london = {
+			change_prosperity = prosperity_weak_penalty
+			every_pop = {
+				limit = {
+					OR = {
+						pop_type = pop_type:burghers
+						pop_type = pop_type:peasants
+					}
+				}
+				add_pop_size = {
+					value = pop_size
+					multiply = -0.01
+				}
+			}
+			market = {
+				add_temporary_demand = {
+					type = demand:beer_flood
+					months = 60
+				}
+			}
+		}
+
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_penalty }
+
+	}
+
+	historical_info = flavor_eng.245.historical_info
+
+}
+
+# The Timeless Lady
+flavor_eng.246 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.246.title
+	desc = flavor_eng.246.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1800.1.1
+		to = 1820.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		location:winchester = {
+			owner = root
+		}
+
+		societal_value:traditionalist_vs_innovative <= 10
+
+	}
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+	immediate = {
+
+		create_character = {
+			first_name = name_joanna
+			last_name = Austen
+			estate = estate_type:clergy_estate
+			adm = 37
+			dip = 35
+			mil = 0
+			birth_date = 1775.1.1
+			artist_skill = 0.9
+			artist = writer
+			female = yes
+			birth_location = location:winchester
+			script = eng_jane_austen
+			save_scope_as = jane_austen
+		}
+
+		location:winchester = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.246.a
+		historical_option = yes
+
+		custom_tooltip = flavor_eng.246.tt1
+
+	}
+
+	option = {
+		name = flavor_eng.246.b
+
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+
+		hidden_effect = { kill_character_silently = scope:jane_austen }
+
+	}
+
+	historical_info = flavor_eng.246.historical_info
+
+}
+
+# Pride and Prejudice
+flavor_eng.247 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.247.title
+	desc = flavor_eng.247.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1800.1.1
+		to = 1820.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		character:eng_jane_austen ?= { is_alive = yes }
+
+		location:winchester = { owner = root controller = root }
+
+	}
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+	immediate = {
+
+		character:eng_jane_austen ?= { save_scope_as = jane_austen }
+
+		location:winchester = { save_scope_as = target_location }
+
+	}
+
+	option = {
+		name = flavor_eng.247.a
+		historical_option = yes
+
+			scope:target_location = {
+				create_art = {
+					artist = scope:jane_austen
+					quality = 100
+					location = scope:target_location
+					type = work_of_art_type:novel
+					key = pride_and_prejudice
+				}
+			}
+
+			scope:jane_austen = {
+				add_artist_skill = 0.03
+			}
+
+			culture = {
+				add_cultural_tradition = cultural_tradition_mild_bonus
+			}
+
+	}
+
+	option = {
+		name = flavor_eng.247.b
+
+		add_prestige = prestige_mild_bonus
+
+	}
+
+	historical_info = flavor_eng.247.historical_info
+
+}
+
+# The Cowpox Vaccine
+flavor_eng.248 = {
+	type = country_event
+
+	fire_only_once = yes
+
+	title = flavor_eng.248.title
+	desc = flavor_eng.248.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1790.1.1
+		to = 1820.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		OR = {
+			societal_value:traditionalist_vs_innovative >= 30
+			has_country_modifier = philosophical_transactions
+		}
+
+	}
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+	immediate = {
+
+		capital = { save_scope_as = target_location }
+
+		language:latin_language = { save_scope_as = latin }
+
+	}
+
+	option = {
+		name = flavor_eng.248.a
+		historical_option = yes
+
+		if = {
+			limit = {
+				has_country_modifier = philosophical_transactions
+			}
+			add_research_progress = research_progress_severe_bonus
+			custom_tooltip = flavor_eng.248.tt1
+		}
+		else = {
+			add_research_progress = research_progress_mild_bonus
+			custom_tooltip = flavor_eng.248.tt2
+		}
+
+	}
+
+	option = {
+		name = flavor_eng.248.b
+
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_bonus }
+
+	}
+
+	historical_info = flavor_eng.248.historical_info
+
+}
+
+# The Industrial Painter
+flavor_eng.249 = {
+	type = country_event
+	title = flavor_eng.249.title
+	desc = flavor_eng.249.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1676.1.1
+		to = 1723.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+
+		location:lubeck.owner = {
+			religion.group = religion_group:christian
+		}
+
+		government_type = government_type:monarchy
+
+	}
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+	immediate = {
+
+		create_character = {
+			first_name = name_godfrey
+			last_name = Kneller
+			estate = estate_type:burghers_estate
+			adm = 31
+			dip = 31
+			mil = 10
+			birth_date = 1646.1.1
+			birth_location = location:lubeck
+			religion = location:lubeck.dominant_religion
+			artist_skill = 1
+			artist = painter
+			save_scope_as = godfrey_kneller
+			script = eng_godfrey_kneller
+		}
+
+		location:lubeck = {
+			save_scope_as = target_location
+		}
+
+	}
+
+	option = {
+		historical_option = yes
+		name = flavor_eng.249.a
+		trigger= {
+			OR = {
+				NOT = { has_policy = de_heretico_comburendo }
+				AND = {
+					has_policy = de_heretico_comburendo
+					scope:godfrey_kneller.religion = root.religion
+				}
+			}
+		}
+
+		custom_tooltip = flavor_eng.249.tt1
+
+		scope:godfrey_kneller = {
+			add_character_modifier = {
+				modifier = industrial_painter
+				years = -1
+				mode = add_and_extend
+			}
+		}
+
+		if = {
+			limit = {
+				has_policy = strict_censorship
+				scope:godfrey_kneller.religion != root.religion
+			}
+			add_estate_satisfaction = { type = estate_type:clergy_estate
+				value = estate_satisfaction_severe_penalty
+			}
+			custom_tooltip = flavor_eng.249.tt2
+		}
+
+	}
+
+	option = {
+	name = flavor_eng.249.b
+	trigger = {
+		has_policy = de_heretico_comburendo
+		scope:godfrey_kneller.religion != root.religion
+	}
+
+		scope:godfrey_kneller ?= {
+			kill_character = {
+				target = this
+				reason = burned_alive
+				killer = ruler
+			}
+		}
+
+		custom_tooltip = flavor_eng.249.tt3
+
+	}
+
+	option = {
+		name = flavor_eng.249.c
+		trigger= {
+			OR = {
+				NOT = { has_policy = de_heretico_comburendo }
+				AND = {
+					has_policy = de_heretico_comburendo
+					scope:godfrey_kneller.religion = root.religion
+				}
+			}
+		}
+
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+
+		custom_tooltip = flavor_eng.249.tt1
+		custom_tooltip = flavor_eng.249.tt4
+
+	}
+
+	option = {
+		name = flavor_eng.249.d
+		trigger= {
+			OR = {
+				NOT = { has_policy = de_heretico_comburendo }
+				AND = {
+					has_policy = de_heretico_comburendo
+					scope:godfrey_kneller.religion = root.religion
+				}
+			}
+		}
+
+		hidden_effect = { kill_character_silently = scope:godfrey_kneller }
+
+	}
+
+	historical_info = flavor_eng.249.historical_info
+
+}
+
+# Act of Supremacy - Personal Union Partner Notification
+flavor_eng.250 = {
+	type = country_event
+	title = flavor_eng.250.title
+	desc = flavor_eng.250.desc
+	outcome = neutral
+
+	option = {
+		name = flavor_eng.250.a
+	}
+
+}
+

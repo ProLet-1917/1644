@@ -1,0 +1,736 @@
+﻿namespace = flavor_sco
+
+flavor_sco.6 = {
+	type = country_event
+	title = flavor_sco.6.title
+	desc = flavor_sco.6.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = SCO
+		from = 1650.1.1
+		to = 1776.1.1
+		monthly_chance = 8
+	}
+
+	trigger = {
+		num_of_ports > 1
+		discovered_route_to_india = yes
+		OR = {
+			any_owned_non_rural_location = {
+				sub_continent = sub_continent:south_asia
+			}
+			any_owned_foreign_building_location = {
+				sub_continent = sub_continent:south_asia
+			}
+		}
+
+	}
+
+	illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+	
+	option = {
+		name = flavor_sco.6.a
+		custom_tooltip = flavor_sco.6.a.tt
+		set_variable = { name = has_east_india_trading_company value = 1 }
+	}
+
+	option = {
+		name = flavor_sco.6.b
+		add_stability = stability_severe_bonus
+		add_legitimacy = legitimacy_severe_bonus
+		add_country_modifier = { modifier = sco_no_east_india years = 12 mode = add_and_extend }
+	}
+}
+
+flavor_sco.7 = {
+	type = country_event
+	title = flavor_sco.7.title
+	desc = flavor_sco.7.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = SCO
+		from = 1725.1.1
+		to = 1800.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		has_advance = modern_road_advance
+		any_owned_location = {
+			area = area:scottish_highlands_area
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+	
+	option = {
+		name = flavor_sco.7.a
+		historical_option = yes
+		change_gold_effect = { scale = -6 }
+		custom_tooltip = {
+			text = flavor_sco.7.tt
+			area:scottish_highlands_area = {
+				every_location_in_area = {
+					change_development = development_mild_bonus
+					add_road_to = {
+						target = root.capital
+						type = modern_road
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = flavor_sco.7.b
+		change_gold_effect = { scale = -6 }
+		add_country_modifier = { modifier = sco_global_road_construction years = 12 mode = add_and_extend }
+	}
+	option = {
+		name = flavor_sco.7.c
+
+		change_societal_value = {
+			type = centralization_vs_decentralization
+			value = societal_value_large_move_to_right
+		}
+	}
+}
+
+flavor_sco.8 = {
+	type = country_event
+	title = flavor_sco.8.title
+	desc = flavor_sco.8.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = SCO
+		from = 1700.1.1
+		to = 1800.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		if = {
+			limit = {
+				owns = location:glasgow
+			}
+			location:glasgow = { save_scope_as = target_location }
+		}
+		else = {
+			random_owned_location = {
+				limit = {
+					is_city = yes
+					dominant_culture = root.culture
+				}
+			}
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_sco.8.a
+		historical_option = yes
+		change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_move_to_left }
+	}
+	option = {
+		name = flavor_sco.8.b
+		change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_move_to_left }
+	}
+}
+
+flavor_sco.11 = {
+	type = country_event
+	title = flavor_sco.11.title
+	desc = flavor_sco.11.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = SCO
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 50
+	}
+
+	trigger = {
+		owns = location:london
+		capital != location:london
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:burghers background = pop_type:soldiers }
+	}
+	
+	option = {
+		name = flavor_sco.11.a
+		add_prestige = prestige_extreme_bonus
+		location:london = {
+			change_development  = development_severe_penalty
+		}
+		capital = {
+			change_development  = development_severe_bonus
+		}
+
+		add_migration = {
+			owner = this
+			from = location:london.province_definition
+			to = capital.province_definition
+			type = pop_type:peasants
+			amount = 0.250
+			months = 120
+		}
+
+	}
+	
+	option = {
+		name = flavor_sco.11.b
+		add_stability = stability_extreme_bonus
+	}
+}
+
+flavor_sco.13 = { # We are diverse.... or?
+	type = country_event
+	title = flavor_sco.13.title
+	desc = flavor_sco.13.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = SCO
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		culture = { save_scope_as = previous_culture }
+		event_illustration_culture_effect = { culture = culture:highland }
+	}
+
+	option = { # Aye we are diverse
+		name = flavor_sco.13.a
+		culture = { add_cultural_tradition = cultural_tradition_radical_bonus }
+	}
+
+	option = { # Nay we are Lowlanders
+		name = flavor_sco.13.b
+		if = {
+			limit = { NOT = { culture = culture:scottish } }
+			change_culture = culture:scottish
+			add_accepted_culture = scope:previous_culture
+		}
+		if = {
+			limit = { has_reform = government_reform:celtic_traditions_reform }
+			remove_reform = government_reform:celtic_traditions_reform
+		}
+		every_primary_or_accepted_culture = {
+			limit = { NOT = { language = culture:scottish.language } }
+			root = {
+				if = {
+					limit = { NOT = { culture = prev } }
+					remove_accepted_culture = prev
+				}
+			}
+		}
+		if = {
+			limit = { court_dialect != culture:scottish.dialect }
+			set_court_language = culture:scottish.dialect
+		}
+		culture:scottish = { add_cultural_influence = cultural_influence_radical_bonus }
+	}
+
+	option = { # Nay we are Highlanders
+		name = flavor_sco.13.c
+		if = {
+			limit = { NOT = { culture = culture:highland } }
+			change_culture = culture:highland
+			add_accepted_culture = scope:previous_culture
+		}
+		if = {
+			limit = { NOT = { has_reform = government_reform:celtic_traditions_reform } }
+			add_reform = government_reform:celtic_traditions_reform
+		}
+		every_primary_or_accepted_culture = {
+			limit = { NOT = { language = culture:highland.language } }
+			root = {
+				if = {
+					limit = { NOT = { culture = prev } }
+					remove_accepted_culture = prev
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { court_dialect = culture:highland.dialect  } }
+			set_court_language = culture:highland.dialect
+		}
+		culture:highland = { add_cultural_influence = cultural_influence_radical_bonus }
+	}
+}
+
+flavor_sco.15 = { # Loch Ness Monster sighting
+	type = country_event
+	title = flavor_sco.15.title
+	desc = flavor_sco.15.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		location:inverness = {
+			save_scope_as = target_location
+		}
+	}
+
+	trigger = {
+		location:inverness = {
+			owner = root
+		}
+	}
+
+	option = {
+		name = flavor_sco.15.a
+		add_stability = stability_mild_penalty
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
+		location:inverness = {
+			add_location_modifier = {
+				modifier = sco_loch_ness_sightings
+				years = 10
+				mode = add_and_extend
+			}
+		}
+	}
+
+	option = {
+		name = flavor_sco.15.b
+		add_stability = stability_weak_penalty
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_right }
+	}
+}
+
+scripted_trigger sco_17_location_trigger = {
+	is_discovered_by = root
+	has_owner = yes
+	owner ?= {
+		NOT = { this = root }
+		religion = location:ayr.dominant_religion
+	}
+}
+
+flavor_sco.17 = { # Robert Burns
+	hide_portraits = yes
+	type = country_event
+	title = flavor_sco.17.title
+	desc = flavor_sco.17.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = SCO
+		from = 1770.1.1
+		to = 1800.1.1
+		monthly_chance = 2
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		any_owned_location = { count >= 2 }
+		location:ayr = {
+			owner ?= root
+			any_pop = {
+				pop_type = pop_type:peasants
+				culture = culture:scottish
+			}
+		}
+		region:caribbean_region = {
+			any_location_in_region = {
+				sco_17_location_trigger = yes
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		region:caribbean_region = {
+			save_scope_as = west_indies
+		}
+		random_owned_location = {
+			limit = { this = location:ayr }
+			save_scope_as = origin
+		}
+		create_character = {
+			first_name = name_robert
+			last_name = name_burns
+			female = no
+			artist = writer
+			artist_skill = 0.85
+			culture = culture:scottish
+			birth_location = scope:origin
+			religion = scope:origin.dominant_religion
+			birth_date = 1759.1.25
+			save_scope_as = burns
+			estate = estate_type:peasants_estate
+		}
+		if = {
+			limit = {
+				location:edinburgh = {
+					owner ?= root
+				}
+			}
+			location:edinburgh = { save_scope_as = destination }
+		}
+		else_if = {
+			limit = {
+				any_owned_location = {
+					NOT = { this = scope:origin }
+					is_core_of = root
+					OR = {
+						location_rank = location_rank:town
+						location_rank = location_rank:city
+					}
+				}
+			}
+			random_owned_location = {
+				limit = {
+					NOT = { this = scope:origin }
+					is_core_of = root
+					OR = {
+						location_rank = location_rank:town
+						location_rank = location_rank:city
+					}
+				}
+				save_scope_as = destination
+			}
+		}
+		else = {
+			random_owned_location = {
+				limit = {
+					NOT = { this = scope:origin }
+				}
+				save_scope_as = destination
+			}
+		}
+	}
+
+	option = {
+		name = flavor_sco.17.a
+
+		scope:origin = {
+			create_art = {
+				artist = scope:burns
+				quality = 75
+				location = scope:destination
+				type = work_of_art_type:poem
+				key = robert_burns_poems_chiefly_in_the_scottish_dialect
+			}
+		}
+	}
+
+	option = {
+		name = flavor_sco.17.b
+
+		scope:origin = {
+			create_art = {
+				artist = scope:burns
+				quality = 75
+				location = scope:destination
+				type = work_of_art_type:poem
+				key = robert_burns_poems_chiefly_in_the_scottish_dialect
+			}
+			create_art = {
+				artist = scope:burns
+				quality = 60
+				location = scope:destination
+				type = work_of_art_type:poem
+			}
+			create_art = {
+				artist = scope:burns
+				quality = 50
+				location = scope:destination
+				type = work_of_art_type:poem
+			}
+		}
+
+		scope:west_indies = {
+			random_location_in_region = {
+				limit = {
+					sco_17_location_trigger = yes
+				}
+				owner ?= {
+					scope:burns = { move_country = prev }
+				}
+			}
+		}
+
+		change_gold_effect = { scale = -6 }
+	}
+}
+
+flavor_sco.20 = { # Wild Haggis
+	type = country_event
+	title = flavor_sco.20.title
+	desc = flavor_sco.20.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_fur.dds"
+
+	dynamic_historical_event = {
+		tag = SCO
+		from = 1700.1.1
+		to = 1800.1.1
+		monthly_chance = 1
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		any_owned_location = {
+			area = area:scottish_highlands_area
+		}
+	}
+
+	immediate = {
+	}
+
+	option = {
+		name = flavor_sco.20.a # substitute
+		add_stability = stability_mild_bonus
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_right }
+
+		historical_option = yes
+	}
+	option = {
+		name = flavor_sco.20.b # breeding programme
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_left }
+		capital.market = {
+			add_goods_supply = {
+				goods = goods:fur
+				amount = market_goods_mild_gain
+			}
+		}
+	}
+}
+
+flavor_sco.400 = { # Expedition to the New World
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_sco.400.title
+ 	desc = flavor_sco.400.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = SCO
+		from = 1644.1.1
+		to = 1704.1.1
+		monthly_chance = 8
+	}
+
+ 	trigger = {
+		has_ruler = yes
+ 	}
+
+	image = "gfx/interface/illustrations/institutions/new_world.dds"
+
+    immediate = {
+		ruler ?= {
+            save_scope_as = sco_ruler
+        }
+		unlock_law_effect = {
+			type = sco_colonial_affairs_law
+		}
+	}
+
+ 	option = { # We shall strive to join the other colonial powers
+		name = flavor_sco.400.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		add_policy = policy:sco_limited_colonial_ventures
+		add_country_modifier = { modifier = sco_darien_scheme years = 12 mode = add_and_extend }
+		ai_chance = {
+			factor = 0.6
+		}
+ 	}
+
+ 	option = { # Halt any colonial ambitions for now
+		name = flavor_sco.400.b
+		add_stability = stability_mild_bonus
+		add_policy = policy:sco_no_colonial_affairs
+		ai_chance = {
+			factor = 0.4
+		}
+ 	}
+}
+
+flavor_sco.401 = { # David Hume, Treatise of Human Nature
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_sco.401.title
+ 	desc = flavor_sco.401.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = SCO
+		tag = ENG
+		tag = GBR
+		from = 1733.1.1
+		to = 1775.1.1
+		monthly_chance = 20
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		NOT = { exists = character:david_hume }
+ 	}
+
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+
+    immediate = {
+		create_character = {
+			first_name = name_david
+			last_name = hume
+			adm = 62
+			dip = 44
+			mil = 35
+			culture = culture:scottish
+			birth_location = location:edinburgh
+			religion = religion:calvinist
+			birth_date = 1711.4.26
+			estate = estate_type:burghers_estate
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+			script = david_hume
+			save_scope_as = target_character
+			artist = philosopher
+			artist_skill = 0.75
+			create_in_limbo = yes
+		}
+		root.capital = {
+			create_art = {
+				quality = 70
+				artist = scope:target_character
+				type = work_of_art_type:treatise
+				key = treatise_of_human_nature
+			}
+		}
+		ruler ?= {
+            save_scope_as = sco_ruler
+        }
+	}
+
+ 	option = { # Sponsor his work!
+		name = flavor_sco.401.a
+		historical_option = yes
+		scope:target_character = { move_country = root }
+		change_gold_effect = { scale = -4 }
+		culture = {
+			add_cultural_influence = cultural_influence_extreme_bonus
+		}
+		ai_chance = {
+			factor = 0.95
+		}
+ 	}
+
+ 	option = { # The resources of the state would be better spent elsewhere
+		name = flavor_sco.401.b
+		add_legitimacy = legitimacy_mild_bonus
+		scope:target_character = { banish_character = yes }
+		culture = {
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+		ai_chance = {
+			factor = 0.05
+		}
+ 	}
+}
+
+#flavor_sco.1500 = { #Stone of Scone returns to Scotland
+#	type = country_event
+#	title = flavor_sco.1500.title
+#	desc = flavor_sco.1500.desc
+#
+#	fire_only_once = yes
+#
+#	trigger = {
+#		OR = {
+#			tag = SCO
+#			culture = { has_culture_group = culture_group:scottish_group }
+#		}
+#	}
+#
+#	option = {
+#		name = flavor_sco.1500.a
+#		add_legitimacy = legitimacy_severe_bonus
+#		add_prestige = prestige_severe_bonus
+#		show_as_tooltip = {
+#			c:ENG = {
+#				add_legitimacy = legitimacy_severe_penalty
+#				add_prestige = prestige_severe_penalty
+#			}
+#		}
+#		hidden_effect = {
+#			c:ENG = { trigger_event_silently = flavor_sco.1501 }
+#		}
+#	}
+#}
+#
+#flavor_sco.1501 = { #England gets notified about Stone of Scone
+#	type = country_event
+#	title = flavor_sco.1501.title
+#	desc = flavor_sco.1501.desc
+#
+#	fire_only_once = yes
+#
+#	option = {
+#		name = flavor_sco.1501.a
+#		add_legitimacy = legitimacy_severe_penalty
+#		add_prestige = prestige_severe_penalty
+#	}
+#}

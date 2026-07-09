@@ -51,8 +51,8 @@ wooden_lifting_machine = {
 
     starting_technology_level = 2
 
-    building_upkeep_costs = -0.01
-    global_urban_build_buildings_cost = -0.05
+    building_upkeep_efficiency = 0.05
+    global_urban_build_buildings_efficiency = 0.05
 }
 
 mercenary_contract = {
@@ -250,5 +250,81 @@ reformation_standard_army_training = {
     land_morale_movement_cost = -0.0001
 }
 
+#New Levies
+#Age 3
+hook_sickle_tactic = {
+    age = age_3_discovery
+
+    requires = pike_and_shot_advance
+
+    starting_technology_level = 3
+
+    unlock_levy = levy_a_billmen_levy
+}
+
+mobile_militia_advance = {
+    age = age_3_discovery
+
+    requires = pike_and_shot_advance
+
+    starting_technology_level = 3
+
+    unlock_levy = levy_a_mounted_militia
+}
+
+#Age 4
+spearmen_advance = {
+    age = age_4_reformation
+
+    requires = unlock_flintlock_levy
+
+    starting_technology_level = 4
+
+    unlock_levy = levy_a_spearmen_levy
+}
+
+unlock_stradioti_advance = {
+    age = age_4_reformation
+
+    requires = flintlock_gun
+
+    starting_technology_level = 4
+
+    unlock_levy = levy_a_stradioti
+}
+
+#Age 5
+countryside_guard = {
+    age = age_5_absolutism
+
+    requires = unlock_hunters_advance
+
+    unlock_levy = levy_a_guard_levy
+}
+
+volunteer_cavalry = {
+    age = age_5_absolutism
+
+    requires = army_doctrine_law_advance
+
+    unlock_levy = levy_a_volunteer_cavalry
+}
+
+#Age 6
+national_conscript = {
+    age = age_6_revolutions
+
+    requires = nation_state_advance
+
+    unlock_levy = levy_a_reserve_levy
+}
+
+unlock_mounted_rifles_advance = {
+    age = age_6_revolutions
+
+    requires = long_rifle
+
+    unlock_levy = levy_a_mounted_rifles
+}
 
 

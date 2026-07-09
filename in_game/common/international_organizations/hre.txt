@@ -2,8 +2,9 @@
 
 	has_target = no
 	unique = yes
+	max_circles_at_formation = 10
 	expel_members_who_are_targets_of_other_members = no
-	
+	has_buildings = yes
 	show_leave_message = no
 	use_laws_as_join_reason = no
 
@@ -13,6 +14,7 @@
 
 	has_parliament = yes
 	parliament_type = hre_court_assembly
+	alert_view_tab = parliament
 	resolution_widget = parliament
 	has_dynastic_power = yes
 	
@@ -49,6 +51,7 @@
 	override_ruler_title = yes
 
 	only_leader_country_joins_defensive_wars = yes
+	joins_defensive_wars_as_co_belligerent = yes
 
 	join_defensive_wars_always = {
 		custom_tooltip = {
@@ -56,23 +59,17 @@
 			hre_enabled_free_cities_protection = yes
 			exists = scope:actor
 			scope:actor = {
-				OR = {
-					has_special_status_in_international_organization = {
-						type = special_status:free_city
-						international_organization = root
-					}
-					any_subject = {
-						has_special_status_in_international_organization = {
-							type = special_status:free_city
-							international_organization = root
-						}
-					}
+				is_subject = no
+				has_special_status_in_international_organization = {
+					type = special_status:free_city
+					international_organization = root
 				}
 			}
 		}
 	}
 
 	join_defensive_wars_auto_call = {
+		exists = scope:target
 		scope:target ?= {
 			not = {
 				is_member_of_international_organization = root
@@ -82,8 +79,19 @@
 			modifier:excluded_from_imperial_protection = no
 		}
 	}
-	
+
 	can_declare_war = {
+		trigger_if = {
+			limit = {
+				scope:attacker = { is_ai = yes }
+				scope:attacker = { is_member_of_international_organization = scope:recipient }
+				scope:defender = { is_member_of_international_organization = scope:recipient }
+			}
+			scope:attacker = { has_casus_belli_on = scope:defender }
+		}
+		trigger_else = {
+			hidden_trigger = { always = yes }
+		}
 		trigger_if = {
 			limit = {
 				scope:recipient = { modifier:enforced_internal_peace = yes }
@@ -93,7 +101,7 @@
 			scope:recipient = { modifier:enforced_internal_peace = no }
 		}
 		trigger_else = {
-			always = yes
+			hidden_trigger = { always = yes }
 		}
 	}
 
@@ -103,16 +111,26 @@
 		is_leader_of_international_organization = scope:recipient
 	}
 
+
 	land_ownership_rule = hre_land_ownership
-	antagonism_modifier_for_taking_land_from_fellow_member = 1.0	  # Members get more Antagonism in the HRE
-	antagonism_modifier_for_taking_land_from_member_as_outsider = 1.75 # Outsiders get even more Antagonism in the HRE
+	antagonism_modifier_for_taking_land_from_fellow_member = 0.75	  # Members get more Antagonism in the HRE
+	antagonism_modifier_for_taking_land_from_member_as_outsider = 1.25 # Outsiders get even more Antagonism in the HRE
 	no_cb_price_modifier_for_fellow_member = 0.75
 
 	modifier = {
-		block_from_change_to_kingdom_rank = yes
 		block_from_change_to_empire_rank = yes
 		block_from_change_to_duchy_rank = yes
 		reject_subjugation_reasons = 25
+	}
+
+	modifier = {
+		potential_trigger = {
+			NOR = {
+				has_game_rule = no_rank_restriction
+				has_game_rule = rank_restriction_by_numbers
+			}
+		}
+		block_from_change_to_kingdom_rank = yes
 	}
 
 	international_organization_modifier = {
@@ -120,21 +138,25 @@
 		hre_max_elector = 4
 		hre_max_archbishop_elector = 3
 	}
-	
-	leader_modifier = {
-		great_power_score_exempt_from_forfeit = 250
 
+	imperial_circle_leader_modifier = {
+		monthly_prestige = 0.1
+		diplomatic_reputation = 1
+	}
+
+	leader_modifier = {
+		monthly_prestige = 0.1
 		diplomatic_capacity = 1
 		max_diplomats = 2
 		diplomatic_range = 500
-		
+
 		fort_limit = 1
-		
-		num_possible_artists = 1 
+
+		num_possible_artists = 1
 		cultures_capacity = 1
 		government_size = 1
 		monthly_prestige = 0.1
-		
+
 		allowed_alliance = yes
 		allowed_guarantee = yes
 		allowed_support_rebels = yes
@@ -142,7 +164,9 @@
 		allowed_enforce_peace = yes
 		allowed_threaten_war = yes
 
+		monthly_diplomats = 0.5 # Enable the emperor to use actions like "Demand unlawful territory" more often
 	}
+
 	
 	create_visible_trigger = {
 		always = no
@@ -154,7 +178,9 @@
 
 	can_lead_trigger = {
 		country_type = location
+		country_exists = root
 		government_type = government_type:monarchy
+		is_revolutionary = no
 		is_subject = no
 		hre_country_fulfills_imperial_religion_requirement = { type = voting }
 		hidden_trigger = {
@@ -177,31 +203,137 @@
 							ruler ?= { is_female = no }
 							scope:recipient = { modifier:hre_allow_female_emperors = yes }
 						}
-						ruler ?= { modifier:blocked_from_ruling_the_hre = no }
+						ruler ?= {
+							modifier:blocked_from_ruling_the_hre = no
+							custom_tooltip = {
+								text = hre_character_fulfills_imperial_religion_requirement_tt
+								hre_country_fulfills_imperial_religion_requirement = { type = voting }
+							}
+						}
 					}
 				}
 			}
 
 			# Already Emperor: heir must be eligible (successor check)
 			AND = {
-				is_leader_of_international_organization = scope:recipient
+				OR = {
+					is_leader_of_international_organization = scope:recipient
+					scope:recipient = {
+						international_organization_has_leader = no
+						exists = last_leader_country
+						last_leader_country ?= root
+					}
+				}
 
 				custom_tooltip = {
 					text = hre_has_eligible_heir_tt
 					AND = {
 						has_heir = yes
 						OR = {
-							has_ruler = no
-							is_leader_of_international_organization = scope:recipient
-						}
-						OR = {
 							heir ?= { is_female = no }
 							scope:recipient = { modifier:hre_allow_female_emperors = yes }
 						}
-						heir ?= { modifier:blocked_from_ruling_the_hre = no }
+						heir ?= {
+							modifier:blocked_from_ruling_the_hre = no
+							custom_tooltip = {
+								text = hre_character_fulfills_imperial_religion_requirement_tt
+								hre_country_fulfills_imperial_religion_requirement = { type = voting }
+							}
+						}
 					}
 				}
 			}
+		}
+		trigger_if = {
+			limit = {
+				exists = union
+				union ?= {
+					has_special_status_available = special_status:senior_partner
+				}
+			}
+			is_junior_partner = no
+		}
+	}
+
+	can_lead_tooltip_trigger = {
+		government_type = government_type:monarchy
+		is_revolutionary = no
+		is_subject = no
+		hre_country_fulfills_imperial_religion_requirement = { type = voting }
+		OR = {
+			# Not currently Emperor: ruler must be eligible
+			AND = {
+				custom_tooltip = {
+					text = hre_eligible_via_ruler_context_tt
+					NOT = { is_leader_of_international_organization = scope:recipient }
+				}
+				custom_tooltip = {
+					text = hre_ruler_not_regency_tt
+					has_regent = no
+				}
+				custom_tooltip = {
+					text = hre_has_ruler_tt
+					has_ruler = yes
+				}
+				custom_tooltip = {
+					text = hre_ruler_gender_eligible_tt
+					OR = {
+						ruler ?= { is_female = no }
+						scope:recipient = { modifier:hre_allow_female_emperors = yes }
+					}
+				}
+				custom_tooltip = {
+					text = hre_ruler_not_blocked_tt
+					ruler ?= { modifier:blocked_from_ruling_the_hre = no }
+				}
+				custom_tooltip = {
+					text = hre_ruler_religion_aligns_tt
+					ruler ?= { hre_country_fulfills_imperial_religion_requirement = { type = voting } }
+				}
+			}
+
+			# Already Emperor (or last leader): heir must be eligible (successor check)
+			AND = {
+				custom_tooltip = {
+					text = hre_eligible_via_heir_context_tt
+					OR = {
+						is_leader_of_international_organization = scope:recipient
+						scope:recipient = {
+							international_organization_has_leader = no
+							exists = last_leader_country
+							last_leader_country ?= root
+						}
+					}
+				}
+				custom_tooltip = {
+					text = hre_has_heir_tt
+					has_heir = yes
+				}
+				custom_tooltip = {
+					text = hre_heir_gender_eligible_tt
+					OR = {
+						heir ?= { is_female = no }
+						scope:recipient = { modifier:hre_allow_female_emperors = yes }
+					}
+				}
+				custom_tooltip = {
+					text = hre_heir_not_blocked_tt
+					heir ?= { modifier:blocked_from_ruling_the_hre = no }
+				}
+				custom_tooltip = {
+					text = hre_heir_religion_aligns_tt
+					heir ?= { hre_country_fulfills_imperial_religion_requirement = { type = voting } }
+				}
+			}
+		}
+		trigger_if = {
+			limit = {
+				exists = union
+				union ?= {
+					has_special_status_available = special_status:senior_partner
+				}
+			}
+			is_junior_partner = no
 		}
 	}
 	
@@ -327,7 +459,7 @@
 					}
 				}
 				ordered_international_organization_member = {
-					order_by = great_power_score
+					order_by = country_economical_base
 					limit = { can_lead_international_organization = root }
 					max = 1
 					check_range_bounds = no
@@ -336,6 +468,111 @@
 				if = {
 					limit = { exists = scope:new_leader }
 					set_leader_country = scope:new_leader
+				}
+				# ---- Imperial Circles monthly checks ----
+				if = {
+					limit = { circles_are_active = yes }
+
+					# .1 — Notify Emperor exactly once when circles first lock
+					if = {
+						limit = {
+							NOT = { has_variable = circles_established_notified }
+							international_organization_has_leader = yes
+						}
+						set_variable = circles_established_notified
+						leader_country ?= {
+							trigger_event_non_silently = imperial_circles.1
+						}
+					}
+
+					leader_country ?= {
+						save_scope_as = hre_emperor_scope
+					}
+
+					# .11 / .12 — Fire to each circle leader when satisfaction is critically low
+					every_imperial_circle = {
+						limit = {
+							has_circle_leader = yes
+							NOT = { is_dormant_imperial_circle = yes }
+						}
+						circle_leader ?= {
+							if = {
+								limit = {
+									any_imperial_circle_country_is_member_of = {
+										imperial_circle_satisfaction < 15
+									}
+									NOT = { has_variable = circle_critical_satisfaction_cooldown }
+								}
+								set_variable = { name = circle_critical_satisfaction_cooldown months = 6 }
+								trigger_event_non_silently = imperial_circles.12
+							}
+							else_if = {
+								limit = {
+									any_imperial_circle_country_is_member_of = {
+										imperial_circle_satisfaction < 30
+									}
+									NOT = { has_variable = circle_low_satisfaction_cooldown }
+								}
+								set_variable = { name = circle_low_satisfaction_cooldown months = 6 }
+								trigger_event_non_silently = imperial_circles.11
+							}
+						}
+					}
+
+					# Depose extraterritorial circle leaders: a country_type = building entity (e.g. a banking
+					# country such as the Bank of Peruzzi) farms prestige from the threatening_enemies modifier
+					# while permanently weak, pinning itself to the prestige cap and becoming an unbeatable
+					# leader. Clear it so a settled country is elected in the .70 / .71 pass below.
+					every_imperial_circle = {
+						limit = {
+							has_circle_leader = yes
+							NOT = { is_dormant_imperial_circle = yes }
+							circle_leader ?= {
+								OR = {
+									country_type = building
+									is_subject = yes
+								}
+							}
+						}
+						clear_circle_leader = { }
+					}
+
+					# .70 / .71 — Handle leaderless circles: auto-elect or notify Emperor
+					every_imperial_circle = {
+						limit = {
+							NOT = { has_circle_leader = yes }
+							NOT = { is_dormant_imperial_circle = yes }
+						}
+						ordered_circle_member = {
+							limit = {
+								NOT = { country_type = building }
+								is_subject = no
+							}
+							order_by = prestige
+							max = 1
+							check_range_bounds = no
+							save_scope_as = new_circle_leader
+						}
+						if = {
+							limit = { exists = scope:new_circle_leader }
+							set_circle_leader = scope:new_circle_leader
+							scope:new_circle_leader = {
+								trigger_event_non_silently = imperial_circles.70
+							}
+						}
+						else_if = {
+							limit = {
+								exists = scope:hre_emperor_scope
+								scope:hre_emperor_scope = {
+									NOT = { has_variable = circle_no_leader_cooldown }
+								}
+							}
+							scope:hre_emperor_scope = {
+								set_variable = { name = circle_no_leader_cooldown months = 12 }
+								trigger_event_non_silently = imperial_circles.71
+							}
+						}
+					}
 				}
 			}
 		}
@@ -569,21 +806,11 @@
 						# Emperor Abilities
 						add = {
 							desc = "EMPEROR_ABILITIES"
-							add = {
-								value = "leader_country.ruler_or_heir_if_regent.adm"
-								subtract = 50
-								multiply = 0.001
-							}
-							add = {
-								value = "leader_country.ruler_or_heir_if_regent.dip"
-								subtract = 50
-								multiply = 0.001
-							}
-							add = {
-								value = "leader_country.ruler_or_heir_if_regent.mil"
-								subtract = 50
-								multiply = 0.001
-							}
+							value = "leader_country.ruler_or_heir_if_regent.adm"
+							add = "leader_country.ruler_or_heir_if_regent.dip"
+							add = "leader_country.ruler_or_heir_if_regent.mil"
+							subtract = 150
+							multiply = 0.001
 						}
 						#monthly bonus from modifiers
 						add = {
@@ -618,6 +845,12 @@
 		imperial_prince
 		imperial_peasant_republic
 		italia_state
+	}
+
+	# Put the opinion component here such that AI can understand that improving opinion will make it easier to invite people which doenst work in ai_desire_to_join
+	join_diplo_chance = {
+		opinion = 0.25
+		base = -10
 	}
 
 	ai_desire_to_join = {
@@ -713,6 +946,18 @@
 				desc = "IS_AT_WAR"
 				value = 1000
 			}
+		}
+		if = {
+			limit = {
+				country_rank_is_kingdom = yes
+			}
+			subtract = 250
+		}
+		if = {
+			limit = {
+				country_rank_is_empire = yes
+			}
+			subtract = 250
 		}
 	}
 	
@@ -816,64 +1061,81 @@
 				value = 1000
 			}
 		}
+		if = {
+			limit = {
+				country_rank_is_kingdom = yes
+			}
+			subtract = 250
+		}
+		if = {
+			limit = {
+				country_rank_is_empire = yes
+			}
+			subtract = 250
+		}
 	}
 	
-	ai_issue_voting_bias = {		
-		#passing policies is what makes the empire great, so if the leader can enact one, they will
+	ai_issue_voting_bias = {
+		# HRE members lean toward the Emperor's pick when they like the Emperor
+		# and Imperial Authority is high. Bias must apply to one candidate at a
+		# time (the proposed one) so the predicted-vote tooltip and the live AI
+		# vote agree, instead of canceling across all candidates during preview.
 		add = {
-			desc = "POLICY_BIAS_LEADER_ALWAYS_WANTS"
+			desc = "POLICY_BIAS_VOTE_WITH_EMPEROR"
 			if = {
 				limit = {
+					exists = scope:vote
 					scope:recipient = {
-						leader_country ?= scope:actor
+						international_organization_has_leader = yes
 					}
-				}
-				#this should end up with 20 for yes and -20 for no from the leader
-				if = {
-					limit = {
-						is_set = scope:vote
-					}
-					value = 1
-				}
-				else = {
-					value = -1
-				}
-				multiply = 20
-			}
-		}
-		
-		#opinion of leader
-		add = {
-			desc = "POLICY_BIAS_OPINION_OF_EMPEROR"
-			if = {
-				limit = { not = { scope:actor = scope:recipient.leader_country } }
-				scope:recipient = {
-					leader_country = {
-						if = {
-							limit = {
-								is_set = scope:vote
-							}
-							value = 1
-						}
-						else = {
-							value = -1
-						}
-						multiply = {
-							scope:actor = {
-								value = this_opinion_of_prev
+					not = { scope:actor = scope:recipient.leader_country }
+					OR = {
+						AND = {
+							exists = scope:previewed_vote
+							scope:previewed_vote = scope:vote
+							scope:recipient = {
+								NOT = { international_organization_has_policy = scope:previewed_vote }
 							}
 						}
-						multiply = 0.1 
+						scope:recipient = {
+							has_variable = io_law_target
+							var:io_law_target = scope:vote
+						}
 					}
+				}
+				value = {
+					value = "scope:actor.opinion(scope:recipient.leader_country)"
+					min = 0
+					divide = 100
+					multiply = scope:recipient.var:imperial_authority
+					divide = 100
+					multiply = hre_emperor_alignment_vote_bias_weight
 				}
 			}
 		}
-		#Emperor modifiers
-		add = {
-			desc = "MODIFIER_TYPE_NAME_reasons_to_vote"
-			if = {
-				limit = { not = { scope:actor = scope:recipient.leader_country } }
-				value = scope:recipient.leader_country.modifier:reasons_to_vote
+	}
+
+	ai_desire_to_attack_other_members = {
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						is_leader_of_international_organization = scope:recipient
+						NOT = {
+							has_casus_belli_of_type_on = {
+								type = casus_belli:cb_religious_superiority	#at least in case they can start the Religious Wars they should do THAT
+								target = scope:defender
+							}
+						}
+					}
+					NOT = { has_casus_belli_on = scope:defender }	#Basically makes the AI declare no no-cb wars within the HRE
+				}
+			}
+			subtract = {
+				desc = "NO_APROPRIATE_CASUS_BELLI"
+				value = "conquer_desire(scope:defender)"
+				max = 0
+				subtract = 10000
 			}
 		}
 	}

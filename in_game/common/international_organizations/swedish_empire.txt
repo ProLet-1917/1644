@@ -36,7 +36,6 @@ swedish_empire = { #svenska stormaktstiden https://en.wikipedia.org/wiki/Swedish
     }
 
     leader_modifier = {
-        great_power_score = 100
         cannot_be_subjugated = yes
     }
 
@@ -138,6 +137,18 @@ swedish_empire = { #svenska stormaktstiden https://en.wikipedia.org/wiki/Swedish
             desc = "game_concept_tax_base"
             value = country_tax_base
             multiply = 0.25
+        }
+        if = {
+            limit = {
+                OR = {
+                    country_rank = country_rank:rank_kingdom
+                    country_rank = country_rank:rank_empire
+                }
+            }
+            subtract = {
+                desc = "powerful"
+                value = 200
+            }
         }
     }
 

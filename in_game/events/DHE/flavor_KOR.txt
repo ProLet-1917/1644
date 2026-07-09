@@ -1,5 +1,157 @@
-﻿# Empty override file
-# Original file: events\DHE\flavor_KOR.txt
-# This file disables all events from the original file
+﻿namespace = flavor_kor
 
-namespace = flavor_kor
+# Veritable Records of the Joseon Dynasty
+flavor_kor.29 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_kor.29.title
+	desc = flavor_kor.29.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = JOE
+		from = 1644.1.1
+		to = 1910.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		custom_tooltip = {
+			text = is_joseon_dynasty_tt
+			is_joseon_dynasty = yes
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+		ordered_artist = {
+			limit = {
+				artist_type = writer
+			}
+			save_scope_as = target_artist #only for the illustration
+		}
+	}
+
+	option = {
+		name = flavor_kor.29.a
+
+		historical_option = yes
+
+		ai_chance = {
+			factor = 0.8
+		}
+
+		add_country_modifier = {
+			mode = add_and_extend
+			modifier = kor_veritable_record_maintenance
+			years = 25
+		}
+		capital = {
+			create_art = {
+				key = veritable_records_of_joseon
+				quality = 80
+				type = work_of_art_type:chronicle
+			}
+		}
+	}
+
+	option = {
+		name = flavor_kor.29.b
+
+		ai_chance = {
+			factor = 0.2
+			modifier = {
+				factor = 0
+				OR = {
+					prestige <= 25
+					government_power <= 50
+				}
+			}
+		}
+
+		add_prestige = prestige_mild_penalty
+		add_government_power = government_power_extreme_penalty
+	}
+}
+
+# Cloud Dream of Nine
+flavor_kor.35 = {
+	type = country_event
+	title = flavor_kor.35.title
+	desc = flavor_kor.35.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = JOE
+		from = 1670.1.1
+		to = 1720.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	trigger = {
+		any_artist = {
+			artist_type = writer
+			artist_skill >= 0.1
+		}
+		has_advance = kor_hangeul_alphabet
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		random_artist = {
+			limit = {
+				artist_type = writer
+				artist_skill >= 0.1
+			}
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_kor.35.a
+
+		ai_chance = {
+			factor = 0.8
+		}
+
+		culture = {
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+		capital = {
+			create_work_of_art_with_artist_input = {
+				artist = scope:target_character
+				base_quality = 0.5
+				key = kor_cloud_dream_of_nine
+				type = work_of_art_type:novel
+			}
+		}
+	}
+
+	option = {
+		name = flavor_kor.35.b
+
+		ai_chance = {
+			factor = 0.2
+		}
+
+		add_prestige = prestige_mild_penalty
+		scope:target_character = {
+			add_artist_skill = -0.1
+		}
+		culture = {
+			add_cultural_tradition = cultural_tradition_extreme_bonus
+		}
+	}
+}

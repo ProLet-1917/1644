@@ -1,0 +1,1443 @@
+﻿namespace = flavor_ven
+
+flavor_ven.15 = {
+	type = country_event
+	title = flavor_ven.15.title
+	desc = flavor_ven.15.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1730.1.1
+		to = 1770.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		location:venice = {
+			has_location_modifier = ven_murano_glass_industry
+			owner = ROOT
+		}
+	}
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_glass.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_joseph
+			last_name = Briati
+			birth_date = 1686.1.8
+			culture = culture:venetian
+			birth_location = location:venice
+			estate = estate_type:burghers_estate
+			script = giuseppe_briati_character
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		character:giuseppe_briati_character = {
+			set_to_limited_random_stats = {
+				max_adm = 75
+				min_adm = 5
+				max_dip = 61
+				min_dip = 2
+				max_mil = 15
+				min_mil = 0
+			}
+		}
+		location:venice = { save_scope_as = target_location }
+	}
+
+	option = {
+		name = flavor_ven.15.a
+		add_prestige = prestige_mild_bonus
+
+		scope:target_character = { move_country = root }
+		location:venice = {
+			change_prosperity = prosperity_weak_bonus
+			change_development = development_weak_bonus
+		}
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_minor_move_to_left }
+	}
+
+	option = {
+		name = flavor_ven.15.b
+		scope:target_character = { move_country = root }
+		add_government_power = government_power_mild_bonus
+		add_stability = stability_weak_bonus
+	}
+}
+
+flavor_ven.23 = { #The Infestation of Venice
+	type = country_event
+	title = flavor_ven.23.title
+	desc = flavor_ven.23.desc
+	outcome = neutral
+
+	trigger = {
+		country_has_disease = disease:influenza
+		owns = location:venice
+		location:venice = {
+			"disease_resistance(disease:influenza)" < 0.5
+		}
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+	}
+
+	option = {
+		name = flavor_ven.23.a
+		change_gold_effect = { scale = -12 }
+		random_list = {
+			20 = {
+				location:venice = {
+					set_disease_presence = {
+						disease_outbreak = disease:influenza.original_outbreak
+						value = 0.5
+					}
+				}
+			}
+			80 = { }
+		}
+	}
+
+	option = {
+		name = flavor_ven.23.b
+		add_stability = stability_severe_penalty
+		location:venice = {
+			every_pop = {
+				limit = {
+					owner = root
+				}
+				add_pop_satisfaction = pop_satisfaction_extreme_penalty
+			}
+			province = {
+				change_province_food = -50
+			}
+		}
+		location:venice = {
+			set_disease_presence = {
+				disease_outbreak = disease:influenza.original_outbreak
+				value = 0.5
+			}
+		}
+	}
+}
+
+flavor_ven.25 = { #Fall of Constantinople
+	type = country_event
+	title = flavor_ven.25.title
+	desc = flavor_ven.25.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 50
+	}
+	
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		location:constantinople = {
+			save_scope_as = target_location
+		}
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+	}
+
+	trigger = {
+		owns = location:constantinople
+	}
+
+
+	option = {
+		name = flavor_ven.25.a
+		change_gold_effect = { scale = 6 }
+		location:constantinople = {
+			change_prosperity = prosperity_extreme_penalty
+			every_pop = {
+				limit = {
+					owner = root
+				}
+				add_pop_satisfaction = pop_satisfaction_extreme_penalty
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ven.25.b
+		custom_tooltip = {
+			text = flavor_ven.25.b.tt
+			location:constantinople = {
+				remove_core = root
+				add_core = c:LAT
+			}
+			create_country_from_cores_in_our_locations = c:LAT
+			c:LAT = {
+				make_subject_of = { target = root type = subject_type:vassal }
+				change_religion = religion:catholic
+				change_religion_for_ruler_and_family = { country = c:LAT religion = religion:catholic }
+				change_government_type = government_type:monarchy
+				every_owned_location = { add_core = c:LAT }
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ven.25.c
+		custom_tooltip = {
+			text = flavor_ven.25.c.tt
+			every_owned_location = {
+				limit = {
+					area = area:thrace_area
+				}
+				remove_core = root
+				add_core = c:LAT
+			}
+			create_country_from_cores_in_our_locations = c:LAT
+			c:LAT = {
+				make_subject_of = { target = root type = subject_type:vassal }
+				change_religion = religion:catholic
+				change_religion_for_ruler_and_family = { country = c:LAT religion = religion:catholic }
+				change_government_type = government_type:monarchy
+				every_owned_location = { add_core = c:LAT }
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ven.25.d
+		add_prestige = prestige_extreme_bonus
+	}
+}
+
+flavor_ven.26 = { #Liberation of Jerusalem
+	type = country_event
+	title = flavor_ven.26.title
+	desc = flavor_ven.26.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 50
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:nobles_estate }
+		location:jerusalem = {
+			save_scope_as = target_location
+		}
+	}
+
+	trigger = {
+		owns = location:jerusalem
+	}
+
+	option = {
+		name = flavor_ven.26.a
+		add_prestige = prestige_extreme_bonus
+		add_religious_influence_if_valid = { VALUE = religious_influence_extreme_bonus }
+	}
+
+	option = {
+		name = flavor_ven.26.b
+		custom_tooltip = {
+			text = flavor_ven.26.b.tt
+			location:jerusalem = {
+				remove_core = root
+				add_core = c:KOJ
+			}
+			create_country_from_cores_in_our_locations = c:KOJ
+			c:KOJ = {
+				change_religion = religion:catholic
+				change_religion_for_ruler_and_family = { country = c:KOJ religion = religion:catholic }
+				change_government_type = government_type:monarchy
+				every_owned_location = { add_core = c:KOJ }
+				make_subject_of = { target = root type = subject_type:vassal }
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ven.26.c
+		custom_tooltip = {
+			text = flavor_ven.26.c.tt
+			every_owned_location = {
+				limit = {
+					area = area:levant_area
+				}
+				remove_core = root
+				add_core = c:KOJ
+			}
+			create_country_from_cores_in_our_locations = c:KOJ
+			c:KOJ = {
+				change_religion = religion:catholic
+				change_religion_for_ruler_and_family = { country = c:KOJ religion = religion:catholic }
+				change_government_type = government_type:monarchy
+				every_owned_location = { add_core = c:KOJ }
+				make_subject_of = { target = root type = subject_type:vassal }
+			}
+		}
+	}
+}
+
+flavor_ven.30 = { #Mediterranean Naval Superpower
+	hide_portraits = yes
+	type = country_event
+	title = flavor_ven.30.title
+	desc = flavor_ven.30.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 10
+	}
+
+	image = "gfx/interface/illustrations/units/navy_heavy_ship_3.dds"
+
+	trigger = {
+		has_ruler = yes
+		region:balkan_region = {
+			NOT = {
+				any_present_country = {
+					navy_size > root.navy_size
+				}
+			}
+		}
+		region:italy_region = {
+			NOT = {
+				any_country_with_capital_in_geography = {
+					navy_size > root.navy_size
+				}
+			}
+		}
+		region:egypt_region = {
+			NOT = {
+				any_country_with_capital_in_geography = {
+					navy_size > root.navy_size
+				}
+			}
+		}
+		region:maghreb_region = {
+			NOT = {
+				any_country_with_capital_in_geography = {
+					navy_size > root.navy_size
+				}
+			}
+		}
+		area:catalonia_area = {
+			NOT = {
+				any_country_with_capital_in_geography = {
+					navy_size > root.navy_size
+				}
+			}
+		}
+	}
+
+	immediate = {
+		ruler = {
+			save_scope_as = target_ruler
+		}
+	}
+
+	option = {
+		name = flavor_ven.30.a
+		add_navy_tradition = navy_tradition_extreme_bonus
+		add_country_modifier = {
+			modifier = ven_mare_nostrum
+			years = 25
+			mode = add_and_extend
+		}
+
+		scope:target_ruler = {
+			add_adm = { 10 20 }
+			add_dip = { 10 20 }
+			add_mil = { 10 20 }
+		}
+	}
+}
+
+flavor_ven.36 = { # The Golden Republic
+	type = country_event
+	title = flavor_ven.36.title
+	desc = flavor_ven.36.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		government_type = government_type:republic
+		country_rank = country_rank:rank_empire
+	}
+
+	illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_ven.36.a
+		add_prestige = prestige_mild_bonus
+	}
+
+	option = {
+		name = flavor_ven.36.b
+		add_prestige = prestige_mild_bonus
+		custom_tooltip = flavor_ven.36.b.tt
+		hidden_effect = {
+			change_country_color = map_venice_orange #Orange from the Venetian Flag
+		}
+	}
+
+	option = {
+		name = flavor_ven.36.c
+		add_prestige = prestige_mild_bonus
+		custom_tooltip = flavor_ven.36.c.tt
+		hidden_effect = {
+			change_country_color = map_venice_purple #EU4 La Serenissima Color
+		}
+	}
+}
+
+flavor_ven.38 = { #The Loredanian Academy
+	type = country_event
+	title = flavor_ven.38.title
+	desc = flavor_ven.38.desc
+	outcome = neutral
+	fire_only_once = yes
+
+	historical_info = flavor_ven.38.historical_info
+
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		owns = location:venice
+		location:venice = {
+			has_building = building_type:university
+			OR = {
+				location_rank = location_rank:town
+				location_rank = location_rank:city
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+
+	option = {
+		name = flavor_ven.38.a
+		historical_option = yes
+		change_gold_effect = { scale = -12 }
+		add_research_progress = research_progress_mild_bonus
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+	}
+
+	option = {
+		name = flavor_ven.38.b
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+flavor_ven.40 = { #Fall of Genoa
+	type = country_event
+	title = flavor_ven.40.title
+	desc = flavor_ven.40.desc
+	outcome = neutral
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 10
+	}
+
+	illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	trigger = {
+		owns = location:genoa
+	}
+
+	option = {
+		name = flavor_ven.40.a
+		change_gold_effect = { scale = 6 }
+		capital = {
+			market = {
+				add_merchant_power = {
+					country = root
+					power = merchant_power_mild_bonus
+					months = 125
+					key = affluent_merchants
+				}
+			}
+		}
+	}
+}
+
+flavor_ven.43 = { #Lorenzo Marcello
+	type = country_event
+	title = flavor_ven.43.title
+	desc = flavor_ven.43.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_ven.43.historical_info
+
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1644.1.1
+		to = 1660.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		owns = location:venice
+	}
+
+	image = "gfx/interface/illustrations/units/navy_heavy_ship_3.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_laurence
+			birth_date = 1603.4.5
+			birth_location = location:venice
+			estate = estate_type:nobles_estate
+			adm = { 20 70 }
+			dip = { 20 70 }
+			mil = { 20 70 }
+			artist_skill = 0.78
+			dynasty = dynasty:marcello_dynasty
+			culture = culture:venetian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_ven.43.a
+		add_navy_tradition = navy_tradition_mild_bonus
+		scope:target_character = {
+			move_country = root
+			add_random_trait_from_category = admiral
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ven.43.b
+		add_prestige = prestige_mild_bonus
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_ven.68 = { #Antonio Vivaldi
+	type = country_event
+	title = flavor_ven.68.title
+	desc = flavor_ven.68.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_ven.68.historical_info
+
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1715.1.1
+		to = 1740.1.1
+		monthly_chance = 1
+	}
+
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_anthony
+			last_name = Vivaldi
+			birth_date = 1678.3.4
+			birth_location = location:venice
+			estate = estate_type:burghers_estate
+			adm = { 20 70 }
+			dip = { 20 70 }
+			mil = { 20 70 }
+			artist_skill = 0.95
+			culture = culture:venetian
+			artist = composer
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_ven.68.a
+
+		scope:target_character = {
+			move_country = root
+			add_trait = trait:prominent
+		}
+	}
+}
+
+flavor_ven.70 = { #Benedetto Marcello
+	type = country_event
+	title = flavor_ven.70.title
+	desc = flavor_ven.70.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_ven.70.historical_info
+
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1715.1.1
+		to = 1730.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		owns = location:venice
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		
+		create_character = {
+			first_name = name_benedict
+			birth_date = 1686.8.1
+			birth_location = location:venice
+			estate = estate_type:nobles_estate
+			adm = { 20 70 }
+			dip = { 20 70 }
+			mil = { 20 70 }
+			artist_skill = 0.78
+			dynasty = dynasty:marcello_dynasty
+			culture = culture:venetian
+			save_scope_as = target_character
+			create_in_limbo = yes
+			artist = composer
+		}
+	}
+
+	option = {
+		name = flavor_ven.70.a
+		scope:target_character = {
+			move_country = root
+		}
+	}
+
+	option = {
+		name = flavor_ven.70.b
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_ven.73 = { # The Banco del Giro
+	type = country_event
+	title = flavor_ven.73.title
+	desc = flavor_ven.73.desc
+	outcome = neutral
+	historical_info = flavor_ven.73.historical_info
+	fire_only_once = yes
+
+	major = yes
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		owns = location:venice
+		has_embraced_institution = institution:banking
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		location:venice = {
+			save_scope_as = banco_giro_hq
+		}
+
+		scope:banco_giro_hq = {
+			create_building_country_in_location = {
+				name = {
+					name = BANCO_DEL_GIRO
+				}
+				reforms = {
+					banking_country
+				}
+				save_scope_as = banco_giro_tag
+
+				hidden_effect = {
+					change_country_flag = BANCO_DEL_GIRO
+					define_unique_country_tag = BGIRO
+					change_heir_selection = heir_selection:bank_selection
+					change_government_type = government_type:republic
+				}
+			}
+			scope:banco_giro_hq = {
+				change_building_level_in_location = {
+					building = building_type:banking_office
+					value = 1
+					owner = scope:banco_giro_tag
+				}
+			}
+		}
+		set_local_variable = {
+			name = amount_of_gold_for_banco_giro
+			value = { 250 500 }
+		}
+	}
+
+	option = {
+		name = flavor_ven.73.a
+
+		historical_option = yes
+
+		show_as_tooltip = {
+			scope:banco_giro_hq = {
+				change_building_level_in_location = {
+					building = building_type:banking_office
+					value = 1
+					owner = scope:banco_giro_tag
+				}
+			}
+		}
+		scope:banco_giro_tag = {
+			make_subject_of = {
+				target = ROOT
+				type = subject_type:state_bank
+			}
+		}
+		change_gold_effect = { scale = 2 }
+	}
+
+	option = {
+		name = flavor_ven.73.b
+		high_risk_option = yes
+
+		show_as_tooltip = {
+			scope:banco_giro_hq = {
+				change_building_level_in_location = {
+					building = building_type:banking_office
+					value = 1
+					owner = scope:banco_giro_tag
+				}
+			}
+		}
+		scope:banco_giro_tag = {
+			make_subject_of = {
+				target = ROOT
+				type = subject_type:state_bank
+			}
+		}
+		change_gold_effect = { scale = 2 }
+
+		change_player = scope:banco_giro_tag
+	}
+
+	after = {
+		scope:banco_giro_tag = {
+			trigger_event_non_silently = flavor_ven.732
+		}
+	}
+}
+
+
+flavor_ven.732 = { # Starting Event for The Banco del Giro
+	type = country_event
+	title = flavor_ven.732.title
+	desc = flavor_ven.732.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_ven.732.a
+
+		add_gold = local_var:amount_of_gold_for_banco_giro
+	}
+}
+
+flavor_ven.79 = { #A Foothold in Cyprus
+	type = country_event
+	title = flavor_ven.79.title
+	desc = flavor_ven.79.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		own_entire_province = province_definition:cyprus_province
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_ven.79.a
+		trigger = {
+			NOT = {
+				owns = location:alexandria
+			}
+		}
+		add_casus_belli = { target = location:alexandria.owner type = casus_belli:cb_conquer_province province = location:alexandria.province }
+	}
+
+	option = {
+		name = flavor_ven.79.b
+		trigger = {
+			NOT = {
+				owns = location:jerusalem
+			}
+		}
+		add_casus_belli = { target = location:jerusalem.owner type = casus_belli:cb_conquer_province province = location:jerusalem.province }
+	}
+
+	option = {
+		name = flavor_ven.79.c
+		trigger = {
+			NOT = {
+				owns = location:antioch
+			}
+		}
+		add_casus_belli = { target = location:antioch.owner type = casus_belli:cb_conquer_province province = location:antioch.province }
+	}
+
+	option = {
+		name = flavor_ven.79.d
+		province_definition:cyprus_province = {
+			every_location_in_province_definition = {
+				change_control = control_mild_bonus
+			}
+		}
+	}
+}
+
+flavor_ven.87 = { #A Scholar Against All Odds
+	type = country_event
+	title = flavor_ven.87.title
+	desc = flavor_ven.87.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_ven.87.historical_info
+
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1675.1.1
+		to = 1690.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:venice
+		owns = location:padova
+		location:padova = {
+			has_building = building_type:university
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		
+		create_character = {
+			first_name = name_helen.name_lucrece
+			birth_date = 1646.6.5
+			birth_location = location:venice
+			estate = estate_type:nobles_estate
+			female = yes
+			adm = { 60 80 }
+			dip = { 60 80 }
+			mil = { 10 20 }
+			dynasty = dynasty:cornaro_piscopia_dynasty
+			culture = culture:venetian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_ven.87.a
+		historical_option = yes
+		add_republican_tradition = republican_tradition_mild_bonus
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+
+	option = {
+		name = flavor_ven.87.b
+		add_republican_tradition = republican_tradition_mild_penalty
+		scope:target_character = {
+			move_country = root
+		}
+	}
+}
+
+flavor_ven.90 = {
+	#Nicolò Minato
+	type = country_event
+	title = flavor_ven.90.title
+	desc = flavor_ven.90.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_ven.90.historical_info
+
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1650.1.1
+		to = 1670.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		location:venice = {
+			has_building = building_type:opera_house
+		}
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		create_character = {
+			first_name = name_nicholas
+			last_name = Minato
+			birth_date = 1627.1.1
+			culture = culture:lombard
+			birth_location = location:bergamo
+			save_scope_as = target_character
+			estate = estate_type:burghers_estate
+			artist = composer
+			artist_skill = 0.85
+			add_trait = trait:meticulous
+		}
+	}
+
+	option = {
+		name = flavor_ven.90.a
+		historical_option = yes
+		change_gold_effect = { scale = -3 }
+		culture = {
+			add_cultural_influence = cultural_influence_weak_bonus
+			add_cultural_tradition = cultural_tradition_weak_bonus
+		}
+		scope:target_character = {
+			move_country = root
+		}
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_penalty
+		}
+	}
+
+	option = {
+		name = flavor_ven.90.b
+		culture = {
+			add_cultural_influence = cultural_influence_weak_penalty
+			add_cultural_tradition = cultural_tradition_weak_penalty
+		}
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_bonus
+		}
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+	}
+}
+
+flavor_ven.94 = { #The Coffeehouse Controversy
+	type = country_event
+	title = flavor_ven.94.title
+	desc = flavor_ven.94.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_ven.94.historical_info
+
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1750.1.1
+		to = 1850.1.1
+		monthly_chance = 1
+	}
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_cocoa.dds"
+
+	trigger = {
+		exists = capital
+		capital.market ?= {
+			is_traded_in_market = goods:coffee
+		}
+		owns = location:venice
+	}
+
+	option = {
+		name = flavor_ven.94.a
+		historical_option = yes
+		location:venice = {
+			change_prosperity = prosperity_mild_penalty
+		}
+		add_estate_satisfaction = { type = estate_type:burghers_estate
+			value = estate_satisfaction_severe_penalty
+		}
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_severe_bonus
+		}
+		add_estate_satisfaction = { type = estate_type:nobles_estate
+			value = estate_satisfaction_severe_bonus
+		}
+		capital.market = {
+			add_temporary_demand = {
+				type = demand:ven_coffeehouses_banned
+				years = 10
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ven.94.b
+		location:venice = {
+			change_prosperity = prosperity_mild_bonus
+		}
+		add_estate_satisfaction = { type = estate_type:burghers_estate
+			value = estate_satisfaction_severe_bonus
+		}
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_severe_penalty
+		}
+		add_estate_satisfaction = { type = estate_type:nobles_estate
+			value = estate_satisfaction_severe_penalty
+		}
+	}
+}
+
+flavor_ven.95 = { #An Expedition to Dalmatia
+	type = country_event
+	title = flavor_ven.95.title
+	desc = flavor_ven.95.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_ven.95.historical_info
+
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1770.1.1
+		to = 1790.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		"culture_percentage_in_country(culture:croatian)" > 0
+		province_definition:north_dalmatia_province = {
+			any_location_in_province_definition = {
+				has_owner = yes
+				owner = ROOT
+			}
+		}
+	}
+
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_albert
+			last_name = Fortis
+			birth_date = 1741.11.11
+			culture = culture:venetian
+			birth_location = location:padova
+			save_scope_as = target_character
+			estate = estate_type:burghers_estate
+			adm = { 50 75 }
+			dip = { 50 75 }
+			mil = { 20 40 }
+			create_in_limbo = yes
+		}
+		province:north_dalmatia_province = {
+			random_location_in_province = {
+				ordered_pop = {
+					max = 1
+					order_by = pop_size
+					limit = {
+						pop_type = pop_type:peasants
+					}
+					save_scope_as = target_pop
+					save_scope_as = target_pop_bckg
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ven.95.a
+		historical_option = yes
+		change_gold_effect = { scale = -3 }
+		scope:target_character = {
+			move_country = root
+		}
+		add_research_progress = research_progress_mild_bonus
+		culture:croatian = {
+			change_cultural_view = {
+				target = root.culture
+				change = 1
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ven.95.b
+		add_research_progress = research_progress_mild_penalty
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_ven.96 = { #The Exhibition of Rosalba Carriera
+	type = country_event
+	title = flavor_ven.96.title
+	desc = flavor_ven.96.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_ven.96.historical_info
+
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1700.1.1
+		to = 1720.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		owns = location:venice
+	}
+
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+
+	immediate = {
+
+		location:venice = {
+			save_scope_as = target_location
+		}
+		create_character = {
+			first_name = name_rosalba
+			last_name = Carriera
+			birth_date = 1673.1.12
+			culture = culture:venetian
+			birth_location = location:venice
+			save_scope_as = target_character
+			estate = estate_type:burghers_estate
+			female = yes
+			artist_skill = 0.8
+			create_in_limbo = yes
+
+			artist = painter
+		}
+	}
+
+	option = {
+		name = flavor_ven.96.a
+		historical_option = yes
+		scope:target_character = {
+			move_country = root
+		}
+		add_republican_tradition = republican_tradition_mild_penalty
+		add_prestige = prestige_mild_bonus
+	}
+
+	option = {
+		name = flavor_ven.96.b
+		add_republican_tradition = republican_tradition_mild_bonus
+		add_prestige = prestige_mild_penalty
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_ven.97 = { #The Suppression of the Ridotto
+	type = country_event
+	title = flavor_ven.97.title
+	desc = flavor_ven.97.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_ven.97.historical_info
+
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1700.1.1
+		to = 1720.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	trigger = {
+		owns = location:venice
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_ven.97.a
+		historical_option = yes
+		add_stability = stability_weak_bonus
+		change_gold_effect = { scale = 3 }
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_severe_penalty
+		}
+		add_estate_satisfaction = {
+			type = estate_type:burghers_estate
+			value = estate_satisfaction_severe_penalty
+		}
+	}
+
+	option = {
+		name = flavor_ven.97.b
+		add_stability = stability_weak_penalty
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_weak_bonus
+		}
+		"estate(estate_type:nobles_estate)" = {
+			estate_add_gold = {
+				value = {
+					add = root.monthly_income_total
+					multiply = -2
+				}
+			}
+		}
+		add_estate_satisfaction = {
+			type = estate_type:burghers_estate
+			value = estate_satisfaction_weak_bonus
+		}
+		"estate(estate_type:burghers_estate)" = {
+			estate_add_gold = {
+				value = {
+					add = root.monthly_income_total
+					multiply = -2
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ven.97.c
+		add_stability = stability_severe_penalty
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_severe_bonus
+		}
+		"estate(estate_type:nobles_estate)" = {
+			estate_add_gold = {
+				value = {
+					add = root.monthly_income_total
+					multiply = -4
+				}
+			}
+		}
+		add_estate_satisfaction = {
+			type = estate_type:burghers_estate
+			value = estate_satisfaction_severe_bonus
+		}
+		"estate(estate_type:burghers_estate)" = {
+			estate_add_gold = {
+				value = {
+					add = root.monthly_income_total
+					multiply = -4
+				}
+			}
+		}
+	}
+}
+
+flavor_ven.100 = { #The Inventions of Tito Livio Burattini
+	type = country_event
+	title = flavor_ven.100.title
+	desc = flavor_ven.100.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_ven.98.historical_info
+
+	dynamic_historical_event = {
+		tag = VEN
+		from = 1645.1.1
+		to = 1670.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		owns = location:belluno
+	}
+
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_titus.name_livius
+			last_name = Burattini
+			birth_date = 1617.3.8
+			culture = culture:venetian
+			birth_location = location:belluno
+			save_scope_as = target_character
+			estate = estate_type:burghers_estate
+			artist_skill = { 0.8 1 }
+			create_in_limbo = yes
+
+			artist = scientist
+		}
+		location:belluno = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_ven.100.a
+		historical_option = yes
+		change_gold_effect = { scale = -5 }
+		scope:target_character = {
+			move_country = root
+		}
+		add_research_progress = research_progress_severe_bonus
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_large_move_to_right }
+	}
+
+	option = {
+		name = flavor_ven.100.b
+		add_research_progress = research_progress_severe_penalty
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_large_move_to_left }
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+#----------- Chains ----------
+
+

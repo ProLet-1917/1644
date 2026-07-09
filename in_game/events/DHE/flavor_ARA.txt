@@ -1,5 +1,482 @@
-﻿# Empty override file
-# Original file: events\DHE\flavor_ARA.txt
-# This file disables all events from the original file
+﻿namespace = flavor_ara
 
-namespace = flavor_ara
+flavor_ara.7 = { #Baltasar Gracián
+	type = country_event
+	title = flavor_ara.7.title
+	desc = flavor_ara.7.desc
+	outcome = neutral
+	fire_only_once = yes
+	
+	dynamic_historical_event = {
+		tag = ARA
+		from = 1640.1.1
+		to = 1658.1.1
+		monthly_chance = 10
+	}
+
+	historical_info = flavor_ara.7.historical_info
+
+	trigger = {
+		religion = religion:catholic
+		owns = location:tarragona
+		location:tarragona = {
+			has_building = building_type:university
+		}
+	}
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		create_character = {
+			first_name = name_balthazar
+			last_name = Gracian
+			birth_date = 1601.8.1
+			birth_location = location:calatayud
+			estate = estate_type:clergy_estate
+			adm = { 20 70 }
+			dip = { 70 95 }
+			mil = { 10 30 }
+			artist_skill = 0.9
+			culture = culture:aragonese
+			save_scope_as = target_character
+			script = ara_gracian_script
+			create_in_limbo = yes
+
+			artist = writer
+		}
+	}
+
+	option = {
+		name = flavor_ara.7.a
+		historical_option = yes
+        scope:target_character = {
+            move_country = root
+			add_trait = trait:prominent
+		}
+	}
+
+	option = {
+		name = flavor_ara.7.b
+        change_societal_value = { type = spiritualist_vs_humanist value = societal_value_move_to_right }
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_ara.8 = { #Gracián Finishes El Criticón
+	type = country_event
+	title = flavor_ara.8.title
+	desc = flavor_ara.8.desc
+	outcome = neutral
+	fire_only_once = yes
+	historical_info = flavor_ara.8.historical_info
+
+	dynamic_historical_event = {
+		tag = ARA
+		from = 1653.1.1
+		to = 1657.1.1
+		monthly_chance = 10
+	}
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		character:ara_gracian_script ?= { save_scope_as = gracian }
+		random_neighbor_country = {
+			save_scope_as = target_country
+		}
+		location:tarragona = {
+			create_art = {
+				quality = 90
+				artist = scope:gracian
+				type = work_of_art_type:novel
+				key = el_criticon
+			}
+		}
+	}
+
+	trigger = {
+		character:ara_gracian_script ?= { is_alive = yes }
+		owns = location:tarragona
+	}
+
+	option = {
+		name = flavor_ara.8.a
+		historical_option = yes
+		change_gold_effect = { scale = -6 }
+		show_as_tooltip = {
+			location:tarragona = {
+				create_art = {
+					quality = 90
+					artist = scope:gracian
+					type = work_of_art_type:novel
+					key = el_criticon
+				}
+			}
+		}
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_penalty }
+	}
+
+	option = {
+		name = flavor_ara.8.b
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+		if = {
+			limit = {
+				exists = scope:target_country
+			}
+			scope:gracian = {
+				move_country = scope:target_country
+			}
+		}
+		hidden_effect = {
+			destroy_art = work_of_art:el_criticon
+		}
+	}
+}
+
+flavor_ara.11 = { #Repairing the Basilica del Pilar
+	type = country_event
+	title = flavor_ara.11.title
+	desc = flavor_ara.11.desc
+	outcome = neutral
+	fire_only_once = yes
+
+	historical_info = flavor_ara.11.historical_info
+
+	dynamic_historical_event = {
+		tag = ARA
+		from = 1670.1.1
+		to = 1700.1.1
+		monthly_chance = 1
+	}
+	
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+		random_work_of_art = {
+			limit = { this = work_of_art:basilica_pilar }
+			save_scope_as = target_art
+		}
+		ruler = { save_scope_as = target_ruler }
+		create_character = {
+			first_name = name_francis
+			last_name = Herrera
+			birth_date = 1622.2.7
+			birth_location = location:sevilla
+			estate = estate_type:burghers_estate
+			adm = { 20 70 }
+			dip = { 20 70 }
+			mil = { 20 70 }
+			artist_skill = 0.70
+			culture = culture:castilian
+			artist = architect
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	trigger = {
+		owns = location:zaragoza
+		location:zaragoza = {
+			any_work_of_art_in_location = {
+				this = work_of_art:basilica_pilar
+			}
+		}
+		has_ruler = yes
+	}
+
+	option = {
+		name = flavor_ara.11.a
+		historical_option = yes
+		change_gold_effect = { scale = -8 }
+		work_of_art:basilica_pilar = {
+			change_art_quality = 20
+		}
+        scope:target_character = {
+            move_country = root
+		}
+	}
+
+	option = {
+		name = flavor_ara.11.b
+		change_gold_effect = { scale = -4 }
+		work_of_art:basilica_pilar = {
+			change_art_quality = 5
+		}
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+
+	option = {
+		name = flavor_ara.11.c
+		culture:catalan = {
+			add_cultural_tradition = cultural_tradition_severe_penalty
+			add_cultural_influence = cultural_influence_severe_penalty
+		}
+		work_of_art:basilica_pilar = {
+			change_art_quality = -30
+		}
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_ara.19 = { #Juan de Lanuza y Urrea
+	type = country_event
+	title = flavor_ara.19.title
+	desc = flavor_ara.19.desc
+	outcome = neutral
+
+	historical_info = flavor_ara.19.historical_info
+
+	dynamic_historical_event = {
+		tag = ARA
+		from = 1590.1.1
+		to = 1650.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_john
+			last_name = de_Lanuza_y_Urrea
+			birth_date = 1564.2.7
+			birth_location = location:zaragoza
+			estate = estate_type:peasants_estate
+			adm = { 20 60 }
+			dip = { 20 60 }
+			mil = { 50 80 }
+			culture = culture:aragonese
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	trigger = {
+		custom_tooltip = {
+			text = variable_tt_ara_juan_urrea_event
+			has_variable = ara_juan_urrea_event
+		}
+		NOT = {
+			any_rebel = {
+				rebel_name_key = aragonese_loyalist_rebels
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ara.19.a
+		historical_option = yes
+		add_government_power = government_power_mild_bonus
+		kill_character = {
+			target = scope:target_character
+			reason = execution
+		}
+		custom_tooltip = {
+			text = flavor_ara.19.a.tt
+			every_owned_location = {
+				limit = {
+					area = area:aragon_area
+				}
+				every_pop = {
+					limit = {
+						owner = root
+					}
+					add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ara.19.b
+		add_stability = stability_severe_penalty
+		scope:target_character = {
+			move_country = root
+		}
+		custom_tooltip = {
+			text = flavor_ara.19.b.tt
+			every_owned_location = {
+				limit = {
+					area = area:aragon_area
+				}
+				every_pop = {
+					limit = {
+						owner = root
+					}
+					add_pop_satisfaction = pop_satisfaction_severe_bonus
+				}
+			}
+		}
+	}
+
+	after = {
+		remove_variable = ara_juan_urrea_event
+	}
+}
+
+flavor_ara.104 = { #Barcelona Royal Shipyard
+	type = country_event
+	title = flavor_ara.104.title
+	desc = flavor_ara.104.desc
+	outcome = neutral
+	fire_only_once = yes
+	
+	dynamic_historical_event = {
+		tag = ARA
+		tag = SPA
+		from = 1644.1.1
+		to = 1750.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		owns = location:barcelona
+		location:barcelona = {
+			has_building_with_at_least_one_level = barcelona_royal_shipyard
+		}
+	}
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+		location:barcelona = {
+			save_scope_as = port_location
+		}
+	}
+
+	option = {
+		name = flavor_ara.104.a
+		scope:port_location = {
+			create_num_sub_unit_of_category =  {
+				count = {
+					value = root.expected_navy_size
+					multiply = 0.1
+					min = 5
+				}
+				category = sub_unit_category:navy_galley
+			}
+		}
+		change_societal_value = {
+			type = land_vs_naval
+			value = societal_value_minor_move_to_right
+		}
+	}
+}
+
+flavor_ara.111 = { #The Coronation Dilemma
+	type = country_event
+	title = flavor_ara.111.title
+	desc = flavor_ara.111.desc
+	outcome = neutral
+
+	trigger = {
+		tag = ARA
+		government_type = government_type:monarchy
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:clergy_estate }
+	}
+
+	option = {
+		name = flavor_ara.111.a
+		change_gold_effect = { scale = -2.00 }
+		add_government_power = government_power_extreme_bonus
+		add_estate_satisfaction = { type = estate_type:nobles_estate	value = estate_satisfaction_mild_bonus }
+		add_estate_satisfaction = { type = estate_type:clergy_estate	value = estate_satisfaction_mild_penalty }
+		if = {
+			limit = {
+				country_exists = c:PAP
+				c:ARA = {
+					religion = religion:catholic
+				}
+			}
+			c:PAP = {
+				add_opinion = { target = root modifier = opinion_backward_monarch }
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ara.111.b
+		trigger = {
+			country_exists = c:PAP
+			c:ARA = {
+				religion = religion:catholic
+			}
+		}
+		change_gold_effect = { scale = -2.00 }
+		add_religious_influence = religious_influence_mild_bonus
+		add_estate_satisfaction = { type = estate_type:nobles_estate	value = estate_satisfaction_mild_penalty }
+		add_estate_satisfaction = { type = estate_type:clergy_estate	value = estate_satisfaction_mild_bonus }
+		c:PAP = {
+			add_opinion = { target = root modifier = opinion_supportive_monarch }
+		}
+	}
+
+	option = {
+		name = flavor_ara.111.c
+		change_gold_effect = { scale = -2.00 }
+		add_prestige = prestige_mild_bonus
+		add_government_power = government_power_mild_bonus
+		add_estate_satisfaction = { type = estate_type:clergy_estate	value = estate_satisfaction_mild_penalty }
+		if = {
+			limit = {
+				country_exists = c:PAP
+			}
+			c:PAP = {
+				add_opinion = { target = root modifier = opinion_backward_monarch }
+			}
+		}
+		custom_tooltip = flavor_ara.111.c.tt
+		hidden_effect = {
+			area:aragon_area = {
+				every_location_in_area = {
+					every_pop = {
+						limit = {
+							owner = root
+							pop_type = pop_type:nobles
+						}
+						add_pop_satisfaction = pop_satisfaction_severe_penalty
+					}
+				}
+			}
+		}
+	}
+}
+
+
+

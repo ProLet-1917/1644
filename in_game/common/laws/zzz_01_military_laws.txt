@@ -1,7 +1,10 @@
 ﻿INJECT:medieval_levy_law = {
 	broken_weisuo = {
 		potential = {
-	        has_culture_group = culture_group:chinese_group
+	        OR = {
+				has_reform = government_reform:the_chinese_emperor
+				has_reform = government_reform:the_chinese_warlords
+			}
 		}
 		country_modifier = {
 			global_levy_size_modifier = -0.7

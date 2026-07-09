@@ -1,0 +1,300 @@
+REPLACE:anglican = {
+    color = color_anglican
+    group = christian
+
+    enable = 1534.11.3
+
+    religious_aspects = 3
+    has_religious_influence = yes
+
+    ai_wants_convert = yes
+
+    definition_modifier = {
+        global_max_literacy = 5
+        global_build_buildings_efficiency = 0.1
+
+        monthly_religious_influence = 0.1
+
+        maximum_religious_influence = 400
+    }
+
+    opinions = {
+    }
+
+    unique_names = {
+        name_aaron name_abraham
+        name_bartholomew name_benjamin
+        name_cornelius
+        name_elias Ezra
+        name_gabriel
+        name_isaac
+        name_james Jason name_jeremiah name_jonas Jonathan name_jordan name_joseph name_joshua Josiah
+        name_moses
+        Nathan Nathaniel
+        name_samuel name_salomon
+        name_timothy
+        name_zechariah
+    }
+
+    tags = { protestant_gfx western_christian_gfx christian_gfx abrahamic_gfx }
+    custom_tags = { protestant church_aspects }
+}
+
+REPLACE:calvinist = {
+    color = color_calvinist
+    group = christian
+
+    enable = 1529.5.1
+
+    religious_aspects = 3
+    has_religious_influence = yes
+
+    ai_wants_convert = yes
+
+    definition_modifier = {
+        clergy_estate_target_satisfaction = large_permanent_target_satisfaction
+
+        is_battles_preordained = yes
+        retreat_delay = 20
+
+        global_monthly_art_start_chance = -0.1
+        discipline = 0.05
+
+        monthly_religious_influence = 0.1
+
+        maximum_religious_influence = 400
+    }
+
+    opinions = {
+        hussite = positive
+        lutheran = positive
+        lollardy = positive
+    }
+
+    unique_names = {
+        name_aaron name_abraham
+        name_bartholomew name_benjamin
+        name_cornelius
+        name_elias Ezra
+        name_gabriel
+        name_isaac
+        name_james Jason name_jeremiah name_jonas Jonathan name_jordan name_joseph name_joshua Josiah
+        name_moses
+        Nathan Nathaniel
+        name_samuel name_salomon
+        name_timothy
+        name_zechariah
+    }
+
+    tags = { protestant_gfx western_christian_gfx christian_gfx abrahamic_gfx }
+    custom_tags = { protestant church_aspects }
+}
+
+REPLACE:catholic = {
+    color = religion_catholic
+    group = christian
+
+    language = church_dialect
+
+    #needs_reform = yes
+    has_religious_influence = yes
+
+    has_religious_head = yes
+    has_cardinals = yes
+    has_canonization = yes
+
+    important_country = PAP
+
+    tithe = 0.02		#2% is 20% of the tenth
+
+    goods_demand_modifier = {
+        fish = 1.25
+    }
+    clergy_goods_demand_modifier = {
+        incense = 2
+    }
+
+    definition_modifier = {
+        clergy_estate_max_tax = -1.0
+        monthly_religious_influence = 0.1
+        global_clergy_max_literacy = 25
+
+        can_have_monasteries = yes
+        block_from_change_to_empire_rank_catholic = yes
+        maximum_religious_influence = 900
+
+        cannot_declare_no_cb_wars_on_religion_head = yes
+        country_allow_canonization = yes
+    }
+
+    opinions = {
+        bogomilism = enemy
+        bosnian_church = enemy
+        catharism = enemy
+        hussite = enemy
+        orthodox = kindred
+        waldensian = enemy
+        judaism = negative
+        sunni = enemy
+        shia = enemy
+        ibadi = enemy
+    }
+
+    tags = { catholic_gfx western_christian_gfx christian_gfx abrahamic_gfx }
+}
+
+REPLACE:hussite = {
+    color = color_hussite
+    group = christian
+
+    language = czech_dialect #this will change once lutheranism spawns to mirror their
+
+    enable = 1412.10.18
+
+    religious_aspects = 3
+    has_religious_influence = yes
+
+    definition_modifier = {
+        army_auxiliary_maintenance_cost_modifier = -0.25
+        global_pop_promotion_speed_modifier = 0.10
+        global_pop_conversion_speed_modifier = 0.10
+
+        monthly_religious_influence = 0.1
+
+        maximum_religious_influence = 400
+    }
+
+    opinions = {
+        lutheran = kindred
+        calvinist = positive
+    }
+
+    unique_names = {
+        name_aaron name_abraham
+        name_bartholomew name_benjamin
+        name_cornelius
+        name_elias Ezra
+        name_gabriel
+        name_isaac
+        name_james Jason name_jeremiah name_jonas Jonathan name_jordan name_joseph name_joshua Josiah
+        name_moses
+        Nathan Nathaniel
+        name_samuel name_salomon
+        name_timothy
+        name_zechariah
+    }
+
+    tags = { protestant_gfx western_christian_gfx christian_gfx abrahamic_gfx }
+    custom_tags = { protestant church_aspects }
+}
+
+REPLACE:lollardy = {
+    color = color_lollardy
+    group = christian
+
+    enable = 1350.1.1
+
+    religious_aspects = 3
+    has_religious_influence = yes
+
+
+    definition_modifier = {
+        global_clergy_estate_power = -0.5
+        global_peasants_estate_power = 0.5
+        global_max_literacy = 10
+
+        monthly_religious_influence = 0.1
+
+        maximum_religious_influence = 400
+    }
+
+    opinions = {
+        # these are set up in flavor_eng.1 when it spawns
+        calvinist = positive
+        lutheran = positive
+    }
+
+    unique_names = {
+    }
+
+    tags = { protestant_gfx western_christian_gfx christian_gfx abrahamic_gfx }
+    custom_tags = { protestant church_aspects }
+}
+
+REPLACE:lutheran = {
+    color = color_lutheran
+    group = christian
+
+    enable = 1522.3.9
+
+    religious_aspects = 3
+    has_religious_influence = yes
+
+    ai_wants_convert = yes
+
+    definition_modifier = {
+
+        clergy_estate_target_satisfaction = medium_permanent_target_satisfaction
+        tax_income_efficiency = medium_tax_income_efficiency_bonus
+
+        monthly_religious_influence = 0.1
+
+        maximum_religious_influence = 400
+    }
+
+    opinions = {
+        calvinist = positive
+        hussite = kindred
+        lollardy = positive
+    }
+
+    unique_names = {
+        name_aaron name_abraham
+        name_bartholomew name_benjamin
+        name_cornelius
+        name_elias Ezra
+        name_gabriel
+        name_isaac
+        name_james Jason name_jeremiah name_jonas Jonathan name_jordan name_joseph name_joshua Josiah
+        name_moses
+        Nathan Nathaniel
+        name_samuel name_salomon
+        name_timothy
+        name_zechariah
+    }
+
+    tags = { protestant_gfx western_christian_gfx christian_gfx abrahamic_gfx }
+    custom_tags = { protestant church_aspects }
+}
+
+REPLACE:strigolniki = { #https://en.wikipedia.org/wiki/Strigolniki
+    color = color_strigolniki
+    group = christian
+
+    language = russian_dialect
+
+    enable = 1455.1.1
+
+    has_patriarchs = yes
+    has_canonization = yes
+    has_autocephalous_patriarchates = yes
+    has_religious_influence = yes
+    definition_modifier = {
+        global_clergy_estate_power = -0.5
+        global_peasants_estate_power = 0.25
+        global_burghers_estate_power = 0.25
+        global_max_literacy = 10
+
+        maximum_religious_influence = 400
+        country_allow_canonization = yes
+    }
+
+    opinions = {
+        # none really
+    }
+
+    unique_names = {
+    }
+
+    tags = { eastern_christian_gfx christian_gfx abrahamic_gfx }
+}

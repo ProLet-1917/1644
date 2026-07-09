@@ -1,0 +1,464 @@
+﻿namespace = flavor_swi
+#README
+# events 1 - 99 are events specifically for the united tag of Switzerland
+# events 100 - 999 are events for the Swiss Confederation IO
+# events 1000+ are dynamic historical events for the different Swiss cantons (+ unified Switzerland too)
+
+#The Switzerland and the Empire
+
+scripted_effect core_and_seize_swiss_lands = {
+	every_location_in_area = {
+		limit = {
+			is_ownable = yes
+			NOT = { is_core_of = root }
+		}
+		add_core = root
+	}
+	every_location_in_area = {
+		limit = {
+			has_owner = yes
+			NOT = { owner = root }
+			owner ?= {
+				NOT = { is_member_of_international_organization = international_organization:swiss_confederation }
+				is_subject_or_below_of = root
+			}
+		}
+		change_location_owner = root
+	}
+}
+
+#Formation of the Swiss Nation
+flavor_swi.100 = {
+	type = country_event
+	title = flavor_swi.100.title
+	desc = flavor_swi.100.desc
+	outcome = neutral
+	major = yes
+	major_trigger = {
+		NOT = { is_member_of_international_organization = international_organization:swiss_confederation }
+		OR = {
+			is_neighbor_of = root
+			is_member_of_international_organization = international_organization:hre
+		}
+	}
+	
+
+	illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		save_scope_as = target_country
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+	option = {
+		name = flavor_swi.100.a
+		
+		form_country = formable_country:SWI_f
+		set_country_rank_effect = { rank = country_rank:rank_duchy }
+		unlock_government_reform_effect = { type = autonomous_swiss_cantons_reform }
+		add_replacing_gov_reform = { reform = government_reform:autonomous_swiss_cantons_reform }
+		switch = {
+			trigger = has_variable
+			swi_picked_gov_type_monarchy = {
+				if = {
+					limit = {
+						NOT = { government_type = government_type:monarchy }
+					}
+					change_government_type = government_type:monarchy
+					change_heir_selection = heir_selection:cognatic_primogeniture
+				}
+				remove_variable = swi_picked_gov_type_monarchy
+			}
+			swi_picked_gov_type_republic = {
+				if = {
+					limit = {
+						NOT = { government_type = government_type:republic }
+					}
+					change_government_type = government_type:republic
+					change_heir_selection = heir_selection:republic_4_year_terms
+				}
+				remove_variable = swi_picked_gov_type_republic
+			}
+			swi_picked_gov_type_theocracy = {
+				if = {
+					limit = {
+						NOT = { government_type = government_type:theocracy }
+					}
+					change_government_type = government_type:theocracy
+					change_heir_selection = heir_selection:bishopric_elective
+				}
+				remove_variable = swi_picked_gov_type_theocracy
+			}
+		}
+		custom_tooltip = {
+			text = sc_gain_cores_on_switzerland_proper_tt
+			area:central_switzerland_area = { core_and_seize_swiss_lands = yes }
+			area:eastern_switzerland_area = { core_and_seize_swiss_lands = yes }
+			area:western_switzerland_area = { core_and_seize_swiss_lands = yes }
+		}
+		custom_tooltip = sc_seize_subject_locations_tt
+		if = {
+			limit = { exists = international_organization:swiss_confederation }
+			custom_tooltip = {
+				text = sc_unify_the_cantons_tt
+				international_organization:swiss_confederation = {
+					every_international_organization_owned_location = {
+						limit = {
+							has_owner = yes
+							OR = {
+								owner = root
+								owner = { is_neighbor_of = root }
+							}
+							NOT = { is_core_of = root }
+						}
+						add_core = root
+					}
+					every_international_organization_member = {
+						limit = { NOT = { this = root } }
+						trigger_event_silently = { id = flavor_swi.101 }
+					}
+				}
+			}
+			destroy_international_organization = { target = international_organization:swiss_confederation }
+		}
+	}
+}
+
+# ...and for member states
+flavor_swi.101 = {
+	type = country_event
+	title = flavor_swi.101.title
+	desc = flavor_swi.101.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+	}
+		
+	option = {
+		name = flavor_swi.101.a
+		if = {
+			limit = { exists = scope:target_country }
+			scope:target_country = {
+				annex_country = { country = root }
+			}
+		}
+	}
+	option = {
+		name = flavor_swi.101.b
+		trigger = { is_ai = no }
+		custom_tooltip = {
+			text = sc_every_core_location_breaks_away_tt
+			if = {
+				limit = { exists = scope:target_country }
+				every_owned_location = {
+					limit = { is_core_of = scope:target_country }
+					change_location_owner = scope:target_country
+				}
+			}
+		}
+	}
+}
+
+#The Swiss Confederation and the Reformation
+flavor_swi.110 = {
+	type = country_event
+	title = flavor_swi.110.title
+	desc = flavor_swi.110.desc
+	outcome = neutral
+	historical_info = flavor_swi.110.historical_info
+	major = yes
+	major_trigger = {
+		is_member_of_international_organization = international_organization:swiss_confederation
+	}
+	fire_only_once = yes
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		set_global_variable = { name = swi_triggered_religious_conflict_event value = yes days = 7300 }
+	}
+	trigger = {
+		exists = international_organization:swiss_confederation
+		is_member_of_international_organization = international_organization:swiss_confederation
+		reformation_is_enabled = yes
+		international_organization:swiss_confederation = {
+			NOT = { international_organization_has_unlocked_law_trigger = { type = sc_religious_affairs } }
+			trigger_if = {
+				limit = { NOT = { leader_type = none } }
+				international_organization_has_leader = yes
+				leader_country = root
+			}
+			any_international_organization_member = {
+				is_protestant = yes
+				percent > 0.4
+			}
+		}
+	}
+	option = {
+		name = flavor_swi.110.a
+		historical_option = yes
+		international_organization:swiss_confederation = {
+			international_organization_unlock_law_effect = { type = sc_religious_affairs }
+			custom_tooltip = {
+				text = sc_block_votes_on_non_religious_policies_tt
+				set_variable = sc_blocked_votes_on_non_religious_policies
+			}
+			custom_tooltip = {
+				text = sc_religious_chaos_tt
+				set_variable = sc_religious_chaos
+			}
+		}
+	}
+}
+
+#The War of [target_location.GetName]
+flavor_swi.111 = {
+	type = country_event
+	title = flavor_swi.111.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:target_character }
+				desc = flavor_swi.111.desc
+			}
+			triggered_desc = {
+				trigger = { always = yes }
+				desc = flavor_swi.111.desc.fallback
+			}
+		}
+	}
+	outcome = neutral
+	historical_info = flavor_swi.111.historical_info
+	major = yes
+	major_trigger = {
+		is_member_of_international_organization = international_organization:swiss_confederation
+	}
+	fire_only_once = yes
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		international_organization:swiss_confederation = {
+			random_international_organization_owned_location = {
+				save_scope_as = target_location
+			}
+		}
+		if = {
+			limit = { exists = character:swi_huldrych_zwingli }
+			character:swi_huldrych_zwingli = { save_scope_as = target_character }
+		}
+	}
+	trigger = {
+		exists = international_organization:swiss_confederation
+		is_member_of_international_organization = international_organization:swiss_confederation
+		exists = character:swi_huldrych_zwingli
+		reformation_is_enabled = yes
+		international_organization:swiss_confederation = {
+			has_land_ownership_rule = yes
+			international_organization_num_locations > 0
+			international_organization_has_unlocked_law_trigger = { type = sc_religious_affairs }
+			international_organization_has_policy = policy:sc_enforcing_religious_unity
+			trigger_if = {
+				limit = { NOT = { leader_type = none } }
+				international_organization_has_leader = yes
+				leader_country = root
+			}
+			any_international_organization_member = {
+				is_protestant = yes
+			}
+		}
+	}
+	option = {
+		name = flavor_swi.111.a
+		historical_option = yes
+		international_organization:swiss_confederation = {
+			custom_tooltip = {
+				text = sc_every_member_gains_force_convert_cb_tt
+				every_international_organization_member = {
+					save_temporary_scope_as = swiss_country
+					international_organization:swiss_confederation = {
+						every_international_organization_member = {
+							limit = {
+								NOT = { this = scope:swiss_country }
+								NOT = { religion = scope:swiss_country.religion }
+								religion.group = scope:swiss_country.religion.group
+							}
+							add_casus_belli = {
+								target = scope:swiss_country
+								type = casus_belli:cb_heretic
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#The Swiss Confederation Conflict and the Empire
+flavor_swi.120 = {
+	type = country_event
+	title = flavor_swi.120.title
+	desc = flavor_swi.120.desc
+	outcome = neutral
+	historical_info = flavor_swi.120.historical_info
+	major = yes
+	major_trigger = {
+		OR = {
+			is_member_of_international_organization = international_organization:swiss_confederation
+			is_member_of_international_organization = international_organization:hre
+		}
+	}
+	fire_only_once = yes
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	trigger = {
+		exists = international_organization:swiss_confederation
+		exists = international_organization:hre
+		is_member_of_international_organization = international_organization:swiss_confederation
+		is_member_of_international_organization = international_organization:hre
+		reformation_is_enabled = yes
+		international_organization:hre = {
+			leader_country ?= { save_temporary_scope_as = hre_leader }
+			international_organization_has_policy = policy:only_imperial_religion_policy
+		}
+		international_organization:swiss_confederation = {
+			international_organization_has_unlocked_law_trigger = { type = sc_religious_affairs }
+			international_organization_has_law = law:sc_religious_affairs
+			NOT = { international_organization_has_unlocked_law_trigger = { type = sc_relations_with_hre } }
+			trigger_if = {
+				limit = { exists = scope:hre_leader }
+				any_international_organization_member = {
+					religion != scope:hre_leader.religion
+					percent > 0.4
+				}
+			}
+			trigger_if = {
+				limit = { NOT = { leader_type = none } }
+				international_organization_has_leader = yes
+				leader_country = root
+			}
+			any_international_organization_member = {
+				is_member_of_international_organization = international_organization:hre
+				percent > 0.2
+			}
+		}
+		NOT = { has_global_variable = swi_triggered_religious_conflict_event }	#20 years have passed since the internal religious conflict
+	}
+	option = {
+		name = flavor_swi.120.a
+		historical_option = yes
+		international_organization:swiss_confederation = {
+			international_organization_unlock_law_effect = { type = sc_relations_with_hre }
+		}
+	}
+}
+
+#[GetUniqueInternationalOrganization('swiss_confederation').GetNameWithNoTooltip] leaves the Empire!
+flavor_swi.121 = {
+	type = country_event
+	title = flavor_swi.121.title
+	desc = flavor_swi.121.desc
+	outcome = neutral
+	historical_info = flavor_swi.120.historical_info
+	major = yes
+	major_trigger = {
+		is_member_of_international_organization = international_organization:hre
+	}
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	option = {
+		name = flavor_swi.121.a
+		change_imperial_authority = { value = imperial_authority_extreme_penalty }
+	}
+}
+
+#The Swiss Movement for Unification
+# scripted trigger for the sc_unification_movement_event_happened_tt custom tooltip
+scripted_trigger flavor_swi_999_trigger = {
+	culture = { has_culture_group = culture_group:swiss_group }
+	OR = {
+		at_war = no
+		is_in_defensive_war = yes
+	}
+	international_organization:swiss_confederation = {
+		international_organization_population >= 350
+		any_international_organization_owned_location = {
+			custom_tooltip = {
+				text = flavor_swi_999_trigger_at
+				OR = {
+					is_ownable = no
+					owner = {
+						is_member_of_international_organization = international_organization:swiss_confederation
+					}
+				}
+			}
+			percent >= 0.8
+		}
+		trigger_if = {
+			limit = { NOT = { leader_type = none } }
+			international_organization_has_leader = yes
+			leader_country ?= root
+		}
+	}
+}
+flavor_swi.999 = {
+	type = country_event
+	title = flavor_swi.999.title
+	desc = flavor_swi.999.desc
+	outcome = neutral
+	historical_info = flavor_swi.999.historical_info
+	major = yes
+	major_trigger = {
+		OR = {
+			is_member_of_international_organization = international_organization:swiss_confederation
+			is_member_of_international_organization = international_organization:hre
+		}
+	}
+	fire_only_once = yes
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+	}
+	trigger = {
+		exists = international_organization:swiss_confederation
+		is_member_of_international_organization = international_organization:swiss_confederation
+		NOT = { has_global_variable = sc_unification_movement_event_happened }
+		flavor_swi_999_trigger = yes
+	}
+	option = {
+		name = flavor_swi.999.a
+		custom_tooltip = {
+			text = sc_unification_movement_event_happens_tt
+			set_global_variable = sc_unification_movement_event_happened
+		}
+	}
+}

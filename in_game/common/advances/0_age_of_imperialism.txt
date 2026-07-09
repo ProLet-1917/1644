@@ -148,7 +148,7 @@ harvey_steel_advance = {
     navy_heavy_ship_power = 0.1
     navy_galley_power = 0.1
     navy_light_ship_power = 0.1
-    navy_repair_cost = 0.05
+    navy_repair_efficiency = 0.1
     navy_maintenance_efficiency = 0.05
 }
 
@@ -212,7 +212,7 @@ large_construction_machinery_advance = {
     requires = high_and_low_pressure_steam_engine_advance
 
     global_construction_speed = 0.1
-    global_build_buildings_cost = 0.02
+    global_build_buildings_efficiency = 0.1
     global_road_building_time = 0.1
     global_max_rgo_size_modifier_in_rural = 0.05
     global_max_rgo_size_modifier_in_non_rural = 0.1
@@ -274,7 +274,7 @@ turbine_engine_advance = {
 
     navy_movement_speed = 0.4
     navy_maintenance_efficiency = 0.02
-    navy_repair_cost = 0.01
+    navy_repair_efficiency = 0.1
 }
 
 electrical_power_generation_advance = {
@@ -322,14 +322,14 @@ mechanical_production_advance = {
     age = age_7_imperialism
     requires = clean_coal_advance
 
-    building_upkeep_costs = -0.1
+    building_upkeep_efficiency = 0.1
 }
 
 assembly_line_advance = {
     age = age_7_imperialism
     requires = mechanical_production_advance
 
-    building_upkeep_costs = -0.25
+    building_upkeep_efficiency = 0.15
 }
 
 telephone_assembly_advance = {
@@ -355,6 +355,13 @@ fertilizer_advance = {
     icon = expanded_supply_trains
 
     global_monthly_food_modifier = 0.2
+}
+
+industrial_agriculture_advance = {
+    age = age_7_imperialism
+    requires = clean_coal_advance
+
+    unlock_building = commercial_farm
 }
 
 large_scale_farms_advance = {
@@ -411,7 +418,7 @@ modern_diplomacy_advance = {
     age = age_7_imperialism
     requires = manifest_destiny_advance
 
-    diplomatic_capacity_modifier = 0.1
+    diplomatic_capacity_modifier = 1.0
     diplomatic_range = 200
     diplomatic_reputation = 0.05
     monthly_diplomats = 0.05
@@ -429,7 +436,7 @@ modern_education_advance = {
     age = age_7_imperialism
     requires = nationalism_advance
 
-    global_max_literacy = 0.1
+    global_max_literacy = 7.5
     research_speed_modifier = 0.1
     research_speed = 0.25
 }
@@ -438,7 +445,7 @@ quality_education_advance = {
     age = age_7_imperialism
     requires = modern_education_advance
 
-    global_max_literacy = 0.1
+    global_max_literacy = 7.5
     global_monthly_literacy = 0.05
 }
 
@@ -495,7 +502,7 @@ investment_banks_advance = {
     age = age_7_imperialism
     requires = modern_bank_advance
 
-    building_upkeep_costs = -0.05
+    building_upkeep_efficiency = 0.1
     global_construction_speed = 0.05
 }
 
@@ -503,7 +510,7 @@ corporate_governance_advance = {
     age = age_7_imperialism
     requires = investment_banks_advance
 
-    building_upkeep_costs = -0.10
+    building_upkeep_efficiency = 0.1
     global_trades_per_burgher = 0.05
 }
 
@@ -521,7 +528,7 @@ monior_market_behaviour_advance = {
     requires = modern_bank_advance
 
     control_the_food_market_cost_modifier = -0.05
-    food_purchase_cost = -0.10
+    food_purchase_efficiency = 0.1
 }
 
 organized_factory_advance = {

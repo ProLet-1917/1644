@@ -1,0 +1,5670 @@
+﻿namespace = flavor_fra
+
+flavor_fra.7 = { # The Fronde in France
+	type = country_event
+	title = flavor_fra.7.title
+	desc = flavor_fra.7.desc
+	outcome = neutral
+	historical_info = flavor_fra.7.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1644.1.1
+		to = 1664.1.1
+		monthly_chance = 8
+	}
+
+	trigger = {
+		has_ruler = yes
+		legitimacy < 50
+	}
+
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_rebel = {
+			category = estate
+			name = fronde_uprising
+			estate = nobles_estate
+			save_scope_as = fronde_uprising
+		}
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+
+	option = {
+		name = flavor_fra.7.a
+		historical_option = yes
+
+		custom_tooltip = {
+			text = fronde_joining
+			every_owned_location = {
+				limit = {
+					region = region:france_region
+				}
+				every_pop = {
+					limit = {
+						owner = root
+						pop_type = pop_type:nobles
+					}
+					add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+					change_pop_allegiance = scope:fronde_uprising
+				}
+			}
+			the_fronde_protest_effect = yes
+		}
+
+		revoke_estate_privilege = estate_privilege:nobles_land_rights
+		revoke_estate_privilege = estate_privilege:noble_leaders_only
+		revoke_estate_privilege = estate_privilege:primacy_of_nobility
+		change_societal_value = { type = centralization_vs_decentralization	value = societal_value_large_move_to_left	}
+	}
+	option = {
+		name = flavor_fra.7.b
+		add_estate_satisfaction = { type = estate_type:nobles_estate	value = estate_satisfaction_mild_bonus }
+		grant_estate_privilege = estate_privilege:nobles_land_rights
+		grant_estate_privilege = estate_privilege:noble_leaders_only
+		grant_estate_privilege = estate_privilege:primacy_of_nobility
+		grant_estate_privilege = estate_privilege:noble_serfdom_rights
+		grant_estate_privilege = estate_privilege:elaborate_court_ceremonies
+		change_societal_value = { type = centralization_vs_decentralization	value = societal_value_large_move_to_right	}
+	}
+}
+
+flavor_fra.9 = { # Colbertism
+	type = country_event
+	title = flavor_fra.9.title
+	desc = flavor_fra.9.desc
+	outcome = neutral
+	historical_info = flavor_fra.9.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1661.1.1
+		to = 1682.1.1
+		monthly_chance = 10
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	trigger = {
+		has_ruler = yes
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		create_character = {
+			first_name = name_john.name_baptiste
+			last_name = colbert
+			adm = 80
+			dip = 75
+			mil = 62
+			culture = culture:french
+			birth_location = location:reims
+			religion = religion:catholic
+			birth_date = 1619.9.29
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+			estate = estate_type:burghers_estate
+			script = jean_colbert
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+
+	option = {
+		name = flavor_fra.9.a
+		historical_option = yes
+		scope:target_character = {
+			move_country = c:FRA
+		}
+		add_country_modifier = { modifier = fra_colbertism years = 15 mode = add }
+		change_societal_value = { type = land_vs_naval	value = societal_value_large_move_to_right	}
+		change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_move_to_left }
+	}
+	option = {
+		name = flavor_fra.9.b
+		scope:target_character = {
+			move_country = c:FRA
+		}
+		add_country_modifier = { modifier = fra_colbertism_economic_focus years = 15 mode = add }
+		change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_minor_move_to_left }
+		change_societal_value = { type = aristocracy_vs_plutocracy value = societal_value_move_to_right }
+	}
+
+}
+
+flavor_fra.10 = { # The Commissioning of Versailles
+	type = country_event
+	title = flavor_fra.10.title
+	desc = flavor_fra.10.desc
+	outcome = neutral
+	historical_info = flavor_fra.10.historical_info
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1650.1.1
+		to = 1700.1.1
+		monthly_chance = 2
+	}
+	trigger = {
+		government_type = government_type:monarchy
+		owns = location:paris
+		location:paris = {
+			is_capital = yes
+		}
+		has_ruler = yes
+	}
+
+	option = {
+		name = flavor_fra.10.a
+		historical_option = yes
+		add_country_modifier = { modifier = fra_commissioning_of_versailles years = 15 mode = add }
+		location:paris = {
+			construct_building = {
+				building_type = building_type:versailles
+			}
+		}
+	}
+	option = {
+		name = flavor_fra.10.b
+		add_stability = stability_mild_bonus
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+scripted_trigger valid_french_target_location = {
+	dominant_culture.language = culture:french.language
+	country_exists = c:FRA
+	NOT = {
+		owner ?= c:FRA
+	}
+	any_neighbor_location = {
+		owner ?= c:FRA
+	}
+}
+
+flavor_fra.11 = { # Chambers of Reunion
+	type = country_event
+	title = flavor_fra.11.title
+	desc = flavor_fra.11.desc
+	outcome = neutral
+	historical_info = flavor_fra.11.historical_info
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1650.1.1
+		to = 1750.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+	trigger = {
+		any_neighbor_country = {
+			NOT = {
+				is_subject_of = c:FRA
+			}
+			any_owned_location = {
+				valid_french_target_location = yes
+			}
+		}
+		has_ruler = yes
+	}
+
+	option = {
+		name = flavor_fra.11.a
+		historical_option = yes
+		custom_tooltip = chamber_of_union_claims
+		every_neighbor_country = {
+			limit = {
+				NOT = {
+					is_subject_of = c:FRA
+				}
+				any_owned_location = {
+					valid_french_target_location = yes
+				}
+			}
+			add_opinion = { target = root modifier = claims_through_chambers_of_union }
+			hidden_effect = {
+				ordered_owned_location = {
+					limit = {
+						valid_french_target_location = yes
+					}
+					max = 1
+					order_by = population
+					c:FRA = { add_casus_belli =  { type = casus_belli:cb_conquer_province target = prev.owner province = prev.province } }
+				}
+			}
+		}
+	}
+	option = {
+		name = flavor_fra.11.b
+		custom_tooltip = improve_relations_with_neighbors_with_french_provinces
+		add_legitimacy = legitimacy_mild_penalty
+		hidden_effect = {
+			every_neighbor_country = {
+				limit = {
+					any_owned_location = {
+						valid_french_target_location = yes
+					}
+				}
+				add_opinion = { target = root modifier = did_not_form_chambers_of_union }
+				add_antagonism = { target = root modifier = did_not_form_chambers_of_union_antagonism }
+			}
+		}
+	}
+}
+
+flavor_fra.12 = { # Plight of the Lutherans
+	hide_portraits = yes
+	type = country_event
+	title = flavor_fra.12.title
+	desc = flavor_fra.12.desc
+	outcome = neutral
+	historical_info = flavor_fra.12.historical_info
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1650.1.1
+		to = 1750.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	trigger = {
+		religion = religion:catholic
+		custom_tooltip = {
+			text = variable_tt_nantes_revoked_by_sun_king
+			has_variable = nantes_revoked_by_sun_king
+		}
+		has_country_modifier = fra_quartering_of_the_dragoons
+		"religion_percentage_in_country(religion:lutheran)" > 0.05
+		any_country = {
+			religion = religion:lutheran
+		}
+		has_ruler = yes
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ordered_country = {
+			limit = {
+				capital.continent = continent:europe
+				religion = religion:lutheran
+			}
+			order_by = total_population
+			max = 1
+			save_scope_as = escape_target
+		}
+	}
+
+	option = {
+		name = flavor_fra.12.a
+		historical_option = yes
+		add_stability = stability_mild_bonus
+		add_legitimacy = legitimacy_mild_penalty
+		every_province = {
+			limit = {
+				continent = continent:europe
+				religion_percentage = {
+					religion = religion:lutheran
+					value > 0
+				}
+			}
+			add_migration = {
+				owner = root
+				from = this.province_definition
+				to = scope:escape_target.capital.province_definition
+				religion = religion:lutheran
+				amount = 0.3
+				months = 36
+			}
+		}
+
+	}
+	option = {
+		name = flavor_fra.12.b
+		add_stability = stability_mild_penalty
+		add_legitimacy = legitimacy_mild_bonus
+		every_province = {
+			limit = {
+				continent = continent:europe
+				religion_percentage = {
+					religion = religion:lutheran
+					value > 0
+				}
+			}
+			add_migration = {
+				owner = root
+				from = this.province_definition
+				to = scope:escape_target.capital.province_definition
+				religion = religion:lutheran
+				amount = 0.1
+				months = 36
+			}
+		}
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_penalty }
+	}
+}
+
+flavor_fra.13 = { # Calvinists expelled from France
+	hide_portraits = yes
+	type = country_event
+	title = flavor_fra.13.title
+	desc = flavor_fra.13.desc
+	outcome = neutral
+	historical_info = flavor_fra.13.historical_info
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1650.1.1
+		to = 1750.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		religion = religion:catholic
+		custom_tooltip = {
+			text = variable_tt_nantes_revoked_by_sun_king
+			has_variable = nantes_revoked_by_sun_king
+		}
+		has_country_modifier = fra_quartering_of_the_dragoons
+		"religion_percentage_in_country(religion:calvinist)" >= 0.10
+		any_country = {
+			religion = religion:calvinist
+		}
+		has_ruler = yes
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		ordered_country = {
+			limit = {
+				capital.continent = continent:europe
+				religion = religion:calvinist
+			}
+			order_by = total_population
+			max = 1
+			save_scope_as = escape_target
+		}
+	}
+
+	option = {
+		name = flavor_fra.13.a
+		add_stability = stability_severe_bonus
+		historical_option = yes
+		add_prestige = prestige_severe_bonus
+		every_province = {
+			limit = {
+				continent = continent:europe
+				religion_percentage = {
+					religion = religion:calvinist
+					value > 0
+				}
+			}
+			add_migration = {
+				owner = root
+				from = this.province_definition
+				to = scope:escape_target.capital.province_definition
+				religion = religion:calvinist
+				amount = 0.3
+				months = 24
+			}
+		}
+
+	}
+	option = { #
+		name = flavor_fra.13.b
+		add_stability = stability_mild_penalty
+		add_prestige = prestige_mild_penalty
+		add_estate_satisfaction = { type = estate_type:clergy_estate	value = estate_satisfaction_mild_penalty }
+		every_province = {
+			limit = {
+				continent = continent:europe
+				religion_percentage = {
+					religion = religion:calvinist
+					value > 0
+				}
+			}
+			add_migration = {
+				owner = root
+				from = this.province_definition
+				to = scope:escape_target.capital.province_definition
+				religion = religion:calvinist
+				amount = 0.12
+				months = 24
+			}
+		}
+	}
+}
+
+flavor_fra.14 = { # Charles-François de Broglie
+	type = country_event
+	title = flavor_fra.14.title
+	desc = flavor_fra.14.desc
+	outcome = neutral
+	historical_info = flavor_fra.14.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1749.1.1
+		to = 1781.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	trigger = {
+		has_ruler = yes
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		if = {
+			limit = {
+				NOT = { exists = dynasty:de_Broglie_dynasty }
+			}
+			create_named_dynasty = de_Broglie_dynasty
+		}
+		create_character = {
+			first_name = Charles_Francois
+			dynasty = dynasty:de_Broglie_dynasty
+			adm = 85
+			dip = 83
+			mil = 65
+			birth_location = location:paris
+			birth_date = 1719.8.19
+			culture = culture:gascon
+
+			estate = estate_type:nobles_estate
+			script = charles_francois_de_brogile
+		}
+		character:charles_francois_de_brogile ?= {
+			save_scope_as = target_character
+		}
+        ruler ?= {
+            save_scope_as = ruler_fra
+        }
+	}
+
+	option = {
+		name = flavor_fra.14.a
+		historical_option = yes
+		add_country_modifier = { modifier = fra_la_secret_roy_network years = 10 mode = add }
+		scope:target_character = {
+			move_country = c:FRA
+		}
+	}
+
+	option = {
+		name = flavor_fra.14.b
+		add_country_modifier = { modifier = fra_la_secret_roy_network_reduced years = 10 mode = add }
+		scope:target_character = {
+			move_country = c:FRA
+		}
+	}
+}
+
+flavor_fra.15 = { # André-Hercule de Fleury
+	type = country_event
+	title = flavor_fra.15.title
+	desc = flavor_fra.15.desc
+	outcome = neutral
+	historical_info = flavor_fra.15.historical_info
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1710.1.1
+		to = 1730.1.1
+		monthly_chance = 12
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = Andre_Hercule
+			last_name = Fleury
+			adm = 80
+			dip = 70
+			mil = 60
+			birth_location = location:lodeve
+			birth_date = 1653.6.22
+			culture = culture:languedocien
+			religion = religion:catholic
+			estate = estate_type:clergy_estate
+			script = andre_hercule_fleury
+			save_scope_as = target_character
+		}
+	}
+
+	trigger = {
+		religion = religion:catholic
+		has_ruler = yes
+		has_heir = yes
+	}
+
+	option = {
+		name = flavor_fra.15.a
+		historical_option = yes
+		scope:target_character = {
+			move_country = c:FRA
+		}
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = is_andre_fleury
+				years = -1
+				mode = add
+			}
+			add_adm = 10
+			add_dip = 10
+			add_mil = 10
+		}
+	}
+}
+
+flavor_fra.16 = { # Machault's 5 Percent tax
+	type = country_event
+	title = flavor_fra.16.title
+	desc = flavor_fra.16.desc
+	outcome = neutral
+	historical_info = flavor_fra.16.historical_info
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1740.1.1
+		to = 1760.1.1
+		monthly_chance = 8
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	trigger = {
+		has_law = fra_taille
+	}
+
+	immediate = {
+		set_variable = { name = enable_5_percent_tax value = 1 }
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_john.name_baptiste
+			last_name = de_machault
+			adm = 80
+			dip = 75
+			mil = 62
+			culture = culture:french
+			birth_location = location:paris
+			religion = religion:catholic
+			birth_date = 1701.12.1
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+			estate = estate_type:nobles_estate
+			script = jean_baptiste_de_machault
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_fra.16.b
+		historical_option = yes
+		custom_tooltip = unlocks_machault_tax_reforms
+		add_policy = policy:no_five_percent_tax
+		scope:target_character = {
+			move_country = c:FRA
+		}
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_bonus
+		}
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+	option = {
+		name = flavor_fra.16.a
+		custom_tooltip = unlocks_machault_tax_reforms
+		add_policy = policy:five_percent_tax
+		scope:target_character = {
+			move_country = c:FRA
+		}
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_penalty
+		}
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_penalty
+		}
+	}
+
+}
+
+flavor_fra.17 = { # Turgot's Economic Reforms
+	type = country_event
+	title = flavor_fra.17.title
+	desc = flavor_fra.17.desc
+	outcome = neutral
+	historical_info = flavor_fra.17.historical_info
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1750.1.1
+		to = 1775.1.1
+		monthly_chance = 7
+	}
+
+	trigger = {
+		at_war = no
+		has_ruler = yes
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_anna.name_robert.name_james
+			last_name = turgot
+			adm = 80
+			dip = 75
+			mil = 62
+			culture = culture:french
+			birth_location = location:paris
+			religion = religion:catholic
+			birth_date = 1727.5.10
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+			estate = estate_type:burghers_estate
+			script = minister_turgot
+			save_scope_as = target_character
+		}
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+	option = {
+		name = flavor_fra.17.a
+		historical_option = yes
+		scope:target_character = {
+			move_country = c:FRA
+		}
+		add_country_modifier = { modifier = turgots_economic_reforms years = 10 mode = add }
+		random_list = {
+			75 = {
+			}
+			25 = {
+				add_stability = stability_mild_penalty
+			}
+		}
+	}
+	option = {
+		name = flavor_fra.17.b
+		scope:target_character = {
+			move_country = c:FRA
+		}
+		add_stability = stability_mild_bonus
+	}
+}
+
+flavor_fra.18 = { # Necker announces the Budget Deficit
+	type = country_event
+	title = flavor_fra.18.title
+	desc = flavor_fra.18.desc
+	outcome = neutral
+	historical_info = flavor_fra.18.historical_info
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1760.1.1
+		to = 1805.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		num_loans > 5
+		at_war = no
+		has_ruler = yes
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_james
+			last_name = necker
+			adm = 76
+			dip = 63
+			mil = 48
+			culture = culture:french
+			birth_location = location:paris
+			religion = religion:catholic
+			birth_date = 1732.9.30
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+			estate = estate_type:burghers_estate
+			script = jacques_necker
+			save_scope_as = target_character
+		}
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+	option = {
+		name = flavor_fra.18.b
+		historical_option = yes
+		scope:target_character = {
+			move_country = c:FRA
+		}
+		add_country_modifier = { modifier = necker_reforms years = 10 mode = add }
+	}
+
+	option = {
+		name = flavor_fra.18.a
+		add_stability = stability_mild_bonus
+		custom_tooltip = necker_resigns
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+	}
+}
+
+flavor_fra.19 = { # The Eden Agreement
+	type = country_event
+	title = flavor_fra.19.title
+	desc = flavor_fra.19.desc
+	outcome = neutral
+	historical_info = flavor_fra.19.historical_info
+
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1780.1.1
+		to = 1800.1.1
+		monthly_chance = 20
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		character:eng_william_pitt_the_younger ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	trigger = {
+		country_exists = c:ENG
+		NOT = {	is_at_war_with = c:ENG	}
+		character:eng_william_pitt_the_younger ?= { is_alive = yes }
+	}
+
+	option = {
+		name = flavor_fra.19.a
+		historical_option = yes
+		c:ENG = { add_prestige = prestige_mild_bonus add_opinion = { target = root modifier = the_eden_agreement } }
+		add_country_modifier = { modifier = fra_eden_agreement years = 10 mode = add }
+		c:ENG = { add_country_modifier = { modifier = fra_eden_agreement_eng years = 10 mode = add } }
+	}
+	option = {
+		name = flavor_fra.19.b
+		add_prestige = prestige_extreme_bonus
+		c:ENG = { add_opinion = { target = root modifier = refusal_of_the_eden_agreement }	}
+	}
+}
+
+flavor_fra.20 = { # Rousseau Publishes 'The Social Contract'
+	type = country_event
+	title = flavor_fra.20.title
+	desc = flavor_fra.20.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1762.1.1
+		to = 1772.1.1
+		monthly_chance = 75
+	}
+
+	trigger = {
+		owns = location:paris
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = Jean_Jacques
+			last_name = Rousseau
+			adm = 42
+			dip = 82
+			mil = 21
+			birth_date = 1712.6.28
+			birth_location = location:geneve
+			culture = culture:french
+			religion = religion:catholic
+			artist_skill = 0.95
+			artist = philosopher
+			estate = estate_type:burghers_estate
+			save_scope_as = target_artist
+			script = fra_jean_jacques_rousseau
+		}
+
+	}
+
+
+	option = {
+		name = flavor_fra.20.a
+
+		culture = {
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+		add_prestige = prestige_mild_bonus
+		location:paris = {
+			create_art = {
+				artist = scope:target_artist
+				quality = 93
+				type = work_of_art_type:treatise
+				key = the_social_contract
+			}
+		}
+
+	}
+}
+
+flavor_fra.21 = { # Voltaire 'Philosophical Letters'
+	type = country_event
+	title = flavor_fra.21.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					country_exists = c:ENG
+					NOT = {
+						country_exists = c:GBR
+					}
+				}
+				desc = flavor_fra.21.desc
+			}
+			triggered_desc = {
+				trigger = {
+					country_exists = c:GBR
+					NOT = {
+						country_exists = c:ENG
+					}
+				}
+				desc = flavor_fra.21.desc_GBR
+			}
+			triggered_desc = { # Fallback if cases such as Scotland forming GBR
+				trigger = {
+					AND = {
+						country_exists = c:GBR
+						country_exists = c:ENG
+					}
+				}
+				desc = flavor_fra.21.desc_GBR
+			}
+		}
+	}
+	outcome = neutral
+
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1732.1.1
+		to = 1752.1.1
+		monthly_chance = 12
+	}
+
+	trigger = {
+		owns = location:paris
+		OR = {
+			country_exists = c:ENG
+			country_exists = c:GBR
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = Francois_Marie
+			last_name = Voltaire
+			adm = 50
+			dip = 82
+			mil = 32
+			birth_date = 1694.11.21
+			birth_location = location:paris
+			culture = culture:french
+			religion = religion:catholic
+			script = fra_francois_marie_voltaire
+
+			artist_skill = 0.95
+			artist = philosopher
+			estate = estate_type:burghers_estate
+			save_scope_as = target_artist
+		}
+
+	}
+
+	option = {
+		name = flavor_fra.21.a
+		culture = {
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+		add_prestige = prestige_mild_bonus
+		location:paris = {
+			create_art = {
+				artist = scope:target_artist
+				quality = 85
+				type = work_of_art_type:treatise
+				key = philosophical_letters
+			}
+		}
+
+	}
+}
+
+flavor_fra.22 = { # Montesquieu publishes 'The spirit of laws'
+	type = country_event
+	title = flavor_fra.22.title
+	desc = flavor_fra.22.desc
+	outcome = neutral
+	fire_only_once = yes
+	
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1738.1.1
+		to = 1758.1.1
+		monthly_chance = 50
+	}
+
+	trigger = {
+		owns = location:paris
+		has_ruler = yes
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_charles
+			last_name = Montesquieu
+			adm = 48
+			dip = 79
+			mil = 21
+			birth_date = 1689.1.18
+			birth_location = location:paris
+			culture = culture:french
+			religion = religion:catholic
+			artist_skill = 0.90
+			artist = philosopher
+			estate = estate_type:burghers_estate
+			save_scope_as = target_artist
+			create_in_limbo = yes
+		}
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+	option = {
+		name = flavor_fra.22.a
+		culture = {
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+		scope:target_artist = { move_country = root }
+		add_prestige = prestige_mild_bonus
+		location:paris = {
+			create_art = {
+				artist = scope:target_artist
+				quality = 97
+				type = work_of_art_type:treatise
+				key = spirit_of_the_law
+			}
+		}
+	}
+}
+
+flavor_fra.23 = { # René Descartes
+	type = country_event
+	title = flavor_fra.23.title
+	desc = flavor_fra.23.desc
+	outcome = neutral
+	historical_info = flavor_fra.23.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1644.1.1
+		to = 1660.1.1
+		monthly_chance = 12
+	}
+
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+
+	immediate = {
+		create_character = {
+			first_name = name_renatus
+			last_name = Descartes
+			adm = 92
+			dip = 82
+			mil = 15
+			birth_date = 1596.3.31
+			birth_location = location:paris
+			culture = culture:french
+			religion = religion:catholic
+
+			artist_skill = 0.90
+			artist = philosopher
+			estate = estate_type:burghers_estate
+			script = fra_rene_descartes
+			create_in_limbo = yes
+		}
+		character:fra_rene_descartes ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_fra.23.a
+		add_research_progress = research_progress_extreme_bonus
+		scope:target_character = {
+            move_country = c:FRA
+        }
+	}
+}
+
+flavor_fra.1101 = { # Son demands landed title
+	hide_portraits = yes
+	type = country_event
+	title = flavor_fra.1101.title
+	desc = flavor_fra.1101.desc
+	outcome = neutral
+
+
+	trigger = {
+		has_reform = government_reform:french_feudal_nobility
+		at_war = no
+		num_locations > 1
+		ruler ?= {
+			is_alive = yes
+			age_in_years > 36
+			num_of_children > 4
+			any_child = {
+				AND = {
+					age_in_years > 20
+					father ?= root.ruler
+					is_alive = yes
+					is_heir = no
+					is_adult = yes
+					is_female = no
+				}
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler = {
+			random_child = {
+				limit = {
+					age_in_years > 20
+					father = root.ruler
+					is_alive = yes
+					is_heir = no
+					is_adult = yes
+					is_female = no
+				}
+				save_scope_as = target_son_for_appanage
+			}
+		}
+		random_province = {
+			limit = {
+				region = root.capital.region
+				NOT = {	province_definition = owner.capital.province_definition	}
+			}
+			save_scope_as = potential_duchy_province
+		}
+		random_owned_location = {
+			limit = {
+				is_capital = no
+			}
+			save_scope_as = potential_lordship_location
+		}
+	}
+
+	option = { # He shall have his own Duchy!
+		name = flavor_fra.1101.a
+		add_legitimacy = legitimacy_mild_bonus
+		scope:potential_duchy_province = {
+			create_location_country_from_province = {
+				make_subject_of = {  target = root type = subject_type:appanage }
+				hidden_effect = {
+					capital.province = { change_province_integration = core }
+				}
+				save_scope_as = target_country
+			}
+		}
+		scope:target_country = {
+			set_new_ruler = scope:target_son_for_appanage
+			change_government_type = government_type:monarchy
+			add_reform = government_reform:french_appanage_reform
+			every_owned_location = {
+				limit = {
+					owner ?= scope:target_country
+				}
+				add_core = scope:target_country
+				change_integration_level = core
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+
+	option = { # He shall rule as a Count
+		name = flavor_fra.1101.b
+		add_legitimacy = legitimacy_weak_bonus
+		scope:potential_lordship_location = {
+			create_country_from_location = {
+				make_subject_of = {  target = root type = subject_type:appanage }
+				save_scope_as = target_country
+			}
+		}
+		scope:target_country = {
+			set_new_ruler = scope:target_son_for_appanage
+			change_government_type = government_type:monarchy
+			add_reform = government_reform:french_appanage_reform
+			every_owned_location = {
+				limit = {
+					owner ?= scope:target_country
+				}
+				add_core = scope:target_country
+				change_integration_level = core
+			}
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+
+	option = { # Deny him any titles
+		name = flavor_fra.1101.c
+		add_prestige = prestige_severe_penalty
+		add_legitimacy = legitimacy_severe_penalty
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+flavor_fra.1102 = { # Annexation of an Appanage
+	type = country_event
+	title = flavor_fra.1102.title
+	desc = flavor_fra.1102.desc
+	outcome = neutral
+
+	trigger = {
+		exists = scope:target
+		scope:target = {
+			is_ai = yes
+			has_reform = government_reform:french_appanage_reform
+		}
+		has_reform = government_reform:french_feudal_nobility
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = { # We should exercise caution
+		name = flavor_fra.1102.a
+		change_societal_value = {
+			type = centralization_vs_decentralization
+			value = societal_value_minor_move_to_right
+		}
+		add_stability = stability_mild_penalty
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = { # Press for centralization!
+		name = flavor_fra.1102.b
+		change_societal_value = {
+			type = centralization_vs_decentralization
+			value = societal_value_minor_move_to_left
+		}
+		every_country = {
+			limit = {
+				is_subject_of = c:FRA
+				has_reform = government_reform:french_appanage_reform
+			}
+			add_opinion = { target = c:FRA modifier = opinion_fra_annexed_appanage }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+
+flavor_fra.1103 = { # Consolidation of Appanage Lands
+	type = country_event
+	title = flavor_fra.1103.title
+	desc = flavor_fra.1103.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 100
+	}
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler = {
+			save_scope_as = scope_ruler
+		}
+	}
+
+	trigger = {
+		has_reform = government_reform:french_feudal_nobility
+		has_ruler = yes
+		c:FRA = {
+			any_subject = {
+				is_subject_type = appanage
+				count < 1
+			}
+		}
+	}
+
+
+	option = { # A major step towards the Modernization of France
+		name = flavor_fra.1103.a
+		remove_reform = government_reform:french_feudal_nobility
+		set_variable = { name = enable_centralized_fra_reform value = 1 }
+		add_reform = government_reform:french_centralized_monarchy
+		change_societal_value = {
+			type = centralization_vs_decentralization
+			value = societal_value_huge_move_to_left
+		}
+		add_prestige = prestige_severe_bonus
+		add_legitimacy = legitimacy_severe_bonus
+		add_legitimacy = stability_mild_bonus
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+flavor_fra.400 = { # Ballet of the Blackbird Hunt
+	type = country_event
+	title = flavor_fra.400.title
+	desc = flavor_fra.400.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1644.1.1
+		to = 1660.1.1
+		monthly_chance = 20
+	}
+
+
+	trigger = {
+		has_ruler = yes
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		location:paris = {
+			create_art = {
+				artist = scope:fra_ruler
+				quality = 50
+				type = work_of_art_type:play
+				key = ballet_de_la_merlaison
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+
+	option = { # Introduce the Ballet at the next major ball.
+		name = flavor_fra.400.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		show_as_tooltip = {
+			location:paris = {
+				create_art = {
+					artist = scope:fra_ruler
+					quality = 50
+					type = work_of_art_type:play
+					key = ballet_de_la_merlaison
+				}
+			}
+		}
+	}
+	option = { # Future ballets shall be held only for the royal family.
+		name = flavor_fra.400.b
+		add_legitimacy = legitimacy_mild_bonus
+		show_as_tooltip = {
+			location:paris = {
+				create_art = {
+					artist = scope:fra_ruler
+					quality = 50
+					type = work_of_art_type:play
+					key = ballet_de_la_merlaison
+				}
+			}
+		}
+	}
+}
+# French Monarch 'Divine Right' events
+
+flavor_fra.410 = { # Divine Right
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.410.title
+ 	desc = flavor_fra.410.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1660.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = target_character
+        }
+		set_variable = { name = enable_sun_king_events value = 1 }
+	}
+
+ 	option = { # My reign shall be one of splendor and glory
+		name = flavor_fra.410.a
+		historical_option = yes
+		custom_tooltip = fra_sun_king_adm_prestige
+		custom_tooltip = if_fra_ruler_designate_dies
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = is_sun_king_prestige_rule
+				months = 480
+				mode = add
+			}
+			add_adm = 10
+			add_dip = 10
+			add_mil = 10
+		}
+		ai_chance = {
+			factor = 0.5
+		}
+ 	}
+
+ 	option = { # My reign shall be one of prosperity and stability
+		name = flavor_fra.410.b
+		custom_tooltip = fra_sun_king_dip_stability
+		custom_tooltip = if_fra_ruler_designate_dies
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = is_sun_king_stability_rule
+				months = 480
+				mode = add
+			}
+			add_adm = 10
+			add_dip = 10
+			add_mil = 10
+		}
+		ai_chance = {
+			factor = 0.5
+		}
+ 	}
+}
+
+flavor_fra.411 = { # The Regency of <Regent_name> and Mazarin
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.411.title
+ 	desc = flavor_fra.411.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1653.1.1
+		to = 1675.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = no
+		has_heir = yes
+		at_war = no
+        AND = {
+            has_regent = yes
+            heir.mother = {
+                is_alive = yes
+            }
+        }
+ 	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+        heir.mother = {
+            save_scope_as = scope_former_consort
+        }
+		create_character = {
+			first_name = name_julius.name_raymond
+			last_name = mazzarino
+			adm = 68
+			dip = 46
+			mil = 44
+			culture = culture:neapolitan
+			birth_location = location:aquila
+			religion = religion:catholic
+			birth_date = 1602.7.14
+			estate = estate_type:clergy_estate
+			script = cardinal_mazarin
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+        if = {
+            limit = {
+                has_regent = yes
+            }
+            heir.father = {
+                save_scope_as = scope_ruler_dead
+            }
+        }
+        heir ?= {
+            save_scope_as = scope_heir_fra
+        }
+	}
+
+ 	option = { # The Queen Mother and Mazarin will govern for the young Prince(ess)
+		name = flavor_fra.411.a
+		historical_option = yes
+        if = {
+            limit = {
+				NOT = { regent = scope:scope_former_consort }
+                has_regent = yes
+            }
+			set_regent = scope:scope_former_consort
+        }
+		add_legitimacy = legitimacy_severe_penalty
+		scope:scope_former_consort = {
+            add_character_modifier = {
+                modifier = queen_seized_regency
+                months = 300
+                mode = add
+            }
+		}
+		scope:target_character = {
+			move_country = root
+            add_character_modifier = {
+                modifier = the_queens_chief_minister
+                months = 300
+                mode = add
+            }
+		}
+        heir ?= {
+            add_character_modifier = {
+                modifier = fra_heir_queens_regency
+                months = 120
+                mode = add
+            }
+        }
+		ai_chance = {
+			factor = 0.8
+		}
+ 	}
+
+ 	option = { # A regency council led by the court without the Queen-mother would be preferred
+		name = flavor_fra.411.b
+		add_stability = stability_mild_penalty
+		add_legitimacy = legitimacy_mild_bonus
+		scope:target_character = { move_country = root }
+		custom_tooltip = {
+			text = fra_designated_regency_council
+			create_character = {
+				adm = { 45 85 }
+				dip = { 40 80 }
+				mil = { 35 75 }
+				estate = estate_type:burghers_estate
+				age = 35
+				female = no
+				save_scope_as = regency_council_leader
+			}
+			set_regent = scope:regency_council_leader
+		}
+        heir ?= {
+            add_character_modifier = {
+                modifier = fra_heir_regency_council
+                months = 120
+                mode = add
+            }
+        }
+		ai_chance = {
+			factor = 0.2
+		}
+ 	}
+}
+
+flavor_fra.412 = { # Suspected Corruption of Nicolas Fouquet
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.412.title
+ 	desc = flavor_fra.412.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1665.1.1
+		to = 1675.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_nicholas
+			last_name = fouquet
+			adm = 52
+			dip = 62
+			mil = 29
+			culture = culture:french
+			birth_location = location:paris
+			religion = religion:catholic
+			birth_date = 1615.1.27
+			estate = estate_type:nobles_estate
+			script = nicholas_fouquet
+			save_scope_as = target_character
+		}
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # Fouquet must resign at once!
+		name = flavor_fra.412.a
+		historical_option = yes
+		custom_tooltip = fouquet_will_resign_and_retire_from_life
+		if = {
+			limit = {
+				ruler ?= {
+           	 		has_character_modifier = is_sun_king_prestige_rule
+				}
+			}
+			ruler ?= {
+				add_adm = 7
+				add_dip = 7
+			}
+			add_prestige = prestige_weak_bonus
+        }
+		if = {
+			limit = {
+				ruler ?= {
+           	 		has_character_modifier = is_sun_king_stability_rule
+				}
+			}
+			ruler ?= {
+				add_adm = 5
+				add_dip = 5
+			}
+			add_legitimacy = legitimacy_mild_bonus
+			add_stability = stability_weak_bonus
+        }
+		if = {
+			limit = {
+				ruler ?= {
+					NOR = {
+						has_character_modifier = is_sun_king_stability_rule
+						has_character_modifier = is_sun_king_prestige_rule
+					}
+				}
+			}
+			ruler ?= {
+				add_adm = 4
+				add_dip = 4
+			}
+			add_stability = stability_weak_bonus
+        }
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+		ai_chance = {
+			factor = 0.5
+		}
+ 	}
+
+ 	option = { # Admonish him, but allow him to retain his current position
+		name = flavor_fra.412.b
+		scope:target_character = {
+			add_character_modifier = { modifier = fra_suspected_fouquet_corruption years = 25 mode = add }
+		}
+		if = {
+			limit = {
+				ruler ?= {
+           	 		has_character_modifier = is_sun_king_prestige_rule
+				}
+			}
+			ruler ?= {
+				add_adm = 4
+				add_dip = 4
+			}
+        }
+		if = {
+			limit = {
+				ruler ?= {
+           	 		has_character_modifier = is_sun_king_stability_rule
+				}
+			}
+			ruler ?= {
+				add_adm = 2
+				add_dip = 2
+			}
+        }
+		if = {
+			limit = {
+				ruler ?= {
+					NOR = {
+						has_character_modifier = is_sun_king_stability_rule
+						has_character_modifier = is_sun_king_prestige_rule
+					}
+				}
+			}
+			ruler ?= {
+				add_adm = 1
+				add_dip = 1
+			}
+        }
+		ai_chance = {
+			factor = 0.25
+		}
+ 	}
+
+ 	option = { # His supposed corruption are just baseless rumors
+		name = flavor_fra.412.c
+		add_legitimacy = legitimacy_weak_penalty
+		add_country_modifier = { modifier = fra_fouquet_corruption years = 10 mode = add }
+		ai_chance = {
+			factor = 0.25
+		}
+ 	}
+}
+
+flavor_fra.413 = { # Taxation of the old Aristocracy
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.413.title
+ 	desc = flavor_fra.413.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1665.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_events
+			has_variable = enable_sun_king_events
+		}
+ 	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # It is time the nobility paid there dues
+		name = flavor_fra.413.a
+		historical_option = yes
+		scope:fra_ruler = {
+			add_character_modifier = { modifier = fra_sun_king_aristocratic_taxation years = 20 mode = add }
+		}
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+		if = {
+			limit = {
+				ruler ?= {
+           	 		has_character_modifier = is_sun_king_prestige_rule
+				}
+			}
+			ruler ?= {
+				add_adm = 10
+				add_dip = 8
+			}
+			add_prestige = prestige_mild_bonus
+        }
+		if = {
+			limit = {
+				ruler ?= {
+           	 		has_character_modifier = is_sun_king_stability_rule
+				}
+			}
+			ruler ?= {
+				add_adm = 8
+				add_dip = 10
+			}
+			add_stability = stability_weak_bonus
+        }
+		if = {
+			limit = {
+				ruler ?= {
+					NOR = {
+						has_character_modifier = is_sun_king_stability_rule
+						has_character_modifier = is_sun_king_prestige_rule
+					}
+				}
+			}
+			ruler ?= {
+				add_adm = 5
+				add_dip = 5
+			}
+        }
+		ai_chance = {
+			factor = 0.5
+		}
+ 	}
+
+ 	option = { # Strive for a compromise, to prevent full alienation
+		name = flavor_fra.413.b
+		scope:fra_ruler = {
+			add_character_modifier = { modifier = fra_sun_king_aristocratic_compromise_taxation years = 20 mode = add }
+		}
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		if = {
+			limit = {
+				ruler ?= {
+           	 		has_character_modifier = is_sun_king_prestige_rule
+				}
+			}
+			ruler ?= {
+				add_adm = 8
+				add_dip = 4
+			}
+        }
+		if = {
+			limit = {
+				ruler ?= {
+           	 		has_character_modifier = is_sun_king_stability_rule
+				}
+			}
+			ruler ?= {
+				add_adm = 4
+				add_dip = 8
+			}
+        }
+		if = {
+			limit = {
+				ruler ?= {
+					NOR = {
+						has_character_modifier = is_sun_king_stability_rule
+						has_character_modifier = is_sun_king_prestige_rule
+					}
+				}
+			}
+			ruler ?= {
+				add_adm = 4
+				add_dip = 4
+			}
+        }
+		ai_chance = {
+			factor = 0.2
+		}
+ 	}
+
+
+ 	option = { # Let's not risk angering the Aristocracy
+		name = flavor_fra.413.c
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_bonus }
+		ai_chance = {
+			factor = 0.3
+		}
+ 	}
+}
+
+flavor_fra.414 = { # Michel le Tellier and the Reforming of the French Army
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.414.title
+ 	desc = flavor_fra.414.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1658.1.1
+		to = 1685.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_events
+			has_variable = enable_sun_king_events
+		}
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+    immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		create_named_dynasty = le_tellier_dynasty
+		create_character = {
+			first_name = name_michael
+			dynasty = dynasty:le_tellier_dynasty
+			adm = 39
+			dip = 57
+			mil = 69
+			culture = culture:french
+			birth_location = location:paris
+			religion = religion:catholic
+			birth_date = 1603.4.19
+			estate = estate_type:nobles_estate
+			script = michel_le_tellier
+			save_scope_as = target_character
+		}
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # Allow Michel to pave the way for reform!
+		name = flavor_fra.414.a
+		historical_option = yes
+		add_country_modifier = { modifier = fra_tellier_reforms years = 15 mode = add }
+		ruler ?= {
+			add_adm = 10
+			add_dip = 10
+			add_mil = 10
+        }
+		add_army_tradition = army_tradition_extreme_bonus
+		change_societal_value = { type = quality_vs_quantity value = societal_value_move_to_left }
+		# Revoke Nobles and Disable there exclusive reform
+		ai_chance = {
+			factor = 0.5
+		}
+ 	}
+
+ 	option = { # Retain the special privileges granted to nobility leaders
+		name = flavor_fra.414.b
+		add_country_modifier = { modifier = fra_tellier_reforms_partial years = 15 mode = add }
+		ruler ?= {
+			add_adm = 7
+			add_dip = 7
+			add_mil = 7
+        }
+		add_army_tradition = army_tradition_mild_bonus
+		ai_chance = {
+			factor = 0.5
+		}
+ 	}
+}
+
+flavor_fra.415 = { # Grande Ordonnance de Procédure Civil # Code Louis/Unfication of the North and South customary laws
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.415.title
+ 	desc = flavor_fra.415.desc
+	outcome = neutral
+
+
+	image = "gfx/interface/illustrations/government/throne_rooms/throne_room_north_german.dds"
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1670.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_events
+			has_variable = enable_sun_king_events
+		}
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+    immediate = {
+
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # It is time all of France follow one, uniformed law
+		name = flavor_fra.415.a
+		historical_option = yes
+		set_variable = { name = enable_code_louis value = 1 }
+		add_reform = government_reform:fra_code_louis
+		if = {
+			limit = {
+				ruler ?= {
+           	 		has_character_modifier = is_sun_king_prestige_rule
+				}
+			}
+			ruler ?= {
+				add_adm = 12
+				add_dip = 8
+			}
+        }
+		if = {
+			limit = {
+				ruler ?= {
+           	 		has_character_modifier = is_sun_king_stability_rule
+				}
+			}
+			ruler ?= {
+				add_adm = 8
+				add_dip = 12
+			}
+        }
+		if = {
+			limit = {
+				ruler ?= {
+					NOR = {
+						has_character_modifier = is_sun_king_stability_rule
+						has_character_modifier = is_sun_king_prestige_rule
+					}
+				}
+			}
+			ruler ?= {
+				add_adm = 6
+				add_dip = 6
+			}
+        }
+		ai_chance = {
+			factor = 0.6
+		}
+ 	}
+
+ 	option = { # Adopt the Code Louis for the Northern portion of France, but allow the south to retain autonomy
+		name = flavor_fra.415.b
+		add_legitimacy = legitimacy_mild_bonus
+		set_variable = { name = enable_code_louis value = 1 }
+		add_country_modifier = { modifier = fra_limited_code_louis years = 15 mode = add }
+		if = {
+			limit = {
+				ruler ?= {
+           	 		has_character_modifier = is_sun_king_prestige_rule
+				}
+			}
+			ruler ?= {
+				add_adm = 10
+				add_dip = 5
+			}
+        }
+		if = {
+			limit = {
+				ruler ?= {
+           	 		has_character_modifier = is_sun_king_stability_rule
+				}
+			}
+			ruler ?= {
+				add_adm = 5
+				add_dip = 10
+			}
+        }
+		if = {
+			limit = {
+				ruler ?= {
+					NOR = {
+						has_character_modifier = is_sun_king_stability_rule
+						has_character_modifier = is_sun_king_prestige_rule
+					}
+				}
+			}
+			ruler ?= {
+				add_adm = 4
+				add_dip = 4
+			}
+        }
+		ai_chance = {
+			factor = 0.3
+		}
+ 	}
+
+ 	option = { # Maintain current customary laws
+		name = flavor_fra.415.c
+		add_legitimacy = legitimacy_weak_bonus
+		add_stability = stability_extreme_bonus
+		ai_chance = {
+			factor = 0.1
+		}
+ 	}
+}
+
+flavor_fra.416 = { # Grande Ordonnance sur les Colonies of 1685 # Louis attempt to 'humanize' slavery
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.416.title
+ 	desc = flavor_fra.416.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1680.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_events
+			has_variable = enable_sun_king_events
+		}
+		has_colonial_charters = yes
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # The practice of slavery in the colonies must be reigned in
+		name = flavor_fra.416.a
+		historical_option = yes
+		add_country_modifier = { modifier = fra_ordonnance_of_slavery years = 25 mode = add }
+		ai_chance = {
+			factor = 0.75
+		}
+ 	}
+
+ 	option = { # Implement the policy in France, but the policy may prove unenforceable
+		name = flavor_fra.416.b
+		add_country_modifier = { modifier = fra_ordonnance_of_slavery_limited years = 25 mode = add }
+		ai_chance = {
+			factor = 0.25
+		}
+ 	}
+}
+
+scripted_trigger valid_french_lowlands_target_location = {
+	OR = {
+		dominant_culture = culture:low_franconian
+		dominant_culture = culture:picard
+		dominant_culture = culture:walloon
+	}
+	country_exists = c:FRA
+	any_neighbor_location = {
+		owner ?= c:FRA
+	}
+}
+
+flavor_fra.417 = { # France's Natural Borders # Based on the Wars of Devolution
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.417.title
+ 	desc = flavor_fra.417.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1665.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+	image = "gfx/interface/illustrations/government/throne_rooms/throne_room_north_german.dds"
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_events
+			has_variable = enable_sun_king_events
+		}
+		any_neighbor_country = {
+			NOT = {
+				is_subject_of = c:FRA
+			}
+			any_owned_location = {
+				valid_french_lowlands_target_location = yes
+
+			}
+		}
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+    immediate = {
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # It is long past time we seized these territories
+		name = flavor_fra.417.a
+		historical_option = yes
+		custom_tooltip = claims_on_lowland_culture_countries
+		ruler ?= {
+			add_adm = 4
+			add_dip = 4
+			add_mil = 8
+		}
+		every_neighbor_country = {
+			limit = {
+				NOT = {
+					is_subject_of = c:FRA
+				}
+				any_owned_location = {
+					valid_french_lowlands_target_location = yes
+				}
+			}
+			add_opinion = { target = root modifier = lowlands_devolution_french_ambitions }
+			hidden_effect = {
+				ordered_owned_location = {
+					limit = {
+						valid_french_lowlands_target_location = yes
+					}
+					max = 1
+					order_by = population
+					c:FRA = { add_casus_belli =  { type = casus_belli:cb_conquer_province target = prev.owner province = prev.province } }
+				}
+			}
+		}
+		ai_chance = {
+			factor = 0.7
+		}
+ 	}
+
+ 	option = { # It would be unwise to stir a greater conflict with the Holy Roman empire
+		name = flavor_fra.417.b
+		drop_antagonism_bomb = {
+			target = capital
+			modifier = antagonism_renounced_claim
+			value = -5
+		}
+		ruler ?= {
+			add_adm = 8
+			add_dip = 8
+		}
+		ai_chance = {
+			factor = 0.3
+		}
+ 	}
+}
+
+flavor_fra.418 = { # Reapprochment with the Ottoman Turks
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.418.title
+ 	desc = flavor_fra.418.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1685.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_events
+			has_variable = enable_sun_king_events
+		}
+		country_exists = c:TUR
+		c:TUR = {
+			is_ai = yes
+		}
+		NOT = { is_allied_with = { target = c:TUR }	}
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # Let us attempt to reforge old ties
+		name = flavor_fra.418.a
+		historical_option = yes
+		add_opinion = {
+			target = c:TUR
+			modifier = opinion_new_fra_tur_relations
+		}
+		reverse_add_opinion = {
+			target = c:TUR
+			modifier = opinion_new_fra_tur_relations
+		}
+		ai_chance = {
+			factor = 0.55
+		}
+ 	}
+
+ 	option = { # We have no need to renew ties with the Ottomans
+		name = flavor_fra.418.b
+		add_prestige = prestige_severe_bonus
+		ai_chance = {
+			factor = 0.45
+		}
+ 	}
+}
+
+flavor_fra.419 = { # Belligerent Policy of <monarch_name>
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.419.title
+ 	desc = flavor_fra.419.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1657.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = yes # Being at war needed to trigger this event
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_events
+			has_variable = enable_sun_king_events
+		}
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = target_character
+        }
+	}
+
+ 	option = { # Now is the time for France's prowess to shine on the global stage
+		name = flavor_fra.419.a
+		historical_option = yes
+		drop_antagonism_bomb = {
+			target = capital
+			modifier = antagonism_pushed_towards_belligerent
+			value = 2
+		}
+		add_country_modifier = { modifier = fra_belligerent_policy years = 15 mode = add }
+		scope:target_character = {
+            add_character_modifier = {
+                modifier = fra_warlike_sun_king
+                months = 300
+                mode = add
+            }
+        }
+		ai_chance = {
+			factor = 0.7
+		}
+ 	}
+
+ 	option = { # We will only fight when necessary
+		name = flavor_fra.419.b
+		drop_antagonism_bomb = {
+			target = capital
+			modifier = antagonism_pushed_away_from_belligerent
+			value = -2
+		}
+		scope:target_character = {
+            add_character_modifier = {
+                modifier = fra_warlike_sun_king
+                months = 300
+                mode = add
+            }
+        }
+		ai_chance = {
+			factor = 0.3
+		}
+ 	}
+}
+
+flavor_fra.421 = { # The Nobility and the Palace of Versailies
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.421.title
+ 	desc = flavor_fra.421.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1657.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_events
+			has_variable = enable_sun_king_events
+		}
+		owns = location:paris
+		location:paris = {
+			is_capital = yes
+			has_building_with_at_least_one_level = versailles
+		}
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		set_variable = { name = enable_residence_in_versailles value = 1 }
+	}
+
+ 	option = { # Invite more members of the prominent families to take residence at Versailies
+		name = flavor_fra.421.a
+		historical_option = yes
+		custom_tooltip = this_may_lead_to_permanent_weakening_of_the_nobility
+		grant_estate_privilege = estate_privilege:residence_in_versailles
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		if = {
+			limit = {
+				ruler ?= {
+           	 		has_character_modifier = is_sun_king_prestige_rule
+				}
+			}
+			ruler ?= {
+				add_adm = 8
+				add_dip = 4
+			}
+			add_prestige = prestige_mild_bonus
+        }
+		if = {
+			limit = {
+				ruler ?= {
+           	 		has_character_modifier = is_sun_king_stability_rule
+				}
+			}
+			ruler ?= {
+				add_adm = 4
+				add_dip = 8
+			}
+			add_stability = stability_mild_bonus
+        }
+		if = {
+			limit = {
+				ruler ?= {
+					NOR = {
+						has_character_modifier = is_sun_king_stability_rule
+						has_character_modifier = is_sun_king_prestige_rule
+					}
+				}
+			}
+			ruler ?= {
+				add_adm = 4
+				add_dip = 4
+			}
+        }
+		ai_chance = {
+			factor = 0.9
+		}
+ 	}
+
+ 	option = { # The palace will welcome many, but will remain a private residence for the royal family
+		name = flavor_fra.421.b
+		add_legitimacy = legitimacy_extreme_bonus
+		add_country_modifier = { modifier = fra_versailles_royals_only years = 15 mode = add }
+		ai_chance = {
+			factor = 0.1
+		}
+ 	}
+}
+
+flavor_fra.422 = { # Seduction of the Nobility # Permanently weakens the nobility
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.422.title
+ 	desc = flavor_fra.422.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1657.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_events
+			has_variable = enable_sun_king_events
+		}
+		owns = location:paris
+		location:paris = {
+			is_capital = yes
+			has_building_with_at_least_one_level = versailles
+		}
+		has_estate_privilege = estate_privilege:residence_in_versailles
+ 	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		set_variable = { name = enable_permanent_residence_in_versailles value = 1 }
+	}
+
+ 	option = { # The Eminence of the Monarch has forever eclipsed the nobility
+		name = flavor_fra.422.a
+		historical_option = yes
+		add_prestige = prestige_extreme_bonus
+		revoke_estate_privilege = estate_privilege:residence_in_versailles
+		grant_estate_privilege = estate_privilege:permanent_residence_in_versailles
+		ai_chance = {
+			factor = 0.8
+		}
+ 	}
+
+ 	option = { # The historical power of the nobility still remains to be respected
+		name = flavor_fra.422.b
+		add_prestige = prestige_extreme_bonus
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		ai_chance = {
+			factor = 0.2
+		}
+ 	}
+}
+
+flavor_fra.423 = { # Revoking of Nantes
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.423.title
+ 	desc = flavor_fra.423.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/government/throne_rooms/throne_room_north_german.dds"
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1670.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_events
+			has_variable = enable_sun_king_events
+		}
+		has_policy = edict_of_nantes
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+    immediate = {
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # <monarch> and the court will no longer be beholden to Nantes!
+		name = flavor_fra.423.a
+		historical_option = yes
+		remove_law = law:fra_reformation_tolerance_edicts
+		set_variable = { name = nantes_revoked_by_sun_king value = 1 }
+		custom_tooltip = edict_of_nantes_disabled
+		add_prestige = prestige_severe_bonus
+		add_country_modifier = {
+			modifier = fra_edict_of_nantes_rescinded
+			years = 15
+			mode = add
+		}
+		ai_chance = {
+			factor = 0.7
+		}
+ 	}
+
+ 	option = { # No, we still need the Edict to maintain religious peace
+		name = flavor_fra.423.b
+		add_country_modifier = {
+			modifier = fra_reliance_on_nantes
+			years = 15
+			mode = add
+		}
+		ai_chance = {
+			factor = 0.3
+		}
+ 	}
+}
+
+flavor_fra.424 = { # Revocation of Nantes condemed
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.424.title
+ 	desc = flavor_fra.424.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1670.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_events
+			has_variable = enable_sun_king_events
+		}
+		custom_tooltip = {
+			text = variable_tt_nantes_revoked_by_sun_king
+			has_variable = nantes_revoked_by_sun_king
+		}
+ 	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # We will recover from this
+		name = flavor_fra.424.a
+		historical_option = yes
+		add_country_modifier = {
+			modifier = fra_fallout_from_end_of_nantes
+			years = 15
+			mode = add
+		}
+ 	}
+}
+
+flavor_fra.425 = { # Quartering of the Dragoons
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.425.title
+ 	desc = flavor_fra.425.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1670.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_events
+			has_variable = enable_sun_king_events
+		}
+		custom_tooltip = {
+			text = variable_tt_nantes_revoked_by_sun_king
+			has_variable = nantes_revoked_by_sun_king
+		}
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+    immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # The Quartering of the Dragoons should prevent any uprisings
+		name = flavor_fra.425.a
+		historical_option = yes
+		add_stability = stability_mild_bonus
+		add_country_modifier = {
+			modifier = fra_quartering_of_the_dragoons
+			years = 15
+			mode = add
+		}
+		ai_chance = {
+			factor = 0.65
+		}
+ 	}
+
+ 	option = { # This would be too costly on the state, abandon the idea!
+		name = flavor_fra.425.b
+		add_stability = stability_mild_penalty
+		add_legitimacy = legitimacy_weak_bonus
+		ai_chance = {
+			factor = 0.35
+		}
+ 	}
+}
+
+flavor_fra.426 = { # <Monarch> personal patronage of Court Officials
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.426.title
+ 	desc = flavor_fra.426.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1670.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_events
+			has_variable = enable_sun_king_events
+		}
+		owns = location:paris
+		location:paris = {
+			is_capital = yes
+			has_building_with_at_least_one_level = versailles
+		}
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # The <monarch> patronage is a costly one, but has no doubt earned loyalty
+		name = flavor_fra.426.a
+		historical_option = yes
+		scope:fra_ruler = {
+            add_character_modifier = {
+                modifier = fra_sun_king_court_patronage
+                months = 120
+                mode = add
+            }
+        }
+		ai_chance = {
+			factor = 0.55
+		}
+ 	}
+
+ 	option = { # Force <monarch> to scale back his patronage to conserve the royal treasury
+		name = flavor_fra.426.b
+		scope:fra_ruler = {
+            add_character_modifier = {
+                modifier = fra_sun_king_scaled_back_court_patronage
+                months = 120
+                mode = add
+            }
+        }
+		ai_chance = {
+			factor = 0.45
+		}
+ 	}
+}
+
+flavor_fra.427 = { # Revitalization of the Academie Française
+	#show portrait = of both.
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.427.title
+ 	desc = flavor_fra.427.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/printing_press.dds"
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1675.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_events
+			has_variable = enable_sun_king_events
+		}
+		custom_tooltip = {
+			text = variable_tt_academie_francaise_built
+			has_variable = academie_francaise_built
+		}
+		character:cardinal_richelieu = {
+			is_alive = no
+		}
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+    immediate = {
+		character:cardinal_richelieu ?= {
+			save_scope_as = target_character
+		}
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # <Monarch> will ensure the continuation of the Academie Française
+		name = flavor_fra.427.a
+		historical_option = yes
+		add_country_modifier = { modifier = fra_academie_francaise_revitalized years = 15 mode = add }
+		change_gold_effect = { scale = -3.00 }
+		culture:french = {
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+		ai_chance = {
+			factor = 0.85
+		}
+ 	}
+
+ 	option = { # Fund the Academie Française, but not too much at the state's expense
+		name = flavor_fra.427.b
+		change_gold_effect = { scale = -1.75 }
+		culture:french = {
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+		add_research_progress = research_progress_mild_bonus
+		ai_chance = {
+			factor = 0.15
+		}
+ 	}
+}
+
+flavor_fra.428 = { # Academie Royale de Danse and d’Opera # The Opera of Versailies
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.428.title
+ 	desc = flavor_fra.428.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/renaissance.dds"
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1670.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_events
+			has_variable = enable_sun_king_events
+		}
+		owns = location:paris
+		location:paris = {
+			is_capital = yes
+			has_building_with_at_least_one_level = versailles
+		}
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+    immediate = {
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # Versaillies is the wonder of Europe!
+		name = flavor_fra.428.a
+		historical_option = yes
+		add_prestige = prestige_severe_bonus
+		culture:french = {
+			add_cultural_influence = cultural_influence_extreme_bonus
+		}
+		ai_chance = {
+			factor = 0.95
+		}
+ 	}
+
+ 	option = { # These operas must end!
+		name = flavor_fra.428.b
+		add_country_modifier = { modifier = fra_clamped_down_on_opera years = 10 mode = add }
+		ai_chance = {
+			factor = 0.05
+		}
+ 	}
+}
+
+
+flavor_fra.429 = { # A King Without Equal # Gives Sun King/Queen title
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.429.title
+ 	desc = flavor_fra.429.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1657.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_events
+			has_variable = enable_sun_king_events
+		}
+		ruler ?= {
+			adm > 70
+			dip > 70
+			mil > 70
+		}
+		prestige >= 70
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # All of history shall remember the name of <monarch>
+		name = flavor_fra.429.a
+		historical_option = yes
+		if = {
+			limit = {
+				ruler ?= {
+           	 		is_female = no
+				}
+			}
+			ruler ?= {
+				set_nickname = nick_the_sun_king
+			}
+        }
+		if = {
+			limit = {
+				ruler ?= {
+           	 		is_female = yes
+				}
+			}
+			ruler ?= {
+				set_nickname = nick_the_sun_queen
+			}
+        }
+		add_prestige = prestige_extreme_bonus
+		add_legitimacy = legitimacy_extreme_bonus
+		ruler ?= {
+			add_character_modifier = {
+                modifier = the_sun_king_bonus
+                years = -1 # 'Permanent' but disappears after character dies
+                mode = add_and_extend
+            }
+		}
+		set_variable = { name = enable_sun_king_successor_events value = 1 }
+ 	}
+
+}
+
+scripted_trigger is_valid_indochina_country = {
+	OR = {
+		culture = culture:vietnamese_culture
+		culture = culture:thai_culture
+		culture = culture:cham_culture
+		culture = culture:khmer_culture
+	}
+	has_ports = yes
+	is_ai = yes
+}
+
+flavor_fra.430 = { # Influence in Indochina # Embassy building
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.430.title
+ 	desc = flavor_fra.430.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1680.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		region:indochina_region= {
+			any_present_country = {
+				is_valid_indochina_country = yes
+				capital = {
+					is_discovered_by = c:FRA
+				}
+			}
+		}
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		region:indochina_region = {	
+			random_present_country = {
+				limit = {
+					is_valid_indochina_country = yes
+					capital = {
+						is_discovered_by = c:FRA
+					}
+				}
+				save_scope_as = indochina_french_sphere
+			}
+		}
+		scope:indochina_french_sphere = {
+			ruler ?= {
+           		save_scope_as = indochina_ruler
+        	}
+		}
+	}
+
+ 	option = { # Let us establish an embassy in <nation>
+		name = flavor_fra.430.a
+		historical_option = yes
+		add_opinion = { target = scope:indochina_french_sphere modifier = french_indochina_embassy }
+		scope:indochina_french_sphere = {
+			add_opinion = { target = c:FRA modifier = french_indochina_embassy }
+			add_country_modifier = { modifier = indochina_french_advisors years = 15 mode = add }
+		}
+		ai_chance = {
+			factor = 0.6
+		}
+ 	}
+
+ 	option = { # Let us pursue more direct means for relations
+		name = flavor_fra.430.b
+		add_opinion = { target = scope:indochina_french_sphere modifier = french_indochina_hostilities }
+		add_casus_belli = {	target = scope:indochina_french_sphere type = casus_belli:cb_annex }
+		scope:indochina_french_sphere = {
+			add_opinion = { target = c:FRA modifier = french_indochina_hostilities }
+		}
+		ai_chance = {
+			factor = 0.4
+		}
+ 	}
+
+}
+
+flavor_fra.431 = { # Jesuit Missions in China
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.431.title
+ 	desc = flavor_fra.431.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1680.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		country_exists = c:CHI
+		c:CHI = {
+			is_ai = yes
+		}
+		has_discovered = c:CHI.capital
+		within_diplomatic_range = c:CHI
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		c:CHI = {
+			capital = { save_scope_as = chi_capital_scope }
+		}
+		create_character = {
+			first_name = name_john
+			last_name = de_fontaney
+			adm = 44
+			dip = 41
+			mil = 22
+			culture = culture:french
+			birth_location = location:paris
+			religion = religion:catholic
+			birth_date = 1643.1.1
+			estate = estate_type:clergy_estate
+			script = jean_fontaney
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+ 	option = { # May <target_character> spread the <catholic> faith abroad!
+		name = flavor_fra.431.a
+		historical_option = yes
+		add_religious_influence = religious_influence_mild_bonus
+		scope:target_character = { move_country = c:CHI }
+		hidden_effect = {
+			scope:chi_capital_scope = {
+				every_pop = {
+					split_pop = {
+						fraction = 0.08
+						religion = religion:catholic
+					}
+				}
+			}
+		}
+		random_list = {
+			33 = {
+				reverse_add_opinion = { target = c:CHI modifier = french_jesuits_in_our_lands }
+			}
+			67 = {
+				custom_tooltip = nothing_happens_with_jesuits
+			}
+		}
+		ai_chance = {
+			factor = 0.9
+		}
+ 	}
+
+ 	option = { # Forbid the Jesuits to prevent a Diplomatic incident
+		name = flavor_fra.431.b
+		add_prestige = prestige_mild_penalty
+		add_religious_influence = religious_influence_mild_penalty
+		hidden_effect = {
+			kill_character_silently = scope:target_character
+		}
+		ai_chance = {
+			factor = 0.1
+		}
+ 	}
+}
+
+flavor_fra.432 = { # Gift from the Portuguese King # Elephant for Louis XIV
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.432.title
+ 	desc = flavor_fra.432.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1680.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		country_exists = c:POR
+		c:POR = {
+			is_ai = yes
+			has_ruler = yes
+		}
+ 	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		c:POR = {
+			ruler ?= {
+            	save_scope_as = por_ruler
+        	}
+		}
+	}
+
+ 	option = { # A wonderful gift from the Portuguese Monarch!
+		name = flavor_fra.432.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		culture = {
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+		add_opinion = { target = c:POR modifier = opinion_portuguese_elephant_gift }
+		reverse_add_opinion = { target = c:POR modifier = opinion_portuguese_elephant_gift }
+		ai_chance = {
+			factor = 0.8
+		}
+ 	}
+
+ 	option = { # Have the beast studied
+		name = flavor_fra.432.b
+		add_research_progress = research_progress_mild_bonus
+		add_prestige = prestige_mild_penalty
+		ai_chance = {
+			factor = 0.2
+		}
+ 	}
+}
+
+flavor_fra.433 = { # Rule by Council
+	type = country_event
+	title = flavor_fra.433.title
+	desc = flavor_fra.433.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1660.1.1
+		to = 1715.1.1
+		monthly_chance = 20
+	}
+
+
+	trigger = {
+		has_ruler = yes
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+
+	option = { # The 4 Councils shall strengthen <monarch> rule
+		name = flavor_fra.433.a
+		historical_option = yes
+		add_country_modifier = { modifier = fra_rule_by_four_council years = 15 mode = add }
+	}
+	option = { # Our current existing royal council has served us well
+		name = flavor_fra.433.b
+		add_legitimacy = legitimacy_mild_bonus
+	}
+}
+
+flavor_fra.440 = { # Vauban ideals
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.440.title
+ 	desc = flavor_fra.440.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1665.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+    immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		create_character = {
+			first_name = name_sebastian
+			last_name = la_prestre
+			adm = 68
+			dip = 62
+			mil = 80
+			culture = culture:french
+			birth_location = location:luxeuil
+			religion = religion:catholic
+			birth_date = 1633.5.13
+			estate = estate_type:nobles_estate
+			script = vauban
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+ 	option = { # Let Vauban pave the way for engineering!
+		name = flavor_fra.440.a
+		historical_option = yes
+		scope:target_character = {
+			move_country = c:FRA
+            add_character_modifier = {
+                modifier = vauban_engineering
+                years = 25
+                mode = add
+            }
+		}
+		ai_chance = {
+			factor = 0.9
+		}
+ 	}
+
+ 	option = { # We do not need him
+		name = flavor_fra.440.b
+		add_legitimacy = legitimacy_mild_bonus
+		scope:target_character = { move_country = root }
+		ai_chance = {
+			factor = 0.1
+		}
+ 	}
+
+}
+
+flavor_fra.441 = { # The Engineering of Vauban
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.441.title
+ 	desc = flavor_fra.441.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1657.1.1
+		to = 1726.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		character:vauban ?= { is_alive = yes }
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}	
+
+    immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		character:vauban ?= {
+			save_scope_as = target_character
+		}
+	}
+
+ 	option = { # Let us employ his fortification expertise!
+		name = flavor_fra.441.a
+		historical_option = yes
+		add_country_modifier = { modifier = fra_vauban_fortification years = 15 mode = add }
+		change_societal_value = { type = offensive_vs_defensive value = societal_value_move_to_right }
+		ai_chance = {
+			factor = 0.5
+		}
+ 	}
+
+ 	option = { # The best defense, will always be a good offense
+		name = flavor_fra.441.b
+		add_country_modifier = { modifier = fra_favoring_offense_over_vauban_defense years = 15 mode = add }
+		change_societal_value = { type = offensive_vs_defensive value = societal_value_move_to_left }
+		ai_chance = {
+			factor = 0.5
+		}
+ 	}
+
+}
+
+flavor_fra.460 = { # Introduction of New Court Fasion
+	type = country_event
+	title = flavor_fra.460.title
+	desc = flavor_fra.460.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1620.1.1
+		to = 1660.1.1
+		monthly_chance = 20
+	}
+
+
+	trigger = {
+		has_ruler = yes
+		at_war = no
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		random_neighbor_country = {
+			save_scope_as = adopted_peruke_court
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	option = { # Introduce the new fashion to the courts of europe
+		name = flavor_fra.460.a
+		historical_option = yes
+		add_prestige = prestige_severe_bonus
+		add_country_modifier = { modifier = fra_introduce_new_fashion_to_europe years = 15 mode = add }
+		change_gold_effect = { scale = -6 }
+	}
+	option = { # Maintain the current court fashion
+		name = flavor_fra.460.b
+		add_legitimacy = legitimacy_mild_bonus
+		add_gold = 100
+	}
+}
+
+##########################
+# France Flavour - Age 5 #
+##########################
+
+
+flavor_fra.500 = { # A Return to Form
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.500.title
+ 	desc = flavor_fra.500.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1726.1.1
+		to = 1786.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		government_type = government_type:monarchy
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_successor_events
+			has_variable = enable_sun_king_successor_events
+		}
+		ruler ?= {
+			NOT = { has_character_modifier = the_sun_king_bonus }
+		}
+ 	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		previous_ruler ?= {
+			save_scope_as = previous_ruler
+		}
+	}
+
+ 	option = { # Strive for a more popular reign
+		name = flavor_fra.500.a
+		historical_option = yes
+		add_legitimacy = legitimacy_mild_bonus
+		change_societal_value = { type = centralization_vs_decentralization	value = societal_value_move_to_right }
+		scope:fra_ruler = {
+            add_character_modifier = {
+                modifier = fra_sun_king_successor_popular
+                years = 20
+                mode = add
+            }
+        }
+		ai_chance = {
+			factor = 0.5
+		}
+ 	}
+
+ 	option = { # Emulate the Absolutist Ideals of <sun_king>
+		name = flavor_fra.500.b
+		drop_antagonism_bomb = {
+			target = c:FRA.capital
+			modifier = antagonism_more_absolutism
+		}
+		scope:fra_ruler = {
+            add_character_modifier = {
+                modifier = fra_sun_king_successor_absolutist
+                years = 20
+                mode = add
+            }
+        }
+		ai_chance = {
+			factor = 0.5
+		}
+ 	}
+}
+
+
+flavor_fra.501 = { # The Absolutist Legacy of <fra_ruler>
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.501.title
+ 	desc = flavor_fra.501.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1731.1.1
+		to = 1790.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		government_type = government_type:monarchy
+		custom_tooltip = {
+			text = variable_tt_enable_sun_king_successor_events
+			has_variable = enable_sun_king_successor_events
+		}
+		ruler ?= {
+			NOT = { has_character_modifier = the_sun_king_bonus }
+		}
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		previous_ruler ?= {
+			save_scope_as = previous_ruler
+		}
+	}
+
+ 	option = { # Maintain the new Status Quo
+		name = flavor_fra.501.a
+		scope:fra_ruler = {
+			add_adm = 3
+			add_dip = 3
+			add_mil = 3
+        }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_penalty }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_penalty }
+		ai_chance = {
+			factor = 0.5
+		}
+ 	}
+
+ 	option = { # Concede some power back to the Estates
+		name = flavor_fra.501.b
+		add_prestige = prestige_mild_penalty
+		add_country_modifier = { modifier = fra_yielded_absolutist_power years = 15 mode = add }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+		ai_chance = {
+			factor = 0.3
+		}
+ 	}
+
+ 	option = { # Reinforce Absolutist Ideals
+		trigger = {
+			ruler = {
+				has_character_modifier = fra_sun_king_successor_absolutist
+			}
+		}
+		name = flavor_fra.501.c
+		scope:fra_ruler = {
+			add_adm = 5
+			add_dip = 5
+			add_mil = 5
+        }
+		add_country_modifier = { modifier = fra_strengthen_absolutist_grip years = 15 mode = add }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 0.8
+		}
+ 	}
+
+	after = {
+		remove_variable = enable_sun_king_events
+	}
+}
+
+flavor_fra.502 = { # A Visit from the Russian Tsar (Based on historical event)
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.502.title
+ 	desc = flavor_fra.502.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1717.1.1
+		to = 1736.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		country_exists = c:RUS
+		NOT = { is_allied_with = { target = c:RUS } }
+		NOT = { is_rival_of = c:RUS	}
+		is_independent_or_autonomous_subject = yes
+		c:RUS = {
+			has_ruler = yes
+			NOT = { is_rival_of = c:FRA	}
+			is_independent_or_autonomous_subject = yes
+		}
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		c:RUS = {
+        	ruler ?= {
+            	save_scope_as = rus_ruler
+        	}
+		}
+	}
+
+ 	option = { # The Tsar will always be welcomed at Court
+		name = flavor_fra.502.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		scope:fra_ruler = {
+			add_dip = 8
+        }
+		add_opinion = { target = c:RUS modifier = fra_impressed_russian_tsar }
+		c:RUS = {
+			add_opinion = { target = c:FRA modifier = fra_impressed_russian_tsar }
+		}
+		ai_chance = {
+			factor = 0.55
+		}
+ 	}
+
+ 	option = { # A welcome vistor, but reject any future desires to visit court
+		name = flavor_fra.502.b
+		add_prestige = prestige_weak_bonus
+		add_legitimacy = legitimacy_weak_bonus
+		scope:fra_ruler = {
+			add_dip = 8
+        }
+		add_opinion = { target = c:RUS modifier = fra_impressed_russian_tsar_quicker_decay }
+		c:RUS = {
+			add_opinion = { target = c:FRA modifier = fra_impressed_russian_tsar_quicker_decay }
+		}
+		ai_chance = {
+			factor = 0.25
+		}
+ 	}
+
+ 	option = { # Give the Russian Tsar an 'insulting' parting gift
+		name = flavor_fra.502.c
+		scope:fra_ruler = {
+			add_mil = 8
+			add_dip = -3
+        }
+		c:RUS = {
+			add_casus_belli = {
+				target = c:FRA
+				type = casus_belli:cb_insulted_us
+			}
+		}
+		ai_chance = {
+			factor = 0.2
+		}
+ 	}
+}
+
+flavor_fra.503 = { # Fleury and the King # Advise buff
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.503.title
+ 	desc = flavor_fra.503.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1723.1.1
+		to = 1750.1.1
+		monthly_chance = 25
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		character:andre_hercule_fleury ?= {
+			is_alive = yes
+		}
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		character:andre_hercule_fleury ?= {
+			save_scope_as = target_character
+		}
+	}
+
+ 	option = { # We shall use his advise well
+		name = flavor_fra.503.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		add_legitimacy = legitimacy_mild_bonus
+		custom_tooltip = fleury_additional_dhe
+		custom_tooltip = fleury_ministry_bonus
+        add_country_modifier = { # This modifier will be removed on Fleury death
+            modifier = fra_fleury_ministry
+            years = -1
+            mode = add_and_extend
+        }
+ 	}
+}
+
+flavor_fra.504 = { # The Cartes de Cassini # First Accurate Map of France
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.504.title
+ 	desc = flavor_fra.504.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1735.1.1
+		to = 1783.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		create_character = {
+			first_name = name_caesar.name_francis
+			last_name = cassini_de_thury
+			adm = 62
+			dip = 46
+			mil = 20
+			culture = culture:french
+			birth_location = location:paris
+			religion = religion:catholic
+			birth_date = 1714.6.17
+			estate = estate_type:burghers_estate
+			script = cassini
+			create_in_limbo = yes
+			save_scope_as = target_artist
+			artist_skill = 0.65
+			artist = calligrapher
+		}
+	}
+
+ 	option = { # Commission the Cartographer to map France!
+		name = flavor_fra.504.a
+		historical_option = yes
+		change_gold_effect = { scale = -3 }
+		culture = {
+			add_cultural_influence = cultural_influence_extreme_bonus
+		}
+		scope:target_artist = {
+			move_country = c:FRA
+		}
+		location:paris = {
+			create_art = {
+				artist = scope:target_artist
+				quality = 70
+				type = work_of_art_type:chronicle
+				key = cartes_de_cassini
+			}
+		}
+		ai_chance = {
+			factor = 0.9
+		}
+ 	}
+
+ 	option = { # Such a commission would be too great an expense of the state
+		name = flavor_fra.504.b
+		add_prestige = prestige_mild_bonus
+		change_gold_effect = { scale = 1.5 }
+		hidden_effect = {
+			kill_character_silently = scope:target_artist
+		}
+		ai_chance = {
+			factor = 0.1
+		}
+ 	}
+}
+
+flavor_fra.505 = { # <ruler> and the Department of Physics
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.505.title
+ 	desc = flavor_fra.505.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1730.1.1
+		to = 1779.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+ 	}
+
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+
+    immediate = {
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # Provide the College with funds!
+		name = flavor_fra.505.a
+		historical_option = yes
+		change_gold_effect = { scale = -2.40 }
+		add_country_modifier = { modifier = fra_college_de_france years = 10 mode = add }
+		custom_tooltip = college_may_request_more_funds
+		set_variable = { name = college_de_france_wants_more_funding value = 1 }
+		ai_chance = {
+			factor = 0.8
+		}
+ 	}
+
+ 	option = { # Relocate the funds to the royal treasury
+		name = flavor_fra.505.b
+		add_prestige = prestige_mild_penalty
+		change_gold_effect = { scale = 2.00 }
+		ai_chance = {
+			factor = 0.2
+		}
+ 	}
+}
+
+flavor_fra.506 = { # <ruler> and the Department of Mechanics
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.506.title
+ 	desc = flavor_fra.506.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1730.1.1
+		to = 1779.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_tt_college_de_france_wants_more_funding
+			has_variable = college_de_france_wants_more_funding
+		}
+ 	}
+
+	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
+
+    immediate = {
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # Expand the Departments!
+		name = flavor_fra.506.a
+		historical_option = yes
+		change_gold_effect = { scale = -1.80 }
+		add_research_progress = research_progress_ultimate_bonus
+		ai_chance = {
+			factor = 0.65
+		}
+ 	}
+
+ 	option = { # This department expansion is a waste of resources
+		name = flavor_fra.506.b
+		change_gold_effect = { scale = 1.20 }
+		ai_chance = {
+			factor = 0.35
+		}
+ 	}
+
+	after = {
+		remove_variable = college_de_france_wants_more_funding
+	}
+}
+
+flavor_fra.507 = { # John Law Stimulation
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.507.title
+ 	desc = flavor_fra.507.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1714.1.1
+		to = 1736.1.1
+		monthly_chance = 20
+	}
+
+ 	trigger = {
+		has_ruler = yes
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_john
+			last_name = law
+			adm = 72
+			dip = 48
+			mil = 28
+			culture = culture:scottish
+			birth_location = location:edinburgh
+			religion = religion:catholic
+			birth_date = 1671.4.21
+			estate = estate_type:burghers_estate
+			script = john_law
+			save_scope_as = target_artist
+			create_in_limbo = yes
+		}
+	}
+
+ 	option = { # Let Law take the reins!
+		name = flavor_fra.507.a
+		historical_option = yes
+		scope:target_artist ?= { move_country = root }
+		custom_tooltip = john_law_dhe_events
+		custom_tooltip = john_law_joins_france_and_bank
+		add_country_modifier = { modifier = fra_john_law_stimulus years = 10 mode = add }
+		ai_chance = {
+			factor = 0.8
+		}
+	}
+ 	option = { # His ideas will only bring further ruin!
+		name = flavor_fra.507.b
+		add_country_modifier = { modifier = fra_late_stagnant_economy years = 8 mode = add }
+		hidden_effect = {
+			kill_character_silently = scope:target_artist
+		}
+		ai_chance = {
+			factor = 0.2
+		}
+ 	}
+}
+
+flavor_fra.508 = { # General Private Bank # The Banque Generale Privee # John Law Bank, became Royal Bank of France for a time
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.508.title
+ 	desc = flavor_fra.508.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1714.1.1
+		to = 1736.1.1
+		monthly_chance = 20
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		exists = character:john_law
+		country_exists = c:FRA
+		character:john_law ?= {
+			is_alive = yes
+			owner ?= c:FRA
+		}
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		character:john_law ?= {
+			save_scope_as = target_artist
+		}
+		set_variable = { name = enable_general_private_bank value = 1 }
+	}
+
+ 	option = { # Let John Law establish the General Private Bank
+		name = flavor_fra.508.a
+		historical_option = yes
+		change_gold_effect = { scale = 5.00 }
+		custom_tooltip = john_law_bank_risk
+		character:john_law ?= {
+			add_adm = 7
+		}
+		add_country_modifier = { modifier = fra_john_law_national_bank years = 15 mode = add }
+		ai_chance = {
+			factor = 0.75
+		}
+ 	}
+
+ 	option = { # Welcome the bank, but prevent overreliance
+		name = flavor_fra.508.b
+		custom_tooltip = john_law_bank_more_direct
+		change_gold_effect = { scale = 1.25 }
+		add_country_modifier = { modifier = fra_caution_national_bank years = 15 mode = add }
+		set_variable = { name = prevent_overeliance_on_general_bank value = 1 }
+		ai_chance = {
+			factor = 0.25
+		}
+ 	}
+}
+
+flavor_fra.509 = { # The Banque Generale Invests in the Colonies
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.509.title
+ 	desc = flavor_fra.509.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1714.1.1
+		to = 1736.1.1
+		monthly_chance = 20
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_tt_enable_general_private_bank
+			has_variable = enable_general_private_bank
+		}
+		custom_tooltip = {
+			text = variable_tt_enable_general_private_bank_collapsed
+			NOT = { has_variable = enable_general_private_bank_collapsed }
+		}
+		has_colonial_charters = yes
+		exists = character:john_law
+		character:john_law ?= {
+			is_alive = yes
+			owner = c:FRA
+		}
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		character:john_law ?= {
+			save_scope_as = target_artist
+		}
+	}
+
+ 	option = { # Allow him to expand the shares of the company
+		name = flavor_fra.509.a
+		historical_option = yes
+		custom_tooltip = john_law_colonial_risk
+		change_gold_effect = { scale = 5.00 }
+		character:john_law ?= {
+			add_adm = 5
+			add_dip = 5
+		}
+		add_country_modifier = { modifier = fra_john_law_mississippi_company years = 15 mode = add }
+		ai_chance = {
+			factor = 0.7
+		}
+ 	}
+
+ 	option = { # Limit the degree to which Law issues colonial shares
+		name = flavor_fra.509.b
+		custom_tooltip = law_monopoly_restricted
+		change_gold_effect = { scale = 0.50 }
+		add_legitimacy = legitimacy_mild_penalty
+		add_country_modifier = { modifier = fra_john_law_mississippi_company_limit years = 15 mode = add }
+		set_variable = { name = prevented_law_colonial_monopoly value = 1 }
+		ai_chance = {
+			factor = 0.3
+		}
+ 	}
+}
+
+flavor_fra.510 = { # Benefits of the Banque Generale
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.510.title
+ 	desc = flavor_fra.510.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1714.1.1
+		to = 1736.1.1
+		monthly_chance = 20
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_tt_enable_general_private_bank
+			has_variable = enable_general_private_bank
+		}
+		custom_tooltip = {
+			text = variable_tt_enable_general_private_bank_collapsed
+			NOT = { has_variable = enable_general_private_bank_collapsed }
+		}
+		OR = { # Rewarded for going fully historical
+			has_country_modifier = fra_john_law_national_bank
+			has_country_modifier = fra_john_law_mississippi_company
+		}
+		exists = character:john_law
+		character:john_law ?= {
+			is_alive = yes
+			owner = c:FRA
+		}
+ 	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		character:john_law ?= {
+			save_scope_as = target_artist
+		}
+	}
+
+ 	option = { # May John Law policies continue to fill the coffers of France!
+		name = flavor_fra.510.a
+		historical_option = yes
+		custom_tooltip = bank_yields_benefits_for_now
+		change_gold_effect = { scale = 12.00 }
+		add_country_modifier = { modifier = fra_general_private_bank_benefits years = 12 mode = add }
+		add_stability = stability_mild_bonus
+		add_prestige = prestige_mild_bonus
+ 	}
+}
+
+scripted_effect remove_law_bank_modifiers = {
+	if = {
+		limit = {
+			has_country_modifier = fra_john_law_national_bank
+		}
+		remove_country_modifier = fra_john_law_national_bank
+	}
+	if = {
+		limit = {
+			has_country_modifier = fra_caution_national_bank
+		}
+		remove_country_modifier = fra_caution_national_bank
+	}
+	if = {
+		limit = {
+			has_country_modifier = fra_john_law_mississippi_company
+		}
+		remove_country_modifier = fra_john_law_mississippi_company
+	}
+	if = {
+		limit = {
+			has_country_modifier = fra_john_law_mississippi_company_limit
+		}
+		remove_country_modifier = fra_john_law_mississippi_company_limit
+	}
+	if = {
+		limit = {
+			has_country_modifier = fra_general_private_bank_benefits
+		}
+		remove_country_modifier = fra_general_private_bank_benefits
+	}
+}
+
+flavor_fra.511 = { # Collapse of the Banque Royal
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.511.title
+ 	desc = flavor_fra.511.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1720.1.1
+		to = 1736.1.1
+		monthly_chance = 18
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_tt_enable_general_private_bank
+			has_variable = enable_general_private_bank
+		}
+		exists = character:john_law
+ 	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		character:john_law ?= {
+			save_scope_as = target_artist
+		}
+		set_variable = { name = enable_general_private_bank_collapsed value = 1 }
+	}
+
+ 	option = { # Law policies have led us to this disaster!
+		name = flavor_fra.511.a
+		trigger = {
+			AND = {
+				NOT = { has_variable = prevent_overeliance_on_general_bank }
+				NOT = { has_variable = prevented_law_colonial_monopoly }
+			}
+		}
+		historical_option = yes
+		remove_law_bank_modifiers = yes
+		change_gold_effect = { scale = -8.00 }
+		add_inflation = inflation_ultimate_penalty
+		add_stability = stability_mild_penalty
+		add_prestige = prestige_mild_penalty
+		add_country_modifier = { modifier = fra_general_private_bank_collapse_full_negatives years = 10 mode = add }
+ 	}
+
+ 	option = { # Law policies have been a disaster, but our caution and mitigated some economical damage
+		name = flavor_fra.511.b
+		remove_law_bank_modifiers = yes
+		change_gold_effect = { scale = -4.00 }
+		add_inflation = inflation_severe_penalty
+		trigger = {
+			OR = {
+				has_variable = prevent_overeliance_on_general_bank
+				has_variable = prevented_law_colonial_monopoly
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_variable = prevented_law_colonial_monopoly }
+			}
+			add_country_modifier = { modifier = fra_general_private_bank_collapse_colonies_bankrupted years = 10 mode = add }
+		}
+		if = {
+			limit = {
+				NOT = { has_variable = prevent_overeliance_on_general_bank }
+			}
+			add_country_modifier = { modifier = fra_general_private_bank_collapse_overeliance_penalty years = 10 mode = add }
+		}
+		if = {
+			limit = {
+				AND = {
+					has_variable = prevent_overeliance_on_general_bank
+					has_variable = prevented_law_colonial_monopoly
+				}
+			}
+			add_country_modifier = { modifier = fra_general_private_bank_collapse_partial_negation years = 10 mode = add }
+		}
+ 	}
+
+	after = {
+		remove_variable = enable_general_private_bank
+		remove_variable = prevented_law_colonial_monopoly
+		remove_variable = prevent_overeliance_on_general_bank
+		if = {
+			limit = {
+				character:john_law ?= {
+					is_alive = no
+				}
+			}
+			remove_variable = enable_general_private_bank_collapsed
+		}
+	}
+}
+
+flavor_fra.512 = { # Fallout of John Law
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.512.title
+ 	desc = flavor_fra.512.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1714.1.1
+		to = 1736.1.1
+		monthly_chance = 75
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_tt_enable_general_private_bank_collapsed
+			has_variable = enable_general_private_bank_collapsed
+		}
+		exists = character:john_law
+		character:john_law ?= {
+			owner = c:FRA
+			is_alive = yes
+		}
+ 	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}	
+
+    immediate = {	
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		character:john_law ?= {
+			save_scope_as = target_character
+		}		
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # Have all his holdings in France confiscated!
+		name = flavor_fra.512.a
+		historical_option = yes
+		kill_character_silently = scope:target_character
+		add_stability = stability_weak_bonus
+		add_legitimacy = legitimacy_weak_bonus
+		change_gold_effect = { scale = 0.75 }
+ 	}
+
+	after = {
+		remove_variable = enable_general_private_bank_collapsed
+	}
+}
+
+flavor_fra.520 = { # The Unigenitus and Jansenism
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.520.title
+ 	desc = flavor_fra.520.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1720.1.1
+		to = 1740.1.1
+		monthly_chance = 40
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		country_exists = c:PAP
+		c:PAP = {
+			has_ruler = yes
+		}
+		religion = religion:catholic
+ 	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		c:PAP = {
+        	ruler ?= {
+            	save_scope_as = pap_ruler
+        	}
+		}
+	}
+
+ 	option = { # This legality of Jansenism will soon need to be decided
+		name = flavor_fra.520.a
+		historical_option = yes
+		set_variable = { name = janseism_conflict_events value = 1 }
+		custom_tooltip = janseism_unigenitus_conflict_events_wilL_occur
+		unlock_law_effect = { type = fra_jansenism_legality }
+		add_policy = policy:jansenism_no_formal_law
+		add_country_modifier = { modifier = fra_jansenism_unigenitus_conflict years = 25 mode = add }
+ 	}
+}
+
+flavor_fra.521 = { # Repudition of Jansenism
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.521.title
+ 	desc = flavor_fra.521.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1720.1.1
+		to = 1740.1.1
+		monthly_chance = 20
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_tt_janseism_conflict_events
+			has_variable = janseism_conflict_events
+		}
+		NOT = { has_policy = unigenitus_codified }
+		country_exists = c:PAP
+		c:PAP = {
+			has_ruler = yes
+		}
+		religion = religion:catholic
+ 	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		c:PAP = {
+        	ruler ?= {
+            	save_scope_as = pap_ruler
+        	}
+		}
+	}
+
+ 	option = { # Side with Unigenitus court proponents
+		name = flavor_fra.521.a
+		historical_option = yes
+		add_religious_influence = religious_influence_severe_bonus
+		add_estate_satisfaction = { type = estate_type:peasants_estate	value = estate_satisfaction_mild_penalty }
+		add_estate_satisfaction = { type = estate_type:burghers_estate	value = estate_satisfaction_mild_penalty }
+		add_estate_satisfaction = { type = estate_type:clergy_estate	value = estate_satisfaction_mild_bonus }
+		ai_chance = {
+			factor = 0.7
+		}
+ 	}
+
+ 	option = { # Allow Janseism followers to protest the Unigenitus decree
+		name = flavor_fra.521.b
+		add_religious_influence = religious_influence_severe_penalty
+		add_estate_satisfaction = { type = estate_type:peasants_estate	value = estate_satisfaction_mild_bonus }
+		add_estate_satisfaction = { type = estate_type:burghers_estate	value = estate_satisfaction_mild_bonus }
+		add_estate_satisfaction = { type = estate_type:clergy_estate	value = estate_satisfaction_mild_penalty }
+		c:PAP = { add_opinion = { target = root modifier = fra_weakened_unigenitus_decree }	}
+		ai_chance = {
+			factor = 0.3
+		}
+ 	}
+}
+
+
+flavor_fra.522 = { # Cinquantieme Tax
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.522.title
+ 	desc = flavor_fra.522.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1720.1.1
+		to = 1740.1.1
+		monthly_chance = 20
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_tt_janseism_conflict_events
+			has_variable = janseism_conflict_events
+		}
+		NOT = { has_policy = unigenitus_codified }
+		religion = religion:catholic
+ 	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # Levy the tax!
+		name = flavor_fra.522.a
+		historical_option = yes
+		custom_tooltip = {
+			text = cheapter_to_enact_unigenitus
+			set_variable = { name = reduced_unigenitus_implementation value = 1 }
+		}
+		add_religious_influence = religious_influence_severe_bonus
+		change_gold_effect = { scale = 3.00 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate	value = estate_satisfaction_mild_penalty }
+		add_estate_satisfaction = { type = estate_type:burghers_estate	value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 0.65
+		}
+ 	}
+
+ 	option = { # Forbid the Tax.
+		name = flavor_fra.522.b
+		custom_tooltip = {
+			text = period_of_stability_when_declining_unigenitus
+			set_variable = { name = no_unigenitus_implementation_will_grant_more_stability value = 1 }
+		}
+		add_stability = stability_severe_bonus
+		add_estate_satisfaction = { type = estate_type:peasants_estate	value = estate_satisfaction_mild_bonus }
+		add_estate_satisfaction = { type = estate_type:burghers_estate	value = estate_satisfaction_mild_bonus }
+		ai_chance = {
+			factor = 0.35
+		}
+ 	}
+}
+
+flavor_fra.523 = { # Dissent Amongst the Gallicans proponents
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.523.title
+ 	desc = flavor_fra.523.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1720.1.1
+		to = 1740.1.1
+		monthly_chance = 20
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_tt_janseism_conflict_events
+			has_variable = janseism_conflict_events
+		}
+		NOT = { has_policy = unigenitus_codified }
+		country_exists = c:PAP
+		c:PAP = {
+			has_ruler = yes
+		}
+		religion = religion:catholic
+ 	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		c:PAP = {
+        	ruler ?= {
+            	save_scope_as = pap_ruler
+        	}
+		}
+	}
+
+ 	option = { # We will have to weaken the Jansenist's Gallicans allies
+		name = flavor_fra.523.a
+		historical_option = yes
+		custom_tooltip = gallicans_in_clergy_will_oppose_crown
+		add_stability = stability_weak_penalty
+		add_country_modifier = { modifier = fra_gallicans_allies years = 12 mode = add }
+		ai_chance = {
+			factor = 0.35
+		}
+ 	}
+
+ 	option = { # Allow them to openly support their Jansenist allies for now
+		name = flavor_fra.523.b
+		add_stability = stability_weak_bonus
+		custom_tooltip = {
+			text = avoids_gallican_ire_unless_unigenitus_implemented
+			set_variable = { name = gallican_ire_if_implemented value = 1 }
+		}
+		ai_chance = {
+			factor = 0.65
+		}
+ 	}
+}
+
+
+flavor_fra.524 = { # The Unigenitus Decree
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.524.title
+ 	desc = flavor_fra.524.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1720.1.1
+		to = 1740.1.1
+		monthly_chance = 20
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_tt_janseism_conflict_events
+			has_variable = janseism_conflict_events
+		}
+		country_exists = c:PAP
+		c:PAP = {
+			has_ruler = yes
+		}
+		religion = religion:catholic
+ 	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		c:PAP = {
+        	ruler ?= {
+            	save_scope_as = pap_ruler
+        	}
+		}
+	}
+
+ 	option = { # Codified the Unigenitus bull into law.
+		name = flavor_fra.524.a
+		historical_option = yes
+		remove_country_modifier = fra_jansenism_unigenitus_conflict
+		if = {
+			limit = {
+				has_variable = reduced_unigenitus_implementation
+			}
+			add_country_modifier = { modifier = fra_unigenitus_implementation years = 10 mode = add }
+		}
+		if = {
+			limit = {
+				has_variable = gallican_ire_if_implemented
+			}
+			add_country_modifier = { modifier = fra_gallicans_ire years = 10 mode = add }
+		}
+		unlock_policy_effect = { type = unigenitus_codified }
+		add_policy = policy:unigenitus_codified
+		ai_chance = {
+			factor = 0.8
+		}
+ 	}
+
+ 	option = { # Reject the Unigenitus bull, and allow Jansenism to continue.
+		name = flavor_fra.524.b
+		if = {
+			limit = {
+				has_country_modifier = fra_jansenism_unigenitus_conflict
+			}
+			remove_country_modifier = fra_jansenism_unigenitus_conflict
+		}
+		if = {
+			limit = {
+				has_country_modifier = fra_gallicans_allies
+			}
+			remove_country_modifier = fra_gallicans_allies
+		}
+		add_religious_influence = religious_influence_extreme_penalty
+		c:PAP = { add_opinion = { target = root modifier = fra_blocked_unigenitus_implementation }	}
+		if = {
+			limit = {
+				has_variable = no_unigenitus_implementation_will_grant_more_stability
+			}
+			add_stability = stability_extreme_bonus
+		}
+		ai_chance = {
+			factor = 0.2
+		}
+ 	}
+
+	after = {
+		remove_variable = no_unigenitus_implementation_will_grant_more_stability
+		remove_variable = gallican_ire_if_implemented
+		remove_variable = reduced_unigenitus_implementation
+		remove_variable = janseism_conflict_events
+	}
+}
+
+# Fleury Events Flavor
+
+flavor_fra.530 = { # Fleury and the Navy of France
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.530.title
+ 	desc = flavor_fra.530.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/units/navy_light_ship_4.dds"
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1725.1.1
+		to = 1750.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		navy_size_percentage >= 0.5
+		any_rival ?= {
+			navy_size >= root.navy_size
+		}
+		character:andre_hercule_fleury ?= {
+			is_alive = yes
+		}
+		has_country_modifier = fra_fleury_ministry
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+    immediate = {
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		character:andre_hercule_fleury ?= {
+			save_scope_as = target_character
+		}
+	}
+
+ 	option = { # Fleury is right, reduce the size of the Navy!
+		name = flavor_fra.530.a
+		historical_option = yes
+		change_societal_value = { type = land_vs_naval	value = societal_value_large_move_to_left }
+		add_country_modifier = { modifier = fra_fleury_naval_reallocation years = 10 mode = add }
+		ai_chance = {
+			factor = 0.6
+		}
+ 	}
+
+ 	option = { # Reject Fleury offer, maintain current Naval funds
+		name = flavor_fra.530.b
+		change_societal_value = { type = land_vs_naval	value = societal_value_move_to_right }
+		add_country_modifier = { modifier = fra_maintain_the_navy years = 10 mode = add }
+		ai_chance = {
+			factor = 0.4
+		}
+ 	}
+}
+
+flavor_fra.531 = { # Philibert Orry's Balancing of the Budget # Dixieme Tax
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.531.title
+ 	desc = flavor_fra.531.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1725.1.1
+		to = 1750.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		character:andre_hercule_fleury ?= {
+			is_alive = yes
+		}
+		character:john_law ?= {
+			is_alive = no
+		}
+		has_country_modifier = fra_fleury_ministry
+ 	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		character:andre_hercule_fleury ?= {
+			save_scope_as = target_character
+		}
+		create_character = {
+			first_name = name_philip
+			last_name = orry
+			adm = 64
+			dip = 41
+			mil = 32
+			culture = culture:french
+			birth_location = location:troyes
+			religion = religion:catholic
+			birth_date = 1689.1.22
+			estate = estate_type:burghers_estate
+			script = philibert_orry
+			save_scope_as = philip_orry
+			create_in_limbo = yes
+		}
+		character:john_law ?= {
+			save_scope_as = john_law
+		}
+	}
+
+ 	option = { # Implement the Dixieme Tax to balance the budget
+		name = flavor_fra.531.a
+		historical_option = yes
+		scope:philip_orry = { move_country = root }
+		add_country_modifier = { modifier = fra_dixieme_tax_levied years = 5 mode = add }
+		ai_chance = {
+			factor = 0.85
+		}
+ 	}
+
+ 	option = { # The Risk is too Great
+		name = flavor_fra.531.b
+		scope:philip_orry = { move_country = root }
+		add_stability = stability_mild_bonus
+		add_legitimacy = legitimacy_mild_bonus
+		add_country_modifier = { modifier = fra_dixieme_financial_woes years = 5 mode = add }
+		ai_chance = {
+			factor = 0.15
+		}
+ 	}
+}
+
+flavor_fra.532 = { # The National Road Network
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.532.title
+ 	desc = flavor_fra.532.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1725.1.1
+		to = 1750.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		character:andre_hercule_fleury ?= {
+			is_alive = yes
+		}
+		has_country_modifier = fra_fleury_ministry
+ 	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+    immediate = {	
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		character:andre_hercule_fleury ?= {
+			save_scope_as = target_character
+		}
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # All of France will be connected!
+		name = flavor_fra.532.a
+		historical_option = yes
+		custom_tooltip = {
+			text = if_fleury_dies_road_network_change # Becomes a 5 years modifier with reduces effectiveness of 50%
+			set_variable = { name = enable_fleury_road_legacy_modifier value = 1 }
+		}
+		change_gold_effect = { scale = -12.00 }
+		add_country_modifier = { modifier = fra_fleury_national_road_project years = 15 mode = add }
+		ai_chance = {
+			factor = 0.75
+		}
+ 	}
+
+ 	option = { # A project too expensive
+		name = flavor_fra.532.b
+		add_stability = stability_severe_bonus
+		add_country_modifier = { modifier = fra_fleury_road_road_project_scorned years = 10 mode = add }
+		ai_chance = {
+			factor = 0.25
+		}
+ 	}
+}
+
+flavor_fra.533 = { # Fleury Maritime Growth of France
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.533.title
+ 	desc = flavor_fra.533.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1725.1.1
+		to = 1750.1.1
+		monthly_chance = 10
+	}
+	image = "gfx/interface/illustrations/institutions/global_trade.dds"
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		character:andre_hercule_fleury ?= {
+			is_alive = yes
+		}
+		has_country_modifier = fra_fleury_ministry
+		has_country_modifier = fra_fleury_naval_reallocation
+		has_country_modifier = 	fra_fleury_national_road_project
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+    immediate = {
+		
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		character:andre_hercule_fleury ?= {
+			save_scope_as = target_character
+		}
+	}
+
+ 	option = { # France Maritime Trade has never been better!
+		name = flavor_fra.533.a
+		historical_option = yes
+		add_country_modifier = { modifier = fra_fleury_maritime_bonus years = 15 mode = add }
+		ai_chance = {
+			factor = 0.55
+		}
+ 	}
+
+ 	option = { # Fleury has brought prosperity to France
+		name = flavor_fra.533.b
+		add_country_modifier = { modifier = fra_fleury_france_land_prosperity years = 15 mode = add }
+		ai_chance = {
+			factor = 0.45
+		}
+ 	}
+}
+
+flavor_fra.534 = { # End of Fleury Reign # Fleury will be scripted to 'die', although this paves the way for Machault and Marc-Pierre
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.534.title
+ 	desc = flavor_fra.534.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1725.1.1
+		to = 1800.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		exists = character:andre_hercule_fleury
+		character:andre_hercule_fleury ?= {
+			is_alive = no
+		}
+		has_country_modifier = fra_fleury_ministry
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		if = {
+			limit = {
+				has_variable = enable_fleury_road_legacy_modifier
+			}
+			add_country_modifier = { modifier = fra_fleury_national_road_project_legacy years = 5 mode = add }
+			remove_country_modifier = fra_fleury_national_road_project
+		}
+	}
+
+ 	option = { # The <ruler> will continue to rule without a chief minister!
+		name = flavor_fra.534.a
+		historical_option = yes
+		remove_country_modifier = fra_fleury_ministry
+		add_legitimacy = legitimacy_mild_penalty
+        scope:fra_ruler = {
+            add_character_modifier = {
+                modifier = fra_no_chief_minister
+                years = 25
+                mode = add
+            }
+        }
+		ai_chance = {
+			factor = 0.5
+		}
+ 	}
+
+ 	option = { # Increase reliance on the council with Fleury passing
+		name = flavor_fra.534.b
+		add_stability = stability_mild_bonus
+		remove_country_modifier = fra_fleury_ministry
+        scope:fra_ruler = {
+            add_character_modifier = {
+                modifier = fra_reliance_on_ministers
+                years = 15
+                mode = add
+            }
+        }
+		ai_chance = {
+			factor = 0.5
+		}
+ 	}
+	after = {
+		remove_variable = enable_fleury_road_legacy_modifier
+	}
+}
+
+flavor_fra.540 = { # Mézières Royal Engineering School (Founded in Mezieres)
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.540.title
+ 	desc = flavor_fra.540.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1738.1.1
+		to = 1760.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		owns = location:chateau_porcien
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		create_character = {
+			first_name = name_mark.name_peter
+			last_name = de_voyer
+			adm = 41
+			dip = 52
+			mil = 79
+			culture = culture:french
+			birth_location = location:paris
+			religion = religion:catholic
+			birth_date = 1696.9.16
+			estate = estate_type:burghers_estate
+			script = marc_de_voyer
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+ 	option = { # This school will create many talented engineers!!
+		name = flavor_fra.540.a
+		historical_option = yes
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+		change_gold_effect = { scale = -3.50 }
+		add_research_progress = research_progress_mild_bonus
+		change_societal_value = { type = quality_vs_quantity value = societal_value_move_to_left }
+		add_country_modifier = { modifier = fra_ecole_royale_mezieres years = 10 mode = add }
+		ai_chance = {
+			factor = 0.6
+		}
+ 	}
+
+ 	option = { # Reward de Voyer a promotion at court! (Comte d'Arenson is the Secretary of War title)
+		name = flavor_fra.540.b
+		change_gold_effect = { scale = -3.50 }
+        scope:target_character = {
+			move_country = root
+            add_character_modifier = {
+                modifier = fra_advisor_promoted_at_court
+                years = 15
+                mode = add
+            }
+        }
+		change_societal_value = { type = quality_vs_quantity value = societal_value_move_to_left }
+		add_country_modifier = { modifier = fra_ecole_royale_mezieres years = 10 mode = add }
+		ai_chance = {
+			factor = 0.3
+		}
+ 	}
+
+ 	option = { # This school would be too great an expense
+		name = flavor_fra.540.c
+		add_prestige = prestige_mild_penalty
+		add_legitimacy = legitimacy_mild_bonus
+		add_stability = stability_weak_bonus
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+		ai_chance = {
+			factor = 0.1
+		}
+ 	}
+}
+
+flavor_fra.541 = { # The École Militaire
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.541.title
+ 	desc = flavor_fra.541.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1740.1.1
+		to = 1783.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+    immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+ 	option = { # Establish the Academy!
+		name = flavor_fra.541.a
+		historical_option = yes
+		change_gold_effect = { scale = -5.00 }
+		add_army_tradition = army_tradition_extreme_bonus
+		change_societal_value = { type = quality_vs_quantity value = societal_value_move_to_left }
+		add_country_modifier = { modifier = fra_ecole_militaire years = 10 mode = add }
+		ai_chance = {
+			factor = 0.7
+		}
+ 	}
+
+ 	option = { # Our existing army is fine, double maintenance efforts!
+		name = flavor_fra.541.b
+		add_prestige = prestige_mild_bonus
+		add_country_modifier = { modifier = fra_reinforce_existing_army years = 10 mode = add }
+		ai_chance = {
+			factor = 0.3
+		}
+ 	}
+}
+
+flavor_fra.542 = { # Local Parliaments React to the 5 percent tax # Machault Event
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.542.title
+ 	desc = flavor_fra.542.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1740.1.1
+		to = 1767.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		has_policy = five_percent_tax
+		character:jean_baptiste_de_machault ?= {
+			is_alive = yes
+		}
+		modifier:has_a_parliamentary_system = yes
+ 	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+		character:jean_baptiste_de_machault ?= {
+			save_scope_as = target_character
+		}
+	}
+
+ 	option = { # Close down their parliaments!
+		name = flavor_fra.542.a
+		historical_option = yes
+		add_country_modifier = { modifier = fra_province_parliaments_closed years = 10 mode = add }
+		add_estate_satisfaction = { type = estate_type:peasants_estate	value = estate_satisfaction_extreme_penalty }
+		ai_chance = {
+			factor = 0.55
+		}
+ 	}
+
+ 	option = { # Retract the law
+		name = flavor_fra.542.b
+		add_prestige = prestige_severe_penalty
+		add_policy = policy:no_five_percent_tax
+		ai_chance = {
+			factor = 0.45
+		}
+ 	}
+}
+
+
+flavor_fra.543 = { # Supression of the Jesuits
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.543.title
+ 	desc = flavor_fra.543.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1750.1.1
+		to = 1770.1.1
+		monthly_chance = 10
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		at_war = no
+		has_heir = yes
+		has_consort = yes
+		modifier:has_a_parliamentary_system = yes
+		religion = religion:catholic
+		has_policy = jesuits_allowed
+		has_unlocked_global_law_trigger = { type = society_of_jesus }
+ 	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+        heir ?= {
+            save_scope_as = scope_heir_fra
+        }
+	}
+
+ 	option = { # The Jesuits have grown too powerful, rein them in!
+		name = flavor_fra.543.a
+		historical_option = yes
+		custom_tooltip = some_in_royal_household_will_oppose
+		add_policy = policy:jesuits_not_allowed
+		add_country_modifier = { modifier = fra_jesuits_banned_bonus years = 20 mode = add }
+		add_religious_influence = religious_influence_mild_penalty
+		change_societal_value = { type = centralization_vs_decentralization	value = societal_value_large_move_to_left }
+		ai_chance = {
+			factor = 0.6
+		}
+ 	}
+
+ 	option = { # The Jesuits still remain a valuable order within France
+		name = flavor_fra.543.b
+		add_religious_influence = religious_influence_severe_bonus
+		add_country_modifier = { modifier = fra_jesuit_order_allowed_bonus years = 20 mode = add }
+		ai_chance = {
+			factor = 0.4
+		}
+ 	}
+}
+
+flavor_fra.544 = { # Heir Disapproves of the Supression of the Jesuits
+	type = country_event
+	fire_only_once = yes
+ 	title = flavor_fra.544.title
+ 	desc = flavor_fra.544.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1750.1.1
+		to = 1770.1.1
+		monthly_chance = 25
+	}
+
+ 	trigger = {
+		has_ruler = yes
+		has_consort = yes
+		has_heir = yes
+		religion = religion:catholic
+		has_policy = jesuits_not_allowed
+		has_unlocked_global_law_trigger = { type = society_of_jesus }
+ 	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}	
+
+    immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+        heir ?= {
+            save_scope_as = scope_heir_fra
+        }
+        consort ?= {
+            save_scope_as = consort_fra
+        }
+	}
+
+ 	option = { # The new policy towards Jesuits will remain unchanged
+		name = flavor_fra.544.a
+		historical_option = yes
+		add_country_modifier = { modifier = fra_royal_house_feuds years = 10 mode = add }
+		ai_chance = {
+			factor = 0.7
+		}
+ 	}
+
+ 	option = { # Compromise and return some power to the Jesuits
+		name = flavor_fra.544.b
+		add_legitimacy = legitimacy_mild_penalty
+		add_country_modifier = { modifier = fra_royal_house_feuds_compromise years = 10 mode = add }
+		ai_chance = {
+			factor = 0.3
+		}
+ 	}
+}
+
+flavor_fra.550 = { # Louvre Museum
+	hide_portraits = yes
+	type = country_event
+	title = flavor_fra.550.title
+	desc = flavor_fra.550.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = FRA
+		from = 1783.1.1
+		to = 1850.1.1
+		monthly_chance = 20
+	}
+
+
+	trigger = {
+		has_ruler = yes
+		government_type = government_type:republic
+		is_revolutionary = yes
+		owns = location:paris
+		location:paris = {
+			is_capital = yes
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+		ruler ?= {
+            save_scope_as = fra_ruler
+        }
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}	
+
+
+	option = { # Found the Museum!
+		name = flavor_fra.550.a
+		historical_option = yes
+		culture = {
+			add_cultural_influence = cultural_influence_radical_bonus
+		}
+		location:paris = {
+			construct_building = {
+				building_type = building_type:fra_louvre_museum
+				instant = yes
+				cost_multiplier = 0
+				cost_multiplier_reason = "game_concept_event"
+			}
+		}
+	}
+	option = { # We have no use for this proposal.
+		name = flavor_fra.550.b
+		add_prestige = prestige_mild_penalty
+	}
+}

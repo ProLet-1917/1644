@@ -1,0 +1,405 @@
+﻿namespace = flavor_por
+
+flavor_por.12 = { #Methuen Agreement
+	hide_portraits = yes
+	type = country_event
+	title = flavor_por.12.title
+	desc = flavor_por.12.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = POR
+		from = 1690.1.1
+		to = 1706.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		at_war = no
+		capital = location:lisbon
+		location:london = {
+			owner ?= {
+				NOT = { tag = POR }
+				culture = culture:english
+				NOT = { is_at_war_with = ROOT }
+				NOT = { is_rival_of = ROOT }
+				NOT = { is_embargoed_by = ROOT }
+				ROOT = {
+					NOT = { is_embargoed_by = prev }
+				}
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		location:london = {
+			owner = {
+				save_scope_as = target_country
+				create_character = {
+					first_name = name_john
+					last_name = Methuen
+					adm = { 25 100 }
+					dip = { 25 100 }
+					mil = { 25 100 }
+					culture = culture:english
+					estate = estate_type:nobles_estate
+					birth_date = 1650.7.22
+					birth_location = location:salisbury
+					save_scope_as = target_character
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_por.12.a
+		historical_option = yes
+		location:london.owner = {
+			add_opinion = { target = root modifier = accepted_meuthen_agreement }
+			trigger_event_non_silently = { id = flavor_eng.36 }
+		}
+
+		location:lisbon = {
+			change_development  = development_mild_bonus
+		}
+
+
+	}
+	option = {
+		name = flavor_por.12.b
+		add_stability = stability_mild_bonus
+		location:london.owner = {
+			add_opinion = { target = root modifier = denounced_meuthen_agreement }
+		}
+	}
+	historical_info = flavor_por.12.historical_info
+}
+
+flavor_por.13 = { #Luís de Meneses Cabinet Member
+	type = country_event
+	title = flavor_por.13.title
+	desc = flavor_por.13.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = POR
+		from = 1662.1.1
+		to = 1690.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_louis
+			last_name = de_Meneses
+			adm = 30
+			dip = 80
+			mil = 50
+			culture = culture:portuguese
+			estate = estate_type:nobles_estate
+			birth_date = 1632.7.22
+			birth_location = location:lisbon
+			script = por_luis_de_meneses
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_por.13.a
+		historical_option = yes
+		change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_minor_move_to_left }
+		scope:target_character = { move_country = root }
+	}
+	
+	option = {
+		change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_minor_move_to_right }
+		kill_character_silently = scope:target_character
+		name = flavor_por.13.b
+	}
+	
+	historical_info = flavor_por.13.historical_info
+}
+
+flavor_por.24 = { #The Royal Pantheon
+	type = country_event
+	title = flavor_por.24.title
+	desc = flavor_por.24.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = POR
+		government_type = government_type:monarchy
+		religion = religion:catholic
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		previous_ruler ?= {
+			if = {
+				limit = { this != scope:old_ruler }
+				save_scope_as = old_ruler
+			}
+		}
+	}
+
+	option = {
+		name = flavor_por.24.a
+		historical_option = yes
+
+		change_gold_effect = { scale = -3.00 }
+
+		add_prestige = prestige_extreme_bonus
+		add_legitimacy = legitimacy_extreme_bonus
+	}
+
+	option = {
+		name = flavor_por.24.b
+
+		add_prestige = prestige_mild_penalty
+		add_legitimacy = legitimacy_mild_penalty
+	}
+
+	historical_info = flavor_por.24.historical_info
+}
+
+flavor_por.26 = { #Madeira Wine
+	type = country_event
+	title = flavor_por.26.title
+	desc = flavor_por.26.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_wine.dds"
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = POR
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		owns = location:funchal
+		any_subject = {
+			is_subject_type = colonial_nation
+			capital.region = region:brazil_region
+			#Is the colony producing a good amount of sugar?
+			OR = {
+				#A location with the sugar good and a good amount of levels
+				any_owned_location = {
+					region = region:brazil_region
+					raw_material = goods:sugar
+					rgo_workers >= 3
+				}
+				#Several locations with the sugar plantation
+				any_owned_location = {
+					region = region:brazil_region
+					count >= 5
+					has_building_with_at_least_one_level = sugar_plantation
+				}
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+	}
+
+	option = {
+		name = flavor_por.26.a
+		historical_option = yes
+		location:funchal = {
+			change_raw_material = goods:wine
+		}
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_minor_move_to_left }
+	}
+
+	option = {
+		name = flavor_por.26.b
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_move_to_right }
+	}
+
+	historical_info = flavor_por.26.historical_info
+}
+
+flavor_por.35 = { # Ericeira's policies - Mercantilist Ideals of [target_character.GetName]
+	type = country_event
+	title = flavor_por.35.title
+	desc = flavor_por.35.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = POR
+		from = 1675.10.16
+		to = 1690.5.26
+		monthly_chance = 10
+	}
+
+	trigger = {
+		any_cabinet_character = {
+			count >= 1
+		}
+		owns = location:covilha
+		location:covilha.raw_material = goods:wool
+		location:covilha = {
+			any_pop = {
+				owner = root
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		random_cabinet_character = {
+			save_scope_as = target_character
+		}
+		location:covilha = {
+			random_pop = {
+				limit = {
+					owner = root
+					pop_type = pop_type:burghers
+				}
+				save_scope_as = target_pop
+			}
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_por.35.a
+
+		change_societal_value = {
+			type = mercantilism_vs_free_trade
+			value = societal_value_huge_move_to_left
+		}
+
+		promote_to_head_of_cabinet_effect = {
+			target = scope:target_character
+		}
+
+		scope:target_location = {
+			add_location_modifier = {
+				mode = add_and_extend
+				modifier = por_wool_town
+				years = 30
+			}
+		}
+		scope:target_pop ?= {
+			add_pop_satisfaction = pop_satisfaction_mild_bonus
+		}
+	}
+
+	option = {
+		name = flavor_por.35.b
+
+		add_estate_satisfaction = {
+			type = estate_type:burghers_estate
+			value = estate_satisfaction_mild_bonus
+		}
+
+		add_stability = stability_mild_bonus
+	}
+}
+
+flavor_por.36 = { # Pombal - Ambitions of [target_character.GetName]
+	type = country_event
+	title = flavor_por.36.title
+	desc = flavor_por.36.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = POR
+		from = 1750.1.1
+		to = 1777.1.1
+		monthly_chance = 10
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	trigger = {
+		any_cabinet_character = {
+			count >= 1
+		}
+		has_ruler = yes
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler = {
+			save_scope_as = ruler_scope
+		}
+		random_cabinet_character = {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_por.36.a
+
+		promote_to_head_of_cabinet_effect = {
+			target = scope:target_character
+		}
+
+		change_societal_value = {
+			type = absolutism_vs_liberalism
+			value = societal_value_huge_move_to_left
+		}
+
+		change_societal_value = {
+			type = mercantilism_vs_free_trade
+			value = societal_value_large_move_to_left
+		}
+
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_extreme_penalty
+		}
+	}
+
+	option = {
+		name = flavor_por.36.b
+
+		scope:ruler_scope = {
+			add_adm = 5
+			add_dip = 5
+			add_mil = 5
+		}
+	}
+}

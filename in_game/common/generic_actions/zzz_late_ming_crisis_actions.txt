@@ -27,9 +27,20 @@ late_ming_crisis_grant_unification_cb = {
     }
 
 	ai_tick = monthly
-	ai_tick_frequency = 6
+	ai_tick_frequency = 3
 	automation_tick = never
-	automation_tick_frequency = 3
+	automation_tick_frequency = 12
+
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = "choose_situation"
+        column = {data = name}
+        visible = {
+            situation:late_ming_crisis = this
+            situation_is_active = yes
+        }
+    }
 
 	select_trigger = {
 		looking_for_a = country
@@ -100,7 +111,7 @@ late_ming_crisis_grant_unification_cb = {
 
     ai_will_do = {
         # 基础分数
-        value = 50
+        base = 100
 
         # 检查目标是否是邻居
         add = {
@@ -124,7 +135,7 @@ late_ming_crisis_grant_unification_cb = {
                     # 检查actor对target有大量军事优势
                     "scope:actor.relative_military_strength(scope:target)" > 1
                 }
-                value = 50
+                value = 100
             }
 
             # 如果军力不足（<= 1），大幅降低分数，避免弱国攻击强国
@@ -136,7 +147,7 @@ late_ming_crisis_grant_unification_cb = {
                 value = -50
             }
 
-            # 如果已有CB，降低分数
+            # 如果已有CB
             if = {
                 limit = {
                     scope:actor = {
@@ -146,12 +157,16 @@ late_ming_crisis_grant_unification_cb = {
                         }
                     }
                 }
-                value = -200
+                value = 50
             }
         }
         add = {
             value = stability
             multiply = 0.1
+        }
+        add = {
+            value = war_exhaustion
+            multiply = -0.5
         }
     }
 }
@@ -185,7 +200,18 @@ late_ming_crisis_subjugate_disobedient = {
     }
 
 	ai_tick = monthly
-	ai_tick_frequency = 6
+	ai_tick_frequency = 3
+
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = "choose_situation"
+        column = {data = name}
+        visible = {
+            situation:late_ming_crisis = this
+            situation_is_active = yes
+        }
+    }
 
 	select_trigger = {
 		looking_for_a = country
@@ -259,7 +285,7 @@ late_ming_crisis_subjugate_disobedient = {
 
     ai_will_do = {
         # 基础分数
-        value = 50
+        value = 100
 
         # 检查目标是否是附庸，且满足军事优势和低好感度条件
         add = {
@@ -288,7 +314,7 @@ late_ming_crisis_subjugate_disobedient = {
                         }
                     }
                 }
-                value = 50
+                value = 200
             }
 
             # 如果不满足军事优势或好感度条件，大幅降低分数
@@ -310,7 +336,7 @@ late_ming_crisis_subjugate_disobedient = {
                 value = -50
             }
 
-            # 如果已有CB，降低分数
+            # 如果已有CB
             if = {
                 limit = {
                     scope:actor = {
@@ -320,12 +346,16 @@ late_ming_crisis_subjugate_disobedient = {
                         }
                     }
                 }
-                value = -200
+                value = 50
             }
         }
         add = {
             value = stability
             multiply = 0.1
+        }
+        add = {
+            value = war_exhaustion
+            multiply = -0.5
         }
     }
 }
@@ -361,9 +391,21 @@ late_ming_crisis_restore_celestial_empire = {
 	automation_tick = never
 	automation_tick_frequency = 3
 
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = "choose_situation"
+        column = {data = name}
+        visible = {
+            situation:late_ming_crisis = this
+            situation_is_active = yes
+        }
+    }
+
 	effect = {
         scope:actor = {
             # 等同于成立CHI国家
+            form_country = formable_country:CHI_f
             zzz_1644_form_china_effect = yes
         }
     }

@@ -1,0 +1,114 @@
+﻿namespace = flavor_vij
+
+#Hiring Muslim Riders
+flavor_vij.22 = {
+	type = country_event
+	title = flavor_vij.22.title
+	desc = flavor_vij.22.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = VIJ
+		from = 1644.1.1
+		to = 1800.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	trigger = {
+		has_embraced_institution = institution:professional_armies
+		gold >= {
+			value = root.monthly_income_trade_and_tax
+			multiply = 3
+		}
+		religion = religion:hindu
+		"religion_group_percentage_in_country(religion_group:muslim)" >= 0.05
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+	}
+
+	option = {
+		name = flavor_vij.22.a
+
+		unlock_unit_effect = { type = a_muslim_riders_vijay }
+		custom_tooltip = vijay_riders_may_only_be_recruited_from_muslim_provinces
+		change_societal_value = { type = spiritualist_vs_humanist value = societal_value_move_to_right }
+		change_gold_effect = { scale = -2 }
+	}
+
+	option = {
+		name = flavor_vij.22.b
+
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_bonus
+		}
+		change_societal_value = { type = spiritualist_vs_humanist value = societal_value_move_to_left }
+	}
+}
+
+#Approach of the Monarch
+flavor_vij.25 = {
+	type = country_event
+	title = flavor_vij.25.title
+	desc = flavor_vij.25.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	trigger = {
+		religion = religion:hindu
+		tag = VIJ
+	}
+
+	immediate = {
+		event_illustration_peasants_foreign_religion_pop_type_effect = yes
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+		lock_parliament_issue_effect = {
+			type = increase_non_hindu_control
+		}
+		lock_parliament_issue_effect = {
+			type = tolerance_of_non_hindus
+		}
+	}
+
+	option = { #Tolerant approach
+		name = flavor_vij.25.a
+
+		change_societal_value = {
+			type = spiritualist_vs_humanist
+			value = societal_value_move_to_right
+		}
+
+		unlock_parliament_issue_effect = {
+			type = tolerance_of_non_hindus
+		}
+	}
+
+	option = { #Religious approach
+		name = flavor_vij.25.b
+
+
+		change_societal_value = {
+			type = spiritualist_vs_humanist
+			value = societal_value_move_to_left
+		}
+
+		unlock_parliament_issue_effect = {
+			type = increase_non_hindu_control
+		}
+	}
+}

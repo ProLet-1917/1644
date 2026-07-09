@@ -1,0 +1,4292 @@
+﻿namespace = flavor_hab
+
+flavor_hab.13 = { #Cameralism in Austria
+	type = country_event
+	title = flavor_hab.13.title
+	desc = flavor_hab.13.desc
+	outcome = neutral
+	#historical_info = flavor_hab.13.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1660.1.1
+		to = 1700.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:burghers   background = pop_type:burghers }
+
+		create_character = {
+			first_name = name_philip.name_william
+			last_name = von_hornick
+			birth_date = 1640.1.23
+			birth_location = location:frankfurt
+			adm = 84
+			dip = 65
+			mil = 23
+			estate = estate_type:burghers_estate
+			create_in_limbo = yes
+			save_scope_as = target_character_1
+		}
+		create_character = {
+			first_name = name_john.name_william
+			last_name = von_schroder
+			birth_date = 1640.11.15
+			birth_location = location:hassfurt
+			adm = 59
+			dip = 87
+			mil = 32
+			estate = estate_type:burghers_estate
+			create_in_limbo = yes
+			save_scope_as = target_character_2
+		}
+	}
+
+	trigger = {
+		has_policy = cameralism_policy
+	}
+
+	option = {
+		name = flavor_hab.13.a
+
+		add_legitimacy = legitimacy_mild_bonus
+		change_societal_value = { type = outward_vs_inward value = societal_value_move_to_right }
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_move_to_right }
+		scope:target_character_1 = {
+			move_country = root
+		}
+		scope:target_character_2 = { banish_character = yes }
+	}
+
+	option = {
+		name = flavor_hab.13.b
+
+		add_prestige = prestige_mild_bonus
+		change_societal_value = { type = outward_vs_inward value = societal_value_move_to_left }
+		change_societal_value = { type = land_vs_naval value = societal_value_move_to_left }
+		scope:target_character_2 = {
+			move_country = root
+		}
+		scope:target_character_1 = { banish_character = yes }
+	}
+}
+
+flavor_hab.14 = { #Tractatus de iuribus incorporalibus
+	type = country_event
+	title = flavor_hab.14.title
+	desc = flavor_hab.14.desc
+	outcome = neutral
+	historical_info = flavor_hab.14.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1644.1.1
+		to = 1690.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:burghers   background = pop_type:burghers }
+
+		ruler = { save_scope_as = target_ruler }
+	}
+
+	trigger = {
+		has_ruler = yes
+		months_since_peace >= 48
+	}
+
+	option = {
+		name = flavor_hab.14.a
+		historical_option = yes
+
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_move_to_right }
+		set_variable = hab_tractatus_incorporalibus_granted
+		grant_estate_privilege = estate_privilege:hab_tractatus_incorporalibus
+	}
+
+	option = {
+		name = flavor_hab.14.b
+
+		add_stability = stability_mild_bonus
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_move_to_left }
+	}
+}
+
+flavor_hab.15 = { #Founding of the Wiener Zeitung
+	hide_portraits = yes
+	type = country_event
+	title = flavor_hab.15.title
+	desc = flavor_hab.15.desc
+	outcome = neutral
+	historical_info = flavor_hab.15.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1680.1.1
+		to = 1720.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		ruler = { save_scope_as = target_ruler }
+	}
+
+	trigger = {
+		has_ruler = yes
+		has_advance = newspapers_advance
+	}
+
+	option = {
+		name = flavor_hab.15.a
+		historical_option = yes
+
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+		add_policy = policy:free_press
+	}
+
+	option = {
+		name = flavor_hab.15.b
+
+		add_prestige = prestige_mild_bonus
+		add_policy = policy:censored_press
+	}
+
+	option = {
+		name = flavor_hab.15.c
+
+		add_legitimacy = legitimacy_mild_bonus
+		add_policy = policy:state_press_only
+	}
+}
+
+flavor_hab.17 = { #Expulsion of Lutherans in Salzburg
+	hide_portraits = yes
+	type = country_event
+	title = flavor_hab.17.title
+	desc = flavor_hab.17.desc
+	outcome = neutral
+	historical_info = flavor_hab.17.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		tag = SLZ
+		from = 1700.1.1
+		to = 1750.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+
+		region:carpathia_region = {
+			random_location_in_region = {
+				limit = {
+					owner != root
+					is_discovered_by = root
+				}
+				save_scope_as = escape_target1
+			}
+		}
+		region:north_german_region = {
+			random_location_in_region = {
+				limit = {
+					owner != root
+					dominant_religion = religion:lutheran
+					is_discovered_by = root
+				}
+				save_scope_as = escape_target2
+			}
+		}
+		region:north_german_region = {
+			random_location_in_region = {
+				limit = {
+					owner != root
+					dominant_religion = religion:lutheran
+					is_discovered_by = root
+				}
+				save_scope_as = escape_target3
+			}
+		}
+	}
+
+	trigger = {
+		religion = religion:catholic
+		own_entire_area = area:salzburg_area
+		any_province = {
+			area = area:salzburg_area
+			religion_percentage = {
+				religion = religion:lutheran
+				value > 0
+			}
+		}
+	}
+
+	option = {
+		name = flavor_hab.17.a
+		historical_option = yes
+
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_minor_move_to_left }
+
+		custom_tooltip = flavor_hab.17.a.tt
+		hidden_effect = {
+			area:salzburg_area  = {
+				every_location_in_area = {
+					every_pop = {
+						limit = {
+							religion = religion:lutheran
+						}
+						split_pop = {
+							fraction = 0.1
+							religion = religion:catholic
+						}
+					}
+				}
+			}
+			every_province = {
+				limit = {
+					area = area:salzburg_area
+					religion_percentage = {
+						religion = religion:lutheran
+						value > 0
+					}
+				}
+				add_migration = {
+					owner = prev
+					from = this.province_definition
+					to = scope:escape_target1.province_definition
+					religion = religion:lutheran
+					amount = 0.200
+					months = 60
+				}
+				add_migration = {
+					owner = prev
+					from = this.province_definition
+					to = scope:escape_target2.province_definition
+					religion = religion:lutheran
+					amount = 0.200
+					months = 60
+				}
+				add_migration = {
+					owner = prev
+					from = this.province_definition
+					to = scope:escape_target3.province_definition
+					religion = religion:lutheran
+					amount = 0.200
+					months = 60
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_hab.17.b
+
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_minor_move_to_right }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_extreme_penalty }
+	}
+}
+
+flavor_hab.18 = { #Geheime Kabinettskanzlei
+	type = country_event
+	title = flavor_hab.18.title
+	desc = flavor_hab.18.desc
+	outcome = neutral
+	historical_info = flavor_hab.18.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1690.1.1
+		to = 1740.1.1
+		monthly_chance = 3
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_hab.18.a
+		historical_option = yes
+
+		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_left }
+		set_variable = hab_geheime_kabinettskanzlei
+	}
+
+	option = {
+		name = flavor_hab.18.b
+
+		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_right }
+	}
+}
+
+flavor_hab.19 = { #Prince Eugene of Savoy
+	type = country_event
+	title = flavor_hab.19.title
+	desc = flavor_hab.19.desc
+	outcome = neutral
+	historical_info = flavor_hab.19.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1683.1.1
+		to = 1736.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		create_character = {
+			first_name = name_eugene
+			religion = religion:catholic
+			estate = estate_type:nobles_estate
+			birth_date = 1663.10.18
+			birth_location = location:paris
+			culture = culture:arpitan
+			dynasty = dynasty:savoie_carignan_dynasty
+			adm = 79
+			dip = 82
+			mil = 89
+			save_scope_as = target_character
+		}
+		ruler = {
+			save_scope_as = target_ruler
+		}
+	}
+
+	trigger = {
+		has_ruler = yes
+	}
+
+	option = {
+		name = flavor_hab.19.a
+		historical_option = yes
+
+		scope:target_character = { move_country = root }
+		add_army_tradition = army_tradition_weak_bonus
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_bonus }
+	}
+
+	option = {
+		name = flavor_hab.19.b
+
+		add_legitimacy = legitimacy_weak_bonus
+		scope:target_character = { banish_character = yes }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_penalty }
+	}
+}
+
+flavor_hab.20 = { #Ludwig van Beethoven
+	type = country_event
+	title = flavor_hab.20.title
+	desc = flavor_hab.20.desc
+	outcome = neutral
+	historical_info = flavor_hab.20.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1791.1.1
+		to = 1827.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		create_character = {
+			first_name = name_louis
+			last_name = van_Beethoven
+			birth_date = 1770.12.16
+			birth_location = location:bonn
+			artist_skill = 0.96
+			artist = composer
+			estate = estate_type:burghers_estate
+			save_scope_as = target_artist
+			script = hab_ludwig_van_beethoven
+			add_trait = trait:workaholic
+		}
+
+		capital = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_hab.20.a
+		historical_option = yes
+
+		capital = {
+			create_art = {
+				artist = scope:target_artist
+				quality = 90
+				location = root.capital
+				type = work_of_art_type:symphony
+				key = beethoven_first_symphony
+			}
+		}
+	}
+}
+
+flavor_hab.21 = { #Wolfgang Amadeus Mozart
+	type = country_event
+	title = flavor_hab.21.title
+	desc = flavor_hab.21.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1774.1.1
+		to = 1791.1.1
+		monthly_chance = 12
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		create_character = {
+			first_name = name_wolfgang.name_amadeus
+			last_name = Mozart
+			birth_date = 1756.1.27
+			birth_location = location:salzburg
+			artist_skill = 1.0
+			artist = composer
+			estate = estate_type:burghers_estate
+			script = hab_mozart_script
+			save_scope_as = target_artist
+			add_trait = trait:workaholic
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_hab.21.a
+
+		change_gold_effect = { scale = -2 }
+		add_prestige = prestige_extreme_bonus
+		scope:target_artist = { move_country = root }
+	}
+
+	option = {
+		name = flavor_hab.21.b
+		scope:target_artist = { banish_character = yes }
+	}
+}
+
+flavor_hab.22 = { #Resettlements into Hungary
+	hide_portraits = yes
+	type = country_event
+	title = flavor_hab.22.title
+	desc = flavor_hab.22.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1700.1.1
+		to = 1800.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:peasants background = pop_type:peasants }
+
+		random_province = {
+			limit = {
+				area = area:transylvania_area
+			}
+			save_scope_as = target_province
+		}
+	}
+
+	trigger = {
+		own_entire_area = area:transylvania_area
+	}
+
+	option = {
+		name = flavor_hab.22.a
+		historical_option = yes
+
+		change_gold_effect = { scale = -2 }
+		add_migration = {
+			owner = root
+			from = capital.province_definition
+			to = scope:target_province.province_definition
+			type = pop_type:peasants
+			amount = 0.2
+			months = 120
+		}
+
+	}
+	option = {
+		name = flavor_hab.22.b
+
+		add_stability = stability_mild_bonus
+	}
+}
+
+flavor_hab.23 = { #Klemens von Metternich
+	type = country_event
+	title = flavor_hab.23.title
+	desc = flavor_hab.23.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1798.1.1
+		to = 1838.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		create_character = {
+			first_name = name_clement.name_wenceslas
+			dynasty = dynasty:von_metternich_dynasty
+			adm = 72
+			dip = 94
+			mil = 82
+			birth_date = 1773.5.15
+			birth_location = location:coblenz
+			culture = culture:danube_bavarian
+			estate = estate_type:nobles_estate
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+		}
+	}
+
+	option = {
+		name = flavor_hab.23.a
+
+		add_government_power = government_power_weak_bonus
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+flavor_hab.24 = { #Johann Wenzel Radetzky
+	type = country_event
+	title = flavor_hab.24.title
+	desc = flavor_hab.24.desc
+	outcome = neutral
+	historical_info = flavor_hab.24.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1791.1.1
+		to = 1841.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+		10 = armed
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		create_character = {
+			first_name = name_john.name_wenceslas
+			last_name = von_radetzky
+			adm = 81
+			dip = 72
+			mil = 89
+			birth_date = 1766.11.2
+			birth_location = location:benesov
+			culture = culture:czech
+			estate = estate_type:nobles_estate
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	trigger = {
+		OR = {
+			root = {
+				has_accepted_culture = culture:czech
+			}
+			any_subject = {
+				has_primary_or_accepted_culture = culture:czech
+			}
+		}
+	}
+
+	option = {
+		name = flavor_hab.24.a
+		historical_option = yes
+
+		add_army_tradition = army_tradition_weak_bonus
+		scope:target_character = {
+			move_country = root
+		}
+	}
+
+	option = {
+		name = flavor_hab.24.b
+
+		add_prestige = prestige_mild_bonus
+		add_legitimacy = legitimacy_mild_bonus
+		scope:target_character = { banish_character = yes }
+	}
+}
+
+flavor_hab.25 = { #Schönbrunn Palace
+	type = country_event
+	title = flavor_hab.25.title
+	desc = flavor_hab.25.desc
+	outcome = neutral
+	historical_info = flavor_hab.25.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1736.1.1
+		to = 1790.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+			save_scope_as = target_ruler
+		}
+
+		create_character = {
+			first_name = name_nicholas
+			last_name = von_pacassi
+			birth_date = 1716.3.5
+			birth_location = location:wiener_neustadt
+			artist_skill = 0.78
+			artist = architect
+			estate = estate_type:burghers_estate
+			save_scope_as = target_artist
+			create_in_limbo = yes
+		}
+	}
+
+	trigger = {
+		owns = location:vienna
+		government_type = government_type:monarchy
+		has_ruler = yes
+		location:vienna = {
+			is_capital = yes
+			num_civil_constructions < 1
+			OR = {
+				location_rank = location_rank:town
+				location_rank = location_rank:city
+			}
+			market = {
+				is_traded_in_market = goods:goods_gold
+				is_traded_in_market = goods:fine_cloth
+			}
+		}
+	}
+
+	option = {
+		name = flavor_hab.25.a
+		historical_option = yes
+		scope:target_artist = { move_country = root }
+
+		change_gold_effect = { scale = -12 }
+		location:vienna = {
+			construct_building = { building_type = building_type:schonbrunn_palace }
+			every_pop = {
+				limit = {
+					owner = root
+					pop_type = pop_type:nobles
+				}
+				add_pop_satisfaction = pop_satisfaction_mild_bonus
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_hab.25.b
+
+		add_legitimacy = legitimacy_mild_penalty
+		scope:target_artist = { banish_character = yes }
+	}
+}
+
+flavor_hab.26 = { #Joseph Haydn
+	type = country_event
+	title = flavor_hab.26.title
+	desc = flavor_hab.26.desc
+	outcome = neutral
+	historical_info = flavor_hab.26.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1764.1.1
+		to = 1809.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		create_character = {
+			first_name = name_joseph
+			last_name = haydn
+			birth_date = 1732.4.1
+			birth_location = location:austria_baden
+			artist_skill = 0.92
+			artist = composer
+			estate = estate_type:burghers_estate
+			save_scope_as = target_artist
+			script = hab_haydn
+			add_trait = trait:workaholic
+			create_in_limbo = yes
+		}
+	}
+
+	trigger = {
+		country_rank = country_rank:rank_empire
+	}
+
+	option = {
+		name = flavor_hab.26.a
+		historical_option = yes
+
+		change_gold_effect = { scale = -4 }
+		scope:target_artist = {
+			move_country = root
+		}
+		capital = {
+			create_art = {
+				artist = scope:target_artist
+				quality = 93
+				location = root.capital
+				type = work_of_art_type:symphony
+				key = the_creation
+			}
+		}
+	}
+
+	option = {
+		name = flavor_hab.26.b
+
+		scope:target_artist = { banish_character = yes }
+	}
+}
+
+flavor_hab.27 = { #Imperial Colors
+	type = country_event
+	title = flavor_hab.27.title
+	desc = flavor_hab.27.desc
+	outcome = neutral
+
+	historical_info = flavor_hab.27.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1750.1.1
+		to = 1836.1.1
+		monthly_chance = 10
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	trigger = {
+		government_type = government_type:monarchy
+		country_rank = country_rank:rank_empire
+	}
+
+	option = {
+		name = flavor_hab.27.a
+		historical_option = yes
+		set_variable = hab_imperial_flag
+		add_prestige = prestige_mild_bonus
+		hidden_effect = {
+			change_country_flag = HAB_IMPERIAL
+		}
+		custom_tooltip = flavor_hab.27.a.tt
+	}
+
+	option = {
+		name = flavor_hab.27.b
+		add_legitimacy = legitimacy_mild_bonus
+	}
+}
+
+flavor_hab.37 = { #Imperial Ascendancy
+	type = country_event
+	title = flavor_hab.37.title
+	desc = flavor_hab.37.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.37.historical_info
+
+	immediate = {
+		ruler = {
+			save_scope_as = austria_first_emperor
+		}
+		set_variable = {
+			name = austria_first_emperor_variable
+			value = scope:austria_first_emperor
+		}
+	}
+
+	trigger = {
+		is_leader_of_international_organization = international_organization:hre
+		has_ruler = yes
+		international_organization:hre = {
+			international_organization_has_policy = policy:golden_bull_policy
+		}
+	}
+
+	option = {
+		name = flavor_hab.37.a
+		historical_option = yes
+		add_legitimacy = legitimacy_severe_bonus
+		add_prestige = prestige_severe_bonus
+	}
+}
+
+flavor_hab.53 = { #Tearing Down the Walls of Vienna
+	type = country_event
+	title = flavor_hab.53.title
+	desc = flavor_hab.53.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.53.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1750.1.1
+		to = 1836.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		owns = location:vienna
+		location:vienna = {
+			has_location_modifier = walls_of_vienna
+		}
+	}
+
+	option = {
+		name = flavor_hab.53.a
+		historical_option = yes
+		location:vienna = {
+			remove_location_modifier = walls_of_vienna
+			change_development  = development_severe_bonus
+			change_prosperity = prosperity_mild_bonus
+		}
+	}
+
+	option = {
+		name = flavor_hab.53.b
+		add_army_tradition = army_tradition_mild_bonus
+		change_societal_value = { type = offensive_vs_defensive value = societal_value_move_to_right }
+	}
+}
+
+flavor_hab.62 = { #Kaiserkrone
+	type = country_event
+	title = flavor_hab.62.title
+	desc = flavor_hab.62.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.62.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 10
+	}
+
+	immediate = {
+		ruler = {
+			save_scope_as = target_ruler
+		}
+	}
+
+	trigger = {
+		government_type = government_type:monarchy
+		has_ruler = yes
+		ruler ?= { total_abilities >= 180 }
+		owns = location:vienna
+		is_leader_of_international_organization = international_organization:hre
+	}
+
+	option = {
+		name = flavor_hab.62.a
+		historical_option = yes
+		change_gold_effect = { scale = -6 }
+		add_prestige = prestige_severe_bonus
+		add_legitimacy = legitimacy_severe_bonus
+		location:vienna = {
+			create_art = {
+				quality = 85
+				type = work_of_art_type:regalia
+				key = kaiserkrone
+			}
+		}
+	}
+
+	option = {
+		name = flavor_hab.62.b
+		add_prestige = prestige_severe_penalty
+		add_legitimacy = legitimacy_severe_penalty
+		hidden_effect = {
+			destroy_art = work_of_art:kaiserkrone
+		}
+	}
+}
+
+flavor_hab.64 = { #Institutionalizing the Geheimer Rat
+	type = country_event
+	title = flavor_hab.64.title
+	desc = flavor_hab.64.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1644.1.1
+		to = 1750.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_advance = geheimrat
+		has_reform = government_reform:privy_council
+	}
+
+	option = {
+		name = flavor_hab.64.a
+		unlock_government_reform_effect = { type = hab_geheimer_rat }
+		custom_tooltip = flavor_hab.64.a.tt
+	}
+
+	option = {
+		name = flavor_hab.64.b
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+	}
+}
+
+flavor_hab.67 = { #Karl von Liechtenstein
+	type = country_event
+	title = flavor_hab.67.title
+	desc = flavor_hab.67.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.67.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_ruler = yes
+		OR = {
+			has_advance = geheimrat
+			has_reform = government_reform:hab_geheimer_rat
+			has_reform = government_reform:privy_council
+		}
+		OR = {
+            NOT = {
+                dynasty_exists = von_Liechtenstein_dynasty
+            }
+            dynasty:von_Liechtenstein_dynasty = {
+                any_character_in_dynasty = {
+                    is_heir = no
+                    is_ruler = no
+                    is_female = no
+                    is_adult = yes
+                    age_in_years > 30
+                    this != character:hab_gundakar_liechtenstein
+                    this != character:hab_maximilian_liechtenstein
+                    this != character:hab_wenceslas_liechtenstein
+                }
+            }
+        }
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler = {
+			save_scope_as = target_ruler
+		}
+
+		create_character = {
+			first_name = name_charles
+			birth_date = 1569.7.30
+			birth_location = location:hodonin
+			dynasty = dynasty:von_Liechtenstein_dynasty
+			estate = estate_type:nobles_estate
+			adm = { 50 70 }
+			dip = { 50 90 }
+			mil = { 20 70 }
+			culture = culture:danube_bavarian
+			save_scope_as = target_character
+			create_in_limbo = yes
+			script = hab_karl_liechtenstein
+		}
+	}
+
+	option = {
+		name = flavor_hab.67.a
+		historical_option = yes
+		add_legitimacy = legitimacy_mild_bonus
+		scope:target_character = {
+			move_country = root
+		}
+	}
+}
+
+flavor_hab.68 = { #Maximilian von Liechtenstein
+	type = country_event
+	title = flavor_hab.68.title
+	desc = flavor_hab.68.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.68.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		OR = {
+			has_advance = geheimrat
+			has_reform = government_reform:hab_geheimer_rat
+			has_reform = government_reform:privy_council
+		}
+		OR = {
+            NOT = {
+                dynasty_exists = von_Liechtenstein_dynasty
+            }
+            dynasty:von_Liechtenstein_dynasty = {
+                any_character_in_dynasty = {
+                    is_heir = no
+                    is_ruler = no
+                    is_female = no
+                    is_adult = yes
+                    age_in_years > 30
+                    this != character:hab_karl_liechtenstein
+                    this != character:hab_gundakar_liechtenstein
+                    this != character:hab_wenceslas_liechtenstein
+                }
+            }
+        }
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		
+		create_character = {
+			first_name = name_maximilian
+			birth_date = 1578.11.6
+			birth_location = location:hodonin
+			dynasty = dynasty:von_Liechtenstein_dynasty
+			estate = estate_type:nobles_estate
+			adm = { 30 70 }
+			dip = { 30 70 }
+			mil = { 70 90 }
+			culture = culture:danube_bavarian
+			save_scope_as = target_character
+			create_in_limbo = yes
+			script = hab_maximilian_liechtenstein
+		}
+	}
+
+	option = {
+		name = flavor_hab.68.a
+		historical_option = yes
+		add_army_tradition = army_tradition_mild_bonus
+		scope:target_character = {
+			move_country = root
+			add_random_trait_from_category = general
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+		}
+	}
+}
+
+flavor_hab.69 = { #Maximilian Trauttmansdorff
+	type = country_event
+	title = flavor_hab.69.title
+	desc = flavor_hab.69.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.69.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		OR = {
+			has_advance = geheimrat
+			has_reform = government_reform:hab_geheimer_rat
+			has_reform = government_reform:privy_council
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		
+		create_character = {
+			first_name = name_maximilian
+			birth_date = 1578.6.23
+			birth_location = location:graz
+			dynasty = dynasty:trauttmansdorff_dynasty
+			estate = estate_type:nobles_estate
+			adm = { 60 80 }
+			dip = { 80 95 }
+			mil = { 20 50 }
+			culture = culture:danube_bavarian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_hab.69.a
+		historical_option = yes
+		add_legitimacy = legitimacy_mild_bonus
+		scope:target_character = {
+			move_country = root
+		}
+	}
+}
+
+flavor_hab.70 = { #Franz von Dietrichstein
+	type = country_event
+	title = flavor_hab.70.title
+	desc = flavor_hab.70.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 10
+	}
+
+	historical_info = flavor_hab.70.historical_info
+
+	trigger = {
+		OR = {
+			has_advance = geheimrat
+			has_reform = government_reform:hab_geheimer_rat
+			has_reform = government_reform:privy_council
+		}
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_francis.name_seraphin
+			last_name = von_Dietrichstein
+			birth_date = 1570.8.22
+			birth_location = location:madrid
+			estate = estate_type:clergy_estate
+			adm = { 50 80 }
+			dip = { 70 90 }
+			mil = { 20 40 }
+			culture = culture:danube_bavarian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_hab.70.a
+		historical_option = yes
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+		scope:target_character = {
+			move_country = root
+		}
+	}
+}
+
+flavor_hab.71 = { #Gerhard von Questenberg
+	type = country_event
+	title = flavor_hab.71.title
+	desc = flavor_hab.71.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.71.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		OR = {
+			has_advance = geheimrat
+			has_reform = government_reform:hab_geheimer_rat
+			has_reform = government_reform:privy_council
+		}
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_gerard
+			last_name = von_Questenberg
+			birth_date = 1586.1.1
+			birth_location = location:cologne
+			estate = estate_type:burghers_estate
+			adm = { 50 80 }
+			dip = { 50 80 }
+			mil = { 20 40 }
+			culture = culture:ripuarian_franconian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_hab.71.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		scope:target_character = {
+			move_country = root
+		}
+	}
+}
+
+flavor_hab.72 = { #Johann Baptist Verda
+	type = country_event
+	title = flavor_hab.72.title
+	desc = flavor_hab.72.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.72.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		OR = {
+			has_advance = geheimrat
+			has_reform = government_reform:hab_geheimer_rat
+			has_reform = government_reform:privy_council
+		}
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_john.name_baptiste
+			last_name = Verda
+			birth_date = 1582.1.1
+			birth_location = location:graz
+			estate = estate_type:burghers_estate
+			adm = { 50 80 }
+			dip = { 50 80 }
+			mil = { 20 40 }
+			culture = culture:danube_bavarian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_hab.72.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		scope:target_character = {
+			move_country = root
+		}
+	}
+}
+
+flavor_hab.73 = { #Nicolas Esterhazy
+	type = country_event
+	title = flavor_hab.73.title
+	desc = flavor_hab.73.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.73.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		OR = {
+			has_advance = geheimrat
+			has_reform = government_reform:hab_geheimer_rat
+			has_reform = government_reform:privy_council
+		}
+		has_accepted_culture = culture:hungarian
+		"culture_percentage_in_country(culture:hungarian)" > 0
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_nicholas
+			last_name = Esterhazy
+			birth_date = 1583.4.8
+			birth_location = location:trnava
+			estate = estate_type:nobles_estate
+			dynasty = dynasty:Esterhazy_dynasty
+			adm = { 50 80 }
+			dip = { 50 80 }
+			mil = { 60 80 }
+			culture = culture:hungarian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_hab.73.a
+		historical_option = yes
+		scope:target_character = {
+			move_country = root
+		}
+		scope:target_character = {
+			add_trait = trait:unsuited_for_naval_command
+			add_trait = trait:unsuited_for_army_command
+		}
+	}
+
+	option = {
+		name = flavor_ven.73.b
+		add_army_tradition = army_tradition_mild_bonus
+		scope:target_character = {
+			move_country = root
+		}
+		scope:target_character = {
+			add_random_trait_from_category = general
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+		}
+	}
+}
+
+flavor_hab.74 = { #Vilem Slavata
+	type = country_event
+	title = flavor_hab.74.title
+	desc = flavor_hab.74.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.74.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		OR = {
+			has_advance = geheimrat
+			has_reform = government_reform:hab_geheimer_rat
+			has_reform = government_reform:privy_council
+		}
+		has_accepted_culture = culture:czech
+		"culture_percentage_in_country(culture:czech)" > 0
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		
+		create_character = {
+			first_name = name_william
+			birth_date = 1572.12.1
+			birth_location = location:kutna_hora
+			dynasty = dynasty:slavata_dynasty
+			estate = estate_type:nobles_estate
+			adm = { 60 80 }
+			dip = { 80 95 }
+			mil = { 20 50 }
+			culture = culture:czech
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_hab.74.a
+		historical_option = yes
+		add_legitimacy = legitimacy_mild_bonus
+		scope:target_character = {
+			move_country = root
+		}
+	}
+}
+
+flavor_hab.75 = { #Geheimer Rat Growing Inefficient
+	type = country_event
+	title = flavor_hab.75.title
+	desc = flavor_hab.75.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1660.1.1
+		to = 1705.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		OR = {
+			AND = {
+				has_advance = geheimrat
+				has_reform = government_reform:hab_geheimer_rat
+			}
+			has_reform = government_reform:privy_council
+		}
+		any_courtier = {
+			count > 20
+		}
+	}
+
+	option = {
+		name = flavor_hab.75.a
+		change_gold_effect = { scale = -6 }
+		add_country_modifier = {
+			modifier = geheimer_konferenz
+			years = 15
+			mode = add_and_extend
+		}
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+	}
+
+	option = {
+		name = flavor_hab.75.b
+		add_country_modifier = {
+			modifier = abolished_the_geheimer_rat
+			years = 15
+			mode = add_and_extend
+		}
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_right
+		}
+		set_variable = abolished_geheimer_rat
+		remove_reform = government_reform:hab_geheimer_rat
+	}
+}
+
+flavor_hab.76 = { #The Marian Column
+	type = country_event
+	title = flavor_hab.76.title
+	desc = flavor_hab.76.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:scharding
+		has_ruler = yes
+		religion = religion:catholic
+		situation:thirty_years_war = {
+			situation_has_ended = yes
+		}
+		is_leader_of_international_organization = international_organization:hre
+		international_organization:hre = {
+			international_organization_has_policy = policy:only_imperial_religion_policy
+		}
+	}
+
+	immediate = {
+		ruler = {
+			save_scope_as = target_ruler
+		}
+		location:scharding = {
+			create_art = {
+				quality = 60
+				type = work_of_art_type:statue
+				key = marian_column
+			}
+		}
+	}
+
+	option = {
+		name = flavor_hab.76.a
+		change_gold_effect = { scale = -6 	}
+		add_army_tradition = army_tradition_mild_bonus
+		show_as_tooltip = {
+			location:scharding = {
+				create_art = {
+					quality = 60
+					type = work_of_art_type:statue
+					key = marian_column
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_hab.76.b
+		add_prestige = prestige_mild_penalty
+		hidden_effect = {
+			destroy_art = work_of_art:marian_column
+		}
+	}
+}
+
+flavor_hab.77 = { #Antonio Cesti
+	type = country_event
+	title = flavor_hab.77.title
+	desc = flavor_hab.77.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1650.1.1
+		to = 1670.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		has_ruler = yes
+	}
+
+	immediate = {
+		ruler = {
+			save_scope_as = target_ruler
+		}
+		create_character = {
+			first_name = name_anthony
+			last_name = Cesti
+			birth_date = 1623.8.5
+			birth_location = location:arezzo
+			estate = estate_type:burghers_estate
+			adm = { 20 70 }
+			dip = { 20 70 }
+			mil = { 20 70 }
+			artist_skill = 0.78
+			culture = culture:tuscan
+			save_scope_as = target_character
+			create_in_limbo = yes
+
+			artist = composer
+		}
+	}
+
+	option = {
+		name = flavor_hab.77.a
+		change_gold_effect = { scale = -4 }
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+		scope:target_character = {
+			move_country = root
+		}
+	}
+
+	option = {
+		name = flavor_hab.77.b
+		add_prestige = prestige_mild_penalty
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_hab.78 = { #Disempowering the Tirolean Parliament
+	type = country_event
+	title = flavor_hab.78.title
+	desc = flavor_hab.78.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		tag = TIR
+		from = 1650.1.1
+		to = 1700.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		any_owned_location = {
+			area = area:tirol_area
+			count >= 10
+		}
+		"estate_power(estate_type:nobles_estate)" > 0.5
+		societal_value:centralization_vs_decentralization < 25
+	}
+
+	option = {
+		name = flavor_hab.78.a
+		add_stability = stability_severe_penalty
+		change_societal_value = {
+			type = centralization_vs_decentralization
+			value = societal_value_move_to_left
+		}
+		custom_tooltip = {
+			text = flavor_hab.78.a.tt
+			every_owned_location = {
+				limit = {
+					area = area:tirol_area
+				}
+				every_pop = {
+					limit = {
+						owner = root
+					}
+					add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_hab.78.b
+		add_government_power = government_power_severe_penalty
+		change_societal_value = {
+			type = centralization_vs_decentralization
+			value = societal_value_move_to_right
+		}
+		add_estate_satisfaction = { type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_bonus
+		}
+		custom_tooltip = {
+			text = flavor_hab.78.b.tt
+			every_owned_location = {
+				limit = {
+					area = area:tirol_area
+				}
+				every_pop = {
+					limit = {
+						owner = root
+					}
+					add_pop_satisfaction = pop_satisfaction_severe_bonus
+				}
+			}
+		}
+	}
+}
+
+flavor_hab.79 = { #St Stephens Cathedral Bell
+	hide_portraits = yes
+	type = country_event
+	title = flavor_hab.79.title
+	desc = flavor_hab.79.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.79.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1700.1.1
+		to = 1850.1.1
+		monthly_chance = 1
+	}
+
+	immediate = {
+		random_work_of_art = {
+			limit = { this = work_of_art:st_stephens_cathedral }
+			save_scope_as = target_art
+		}
+	}
+
+	trigger = {
+		custom_tooltip = {
+			text = variable_hab_church_bell_variable_tt
+			has_variable = hab_church_bell_variable
+		}
+		owns = location:vienna
+		location:vienna = {
+			any_work_of_art_in_location = {
+				this = work_of_art:st_stephens_cathedral
+			}
+		}
+		has_ruler = yes
+	}
+
+	option = {
+		name = flavor_hab.79.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		change_gold_effect = { scale = -6 }
+		work_of_art:st_stephens_cathedral = {
+			change_art_quality = 10
+		}
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+	}
+
+	option = {
+		name = flavor_hab.79.b
+		add_prestige = prestige_mild_bonus
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_penalty }
+	}
+
+	after = {
+		remove_variable = hab_church_bell_variable
+	}
+}
+
+flavor_hab.80 = { #König Ottokars Glück und Ende
+	type = country_event
+	title = flavor_hab.80.title
+	desc = flavor_hab.80.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1820.1.1
+		to = 1850.1.1
+		monthly_chance = 1
+	}
+
+	immediate = {
+		character:boh_otakar_ii_premyslid ?= { save_scope_as = otakar }
+		create_character = {
+			first_name = name_francis
+			last_name = Grillparzer
+			birth_date = 1791.1.21
+			birth_location = location:vienna
+			estate = estate_type:burghers_estate
+			adm = { 20 70 }
+			dip = { 20 70 }
+			mil = { 20 70 }
+			artist_skill = 0.85
+			culture = culture:danube_bavarian
+			save_scope_as = target_character
+			create_in_limbo = yes
+
+			artist = composer
+		}
+	}
+
+	option = {
+		name = flavor_hab.80.a
+        scope:target_character = {
+            move_country = root
+        }
+		scope:target_character = {
+			add_trait = trait:prominent
+		}
+		add_prestige = prestige_mild_bonus
+	}
+
+	option = {
+		name = flavor_hab.80.b
+		culture = {
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_hab.81 = { #Kingdom of Galicia-Lodomeria
+	hide_portraits = yes
+	type = country_event
+	title = flavor_hab.81.title
+	desc = flavor_hab.81.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.81.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		any_owned_location = {
+			area = area:lesser_poland_area
+			count >= 10
+		}
+		any_owned_location = {
+			area = area:red_ruthenia_area
+			count >= 10
+		}
+	}
+
+	option = {
+		name = flavor_hab.81.a
+		historical_option = yes
+		custom_tooltip = flavor_hab.81.a.tt
+        hidden_effect = {
+			random_owned_location = {
+				limit = {
+					OR = {
+						area = area:lesser_poland_area
+						area = area:red_ruthenia_area
+					}
+				}
+				save_scope_as = target_location
+			}
+			scope:target_location = {
+				create_country_from_location = {
+					save_scope_as = galicia_lodomeria
+					set_country_rank = country_rank:rank_kingdom
+				}
+			}
+			scope:galicia_lodomeria = {
+				form_country = formable_country:GLD_f
+				change_country_color = map_galicia_lodomeria
+				set_new_ruler = root.ruler
+				change_religion = religion:catholic
+				change_religion_for_ruler_and_family = { country = scope:galicia_lodomeria religion = religion:catholic }
+				make_subject_of = {
+					target = root
+					type = subject_type:vassal
+				}
+			}
+			every_owned_location = {
+				limit = {
+					OR = {
+						area = area:lesser_poland_area
+						area = area:red_ruthenia_area
+					}
+				}
+				change_location_owner = scope:galicia_lodomeria
+				add_core = scope:galicia_lodomeria
+				change_integration_level = core
+			}
+		}
+	}
+
+	option = {
+		name = flavor_hab.81.b
+		custom_tooltip = flavor_hab.81.b.tt
+		hidden_effect = {
+			area:lesser_poland_area = {
+				every_location_in_area = {
+					change_control = control_severe_bonus
+				}
+			}
+			area:red_ruthenia_area = {
+				every_location_in_area = {
+					change_control = control_severe_bonus
+				}
+			}
+		}
+	}
+}
+
+flavor_hab.82 = { #Johann Anton von Pergen
+	type = country_event
+	title = flavor_hab.82.title
+	desc = flavor_hab.82.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1760.1.1
+		to = 1775.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		has_ruler = yes
+	}
+
+	immediate = {
+		ruler = { save_scope_as = target_ruler }
+		create_character = {
+			first_name = name_john.name_anthony
+			last_name = von_Pergen
+			birth_date = 1725.2.15
+			birth_location = location:vienna
+			estate = estate_type:burghers_estate
+			adm = { 70 90 }
+			dip = { 70 90 }
+			mil = { 20 40 }
+			culture = culture:danube_bavarian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_hab.82.a
+        scope:target_character = {
+            move_country = root
+        }
+		add_government_power = government_power_severe_bonus
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_right }
+	}
+
+	option = {
+		name = flavor_hab.82.b
+		add_government_power = government_power_severe_penalty
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_hab.83 = { #A Monument to Triumph
+	type = country_event
+	title = flavor_hab.83.title
+	desc = flavor_hab.83.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.83.historical_info
+
+	trigger = {
+		current_year > 1750
+		owns = location:innsbruck
+	}
+	option = {
+		name = flavor_hab.83.a
+		historical_option = yes
+		change_gold_effect = { scale = -6 }
+		add_prestige = prestige_mild_bonus
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_right }
+		location:innsbruck = {
+			change_prosperity = prosperity_severe_bonus
+		}
+		location:innsbruck = {
+			create_art = {
+				quality = 65
+				type = work_of_art_type:statue
+				key = triumphal_arch
+			}
+		}
+	}
+
+	option = {
+		name = flavor_hab.83.b
+		add_prestige = prestige_mild_penalty
+		hidden_effect = {
+			destroy_art = work_of_art:triumphal_arch
+		}
+	}
+}
+
+flavor_hab.86 = { #Rakoczis Uprising
+	type = country_event
+	title = flavor_hab.86.title
+	desc = flavor_hab.86.desc
+	outcome = neutral
+
+	historical_info = flavor_hab.86.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1700.1.1
+		to = 1715.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		any_owned_location = {
+			area = area:slovakia_area
+			count >= 20
+		}
+	}
+
+	fire_only_once = yes
+
+
+	immediate = {
+		create_character = {
+			first_name = name_francis
+			adm = { 30 70 }
+			dip = { 20 70 }
+			mil = { 40 80 }
+			birth_date = 1676.3.27
+			birth_location = location:zemplin
+			dynasty = dynasty:rakoczi_dynasty
+			religion = religion:calvinist
+			culture = culture:hungarian
+			estate = estate_type:nobles_estate
+			create_in_limbo = yes
+			script = hab_rakoczi
+			save_scope_as = target_character
+		}
+		create_rebel = {
+			category = estate
+			estate = nobles_estate
+			name = rakoczi_uprising
+			save_scope_as = rakoczi_uprising_scope
+		}
+	}
+
+	option = {
+		name = flavor_hab.86.a
+		historical_option = yes
+		custom_tooltip = {
+			text = flavor_hab.86.a.tt
+			every_owned_location = {
+				limit = {
+					area = area:slovakia_area
+				}
+				every_pop = {
+					limit = {
+						owner = root
+					}
+					add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+					change_pop_allegiance = scope:rakoczi_uprising_scope
+				}
+			}
+		}
+
+		scope:rakoczi_uprising_scope = { add_rebel_progress = 0.9 }
+
+		add_stability = stability_ultimate_penalty
+	}
+
+	option = {
+		name = flavor_hab.85.b
+		add_government_power = government_power_ultimate_penalty
+		custom_tooltip = {
+			text = flavor_hab.85.b.tt
+			every_owned_location = {
+				limit = {
+					area = area:slovakia_area
+				}
+				change_control = control_ultimate_penalty
+			}
+		}
+		destroy_rebel = scope:rakoczi_uprising_scope
+	}
+
+	after = {
+		remove_variable = hab_rakoczi_uprising
+	}
+}
+
+flavor_hab.90 = { #Böhmer Publishes the Regesta Imperii
+	type = country_event
+	title = flavor_hab.90.title
+	desc = flavor_hab.90.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.90.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1820.1.1
+		to = 1850.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		exists = international_organization:hre
+		exists = international_organization:hre.leader_country
+		location:frankfurt = { is_owned_by_international_organization = international_organization:hre }
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_john.name_frederick
+			last_name = Bohmer
+			birth_date = 1795.4.22
+			birth_location = location:frankfurt
+			estate = estate_type:burghers_estate
+			adm = { 30 80 }
+			dip = { 30 80 }
+			mil = { 20 40 }
+			culture = culture:rhine_franconian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_hab.90.a
+        scope:target_character = {
+            move_country = root
+        }
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_penalty
+			add_cultural_influence = cultural_influence_mild_penalty
+		}
+	}
+
+	option = {
+		name = flavor_hab.90.b
+		historical_option = yes
+		change_imperial_authority = { value = imperial_authority_mild_bonus }
+		add_prestige = prestige_mild_bonus
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_hab.91 = { #The Biedermeier Era
+	type = country_event
+	title = flavor_hab.91.title
+	desc = flavor_hab.91.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.91.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1815.1.1
+		to = 1865.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	trigger = {
+		stability > 60
+		at_war = no
+	}
+
+	option = {
+		name = flavor_hab.91.a
+		historical_option = yes
+        add_prestige = prestige_mild_bonus
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+	}
+}
+
+flavor_hab.92 = { #Johann Strauss
+	type = country_event
+	title = flavor_hab.92.title
+	desc = flavor_hab.92.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.92.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1825.1.1
+		to = 1875.1.1
+		monthly_chance = 1
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_john
+			last_name = Strauss
+			birth_date = 1804.3.14
+			birth_location = location:vienna
+			estate = estate_type:burghers_estate
+			adm = { 20 70 }
+			dip = { 20 70 }
+			mil = { 20 70 }
+			artist_skill = 0.95
+			culture = culture:danube_bavarian
+			artist = composer
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_hab.92.a
+		add_prestige = prestige_mild_bonus
+		scope:target_character = {
+			move_country = root
+			add_trait = trait:prominent
+		}
+	}
+
+	option = {
+		name = flavor_hab.92.b
+		historical_option = yes
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_hab.93 = { #Imperial Artillery
+	type = country_event
+	title = flavor_hab.93.title
+	desc = flavor_hab.93.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.93.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1737.1.1
+		to = 1770.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		has_advance = imperial_artillery
+		OR = {
+            NOT = {
+                dynasty_exists = von_Liechtenstein_dynasty
+            }
+            dynasty:von_Liechtenstein_dynasty = {
+                any_character_in_dynasty = {
+                    is_heir = no
+                    is_ruler = no
+                    is_female = no
+                    is_adult = yes
+                    age_in_years > 30
+                    this != character:hab_karl_liechtenstein
+                    this != character:hab_maximilian_liechtenstein
+                    this != character:hab_gundakar_liechtenstein
+                }
+            }
+        }
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_joseph.name_wenceslas
+			last_name = von_Liechtenstein
+			dynasty = dynasty:von_Liechtenstein_dynasty
+			birth_date = 1696.8.9
+			birth_location = location:prague
+			estate = estate_type:nobles_estate
+			adm = { 20 70 }
+			dip = { 20 70 }
+			mil = { 80 90 }
+			culture = culture:danube_bavarian
+			save_scope_as = target_character
+			create_in_limbo = yes
+			script = hab_wenceslas_liechtenstein
+		}
+	}
+
+	option = {
+		name = flavor_hab.93.a
+		historical_option = yes
+		add_army_tradition = army_tradition_mild_bonus
+		scope:target_character = {
+			move_country = root
+			add_random_trait_from_category = general
+			add_character_modifier = {
+				modifier = refuses_to_serve_in_cabinet
+				years = -1
+				mode = add_and_extend
+			}
+		}
+	}
+}
+
+flavor_hab.94 = { #Multicultural Empire
+	type = country_event
+	title = flavor_hab.94.title
+	desc = flavor_hab.94.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.94.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1700.1.1
+		to = 1900.1.1
+		monthly_chance = 10
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	trigger = {
+		has_advance = multicultural_empire
+	}
+
+	option = {
+		name = flavor_hab.94.a
+		historical_option = yes
+		add_stability = stability_severe_bonus
+	}
+}
+
+flavor_hab.95 = { #Wiener Klassik
+	type = country_event
+	title = flavor_hab.95.title
+	desc = flavor_hab.95.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.95.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1700.1.1
+		to = 1850.1.1
+		monthly_chance = 10
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	trigger = {
+		has_advance = wiener_klassik
+	}
+
+	option = {
+		name = flavor_hab.95.a
+		historical_option = yes
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+	}
+}
+
+flavor_hab.96 = { #The Pragmatic Sanction
+	type = country_event
+	title = flavor_hab.96.title
+	desc = flavor_hab.96.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.96.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 10
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		ruler = { save_scope_as = target_ruler }
+		heir = { save_scope_as = target_heir }
+	}
+
+	trigger = {
+		has_ruler = yes
+		heir ?= {
+			is_female = yes
+		}
+		exists = international_organization:hre
+		is_member_of_international_organization = international_organization:hre
+		international_organization:hre = {
+			modifier:hre_allow_female_emperors = yes
+		}
+		is_leader_of_international_organization = international_organization:hre
+	}
+
+	option = {
+		name = flavor_hab.96.a
+		historical_option = yes
+		add_legitimacy = legitimacy_mild_bonus
+		ruler ?= {
+			add_dip = 5
+		}
+	}
+}
+
+flavor_hab.97 = { #Marianna Martines
+	type = country_event
+	title = flavor_hab.97.title
+	desc = flavor_hab.97.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1775.1.1
+		to = 1795.1.1
+		monthly_chance = 1
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_marianne
+			last_name = Martines
+			birth_date = 1744.5.4
+			birth_location = location:vienna
+			estate = estate_type:burghers_estate
+			female = yes
+			adm = { 20 70 }
+			dip = { 20 70 }
+			mil = { 10 20 }
+			culture = culture:danube_bavarian
+			save_scope_as = target_character
+			create_in_limbo = yes
+			artist = composer
+			artist_skill = 0.75
+		}
+	}
+
+	option = {
+		name = flavor_hab.97.a
+		scope:target_character = {
+			move_country = root
+		}
+	}
+
+	option = {
+		name = flavor_hab.97.b
+		add_prestige = prestige_weak_bonus
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_hab.98 = { #Antonio Salieri
+	type = country_event
+	title = flavor_hab.98.title
+	desc = flavor_hab.98.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.98.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1785.1.1
+		to = 1800.1.1
+		monthly_chance = 1
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_anthony
+			last_name = Salieri
+			birth_date = 1750.8.18
+			birth_location = location:legnago
+			estate = estate_type:burghers_estate
+			adm = { 40 70 }
+			dip = { 40 70 }
+			mil = { 10 40 }
+			culture = culture:venetian
+			save_scope_as = target_character
+			create_in_limbo = yes
+			artist = composer
+			artist_skill = 0.8
+		}
+	}
+
+	option = {
+		name = flavor_hab.98.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		change_gold_effect = { scale = -3 }
+        scope:target_character = {
+            move_country = root
+		}
+	}
+
+	option = {
+		name = flavor_hab.98.b
+		add_prestige = prestige_mild_penalty
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_hab.99 = { #Proclaiming the Austrian Empire
+	type = country_event
+	title = flavor_hab.99.title
+	desc = flavor_hab.99.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.99.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1750.1.1
+		to = 1850.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		NOT = {
+			country_rank = country_rank:rank_empire
+		}
+		is_subject = no
+		NOT = {
+			exists = international_organization:hre
+		}
+		has_ruler = yes
+		is_great_power = yes
+	}
+
+	option = {
+		name = flavor_hab.99.a
+		historical_option = yes
+		add_legitimacy = legitimacy_severe_bonus
+		set_country_rank_effect = { rank = country_rank:rank_empire }
+		every_neighbor_country = {
+			limit = {
+				NOT = {
+					is_allied_with = { target = root }
+					is_subject_of = root
+				}
+			}
+			add_opinion = {
+				target = root
+				modifier = hab_proclaimed_austrian_empire
+			}
+		}
+		change_societal_value = {
+			type = belligerent_vs_conciliatory
+			value = societal_value_large_move_to_left
+		}
+	}
+
+	option = {
+		name = flavor_hab.99.b
+		add_legitimacy = legitimacy_severe_penalty
+		change_societal_value = {
+			type = belligerent_vs_conciliatory
+			value = societal_value_large_move_to_right
+		}
+	}
+}
+
+flavor_hab.100 = { #Johann Lukas von Hildebrandt
+	type = country_event
+	title = flavor_hab.100.title
+	desc = flavor_hab.100.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.100.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1700.1.1
+		to = 1720.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:vienna
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_john.name_lucas
+			last_name = von_Hildebrandt
+			birth_date = 1668.11.14
+			birth_location = location:genoa
+			estate = estate_type:burghers_estate
+			adm = { 20 70 }
+			dip = { 20 70 }
+			mil = { 20 70 }
+			artist_skill = 0.85
+			culture = culture:danube_bavarian
+			artist = architect
+			save_scope_as = target_character
+			script = hab_hildebrandt
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_hab.100.a
+		historical_option = yes
+		change_gold_effect = { scale = -4 }
+		scope:target_character = {
+			move_country = root
+			add_trait = trait:architectural_visionary
+		}
+	}
+
+	option = {
+		name = flavor_hab.100.b
+		add_prestige = prestige_weak_penalty
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_hab.101 = { #The Belvedere Palace
+	type = country_event
+	title = flavor_hab.101.title
+	desc = flavor_hab.101.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1720.1.1
+		to = 1740.1.1
+		monthly_chance = 10
+	}
+
+	immediate = {
+		character:hab_hildebrandt ?= { save_scope_as = target_character }
+	}
+
+	trigger = {
+		character:hab_hildebrandt ?= {
+			is_alive = yes
+		}
+		owns = location:vienna
+	}
+
+	option = {
+		name = flavor_hab.101.a
+		location:vienna = {
+			change_prosperity = prosperity_mild_bonus
+			change_development = development_severe_bonus
+		}
+		location:vienna = {
+			construct_building = {
+				building_type = building_type:belvedere_palace
+			}
+		}
+	}
+
+	option = {
+		name = flavor_hab.101.b
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+flavor_hab.102 = { #Composing the Kaiserhymne
+	hide_portraits = yes
+	type = country_event
+	title = flavor_hab.102.title
+	desc = flavor_hab.102.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1780.1.1
+		to = 1800.1.1
+		monthly_chance = 10
+	}
+
+	immediate = {
+		ruler = { save_scope_as = target_ruler }
+		character:hab_haydn ?= { save_scope_as = target_character1 }
+		create_character = {
+			first_name = name_laurence.name_leopold
+			last_name = Haschka
+			birth_date = 1749.9.1
+			birth_location = location:vienna
+			estate = estate_type:burghers_estate
+			adm = { 20 70 }
+			dip = { 20 70 }
+			mil = { 20 70 }
+			artist_skill = 0.8
+			culture = culture:danube_bavarian
+			artist = writer
+			save_scope_as = target_character2
+			script = hab_haschka
+			create_in_limbo = yes
+		}
+		location:vienna = {
+			create_art = {
+				quality = 70
+				type = work_of_art_type:symphony
+				key = kaiserhymne
+				artist = scope:target_character1
+			}
+		}
+	}
+
+	trigger = {
+		character:hab_haydn ?= {
+			is_alive = yes
+		}
+		has_ruler = yes
+		owns = location:vienna
+	}
+
+	option = {
+		name = flavor_hab.102.a
+		change_gold_effect = { scale = -6 }
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_penalty
+			add_cultural_influence = cultural_influence_mild_penalty
+		}
+		show_as_tooltip = {
+			location:vienna = {
+				create_art = {
+					quality = 70
+					type = work_of_art_type:symphony
+					key = kaiserhymne
+					artist = scope:target_character1
+				}
+			}
+		}
+        scope:target_character2 = {
+            move_country = root
+		}
+	}
+
+	option = {
+		name = flavor_hab.102.b
+		add_prestige = prestige_mild_penalty
+		hidden_effect = {
+			destroy_art = work_of_art:kaiserhymne
+			kill_character_silently = scope:target_character2
+		}
+	}
+}
+
+flavor_hab.103 = { #Regulating the Danube
+	type = country_event
+	title = flavor_hab.103.title
+	desc = flavor_hab.103.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1770.1.1
+		to = 1800.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:vienna
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_john.name_sigmund
+			last_name = Hubert
+			birth_date = 1736.6.6
+			birth_location = location:sopron
+			estate = estate_type:burghers_estate
+			adm = { 20 70 }
+			dip = { 20 70 }
+			mil = { 20 70 }
+			culture = culture:danube_bavarian
+			save_scope_as = target_character
+			script = hab_hubert
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_hab.103.a
+		change_gold_effect = { scale = -8 }
+		location:vienna = {
+			change_prosperity = prosperity_weak_penalty
+			every_pop = {
+				add_pop_size = {
+					value = pop_size
+					multiply = -0.05
+				}
+			}
+		}
+        scope:target_character = {
+            move_country = root
+        }
+	}
+
+	option = {
+		name = flavor_hab.103.b
+		change_gold_effect = { scale = -3 }
+		location:vienna = {
+			change_prosperity = prosperity_severe_penalty
+			every_pop = {
+				add_pop_size = {
+					value = pop_size
+					multiply = -0.1
+				}
+			}
+		}
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+
+	option = {
+		name = flavor_hab.103.c
+		add_stability = stability_severe_penalty
+		location:vienna = {
+			change_prosperity = prosperity_ultimate_penalty
+			change_development = development_mild_penalty
+			every_pop = {
+				add_pop_size = {
+					value = pop_size
+					multiply = -0.2
+				}
+			}
+		}
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_hab.1700 = { #Founding a state owned bank for Austria
+	type = country_event
+	title = flavor_hab.1700.title
+	desc = flavor_hab.1700.desc
+	outcome = neutral
+	historical_info = flavor_hab.1700.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1680.1.1
+		to = 1720.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		ruler = {
+			save_scope_as = target_ruler
+		}
+	}
+
+	trigger = {
+		has_ruler = yes
+		gold > { value = monthly_income_trade_and_tax multiply = 6 }
+	}
+
+	option = {
+		name = flavor_hab.1700.a
+		historical_option = yes
+
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
+		add_gold_to_estate = {
+			estate_type = estate_type:nobles_estate
+			value = { value = root.estate_tax_base:nobles_estate multiply = -4 }
+		}
+		add_gold = {
+			value = { value = root.estate_tax_base:nobles_estate multiply = 4 }
+		}
+
+		trigger_event_silently = {
+			id = flavor_hab.1701
+			years = 5
+		}
+	}
+
+	option = {
+		name = flavor_hab.1700.b
+
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		trigger_event_silently = {
+			id = flavor_hab.1701
+			years = 5
+		}
+	}
+}
+
+flavor_hab.1701 = { #The fate of the state owned bank
+	type = country_event
+	title = flavor_hab.1701.title
+	desc = flavor_hab.1701.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1680.1.1
+		to = 1720.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_hab.1701.a
+
+		trigger = {
+			gold > { value = monthly_income_trade_and_tax multiply = 40 } #saved more than half + 10 months of income of the 5 years
+		}
+
+		change_gold_effect = { scale = -40 }
+		add_inflation = inflation_extreme_bonus
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_huge_move_to_left }
+		change_societal_value = { type = centralization_vs_decentralization value = societal_value_huge_move_to_left }
+	}
+
+	option = {
+		name = flavor_hab.1701.b
+
+		trigger = {
+			gold < { value = monthly_income_trade_and_tax multiply = 40 } #saved less than half + 10 months of income of the 5 years
+		}
+
+		add_prestige = prestige_extreme_penalty
+		add_legitimacy = legitimacy_extreme_penalty
+	}
+}
+
+flavor_hab.1800 = { #Mühlviertel Textile Production
+	type = country_event
+	title = flavor_hab.1800.title
+	desc = flavor_hab.1800.desc
+	outcome = neutral
+	historical_info = flavor_hab.1800.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1644.1.1
+		to = 1690.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	trigger = {
+		owns = location:linz
+		OR = {
+			owns = location:perg
+			owns = location:freistadt
+			owns = location:rohrbach
+		}
+	}
+
+	option = {
+		name = flavor_hab.1800.a
+		historical_option = yes
+
+		location:linz = {
+			if = {
+				limit = {
+					location_rank = location_rank:rural_settlement
+				}
+				change_location_rank_effect = { location_rank = location_rank:town }
+			}
+			else = {
+				change_development = development_mild_bonus
+				change_prosperity = prosperity_severe_bonus
+			}
+		}
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+		set_variable = hab_push_for_muhlviertel_textile_industry
+	}
+	option = {
+		name = flavor_hab.1800.b
+
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_minor_move_to_right }
+		location:linz = {
+			change_max_raw_material_workers = 2
+		}
+	}
+}
+
+flavor_hab.1801 = { #Mühlviertel Textile Production Success
+	type = country_event
+	title = flavor_hab.1801.title
+	desc = flavor_hab.1801.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1670.1.1
+		to = 1720.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	trigger = {
+		owns = location:linz
+		location:linz = {
+			location_building_level = {
+				building_type = building_type:cloth_manufactory
+				value >= 4
+			}
+		}
+		custom_tooltip = {
+			text = variable_hab_push_for_muhlviertel_textile_industry_tt
+			has_variable = hab_push_for_muhlviertel_textile_industry
+		}
+	}
+
+	option = {
+		name = flavor_hab.1801.a
+
+		remove_variable = hab_push_for_muhlviertel_textile_industry
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_minor_move_to_left }
+		add_prestige = prestige_mild_bonus
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+	}
+}
+
+flavor_hab.1802 = { #Mühlviertel Textile Production Failure
+	type = country_event
+	title = flavor_hab.1802.title
+	desc = flavor_hab.1802.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1670.1.1
+		to = 1720.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	trigger = {
+		owns = location:linz
+		location:linz = {
+			location_building_level = {
+				building_type = building_type:cloth_manufactory
+				value < 4
+			}
+		}
+		custom_tooltip = {
+			text = variable_hab_push_for_muhlviertel_textile_industry_tt
+			has_variable = hab_push_for_muhlviertel_textile_industry
+		}
+	}
+
+	option = {
+		name = flavor_hab.1802.a
+
+		location:linz = {
+			change_development = development_mild_penalty
+			change_prosperity = prosperity_severe_penalty
+		}
+		remove_variable = hab_push_for_muhlviertel_textile_industry
+		change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_move_to_right }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_penalty }
+	}
+}
+
+#Jewish Advisors of Leopold I
+flavor_hab.1900 = {  #Samuel Oppenheimer
+	type = country_event
+	title = flavor_hab.1900.title
+	desc = flavor_hab.1900.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1655.1.1
+		to = 1703.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_samuel
+			last_name = oppenheimer
+			birth_date = 1630.6.21
+			birth_location = location:heidelberg
+			adm = 78
+			dip = 75
+			mil = 46
+			estate = estate_type:burghers_estate
+			religion = religion:judaism
+			create_in_limbo = yes
+			save_scope_as = target_character
+			script = hab_samuel_oppenheimer
+		}
+	}
+
+	trigger = {
+		owns = location:vienna
+	}
+
+	option = {
+		name = flavor_hab.1900.a
+
+		set_variable = samuel_oppenheimer_hired
+		change_gold_effect = { scale = -2 }
+		scope:target_character = {
+			move_country = root
+		}
+	}
+
+	option = {
+		name = flavor_hab.1900.b
+		scope:target_character = { banish_character = yes }
+	}
+}
+
+flavor_hab.1901 = {  #Samson Wertheimer
+	type = country_event
+	title = flavor_hab.1901.title
+	desc = flavor_hab.1901.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1680.1.1
+		to = 1724.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		character:hab_samuel_oppenheimer = {
+			save_scope_as = target_mentor
+		}
+
+		create_character = {
+			first_name = name_samson
+			last_name = wertheimer
+			birth_date = 1658.1.17
+			birth_location = location:worms
+			adm = 84
+			dip = 73
+			mil = 41
+			estate = estate_type:burghers_estate
+			religion = religion:judaism
+			create_in_limbo = yes
+			save_scope_as = target_character
+			script = hab_samson_wertheimer
+		}
+	}
+
+	trigger = {
+		character:hab_samuel_oppenheimer = {
+			in_cabinet = yes
+		}
+		custom_tooltip = {
+			text = variable_samuel_oppenheimer_hired_tt
+			has_variable = samuel_oppenheimer_hired
+		}
+	}
+
+	option = {
+		name = flavor_hab.1901.a
+
+		change_gold_effect = { scale = -2 }
+		scope:target_character = {
+			move_country = root
+		}
+	}
+
+	option = {
+		name = flavor_hab.1901.b
+		scope:target_character = { banish_character = yes }
+	}
+}
+
+flavor_hab.1902 = { #The Court Bankers finance in wartime
+	type = country_event
+	title = flavor_hab.1902.title
+	desc = flavor_hab.1902.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1655.1.1
+		to = 1740.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		character:hab_samuel_oppenheimer = {
+			if = {
+				limit = {
+					in_cabinet = yes
+				}
+			}
+			save_scope_as = target_character
+		}
+		character:hab_samson_wertheimer = {
+			if = {
+				limit = {
+					in_cabinet = yes
+					character:hab_samuel_oppenheimer = {
+						in_cabinet = no
+					}
+				}
+			}
+			save_scope_as = target_character
+		}
+	}
+
+	trigger = {
+		OR = {
+			character:hab_samuel_oppenheimer = {
+				in_cabinet = yes
+			}
+			character:hab_samson_wertheimer = {
+				in_cabinet = yes
+			}
+		}
+		at_war = yes
+	}
+
+	option = {
+		name = flavor_hab.1901.a
+
+		change_gold_effect = { scale = 12 }
+		add_inflation = inflation_mild_penalty
+	}
+}
+
+flavor_hab.1903 = { #The Court Bankers finance in wartime
+	type = country_event
+	title = flavor_hab.1903.title
+	desc = flavor_hab.1903.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1655.1.1
+		to = 1740.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		character:hab_samuel_oppenheimer = {
+			if = {
+				limit = {
+					in_cabinet = yes
+				}
+			}
+			save_scope_as = target_character
+		}
+		character:hab_samson_wertheimer = {
+			if = {
+				limit = {
+					in_cabinet = yes
+					character:hab_samuel_oppenheimer = {
+						in_cabinet = no
+					}
+				}
+			}
+			save_scope_as = target_character
+		}
+		location:vienna = {
+			save_scope_as = target_location
+		}
+	}
+
+	trigger = {
+		OR = {
+			character:hab_samuel_oppenheimer = {
+				in_cabinet = yes
+			}
+			character:hab_samson_wertheimer = {
+				in_cabinet = yes
+			}
+		}
+		owns = location:vienna
+		location:vienna = {
+			num_civil_constructions > 4
+		}
+	}
+
+	option = {
+		name = flavor_hab.1903.a
+
+		change_gold_effect = { scale = 8 }
+		add_inflation = inflation_mild_penalty
+	}
+}
+
+flavor_hab.2000 = { #Wenzel Anton Kaunitz - Diplomatic Revolution
+	type = country_event
+	title = flavor_hab.2000.title
+	desc = flavor_hab.2000.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1737.1.1
+		to = 1794.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		create_character = {
+			first_name = name_wenceslas
+			dynasty = dynasty:von_kaunitz_dynasty
+			religion = religion:catholic
+			estate = estate_type:nobles_estate
+			birth_date = 1711.2.2
+			female = no
+			birth_location = location:vienna
+			adm = 71
+			dip = 87
+			mil = 68
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		random_rival = {
+			limit = {
+				is_great_power = yes
+				has_presence_in = continent:europe
+				religion.group = religion_group:christian
+			}
+			save_scope_as = rival_country
+		}
+	}
+
+	trigger = {
+		has_embraced_institution = institution:enlightenment
+		any_rival = {
+			is_great_power = yes
+			has_presence_in = continent:europe
+			religion.group = religion_group:christian
+		}
+	}
+
+	option = {
+		name = flavor_hab.2000.a
+		scope:target_character = { move_country = root }
+		add_government_power = government_power_extreme_bonus
+		add_prestige = prestige_mild_bonus
+
+		every_rival = {
+			add_opinion = {
+				target = root
+				modifier = hab_diplomatic_revolution
+			}
+		}
+		remove_rival = scope:rival_country
+		scope:rival_country = {
+			trigger_event_non_silently = flavor_hab.2001
+		}
+	}
+
+	option = {
+		name = flavor_hab.2000.b
+
+		scope:target_character = { move_country = root }
+		add_legitimacy = legitimacy_weak_bonus
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+flavor_hab.2001 = { #Diplomatic Revolution - Rivals Response
+	type = country_event
+	title = flavor_hab.2001.title
+	desc = flavor_hab.2001.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_hab.2001.a
+
+		remove_rival = c:HAB
+	}
+
+	option = {
+		name = flavor_hab.2001.b
+
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+flavor_hab.2100 = { #Reforms of Maria Theresia and Joseph II
+	type = country_event
+	title = flavor_hab.2100.title
+	desc = flavor_hab.2100.desc
+	outcome = neutral
+	historical_info = flavor_hab.2100.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1750.1.1
+		to = 1800.1.1
+		monthly_chance = 4
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		ruler = {
+			save_scope_as = target_ruler
+		}
+	}
+
+	trigger = {
+		has_embraced_institution = institution:enlightenment
+		ruler ?= { total_abilities >= 170 }
+	}
+
+	option = {
+		name = flavor_hab.2100.a
+		historical_option = yes
+
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_large_move_to_right }
+		add_research_progress = research_progress_severe_bonus
+		add_country_modifier = { modifier = reform_of_law years = 5 mode = add_and_extend }
+		set_variable = hab_reforms_of_enlightenment
+	}
+}
+
+flavor_hab.2101 = { #Pushback against enlightenment reforms
+	type = country_event
+	title = flavor_hab.2101.title
+	desc = flavor_hab.2101.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1780.1.1
+		to = 1830.1.1
+		monthly_chance = 6
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		ruler = {
+			save_scope_as = target_ruler
+		}
+	}
+
+	trigger = {
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_hab_reforms_of_enlightenment_tt
+			has_variable = hab_reforms_of_enlightenment
+		}
+		stability <= 25
+	}
+
+	option = {
+		name = flavor_hab.2101.a
+		historical_option = yes
+
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_minor_move_to_left }
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_minor_move_to_left }
+		remove_variable = hab_reforms_of_enlightenment
+	}
+
+	option = {
+		name = flavor_hab.2101.b
+
+		change_gold_effect = { scale = -8 }
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_minor_move_to_right }
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_minor_move_to_right }
+		remove_variable = hab_reforms_of_enlightenment
+
+	}
+
+	option = {
+		name = flavor_hab.2101.c
+
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_right }
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_move_to_right }
+		remove_variable = hab_reforms_of_enlightenment
+
+	}
+}
+
+flavor_hab.2102 = { #Embracement of enlighten reforms
+	type = country_event
+	title = flavor_hab.2102.title
+	desc = flavor_hab.2102.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1790.1.1
+		to = 1830.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		ruler = {
+			save_scope_as = target_ruler
+		}
+	}
+
+	trigger = {
+		has_ruler = yes
+		custom_tooltip = {
+			text = variable_hab_reforms_of_enlightenment_tt
+			has_variable = hab_reforms_of_enlightenment
+		}
+		stability > 25
+	}
+
+	option = {
+		name = flavor_hab.2102.a
+
+		add_legitimacy = legitimacy_severe_bonus
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_right }
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_move_to_right }
+		remove_variable = hab_reforms_of_enlightenment
+	}
+}
+
+flavor_hab.2103 = { #The Raabization of the Land Management - formerly flavor_hab.87
+	type = country_event
+	title = flavor_hab.2103.title
+	desc = flavor_hab.2103.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1750.1.1
+		to = 1770.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		custom_tooltip = {
+			text = variable_hab_reforms_of_enlightenment_tt
+			has_variable = hab_reforms_of_enlightenment
+		}
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_francis.name_anthony
+			last_name = von_Raab
+			birth_date = 1722.12.21
+			birth_location = location:vienna
+			estate = estate_type:burghers_estate
+			adm = { 20 60 }
+			dip = { 20 60 }
+			mil = { 20 40 }
+			culture = culture:danube_bavarian
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_hab.2103.a
+		add_stability = stability_severe_penalty
+		change_gold_effect = { scale = 6 }
+        scope:target_character = {
+            move_country = root
+        }
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_severe_penalty
+		}
+		add_estate_satisfaction = { type = estate_type:nobles_estate
+			value = estate_satisfaction_severe_penalty
+		}
+		add_estate_satisfaction = { type = estate_type:peasants_estate
+			value = estate_satisfaction_severe_bonus
+		}
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_right }
+	}
+
+	option = {
+		name = flavor_hab.2103.b
+		add_stability = stability_mild_bonus
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_bonus
+		}
+		add_estate_satisfaction = { type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_bonus
+		}
+		add_estate_satisfaction = { type = estate_type:peasants_estate
+			value = estate_satisfaction_mild_penalty
+		}
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_hab.2104 = { #Reforms of Adam František Kollár - formerly flavor_hab.89
+	type = country_event
+	title = flavor_hab.2104.title
+	desc = flavor_hab.2104.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_hab.2104.historical_info
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1750.1.1
+		to = 1760.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		exists = international_organization:hre
+		exists = international_organization:hre.leader_country
+		OR = {
+			any_owned_location = {
+				area = area:slovakia_area
+				count >= 20
+			}
+			"culture_percentage_in_country(culture:slovak)" > 0
+		}
+	}
+
+	immediate = {
+		create_character = {
+			first_name = name_adam.name_francis
+			last_name = kollar_last_name
+			birth_date = 1718.1.1
+			birth_location = location:oravsky_podzamok
+			estate = estate_type:burghers_estate
+			adm = { 60 80 }
+			dip = { 70 85 }
+			mil = { 20 40 }
+			culture = culture:slovak
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_hab.2104.a
+		historical_option = yes
+        scope:target_character = {
+            move_country = root
+        }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_penalty }
+		change_societal_value = { type = centralization_vs_decentralization value = societal_value_move_to_left }
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_right
+		}
+	}
+
+	option = {
+		name = flavor_hab.2104.b
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+		change_societal_value = { type = centralization_vs_decentralization value = societal_value_move_to_right }
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_left
+		}
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_hab.2202 = { #Military Academy of Maria Theresia
+	type = country_event
+	title = flavor_hab.2202.title
+	desc = flavor_hab.2202.desc
+	outcome = neutral
+	historical_info = flavor_hab.2202.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1740.1.1
+		to = 1780.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		location:wiener_neustadt = {
+			save_scope_as = target_location
+		}
+	}
+
+	trigger = {
+		NOT = {
+			has_embraced_institution = institution:levee_en_masse
+		}
+		at_war = yes
+		any_current_war = {
+			any_war_participant = {
+				has_embraced_institution = institution:levee_en_masse
+			}
+		}
+		owns = location:wiener_neustadt
+		location:wiener_neustadt = {
+			OR = {
+				location_rank = location_rank:town
+				location_rank = location_rank:city
+			}
+			integration_level = core
+		}
+	}
+
+	option = {
+		name = flavor_hab.2202.a
+		historical_option = yes
+
+		change_gold_effect = { scale = -12 }
+		scope:target_location = {
+			change_institution_progress = { type = institution:levee_en_masse value = institution_progress_ultimate_bonus }
+		}
+		add_army_tradition = army_tradition_mild_bonus
+	}
+
+	option = {
+		name = flavor_hab.2202.b
+
+		add_legitimacy = legitimacy_mild_penalty
+	}
+}
+
+
+flavor_hab.2500 = { #The Austro-Prussian Rivalry
+	type = country_event
+	title = flavor_hab.2500.title
+	desc = flavor_hab.2500.desc
+	outcome = neutral
+
+	historical_info = flavor_hab.2500.historical_info
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = HAB
+		from = 1700.1.1
+		to = 1900.1.1
+		monthly_chance = 10
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	trigger = {
+		is_leader_of_international_organization = international_organization:hre
+		AND = {
+			tag_exists = PRU
+			country_exists = c:PRU
+		}
+		NOT = { is_allied_with = { target = c:PRU } }
+		NOT = { has_truce_with = c:PRU }
+		c:PRU = { NOT = { is_subject_of = root } }
+		c:PRU = {
+			OR = {
+				is_rival_of = ROOT
+				is_enemy_of = ROOT
+				country_rank_level > 2
+			}
+		}
+		c:PRU = {
+			any_owned_location = {
+				is_core_of = root
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	option = {
+		name = flavor_hab.2500.a
+		historical_option = yes
+		add_casus_belli = {
+			target = c:PRU
+			type = casus_belli:cb_humiliate
+		}
+		add_historical_rival_scripted = { target = c:PRU trigger_recipient_event = no }
+		c:PRU = {
+			add_historical_rival_scripted = { target = c:HAB trigger_recipient_event = no }
+		}
+		c:PRU = { trigger_event_non_silently = { id = flavor_hab.2501 days = 20 } }
+		every_country = {
+			limit = {
+				NOT = {
+					is_subject_of = root
+				}
+				NOT = {
+					OR = {
+						is_rival_of = ROOT
+						is_enemy_of = ROOT
+					}
+				}
+				OR = {
+					is_rival_of = c:PRU
+					is_enemy_of = c:PRU
+				}
+			}
+			add_opinion = { target = root modifier = opinion_anti_prussian_coalition }
+		}
+	}
+
+	option = {
+		name = flavor_hab.2500.b
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+flavor_hab.2501 = { #Prussian Event about the rivalry
+    type = country_event
+	title = flavor_hab.2501.title
+	desc = flavor_hab.2501.desc
+	outcome = neutral
+
+	historical_info = flavor_hab.2500.historical_info
+
+    option = {
+        name = flavor_hab.2501.a
+		historical_option = yes
+		show_as_tooltip = {
+			c:HAB = {
+				add_casus_belli = {
+					target = c:PRU
+					type = casus_belli:cb_humiliate
+				}
+				add_historical_rival_scripted = { target = c:PRU trigger_recipient_event = no }
+				c:PRU = {
+					add_historical_rival_scripted = { target = c:HAB trigger_recipient_event = no }
+				}
+				every_country = {
+					limit = {
+						NOT = {
+							is_subject_of = root
+						}
+						NOT = {
+							OR = {
+								is_rival_of = ROOT
+								is_enemy_of = ROOT
+							}
+						}
+						OR = {
+							is_rival_of = c:PRU
+							is_enemy_of = c:PRU
+						}
+					}
+					add_opinion = { target = root modifier = opinion_anti_prussian_coalition }
+				}
+			}
+		}
+    }
+}
+
+# #converted Events Age 4 Reformation
+
+# flavor_hab.21 = {
+# 	type = country_event
+# 	title = flavor_hab.21.title
+# 	desc = flavor_hab.21.desc
+
+
+# 	fire_only_once = yes
+# 	dynamic_historical_event = {
+# 		tag = HAB
+# 		from = 1600.1.1
+# 		to = 1650.1.1
+# 		monthly_chance = 2
+# 	}
+
+# 	trigger = {
+# 		stability < 20
+# 	}
+
+# 	option = {
+# 		name = flavor_hab.21.a
+# 		add_stability = stability_extreme_penalty
+# 		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_extreme_penalty }
+# 	}
+# }
+
+# #converted Events Age 5 Absolutism
+
+# flavor_hab.22 = {
+# 	type = country_event
+# 	title = flavor_hab.22.title
+# 	desc = flavor_hab.22.desc
+
+# 	fire_only_once = yes
+# 	dynamic_historical_event = {
+# 		tag = HAB
+# 		from = 1700.1.1
+# 		to = 1713.1.1
+# 		monthly_chance = 2
+# 	}
+
+# 	trigger = {
+# 		"culture_percentage_in_country(culture:hungarian)" > 0
+
+# 		area:transdanubia_area = {
+# 			any_location_in_area = {
+# 				owner = root
+# 			}
+# 		}
+# 		NOT = { country_exists = c:HUN }
+# 	}
+
+
+# 	immediate = {
+
+# 		create_rebel = {
+# 			category = nationalist
+# 			culture = culture:hungarian
+# 			name = hungarian_nobles
+# 			save_scope_as = hungarian_nobles
+# 		}
+
+# 	}
+
+
+# 	option = {
+# 		name = flavor_hab.22.a
+# 		historical_option = yes
+# 		custom_tooltip = {
+# 			text = hungarian_nobles_joining
+# 			every_owned_location = {
+# 				every_pop = {
+# 					limit = {
+# 						owner = root
+# 						culture = culture:hungarian
+# 					}
+# 					add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+# 					change_pop_allegiance = scope:hungarian_nobles
+# 				}
+# 			}
+
+# 		}
+# 	}
+# 	option = {
+# 		name = flavor_hab.22.b
+# 		destroy_rebel = scope:hungarian_nobles
+# 		create_country_from_cores_in_our_locations = c:HUN
+# 		c:HUN = {
+# 			make_subject_of = { target = c:HAB type = subject_type:dominion }
+# 		}
+# 		add_government_power = government_power_weak_penalty
+# 	}
+# }

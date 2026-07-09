@@ -221,13 +221,13 @@ flavor_moi.7 = {
                 limit = {
                     location_rank = location_rank:rural_settlement
                 }
-                change_location_rank = location_rank:town
+                change_location_rank_effect = { location_rank = location_rank:town }
             }
             else_if = {
                 limit = {
                     location_rank = location_rank:town
                 }
-                change_location_rank = location_rank:city
+                change_location_rank_effect = { location_rank = location_rank:city }
             }
         }
         add_gold = -20
@@ -269,13 +269,13 @@ flavor_moi.8 = {
                 limit = {
                     location_rank = location_rank:rural_settlement
                 }
-                change_location_rank = location_rank:town
+                change_location_rank_effect = { location_rank = location_rank:town }
             }
             else_if = {
                 limit = {
                     location_rank = location_rank:town
                 }
-                change_location_rank = location_rank:city
+                change_location_rank_effect = { location_rank = location_rank:city }
             }
         }
         add_gold = -25
@@ -369,7 +369,7 @@ flavor_moi.10 = {
     option = {
         name = flavor_moi.10.a
         location:kythira = {
-            change_location_rank = location_rank:town
+            change_location_rank_effect = { location_rank = location_rank:town }
         }
         add_gold = -10
     }

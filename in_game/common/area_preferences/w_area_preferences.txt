@@ -112,10 +112,17 @@ prussia_conquer_silesia = {
 
 russia_conquer_europe = {
     preference_type = conquest
-    modifier = 1.5
+    modifier = 1.05
     region = ruthenia_region
     region = steppes_region
     region = caucasus_region
+}
+
+russia_conquer_asia = {
+    preference_type = conquest
+    modifier = 2.25
+    region = caucasus_region
+    region = khorasan_region
 }
 
 russia_conquer_baltic = {
@@ -130,6 +137,11 @@ russia_explore_siberia = {
     preference_type = exploration
     modifier = 3
     region = east_siberia_region
+    region = alaska_region
+    region = west_siberia_region
+    region = ural_region
+    region = russian_region
+    region = steppes_region
     area = lower_amur_area
     area = middle_amur_area
 }

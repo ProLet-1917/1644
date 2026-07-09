@@ -1,0 +1,71 @@
+﻿namespace = flavor_mlo
+
+flavor_mlo.24 = { #Duomo di Milano
+	hide_portraits = yes
+	type = country_event
+	title = flavor_mlo.24.title
+	desc = flavor_mlo.24.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = MLO
+		from = 1644.1.1
+		to = 1918.11.11
+		monthly_chance = 10
+	}
+
+	trigger = {
+		owns = location:milano #If you are Milan and don't own Milano, you have problems
+		location:milano = {
+			has_building_with_at_least_one_level = cathedral
+		}
+		peaceful_and_rich = yes
+	}
+
+	illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		location:milano = {
+			save_scope_as = target_location
+		}
+
+		create_character = {
+			first_name = name_simeon
+			last_name = Orsenigo
+			culture = culture:lombard
+			age = 45
+			artist_skill = 0.79
+			artist = architect
+			estate = estate_type:burghers_estate
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_mlo.24.a
+
+		scope:target_character = { move_country = root }
+		scope:target_location = {
+			create_art = {
+				artist = scope:target_character
+				quality = 85
+				type = work_of_art_type:monument
+				key = milan_cathedral
+			}
+		}
+		change_gold_effect = { scale = -3 }
+	}
+
+	option = {
+		name = flavor_mlo.24.b
+
+		scope:target_character = { banish_character = yes }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_penalty }
+	}
+}

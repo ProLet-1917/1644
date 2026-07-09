@@ -1,0 +1,310 @@
+﻿namespace = flavor_dai
+
+# Trade with the Japanese
+flavor_dai.3 = {
+	type = country_event
+	title = flavor_dai.3.title
+	desc = flavor_dai.3.desc
+	outcome = neutral
+	historical_info = flavor_dai.3.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = DAI
+		from = 1644.1.1
+		to = 1680.1.1
+		monthly_chance = 5
+	}
+	trigger = {
+		owns = location:dien_ban
+		location:dien_ban = {
+			market = {
+				any_merchant_in_market = {
+					NOT = { this = ROOT }
+					culture ?= { has_culture_group = culture_group:japanese_group }
+				}
+			}
+		}
+	}
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+		culture = { save_scope_as = root_culture }
+		location:dien_ban = {
+			save_scope_as = target_location
+			market = {
+				save_scope_as = target_market
+				random_merchant_in_market = {
+					limit = {
+						NOT = { this = ROOT }
+						culture = { has_culture_group = culture_group:japanese_group }
+					}
+					save_scope_as = target_country
+					capital = {
+						region = { save_scope_as = target_region }
+					}
+					culture = {
+						save_scope_as = target_culture
+						random_culture_group = {
+							limit = { this = culture_group:japanese_group }
+							save_scope_as = target_culture_group
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = flavor_dai.3.a
+		historical_option = yes
+		scope:root_culture = { change_cultural_view = { target = scope:target_culture change = 1 } }
+		scope:target_culture = { change_cultural_view = { target = scope:root_culture change = 1 } }
+		scope:target_location = {
+			if = {
+				limit = { location_rank = location_rank:rural_settlement }
+				construct_building = {
+					building_type = building_type:overseas_trading_post
+					cost_multiplier = 0
+					instant = yes
+					owner = scope:target_country
+					cost_multiplier_reason = "japanese_bridge"
+				}
+			}
+			else = {
+				construct_building = {
+					building_type = building_type:trade_office
+					cost_multiplier = 0
+					instant = yes
+					owner = scope:target_country
+					cost_multiplier_reason = "japanese_bridge"
+				}
+			}
+		}
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+	}
+	option = {
+		name = flavor_dai.3.b
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_penalty }
+	}
+	option = {
+		name = flavor_dai.3.c
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_penalty }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		create_relation = { 
+			first = ROOT
+			second = scope:target_country
+			type = relation_type:embargo_nation
+		}
+		scope:root_culture = { change_cultural_view = { target = scope:target_culture change = -1 } }
+		scope:target_culture = { change_cultural_view = { target = scope:root_culture change = -1 } }
+	}
+}
+
+# The Imperial Citadel
+flavor_dai.4 = {
+	type = country_event
+	title = flavor_dai.4.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { scope:capital_location = scope:target_location } }
+				desc = flavor_dai.4.desc.a
+			}
+			triggered_desc = {
+				trigger = { scope:capital_location = scope:target_location }
+				desc = flavor_dai.4.desc.b
+			}
+		}
+	}
+	outcome = neutral
+	historical_info = flavor_dai.4.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = DAI
+		from = 1800.1.1
+		to = 1860.1.1
+		monthly_chance = 10
+	}
+	trigger = {
+		owns = location:amarendrapura
+		has_ruler = yes
+		total_population >= 3000
+		country_rank_level > 2
+		at_war = no
+	}
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= { save_scope_as = target_character }
+		location:amarendrapura = { save_scope_as = target_location }
+		capital = { save_scope_as = capital_location }
+	}
+	option = {
+		name = flavor_dai.4.a
+		historical_option = yes
+		trigger = { NOT = { scope:capital_location = scope:target_location } }
+		set_capital = scope:target_location
+		scope:target_location = {
+			rename_location = hue_location
+			change_location_rank_effect = { location_rank = location_rank:city }
+			construct_building = {
+				building_type = building_type:imperial_city_of_hue
+				cost_multiplier = 0
+				cost_multiplier_reason = "flavor_dai.4.tt"
+			}
+		}
+	}
+	option = {
+		name = flavor_dai.4.b
+		trigger = { NOT = { scope:capital_location = scope:target_location } }
+		scope:capital_location = {
+			rename_location = hue_location
+			change_location_rank_effect = { location_rank = location_rank:city }
+			construct_building = {
+				building_type = building_type:imperial_city_of_hue
+				cost_multiplier = 0
+				cost_multiplier_reason = "flavor_dai.4.tt"
+			}
+		}
+	}
+	option = {
+		name = flavor_dai.4.c
+		trigger = { scope:capital_location = scope:target_location }
+		scope:target_location = {
+			rename_location = hue_location
+			change_location_rank_effect = { location_rank = location_rank:city }
+			construct_building = {
+				building_type = building_type:imperial_city_of_hue
+				cost_multiplier = 0
+				cost_multiplier_reason = "flavor_dai.4.tt"
+			}
+		}
+	}
+}
+
+# The Vietnamese Alphabet
+flavor_dai.5 = {
+	type = country_event
+	title = flavor_dai.5.title
+	desc = flavor_dai.5.desc
+	outcome = neutral
+	historical_info = flavor_dai.5.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = DAI
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 5
+	}
+	trigger = {
+		culture = culture:vietnamese_culture
+		capital = {
+
+			market = {
+				any_merchant_in_market = {
+					religion ?= {
+						group = religion_group:christian
+					}
+					liturgical_language = language:latin_language
+					culture = culture:portuguese
+					owns = location:guarda
+				}
+			}
+		}
+	}
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:nobles_estate }
+		culture = {
+			save_scope_as = root_culture
+			language = { save_scope_as = root_language }
+		}
+		capital = {
+			save_scope_as = target_location
+			region = { save_scope_as = target_region }
+			market = {
+				random_merchant_in_market = {
+					limit = {
+						religion.group = religion_group:christian
+						liturgical_language = language:latin_language
+						culture = culture:portuguese
+					}
+					save_scope_as = target_country
+					culture = { save_scope_as = target_culture }
+					religion = { save_scope_as = target_religion }
+					liturgical_language = { save_scope_as = target_language }
+				}
+			}
+		}
+		create_character = {
+			first_name = name_francis
+			last_name = de_Pina
+			estate = estate_type:clergy_estate
+			birth_date = 1585.1.1
+			birth_location = location:guarda
+			adm = { 40 80 }
+			dip = { 40 80 }
+			mil = { 20 60 }
+			religion = scope:target_religion
+			culture = scope:target_culture
+			female = no
+			save_scope_as = target_character
+			move_country = ROOT
+		}
+	}
+	option = {
+		name = flavor_dai.5.a
+		historical_option = yes
+		scope:root_culture = { change_cultural_view = { target = scope:target_culture change = 1 } }
+		scope:target_culture = { change_cultural_view = { target = scope:root_culture change = 1 } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_penalty }
+		scope:target_location = {
+			construct_building = {
+				building_type = building_type:missionary_building
+				cost_multiplier = 0
+				instant = yes
+				owner = scope:target_country
+				cost_multiplier_reason = "portuguese_missionary"
+			}
+		}
+		add_country_modifier = {
+			modifier = dai_latinization_of_the_alphabet
+			years = modifier_duration_years_long
+			mode = add_and_extend
+		}
+	}
+	option = {
+		name = flavor_dai.5.b
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_penalty }
+		scope:target_location = {
+			construct_building = {
+				building_type = building_type:missionary_building
+				cost_multiplier = 0
+				instant = yes
+				owner = scope:target_country
+				cost_multiplier_reason = "portuguese_missionary"
+			}
+		}
+	}
+	option = {
+		name = flavor_dai.5.c
+		scope:target_character = {
+			banish_character_to_country_effect = { target = scope:target_country }
+		}
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+		create_relation = { 
+			first = ROOT
+			second = scope:target_country
+			type = relation_type:embargo_nation
+		}
+	}
+}

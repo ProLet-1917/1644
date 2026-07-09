@@ -59,7 +59,10 @@ late_ming_crisis_combat_victory_effect = {
                 }
                 change_variable = {
                     name = chi_domination
-                    add = scope:war_score
+                    add = {
+                        add = scope:war_score
+                        multiply = 0.1
+                    }
                 }
             }
         }
@@ -77,7 +80,10 @@ late_ming_crisis_combat_defeat_effect = {
                 }
                 change_variable = {
                     name = chi_domination
-                    subtract = scope:war_score
+                    subtract = {
+                        add = scope:war_score
+                        multiply = 0.1
+                    }
                 }
             }
         }

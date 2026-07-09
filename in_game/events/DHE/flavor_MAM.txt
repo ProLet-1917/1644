@@ -1,0 +1,1943 @@
+﻿namespace = flavor_mam
+
+flavor_mam.17 = {
+	type = country_event
+	title = flavor_mam.17.title
+	desc = flavor_mam.17.desc
+	outcome = neutral
+
+	immediate = {
+		random_owned_location = {
+			limit = {
+				OR = {
+					location_rank = location_rank:city
+					location_rank = location_rank:town
+					location_rank = location_rank:rural_settlement
+				}
+			}
+			save_scope_as = target_location
+		}
+		capital = { save_scope_as = target_capital }
+		random_list = {
+			1 = { culture:circassian_culture = { save_scope_as = target_culture } }
+			1 = { culture:abkhazian_culture = { save_scope_as = target_culture } }
+			1 = { culture:georgian_culture = { save_scope_as = target_culture } }
+			1 = { culture:armenian_culture = { save_scope_as = target_culture } }
+			1 = { culture:crimean = { save_scope_as = target_culture } }
+			1 = { culture:halychian_culture = { save_scope_as = target_culture } }
+			1 = { culture:ruthenian = { save_scope_as = target_culture } }
+			1 = { culture:muscovite = { save_scope_as = target_culture } }
+			1 = { culture:novgorodian = { save_scope_as = target_culture } }
+			1 = { culture:turkish_culture = { save_scope_as = target_culture } }
+			1 = { culture:turkoman_culture = { save_scope_as = target_culture } }
+			1 = { culture:turkmen_culture = { save_scope_as = target_culture } }
+			1 = { culture:khorasani_culture = { save_scope_as = target_culture } }
+		}
+
+		save_scope_as = target_country
+		create_character = {
+			adm = {
+				value = { 25 75 }
+				add = {
+					value = root.army_tradition
+					divide = 4
+				}
+			}
+			dip = {
+				value = { 25 75 }
+				add = {
+					value = root.army_tradition
+					divide = 4
+				}
+			}
+			mil = {
+				value = { 25 75 }
+				add = {
+					value = root.army_tradition
+					divide = 4
+				}
+			}
+			save_scope_as = target_character
+			culture = scope:target_culture
+			create_in_limbo = yes
+			add_trait = trait:mamluk
+		}
+		create_character = {
+			adm = {
+				value = { 25 75 }
+				add = {
+					value = root.army_tradition
+					divide = 4
+				}
+			}
+			dip = {
+				value = { 25 75 }
+				add = {
+					value = root.army_tradition
+					divide = 4
+				}
+			}
+			mil = {
+				value = { 25 75 }
+				add = {
+					value = root.army_tradition
+					divide = 4
+				}
+			}
+			save_scope_as = target_character2
+			culture = scope:target_culture
+			create_in_limbo = yes
+			add_trait = trait:mamluk
+		}
+	}
+	option = {
+		name = flavor_mam.17.a
+
+		scope:target_character = {
+			move_country = root
+			change_character_estate = estate_type:nobles_estate
+			if = {
+				limit  = { has_dynasty = no }
+				custom_tooltip = found_dynasty_target_location_tt
+				hidden_effect = {
+					scope:target_location = {
+						create_dynasty_from_location = random
+						last_dynasty_in_location = { save_scope_as = target_dynasty }
+					}
+					change_dynasty = scope:target_dynasty
+				}
+			}
+		}
+   		kill_character_silently = scope:target_character2
+	}
+
+	option = {
+		name = flavor_mam.17.b
+		scope:target_character2 = {
+			move_country = root
+			change_character_estate = estate_type:nobles_estate
+			if = {
+				limit  = { has_dynasty = no }
+				custom_tooltip = found_dynasty_target_location_tt
+				hidden_effect = {
+					scope:target_location = {
+						create_dynasty_from_location = random
+						last_dynasty_in_location = { save_scope_as = target_dynasty }
+					}
+					change_dynasty = scope:target_dynasty
+				}
+			}
+		}
+   		kill_character_silently = scope:target_character
+	}
+}
+
+flavor_mam.18 = {
+	type = country_event
+	title = flavor_mam.18.title
+	desc = flavor_mam.18.desc
+	outcome = neutral
+
+	trigger = {
+		has_reform = government_reform:mamluk_government
+		any_character = {
+			count >= 1
+			is_ruler = no
+			is_regent = no
+			is_heir = no
+			has_trait = mamluk
+		}
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	immediate = {
+		ruler_or_regent ?= { save_scope_as = target_character }
+		set_variable = {
+			name = mamluk_count_var
+			value = 1	#Cannot be 0
+		}
+		if = {
+			limit = {
+				any_character = {
+					count > 4
+					is_ruler = no
+					is_regent = no
+					is_heir = no
+					has_trait = mamluk
+				}
+			}
+		}
+		every_character = {
+			limit = {
+				is_ruler = no
+				is_regent = no
+				is_heir = no
+				has_trait = mamluk
+			}
+			owner = {
+				change_variable = {
+					name = mamluk_count_var
+					add = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				var:mamluk_count_var > 4
+			}
+			random_list = {
+				1 = {
+					change_variable = {
+						name = mamluk_count_var
+						divide = 3	#We do not want to kill ALL the mamluk characters, only a third
+					}
+				}
+				1 = {
+					change_variable = {
+						name = mamluk_count_var
+						divide = 2	#We do not want to kill ALL the mamluk characters, only half
+					}
+				}
+				1 = { }	#Murder them all!
+			}
+			while = {
+				limit = { var:mamluk_count_var > 0 }
+				change_variable = {
+					name = mamluk_count_var
+					subtract = 1
+				}
+				random_character = {
+					limit = {
+						is_ruler = no
+						is_regent = no
+						is_heir = no
+						has_trait = mamluk
+					}
+					set_variable = potential_mamluk_var
+				}
+			}
+		}
+		else = {
+			every_character = {
+				limit = {
+					is_ruler = no
+					is_regent = no
+					is_heir = no
+					has_trait = mamluk
+				}
+				set_variable = potential_mamluk_var
+			}
+		}
+		set_variable = {
+			name = mamluk_purge_side_effect_variable
+			value = 0
+		}
+		every_character = {
+			limit = {
+				has_variable = potential_mamluk_var
+			}
+			owner = {
+				change_variable = {
+					name = mamluk_purge_side_effect_variable
+					add = 0.1
+				}
+			}
+		}
+		event_illustration_government_estate_effect = yes
+	}
+	option = {
+		name = flavor_mam.18.a
+
+		trigger = {
+			manpower_percentage > 0.2
+		}
+
+		add_yearly_manpower = {
+			value = 1
+			add = {
+				value = manpower
+				divide = 5
+			}
+			multiply = {
+				value = 1
+				add = var:mamluk_purge_side_effect_variable
+			}
+			multiply = -1
+		}
+		add_army_tradition = {
+			value = army_tradition_mild_penalty
+			add = {
+				value = army_tradition_mild_penalty
+				multiply = var:mamluk_purge_side_effect_variable
+			}
+		}
+		every_character = {
+			limit = {
+				has_variable = potential_mamluk_var
+			}
+			kill_character = this
+		}
+	}
+
+	option = {
+		name = flavor_mam.18.b
+
+		add_government_power = {
+			value = government_power_extreme_penalty
+			multiply = {
+				value = 1
+				add = var:mamluk_purge_side_effect_variable
+			}
+		}
+		custom_tooltip = mam_backstabs_later_tt
+	}
+
+	after = {
+		remove_variable = mamluk_purge_side_effect_variable
+		remove_variable = mamluk_count_var
+		every_character = {
+			limit = { has_variable = potential_mamluk_var }
+			remove_variable = potential_mamluk_var
+			set_variable = rebelling_mamluk_var
+		}
+	}
+}
+
+flavor_mam.19 = {
+	type = country_event
+	title = flavor_mam.19.title
+	desc = flavor_mam.19.desc
+	outcome = neutral
+
+	trigger = {
+		has_reform = government_reform:mamluk_government
+		any_character = {
+			is_ruler = no
+			is_heir = no
+			is_regent = no
+			has_trait = mamluk
+			has_variable = rebelling_mamluk_var
+		}
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	immediate = {
+		ordered_character = {
+			limit = { has_variable = rebelling_mamluk_var }
+			order_by = {
+				value = total_abilities
+				if = {
+					limit = { in_cabinet = yes }
+					add = 50
+				}
+				if = {
+					limit = { is_general = yes }
+					add = 100
+				}
+			}
+			max = 1
+			check_range_bounds = no
+			remove_variable = rebelling_mamluk_var
+			save_scope_as = target_character
+		}
+		ruler_or_regent ?= { save_scope_as = target_character2 }
+		previous_ruler ?= { save_scope_as = target_character3 }
+		
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate } 
+	}
+
+	option = {
+		name = flavor_mam.19.a
+
+		add_stability = stability_extreme_penalty
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_extreme_penalty }
+	}
+
+	option = {
+		name = flavor_mam.19.b
+
+		create_character = {
+			estate = estate_type:nobles_estate
+			dynasty = scope:target_character.dynasty
+			adm = { 0 50 }
+			dip = { 0 50 }
+			mil = { 0 65 }
+			add_trait = trait:mamluk
+		}
+		change_societal_value = {
+			type = aristocracy_vs_plutocracy
+			value = societal_value_minor_move_to_left
+		}
+	}
+
+	option = {
+		name = flavor_mam.19.c
+
+		kill_character = scope:target_character
+		add_government_power = government_power_extreme_penalty
+	}
+}
+
+flavor_mam.20 = {	#$mamluk$ Clashes with Nobles
+	type = country_event
+	title = flavor_mam.20.title
+	desc = flavor_mam.20.desc
+	outcome = neutral
+
+	trigger = {
+		has_reform = government_reform:mamluk_government
+		any_character = {
+			is_ruler = no
+			is_heir = no
+			is_regent = no
+			has_trait = mamluk
+			has_variable = rebelling_mamluk_var
+		}
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = armed
+	}
+
+	immediate = {
+		random_character = {
+			limit = {
+				is_ruler = no
+				is_heir = no
+				is_regent = no
+				has_trait = mamluk
+				has_variable = rebelling_mamluk_var
+			}
+			save_scope_as = target_character
+			remove_variable = rebelling_mamluk_var
+			birth_location = {
+				save_scope_as = target_location
+				province = {
+					save_scope_as = target_province
+				}
+			}
+		}
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	option = {
+		name = flavor_mam.20.a
+
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		kill_character = scope:target_character
+		if = {
+			limit = {
+				scope:target_character.birth_location.owner = root
+			}
+			custom_tooltip = {
+				text = people_in_bl_will_dislike_that_tt
+				scope:target_character.birth_location = {
+					province = {
+						every_location_in_province = {
+							every_pop = {
+								limit = {
+									owner = root
+								}
+								add_pop_satisfaction = pop_satisfaction_extreme_penalty
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mam.20.b
+
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_extreme_penalty }
+		add_government_power = government_power_extreme_penalty
+	}
+}
+
+flavor_mam.21 = {
+	type = country_event
+	title = flavor_mam.21.title
+	desc = flavor_mam.21.desc
+	outcome = neutral
+
+	trigger = {
+		has_reform = government_reform:mamluk_government
+		any_character = {
+			is_ruler = no
+			is_heir = no
+			is_regent = no
+			has_trait = mamluk
+			has_variable = rebelling_mamluk_var
+			birth_location.owner = root
+		}
+	}
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	immediate = {
+		random_character = {
+			limit = {
+				is_ruler = no
+				is_heir = no
+				is_regent = no
+				has_trait = mamluk
+				has_variable = rebelling_mamluk_var
+			}
+			save_scope_as = target_character
+			remove_variable = rebelling_mamluk_var
+			birth_location = {
+				save_scope_as = target_location
+				province = {
+					save_scope_as = target_province
+				}
+			}
+		}
+		ruler_or_regent ?= { save_scope_as = target_character2 }
+	}
+
+	option = {
+		name = flavor_mam.21.a
+
+		custom_tooltip = {
+			text = target_province_local_abuses_modifier_tt
+			scope:target_location = {
+				province = {
+					every_location_in_province = {
+						add_location_modifier = {
+							modifier = local_abuses_modifier
+							years = 5
+							mode = add_and_extend
+						}
+						every_pop = {
+							limit = {
+								owner = root
+							}
+							add_pop_satisfaction = pop_satisfaction_severe_penalty
+						}
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mam.21.b
+
+		kill_character = scope:target_character
+		add_government_power = government_power_extreme_penalty
+	}
+}
+
+flavor_mam.22 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_mam.22.title
+	desc = flavor_mam.22.desc
+	outcome = neutral
+
+	trigger = {
+		has_reform = government_reform:mamluk_government
+		any_character = {
+			is_ruler = no
+			is_heir = no
+			is_regent = no
+			has_trait = mamluk
+			has_variable = rebelling_mamluk_var
+		}
+		any_character = {
+			is_ruler = no
+			is_heir = no
+			is_regent = no
+			has_trait = mamluk
+			NOT = { has_variable = rebelling_mamluk_var }
+		}
+	}
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	immediate = {
+		random_character = {
+			limit = {
+				is_ruler = no
+				is_heir = no
+				is_regent = no
+				has_trait = mamluk
+				has_variable = rebelling_mamluk_var
+			}
+			save_scope_as = target_character
+		}
+		random_character = {
+			limit = {
+				is_ruler = no
+				is_heir = no
+				is_regent = no
+				has_trait = mamluk
+				NOT = { has_variable = rebelling_mamluk_var }
+			}
+			save_scope_as = target_character2
+		}
+		ruler_or_regent ?= { save_scope_as = target_character3 }
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_mam.22.a
+
+		custom_tooltip = based_on_target_character2_importance_tt
+		add_government_power = {
+			value = government_power_mild_penalty
+			add = {
+				value = scope:target_character2.total_abilities
+				subtract = scope:target_character.total_abilities
+				divide = 10
+			}
+			if = {
+				limit = {
+					scope:target_character = { modifier:is_head_of_cabinet = yes }
+				}
+				add = government_power_extreme_penalty
+			}
+		}
+		add_army_tradition = {
+			value = army_tradition_weak_bonus
+			add = {
+				value = scope:target_character2.total_abilities
+				subtract = {
+					if = {
+						limit = {
+							scope:target_character = { modifier:is_head_of_cabinet = yes }
+						}
+						value = {
+							add = scope:target_character.total_abilities
+							add = 100
+						}
+					}
+					else = {
+						value = scope:target_character.total_abilities
+					}
+				}
+				divide = 10
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mam.22.b
+
+		kill_character = scope:target_character
+		custom_tooltip = based_on_target_character2_importance_tt
+		add_stability = {
+			value = stability_mild_penalty
+			add = {
+				value = scope:target_character2.total_abilities
+				subtract = scope:target_character.total_abilities
+				divide = 10
+			}
+			if = {
+				limit = {
+					scope:target_character = { modifier:is_head_of_cabinet = yes }
+				}
+				add = stability_mild_penalty
+			}
+		}
+
+	}
+}
+
+#Discovery of the Rosetta Stone
+flavor_mam.61 = {
+	type = country_event
+	title = flavor_mam.61.title
+	desc = flavor_mam.61.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = EGY
+		from = 1700.1.1
+		to = 1850.1.1
+		monthly_chance = 1
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	trigger = {
+		owns = location:rashid
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+
+	option = {
+		name = flavor_mam.61.a
+		change_gold_effect = { scale = -6 }
+		custom_tooltip = flavor_mam.61.tt
+		trigger_event_silently = { id = flavor_mam.62  days = 5475 }
+	}
+
+	option = {
+		name = flavor_mam.61.b
+		add_prestige = prestige_weak_penalty
+	}
+}
+
+#Deciphering the Rosetta Stone
+flavor_mam.62 = {
+	type = country_event
+	title = flavor_mam.62.title
+	desc = flavor_mam.62.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	historical_info = flavor_mam.62.historical_info
+
+	option = {
+		name = flavor_mam.62.a
+		historical_option = yes
+		add_research_progress = research_progress_extreme_bonus
+		culture = {
+			add_cultural_tradition = cultural_tradition_extreme_bonus
+			add_cultural_influence = cultural_influence_extreme_bonus
+		}
+	}
+}
+
+#Deciphering the Rosetta Stone
+flavor_mam.63 = {
+	type = country_event
+	title = flavor_mam.63.title
+	desc = flavor_mam.63.desc
+	outcome = neutral
+
+	historical_info = flavor_mor.16.historical_info
+
+	option = {
+		name = flavor_mam.63.a
+		historical_option = yes
+		custom_tooltip = ibn_khaldun_hit_the_road_tt
+		culture = {
+			add_cultural_tradition = cultural_tradition_weak_bonus
+			add_cultural_influence = cultural_influence_weak_bonus
+		}
+	}
+}
+
+#Mamluk Succession
+#Commented out due to not being needed - it clashes with the Mamluk succession law
+#flavor_mam.64 = {
+#	type = country_event
+#	title = flavor_mam.64.title
+#	desc = flavor_mam.64.desc
+#
+#	trigger = {
+#		has_reform = government_reform:mamluk_government
+#		succession_law = heir_selection:dynastic_elective_succession
+#	}
+#
+#	immediate = {
+#		ordered_accepted_culture = {
+#			order_by = {
+#				value = "root.culture_population_in_country(prev)"
+#			}
+#			max = 1
+#			save_scope_as = target_culture
+#		}
+#		ordered_accepted_culture = {
+#			order_by = {
+#				value = "root.culture_population_in_country(prev)"
+#			}
+#			max = 2
+#			save_scope_as = target_culture2
+#		}
+#		ordered_accepted_culture = {
+#			order_by = {
+#				value = "root.culture_population_in_country(prev)"
+#			}
+#			max = 3
+#			save_scope_as = target_culture3
+#		}
+#		culture = {
+#			save_scope_as = target_culture4
+#		}
+#		if = {
+#			limit = {
+#				any_character = {
+#					has_dynasty = yes
+#					culture = scope:target_culture
+#				}
+#			}
+#
+#			ordered_character = {
+#				order_by = total_abilities
+#				limit = {
+#					has_dynasty = yes
+#					culture = scope:target_culture
+#				}
+#				max = 1
+#				save_scope_as = first_ruler
+#			}
+#		}
+#		else = {
+#			random_owned_location = {
+#				limit = {
+#					any_pop = {
+#						culture = scope:target_culture
+#					}
+#				}
+#				create_dynasty_from_location = random
+#
+#				last_dynasty_in_location ?= {
+#					save_scope_as = first_dynasty
+#				}
+#				save_scope_as = first_location
+#			}
+#			create_character = {
+#				culture = scope:target_culture
+#				religion = root.religion
+#				min_age = 25
+#				adm = {
+#					20
+#					70
+#				}
+#				dip = {
+#					20
+#					70
+#				}
+#				mil = {
+#					20
+#					70
+#				}
+#				birth_location = scope:first_location
+#				estate = estate_type:nobles_estate
+#				dynasty = scope:first_dynasty
+#				save_scope_as = first_ruler
+#			}
+#		}
+#		if = {
+#			limit = {
+#				any_character = {
+#					has_dynasty = yes
+#					culture = scope:target_culture2
+#				}
+#			}
+#
+#			ordered_character = {
+#				order_by = total_abilities
+#				limit = {
+#					has_dynasty = yes
+#					culture = scope:target_culture2
+#				}
+#				max = 1
+#				save_scope_as = second_ruler
+#			}
+#		}
+#		else = {
+#			random_owned_location = {
+#				limit = {
+#					any_pop = {
+#						culture = scope:target_culture2
+#					}
+#				}
+#				create_dynasty_from_location = random
+#
+#				last_dynasty_in_location ?= {
+#					save_scope_as = first_dynasty
+#				}
+#				save_scope_as = first_location
+#			}
+#			create_character = {
+#				culture = scope:target_culture2
+#				religion = root.religion
+#				min_age = 25
+#				adm = {
+#					20
+#					70
+#				}
+#				dip = {
+#					20
+#					70
+#				}
+#				mil = {
+#					20
+#					70
+#				}
+#				birth_location = scope:first_location
+#				estate = estate_type:nobles_estate
+#				dynasty = scope:first_dynasty
+#				save_scope_as = second_ruler
+#			}
+#		}
+#		if = {
+#			limit = {
+#				any_character = {
+#					has_dynasty = yes
+#					culture = scope:target_culture3
+#				}
+#			}
+#
+#			ordered_character = {
+#				order_by = total_abilities
+#				limit = {
+#					has_dynasty = yes
+#					culture = scope:target_culture3
+#				}
+#				max = 1
+#				save_scope_as = third_ruler
+#			}
+#		}
+#		else = {
+#			random_owned_location = {
+#				limit = {
+#					any_pop = {
+#						culture = scope:target_culture3
+#					}
+#				}
+#				create_dynasty_from_location = random
+#
+#				last_dynasty_in_location ?= {
+#					save_scope_as = first_dynasty
+#				}
+#				save_scope_as = first_location
+#			}
+#			create_character = {
+#				culture = scope:target_culture2
+#				religion = root.religion
+#				min_age = 25
+#				adm = {
+#					20
+#					70
+#				}
+#				dip = {
+#					20
+#					70
+#				}
+#				mil = {
+#					20
+#					70
+#				}
+#				birth_location = scope:first_location
+#				estate = estate_type:nobles_estate
+#				dynasty = scope:first_dynasty
+#				save_scope_as = third_ruler
+#			}
+#		}
+#		if = {
+#			limit = {
+#				any_character = {
+#					has_dynasty = yes
+#					culture = scope:target_culture4
+#				}
+#			}
+#
+#			ordered_character = {
+#				order_by = total_abilities
+#				limit = {
+#					has_dynasty = yes
+#					culture = scope:target_culture4
+#				}
+#				max = 1
+#				save_scope_as = fourth_ruler
+#			}
+#		}
+#		else = {
+#			random_owned_location = {
+#				limit = {
+#					any_pop = {
+#						culture = scope:target_culture4
+#					}
+#				}
+#				create_dynasty_from_location = random
+#
+#				last_dynasty_in_location ?= {
+#					save_scope_as = first_dynasty
+#				}
+#				save_scope_as = first_location
+#			}
+#			create_character = {
+#				culture = scope:target_culture4
+#				religion = root.religion
+#				min_age = 25
+#				adm = {
+#					20
+#					70
+#				}
+#				dip = {
+#					20
+#					70
+#				}
+#				mil = {
+#					20
+#					70
+#				}
+#				birth_location = scope:first_location
+#				estate = estate_type:nobles_estate
+#				dynasty = scope:first_dynasty
+#				save_scope_as = fourth_ruler
+#			}
+#		}
+#	}
+#
+#	option = {
+#		name = flavor_mam.64.a
+#		set_new_ruler = scope:first_ruler
+#		scope:target_culture = {
+#			add_cultural_tradition = cultural_tradition_mild_bonus
+#		}
+#	}
+#
+#	option = {
+#		name = flavor_mam.64.b
+#		set_new_ruler = scope:second_ruler
+#		scope:target_culture2 = {
+#			add_cultural_tradition = cultural_tradition_mild_bonus
+#		}
+#	}
+#
+#	option = {
+#		name = flavor_mam.64.c
+#		set_new_ruler = scope:third_ruler
+#		scope:target_culture3 = {
+#			add_cultural_tradition = cultural_tradition_mild_bonus
+#		}
+#	}
+#
+#	option = {
+#		name = flavor_mam.64.d
+#		set_new_ruler = scope:fourth_ruler
+#		scope:target_culture4 = {
+#			add_cultural_tradition = cultural_tradition_mild_bonus
+#		}
+#		add_stability = stability_mild_bonus
+#	}
+#}
+
+flavor_mam.65 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_mam.65.title
+	desc = flavor_mam.65.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	trigger = {
+		has_reform = government_reform:mamluk_government
+		any_pop = {
+			pop_type = pop_type:soldiers
+			culture != root.culture
+		}
+	}
+
+	immediate = {
+		random_owned_location = {
+			limit = {
+				any_pop = {
+					pop_type = pop_type:soldiers
+					culture != root.culture
+				}
+			}
+			save_scope_as = target_location
+		}
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+	}
+
+	option = {
+		name = flavor_mam.65.a
+		custom_tooltip = {
+			text = mam_all_pop_not_of_primary_culture_lose_satisfaction_tt
+			scope:target_location = {
+				every_pop = {
+					limit = {
+						pop_type = pop_type:soldiers
+						culture != root.culture
+					}
+					add_pop_satisfaction = pop_satisfaction_extreme_penalty
+				}
+			}
+		}
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_weak_bonus
+		}
+	}
+
+	option = {
+		name = flavor_mam.65.b
+		scope:target_location = {
+			change_control = control_mild_penalty
+		}
+		add_gold = {
+			value = monthly_income_total
+			min = 10
+			max = 400
+			multiply = -0.5
+		}
+	}
+}
+
+flavor_mam.66 = {
+	type = country_event
+	title = flavor_mam.66.title
+	desc = flavor_mam.66.desc
+	outcome = neutral
+	image = "gfx/interface/icons/trade_goods/illustrations/_default.dds"
+
+
+	trigger = {
+		has_reform = government_reform:mamluk_government
+		any_core_location = {
+			integration_level = core
+			OR = {
+				market ?= {
+					is_produced_in_market = goods:paper
+				}
+				market ?= {
+					is_produced_in_market = goods:cloth
+				}
+				raw_material ?= goods:sugar
+				raw_material ?= goods:cotton
+				raw_material ?= goods:silk
+				raw_material ?= goods:gems
+				raw_material ?= goods:coffee
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_owned_location = {
+				limit = {
+					integration_level = core
+					OR = {
+						market = {
+							is_produced_in_market = goods:paper
+						}
+						market = {
+							is_produced_in_market = goods:cloth
+						}
+						raw_material ?= goods:sugar
+						raw_material ?= goods:cotton
+						raw_material ?= goods:silk
+						raw_material ?= goods:gems
+						raw_material ?= goods:coffee
+					}
+				}
+				save_scope_as = target_location
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mam.66.a
+		add_estate_satisfaction = {
+			type = estate_type:burghers_estate
+			value = estate_satisfaction_mild_penalty
+		}
+		change_gold_effect = { scale = 0.5	}
+		scope:target_location.market = {
+			add_temporary_demand = {
+				type = demand:tarh
+				months = 24
+				scale_with_pop = 0.003
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mam.66.b
+		add_estate_satisfaction = {
+			type = estate_type:burghers_estate
+			value = estate_satisfaction_mild_bonus
+		}
+		scope:target_location.market = {
+			add_temporary_demand = {
+				type = demand:lack_of_demand_for_fine_goods
+				months = 24
+				scale_with_pop = 0.003
+			}
+		}
+		change_gold_effect = { scale = -0.5	}
+	}
+}
+
+flavor_mam.67 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_mam.67.title
+	desc = flavor_mam.67.desc
+	outcome = neutral
+
+	trigger = {
+		exists = capital
+		has_reform = government_reform:mamluk_government
+		legitimacy <= 60
+		stability <= 0
+		any_core_location = {
+			integration_level = core
+			area = root.capital.area
+			is_capital = no
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_core_location = {
+				limit = {
+					integration_level = core
+					area = root.capital.area
+					is_capital = no
+				}
+				save_scope_as = target_location
+				area = {
+					save_scope_as = target_area
+				}
+			}
+		}
+		create_character = {
+			culture = root.culture
+			religion = root.religion
+			min_age = 30
+			adm = {
+				50
+				70
+			}
+			dip = {
+				40
+				60
+			}
+			mil = {
+				60
+				80
+			}
+			save_scope_as = target_character
+		}
+
+		create_rebel = {
+			category = pretender
+			name = mamluk_pretender
+			save_scope_as = mamluk_pretender
+		}
+	}
+
+	option = {
+		name = flavor_mam.67.a
+		add_legitimacy = legitimacy_mild_penalty
+		scope:target_character = {
+			change_character_allegiance = scope:mamluk_pretender
+		}
+		custom_tooltip = {
+			text = mam_every_location_in_area_minus_capital_joins_rebellion_tt
+			scope:target_area = {
+				every_location_in_area = {
+					limit = {
+						owner ?= root
+						is_capital = no
+					}
+					every_pop = {
+						limit = {
+							owner ?= root
+						}
+						add_pop_satisfaction = pop_satisfaction_extreme_penalty
+						change_pop_allegiance = scope:mamluk_pretender
+					}
+				}
+			}
+		}
+	}
+}
+
+flavor_mam.68 = {
+	type = country_event
+	title = flavor_mam.68.title
+	desc = flavor_mam.68.desc
+	outcome = neutral
+
+	trigger = {
+
+		has_reform = government_reform:mamluk_government
+	}
+
+	immediate = {
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_mam.68.a
+		add_stability = stability_mild_penalty
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+
+	option = {
+		name = flavor_mam.68.b
+		add_legitimacy = legitimacy_mild_penalty
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+
+	option = {
+		name = flavor_mam.68.c
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_penalty
+		}
+	}
+}
+
+flavor_mam.69 = {
+	type = country_event
+	title = flavor_mam.69.title
+	desc = flavor_mam.69.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/government/throne_rooms/throne_room_syrian.dds"
+
+	trigger = {
+		has_reform = government_reform:mamluk_government
+		legitimacy <= 40
+		capital ?= {
+			controller ?= root
+		}
+		has_heir = yes
+	}
+
+	immediate = {
+		create_character = {
+			culture = root.culture
+			religion = root.religion
+			min_age = 30
+			adm = {
+				50
+				70
+			}
+			dip = {
+				40
+				60
+			}
+			mil = {
+				60
+				80
+			}
+			save_scope_as = target_character
+		}
+		ruler_or_heir_if_regent ?= {
+			save_scope_as = target_character2
+		}
+	}
+
+	option = {
+		name = flavor_mam.69.a
+		add_legitimacy = legitimacy_mild_bonus
+		add_stability = stability_extreme_penalty
+		scope:target_character = {
+			imprison_character_effect = {
+				years = -1
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mam.69.b
+		add_stability = stability_extreme_penalty
+		kill_character = scope:target_character2
+	}
+}
+
+flavor_mam.70 = {
+	type = country_event
+	title = flavor_mam.70.title
+	desc = flavor_mam.70.desc
+	outcome = neutral
+
+	trigger = {
+		has_reform = government_reform:mamluk_government
+		NOT = { has_variable = mam_ruler_invested_in_cairo }
+		location:cairo = {
+			is_capital_of = {
+				target = root
+			}
+		}
+	}
+
+	immediate = {
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+		capital ?= {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_mam.70.a
+		scope:target_location.market = {
+			add_merchant_power = {
+				country = root
+				key = bolstered_capital_trade
+				months = 120
+				power = merchant_power_mild_bonus
+			}
+		}
+		add_gold = {
+			value = monthly_income_total
+			min = 10
+			max = 1000
+			multiply = -1
+		}
+	}
+
+	option = {
+		name = flavor_mam.70.b
+		scope:target_location = {
+			change_development = development_mild_bonus
+		}
+		add_gold = {
+			value = monthly_income_total
+			min = 10
+			max = 1000
+			multiply = -1
+		}
+	}
+
+	option = {
+		name = flavor_mam.70.c
+		add_estate_satisfaction = {
+			type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_bonus
+		}
+		change_societal_value = { type = mysticism_vs_jurisprudence value = societal_value_tiny_move_to_right }
+		add_gold = {
+			value = monthly_income_total
+			min = 10
+			max = 1000
+			multiply = -1
+		}
+	}
+
+	option = {
+		name = flavor_mam.70.d
+		add_legitimacy = legitimacy_mild_bonus
+		add_prestige = prestige_mild_bonus
+		add_gold = {
+			value = monthly_income_total
+			min = 10
+			max = 1000
+			multiply = -1
+		}
+	}
+
+	option = {
+		name = flavor_mam.70.e
+		add_legitimacy = legitimacy_mild_penalty
+	}
+
+	after = {
+		set_variable = mam_ruler_invested_in_cairo
+	}
+}
+
+flavor_mam.71 = {
+	type = country_event
+	title = flavor_mam.71.title
+	desc = flavor_mam.71.desc
+	outcome = neutral
+
+	trigger = {
+		religion.group = religion_group:muslim
+		any_character = {
+			count > 2
+			is_ruler = no
+			is_regent = no
+			is_heir = no
+			culture ?= culture:bedouin_culture
+		}
+		any_character = {
+			count > 3
+			is_ruler = no
+			is_regent = no
+			is_heir = no
+			culture ?= {
+				NOT = {
+					this = root.culture
+				}
+			}
+		}
+		any_character = {
+			count > 2
+			is_ruler = no
+			is_regent = no
+			is_heir = no
+			culture ?= root.culture
+		}
+		OR = {
+			NOT = { exists = var:mamluk_amir_al_hajj }
+			var:mamluk_amir_al_hajj ?= {
+				is_alive = no
+			}
+		}
+		has_reform = government_reform:mamluk_government
+	}
+
+	immediate = {
+		ordered_character ?= {
+			order_by = total_abilities
+			max = 1
+			limit = {
+				culture = culture:bedouin_culture
+			}
+			save_scope_as = bedouin_candidate
+		}
+		ordered_character ?= {
+			order_by = mil
+			max = 1
+			limit = {
+				this != scope:bedouin_candidate
+				culture != root.culture
+			}
+			save_scope_as = mil_candidate
+		}
+		ordered_character ?= {
+			order_by = dip
+			max = 1
+			limit = {
+				this != scope:bedouin_candidate
+				this != scope:mil_candidate
+				culture != root.culture
+			}
+			save_scope_as = dip_candidate
+		}
+		ordered_character ?= {
+			order_by = adm
+			max = 1
+			limit = {
+				this != scope:bedouin_candidate
+				this != scope:mil_candidate
+				this != scope:dip_candidate
+				culture != root.culture
+			}
+			save_scope_as = adm_candidate
+		}
+		ordered_character ?= {
+			order_by = total_abilities
+			max = 1
+			limit = {
+				this != scope:bedouin_candidate
+				this != scope:mil_candidate
+				this != scope:dip_candidate
+				this != scope:adm_candidate
+				culture = root.culture
+			}
+			save_scope_as = mamluk_candidate
+		}
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_mam.71.a
+		trigger = {
+			exists = scope:bedouin_candidate
+		}
+		set_variable = {
+			name = mamluk_amir_al_hajj
+			value = scope:bedouin_candidate
+		}
+		culture:bedouin_culture = {
+			add_cultural_influence = {
+				value = cultural_influence_mild_bonus
+				add = {
+					value = scope:bedouin_candidate.total_abilities
+					divide = 30
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mam.71.b
+		trigger = {
+			exists = scope:mil_candidate
+		}
+		set_variable = {
+			name = mamluk_amir_al_hajj
+			value = scope:mil_candidate
+		}
+		add_army_tradition = {
+			value = army_tradition_mild_bonus
+			add = {
+				value = scope:mil_candidate.mil
+				divide = 10
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mam.71.c
+		trigger = {
+			exists = scope:dip_candidate
+		}
+		set_variable = {
+			name = mamluk_amir_al_hajj
+			value = scope:dip_candidate
+		}
+		add_diplomats = {
+			value = diplomats_mild_bonus
+			add = {
+				value  = scope:dip_candidate.dip
+				divide = 50
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mam.71.d
+		trigger = {
+			exists = scope:adm_candidate
+		}
+		set_variable = {
+			name = mamluk_amir_al_hajj
+			value = scope:dip_candidate
+		}
+		change_societal_value = { type = mysticism_vs_jurisprudence value = societal_value_move_to_right }
+	}
+
+	option = {
+		name = flavor_mam.71.e
+		trigger = {
+			exists = scope:mamluk_candidate
+		}
+		set_variable = {
+			name = mamluk_amir_al_hajj
+			value = scope:mamluk_candidate
+		}
+		culture = {
+			add_cultural_influence = {
+				value = cultural_influence_mild_bonus
+				add = {
+					value = scope:mamluk_candidate.total_abilities
+					divide = 30
+				}
+			}
+		}
+	}
+}
+
+flavor_mam.72 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_mam.72.title
+	desc = flavor_mam.72.desc
+	outcome = neutral
+
+	trigger = {
+		has_reform = government_reform:mamluk_government
+		any_core_location = {
+			NOT = {
+				has_location_modifier = awlad_al_nas_commander
+			}
+			NOT = {
+				has_location_modifier = mamluk_commander
+			}
+			any_neighbor_location = {
+				has_owner = yes
+				is_border = yes
+				owner != root
+			}
+		}
+		any_character = {
+			has_trait = mamluk
+		}
+	}
+
+	immediate = {
+		random_owned_location = {
+			limit = {
+				integration_level = core
+				NOT = {
+					has_location_modifier = awlad_al_nas_commander
+				}
+				NOT = {
+					has_location_modifier = mamluk_commander
+				}
+				any_neighbor_location = {
+					has_owner = yes
+					owner != root
+				}
+			}
+			save_scope_as = target_location
+		}
+		ordered_character = {
+			order_by = total_abilities
+			limit = {
+				has_trait = mamluk
+			}
+			max = 1
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_mam.72.a
+		add_legitimacy = legitimacy_weak_penalty
+		scope:target_location = {
+			add_location_modifier = { modifier = awlad_al_nas_commander months = 120 mode = add }
+		}
+		add_estate_satisfaction = {
+			type = scope:target_character.estate_type
+			value = estate_satisfaction_weak_penalty
+		}
+	}
+
+	option = {
+		name = flavor_mam.72.b
+		add_legitimacy = legitimacy_weak_bonus
+		scope:target_location = {
+			add_location_modifier = { modifier = mamluk_commander months = 120 mode = add }
+		}
+		add_estate_satisfaction = {
+			type = scope:target_character.estate_type
+			value = estate_satisfaction_weak_bonus
+		}
+	}
+}
+
+flavor_mam.73 = {
+	type = country_event
+	title = flavor_mam.73.title
+	desc = flavor_mam.73.desc
+	outcome = neutral
+
+	trigger = {
+		has_ruler = yes
+		has_reform = government_reform:mamluk_government
+		NOT = {
+			ruler ?= { has_character_modifier = loyal_mamluks_in_high_positions }
+		}
+		NOT = {
+			has_country_modifier = trusting_old_guard
+		}
+	}
+
+	immediate = {
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_mam.73.a
+		add_stability = stability_mild_bonus
+		ruler ?= { add_character_modifier = { modifier = loyal_mamluks_in_high_positions months = 120 mode = add } }
+	}
+
+	option = {
+		name = flavor_mam.73.b
+		add_stability = stability_mild_penalty
+		add_country_modifier = { modifier = trusting_old_guard months = 120 mode = add }
+	}
+}
+
+flavor_mam.74 = {
+	type = country_event
+	title = flavor_mam.74.title
+	desc = flavor_mam.74.desc
+	outcome = neutral
+	trigger = {
+
+		has_reform = government_reform:mamluk_government
+		at_war = no
+		ruler_or_regent ?= {
+			OR = {
+				mil >= 65
+				has_trait = martial_educator
+			}
+		}
+	}
+
+	immediate = {
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_mam.74.a
+
+		add_army_tradition = {
+			value = army_tradition_weak_bonus
+			add = {
+				value = scope:target_character.mil
+				divide = 20
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mam.74.b
+		add_gold = {
+			value = monthly_income_total
+			min = 10
+			multiply = -2
+		}
+		add_army_tradition = {
+			value = army_tradition_weak_bonus
+			add = {
+				value = scope:target_character.mil
+				divide = 10
+			}
+		}
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_mild_bonus
+		}
+	}
+}
+
+#Good outcome
+flavor_mam.75 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_mam.75.title
+	desc = flavor_mam.75.desc
+	outcome = neutral
+	trigger = {
+		religion.group = religion_group:muslim
+		has_variable = mamluk_amir_al_hajj
+		var:mamluk_amir_al_hajj ?= {
+			is_alive = yes
+			owner = root
+		}
+	}
+	
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+		var:mamluk_amir_al_hajj = {
+			save_scope_as = target_character2
+		}
+		event_illustration_government_estate_effect = yes
+	}
+
+	option = {
+		name = flavor_mam.75.a
+		add_prestige = prestige_mild_bonus
+		add_legitimacy = legitimacy_mild_bonus
+		change_societal_value = { type = mysticism_vs_jurisprudence value = societal_value_tiny_move_to_right }
+	}
+}
+
+#Bad outcome
+flavor_mam.76 = { #GRAVEYARD
+	hide_portraits = yes
+	type = country_event
+	title = flavor_mam.76.title
+	desc = flavor_mam.76.desc
+	outcome = neutral
+	trigger = {
+		religion.group = religion_group:muslim
+		has_variable = mamluk_amir_al_hajj
+		var:mamluk_amir_al_hajj ?= {
+			is_alive = yes
+			owner = root
+		}
+	}
+		
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	immediate = {
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+		var:mamluk_amir_al_hajj = {
+			save_scope_as = target_character2
+		}
+		event_illustration_government_estate_effect = yes
+	}
+
+	option = {
+		name = flavor_mam.76.a
+		add_prestige = prestige_mild_penalty
+		change_societal_value = { type = mysticism_vs_jurisprudence value = societal_value_tiny_move_to_left }
+	}
+}
+
+flavor_mam.77 = {
+	type = country_event
+	title = flavor_mam.77.title
+	desc = flavor_mam.77.desc
+	outcome = neutral
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_wheat.dds"
+
+	fire_only_once = yes
+
+	historical_info = flavor_mam.77.historical_info
+
+	dynamic_historical_event = {
+		tag = EGY
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		any_market_present_in_country = { is_produced_in_market = goods:wheat }
+		total_effective_building_levels:granary > 0
+	}
+
+
+	option = {
+		name = flavor_mam.77.a
+		historical_option = yes
+		change_gold_effect = { scale = -2 }
+		ordered_owned_location = {
+			limit = {
+				raw_material = goods:wheat
+			}
+			order_by = population
+			max = 3
+			add_location_modifier = { modifier = mam_granary_of_the_mediterranean years = 20 mode = add }
+		}
+	}
+
+	option = {
+		name = flavor_mam.77.b
+		add_prestige = prestige_mild_penalty
+	}
+}

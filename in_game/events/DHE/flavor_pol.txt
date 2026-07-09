@@ -1,0 +1,633 @@
+﻿namespace = flavor_pol
+
+#Merkuriusz Polski Ordynaryjny
+flavor_pol.3 = { #https://pl.wikipedia.org/wiki/Merkuriusz_Polski_Ordynaryjny
+	type = country_event
+	title = flavor_pol.3.title
+	desc = flavor_pol.3.desc
+	outcome = neutral
+	historical_info = flavor_pol.3.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = PLC
+		from = 1644.1.1
+		to = 1700.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		has_advance = newspapers_advance
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		create_character = { #https://pl.wikipedia.org/wiki/Hieronim_Pinocci
+			first_name = name_hieronymus
+			last_name = name_pinocci
+			adm = 85 dip = 91 mil = 41
+			birth_date = 1612.12.31
+			birth_location = location:lucca
+			culture = culture:tuscan
+			estate = estate_type:burghers_estate
+			script = pol_hieronymus_pinocci
+			save_scope_as = hieronymus_pinocci_scope
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_pol.3.a
+		historical_option = yes
+		change_gold_effect = { scale = -4 }
+		add_research_progress = research_progress_severe_bonus
+		capital = {
+			if = {
+				limit = {
+					NOT = { has_building = building_type:local_newspaper }
+				}
+				change_building_level_in_location = {
+					building = building_type:local_newspaper
+					value = 1
+				}
+			}
+		}
+		scope:hieronymus_pinocci_scope = {
+			move_country = root
+			add_character_modifier = {
+				modifier = banned_from_cabinet
+				years = 10
+				mode = add_and_extend
+			}
+		}
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_move_to_right }
+	}
+
+	option = {
+		name = flavor_pol.3.b
+		change_gold_effect = { scale = -1 }
+		capital = {
+			if = {
+				limit = {
+					NOT = { has_building = building_type:local_newspaper }
+				}
+				change_building_level_in_location = {
+					building = building_type:local_newspaper
+					value = 1
+				}
+			}
+		}
+		scope:hieronymus_pinocci_scope = {
+			move_country = root
+			add_character_modifier = {
+				modifier = banned_from_cabinet
+				years = 10
+				mode = add_and_extend
+			}
+		}
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_move_to_right }
+	}
+
+	option = {
+		name = flavor_pol.3.c
+		add_policy = policy:free_press
+		scope:hieronymus_pinocci_scope = { move_country = root }
+		capital = {
+			if = {
+				limit = {
+					NOT = { has_building = building_type:local_newspaper }
+				}
+				change_building_level_in_location = {
+					building = building_type:local_newspaper
+					value = 1
+				}
+			}
+		}
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_move_to_right }
+	}
+	option = {
+		name = flavor_pol.3.d
+		add_policy = policy:state_press_only
+   		kill_character_silently = scope:hieronymus_pinocci_scope
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_move_to_left }
+	}
+}
+
+#The Sobieskian Army Reforms
+flavor_pol.12 = { #https://en.wikipedia.org/wiki/John_III_Sobieski
+	hide_portraits = yes
+	type = country_event
+	title = flavor_pol.12.title
+	desc = flavor_pol.12.desc
+	outcome = neutral
+	historical_info = flavor_pol.12.historical_info
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = PLC
+		current_year >= 1670
+		current_year <= 1760
+
+		has_ruler = yes
+
+		num_estate_privileges:nobles_estate > 1
+		ruler = {
+			mil >= 70
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+			}
+			save_scope_as = target_privilege
+		}
+		ruler_or_regent ?= {
+			save_scope_as = new_ruler_scope
+		}
+	}
+
+	option = {
+		name = flavor_pol.12.a
+		historical_option = yes
+		change_gold_effect = { scale = -3 }
+		add_army_tradition = army_tradition_severe_bonus
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		change_societal_value = { type = quality_vs_quantity value = societal_value_move_to_left }
+	}
+	option = {
+		name = flavor_pol.12.b
+		change_gold_effect = { scale = -3 }
+		add_army_tradition = army_tradition_mild_bonus
+		change_societal_value = { type = quality_vs_quantity value = societal_value_minor_move_to_left }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_extreme_penalty }
+		revoke_estate_privilege =  scope:target_privilege
+		add_stability = stability_severe_penalty
+	}
+}
+
+#The Great Northern Conflict
+flavor_pol.17 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_pol.17.title
+	desc = flavor_pol.17.desc
+	outcome = neutral
+	historical_info = flavor_pol.17.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = PLC
+		from = 1690.1.1
+		to = 1710.1.1
+		monthly_chance = 20
+	}
+
+	trigger = {
+		OR = {
+			any_rival = {
+				culture ?= { has_culture_group = culture_group:scandinavian_group }
+				is_neighbor_of = root
+				root = { can_declare_war_on = prev }
+			}
+			any_enemy = {
+				culture ?= { has_culture_group = culture_group:scandinavian_group }
+				is_neighbor_of = root
+				root = { can_declare_war_on = prev }
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		if = {
+			limit = {
+				any_rival = {
+					culture ?= { has_culture_group = culture_group:scandinavian_group }
+					is_neighbor_of = root
+					root = { can_declare_war_on = prev }
+				}
+			}
+			ordered_rival = {
+				limit = {
+					culture ?= { has_culture_group = culture_group:scandinavian_group }
+					is_neighbor_of = root
+					root = { can_declare_war_on = prev }
+				}
+				order_by = country_economical_base
+				check_range_bounds = no
+				max = 1
+				save_scope_as = target_country
+			}
+		}
+		else = {
+			ordered_enemy = {
+				limit = {
+					culture ?= { has_culture_group = culture_group:scandinavian_group }
+					is_neighbor_of = root
+					root = { can_declare_war_on = prev }
+				}
+				order_by = country_economical_base
+				check_range_bounds = no
+				max = 1
+				save_scope_as = target_country
+			}
+		}
+		scope:target_country = {
+			ordered_province = {
+				limit = {
+					any_location_in_province = { is_neighbor_of = root }
+				}
+				order_by = population
+				max = 1
+				check_range_bounds = no
+				save_scope_as = target_province
+			}
+		}
+	}
+
+	option = {
+		name = flavor_pol.17.a
+		historical_option = yes
+
+		scope:target_country = {
+			add_opinion = { target = root modifier = opinion_polish_aggressions }
+		}
+
+		if = {
+			limit = {
+				can_declare_legal_war_on = { target = scope:target_country }
+			}
+			declare_war_with_cb = {
+				target = scope:target_country
+				target_province = scope:target_province
+				type = casus_belli:great_northern_conflict
+			}
+		}
+		else = {
+			add_casus_belli = {
+				target = scope:target_country
+				type = casus_belli:great_northern_conflict
+				province = scope:target_province
+			}
+		}
+
+		add_army_tradition = army_tradition_extreme_bonus
+	}
+	option = {
+		name = flavor_pol.17.b
+
+		add_casus_belli =  {
+			type = casus_belli:great_northern_conflict
+			target = scope:target_country
+			province = scope:target_province.province
+			years = 20
+		}
+
+		add_prestige = prestige_extreme_penalty
+	}
+}
+
+#Ending the Stagnation
+flavor_pol.19 = {
+	type = country_event
+	title = flavor_pol.19.title
+	desc = flavor_pol.19.desc
+	outcome = neutral
+	historical_info = flavor_pol.19.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = PLC
+		from = 1680.1.1
+		to = 1695.1.1
+		monthly_chance = 20
+	}
+
+	trigger = {
+		has_estate_privilege = estate_privilege:liberum_veto
+		has_estate_privilege = estate_privilege:nieszawa_privileges
+		has_ruler = yes
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_pol.19.a
+		historical_option = yes
+		add_stability = stability_mild_bonus
+		custom_tooltip = pol_stag_maybe_more_tt
+	}
+	option = {
+		name = flavor_pol.19.b
+		add_stability = stability_ultimate_penalty
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_radical_penalty }
+		revoke_estate_privilege = estate_privilege:liberum_veto
+		revoke_estate_privilege = estate_privilege:nieszawa_privileges
+		add_country_modifier = { modifier = pol_sobieski_crown_authority_modifier years = modifier_duration_years_long mode = add_and_extend }
+		add_prestige = prestige_ultimate_bonus
+	}
+}
+
+#Ending the Stagnation
+flavor_pol.20 = {
+	type = country_event
+	title = flavor_pol.20.title
+	desc = flavor_pol.20.desc
+	outcome = neutral
+	historical_info = flavor_pol.20.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = PLC
+		from = 1692.1.1
+		to = 1712.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		has_estate_privilege = estate_privilege:liberum_veto
+		has_estate_privilege = estate_privilege:nieszawa_privileges
+		has_ruler = yes
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_pol.20.a
+		historical_option = yes
+		add_stability = stability_mild_bonus
+		custom_tooltip = pol_stag_maybe_more_tt
+	}
+	option = {
+		name = flavor_pol.20.b
+		add_stability = stability_ultimate_penalty
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_radical_penalty }
+		revoke_estate_privilege = estate_privilege:liberum_veto
+		revoke_estate_privilege = estate_privilege:nieszawa_privileges
+		add_country_modifier = { modifier = pol_saxon_administration_modifier years = modifier_duration_years_extended mode = add_and_extend }
+		add_prestige = prestige_severe_bonus
+	}
+}
+
+#Ending the Stagnation
+flavor_pol.21 = {
+	type = country_event
+	title = flavor_pol.21.title
+	desc = flavor_pol.21.desc
+	outcome = neutral
+	historical_info = flavor_pol.21.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = PLC
+		from = 1765.1.1
+		to = 1780.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		has_estate_privilege = estate_privilege:liberum_veto
+		has_estate_privilege = estate_privilege:nieszawa_privileges
+		has_ruler = yes
+		knows_about_institution = institution:enlightenment
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler ?= { save_scope_as = target_character }
+	}
+
+	option = {
+		name = flavor_pol.21.a
+		historical_option = yes
+		add_stability = stability_mild_bonus
+		custom_tooltip = pol_stag_last_chance_tt
+	}
+	option = {
+		name = flavor_pol.21.b
+		add_stability = stability_ultimate_penalty
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_radical_penalty }
+		revoke_estate_privilege = estate_privilege:liberum_veto
+		revoke_estate_privilege = estate_privilege:nieszawa_privileges
+		add_country_modifier = { modifier = pol_enlightenment_reforms_modifier years = modifier_duration_years_extended mode = add_and_extend }
+		add_prestige = prestige_mild_bonus
+		if = {
+			limit = { country_exists = c:RUS }
+			c:RUS = { add_opinion = { target = ROOT modifier = opinion_pol_reform_threatens_neighbors } }
+		}
+		if = {
+			limit = { country_exists = c:PRU }
+			c:PRU = { add_opinion = { target = ROOT modifier = opinion_pol_reform_threatens_neighbors } }
+		}
+		if = {
+			limit = {
+				NOT = { country_exists = c:RUS }
+				NOT = { country_exists = c:PRU }
+			}
+			ordered_neighbor_country = {
+				limit = {
+					is_independent_or_autonomous_subject = yes
+					NOT = { is_allied_with = { target = root } }
+				}
+				max = 1
+				order_by = total_population
+				add_opinion = { target = ROOT modifier = opinion_pol_reform_threatens_neighbors }
+			}
+		}
+	}
+}
+
+#Ending the Stagnation
+flavor_pol.22 = {
+	type = country_event
+	title = flavor_pol.22.title
+	desc = flavor_pol.22.desc
+	outcome = neutral
+	historical_info = flavor_pol.22.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = PLC
+		from = 1785.1.1
+		to = 1800.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		has_estate_privilege = estate_privilege:liberum_veto
+		has_estate_privilege = estate_privilege:nieszawa_privileges
+		has_ruler = yes
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_pol.22.a
+		add_stability = stability_mild_bonus
+		add_prestige = prestige_mild_penalty
+		custom_tooltip = pol_stag_no_more_tt
+	}
+	option = {
+		name = flavor_pol.22.b
+		historical_option = yes
+		add_stability = stability_ultimate_penalty
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_radical_penalty }
+		revoke_estate_privilege = estate_privilege:liberum_veto
+		revoke_estate_privilege = estate_privilege:nieszawa_privileges
+		add_country_modifier = { modifier = pol_may_constitution_modifier years = modifier_duration_years_normal mode = add_and_extend }
+		add_prestige = prestige_extreme_bonus
+		if = {
+			limit = { country_exists = c:RUS }
+			c:RUS = { add_opinion = { target = ROOT modifier = opinion_pol_constitution_threatens_neighbors } }
+		}
+		if = {
+			limit = { country_exists = c:PRU }
+			c:PRU = { add_opinion = { target = ROOT modifier = opinion_pol_constitution_threatens_neighbors } }
+		}
+		if = {
+			limit = {
+				NOT = { country_exists = c:RUS }
+				NOT = { country_exists = c:PRU }
+			}
+			ordered_neighbor_country = {
+				limit = {
+					is_independent_or_autonomous_subject = yes
+					NOT = { is_allied_with = { target = root } }
+				}
+				max = 1
+				order_by = total_population
+				add_opinion = { target = ROOT modifier = opinion_pol_constitution_threatens_neighbors }
+			}
+		}
+	}
+}
+
+#The Sejm comply with your policies
+flavor_pol.23 = {
+	type = country_event
+	title = flavor_pol.23.title
+	desc = flavor_pol.23.desc
+	outcome = neutral
+	historical_info = flavor_pol.23.historical_info
+	trigger = {
+		OR = {
+			has_estate_privilege = estate_privilege:pacta_conventa
+			has_estate_privilege = estate_privilege:liberum_veto
+			has_estate_privilege = estate_privilege:nieszawa_privileges
+		}
+		NOT = {
+			OR = {
+ 				has_variable = pol_sejm_disagrees_cooldown
+				has_variable = pol_sejm_agrees_cooldown
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		set_variable = { name = pol_sejm_agrees_cooldown value = 1 days = 365 }
+	}
+
+	option = {
+		name = flavor_pol.23.a
+		change_parliament_issue_support = 0.25
+	}
+}
+
+#The Sejm veto all your policies
+flavor_pol.24 = {
+	type = country_event
+	title = flavor_pol.24.title
+	desc = flavor_pol.24.desc
+	outcome = neutral
+	historical_info = flavor_pol.23.historical_info
+
+	trigger = {
+		OR = {
+			has_estate_privilege = estate_privilege:pacta_conventa
+			has_estate_privilege = estate_privilege:liberum_veto
+			has_estate_privilege = estate_privilege:nieszawa_privileges
+		}
+		NOT = {
+			OR = {
+ 				has_variable = pol_sejm_disagrees_cooldown
+				has_variable = pol_sejm_agrees_cooldown
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		set_variable = { name = pol_sejm_disagrees_cooldown value = 1 days = 365 }
+	}
+
+	option = {
+		name = flavor_pol.24.a
+		change_parliament_issue_support = -1.0
+	}
+	option = {
+		name = flavor_pol.24.b
+		add_legitimacy = legitimacy_weak_penalty
+		add_stability = stability_mild_penalty
+	}
+}

@@ -39,7 +39,7 @@ levy_banner_cavalry = {
 # 八旗甲喇步兵 - 普通步兵（优先级较低）
 # 来源：满洲八旗、蒙古八旗的士兵、农民、市民阶层
 levy_banner_jalan = {
-	size = 0.1
+	size = levy_generic_infantry_size
 	unit = levy_banner_jalan
 	
 	# 限制只能由清朝使用
@@ -79,12 +79,29 @@ levy_ujen_cooha = {
 	allowed_pop_type = burghers
 	allowed_pop_type = slaves
 
-	
-	# 文化要求：汉族文化和朝鲜文化
-	allow = {
-		OR = {
-			culture = { has_culture_group = culture_group:chinese_group }
-			culture = culture:korean_culture
-		}
-	}
+	allowed_culture = korean_culture
+	allowed_culture = han_culture
+}
+
+levy_cossack_infantry = {
+	size = levy_generic_infantry_size
+
+	allowed_culture = cossack_culture
+
+	allowed_pop_type = peasants
+	allowed_pop_type = tribesmen
+	allowed_pop_type = laborers
+
+	unit = levy_cossack_infantry
+}
+
+levy_cossack_cavalry = {
+	size = levy_generic_noble_cavalry_size
+
+	allowed_culture = cossack_culture
+
+	allowed_pop_type = soldiers
+	allowed_pop_type = herdsman
+
+	unit = levy_cossack_cavalry
 }

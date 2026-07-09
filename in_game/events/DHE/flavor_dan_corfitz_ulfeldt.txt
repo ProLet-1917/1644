@@ -1,0 +1,444 @@
+﻿namespace = flavor_dan_corfitz_ulfeldt
+
+flavor_dan_corfitz_ulfeldt.1 = { #Corfits Ulfeldt
+	type = country_event
+	title = flavor_dan_corfitz_ulfeldt.1.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					ruler = {
+						any_child = {
+							is_female = yes
+							is_adult = yes
+							age_in_years <= 40
+							is_married = no
+						}
+					}
+				}
+				desc = flavor_dan_corfitz_ulfeldt.1.marriage.desc
+			}
+			desc = flavor_dan_corfitz_ulfeldt.1.desc
+		}
+	}
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = DAN
+		from = 1644.1.1
+		to = 1650.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		exists = ruler
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_cornificius
+			last_name = ulfeldt
+			birth_date = 1606.7.10
+			birth_location = location:assens
+			adm = 73
+			dip = 61
+			mil = 48
+			culture = culture:danish
+			religion = religion:catholic
+			estate = estate_type:nobles_estate
+			script = corfitz_ulfeldt_script
+			save_scope_as = target_character
+		}
+
+		ruler = {
+			save_scope_as = target_ruler
+			random_child = {
+				limit = {
+					is_female = yes
+					is_adult = yes
+					age_in_years <= 40
+					is_married = no
+				}
+				save_scope_as = target_princess
+			}
+		}
+		trigger_event_silently = {
+			id = flavor_dan_corfitz_ulfeldt.2
+			months = { 50 60 }
+		}
+	}
+
+	option = {
+		name = flavor_dan_corfitz_ulfeldt.1.a
+		historical_option = yes
+		trigger = {
+			ruler = {
+				any_child = {
+					is_female = yes
+					is_adult = yes
+					age_in_years <= 40
+					is_married = no
+				}
+			}
+		}
+		scope:target_character = { marry_character = scope:target_princess }
+		add_legitimacy = legitimacy_weak_bonus
+	}
+
+	option = {
+		name = flavor_dan_corfitz_ulfeldt.1.b
+		add_prestige = prestige_weak_bonus
+	}
+}
+
+flavor_dan_corfitz_ulfeldt.2 = { #The Growing Influence of Corfits Ulfeldt
+	type = country_event
+	title = flavor_dan_corfitz_ulfeldt.2.title
+	desc = flavor_dan_corfitz_ulfeldt.2.desc
+	outcome = neutral
+
+	trigger = {
+		character:corfitz_ulfeldt_script = {
+			is_alive = yes
+			owner = root
+		}
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		if = {
+			limit = {
+				country_exists = c:SWE
+			}
+			c:SWE = { save_scope_as = target_country }
+		}
+		else = {
+			random_known_country = {
+				limit = {
+					OR = {
+						is_rival_of = root
+						opinion = { target = root value < 0 }
+					}
+				}
+				save_scope_as = target_country
+			}
+		}
+	}
+
+	option = {
+		name = flavor_dan_corfitz_ulfeldt.2.a
+		if = {
+			limit = {
+				scope:target_character.first_spouse = scope:target_princess
+			}
+			add_legitimacy = legitimacy_severe_penalty
+			add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
+			change_gold_effect = { scale = -3 }
+		}
+		else = {
+			add_legitimacy = legitimacy_mild_penalty
+			add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+			change_gold_effect = { scale = -2 }
+		}
+	}
+
+	option = {
+		name = flavor_dan_corfitz_ulfeldt.2.b
+		historical_option = yes
+		scope:target_character = {
+			move_country = scope:target_country
+			if = {
+				limit = { is_married = yes }
+				first_spouse = { move_country = scope:target_country }
+			}
+			every_child = { move_country = scope:target_country }
+		}
+		scope:target_country = {
+			trigger_event_silently = {
+				id = flavor_dan_corfitz_ulfeldt.3
+				months = { 12 24 }
+			}
+		}
+	}
+}
+
+flavor_dan_corfitz_ulfeldt.3 = { #Corfits Ulfeldt offers a fortune
+	type = country_event
+	title = flavor_dan_corfitz_ulfeldt.3.title
+	desc = flavor_dan_corfitz_ulfeldt.3.desc
+	outcome = neutral
+
+	trigger = {
+		character:corfitz_ulfeldt_script = {
+			is_alive = yes
+			owner = root
+		}
+		exists = ruler
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler = { save_scope_as = target_ruler }
+	}
+
+	option = {
+		name = flavor_dan_corfitz_ulfeldt.3.a
+		historical_option = yes
+		change_gold_effect = { scale = 10 }
+		trigger_event_silently = {
+			id = flavor_dan_corfitz_ulfeldt.5
+			months = { 36 60 }
+		}
+	}
+
+	option = {
+		name = flavor_dan_corfitz_ulfeldt.3.b
+		add_prestige = prestige_weak_penalty
+	}
+}
+
+flavor_dan_corfitz_ulfeldt.4 = { #Corfits Ulfeldt Insight
+	type = country_event
+	title = flavor_dan_corfitz_ulfeldt.4.title
+	desc = flavor_dan_corfitz_ulfeldt.4.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = SWE
+		from = 1640.1.1
+		to = 1650.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		character:corfitz_ulfeldt_script = {
+			is_alive = yes
+			owner = root
+		}
+		country_exists = c:DAN
+		is_at_war_with = c:DAN
+		any_army = {
+			in_siege = yes
+			unit_location.owner = c:DAN
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		random_army = {
+			limit = {
+				in_siege = yes
+				unit_location.owner = c:DAN
+			}
+			unit_location = { save_scope_as = target_location }
+		}
+		character:corfitz_ulfeldt_script = { save_scope_as = target_character }
+		trigger_event_silently = {
+			id = flavor_dan_corfitz_ulfeldt.5
+			months = { 36 60 }
+		}
+	}
+
+	option = {
+		name = flavor_dan_corfitz_ulfeldt.4.a
+		scope:target_location = { change_location_controller = root }
+	}
+}
+
+flavor_dan_corfitz_ulfeldt.5 = { #Corfits Ulfeldt is becoming a nuisance
+	type = country_event
+	title = flavor_dan_corfitz_ulfeldt.5.title
+	desc = flavor_dan_corfitz_ulfeldt.5.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	trigger = {
+		character:corfitz_ulfeldt_script = {
+			is_alive = yes
+			owner = root
+		}
+		country_exists = c:DAN
+		OR = {
+			AND = {
+				country_exists = c:BRA
+				c:BRA = {
+					NOT = {
+						has_casus_belli_of_type_on = { type = casus_belli:cb_claim_throne target = c:DAN }
+					}
+				}
+			}
+			AND = {
+				c:DAN = {
+					any_known_country = {
+						OR = {
+							is_rival_of = c:DAN
+							opinion = { target = c:DAN value < 0 }
+						}
+						NOT = {
+							has_casus_belli_of_type_on = { type = casus_belli:cb_claim_throne target = c:DAN }
+						}
+					}
+				}
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		if = {
+			limit = {
+				country_exists = c:BRA
+				c:BRA = {
+					NOT = {
+						has_casus_belli_of_type_on = { type = casus_belli:cb_claim_throne target = c:DAN }
+					}
+				}
+			}
+			c:BRA = { save_scope_as = target_country }
+		}
+		else = {
+			c:DAN = {
+				random_known_country = {
+					limit = {
+						OR = {
+							is_rival_of = c:DAN
+							opinion = { target = c:DAN value < 0 }
+						}
+						NOT = {
+							has_casus_belli_of_type_on = { type = casus_belli:cb_claim_throne target = c:DAN }
+						}
+					}
+					save_scope_as = target_country
+				}
+			}
+		}
+		save_scope_as = origin_country
+	}
+
+	option = {
+		name = flavor_dan_corfitz_ulfeldt.2.a
+		add_legitimacy = legitimacy_mild_penalty
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+		change_gold_effect = { scale = -2 }
+	}
+
+	option = {
+		name = flavor_dan_corfitz_ulfeldt.2.b
+		historical_option = yes
+		scope:target_character = {
+			move_country = scope:target_country
+			if = {
+				limit = { is_married = yes }
+				first_spouse = { move_country = scope:target_country }
+			}
+			every_child = { move_country = scope:target_country }
+		}
+		scope:target_country = { trigger_event_silently = flavor_dan_corfitz_ulfeldt.6 }
+	}
+}
+
+flavor_dan_corfitz_ulfeldt.6 = { #Corfits Ulfeldt Arrives with a Proposal
+	hide_portraits = yes
+	type = country_event
+	title = flavor_dan_corfitz_ulfeldt.6.title
+	desc = flavor_dan_corfitz_ulfeldt.6.desc
+	outcome = neutral
+
+	trigger = {
+		character:corfitz_ulfeldt_script = {
+			is_alive = yes
+			owner = root
+		}
+		country_exists = c:DAN
+		exists = ruler
+		NOT = {
+			has_casus_belli_of_type_on = { type = casus_belli:cb_claim_throne target = c:DAN }
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler = { save_scope_as = target_ruler }
+	}
+
+	option = {
+		name = flavor_dan_corfitz_ulfeldt.6.a
+		add_legitimacy = legitimacy_mild_penalty
+		change_gold_effect = { scale = 3 }
+		add_casus_belli = { target = c:DAN type = casus_belli:cb_claim_throne }
+	}
+
+	option = {
+		name = flavor_dan_corfitz_ulfeldt.6.b
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		add_legitimacy = legitimacy_weak_bonus
+		save_scope_as = origin_country
+		c:DAN = { trigger_event_silently = flavor_dan_corfitz_ulfeldt.7 }
+	}
+
+}
+
+flavor_dan_corfitz_ulfeldt.7 = { #The end of Corfits Ulfeldt's schemes #GRAVEYARD #PRISON
+	type = country_event
+	title = flavor_dan_corfitz_ulfeldt.7.title
+	desc = flavor_dan_corfitz_ulfeldt.7.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_dan_corfitz_ulfeldt.7.a
+		add_legitimacy = legitimacy_mild_bonus
+		if = {
+			limit = {
+				scope:target_character = { is_alive = yes }
+			}
+			kill_character = scope:target_character
+		}
+	}
+
+}

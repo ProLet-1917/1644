@@ -208,12 +208,11 @@ widget = {
 				size = { 40 40 }
 				position = { -40 10 }
 
-				button_checkbox = {
+				checkbox_diamond_alt = {
 					size = { 25 25 }
 					align = right|nobaseline
-					checked = "[NOT(GetVariableSystem.Exists('move_decisions_panel'))]"
 					onclick = "[GetVariableSystem.Toggle('move_decisions_panel')]"
-					down = "[GetVariableSystem.Toggle('move_decisions_panel')]"
+					down = "[GetVariableSystem.Exists('move_decisions_panel')]"
 					tooltipwidget = {
 						LeftClickButtonTooltip = {
 							blockoverride "onclick_text" {
@@ -235,10 +234,7 @@ widget = {
 					parentanchor = right|vcenter
 					using = bg_button_light_alt_round
 
-					blockoverride "close_onclick" {
-						onclick = "[GetVariableSystem.Toggle('decisions_panel')]"
-						down = "[GetVariableSystem.Toggle('decisions_panel')]"
-					}
+					blockoverride "close_on_action" { on_action = "[GetVariableSystem.Toggle('decisions_panel')]" }
 
 					blockoverride "button_texture" {
 						texture = "gfx/interface/buttons/flats/close_button_alt.dds"
@@ -517,6 +513,42 @@ widget = {
 								ContextualTooltipType = {
 									blockoverride "title_text" {
 										text = "claim_mandate_of_heaven"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							icon = {
+								size = { @generic_decisions_height @generic_decisions_height }
+								texture = "gfx/interface/icons/international_organizations/middle_kingdom.dds"
+							}
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "claim_the_seat_of_chinese_emperor"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "claim_the_seat_of_chinese_emperor" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "claim_the_seat_of_chinese_emperor"
 									}
 									blockoverride "concept_link" {
 										using = decisions_regular
@@ -983,6 +1015,39 @@ widget = {
 								ContextualTooltipType = {
 									blockoverride "title_text" {
 										text = "reform_the_janissaries"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							using = generic_decisions_icon_small
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "search_byzantine_heir"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "search_byzantine_heir" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "search_byzantine_heir"
 									}
 									blockoverride "concept_link" {
 										using = decisions_regular

@@ -1,0 +1,68 @@
+﻿namespace = flavor_geo
+
+flavor_geo.28 = { #Sulkhan-Saba Orbeliani
+	type = country_event
+	title = flavor_geo.28.title
+	desc = flavor_geo.28.desc
+	outcome = neutral
+	historical_info = flavor_geo.28.historical_info
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = GEO
+		from = 1678.1.1
+		to = 1710.3.14
+		monthly_chance = 1
+	}
+
+	trigger = {
+		at_war = no
+		is_during_bankruptcy = no
+		owns = location:dmanisi
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		location:dmanisi = {
+			event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+			save_scope_as = target_location
+			create_dynasty_from_location = orbeliani_dynasty
+		}
+		ruler_or_regent = { save_scope_as = target_character1 }
+		create_character = {
+			first_name = name_sulkhan.name_sabbas
+			dynasty = dynasty:orbeliani_dynasty
+			birth_date = 1658.1.26
+			birth_location = location:dmanisi
+			estate = estate_type:nobles_estate
+			artist = writer
+			artist_skill = 0.81
+			save_scope_as = target_character2
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_geo.28.a
+		historical_option = yes
+
+		scope:target_character2 = { move_country = root }
+		change_gold_effect = { scale = -3 }
+
+	}
+	option = {
+		name = flavor_geo.28.b
+
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_penalty
+			add_cultural_influence = cultural_influence_mild_penalty
+		}
+		hidden_effect = {
+   			kill_character_silently = scope:target_character2
+  		}
+	}
+}

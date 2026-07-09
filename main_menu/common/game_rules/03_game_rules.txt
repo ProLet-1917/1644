@@ -20,10 +20,14 @@ REPLACE:mission_packs_enabled_rule = {
 
 REPLACE:ai_colonisation_rule = {
 	default = western_colonisation_only
-
+	
 	all_countries_colonize = {
 		flag = flavour_rule
 	}
+
+	#all_countries_colonize_except_special = {
+	#	flag = flavour_rule
+	#}
 
 	western_colonisation_only = {
 		flag = flavour_rule

@@ -1,0 +1,140 @@
+dynasty_stability_modifier = {
+
+    category = country
+    type = country
+
+    scales_with = {
+        value = var:dynasty_stability
+        multiply = 0.001
+    }
+
+    potential_trigger = {
+        modifier:allow_dynasty_stability = yes
+    }
+
+    global_crown_estate_power = 1.0
+
+    trade_income = 0.1
+    tax_income_efficiency = 0.1
+    global_estate_max_tax = 0.1
+    global_estate_target_satisfaction = 0.1
+
+    global_max_control = 0.1
+    monthly_legitimacy = 0.1
+}
+
+INJECT:country_base_values = {
+    dynasty_stability_monthly_income = -0.1
+}
+
+INJECT:positive_stability_impact = {
+    dynasty_stability_monthly_income = 0.1
+}
+
+INJECT:negative_stability_impact = {
+    dynasty_stability_monthly_income = -0.2
+}
+
+dynasty_stability_form_high_government_power = {
+    category = country
+    type = country
+
+    limit = {
+        government_power > 50
+    }
+
+    scales_with = {
+        value = government_power
+        multiply = 0.01
+    }
+
+    potential_trigger = {
+        modifier:allow_dynasty_stability = yes
+    }
+
+    dynasty_stability_monthly_income = 0.05
+}
+
+dynasty_stability_from_low_government_power = {
+    category = country
+    type = country
+
+    limit = {
+        government_power < 50
+    }
+
+    scales_with = {
+        value = government_power
+        multiply = -0.01
+        add = 1
+    }
+
+    potential_trigger = {
+        modifier:allow_dynasty_stability = yes
+    }
+
+    dynasty_stability_monthly_income = -0.2
+}
+
+non_controlled_population_effect_dynamic_stability = {
+    category = country
+    type = country
+
+    scales_with = {
+        value = non_controlled_population_value
+    }
+
+    potential_trigger = {
+        modifier:allow_dynasty_stability = yes
+    }
+
+    dynasty_stability_monthly_income = -0.25
+}
+
+average_country_literacy = {
+    category = country
+    type = country
+
+    scales_with = {
+        value = average_country_literacy
+        multiply = 0.02
+    }
+
+    potential_trigger = {
+        modifier:allow_dynasty_stability = yes
+    }
+
+    dynasty_stability_monthly_income = -0.05
+}
+
+prestige_effect_dynasty_stability_modifier = {
+    category = country
+    type = country
+
+    scales_with = {
+        value = prestige
+        multiply = 0.01
+    }
+
+    potential_trigger = {
+        modifier:allow_dynasty_stability = yes
+    }
+
+    dynasty_stability_monthly_income = 0.10
+}
+
+corruption_effect_dynasty_stability_modifier = {
+    category = country
+    type = country
+
+    scales_with = {
+        value = var:corruption
+        multiply = -1
+    }
+
+    potential_trigger = {
+        modifier:allow_dynasty_stability = yes
+    }
+
+    dynasty_stability_monthly_income = 0.01
+}

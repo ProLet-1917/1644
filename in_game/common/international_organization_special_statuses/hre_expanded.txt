@@ -103,6 +103,12 @@ REPLACE:imperial_prince = {
                 country_has_special_status = { type = special_status:elector country = root }
             }
             NOT = {
+                country_has_special_status = { type = special_status:imperial_peasant_republic country = root }
+            }
+            NOT = {
+                country_has_special_status = { type = special_status:free_city country = root }
+            }
+            NOT = {
                 country_has_special_status = { type = special_status:italia_state country = root }
             }
         }
@@ -119,6 +125,8 @@ REPLACE:imperial_prince = {
             dominant_culture = culture.culture_group:italian_group
             has_special_status_in_international_organization = { type = special_status:emperor international_organization = international_organization:hre }
             has_special_status_in_international_organization = { type = special_status:elector international_organization = international_organization:hre }
+            has_special_status_in_international_organization = { type = special_status:imperial_peasant_republic international_organization = scope:recipient }
+            has_special_status_in_international_organization = { type = special_status:free_city international_organization = scope:recipient }
             has_special_status_in_international_organization = { type = special_status:italia_state international_organization = international_organization:hre }
         }
     }

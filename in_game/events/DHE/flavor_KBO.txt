@@ -1,0 +1,189 @@
+﻿namespace = flavor_kbo
+
+flavor_kbo.8 = { #Mai & Warrior
+	hide_portraits = yes
+	type = country_event
+	title = flavor_kbo.8.title
+	desc = flavor_kbo.8.desc 
+	outcome = neutral
+
+	trigger = {
+		tag = KBO
+		has_ruler = yes
+		ruler ?= {
+			NOR = { 
+				has_character_modifier = mai_and_warrior_modifier
+				has_character_modifier = mai_and_strategist_modifier
+			}
+		}
+		OR = {
+			current_age = age_1_traditions
+			current_age = age_2_renaissance
+			current_age = age_3_discovery
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		ruler ?= {
+			save_scope_as = target_character
+		}
+	}
+	
+
+	option = {
+		name = flavor_kbo.8.a
+
+		trigger = {
+			scope:target_character = { 
+				OR = { 
+					has_trait_category = general 
+					total_abilities > 150
+				}
+			}
+		}
+
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = mai_and_warrior_modifier 
+				months = -1 
+				mode = add_and_extend
+			}
+		}
+	}
+
+	option = {
+		name = flavor_kbo.8.b
+
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = mai_and_strategist_modifier 
+				months = -1 
+				mode = add_and_extend
+			}
+		}
+	}
+	
+	option = {
+		name = flavor_kbo.8.c
+
+		add_government_power = government_power_mild_bonus
+	}
+}
+
+flavor_kbo.12 = { #Legacy of the [ROOT.GetCountry.GetLongNameWithNoTooltip]
+	type = country_event
+	title = flavor_kbo.12.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = {	own_entire_province = province_definition:kanem_province }
+					NOT = {	own_entire_province = province_definition:bornu_province }
+				}
+				desc = flavor_kbo.12.bad.desc
+			}
+			triggered_desc = {
+				trigger = { always = yes }
+				desc = flavor_kbo.12.desc
+			}
+		}
+	}
+	outcome = neutral
+	fire_only_once = yes
+
+	illustration_tags = {
+        10 = angry
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		capital.province = { save_scope_as = target_capital_province }
+		if = {
+			limit = {
+				own_entire_province = province_definition:bornu_province
+				NOT = { own_entire_province = province_definition:kanem_province }
+			}
+			province_definition:kanem_province = { save_scope_as = target_lost_province }
+		}
+		if = {
+			limit = {
+				own_entire_province = province_definition:kanem_province
+				NOT = { own_entire_province = province_definition:bornu_province }
+			}
+			province_definition:bornu_province = { save_scope_as = target_lost_province }
+		}
+
+	}
+
+	option = { #We must Accept our fate
+		name = flavor_kbo.12.a
+		trigger = {
+			NOT = { own_entire_province = province_definition:kanem_province }
+		}
+		custom_tooltip = flavor_kbo.12_become_bornu_tt
+		hidden_effect = {
+			change_country_name = BNU
+			change_country_adjective = BNU_ADJ
+			change_country_color = map_BNU
+			change_country_flag = BNU
+		}
+		set_variable = kbo_lost_kanem
+		add_government_power = government_power_weak_penalty
+		add_stability = stability_weak_bonus
+	}
+
+	option = { #We are not dead yet
+		name = flavor_kbo.12.b
+		add_government_power = government_power_mild_bonus
+		add_stability = stability_weak_penalty
+	}
+}
+
+flavor_kbo.13 = { #Reconquest of Kanem
+	type = country_event
+	title = flavor_kbo.13.title
+	desc = flavor_kbo.13.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = KBO
+		from = 1644.1.1
+		to = 1800.1.1
+		monthly_chance = 5
+	}	
+
+	illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	trigger = {
+		custom_tooltip = {
+			text = variable_kbo_lost_kanem_tt
+			has_variable = kbo_lost_kanem
+		}
+		own_entire_province = province_definition:kanem_province
+		at_war = no
+	}
+
+	option = { #Glory to us
+		name = flavor_kbo.13.a
+		add_government_power = government_power_mild_bonus
+		add_stability = stability_weak_bonus
+		add_prestige = prestige_mild_bonus
+	}
+}
+

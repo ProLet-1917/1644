@@ -1,0 +1,515 @@
+﻿namespace = flavor_ere
+
+#Bid for Independence
+flavor_ere.1 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_ere.1.title
+	desc = flavor_ere.1.desc
+	outcome = neutral
+	historical_info = flavor_ere.2.historical_info
+	fire_only_once = yes
+	
+	dynamic_historical_event = {
+		tag = ERE
+		from = 1337.1.1
+		to = 1343.1.1
+		monthly_chance = 2
+	}
+	
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+	
+	trigger = {
+		ruler = character:ere_eretna
+		is_subject = yes
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		capital = {
+			random_pop = {
+				limit = {
+					religion = root.religion
+					culture = root.culture
+				}
+				save_scope_as = target_pop
+				save_scope_as = target_pop_bckg
+			}
+		}
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+		overlord ?= { save_scope_as = target_country }
+	}
+
+	#It is time to rid ourselves of our [target_country.GetAdjectiveWithNoTooltip] shackles!
+	option = {
+		name = flavor_ere.1.a
+		historical_option = yes
+		ai_chance = {
+			factor = 100
+		}
+		if = {
+			limit = { is_subject_of = c:JAL }
+			every_current_war = {
+				limit = { is_on_same_side = { country = root target = c:JAL } }
+				root = { leave_war = { war = prev actor = root } }
+			}
+			c:JAL = { trigger_event_non_silently = flavor_ere.2 }
+			custom_tooltip = declare_indep_war_tt
+			show_as_tooltip = {
+				c:JAL = {
+					add_country_modifier = {
+						modifier = rebellious_subjects_modifier
+						years = 3
+						mode = add_and_extend
+					}
+				}
+			}
+		}
+		else = {
+			add_liberty_desire = 25
+		}
+		drop_antagonism_bomb = {
+			target = c:JAL.capital
+			modifier = antagonism_declaring_independence
+		}
+	}
+
+	#Not yet.
+	option = {
+		name = flavor_ere.1.b
+		ai_chance = {
+			factor = 0
+		}
+		add_opinion_mutual_effect = {
+			target = scope:target_country
+			modifier = opinion_professed_mutual_loyalty
+		}
+	}
+}
+
+flavor_ere.2 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_ere.2.title
+	desc = flavor_ere.2.desc
+	outcome = neutral
+	historical_info = flavor_ere.2.historical_info
+	fire_only_once = yes
+	
+	illustration_tags = {
+		10 = exterior
+		10 = armed
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler_or_regent ?= { save_scope_as = target_character2}
+	}
+
+	option = {
+		name = flavor_ere.2.a
+		historical_option = yes
+
+		add_country_modifier = {
+			modifier = rebellious_subjects_modifier
+			years = 5
+			mode = add_and_extend
+		}
+
+		c:ERE = {
+			leave_all_wars_with = root
+			if = {
+				limit = {
+					can_declare_legal_war_on = { target = root }
+				}
+				declare_war_with_cb = {
+					target = root
+					type = casus_belli:cb_independence_war
+				}
+			}
+			else = {
+				add_casus_belli = {
+					target = root
+					type = casus_belli:cb_independence_war
+				}
+			}
+			hidden_effect = {
+				ruler ?= { set_variable = beardless_prophet_variable }
+			}
+		}
+	}
+	
+	option = {
+		name = flavor_ere.2.b
+
+		if = {
+			limit = {
+				c:ERE = { is_subject_of = root }
+			}
+			cancel_subject = c:ERE
+		}
+		add_stability = stability_extreme_penalty
+		add_government_power = government_power_mild_penalty
+	}
+}
+
+flavor_ere.3 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_ere.3.title
+	desc = flavor_ere.3.desc
+	outcome = neutral
+	fire_only_once = yes
+	historical_info = flavor_ere.3.historical_info
+	
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		capital = {
+			random_pop = {
+				limit = {
+					religion = root.religion
+					culture = root.culture
+				}
+				save_scope_as = target_pop
+				save_scope_as = target_pop_bckg
+			}
+		}
+		ruler ?= { save_scope_as = target_character }
+		c:JAL = {
+			save_scope_as = target_country
+			ruler_or_regent ?= { save_scope_as = target_character2 }
+		}
+	}
+
+	option = {
+		name = flavor_ere.3.a
+		historical_option = yes
+
+		add_stability = stability_severe_bonus
+		add_war_exhaustion = war_exhaustion_extreme_bonus
+		ruler ?= { set_nickname = beardless_prophet }
+	}
+}
+
+flavor_ere.4 = {
+	type = country_event
+	title = flavor_ere.4.title
+	desc = flavor_ere.4.desc
+	outcome = neutral
+	fire_only_once = yes
+	
+	dynamic_historical_event = {
+		tag = ERE
+		from = 1363.1.1
+		to = 1366.1.1
+		monthly_chance = 20
+	}
+	
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+	
+	trigger = {
+		OR = {
+			is_subject = yes
+			at_war = no
+		}
+		is_during_bankruptcy = no
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		create_character = {
+			first_name = Burhan
+			last_name = al-Din
+			estate = estate_type:peasants_estate
+			birth_date = 1345.1.8
+			birth_location = location:kayseri
+			adm = { 50 100 }
+			dip = { 50 100 }
+			mil = { 50 100 }
+			create_in_limbo = yes
+			save_scope_as = target_character
+			script = ere_burhan_al_din
+			add_trait = trait:defensive_planner
+		}
+	}
+
+	option = {
+		name = flavor_ere.4.a
+		ai_chance = {
+			factor = 100
+		}
+		custom_tooltip = target_character_will_make_fine_general_tt
+		hidden_effect = {
+			scope:target_character = { move_country = root }
+		}
+		add_army_tradition = army_tradition_mild_bonus
+	}
+	
+	option = {
+		name = flavor_ere.4.b
+		ai_chance = {
+			factor = 0
+		}
+
+		custom_tooltip = target_character_vanishes_tt
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+	}
+}
+
+flavor_ere.5 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_ere.5.title
+	desc = flavor_ere.5.desc
+	outcome = neutral
+	fire_only_once = yes
+	
+	dynamic_historical_event = {
+		tag = ERE
+		from = 1375.1.1
+		to = 1390.1.1
+		monthly_chance = 2
+	}
+	
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+	
+	trigger = {
+		character:ere_burhan_al_din = {
+			is_alive = yes
+			owner = root
+			is_ruler = no
+			is_heir = no
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+		create_rebel = {
+			category = pretender
+			name = burhan_al_din_pretenders
+			save_scope_as = target_rebel
+		}
+
+		character:ere_burhan_al_din  = {
+			save_scope_as = target_character2
+			change_character_allegiance = scope:target_rebel
+		}
+		set_variable = {
+			name = current_ruler_power_variable
+			value = {
+				add = {
+					value = "estate_power(estate_type:crown_estate)"
+					multiply = 10
+				}
+				add = {
+					value = government_power
+					divide = 2
+				}
+			}
+		}
+		set_variable = {
+			name = num_rebelling_locations
+			value = 0
+		}
+		if = {
+			limit = {
+				var:current_ruler_power_variable < 100
+			}
+			while = {
+				limit = { var:current_ruler_power_variable < 100 }
+				ordered_owned_location = {
+					limit = {
+						is_capital = no
+					}
+					order_by = {
+						value = population
+						multiply = -1
+					}
+					max = 1
+					owner = {
+						change_variable = {
+							name = current_ruler_power_variable
+							add = 1
+						}
+						change_variable = {
+							name = num_rebelling_locations
+							add = 1
+						}
+					}
+					every_pop = {
+						limit = {
+							owner = root
+						}
+						add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+						change_pop_allegiance = scope:target_rebel
+					}
+				}
+			}
+		}
+		else = {
+			remove_variable = current_ruler_power_variable
+			remove_variable = num_rebelling_locations
+		}
+
+	}
+
+	option = {
+		name = flavor_ere.5.a
+		ai_chance = {
+			factor = 100
+		}
+		if = {
+			limit = {
+				OR = {
+					exists = var:current_ruler_power_variable
+					exists = var:num_rebelling_locations
+				}
+			}
+			custom_tooltip = impacted_locations_var_tt
+			add_stability = stability_severe_penalty
+		}
+		else = {
+			add_stability = stability_ultimate_penalty
+		}
+		if = {
+			limit = { num_subjects > 0 }
+			every_subject = {
+				add_liberty_desire = 50
+			}
+		}
+	}
+
+	after = {
+		remove_variable = current_ruler_power_variable
+		remove_variable = num_rebelling_locations
+	}
+}
+
+#Köşkmedrese
+flavor_ere.6 = {
+	type = country_event
+	title = flavor_ere.6.title
+	desc = flavor_ere.6.desc
+	outcome = neutral
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = ERE
+		from = 1337.1.1
+		to = 1430.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	trigger = {
+		character:ere_eretna = {
+			is_ruler = yes
+			is_alive = yes
+		}
+		character:ere_suli = {
+			is_alive = no
+		}
+		owns = location:kayseri
+		location:kayseri = {
+			OR = {
+				location_rank = location_rank:town
+				location_rank = location_rank:city
+			}
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:clergy_estate }
+		ruler ?= {
+			save_scope_as = ruler_scope
+		}
+		character:ere_suli = {
+			save_scope_as = ere_suli_scope
+		}
+		create_character = {
+			first_name = Kaluyan
+			birth_date = 1311.1.1
+			birth_location = location:tarsus
+			culture = culture:armenian_culture
+			religion = religion:miaphysite
+			estate = estate_type:burghers_estate
+			artist = architect
+			artist_skill = 0.52
+			script = ere_kaluyan_script
+			save_scope_as = ere_kaluyan_scope
+			create_in_limbo = yes
+		}
+	}
+
+	option = {
+		name = flavor_ere.6.a
+		historical_option = yes
+
+		if = {
+			limit = {
+				location:kayseri = {
+					NOT = { has_building = building_type:madrasa }
+				}
+			}
+			location:kayseri = {
+				construct_building = {
+					building_type = building_type:madrasa
+					cost_multiplier = 1.3
+					cost_multiplier_reason = "clergy_expensive_sponsorship"
+				}
+			}
+		}
+		else = {
+			change_gold_effect = { scale = -4 }
+			location:kayseri = {
+				create_art = {
+					artist = scope:ere_kaluyan_scope
+					quality = 58
+					type = work_of_art_type:monument
+					key = koskmedrese
+				}
+			}
+		}
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_move_to_right
+		}
+		add_prestige = prestige_mild_bonus
+		scope:ere_kaluyan_scope = { move_country = root }
+	}
+	
+	option = {
+		name = flavor_ere.6.b
+
+		add_prestige = prestige_mild_penalty
+		scope:agostino_barelli_scope = { move_country = location:tarsus.owner }
+		hidden_effect = {
+   			kill_character_silently = scope:ere_kaluyan_scope
+  		}
+	}
+}

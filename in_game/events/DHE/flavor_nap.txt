@@ -1,0 +1,627 @@
+﻿namespace = flavor_nap
+
+flavor_nap.4 = { #The Great City of the Baroque
+	type = country_event
+	title = flavor_nap.4.title
+	desc = flavor_nap.4.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NAP
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 5
+	}
+	
+	illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		location:naples = {
+			save_scope_as = target_location
+		}
+	}
+
+	trigger = {
+		owns = location:naples
+		location:naples = {
+			integration_level = core
+			num_pop_type:burghers > 20
+		}
+	}
+
+	option = {
+		name = flavor_nap.4.a
+		historical_option = yes
+		location:naples = {
+			change_development  = development_severe_bonus
+		}
+	}
+}
+
+flavor_nap.280 = { #The Two Sicilies Reunited
+	type = country_event
+
+	title = flavor_nap.280.title
+	desc = flavor_nap.280.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = TWS
+	}
+
+	immediate = {
+	}
+
+	option = {
+		name = flavor_nap.280.a
+		trigger = {
+			NOT = { capital = location:palermo }
+			any_owned_location = { this = location:palermo }
+		}
+		set_capital = location:palermo
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_bonus }
+		add_legitimacy = legitimacy_severe_bonus
+		add_prestige = prestige_extreme_bonus
+
+	}
+
+	option = {
+		name = flavor_nap.280.b
+		trigger = {
+			NOT = { capital = location:naples }
+			any_owned_location = { this = location:naples }
+		}
+		set_capital = location:naples
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_bonus }
+		add_legitimacy = legitimacy_severe_bonus
+		add_prestige = prestige_extreme_bonus
+	}
+
+	option = {
+		name = flavor_nap.280.c
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_bonus }
+		add_legitimacy = legitimacy_severe_bonus
+		add_prestige = prestige_extreme_bonus
+	}
+}
+
+flavor_nap.113 = { #The Palace of Caserta
+	type = country_event
+
+	title = flavor_nap.113.title
+	desc = flavor_nap.113.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NAP
+		from = 1727.1.1
+		to = 1777.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		government_type = government_type:monarchy
+		owns = location:caserta
+		has_ruler = yes
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = Luigi
+			last_name = Vanvitelli
+			birth_date = 1700.5.12
+			adm = 80
+			dip = 65
+			mil = 15
+			birth_location = location:naples
+			artist = architect
+			estate = estate_type:burghers_estate
+			artist_skill = 0.85
+			culture = culture:neapolitan
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+		ruler = { save_scope_as = targer_ruler }
+	}
+
+	option = {
+		name = flavor_nap.113.a
+		historical_option = yes
+
+		scope:target_character = { move_country = root }
+		location:caserta = {
+			create_art = {
+				artist = scope:target_character
+				quality = 90
+				type = work_of_art_type:palace
+				key = palace_of_caserta
+			}
+		}
+
+	}
+
+	option = {
+		name = flavor_nap.113.b
+		add_prestige = prestige_extreme_penalty
+   		kill_character_silently = scope:target_character
+	}
+
+}
+
+flavor_nap.114 = { #La Pudizia
+	type = country_event
+
+	title = flavor_nap.114.title
+	desc = flavor_nap.114.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NAP
+		from = 1727.1.1
+		to = 1777.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		owns = location:naples
+		culture:neapolitan = {
+			cultural_influence > 50
+			cultural_tradition > 50
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_anthony
+			last_name = Corradini
+			birth_date = 1688.10.19
+			adm = 70
+			dip = 75
+			mil = 25
+			birth_location = location:venice
+			artist = sculptor
+			estate = estate_type:burghers_estate
+			artist_skill = 0.85
+			culture = culture:venetian
+			save_scope_as = target_artist
+		}
+
+	}
+
+	option = {
+		name = flavor_nap.114.a
+
+		historical_option = yes
+		culture = {
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+		add_prestige = prestige_weak_bonus
+		location:naples = {
+			create_art = {
+				artist = scope:target_artist
+				quality = 90
+				type = work_of_art_type:statue
+				key = pudizia
+			}
+		}
+	}
+
+}
+
+flavor_nap.115 = { #San Leucio Silk Factory
+	type = country_event
+
+	title = flavor_nap.115.title
+	desc = flavor_nap.115.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NAP
+		from = 1725.1.1
+		to = 1775.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		current_age = age_5_absolutism
+		owns = location:caserta
+		has_ruler = yes
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		ruler = { save_scope_as = target_character }
+		location:caserta = { save_scope_as = target_location }
+	}
+
+	option = {
+		name = flavor_nap.115.a
+
+		historical_option = yes
+		location:caserta = {
+			construct_building = { building_type = building_type:fine_cloth_manufactory }
+		}
+	}
+
+}
+flavor_nap.12 = { #https://en.wikipedia.org/wiki/State_of_the_Presidi
+	type = country_event
+	title = flavor_nap.12.title
+	desc = flavor_nap.12.desc
+	outcome = neutral
+	historical_info = flavor_nap.12.historical_info
+
+	fire_only_once = yes
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	dynamic_historical_event = {
+		tag = NAP
+		from = 1644.1.1
+		to = 1800.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		owns = location:piombino
+		owns = location:pitigliano
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		location:piombino = {
+			save_scope_as = target_location
+		}
+		location:pitigliano = {
+			save_scope_as = target_location2
+		}
+	}
+
+	option = {
+		name = flavor_nap.12.a
+		historical_option = yes
+		scope:target_location = {
+			add_location_modifier = {
+				modifier = nap_state_of_the_presidi
+				years = -1
+			}
+		}
+		scope:target_location2 = {
+			add_location_modifier = {
+				modifier = nap_state_of_the_presidi
+				years = -1
+			}
+		}
+		add_navy_tradition = navy_tradition_severe_bonus
+	}
+}
+
+# Heavy Taxation
+flavor_nap.400 = {
+	type = country_event
+
+	title = flavor_nap.400.title
+	desc = flavor_nap.400.desc
+	outcome = neutral
+	historical_info = flavor_nap.400.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NAP
+		from = 1644.1.1
+		to = 1654.1.1
+		monthly_chance = 10
+	}
+	
+	illustration_tags = {
+        10 = angry
+        10 = interior
+    }
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	
+	trigger = {
+		owns = location:naples
+	}
+
+	option = {
+		name = flavor_nap.400.a #Levy the Taxation
+
+		historical_option = yes
+
+		add_country_modifier = {
+			modifier = nap_heavy_taxation
+			years = 25
+		}
+
+		custom_tooltip = {
+			text = nap_every_peasant_pop_loses_5_satisfaction
+			every_pop = {
+				limit = {
+					owner = root
+					pop_type = pop_type:peasants
+				}
+				add_pop_satisfaction = pop_satisfaction_weak_penalty #the real penalty is when you tax them
+			}
+		}
+
+		trigger_event_non_silently = { id = flavor_nap.401 years = { 1 5 } }
+	}
+	option = {
+		name = flavor_nap.400.b #Do not tax
+
+		add_country_modifier = {
+			modifier = nap_insufficient_funds
+			years = 30
+		}
+
+		add_stability = stability_mild_penalty
+
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_severe_penalty
+		}
+	}
+}
+
+flavor_nap.401 = { #Masaniello's Revolt
+	type = country_event
+
+	title = flavor_nap.401.title
+	desc = flavor_nap.401.desc
+	outcome = neutral
+	historical_info = flavor_nap.401.historical_info
+
+	illustration_tags = {
+        10 = angry
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		create_character = { #https://en.wikipedia.org/wiki/Masaniello
+			first_name = name_thomas
+			last_name = Aniello
+			nickname = Masaniello
+			birth_date = 1620.6.29
+			birth_location = location:naples
+			religion = religion:catholic
+			culture = culture:neapolitan
+			estate = estate_type:peasants_estate
+			script = nap_masaniello
+			save_scope_as = masaniello_scope
+			adm = { 50 60 }
+			dip = { 40 50 }
+			mil = { 40 50 }
+			add_character_modifier = { modifier = rebel_leader_modifier years = -1 mode = add_and_extend }
+		}
+		create_rebel = {
+			category = estate
+			estate = peasants_estate
+
+			name = flavor_nap_masaniello
+
+			save_scope_as = rebel_target
+		}
+		set_variable = {
+			name = future_republic_of_naples
+			value = scope:rebel_target
+		}
+		scope:masaniello_scope = {
+			change_character_allegiance = scope:rebel_target
+		}
+	}
+
+
+	option = {
+		name = flavor_nap.401.a
+
+		historical_option = yes
+
+		add_stability = stability_mild_penalty
+		add_legitimacy = legitimacy_mild_bonus
+
+		custom_tooltip = {
+			text = flavor_nap.401.a.tt1
+			#Get every non neapolitan pop in Italy
+			every_owned_location = {
+				limit = {
+					region = region:italy_region
+				}
+				every_pop = {
+					limit = {
+						owner = root
+						pop_type = pop_type:peasants
+						NOT = { culture = root.culture }
+					}
+					add_pop_satisfaction = pop_satisfaction_severe_penalty
+					change_pop_allegiance = scope:rebel_target
+				}
+			}
+		}
+		custom_tooltip = {
+			text = flavor_nap.401.a.tt2
+			#Get all pops in the 5 least controlled locations
+			#in Italy to add some more impact to the rebellion
+			ordered_owned_location = {
+				order_by = { #Get the least controlled ones
+					value = local_control
+					multiply = -1
+				}
+				max = 5
+				every_pop = {
+					limit = {
+						owner = root
+						pop_type = pop_type:peasants
+					}
+					add_pop_satisfaction = pop_satisfaction_severe_penalty
+					change_pop_allegiance = scope:rebel_target
+				}
+			}
+		}
+
+		scope:rebel_target = {
+			add_rebel_progress = 0.9
+		}
+	}
+
+	option = {
+		name = flavor_nap.401.b
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_extreme_bonus }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+		set_variable = { name = masaniellos_fight_flag value = 1 }
+		grant_estate_privilege = estate_privilege:masaniellos_fight
+	}
+}
+
+scripted_effect nap_republic_of_napoli_buffs = {
+	add_reform = government_reform:serene_republic_of_naples
+	change_societal_value = {
+		type = serfdom_vs_free_subjects
+		value = societal_value_large_move_to_right
+	}
+	change_societal_value = {
+		type = offensive_vs_defensive
+		value = societal_value_large_move_to_right
+	}
+	add_country_modifier = {
+		modifier = nap_struggle_for_independence
+		years = 10
+	}
+}
+
+flavor_nap.402 = { #Establishment of the Republic of Naples
+	type = country_event
+
+	title = flavor_nap.402.title
+	desc = flavor_nap.402.desc
+	outcome = neutral
+	major = yes
+
+	illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		scope:republic_of_naples = {
+			change_government_type = government_type:republic
+			set_country_rank = country_rank:rank_kingdom
+		}
+		nap_republic_of_napoli_buffs = yes
+		save_scope_as = root_naples
+		scope:republic_of_naples.capital = {
+			save_scope_as = republic_of_naples_capital
+		}
+	}
+
+
+	option = {
+		name = flavor_nap.402.a
+
+		show_as_tooltip = {
+			scope:republic_of_naples = {
+				nap_republic_of_napoli_buffs = yes
+			}
+		}
+		scope:republic_of_naples = {
+			trigger_event_non_silently = flavor_nap.403
+		}
+	}
+	option = {
+		name = flavor_nap.402.b
+		high_risk_option = yes
+
+		change_player = scope:republic_of_naples
+		show_as_tooltip = {
+			scope:republic_of_naples = {
+				nap_republic_of_napoli_buffs = yes
+			}
+		}
+		scope:republic_of_naples = {
+			trigger_event_non_silently = flavor_nap.403
+		}
+	}
+}
+
+flavor_nap.403 = { #Establishment of the Republic of Naples - as the nation
+	type = country_event
+
+	title = flavor_nap.403.title
+	desc = flavor_nap.403.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	
+	option = {
+		name = flavor_nap.403.a
+
+		nap_republic_of_napoli_buffs = yes
+
+		add_country_modifier = {
+			modifier = nap_favor_monarchy
+			years = 40
+		}
+	}
+	option = {
+		name = flavor_nap.403.b
+
+		nap_republic_of_napoli_buffs = yes
+
+		add_country_modifier = {
+			modifier = nap_favor_republic
+			years = 40
+		}
+	}
+}

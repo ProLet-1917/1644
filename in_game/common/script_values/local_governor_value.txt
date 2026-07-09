@@ -1,0 +1,54 @@
+local_governor_control_value = {
+    value = scope:target.var:already_has_a_local_governor.mil
+}
+
+local_governor_number = {
+    value = 0
+
+    add = {
+        value = total_locations_owned
+        divide = 250
+    }
+
+    add = {
+        value = total_primary_culture_population
+        add = total_accepted_culture_population
+        divide = 2500
+    }
+}
+
+on_plundering_value = {
+    value = 1
+    multiply = {
+        value = 0.008
+        #value = scope:new_controller.modifier:population_got_plunder_basic # 8%*1000 = 8 People
+    }
+    if = {
+        limit = {
+            scope:character.army_size <= 20
+        }
+        divide = {
+            value = scope:character.army_size
+            divide = 20
+        }
+    }
+    if = {
+        limit = {
+            OR = {
+                this.culture = scope:new_controller.culture
+                this.religion = scope:new_controller.religion
+            }
+        }
+        multiply = 0.5
+    }
+    if = {
+        limit = {
+            AND = {
+                this.culture = scope:new_controller.culture
+                this.religion = scope:new_controller.religion
+            }
+        }
+        multiply = 0.5 #0.5*0.5 = 0.25
+    }
+    multiply = -1
+}

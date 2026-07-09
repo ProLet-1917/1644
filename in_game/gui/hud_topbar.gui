@@ -215,22 +215,9 @@ Types HUD_TopbarTypes
 
 								action_tooltip = {
 									click_type = right
-									click_mode = confirm
-									title = "BRIBE_ESTATE_T"
-								}
-
-								action_button = {
-									onclick = "[EstatesItem.AddNewPrivilege]"
-									parentanchor = center
-									size = { 100% 90% }
-									actor = "[Player]"
-									enabled = yes
-									parameter = {
-										parameter_name = "target"
-										parameter_value = "[EstatesItem.GetEstate]"
-									}
-									right_click_and_hold_action = { action_name = "bribe_estate" }
-									tooltip_enabled = no
+									click_mode = single
+									title = "ESTATE_ACTIONS_MENU_T"
+									on_action = "[EstatesItem.OpenActionsWindow]"
 								}
 
 								tooltipwidget = {
@@ -2288,8 +2275,7 @@ template speed_bar {
 						# blockoverride "gamespeed_button_texture" {
 						# 	texture = "[GetGraphicalCultureTexture('speed_end_button')]"
 						# }
-					}					
-					
+					}
 				}
 
 				# FAKE PLAY PAUSE BUTTON

@@ -90,7 +90,7 @@ request_peaceful_talk = {
                 global_var:current_religion_war_length >= 320
                 global_var:current_religion_war_length < 350
             }
-            add = 30
+            add = 25
         }
         if = {
             limit = {
@@ -103,7 +103,7 @@ request_peaceful_talk = {
             limit = {
                 global_var:current_religion_war_length >= 380
             }
-            add = 80
+            add = 75
         }
         if = {
             limit = {
@@ -113,7 +113,7 @@ request_peaceful_talk = {
                     is_leader_of_international_organization = international_organization:catholic_league
                 }
             }
-            add = 30
+            add = 25
         }
         if = {
             limit = {
@@ -122,7 +122,7 @@ request_peaceful_talk = {
                     is_leader_of_international_organization = international_organization:catholic_league
                 }
             }
-            add = 80
+            add = 75
         }
         if = {
             limit = {
@@ -132,7 +132,7 @@ request_peaceful_talk = {
                     is_leader_of_international_organization = international_organization:protestant_union
                 }
             }
-            add = 30
+            add = 25
         }
         if = {
             limit = {
@@ -141,7 +141,7 @@ request_peaceful_talk = {
                     is_leader_of_international_organization = international_organization:protestant_union
                 }
             }
-            add = 80
+            add = 75
         }
         if = {
             limit = {
@@ -151,7 +151,7 @@ request_peaceful_talk = {
                     is_leader_of_international_organization = international_organization:protestant_union
                 }
             }
-            add = 1000
+            add = 100
         }
         else_if = {
             limit = {
@@ -161,7 +161,10 @@ request_peaceful_talk = {
                     is_leader_of_international_organization = international_organization:catholic_league
                 }
             }
-            add = 1000
+            add = 100
+        }
+        add = {
+            value = scope:actor.war_exhaustion
         }
     }
 }

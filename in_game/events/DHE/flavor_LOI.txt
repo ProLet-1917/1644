@@ -1,0 +1,61 @@
+﻿namespace = flavor_loi
+
+# Shipbuilding Contest
+flavor_loi.20 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_loi.20.title
+	desc = flavor_loi.20.desc
+	outcome = neutral
+
+	trigger = {
+		OR = {
+			has_reform = government_reform:galley_lords_reform
+			has_reform = government_reform:family_sagas_reform
+		}
+		any_owned_location = { is_port = yes }
+	}
+
+	illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+		random_owned_location = {
+			limit = { is_port = yes }
+			save_scope_as = target_location
+		}
+	}
+
+	# commission our own
+	option = {
+		name = flavor_loi.20.a
+		change_gold_effect = { scale = -6 }
+		add_navy_tradition = navy_tradition_extreme_bonus
+		add_prestige = prestige_weak_bonus
+		scope:target_location = { create_sub_unit_of_category = sub_unit_category:navy_galley }
+	}
+
+	# sponsor a contestant
+	option = {
+		change_gold_effect = { scale = -1 }
+		add_gold_to_estate = {
+			estate_type = estate_type:burghers_estate
+			value = root.monthly_income_trade_and_tax
+		}
+		add_estate_satisfaction = { type = estate_type:burghers_estate
+			value = estate_satisfaction_weak_bonus
+		}
+		name = flavor_loi.20.b
+		add_navy_tradition = navy_tradition_mild_bonus
+	}
+
+	# ignore the contest
+	option = {
+		name = flavor_loi.20.c
+		add_navy_tradition = navy_tradition_mild_penalty
+		add_prestige = prestige_weak_penalty
+	}
+}

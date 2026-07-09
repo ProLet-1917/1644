@@ -1,5 +1,415 @@
-﻿# Empty override file
-# Original file: events\DHE\flavor_MCH.txt
-# This file disables all events from the original file
+﻿namespace = flavor_mch
 
-namespace = flavor_mch
+flavor_mch.3 = {
+	type = country_event
+	title = flavor_mch.3.title
+	desc = flavor_mch.3.desc
+	outcome = neutral
+	fire_only_once = yes
+	
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1645.1.1
+		to = 1660.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		culture ?= { has_culture_group = culture_group:jurchen_group }
+		own_entire_area = area:beiping_area
+		own_entire_area = area:yannan_area
+		own_entire_area = area:yanbei_area
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+	}
+
+	option = {
+		name = flavor_mch.3.a
+		historical_option = yes
+		change_societal_value = { type = land_vs_naval value = societal_value_move_to_left }
+		change_societal_value = { type = offensive_vs_defensive value = societal_value_minor_move_to_left }
+		change_societal_value = { type = quality_vs_quantity value = societal_value_minor_move_to_left }
+	}
+	
+	option = {
+		name = flavor_mch.3.b
+		change_societal_value = { type = offensive_vs_defensive value = societal_value_minor_move_to_right }
+	}
+}
+
+flavor_mch.4 = {
+	type = country_event
+	title = flavor_mch.4.title
+	desc = flavor_mch.4.desc
+	outcome = neutral
+	fire_only_once = yes
+	
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1770.1.1
+		to = 1800.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		culture ?= { has_culture_group = culture_group:jurchen_group }
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_heshen
+			last_name = Niohuru
+			culture = culture:jurchen_culture
+			birth_location = location:fushun_liaoyang
+			birth_date = 1750.7.1
+			religion = root.religion
+			create_in_limbo = yes
+			save_scope_as = target_character
+		}
+		scope:target_character = {
+			set_to_limited_random_stats = {
+				max_adm = 90
+				min_adm = 50
+				max_dip = 90
+				min_dip = 50
+				max_mil = 90
+				min_mil = 50
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mch.4.a
+		historical_option = yes
+
+		scope:target_character = {
+			move_country = ROOT
+		}
+		change_gold_effect = { scale = -4 }
+	}
+	option = {
+		name = flavor_mch.4.b
+		add_prestige = prestige_weak_bonus
+		hidden_effect = { kill_character_silently = scope:target_character }
+	}
+}
+
+# The Queue Hairstyle
+flavor_mch.6 = {
+	type = country_event
+	title = flavor_mch.6.title
+	desc = flavor_mch.6.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		culture ?= { has_culture_group = culture_group:jurchen_group }
+		is_leader_of_international_organization = international_organization:middle_kingdom
+		has_ruler = yes
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	immediate = {
+		unlock_law_effect = {
+			type = mch_queue_hair
+		}
+
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		ruler = {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_mch.6.a
+
+		add_policy = policy:enforce_queue_hair
+		culture = {
+			add_cultural_influence = cultural_influence_severe_bonus
+		}
+	}
+
+	option = {
+		name = flavor_mch.6.b
+
+		add_policy = policy:queue_hair_status_quo
+		add_all_estate_satisfaction = {
+			value = 0.1
+		}
+	}
+}
+
+# Lifan Yuan
+flavor_mch.12 = {
+	type = country_event
+	title = flavor_mch.12.title
+	desc = flavor_mch.12.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1644.1.1
+		to = 1912.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		culture ?= { has_culture_group = culture_group:jurchen_group }
+		any_province = {
+			count >= 50
+			OR = {
+				region = region:mongolia_region
+				region = region:tibet_region
+				region = region:xinjiang_region
+				sub_continent = sub_continent:north_asia
+				sub_continent = sub_continent:central_asia
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_mch.12.a
+
+		unlock_government_reform_effect = { type = lifan_yuan }
+		add_reform = government_reform:lifan_yuan
+	}
+
+	option = {
+		name = flavor_mch.12.b
+
+		unlock_government_reform_effect = { type = lifan_yuan }
+	}
+}
+
+# Beijing Capital
+flavor_mch.14 = {
+	type = country_event
+	title = flavor_mch.14.title
+	desc = flavor_mch.14.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1644.1.1
+		to = 1912.1.1
+		monthly_chance = 50
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+
+	trigger = {
+		culture ?= { has_culture_group = culture_group:jurchen_group }
+		owns = location:dadu
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		location:dadu = {
+			save_scope_as = target_location
+		}
+
+		set_local_variable = {
+			name = diff_between_beijing_and_capital
+			value = {
+				value = scope:target_location.development
+				subtract = capital.development
+				min = 0
+			}
+		}
+	}
+
+	option = {
+		name = flavor_mch.14.a
+		historical_option = yes
+		if = {
+			limit = {
+				capital != scope:target_location
+			}
+			set_capital = scope:target_location
+		}
+		scope:target_location = {
+			change_development = development_severe_bonus
+			change_prosperity = prosperity_extreme_bonus
+		}
+
+		change_societal_value = {
+			type = sinicized_vs_unsinicized
+			value = societal_value_huge_move_to_left
+		}
+
+		add_stability = stability_mild_bonus
+	}
+
+	option = {
+		name = flavor_mch.14.b
+
+		trigger = {
+			capital != scope:target_location
+			scope:target_location.development > capital.development
+		}
+
+		capital = {
+			change_development = {
+				value = local_var:diff_between_beijing_and_capital
+				multiply = 0.75
+			}
+		}
+
+		scope:target_location = {
+			change_development = {
+				value = local_var:diff_between_beijing_and_capital
+				multiply = -0.75
+			}
+		}
+	}
+}
+
+# Green Standard Army
+flavor_mch.15 = {
+	type = country_event
+	title = flavor_mch.15.title
+	desc = flavor_mch.15.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1644.1.1
+		to = 1850.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		culture ?= { has_culture_group = culture_group:jurchen_group }
+		custom_tooltip = {
+			text = variable_chinese_banners_tt
+			has_variable = chinese_banners
+		}
+		2000 <= { #at least 2M pops of chinese culture group in our country
+			value = this.total_population
+			multiply = "culture_group_percentage_in_country(culture_group:chinese_group)"
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+	}
+
+	option = {
+		name = flavor_mch.15.a
+
+		add_army_tradition = army_tradition_weak_bonus
+
+		change_gold_effect = { scale = -6 }
+
+		unlock_policy_effect = {
+			type = mch_green_standard_army
+		}
+
+		add_policy = policy:mch_green_standard_army
+	}
+
+	option = {
+		name = flavor_mch.15.b
+
+		unlock_policy_effect = {
+			type = mch_green_standard_army
+		}
+	}
+
+	after = {
+		remove_variable = chinese_banners
+	}
+}
+
+#Inheriting the Ming Reforms
+flavor_mch.16 = {
+	type = country_event
+	title = flavor_mch.16.title
+	desc = flavor_mch.16.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1644.1.1
+		to = 1912.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		culture ?= { has_culture_group = culture_group:jurchen_group }
+		is_leader_of_international_organization = international_organization:middle_kingdom
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_mch.16.a
+
+		custom_tooltip = unlock_chinese_language_reforms
+		set_variable = unlocked_mandarin_language_reforms
+		change_celestial_authority = { value = celestial_authority_mild_bonus }
+	}
+
+	option = {
+		name = flavor_mch.16.b
+
+		unlock_estate_privilege_effect = {
+			type = mch_tribal_favor
+		}
+		custom_tooltip = MCH_conditional_benefit
+	}
+}

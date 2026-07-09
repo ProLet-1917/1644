@@ -1,11 +1,13 @@
 on_location_occupied = {
     on_actions = {
+        on_plundering
         dynamic_territorial_occupation_check
     }
 }
 
 on_siege_won = {
     on_actions = {
+        on_plundering
         dynamic_territorial_occupation_check
     }
 }
@@ -137,6 +139,29 @@ dynamic_territorial_occupation_yearly_check = {
                         }
                     }
                     change_location_owner = scope:new_owner
+                }
+            }
+        }
+    }
+}
+
+on_plundering = {
+    trigger = {
+        scope:target = {
+            has_owner = yes
+        }
+    }
+    effect = {
+        scope:target.controller = {
+            save_temporary_scope_as = new_controller
+        }
+        scope:target = {
+            every_pop = {
+                limit = {
+                    owner != scope:new_controller #Not ourselves pop
+                }
+                add_pop_size = {
+                    value = on_plundering_value
                 }
             }
         }

@@ -1,0 +1,87 @@
+﻿namespace = flavor_wls
+
+scripted_trigger country_eisteddfod_trigger = {
+	NOT = { culture = culture:welsh }
+	any_owned_location = { location_eisteddfod_trigger = yes }
+}
+
+scripted_trigger location_eisteddfod_trigger = {
+	dominant_culture = culture:welsh
+}
+
+# Eisteddfod festival
+flavor_wls.10 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_wls.10.title
+	desc = flavor_wls.10.desc
+	outcome = neutral
+	
+	trigger = {
+		country_eisteddfod_trigger = yes
+	}
+
+	illustration_tags = {
+        10 = happy
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		random_owned_location = {
+			limit = { location_eisteddfod_trigger = yes }
+			save_scope_as = target_location
+		}
+	}
+
+	# Embrace the festival
+	option = {
+		name = flavor_wls.10.a
+		scope:target_location = {
+			dominant_culture = {
+				add_cultural_tradition = cultural_tradition_severe_bonus
+			}
+			province = {
+				every_location_in_province = {
+					change_control = control_severe_penalty
+				}
+			}
+		}
+		scope:target_location.province = {
+
+		}
+	}
+
+	# Co-opt the festival
+	option = {
+		name = flavor_wls.10.b
+		scope:target_location = {
+			dominant_culture = {
+				add_cultural_tradition = cultural_tradition_weak_bonus
+			}
+			province = {
+				every_location_in_province = {
+				change_control = control_mild_bonus
+				}
+			}
+		}
+		culture = {
+			add_cultural_influence = cultural_influence_weak_bonus
+		}
+		change_gold_effect = { scale = -2 }
+	}
+
+	# Break up the festival
+	option = {
+		name = flavor_wls.10.c
+		culture = {
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+		change_gold_effect = { scale = -6 }
+		scope:target_location.province = {
+			every_location_in_province = {
+				change_control = control_mild_bonus
+			}
+		}
+	}
+}

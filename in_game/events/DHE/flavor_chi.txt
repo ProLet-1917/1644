@@ -1,5 +1,3234 @@
-﻿# Empty override file
-# Original file: events\DHE\flavor_chi.txt
-# This file disables all events from the original file
+﻿namespace = flavor_chi
 
-namespace = flavor_chi
+scripted_trigger is_yuan_china = {
+	culture = culture:mongolian_culture
+}
+
+scripted_trigger is_qing_china = {
+	culture ?= { has_culture_group = culture_group:jurchen_group }
+}
+
+scripted_trigger has_eunuchs = {
+	has_reform = government_reform:empower_the_eunuchs
+}
+
+scripted_effect upgrade_great_wall = {
+	every_location_in_province = {
+		limit = {
+			has_building_with_at_least_one_level = ruined_great_wall_of_china
+		}
+		construct_building = {
+			building_type = building_type:repaired_great_wall_of_china
+			cost_multiplier = 0.5
+			cost_multiplier_reason = "royal_sponsorship"
+		}
+		change_control = control_weak_bonus
+	}
+	root = {
+		if = {
+			limit = { modifier:allow_righteousness = yes }
+			add_righteousness = righteousness_mild_penalty
+		}
+		if = {
+			limit = { modifier:allow_harmony = yes }
+			add_harmony = harmony_weak_bonus
+		}
+		if = {
+			limit = { is_leader_of_international_organization = international_organization:middle_kingdom }
+			change_celestial_authority = { value = celestial_authority_weak_bonus }
+		}
+	}
+}
+
+flavor_chi.2 = {
+	type = country_event
+	title = flavor_chi.2.title
+	desc = flavor_chi.2.desc
+	outcome = neutral
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = CHI
+		total_effective_building_levels:ruined_great_wall_of_china > 0
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		random_province = {
+			limit = {
+				any_location_in_province = {
+					has_building_with_at_least_one_level = ruined_great_wall_of_china
+				}
+			}
+			save_scope_as = target_province1
+		}
+		random_province = {
+			limit = {
+				this != scope:target_province1
+				any_location_in_province = {
+					has_building_with_at_least_one_level = ruined_great_wall_of_china
+				}
+			}
+			save_scope_as = target_province2
+		}
+		random_province = {
+			limit = {
+				this != scope:target_province1
+				this != scope:target_province2
+				any_location_in_province = {
+					has_building_with_at_least_one_level = ruined_great_wall_of_china
+				}
+			}
+			save_scope_as = target_province3
+		}
+		set_local_variable = {
+			name = wall_maintenance_price
+			value = 0
+		}
+		ordered_owned_location = {
+			limit = {
+				has_building_with_at_least_one_level = ruined_great_wall_of_china
+			}
+			order_by = population
+			max = 5
+
+			root = {
+				change_local_variable = {
+					name = wall_maintenance_price
+					add = prev.location_tax_base
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_chi.2.a
+		add_gold = {
+			value = local_var:wall_maintenance_price
+			multiply = -5
+		}
+		if = {
+			limit = { modifier:allow_righteousness = yes }
+			add_righteousness = righteousness_weak_penalty
+		}
+		if = {
+			limit = { is_leader_of_international_organization = international_organization:middle_kingdom }
+			change_celestial_authority = { value = celestial_authority_weak_bonus }
+		}
+	}
+
+	option = {
+		name = flavor_chi.2.b
+		trigger = {
+			exists = scope:target_province1
+		}
+		scope:target_province1 = {
+			upgrade_great_wall = yes
+		}
+	}
+
+	option = {
+		name = flavor_chi.2.c
+		trigger = {
+			exists = scope:target_province2
+		}
+		scope:target_province2 = {
+			upgrade_great_wall = yes
+		}
+		if = {
+			limit = { modifier:allow_righteousness = yes }
+			add_righteousness = righteousness_weak_penalty
+		}
+		if = {
+			limit = { is_leader_of_international_organization = international_organization:middle_kingdom }
+			change_celestial_authority = { value = celestial_authority_weak_bonus }
+		}
+	}
+
+	option = {
+		name = flavor_chi.2.d
+		trigger = {
+			exists = scope:target_province3
+		}
+		scope:target_province3 = {
+			upgrade_great_wall = yes
+		}
+	}
+
+	option = {
+		name = flavor_chi.2.e
+		add_government_power = government_power_ultimate_penalty
+		if = {
+			limit = { modifier:allow_harmony = yes }
+			harmony_mild_towards_equilibrium = yes
+		}
+	}
+}
+
+scripted_trigger flavor_chi.15_foreign_country_trigger = {
+	has_ruler = yes
+	any_character = {
+		adm >= 60
+		dip >= 60
+		in_cabinet = yes
+	}
+}
+
+scripted_effect flavor_chi.15_foreign_country_saving_scopes_effect = {
+	ruler = { save_scope_as = target_ruler }
+	random_character = {
+		limit = {
+			adm >= 60
+			dip >= 60
+			in_cabinet = yes
+		}
+		save_scope_as = target_character
+	}
+	save_scope_as = target_country
+
+}
+
+flavor_chi.8 = {
+	type = country_event
+	title = flavor_chi.8.title
+	desc = flavor_chi.8.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = CHI
+		from = 1760.1.1
+		to = 1800.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		any_market_present_in_country = {
+			OR = {
+				has_merchant = c:GBR
+				has_merchant = c:ENG
+			}
+		}
+		OR = {
+			AND = {
+				country_exists = c:GBR
+				c:GBR = { flavor_chi.15_foreign_country_trigger = yes }
+			}
+			AND = {
+				country_exists = c:ENG
+				c:ENG = { flavor_chi.15_foreign_country_trigger = yes }
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		if = {
+			limit = { country_exists = c:GBR }
+			c:GBR = { flavor_chi.15_foreign_country_saving_scopes_effect = yes }
+		}
+		else = {
+			c:ENG = { flavor_chi.15_foreign_country_saving_scopes_effect = yes }
+		}
+	}
+
+	option = {
+		name = flavor_chi.8.a
+		historical_option = yes
+		add_stability = stability_severe_bonus
+		if = {
+			limit = { modifier:allow_righteousness = yes }
+			add_righteousness = righteousness_weak_penalty
+		}
+		if = {
+			limit = { is_leader_of_international_organization = international_organization:middle_kingdom }
+			change_celestial_authority = { value = celestial_authority_weak_bonus }
+		}
+		if = {
+			limit = { modifier:allow_harmony = yes }
+			add_harmony = harmony_weak_penalty
+		}
+	}
+	option = {
+		name = flavor_chi.8.b
+		add_research_progress = research_progress_severe_bonus
+		c:GBR ?= {
+			add_opinion = { target = root modifier = opinion_ideas }
+		}
+		c:ENG ?= {
+			add_opinion = { target = root modifier = opinion_ideas }
+		}
+		if = {
+			limit = { modifier:allow_harmony = yes }
+			harmony_mild_towards_equilibrium = yes
+		}
+	}
+}
+
+flavor_chi.15 = {	#Administrative Purge
+	type = country_event
+	title = flavor_chi.15.title
+	desc = flavor_chi.15.desc
+	outcome = neutral
+
+	trigger = {
+		tag = CHI
+		any_cabinet_character = {
+			total_abilities < 180
+			NOT = { has_variable = was_on_purge_event }
+		}
+	}
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler_or_regent ?= { save_scope_as = target_character }
+		random_cabinet_character = {
+			limit = {
+				total_abilities < 180
+				NOT = { has_variable = was_on_purge_event }
+			}
+			save_scope_as = target_character2
+			set_variable = {
+				name = was_on_purge_event
+				years = 2
+			}
+		}
+	}
+
+	option = {
+		name = flavor_chi.15.a
+
+		remove_from_cabinet = scope:target_character2
+		scope:target_character2 = {
+			add_character_modifier = {
+				modifier = banned_from_cabinet
+				years = 5
+				mode = add_and_extend
+			}
+		}
+		if = {
+			limit = { modifier:allow_righteousness = yes }
+			add_righteousness = righteousness_weak_bonus
+		}
+	}
+
+	option = {
+		name = flavor_chi.15.b
+
+		custom_tooltip = target_character_2_vanishes_tt
+		hidden_effect = {
+			kill_character_silently = scope:target_character2
+		}
+		if = {
+			limit = { modifier:allow_harmony = yes }
+			add_harmony = harmony_severe_penalty
+		}
+	}
+
+	option = {
+		name = flavor_chi.15.c
+
+		add_government_power = government_power_mild_penalty
+		if = {
+			limit = { modifier:allow_harmony = yes }
+			harmony_mild_towards_equilibrium = yes
+		}
+		if = {
+			limit = { modifier:allow_righteousness = yes }
+			add_righteousness = righteousness_weak_penalty
+		}
+	}
+}
+
+flavor_chi.16 = {	#Mistrust in the Cabinet
+	hide_portraits = yes
+	type = country_event
+	title = flavor_chi.16.title
+	desc = flavor_chi.16.desc
+	outcome = neutral
+
+	trigger = {
+		tag = CHI
+		any_cabinet_character = {
+			count > 0
+			culture != root.culture
+			NOT = { has_variable = cultural_difference_variable }
+		}
+	}
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler_or_regent ?= { save_scope_as = target_character }
+		random_cabinet_character = {
+			limit = {
+				culture != root.culture
+			}
+			save_scope_as = target_character2
+			culture = { save_scope_as = target_culture }
+			set_variable = {
+				name = cultural_difference_variable
+				years = 5
+			}
+		}
+	}
+
+	option = {
+		name = flavor_chi.16.a
+
+		remove_from_cabinet = scope:target_character2
+		scope:target_character2 = {
+			add_character_modifier = {
+				modifier = banned_from_cabinet
+				years = 5
+				mode = add_and_extend
+			}
+		}
+		add_government_power = government_power_weak_bonus
+		if = {
+			limit = {
+				OR = {
+					societal_value:spiritualist_vs_humanist > 25
+					societal_value:spiritualist_vs_humanist < -25
+				}
+			}
+			custom_tooltip = based_on_spiritualist_vs_humanist_tt
+			add_stability = {
+				value = stability_weak_penalty
+				add = {
+					value = societal_value:spiritualist_vs_humanist
+					divide = 10
+					multiply = -1
+				}
+			}
+		}
+		if = {
+			limit = { modifier:allow_righteousness = yes }
+			add_righteousness = righteousness_weak_penalty
+		}
+	}
+
+	option = {
+		name = flavor_chi.16.b
+
+		add_government_power = government_power_weak_penalty
+		if = {
+			limit = {
+				OR = {
+					societal_value:spiritualist_vs_humanist > 25
+					societal_value:spiritualist_vs_humanist < -25
+				}
+			}
+			custom_tooltip = based_on_spiritualist_vs_humanist_tt
+			add_stability = {
+				value = stability_weak_penalty
+				add = {
+					value = societal_value:spiritualist_vs_humanist
+					divide = 10
+				}
+			}
+		}
+		culture = {
+			add_cultural_influence = cultural_influence_mild_penalty
+		}
+		if = {
+			limit = { modifier:allow_harmony = yes }
+			harmony_mild_towards_equilibrium = yes
+		}
+		if = {
+			limit = { is_leader_of_international_organization = international_organization:middle_kingdom }
+			change_celestial_authority = { value = celestial_authority_weak_penalty }
+		}
+	}
+}
+
+flavor_chi.17 = {	#Liquid Silver
+	hide_portraits = yes
+	type = country_event
+	title = flavor_chi.17.title
+	desc = flavor_chi.17.desc
+	outcome = neutral
+
+	trigger = {
+		tag = CHI
+		ruler_or_regent ?= {
+			age_in_years < 60
+			NOT = { has_variable = elixir_event_variable }
+		}
+	}
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler_or_regent ?= { save_scope_as = target_character remove_character_modifier =  mercury_elixir_modifier }
+		create_character = {
+			estate = estate_type:clergy_estate
+			adm = { 10 80 }
+			dip = { 10 80 }
+			mil = { 10 80 }
+			save_scope_as = target_character2
+			create_in_limbo = yes
+		}
+		ruler_or_regent ?= {
+			set_variable = elixir_event_variable
+		}
+	}
+
+	option = {
+		name = flavor_chi.17.a
+
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_minor_move_to_right
+		}
+		custom_tooltip = this_may_shorten_ruler_lifespan_tt
+		hidden_effect = {
+			ruler_or_regent ?= {
+				random_list = {
+					1 = {
+						add_character_modifier = {
+							modifier = mercury_elixir_modifier
+							mode = add_and_extend
+							months = -1
+						}
+					}
+					1 = {  }
+				}
+			}
+		}
+		if = {
+			limit = { modifier:allow_harmony = yes }
+			harmony_mild_towards_equilibrium = yes
+		}
+		scope:target_character2 = { move_country = root }
+	}
+
+	option = {
+		name = flavor_chi.17.b
+
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_minor_move_to_left
+		}
+		hidden_effect = {
+			kill_character_silently = scope:target_character2
+		}
+		if = {
+			limit = { modifier:allow_harmony = yes }
+			add_harmony = harmony_severe_penalty
+		}
+	}
+}
+
+flavor_chi.18 = {	#Away from Home
+	hide_portraits = yes
+	type = country_event
+	title = flavor_chi.18.title
+	desc = flavor_chi.18.desc
+	outcome = neutral
+
+	trigger = {
+		tag_exists = CHI
+		tag = CHI
+		any_cabinet_character ?= {
+			birth_location.province != root.capital.province
+			birth_location.owner = c:CHI
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler_or_regent ?= { save_scope_as = target_character remove_character_modifier =  mercury_elixir_modifier }
+		random_cabinet_character = {
+			limit = {
+				birth_location != root.capital
+			}
+			save_scope_as = target_character2
+		}
+		scope:target_character2.birth_location = {
+			save_scope_as = target_location
+			province = { save_scope_as = target_province }
+		}
+		set_variable = {
+			name = character_age_display_variable
+			value = scope:target_character2.age_in_years
+			months = 4
+		}
+		set_variable = {
+			name = character_pop_satisfaction_gain_variable
+			value = {
+				add = scope:target_character2.total_abilities
+				divide = 500
+			}
+			months = 4
+		}
+		set_variable = {
+			name = character_pop_satisfaction_gain_variable_display
+			value = {
+				add = var:character_pop_satisfaction_gain_variable
+				multiply = 100
+			}
+			months = 4
+		}
+		set_variable = {
+			name = character_prosperity_gain_variable
+			value = {
+				add = scope:target_character2.total_abilities
+				divide = 1000
+			}
+			months = 4
+		}
+		set_variable = {
+			name = character_prosperity_gain_variable_display
+			value = {
+				add = var:character_prosperity_gain_variable
+				multiply = 100
+			}
+			months = 4
+		}
+	}
+
+	option = {
+		name = flavor_chi.18.a
+
+		custom_tooltip = target_province_gets_pop_sat_and_prosperity_tt
+		remove_from_cabinet = scope:target_character2
+		hidden_effect = {
+			scope:target_location = {
+				every_pop = {
+					limit = {
+						owner = root
+					}
+					add_pop_satisfaction = root.var:character_pop_satisfaction_gain_variable
+				}
+				province = {
+					every_location_in_province = {
+						change_prosperity = root.var:character_prosperity_gain_variable
+					}
+				}
+			}
+		}
+		scope:target_character2 = {
+			add_character_modifier = {
+				modifier = away_from_the_court_modifier
+				years = 2
+				mode = add_and_extend
+			}
+		}
+		if = {
+			limit = { modifier:allow_harmony = yes }
+			harmony_mild_towards_equilibrium = yes
+		}
+	}
+
+	option = {
+		name = flavor_chi.18.b
+
+		add_government_power = government_power_weak_bonus
+		if = {
+			limit = { modifier:allow_righteousness = yes }
+			add_righteousness = righteousness_weak_penalty
+		}
+	}
+
+	after = {
+		remove_variable = character_age_display_variable
+		remove_variable = character_pop_satisfaction_gain_variable_display
+		remove_variable = character_prosperity_gain_variable_display
+	}
+}
+
+flavor_chi.19 = {	#Friendship in High Places
+	hide_portraits = yes
+	type = country_event
+	title = flavor_chi.19.title
+	desc = flavor_chi.19.desc
+	outcome = neutral
+
+	trigger = {
+		tag = CHI
+		any_cabinet_character ?= {
+			count > 1
+		}
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		random_cabinet_character = {
+			save_scope_as = target_character
+		}
+		random_cabinet_character = {
+			limit = {
+				this != scope:target_character
+			}
+			save_scope_as = target_character2
+		}
+		ruler_or_regent ?= { save_scope_as = target_character3 }
+	}
+
+	option = {
+		name = flavor_chi.19.a
+
+		custom_tooltip = based_on_the_abilities_of_cabinet_tt
+		add_government_power = {
+			add = {
+				value = scope:target_character.total_abilities
+			}
+			add = {
+				value = scope:target_character2.total_abilities
+			}
+			divide = 50
+			add = government_power_mild_bonus
+			ceiling = yes
+		}
+		add_stability = {
+			add = {
+				value = scope:target_character.total_abilities
+			}
+			add = {
+				value = scope:target_character2.total_abilities
+			}
+			divide = 50
+			add = stability_mild_bonus
+			ceiling = yes
+		}
+	}
+
+	option = {
+		name = flavor_chi.19.b
+
+
+		if = {
+			limit = {
+				scope:target_character3 = {
+					OR = {
+						has_trait = well_advised
+						num_of_traits > 2
+					}
+				}
+			}
+			scope:target_character = {
+				add_adm = 2
+				add_dip = 2
+				add_mil = 2
+			}
+			scope:target_character2 = {
+				add_adm = 2
+				add_dip = 2
+				add_mil = 2
+			}
+
+		}
+		else = {
+			scope:target_character3 = { add_trait = trait:well_advised }
+		}
+	}
+}
+
+flavor_chi.20 = {	#Famine in [target_province.GetNameWithNoTooltip]
+	type = country_event
+	title = flavor_chi.20.title
+	desc = flavor_chi.20.desc
+	outcome = neutral
+
+	trigger = {
+		tag = CHI
+		any_province = {
+			province_food_percentage < 0.25
+		}
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		ordered_province = {
+			limit = { province_food_percentage < 0.25 }
+			order_by = population
+			max = 1
+			check_range_bounds = no
+			save_scope_as = target_province
+		}
+		set_variable = {
+			name = target_province_average_control_variable
+			value = scope:target_province.province_average_control
+			months = 5
+		}
+		set_variable = {
+			name = target_province_control_food_variable
+			value = {
+				add = var:target_province_average_control_variable
+				divide = 3
+			}
+		}
+		set_variable = {
+			name = target_province_control_prosperity_variable
+			value = {
+				add = var:target_province_average_control_variable
+				divide = 5
+			}
+		}
+		set_variable = {
+			name = target_province_control_pop_satisfaction_variable
+			value = {
+				add = var:target_province_average_control_variable
+				divide = 2
+			}
+		}
+		set_variable = {
+			name = target_province_control_prosperity_variable_display
+			value = {
+				add = var:target_province_control_prosperity_variable
+				multiply = 100
+			}
+		}
+		set_variable = {
+			name = target_province_control_pop_satisfaction_variable_display
+			value = {
+				add = var:target_province_control_pop_satisfaction_variable
+				multiply = 100
+			}
+		}
+	}
+
+	option = {
+		name = flavor_chi.20.a
+
+		change_gold_effect = { scale = -1 }
+		custom_tooltip = every_location_in_province_food_prosperity_satisfaction_tt
+		hidden_effect = {
+			scope:target_province = {
+				change_province_food_percentage = root.var:target_province_control_food_variable
+				every_location_in_province = {
+					change_prosperity = root.var:target_province_control_prosperity_variable
+					every_pop = {
+						limit = {
+							owner = root
+						}
+						add_pop_satisfaction = root.var:target_province_control_pop_satisfaction_variable
+					}
+				}
+			}
+		}
+		if = {
+			limit = { modifier:allow_righteousness = yes }
+			add_righteousness = righteousness_weak_bonus
+		}
+	}
+
+	option = {
+		name = flavor_chi.20.b
+
+		add_stability = stability_weak_penalty
+		custom_tooltip = target_province_loses_prosperity_and_pop_satisfaction_tt
+		hidden_effect = {
+			scope:target_province = {
+				every_location_in_province = {
+					change_prosperity = prosperity_very_weak_penalty
+					every_pop = {
+						limit = {
+							owner = root
+						}
+						add_pop_satisfaction = pop_satisfaction_severe_penalty
+					}
+				}
+			}
+		}
+		if = {
+			limit = { modifier:allow_harmony = yes }
+			harmony_mild_towards_equilibrium = yes
+		}
+	}
+
+	after = {
+		remove_variable = target_province_control_prosperity_variable_display
+		remove_variable = target_province_control_pop_satisfaction_variable_display
+	}
+}
+
+scripted_trigger set_british_target = {
+	trigger_if = {
+		limit = {
+			tag_exists = GBR
+			country_exists = c:GBR
+		}
+		c:GBR = {
+			save_temporary_scope_as = british_target
+		}
+	}
+	trigger_else = {
+		c:ENG = { save_temporary_scope_as = british_target }
+	}
+}
+scripted_effect set_british_target_effect = {
+	if = {
+		limit = {
+			tag_exists = GBR
+			country_exists = c:GBR
+		}
+		c:GBR = {
+			save_scope_as = target_country
+		}
+	}
+	else = {
+		c:ENG = { save_scope_as = target_country }
+	}
+}
+
+# Lord Macartney's mission to China
+flavor_chi.43 = {
+	type = country_event
+	title = flavor_chi.43.title
+	desc = flavor_chi.43.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = CHI
+		from = 1792.1.1
+		to = 1806.1.1
+		monthly_chance = 25
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		OR = {
+			country_exists = c:ENG
+			AND = {
+				tag_exists = GBR
+				country_exists = c:GBR
+				c:GBR = { culture = culture:english }
+			}
+		}
+
+		set_british_target = yes
+
+		scope:british_target = {
+			has_discovered = root.capital
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+		set_british_target_effect = yes
+
+		create_character = {
+			estate = estate_type:nobles_estate
+			first_name = name_george
+			dynasty = dynasty:mac_carthaigh_dynasty
+			birth_date = 1737.5.14
+			birth_location = location:kirkcudbright
+			adm = { 20 30 }
+			dip = { 50 70 }
+			mil = { 40 50 }
+			create_in_limbo = yes
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_chi.43.a
+
+		change_societal_value = {
+			type = outward_vs_inward
+			value = societal_value_move_to_right
+		}
+
+		add_stability = stability_mild_bonus
+
+		hidden_effect = {
+			kill_character_silently = {
+				target = scope:target_character
+			}
+		}
+	}
+
+	option = {
+		name = flavor_chi.43.b
+
+		add_research_progress = research_progress_severe_bonus
+		add_opinion = {
+			modifier = chi_accepted_mission
+			target = scope:target_country
+		}
+
+		scope:target_character = {
+			move_country = ROOT
+		}
+	}
+}
+
+# Qin Liangyu
+flavor_chi.46 = {
+	type = country_event
+	title = flavor_chi.46.title
+	desc = flavor_chi.46.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = MNG
+		from = 1644.1.1
+		to = 1648.1.1
+		monthly_chance = 10
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		create_character = {
+			estate = estate_type:burghers_estate
+			first_name = name_liang2.name_yu4
+			last_name = name_qin
+			birth_location = location:linjiang
+			birth_date = 1574.1.1
+			female = yes
+			adm = { 50 60 }
+			dip = { 50 60 }
+			mil = { 70 80 }
+			save_scope_as = target_character
+		}
+	}
+	option = {
+		name = flavor_chi.46.a
+
+		scope:target_character = {
+			add_mil = 20
+		}
+	}
+	option = {
+		name = flavor_chi.46.b
+
+		scope:target_character = {
+			add_adm = 15
+			add_dip = 5
+		}
+
+		culture = {
+			add_cultural_influence = cultural_influence_severe_bonus
+		}
+	}
+	option = {
+		name = flavor_chi.46.c
+
+		scope:target_character = {
+			add_adm = 10
+			add_dip = 10
+			add_mil = 5
+		}
+	}
+}
+
+#Wang Zhenyi
+flavor_chi.47 = {
+	type = country_event
+	title = flavor_chi.47.title
+	desc = flavor_chi.47.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = CHI
+		from = 1784.1.1
+		to = 1797.1.1
+		monthly_chance = 25
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_character = {
+			estate = estate_type:burghers_estate
+			first_name = name_zhen.name_yi2
+			last_name = name_wang
+			artist = scientist
+			birth_location = location:shangyuan
+			birth_date = 1768.1.1
+			artist_skill = { 0.7 0.8 }
+			female = yes
+			create_in_limbo = yes
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_chi.47.a
+
+		add_yearly_gold = -1
+		scope:target_character = {
+			move_country = ROOT
+		}
+	}
+
+	option = {
+		name = flavor_chi.47.b
+
+		add_prestige = prestige_mild_penalty
+		hidden_effect = {
+			kill_character_silently = {
+				target = scope:target_character
+			}
+		}
+	}
+}
+
+# Examination System - Abolishment
+flavor_chi.59 = {
+	type = country_event
+	title = flavor_chi.59.title
+	desc = flavor_chi.59.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = CHI
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 5
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	trigger = {
+		is_yuan_china = no
+		international_organization:middle_kingdom ?= {
+			leader_country = root
+			NOT = { international_organization_has_policy = policy:direct_appointment }
+		}
+	}
+
+	option = {
+		name = flavor_chi.59.a
+
+		international_organization:middle_kingdom = {
+			add_policy_to_international_organization = policy:direct_appointment
+		}
+
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = estate_satisfaction_severe_bonus
+		}
+
+		change_societal_value = {
+			type = aristocracy_vs_plutocracy
+			value = societal_value_move_to_left
+		}
+	}
+
+	option = {
+		name = flavor_chi.59.b
+
+		add_research_progress = research_progress_mild_bonus
+	}
+}
+
+# Eunuchs Assume More Powers
+flavor_chi.61 = {
+	type = country_event
+	title = flavor_chi.61.title
+	desc = flavor_chi.61.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		has_eunuchs = yes
+		NOT = { has_country_modifier = chi_eunuchs }
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+
+	option = {
+		name = flavor_chi.61.a
+
+		add_country_modifier = {
+			mode = add
+			modifier = chi_eunuchs
+			years = 30
+		}
+	}
+}
+
+# Raised by the Eunuchs
+flavor_chi.62 = {
+	type = country_event
+	title = flavor_chi.62.title
+	desc = flavor_chi.62.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		has_eunuchs = yes
+		regent ?= {
+			total_abilities <= 150
+		}
+		heir ?= {
+			age_in_years > 8
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		regent = {
+			save_scope_as = target_regent
+		}
+		heir = {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_chi.62.a
+
+		scope:target_character = {
+			add_trait = trait:raised_by_eunuchs
+		}
+	}
+}
+
+flavor_chi.63 = {
+	type = country_event
+	title = flavor_chi.63.title
+	desc = flavor_chi.63.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		has_eunuchs = yes
+		modifier:eunuch_power >= 1
+		any_cabinet_character = {
+			count >= 1
+		}
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ordered_cabinet_character = {
+			order_by = {
+				value = this.total_abilities
+			}
+			max = 1
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_chi.63.a
+
+		scope:target_character = {
+			imprison_character_effect = {
+				years = -1
+			}
+		}
+
+		add_country_modifier = {
+			mode = add_and_extend
+			modifier = chi_eunuch_excesses
+			years = 20
+		}
+	}
+
+	option = {
+		name = flavor_chi.63.b
+
+		add_stability = stability_mild_penalty
+	}
+
+	option = {
+		name = flavor_chi.63.c
+
+		add_stability = stability_severe_penalty
+		add_prestige = prestige_severe_penalty
+		add_country_modifier = {
+			mode = add_and_extend
+			modifier = chi_stood_up_to_eunuchs
+			years = 20
+		}
+	}
+}
+
+# Increase Amount of Palace Eunuchs
+flavor_chi.64 = {
+	type = country_event
+	title = flavor_chi.64.title
+	desc = flavor_chi.64.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		has_eunuchs = yes
+		exists = capital
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		capital = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_chi.64.a
+
+		add_country_modifier = {
+			mode = add_and_extend
+			modifier = chi_more_eunuchs
+			years = 20
+		}
+
+		scope:target_location = {
+			change_prosperity = prosperity_very_weak_bonus
+		}
+	}
+
+	option = {
+		name = flavor_chi.64.b
+
+		add_prestige = prestige_weak_bonus
+	}
+}
+
+# Willing Castration
+flavor_chi.65 = {
+	type = country_event
+	title = flavor_chi.65.title
+	desc = flavor_chi.65.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		has_eunuchs = yes
+		modifier:eunuch_power >= 0.75
+		exists = capital
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		capital = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_chi.65.a
+
+		add_country_modifier = {
+			mode = add_and_extend
+			modifier = chi_more_eunuchs
+			years = 20
+		}
+	}
+
+	option = {
+		name = flavor_chi.65.b
+
+		add_gold = {
+			value = scope:target_location.population
+			multiply = -0.01
+		}
+		scope:target_location = {
+			change_prosperity = prosperity_mild_bonus
+		}
+	}
+}
+
+# Assumption of Power
+flavor_chi.66 = {
+	type = country_event
+	title = flavor_chi.66.title
+	desc = flavor_chi.66.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		has_eunuchs = yes
+		has_ruler = yes
+		modifier:eunuch_power >= -0.25
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler = {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_chi.66.a
+
+		add_country_modifier = {
+			mode = add_and_extend
+			modifier = chi_reverse_eunuch_powers
+			years = 25
+		}
+	}
+
+	option = {
+		name = flavor_chi.66.b
+
+		add_legitimacy = legitimacy_mild_bonus
+	}
+}
+
+flavor_chi.67 = {
+	type = country_event
+	title = flavor_chi.67.title
+	desc = flavor_chi.67.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	trigger = {
+		has_eunuchs = yes
+		modifier:eunuch_power >= 1.5
+	}
+
+	option = {
+		name = flavor_chi.67.a
+
+		add_stability = stability_severe_penalty
+		add_country_modifier = {
+			mode = add_and_extend
+			modifier = chi_eunuch_purges
+			years = 30
+		}
+	}
+
+	option = {
+		name = flavor_chi.67.b
+
+		add_prestige = prestige_severe_penalty
+	}
+}
+
+# Plea of Dismissal
+flavor_chi.68 = {
+	type = country_event
+	title = flavor_chi.68.title
+	desc = flavor_chi.68.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		has_eunuchs = yes
+		modifier:eunuch_power >= 2
+		has_ruler = yes
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler = {
+			save_scope_as = target_character
+		}
+
+		create_or_target_eunuch_character = yes
+	}
+
+	option = {
+		name = flavor_chi.68.a
+
+		add_country_modifier = {
+			mode = replace
+			modifier = chi_powerful_eunuch
+			years = 30
+		}
+	}
+
+	option = {
+		name = flavor_chi.68.b
+
+		add_stability = stability_extreme_penalty
+		scope:eunuch = {
+			imprison_character_effect = {
+				years = 10
+			}
+		}
+	}
+}
+
+# Limitless Eunuch
+flavor_chi.69 = {
+	type = country_event
+	title = flavor_chi.69.title
+	desc = flavor_chi.69.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		has_eunuchs = yes
+		modifier:eunuch_power >= 2.5
+		has_ruler = yes
+		has_country_modifier = chi_powerful_eunuch
+		NOT = { has_country_modifier = chi_eunuch_government }
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_chi.69.a
+
+		add_country_modifier = {
+			mode = add_and_extend
+			modifier = chi_eunuch_government
+			years = 20
+		}
+	}
+}
+
+# Murder Plot
+flavor_chi.70 = {
+	type = country_event
+	title = flavor_chi.70.title
+	desc = flavor_chi.70.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		has_eunuchs = yes
+		modifier:eunuch_power >= 3
+		has_country_modifier = chi_powerful_eunuch
+		num_characters >= 1
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		create_or_target_eunuch_character = yes
+		random_character = {
+			limit = {
+				NOT = { is_ruler = yes }
+				NOT = { this = scope:eunuch }
+			}
+			save_scope_as = murder_target
+		}
+	}
+
+	option = {
+		name = flavor_chi.70.a
+
+		add_prestige = prestige_severe_penalty
+		kill_character = {
+			target = scope:murder_target
+			reason = assassination
+		}
+	}
+	option = {
+		name = flavor_chi.70.b
+
+		add_stability = stability_extreme_penalty
+		remove_country_modifier = chi_powerful_eunuch
+		if = {
+			limit = {
+				has_country_modifier = chi_eunuch_government
+			}
+			remove_country_modifier = chi_eunuch_government
+		}
+
+		scope:eunuch = {
+			imprison_character_effect = {
+				years = 10
+			}
+		}
+	}
+}
+
+# Cult of the White Lotus Campaigns
+flavor_chi.83 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_chi.83.title
+	desc = flavor_chi.83.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		random_province = {
+			limit = {
+				dominant_culture = {
+					has_culture_group = culture_group:chinese_group
+				}
+			}
+			save_scope_as = target_province
+			random_location_in_province = {
+				save_scope_as = target_location
+				random_pop = {
+					save_scope_as = target_pop
+				}
+				random_pop = {
+					limit = {
+						pop_type = pop_type:peasants
+					}
+					save_scope_as = target_pop
+				}
+			}
+		}
+
+		create_character = {
+			estate = estate_type:clergy_estate
+			min_age = 20
+			birth_location = scope:target_location
+			save_scope_as = target_character
+		}
+
+		create_rebel = {
+			category = religious
+			name = white_lotus_rebellion
+			religion = root.religion
+			save_scope_as = target_rebel
+		}
+
+		scope:target_character = {
+			change_character_allegiance = scope:target_rebel
+		}
+
+		set_local_variable = {
+			name = length_of_agitation
+			value = { 3 10 }
+		}
+	}
+
+	trigger = {
+		tag = CHI
+		any_province = {
+			dominant_culture = {
+				has_culture_group = culture_group:chinese_group
+			}
+		}
+	}
+
+	option = {
+		name = flavor_chi.83.a
+
+		custom_tooltip = {
+			text = flavor_chi.83.tooltip
+			scope:target_province = {
+				every_location_in_province = {
+					every_pop = {
+						limit = {
+							owner = root
+							pop_type = pop_type:peasants
+						}
+						change_pop_allegiance = scope:target_rebel
+						add_pop_satisfaction = pop_satisfaction_mild_penalty
+					}
+					add_location_modifier = {
+						mode = add_and_extend
+						modifier = chi_white_lotus_agitation
+						years = local_var:length_of_agitation
+					}
+				}
+			}
+		}
+	}
+}
+
+# Salt Smuggling
+flavor_chi.85 = {
+	type = country_event
+	title = flavor_chi.85.title
+	desc = flavor_chi.85.desc
+	outcome = neutral
+
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_salt.dds"
+
+	trigger = {
+		culture = {
+			has_culture_group = culture_group:chinese_group
+		}
+		produced_in_country:salt > 0
+		any_owned_location = {
+			raw_material = goods:salt
+		}
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = armed
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+		random_owned_location = {
+			limit = {
+				raw_material = goods:salt
+			}
+			province = {
+				save_scope_as = target_province
+			}
+		}
+		set_local_variable = {
+			name = cost_to_deal_with_smugglers
+			value = 0
+		}
+		scope:target_province = {
+			every_location_in_province = {
+				ROOT = {
+					change_local_variable = {
+						name = cost_to_deal_with_smugglers
+						add = prev.location_tax_base
+					}
+				}
+			}
+		}
+		change_local_variable = {
+			name = cost_to_deal_with_smugglers
+			multiply = -9
+		}
+	}
+
+	option = {
+		name = flavor_chi.85.a
+
+		add_gold = local_var:cost_to_deal_with_smugglers
+
+		add_estate_satisfaction = {
+			type = estate_type:peasants_estate
+			value = estate_satisfaction_weak_penalty
+		}
+
+		add_legitimacy = legitimacy_mild_bonus
+	}
+
+	option = {
+		name = flavor_chi.85.b
+
+		change_societal_value = {
+			type = centralization_vs_decentralization
+			value = societal_value_move_to_right
+		}
+
+		scope:target_province = {
+			add_province_modifier = {
+				mode = add_and_extend
+				modifier = chi_salt_black_market
+				years = 10
+			}
+		}
+	}
+
+	option = {
+		name = flavor_chi.85.c
+
+		add_prestige = prestige_mild_penalty
+
+		scope:target_province = {
+			add_province_modifier = {
+				mode = add_and_extend
+				modifier = chi_salt_black_market
+				years = 25
+			}
+		}
+	}
+}
+
+# Corruption in the Censorate
+flavor_chi.86 = {
+	type = country_event
+	title = flavor_chi.86.title
+	desc = flavor_chi.86.desc
+	outcome = neutral
+
+	trigger = {
+		tag = CHI
+		has_reform = government_reform:three_departments_system
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_chi.86.a
+
+		add_stability = stability_weak_penalty
+	}
+
+	option = {
+		name = flavor_chi.86.b
+
+		add_yearly_gold = 0.25
+		add_stability = stability_severe_penalty
+	}
+}
+
+# Repairing the Canal
+flavor_chi.87 = {
+	type = country_event
+	title = flavor_chi.87.title
+	desc = flavor_chi.87.desc
+	outcome = neutral
+
+	trigger = {
+		has_global_variable = china_grand_canal_sustained_damage
+		tag = CHI
+		any_owned_location = {
+			is_part_of_chinese_grand_canal = yes
+			count >= 25
+		}
+		gold >= {
+			value = monthly_income_trade_and_tax
+			multiply = 10
+		}
+	}
+	
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_chi.87.a
+
+		change_gold_effect = { scale = -20	}
+		repair_grand_canal_china = yes
+	}
+
+	option = {
+		name = flavor_chi.87.b
+
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+# Dream of the Red Chamber
+flavor_chi.92 = {
+	type = country_event
+	title = flavor_chi.92.title
+	desc = flavor_chi.92.desc
+	outcome = neutral
+	historical_info = flavor_chi.92.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = CHI
+		from = 1730.1.1
+		to = 1780.1.1
+		monthly_chance = 3
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+
+		create_character = {
+			first_name = name_xue.name_qin2
+			last_name = name_cao
+			adm = { 25 100 }
+			dip = { 25 100 }
+			mil = { 25 100 }
+			artist = artist_type:writer
+			artist_skill = { 0.75 0.95 }
+			birth_date = 1710.4.4
+			birth_location = location:shangyuan
+			culture = culture:jianghuai_culture
+			religion = religion:sanjiao
+			estate = estate_type:burghers_estate
+			save_scope_as = target_character
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+
+		capital ?= {
+			create_art = {
+				artist = scope:target_character
+				key = hong_lu_meng
+				quality = 100
+				type = work_of_art_type:novel
+			}
+		}
+	}
+
+	option = {
+		name = flavor_chi.92.a
+
+		show_as_tooltip = {
+			capital ?= {
+				create_art = {
+					artist = scope:target_character
+					key = hong_lu_meng
+					quality = 100
+					type = work_of_art_type:novel
+				}
+			}
+		}
+
+		culture ?= {
+			add_cultural_influence = cultural_influence_mild_bonus
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+
+		change_gold_effect = { scale = -4 }
+	}
+
+	option = {
+		name = flavor_chi.92.b
+
+		add_prestige = prestige_mild_penalty
+
+		show_as_tooltip = {
+			capital ?= {
+				create_art = {
+					artist = scope:target_character
+					key = hong_lu_meng
+					quality = 80
+					type = work_of_art_type:novel
+				}
+			}
+		}
+
+		hidden_effect = {
+			work_of_art:hong_lu_meng ?= {
+				change_art_quality = -20
+			}
+		}
+	}
+}
+
+######
+#Six Masters of the Early Qing
+#####
+
+#Yun Shouping
+flavor_chi.101 = {
+	type = country_event
+	title = flavor_chi.101.title
+	desc = flavor_chi.101.desc
+	outcome = neutral
+	historical_info = flavor_chi.101.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = CHI
+		from = 1660.1.1
+		to = 1690.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		is_qing_china = yes
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_shou.name_ping
+			last_name = name_yun4
+			adm = { 25 100 }
+			dip = { 25 100 }
+			mil = { 25 100 }
+			artist = artist_type:painter
+			artist_skill = { 0.25 0.9 }
+			birth_date = 1633.5.11
+			birth_location = location:yixing
+			culture = culture:wu_culture
+			religion = religion:sanjiao
+			estate = estate_type:peasants_estate
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+	}
+
+	option = {
+		name = flavor_chi.101.a
+
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = chi_artistic_master_of_the_qing_dynasty
+				years = -1
+			}
+		}
+
+		culture ?= {
+			add_cultural_influence = cultural_influence_mild_bonus
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+		scope:target_character = { move_country = root }
+
+		change_societal_value = { type = spiritualist_vs_humanist value = societal_value_huge_move_to_left }
+	}
+
+	option = {
+		name = flavor_chi.101.b
+
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+		change_societal_value = { type = spiritualist_vs_humanist value = societal_value_huge_move_to_right }
+		change_societal_value = { type = outward_vs_inward value = societal_value_huge_move_to_left }
+	}
+}
+
+#Wu Li
+flavor_chi.102 = {
+	type = country_event
+	title = flavor_chi.102.title
+	desc = flavor_chi.102.desc
+	outcome = neutral
+	historical_info = flavor_chi.102.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = CHI
+		from = 1655.1.1
+		to = 1690.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		is_qing_china = yes
+		religion.group != religion_group:christian
+		"religion_group_percentage_in_country(religion_group:christian)" > 0.05
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+
+		create_character = {
+			first_name = name_li4
+			last_name = name_wu
+			adm = { 25 100 }
+			dip = { 25 100 }
+			mil = { 25 100 }
+			artist = artist_type:painter
+			artist_skill = { 0.25 0.9 }
+			birth_date = 1632.4.2
+			birth_location = location:wujin
+			culture = culture:wu_culture
+			religion = religion:catholic
+			estate = estate_type:clergy_estate
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+	}
+
+	option = {
+		name = flavor_chi.102.a
+
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = chi_artistic_master_of_the_qing_dynasty
+				years = -1
+			}
+			move_country = root
+		}
+
+		culture ?= {
+			add_cultural_influence = cultural_influence_mild_bonus
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+
+		change_societal_value = { type = spiritualist_vs_humanist value = societal_value_huge_move_to_right }
+
+		add_stability = stability_mild_penalty
+	}
+
+	option = {
+		name = flavor_chi.102.b
+
+		change_societal_value = { type = spiritualist_vs_humanist value = societal_value_huge_move_to_left }
+		change_societal_value = { type = outward_vs_inward value = societal_value_huge_move_to_right }
+
+		scope:target_character = {
+			banish_character = yes
+		}
+	}
+}
+
+#Wang Shimin
+flavor_chi.103 = {
+	type = country_event
+	title = flavor_chi.103.title
+	desc = flavor_chi.103.desc
+	outcome = neutral
+	historical_info = flavor_chi.103.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = CHI
+		from = 1660.1.1
+		to = 1690.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		is_qing_china = yes
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_shi.name_min
+			last_name = name_wang
+			adm = { 25 100 }
+			dip = { 25 100 }
+			mil = { 25 100 }
+			artist = artist_type:painter
+			artist_skill = { 0.25 0.9 }
+			birth_date = 1592.3.12
+			birth_location = location:kunshan
+			culture = culture:wu_culture
+			religion = religion:sanjiao
+			estate = estate_type:burghers_estate
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+	}
+
+	option = {
+		name = flavor_chi.103.a
+
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = chi_artistic_master_of_the_qing_dynasty
+				years = -1
+			}
+		}
+
+		culture ?= {
+			add_cultural_influence = cultural_influence_mild_bonus
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+		scope:target_character = { move_country = root }
+
+		change_societal_value = { type = individualism_vs_communalism value = societal_value_huge_move_to_right }
+	}
+
+	option = {
+		name = flavor_chi.103.b
+
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+		change_societal_value = { type = individualism_vs_communalism value = societal_value_huge_move_to_left }
+		change_societal_value = { type = outward_vs_inward value = societal_value_huge_move_to_left }
+	}
+}
+
+#Wang Jian
+flavor_chi.104 = {
+	type = country_event
+	title = flavor_chi.104.title
+	desc = flavor_chi.104.desc
+	outcome = neutral
+	historical_info = flavor_chi.104.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = CHI
+		from = 1644.1.1
+		to = 1675.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		is_qing_china = yes
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+
+		create_character = {
+			first_name = name_jian4
+			last_name = name_wang
+			adm = { 25 100 }
+			dip = { 25 100 }
+			mil = { 25 100 }
+			artist = artist_type:painter
+			artist_skill = { 0.25 0.9 }
+			birth_date = 1598.12.5
+			birth_location = location:kunshan
+			culture = culture:wu_culture
+			religion = religion:sanjiao
+			estate = estate_type:burghers_estate
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+	}
+
+	option = {
+		name = flavor_chi.104.a
+
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = chi_artistic_master_of_the_qing_dynasty
+				years = -1
+			}
+		}
+
+		culture ?= {
+			add_cultural_influence = cultural_influence_mild_bonus
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+		scope:target_character = { move_country = root }
+
+		change_societal_value = { type = individualism_vs_communalism value = societal_value_huge_move_to_right }
+	}
+
+	option = {
+		name = flavor_chi.104.b
+
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+		change_societal_value = { type = individualism_vs_communalism value = societal_value_huge_move_to_left }
+		change_societal_value = { type = outward_vs_inward value = societal_value_huge_move_to_left }
+	}
+}
+
+#Wang Yuanqi
+flavor_chi.105 = {
+	type = country_event
+	title = flavor_chi.105.title
+	desc = flavor_chi.105.desc
+	outcome = neutral
+	historical_info = flavor_chi.105.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = CHI
+		from = 1660.1.1
+		to = 1695.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		is_qing_china = yes
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+
+		create_character = {
+			first_name = name_yuan21.name_qi21
+			last_name = name_wang
+			adm = { 25 100 }
+			dip = { 25 100 }
+			mil = { 25 100 }
+			artist = artist_type:painter
+			artist_skill = { 0.25 0.9 }
+			birth_date = 1642.9.12
+			birth_location = location:kunshan
+			culture = culture:wu_culture
+			religion = religion:sanjiao
+			estate = estate_type:burghers_estate
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+	}
+
+	option = {
+		name = flavor_chi.105.a
+
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = chi_artistic_master_of_the_qing_dynasty
+				years = -1
+			}
+		}
+
+		culture ?= {
+			add_cultural_influence = cultural_influence_mild_bonus
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+		scope:target_character = { move_country = root }
+
+		change_societal_value = { type = individualism_vs_communalism value = societal_value_huge_move_to_right }
+	}
+
+	option = {
+		name = flavor_chi.105.b
+
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+		change_societal_value = { type = individualism_vs_communalism value = societal_value_huge_move_to_left }
+		change_societal_value = { type = outward_vs_inward value = societal_value_huge_move_to_left }
+	}
+}
+
+#Wang Hui
+flavor_chi.106 = {
+	type = country_event
+	title = flavor_chi.106.title
+	desc = flavor_chi.106.desc
+	outcome = neutral
+	historical_info = flavor_chi.106.historical_info
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = CHI
+		from = 1650.1.1
+		to = 1685.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		is_qing_china = yes
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+
+		create_character = {
+			first_name = name_hui12
+			last_name = name_wang
+			adm = { 25 100 }
+			dip = { 25 100 }
+			mil = { 25 100 }
+			artist = artist_type:painter
+			artist_skill = { 0.25 0.9 }
+			birth_date = 1632.3.6
+			birth_location = location:changshu
+			culture = culture:wu_culture
+			religion = religion:sanjiao
+			estate = estate_type:burghers_estate
+			save_scope_as = target_character
+			create_in_limbo = yes
+		}
+
+		ruler_or_regent ?= {
+			save_scope_as = target_character2
+		}
+	}
+
+	option = {
+		name = flavor_chi.106.a
+
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = chi_artistic_master_of_the_qing_dynasty
+				years = -1
+			}
+		}
+
+		culture ?= {
+			add_cultural_influence = cultural_influence_mild_bonus
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+		scope:target_character = { move_country = root }
+
+		change_societal_value = { type = individualism_vs_communalism value = societal_value_huge_move_to_right }
+	}
+
+	option = {
+		name = flavor_chi.106.b
+
+		hidden_effect = {
+   			kill_character_silently = scope:target_character
+  		}
+		change_societal_value = { type = individualism_vs_communalism value = societal_value_huge_move_to_left }
+		change_societal_value = { type = outward_vs_inward value = societal_value_huge_move_to_left }
+	}
+}
+
+# Yuanmingyuan
+flavor_chi.107 = {
+	type = country_event
+	title = flavor_chi.107.title
+	desc = flavor_chi.107.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = CHI
+		from = 1707.1.1
+		to = 1750.1.1
+		monthly_chance = 10
+	}
+
+	trigger = {
+		culture ?= { has_culture_group = culture_group:jurchen_group }
+		ruler ?= {
+			has_dynasty = yes
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		ruler = {
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_chi.107.a
+
+		add_gold = {
+			value = capital.population
+			multiply = -4
+			multiply =  { 0.75 1.25 }
+		}
+		capital = {
+			create_art = {
+				key = yuanmingyuan
+				quality = { 0.8 0.9 }
+				type = work_of_art_type:palace
+			}
+		}
+		add_government_power = government_power_severe_bonus
+	}
+
+	option = {
+		name = flavor_chi.107.b
+
+		add_prestige = prestige_severe_penalty
+	}
+}
+
+# Send a Large Tributary - subject
+flavor_chi.108 = {
+	type = country_event
+	title = flavor_chi.108.title
+	desc = flavor_chi.108.desc
+	outcome = neutral
+
+	trigger = {
+		exists = international_organization:middle_kingdom
+		exists = international_organization:middle_kingdom.leader_country
+		is_subject_of = international_organization:middle_kingdom.leader_country
+		is_subject_type = tributary
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		save_scope_as = origin_country
+		overlord = {
+			save_scope_as = target_country
+		}
+	}
+
+	option = {
+		name = flavor_chi.108.a
+
+		ai_chance = {
+			factor = 0.7
+		}
+
+		add_country_modifier = {
+			mode = add_and_extend
+			modifier = chi_large_tributary_envoy
+			years = 40
+		}
+
+		random = {
+			chance = 50
+			scope:target_country = {
+				trigger_event_non_silently = {
+					id = flavor_chi.109
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_chi.108.b
+
+		ai_chance = {
+			factor = 0.3
+		}
+
+		add_liberty_desire = liberty_desire_mild_minus
+	}
+}
+
+# Send a Large Tributary - overlord
+flavor_chi.109 = {
+	type = country_event
+	title = flavor_chi.109.title
+	desc = flavor_chi.109.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	major = yes
+
+	major_trigger = {
+		this = scope:origin_country
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_chi.109.a
+
+		ai_chance = {
+			factor = 0.25
+		}
+
+		scope:origin_country = {
+			remove_country_modifier = chi_large_tributary_envoy
+
+			add_opinion = {
+				modifier = chi_reduced_tributary_size
+				target = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = flavor_chi.109.b
+
+		ai_chance = {
+			factor = 0.70
+		}
+
+		add_diplomats = diplomats_severe_penalty
+		add_prestige = prestige_weak_penalty
+	}
+
+	option = {
+		name = flavor_chi.109.c
+
+		ai_chance = {
+			factor = 0.05
+		}
+
+		cancel_subject = scope:origin_country
+	}
+}
+
+# Legislative Precedent
+flavor_chi.110 = {
+	type = country_event
+	title = flavor_chi.110.title
+	desc = flavor_chi.110.desc
+	outcome = neutral
+
+	trigger = {
+		culture = {
+			has_culture_group = culture_group:chinese_group
+		}
+		any_character = {
+			adm >= 80
+		}
+	}
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		random_character = {
+			limit = {
+				adm >= 80
+			}
+			weight = {
+				factor = 1
+				modifier = {
+					factor = {
+						value = adm
+						subtract = 80
+					}
+				}
+			}
+			save_scope_as = target_character
+		}
+		random_estate = {
+			limit = {
+				NOT = { estate_type = estate_type:crown_estate }
+			}
+			save_scope_as = target_estate
+		}
+	}
+
+	option = {
+		name = flavor_chi.110.a
+
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 4
+				government_power < 25
+			}
+		}
+
+		add_estate_satisfaction = {
+			type = scope:target_estate.estate_type
+			value = estate_satisfaction_mild_penalty
+		}
+		add_government_power = government_power_severe_bonus
+	}
+
+	option = {
+		name = flavor_chi.110.b
+
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 2
+				stability < 50
+			}
+			modifier = {
+				factor = 2
+				stability < 25
+			}
+		}
+
+		add_stability = stability_mild_bonus
+	}
+}
+
+# Mongol Rebels Caught in [target_province.GetName]
+flavor_chi.112 = {
+	type = country_event
+	title = flavor_chi.112.title
+	desc = flavor_chi.112.desc
+	outcome = neutral
+
+	trigger = {
+		culture = {
+			has_culture_group = culture_group:chinese_group
+		}
+		country_has_estate = estate_type:peasants_estate
+		any_province = {
+			OR = {
+				culture_percentage = {
+					culture = culture:mongolian_culture
+					value > 0.1
+				}
+				culture_percentage = {
+					culture = culture:tumed_culture
+					value > 0.1
+				}
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		random_province = {
+			limit = {
+				OR = {
+					culture_percentage = {
+						culture = culture:mongolian_culture
+						value > 0.1
+					}
+					culture_percentage = {
+						culture = culture:tumed_culture
+						value > 0.1
+					}
+				}
+			}
+			weight = {
+				factor = 1
+				modifier = {
+					factor = population
+				}
+			}
+			save_scope_as = target_province
+			ordered_location_in_province = {
+				order_by = population
+				max = 1
+				check_range_bounds = no
+				save_scope_as = target_location
+				event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+			}
+		}
+	}
+
+	option = {
+		name = flavor_chi.112.a
+
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.1
+				trigger = {
+					manpower < {
+						value = yearly_manpower
+						multiply = 0.5
+					}
+				}
+			}
+			modifier = {
+				factor = 0.1
+				trigger = {
+					gold < {
+						value = monthly_income_trade_and_tax
+						multiply = 3
+					}
+				}
+			}
+		}
+
+		change_gold_effect = { scale = -1.5 }
+		add_yearly_manpower = -0.05
+		scope:target_province = {
+			add_province_modifier = {
+				mode = replace
+				modifier = chi_mongol_rebel_bands_curbed
+				years = 15
+			}
+		}
+	}
+
+	option = {
+		name = flavor_chi.112.b
+
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.1
+				estate_satisfaction:peasants_estate < 0.4
+			}
+		}
+
+		scope:target_province = {
+			add_province_modifier = {
+				mode = replace
+				modifier = chi_mongol_rebel_bands
+				years = 15
+			}
+		}
+		add_estate_satisfaction = {
+			type = estate_type:peasants_estate
+			value = estate_satisfaction_mild_penalty
+		}
+	}
+}
+
+# Koxinga Flees to Taiwan
+flavor_chi.113 = {
+	type = country_event
+	title = flavor_chi.113.title
+	desc = flavor_chi.113.desc
+	outcome = neutral
+
+	trigger = {
+		is_yuan_china = no
+		any_character = {
+			is_general = yes
+		}
+		area:taiwan_area = {
+			any_location_in_area = {
+				has_owner = no
+				is_coastal = yes
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		random_character = {
+			limit = {
+				is_general = yes
+			}
+			save_scope_as = target_character
+		}
+
+		area:taiwan_area = {
+			random_location_in_area = {
+				limit = {
+					has_owner = no
+					is_coastal = yes
+				}
+				save_scope_as = target_location
+			}
+		}
+
+		scope:target_location = {
+			change_location_owner = ROOT
+			create_country_from_location = {
+				save_scope_as = target_country
+				set_new_ruler = scope:target_character
+				add_country_modifier = {
+					mode = replace
+					modifier = chi_taiwan_exile
+					years = 25
+				}
+			}
+			change_integration_level = core
+			add_core = scope:target_country
+		}
+	}
+
+	option = {
+		name = flavor_chi.113.a
+
+		add_prestige = prestige_mild_penalty
+	}
+
+	option = {
+		name = flavor_chi.113.b
+		high_risk_option = yes
+
+		trigger = {
+			is_ai = no
+		}
+
+		add_prestige = prestige_mild_penalty
+		change_player = scope:target_country
+	}
+}
+
+# Personal Recommendation
+flavor_chi.114 = {
+	type = country_event
+	title = flavor_chi.114.title
+	desc = flavor_chi.114.desc
+	outcome = neutral
+
+	trigger = {
+		has_policy = abolish_imperial_examination
+		any_cabinet_character = {
+			count >= 1
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		random_cabinet_character = {
+			save_scope_as = recommending_character
+		}
+		create_character = {
+			estate = estate_type:burghers_estate
+			age = 25
+			adm = { 30 80 }
+			dip = { 30 80 }
+			mil = { 30 80 }
+			create_in_limbo = yes
+			save_scope_as = target_character
+		}
+	}
+
+	option = {
+		name = flavor_chi.114.a
+
+		ai_chance = {
+			factor = 0.75
+			modifier = {
+				factor = 0
+				trigger = {
+					gold < {
+						value = monthly_income_trade_and_tax
+						multiply = 3
+					}
+				}
+			}
+		}
+
+		change_gold_effect = { scale = -3 }
+		scope:target_character = {
+			move_country = ROOT
+		}
+		scope:target_character = {
+			add_character_modifier = {
+				mode = replace
+				modifier = chi_personal_recommendation
+				years = -1
+			}
+		}
+	}
+
+	option = {
+		name = flavor_chi.114.b
+
+		ai_chance = {
+			factor = 0.25
+		}
+
+		scope:recommending_character = {
+			add_character_modifier = {
+				mode = replace
+				modifier = chi_offended_cabinet_member
+				years = 3
+			}
+		}
+		hidden_effect = {
+			kill_character_silently = {
+				target = scope:target_character
+			}
+		}
+	}
+}
+
+# Proclamation of Accession
+flavor_chi.115 = {
+	type = country_event
+	title = flavor_chi.115.title
+	desc = flavor_chi.115.desc
+	outcome = neutral
+	
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		save_scope_as = target_country
+	}
+
+	option = {
+		name = flavor_chi.115.a
+
+		add_country_modifier = {
+			modifier = chi_new_dynasty
+			years = 50
+			mode = add_and_extend
+		}
+
+		hidden_effect = {
+			if = {
+				limit = {
+					exists = international_organization:middle_kingdom
+					NOT = { is_leader_of_international_organization = international_organization:middle_kingdom }
+				}
+				international_organization:middle_kingdom.leader_country = {
+					every_subject = {
+						limit = {
+							is_subject_type = tributary
+						}
+						trigger_event_non_silently = flavor_chi.116
+					}
+				}
+			}
+			every_subject = {
+				limit = {
+					is_subject_type = tributary
+				}
+				trigger_event_non_silently = flavor_chi.116
+			}
+		}
+	}
+}
+
+# Proclamation of Accession - other countries
+flavor_chi.116 = {
+	type = country_event
+	title = flavor_chi.116.title
+	desc = flavor_chi.116.desc
+	outcome = neutral
+	
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	
+	option = {
+		name = flavor_chi.116.a
+
+		ai_chance = {
+			factor = 0.25
+			modifier = {
+				factor = 2
+				trigger = {
+					"opinion(scope:target_country)" >= 0
+				}
+			}
+			modifier = {
+				factor = 2
+				trigger = {
+					"opinion(scope:target_country)" >= 25
+				}
+			}
+			modifier = {
+				factor = 2
+				trigger = {
+					"opinion(scope:target_country)" >= 50
+				}
+			}
+			modifier = {
+				factor = 4
+				trigger = {
+					"opinion(scope:target_country)" >= 100
+				}
+			}
+		}
+
+		add_opinion_mutual_effect = {
+			modifier = chi_acceptance_of_dynasty
+			target = scope:target_country
+		}
+	}
+
+	option = {
+		name = flavor_chi.116.b
+
+		ai_chance = {
+			factor = 0.5
+		}
+
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+flavor_chi.127 = { #Xi'an
+	type = country_event
+	title = flavor_chi.127.title
+	desc = flavor_chi.127.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = CHI
+		from = 1644.1.1
+		to = 1918.1.1
+		monthly_chance = 1
+	}
+
+	trigger = {
+		owns = location:jingzhao
+		NOT = { is_situation_active = situation:red_turban_rebellions }
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		location:jingzhao = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = flavor_chi.127.a
+
+		add_legitimacy = legitimacy_mild_bonus
+		scope:target_location = {
+			if = {
+				limit = { location_rank != location_rank:city}
+				change_location_rank_effect = { location_rank = location_rank:city }
+			}
+			else = {
+				change_development = development_weak_bonus
+			}
+			rename_location = xian
+		}
+	}
+
+	option = {
+		name = flavor_chi.127.b
+
+		add_legitimacy = legitimacy_mild_bonus
+		scope:target_location = {
+			if = {
+				limit = { location_rank != location_rank:city}
+				change_location_rank_effect = { location_rank = location_rank:city }
+			}
+			else = {
+				change_development = development_weak_bonus
+			}
+			rename_location = changan_xian
+		}
+	}
+
+	option = {
+		name = flavor_chi.127.c
+		add_prestige = prestige_extreme_bonus
+	}
+}
+
+#######
+# flavor_chi.2000 - flavor_chi.2999 used for Treasure Voyage in flavor_chi_treasure_expedition.txt
+#######

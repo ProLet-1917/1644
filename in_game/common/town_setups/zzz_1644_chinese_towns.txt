@@ -9,7 +9,8 @@ REPLACE:chinese_town = {
 	temple = 1
 	zhixian = 1
 	confucian_school = 1
-	
+	scriptorium = 1
+
 	# --- 基础设施与商业 ---
 	marketplace = 1		# 基础商业
 	granary = 1			# 基础粮食储备
@@ -22,8 +23,9 @@ REPLACE:chinese_town = {
 	# 轻工业
 	pottery_guild = 1	# 基础：陶瓷
 	furniture_guild = 1	# 基础：手工业
-	paper_guild = 1		# 基础：造纸
+	paper_guild = 2		# 基础：造纸
 	tannery = 1			# 基础：皮革加工
+	tools_guild = 2
 	
 	# 重工业与资源
 	winery = 1			# 基础：农业加工
@@ -40,8 +42,8 @@ REPLACE:chinese_town = {
 # =============================================================================
 REPLACE:chinese_city = {
 	# --- 行政与宗教 ---
-	zhixian = 2		# 行政管理
-	scriptorium = 1		# 文化教育 (书院)
+	zhixian = 1		# 行政管理
+	scriptorium = 3		# 文化教育 (书院)
 	confucian_academy = 1
 	temple = 1
 	
@@ -63,6 +65,7 @@ REPLACE:chinese_city = {
 	lacquerware_guild = 1 # 漆器工艺
 	distillers_workshop = 1	# 蒸馏酒业
 	tannery = 3				# 皮革加工
+	dyes_workshop = 2
 	
 	# 重工业与工具
 	tools_workshop = 3		# 工具制造
@@ -81,8 +84,8 @@ REPLACE:chinese_city = {
 # =============================================================================
 REPLACE:chinese_coastal_city = {
 	# --- 行政与宗教 ---
-	zhixian = 2
-	scriptorium = 1
+	zhixian = 1
+	scriptorium = 3
 	confucian_academy = 1
 	temple = 1
 	
@@ -105,6 +108,7 @@ REPLACE:chinese_coastal_city = {
 	lacquerware_guild = 1
 	distillers_workshop = 1
 	tannery = 3
+	dyes_workshop = 2
 	
 	# 重工业与军工
 	tools_workshop = 3
@@ -128,7 +132,7 @@ REPLACE:chinese_coastal_city = {
 # =============================================================================
 chinese_town_mil = {
 	# --- 行政与宗教 ---
-	zhixian = 2			# 军事行政合一
+	zhixian = 1			# 军事行政合一
 	temple = 1
 	confucian_school = 1
 	
@@ -152,6 +156,7 @@ chinese_town_mil = {
 	mason = 1			# 防御工事材料
 	gun_smith = 2	# 火器工坊
 	cannon_maker = 2
+	dyes_workshop = 1
 	
 	# --- 军事防御 ---
 	city_walls = 1			# 城堡防御
@@ -160,7 +165,7 @@ chinese_town_mil = {
 }
 chinese_coastal_town_mil = {
 		# --- 行政与宗教 ---
-		zhixian = 2			# 军事行政合一
+		zhixian = 1			# 军事行政合一
 		temple = 1
 		confucian_school = 1 #儒学门舍
 		
@@ -184,6 +189,7 @@ chinese_coastal_town_mil = {
 		mason = 1			# 防御工事材料
 		gun_smith = 2	# 火器工坊
 		cannon_maker = 2
+		dyes_workshop = 1
 		
 		# --- 军事防御 ---
 		city_walls = 1			# 城堡防御
@@ -197,8 +203,8 @@ chinese_coastal_town_mil = {
 # =============================================================================
 chinese_city_mil = {
 	# --- 行政与宗教 ---
-	zhixian = 2
-	scriptorium = 1
+	zhixian = 1
+	scriptorium = 3
 	confucian_school = 1
 	temple = 1
 	

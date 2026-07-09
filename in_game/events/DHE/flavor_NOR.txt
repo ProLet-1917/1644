@@ -1,0 +1,141 @@
+﻿namespace = flavor_nor
+
+flavor_nor.21 = {
+	type = country_event
+	title = flavor_nor.21.title
+	desc = flavor_nor.21.desc
+	outcome = neutral
+	fire_only_once = yes
+	
+	dynamic_historical_event = {
+		tag = NOR
+		from = 1711.1.1
+		to = 1720.1.1
+		monthly_chance = 5
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_poptype_effect = { foreground = pop_type:soldiers background = pop_type:soldiers }
+		create_character = {
+			first_name = name_peter
+			last_name = Tordenskiold
+			estate = estate_type:nobles_estate
+			adm = 90
+			dip = 95
+			mil = 90
+			birth_location = location:nidaros
+			birth_date = 1690.10.28
+			culture = culture:norwegian
+			script = nor_tordenskiold
+			add_trait = trait:ironside
+			save_scope_as = tordenskiold
+		}
+	}
+
+	trigger = {
+		owns = location:nidaros
+		num_of_ports >= 3
+	}
+
+	option = {
+		name = flavor_nor.21.a
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+flavor_nor.22 = {
+	type = country_event
+	title = flavor_nor.22.title
+	desc = flavor_nor.22.desc
+	outcome = neutral
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = NOR
+		from = 1650.1.1
+		to = 1675.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		num_of_ports >= 3
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		create_character = {
+			first_name = Cort
+			last_name = Adeler
+			estate = estate_type:nobles_estate
+			adm = 75
+			dip = 80
+			mil = 75
+			birth_location = location:skien
+			birth_date = 1622.12.16
+			culture = culture:norwegian
+			add_trait = trait:level_headed
+			save_scope_as = cort_adeler
+		}
+	}
+
+	option = {
+		name = flavor_nor.22.a
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+flavor_nor.24 = {
+	type = country_event
+	title = flavor_nor.24.title
+	desc = flavor_nor.24.desc
+	outcome = neutral
+
+	fire_only_once = yes
+	
+	dynamic_historical_event = {
+		tag = NOR
+		from = 1644.1.1
+		to = 1660.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		owns = location:bergen
+		has_country_modifier = nor_hollendertiden
+	}
+
+	illustration_tags = {
+        10 = regular
+        10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+	
+	option = {
+		name = flavor_nor.24.a
+		location:bergen = {
+			change_development  = development_severe_bonus
+		}
+		random_owned_location = {
+			limit = {
+				is_port = yes
+				area = owner.capital.area
+			}
+			change_development  = development_severe_bonus
+		}
+
+		change_societal_value = { type = land_vs_naval value = societal_value_move_to_right }
+	}
+}
