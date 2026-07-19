@@ -1,0 +1,392 @@
+fanwang_shuwei = {
+    get_payer_list = {
+        leader_country ?= {
+            add_to_local_variable_list = {
+                name = payers
+                target = this
+            }
+        }
+    }
+    get_payee_list = {
+        every_international_organization_member = {
+            limit = {
+                NOT = { is_leader_of_international_organization = root }
+                modifier:is_fanwang = yes
+            }
+            add_to_local_variable_list = {
+                name = payees
+                target = this
+            }
+        }
+    }
+    price = fanwang_shuwei_price
+    uses_maintenance = yes
+    min_slider_value = 0
+    maintenance_modifier = {
+        potential_trigger = { "payment_maintenance(scope:recipient|fanwang_shuwei)" < 0.5 }
+        scale = {
+            value = 1
+            subtract = {
+                value = "payment_maintenance(scope:recipient|fanwang_shuwei)"
+                multiply = 2
+            }
+        }
+        dynasty_stability_monthly_income = -0.05
+    }
+    maintenance_modifier = {
+        potential_trigger = { "payment_maintenance(scope:recipient|fanwang_shuwei)" > 0.5 }
+        scale = {
+            value = "payment_maintenance(scope:recipient|fanwang_shuwei)"
+            subtract = 0.5
+            multiply = 2
+        }
+        dynasty_stability_monthly_income = 0.05
+    }
+
+    price_multiplier = {
+        if = {
+            #nothing happens during a power struggle
+            limit = {
+                international_organization_has_leader = no
+            }
+            value = 0
+        }
+        else = {
+            every_international_organization_member = {
+                limit = {
+                    not = { is_leader_of_international_organization = root }
+                }
+                add = monthly_income_trade_and_tax
+            }
+            multiply = 0.01
+        }
+    }
+
+    proportion_for_payer = {
+        add = {
+            desc = "game_concept_monthly_income_trade_and_tax"
+            value = monthly_income_trade_and_tax
+        }
+    }
+
+    proportion_for_payee = {
+        add = {
+            desc = "fanwang_shuwei"
+            value = 1
+        }
+    }
+}
+
+fanwang_shixi = {
+    get_payer_list = {
+        leader_country ?= {
+            add_to_local_variable_list = {
+                name = payers
+                target = this
+            }
+        }
+    }
+    get_payee_list = {
+        every_international_organization_member = {
+            limit = {
+                NOT = { is_leader_of_international_organization = root }
+                modifier:is_fanwang = yes
+            }
+            add_to_local_variable_list = {
+                name = payees
+                target = this
+            }
+        }
+    }
+    price = fanwang_shixi_price
+    uses_maintenance = yes
+    maintenance_modifier = {
+        potential_trigger = { "payment_maintenance(scope:recipient|fanwang_shixi)" < 0.5 }
+        scale = {
+            value = 1
+            subtract = {
+                value = "payment_maintenance(scope:recipient|fanwang_shixi)"
+                multiply = 2
+            }
+        }
+        dynasty_stability_monthly_income = -0.025
+    }
+    maintenance_modifier = {
+        potential_trigger = { "payment_maintenance(scope:recipient|fanwang_shixi)" > 0.5 }
+        scale = {
+            value = "payment_maintenance(scope:recipient|fanwang_shixi)"
+            subtract = 0.5
+            multiply = 2
+        }
+        dynasty_stability_monthly_income = 0.05
+    }
+
+    price_multiplier = {
+        if = {
+            #nothing happens during a power struggle
+            limit = {
+                international_organization_has_leader = no
+            }
+            value = 0
+        }
+        else = {
+            every_international_organization_member = {
+                limit = {
+                    not = { is_leader_of_international_organization = root }
+                }
+                add = monthly_income_trade_and_tax
+            }
+            multiply = 0.01
+        }
+    }
+
+    proportion_for_payer = {
+        add = {
+            desc = "game_concept_monthly_income_trade_and_tax"
+            value = monthly_income_trade_and_tax
+        }
+    }
+
+    proportion_for_payee = {
+        add = {
+            desc = "fanwang_shixi"
+            value = 1
+        }
+    }
+}
+
+fanwang_jiangdeng = {
+    get_payer_list = {
+        leader_country ?= {
+            add_to_local_variable_list = {
+                name = payers
+                target = this
+            }
+        }
+    }
+    get_payee_list = {
+        every_international_organization_member = {
+            limit = {
+                NOT = { is_leader_of_international_organization = root }
+                modifier:is_fanwang = yes
+            }
+            add_to_local_variable_list = {
+                name = payees
+                target = this
+            }
+        }
+    }
+    price = fanwang_jiangdeng_price
+    uses_maintenance = yes
+    maintenance_modifier = {
+        potential_trigger = { "payment_maintenance(scope:recipient|fanwang_jiangdeng)" < 0.5 }
+        scale = {
+            value = 1
+            subtract = {
+                value = "payment_maintenance(scope:recipient|fanwang_jiangdeng)"
+                multiply = 2
+            }
+        }
+        dynasty_stability_monthly_income = -0.05
+    }
+    maintenance_modifier = {
+        potential_trigger = { "payment_maintenance(scope:recipient|fanwang_jiangdeng)" > 0.5 }
+        scale = {
+            value = "payment_maintenance(scope:recipient|fanwang_jiangdeng)"
+            subtract = 0.5
+            multiply = 2
+        }
+        dynasty_stability_monthly_income = 0.025
+    }
+
+    price_multiplier = {
+        if = {
+            #nothing happens during a power struggle
+            limit = {
+                international_organization_has_leader = no
+            }
+            value = 0
+        }
+        else = {
+            every_international_organization_member = {
+                limit = {
+                    not = { is_leader_of_international_organization = root }
+                }
+                add = monthly_income_trade_and_tax
+            }
+            multiply = 0.01
+        }
+    }
+
+    proportion_for_payer = {
+        add = {
+            desc = "game_concept_monthly_income_trade_and_tax"
+            value = monthly_income_trade_and_tax
+        }
+    }
+
+    proportion_for_payee = {
+        add = {
+            desc = "fanwang_jiangdeng"
+            value = 1
+        }
+    }
+}
+
+fanzhen_payment = {
+    get_payer_list = {
+        leader_country ?= {
+            add_to_local_variable_list = {
+                name = payers
+                target = this
+            }
+        }
+    }
+    get_payee_list = {
+        every_international_organization_member = {
+            limit = {
+                NOT = { is_leader_of_international_organization = root }
+                modifier:is_fanzhen = yes
+            }
+            add_to_local_variable_list = {
+                name = payees
+                target = this
+            }
+        }
+    }
+    price = fanzhen_payment_price
+    uses_maintenance = yes
+    maintenance_modifier = {
+        potential_trigger = { "payment_maintenance(scope:recipient|fanzhen_payment)" < 0.5 }
+        scale = {
+            value = 1
+            subtract = {
+                value = "payment_maintenance(scope:recipient|fanzhen_payment)"
+                multiply = 2
+            }
+        }
+        dynasty_stability_monthly_income = -0.10
+    }
+    maintenance_modifier = {
+        potential_trigger = { "payment_maintenance(scope:recipient|fanzhen_payment)" > 0.5 }
+        scale = {
+            value = "payment_maintenance(scope:recipient|fanzhen_payment)"
+            subtract = 0.5
+            multiply = 2
+        }
+        dynasty_stability_monthly_income = 0.025
+    }
+
+    price_multiplier = {
+        if = {
+            #nothing happens during a power struggle
+            limit = {
+                international_organization_has_leader = no
+            }
+            value = 0
+        }
+        else = {
+            every_international_organization_member = {
+                limit = {
+                    not = { is_leader_of_international_organization = root }
+                }
+                add = monthly_income_trade_and_tax
+            }
+            multiply = 0.1
+        }
+    }
+
+    proportion_for_payer = {
+        add = {
+            desc = "game_concept_monthly_income_trade_and_tax"
+            value = monthly_income_trade_and_tax
+        }
+    }
+
+    proportion_for_payee = {
+        add = {
+            desc = "fanzhen_payment"
+            value = 1
+        }
+    }
+}
+
+chaogong_payment = {
+    get_payer_list = {
+        every_international_organization_member = {
+            limit = {
+                NOT = { is_leader_of_international_organization = root }
+                modifier:is_tributary = yes
+            }
+            add_to_local_variable_list = {
+                name = payers
+                target = this
+            }
+        }
+    }
+    get_payee_list = {
+        leader_country ?= {
+            add_to_local_variable_list = {
+                name = payees
+                target = this
+            }
+        }
+    }
+    price = chaogong_payment_price
+    uses_maintenance = yes
+    maintenance_modifier = {
+        potential_trigger = { "payment_maintenance(scope:recipient|chaogong_payment)" < 0.5 }
+        scale = {
+            value = 1
+            subtract = {
+                value = "payment_maintenance(scope:recipient|chaogong_payment)"
+                multiply = 2
+            }
+        }
+        monthly_prestige = -0.05
+    }
+    maintenance_modifier = {
+        potential_trigger = { "payment_maintenance(scope:recipient|chaogong_payment)" > 0.5 }
+        scale = {
+            value = "payment_maintenance(scope:recipient|chaogong_payment)"
+            subtract = 0.5
+            multiply = 2
+        }
+        monthly_prestige = 0.02
+        global_production_efficiency = 0.02
+    }
+
+    price_multiplier = {
+        if = {
+            #nothing happens during a power struggle
+            limit = {
+                international_organization_has_leader = no
+            }
+            value = 0
+        }
+        else = {
+            every_international_organization_member = {
+                limit = {
+                    not = { is_leader_of_international_organization = root }
+                }
+                add = monthly_income_trade_and_tax
+            }
+            multiply = 0.02
+        }
+    }
+
+    proportion_for_payee = {
+        add = {
+            desc = "game_concept_monthly_income_trade_and_tax"
+            value = monthly_income_trade_and_tax
+        }
+    }
+
+    proportion_for_payer = {
+        add = {
+            desc = "chaogong_payment"
+            value = 1
+        }
+    }
+}
+

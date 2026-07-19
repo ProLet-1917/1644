@@ -1,0 +1,222 @@
+tianzi = {
+    max_countries = 1
+
+    priority = 15
+
+    can_bestow_trigger = {
+        is_leader_of_international_organization = scope:recipient
+    }
+
+    auto_bestowal_trigger = {
+        always = yes
+    }
+
+    auto_rescind_trigger = {
+        NOT = { is_leader_of_international_organization = scope:recipient }
+    }
+
+    leader = yes
+
+    map_color = rgb { 228 171 65 }
+
+    special_status_power = {
+        value = 20
+    }
+
+    modifier = {
+
+    }
+}
+
+fanwang = {
+    priority = 10
+    can_bestow_trigger = {
+        is_subject_of = scope:recipient.leader_country
+        subject_type = subject_type:fanwang
+        is_member_of_international_organization = scope:recipient
+    }
+    auto_bestowal_trigger = {
+        has_reform = government_reform:fanwang_reform
+    }
+    auto_rescind_trigger = {
+        OR = {
+            NOT = { government_type = government_type:monarchy }
+            NOT = { is_member_of_international_organization = scope:recipient }
+        }
+    }
+
+    on_bestowed_effect = {
+
+    }
+
+    on_rescinded_effect = {
+        scope:recipient = {
+            international_organization_remove_special_status = {
+                type = scope:source
+                country = root
+            }
+        }
+    }
+
+    map_color = rgb { 151 55 187 }
+
+    special_status_power = {
+        value = 1
+    }
+
+    modifier = {
+        loyalty_to_overlord = 5
+        is_fanwang = yes
+    }
+}
+
+
+fanzhen = {
+    priority = 8
+    can_bestow_trigger = {
+        is_subject_of = scope:recipient.leader_country
+        subject_type = subject_type:cn_march_governor
+        is_member_of_international_organization = scope:recipient
+        NOT = {
+            has_policy = cd_feichu_fanzhen
+        }
+    }
+    auto_bestowal_trigger = {
+        always = yes
+    }
+    auto_rescind_trigger = {
+        OR = {
+            NOT = { government_type = government_type:monarchy }
+            NOT = { is_member_of_international_organization = scope:recipient }
+            has_policy = cd_feichu_fanzhen
+        }
+    }
+
+    on_bestowed_effect = {
+
+    }
+
+    on_rescinded_effect = {
+        scope:recipient = {
+            international_organization_remove_special_status = {
+                type = scope:source
+                country = root
+            }
+        }
+    }
+
+    map_color = rgb { 221 108 74 }
+
+    special_status_power = {
+        value = 2
+    }
+
+    modifier = {
+        levy_combat_efficiency_modifier = 0.1
+        global_levy_size_modifier = 0.1
+        is_fanzhen = yes
+    }
+}
+
+tusi = {
+    priority = 5
+    can_bestow_trigger = {
+        is_subject_or_below_of = scope:recipient.leader_country
+        subject_type = subject_type:tusi
+        is_member_of_international_organization = scope:recipient
+    }
+    auto_bestowal_trigger = {
+        subject_type = subject_type:tusi
+    }
+    auto_rescind_trigger = {
+        OR = {
+            NOT = { subject_type = subject_type:tusi }
+            NOT = { is_member_of_international_organization = scope:recipient }
+        }
+    }
+
+    on_bestowed_effect = {
+
+    }
+
+    on_rescinded_effect = {
+        scope:recipient = {
+            international_organization_remove_special_status = {
+                type = scope:source
+                country = root
+            }
+        }
+    }
+
+    map_color = rgb { 56 202 192 }
+
+    special_status_power = {
+        value = 0
+    }
+
+    modifier = {
+        loyalty_to_overlord = 5
+        is_tusi = yes
+    }
+}
+
+tributary = {
+    priority = 1
+
+    can_bestow_trigger = {
+        is_member_of_international_organization = scope:recipient
+        OR = {
+            NOT = { is_subject_of = scope:recipient.leader_country }
+            AND = {
+                is_subject_of = scope:recipient.leader_country
+                subject_type = subject_type:tributary
+            }
+        }
+        scope:recipient = {
+            NOT = {
+                country_has_special_status = { type = special_status:tianzi country = root }
+            }
+            NOT = {
+                country_has_special_status = { type = special_status:fanwang country = root }
+            }
+            NOT = {
+                country_has_special_status = { type = special_status:fanzhen country = root }
+            }
+            NOT = {
+                country_has_special_status = { type = special_status:tusi country = root }
+            }
+        }
+    }
+
+    auto_bestowal_trigger = {
+        always = yes
+    }
+
+    auto_rescind_trigger = {
+        OR = {
+            NOT = { is_member_of_international_organization = scope:recipient }
+            has_special_status_in_international_organization = { type = special_status:tianzi international_organization = scope:recipient }
+            has_special_status_in_international_organization = { type = special_status:fanwang international_organization = scope:recipient }
+            has_special_status_in_international_organization = { type = special_status:fanzhen international_organization = scope:recipient }
+            has_special_status_in_international_organization = { type = special_status:tusi international_organization = scope:recipient }
+        }
+    }
+
+    on_bestowed_effect = {
+    }
+
+    on_rescinded_effect = {
+
+    }
+
+    map_color = rgb { 130 157 108 }
+
+    special_status_power = {
+        value = 0
+    }
+
+    modifier = {
+        prestige_decay = 0.01
+        is_tributary = yes
+    }
+}

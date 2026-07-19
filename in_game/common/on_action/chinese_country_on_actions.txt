@@ -54,21 +54,3 @@ on_chinese_warlord_monthly_check = {
         }
     }
 }
-
-on_late_ming_crisis_monthly = {
-    trigger = {
-        is_situation_active = situation:late_ming_crisis
-        has_global_variable = ming_emperor_in_nanjing
-        location:shangyuan = {
-            OR = {
-                owner != c:MNG
-                controller != c:MNG
-            }
-        }
-    }
-    effect = {
-        c:MNG = {
-            trigger_event_non_silently = flavor_mng.2
-        }
-    }
-}

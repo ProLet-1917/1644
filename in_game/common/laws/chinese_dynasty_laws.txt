@@ -1,0 +1,203 @@
+cd_fanwang_yiwu = {
+    type = international_organization
+    law_category = administrative
+
+    potential = {
+        international_organization_type = international_organization_type:chinese_dynasty
+        "num_countries_with_special_status(special_status:fanwang)" > 0
+    }
+
+    cd_fanwang_shuwei_policy = { #Fanwang defend the border
+        payments_implemented = { fanwang_shuwei }
+        wants_propose_policy = {
+            base = -10
+            add = {
+                if = {
+                    limit = {
+                        root = c:MNG
+                    }
+                    add = 25
+                }
+            }
+        }
+    }
+
+    cd_fanwang_zaijing_policy = { #Fanwang only in capital
+        on_activate = {
+            set_variable = fanwang_zaijing
+        }
+
+        on_deactivate = {
+            remove_variable = fanwang_zaijing
+        }
+
+        modifier = {
+            dynasty_stability_monthly_income = 0.01
+        }
+
+        payments_repealed = { fanwang_shuwei }
+
+        wants_propose_policy = {
+            base = 10
+        }
+
+        wants_keep_policy = {
+            base = 10
+        }
+    }
+
+    cd_fanwang_zaiwai_policy = { #Fanwang in everywhere
+        on_activate = {
+            set_variable = fanwang_zaiwai
+        }
+
+        on_deactivate = {
+            remove_variable = fanwang_zaiwai
+        }
+
+        modifier = {
+            stability_investment = 0.01
+        }
+
+        payments_repealed = { fanwang_shuwei }
+
+        wants_propose_policy = {
+            base = 5
+            add = {
+                if = {
+                    limit = {
+                        root = c:MNG
+                    }
+                    add = 50
+                }
+            }
+        }
+
+        wants_keep_policy = {
+            base = 5
+            add = {
+                if = {
+                    limit = {
+                        root = c:MNG
+                    }
+                    add = 25
+                }
+            }
+        }
+    }
+}
+
+cd_fanwang_daiyu = {
+    type = international_organization
+    law_category = administrative
+
+    potential = {
+        international_organization_type = international_organization_type:chinese_dynasty
+        "num_countries_with_special_status(special_status:fanwang)" > 0
+    }
+
+    cd_fanwang_shixi_policy = {
+        payments_implemented = { fanwang_shixi }
+        payments_repealed = { fanwang_jiangdeng }
+
+        wants_propose_policy = {
+            base = 5
+            add = {
+                if = {
+                    limit = {
+                        root = c:MNG
+                    }
+                    add = 50
+                }
+            }
+        }
+
+        wants_keep_policy = {
+            base = 5
+            add = {
+                if = {
+                    limit = {
+                        root = c:MNG
+                    }
+                    add = 25
+                }
+            }
+        }
+    }
+
+    cd_fanwang_jiangdeng_policy = {
+        payments_implemented = { fanwang_jiangdeng }
+        payments_repealed = { fanwang_shixi }
+
+        wants_propose_policy = {
+            base = 10
+        }
+
+        wants_keep_policy = {
+            base = 10
+        }
+    }
+}
+
+cd_fanzhen_right = {
+    type = international_organization
+    law_category = administrative
+
+    potential = {
+        international_organization_type = international_organization_type:chinese_dynasty
+        "num_countries_with_special_status(special_status:fanzhen)" > 0
+    }
+
+    cd_fanzhen_shuwei = {
+        payments_implemented = { fanzhen_payment }
+    }
+
+    cd_fanzhen_kaijiang = {
+        payments_implemented = { fanzhen_payment }
+
+        wants_propose_policy = {
+            base = 5
+        }
+
+        wants_keep_policy = {
+            base = 5
+        }
+    }
+
+    cd_feichu_fanzhen = {
+        payments_repealed = { fanzhen_payment }
+
+        wants_propose_policy = {
+            base = 10
+        }
+
+        wants_keep_policy = {
+            base = 10
+        }
+    }
+}
+
+cd_chaogong_system = {
+    type = international_organization
+    law_category = administrative
+
+    potential = {
+        international_organization_type = international_organization_type:chinese_dynasty
+    }
+
+    cd_establish_chaogong_system = {
+        payments_implemented = { chaogong_payment }
+
+        wants_propose_policy = {
+            base = 10
+        }
+
+        wants_keep_policy = {
+            base = 10
+        }
+    }
+
+    cd_abolish_chaogong_system = {
+        payments_repealed = { chaogong_payment }
+    }
+}

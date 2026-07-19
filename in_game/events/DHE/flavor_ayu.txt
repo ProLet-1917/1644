@@ -105,8 +105,8 @@ flavor_ayu.5 = { #The Foundation of the Modern Thai State
 		scope:target_location = {
 			rename_location = bangkok
 			if = {
-				limit = { 
-					NOT = { location_rank = location_rank:city }
+				limit = {
+					NOT = { OR = { location_rank = location_rank:city  location_rank = location_rank:megalopolis } }
 				}
 				change_location_rank_effect = { location_rank = location_rank:city }
 			}
@@ -292,6 +292,7 @@ flavor_ayu.8 = { #The Buddha's Footprint
 					OR = {
 						location_rank = location_rank:town
 						location_rank = location_rank:city
+						location_rank = location_rank:megalopolis
 					}
 					NOT = { has_building_with_at_least_one_level = temple }
 				}

@@ -292,6 +292,7 @@
         }
 
         spawn_army_for_hordes_effect = yes
+        spawn_army_for_fanwangs_effect = yes
 
         start_herd_check_effect = yes
 
@@ -388,6 +389,17 @@
         c:CSH = {
             unlock_government_reform_effect = {
                 type = chi_peasant_empire_reform
+            }
+            set_variable = {
+                name = dynasty_stability
+                value = 175.5
+            }
+        }
+
+        c:CXI = {
+            set_variable = {
+                name = dynasty_stability
+                value = 113.2
             }
         }
 
@@ -527,6 +539,13 @@
             }
             unlock_government_reform_effect = {
                 type = por_ordinances
+            }
+        }
+
+        c:QNG = {
+            set_variable = {
+                name = dynasty_stability
+                value = 332.5
             }
         }
 

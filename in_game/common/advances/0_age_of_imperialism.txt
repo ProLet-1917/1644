@@ -357,6 +357,13 @@ fertilizer_advance = {
     global_monthly_food_modifier = 0.2
 }
 
+industrial_agriculture_advance = {
+    age = age_7_imperialism
+    requires = clean_coal_advance
+
+    unlock_building = commercial_farm
+}
+
 large_scale_farms_advance = {
     age = age_7_imperialism
     requires = fertilizer_advance

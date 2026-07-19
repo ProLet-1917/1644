@@ -64,7 +64,7 @@ NUnit = {
 
 	ATTRITION_LACK_OF_FOOD	= 5
 
-	LEVY_MAINTENANCE_FACTOR = 0.01
+	LEVY_MAINTENANCE_FACTOR = 0.10
 	MOTHBALL_PERCENT = 0.1
 
 	LAND_MORALE = 3.0
@@ -149,7 +149,7 @@ NCombat = {
 
 	MAX_FRONTAGE_OVERSTACKING = 1.25	#25% overstack in flanks.
 
-	LAND_LEVY_COMBAT_IMPACT = 0.50
+	LAND_LEVY_COMBAT_IMPACT = 0.60
 
 	INITIATIVE_BASE_CHANCE = 0.1	# base chance each tick
 	INITIATIVE_CHANCE_EACH = 0.02 # Chance to engage per point of initiative
@@ -163,7 +163,7 @@ NCombat = {
 
 	LAND_STRENGTH_DAMAGE_MODIFIER = 0.2
 	NAVAL_STRENGTH_DAMAGE_MODIFIER = 0.25
-	LAND_MORALE_DAMAGE_MODIFIER = 1.0
+	LAND_MORALE_DAMAGE_MODIFIER = 1.125
 	NAVAL_MORALE_DAMAGE_MODIFIER = 0.2
 	NOT_ENGAGED_STRENGTH_DAMAGE_MODIFIER = 1.1
 	NOT_ENGAGED_MORALE_DAMAGE_MODIFIER = 1.2
@@ -183,10 +183,10 @@ NCombat = {
 	FOOD_PERCENTAGE_LOST_AT_RETREAT = 0.5
 
 	EXPERIENCE_GAIN = 30
-	LAND_WAR_EXHAUSTION_FROM_LOSSES = 1
+	LAND_WAR_EXHAUSTION_FROM_LOSSES = 0.75
 
 	NAVAL_WAR_EXHAUSTION_FROM_LOSSES = 1.5 #Multiplier on losses
-	MAX_WAR_EXHAUSTION_FROM_BATTLE = 5.0
+	MAX_WAR_EXHAUSTION_FROM_BATTLE = 3.0
 
 
 	TRADITION_GAIN_LAND = 10
@@ -206,9 +206,9 @@ NCombat = {
 	SIEGE_DISEASE_IMPACT = 0.05
 	SIEGE_MAX_FORT_LIMIT_BONUS = 8
 	SIEGE_REGIMENTS_FOR_ARTILLERY = 3
-	SIEGE_MEMORY = 11
-	SIEGE_WIN = 20
-	MAX_BREACH = 3
+	SIEGE_MEMORY = 16
+	SIEGE_WIN = 25
+	MAX_BREACH = 4
 	BREACH_REPAIR_PER_DAY = 0.01
 
 	SIEGE_SUPPLY_SHORTAGE_LOSS = 0.02
@@ -238,9 +238,9 @@ NCombat = {
 
 
 NAI = {
-	USE_REGULARS_IN_WAR_WEIGHT_MULT = 12 #10
-	USE_LEVIES_IN_WAR_WEIGHT_MULT = 5
-	USE_MERCENARIES_IN_WAR_WEIGHT_MULT = 1
+	USE_REGULARS_IN_WAR_WEIGHT_MULT = 15 #10
+	USE_LEVIES_IN_WAR_WEIGHT_MULT = 4
+	USE_MERCENARIES_IN_WAR_WEIGHT_MULT = 0.8
 
 	AI_HEAVY_DEBT_THRESHOLD = 0.75		#if total debt is >% of max debt
 
@@ -300,8 +300,8 @@ NAI = {
 	COLONY_NEIGHBORING_CHARTER_UTILITY_BONUS = 5.0 # additive bonus to colonize neighboring charter
 	COLONY_REGION_COMPLETION_UTILITY_BONUS = 5.0 # multiplicative bonus from ratio of locations we own (or vassals) in the region which we colonize
 	COLONY_POP_THRESHOLD = 20
-	COLONY_DISEASE_UTILITY_PENALTY = 2.5 # Utility penalty per diseased location in target province (discourages colonizing disease-endemic regions)
-
+	COLONY_DISEASE_UTILITY_PENALTY = 25.0 # Utility penalty for target province, disabled when above threshold migration (discourages colonizing disease-endemic regions)
+	AI_MIGRATION_THRESHOLD_FOR_DISEASED_LOCATIONS = 0.05 # expected monthly migration required to be able to successfully colonize locations with disease e.g. malaria
 
 	AI_MARKET_LOW_FOOD_THRESHOLD = 0.5 # when market food stockpile reaches this level AI will improve food production if food balance is negative
 	AI_MARKET_CRITICAL_FOOD_THRESHOLD = 0.1 # when market food stockpile reaches this level AI will improve food production even if food balance is positive
@@ -403,7 +403,7 @@ NAI = {
 	AI_ALLOWED_PARALLEL_SAME_TYPE_CONSTRUCTION_MINIMUM = 3 # minimum allowed of parallel construction of the same type of building
 	AI_ALLOWED_PARALLEL_TOTAL_CONSTRUCTION_RATIO = 0.05 # Allowed to start new constructions in 5% of our locations each monthly tick
 	AI_MAX_NEW_BUILDINGS_PER_LOCATION = 3 # AI will not start a new ramping building if doing so would put more than this many ramping/in-flight buildings at the same location
-	AI_PROXIMITY_SOURCE_MINIMUM_DISTANCE = 100 # minimum map distance between proximity source buildings
+	AI_PROXIMITY_SOURCE_MINIMUM_DISTANCE = 10 # minimum map distance between proximity source buildings
 
 	AI_PERFORMANCE_UTILITY_LOCATIONS_TO_SAMPLE = 20 # Maximum number of sample locations for AI modifier utility for performance costly modifiers
 	AI_PERFORMANCE_CABINET_ACTION_LOCATION_SAMPLE_SIZE = 20 # Maximum number of sample locations for AI cabinet actions
@@ -689,7 +689,7 @@ NAI = {
 	PEACE_OFFER_WAR_ENTHUSIASM_STALE_WAR = 0.5
 	PEACE_OFFER_MISSING_IMPORTANT_TREATIES_STRENGTH_COMPARISON_MULT = 0.1
 	PEACE_OFFER_ALLY_LEAVE_WAR_ENTHUSIASM = 0.25
-	PEACE_OFFER_SEND_PEACE_ENEMY_STRENGTH_FACTOR = 0.2 # Ai will always send peace offers if the enemy side * factor is stronger than the Ai country alone.
+	PEACE_OFFER_SEND_PEACE_ENEMY_STRENGTH_FACTOR = 0.1 # Ai will always send peace offers if the enemy side * factor is stronger than the Ai country alone.
 
 	HEAVILY_OUTNUMBERED_RATIO = 0.40       # StrengthBalance below this activates outnumbered war behavior
 	OUTNUMBERED_BATTLE_ADVANTAGE = 0.60    # when outnumbered, only chase stacks whose power is <= this fraction of our strength
@@ -787,7 +787,7 @@ NAI = {
 	CONQUER_DESIRE_THREAT_MAX = 1.5 #Reach multiplier ceiling when target is overwhelmingly weaker than us
 
 	TARGET_SAFE_ANTAGONISM_FOR_AI = 50 #How much antagonism Ai is willing to take before getting a too much antagonism modifier
-	EXPECTED_WAR_SCORE_BASE = 25 #How much warscore Ai expects to get in a war
+	EXPECTED_WAR_SCORE_BASE = 30 #How much warscore Ai expects to get in a war
 	EARLY_PEACE_TIME_MONTHS = 4 #How many months need to pass for Ai to lose the early war peace acceptance modifier
 	EARLY_PEACE_TIME_BASE = 10 #How much negative acceptance is added by the early war modifier
 	EARLY_PEACE_TIME_FACTOR = 1.5 #How much acceptance is multiplied by the early war modifier
@@ -1003,15 +1003,15 @@ NAI = {
 
 	AI_CLAN_BUILDING_DISTANCE_PENALTY_FACTOR = 0.005 # Proximity penalty for building-based clan foreign building placement. Utility is multiplied by 1/(1 + distance * factor). At factor 0.005: distance 100 -> 0.67x, distance 200 -> 0.5x.
 
-	AI_CONQUER_DESIRE_DISTANCE_BASE = 150
-	AI_CONQUER_DESIRE_DISTANCE_PER_COUNTRY_SIZE = 0.5
-	AI_CONQUER_DESIRE_DISTANCE_PER_AGE = 50
+	AI_CONQUER_DESIRE_DISTANCE_BASE = 200
+	AI_CONQUER_DESIRE_DISTANCE_PER_COUNTRY_SIZE = 1.00
+	AI_CONQUER_DESIRE_DISTANCE_PER_AGE = 100
 
 	AI_CONQUER_DESIRE_DISTANCE_MULTIPLIER = -0.275 # -0.1 #Penalty for ai to attack targets far away
 	AI_CONQUER_DESIRE_NAVAL_DISTANCE_MULTIPLIER = -0.5 #Penalty for ai to attack targets far away over sea, smaller number means more likely to attack
 	AI_CONQUER_DESIRE_MAX = 100
 	AI_CONQUER_DESIRE_THROUGH_SUBJECT_MULT = 0.25 # 0.5 # Score mult when you have to go through your subject to reach enemy
-	AI_CONQUER_DESIRE_CAPITAL_DISTANCE = 60 # 100 # After this map distance locations starts getting a penalty from being too far away from capital
+	AI_CONQUER_DESIRE_CAPITAL_DISTANCE = 120 # 100 # After this map distance locations starts getting a penalty from being too far away from capital
 	AI_CONQUER_DESIRE_CAPITAL_DISTANCE_MIN_FACTOR = 0.05 # Minimum allowed multiplier from distance to capital
 	AI_CALL_ALLY_STRENGTH_BALANCE_THRESHOLD = 0.75 # AI will not call in allies if war balance is over this
 

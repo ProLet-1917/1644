@@ -14,9 +14,17 @@ flavor_all_chi.1 = {
     option = {
         name = flavor_all_chi.1.a
         ai_chance = {
-            value = 2
+            value = 0
+            modifier = {
+                trigger = {
+                    OR = {
+                        country_rank = country_rank:rank_duchy
+                        country_rank = country_rank:rank_kingdom
+                    }
+                }
+                add = 50
+            }
         }
-        change_country_name = CSO
     }
 
     option = {
@@ -39,7 +47,7 @@ flavor_all_chi.1 = {
     option = {
         name = flavor_all_chi.1.c
         ai_chance = {
-            value = 2
+            value = 1
         }
         change_country_name = CHE
     }
@@ -95,5 +103,13 @@ flavor_all_chi.1 = {
             }
         }
         change_country_name = MNG
+    }
+
+    option = {
+        name = flavor_all_chi.1.g
+        ai_chance = {
+            value = 2
+        }
+        change_country_name = CSO
     }
 }

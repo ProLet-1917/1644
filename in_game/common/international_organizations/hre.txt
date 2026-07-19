@@ -527,7 +527,12 @@
 						limit = {
 							has_circle_leader = yes
 							NOT = { is_dormant_imperial_circle = yes }
-							circle_leader ?= { country_type = building }
+							circle_leader ?= {
+								OR = {
+									country_type = building
+									is_subject = yes
+								}
+							}
 						}
 						clear_circle_leader = { }
 					}
@@ -539,8 +544,10 @@
 							NOT = { is_dormant_imperial_circle = yes }
 						}
 						ordered_circle_member = {
-							# Extraterritorial entities (country_type = building) cannot lead a circle.
-							limit = { NOT = { country_type = building } }
+							limit = {
+								NOT = { country_type = building }
+								is_subject = no
+							}
 							order_by = prestige
 							max = 1
 							check_range_bounds = no
@@ -1086,6 +1093,9 @@
 						AND = {
 							exists = scope:previewed_vote
 							scope:previewed_vote = scope:vote
+							scope:recipient = {
+								NOT = { international_organization_has_policy = scope:previewed_vote }
+							}
 						}
 						scope:recipient = {
 							has_variable = io_law_target

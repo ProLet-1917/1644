@@ -441,6 +441,108 @@ international_organization_manager = {
 		members = { ONO KKA ONY GYO ONN }
 	}
 
+    #################################################################
+    # 			    		Chinese Dynasty   						#
+    #################################################################
+
+	add_international_organization = {
+		type = chinese_dynasty
+		creation_date = 1368.1.1
+		members = {
+			MNG
+			LZQ CGJ HDG LLZ ZLY ZZL LNG WSG
+			LJG MMA MHK YAN YNG ULI MTG BZH
+			HQG MHN LUJ MGK YNJ NWU NGZ SZI
+			NLU GNN FZH LXG SZG WNG WSA LBO
+			TNQ ZNN SMG TNZ ADG DYG YSN DLN
+			NDN NLG MWO LZI NYZ MGN MHA KTG
+			CHH MUA MUO SXI ZNX YZO CKL KSY
+			CBG TTQ TRH QNQ
+
+			SHU CZH CIJ HIC UAI
+		}
+		leader = MNG
+
+        tianzi = {
+			MNG
+		}
+
+        fanwang = {
+			SHU CZH CIJ HIC UAI
+		}
+
+        fanzhen = {
+			LZQ CGJ HDG LLZ ZLY ZZL LNG WSG
+		}
+
+        tusi = {
+			LJG MMA MHK YAN YNG ULI MTG BZH
+			HQG MHN LUJ MGK YNJ NWU NGZ SZI
+			NLU GNN FZH LXG SZG WNG WSA LBO
+			TNQ ZNN SMG TNZ ADG DYG YSN DLN
+			NDN NLG MWO LZI NYZ KSY CKL
+			SXI ZNX YZO
+		}
+
+		tributary = {
+			MGN MHA KTG CHH MUA MUO
+			CBG TTQ TRH QNQ
+		}
+
+		laws = {
+			cd_fanwang_zaiwai_policy
+			cd_fanwang_shixi_policy
+            cd_fanzhen_shuwei
+            cd_establish_chaogong_system
+		}
+	}
+
+	add_international_organization = {
+		type = chinese_dynasty
+		creation_date = 1644.1.1
+		members = {
+			CSH CJX
+		}
+		leader = CSH
+
+		tianzi = {
+			CSH
+		}
+
+		fanzhen = {
+			CJX
+		}
+
+		laws = {
+			cd_fanzhen_shuwei
+			cd_establish_chaogong_system
+		}
+	}
+
+	add_international_organization = {
+		type = chinese_dynasty
+		creation_date = 1636.1.1
+		members = {
+			QNG JOE
+		}
+		leader = QNG
+
+		tianzi = {
+			QNG
+		}
+
+		tributary = {
+			JOE
+		}
+
+		laws = {
+			cd_fanwang_jiangdeng_policy
+			cd_fanwang_shuwei_policy
+			cd_fanzhen_kaijiang
+			cd_establish_chaogong_system
+		}
+	}
+
 	#################################################################
 	# 							Sects								#
 	#################################################################

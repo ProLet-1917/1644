@@ -1,0 +1,397 @@
+#Made by Lvtoumao, Part of v.0.5
+chinese_dynasty = {
+
+    has_target = no
+    has_buildings = yes
+    show_leave_message = yes
+    use_laws_as_join_reason = no
+
+    custom_name = chinese_dynasty
+
+    show_as_overlord_on_map_trigger = {
+        always = yes
+    }
+
+    has_parliament = yes
+    parliament_type = chinese_dynasty_parliament
+    alert_view_tab = parliament
+    resolution_widget = parliament
+
+    has_leader_country = yes
+    leader_title_key = "CD_EMPEROR"
+    use_regnal_number = no
+    leader_type = character
+    leader = {
+        leader_country ?= {
+            if = {
+                limit = {
+                    has_regent = yes
+                    has_heir = yes
+                }
+                heir ?= {
+                    add_to_list = leaders
+                }
+            }
+            else_if = {
+                limit = {
+                    has_ruler = yes
+                    ruler ?= { is_alive = yes }
+                }
+                ruler ?= {
+                    add_to_list = leaders
+                }
+            }
+        }
+    }
+    leader_change_trigger_type = none
+    leader_change_method = none
+    disband_if_no_leader = no #If in civil war
+    override_ruler_title = yes
+
+    create_enabled_trigger = {
+        has_reform = government_reform:the_chinese_emperor
+        country_rank = country_rank:rank_empire
+        government_type = government_type:monarchy
+        NOT = {
+            is_member_of_international_organization = international_organization:chinese_dynasty
+        }
+    }
+
+    create_visible_trigger = {
+        has_reform = government_reform:the_chinese_emperor
+        country_rank = country_rank:rank_empire
+        government_type = government_type:monarchy
+        NOT = {
+            is_member_of_international_organization = international_organization:chinese_dynasty
+        }
+    }
+
+    join_offensive_wars_always = {
+        OR = {
+            AND = {
+                has_special_status_available = special_status:fanzhen
+                country_has_special_status = {
+                    type = special_status:fanzhen
+                    country = root
+                }
+            }
+            AND = {
+                international_organization_has_policy = policy:cd_fanwang_shuwei_policy
+                country_has_special_status = {
+                    type = special_status:fanwang
+                    country = root
+                }
+            }
+        }
+    }
+
+    join_defensive_wars_always = {
+        OR = {
+            AND = {
+                has_special_status_available = special_status:fanzhen
+                country_has_special_status = {
+                    type = special_status:fanzhen
+                    country = root
+                }
+            }
+            AND = {
+                international_organization_has_policy = policy:cd_fanwang_shuwei_policy
+                country_has_special_status = {
+                    type = special_status:fanwang
+                    country = root
+                }
+            }
+        }
+    }
+
+    can_declare_war = {
+        OR = {
+            is_leader_of_international_organization = international_organization:chinese_dynasty
+            AND = {
+                has_policy = cd_fanzhen_kaijiang
+                has_special_status_in_international_organization = {
+                    international_organization = international_organization:chinese_dynasty
+                    type = special_status:fanzhen
+                }
+            }
+        }
+    }
+
+    modifier = {
+        block_from_change_to_empire_rank = yes
+        block_from_change_to_kingdom_rank = yes
+        block_from_change_to_duchy_rank = yes
+    }
+
+    leader_modifier = {
+        dynasty_stability_monthly_income = 0.02
+        cannot_be_subjugated = yes
+    }
+
+    gives_military_access_to_all_when_at_war = yes
+
+    can_lead_trigger = {
+        country_exists = root
+        government_type = government_type:monarchy
+        is_revolutionary = no
+        is_subject = no
+
+        #Check if the current emperor have no heir, fanwang's son can be the emperor.
+        #Or Check when emperor died, start a parliament issue.
+    }
+
+    can_lead_tooltip_trigger = {
+        government_type = government_type:monarchy
+        is_revolutionary = no
+        is_subject = no
+    }
+
+    auto_disband_trigger = {
+        AND = {
+            scope:recipient = {
+                "num_countries_with_special_status(special_status:tianzi)" = 0
+                "num_countries_with_special_status(special_status:fanwang)" = 0
+            }
+        }
+    }
+
+    auto_leave_trigger = {
+        AND = {
+            NOT = {
+                is_leader_of_international_organization = international_organization:chinese_dynasty
+            }
+            OR = {
+                AND = {
+                    has_special_status_in_international_organization = {
+                        international_organization = international_organization:chinese_dynasty
+                        type = special_status:fanwang
+                    }
+                    NOT = { is_subject_of = international_organization:chinese_dynasty.leader_country }
+                }
+                AND = {
+                    has_special_status_in_international_organization = {
+                        international_organization = international_organization:chinese_dynasty
+                        type = special_status:fanzhen
+                    }
+                    NOT = { is_subject_of = international_organization:chinese_dynasty.leader_country }
+                }
+                AND = {
+                    has_special_status_in_international_organization = {
+                        international_organization = international_organization:chinese_dynasty
+                        type = special_status:tusi
+                    }
+                    NOT = { is_subject_or_below_of = international_organization:chinese_dynasty.leader_country }
+                }
+                NOT = { is_subject_of = international_organization:chinese_dynasty.leader_country }
+            }
+        }
+        is_at_war_with = scope:recipient.leader_country
+    }
+
+    can_leave_trigger = {
+        NOR = {
+            this = scope:recipient.leader_country
+            is_subject_of = scope:recipient.leader_country
+        }
+    }
+
+    can_vote_in_parliament = {
+        "country_highest_rated_special_status_power(scope:recipient)" > 0
+    }
+
+    monthly_effect = {
+        #auto-join anyone who becomes subject or tributary of China
+        leader_country ?= {
+            every_subject = {
+                limit = { NOT = { is_member_of_international_organization = root } }
+                root = {
+                    add_country_to_international_organization = prev
+                }
+            }
+        }
+    }
+
+    # Put the opinion component here such that AI can understand that improving opinion will make it easier to invite people which doenst work in ai_desire_to_join
+    join_diplo_chance = {
+        opinion = 0.25
+        base = -10
+    }
+
+    ai_desire_to_join = {
+        base = -50
+        add = {
+            desc = "WE_ARE_SMALL"
+            if = {
+                limit = { num_locations < 8 }
+                value = 25
+            }
+        }
+        if = {
+            limit = { country_rank_level > 1 }
+            subtract = {
+                desc = "game_concept_country_rank"
+                value = {
+                    value = country_rank_level
+                    multiply = 25
+                }
+            }
+        }
+        subtract = {
+            desc = "game_concept_tax_base"
+            value = country_tax_base
+        }
+        add = {
+            desc = "game_concept_opinion"
+            value = {
+                value = "root.opinion(scope:actor)"
+                divide = 4      # max ±50 at ±200 opinion
+            }
+        }
+        add = {
+            desc = "game_concept_diplomatic_reputation"
+            value = {
+                value = "scope:actor.modifier:diplomatic_reputation"
+                multiply = 0.5  # +0.5 reasons per 1 diprep
+            }
+        }
+        if = {
+            limit = {
+                opinion = {
+                    target = scope:recipient.leader_country
+                    value < -20
+                }
+            }
+            add = {
+                desc = "POOR_RELATIONS"
+                value = -1000
+            }
+        }
+        add = {
+            desc = "EMPEROR_DIP_REPUTATION"
+            scope:recipient = {
+                value = leader_country.modifier:diplomatic_reputation
+                multiply = 2
+            }
+        }
+        if = {
+            limit = {
+                NOT = { within_diplomatic_range = scope:recipient.leader_country }
+            }
+            add = {
+                desc = "OUTSIDE_OF_DIP_RANGE"
+                value = -1000
+            }
+        }
+        add = {
+            desc = "DISTANCE_FROM_CHINA"
+            value = "border_distance_to(scope:recipient.leader_country)"
+            multiply = -0.05
+            min = -1000
+        }
+        if = {
+            limit = { at_war = yes }
+            add = {
+                desc = "IS_AT_WAR"
+                value = -1000
+            }
+        }
+        if = {
+            limit = {
+                is_subject = yes
+                is_subject_or_below_of = scope:recipient.leader_country
+                NOT = { subject_type = subject_type:tributary }
+            }
+            add = {
+                desc = "SUBJECT"
+                value = -1000
+            }
+        }
+        if = {
+            limit = {
+                is_member_of_international_organization_of_type = {
+                    type = chinese_dynasty
+                }
+            }
+            add = {
+                desc = "IS_IN_ANY_SAME_INTERNATIONAL_ORGANIZATION_TRIGGER"
+                value = -1000
+            }
+        }
+    }
+
+    ai_desire_to_allow_new_member = {
+        add = {
+            desc = "WE_WANT_THE_ORGANIZATION_TO_GROW"
+            value = 20
+        }
+    }
+
+    ai_issue_voting_bias = {
+        add = {
+            desc = "INERTIA"
+            value = -1
+        }
+
+        #passing policies is what makes the empire great, so if the leader can enact one, they will
+        add = {
+            desc = "POLICY_BIAS_LEADER_ALWAYS_WANTS"
+            if = {
+                limit = {
+                    scope:recipient.leader_country ?= {
+                        this = scope:actor
+                    }
+                }
+                #this should end up with 20 for yes and -20 for no from the leader
+                if = {
+                    limit = {
+                        is_set = scope:vote
+                    }
+                    value = 1
+                }
+                else = {
+                    value = -1
+                }
+                multiply = 20
+            }
+        }
+
+        #opinion of leader
+        add = {
+            desc = "POLICY_BIAS_OPINION_OF_IO_LEADER"
+            if = {
+                limit = {
+                    scope:recipient = {
+                        NOT = { leader_type = none }
+                        international_organization_has_leader = yes
+                    }
+                    not = { scope:actor = scope:recipient.leader_country }
+                }
+                scope:recipient = {
+                    leader_country = {
+                        if = {
+                            limit = {
+                                is_set = scope:vote
+                            }
+                            value = 1
+                        }
+                        else = {
+                            value = -1
+                        }
+                        multiply = {
+                            value = "scope:actor.opinion(scope:recipient.leader_country)"
+                            multiply = 0.1
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    special_statuses_implemented = {
+        tianzi
+        fanwang
+        fanzhen
+        tusi
+        tributary
+    }
+}

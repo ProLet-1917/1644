@@ -737,3 +737,109 @@ financial_center = {
 
     obsolete = commerce_center
 }
+
+commercial_farm = {
+    is_foreign = no
+    pop_type = peasants
+    max_levels = farm_max_level
+
+    employment_size = commercial_farm_employment
+
+    category = village_category
+    rural_settlement = yes
+    town = yes
+    city = yes
+    megalopolis = yes
+
+    build_time = farm_build_time
+
+    location_potential = {
+        OR = {
+            vegetation = grasslands
+            vegetation = farmland
+            vegetation = woods
+        }
+    }
+
+    unique_production_methods = {
+        production_sturdy_grains = {
+            tools = 0.2
+            millet = 0.5
+
+            produced = millet
+            output = 7.25
+
+            debug_max_profit = 1.0
+
+            category = factory_input
+        }
+
+        production_wheat = {
+            tools = 0.2
+            wheat = 0.45
+
+            produced = wheat
+            output = 6.55
+
+            debug_max_profit = 1.0
+
+            category = factory_input
+        }
+
+        production_rice = {
+            tools = 0.2
+            rice = 0.62
+
+            produced = rice
+            output = 7.05
+
+            debug_max_profit = 1.0
+
+            category = factory_input
+        }
+    }
+
+    unique_production_methods = {
+        production_maize = {
+            tools = 0.2
+            maize = 0.3
+
+            produced = maize
+            output = 2.75
+
+            debug_max_profit = 1.0
+
+            category = factory_input
+        }
+
+        production_potato = {
+            tools = 0.2
+            potato = 0.42
+
+            produced = potato
+            output = 3.55
+
+            debug_max_profit = 1.0
+
+            category = factory_input
+        }
+
+        production_cotton = {
+            tools = 0.2
+            cotton = 0.72
+
+            produced = cotton
+            output = 3.32
+
+            debug_max_profit = 1.0
+
+            category = factory_input
+        }
+    }
+
+    raw_modifier = {
+        local_burghers_desired_pop = 0.05
+    }
+
+    construction_demand = factory_construction
+}

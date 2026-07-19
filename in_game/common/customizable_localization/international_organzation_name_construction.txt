@@ -1,0 +1,18 @@
+chinese_dynasty = {
+    type = international_organization
+
+
+    text = {
+        trigger = {
+            leader_country = {
+                has_reform = government_reform:the_chinese_emperor
+            }
+        }
+        localization_key = CHINESE_DYNASTY_NAME
+    }
+
+    text = {
+        localization_key = chinese_dynasty
+        fallback = yes
+    }
+}

@@ -29,11 +29,61 @@ the_chinese_emperor = {
         if = {
             limit = {
                 current_year >= 1645
-                NOT = {
+                NOR = {
                     has_variable = claim_dynasty_name
+                    this = c:CXI
                 }
             }
             trigger_event_non_silently = flavor_all_chi.1
+        }
+        if = {
+            limit = {
+                NOT = {
+                    is_member_of_international_organization = international_organization:chinese_dynasty
+                }
+            }
+            create_international_organization = {
+                type = international_organization_type:chinese_dynasty
+                creator = prev
+                add_country_to_international_organization = prev
+                set_leader_country = prev
+                add_policy_to_international_organization = policy:cd_fanzhen_shuwei
+                add_policy_to_international_organization = policy:cd_establish_chaogong_system
+            }
+            every_subject_or_below = {
+                international_organization:chinese_dynasty = {
+                    add_country_to_international_organization = prev
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                is_member_of_international_organization = international_organization:chinese_dynasty
+                NOT = {
+                    is_leader_of_international_organization = international_organization:chinese_dynasty
+                }
+            }
+            international_organization:chinese_dynasty = {
+                remove_country_from_international_organization = {
+                    country = prev
+                }
+            }
+            create_international_organization = {
+                type = international_organization_type:chinese_dynasty
+                creator = prev
+                add_country_to_international_organization = prev
+                set_leader_country = prev
+                add_policy_to_international_organization = policy:cd_fanzhen_shuwei
+                add_policy_to_international_organization = policy:cd_establish_chaogong_system
+            }
+            every_subject_or_below = {
+                international_organization:chinese_dynasty = {
+                    add_country_to_international_organization = prev
+                }
+            }
+        }
+        else_if = {
+            is_leader_of_international_organization = international_organization:chinese_dynasty
         }
     }
 
@@ -128,7 +178,10 @@ fanwang_reform = {
     government = monarchy
 
     potential = {
-        is_subject_type = fanwang
+        OR = {
+            is_subject_type = fanwang
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
     }
     allow = {
         overlord ?= {
@@ -151,6 +204,7 @@ fanwang_reform = {
         loyalty_to_overlord = 10
         nobles_estate_levy_size = 0.1
         allow_dynasty_stability = yes
+        enable_forced_dynamic_territorial_occupation = yes
     }
 
     years = 2

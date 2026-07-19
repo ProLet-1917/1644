@@ -3,8 +3,6 @@ REPLACE:location_base_values = {
         category = location
     }
 
-    local_population_capacity = 1000
-
     local_devastation_recovery = 0.005
     local_monthly_control = 0.0005
 
@@ -17,6 +15,7 @@ REPLACE:location_base_values = {
     local_pop_demotion_speed = 0.08
 
     local_food_capacity = 50
+    local_monthly_food_modifier = -1.0
 
     local_frontage_allowed = 10
 
@@ -73,7 +72,8 @@ REPLACE:available_free_land = {
         category = location
     }
     #local_migration_attraction = 0.1
-    local_population_growth = 0.002
+    local_population_growth = 0.0025
+    local_monthly_food_modifier = 1.0
 }
 
 # when its <10% capacity & <10k
@@ -117,4 +117,30 @@ REPLACE:prosperity = {
     local_population_growth = 0.005
 
     local_mercenaries_modifier = -0.5
+}
+
+REPLACE:location_size_impact = {
+    game_data = {
+        category = location
+    }
+    local_institution_growth_modifier = -0.01
+    local_population_capacity = 24
+
+    occupation_time = 0.0025
+}
+
+REPLACE:province_capital = {
+    game_data = {
+        category = location
+    }
+
+    local_population_capacity_modifier = 0.05
+    local_migration_attraction = 0.01
+
+    local_nobles_desired_pop_scaled = 0.001
+    local_clergy_desired_pop_scaled = 0.001
+
+    local_max_control = 0.15
+
+    free_building_levels = 2
 }

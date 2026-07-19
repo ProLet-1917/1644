@@ -149,3 +149,29 @@ zzz_1644_increase_total_casualties = {
 	}
 }
 
+spawn_army_for_fanwangs_effect = {
+	location:wuxian = {
+		create_sub_unit_with_owner = {
+			type = a_1644_chinese_zhanbing
+			owner = c:CZH
+			origin = this
+			experience = 5
+		}
+	}
+	location:changsha = {
+		create_sub_unit_with_owner = {
+			type = a_1644_chinese_zhanbing
+			owner = c:CIJ
+			origin = this
+			experience = 10
+		}
+	}
+	location:hengyang = {
+		create_sub_unit_with_owner = {
+			type = a_1644_chinese_zhanbing
+			owner = c:HIC
+			origin = this
+			experience = 2.5
+		}
+	}
+}

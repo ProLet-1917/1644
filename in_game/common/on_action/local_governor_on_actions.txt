@@ -15,6 +15,7 @@ on_local_governor_death = {
             }
             remove_variable = already_has_a_local_governor
             remove_variable = working_on_local_governor_actions #if have
+            #remove_variable = working_on_nearby_land #if have
             remove_local_governor_actions_when_death = yes
         }
     }
@@ -46,6 +47,7 @@ on_re_calc_governor = {
                     remove_variable = can_hire_local_governor
                     remove_variable = already_has_a_local_governor
                     remove_variable = working_on_local_governor_actions #if have
+                    remove_variable = working_on_nearby_land #if have
                     remove_local_governor_actions = yes
                 }
             }
@@ -72,6 +74,7 @@ on_monthly_re_calc_governor = {
             remove_variable = can_hire_local_governor
             remove_variable = already_has_a_local_governor
             remove_variable = working_on_local_governor_actions #if have
+            #remove_variable = working_on_nearby_land #if have
             remove_local_governor_actions = yes
         }
         every_location_in_the_world = {
@@ -85,6 +88,21 @@ on_monthly_re_calc_governor = {
                 }
             }
             set_variable = can_hire_local_governor
+        }
+        every_location_in_the_world = {
+            limit = {
+                OR = {
+                    has_building = building_type:local_governor
+                    has_building = building_type:lieutenancy
+                }
+                has_variable = can_hire_local_governor
+                this.var:already_has_a_local_governor.owner != this.owner
+            }
+            remove_variable = can_hire_local_governor
+            remove_variable = already_has_a_local_governor
+            remove_variable = working_on_local_governor_actions #if have
+            #remove_variable = working_on_nearby_land #if have
+            remove_local_governor_actions = yes
         }
         set_global_variable = {
             name = has_re_calc_governored

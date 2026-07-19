@@ -1,0 +1,57 @@
+palace_of_fanwang = {
+    is_special = yes
+    is_foreign = yes
+    need_good_relation = no
+    pop_type = nobles
+
+    category = government_category
+
+    max_levels = 1
+    employment_size = palace_of_fanwang_employment
+
+    rural_settlement = yes
+    town = yes
+    city = yes
+    megalopolis = yes
+
+    country_potential = {
+        OR = {
+            has_reform = government_reform:fanwang_reform
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    location_potential = {
+        is_capital = yes
+        OR = {
+            owner = scope:actor
+            owner = scope:actor.overlord
+        }
+    }
+
+    build_time = government_build_time
+
+    modifier = {
+        manpower_to_building_owner = 0.025
+        scaled_gold_to_building_owner = 0.25
+    }
+
+    foreign_country_modifier = {
+
+    }
+
+    unique_production_methods = {
+        palace_of_fanwang = {
+            weaponry = 0.01
+            goods_gold = 0.01
+            silver = 0.01
+            books = 0.05
+            paper = 0.05
+            cloth = 0.2
+            furniture = 0.2
+            category = building_maintenance
+        }
+    }
+
+    construction_demand = palace_of_fanwang_construction
+}

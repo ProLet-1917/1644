@@ -112,6 +112,7 @@ claim_mandate_of_heaven = {
                 }
             }
             num_locations_owned_or_owned_by_subjects_or_below >= 800
+
         }
         NOT = { is_situation_active = situation:late_ming_crisis }
     }
@@ -345,13 +346,8 @@ claim_dominance_over_the_baltic_sea = {
                 modifier = dominance_over_the_baltic_sea
                 years = -1
             }
-            if = {
-                limit = {
-                    ironman = yes
-                }
-                set_global_variable = {
-                    name = declare_baltic_hegemony
-                }
+            set_global_variable = {
+                name = declare_baltic_hegemony
             }
         }
     }
@@ -1605,6 +1601,80 @@ reform_the_janissaries = {
     }
 
     ai_will_do = { value = 100 }	#They always want to do this
+}
+
+search_byzantine_heir = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:search_byzantine_heir_prices
+
+    cooldown = {
+        type = search_byzantine_heir
+        years = 15
+    }
+
+    potential = {
+        scope:actor = {
+            OR = {
+                has_or_had_tag = MOI
+                has_dlc = "0_4_echo_of_the_empire"
+            }
+        }
+        dynasty:palaiologos_dynasty = {
+            exists = yes
+        }
+        NOT = {
+            has_global_variable = moi_ruler_palaiologos
+        }
+        current_year <= 1645
+    }
+
+    allow = {
+        scope:actor = {
+            OR = {
+                has_or_had_tag = MOI
+                has_dlc = "0_4_echo_of_the_empire"
+            }
+        }
+        dynasty:palaiologos_dynasty = {
+            exists = yes
+        }
+    }
+
+    effect = {
+        random_list = {
+            40 = {
+                character:roe_ferdinand_palaiologos = {
+                    save_scope_as = target
+                }
+            }
+            25 = {
+                character:roe_john_palaiologos = {
+                    save_scope_as = target
+                }
+            }
+            20 = {
+                character:eng_theodore_jr_palaiologos = {
+                    save_scope_as = target
+                }
+            }
+        }
+        scope:target = {
+            move_country = scope:actor
+        }
+        scope:actor = {
+            set_new_ruler = scope:target
+        }
+        set_global_variable = moi_ruler_palaiologos
+    }
+
+    ai_will_do = { value = 1 }	#They not always want to do this
 }
 
 claim_the_seat_of_chinese_emperor = {

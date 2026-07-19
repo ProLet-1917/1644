@@ -12,7 +12,7 @@ flavor_mng.1 = {
         tag = MNG
         from = 1644.1.1
         to = 1654.1.1
-        monthly_chance = 100
+        monthly_chance = 75
     }
 
     trigger = {
@@ -54,6 +54,28 @@ flavor_mng.2 = {
     desc = flavor_mng.2.desc
     fire_only_once = yes
 
+    dynamic_historical_event = {
+        tag = MNG
+        from = 1644.1.1
+        to = 1685.1.1
+        monthly_chance = 50
+    }
+
+    trigger = {
+        OR = {
+            has_or_had_tag = MNG
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        is_situation_active = situation:late_ming_crisis
+        has_global_variable = ming_emperor_in_nanjing
+        location:shangyuan = {
+            OR = {
+                owner != c:MNG
+                controller != c:MNG
+            }
+        }
+    }
+
     immediate = {
         event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
         change_variable = {
@@ -65,6 +87,7 @@ flavor_mng.2 = {
 
     option = {
         name = flavor_mng.2.a
+        historical_option = yes
         custom_tooltip = lost_nanjing
         c:MNG = {
             set_variable = mng_lost_nanjing
@@ -72,6 +95,10 @@ flavor_mng.2 = {
         kill_character = c:MNG.ruler
         kill_character = c:MNG.heir
         set_new_ruler = character:interregnum
+    }
+
+    option = {
+        name = flavor_mng.2.b
     }
 }
 
@@ -87,7 +114,7 @@ flavor_mng.3 = {
         tag = MNG
         from = 1644.1.1
         to = 1655.1.1
-        monthly_chance = 100
+        monthly_chance = 75
     }
 
     trigger = {
@@ -170,7 +197,7 @@ flavor_mng.4 = {
         tag = MNG
         from = 1644.1.1
         to = 1655.1.1
-        monthly_chance = 75
+        monthly_chance = 50
     }
 
     trigger = {
@@ -304,7 +331,7 @@ flavor_mng.5 = {
         tag = MNG
         from = 1645.1.1
         to = 1675.1.1
-        monthly_chance = 20
+        monthly_chance = 50
     }
 
     trigger = {
@@ -343,7 +370,7 @@ flavor_mng.6 = {
         tag = MNG
         from = 1645.1.1
         to = 1700.1.1
-        monthly_chance = 100
+        monthly_chance = 75
     }
 
     trigger = {
@@ -362,11 +389,74 @@ flavor_mng.6 = {
     }
 
     option = {
-        name = flavor_mng.5.a
+        name = flavor_mng.6.a
         change_variable = {
             name = dynasty_stability
             add = 100
         }
+        if = {
+            limit = {
+                var:corruption >= 5
+            }
+            change_variable = {
+                name = corruption
+                subtract = 5
+            }
+        }
     }
 }
 
+#Lost Fujing
+flavor_mng.7 = {
+    type = country_event
+    title = flavor_mng.7.title
+    desc = flavor_mng.7.desc
+    fire_only_once = yes
+
+    dynamic_historical_event = {
+        tag = MNG
+        from = 1644.1.1
+        to = 1685.1.1
+        monthly_chance = 50
+    }
+
+    trigger = {
+        OR = {
+            has_or_had_tag = MNG
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        is_situation_active = situation:late_ming_crisis
+        has_global_variable = ming_emperor_in_fuzhou
+        location:minxian = {
+            OR = {
+                owner != c:MNG
+                controller != c:MNG
+            }
+        }
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+        change_variable = {
+            name = dynasty_stability
+            subtract = 150
+        }
+        remove_global_variable = ming_emperor_in_fuzhou
+    }
+
+    option = {
+        name = flavor_mng.7.a
+        historical_option = yes
+        custom_tooltip = lost_fuzhou
+        c:MNG = {
+            set_variable = mng_lost_fuzhou
+        }
+        kill_character = c:MNG.ruler
+        kill_character = c:MNG.heir
+        set_new_ruler = character:interregnum
+    }
+
+    option = {
+        name = flavor_mng.7.b
+    }
+}

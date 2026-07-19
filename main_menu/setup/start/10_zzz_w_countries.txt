@@ -12591,6 +12591,7 @@ countries = {
 	}
 
 	#Fanwang
+
     SHU = { # Shu
 		own_control_core = {
 			# chuanxi_area ─ 川西
@@ -12651,7 +12652,7 @@ countries = {
             type = monarchy
             ruler = shu_zhu_zhishu
             ruler_term = { character = shu_zhu_zhishu start_date = 1617.8.5 }
-            heir_selection = cognatic_primogeniture
+            heir_selection = patrilineal_primogeniture
             laws = {
                 medieval_levy_law = broken_weisuo
             }
@@ -12671,6 +12672,118 @@ countries = {
             gold = 925 #国库
             stability = -25 #稳定度
         }
+	}
+
+    CZH = { #Zhou
+		type = army
+
+		our_cores_conquered_by_others = {
+			kaifeng
+		}
+		capital = wuxian
+		include = "zzz_cn_military_gvn"
+		include = "expl_mongols"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+
+		government = {
+			type = monarchy
+			ruler = CZH_zhu_lunkui
+			ruler_term = { character = CZH_zhu_lunkui start_date = 1644.4.17 }
+			heir_selection = patrilineal_primogeniture
+			laws = {
+				medieval_levy_law = broken_weisuo
+			}
+
+			reforms = {
+				fanwang_reform
+			}
+		}
+	}
+
+	CIJ = { #Ji
+		type = army
+
+		our_cores_conquered_by_others = {
+			changsha
+		}
+		capital = changsha
+		include = "zzz_cn_military_gvn"
+		include = "expl_mongols"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+
+		government = {
+			type = monarchy
+			ruler = CIJ_zhu_cikui
+			ruler_term = { character = CIJ_zhu_cikui start_date = 1644.4.17 }
+			heir_selection = patrilineal_primogeniture
+			laws = {
+				medieval_levy_law = broken_weisuo
+			}
+
+			reforms = {
+				fanwang_reform
+			}
+		}
+	}
+
+	HIC = { #Hui
+		type = army
+
+		our_cores_conquered_by_others = {
+			jiangling
+		}
+		capital = hengyang
+		include = "zzz_cn_military_gvn"
+		include = "expl_mongols"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+
+		government = {
+			type = monarchy
+			ruler = HIC_zhu_changrun
+			ruler_term = { character = HIC_zhu_changrun start_date = 1627.10.1 }
+			heir_selection = patrilineal_primogeniture
+			laws = {
+				medieval_levy_law = broken_weisuo
+			}
+
+			reforms = {
+				fanwang_reform
+			}
+		}
+	}
+
+	UAI = { #Huai
+		type = army
+
+		own_control_core = {
+			fuliang
+		}
+		capital = fuliang
+		include = "zzz_cn_military_gvn"
+		include = "expl_mongols"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+
+		government = {
+			type = monarchy
+			ruler = UAI_zhu_changqing
+			ruler_term = { character = UAI_zhu_changqing start_date = 1631.5.1 }
+			heir_selection = patrilineal_primogeniture
+			laws = {
+				medieval_levy_law = broken_weisuo
+			}
+
+			reforms = {
+				fanwang_reform
+			}
+		}
 	}
 
 	#Tusi

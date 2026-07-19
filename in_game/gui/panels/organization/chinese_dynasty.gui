@@ -1,0 +1,158 @@
+organization_panel = {
+    blockoverride "organization_laws_tab_text" {
+        text = "EMPIRE_LAWS"
+    }
+
+    blockoverride "organization_parliament_tab_text" {
+        text = "EMPIRE_PARLIAMENT"
+    }
+
+    blockoverride "organization_overview_tab_visible" {}
+    blockoverride "organization_panel_overview_visible" {
+        visible = "[InternationalOrganizationsView.Vars.NotExistOrHasValue( 'organizations', 'overview' )]"
+    }
+    blockoverride "organization_members_tab_down" {
+        down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'members' )]"
+    }
+    blockoverride "organization_panel_members_visible" {
+        visible = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'members' )]"
+    }
+
+    blockoverride "scroll_overview_empty_visible" {  }
+
+    blockoverride "io_main_actions_icon" {
+    }
+
+    blockoverride "organization_main_actions_extra_visible" { visible = yes }
+
+    blockoverride "organization_overview_list_item" {
+        card_io_payments = {}
+    }
+
+    blockoverride "organization_overview_list_item" {
+
+        hbox = {
+            ignoreinvisible = yes
+            layoutpolicy_horizontal = expanding
+            hbox = {
+                layoutpolicy_horizontal = expanding
+                margin = {15 5}
+                using = chinese_dynasty_members_entry
+            }
+
+            visible = "[Not(EqualTo_string(MemberTypeItem.GetName,ShowSpecialStatusName('tianzi')))]"
+            blockoverride "member_item_visibility" {
+                visible = "[Not(IsDataModelEmpty(MemberTypeItem.GetCountries))]"
+            }
+        }
+    }
+
+}
+
+template chinese_dynasty_members_entry {
+    vbox = {
+        block "member_item_visibility" {}
+        layoutpolicy_horizontal = expanding
+
+        allow_outside = yes
+        visible = "[Not(MemberTypeItem.IsAllMembers)]"
+
+        card_common = {
+
+            blockoverride "header_decor_templates" {
+                using = bg_cabinet_card_frame
+            }
+            blockoverride "common_header_icon_texture" {
+                texture = "[MemberTypeItem.GetIcon]"
+                texture_density = 2
+                background = {
+                    texture = "[MemberTypeItem.GetIcon]"
+                    texture_density = 2
+                    margin = {1 1}
+                    modify_texture = {
+                        using = color_black_texture
+                        blend_mode = multiply
+                    }
+                }
+            }
+            blockoverride "common_header_extra_left" {
+                expand = {}
+            }
+
+            blockoverride "common_header_text_full" {
+                text_single = {
+                    align = center
+                    raw_text = "[MemberTypeItem.GetMembersAmount] [MemberTypeItem.GetName]"
+                }
+            }
+            blockoverride "header_size" {
+                size = {-1 40}
+            }
+            blockoverride "common_header_text_expand" {}
+            blockoverride "common_header_extra_right" {
+                expand = {}
+            }
+
+            blockoverride "common_bottom_content" {
+                hbox = {
+                    visible = "[Not(EqualTo_string(MemberTypeItem.GetName,ShowSpecialStatusName('tianzi')))]"
+
+                    scrollarea = {
+                        layoutpolicy_horizontal = expanding
+                        maximumsize = { -1 240 }
+                        scrollbarpolicy_horizontal = always_off
+                        autoresizescrollarea = yes
+                        scrollbar_vertical = {
+                            using = Scrollbar_Vertical
+                        }
+                        scrollwidget = {
+                            fixedgridbox = {
+                                addcolumn = 40
+                                addrow = 26
+                                datamodel_reuse_widgets = yes
+                                parentanchor = hcenter
+                                flipdirection = yes
+                                datamodel_wrap = 11
+                                datamodel = "[MemberTypeItem.GetCountries]"
+                                item = {
+                                    widget = {
+                                        allow_outside = yes
+                                        size = { 40 26 }
+                                        widget = {
+                                            allow_outside = yes
+                                            parentanchor = left
+                                            size = { 32 26 }
+                                            using = chinese_dynasty_member_flag_entry
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+template chinese_dynasty_member_flag_entry {
+    flowcontainer = {
+        ignoreinvisible = yes
+        layoutpolicy_horizontal = expanding
+        allow_outside = yes
+        flowcontainer = {
+            visible = "[Not(EqualTo_string(MemberTypeItem.GetName, ShowSpecialStatusName('tianzi')) )]"
+            ignoreinvisible = yes
+            direction = vertical
+            country_flag_small = {}
+        }
+        flowcontainer = {
+            visible = "[EqualTo_string(MemberTypeItem.GetName, ShowSpecialStatusName('tianzi'))]"
+            ignoreinvisible = yes
+            direction = vertical
+            country_flag_big = {}
+        }
+    }
+}
+
+

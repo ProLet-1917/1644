@@ -10,9 +10,9 @@ klephts_camp = {
     employment_size = klephts_camp_employment
 
     rural_settlement = yes
-    town = no
+    town = yes
     city = no
-
+    megalopolis = no
 
     country_potential = {
         OR = {
@@ -49,10 +49,17 @@ klephts_camp = {
 
     modifier = {
         scale = {
-            value = location_tax_base
+            multiply = location_tax_base
+            divide = local_control
+            if = {
+                limit = {
+                    location_rank = location_rank:town
+                }
+                multiply = 0.5
+            }
         }
-        gold_to_building_owner = 0.05
-        monthly_gold_income = -0.05
+        gold_to_building_owner = 0.10
+        monthly_gold_income = -0.10
     }
 
     foreign_country_modifier = {

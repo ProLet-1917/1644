@@ -1,0 +1,52 @@
+﻿# Unique Levies
+
+levy_a_longbowmen = {
+	size = levy_generic_infantry_size
+
+	allowed_pop_type = peasants
+
+	allow = {
+		unit_longbowmen_pop_trigger = yes
+	}
+	
+	unit = a_longbowmen
+}
+
+levy_a_reformed_gallowglass = {
+	size = levy_generic_noble_cavalry_size
+	
+	allow = {
+		unit_gallowglass_pop_trigger = yes
+	}
+	
+	unit = a_reformed_gallowglass
+}
+
+levy_a_late_almogavars = {
+	size = levy_generic_infantry_size
+	
+	allow = {
+		unit_almogavars_pop_trigger = yes
+	}
+	
+	unit = a_late_almogavars
+}
+
+# Unlockable Levies
+
+levy_plated_knights = {
+	size = levy_generic_noble_cavalry_size
+	
+	allowed_pop_type = nobles
+	
+	unit = a_plated_knights
+}
+
+levy_a_peasant_levy = {
+	size = levy_generic_infantry_size
+
+	allowed_pop_type = peasants
+	allowed_pop_type = laborers
+	
+	unit = a_peasant_levy
+}

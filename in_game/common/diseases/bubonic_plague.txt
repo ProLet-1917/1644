@@ -62,13 +62,13 @@
 					limit = { current_age = age_4_reformation }
 					value = 1.0
 				}
-				else = {  value = 0 } 
+				else = {  value = 0 }
 			}
 			else = { value = 0 }
 		}
 	}
 
-	monthly_resistance_reduction = 0.0001
+	monthly_resistance_reduction = 0.0002  # Slow decay; old value (0.0001) took 833 years, doubled here
 
 	spawn = {
 		#Has the Black Death spawned already?
@@ -101,9 +101,9 @@
 							continent = continent:oceania
 						}
 					}
-	
+
 					"disease_resistance(scope:disease)" < 0.5
-	
+
 					#If we can't find an appropiate location we don't spawn
 				}
 				spawn_disease = {
@@ -112,7 +112,7 @@
 					#save the outbreak created for later
 					save_scope_as = outbreak
 				}
-			}			
+			}
 		}
 		else_if = {
 			#It is ongoing
@@ -174,8 +174,8 @@
 		}
 	}
 
-	#range between 1.5599 to 1.9332 
-	r0 = { 
+	#range between 1.5599 to 1.9332
+	r0 = {
 		#base
 		if = {
 			limit = {
@@ -239,7 +239,7 @@
 	calc_interval_days = 25
 
 	location_stagnation_chance = {
-		#some locations will spread it much more easily than others. 
+		#some locations will spread it much more easily than others.
 		#For this disease, rural places have much more distance between people so spread it less
 		if = {
 			limit = {
@@ -255,6 +255,12 @@
 		}
 		else = {
 			value = 0.02
+			if = { #It can easily die out in low density areas
+				limit = {
+					location_population_percentage < 0.1
+				}
+				add = 0.1
+			}
 		}
 
 		if = { #It can easily die out in difficult terrain
@@ -270,13 +276,7 @@
 			}
 			add = 0.2
 		}
-		if = { #It can easily die out in low density areas
-			limit = {
-				location_population_percentage < 0.1
-			}
-			add = 0.2
-		}
-		
+
 		#if we've got a bit of resistance then stagnation chance will go up
 		if = {
 			limit = {
@@ -284,32 +284,33 @@
 			}
 			add = {
 				value = "disease_resistance(scope:disease)"
-				subtract = 0.4
+				subtract = 0.5
+				multiply = 0.25
 			}
 		}
 		if = {
 			limit = {
 				"disease_resistance(scope:disease)" > 0.95
 			}
-			add = 0.1
+			add = 0.05
 		}
 		if = {
 			limit = {
 				"disease_resistance(scope:disease)" > 0.98
 			}
-			add = 0.2
+			add = 0.1
 		}
 
 		#We need a minimum spread for the black death to work, we make it immune for a small radius so it can move outside of the Golden horde
 		if = {
-			limit = {				
+			limit = {
 				distance_to_squared = {
 					location = scope:disease.origin
-					value < 15000
-				}				
+					value < 150000
+				}
 			}
 			value = 0
-		}	
+		}
 	}
 
 	percentage_to_meet_their_fate_on_calc = {
@@ -318,19 +319,12 @@
 
 	#general bad effects on locations that have this
 	location_modifier = {
-		potential_trigger = {
-			disease_presence = {
-				disease = scope:disease
-				value >= 0.2
-			}
-			NOT = {	disease_has_stagnated = scope:disease }
-		}
 		local_forced_attrition = 5
 		max_attrition = 10
-		
+
 		local_pop_promotion_speed_modifier = -2.0
 		local_pop_demotion_speed_modifier = 0.5
-		
+
 		local_prosperity_decay = 0.1
 		local_monthly_control = -0.002
 
@@ -343,12 +337,14 @@
 	# If untreated, the mortality rate is between 40% and 70%
 	mortality_rate = { 0.3 0.6 }
 
+	character_trait = bubonic_plague_trait
+
 	character_mortality_chance = {
 		value = 0.08
 		if = {
 			limit = {
-				NOT = { 
-					owner = { 
+				NOT = {
+					owner = {
 						has_country_modifier = hiding_from_black_death
 					}
 				}
@@ -379,11 +375,10 @@
 		}
 	}
 
-
 	# script value for the minimum percentage there has to be in a location before it will start spreading
-	# to new locations. 
-	#(root is the location, scope:disease is the disease, 
-	# scope:disease_outbreak is the specific outbreak, 
+	# to new locations.
+	#(root is the location, scope:disease is the disease,
+	# scope:disease_outbreak is the specific outbreak,
 	# scope:current_presence is the current disease presence in the location)
 	location_spread_threshold = {
 		value = 0.30 #30% of the people need to be infected to spread to neighbors
@@ -409,3 +404,4 @@
 		}
 	}
 }
+
