@@ -1,0 +1,85 @@
+namespace = germany_unification
+
+#Germany will seek unity
+germany_unification.1000 = {
+    type = country_event
+    title = germany_unification.1000.title
+    desc = germany_unification.1000.desc
+
+    fire_only_once = yes
+
+    illustration_tags = {
+        10 = interior
+        10 = happy
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+    }
+
+    option = {
+        name = germany_unification.1000.a
+    }
+}
+
+#Annex all member
+germany_unification.1001 = {
+    type = country_event
+    title = germany_unification.1001.title
+    desc = germany_unification.1001.desc
+
+    fire_only_once = yes
+
+    illustration_tags = {
+        10 = interior
+        10 = happy
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+        random_international_organizations_member_of = {
+            limit = {
+                OR = {
+                    this = international_organization:germany_unification_union
+                }
+            }
+            save_scope_as = target_io
+            leader_country = {
+                save_scope_as = target_country
+                ruler_or_regent ?= { save_scope_as = target_character }
+            }
+        }
+    }
+
+    option = {
+        name = germany_unification.1001.a
+        ai_will_select = {
+            add = 100
+            add = { value = "opinion(scope:target_country)" }
+        }
+        add_prestige = prestige_severe_bonus
+        add_stability = stability_mild_bonus
+        if = {
+            limit = {
+                scope:target_io = {
+                    any_international_organization_member = {
+                        is_subject = no
+                        count > 1
+                    }
+                }
+                scope:target_country = root
+            }
+            custom_tooltip = demand_vassalization_from_members_tt
+        }
+        else_if = {
+            limit = {
+                is_subject = no
+            }
+            scope:target_country = {
+                annex_country = {
+                    country = root
+                }
+            }
+        }
+    }
+}

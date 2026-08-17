@@ -19,6 +19,12 @@ monthly_country_pulse = {
 		#Local Governor
 		on_monthly_re_calc_governor
 
+		#Ai personality
+		on_monthly_re_calc_personality
+
+		#Ming flavor Events
+		on_monthly_check_falvor_events
+
 	}
 }
 
@@ -29,3 +35,17 @@ REPLACE:on_nation_changing = {
 	}
 }
 
+on_monthly_re_calc_personality = {
+	events = {
+		ai_flavor.1
+		ai_flavor.2
+	}
+}
+
+on_monthly_check_falvor_events = {
+	events = {
+		flavor_mng.1
+		flavor_mng.2
+		flavor_mng.7
+	}
+}

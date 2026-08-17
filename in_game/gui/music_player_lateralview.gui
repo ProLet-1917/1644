@@ -1,0 +1,244 @@
+lateralview = {
+	name = "music_player_lateralview"
+	widgetid = "music_player_lateralview"
+
+	blockoverride "snd_panel_default" {}
+
+	# SOUND - Automation
+	blockoverride "snd_panel_identifier" { soundeffect = "UI_panelAux_automation_show" }
+	blockoverride "panel_header" {
+		window_header_alt = {
+			using = bg_main_inner_alt
+			blockoverride "header_text" {
+				text = "MUSIC_PLAYER_HEADER"
+			}
+			blockoverride "window_header_alt_color_texture"{
+				using = color_default_brown_texture
+			}
+		}
+	}
+
+	minimumsize = { 400 100% }
+	
+
+	blockoverride "panel_content" {
+		vbox = {
+			using = layoutpolicy_expanding
+			using = bg_main_inner_notabs_alt
+			using = window_main_tabs_margin_alt
+
+			vbox = {
+				using = layoutpolicy_expanding
+				using = bg_secondary_inner_notabs_alt
+				margin = { 2 10 }
+				spacing = 5
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					margin = { 8 0 }
+
+					header_music_player_button = {
+						name  = "menu_game"
+						blockoverride "music_player_button_texture" { 
+							texture = "gfx/interface/icons/flat_icons/tabicons/settings_flat_icon.dds" 
+						}
+
+						action_tooltip = {
+							title = "MUSIC_PLAYER_OPEN_SETTINGS"
+							on_action = "[CloseAllTooltips]"
+							on_action = "[OpenMusicSettings]"
+						}
+					}
+
+					expand = {}
+					text_single = {
+						layoutpolicy_vertical = expanding
+						align = bottom
+						text = "MUSIC_PLAYER_CURRENT_TRACK"
+					}
+					expand = {}
+					header_music_player_button = {
+						blockoverride "music_player_button_texture" { 
+							texture = "gfx/interface/icons/messages_settings/next.dds"
+						}
+
+						action_tooltip = {
+							title = "MUSIC_PLAYER_NEXT_TRACK"
+							on_action = "[Audio_PlayEvent('Stop_1644_All', 'music_manager')]"
+							on_action = "[TriggerMusicPlayerNext]"
+							on_action = "[MusicPlayerLateralView.OnNextTrack]"
+						}
+					}
+				}
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					minimumsize = { -1 36 }
+					margin = { 7 0 }
+					spacing = 10
+
+					icon = {
+						texture = "gfx/interface/icons/work_of_art/play.dds"
+						size = {32 32}
+					}
+					
+
+					text_multi = {
+						minimumsize = { 262 36 }
+						text = "[MusicPlayerLateralView.GetCurrentTrackName]"
+						default_format = "#yellow_titles"
+						align = center
+					}
+
+
+					header_music_player_button = {
+						visible = "[IsMusicPlayerPaused]"
+						blockoverride "music_player_button_texture" { 
+							texture = "gfx/interface/icons/messages_settings/play.dds"
+						}
+						
+						action_tooltip = {
+							title = "MUSIC_PLAYER_PLAY"
+							on_action = "[Audio_PlayEvent('Resume_1644_All', 'music_manager')]"
+							on_action = "[ToggleMusicPlayerPaused]"
+						}
+						clicksound = "mus_player_resume"
+					}
+					header_music_player_button = {
+						visible = "[Not(IsMusicPlayerPaused)]"
+						blockoverride "music_player_button_texture" { 
+							texture = "gfx/interface/icons/messages_settings/pause.dds"
+						}
+						
+						action_tooltip = {
+							title = "MUSIC_PLAYER_PLAY"
+							on_action = "[Audio_PlayEvent('Pause_1644_All', 'music_manager')]"
+							on_action = "[ToggleMusicPlayerPaused]"
+						}
+						clicksound = "mus_player_pause"
+					}
+				}
+
+				filtered_sorted_list = {
+					datacontext = "[MusicPlayerLateralView.GetSortSearch]"
+
+					blockoverride "special_margin"{
+						margin_left = 8
+					}
+					blockoverride "scroll_list_is_empty" {
+						visible = no
+					}
+
+					blockoverride "scroll_list_is_empty_text" {
+						text = "DYNASTIES_LIST_EMPTY"
+					}
+
+					blockoverride "scroll_list_content" {
+						datamodel = "[MusicPlayerLateralView.GetTrackObjects]"
+						addcolumn = 100%
+						addrow = 54
+						datamodel_reuse_widgets = yes
+
+						item = {
+							widget = {
+								size = { 366 50 }
+								card_list_button  = {
+									parentanchor = center
+									size = { 347 100% }
+
+									tooltipwidget = {
+										ContextualTooltipType = {
+											blockoverride "title_icon" {
+												icon = {
+													texture = "gfx/interface/icons/work_of_art/play.dds"
+													using = tooltip_title_icon_size
+												}
+											}
+											blockoverride "title_text" {
+												text = "[MusicPlayerTrack.GetTrackName]"
+											}
+											blockoverride "concept_link_font_size" {}
+											blockoverride "concept_link" {
+												visible = "[Not(StringIsEmpty( MusicPlayerTrack.GetComposer ))]"
+												text = "[MusicPlayerTrack.GetComposer]"
+											}
+											blockoverride "tooltip_content" {
+												TooltipTextBlock = {
+													visible = "[Not(StringIsEmpty( MusicPlayerTrack.GetPerformer ))]"
+													blockoverride "text" {
+														text = "[MusicPlayerTrack.GetPerformer]"
+													}
+												}
+												TooltipTextBlock = {
+													visible = "[Not(StringIsEmpty( MusicPlayerTrack.GetSoloist ))]"
+													blockoverride "text" {
+														text = "[MusicPlayerTrack.GetSoloist]"
+													}
+												}
+												TooltipFlavorTextBlock = {
+													blockoverride "text" {
+														text = "[MusicPlayerTrack.GetTrackFlavour]"
+													}
+												}
+											}
+										}
+									}
+									
+									action_tooltip = {
+										title = "MUSIC_PLAYER_PLAY"
+										on_action = "[Audio_PlayEvent('Stop_1644_All', 'music_manager')]"
+										on_action = "[MusicPlayerTrack.Play]"
+										on_action = "[UnPauseMusicPlayer]"
+									}
+
+									hbox = {
+										parentanchor = center
+										using = layoutpolicy_expanding
+										
+										alwaystransparent = yes
+										margin = { 6 0 }
+										spacing = 10
+										icon = {
+											size = { 16 16 }
+											texture = "gfx/interface/icons/messages_settings/play.dds"
+										}
+										
+										text_multi = {
+											minimumsize = { 0 20 }
+											maximumsize = { 280 44 }
+											autoresize = yes
+											align = left|nobaseline
+											text = "[MusicPlayerTrack.GetTrackName]"
+										}
+
+										expand = {}
+									}
+								}
+							}
+						}
+					}
+				}
+
+				expand = {}
+			}
+		}
+	}
+}
+
+types MusicPlayer
+{
+	type header_music_player_button = button {
+		size = { 32 32 }
+		using = header_button_template
+		blockoverride "header_button_template_push_properties"{using = button_tab_toggle_properties_template}
+		blockoverride "header_button_full_content"{}
+		blockoverride "header_button_template_texture"{using = pressed_button_texture_light}
+		tooltipwidget = {
+			BasicFunctionalTooltip = {}
+		}
+
+		icon = {
+			size = { 24 24 }
+			parentanchor = center
+			block "music_player_button_texture" { }
+		}
+	}
+}

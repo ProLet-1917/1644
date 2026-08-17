@@ -12,8 +12,8 @@ english_civil_war.250 = {
 	dynamic_historical_event = {
 		tag = ENG
 		from = 1644.1.1
-		to = 1650.1.1
-		monthly_chance = 1000
+		to = 1655.1.1
+		monthly_chance = 50
 	}
 
 	trigger = {
@@ -24,9 +24,9 @@ english_civil_war.250 = {
 		location:huntingdon = {
 			save_scope_as = target_location
 		}
+		create_named_dynasty = Cromwell
 		create_character = {
 			first_name = name_oliver
-			last_name = Cromwell
 			estate = estate_type:burghers_estate
 			adm = { 65 95 }
 			dip = { 65 95 }
@@ -35,8 +35,10 @@ english_civil_war.250 = {
 			birth_location = location:huntingdon
 			religion = location:huntingdon.dominant_religion
 			trait_category = general
+			script = eng_oliver_cromwell
 			save_scope_as = target_character
 			set_variable = eng_oliver_cromwell_script
+			dynasty = dynasty:Cromwell
 		}
 
 	}

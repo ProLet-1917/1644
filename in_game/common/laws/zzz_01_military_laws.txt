@@ -2,20 +2,45 @@
 	broken_weisuo = {
 		potential = {
 	        OR = {
-				has_reform = government_reform:the_chinese_emperor
-				has_reform = government_reform:the_chinese_warlords
+				is_chinese_country = yes
 			}
 		}
+
 		country_modifier = {
-			global_levy_size_modifier = -0.75
-			levy_maintenance_modifier = -0.5
+			global_levy_size_modifier = -0.6
+			levy_maintenance_modifier = -0.6
 			levy_combat_efficiency_modifier = -0.1
 			army_maintenance_efficiency = 0.6
 		}
+
 		estate_preferences = {
 			crown_estate
 			peasants_estate
 		}
-		years = 3
+
+		years = 2
+
+		wants_propose_policy = {
+			base = -10
+			if = {
+				limit = {
+					is_chinese_country = yes
+					NOT = {
+						has_reform = government_reform:qng_banner_reform
+					}
+				}
+				add = 100
+			}
+		}
+
+		wants_keep_policy = {
+			base = -10
+			if = {
+				limit = {
+					is_chinese_country = yes
+				}
+				add = 100
+			}
+		}
 	}
 }

@@ -1,0 +1,29 @@
+cb_expel_the_colonist = {
+    years = 15
+    create_visible = {
+        capital = {
+            OR = {
+                continent = continent:america
+                continent = continent:oceania
+            }
+        }
+        is_subject = no
+    }
+
+    create_enabled = {
+        scope:target = {
+            is_subject_type = colonial_nation
+        }
+        scope:target.overlord = {
+            capital = {
+                OR = {
+                    continent = continent:europe
+                    continent = continent:asia
+                }
+            }
+        }
+        is_neighbor_of = scope:target
+    }
+
+    war_goal_type = take_capital
+}

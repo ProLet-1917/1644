@@ -105,16 +105,17 @@ rulling_nearby_land = {
     show_message = no
 
     potential = {
-        scope:actor = {
-            any_ownable_location = {
-                has_variable = already_has_a_local_governor
-            }
+        location = {
+            has_variable = already_has_a_local_governor
         }
     }
 
     allow = {
         location = {
             has_variable = already_has_a_local_governor
+            NOT = {
+                has_variable = local_governor_working_on_this
+            }
         }
     }
 
@@ -177,16 +178,17 @@ spread_culture = {
     show_message = no
 
     potential = {
-        scope:actor = {
-            any_ownable_location = {
-                has_variable = already_has_a_local_governor
-            }
+        location = {
+            has_variable = already_has_a_local_governor
         }
     }
 
     allow = {
         location = {
             has_variable = already_has_a_local_governor
+            NOT = {
+                has_variable = local_governor_working_on_this
+            }
         }
     }
 
@@ -235,6 +237,10 @@ spread_culture = {
         }
         set_local_governor_culture = yes
     }
+
+    ai_will_do = {
+        value = 20
+    }
 }
 
 spread_religion = {
@@ -242,16 +248,17 @@ spread_religion = {
     show_message = no
 
     potential = {
-        scope:actor = {
-            any_ownable_location = {
-                has_variable = already_has_a_local_governor
-            }
+        location = {
+            has_variable = already_has_a_local_governor
         }
     }
 
     allow = {
         location = {
             has_variable = already_has_a_local_governor
+            NOT = {
+                has_variable = local_governor_working_on_this
+            }
         }
     }
 
@@ -307,16 +314,17 @@ held_holiday_celebration = {
     show_message = no
 
     potential = {
-        scope:actor = {
-            any_ownable_location = {
-                has_variable = already_has_a_local_governor
-            }
+        location = {
+            has_variable = already_has_a_local_governor
         }
     }
 
     allow = {
         location = {
             has_variable = already_has_a_local_governor
+            NOT = {
+                has_variable = local_governor_working_on_this
+            }
         }
     }
 
@@ -372,16 +380,17 @@ local_governor_organize_troops = {
     show_message = no
 
     potential = {
-        scope:actor = {
-            any_ownable_location = {
-                has_variable = already_has_a_local_governor
-            }
+        location = {
+            has_variable = already_has_a_local_governor
         }
     }
 
     allow = {
         location = {
             has_variable = already_has_a_local_governor
+            NOT = {
+                has_variable = local_governor_working_on_this
+            }
         }
     }
 
@@ -440,6 +449,9 @@ local_governor_production_plan = {
         scope:actor = {
             any_ownable_location = {
                 has_variable = already_has_a_local_governor
+                NOT = {
+                    has_variable = local_governor_working_on_this
+                }
             }
         }
     }
@@ -494,6 +506,70 @@ local_governor_production_plan = {
             }
         }
         set_local_governor_production = yes
+    }
+}
+
+remove_current_work = {
+    type = owncountry
+    show_message = no
+
+    potential = {
+        scope:actor = {
+            any_ownable_location = {
+                has_variable = local_governor_working_on_this
+            }
+        }
+    }
+
+    allow = {
+        location = {
+            has_variable = local_governor_working_on_this
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = character
+        source = actor
+        target_flag = recipient
+        name = "settle_the_frontier_select_character"
+        none_available_msg_key = "settle_the_frontier_no_character"
+        column = { data = character_info }
+        visible = {
+            has_character_modifier = local_governor
+            has_variable = working_on_local_governor_actions
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = location
+        target_flag = target
+        source = actor
+        source_flags = only_actual_locations
+        name = "choose_location"
+        column = {
+            data = name
+        }
+        column = {
+            data = population
+        }
+        column = {
+            data = development
+        }
+        visible = {
+            this = {
+                var:already_has_a_local_governor = scope:recipient
+                has_variable = local_governor_working_on_this
+            }
+        }
+    }
+
+    effect = {
+        scope:recipient = {
+            remove_variable = working_on_local_governor_actions
+        }
+        scope:target = {
+            remove_local_governor_actions = yes
+        }
     }
 }
 

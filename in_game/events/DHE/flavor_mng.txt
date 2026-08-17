@@ -8,13 +8,6 @@ flavor_mng.1 = {
     fire_only_once = yes
     historical_info = flavor_mng.1.historical_info
 
-    dynamic_historical_event = {
-        tag = MNG
-        from = 1644.1.1
-        to = 1654.1.1
-        monthly_chance = 75
-    }
-
     trigger = {
         OR = {
             has_or_had_tag = MNG
@@ -53,13 +46,6 @@ flavor_mng.2 = {
     title = flavor_mng.2.title
     desc = flavor_mng.2.desc
     fire_only_once = yes
-
-    dynamic_historical_event = {
-        tag = MNG
-        from = 1644.1.1
-        to = 1685.1.1
-        monthly_chance = 50
-    }
 
     trigger = {
         OR = {
@@ -113,7 +99,7 @@ flavor_mng.3 = {
     dynamic_historical_event = {
         tag = MNG
         from = 1644.1.1
-        to = 1655.1.1
+        to = 1665.1.1
         monthly_chance = 75
     }
 
@@ -146,7 +132,7 @@ flavor_mng.3 = {
             first_name = name_yujian
             birth_date = 1602.5.25
             birth_location = location:nanyang
-            culture = culture:han_culture
+            culture = culture:zhongyuan_culture
             religion = religion:sanjiao
             adm = 69
             dip = 57
@@ -196,7 +182,7 @@ flavor_mng.4 = {
     dynamic_historical_event = {
         tag = MNG
         from = 1644.1.1
-        to = 1655.1.1
+        to = 1665.1.1
         monthly_chance = 50
     }
 
@@ -238,7 +224,7 @@ flavor_mng.4 = {
         create_character = {
             first_name = name_yihai
             dynasty = dynasty:rtr_ming_zhu_dynasty
-            culture = culture:han_culture
+            culture = culture:jilu_culture
             religion = religion:sanjiao
             adm = 45
             dip = 70
@@ -412,13 +398,6 @@ flavor_mng.7 = {
     title = flavor_mng.7.title
     desc = flavor_mng.7.desc
     fire_only_once = yes
-
-    dynamic_historical_event = {
-        tag = MNG
-        from = 1644.1.1
-        to = 1685.1.1
-        monthly_chance = 50
-    }
 
     trigger = {
         OR = {

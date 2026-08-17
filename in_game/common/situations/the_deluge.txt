@@ -41,17 +41,7 @@ the_deluge = {
 
     visible = {
         OR = {
-            this = c:PLC
-            this = c:ZAZ
-            this = c:PRU
-            this = c:RUS
-            this = c:SWE
-            this = c:BRA
-            this = c:CRI
-            this = c:TUR
-            this = c:HAB
-            has_presence_in = region:ruthenia_region
-            has_presence_in = region:baltic_region
+            has_presence_in = continent:europe
         }
     }
 
@@ -64,10 +54,10 @@ the_deluge = {
     on_monthly = {
         if = {
             limit = {
-                location ?= {
+                any_ownable_location = {
                     owner = c:PLC
                     NOT = { controller = owner }
-                    NOT = { has_location_modifier = chaos_and_destruction}
+                    NOT = { has_location_modifier = chaos_and_destruction }
                     save_temporary_scope_as = target_location
                 }
             }
@@ -80,7 +70,7 @@ the_deluge = {
         }
         else_if = {
             limit = {
-                location ?= {
+                any_ownable_location = {
                     owner = c:PLC
                     controller = owner
                     has_location_modifier = chaos_and_destruction

@@ -15,6 +15,7 @@ the_chinese_emperor = {
             has_dlc = "0_5_dawn_of_the_new_era"
         }
         country_rank = country_rank:rank_empire
+        is_rebel_country = no
     }
 
     locked = {
@@ -39,7 +40,7 @@ the_chinese_emperor = {
         if = {
             limit = {
                 NOT = {
-                    is_member_of_international_organization = international_organization:chinese_dynasty
+                    is_member_of_international_organization_of_type = { type = chinese_dynasty }
                 }
             }
             create_international_organization = {
@@ -58,9 +59,9 @@ the_chinese_emperor = {
         }
         else_if = {
             limit = {
-                is_member_of_international_organization = international_organization:chinese_dynasty
+                is_member_of_international_organization_of_type = { type = chinese_dynasty }
                 NOT = {
-                    is_leader_of_international_organization = international_organization:chinese_dynasty
+                    is_leader_of_international_organization_of_type = { type = chinese_dynasty }
                 }
             }
             international_organization:chinese_dynasty = {
@@ -83,7 +84,13 @@ the_chinese_emperor = {
             }
         }
         else_if = {
-            is_leader_of_international_organization = international_organization:chinese_dynasty
+            limit = {
+                is_leader_of_international_organization_of_type = { type = chinese_dynasty }
+            }
+            change_variable = {
+                name = dynasty_stability
+                add = 100
+            }
         }
     }
 
@@ -92,9 +99,19 @@ the_chinese_emperor = {
         monthly_prestige = 0.05
         government_reform_slots = 1
         global_max_bureaucracy_slots = 1
-        cultures_capacity = 8
+        cultures_capacity = 20
         dynasty_stability_monthly_income = 0.05
         allow_dynasty_stability = yes
+    }
+
+    location_modifier = {
+        potential_trigger = {
+
+        }
+
+        scale = {
+
+        }
     }
 
     years = 2
@@ -133,7 +150,7 @@ the_chinese_warlords = {
 
     country_modifier = {
         allow_tributary_subject = yes
-        cultures_capacity = 3
+        cultures_capacity = 8
         monthly_prestige = 0.02
         army_maintenance_efficiency = 0.1
         global_manpower_modifier = 0.05
@@ -190,6 +207,7 @@ fanwang_reform = {
             }
         }
         is_subject = yes
+        is_subject_type = fanwang
     }
 
     locked = {
@@ -203,6 +221,8 @@ fanwang_reform = {
         government_reform_slots = 1
         loyalty_to_overlord = 10
         nobles_estate_levy_size = 0.1
+        cultures_capacity = 2
+        allow_tributary_subject = yes
         allow_dynasty_stability = yes
         enable_forced_dynamic_territorial_occupation = yes
     }

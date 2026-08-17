@@ -16,3 +16,22 @@ chinese_dynasty = {
         fallback = yes
     }
 }
+
+germany_unification_union= {
+    type = international_organization
+
+
+    text = {
+        trigger = {
+            leader_country = {
+                has_variable = potential_unifier
+            }
+        }
+        localization_key = GERMANY_UNIFICATION_UNION_NAME
+    }
+
+    text = {
+        localization_key = germany_unification_union
+        fallback = yes
+    }
+}

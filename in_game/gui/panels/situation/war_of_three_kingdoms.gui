@@ -83,6 +83,7 @@ situation_panel = {
 				datacontext = "[GetCountry('ENG')]"
 				visible = "[Country.IsValid]"
 			}
+			blockoverride "left_bottom_flag" { }
 			blockoverride "left_top_text" {
 				text = "[GetCountry('ENG').GetName]"
 			}
@@ -95,6 +96,7 @@ situation_panel = {
 				datacontext = "[GetCountry('ROE')]"
 				visible = "[Country.IsValid]"
 			}
+			blockoverride "right_bottom_flag" { }
 			blockoverride "right_top_text" {
 				text = "[GetCountry('ROE').GetName]"
 			}

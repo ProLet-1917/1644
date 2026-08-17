@@ -15,15 +15,6 @@ flavor_all_chi.1 = {
         name = flavor_all_chi.1.a
         ai_chance = {
             value = 0
-            modifier = {
-                trigger = {
-                    OR = {
-                        country_rank = country_rank:rank_duchy
-                        country_rank = country_rank:rank_kingdom
-                    }
-                }
-                add = 50
-            }
         }
     }
 
@@ -54,9 +45,11 @@ flavor_all_chi.1 = {
 
     option = {
         name = flavor_all_chi.1.d
+
         trigger = {
             culture = culture:jurchen_culture
         }
+
         ai_chance = {
             value = 1
             modifier = {
@@ -88,12 +81,12 @@ flavor_all_chi.1 = {
     option = {
         name = flavor_all_chi.1.f
         ai_chance = {
-            value = 1
+            value = 0
             modifier = {
                 trigger = {
                     ruler.dynasty = dynasty:rtr_ming_zhu_dynasty
                 }
-                multiply = 50
+                add = 10
             }
             modifier = {
                 trigger = {
@@ -111,5 +104,47 @@ flavor_all_chi.1 = {
             value = 2
         }
         change_country_name = CSO
+    }
+
+    option = {
+        name = flavor_all_chi.1.h
+        ai_chance = {
+            value = 1
+            modifier = {
+                trigger = {
+                    OR = {
+                        capital.area = area:shandong_area
+                    }
+                }
+                multiply = 2
+            }
+        }
+        change_country_name = CLU
+    }
+
+    option = {
+        name = flavor_all_chi.1.i
+        ai_chance = {
+            value = 1
+            modifier = {
+                trigger = {
+                    OR = {
+                        capital.area = area:chuandong_area
+                        capital.area = area:chuanxi_area
+                        capital.area = area:chuannan_area
+                    }
+                }
+                multiply = 5
+            }
+        }
+        change_country_name = SHU
+    }
+
+    option = {
+        name = flavor_all_chi.1.j
+        ai_chance = {
+            value = 2
+        }
+        change_country_name = CZH
     }
 }

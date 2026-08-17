@@ -11,7 +11,26 @@
 			current_age = age_5_absolutism
 			current_age = age_6_revolutions
 		}
-		current_year > 1675
+		OR = {
+			AND = {
+				government_power < 50
+				current_year >= 1650
+				is_chinese_country = no
+			}
+			AND = {
+				government_power < 50
+				current_year >= 1675
+				is_chinese_country = yes
+			}
+			AND = {
+				current_year >= 1675
+				is_chinese_country = no
+			}
+			AND = {
+				current_year >= 1700
+				is_chinese_country = yes
+			}
+		}
 		has_any_active_disaster = no
 		OR = {
 			"estate_power(estate_type:crown_estate)" >= 0.25

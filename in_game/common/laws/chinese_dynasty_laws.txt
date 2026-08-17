@@ -1,6 +1,6 @@
 cd_fanwang_yiwu = {
     type = international_organization
-    law_category = administrative
+    law_category = centralization
 
     potential = {
         international_organization_type = international_organization_type:chinese_dynasty
@@ -89,7 +89,7 @@ cd_fanwang_yiwu = {
 
 cd_fanwang_daiyu = {
     type = international_organization
-    law_category = administrative
+    law_category = centralization
 
     potential = {
         international_organization_type = international_organization_type:chinese_dynasty
@@ -141,7 +141,7 @@ cd_fanwang_daiyu = {
 
 cd_fanzhen_right = {
     type = international_organization
-    law_category = administrative
+    law_category = centralization
 
     potential = {
         international_organization_type = international_organization_type:chinese_dynasty
@@ -199,5 +199,104 @@ cd_chaogong_system = {
 
     cd_abolish_chaogong_system = {
         payments_repealed = { chaogong_payment }
+    }
+}
+
+cd_expansion_strategy = {
+    type = international_organization
+    law_category = military
+
+    potential = {
+        international_organization_type = international_organization_type:chinese_dynasty
+    }
+
+    cd_expansionism_policy = {
+        leader_modifier = {
+            land_morale_modifier = 0.05
+            monthly_towards_offensive = 0.05
+            ai_months_between_wars = -6
+            aggressiveness_modifier = 0.15
+        }
+
+        wants_propose_policy = {
+            base = 5
+            add = {
+                if = {
+                    limit = {
+                        var:dynasty_stability >= 100
+                    }
+                    add = 10
+                }
+                if = {
+                    limit = {
+                        var:dynasty_stability < -200
+                    }
+                    subtract = 10
+                }
+            }
+        }
+
+        wants_keep_policy = {
+            base = 5
+            add = {
+                if = {
+                    limit = {
+                        var:dynasty_stability >= 150
+                    }
+                    add = 10
+                }
+                if = {
+                    limit = {
+                        var:dynasty_stability < -150
+                    }
+                    subtract = 10
+                }
+            }
+        }
+    }
+
+    cd_defend_border_policy = {
+        leader_modifier = {
+            global_defensive = 0.1
+            monthly_towards_defensive = 0.05
+            ai_months_between_wars = 12
+            aggressiveness_modifier = -0.15
+        }
+
+        wants_propose_policy = {
+            base = 5
+            add = {
+                if = {
+                    limit = {
+                        var:dynasty_stability < -150
+                    }
+                    add = 10
+                }
+                if = {
+                    limit = {
+                        var:dynasty_stability >= 150
+                    }
+                    subtract = 10
+                }
+            }
+        }
+
+        wants_keep_policy = {
+            base = 5
+            add = {
+                if = {
+                    limit = {
+                        var:dynasty_stability < -150
+                    }
+                    add = 10
+                }
+                if = {
+                    limit = {
+                        var:dynasty_stability >= 150
+                    }
+                    subtract = 10
+                }
+            }
+        }
     }
 }

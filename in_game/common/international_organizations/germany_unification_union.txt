@@ -1,0 +1,163 @@
+#Made by Lvtoumao, Part of v.0.5
+germany_unification_union = {
+
+    has_target = no
+    has_buildings = yes
+    show_leave_message = yes
+    use_laws_as_join_reason = no
+
+    custom_name = germany_unification_union
+
+    show_as_overlord_on_map_trigger = {
+        scope:recipient = {
+            international_organization_has_leader = yes
+        }
+    }
+
+    has_parliament = no
+    has_leader_country = yes
+    leader_type = country
+    leader_change_method = none
+    disband_if_no_leader = yes
+
+    join_offensive_wars_always = {
+        scope:actor = { is_leader_of_international_organization = root }
+    }
+
+    join_defensive_wars_always = {
+        scope:recipient = { is_leader_of_international_organization = root }
+    }
+
+    create_enabled_trigger = {
+        is_situation_active = situation:germany_unification
+        has_variable = potential_unifier
+    }
+
+    create_visible_trigger = {
+        is_situation_active = situation:germany_unification
+        has_variable = potential_unifier
+    }
+
+    can_declare_war = {
+        always = yes
+    }
+
+    gives_military_access_to_all_when_at_war = yes
+
+    can_join_trigger = {
+        is_situation_active = situation:germany_unification
+        culture = { has_culture_group = culture_group:german_group }
+        has_variable = normal_germany_country
+        is_rebel_country = no
+        OR = {
+            is_subject = no
+            AND = {
+                is_subject = yes
+                top_overlord.culture != {
+                    has_culture_group = culture_group:german_group
+                }
+            }
+        }
+    }
+
+    auto_leave_trigger = {
+        NOR = {
+            is_rebel_country = no
+            is_situation_active = situation:germany_unification
+            culture = { has_culture_group = culture_group:german_group }
+            has_variable = normal_germany_country
+        }
+    }
+
+    can_leave_trigger = {
+        NOT = {
+            this = scope:recipient.leader_country
+            is_subject_of = scope:recipient.leader_country
+        }
+    }
+
+    leader_modifier = {
+        global_manpower_modifier = 0.05
+        land_cost_on_distance_from_capital_speed_propagation = 0.02
+        monthly_diplomats = 0.2
+    }
+
+    # Put the opinion component here such that AI can understand that improving opinion will make it easier to invite people which doenst work in ai_desire_to_join
+    join_diplo_chance = {
+        opinion = 0.25
+        base = -25
+    }
+
+    ai_desire_to_join = {
+        subtract = {
+            desc = "game_concept_tax_base"
+            value = {
+                value = country_tax_base
+                divide = 25
+            }
+        }
+        add = {
+            desc = "game_concept_diplomatic_reputation"
+            value = {
+                value = "scope:actor.modifier:diplomatic_reputation"
+                multiply = 0.5  # +0.5 reasons per 1 diprep
+            }
+        }
+        if = {
+            limit = {
+                scope:actor = {
+                    is_great_power = yes
+                }
+            }
+            add = {
+                desc = "game_concept_great_powers"
+                value = 25
+            }
+        }
+        if = {
+            limit = {
+                at_war = yes
+            }
+            subtract = {
+                desc = "IS_AT_WAR"
+                value = 1000
+            }
+        }
+        if = {
+            limit = {
+                country_rank_is_kingdom = yes
+            }
+            subtract = 75
+        }
+        if = {
+            limit = {
+                country_rank_is_empire = yes
+            }
+            subtract = 100
+        }
+    }
+
+    ai_desire_to_allow_new_member = {
+        base = 50
+        add = {
+            value = {
+                value = modifier:bias_for_tolerant_policies
+                multiply = -1
+            }
+        }
+        add = {
+            desc = "game_concept_tax_base"
+            value = {
+                value = country_tax_base
+                multiply = -25
+            }
+        }
+        add = {
+            desc = "game_concept_diplomatic_reputation"
+            value = {
+                value = "scope:actor.modifier:diplomatic_reputation"
+                multiply = 0.5  # +0.5 reasons per 1 diprep
+            }
+        }
+    }
+}

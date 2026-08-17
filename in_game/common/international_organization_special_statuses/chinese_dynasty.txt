@@ -34,6 +34,12 @@ fanwang = {
         is_subject_of = scope:recipient.leader_country
         subject_type = subject_type:fanwang
         is_member_of_international_organization = scope:recipient
+        OR = {
+            AND = {
+                exists = overlord.ruler_or_heir_if_regent.dynasty
+                ruler_or_heir_if_regent = { is_patrilineal_descendant_of = overlord.ruler_or_heir_if_regent.dynasty }
+            }
+        }
     }
     auto_bestowal_trigger = {
         has_reform = government_reform:fanwang_reform
@@ -42,6 +48,17 @@ fanwang = {
         OR = {
             NOT = { government_type = government_type:monarchy }
             NOT = { is_member_of_international_organization = scope:recipient }
+            AND = {
+                NOT = {
+                    has_reform = government_reform:fanwang_reform
+                }
+                NOR = {
+                    AND = {
+                        exists = overlord.ruler_or_heir_if_regent.dynasty
+                        ruler_or_heir_if_regent = { is_patrilineal_descendant_of = overlord.ruler_or_heir_if_regent.dynasty }
+                    }
+                }
+            }
         }
     }
 
@@ -74,15 +91,17 @@ fanwang = {
 fanzhen = {
     priority = 8
     can_bestow_trigger = {
-        is_subject_of = scope:recipient.leader_country
-        subject_type = subject_type:cn_march_governor
         is_member_of_international_organization = scope:recipient
         NOT = {
             has_policy = cd_feichu_fanzhen
         }
     }
     auto_bestowal_trigger = {
-        always = yes
+        is_subject_of = scope:recipient.leader_country
+        OR = {
+            subject_type = subject_type:cn_march_governor
+            subject_type = subject_type:vassal
+        }
     }
     auto_rescind_trigger = {
         OR = {

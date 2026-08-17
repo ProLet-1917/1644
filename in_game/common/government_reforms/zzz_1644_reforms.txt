@@ -1,12 +1,12 @@
 ﻿# 追赃助饷
 REPLACE:chi_peasant_empire_reform = {
 	major = yes
-	unique = yes #
+	unique = yes
 	potential = {
 		has_or_had_tag = CSH
 	}
 	locked = {
-		NOT = {	owns =location:dadu }
+		NOT = {	owns = location:dadu }
 
 		# when these triggers are true, the reform cannot be manually removed by the country. root = country
 	}
@@ -29,7 +29,7 @@ csh_three_year_tax_exemption_reform = {
 	}
 
 	country_modifier = {
-		peasants_estate_max_tax = -1.0
+		peasants_estate_max_tax = -0.33
 		global_peasant_enfranchisment = 0.15
 		peasants_estate_target_satisfaction = large_permanent_target_satisfaction
 		monthly_towards_free_subjects = societal_value_monthly_move
@@ -46,15 +46,25 @@ qng_banner_reform = {
 	potential = {
 		has_or_had_tag = QNG
 	}
+
+	locked = {
+		NOT = {
+			has_variable = eight_banner_abandoned
+		}
+	}
+
 	country_modifier = {
 		scale = {
 			value = var:dynasty_stability
 		}
 		levy_combat_efficiency_modifier = 0.001 # 征召兵战斗力
+		army_maintenance_efficiency = 0.00125
+		levy_maintenance_modifier = -0.0008
 		global_levy_recruitment_speed_modifier = 0.0030  #征召兵招募速度
 		regiment_reinforcement_speed = 0.001
 		tribes_estate_levy_size = 0.0005
 	}
-	years = 6  
+
+	years = 2
 }
 

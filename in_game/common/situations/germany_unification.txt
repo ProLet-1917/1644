@@ -1,0 +1,160 @@
+#============Made by Lvtoumao============
+germany_unification = {
+
+    monthly_spawn_chance = monthly_spawn_chance_unique
+
+    can_start = {
+        region:north_german_region = {
+            any_location_in_region = {
+                percent >= 0.75
+                is_capital = yes
+                owner = {
+                    culture = { has_culture_group = culture_group:german_group }
+                    has_advance = nation_state_advance
+                }
+            }
+        }
+        region:south_german_region = {
+            any_location_in_region = {
+                percent >= 0.75
+                is_capital = yes
+                owner = {
+                    culture =  { has_culture_group = culture_group:german_group }
+                    has_advance = nation_state_advance
+                }
+            }
+        }
+    }
+
+    can_end = {
+        OR = {
+            OR = {
+                country_exists = c:GER
+                country_exists = c:HRE
+            }
+            AND = {
+                region:north_german_region = {
+                    any_location_in_region = {
+                        percent <= 0.2
+                        owner = {
+                            culture = { has_culture_group = culture_group:german_group }
+                        }
+                    }
+                }
+                region:south_german_region = {
+                    any_location_in_region = {
+                        percent <= 0.2
+                        owner = {
+                            culture = { has_culture_group = culture_group:german_group }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    visible = {
+        capital.continent = continent:europe
+    }
+
+    on_start = {
+        every_country = {
+            limit = {
+                culture = { has_culture_group = culture_group:german_group }
+                is_subject = no
+                OR = {
+                    is_regional_power = yes
+                    is_great_power = yes
+                    country_rank = country_rank:rank_kingdom
+                }
+            }
+            save_scope_as = target
+            add_to_global_variable_list = { name = potential_unifier_list target = this }
+            set_variable = potential_unifier
+            create_international_organization = {
+                type = international_organization_type:germany_unification_union
+                add_country_to_international_organization = scope:target
+                set_leader_country = scope:target
+            }
+        }
+        every_country = {
+            limit = {
+                culture = { has_culture_group = culture_group:german_group }
+                NOR = {
+                    is_regional_power = yes
+                    is_great_power = yes
+                    country_rank = country_rank:rank_kingdom
+                }
+            }
+            set_variable = normal_germany_country
+        }
+        every_country = {
+            limit = {
+                capital.continent = continent:europe
+            }
+            trigger_event_non_silently = germany_unification.1000
+        }
+    }
+
+    on_monthly = {
+        ordered_country = {
+            limit = {
+                culture = { has_culture_group = culture_group:german_group }
+                is_subject = no
+                OR = {
+                    is_regional_power = yes
+                    is_great_power = yes
+                    country_rank = country_rank:rank_kingdom
+                }
+                NOT = {
+                    has_variable = remove_from_unifier_list
+                }
+                has_variable = normal_germany_country
+            }
+            order_by = total_population
+            max = 1
+            save_scope_as = target
+            add_to_global_variable_list = { name = potential_unifier_list target = this }
+            set_variable = potential_unifier
+            create_international_organization = {
+                type = international_organization_type:germany_unification_union
+                add_country_to_international_organization = scope:target
+                set_leader_country = scope:target
+            }
+            remove_variable = normal_germany_country
+        }
+    }
+
+    on_ended = {
+        every_country = {
+            limit = {
+                OR = {
+                    has_variable = potential_unifier
+                    has_variable = normal_germany_country
+                }
+            }
+            remove_variable = potential_unifier
+            remove_variable = normal_germany_country
+        }
+    }
+
+    map_color = {
+        if = {
+            limit = {
+                owner = {
+                    has_variable = potential_unifier
+                }
+            }
+            value = rgb { 215 102 112 }
+        }
+    }
+
+    secondary_map_color = {
+        if = {
+            limit = {
+                owner.culture = { has_culture_group = culture_group:german_group }
+            }
+            value = rgb { 75 110 182 }
+        }
+    }
+}

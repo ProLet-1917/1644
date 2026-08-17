@@ -27,7 +27,7 @@ REPLACE:location_base_values = {
 
     hostile_disembark_time_modifier = 0.25
 
-    local_max_rgo_size = 2
+    local_max_rgo_size = script_rgo_level
 
     local_monthly_prosperity = 0.0025
 
@@ -37,6 +37,48 @@ REPLACE:location_base_values = {
     local_clergy_desired_pop_scaled = 0.005
     local_nobles_desired_pop_scaled = 0.0025
 
+}
+
+#multiplies with development in location (0-100)
+REPLACE:development = {
+    game_data = {
+        category = location
+    }
+    local_population_capacity_modifier = 0.025
+    local_distance_from_capital_speed_propagation = 0.005
+    local_supply_limit_modifier = 0.02
+    blockade_force_required = 0.01
+    local_migration_attraction = 0.0025
+    local_trade_center_power = 0.002
+
+    local_institution_growth_modifier = 0.002
+
+    local_construction_speed = 0.01
+
+    local_monthly_food_modifier = 0.01
+
+    free_building_levels = 0.5
+
+    local_max_rgo_size_modifier = 0.025
+
+    local_life_expectancy = 0.1
+
+    occupation_time = 0.01
+
+    local_build_buildings_efficiency = 0.002
+    maximum_stockpile_capacity = 5
+
+    local_mills_build_buildings_efficiency = 0.01
+}
+
+REPLACE:total_population = {
+    game_data = {
+        category = location
+    }
+    supply_limit = 0.02
+    blockade_force_required = 0.02
+
+    free_building_levels = 0.05
 }
 
 REPLACE:possible_promotion_percentage = {
@@ -72,6 +114,7 @@ REPLACE:available_free_land = {
         category = location
     }
     #local_migration_attraction = 0.1
+    local_max_rgo_size_modifier = 0.25
     local_population_growth = 0.0025
     local_monthly_food_modifier = 1.0
 }
@@ -82,7 +125,9 @@ REPLACE:abundant_free_land = {
         category = location
     }
     #local_migration_attraction = 0.2
-    local_population_growth = 0.002
+    local_max_rgo_size_modifier = 0.25
+    local_monthly_food_modifier = 1.0
+    local_population_growth = 0.0032
 }
 
 #multiplies with devastation in location (0 to -1)
@@ -124,7 +169,9 @@ REPLACE:location_size_impact = {
         category = location
     }
     local_institution_growth_modifier = -0.01
-    local_population_capacity = 24
+    local_population_capacity = 27.825
+
+    local_max_rgo_size = 0.263
 
     occupation_time = 0.0025
 }
@@ -143,4 +190,29 @@ REPLACE:province_capital = {
     local_max_control = 0.15
 
     free_building_levels = 2
+}
+
+REPLACE:average_satisfaction_inverted = {
+    game_data = {
+        category = location
+    }
+    local_monthly_prosperity = -0.0025
+    local_mercenaries_modifier = 0.5
+}
+
+
+REPLACE:average_satisfaction = {
+    game_data = {
+        category = location
+    }
+    local_max_control = 0.10
+    local_institution_growth_modifier = 0.1
+    local_population_growth = 0.001
+}
+
+REPLACE:location_closeness_to_equator_impact = {
+    game_data = {
+        category = location
+    }
+    local_monthly_food_modifier = 0.17
 }

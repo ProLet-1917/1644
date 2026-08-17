@@ -1,5 +1,13 @@
-local_governor_control_value = {
+local_governor_mil_value = {
     value = scope:target.var:already_has_a_local_governor.mil
+}
+
+local_governor_dip_value = {
+    value = scope:target.var:already_has_a_local_governor.dip
+}
+
+local_governor_adm_value = {
+    value = scope:target.var:already_has_a_local_governor.adm
 }
 
 local_governor_number = {
@@ -20,12 +28,12 @@ local_governor_number = {
 on_plundering_value = {
     value = 1
     multiply = {
-        value = 0.008
-        #value = scope:new_controller.modifier:population_got_plunder_basic # 8%*1000 = 8 People
+        value = define:NAnno1644|POP_GOT_PLUNDER_BASIC
+        #value = scope:new_controller.modifier:population_got_plunder_basic # 1.6% * 1000 = 16 People
     }
     if = {
         limit = {
-            scope:character.army_size <= 20
+            scope:character.army_size <= define:NAnno1644|POP_GOT_PLUNDER_REQUIRE
         }
         divide = {
             value = scope:character.army_size

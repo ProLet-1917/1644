@@ -96,14 +96,11 @@ REPLACE:zhixian = {
 	build_time = small_capital_build_time
 	
 	country_potential = {
-		OR = {
-			has_reform = government_reform:the_chinese_warlords
-			has_reform = government_reform:the_chinese_emperor
-		}
+		is_chinese_country = yes
 	}
 
 	location_potential = {
-		has_road_to_capital = yes
+		#has_road_to_capital = yes
 		owner.capital != this
 		is_province_capital = yes
 	}
@@ -139,25 +136,16 @@ REPLACE:zhixian = {
 	}
 
 	on_construction_ended = {
-		if = {
-			limit = {
-				NOT = {
-					has_variable = can_hire_local_governor
-				}
-			}
-			location = {
-				set_variable = can_hire_local_governor
-			}
-		}
+
 	}
 	
 	unique_production_methods = {
 		zhixian_1644_maintenance = {
-			paper = 2.0
+			paper = 1.25
 			weaponry = 0.25
 			tools = 0.5
-			books = 0.5
-			fine_cloth = 0.2
+			books = 0.25
+			fine_cloth = 0.1
 			silver = 0.05
 			furniture = 0.25
 			cloth = 0.25
@@ -168,25 +156,11 @@ REPLACE:zhixian = {
 	construction_demand = zhixian_construction
 
 	on_built = {
-		if = {
-			limit = {
-				NOT = {
-					has_variable = can_hire_local_governor
-				}
-			}
-			location = {
-				set_variable = can_hire_local_governor
-			}
-		}
+
 	}
 
 	on_destroyed = {
-		location = {
-			remove_variable = can_hire_local_governor
-			remove_variable = already_has_a_local_governor
-			remove_variable = working_on_local_governor_actions #if have
-			remove_local_governor_actions_when_death = yes
-		}
+
 	}
 
 	remove_if = {
@@ -198,9 +172,11 @@ REPLACE:zhixian = {
 	modifier = {
 		#local_max_control = 0.05  #
 		local_monthly_control = 0.002  # 每月+0.2%控制力
-		local_proximity_source = 60
+		local_proximity_source = 65
 		local_monthly_development_modifier = 0.005  # 发展度增长提升
 		local_nobles_estate_power = 1.25
+		pop_join_rebel_threshold = -0.02
+		pop_leave_rebels_threshold = -0.02
 	}
 }
 
@@ -235,11 +211,11 @@ REPLACE:provincial_garrison = {
 	
 	unique_production_methods = {
 		weisuo_maintenance = {
-			leather = 0.25  # 降低：从0.5降至0.25
-			cloth = 0.10   # 
-			paper = 0.10   # 降低：从0.20降至0.10
-			weaponry = 0.25 # 降低：从0.5降至0.25
-			firearms = 0.5
+			leather = 0.15
+			cloth = 0.20
+			lumber = 0.10
+			weaponry = 0.20
+			firearms = 0.25
 			
 			category = building_maintenance
 		}
@@ -272,6 +248,7 @@ REPLACE:jurchen_barracks = {
 	allow = {
 		dominant_culture = { has_culture_group = culture_group:jurchen_group }
 	}
+
 	remove_if = {
 		location = {
 			NOT = { 
@@ -279,7 +256,6 @@ REPLACE:jurchen_barracks = {
 			}
 		}
 	}
-	
 	
 	modifier = {
 		local_manpower = 0.025  # 大幅增强：原为0.0025

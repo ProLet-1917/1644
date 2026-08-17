@@ -72,14 +72,14 @@ chinese_dynasty = {
                 has_special_status_available = special_status:fanzhen
                 country_has_special_status = {
                     type = special_status:fanzhen
-                    country = root
+                    country = scope:recipient
                 }
             }
             AND = {
                 international_organization_has_policy = policy:cd_fanwang_shuwei_policy
                 country_has_special_status = {
                     type = special_status:fanwang
-                    country = root
+                    country = scope:recipient
                 }
             }
         }
@@ -91,14 +91,14 @@ chinese_dynasty = {
                 has_special_status_available = special_status:fanzhen
                 country_has_special_status = {
                     type = special_status:fanzhen
-                    country = root
+                    country = scope:recipient
                 }
             }
             AND = {
                 international_organization_has_policy = policy:cd_fanwang_shuwei_policy
                 country_has_special_status = {
                     type = special_status:fanwang
-                    country = root
+                    country = scope:recipient
                 }
             }
         }
@@ -147,12 +147,8 @@ chinese_dynasty = {
     }
 
     auto_disband_trigger = {
-        AND = {
-            scope:recipient = {
-                "num_countries_with_special_status(special_status:tianzi)" = 0
-                "num_countries_with_special_status(special_status:fanwang)" = 0
-            }
-        }
+        "num_countries_with_special_status(special_status:tianzi)" = 0
+        "num_countries_with_special_status(special_status:fanwang)" = 0
     }
 
     auto_leave_trigger = {
@@ -258,7 +254,7 @@ chinese_dynasty = {
             limit = {
                 opinion = {
                     target = scope:recipient.leader_country
-                    value < -20
+                    value < -50
                 }
             }
             add = {
@@ -299,6 +295,17 @@ chinese_dynasty = {
             limit = {
                 is_subject = yes
                 is_subject_or_below_of = scope:recipient.leader_country
+                NOT = { subject_type = subject_type:tributary }
+            }
+            add = {
+                desc = "IS_OUR_SUBJECT"
+                value = 1000
+            }
+        }
+        if = {
+            limit = {
+                is_subject = yes
+                NOT = { is_subject_or_below_of = scope:recipient.leader_country }
                 NOT = { subject_type = subject_type:tributary }
             }
             add = {

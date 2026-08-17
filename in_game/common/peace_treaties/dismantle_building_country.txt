@@ -1,0 +1,27 @@
+dissolve_building_country_peace_deal = {
+	cost = {
+		add = {
+			desc = "DIPLOREASON_BASE"
+			value = 10
+		}
+		add = {
+			desc = "BUILDING_IS_OWNED_TRIGGER"
+			value = scope:loser.total_building_levels
+			multiply = 0.25
+		}
+		max = 100
+	}
+
+	potential = {
+		scope:loser != c:HSA
+		scope:loser = {
+			country_type = building
+		}
+	}
+
+	effect = {
+		destroy_building_country = scope:loser
+	}
+
+	ai_desire = 100
+}

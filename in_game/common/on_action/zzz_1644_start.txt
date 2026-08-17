@@ -181,6 +181,14 @@
         #    change_max_raw_material_workers = 3
         #}
 
+        location:magdeburg = {
+            add_location_modifier = {
+                modifier = sack_of_magderburg
+                years = 15
+            }
+            change_prosperity = -0.35
+        }
+
         location:viborg = {
             while = {
                 count = 4
@@ -410,7 +418,7 @@
             set_variable = { name = eng_ordinance_of_laborers_flag value = 1 }
             set_variable = { name = stannary_law value = 1 }
             set_variable = { name = benevolence_tax value = 1 }
-            set_variable = { name = navy_board value = 1}
+            set_variable = { name = navy_board value = 1 }
         }
 
         c:ETH = {
@@ -553,10 +561,18 @@
             set_variable = has_unlocked_walls_of_ston
         }
 
+        c:ROE = {
+
+        }
+
         c:RUS = {
             add_country_modifier = {
                 modifier = rise_of_the_russia
                 years = 46
+            }
+            add_country_modifier = {
+                modifier = expand_to_the_end_of_land
+                years = 99
             }
             set_variable = { name = vestiarium value = 1 }
             set_variable = {

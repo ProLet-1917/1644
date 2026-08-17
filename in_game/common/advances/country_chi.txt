@@ -46,6 +46,17 @@ confucian_influences = {
 	requires = legalism_advance
 }
 
+the_ancient_standing_army = {
+	age = age_1_traditions
+
+	potential = {
+		culture = { has_culture_group = culture_group:chinese_group }
+	}
+
+	army_maintenance_efficiency = 0.10
+
+	requires = faster_levy_recruitment
+}
 #Age 2 Renaissance#
 
 extensive_canal_works = {
@@ -86,7 +97,7 @@ lijia_system = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
 
-	global_distance_from_capital_speed_propagation = -0.05
+	global_distance_from_capital_speed_propagation = 0.075
 
 	requires = drill_army_advance
 }

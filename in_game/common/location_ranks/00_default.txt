@@ -29,7 +29,7 @@ megalopolis = {
 		free_building_levels = 200
 		
 		max_constructions_at_same_time = 2
-		local_max_rgo_size_modifier = -0.5
+		#local_max_rgo_size_modifier = -0.5
 
 		local_peasant_enfranchisment = 0.5
 
@@ -55,7 +55,6 @@ megalopolis = {
 		population >= 400.000
 		modifier:cannot_upgrade_location = no
 		is_market_center = yes
-		is_capital = yes
 		owner ?= { is_subject = no }
 	}
 	max_rank = yes
@@ -182,8 +181,7 @@ town = {
 
 rural_settlement = {
 	rank_modifier = {
-		local_max_rgo_size_modifier = 1.0
-		local_monthly_food_modifier = 0.1
+		local_monthly_food_modifier = 0.08
 		
 		local_population_growth = 0.001
 		

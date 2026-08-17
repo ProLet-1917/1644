@@ -1,3 +1,69 @@
 # Levy Size
 levy_generic_heavy_infantry_size = 0.025
 levy_generic_light_cavalry_size = 0.0125
+
+# RGO (temporary)
+script_rgo_level = {
+    base = 0
+    if = {
+        limit = {
+            OR = {
+                raw_material = goods:alum
+                raw_material = goods:amber
+                raw_material = goods:beeswax
+                raw_material = goods:chili
+                raw_material = goods:clay
+                raw_material = goods:cloves
+                raw_material = goods:coal
+                raw_material = goods:cocoa
+                raw_material = goods:coffee
+                raw_material = goods:copper
+                raw_material = goods:cotton
+                raw_material = goods:dyes
+                raw_material = goods:elephants
+                raw_material = goods:fiber_crops
+                raw_material = goods:fish
+                raw_material = goods:fruit
+                raw_material = goods:fur
+                raw_material = goods:gems
+                raw_material = goods:goods_gold
+                raw_material = goods:horses
+                raw_material = goods:incense
+                raw_material = goods:iron
+                raw_material = goods:ivory
+                raw_material = goods:lead
+                raw_material = goods:legumes
+                raw_material = goods:livestock
+                raw_material = goods:lumber
+                raw_material = goods:maize
+                raw_material = goods:marble
+                raw_material = goods:medicaments
+                raw_material = goods:mercury
+                raw_material = goods:millet
+                raw_material = goods:olives
+                raw_material = goods:pearls
+                raw_material = goods:pepper
+                raw_material = goods:potato
+                raw_material = goods:rice
+                raw_material = goods:saffron
+                raw_material = goods:salt
+                raw_material = goods:saltpeter
+                raw_material = goods:sand
+                raw_material = goods:silk
+                raw_material = goods:silver
+                raw_material = goods:stone
+                raw_material = goods:sugar
+                raw_material = goods:tea
+                raw_material = goods:tin
+                raw_material = goods:tobacco
+                raw_material = goods:wheat
+                raw_material = goods:wild_game
+                raw_material = goods:wine
+                raw_material = goods:wool
+            }
+        }
+        add = {
+            value = 1.0
+        }
+    }
+}

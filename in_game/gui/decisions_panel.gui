@@ -337,69 +337,37 @@ widget = {
 									scrollbox = {
 										layoutpolicy_vertical = expanding
 										blockoverride "scrollbox_content" {
-											action_button_regular = {
-												using = generic_decisions_icon_group_small
-												size = { 300 @generic_decisions_group_height }
-												text = "ug_improve_local_goverment"
-												actor = "[Player]"
-												left_click_and_hold_action = { action_name = "ug_improve_local_goverment" }
-												default_format = "#High"
-												tooltipwidget = {
-													ContextualTooltipType = {
-														blockoverride "title_text" {
-															text = "ug_improve_local_goverment"
-														}
-														blockoverride "concept_link" {
-															using = decisions_regular
-														}
-														blockoverride "tooltip_content" {
-															using = action_tooltip_inner_content
-														}
-
-														blockoverride "title_icon" {
-															using = generic_decisions_icon
-														}
-
-														blockoverride "tooltip_ui_action_block" {
-															TooltipUIActionBlockOld = {
-																visible = "[PdxGuiWidget.HasUIAction]"
-															}
-														}
-													}
-												}
-											}
-
-											action_button_regular = {
-												using = generic_decisions_icon_group_small
-												size = { 300 @generic_decisions_group_height }
-												text = "ug_pru_organized_troops"
-												actor = "[Player]"
-												left_click_and_hold_action = { action_name = "ug_pru_organized_troops" }
-												default_format = "#High"
-												tooltipwidget = {
-													ContextualTooltipType = {
-														blockoverride "title_text" {
-															text = "ug_pru_organized_troops"
-														}
-														blockoverride "concept_link" {
-															using = decisions_regular
-														}
-														blockoverride "tooltip_content" {
-															using = action_tooltip_inner_content
-														}
-
-														blockoverride "title_icon" {
-															using = generic_decisions_icon
-														}
-
-														blockoverride "tooltip_ui_action_block" {
-															TooltipUIActionBlockOld = {
-																visible = "[PdxGuiWidget.HasUIAction]"
-															}
-														}
-													}
-												}
-											}
+										#	action_button_regular = {
+										#		using = generic_decisions_icon_group_small
+										#		size = { 300 @generic_decisions_group_height }
+										#		text = "ug_improve_local_goverment"
+										#		actor = "[Player]"
+										#		left_click_and_hold_action = { action_name = "ug_improve_local_goverment" }
+										#		default_format = "#High"
+										#		tooltipwidget = {
+										#			ContextualTooltipType = {
+										#				blockoverride "title_text" {
+										#					text = "ug_improve_local_goverment"
+										#				}
+										#				blockoverride "concept_link" {
+										#					using = decisions_regular
+										#				}
+										#				blockoverride "tooltip_content" {
+										#					using = action_tooltip_inner_content
+										#				}
+#
+#														blockoverride "title_icon" {
+#															using = generic_decisions_icon
+#														}
+#
+#														blockoverride "tooltip_ui_action_block" {
+#															TooltipUIActionBlockOld = {
+#																visible = "[PdxGuiWidget.HasUIAction]"
+#															}
+#														}
+#													}
+#												}
+#											}
 										}
 									}
 								}
@@ -549,6 +517,78 @@ widget = {
 								ContextualTooltipType = {
 									blockoverride "title_text" {
 										text = "claim_the_seat_of_chinese_emperor"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							icon = {
+								size = { @generic_decisions_height @generic_decisions_height }
+								texture = "gfx/interface/icons/international_organizations/middle_kingdom.dds"
+							}
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "claim_the_seat_of_king"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "claim_the_seat_of_king" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "claim_the_seat_of_king"
+									}
+									blockoverride "concept_link" {
+										using = decisions_regular
+									}
+									blockoverride "tooltip_content" {
+										using = action_tooltip_inner_content
+									}
+
+									blockoverride "title_icon" {
+										using = generic_decisions_icon
+									}
+
+									blockoverride "tooltip_ui_action_block" {
+										TooltipUIActionBlockOld = {
+											visible = "[PdxGuiWidget.HasUIAction]"
+										}
+									}
+								}
+							}
+						}
+
+						action_button_regular = {
+							icon = {
+								size = { @generic_decisions_height @generic_decisions_height }
+								texture = "gfx/interface/icons/international_organizations/middle_kingdom.dds"
+							}
+							layoutpolicy_horizontal = expanding
+							size = { 100% @generic_decisions_height }
+							text = "claim_the_seat_of_duchy"
+							actor = "[Player]"
+							left_click_and_hold_action = { action_name = "claim_the_seat_of_duchy" }
+							default_format = "#High"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										text = "claim_the_seat_of_duchy"
 									}
 									blockoverride "concept_link" {
 										using = decisions_regular

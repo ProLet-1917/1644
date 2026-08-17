@@ -3974,7 +3974,44 @@ lateralview = {
 											text = "promote_to_local_governor"
 										}
 										blockoverride "concept_link" {
-											#using = decisions_regular
+											text = "[governor_action|e]"
+										}
+										blockoverride "tooltip_content" {
+											using = action_tooltip_inner_content
+										}
+
+										blockoverride "title_icon" {
+											icon = {
+												size = { 25 25 }
+												position = { 5 5 }
+												texture = "gfx/interface/icons/modifier_types/_default.dds"
+											}
+										}
+
+										blockoverride "tooltip_ui_action_block" {
+											TooltipUIActionBlockOld = {
+												visible = "[PdxGuiWidget.HasUIAction]"
+											}
+										}
+									}
+								}
+							}
+
+							action_button_regular = {
+								position = { 15 0 }
+								size = { 180 35 }
+								visible = "[LocationView.GetLocation.MakeScope.Var('local_governor_working_on_this').IsSet]"
+								text = "remove_current_work"
+								actor = "[Player]"
+								left_click_and_hold_action = { action_name = "remove_current_work" }
+								default_format = "#High"
+								tooltipwidget = {
+									ContextualTooltipType = {
+										blockoverride "title_text" {
+											text = "remove_current_work"
+										}
+										blockoverride "concept_link" {
+											text = "[governor_action|e]"
 										}
 										blockoverride "tooltip_content" {
 											using = action_tooltip_inner_content
@@ -4005,7 +4042,7 @@ lateralview = {
 									position = { 5 5 }
 									texture = "gfx/interface/icons/modifier_types/_default.dds"
 								}
-								visible = "[LocationView.GetLocation.MakeScope.Var('already_has_a_local_governor').IsSet)]"
+								visible = "[And(LocationView.GetLocation.MakeScope.Var('already_has_a_local_governor').IsSet, Not(LocationView.GetLocation.MakeScope.Var('local_governor_working_on_this').IsSet))]"
 								actor = "[Player]"
 								left_click_and_hold_action = { action_name = "rulling_nearby_land" }
 								default_format = "#High"
@@ -4046,7 +4083,7 @@ lateralview = {
 									position = { 5 5 }
 									texture = "gfx/interface/icons/modifier_types/_default.dds"
 								}
-								visible = "[LocationView.GetLocation.MakeScope.Var('already_has_a_local_governor').IsSet)]"
+								visible = "[And(LocationView.GetLocation.MakeScope.Var('already_has_a_local_governor').IsSet, Not(LocationView.GetLocation.MakeScope.Var('local_governor_working_on_this').IsSet))]"
 								actor = "[Player]"
 								left_click_and_hold_action = { action_name = "spread_culture" }
 								default_format = "#High"
@@ -4087,7 +4124,7 @@ lateralview = {
 									position = { 5 5 }
 									texture = "gfx/interface/icons/modifier_types/_default.dds"
 								}
-								visible = "[LocationView.GetLocation.MakeScope.Var('already_has_a_local_governor').IsSet)]"
+								visible = "[And(LocationView.GetLocation.MakeScope.Var('already_has_a_local_governor').IsSet, Not(LocationView.GetLocation.MakeScope.Var('local_governor_working_on_this').IsSet))]"
 								actor = "[Player]"
 								left_click_and_hold_action = { action_name = "spread_religion" }
 								default_format = "#High"
@@ -4128,7 +4165,7 @@ lateralview = {
 									position = { 5 5 }
 									texture = "gfx/interface/icons/modifier_types/_default.dds"
 								}
-								visible = "[LocationView.GetLocation.MakeScope.Var('already_has_a_local_governor').IsSet)]"
+								visible = "[And(LocationView.GetLocation.MakeScope.Var('already_has_a_local_governor').IsSet, Not(LocationView.GetLocation.MakeScope.Var('local_governor_working_on_this').IsSet))]"
 								actor = "[Player]"
 								left_click_and_hold_action = { action_name = "held_holiday_celebration" }
 								default_format = "#High"
@@ -4169,7 +4206,7 @@ lateralview = {
 									position = { 5 5 }
 									texture = "gfx/interface/icons/modifier_types/_default.dds"
 								}
-								visible = "[LocationView.GetLocation.MakeScope.Var('already_has_a_local_governor').IsSet)]"
+								visible = "[And(LocationView.GetLocation.MakeScope.Var('already_has_a_local_governor').IsSet, Not(LocationView.GetLocation.MakeScope.Var('local_governor_working_on_this').IsSet))]"
 								actor = "[Player]"
 								left_click_and_hold_action = { action_name = "local_governor_organize_troops" }
 								default_format = "#High"
@@ -4210,7 +4247,7 @@ lateralview = {
 									position = { 5 5 }
 									texture = "gfx/interface/icons/modifier_types/_default.dds"
 								}
-								visible = "[LocationView.GetLocation.MakeScope.Var('already_has_a_local_governor').IsSet)]"
+								visible = "[And(LocationView.GetLocation.MakeScope.Var('already_has_a_local_governor').IsSet, Not(LocationView.GetLocation.MakeScope.Var('local_governor_working_on_this').IsSet))]"
 								actor = "[Player]"
 								left_click_and_hold_action = { action_name = "local_governor_production_plan" }
 								default_format = "#High"

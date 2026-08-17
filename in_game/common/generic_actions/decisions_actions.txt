@@ -939,156 +939,6 @@ Unify_germany = {
     }
 }
 
-ug_improve_local_goverment = {
-    type = owncountry
-    show_message = no
-    ai_tick = monthly
-    ai_tick_frequency = 12
-
-    automation_tick = never
-    automation_tick_frequency = 12
-
-    price = price:ug_improve_local_goverment_prices
-
-    cooldown = {
-        type = ug_improve_local_goverment
-        years = 8
-    }
-
-    potential = {
-        scope:actor = {
-            culture = { has_culture_group = culture_group:german_group }
-        }
-        international_organization:hre = {
-            exists = no
-        }
-    }
-
-    allow = {
-        scope:actor = {
-            culture = { has_culture_group = culture_group:german_group }
-            is_subject = no
-            is_during_bankruptcy = no
-        }
-        international_organization:hre = {
-            exists = no
-        }
-    }
-
-    select_trigger = {
-        looking_for_a = location
-        source = actor
-        target_flag = target_location
-        name = "choose_location"
-        none_available_msg_key = "no_locations_available"
-        column = {
-            data = name
-        }
-        column = {
-            data = population
-        }
-        visible = {
-            has_owner = yes
-            owner = scope:actor
-            NOT = {
-                has_location_modifier = improve_local_government
-            }
-            is_capital = no
-        }
-    }
-
-    effect = {
-        scope:target_location = {
-            add_location_modifier = {
-                modifier = improve_local_government
-                years = 25
-            }
-        }
-    }
-
-    ai_will_do = {
-        value = 5 #Why not?
-    }
-
-}
-
-ug_pru_organized_troops = {
-    type = owncountry
-    show_message = no
-    ai_tick = monthly
-    ai_tick_frequency = 12
-
-    automation_tick = never
-    automation_tick_frequency = 12
-
-    price = price:ug_pru_organized_troops_prices
-
-    cooldown = {
-        type = ug_pru_organized_troops
-        years = 8
-    }
-
-    potential = {
-        scope:actor = {
-            OR = {
-                tag = BRA
-                tag = PRU
-            }
-            culture = { has_culture_group = culture_group:german_group }
-        }
-        international_organization:hre = {
-            exists = no
-        }
-    }
-
-    allow = {
-        scope:actor = {
-            culture = { has_culture_group = culture_group:german_group }
-            is_subject = no
-            is_during_bankruptcy = no
-        }
-        international_organization:hre = {
-            exists = no
-        }
-    }
-
-    select_trigger = {
-        looking_for_a = location
-        source = actor
-        target_flag = target_location
-        name = "choose_location"
-        none_available_msg_key = "no_locations_available"
-        column = {
-            data = name
-        }
-        column = {
-            data = population
-        }
-        visible = {
-            has_owner = yes
-            owner = scope:actor
-            NOT = {
-                has_location_modifier = pru_organized_troops
-            }
-            is_capital = no
-        }
-    }
-
-    effect = {
-        scope:target_location = {
-            add_location_modifier = {
-                modifier = pru_organized_troops
-                years = 25
-            }
-        }
-    }
-
-    ai_will_do = {
-        value = 5 #Why not?
-    }
-
-}
-
 promoting_religious_tolerance = {
     type = owncountry
     show_message = no
@@ -1716,8 +1566,19 @@ claim_the_seat_of_chinese_emperor = {
                 country_rank = country_rank:rank_duchy
                 country_rank = country_rank:rank_county
             }
-            num_locations_owned_or_owned_by_subjects >= 200
+            OR = {
+                num_locations_owned_or_owned_by_subjects >= 200
+                AND = {
+                    country_rank = country_rank:rank_duchy
+                    num_locations_owned_or_owned_by_subjects >= 150
+                }
+                AND = {
+                    country_rank = country_rank:rank_kingdom
+                    num_locations_owned_or_owned_by_subjects >= 100
+                }
+            }
             is_subject = no
+            is_rebel_country = no
         }
     }
     effect = {
@@ -1725,7 +1586,17 @@ claim_the_seat_of_chinese_emperor = {
             add_reform = government_reform:the_chinese_emperor
             remove_reform = government_reform:the_chinese_warlords
             set_country_rank = country_rank:rank_empire
-            trigger_event_non_silently = flavor_all_chi.1
+            if = {
+                limit = {
+                    NOT = { has_variable = claim_dynasty_name }
+                }
+                trigger_event_non_silently = flavor_all_chi.1
+            }
+            add_stability = 10
+            change_variable = {
+                name = dynasty_stability
+                add = 25
+            }
         }
     }
 
@@ -1765,6 +1636,192 @@ claim_the_seat_of_chinese_emperor = {
                 multiply = 0.25
             }
         }
+        if = {
+            limit = {
+                is_situation_active = situation:late_ming_crisis
+            }
+            subtract = 75
+        }
     }	#They always want to do this
 }
 
+claim_the_seat_of_king = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:claim_the_seat_of_king_prices
+
+    cooldown = {
+        type = claim_the_seat_of_king
+        years = 20
+    }
+
+    potential = {
+        scope:actor = {
+            NOR = {
+                country_rank = country_rank:rank_kingdom
+                country_rank = country_rank:rank_empire
+            }
+            OR = {
+                has_reform = government_reform:the_chinese_warlords
+                has_dlc = "0_5_dawn_of_the_new_era"
+            }
+        }
+    }
+    allow = {
+        scope:actor = {
+            OR = {
+                has_reform = government_reform:the_chinese_warlords
+            }
+            OR = {
+                country_rank = country_rank:rank_duchy
+            }
+            OR = {
+                num_locations_owned_or_owned_by_subjects >= 80
+                AND = {
+                    country_rank = country_rank:rank_duchy
+                    num_locations_owned_or_owned_by_subjects >= 50
+                }
+            }
+            is_subject = no
+            is_rebel_country = no
+        }
+    }
+    effect = {
+        scope:actor = {
+            set_country_rank = country_rank:rank_kingdom
+            if = {
+                limit = {
+                    NOT = { has_variable = claim_dynasty_name }
+                }
+                trigger_event_non_silently = flavor_all_chi.1
+            }
+            add_stability = 10
+            change_variable = {
+                name = dynasty_stability
+                add = 25
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 0
+        if = {
+            limit = {
+                ruler = {
+                    total_abilities <= 150
+                }
+            }
+            add = {
+                value = 300
+                subtract = total_abilities
+                multiply = 0.25
+            }
+        }
+        if = {
+            limit = {
+                ruler = {
+                    total_abilities > 150
+                }
+            }
+            subtract = {
+                value = total_abilities
+                subtract = 150
+                multiply = 0.25
+            }
+        }
+    }	#They always want to do this
+}
+
+claim_the_seat_of_duchy = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:claim_the_seat_of_duchy_prices
+
+    cooldown = {
+        type = claim_the_seat_of_duchy
+        years = 20
+    }
+
+    potential = {
+        scope:actor = {
+            NOR = {
+                country_rank = country_rank:rank_kingdom
+                country_rank = country_rank:rank_empire
+                country_rank = country_rank:rank_duchy
+            }
+            OR = {
+                has_reform = government_reform:the_chinese_warlords
+                has_dlc = "0_5_dawn_of_the_new_era"
+            }
+        }
+    }
+    allow = {
+        scope:actor = {
+            OR = {
+                has_reform = government_reform:the_chinese_warlords
+            }
+            OR = {
+                country_rank = country_rank:rank_county
+            }
+            num_locations_owned_or_owned_by_subjects >= 10
+            is_subject = no
+            is_rebel_country = no
+        }
+    }
+    effect = {
+        scope:actor = {
+            set_country_rank = country_rank:rank_duchy
+            if = {
+                limit = {
+                    NOT = { has_variable = claim_dynasty_name }
+                }
+                trigger_event_non_silently = flavor_all_chi.1
+            }
+            add_stability = 10
+            change_variable = {
+                name = dynasty_stability
+                add = 25
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 20
+        if = {
+            limit = {
+                ruler = {
+                    total_abilities <= 150
+                }
+            }
+            add = {
+                value = 300
+                subtract = total_abilities
+                multiply = 0.25
+            }
+        }
+        if = {
+            limit = {
+                ruler = {
+                    total_abilities > 150
+                }
+            }
+            subtract = {
+                value = total_abilities
+                subtract = 150
+                multiply = 0.25
+            }
+        }
+    }	#They always want to do this
+}

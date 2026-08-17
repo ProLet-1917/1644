@@ -1,0 +1,46 @@
+#These Event is for ai
+namespace = ai_flavor
+
+ai_flavor.1 = {
+    type = country_event
+
+    title = empty_text
+
+    trigger = {
+        is_ai = yes
+        is_chinese_country = yes
+        is_subject = no
+        ai_personality != ai_personality:ai_unifier
+    }
+
+    immediate = {
+        set_personality = ai_personality:ai_unifier
+    }
+
+    option = {
+        name = empty_text
+    }
+}
+
+ai_flavor.2 = {
+    type = country_event
+
+    title = empty_text
+
+    trigger = {
+        is_ai = yes
+        is_chinese_country = yes
+        is_subject = no
+        NOT = {
+            has_area_preference = unify_china
+        }
+    }
+
+    immediate = {
+        add_area_preference = unify_china
+    }
+
+    option = {
+        name = empty_text
+    }
+}

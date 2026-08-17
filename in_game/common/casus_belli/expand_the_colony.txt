@@ -1,0 +1,26 @@
+cb_expand_the_colony = {
+    years = 15
+    create_visible = {
+        is_subject_type = colonial_nation
+        capital = {
+            OR = {
+                continent = continent:america
+                continent = continent:oceania
+            }
+        }
+    }
+
+    create_enabled = {
+        scope:target = {
+            capital = {
+                OR = {
+                    continent = continent:america
+                    continent = continent:oceania
+                }
+            }
+        }
+        is_neighbor_of = scope:target
+    }
+
+    war_goal_type = take_capital
+}

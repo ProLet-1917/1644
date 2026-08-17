@@ -44,7 +44,10 @@ REPLACE:local_governor = {
     }
 
     location_potential = {
-        has_road_to_capital = yes
+        OR = {
+            has_road_to_capital = yes
+            this.sub_continent != owner.capital.sub_continent
+        }
         owner.capital != this
         is_province_capital = yes
     }
@@ -135,7 +138,7 @@ REPLACE:local_governor = {
     construction_demand = local_governor_construction
 
     modifier = {
-        local_proximity_source = 50
+        local_proximity_source = 55
         allow_hire_local_governor = yes
     }
 }
@@ -251,7 +254,7 @@ REPLACE:lieutenancy = {
     }
 
     modifier = {
-        local_proximity_source = 40
+        local_proximity_source = 45
         local_crown_estate_power = 1
         allow_hire_local_governor = yes
     }
