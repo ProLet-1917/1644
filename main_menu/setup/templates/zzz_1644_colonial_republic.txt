@@ -1,0 +1,73 @@
+starting_technology_level = 5
+
+government = {
+	type = republic
+	
+	#Societal Values - 1644 Colonial Trading Company / Colonial Administration
+	centralization_vs_decentralization = 30
+	traditionalist_vs_innovative = 10
+	spiritualist_vs_humanist = 10
+	aristocracy_vs_plutocracy = 30
+	serfdom_vs_free_subjects = 20
+	mercantilism_vs_free_trade = -40
+	belligerent_vs_conciliatory = 30
+	quality_vs_quantity = -20
+	offensive_vs_defensive = 20
+	land_vs_naval = 30
+	capital_economy_vs_traditional_economy = 20
+	individualism_vs_communalism = 5
+	outward_vs_inward = -40
+	parliament = {
+		parliament_type = assembly
+	}
+
+	#Estate Privileges
+	privilege = {
+		#nobles - limited in colonial settings
+		nobles_land_rights
+
+		#burghers - dominant in trading companies
+		commercial_advisory_council
+		burghers_land_rights
+		building_rights
+		trade_monopolies
+		formal_guilds
+		sponsor_maritime_contracts
+		allow_trade_center_sponsorship
+
+		#clergy
+		clergy_literacy_rights
+		clerical_advisory_council
+
+		#commoners - colonial settlers
+		peasants_allowed_weapons_privilege
+		peasants_free_peasantry
+		partial_yield
+		communal_lands
+	}
+
+	laws = {
+		recruitment_law = expanded_levies_policy
+		battle_leadership_law = meritocratic_leadership_policy
+		#maritime_law = mandatory_impressment
+		#piracy_law = issue_letter_of_marque_policy
+		censorship = limited_censorship
+		republican_foundation_law = republicanism_policy
+		education_masses_law = basic_religious_education
+		administrative_system = central_councils
+		bureaucracy_law = centralized_bureaucracy_policy
+		cabinet_laws = meritocratic_recruitment_policy
+		cultural_traditions_law = civil_society
+		marriage_law = monogamous_marriage
+		heir_religion_law = heir_same_religion
+		legal_code_law = civil_law_policy
+		legitimization_of_power_law = machiavellian_rule_policy
+		maritime_law = protect_trade_routes
+		piracy_law = anti_piracy_policy
+		distribution_of_power_law = dop_traditional_distribution_of_power
+		immigration_law = open_borders_law
+		foreign_cultural_law = allow_foreign_rituals
+		mining_law = burghers_mining_law
+		coin_laws = gold_and_silver_coins
+	}
+}

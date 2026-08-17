@@ -1,0 +1,62 @@
+starting_technology_level = 0
+government = {
+	type = tribe
+	heir_selection = tribal_oldest_male
+	
+	parliament = {
+		parliament_type = assembly
+	}
+	centralization_vs_decentralization = 80
+	traditionalist_vs_innovative = -50
+	spiritualist_vs_humanist = -20
+	aristocracy_vs_plutocracy = -80
+	serfdom_vs_free_subjects = 50
+	mercantilism_vs_free_trade = 50
+	belligerent_vs_conciliatory = -40
+	quality_vs_quantity = 50
+	offensive_vs_defensive = 50
+	land_vs_naval = -100
+	capital_economy_vs_traditional_economy = 100
+	individualism_vs_communalism = 80
+	outward_vs_inward = 50
+
+	privilege = {
+		#nobles
+		nobles_land_rights
+		noble_marriage_rights
+		noble_serfdom_rights
+		noble_leaders_only
+	
+		#clergy
+		clergy_enforced_unity
+		clergy_strengthen_faith
+		clergy_land_rights
+
+		#burghers
+		market_fairs
+		formal_guilds
+		building_roads_rights
+		trade_monopolies
+
+		#Commoners
+		allow_hunting
+		communal_lands
+		
+		tribes_tribal_levies
+		tribes_allow_gatherings
+	}
+
+	laws = {
+		marriage_law = polygyny
+	recruitment_law = expanded_levies_policy
+	battle_leadership_law = meritocratic_leadership_policy
+	#maritime_law = mandatory_impressment
+	#piracy_law = issue_letter_of_marque_policy
+	bureaucracy_law = centralized_bureaucracy_policy
+	cabinet_laws = meritocratic_recruitment_policy
+	legitimization_of_power_law = machiavellian_rule_policy
+	foreign_cultural_law = allow_foreign_rituals
+		heir_religion_law = heir_same_religion
+	}
+}
+

@@ -1,0 +1,68 @@
+starting_technology_level = 5
+government = {
+    type = monarchy
+    heir_selection = cognatic_primogeniture
+   
+    centralization_vs_decentralization = 80
+    aristocracy_vs_plutocracy = -75
+    serfdom_vs_free_subjects = -85
+    traditionalist_vs_innovative = -70
+    spiritualist_vs_humanist = -90
+    mercantilism_vs_free_trade = -50
+    offensive_vs_defensive = 45
+    land_vs_naval = -85
+    quality_vs_quantity = 33
+    belligerent_vs_conciliatory = 40
+    capital_economy_vs_traditional_economy = 95
+    individualism_vs_communalism = 30
+    outward_vs_inward = 40
+    parliament = {
+        parliament_type = estate_parliament
+    }
+   
+    privilege = {
+        #nobles
+        auxilium_et_consilium
+        nobles_land_rights
+        noble_marriage_rights
+        noble_fortification_licenses
+
+        #clergy
+        clergy_literacy_rights
+        clergy_enforced_unity
+
+        #burghers
+        market_fairs
+        formal_guilds
+        building_roads_rights
+
+        #Commoners
+        allow_hunting
+        communal_lands
+    }
+    laws = {
+        feudal_de_jure_law = by_tradition
+	recruitment_law = expanded_levies_policy
+	battle_leadership_law = noble_command_policy
+	#maritime_law = mandatory_impressment
+	#piracy_law = issue_letter_of_marque_policy
+	bureaucracy_law = centralized_bureaucracy_policy
+	cabinet_laws = nobles_of_the_robe_policy
+	legitimization_of_power_law = machiavellian_rule_policy
+	foreign_cultural_law = allow_foreign_rituals
+        medieval_levy_law = noble_levies
+        royal_court_customs_law = aristocratic_court_policy
+        patriarchate_law = separated_patriarchate_policy
+        censorship = limited_censorship
+        education_masses_law = basic_religious_education
+        administrative_system = central_councils
+        cultural_traditions_law = martial_society
+        marriage_law = monogamous_marriage
+        heir_religion_law = heir_same_religion
+        legal_code_law = russkaya_pravda_policy
+        distribution_of_power_law = dop_favor_the_ruler
+        immigration_law = open_borders_law
+        mining_law = nobles_mining_law
+		coin_laws = gold_and_silver_coins
+    }
+}

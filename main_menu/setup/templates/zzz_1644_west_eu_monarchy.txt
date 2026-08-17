@@ -3,7 +3,7 @@
 # 适用于 1644 场景中的西欧君主制国家
 
 starting_technology_level = 5
-include = "expl_european_colonial_power"
+include = "zzz_expl_european_colonial_powers"
 
 government = {
 	type = monarchy
@@ -53,21 +53,33 @@ government = {
 	}
 
 	laws = {
-		feudal_de_jure_law = by_tradition                    # 封建法理：按传统
-		medieval_levy_law = peasant_levies                  # 中世纪征召法：农民征召
-		royal_court_customs_law = aristocratic_court_policy   # 皇家宫廷习俗法：贵族宫廷政策
-		censorship = limited_censorship                       # 审查制度：有限审查
-		education_masses_law = basic_religious_education     # 大众教育法：基础宗教教育
-		administrative_system = central_councils             # 行政系统：中央议会
-		cultural_traditions_law = martial_society           # 文化传统法：军事社会
-		marriage_law = monogamous_marriage                  # 婚姻法：一夫一妻制
-		heir_religion_law = heir_same_religion              # 继承人宗教法：继承人同宗教
-		legal_code_law = civil_law_policy                   # 法律法典：民法政策
-		maritime_law = protect_trade_routes                  # 海事法：保护贸易路线
-		piracy_law = anti_piracy_policy                      # 海盗法：反海盗政策
-		distribution_of_power_law = dop_favor_the_ruler     # 权力分配法：偏向统治者
-		immigration_law = open_borders_law                   # 移民法：开放边界
-		mining_law = nobles_mining_law                       # 采矿法：贵族采矿法
+		recruitment_law = expanded_levies_policy
+		battle_leadership_law = noble_command_policy
+		maritime_law = mandatory_impressment
+		piracy_law = issue_letter_of_marque_policy
+		medieval_levy_law = peasant_levies
+
+		censorship = limited_censorship
+		marriage_law = monogamous_marriage
+		heir_religion_law = heir_same_religion
+
+		administrative_system = central_councils
+		bureaucracy_law = centralized_bureaucracy_policy
+		cabinet_laws = nobles_of_the_robe_policy
+		legal_code_law = civil_law_policy
+		legitimization_of_power_law = machiavellian_rule_policy
+		royal_court_customs_law = aristocratic_court_policy
+
+		immigration_law = open_borders_law
+		#colonial_policy = trade_colonies
+		cultural_traditions_law = civil_society
+		education_masses_law = personal_religious_education
+		foreign_cultural_law = allow_foreign_rituals
+		mining_law = burghers_mining_law
+		#native_policy = native_trade
+
+		distribution_of_power_law = dop_favor_the_nobles
+
 		coin_laws = gold_and_silver_coins
 	}
 }
