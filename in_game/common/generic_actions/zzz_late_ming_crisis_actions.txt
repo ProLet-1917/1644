@@ -394,10 +394,6 @@ late_ming_crisis_restore_celestial_empire = {
     allow = {
         scope:actor = {
             zzz_1644_is_china_region_country = yes
-            OR = {
-                NOT = { exists = international_organization:middle_kingdom }
-                NOT = { is_leader_of_international_organization = international_organization:middle_kingdom }
-            }
             # 需要占领所有主要城市以证明统一
             zzz_1644_owns_major_cn_cities = yes
         }
@@ -421,9 +417,7 @@ late_ming_crisis_restore_celestial_empire = {
 
 	effect = {
         scope:actor = {
-            # 等同于成立CHI国家
             form_country = formable_country:CHI_f
-            zzz_1644_form_china_effect = yes
         }
     }
 
@@ -446,12 +440,10 @@ late_ming_crisis_restore_celestial_empire = {
             value = 200
         }
 
-        # 如果已经是天朝领袖，降低优先级
+        # 已经是 CHI 则不必再点
         if = {
             limit = {
-                scope:actor = {
-                    is_leader_of_international_organization = international_organization:middle_kingdom
-                }
+                scope:actor = { tag = CHI }
             }
             value = -500
         }

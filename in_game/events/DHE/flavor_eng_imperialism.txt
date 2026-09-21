@@ -1,0 +1,562 @@
+# Anno 1644 - England in the Age of Imperialism (1837-1918)
+# Flavor / Dynamic Historical Events for the United Kingdom
+# Covers the era, plus the people and artworks of the age.
+
+namespace = flavor_eng_imperialism
+
+# The Chartist Movement
+flavor_eng_imperialism.1 = {
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+
+	title = flavor_eng_imperialism.1.title
+	desc = flavor_eng_imperialism.1.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		tag = GBR
+		from = 1839.1.1
+		to = 1858.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		government_type = government_type:monarchy
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = flavor_eng_imperialism.1.a
+		historical_option = yes
+		change_societal_value = { type = aristocracy_vs_plutocracy value = societal_value_move_to_right }
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_move_to_right }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+	}
+
+	option = {
+		name = flavor_eng_imperialism.1.b
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_move_to_left }
+		add_stability = stability_mild_bonus
+	}
+
+	historical_info = flavor_eng_imperialism.1.historical_info
+}
+
+# The Great Famine in Ireland
+flavor_eng_imperialism.2 = {
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+
+	title = flavor_eng_imperialism.2.title
+	desc = flavor_eng_imperialism.2.desc
+	outcome = bad
+
+	dynamic_historical_event = {
+		tag = ENG
+		tag = GBR
+		from = 1845.1.1
+		to = 1856.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		owns = location:dublin
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:clergy_estate }
+		every_owned_location = {
+			limit = {
+				region = region:ireland_region
+				raw_material = goods:potato
+			}
+			add_location_modifier = {
+				modifier = irish_potato_blight
+				years = 10
+				mode = add_and_extend
+			}
+		}
+	}
+
+	option = {
+		name = flavor_eng_imperialism.2.a
+		add_gold = -250
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+	}
+
+	option = {
+		name = flavor_eng_imperialism.2.b
+		historical_option = yes
+		change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_move_to_right }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+		add_stability = stability_mild_penalty
+	}
+
+	historical_info = flavor_eng_imperialism.2.historical_info
+}
+
+# The Great Exhibition of 1851
+flavor_eng_imperialism.3 = {
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+
+	title = flavor_eng_imperialism.3.title
+	desc = flavor_eng_imperialism.3.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		tag = GBR
+		from = 1848.1.1
+		to = 1860.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		has_embraced_institution = institution:industrialization
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_eng_imperialism.3.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		add_research_progress = research_progress_mild_bonus
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+	}
+
+	option = {
+		name = flavor_eng_imperialism.3.b
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
+	}
+
+	historical_info = flavor_eng_imperialism.3.historical_info
+}
+
+# On the Origin of Species
+flavor_eng_imperialism.4 = {
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+
+	title = flavor_eng_imperialism.4.title
+	desc = flavor_eng_imperialism.4.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		tag = GBR
+		from = 1858.1.1
+		to = 1870.1.1
+		monthly_chance = 2
+	}
+
+	trigger = {
+		has_embraced_institution = institution:scientific_revolution
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = flavor_eng_imperialism.4.a
+		historical_option = yes
+		add_research_progress = research_progress_mild_bonus
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_right }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_penalty }
+	}
+
+	option = {
+		name = flavor_eng_imperialism.4.b
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
+	}
+
+	historical_info = flavor_eng_imperialism.4.historical_info
+}
+
+# The Pre-Raphaelite Brotherhood
+flavor_eng_imperialism.5 = {
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+
+	title = flavor_eng_imperialism.5.title
+	desc = flavor_eng_imperialism.5.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		tag = GBR
+		from = 1848.1.1
+		to = 1855.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:clergy_estate }
+		create_character = {
+			first_name = name_gabriel
+			last_name = rossetti
+			estate = estate_type:burghers_estate
+			adm = 65
+			dip = 82
+			mil = 35
+			birth_date = 1829.7.12
+			birth_location = location:london
+			culture = culture:english
+			religion = religion:anglican
+			artist = painter
+			artist_skill = 0.75
+			save_scope_as = target_character
+		}
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = pre_raphaelite_master
+				years = -1
+				mode = add_and_extend
+			}
+		}
+		capital = {
+			create_art = {
+				type = work_of_art_type:painting
+				artist = scope:target_character
+				quality = 8
+			}
+		}
+	}
+
+	option = {
+		name = flavor_eng_imperialism.5.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+	}
+
+	option = {
+		name = flavor_eng_imperialism.5.b
+		add_prestige = prestige_mild_penalty
+	}
+
+	historical_info = flavor_eng_imperialism.5.historical_info
+}
+
+# The Father of the Modern Novel
+flavor_eng_imperialism.6 = {
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+
+	title = flavor_eng_imperialism.6.title
+	desc = flavor_eng_imperialism.6.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		tag = GBR
+		from = 1837.1.1
+		to = 1870.1.1
+		monthly_chance = 3
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:clergy_estate }
+		create_character = {
+			first_name = name_charles
+			last_name = Dickens
+			estate = estate_type:burghers_estate
+			adm = 80
+			dip = 76
+			mil = 38
+			birth_date = 1812.2.7
+			birth_location = location:london
+			culture = culture:english
+			religion = religion:anglican
+			artist = writer
+			artist_skill = 0.92
+			save_scope_as = target_character
+		}
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = imperialism_novelist
+				years = -1
+				mode = add_and_extend
+			}
+		}
+		capital = {
+			create_art = {
+				type = work_of_art_type:novel
+				artist = scope:target_character
+				quality = 95
+			}
+		}
+	}
+
+	option = {
+		name = flavor_eng_imperialism.6.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		add_research_progress = research_progress_mild_bonus
+		change_societal_value = { type = aristocracy_vs_plutocracy value = societal_value_move_to_right }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+	}
+
+	option = {
+		name = flavor_eng_imperialism.6.b
+		add_prestige = prestige_weak_bonus
+	}
+
+	historical_info = flavor_eng_imperialism.6.historical_info
+}
+
+# The Engineer of the Railway Age
+flavor_eng_imperialism.7 = {
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+
+	title = flavor_eng_imperialism.7.title
+	desc = flavor_eng_imperialism.7.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		tag = GBR
+		from = 1837.1.1
+		to = 1860.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+		create_character = {
+			first_name = name_thomas
+			last_name = brunel
+			estate = estate_type:burghers_estate
+			adm = 63
+			dip = 65
+			mil = 42
+			birth_date = 1806.4.30
+			birth_location = location:london
+			culture = culture:english
+			religion = religion:anglican
+			artist = architect
+			artist_skill = 0.85
+			save_scope_as = target_character
+		}
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = engineers_age
+				years = -1
+				mode = add_and_extend
+			}
+		}
+		capital = {
+			create_art = {
+				type = work_of_art_type:monument
+				artist = scope:target_character
+				quality = 92
+			}
+		}
+	}
+
+	option = {
+		name = flavor_eng_imperialism.7.a
+		historical_option = yes
+		add_research_progress = research_progress_mild_bonus
+		add_prestige = prestige_mild_bonus
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+	}
+
+	option = {
+		name = flavor_eng_imperialism.7.b
+		add_gold = -100
+	}
+
+	historical_info = flavor_eng_imperialism.7.historical_info
+}
+
+# The Lady of the Lamp
+flavor_eng_imperialism.8 = {
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+
+	title = flavor_eng_imperialism.8.title
+	desc = flavor_eng_imperialism.8.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		tag = GBR
+		from = 1853.1.1
+		to = 1858.1.1
+		monthly_chance = 2
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:peasants_estate }
+		create_character = {
+			first_name = name_elizabeth
+			last_name = Nightingale
+			estate = estate_type:burghers_estate
+			adm = 65
+			dip = 68
+			mil = 25
+			birth_date = 1820.5.12
+			birth_location = location:london
+			culture = culture:english
+			religion = religion:anglican
+			save_scope_as = target_character
+		}
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = imperialism_nurse
+				years = -1
+				mode = add_and_extend
+			}
+		}
+	}
+
+	option = {
+		name = flavor_eng_imperialism.8.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		add_research_progress = research_progress_mild_bonus
+		add_stability = stability_mild_bonus
+	}
+
+	option = {
+		name = flavor_eng_imperialism.8.b
+		add_gold = -50
+		add_prestige = prestige_weak_bonus
+	}
+
+	historical_info = flavor_eng_imperialism.8.historical_info
+}
+
+# The Adventures of Sherlock Holmes
+flavor_eng_imperialism.9 = {
+	hide_portraits = yes
+	type = country_event
+	fire_only_once = yes
+
+	title = flavor_eng_imperialism.9.title
+	desc = flavor_eng_imperialism.9.desc
+	outcome = neutral
+
+	dynamic_historical_event = {
+		tag = ENG
+		tag = GBR
+		from = 1887.1.1
+		to = 1895.1.1
+		monthly_chance = 3
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:clergy_estate }
+		create_character = {
+			first_name = name_henry
+			last_name = Conan_Doyle
+			estate = estate_type:burghers_estate
+			adm = 72
+			dip = 75
+			mil = 69
+			birth_date = 1859.5.22
+			birth_location = location:london
+			culture = culture:english
+			religion = religion:anglican
+			artist = writer
+			artist_skill = 0.85
+			save_scope_as = target_character
+		}
+		scope:target_character = {
+			add_character_modifier = {
+				modifier = imperialism_novelist
+				years = -1
+				mode = add_and_extend
+			}
+		}
+		capital = {
+			create_art = {
+				type = work_of_art_type:novel
+				artist = scope:target_character
+				quality = 83
+			}
+		}
+	}
+
+	option = {
+		name = flavor_eng_imperialism.9.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		add_research_progress = research_progress_mild_bonus
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+	}
+
+	option = {
+		name = flavor_eng_imperialism.9.b
+		add_prestige = prestige_weak_bonus
+	}
+
+	historical_info = flavor_eng_imperialism.9.historical_info
+}

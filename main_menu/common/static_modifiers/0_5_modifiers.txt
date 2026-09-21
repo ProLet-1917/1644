@@ -109,3 +109,59 @@ local_governor_production = {
 
     local_production_efficiency = 0.005
 }
+
+# --- England in the Age of Imperialism (flavor_eng_imperialism) ---
+
+# Great Famine in Ireland: potato blight on Irish potato locations (location scope)
+irish_potato_blight = {
+    game_data = {
+        category = location
+    }
+
+    local_potato_output_modifier = -0.75
+    local_monthly_prosperity = -0.002
+}
+
+# Charles Dickens / Arthur Conan Doyle: novelist of the Age of Imperialism (character scope)
+imperialism_novelist = {
+    game_data = {
+        category = character
+    }
+
+    artist_skill_level_gain = 0.25
+    art_creation_speed = 0.5
+    artist_salary_modifier_on_character = -0.25
+}
+
+# Dante Gabriel Rossetti: Pre-Raphaelite master painter (character scope)
+pre_raphaelite_master = {
+    game_data = {
+        category = character
+    }
+
+    artist_skill_level_gain = 0.25
+    art_creation_speed = 0.5
+    artist_impact = 0.5
+}
+
+# Isambard Kingdom Brunel: engineer of the railway age (character scope)
+engineers_age = {
+    game_data = {
+        category = character
+    }
+
+    artist_skill_level_gain = 0.25
+    art_creation_speed = 0.5
+    adm = 2
+}
+
+# Florence Nightingale: pioneer of nursing (character scope)
+imperialism_nurse = {
+    game_data = {
+        category = character
+    }
+
+    adm = 2
+    dip = 1
+    character_life_expectancy = 0.25
+}

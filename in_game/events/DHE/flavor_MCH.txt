@@ -124,7 +124,7 @@ flavor_mch.6 = {
 
 	trigger = {
 		culture ?= { has_culture_group = culture_group:jurchen_group }
-		is_leader_of_international_organization = international_organization:middle_kingdom
+		is_chinese_dynasty_leader = yes
 		has_ruler = yes
 	}
 
@@ -384,7 +384,7 @@ flavor_mch.16 = {
 
 	trigger = {
 		culture ?= { has_culture_group = culture_group:jurchen_group }
-		is_leader_of_international_organization = international_organization:middle_kingdom
+		is_chinese_dynasty_leader = yes
 	}
 
 	illustration_tags = {
@@ -401,7 +401,7 @@ flavor_mch.16 = {
 
 		custom_tooltip = unlock_chinese_language_reforms
 		set_variable = unlocked_mandarin_language_reforms
-		change_celestial_authority = { value = celestial_authority_mild_bonus }
+		change_dynasty_stability = { value = 100 }
 	}
 
 	option = {
@@ -411,5 +411,82 @@ flavor_mch.16 = {
 			type = mch_tribal_favor
 		}
 		custom_tooltip = MCH_conditional_benefit
+	}
+}
+
+# 三藩之乱
+flavor_mch.20 = {
+	type = country_event
+	title = flavor_mch.20.title
+	desc = flavor_mch.20.desc
+	fire_only_once = yes
+	historical_info = flavor_mch.20.historical_info
+	major = yes
+
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1661.1.1
+		to = 1685.1.1
+		monthly_chance = 40
+	}
+
+	trigger = {
+		OR = {
+			has_or_had_tag = QNG
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		is_chinese_dynasty_leader = yes
+		owns = location:dadu
+		country_exists = c:WSG
+		current_year >= 1661
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+		c:WSG = { save_scope_as = pingxi_prince }
+	}
+
+	option = {
+		name = flavor_mch.20.a
+		historical_option = yes
+		custom_tooltip = sanfan_rebellion_tt
+		if = {
+			limit = {
+				c:WSG = { is_subject_of = root }
+			}
+			c:WSG = {
+				add_casus_belli = {
+					target = root
+					type = casus_belli:cb_independence_war
+				}
+				declare_war_with_cb = {
+					target = root
+					type = casus_belli:cb_independence_war
+				}
+			}
+		}
+		else = {
+			add_casus_belli = {
+				target = c:WSG
+				type = casus_belli:cb_chinese_unification
+			}
+			c:WSG = {
+				add_casus_belli = {
+					target = root
+					type = casus_belli:cb_chinese_unification
+				}
+				declare_war_with_cb = {
+					target = root
+					type = casus_belli:cb_chinese_unification
+				}
+			}
+		}
+		change_dynasty_stability = { value = -100 }
+	}
+
+	option = {
+		name = flavor_mch.20.b
+		change_dynasty_stability = { value = -25 }
+		add_prestige = prestige_mild_penalty
 	}
 }

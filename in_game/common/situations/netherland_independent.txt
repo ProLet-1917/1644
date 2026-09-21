@@ -87,7 +87,19 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 	}
 
 	on_monthly = {
-
+		netherland_independent_netural_country_list_monthly_check_effect = yes
+		netherland_independent_netherland_country_list_monthly_check_effect = yes
+		netherland_independent_spain_country_list_monthly_check_effect = yes
+		if = {
+			limit = {
+				location:brussels ?= {
+					c:NED ?= owner
+				}
+			}
+			c:NED = {
+				trigger_event_non_silently = netherland_independent.9
+			}
+		}
 	}
 
 	on_ended = {	

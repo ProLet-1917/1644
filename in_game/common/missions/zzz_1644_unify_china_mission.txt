@@ -10,7 +10,6 @@
 			tag = QNG
 			tag = CSH
 		}
-		exists = international_organization:middle_kingdom
 	}
 
 	enabled = {
@@ -19,7 +18,6 @@
 			tag = QNG
 			tag = CSH
 		}
-		exists = international_organization:middle_kingdom
 	}
 
 	chance = 10000
@@ -249,25 +247,12 @@
 		duration = 0
 
 		on_completion = {
-			# 成为天朝领袖
+			# 成为王朝领袖
 			if = {
 				limit = {
-					exists = international_organization:middle_kingdom
-					NOT = { is_leader_of_international_organization = international_organization:middle_kingdom }
+					NOT = { is_leader_of_international_organization_of_type = { type = chinese_dynasty } }
 				}
-				# 如果还不是成员，先加入
-				if = {
-					limit = {
-						NOT = { is_member_of_international_organization = international_organization:middle_kingdom }
-					}
-					international_organization:middle_kingdom = {
-						add_country_to_international_organization = root
-					}
-				}
-				# 设置为领袖
-				international_organization:middle_kingdom = {
-					set_leader_country = root
-				}
+				zzz_1644_recreate_chinese_dynasty = yes
 			}
 			# 永久国家修正
 			add_country_modifier = {

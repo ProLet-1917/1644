@@ -1,0 +1,389 @@
+# 王朝外交：邀入朝贡、册封藩王
+invite_into_chinese_dynasty = {
+    type = diplomacy
+    category = CATEGORY_CHINESE_DYNASTY_ACTIONS
+
+    ai_limit_per_check = 1
+
+    potential = {
+        scope:actor = {
+            is_chinese_dynasty_leader = yes
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            is_chinese_dynasty_leader = yes
+        }
+    }
+
+    cooldown = {
+        type = invite_into_chinese_dynasty
+        months = 24
+    }
+
+    select_trigger = {
+        looking_for_a = country
+        target_flag = recipient
+        name = "choose_country"
+        column = {
+            data = name
+        }
+        visible = {
+            NOT = { this = scope:actor }
+            is_rebel_country = no
+            NOT = { is_member_of_international_organization_of_type = { type = chinese_dynasty } }
+            capital ?= {
+                OR = {
+                    sub_continent = sub_continent:east_asia
+                    sub_continent = sub_continent:south_east_asia
+                    sub_continent = sub_continent:central_asia
+                }
+            }
+        }
+        enabled = {
+            NOT = { is_at_war_with = scope:actor }
+            within_diplomatic_range = scope:actor
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            random_international_organizations_member_of = {
+                limit = {
+                    international_organization_type = international_organization_type:chinese_dynasty
+                    leader_country = scope:actor
+                }
+                add_country_to_international_organization = scope:recipient
+            }
+        }
+        scope:actor = {
+            change_dynasty_stability = { value = 10 }
+        }
+    }
+
+    ai_will_do = {
+        add = {
+            desc = "OUR_OPINION_TOOLTIP"
+            value = "scope:actor.opinion(scope:recipient)"
+        }
+        add = {
+            desc = "THEIR_OPINION_TOOLTIP"
+            value = "scope:recipient.opinion(scope:actor)"
+        }
+        if = {
+            limit = {
+                NOT = { scope:recipient = { is_chinese_culture_group_country = yes } }
+            }
+            subtract = 150
+        }
+        if = {
+            limit = { scope:recipient = { is_great_power = yes } }
+            subtract = 200
+        }
+        if = {
+            limit = { scope:recipient = { is_regional_power = yes } }
+            subtract = 80
+        }
+        if = {
+            limit = { scope:recipient = { country_rank_level >= 4 } }
+            subtract = 80
+        }
+    }
+
+    accept = {
+        if = {
+            limit = { exists = scope:recipient }
+            add = {
+                desc = "VOTE_BASE_VALUE"
+                value = -80
+            }
+            add = {
+                desc = "THEIR_OPINION_TOOLTIP"
+                value = "scope:recipient.opinion(scope:actor)"
+                if = {
+                    limit = { scope:recipient = { "opinion(scope:actor)" > 0 } }
+                    divide = 10
+                }
+                else = {
+                    divide = 6
+                }
+            }
+            add = {
+                desc = "game_concept_diplomatic_reputation"
+                scope:actor = {
+                    value = modifier:diplomatic_reputation
+                    multiply = 2
+                }
+            }
+            if = {
+                limit = { scope:recipient = { is_chinese_culture_group_country = yes } }
+                add = {
+                    desc = "CHINESE_CULTURE_GROUP"
+                    value = 25
+                }
+            }
+            else = {
+                add = {
+                    desc = "NOT_CHINESE_CULTURE_GROUP"
+                    value = -150
+                }
+            }
+            if = {
+                limit = {
+                    scope:recipient = {
+                        is_chinese_culture_group_country = yes
+                        num_locations < 8
+                        is_great_power = no
+                        is_regional_power = no
+                    }
+                }
+                add = {
+                    desc = "WE_ARE_SMALL"
+                    value = 50
+                }
+            }
+            if = {
+                limit = { scope:recipient = { is_great_power = yes } }
+                add = {
+                    desc = "game_concept_great_powers"
+                    value = -200
+                }
+            }
+            if = {
+                limit = { scope:recipient = { is_regional_power = yes } }
+                add = {
+                    desc = "IS_REGIONAL_POWER"
+                    value = -80
+                }
+            }
+            if = {
+                limit = { scope:recipient = { country_rank_level >= 3 } }
+                add = {
+                    desc = "game_concept_country_rank"
+                    value = -40
+                }
+            }
+            if = {
+                limit = { scope:recipient = { country_rank_level >= 4 } }
+                add = {
+                    desc = "game_concept_country_rank"
+                    value = -80
+                }
+            }
+            if = {
+                limit = { scope:recipient = { num_locations >= 20 } }
+                add = {
+                    desc = "HAS_MANY_LOCATIONS"
+                    value = -50
+                }
+            }
+            subtract = {
+                desc = "game_concept_tax_base"
+                value = scope:recipient.country_tax_base
+                divide = 5
+            }
+        }
+        else = {
+            value = 0
+        }
+    }
+}
+
+enfeoff_fanwang = {
+    type = diplomacy
+    category = CATEGORY_CHINESE_DYNASTY_ACTIONS
+
+    ai_limit_per_check = 1
+
+    potential = {
+        scope:actor = {
+            is_chinese_dynasty_leader = yes
+            government_type = government_type:monarchy
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            is_chinese_dynasty_leader = yes
+        }
+    }
+
+    cooldown = {
+        type = enfeoff_fanwang
+        months = 60
+    }
+
+    select_trigger = {
+        looking_for_a = country
+        target_flag = recipient
+        name = "choose_country"
+        column = {
+            data = name
+        }
+        visible = {
+            NOT = { this = scope:actor }
+            is_rebel_country = no
+            government_type = government_type:monarchy
+            is_member_of_international_organization_of_type = { type = chinese_dynasty }
+            NAND = {
+                is_subject_of = scope:actor
+                subject_type = subject_type:fanwang
+            }
+        }
+        enabled = {
+            NOT = { is_at_war_with = scope:actor }
+            OR = {
+                is_subject_of = scope:actor
+                is_subject = no
+            }
+        }
+    }
+
+    effect = {
+        scope:recipient = {
+            make_subject_of = {
+                target = scope:actor
+                type = subject_type:fanwang
+            }
+        }
+        scope:actor = {
+            change_dynasty_stability = { value = 15 }
+            add_prestige = prestige_mild_bonus
+        }
+    }
+
+    ai_will_do = {
+        add = {
+            desc = "OUR_OPINION_TOOLTIP"
+            value = "scope:actor.opinion(scope:recipient)"
+        }
+        if = {
+            limit = {
+                not = {
+                    scope:recipient = {
+                        government_type = government_type:monarchy
+                    }
+                }
+            }
+            value = -1000
+        }
+        if = {
+            limit = {
+                NOT = { scope:recipient = { is_chinese_culture_group_country = yes } }
+            }
+            subtract = 150
+        }
+        if = {
+            limit = { scope:recipient = { is_great_power = yes } }
+            subtract = 200
+        }
+        if = {
+            limit = { scope:recipient = { is_regional_power = yes } }
+            subtract = 100
+        }
+        if = {
+            limit = {
+                NOT = { scope:recipient = { is_subject_of = scope:actor } }
+            }
+            subtract = 80
+        }
+    }
+
+    accept = {
+        if = {
+            limit = { exists = scope:recipient }
+            add = {
+                desc = "VOTE_BASE_VALUE"
+                value = -100
+            }
+            add = {
+                desc = "THEIR_OPINION_TOOLTIP"
+                value = "scope:recipient.opinion(scope:actor)"
+                divide = 10
+            }
+            add = {
+                desc = "game_concept_diplomatic_reputation"
+                scope:actor = {
+                    value = modifier:diplomatic_reputation
+                    multiply = 1
+                }
+            }
+            if = {
+                limit = { scope:recipient = { is_chinese_culture_group_country = yes } }
+                add = {
+                    desc = "CHINESE_CULTURE_GROUP"
+                    value = 20
+                }
+            }
+            else = {
+                add = {
+                    desc = "NOT_CHINESE_CULTURE_GROUP"
+                    value = -180
+                }
+            }
+            if = {
+                limit = {
+                    scope:recipient = {
+                        is_chinese_culture_group_country = yes
+                        num_locations < 8
+                        is_great_power = no
+                    }
+                }
+                add = {
+                    desc = "WE_ARE_SMALL"
+                    value = 40
+                }
+            }
+            if = {
+                limit = { scope:recipient = { is_great_power = yes } }
+                add = {
+                    desc = "game_concept_great_powers"
+                    value = -250
+                }
+            }
+            if = {
+                limit = { scope:recipient = { is_regional_power = yes } }
+                add = {
+                    desc = "IS_REGIONAL_POWER"
+                    value = -100
+                }
+            }
+            if = {
+                limit = { scope:recipient = { country_rank_level >= 3 } }
+                add = {
+                    desc = "game_concept_country_rank"
+                    value = -80
+                }
+            }
+            if = {
+                limit = { scope:recipient = { num_locations >= 20 } }
+                add = {
+                    desc = "HAS_MANY_LOCATIONS"
+                    value = -60
+                }
+            }
+            subtract = {
+                desc = "game_concept_tax_base"
+                value = scope:recipient.country_tax_base
+                divide = 3
+            }
+            if = {
+                limit = { scope:recipient = { is_subject_of = scope:actor } }
+                add = {
+                    desc = "IS_OUR_SUBJECT"
+                    value = 60
+                }
+            }
+            else = {
+                add = {
+                    desc = "NOT_OUR_SUBJECT"
+                    value = -80
+                }
+            }
+        }
+        else = {
+            value = 0
+        }
+    }
+}

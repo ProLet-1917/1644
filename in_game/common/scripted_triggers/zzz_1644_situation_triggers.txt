@@ -51,6 +51,22 @@ late_ming_crisis_unification_achieved = {
 	}
 }
 
+is_chinese_dynasty_leader = {
+	is_leader_of_international_organization_of_type = { type = chinese_dynasty }
+}
+
+is_chinese_dynasty_member = {
+	is_member_of_international_organization_of_type = { type = chinese_dynasty }
+}
+
+exists_chinese_dynasty = {
+	any_international_organization = {
+		international_organization_type = international_organization_type:chinese_dynasty
+		save_temporary_scope_as = target_io
+	}
+	exists = scope:target_io
+}
+
 is_chinese_country = {
 	AND = {
 		OR = {
@@ -80,6 +96,22 @@ is_chinese_country = {
 			has_primary_or_accepted_or_tolerated_culture = culture:hui_muslim_culture
 		}
 		is_rebel_country = no
+	}
+}
+
+is_celestial_governor_of_chinese_dynasty = {
+	any_international_organizations_member_of = {
+		international_organization_type = international_organization_type:chinese_dynasty
+		country_has_special_status = {
+			type = special_status:celestial_governor
+			country = prev
+		}
+	}
+}
+
+is_chinese_culture_group_country = {
+	culture = {
+		has_culture_group = culture_group:chinese_group
 	}
 }
 

@@ -1355,6 +1355,68 @@ NAI = {
 	AI_ALREADY_INSULTED_FACTOR = 0.9
 }
 
+NCharacter = {
+	BASE_AMOUNT_FOR_COUNTRY = 1.20		#multiply with cabinet size.
+	
+	MAX_INFANT_AGE = 2
+	MAX_CHILD_AGE = 10
+	MAX_ADOLESCENT_AGE = 15
+	ADULT_AGE = 16
+	
+	AI_MIN_MARRIAGE_AGE = 18
+	AI_MAX_FEMALE_MARRIAGE_AGE = 30
+	
+	OLD_AGE_MONTH_CHANCE = 3.25		#100 is dice roll
+	MAX_CHARACTER_AGE = 100			# hard cap; characters die when they reach this age
+	
+	MAX_PREGNANCY_AGE = 50		#blocked above this
+	PREGNANCY_AGE_THRESHOLD = 35
+	PREGNANCY_CHANCE = 180	#1000 is diceroll
+	PREGNANCY_FERTILITY_MIN_REDUCTION = 12
+	PREGNANCY_FERTILITY_MAX_REDUCTION = 22.5
+	MONTHLY_STAT_INCREASE_CHANCE_FOR_CHILD = 50 # <= on 1d100
+	MAX_ABILITY_VALUE = 100
+	
+	
+	EXPLORER_EXTRA_LIFE = 10
+	
+	DYNASTY_HEAD_MARRY_AGE = 24
+	DYNASTY_HEAD_MARRY_TARGET_MIN_AGE = 18
+	DYNASTY_HEAD_MARRY_TARGET_MAX_AGE = 32
+
+	CHILD_TRAIT_AGE = 3
+	
+	YEARS_OF_RULING_FIRST_TRAIT = 1
+	YEARS_OF_RULING_SECOND_TRAIT = 10
+	YEARS_OF_RULING_THIRD_TRAIT = 25
+	
+	
+	CABINET_TRAIT_GAIN_CHANCE = 2 # monthly chance vs d100 to get a trait
+	
+
+	LEADER_COMBAT_TRAIT_GAIN_CHANCE = 0.5	#dice 100 less than Chance * Tradition gained in battle
+	
+	EDUCATION_AGE = 3
+	MAX_AGE_SETUP_ERROR_LOG = 100
+
+	INCOMPETENT_TOTAL_ABILITY_THRESHOLD = 50 # If all the ability scores are added together and are still lower than this, the character is considered Incompetent and it will give you an Alert
+	INCOMPETENT_AGE_THRESHOLD = 10 # you won't get Alert until the Ruler/Heir is this age
+	
+	RULER_ATTRIBUTE_IMPORTANCE = 1
+	HEIR_ATTRIBUTE_IMPORTANCE = 0.9
+	RULER_OTHER_CHILD_ATTRIBUTE_IMPORTANCE = 0.8
+	HEIR_OTHER_CHILD_ATTRIBUTE_IMPORTANCE = 0.7
+	OTHER_CHARACTER_ATTRIBUTE_IMPORTANCE = 0.5
+	ATTRIBUTE_IMPORTANCE_MULTIPLIER = 4
+	
+	# these modify liklihood of certain pops being used to generate a new character
+	RANDOM_CHARACTER_CHANCE_PRIMARY_CULTURE_MULTIPLIER = 80 # n-times more likely to select a Primary Culture pop 
+	RANDOM_CHARACTER_CHANCE_ACCEPTED_CULTURE_MULTIPLIER = 50 # n-times more likely to select an Accepted Culture Culture pop
+	RANDOM_CHARACTER_CHANCE_TOLERATED_CULTURE_MULTIPLIER = 20 # n-times more likely to select an Tolerated Culture Culture pop
+	RANDOM_CHARACTER_CHANCE_CULTURE_OPINION_MULTIPLIER = 1 # multiplies with primary culture's opinion of a pop's culture, e.g. if it was 10, Kindred 3 becomes 30. Same culture is treated as Kindred
+	RANDOM_CHARACTER_CHANCE_RELIGION_OPINION_MULTIPLIER = 1 # multiplies with primary religion's opinion of a pop's religion, e.g. if it was 10, Kindred 3 becomes 30
+}
+
 NLocation = {
 
 	MAX_NUM_LOCATIONS_FOR_INTEGRATE_SLOWDOWN = 5

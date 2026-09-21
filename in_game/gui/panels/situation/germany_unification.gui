@@ -27,12 +27,7 @@ situation_panel = {
                 }
             }
             blockoverride "visible_hint" { }
-            blockoverride "onaction_hint" {
-                action_tooltip = {
-                    title = "OPEN_HINT"
-                    on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_netherland_independent')]"
-                }
-            }
+            blockoverride "onaction_hint" { }
             blockoverride "bottom_content_onclick" {
                 visible = "[LateralView.Vars.Exists( 'requirements_toggled' )]"
             }
@@ -52,7 +47,7 @@ situation_panel = {
                 text_single = {
                     layoutpolicy_horizontal = expanding
                     align = center|nobaseline
-                    text = "POTENIAL_UNIFIER"
+                    text = "POTENTIAL_UNIFIER"
                     blockoverride "left_header_text" { }
                 }
                 expand = {}
@@ -83,6 +78,48 @@ situation_panel = {
                                         size = { 60 40 }
                                         datacontext = "[Scope.GetCountry]"
                                     }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        situation_card_header_button = {
+            blockoverride "card_header_button_header_content" {
+                icon = {
+                    blockoverride "left_header_icon" { }
+                }
+                text_single = {
+                    layoutpolicy_horizontal = expanding
+                    align = center|nobaseline
+                    text = "GERMAN_COUNTRY"
+                    blockoverride "left_header_text" { }
+                }
+                expand = {}
+            }
+            blockoverride "bottom_content" {
+                scrollarea = {
+                    layoutpolicy_horizontal = expanding
+                    size = { -1 240 }
+                    scrollbarpolicy_horizontal = always_off
+                    scrollbar_vertical = {
+                        using = Scrollbar_Vertical
+                    }
+
+                    scrollwidget = {
+                        dynamicgridbox = {
+                            datamodel = "[GetGlobalList('german_country_list')]"
+                            datacontext = "[Scope.Country]"
+                            visible = "[DataModelHasItems(GetGlobalList('german_country_list'))]"
+                            position = { 20 5% }
+                            flipdirection = yes
+                            datamodel_wrap = 13
+                            maxhorizontalslots = 13
+                            item = {
+                                country_flag_small = {
+                                    datacontext = "[Scope.GetCountry]"
                                 }
                             }
                         }

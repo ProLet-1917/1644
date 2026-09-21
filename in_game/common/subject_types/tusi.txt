@@ -3,8 +3,8 @@
 	color = subject_tusi
 	level = 5
 	visible_through_diplomacy = {
-		exists = international_organization:middle_kingdom
-		is_leader_of_international_organization = international_organization:middle_kingdom
+		exists_chinese_dynasty = yes
+		is_chinese_dynasty_leader = yes
 		scope:target = {
 			subject_type_is_not_locked = yes
 			OR = {
@@ -41,8 +41,8 @@
 	}
 
 	visible_through_treaty = {
-		exists = international_organization:middle_kingdom
-		is_leader_of_international_organization = international_organization:middle_kingdom
+		exists_chinese_dynasty = yes
+		is_chinese_dynasty_leader = yes
 		scope:target = {
 			subject_type_is_not_locked = yes
 			OR = {
@@ -79,13 +79,13 @@
 	}
 
 	creation_visible = {
-		exists = international_organization:middle_kingdom
-		is_leader_of_international_organization = international_organization:middle_kingdom
+		exists_chinese_dynasty = yes
+		is_chinese_dynasty_leader = yes
 	}
 
 	subject_creation_enabled = {
-		exists = international_organization:middle_kingdom
-		is_leader_of_international_organization = international_organization:middle_kingdom
+		exists_chinese_dynasty = yes
+		is_chinese_dynasty_leader = yes
 		scope:target_province = {
 			OR = {
 				sub_continent = sub_continent:east_asia
@@ -98,8 +98,8 @@
 	}
 
 	release_country_enabled = {
-		exists = international_organization:middle_kingdom
-		is_leader_of_international_organization = international_organization:middle_kingdom
+		exists_chinese_dynasty = yes
+		is_chinese_dynasty_leader = yes
 		scope:target = {
 			OR = {
 				country_rank_level = 1

@@ -1,0 +1,217 @@
+# 王朝议会：确认继统、征藩镇兵、改土归流
+cd_confirm_imperial_succession = {
+    type = international_organization
+    special_status = tianzi
+    potential = {
+        leader_country ?= {
+            has_heir = yes
+        }
+    }
+    allow = {
+        NOT = { has_cooldown = cd_confirm_imperial_succession }
+        leader_country ?= {
+            has_heir = yes
+        }
+    }
+    chance = 8
+    selectable_for = {
+        is_leader_of_international_organization = scope:recipient
+    }
+    on_debate_passed = {
+        hidden_effect = {
+            add_cooldown = {
+                type = cd_confirm_imperial_succession
+                years = 15
+            }
+        }
+        leader_country ?= {
+            change_dynasty_stability = { value = 50 }
+            add_prestige = prestige_mild_bonus
+            add_legitimacy = legitimacy_mild_bonus
+        }
+    }
+    on_debate_failed = {
+        custom_tooltip = {
+            text = "lose_dynasty_stability_mild"
+        }
+        hidden_effect = {
+            leader_country ?= {
+                change_dynasty_stability = { value = -50 }
+            }
+        }
+    }
+    wants_this_parliament_issue_bias = {
+        if = {
+            limit = { scope:recipient = { international_organization_has_leader = yes } }
+            add = {
+                desc = "VOTE_BASE_VALUE"
+                value = -200
+            }
+            add = {
+                desc = "game_concept_opinion"
+                value = {
+                    value = "root.opinion(scope:recipient.leader_country)"
+                    multiply = 0.5
+                }
+            }
+        }
+        else = {
+            add = {
+                desc = "VOTE_BASE_VALUE"
+                value = 0
+            }
+        }
+    }
+}
+
+cd_levy_fanzhen_troops = {
+    type = international_organization
+    special_status = tianzi
+    potential = {
+        OR = {
+            international_organization_has_policy = policy:cd_fanzhen_shuwei
+            international_organization_has_policy = policy:cd_fanzhen_kaijiang
+        }
+    }
+    allow = {
+        NOT = { has_cooldown = cd_levy_fanzhen_troops }
+    }
+    chance = 10
+    selectable_for = {
+        is_leader_of_international_organization = scope:recipient
+    }
+    on_debate_passed = {
+        hidden_effect = {
+            add_cooldown = {
+                type = cd_levy_fanzhen_troops
+                years = 10
+            }
+        }
+        leader_country ?= {
+            save_scope_as = leader_country_scope
+        }
+        scope:leader_country_scope = {
+            add_manpower = {
+                value = scope:recipient.total_members
+                multiply = 0.12
+            }
+        }
+    }
+    on_debate_failed = {
+        custom_tooltip = {
+            text = "lose_dynasty_stability_mild"
+        }
+        hidden_effect = {
+            leader_country ?= {
+                change_dynasty_stability = { value = -25 }
+            }
+        }
+    }
+    wants_this_parliament_issue_bias = {
+        if = {
+            limit = { scope:recipient = { international_organization_has_leader = yes } }
+            add = {
+                desc = "VOTE_BASE_VALUE"
+                value = -350
+            }
+            add = {
+                desc = "game_concept_opinion"
+                value = {
+                    value = "root.opinion(scope:recipient.leader_country)"
+                    multiply = 0.4
+                }
+            }
+        }
+        else = {
+            add = {
+                desc = "VOTE_BASE_VALUE"
+                value = 0
+            }
+        }
+    }
+}
+
+cd_gaitu_guiliu = {
+    type = international_organization
+    special_status = tianzi
+    potential = {
+        leader_country ?= {
+            any_subject = {
+                subject_type = subject_type:tusi
+            }
+        }
+    }
+    allow = {
+        NOT = { has_cooldown = cd_gaitu_guiliu }
+        leader_country ?= {
+            any_subject = {
+                subject_type = subject_type:tusi
+            }
+        }
+    }
+    chance = 6
+    selectable_for = {
+        is_leader_of_international_organization = scope:recipient
+    }
+    on_debate_passed = {
+        hidden_effect = {
+            add_cooldown = {
+                type = cd_gaitu_guiliu
+                years = 20
+            }
+        }
+        leader_country ?= {
+            save_scope_as = leader_country_scope
+            change_dynasty_stability = { value = 25 }
+        }
+        custom_tooltip = cd_gaitu_guiliu_tt
+        hidden_effect = {
+            scope:leader_country_scope = {
+                every_subject = {
+                    limit = { subject_type = subject_type:tusi }
+                    every_owned_location = {
+                        scope:leader_country_scope = {
+                            add_core = prev
+                        }
+                    }
+                    make_subject_of = {
+                        target = scope:leader_country_scope
+                        type = subject_type:vassal
+                    }
+                }
+            }
+        }
+    }
+    on_debate_failed = {
+        custom_tooltip = {
+            text = "lose_dynasty_stability_mild"
+        }
+        hidden_effect = {
+            leader_country ?= {
+                change_dynasty_stability = { value = -25 }
+            }
+        }
+    }
+    wants_this_parliament_issue_bias = {
+        if = {
+            limit = { scope:recipient = { international_organization_has_leader = yes } }
+            add = {
+                desc = "VOTE_BASE_VALUE"
+                value = -450
+            }
+            add = {
+                desc = "game_concept_opinion"
+                value = {
+                    value = "root.opinion(scope:recipient.leader_country)"
+                    multiply = 0.3
+                }
+            }
+        }
+        else = {
+            add = {
+                desc = "VOTE_BASE_VALUE"
+                value = 0
+            }
+        }
+    }
+}

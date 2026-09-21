@@ -4,6 +4,7 @@ declare_unification_of_germany_empire = {
     potential = {
         scope:actor = {
             has_variable = potential_unifier
+            NOT = { is_emperor = yes }
         }
         situation:germany_unification = {
             situation_is_active = yes
@@ -54,12 +55,135 @@ declare_unification_of_germany_empire = {
     effect = {
         scope:actor = {
             form_country = formable_country:GER_f
-
         }
         scope:target = {
             every_international_organization_member = {
                 trigger_event_non_silently = germany_unification.1001
             }
+        }
+        every_country = {
+            limit = {
+                culture = { has_culture_group = culture_group:german_group }
+                NOT = {
+                    is_member_of_international_organization = scope:target
+                }
+            }
+            trigger_event_non_silently = germany_unification.1002
+        }
+        every_international_organization = {
+            limit = {
+                international_organization_type = international_organization_type:germany_unification_union
+            }
+            destroy_international_organization = { target = this }
+        }
+    }
+
+    ai_will_do = {
+        value = 1000
+    }
+}
+
+# 神罗仍在且本国为皇帝时，通过帝国统一德国
+declare_unification_through_hre = {
+    type = situation
+
+    potential = {
+        scope:actor = {
+            culture = { has_culture_group = culture_group:german_group }
+            is_emperor = yes
+            NOT = { tag = GER }
+        }
+        exists = international_organization:hre
+        situation:germany_unification = {
+            situation_is_active = yes
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            is_emperor = yes
+            has_advance = nation_state_advance
+            is_subject = no
+        }
+        OR = {
+            international_organization:hre = {
+                international_organization_has_policy = policy:revoke_privilegia_policy
+            }
+            AND = {
+                region:north_german_region = {
+                    NOT = {
+                        any_ownable_location_in_region = {
+                            percent > 0.25
+                            AND = {
+                                NOT = { owner = scope:actor }
+                                owner = {
+                                    NOT = { is_subject_of = scope:actor }
+                                }
+                            }
+                        }
+                    }
+                }
+                region:south_german_region = {
+                    NOT = {
+                        any_ownable_location_in_region = {
+                            percent > 0.35
+                            AND = {
+                                NOT = { owner = scope:actor }
+                                owner = {
+                                    NOT = { is_subject_of = scope:actor }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    ai_tick = monthly
+    ai_tick_frequency = 3
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = "choose_situation"
+        column = {data = name}
+        visible = {
+            situation:germany_unification = this
+            situation_is_active = yes
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            save_scope_as = unifier
+            form_country = formable_country:GER_f
+        }
+        international_organization:hre = {
+            every_international_organization_member = {
+                limit = { NOT = { this = scope:unifier } }
+                trigger_event_non_silently = germany_unification.1101
+            }
+        }
+        destroy_international_organization = { target = international_organization:hre }
+        every_international_organization = {
+            limit = {
+                international_organization_type = international_organization_type:germany_unification_union
+            }
+            destroy_international_organization = { target = this }
+        }
+        every_country = {
+            limit = {
+                OR = {
+                    has_variable = german_country
+                    has_variable = potential_unifier
+                }
+            }
+            remove_variable = german_country
+            remove_variable = potential_unifier
         }
     }
 
@@ -244,12 +368,27 @@ ug_pru_organized_troops = {
     }
 }
 
-support_the_unifier = {
+ug_hab_imperial_court = {
     type = situation
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:ug_hab_imperial_court_prices
+
+    cooldown = {
+        type = ug_hab_imperial_court
+        years = 8
+    }
 
     potential = {
         scope:actor = {
-            has_variable = normal_germany_country
+            tag = HAB
+            culture = { has_culture_group = culture_group:german_group }
+            has_variable = potential_unifier
         }
         situation:germany_unification = {
             situation_is_active = yes
@@ -258,7 +397,79 @@ support_the_unifier = {
 
     allow = {
         scope:actor = {
-            has_variable = normal_germany_country
+            tag = HAB
+            culture = { has_culture_group = culture_group:german_group }
+            is_subject = no
+            is_during_bankruptcy = no
+            has_variable = potential_unifier
+        }
+        situation:germany_unification = {
+            situation_is_active = yes
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = "choose_situation"
+        column = {data = name}
+        visible = {
+            situation:germany_unification = this
+            situation_is_active = yes
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = location
+        source = actor
+        target_flag = target_location
+        name = "choose_location"
+        none_available_msg_key = "no_locations_available"
+        column = {
+            data = name
+        }
+        column = {
+            data = population
+        }
+        visible = {
+            has_owner = yes
+            owner = scope:actor
+            NOT = {
+                has_location_modifier = hab_imperial_court
+            }
+            is_capital = no
+        }
+    }
+
+    effect = {
+        scope:target_location = {
+            add_location_modifier = {
+                modifier = hab_imperial_court
+                years = 25
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 5
+    }
+}
+
+support_the_unifier = {
+    type = situation
+
+    potential = {
+        scope:actor = {
+            has_variable = german_country
+        }
+        situation:germany_unification = {
+            situation_is_active = yes
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            has_variable = german_country
             NOT = {
                 is_member_of_international_organization_of_type = {
                     type = germany_unification_union
@@ -301,7 +512,7 @@ support_the_unifier = {
     }
 
     ai_will_do = {
-        base = -25
+        base = -10
         subtract = {
             desc = "game_concept_tax_base"
             value = {

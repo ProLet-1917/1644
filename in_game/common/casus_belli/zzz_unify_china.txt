@@ -69,8 +69,8 @@
 REPLACE:cb_claim_mandate_of_heaven = {
 	speed = 10
 	create_visible = {
-		exists = international_organization:middle_kingdom
-		scope:target = { is_leader_of_international_organization = international_organization:middle_kingdom }
+		exists_chinese_dynasty = yes
+		scope:target = { is_leader_of_international_organization_of_type = { type = chinese_dynasty } }
 		OR = {
 			culture = {
 				OR = {

@@ -1,0 +1,25 @@
+cb_germany_unification = {
+    years = 15
+    create_visible = {
+        is_leader_of_international_organization_of_type = {
+            type = germany_unification_union
+        }
+    }
+
+    create_enabled = {
+        is_leader_of_international_organization_of_type = {
+            type = germany_unification_union
+        }
+    }
+
+    custom_tags = { cannot_be_enforced_peace_on  }
+
+    allow_separate_peace = no
+    allow_white_peace = no
+
+    war_goal_type = take_capital
+
+    required_peace_treaties = {
+        give_up_leader_of_unification_union
+    }
+}

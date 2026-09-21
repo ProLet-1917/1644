@@ -288,7 +288,7 @@ widget = {
 
 						}
 
-						#Decisions Group
+						#Decisions Group — 神罗解体后的保底统一德国
 						vbox = {
 							visible = "[Country.MakeScope.GetVariable('german_country').IsSet]"
 							widget = {
@@ -337,37 +337,6 @@ widget = {
 									scrollbox = {
 										layoutpolicy_vertical = expanding
 										blockoverride "scrollbox_content" {
-										#	action_button_regular = {
-										#		using = generic_decisions_icon_group_small
-										#		size = { 300 @generic_decisions_group_height }
-										#		text = "ug_improve_local_goverment"
-										#		actor = "[Player]"
-										#		left_click_and_hold_action = { action_name = "ug_improve_local_goverment" }
-										#		default_format = "#High"
-										#		tooltipwidget = {
-										#			ContextualTooltipType = {
-										#				blockoverride "title_text" {
-										#					text = "ug_improve_local_goverment"
-										#				}
-										#				blockoverride "concept_link" {
-										#					using = decisions_regular
-										#				}
-										#				blockoverride "tooltip_content" {
-										#					using = action_tooltip_inner_content
-										#				}
-#
-#														blockoverride "title_icon" {
-#															using = generic_decisions_icon
-#														}
-#
-#														blockoverride "tooltip_ui_action_block" {
-#															TooltipUIActionBlockOld = {
-#																visible = "[PdxGuiWidget.HasUIAction]"
-#															}
-#														}
-#													}
-#												}
-#											}
 										}
 									}
 								}

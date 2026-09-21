@@ -804,50 +804,46 @@ Types HUD_TopbarTypes
 								}
 							}
 
+							# ESTATE ICON
+							icon = {
+								size = { 24 24 }
+								texture = "gfx/interface/icons/modifier_types/_default.dds"
+							}
+
 							vbox = {
 								margin_left = 3
 								margin_right = 6
 
+
 								hbox = {
-									using = layoutpolicy_expanding
-									using = text_single_positive_negative
-
-									# ESTATE ICON
-									icon = {
-										size = { 24 24 }
-										texture = "gfx/interface/icons/modifier_types/_default.dds"
+									layoutpolicy_horizontal = expanding
+									spacing = 2
+									text_single = {
+										maximumsize = { -1 18 }
+										autoresize = yes
+										align = left|nobaseline
+										using = Font_Size_Small
+										text = "[Country.MakeScope.GetVariable('dynasty_stability').GetValue|0]"
 									}
 
-									hbox = {
-										layoutpolicy_horizontal = expanding
-										spacing = 2
-
-										text_single = {
-											maximumsize = { -1 18 }
-											autoresize = yes
-											align = left|nobaseline
-											using = Font_Size_Small
-											text = "[Country.MakeScope.GetVariable('dynasty_stability').GetValue|0]"
-										}
-
-										hbox = {
-											layoutpolicy_horizontal = expanding
-											spacing = 2
-
-											text_single = {
-												maximumsize = { -1 12 }
-												autoresize = yes
-												align = left|nobaseline
-												using = Font_Size_Very_Small
-												text = "[Country.GetModifierValueNoFormat('dynasty_stability_monthly_income')]"
-											}
-
-											expand = { }
-										}
-
-										expand = { }
-									}
+									expand = { }
 								}
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									spacing = 2
+
+									text_single = {
+										maximumsize = { -1 12 }
+										autoresize = yes
+										align = left|nobaseline
+										using = Font_Size_Very_Small
+										text = "[Country.GetModifierValueNoFormat('dynasty_stability_monthly_income')]"
+									}
+
+									expand = { }
+								}
+
 
 								expand = { }
 							}
@@ -1137,49 +1133,45 @@ Types HUD_TopbarTypes
 								}
 							}
 
+							# ESTATE ICON
+							icon = {
+								size = { 24 24 }
+								texture = "gfx/interface/icons/modifier_types/_default.dds"
+							}
+
 							vbox = {
 								margin_left = 3
 								margin_right = 6
 
+
 								hbox = {
-									using = layoutpolicy_expanding
-									using = text_single_positive_negative
+									layoutpolicy_horizontal = expanding
+									spacing = 2
 
-									# ESTATE ICON
-									icon = {
-										size = { 24 24 }
-										texture = "gfx/interface/icons/modifier_types/_default.dds"
+									text_single = {
+										maximumsize = { -1 18 }
+										autoresize = yes
+										align = left|nobaseline
+										using = Font_Size_Small
+										text = "[Country.MakeScope.GetVariable('corruption').GetValue|0]"
 									}
 
-									hbox = {
-										layoutpolicy_horizontal = expanding
-										spacing = 2
+									expand = { }
+								}
 
-										text_single = {
-											maximumsize = { -1 18 }
-											autoresize = yes
-											align = left|nobaseline
-											using = Font_Size_Small
-											text = "[Country.MakeScope.GetVariable('corruption').GetValue|0]"
-										}
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									spacing = 2
 
-										hbox = {
-											layoutpolicy_horizontal = expanding
-											spacing = 2
-
-											text_single = {
-												maximumsize = { -1 12 }
-												autoresize = yes
-												align = left|nobaseline
-												using = Font_Size_Very_Small
-												text = "[Country.GetModifierValueNoFormat('corruption_monthly_income')]"
-											}
-
-											expand = { }
-										}
-
-										expand = { }
+									text_single = {
+										maximumsize = { -1 12 }
+										autoresize = yes
+										align = left|nobaseline
+										using = Font_Size_Very_Small
+										text = "[Country.GetModifierValueNoFormat('corruption_monthly_income')]"
 									}
+
+									expand = { }
 								}
 
 								expand = { }

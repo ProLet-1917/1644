@@ -439,3 +439,136 @@ flavor_mng.7 = {
         name = flavor_mng.7.b
     }
 }
+
+# 永历帝
+flavor_mng.8 = {
+    type = country_event
+    title = flavor_mng.8.title
+    desc = flavor_mng.8.desc
+    fire_only_once = yes
+    historical_info = flavor_mng.8.historical_info
+
+    dynamic_historical_event = {
+        tag = MNG
+        from = 1646.1.1
+        to = 1662.1.1
+        monthly_chance = 80
+    }
+
+    trigger = {
+        OR = {
+            has_or_had_tag = MNG
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        has_variable = mng_lost_fuzhou
+        NOT = { has_global_variable = ming_emperor_in_zhaoqing }
+        OR = {
+            owns = location:gaoyao
+            owns = location:kunming
+            owns = location:lingui
+        }
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+        change_variable = {
+            name = dynasty_stability
+            subtract = 25
+        }
+        create_character = {
+            first_name = name_youlang
+            birth_date = 1623.11.1
+            birth_location = location:gaoyao
+            culture = culture:zhongyuan_culture
+            religion = religion:sanjiao
+            adm = 61
+            dip = 68
+            mil = 54
+            dynasty = dynasty:rtr_ming_zhu_dynasty
+            script = mng_zhu_youlang
+            add_trait = trait:benevolent
+            add_trait = trait:humble
+        }
+    }
+
+    option = {
+        name = flavor_mng.8.a
+        historical_option = yes
+        custom_tooltip = emperor_in_zhaoqing
+        set_new_ruler = character:mng_zhu_youlang
+        set_global_variable = {
+            name = ming_emperor_in_zhaoqing
+        }
+        if = {
+            limit = { owns = location:gaoyao }
+            set_capital = location:gaoyao
+        }
+        else_if = {
+            limit = { owns = location:kunming }
+            set_capital = location:kunming
+        }
+        add_prestige = prestige_mild_bonus
+    }
+}
+
+# 郑成功 / 国姓爷
+flavor_mng.9 = {
+    type = country_event
+    title = flavor_mng.9.title
+    desc = flavor_mng.9.desc
+    fire_only_once = yes
+    historical_info = flavor_mng.9.historical_info
+
+    dynamic_historical_event = {
+        tag = MNG
+        from = 1646.1.1
+        to = 1662.1.1
+        monthly_chance = 70
+    }
+
+    trigger = {
+        OR = {
+            has_or_had_tag = MNG
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        has_variable = mng_lost_fuzhou
+        exists = character:chi_guoxing
+        OR = {
+            owns = location:tongan
+            owns = location:nanan_quanzhou
+            country_exists = c:ZZL
+        }
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+        character:chi_guoxing = {
+            save_scope_as = zheng_chenggong
+        }
+    }
+
+    option = {
+        name = flavor_mng.9.a
+        historical_option = yes
+        if = {
+            limit = { exists = character:chi_guoxing }
+            character:chi_guoxing = { move_country = c:MNG }
+        }
+        add_navy_tradition = navy_tradition_severe_bonus
+        add_sailors = { value = root.monthly_sailors multiply = 18 }
+        add_prestige = prestige_mild_bonus
+        change_dynasty_stability = { value = 25 }
+        if = {
+            limit = { country_exists = c:QNG }
+            add_casus_belli = {
+                target = c:QNG
+                type = casus_belli:cb_chinese_unification
+            }
+        }
+    }
+
+    option = {
+        name = flavor_mng.9.b
+        add_prestige = prestige_mild_penalty
+    }
+}

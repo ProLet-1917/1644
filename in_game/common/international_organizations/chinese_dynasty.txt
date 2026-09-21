@@ -1,10 +1,12 @@
 #Made by Lvtoumao, Part of v.0.5
 chinese_dynasty = {
 
+    unique = no
     has_target = no
     has_buildings = yes
     show_leave_message = yes
     use_laws_as_join_reason = no
+    land_ownership_rule = chinese_dynasty_land_ownership
 
     custom_name = chinese_dynasty
 
@@ -209,17 +211,44 @@ chinese_dynasty = {
 
     # Put the opinion component here such that AI can understand that improving opinion will make it easier to invite people which doenst work in ai_desire_to_join
     join_diplo_chance = {
-        opinion = 0.25
-        base = -10
+        opinion = 0.1
+        base = -50
     }
 
     ai_desire_to_join = {
-        base = -50
+        base = -80
         add = {
             desc = "WE_ARE_SMALL"
             if = {
                 limit = { num_locations < 8 }
+                value = 15
+            }
+        }
+        if = {
+            limit = { is_chinese_culture_group_country = yes }
+            add = {
+                desc = "CHINESE_CULTURE_GROUP"
                 value = 25
+            }
+        }
+        else = {
+            add = {
+                desc = "NOT_CHINESE_CULTURE_GROUP"
+                value = -200
+            }
+        }
+        if = {
+            limit = { is_great_power = yes }
+            add = {
+                desc = "game_concept_great_powers"
+                value = -200
+            }
+        }
+        if = {
+            limit = { is_regional_power = yes }
+            add = {
+                desc = "IS_REGIONAL_POWER"
+                value = -100
             }
         }
         if = {
@@ -228,13 +257,23 @@ chinese_dynasty = {
                 desc = "game_concept_country_rank"
                 value = {
                     value = country_rank_level
-                    multiply = 25
+                    multiply = 40
                 }
+            }
+        }
+        if = {
+            limit = { num_locations >= 20 }
+            add = {
+                desc = "HAS_MANY_LOCATIONS"
+                value = -80
             }
         }
         subtract = {
             desc = "game_concept_tax_base"
-            value = country_tax_base
+            value = {
+                value = country_tax_base
+                multiply = 2
+            }
         }
         add = {
             desc = "game_concept_opinion"
@@ -400,5 +439,6 @@ chinese_dynasty = {
         fanzhen
         tusi
         tributary
+        celestial_governor
     }
 }

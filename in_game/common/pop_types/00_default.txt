@@ -62,6 +62,9 @@ clergy = {
 
 burghers = {
 	color = pop_burghers
+
+	promote_to = nobles
+	promote_to = clergy
 	
 	editor = 0.1
 	
@@ -102,6 +105,7 @@ laborers = {
 	color = pop_laborers
 
 	promote_to = burghers
+	promote_to = soldiers
 
 	editor = 1.0
 	
@@ -112,9 +116,6 @@ laborers = {
 	pop_food_consumption = 1.0
 
 	city_graphics = 0.05
-	
-	promote_to = soldiers
-	promote_to = burghers
 
 	has_cap = yes
 
@@ -169,11 +170,10 @@ soldiers = {
 
 peasants = {
 	color = pop_peasants
-	
-	
+
+	#promote_to = nobles
+	#promote_to = clergy
 	promote_to = burghers
-	promote_to = clergy
-	promote_to = nobles
 	promote_to = laborers
 	promote_to = soldiers
 	

@@ -1,6 +1,7 @@
 #Made by Lvtoumao, Part of v.0.5
 germany_unification_union = {
 
+    unique = no
     has_target = no
     has_buildings = yes
     show_leave_message = yes
@@ -47,7 +48,7 @@ germany_unification_union = {
     can_join_trigger = {
         is_situation_active = situation:germany_unification
         culture = { has_culture_group = culture_group:german_group }
-        has_variable = normal_germany_country
+        has_variable = german_country
         is_rebel_country = no
         OR = {
             is_subject = no
@@ -65,7 +66,7 @@ germany_unification_union = {
             is_rebel_country = no
             is_situation_active = situation:germany_unification
             culture = { has_culture_group = culture_group:german_group }
-            has_variable = normal_germany_country
+            has_variable = german_country
         }
     }
 

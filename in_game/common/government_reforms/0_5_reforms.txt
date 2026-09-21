@@ -42,6 +42,10 @@ the_chinese_emperor = {
                 NOT = {
                     is_member_of_international_organization_of_type = { type = chinese_dynasty }
                 }
+                OR = {
+                    NOT = { exists_chinese_dynasty = yes }
+                    current_year >= 1645
+                }
             }
             create_international_organization = {
                 type = international_organization_type:chinese_dynasty
@@ -63,6 +67,7 @@ the_chinese_emperor = {
                 NOT = {
                     is_leader_of_international_organization_of_type = { type = chinese_dynasty }
                 }
+                current_year >= 1645
             }
             international_organization:chinese_dynasty = {
                 remove_country_from_international_organization = {

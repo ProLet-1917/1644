@@ -101,36 +101,194 @@ zzz_1644_grant_unification_cb_for_single_target = {
 	}
 }
 
-# 重建天朝：创建天朝组织并设置当前国家为leader（测试用）
-zzz_1644_recreate_middle_kingdom = {
-	# 保存当前国家scope
-	save_scope_as = country_to_become_leader
-	# 如果天朝不存在，创建它
+zzz_1644_cleanup_duplicate_china_ios = {
 	if = {
-		limit = { NOT = { exists = international_organization:middle_kingdom } }
-		create_international_organization = {
-			type = international_organization_type:middle_kingdom
-		}
-		international_organization:middle_kingdom = {
-			set_variable = { name = num_of_celestial_governors value = 0 }
-			set_variable = { name = celestial_authority value = 50 }
-		}
-	}
-	# 将当前国家添加为成员并设置为leader
-	international_organization:middle_kingdom = {
-		add_country_to_international_organization = scope:country_to_become_leader
-		set_leader_country = scope:country_to_become_leader
-		change_celestial_authority = { value = celestial_authority_very_strong_bonus }
+		limit = { exists = international_organization:middle_kingdom }
+		destroy_international_organization = { target = international_organization:middle_kingdom }
 	}
 }
 
-# 成立CHI国家：等同于CHI_f的form_effect
+# 解散所有王朝国际组织（明末危机开始时清空旧朝秩序）
+zzz_1644_disband_all_chinese_dynasties = {
+	every_international_organization = {
+		limit = {
+			international_organization_type = international_organization_type:chinese_dynasty
+		}
+		if = {
+			limit = { international_organization_has_leader = yes }
+			update_leader_country = yes
+		}
+		every_international_organization_member = {
+			prev = {
+				remove_country_from_international_organization = prev
+			}
+		}
+	}
+}
+
+# 重建王朝：创建 chinese_dynasty 并设置当前国家为领袖
+zzz_1644_recreate_chinese_dynasty = {
+	save_scope_as = country_to_become_leader
+	if = {
+		limit = {
+			NOT = { is_member_of_international_organization_of_type = { type = chinese_dynasty } }
+		}
+		create_international_organization = {
+			type = international_organization_type:chinese_dynasty
+			creator = scope:country_to_become_leader
+			add_country_to_international_organization = scope:country_to_become_leader
+			set_leader_country = scope:country_to_become_leader
+			add_policy_to_international_organization = policy:cd_fanzhen_shuwei
+			add_policy_to_international_organization = policy:cd_establish_chaogong_system
+		}
+	}
+	else_if = {
+		limit = {
+			is_member_of_international_organization_of_type = { type = chinese_dynasty }
+			NOT = { is_leader_of_international_organization_of_type = { type = chinese_dynasty } }
+		}
+		random_international_organizations_member_of = {
+			limit = {
+				international_organization_type = international_organization_type:chinese_dynasty
+			}
+			remove_country_from_international_organization = scope:country_to_become_leader
+		}
+		create_international_organization = {
+			type = international_organization_type:chinese_dynasty
+			creator = scope:country_to_become_leader
+			add_country_to_international_organization = scope:country_to_become_leader
+			set_leader_country = scope:country_to_become_leader
+			add_policy_to_international_organization = policy:cd_fanzhen_shuwei
+			add_policy_to_international_organization = policy:cd_establish_chaogong_system
+		}
+	}
+	every_international_organization = {
+		limit = {
+			international_organization_type = international_organization_type:chinese_dynasty
+			leader_country = scope:country_to_become_leader
+		}
+		save_scope_as = restored_dynasty_io
+	}
+	scope:country_to_become_leader = {
+		every_subject_or_below = {
+			limit = {
+				NOT = { is_member_of_international_organization = scope:restored_dynasty_io }
+			}
+			scope:restored_dynasty_io = {
+				add_country_to_international_organization = prev
+			}
+		}
+		if = {
+			limit = { NOT = { has_reform = government_reform:the_chinese_emperor } }
+			add_reform = government_reform:the_chinese_emperor
+		}
+		change_dynasty_stability = { value = 200 }
+	}
+}
+
+# 原版重建天朝效果：改为重建王朝 IO
+REPLACE:rtr_recreate_middle_kingdom = {
+	custom_tooltip = {
+		text = rtr_recreate_middle_kingdom.tt
+		trigger_event_non_silently = flavor_chi.115
+		zzz_1644_recreate_chinese_dynasty = yes
+		if = {
+			limit = { NOT = { has_bureaucracy_of_type = bureaucracy_type:six_boards_bureaucracy } }
+			if = {
+				limit = { NOT = { has_advance = chi_bureaucracy_advance } }
+				research_advance = advance_type:chi_bureaucracy_advance
+			}
+			add_bureaucracy = bureaucracy_type:six_boards_bureaucracy
+			every_current_bureaucracy = {
+				limit = { bureaucracy_type = bureaucracy_type:six_boards_bureaucracy }
+				set_entrenchment = 60
+				set_maintenance = 0.50
+			}
+		}
+		save_scope_as = country_to_pass_to_scripted_effect
+		rtr_core_all_of_china_effect = { country = scope:country_to_pass_to_scripted_effect }
+		every_present_culture_in_country = {
+			limit = {
+				has_culture_group = culture_group:chinese_group
+				NOR = {
+					is_primary_or_accepted_in = prev
+					is_tolerated_in = prev
+				}
+			}
+			prev = { add_tolerated_culture = prev }
+		}
+	}
+}
+
+REPLACE:rtr_core_all_of_china_effect = {
+	custom_description = {
+		text = rtr_core_all_of_china
+		object = $country$
+		sub_continent:east_asia = {
+			every_location_in_sub_continent = {
+				limit = {
+					is_ownable = yes
+					OR = {
+						region = region:east_china_region
+						region = region:north_china_region
+						region = region:south_china_region
+						region = region:west_china_region
+					}
+					owner ?= {
+						OR = {
+							this = $country$
+							is_subject_or_below_of = $country$
+						}
+					}
+				}
+				add_core = $country$
+				if = {
+					limit = { owner = $country$ }
+					change_integration_level = core
+				}
+			}
+		}
+	}
+	custom_description = {
+		text = rtr_gain_annex_cb_on_china
+		object = $country$
+		rtr_grant_annexation_cb_in = { geography = region:east_china_region country = $country$ }
+		rtr_grant_annexation_cb_in = { geography = region:north_china_region country = $country$ }
+		rtr_grant_annexation_cb_in = { geography = region:south_china_region country = $country$ }
+		rtr_grant_annexation_cb_in = { geography = region:west_china_region country = $country$ }
+	}
+}
+
+# 成立CHI国家：不依赖 REPLACE 是否生效，直接走王朝重建
 zzz_1644_form_china_effect = {
-	# 改为君主制
 	change_government_type = government_type:monarchy
-	# 重建天朝组织（这会改变tag为CHI，核心化中国地区，接受中华文化）
-	rtr_recreate_middle_kingdom = yes
-	# 设置国家等级为4级（帝国级）
+	trigger_event_non_silently = flavor_chi.115
+	zzz_1644_recreate_chinese_dynasty = yes
+	if = {
+		limit = { NOT = { has_bureaucracy_of_type = bureaucracy_type:six_boards_bureaucracy } }
+		if = {
+			limit = { NOT = { has_advance = chi_bureaucracy_advance } }
+			research_advance = advance_type:chi_bureaucracy_advance
+		}
+		add_bureaucracy = bureaucracy_type:six_boards_bureaucracy
+		every_current_bureaucracy = {
+			limit = { bureaucracy_type = bureaucracy_type:six_boards_bureaucracy }
+			set_entrenchment = 60
+			set_maintenance = 0.50
+		}
+	}
+	save_scope_as = country_to_pass_to_scripted_effect
+	rtr_core_all_of_china_effect = { country = scope:country_to_pass_to_scripted_effect }
+	every_present_culture_in_country = {
+		limit = {
+			has_culture_group = culture_group:chinese_group
+			NOR = {
+				is_primary_or_accepted_in = prev
+				is_tolerated_in = prev
+			}
+		}
+		prev = { add_tolerated_culture = prev }
+	}
 	set_country_rank_effect = { rank = country_rank:rank_empire }
 }
 

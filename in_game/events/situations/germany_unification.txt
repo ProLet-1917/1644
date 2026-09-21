@@ -6,8 +6,6 @@ germany_unification.1000 = {
     title = germany_unification.1000.title
     desc = germany_unification.1000.desc
 
-    fire_only_once = yes
-
     illustration_tags = {
         10 = interior
         10 = happy
@@ -22,13 +20,11 @@ germany_unification.1000 = {
     }
 }
 
-#Annex all member
+# Union members: annex into Germany
 germany_unification.1001 = {
     type = country_event
     title = germany_unification.1001.title
     desc = germany_unification.1001.desc
-
-    fire_only_once = yes
 
     illustration_tags = {
         10 = interior
@@ -37,14 +33,9 @@ germany_unification.1001 = {
 
     immediate = {
         event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
-        random_international_organizations_member_of = {
-            limit = {
-                OR = {
-                    this = international_organization:germany_unification_union
-                }
-            }
-            save_scope_as = target_io
-            leader_country = {
+        if = {
+            limit = { exists = c:GER }
+            c:GER = {
                 save_scope_as = target_country
                 ruler_or_regent ?= { save_scope_as = target_character }
             }
@@ -61,19 +52,16 @@ germany_unification.1001 = {
         add_stability = stability_mild_bonus
         if = {
             limit = {
-                scope:target_io = {
-                    any_international_organization_member = {
-                        is_subject = no
-                        count > 1
-                    }
-                }
+                exists = scope:target_country
                 scope:target_country = root
             }
             custom_tooltip = demand_vassalization_from_members_tt
         }
         else_if = {
             limit = {
+                exists = scope:target_country
                 is_subject = no
+                NOT = { this = scope:target_country }
             }
             scope:target_country = {
                 annex_country = {
@@ -81,5 +69,126 @@ germany_unification.1001 = {
                 }
             }
         }
+    }
+}
+
+# Other German countries: join or refuse
+germany_unification.1002 = {
+    type = country_event
+    title = germany_unification.1002.title
+    desc = germany_unification.1002.desc
+
+    illustration_tags = {
+        10 = interior
+        10 = happy
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+        if = {
+            limit = { exists = c:GER }
+            c:GER = {
+                save_scope_as = target_country
+                ruler_or_regent ?= { save_scope_as = target_character }
+            }
+        }
+    }
+
+    option = {
+        name = germany_unification.1002.a
+        ai_will_select = {
+            base = 25
+            add = { value = "opinion(scope:target_country)" }
+        }
+        if = {
+            limit = {
+                exists = scope:target_country
+                NOT = { this = scope:target_country }
+            }
+            scope:target_country = {
+                annex_country = {
+                    country = root
+                }
+            }
+        }
+    }
+
+    option = {
+        name = germany_unification.1002.b
+        ai_will_select = {
+            base = 25
+            if = {
+                limit = {
+                    exists = scope:target_country
+                    "opinion(scope:target_country)" < 0
+                }
+                add = 40
+            }
+        }
+    }
+}
+
+# HRE princes: join the new German empire or stay independent
+germany_unification.1101 = {
+    type = country_event
+    title = germany_unification.1101.title
+    desc = germany_unification.1101.desc
+
+    illustration_tags = {
+        10 = interior
+        10 = happy
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+        if = {
+            limit = { exists = c:GER }
+            c:GER = {
+                save_scope_as = target_country
+                ruler_or_regent ?= { save_scope_as = target_character }
+            }
+        }
+    }
+
+    option = {
+        name = germany_unification.1101.a
+        ai_will_select = {
+            base = 40
+            add = { value = "opinion(scope:target_country)" }
+            if = {
+                limit = { country_rank_level <= 2 }
+                add = 30
+            }
+        }
+        if = {
+            limit = {
+                exists = scope:target_country
+                NOT = { this = scope:target_country }
+            }
+            scope:target_country = {
+                annex_country = {
+                    country = root
+                }
+            }
+        }
+    }
+
+    option = {
+        name = germany_unification.1101.b
+        ai_will_select = {
+            base = 20
+            if = {
+                limit = { country_rank_level >= 3 }
+                add = 40
+            }
+            if = {
+                limit = {
+                    exists = scope:target_country
+                    "opinion(scope:target_country)" < 0
+                }
+                add = 30
+            }
+        }
+        add_prestige = prestige_mild_bonus
     }
 }

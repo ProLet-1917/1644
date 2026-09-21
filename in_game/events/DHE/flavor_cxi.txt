@@ -59,3 +59,117 @@ flavor_cxi.1 = {
         add_legitimacy = 10
     }
 }
+
+# 联明抗清
+flavor_cxi.2 = {
+    type = country_event
+    title = flavor_cxi.2.title
+    desc = flavor_cxi.2.desc
+    fire_only_once = yes
+    historical_info = flavor_cxi.2.historical_info
+
+    dynamic_historical_event = {
+        tag = CXI
+        from = 1646.1.1
+        to = 1662.1.1
+        monthly_chance = 40
+    }
+
+    trigger = {
+        OR = {
+            has_or_had_tag = CXI
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        country_rank = country_rank:rank_empire
+        country_exists = c:MNG
+        country_exists = c:QNG
+        c:MNG = { is_subject = no }
+        NOT = { is_at_war_with = c:MNG }
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+        c:MNG = { save_scope_as = southern_ming }
+        c:QNG = { save_scope_as = qing_court }
+    }
+
+    option = {
+        name = flavor_cxi.2.a
+        historical_option = yes
+        create_alliance = { target = c:MNG }
+        add_opinion = {
+            target = c:MNG
+            modifier = opinion_they_helped_us
+        }
+        c:MNG = {
+            add_opinion = {
+                target = c:CXI
+                modifier = opinion_they_helped_us
+            }
+        }
+        change_dynasty_stability = { value = 25 }
+        if = {
+            limit = { country_exists = c:QNG }
+            add_casus_belli = {
+                target = c:QNG
+                type = casus_belli:cb_chinese_unification
+            }
+        }
+    }
+
+    option = {
+        name = flavor_cxi.2.b
+        add_prestige = prestige_mild_bonus
+        add_legitimacy = legitimacy_mild_bonus
+    }
+}
+
+# 移跸昆明
+flavor_cxi.3 = {
+    type = country_event
+    title = flavor_cxi.3.title
+    desc = flavor_cxi.3.desc
+    fire_only_once = yes
+    historical_info = flavor_cxi.3.historical_info
+
+    dynamic_historical_event = {
+        tag = CXI
+        from = 1647.1.1
+        to = 1662.1.1
+        monthly_chance = 35
+    }
+
+    trigger = {
+        OR = {
+            has_or_had_tag = CXI
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        owns = location:kunming
+        capital != location:kunming
+        OR = {
+            NOT = { owns = location:chengdu }
+            location:chengdu = {
+                controller != root
+            }
+        }
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        name = flavor_cxi.3.a
+        historical_option = yes
+        set_capital = location:kunming
+        location:kunming = {
+            change_prosperity = prosperity_mild_bonus
+        }
+        add_stability = stability_mild_bonus
+    }
+
+    option = {
+        name = flavor_cxi.3.b
+        add_prestige = prestige_mild_bonus
+    }
+}

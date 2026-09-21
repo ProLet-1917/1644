@@ -25,7 +25,7 @@ claim_mandate_of_heaven = {
                     region = region:manchuria_region
                 }
             }
-            NOT = { is_leader_of_international_organization = international_organization:middle_kingdom }
+            NOT = { is_leader_of_international_organization_of_type = { type = chinese_dynasty } }
         }
     }
     allow = {
@@ -40,7 +40,7 @@ claim_mandate_of_heaven = {
                 }
             }
             NOT = { is_subject = yes }
-            NOT = { is_leader_of_international_organization = international_organization:middle_kingdom }
+            NOT = { is_leader_of_international_organization_of_type = { type = chinese_dynasty } }
             OR = {
                 location:dadu = {
                     OR = {
@@ -125,7 +125,6 @@ claim_mandate_of_heaven = {
                 change_government_type = government_type:monarchy
             }
             form_country = formable_country:CHI_f
-            rtr_recreate_middle_kingdom = yes
             if = {
                 limit = {
                     country_rank != country_rank:rank_empire
@@ -883,13 +882,17 @@ Unify_germany = {
     potential = {
         scope:actor = {
             culture = { has_culture_group = culture_group:german_group }
+            NOT = { tag = GER }
         }
         international_organization:hre = {
             exists = no
         }
+        # 德国统一局势激活时走局势行动，本决议仅作保底
+        NOT = { is_situation_active = situation:germany_unification }
     }
 
     allow = {
+        NOT = { is_situation_active = situation:germany_unification }
         region:north_german_region = {
             NOT = {
                 any_ownable_location_in_region = {
@@ -923,13 +926,27 @@ Unify_germany = {
 
     effect = {
         scope:actor = {
+            save_scope_as = unifier
             form_country = formable_country:GER_f
         }
         every_country = {
             limit = {
-                has_variable = german_country
+                culture = { has_culture_group = culture_group:german_group }
+                is_subject = no
+                NOT = { this = scope:unifier }
+                NOT = { tag = GER }
+            }
+            trigger_event_non_silently = germany_unification.1002
+        }
+        every_country = {
+            limit = {
+                OR = {
+                    has_variable = german_country
+                    has_variable = potential_unifier
+                }
             }
             remove_variable = german_country
+            remove_variable = potential_unifier
         }
     }
 

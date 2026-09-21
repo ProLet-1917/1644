@@ -15,12 +15,16 @@
 		OR = {
 			current_year >= 1685
 
-			# 重建天朝：如果有国家成为了天朝组织的领袖，局势结束
+			# 重建王朝：王朝领袖已统一中国主要城市后局势结束
 			AND = {
 				current_year >= 1645
-				exists = international_organization:middle_kingdom
-				international_organization:middle_kingdom = {
+				exists_chinese_dynasty = yes
+				any_international_organization = {
+					international_organization_type = international_organization_type:chinese_dynasty
 					international_organization_has_leader = yes
+					leader_country = {
+						zzz_1644_owns_major_cn_cities = yes
+					}
 				}
 			}
 		}
@@ -42,24 +46,8 @@
 	# 4. 启动效果
 	on_start = {
 
-		# 解散天朝：移除所有天朝成员
-		if = {
-			limit = { exists = international_organization:middle_kingdom }
-			international_organization:middle_kingdom = {
-				# 先移除leader（如果有）
-				if = {
-					limit = { international_organization_has_leader = yes }
-					update_leader_country = yes
-				}
-				# 移除所有成员
-				every_international_organization_member = {
-					international_organization:middle_kingdom = {
-						remove_country_from_international_organization = prev
-					}
-				}
-			}
-		}
-		
+		# 王朝在危机中继续存在，不再解散
+
 		# 给所有首都在中国和满洲的国家互相添加"统一中国"CB
 		# 使用全局变量列表方法，分两步执行
 		collect_china_countries_effect = yes

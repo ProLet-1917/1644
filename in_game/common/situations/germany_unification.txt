@@ -7,17 +7,17 @@ germany_unification = {
         region:north_german_region = {
             any_location_in_region = {
                 percent >= 0.75
-                is_capital = yes
                 owner = {
-                    culture = { has_culture_group = culture_group:german_group }
+                    culture =  { has_culture_group = culture_group:german_group }
                     has_advance = nation_state_advance
                 }
+                #has_institution = institution:ideology
             }
         }
         region:south_german_region = {
             any_location_in_region = {
                 percent >= 0.75
-                is_capital = yes
+                #is_capital = yes
                 owner = {
                     culture =  { has_culture_group = culture_group:german_group }
                     has_advance = nation_state_advance
@@ -76,6 +76,12 @@ germany_unification = {
                 add_country_to_international_organization = scope:target
                 set_leader_country = scope:target
             }
+            if = {
+                limit = {
+                    has_variable = german_country
+                }
+                remove_variable = german_country
+            }
         }
         every_country = {
             limit = {
@@ -85,8 +91,12 @@ germany_unification = {
                     is_great_power = yes
                     country_rank = country_rank:rank_kingdom
                 }
+                NOT = {
+                    has_variable = german_country
+                }
             }
-            set_variable = normal_germany_country
+            add_to_global_variable_list = { name = german_country_list target = this }
+            set_variable = german_country
         }
         every_country = {
             limit = {
@@ -97,6 +107,8 @@ germany_unification = {
     }
 
     on_monthly = {
+        clear_global_variable_list = german_country_list
+        clear_global_variable_list = potential_unifier_list
         ordered_country = {
             limit = {
                 culture = { has_culture_group = culture_group:german_group }
@@ -109,11 +121,16 @@ germany_unification = {
                 NOT = {
                     has_variable = remove_from_unifier_list
                 }
-                has_variable = normal_germany_country
+                has_variable = german_country
+                NOT = { has_variable = potential_unifier }
+                NOT = {
+                    is_leader_of_international_organization_of_type = { type = germany_unification_union }
+                }
             }
             order_by = total_population
             max = 1
             save_scope_as = target
+            remove_variable = german_country
             add_to_global_variable_list = { name = potential_unifier_list target = this }
             set_variable = potential_unifier
             create_international_organization = {
@@ -121,7 +138,18 @@ germany_unification = {
                 add_country_to_international_organization = scope:target
                 set_leader_country = scope:target
             }
-            remove_variable = normal_germany_country
+        }
+        every_country = {
+            limit = {
+                has_variable = german_country
+            }
+            add_to_global_variable_list = { name = german_country_list target = this }
+        }
+        every_country = {
+            limit = {
+                has_variable = potential_unifier
+            }
+            add_to_global_variable_list = { name = potential_unifier_list target = this }
         }
     }
 
@@ -130,11 +158,11 @@ germany_unification = {
             limit = {
                 OR = {
                     has_variable = potential_unifier
-                    has_variable = normal_germany_country
+                    has_variable = german_country
                 }
             }
             remove_variable = potential_unifier
-            remove_variable = normal_germany_country
+            remove_variable = german_country
         }
     }
 

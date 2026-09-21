@@ -6,10 +6,8 @@ REPLACE:location_base_values = {
     local_devastation_recovery = 0.005
     local_monthly_control = 0.0005
 
-
     max_regiments_trained_at_same_time = 1
     max_constructions_at_same_time = 1
-
 
     local_pop_promotion_speed = 0.02
     local_pop_demotion_speed = 0.08
@@ -27,12 +25,11 @@ REPLACE:location_base_values = {
 
     hostile_disembark_time_modifier = 0.25
 
-    local_max_rgo_size = script_rgo_level
+    local_max_rgo_size = script_rgo_level #Won't work :p The Script Value for future use.
 
     local_monthly_prosperity = 0.0025
 
     local_trade_embark_disembark_efficiency = -0.1
-
 
     local_clergy_desired_pop_scaled = 0.005
     local_nobles_desired_pop_scaled = 0.0025
@@ -169,9 +166,9 @@ REPLACE:location_size_impact = {
         category = location
     }
     local_institution_growth_modifier = -0.01
-    local_population_capacity = 27.825
+    local_population_capacity = 29.525
 
-    local_max_rgo_size = 0.263
+    local_max_rgo_size = 0.247
 
     occupation_time = 0.0025
 }

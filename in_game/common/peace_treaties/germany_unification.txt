@@ -1,0 +1,51 @@
+give_up_leader_of_unification_union = {
+    cost = {
+        add = {
+            desc = "DIPLOREASON_BASE"
+            value = 50
+        }
+    }
+
+    potential = {
+        scope:war = {
+            is_no_cb_war = no
+            casus_belli ?= casus_belli:cb_germany_unification
+        }
+    }
+
+    allow = {
+        scope:loser = {
+            is_war_leader_of = scope:war
+            is_leader_of_international_organization_of_type = {
+                type = germany_unification_union
+            }
+        }
+        scope:winner = {
+            is_war_leader_of = scope:war
+            is_leader_of_international_organization_of_type = {
+                type = germany_unification_union
+            }
+        }
+    }
+
+    effect = {
+        ordered_international_organization = {
+            limit = {
+                leader_country = scope:loser
+            }
+            max = 1
+            save_scope_as = loser_io
+        }
+        scope:loser = {
+            destroy_international_organization = {
+                target = scope:loser_io
+            }
+            remove_variable = potential_unifier
+            set_variable = german_country
+            set_variable = remove_from_unifier_list
+        }
+        scope:winner = {
+            add_prestige = 10
+        }
+    }
+}

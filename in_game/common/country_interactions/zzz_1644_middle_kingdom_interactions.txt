@@ -1,0 +1,237 @@
+# 原版天朝外交互动改挂到王朝领袖。
+REPLACE:promote_member_to_celestial_governor = {
+	category = CATEGORY_CHINESE_DYNASTY_ACTIONS
+	type = diplomacy
+
+	ai_tick = never
+
+	potential = {
+		exists_chinese_dynasty = yes
+		scope:actor = {
+			is_chinese_dynasty_leader = yes
+			modifier:may_convert_vassals_to_celestial_governors = yes
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			var:dynasty_stability > 50
+			any_international_organizations_member_of = {
+				international_organization_type = international_organization_type:chinese_dynasty
+				leader_country = scope:actor
+				trigger_if = {
+					limit = {
+						international_organization_has_policy = policy:expand_the_tianxia_policy
+					}
+					"num_countries_with_special_status(special_status:celestial_governor)" < 4
+				}
+				trigger_else = {
+					"num_countries_with_special_status(special_status:celestial_governor)" < 3
+				}
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		target_flag = recipient
+		name = "choose_country"
+		column = {
+			data = name
+		}
+		visible = {
+			is_member_of_international_organization_of_type = { type = chinese_dynasty }
+			is_subject_of = scope:actor
+			NOT = { is_celestial_governor_of_chinese_dynasty = yes }
+		}
+		enabled = {
+			opinion = {
+				target = scope:actor
+				value > 0
+			}
+		}
+	}
+
+	effect = {
+		scope:recipient = {
+			add_opinion = {
+				target = scope:actor
+				modifier = opinion_elevated_to_celestial_governor
+			}
+		}
+		scope:actor = {
+			add_prestige = prestige_mild_penalty
+			change_dynasty_stability = { value = -50 }
+			random_international_organizations_member_of = {
+				limit = {
+					international_organization_type = international_organization_type:chinese_dynasty
+					leader_country = scope:actor
+				}
+				international_organization_add_special_status = {
+					type = special_status:celestial_governor
+					country = scope:recipient
+				}
+			}
+		}
+	}
+	ai_will_do = {
+	}
+}
+
+REPLACE:demote_celestial_governor_to_vassal = {
+	type = diplomacy
+	category = CATEGORY_CHINESE_DYNASTY_ACTIONS
+
+	potential = {
+		exists_chinese_dynasty = yes
+		scope:actor = {
+			is_chinese_dynasty_leader = yes
+			modifier:may_convert_vassals_to_celestial_governors = yes
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			var:dynasty_stability > 50
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		target_flag = recipient
+		name = "choose_country"
+		column = {
+			data = name
+		}
+		visible = {
+			is_member_of_international_organization_of_type = { type = chinese_dynasty }
+			is_celestial_governor_of_chinese_dynasty = yes
+		}
+		enabled = {
+		}
+	}
+
+	effect = {
+		scope:recipient = {
+			add_opinion = {
+				target = scope:actor
+				modifier = opinion_demoted_to_member
+			}
+		}
+		scope:actor = {
+			add_prestige = prestige_mild_penalty
+			change_dynasty_stability = { value = -50 }
+			random_international_organizations_member_of = {
+				limit = {
+					international_organization_type = international_organization_type:chinese_dynasty
+					leader_country = scope:actor
+				}
+				international_organization_remove_special_status = {
+					type = special_status:celestial_governor
+					country = scope:recipient
+				}
+			}
+		}
+	}
+	ai_will_do = {
+	}
+}
+
+REPLACE:demand_silver_tribute = {
+	type = subject
+	category = CATEGORY_SUBJECT_ACTIONS
+
+	potential = {
+		exists_chinese_dynasty = yes
+		scope:actor = {
+			is_chinese_dynasty_leader = yes
+			modifier:allow_tribute_in_silver = yes
+		}
+	}
+
+	allow = {
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		interaction_source_list = {
+			scope:actor = {
+				every_subject = {
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = recipient
+		name = "choose_country"
+		column = {
+			data = name
+		}
+		visible = {
+			is_member_of_international_organization_of_type = { type = chinese_dynasty }
+		}
+		enabled = {
+			NOT = {
+				capital.market = {
+					this = scope:actor.capital.market
+				}
+			}
+			gold >= {
+				value = monthly_income_trade_and_tax
+			}
+			opinion = {
+				target = scope:actor
+				value > 0
+			}
+			produced_in_country:silver > 0
+			subject_loyalty >= MIN_SUBJECT_LOYALTY_FOR_ACTION
+			liberty_desire < MAX_SUBJECT_LIBERTY_DESIRE_FOR_ACTION
+		}
+	}
+
+	effect = {
+		scope:recipient = {
+			capital.market = {
+				add_goods_supply = {
+					goods = goods:silver
+					amount = {
+						subtract = {
+							value = scope:recipient.produced_in_country:silver
+						}
+						divide = {
+							value = 10
+						}
+					}
+				}
+			}
+		}
+		scope:actor = {
+			capital.market = {
+				add_goods_supply = {
+					goods = goods:silver
+					amount = {
+						add = {
+							value = scope:recipient.produced_in_country:silver
+						}
+						divide = {
+							value = 10
+						}
+					}
+				}
+			}
+			add_gold = {
+				value = scope:recipient.monthly_income_trade_and_tax
+			}
+			add_inflation = {
+				value = inflation_ultimate_penalty
+				multiply = {
+					desc = "SCOPE_RECEPIENT_SILVER_PRODUCTION"
+					value = scope:recipient.produced_in_country:silver
+					divide = 1000
+				}
+			}
+		}
+	}
+	ai_will_do = {
+		add = -10
+	}
+}

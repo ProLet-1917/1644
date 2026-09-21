@@ -10,7 +10,7 @@ integration_conquered = {
 	}
 	local_separatism = 0.25
 	local_garrison_growth = -0.005
-	local_pop_assimilation_speed = -0.04
+	local_pop_assimilation_speed = -0.025
 	local_pop_conversion_speed = -0.025
 }
 integration_colonized = {
@@ -18,13 +18,14 @@ integration_colonized = {
 		category = location
 	}
 	local_monthly_control = 0.001
+	local_pop_assimilation_speed = 0.005
 }
 integration_integrated = {
 	game_data = {
 		category = location
 	}
-	local_separatism = 0.1
-	local_pop_assimilation_speed = -0.01
+	local_separatism = 0.05
+	local_pop_assimilation_speed = -0.005
 	local_max_control = 0.075
 }
 integration_core = {

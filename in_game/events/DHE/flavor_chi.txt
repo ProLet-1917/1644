@@ -34,8 +34,8 @@ scripted_effect upgrade_great_wall = {
 			add_harmony = harmony_weak_bonus
 		}
 		if = {
-			limit = { is_leader_of_international_organization = international_organization:middle_kingdom }
-			change_celestial_authority = { value = celestial_authority_weak_bonus }
+			limit = { is_chinese_dynasty_leader = yes }
+			change_dynasty_stability = { value = 50 }
 		}
 	}
 }
@@ -118,8 +118,8 @@ flavor_chi.2 = {
 			add_righteousness = righteousness_weak_penalty
 		}
 		if = {
-			limit = { is_leader_of_international_organization = international_organization:middle_kingdom }
-			change_celestial_authority = { value = celestial_authority_weak_bonus }
+			limit = { is_chinese_dynasty_leader = yes }
+			change_dynasty_stability = { value = 50 }
 		}
 	}
 
@@ -146,8 +146,8 @@ flavor_chi.2 = {
 			add_righteousness = righteousness_weak_penalty
 		}
 		if = {
-			limit = { is_leader_of_international_organization = international_organization:middle_kingdom }
-			change_celestial_authority = { value = celestial_authority_weak_bonus }
+			limit = { is_chinese_dynasty_leader = yes }
+			change_dynasty_stability = { value = 50 }
 		}
 	}
 
@@ -253,8 +253,8 @@ flavor_chi.8 = {
 			add_righteousness = righteousness_weak_penalty
 		}
 		if = {
-			limit = { is_leader_of_international_organization = international_organization:middle_kingdom }
-			change_celestial_authority = { value = celestial_authority_weak_bonus }
+			limit = { is_chinese_dynasty_leader = yes }
+			change_dynasty_stability = { value = 50 }
 		}
 		if = {
 			limit = { modifier:allow_harmony = yes }
@@ -455,8 +455,8 @@ flavor_chi.16 = {	#Mistrust in the Cabinet
 			harmony_mild_towards_equilibrium = yes
 		}
 		if = {
-			limit = { is_leader_of_international_organization = international_organization:middle_kingdom }
-			change_celestial_authority = { value = celestial_authority_weak_penalty }
+			limit = { is_chinese_dynasty_leader = yes }
+			change_dynasty_stability = { value = -50 }
 		}
 	}
 }
@@ -1145,18 +1145,11 @@ flavor_chi.59 = {
 
 	trigger = {
 		is_yuan_china = no
-		international_organization:middle_kingdom ?= {
-			leader_country = root
-			NOT = { international_organization_has_policy = policy:direct_appointment }
-		}
+		is_chinese_dynasty_leader = yes
 	}
 
 	option = {
 		name = flavor_chi.59.a
-
-		international_organization:middle_kingdom = {
-			add_policy_to_international_organization = policy:direct_appointment
-		}
 
 		add_estate_satisfaction = {
 			type = estate_type:nobles_estate
@@ -2560,9 +2553,9 @@ flavor_chi.108 = {
 	outcome = neutral
 
 	trigger = {
-		exists = international_organization:middle_kingdom
-		exists = international_organization:middle_kingdom.leader_country
-		is_subject_of = international_organization:middle_kingdom.leader_country
+		exists_chinese_dynasty = yes
+		exists = international_organization:chinese_dynasty.leader_country
+		is_subject_of = international_organization:chinese_dynasty.leader_country
 		is_subject_type = tributary
 	}
 
@@ -3075,10 +3068,10 @@ flavor_chi.115 = {
 		hidden_effect = {
 			if = {
 				limit = {
-					exists = international_organization:middle_kingdom
-					NOT = { is_leader_of_international_organization = international_organization:middle_kingdom }
+					exists_chinese_dynasty = yes
+					NOT = { is_chinese_dynasty_leader = yes }
 				}
-				international_organization:middle_kingdom.leader_country = {
+				international_organization:chinese_dynasty.leader_country = {
 					every_subject = {
 						limit = {
 							is_subject_type = tributary
