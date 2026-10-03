@@ -51,7 +51,6 @@ megalopolis = {
 	}
 	
 	allow = {
-		location_rank = location_rank:city
 		population >= 400.000
 		modifier:cannot_upgrade_location = no
 		is_market_center = yes
@@ -92,8 +91,9 @@ city = {
 		local_possible_town_rights = 2
 		
 		local_integration_speed_modifier = -0.5
-		
-		
+
+		local_food_production_mult = -0.2
+
 		local_pop_promotion_speed_modifier = 0.25
 		
 		free_building_levels = 100
@@ -116,7 +116,6 @@ city = {
 	}
 	
 	allow = {
-		location_rank = location_rank:town
 		population >= 30
 		modifier:cannot_upgrade_location = no
 	}

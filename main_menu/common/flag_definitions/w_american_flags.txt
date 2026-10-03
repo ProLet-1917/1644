@@ -1,0 +1,109 @@
+﻿# Anno 1644 - Flag definitions for the New World colonial nations
+# Companion to coat_of_arms/coat_of_arms/w_american_coa.txt
+#
+# priority values above 10000 are needed to override the default random definitions.
+
+# 巴西
+VOB = { # Brazil
+    flag_definition = {
+        coa = VOB
+        priority = 10001
+    }
+    flag_definition = {
+        coa = VOB_subject
+        allow_overlord_canton = yes
+        priority = 10005
+        trigger = {
+            coa_def_colonial_nation_trigger = yes
+            coa_def_POR_ensign_trigger = yes
+        }
+    }
+}
+
+# 拉普拉塔
+LPL = { # Rio de la Plata
+    flag_definition = {
+        coa = LPL
+        priority = 10001
+    }
+    flag_definition = {
+        coa = LPL_subject
+        allow_overlord_canton = yes
+        priority = 10005
+        trigger = {
+            coa_def_colonial_nation_trigger = yes
+            coa_def_SPA_ensign_trigger = yes
+        }
+    }
+}
+
+# 秘鲁
+VOP = { # Peru
+    flag_definition = {
+        coa = VOP
+        priority = 10001
+    }
+    flag_definition = {
+        coa = VOP_subject
+        allow_overlord_canton = yes
+        priority = 10005
+        trigger = {
+            coa_def_colonial_nation_trigger = yes
+            coa_def_SPA_ensign_trigger = yes
+        }
+    }
+}
+
+# 新西班牙
+NSP = { # New Spain
+    flag_definition = {
+        coa = NSP
+        priority = 10001
+    }
+    flag_definition = {
+        coa = NSP_subject
+        allow_overlord_canton = yes
+        priority = 10005
+        trigger = {
+            coa_def_colonial_nation_trigger = yes
+            coa_def_SPA_ensign_trigger = yes
+        }
+    }
+}
+
+# 新法兰西
+NFR = { # New France
+    flag_definition = {
+        coa = NFR
+        priority = 10001
+    }
+    flag_definition = {
+        coa = NFR_subject
+        allow_overlord_canton = yes
+        priority = 10005
+        trigger = {
+            coa_def_colonial_nation_trigger = yes
+            coa_def_FRA_ensign_trigger = yes
+        }
+    }
+}
+
+# 新英格兰
+NEN = { # New England
+    flag_definition = {
+        coa = NEN
+        priority = 10001
+    }
+    flag_definition = {
+        coa = NEN_subject
+        allow_overlord_canton = yes
+        priority = 10005
+        trigger = {
+            coa_def_colonial_nation_trigger = yes
+            OR = {
+                coa_def_ENG_ensign_trigger = yes
+                coa_def_GBR_ensign_trigger = yes
+            }
+        }
+    }
+}

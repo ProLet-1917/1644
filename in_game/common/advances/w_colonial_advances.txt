@@ -1,0 +1,460 @@
+﻿# Anno 1644 - Colonial nations in the Age of Imperialism
+#
+# Generic advances for colonial subjects and former colonies, plus national branches
+# for the great New World nations.
+#
+# Binding rules:
+#  * Generic colonial advances require the colonial government reform
+#    (government_reform:colonial_government_reform, defined in 0_5_reforms.txt).
+#  * National advances are bound to their country tag (USA / NSP / NFR / CAN) where such
+#    a tag exists. Brazil and the Rio de la Plata have no dedicated tag in this scenario,
+#    so their branches are bound to the region their capital lies in.
+
+##############################
+# Generic colonial branch
+##############################
+
+colonial_frontier_expansion = {
+    age = age_7_imperialism
+    icon = colonial_ambition
+
+    potential = {
+        OR = {
+            has_reform = government_reform:colonial_government_reform
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    colonial_migration_size_modifier = 0.50
+    global_migration_speed_modifier = 0.15
+    global_monthly_food_modifier = 0.10
+}
+
+immigration_policy_advance = {
+    age = age_7_imperialism
+    icon = colonies
+    requires = colonial_frontier_expansion
+
+    potential = {
+        OR = {
+            has_reform = government_reform:colonial_government_reform
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_population_growth = 0.0020
+    global_migration_speed_modifier = 0.25
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+}
+
+continental_railroad_advance = {
+    age = age_7_imperialism
+    icon = railroad_advance
+    requires = colonial_frontier_expansion
+
+    potential = {
+        OR = {
+            has_reform = government_reform:colonial_government_reform
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_road_building_time = -0.20
+    trade_income = 0.10
+    global_distance_from_capital_speed_propagation = 0.10
+    army_movement_speed = 0.10
+}
+
+federal_industrialization_advance = {
+    age = age_7_imperialism
+    icon = efficient_mining
+    requires = colonial_frontier_expansion
+
+    potential = {
+        OR = {
+            has_reform = government_reform:colonial_government_reform
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_production_efficiency = 0.10
+    global_raw_material_output = 0.15
+    global_construction_speed = 0.05
+}
+
+colonial_constitution_advance = {
+    age = age_7_imperialism
+    icon = the_constitution
+    requires = colonial_frontier_expansion
+
+    potential = {
+        OR = {
+            has_reform = government_reform:colonial_government_reform
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    government_reform_slots = 1
+    parliament_base_support = 0.15
+    monthly_republican_tradition = 0.05
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+}
+
+colonial_manifest_destiny_advance = {
+    age = age_7_imperialism
+    icon = a_modern_nation
+    requires = colonial_frontier_expansion
+
+    potential = {
+        OR = {
+            has_reform = government_reform:colonial_government_reform
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    cultural_influence = 0.15
+    land_morale_modifier = 0.10
+    monthly_towards_outward = societal_value_monthly_move
+    ai_months_between_wars = -12
+}
+
+public_land_grants_advance = {
+    age = age_7_imperialism
+    icon = reclamation_of_land
+    requires = immigration_policy_advance
+
+    potential = {
+        OR = {
+            has_reform = government_reform:colonial_government_reform
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_monthly_food_modifier = 0.15
+    global_rgo_build_time = -0.05
+    global_max_rgo_size_modifier_in_rural = 0.05
+}
+
+transcontinental_telegraph_advance = {
+    age = age_7_imperialism
+    icon = source_of_knowledge
+    requires = continental_railroad_advance
+
+    potential = {
+        OR = {
+            has_reform = government_reform:colonial_government_reform
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_distance_from_capital_speed_propagation = 0.10
+    global_institution_growth_modifier = 0.05
+    trade_income = 0.05
+}
+
+independent_foreign_policy_advance = {
+    age = age_7_imperialism
+    icon = diplomatic_influence
+    requires = colonial_constitution_advance
+
+    potential = {
+        OR = {
+            has_reform = government_reform:colonial_government_reform
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    diplomatic_capacity = 1
+    diplomatic_reputation = 0.05
+    antagonism_received_modifier = -0.15
+}
+
+##############################
+# United States (tag USA)
+##############################
+
+usa_manifest_destiny_advance = {
+    age = age_7_imperialism
+    icon = a_modern_nation
+    requires = colonial_manifest_destiny_advance
+
+    potential = {
+        OR = {
+            has_or_had_tag = USA
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    land_morale_modifier = 0.15
+    global_levy_size_modifier = 0.10
+    colonial_migration_size_modifier = 0.25
+    monthly_war_exhaustion = -0.03
+}
+
+usa_homestead_act_advance = {
+    age = age_7_imperialism
+    icon = reclamation_of_land
+    requires = public_land_grants_advance
+
+    potential = {
+        OR = {
+            has_or_had_tag = USA
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_monthly_food_modifier = 0.20
+    global_population_growth = 0.0015
+    peasants_estate_target_satisfaction = medium_permanent_target_satisfaction
+}
+
+usa_abolition_amendment_advance = {
+    age = age_7_imperialism
+    icon = abolished_serfdom
+    requires = colonial_constitution_advance
+
+    potential = {
+        OR = {
+            has_or_had_tag = USA
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_peasant_enfranchisment = 0.25
+    global_pop_promotion_speed_modifier = 0.10
+    monthly_towards_free_subjects = societal_value_large_monthly_move
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+}
+
+usa_transcontinental_railroad_advance = {
+    age = age_7_imperialism
+    icon = railroad_advance
+    requires = continental_railroad_advance
+
+    potential = {
+        OR = {
+            has_or_had_tag = USA
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_road_building_time = -0.15
+    trade_income = 0.10
+    global_raw_material_output = 0.10
+}
+
+usa_progressive_reform_advance = {
+    age = age_7_imperialism
+    icon = a_dynamic_society
+    requires = usa_transcontinental_railroad_advance
+
+    potential = {
+        OR = {
+            has_or_had_tag = USA
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    tax_income_efficiency = small_tax_income_efficiency_bonus
+    global_monthly_literacy = 0.03
+    global_production_efficiency = 0.05
+}
+
+##############################
+# New Spain / Mexico (tag NSP)
+##############################
+
+mex_mining_modernization_advance = {
+    age = age_7_imperialism
+    icon = serbian_mining
+    requires = federal_industrialization_advance
+
+    potential = {
+        OR = {
+            has_or_had_tag = NSP
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_silver_output_modifier = 0.25
+    global_goods_gold_output_modifier = 0.25
+    global_copper_output_modifier = 0.15
+}
+
+mex_reform_wars_advance = {
+    age = age_7_imperialism
+    icon = the_constitution
+    requires = colonial_constitution_advance
+
+    potential = {
+        OR = {
+            has_or_had_tag = NSP
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    government_reform_slots = 1
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    monthly_towards_liberalism = societal_value_monthly_move
+    monthly_towards_centralization = societal_value_monthly_move
+}
+
+mex_land_reform_advance = {
+    age = age_7_imperialism
+    icon = reclamation_of_land
+    requires = mex_reform_wars_advance
+
+    potential = {
+        OR = {
+            has_or_had_tag = NSP
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_peasant_enfranchisment = 0.20
+    peasants_estate_target_satisfaction = medium_permanent_target_satisfaction
+    global_monthly_food_modifier = 0.15
+    monthly_towards_free_subjects = societal_value_monthly_move
+}
+
+##############################
+# Brazil (capital in Brazil)
+##############################
+
+brz_coffee_economy_advance = {
+    age = age_7_imperialism
+    icon = origin_of_coffee
+    requires = federal_industrialization_advance
+
+    potential = {
+        OR = {
+            has_or_had_tag = VOB
+            zzz_1644_is_brazilian_state = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_coffee_output_modifier = 0.30
+    global_sugar_output_modifier = 0.20
+    trade_income = 0.10
+}
+
+brz_abolition_advance = {
+    age = age_7_imperialism
+    icon = abolished_serfdom
+    requires = brz_coffee_economy_advance
+
+    potential = {
+        OR = {
+            has_or_had_tag = VOB
+            zzz_1644_is_brazilian_state = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_peasant_enfranchisment = 0.25
+    global_pop_promotion_speed_modifier = 0.10
+    monthly_towards_free_subjects = societal_value_large_monthly_move
+}
+
+brz_republic_advance = {
+    age = age_7_imperialism
+    icon = the_constitution
+    requires = brz_abolition_advance
+
+    potential = {
+        OR = {
+            has_or_had_tag = VOB
+            zzz_1644_is_brazilian_state = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    government_reform_slots = 1
+    monthly_republican_tradition = 0.10
+    parliament_base_support = 0.15
+    monthly_towards_liberalism = societal_value_monthly_move
+}
+
+##############################
+# Canada (tag NFR / CAN)
+##############################
+
+can_dominion_advance = {
+    age = age_7_imperialism
+    icon = colonial_assembly
+    requires = colonial_constitution_advance
+
+    potential = {
+        OR = {
+            has_or_had_tag = NFR
+            has_or_had_tag = CAN
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    government_reform_slots = 1
+    subject_loyalty = 15
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    parliament_base_support = 0.15
+}
+
+can_pacific_railway_advance = {
+    age = age_7_imperialism
+    icon = railroad_advance
+    requires = continental_railroad_advance
+
+    potential = {
+        OR = {
+            has_or_had_tag = NFR
+            has_or_had_tag = CAN
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_road_building_time = -0.20
+    trade_income = 0.10
+    global_monthly_food_modifier = 0.10
+}
+
+##############################
+# Rio de la Plata (capital in La Plata)
+##############################
+
+arg_conquest_of_the_desert_advance = {
+    age = age_7_imperialism
+    icon = expansionism
+    requires = colonial_frontier_expansion
+
+    potential = {
+        OR = {
+            has_or_had_tag = LPL
+            zzz_1644_is_la_plata_state = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    colonial_migration_size_modifier = 0.30
+    global_levy_size_modifier = 0.10
+    land_morale_modifier = 0.05
+    monthly_towards_outward = societal_value_monthly_move
+}
+
+arg_export_economy_advance = {
+    age = age_7_imperialism
+    icon = trade_caravans
+    requires = continental_railroad_advance
+
+    potential = {
+        OR = {
+            has_or_had_tag = LPL
+            zzz_1644_is_la_plata_state = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_livestock_output_modifier = 0.25
+    global_wheat_output_modifier = 0.20
+    trade_income = 0.15
+}

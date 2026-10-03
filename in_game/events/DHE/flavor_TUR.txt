@@ -598,7 +598,7 @@ flavor_tur.79 = { #The Arabic Salons
 
 		historical_option = yes
 
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 	}
 
 	option = {
@@ -1473,9 +1473,9 @@ flavor_tur.116 = { #The [GetCountryAdjective] Faction
 				type = aristocracy_vs_plutocracy
 				value = societal_value_move_to_left
 			}
-			add_government_power = government_power_mild_penalty
+			add_political_influence = political_influence_mild_penalty
 		}
-		else = { add_government_power = government_power_extreme_penalty }
+		else = { add_political_influence = political_influence_extreme_penalty }
 	}
 }
 
@@ -1553,7 +1553,7 @@ flavor_tur.117 = { #The Reforms of [ambitious_ruler.GetName]
 			}
 		}
 
-		add_government_power = government_power_weak_bonus
+		add_political_influence = political_influence_weak_bonus
 
 		change_societal_value = {
     		type = aristocracy_vs_plutocracy
@@ -1882,7 +1882,7 @@ flavor_tur.121 = { #The Disaster at [reenactment_location.GetName], triggered by
 			reason = stray_fire
 		}
 
-		add_government_power = government_power_mild_penalty
+		add_political_influence = political_influence_mild_penalty
 
 	}
 	option = {
@@ -1932,7 +1932,7 @@ flavor_tur.122 = { #The Triumph at [reenactment_location.GetName], triggered by 
 
 	immediate = {
 
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 	}
 
 	option = {
@@ -2978,7 +2978,7 @@ flavor_tur.135 = { #The Unsavory Influences on [Sultan]
 			}
 		}
 
-		add_government_power = government_power_weak_bonus
+		add_political_influence = political_influence_weak_bonus
 
 		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
 
@@ -3008,7 +3008,7 @@ flavor_tur.135 = { #The Unsavory Influences on [Sultan]
 		kill_character_silently = scope:cinci_hoca
 		set_new_ruler = heir
 
-		add_government_power = government_power_weak_penalty
+		add_political_influence = political_influence_weak_penalty
 
 		add_stability = stability_severe_penalty
 
@@ -3101,7 +3101,7 @@ flavor_tur.136 = { #[Ruler] the Extravagant
 			add_dip = 3
 		}
 
-		add_government_power = government_power_weak_bonus
+		add_political_influence = political_influence_weak_bonus
 
 		change_societal_value = { type = centralization_vs_decentralization value = societal_value_minor_move_to_right }
 	}
@@ -3188,7 +3188,7 @@ flavor_tur.138 = { #A Scarcity of Scribes
 
 		change_gold_effect = { scale = -6 }
 
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 
 		add_country_modifier = { modifier = recruiting_scribes years = 15 mode = add_and_extend }
 
@@ -3812,7 +3812,7 @@ flavor_tur.146 = { #The Tree of Corpses
 			reason = hanged_by_mob
 		}
 
-		add_government_power = government_power_extreme_penalty
+		add_political_influence = political_influence_extreme_penalty
 
 		change_societal_value = {
 			type = belligerent_vs_conciliatory
@@ -4345,7 +4345,7 @@ flavor_tur.150 = { #The Wronged Servant
 
 		change_societal_value = { type = mysticism_vs_jurisprudence value = societal_value_tiny_move_to_right }
 
-		add_government_power = government_power_weak_bonus
+		add_political_influence = political_influence_weak_bonus
 
 		location:cairo = {
 			change_prosperity = prosperity_weak_bonus
@@ -4414,7 +4414,7 @@ flavor_tur.151 = { #The Beauty of Letters
 			dip = 70
 			mil = 20
 			artist_skill = 0.90
-			artist = iconographer
+			artist = calligrapher
 			culture = culture:turkish_culture
 			religion = religion:sunni
 			estate = estate_type:clergy_estate
@@ -4884,22 +4884,9 @@ flavor_tur.156 = { #Tulip's End
 		historical_option = yes
 
 		custom_tooltip = tur_abdicate_throne_tt
-
-		set_new_ruler = scope:target_heir
-
-		kill_character = {
-			target = scope:petrona_halil
-			reason = killed_by_janissaries
-		}
-
-		custom_tooltip = {
-			text = janissaries_will_not_revolt_tt
-			destroy_rebel = scope:target_rebel
-		}
-
-		add_government_power = government_power_extreme_penalty
-
-		add_prestige = prestige_extreme_penalty
+		custom_tooltip = janissaries_will_not_revolt_tt
+		apply_rebel_demands = scope:target_rebel
+		hidden_effect = { destroy_rebel = scope:target_rebel }
 	}
 
 	option = {
@@ -4972,7 +4959,7 @@ flavor_tur.156 = { #Tulip's End
 		name = flavor_tur.156.c
 
 
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 		custom_tooltip = {
 			text = revolt_will_spread_further_tt
 			ordered_pop = {
@@ -5193,7 +5180,7 @@ flavor_tur.159 = { #Dangerous Words
    			kill_character_silently = scope:enderunlu_fazil
   		}
 
-		add_government_power = government_power_weak_bonus
+		add_political_influence = political_influence_weak_bonus
 
 		change_societal_value = {
 			type = absolutism_vs_liberalism
@@ -5307,7 +5294,7 @@ flavor_tur.160 = { #The Lord of Acre
 			40 = {
 				custom_tooltip = zahir_escapes.tt
 				kill_character_silently = scope:zahir_al_umar
-				add_government_power = government_power_mild_penalty
+				add_political_influence = political_influence_mild_penalty
 			}
 		}
 
@@ -5335,7 +5322,7 @@ flavor_tur.160 = { #The Lord of Acre
 			value = societal_value_minor_move_to_right
 		}
 
-		add_government_power = government_power_mild_penalty
+		add_political_influence = political_influence_mild_penalty
 	}
 }
 
@@ -6009,7 +5996,7 @@ flavor_tur.168 = { #The Grievances of Greece
 			}
 		}
 
-		add_government_power = government_power_mild_penalty
+		add_political_influence = political_influence_mild_penalty
 	}
 }
 
@@ -6087,7 +6074,7 @@ flavor_tur.169 = { #The Constantinople Massacre of 1821
 
 		change_gold_effect = { scale = 3 }
 
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 
 		add_prestige = prestige_weak_penalty
 
@@ -6134,7 +6121,7 @@ flavor_tur.169 = { #The Constantinople Massacre of 1821
 	option = {
 		name = flavor_tur.169.b
 
-		add_government_power = government_power_severe_penalty
+		add_political_influence = political_influence_severe_penalty
 	}
 }
 
@@ -6401,11 +6388,10 @@ flavor_tur.172 = { #Cutting Corners
 
 		change_societal_value = { type =mysticism_vs_jurisprudence value = societal_value_tiny_move_to_left }
 
-		capital.market = {
-			add_goods_supply = {
-				goods = goods:slaves_goods
-				amount = market_goods_mild_gain
-			}
+		sell_goods_to_market = {
+			market = capital.market
+			goods = goods:slaves_goods
+			amount = market_goods_mild_gain
 		}
 
 		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_bonus }
@@ -6786,7 +6772,7 @@ flavor_tur.176 = { #The Dash of Death
 		name = flavor_tur.176.c
 
 		scope:bostancibasi = { move_country = root }
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 
 		scope:target_ruler = { add_trait = trait:malevolent }
 
@@ -6885,77 +6871,6 @@ flavor_tur.178 = { #The Bostancibashi Victorious, triggered by flavor_tur.176
 			add_dip = 3
 			add_mil = 3
 		}
-	}
-}
-
-flavor_tur.179 = { #The New Order Army
-	type = country_event
-	title = flavor_tur.179.title
-	desc = flavor_tur.179.desc
-	outcome = neutral
-
-	historical_info = flavor_tur.179.historical_info
-
-	fire_only_once = yes
-	dynamic_historical_event = {
-		tag = TUR
-		from = 1737.1.1
-		to = 1837.1.1
-		monthly_chance = 5
-	}
-
-	trigger = {
-
-		societal_value:traditionalist_vs_innovative > -25
-
-		societal_value:outward_vs_inward < 25
-
-		has_ruler = yes
-
-		any_owned_location = {
-			has_building_with_at_least_one_level = janissary_barracks
-		}
-
-		any_rival = {
-     		count > 1
-     	}
-	}
-
-	immediate = {
-
-		ruler = {
-			save_scope_as = target_ruler
-		}
-	}
-
-	option = {
-		name = flavor_tur.179.a
-		historical_option = yes
-
-		set_variable = { name = tur_new_order_army value = 1 }
-		custom_tooltip = new_order_army_available.tt
-
-		add_stability = stability_severe_penalty
-
-		change_societal_value = { type = outward_vs_inward value = societal_value_large_move_to_left }
-
-		change_societal_value = { type = quality_vs_quantity value = societal_value_large_move_to_left }
-
-		change_societal_value = { type = land_vs_naval value = societal_value_large_move_to_left }
-
-		trigger_event_silently = {
-			id = flavor_tur.180
-			years = { 5 10 }
-		}
-	}
-
-	option = {
-		name = flavor_tur.179.b
-
-		add_stability = stability_mild_bonus
-
-		change_societal_value = { type = centralization_vs_decentralization value = societal_value_minor_move_to_right }
-
 	}
 }
 
@@ -8355,12 +8270,7 @@ flavor_tur.202 = {
 	option = {
 		name = flavor_tur.202.b
 
-		province:vidin_province = {
-			every_location_in_province = {
-				change_control = control_ultimate_penalty
-			}
-		}
-
+		apply_rebel_demands = scope:chiprovtsi_uprising
 		destroy_rebel = scope:chiprovtsi_uprising
 	}
 }
@@ -8590,7 +8500,7 @@ flavor_tur.216 = {
 			owner = {
 				is_at_war_with = root
 			}
-			modifier:fort_level > 0
+			has_fort = yes
 		}
 	}
 

@@ -43,12 +43,12 @@ flavor_pap.11 = {
 	option = {
 		name = flavor_pap.11.a
 		add_prestige = prestige_weak_penalty
-		add_government_power = government_power_extreme_penalty
+		add_political_influence = political_influence_extreme_penalty
 	}
 	
 	option = {
 		name = flavor_pap.11.b
-		add_government_power = government_power_extreme_bonus
+		add_political_influence = political_influence_extreme_bonus
 		random_list = {
 			10 = {
 				kill_character = {
@@ -148,7 +148,7 @@ flavor_pap.17 = {
 
 		add_stability = stability_extreme_penalty
 		religion:catholic = { add_reform_desire = reform_desire_severe_decrease }
-		add_government_power = government_power_extreme_bonus
+		add_political_influence = political_influence_extreme_bonus
 		custom_tooltip = disables_simony
 
 		religion:catholic = {
@@ -163,7 +163,7 @@ flavor_pap.17 = {
 	option = {
 		name = flavor_pap.17.b
 
-		add_government_power = government_power_extreme_penalty
+		add_political_influence = political_influence_extreme_penalty
 		religion:catholic = {
 			remove_religion_modifier = tolerated_simony_religion
 			add_religion_modifier = endorsed_simony_religion
@@ -207,7 +207,7 @@ flavor_pap.18 = {
 		name = flavor_pap.18.a
 		add_stability = stability_extreme_penalty
 		religion:catholic = { add_reform_desire = reform_desire_severe_decrease }
-		add_government_power = government_power_extreme_bonus
+		add_political_influence = political_influence_extreme_bonus
 		custom_tooltip = disables_veneration_of_relics
 
 		international_organization:catholic_church = {
@@ -218,7 +218,7 @@ flavor_pap.18 = {
 	option = {
 		name = flavor_pap.18.b
 
-		add_government_power = government_power_extreme_penalty
+		add_political_influence = political_influence_extreme_penalty
 		religion:catholic = { add_reform_desire = reform_desire_weak_increase }
 	}
 
@@ -298,20 +298,13 @@ flavor_pap.20 = {
 
 		#Kingdom of God reform
 		unlock_government_reform_effect = { type = kingdom_of_god_reform }
-		if = {
-			#If we have all the slots already full
-			limit = {
-				num_reforms = modifier:government_reform_slots
-			}
-			add_country_modifier = { modifier = kingdom_of_god_slot_modifier }
-		}
 		add_reform = government_reform:kingdom_of_god_reform
 	}
 
 	option = {
 		name = flavor_pap.20.b
 		add_prestige = prestige_severe_bonus
-		add_government_power = government_power_severe_bonus
+		add_political_influence = political_influence_severe_bonus
 	}
 }
 
@@ -518,7 +511,6 @@ flavor_pap.9000 = {
 		location:rome = {
 			owner ?= root
 		}
-		religion = religion:catholic
 		exists = c:PAP 
 		NOT = { tag = ITA }
 		is_real_country = yes	#rebels and revolutionaries should not trigger it just yet..

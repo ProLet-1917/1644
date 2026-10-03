@@ -1,4 +1,4 @@
-namespace = germany_unification
+﻿namespace = germany_unification
 
 #Germany will seek unity
 germany_unification.1000 = {
@@ -10,6 +10,14 @@ germany_unification.1000 = {
         10 = interior
         10 = happy
     }
+
+	trigger = {
+		OR = {
+		    always = yes
+		    has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		capital ?= { continent = continent:europe }
+	}
 
     immediate = {
         event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
@@ -30,6 +38,14 @@ germany_unification.1001 = {
         10 = interior
         10 = happy
     }
+
+	trigger = {
+		OR = {
+		    always = yes
+		    has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		is_member_of_international_organization_of_type = { type = germany_unification_union }
+	}
 
     immediate = {
         event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
@@ -83,6 +99,15 @@ germany_unification.1002 = {
         10 = happy
     }
 
+	trigger = {
+		OR = {
+		    always = yes
+		    has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		culture = { has_culture_group = culture_group:german_group }
+		NOT = { is_member_of_international_organization_of_type = { type = germany_unification_union } }
+	}
+
     immediate = {
         event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
         if = {
@@ -97,7 +122,7 @@ germany_unification.1002 = {
     option = {
         name = germany_unification.1002.a
         ai_will_select = {
-            base = 25
+            value = 25
             add = { value = "opinion(scope:target_country)" }
         }
         if = {
@@ -116,7 +141,7 @@ germany_unification.1002 = {
     option = {
         name = germany_unification.1002.b
         ai_will_select = {
-            base = 25
+            value = 25
             if = {
                 limit = {
                     exists = scope:target_country
@@ -139,6 +164,14 @@ germany_unification.1101 = {
         10 = happy
     }
 
+	trigger = {
+		OR = {
+		    always = yes
+		    has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		is_member_of_international_organization = international_organization:hre
+	}
+
     immediate = {
         event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
         if = {
@@ -153,7 +186,7 @@ germany_unification.1101 = {
     option = {
         name = germany_unification.1101.a
         ai_will_select = {
-            base = 40
+            value = 40
             add = { value = "opinion(scope:target_country)" }
             if = {
                 limit = { country_rank_level <= 2 }
@@ -176,7 +209,7 @@ germany_unification.1101 = {
     option = {
         name = germany_unification.1101.b
         ai_will_select = {
-            base = 20
+            value = 20
             if = {
                 limit = { country_rank_level >= 3 }
                 add = 40
@@ -190,5 +223,183 @@ germany_unification.1101 = {
             }
         }
         add_prestige = prestige_mild_bonus
+    }
+}
+
+# 普奥争雄
+germany_unification.1200 = {
+    type = country_event
+    title = germany_unification.1200.title
+    desc = germany_unification.1200.desc
+
+    historical_info = germany_unification.1200.historical_info
+    major = yes
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+	trigger = {
+		OR = {
+		    always = yes
+		    has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		culture = { has_culture_group = culture_group:german_group }
+	}
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        # 以战争解决领导权
+        name = germany_unification.1200.a
+        historical_option = yes
+        ai_will_select = {
+            value = 60
+        }
+        add_country_modifier = {
+            modifier = german_dual_leadership_contest
+            years = 20
+        }
+        add_prestige = prestige_mild_penalty
+        every_country = {
+            limit = {
+                has_variable = potential_unifier
+                NOT = { this = root }
+            }
+            add_opinion = {
+                target = root
+                modifier = opinion_dishonored_alliance_defensive
+            }
+        }
+    }
+
+    option = {
+        # 以议会与关税同盟解决
+        name = germany_unification.1200.b
+        ai_will_select = {
+            value = 40
+        }
+        add_stability = stability_mild_bonus
+        add_country_modifier = {
+            modifier = german_dual_leadership_compromise
+            years = 20
+        }
+    }
+}
+
+# 北德意志联邦
+germany_unification.1300 = {
+    type = country_event
+    title = germany_unification.1300.title
+    desc = germany_unification.1300.desc
+
+    historical_info = germany_unification.1300.historical_info
+    major = yes
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        has_variable = potential_unifier
+        NOT = { is_emperor = yes }
+        region:north_german_region = {
+            any_location_in_region = {
+                percent >= 0.5
+                owner ?= root
+            }
+        }
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = happy
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+    }
+
+    option = {
+        name = germany_unification.1300.a
+        historical_option = yes
+        ai_will_select = {
+            value = 80
+        }
+        add_country_modifier = {
+            modifier = north_german_confederation
+            years = -1
+        }
+        add_prestige = prestige_mild_bonus
+        set_variable = north_german_confederation_founded
+    }
+
+    option = {
+        name = germany_unification.1300.b
+        ai_will_select = {
+            value = 20
+        }
+        add_stability = stability_mild_bonus
+    }
+}
+
+# 铁与血
+germany_unification.1400 = {
+    type = country_event
+    title = germany_unification.1400.title
+    desc = germany_unification.1400.desc
+
+    historical_info = germany_unification.1400.historical_info
+    major = yes
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        has_variable = potential_unifier
+        NOT = { has_country_modifier = blood_and_iron }
+    }
+
+    dynamic_historical_event = {
+        tag = PRU
+        tag = BRA
+        from = 1640.1.1
+        to = 1918.1.1
+        monthly_chance = 3
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:soldiers }
+    }
+
+    option = {
+        name = germany_unification.1400.a
+        historical_option = yes
+        ai_will_select = {
+            value = 90
+        }
+        add_country_modifier = {
+            modifier = blood_and_iron
+            years = 25
+        }
+        change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_tiny_move_to_left }
+    }
+
+    option = {
+        name = germany_unification.1400.b
+        ai_will_select = {
+            value = 10
+        }
+        add_stability = stability_mild_bonus
+        change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_tiny_move_to_right }
     }
 }

@@ -26,6 +26,40 @@ levy_teulu = {
 	unit = a_teulu
 }
 
+levy_crusader_knights = {
+	size = levy_generic_noble_cavalry_size
+
+	allowed_pop_type = clergy
+
+	allow = {
+		location ?= {
+			OR = {
+				owner = { modifier:can_raise_crusader_levies = yes }
+				modifier:can_raise_crusader_levies = yes
+			}
+		}
+	}
+
+	unit = a_crusader_knights_levy
+}
+
+levy_order_knights = {
+	size = levy_generic_noble_cavalry_size
+
+	allowed_pop_type = nobles
+
+	allow = {
+		location ?= {
+			OR = {
+				owner = { modifier:can_raise_crusader_levies = yes }
+				modifier:can_raise_crusader_levies = yes
+			}
+		}
+	}
+
+	unit = a_order_knights_levy
+}
+
 levy_a_early_longbowmen = {
 	size = levy_generic_infantry_size
 	
@@ -124,12 +158,36 @@ levy_a_early_paik = {
 
 levy_a_almogavars = {
 	size = levy_generic_infantry_size
-	
+
+	allowed_pop_type = peasants
+
 	allow = {
 		unit_almogavars_pop_trigger = yes
 	}
 	
 	unit = a_almogavars
+}
+
+levy_heavy_camelry_1 = {
+	size = levy_generic_noble_cavalry_size
+	allowed_pop_type = soldiers
+	allowed_pop_type = nobles
+	allowed_pop_type = clergy
+	allowed_pop_type = burghers
+	allow = {
+		location ?= { raw_material = goods:camels }
+	}
+	unit = a_heavy_camelry_levy_1
+}
+
+levy_light_camelry_1 = {
+	size = levy_generic_infantry_size
+	allowed_pop_type = peasants
+	allowed_pop_type = laborers
+	allow = {
+		location ?= { raw_material = goods:camels }
+	}
+	unit = a_light_camelry_levy_1
 }
 
 # Default Levies
@@ -138,6 +196,10 @@ levy_mailed_knights = {
 	size = levy_generic_noble_cavalry_size
 	
 	allowed_pop_type = nobles
+
+	allow = {
+		unit_is_tribal_pop_trigger = yes
+	}
 	
 	unit = a_mailed_knights
 }

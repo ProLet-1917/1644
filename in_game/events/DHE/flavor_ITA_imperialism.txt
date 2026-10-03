@@ -1,0 +1,171 @@
+﻿# Anno 1644 - Italy in the Age of Imperialism (1837-1918)
+# Flavour for a unified Kingdom of Italy (see also the italy_unification situation).
+
+namespace = flavor_ita_imperialism
+
+# 复兴运动的遗产
+flavor_ita_imperialism.1 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_ita_imperialism.1.title
+    desc = flavor_ita_imperialism.1.desc
+    outcome = neutral
+
+    historical_info = flavor_ita_imperialism.1.historical_info
+
+    dynamic_historical_event = {
+        tag = ITA
+        from = 1850.1.1
+        to = 1900.1.1
+        monthly_chance = 4
+    }
+
+    trigger = {
+        tag = ITA
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = happy
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        name = flavor_ita_imperialism.1.a
+        historical_option = yes
+        add_country_modifier = { modifier = risorgimento_legacy years = -1 }
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+        add_prestige = prestige_mild_bonus
+        change_societal_value = { type = absolutism_vs_liberalism value = societal_value_tiny_move_to_right }
+    }
+
+    option = {
+        name = flavor_ita_imperialism.1.b
+        add_country_modifier = { modifier = italian_transformismo years = 25 }
+        add_stability = stability_mild_bonus
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+    }
+}
+
+# 南方的落后问题
+flavor_ita_imperialism.2 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_ita_imperialism.2.title
+    desc = flavor_ita_imperialism.2.desc
+    outcome = neutral
+
+    historical_info = flavor_ita_imperialism.2.historical_info
+
+    dynamic_historical_event = {
+        tag = ITA
+        from = 1860.1.1
+        to = 1910.1.1
+        monthly_chance = 3
+    }
+
+    trigger = {
+        tag = ITA
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        # 特别法与社会改革
+        name = flavor_ita_imperialism.2.a
+        historical_option = yes
+        add_country_modifier = { modifier = italian_southern_question years = 25 }
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+        add_stability = stability_mild_penalty
+    }
+
+    option = {
+        # 强力镇压盗匪
+        name = flavor_ita_imperialism.2.b
+        add_country_modifier = { modifier = italian_brigandage_suppressed years = 20 }
+        add_stability = stability_mild_bonus
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_penalty }
+    }
+}
+
+# 意大利歌剧与文学
+flavor_ita_imperialism.10 = {
+    hide_portraits = yes
+    type = country_event
+    fire_only_once = yes
+    title = flavor_ita_imperialism.10.title
+    desc = flavor_ita_imperialism.10.desc
+    outcome = neutral
+
+    historical_info = flavor_ita_imperialism.10.historical_info
+
+    dynamic_historical_event = {
+        tag = ITA
+        from = 1840.1.1
+        to = 1910.1.1
+        monthly_chance = 2
+    }
+
+    trigger = {
+        tag = ITA
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+        create_character = {
+            adm = { 20 80 }
+            dip = { 20 80 }
+            mil = { 10 50 }
+            artist = artist_type:composer
+            artist_skill = { 0.6 1.0 }
+            birth_date = 1813.10.10
+            female = no
+            culture = root.culture
+            religion = root.religion
+            estate = estate_type:burghers_estate
+            create_in_limbo = yes
+            save_scope_as = italian_composer
+        }
+    }
+
+    option = {
+        name = flavor_ita_imperialism.10.a
+        historical_option = yes
+        scope:italian_composer = {
+            move_country = root
+            add_character_modifier = {
+                modifier = italian_master_composer
+                years = -1
+            }
+        }
+        culture ?= {
+            add_cultural_influence = cultural_influence_mild_bonus
+            add_cultural_tradition = cultural_tradition_mild_bonus
+        }
+        add_prestige = prestige_mild_bonus
+    }
+
+    option = {
+        name = flavor_ita_imperialism.10.b
+        hidden_effect = {
+            kill_character_silently = scope:italian_composer
+        }
+        add_stability = stability_mild_bonus
+    }
+}

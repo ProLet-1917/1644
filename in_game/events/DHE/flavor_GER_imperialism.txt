@@ -1,0 +1,219 @@
+﻿# Anno 1644 - Germany in the Age of Imperialism (1837-1918)
+# Flavour for a unified German Empire (see also the germany_unification situation).
+
+namespace = flavor_ger_imperialism
+
+# 帝国宣告
+flavor_ger_imperialism.1 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_ger_imperialism.1.title
+    desc = flavor_ger_imperialism.1.desc
+    outcome = neutral
+
+    historical_info = flavor_ger_imperialism.1.historical_info
+
+    dynamic_historical_event = {
+        tag = GER
+        from = 1850.1.1
+        to = 1918.1.1
+        monthly_chance = 5
+    }
+
+    trigger = {
+        tag = GER
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = happy
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+    }
+
+    option = {
+        name = flavor_ger_imperialism.1.a
+        historical_option = yes
+        add_country_modifier = { modifier = german_empire_proclaimed years = -1 }
+        add_prestige = prestige_severe_bonus
+        add_legitimacy = legitimacy_mild_bonus
+        change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_tiny_move_to_left }
+    }
+
+    option = {
+        name = flavor_ger_imperialism.1.b
+        add_country_modifier = { modifier = german_liberal_empire years = 25 }
+        add_stability = stability_mild_bonus
+        change_societal_value = { type = absolutism_vs_liberalism value = societal_value_tiny_move_to_right }
+    }
+}
+
+# 文化与科学之国
+flavor_ger_imperialism.2 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_ger_imperialism.2.title
+    desc = flavor_ger_imperialism.2.desc
+    outcome = neutral
+
+    historical_info = flavor_ger_imperialism.2.historical_info
+
+    dynamic_historical_event = {
+        tag = GER
+        from = 1860.1.1
+        to = 1915.1.1
+        monthly_chance = 3
+    }
+
+    trigger = {
+        tag = GER
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:burghers_estate }
+    }
+
+    option = {
+        name = flavor_ger_imperialism.2.a
+        historical_option = yes
+        add_country_modifier = { modifier = land_of_poets_and_thinkers years = -1 }
+        add_research_progress = research_progress_severe_bonus
+        add_prestige = prestige_mild_bonus
+        change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_right }
+    }
+
+    option = {
+        name = flavor_ger_imperialism.2.b
+        add_country_modifier = { modifier = german_militarism years = 25 }
+        add_stability = stability_mild_bonus
+        change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_tiny_move_to_left }
+    }
+}
+
+# 世界政策与海军竞赛
+flavor_ger_imperialism.3 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_ger_imperialism.3.title
+    desc = flavor_ger_imperialism.3.desc
+    outcome = neutral
+
+    historical_info = flavor_ger_imperialism.3.historical_info
+
+    dynamic_historical_event = {
+        tag = GER
+        from = 1890.1.1
+        to = 1914.1.1
+        monthly_chance = 3
+    }
+
+    trigger = {
+        tag = GER
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+    }
+
+    option = {
+        name = flavor_ger_imperialism.3.a
+        historical_option = yes
+        ai_will_select = { base = 70 }
+        add_country_modifier = { modifier = weltpolitik years = -1 }
+        add_prestige = prestige_mild_bonus
+        add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+    }
+
+    option = {
+        name = flavor_ger_imperialism.3.b
+        ai_will_select = { base = 30 }
+        add_country_modifier = { modifier = german_continental_policy years = 25 }
+        add_stability = stability_mild_bonus
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+    }
+}
+
+# 德国音乐与哲学
+flavor_ger_imperialism.10 = {
+    hide_portraits = yes
+    type = country_event
+    fire_only_once = yes
+    title = flavor_ger_imperialism.10.title
+    desc = flavor_ger_imperialism.10.desc
+    outcome = neutral
+
+    historical_info = flavor_ger_imperialism.10.historical_info
+
+    dynamic_historical_event = {
+        tag = GER
+        from = 1840.1.1
+        to = 1910.1.1
+        monthly_chance = 2
+    }
+
+    trigger = {
+        tag = GER
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:clergy_estate }
+        create_character = {
+            adm = { 30 90 }
+            dip = { 30 90 }
+            mil = { 10 50 }
+            artist = artist_type:composer
+            artist_skill = { 0.6 1.0 }
+            birth_date = 1813.5.22
+            female = no
+            culture = root.culture
+            religion = root.religion
+            estate = estate_type:burghers_estate
+            create_in_limbo = yes
+            save_scope_as = german_composer
+        }
+    }
+
+    option = {
+        name = flavor_ger_imperialism.10.a
+        historical_option = yes
+        scope:german_composer = {
+            move_country = root
+            add_character_modifier = {
+                modifier = german_master_composer
+                years = -1
+            }
+        }
+        culture ?= {
+            add_cultural_influence = cultural_influence_mild_bonus
+            add_cultural_tradition = cultural_tradition_mild_bonus
+        }
+        add_prestige = prestige_mild_bonus
+    }
+
+    option = {
+        name = flavor_ger_imperialism.10.b
+        hidden_effect = {
+            kill_character_silently = scope:german_composer
+        }
+        add_stability = stability_mild_bonus
+    }
+}

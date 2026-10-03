@@ -63,7 +63,7 @@ flavor_ven.15 = {
 	option = {
 		name = flavor_ven.15.b
 		scope:target_character = { move_country = root }
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 		add_stability = stability_weak_bonus
 	}
 }
@@ -750,7 +750,6 @@ flavor_ven.73 = { # The Banco del Giro
 				hidden_effect = {
 					change_country_flag = BANCO_DEL_GIRO
 					define_unique_country_tag = BGIRO
-					change_heir_selection = heir_selection:bank_selection
 					change_government_type = government_type:republic
 				}
 			}

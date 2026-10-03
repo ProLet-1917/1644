@@ -1,0 +1,478 @@
+﻿# Anno 1644 - Additional Chinese Dynasty diplomatic interactions
+# Companion to chinese_dynasty.txt and zzz_1644_middle_kingdom_interactions.txt.
+
+# 册封朝贡国国王
+enfeoff_tributary_king = {
+    type = diplomacy
+    category = CATEGORY_CHINESE_DYNASTY_ACTIONS
+
+    ai_limit_per_check = 1
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        scope:actor = {
+            is_chinese_dynasty_leader = yes
+            government_type = government_type:monarchy
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            is_chinese_dynasty_leader = yes
+            var:dynasty_stability > 100
+        }
+    }
+
+    cooldown = {
+        type = enfeoff_tributary_king
+        months = 36
+    }
+
+    select_trigger = {
+        looking_for_a = country
+        target_flag = recipient
+        name = "choose_country"
+        column = {
+            data = name
+        }
+        visible = {
+            NOT = { this = scope:actor }
+            is_rebel_country = no
+            is_member_of_international_organization_of_type = { type = chinese_dynasty }
+            NOT = { is_leader_of_international_organization_of_type = { type = chinese_dynasty } }
+            NOR = {
+                is_subject_of = scope:actor
+                country_has_special_status = { type = special_status:celestial_governor country = scope:actor }
+            }
+        }
+        enabled = {
+            NOT = { is_at_war_with = scope:actor }
+            within_diplomatic_range = scope:actor
+        }
+    }
+
+    effect = {
+        scope:recipient = {
+            add_opinion = {
+                target = scope:actor
+                modifier = opinion_elevated_to_celestial_governor
+            }
+            add_country_modifier = {
+                modifier = imperial_investiture
+                years = -1
+            }
+        }
+        scope:actor = {
+            change_dynasty_stability = { value = 15 }
+            add_prestige = prestige_mild_bonus
+            if = {
+                limit = { modifier:allow_righteousness = yes }
+                add_righteousness = righteousness_weak_bonus
+            }
+        }
+    }
+
+    ai_will_do = {
+        add = {
+            desc = "OUR_OPINION_TOOLTIP"
+            value = "scope:actor.opinion(scope:recipient)"
+        }
+        if = {
+            limit = {
+                NOT = { scope:recipient = { is_chinese_culture_group_country = yes } }
+            }
+            subtract = 120
+        }
+        if = {
+            limit = { scope:recipient = { is_great_power = yes } }
+            subtract = 200
+        }
+        if = {
+            limit = { scope:recipient = { is_regional_power = yes } }
+            subtract = 80
+        }
+    }
+
+    accept = {
+        if = {
+            limit = { exists = scope:recipient }
+            add = {
+                desc = "VOTE_BASE_VALUE"
+                value = -60
+            }
+            add = {
+                desc = "THEIR_OPINION_TOOLTIP"
+                value = "scope:recipient.opinion(scope:actor)"
+                divide = 10
+            }
+            add = {
+                desc = "game_concept_diplomatic_reputation"
+                scope:actor = {
+                    value = modifier:diplomatic_reputation
+                    multiply = 1
+                }
+            }
+            if = {
+                limit = { scope:recipient = { is_chinese_culture_group_country = yes } }
+                add = {
+                    desc = "CHINESE_CULTURE_GROUP"
+                    value = 30
+                }
+            }
+            else = {
+                add = {
+                    desc = "NOT_CHINESE_CULTURE_GROUP"
+                    value = -120
+                }
+            }
+            if = {
+                limit = { scope:recipient = { is_great_power = yes } }
+                add = {
+                    desc = "game_concept_great_powers"
+                    value = -200
+                }
+            }
+            if = {
+                limit = { scope:recipient = { num_locations >= 20 } }
+                add = {
+                    desc = "HAS_MANY_LOCATIONS"
+                    value = -50
+                }
+            }
+            subtract = {
+                desc = "game_concept_tax_base"
+                value = scope:recipient.country_tax_base
+                divide = 5
+            }
+        }
+        else = {
+            value = 0
+        }
+    }
+}
+
+# 削藩令
+revoke_fanwang = {
+    type = subject
+    category = CATEGORY_CHINESE_DYNASTY_ACTIONS
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        scope:actor = {
+            is_chinese_dynasty_leader = yes
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            var:dynasty_stability > 200
+        }
+    }
+
+    cooldown = {
+        type = revoke_fanwang
+        months = 48
+    }
+
+    select_trigger = {
+        looking_for_a = country
+        interaction_source_list = {
+            scope:actor = {
+                every_subject = {
+                    add_to_list = source
+                }
+            }
+        }
+        target_flag = recipient
+        name = "choose_country"
+        column = {
+            data = name
+        }
+        visible = {
+            subject_type = subject_type:fanwang
+        }
+        enabled = {
+            opinion = {
+                target = scope:actor
+                value > -50
+            }
+        }
+    }
+
+    effect = {
+        scope:recipient = {
+            add_opinion = {
+                target = scope:actor
+                modifier = opinion_dishonored_alliance_defensive
+            }
+            add_country_modifier = {
+                modifier = fanwang_reduced
+                years = 20
+            }
+        }
+        scope:actor = {
+            change_dynasty_stability = { value = -50 }
+            add_prestige = prestige_mild_bonus
+            add_estate_satisfaction = {
+                type = estate_type:nobles_estate
+                value = estate_satisfaction_mild_penalty
+            }
+        }
+    }
+
+    ai_will_do = {
+        add = {
+            desc = "VOTE_BASE_VALUE"
+            value = 30
+        }
+        if = {
+            limit = {
+                scope:actor = { var:dynasty_stability > 500 }
+            }
+            add = {
+                desc = "celestial_authority_HIGH"
+                value = 40
+            }
+        }
+    }
+}
+
+# 改土归流
+force_gaitu_guiliu = {
+    type = subject
+    category = CATEGORY_CHINESE_DYNASTY_ACTIONS
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        scope:actor = {
+            is_chinese_dynasty_leader = yes
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            var:dynasty_stability > 150
+        }
+    }
+
+    cooldown = {
+        type = force_gaitu_guiliu
+        months = 36
+    }
+
+    select_trigger = {
+        looking_for_a = country
+        interaction_source_list = {
+            scope:actor = {
+                every_subject = {
+                    add_to_list = source
+                }
+            }
+        }
+        target_flag = recipient
+        name = "choose_country"
+        column = {
+            data = name
+        }
+        visible = {
+            subject_type = subject_type:tusi
+        }
+        enabled = {
+            opinion = {
+                target = scope:actor
+                value > -25
+            }
+        }
+    }
+
+    effect = {
+        scope:recipient = {
+            add_opinion = {
+                target = scope:actor
+                modifier = opinion_dishonored_alliance_defensive
+            }
+            every_owned_location = {
+                scope:actor = {
+                    add_core = prev
+                }
+                change_integration_level = core
+            }
+            make_subject_of = {
+                target = scope:actor
+                type = subject_type:vassal
+            }
+        }
+        scope:actor = {
+            change_dynasty_stability = { value = 25 }
+            add_prestige = prestige_mild_bonus
+        }
+    }
+
+    ai_will_do = {
+        add = {
+            desc = "VOTE_BASE_VALUE"
+            value = 25
+        }
+    }
+}
+
+# 招安
+grant_amnesty_to_rebels = {
+    type = diplomacy
+    category = CATEGORY_CHINESE_DYNASTY_ACTIONS
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        scope:actor = {
+            is_chinese_dynasty_leader = yes
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            var:dynasty_stability > 50
+        }
+    }
+
+    cooldown = {
+        type = grant_amnesty_to_rebels
+        months = 24
+    }
+
+    select_trigger = {
+        looking_for_a = country
+        target_flag = recipient
+        name = "choose_country"
+        column = {
+            data = name
+        }
+        visible = {
+            NOT = { this = scope:actor }
+            is_rebel_country = yes
+            capital ?= {
+                OR = {
+                    region = region:west_china_region
+                    region = region:east_china_region
+                    region = region:north_china_region
+                    region = region:south_china_region
+                    region = region:manchuria_region
+                }
+            }
+        }
+        enabled = {
+            NOT = { is_at_war_with = scope:actor }
+        }
+    }
+
+    effect = {
+        scope:recipient = {
+            add_country_modifier = {
+                modifier = imperial_amnesty
+                years = -1
+            }
+        }
+        scope:actor = {
+            change_dynasty_stability = { value = 20 }
+            add_country_modifier = {
+                modifier = great_amnesty
+                years = 10
+            }
+        }
+    }
+
+    ai_will_do = {
+        add = {
+            desc = "VOTE_BASE_VALUE"
+            value = 20
+        }
+    }
+}
+
+# 赐姓
+bestow_imperial_surname = {
+    type = diplomacy
+    category = CATEGORY_CHINESE_DYNASTY_ACTIONS
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        scope:actor = {
+            is_chinese_dynasty_leader = yes
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            var:dynasty_stability > 200
+        }
+    }
+
+    cooldown = {
+        type = bestow_imperial_surname
+        months = 60
+    }
+
+    select_trigger = {
+        looking_for_a = country
+        target_flag = recipient
+        name = "choose_country"
+        column = {
+            data = name
+        }
+        visible = {
+            NOT = { this = scope:actor }
+            is_rebel_country = no
+            is_member_of_international_organization_of_type = { type = chinese_dynasty }
+            NOT = { is_leader_of_international_organization_of_type = { type = chinese_dynasty } }
+        }
+        enabled = {
+            opinion = {
+                target = scope:actor
+                value > 25
+            }
+        }
+    }
+
+    effect = {
+        scope:recipient = {
+            add_opinion = {
+                target = scope:actor
+                modifier = opinion_gift
+            }
+            add_country_modifier = {
+                modifier = imperial_surname_bestowed
+                years = -1
+            }
+        }
+        scope:actor = {
+            change_dynasty_stability = { value = 10 }
+            add_prestige = prestige_mild_bonus
+        }
+    }
+
+    ai_will_do = {
+        add = {
+            desc = "VOTE_BASE_VALUE"
+            value = 5
+        }
+        add = {
+            desc = "THEIR_OPINION_TOOLTIP"
+            value = "scope:recipient.opinion(scope:actor)"
+            divide = 8
+        }
+    }
+}

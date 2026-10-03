@@ -1,4 +1,4 @@
-the_chinese_emperor = {
+﻿the_chinese_emperor = {
     major = yes
     government = monarchy
     potential = {
@@ -230,6 +230,38 @@ fanwang_reform = {
         allow_tributary_subject = yes
         allow_dynasty_stability = yes
         enable_forced_dynamic_territorial_occupation = yes
+    }
+
+    years = 2
+}
+
+# 殖民地政府
+colonial_government_reform = {
+    major = yes
+
+    potential = {
+        OR = {
+            is_subject_type = colonial_nation
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    allow = {
+        OR = {
+            is_subject_type = colonial_nation
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    country_modifier = {
+        government_reform_slots = 1
+        legislative_efficiency = 0.05
+        colonial_migration_size_modifier = 0.15
+        global_migration_speed_modifier = 0.10
+        global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+        global_pop_promotion_speed_modifier = 0.05
+        monthly_towards_outward = societal_value_monthly_move
+        monthly_towards_free_subjects = societal_value_monthly_move
     }
 
     years = 2

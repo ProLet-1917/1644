@@ -167,7 +167,7 @@ flavor_ara.11 = { #Repairing the Basilica del Pilar
 	immediate = {
 		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
 		random_work_of_art = {
-			limit = { this = work_of_art:basilica_pilar }
+			limit = { this = work_of_art:zaragoza_basilica_del_pilar_work_of_art }
 			save_scope_as = target_art
 		}
 		ruler = { save_scope_as = target_ruler }
@@ -192,7 +192,7 @@ flavor_ara.11 = { #Repairing the Basilica del Pilar
 		owns = location:zaragoza
 		location:zaragoza = {
 			any_work_of_art_in_location = {
-				this = work_of_art:basilica_pilar
+				this = work_of_art:zaragoza_basilica_del_pilar_work_of_art
 			}
 		}
 		has_ruler = yes
@@ -290,7 +290,7 @@ flavor_ara.19 = { #Juan de Lanuza y Urrea
 	option = {
 		name = flavor_ara.19.a
 		historical_option = yes
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 		kill_character = {
 			target = scope:target_character
 			reason = execution
@@ -350,7 +350,7 @@ flavor_ara.104 = { #Barcelona Royal Shipyard
 		tag = SPA
 		from = 1644.1.1
 		to = 1750.1.1
-		monthly_chance = 5
+		monthly_chance = 33
 	}
 
 	trigger = {
@@ -414,7 +414,7 @@ flavor_ara.111 = { #The Coronation Dilemma
 	option = {
 		name = flavor_ara.111.a
 		change_gold_effect = { scale = -2.00 }
-		add_government_power = government_power_extreme_bonus
+		add_political_influence = political_influence_extreme_bonus
 		add_estate_satisfaction = { type = estate_type:nobles_estate	value = estate_satisfaction_mild_bonus }
 		add_estate_satisfaction = { type = estate_type:clergy_estate	value = estate_satisfaction_mild_penalty }
 		if = {
@@ -451,7 +451,7 @@ flavor_ara.111 = { #The Coronation Dilemma
 		name = flavor_ara.111.c
 		change_gold_effect = { scale = -2.00 }
 		add_prestige = prestige_mild_bonus
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 		add_estate_satisfaction = { type = estate_type:clergy_estate	value = estate_satisfaction_mild_penalty }
 		if = {
 			limit = {

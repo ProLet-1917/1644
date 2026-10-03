@@ -1,0 +1,90 @@
+# Anno 1644 - static modifiers that were referenced by the mod but never defined.
+# Added during the 1.4 port (see docs/1.4_port_report.md, section B).
+
+#############################################
+# Jiangnan wealth (unify China mission reward)
+#############################################
+
+jiangnan_wealth_modifier = {
+    game_data = { category = country }
+    trade_income = 0.10
+    global_trade_center_power = 0.10
+    global_merchant_power = 0.10
+    global_building_establishment_speed = 0.05
+}
+
+#############################################
+# Unified China (permanent reward for reuniting China)
+#############################################
+
+unified_china_modifier = {
+    game_data = { category = country }
+    monthly_towards_centralization = societal_value_monthly_move
+    global_crown_estate_power = 0.10
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    monthly_prestige = 0.05
+    global_max_literacy = 5
+    cultural_influence_modifier = 0.50
+}
+
+#############################################
+# Wars of the Three Kingdoms (England / Roe)
+#############################################
+
+war_of_three_kingdoms_impact = {
+    game_data = { category = country }
+    monthly_rebel_growth = 0.003
+    global_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+    monthly_prestige = -0.02
+    army_maintenance_efficiency = -0.05
+}
+
+#############################################
+# Obstructing Industrialization
+#############################################
+
+obstructing_industrialization = {
+    game_data = { category = country }
+    global_building_establishment_speed = -0.15
+    global_build_buildings_efficiency = -0.15
+    trade_income = -0.05
+}
+
+#############################################
+# Qing / Shun / Xi DHE modifiers (added with the Ming-Qing DHE set)
+#############################################
+
+# 多尔衮摄政
+qing_dorgon_regency = {
+    game_data = { category = country }
+    global_crown_estate_power = 0.10
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    monthly_towards_centralization = societal_value_monthly_move
+    army_maintenance_efficiency = 0.05
+}
+
+# 剃发令
+qing_tonsure_order = {
+    game_data = { category = country }
+    global_crown_estate_power = 0.15
+    monthly_rebel_growth = 0.002
+    global_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+    monthly_towards_centralization = societal_value_monthly_move
+}
+
+# 大顺群龙无首
+shun_leadership_crisis = {
+    game_data = { category = country }
+    monthly_rebel_growth = 0.003
+    global_estate_target_satisfaction = large_permanent_target_satisfaction_penalty
+    monthly_prestige = -0.05
+}
+
+# 大西四将军分统
+xi_four_generals = {
+    game_data = { category = country }
+    global_nobles_estate_power = 0.10
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    monthly_rebel_growth = 0.002
+    army_maintenance_efficiency = 0.05
+}

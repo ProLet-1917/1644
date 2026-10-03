@@ -231,36 +231,5 @@
 				multiply = 20
 			}
 		}
-		
-		#opinion of leader
-		add = {
-			desc = "POLICY_BIAS_OPINION_OF_IO_LEADER"
-			if = {
-				limit = {
-					scope:recipient = {
-						NOT = { leader_type = none }
-						international_organization_has_leader = yes
-					}
-					not = { scope:actor = scope:recipient.leader_country }
-				}
-				scope:recipient = {
-					leader_country = {
-						if = {
-							limit = {
-								is_set = scope:vote
-							}
-							value = 1
-						}
-						else = {
-							value = -1
-						}
-						multiply = {
-							value = "scope:actor.opinion(scope:recipient.leader_country)"
-							multiply = 0.1
-						}
-					}
-				}
-			}
-		}
 	}
 }

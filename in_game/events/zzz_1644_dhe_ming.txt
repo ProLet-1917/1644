@@ -1,0 +1,361 @@
+# Anno 1644 - Southern Ming dynasty DHE (1644-1683)
+# Trigger conditions are deliberately strict: tag-bound, date-bound and situation-bound.
+
+namespace = dhe_ming_1644
+
+# 弘光朝廷 - The Hongguang Court at Nanjing
+dhe_ming_1644.1 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_ming_1644.1.title
+	desc = dhe_ming_1644.1.desc
+	outcome = neutral
+
+	historical_info = dhe_ming_1644.1.historical_info
+
+	dynamic_historical_event = {
+		tag = MNG
+		from = 1644.5.1
+		to = 1650.1.1
+		monthly_chance = 7
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = MNG
+		is_subject = no
+		current_year < 1650
+		capital ?= { region = region:south_china_region }
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:clergy_estate }
+	}
+
+	option = {
+		# 绍继大统，号召天下
+		name = dhe_ming_1644.1.a
+		historical_option = yes
+		add_legitimacy = legitimacy_severe_bonus
+		add_stability = stability_mild_bonus
+		add_prestige = prestige_mild_bonus
+	}
+
+	option = {
+		# 先安江左，徐图恢复
+		name = dhe_ming_1644.1.b
+		add_stability = stability_mild_bonus
+		add_political_influence = political_influence_mild_bonus
+		add_gold = 100
+		add_legitimacy = legitimacy_mild_penalty
+	}
+}
+
+# 江北四镇 - The Four Garrisons of Jiangbei
+dhe_ming_1644.2 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_ming_1644.2.title
+	desc = dhe_ming_1644.2.desc
+	outcome = neutral
+
+	historical_info = dhe_ming_1644.2.historical_info
+
+	dynamic_historical_event = {
+		tag = MNG
+		from = 1644.6.1
+		to = 1648.1.1
+		monthly_chance = 6
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = MNG
+		current_year < 1648
+		capital ?= { region = region:south_china_region }
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		# 倚重四镇，以藩屏江淮
+		name = dhe_ming_1644.2.a
+		historical_option = yes
+		add_manpower = { value = root.monthly_manpower multiply = 5 }
+		add_army_tradition = army_tradition_mild_bonus
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_bonus }
+		add_political_influence = political_influence_severe_penalty
+		add_stability = stability_mild_penalty
+	}
+
+	option = {
+		# 削夺兵权，归政朝廷
+		name = dhe_ming_1644.2.b
+		add_political_influence = political_influence_mild_bonus
+		add_stability = stability_mild_bonus
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
+		add_army_tradition = army_tradition_mild_penalty
+	}
+}
+
+# 左良玉东下 - Zuo Liangyu Marches East
+dhe_ming_1644.3 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_ming_1644.3.title
+	desc = dhe_ming_1644.3.desc
+	outcome = negative
+
+	historical_info = dhe_ming_1644.3.historical_info
+
+	dynamic_historical_event = {
+		tag = MNG
+		from = 1645.1.1
+		to = 1652.1.1
+		monthly_chance = 4
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = MNG
+		current_year >= 1645
+		stability < 50
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+	}
+
+	option = {
+		# 严旨切责，令其回镇
+		name = dhe_ming_1644.3.a
+		historical_option = yes
+		add_stability = stability_mild_penalty
+		add_political_influence = political_influence_mild_bonus
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+	}
+
+	option = {
+		# 调其东来，另委亲信
+		name = dhe_ming_1644.3.b
+		add_manpower = { value = root.monthly_manpower multiply = 3 }
+		add_stability = stability_mild_bonus
+		add_legitimacy = legitimacy_mild_penalty
+	}
+}
+
+# 江阴八十一日 - The Eighty-One Days of Jiangyin
+dhe_ming_1644.4 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_ming_1644.4.title
+	desc = dhe_ming_1644.4.desc
+	outcome = good
+
+	historical_info = dhe_ming_1644.4.historical_info
+
+	dynamic_historical_event = {
+		tag = MNG
+		from = 1645.6.1
+		to = 1655.1.1
+		monthly_chance = 4
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = MNG
+		current_year >= 1645
+		country_exists = c:QNG
+		is_at_war_with = c:QNG
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		# 褒奖忠义，树之榜样
+		name = dhe_ming_1644.4.a
+		historical_option = yes
+		add_prestige = prestige_severe_bonus
+		add_stability = stability_mild_bonus
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+		add_manpower = { value = root.monthly_manpower multiply = 3 }
+	}
+
+	option = {
+		# 以守为攻，坚壁清野
+		name = dhe_ming_1644.4.b
+		add_army_tradition = army_tradition_mild_bonus
+		add_stability = stability_mild_penalty
+	}
+}
+
+# 郑成功复台 - Koxinga Takes Taiwan
+dhe_ming_1644.5 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_ming_1644.5.title
+	desc = dhe_ming_1644.5.desc
+	outcome = positive
+
+	major = yes
+
+	historical_info = dhe_ming_1644.5.historical_info
+
+	dynamic_historical_event = {
+		tag = MNG
+		from = 1655.1.1
+		to = 1670.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = MNG
+		current_year >= 1655
+		num_of_ports > 1
+		has_presence_in = region:south_china_region
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+		create_character = {
+			adm = { 40 100 }
+			dip = { 40 100 }
+			mil = { 50 100 }
+			general = general_type:army_commander
+			birth_date = 1624.8.28
+			female = no
+			culture = root.culture
+			religion = root.religion
+			estate = estate_type:nobles_estate
+			create_in_limbo = yes
+			save_scope_as = zheng_chenggong
+		}
+	}
+
+	option = {
+		# 命其进取台湾
+		name = dhe_ming_1644.5.a
+		historical_option = yes
+		scope:zheng_chenggong = {
+			move_country = root
+		}
+		add_prestige = prestige_severe_bonus
+		add_navy_tradition = navy_tradition_mild_bonus
+		add_gold = 100
+	}
+
+	option = {
+		# 令其留守金厦
+		name = dhe_ming_1644.5.b
+		scope:zheng_chenggong = {
+			move_country = root
+		}
+		add_manpower = { value = root.monthly_manpower multiply = 4 }
+		add_stability = stability_mild_bonus
+	}
+}
+
+# 永历入缅 - The Yongli Emperor Flees to Burma
+dhe_ming_1644.6 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_ming_1644.6.title
+	desc = dhe_ming_1644.6.desc
+	outcome = negative
+
+	major = yes
+
+	historical_info = dhe_ming_1644.6.historical_info
+
+	dynamic_historical_event = {
+		tag = MNG
+		from = 1655.1.1
+		to = 1670.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = MNG
+		current_year >= 1655
+		stability < 30
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+	}
+
+	option = {
+		# 播迁入缅
+		name = dhe_ming_1644.6.a
+		historical_option = yes
+		add_stability = stability_severe_penalty
+		add_gold = -100
+		add_prestige = prestige_severe_penalty
+	}
+
+	option = {
+		# 退保滇西，联西营
+		name = dhe_ming_1644.6.b
+		add_manpower = { value = root.monthly_manpower multiply = 4 }
+		add_army_tradition = army_tradition_mild_bonus
+		add_stability = stability_mild_penalty
+		if = {
+			limit = { country_exists = c:CXI }
+			add_opinion = { target = c:CXI modifier = opinion_alliance }
+		}
+	}
+}

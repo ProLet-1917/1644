@@ -14,8 +14,11 @@ peace_talk_in_westphalia = { #1648 May.-Oct.
 		}
 	}
 
-	can_end = {
+	outcome = {
+		name = "peace_talk_in_westphalia_congress_closed"
+		trigger = {
 		var:peace_talk_in_westphalia_phase = 5
+		}
 	}
 
 	visible = {
@@ -26,6 +29,11 @@ peace_talk_in_westphalia = { #1648 May.-Oct.
 	}
 
 	on_start = {
+		add_timeline_note = {
+			key = timeline_note_peace_talk_in_westphalia
+			show_in_pop_graph = yes
+			unique = yes
+		}
 		set_variable = {
 			name = peace_talk_in_westphalia_phase_remaining_month
 			value = 5
@@ -103,6 +111,11 @@ peace_talk_in_westphalia = { #1648 May.-Oct.
 	}
 
 	on_ended = {
+		add_timeline_note = {
+			key = timeline_note_peace_talk_in_westphalia_end
+			show_in_pop_graph = yes
+			unique = yes
+		}
 		every_country = {
 			limit = {
 				has_country_modifier = ai_in_religion_war

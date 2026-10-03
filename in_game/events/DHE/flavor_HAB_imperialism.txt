@@ -1,0 +1,403 @@
+﻿# Anno 1644 - The Habsburg Monarchy in the Age of Imperialism (1837-1918)
+
+namespace = flavor_hab_imperialism
+
+# 1848年革命
+flavor_hab_imperialism.1 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_hab_imperialism.1.title
+    desc = flavor_hab_imperialism.1.desc
+    outcome = negative
+
+    historical_info = flavor_hab_imperialism.1.historical_info
+
+    dynamic_historical_event = {
+        tag = HAB
+        tag = AUS
+        from = 1848.3.1
+        to = 1855.1.1
+        monthly_chance = 6
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        stability < 25
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        # 以改革平息
+        name = flavor_hab_imperialism.1.a
+        historical_option = yes
+        add_stability = stability_mild_bonus
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+        change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_tiny_move_to_right }
+        add_country_modifier = { modifier = habsburg_reform_era years = 15 }
+    }
+
+    option = {
+        # 以军队镇压
+        name = flavor_hab_imperialism.1.b
+        add_stability = stability_severe_penalty
+        add_country_modifier = { modifier = habsburg_military_absolutism years = 15 }
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+    }
+}
+
+# 奥匈折衷
+flavor_hab_imperialism.2 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_hab_imperialism.2.title
+    desc = flavor_hab_imperialism.2.desc
+    outcome = neutral
+
+    historical_info = flavor_hab_imperialism.2.historical_info
+
+    dynamic_historical_event = {
+        tag = HAB
+        tag = AUS
+        from = 1860.1.1
+        to = 1880.1.1
+        monthly_chance = 4
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        OR = {
+            any_primary_or_accepted_or_tolerated_culture = { culture_group = culture_group:hungarian_group }
+            owns = location:buda
+            owns = location:bratislava
+        }
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = regular
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        # 双元帝国
+        name = flavor_hab_imperialism.2.a
+        historical_option = yes
+        add_country_modifier = { modifier = austro_hungarian_compromise years = -1 }
+        add_stability = stability_mild_bonus
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+        change_societal_value = { type = centralization_vs_decentralization value = societal_value_tiny_move_to_right }
+    }
+
+    option = {
+        # 单一集权帝国
+        name = flavor_hab_imperialism.2.b
+        add_country_modifier = { modifier = habsburg_military_absolutism years = 15 }
+        add_stability = stability_mild_penalty
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+        change_societal_value = { type = centralization_vs_decentralization value = societal_value_tiny_move_to_left }
+    }
+}
+
+# 巴尔干危机
+flavor_hab_imperialism.3 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_hab_imperialism.3.title
+    desc = flavor_hab_imperialism.3.desc
+    outcome = neutral
+
+    historical_info = flavor_hab_imperialism.3.historical_info
+
+    dynamic_historical_event = {
+        tag = HAB
+        tag = AUS
+        from = 1875.1.1
+        to = 1914.1.1
+        monthly_chance = 3
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        has_presence_in = region:balkan_region
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        # 兼并波斯尼亚
+        name = flavor_hab_imperialism.3.a
+        historical_option = yes
+        ai_will_select = { base = 60 }
+        add_country_modifier = { modifier = balkan_annexation_crisis years = 15 }
+        add_prestige = prestige_mild_bonus
+        add_stability = stability_mild_penalty
+    }
+
+    option = {
+        # 外交克制
+        name = flavor_hab_imperialism.3.b
+        ai_will_select = { base = 40 }
+        add_stability = stability_mild_bonus
+        add_prestige = prestige_mild_penalty
+        change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_tiny_move_to_right }
+    }
+}
+
+# 维也纳音乐之都
+flavor_hab_imperialism.10 = {
+    hide_portraits = yes
+    type = country_event
+    fire_only_once = yes
+    title = flavor_hab_imperialism.10.title
+    desc = flavor_hab_imperialism.10.desc
+    outcome = neutral
+
+    historical_info = flavor_hab_imperialism.10.historical_info
+
+    dynamic_historical_event = {
+        tag = HAB
+        tag = AUS
+        from = 1830.1.1
+        to = 1900.1.1
+        monthly_chance = 2
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        OR = {
+            owns = location:vienna
+            owns = location:buda
+            owns = location:prague
+        }
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:clergy_estate }
+        create_character = {
+            adm = { 20 80 }
+            dip = { 20 80 }
+            mil = { 10 50 }
+            artist = artist_type:composer
+            artist_skill = { 0.5 1.0 }
+            birth_date = 1797.1.31
+            female = no
+            culture = culture:danube_bavarian
+            religion = religion:catholic
+            estate = estate_type:burghers_estate
+            create_in_limbo = yes
+            save_scope_as = viennese_composer
+        }
+    }
+
+    option = {
+        name = flavor_hab_imperialism.10.a
+        historical_option = yes
+        scope:viennese_composer = {
+            move_country = root
+            add_character_modifier = {
+                modifier = viennese_master_composer
+                years = -1
+            }
+        }
+        culture ?= {
+            add_cultural_influence = cultural_influence_mild_bonus
+            add_cultural_tradition = cultural_tradition_mild_bonus
+        }
+        add_prestige = prestige_mild_bonus
+    }
+
+    option = {
+        name = flavor_hab_imperialism.10.b
+        hidden_effect = {
+            kill_character_silently = scope:viennese_composer
+        }
+        add_stability = stability_mild_bonus
+    }
+}
+
+# 维也纳分离派
+flavor_hab_imperialism.11 = {
+    hide_portraits = yes
+    type = country_event
+    fire_only_once = yes
+    title = flavor_hab_imperialism.11.title
+    desc = flavor_hab_imperialism.11.desc
+    outcome = neutral
+
+    historical_info = flavor_hab_imperialism.11.historical_info
+
+    dynamic_historical_event = {
+        tag = HAB
+        tag = AUS
+        from = 1890.1.1
+        to = 1915.1.1
+        monthly_chance = 2
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+        create_character = {
+            adm = { 30 90 }
+            dip = { 30 90 }
+            mil = { 10 50 }
+            artist = artist_type:painter
+            artist_skill = { 0.5 1.0 }
+            birth_date = 1862.7.14
+            female = no
+            culture = culture:danube_bavarian
+            religion = religion:catholic
+            estate = estate_type:burghers_estate
+            create_in_limbo = yes
+            save_scope_as = secessionist_painter
+        }
+    }
+
+    option = {
+        name = flavor_hab_imperialism.11.a
+        historical_option = yes
+        scope:secessionist_painter = {
+            move_country = root
+            add_character_modifier = {
+                modifier = viennese_secession_painter
+                years = -1
+            }
+        }
+        culture ?= {
+            add_cultural_influence = cultural_influence_mild_bonus
+            add_cultural_tradition = cultural_tradition_mild_bonus
+        }
+        change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_right }
+    }
+
+    option = {
+        name = flavor_hab_imperialism.11.b
+        add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+        change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_left }
+    }
+}
+
+# 精神分析
+flavor_hab_imperialism.12 = {
+    hide_portraits = yes
+    type = country_event
+    fire_only_once = yes
+    title = flavor_hab_imperialism.12.title
+    desc = flavor_hab_imperialism.12.desc
+    outcome = neutral
+
+    historical_info = flavor_hab_imperialism.12.historical_info
+
+    dynamic_historical_event = {
+        tag = HAB
+        tag = AUS
+        from = 1890.1.1
+        to = 1915.1.1
+        monthly_chance = 2
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+        OR = {
+            has_advance = modern_education_advance
+            has_advance = social_science_advance
+        }
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:burghers_estate }
+        create_character = {
+            adm = { 40 100 }
+            dip = { 30 90 }
+            mil = { 10 50 }
+            artist = artist_type:scientist
+            artist_skill = { 0.5 1.0 }
+            birth_date = 1856.5.6
+            female = no
+            culture = culture:danube_bavarian
+            religion = religion:judaism
+            estate = estate_type:burghers_estate
+            create_in_limbo = yes
+            save_scope_as = viennese_scientist
+        }
+    }
+
+    option = {
+        name = flavor_hab_imperialism.12.a
+        historical_option = yes
+        scope:viennese_scientist = {
+            move_country = root
+            add_character_modifier = {
+                modifier = viennese_scientific_school
+                years = -1
+            }
+        }
+        change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_right }
+        change_societal_value = { type = spiritualist_vs_humanist value = societal_value_tiny_move_to_right }
+        add_research_progress = research_progress_mild_bonus
+    }
+
+    option = {
+        name = flavor_hab_imperialism.12.b
+        scope:viennese_scientist = {
+            banish_character = yes
+        }
+        add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+    }
+}

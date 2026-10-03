@@ -1,0 +1,275 @@
+﻿# Anno 1644 - Japan in the Age of Imperialism (1837-1918)
+
+namespace = flavor_jap_imperialism
+
+# 明治维新
+flavor_jap_imperialism.1 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_jap_imperialism.1.title
+    desc = flavor_jap_imperialism.1.desc
+    outcome = neutral
+
+    historical_info = flavor_jap_imperialism.1.historical_info
+
+    dynamic_historical_event = {
+        tag = JAP
+        from = 1853.1.1
+        to = 1880.1.1
+        monthly_chance = 5
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_6_revolutions }
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+    }
+
+    option = {
+        # 王政复古
+        name = flavor_jap_imperialism.1.a
+        historical_option = yes
+        add_country_modifier = { modifier = meiji_restoration years = -1 }
+        change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_right }
+        change_societal_value = { type = centralization_vs_decentralization value = societal_value_tiny_move_to_left }
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+        add_stability = stability_mild_penalty
+    }
+
+    option = {
+        # 维持幕府
+        name = flavor_jap_imperialism.1.b
+        add_stability = stability_mild_bonus
+        add_country_modifier = { modifier = bakufu_preserved years = 25 }
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+    }
+}
+
+# 岩仓使团
+flavor_jap_imperialism.2 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_jap_imperialism.2.title
+    desc = flavor_jap_imperialism.2.desc
+    outcome = neutral
+
+    historical_info = flavor_jap_imperialism.2.historical_info
+
+    dynamic_historical_event = {
+        tag = JAP
+        from = 1870.1.1
+        to = 1895.1.1
+        monthly_chance = 4
+    }
+
+    trigger = {
+        has_country_modifier = meiji_restoration
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = happy
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+    }
+
+    option = {
+        name = flavor_jap_imperialism.2.a
+        historical_option = yes
+        add_country_modifier = { modifier = iwakura_mission years = 20 }
+        add_research_progress = research_progress_mild_bonus
+        add_prestige = prestige_mild_bonus
+    }
+
+    option = {
+        name = flavor_jap_imperialism.2.b
+        add_stability = stability_mild_bonus
+        change_societal_value = { type = outward_vs_inward value = societal_value_tiny_move_to_left }
+    }
+}
+
+# 脱亚入欧
+flavor_jap_imperialism.3 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_jap_imperialism.3.title
+    desc = flavor_jap_imperialism.3.desc
+    outcome = neutral
+
+    historical_info = flavor_jap_imperialism.3.historical_info
+
+    dynamic_historical_event = {
+        tag = JAP
+        from = 1880.1.1
+        to = 1910.1.1
+        monthly_chance = 3
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = regular
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        name = flavor_jap_imperialism.3.a
+        historical_option = yes
+        add_country_modifier = { modifier = leave_asia_join_europe years = -1 }
+        change_societal_value = { type = outward_vs_inward value = societal_value_tiny_move_to_right }
+        change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_right }
+        add_prestige = prestige_mild_bonus
+    }
+
+    option = {
+        name = flavor_jap_imperialism.3.b
+        add_stability = stability_mild_bonus
+        add_country_modifier = { modifier = preserve_asian_traditions years = 25 }
+        change_societal_value = { type = spiritualist_vs_humanist value = societal_value_tiny_move_to_left }
+    }
+}
+
+# 日清与日俄战争
+flavor_jap_imperialism.4 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_jap_imperialism.4.title
+    desc = flavor_jap_imperialism.4.desc
+    outcome = neutral
+
+    historical_info = flavor_jap_imperialism.4.historical_info
+
+    dynamic_historical_event = {
+        tag = JAP
+        from = 1890.1.1
+        to = 1910.1.1
+        monthly_chance = 3
+    }
+
+    trigger = {
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+    }
+
+    option = {
+        name = flavor_jap_imperialism.4.a
+        historical_option = yes
+        ai_will_select = { base = 70 }
+        add_country_modifier = { modifier = japanese_imperial_expansion years = 25 }
+        add_prestige = prestige_severe_bonus
+        change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_tiny_move_to_left }
+    }
+
+    option = {
+        name = flavor_jap_imperialism.4.b
+        ai_will_select = { base = 30 }
+        add_stability = stability_mild_bonus
+        change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_tiny_move_to_right }
+    }
+}
+
+# 浮世绘与近代艺术
+flavor_jap_imperialism.10 = {
+    hide_portraits = yes
+    type = country_event
+    fire_only_once = yes
+    title = flavor_jap_imperialism.10.title
+    desc = flavor_jap_imperialism.10.desc
+    outcome = neutral
+
+    historical_info = flavor_jap_imperialism.10.historical_info
+
+    dynamic_historical_event = {
+        tag = JAP
+        from = 1830.1.1
+        to = 1900.1.1
+        monthly_chance = 2
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_6_revolutions }
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+        create_character = {
+            adm = { 20 80 }
+            dip = { 20 80 }
+            mil = { 10 50 }
+            artist = artist_type:painter
+            artist_skill = { 0.5 1.0 }
+            birth_date = 1760.1.1
+            female = no
+            culture = root.culture
+            religion = root.religion
+            estate = estate_type:burghers_estate
+            create_in_limbo = yes
+            save_scope_as = ukiyo_e_master
+        }
+    }
+
+    option = {
+        name = flavor_jap_imperialism.10.a
+        historical_option = yes
+        scope:ukiyo_e_master = {
+            move_country = root
+            add_character_modifier = {
+                modifier = ukiyo_e_master_modifier
+                years = -1
+            }
+        }
+        culture ?= {
+            add_cultural_influence = cultural_influence_mild_bonus
+            add_cultural_tradition = cultural_tradition_mild_bonus
+        }
+        add_prestige = prestige_mild_bonus
+    }
+
+    option = {
+        name = flavor_jap_imperialism.10.b
+        hidden_effect = {
+            kill_character_silently = scope:ukiyo_e_master
+        }
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+    }
+}

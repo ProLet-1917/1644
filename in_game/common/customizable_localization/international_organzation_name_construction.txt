@@ -35,3 +35,21 @@ germany_unification_union= {
         fallback = yes
     }
 }
+
+italy_unification_union = {
+    type = international_organization
+
+    text = {
+        trigger = {
+            leader_country = {
+                has_variable = italian_potential_unifier
+            }
+        }
+        localization_key = ITALY_UNIFICATION_UNION_NAME
+    }
+
+    text = {
+        localization_key = italy_unification_union
+        fallback = yes
+    }
+}

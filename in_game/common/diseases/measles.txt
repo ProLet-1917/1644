@@ -8,12 +8,19 @@
 
 	#effect to spawn the disease somewhere when we've decided it should spawn.
 	spawn = {
-		random_ownable_location = {
+		#If the great_pestilence has not happened yet, exclude America
+		if = {
 			limit = {
 				#Not empty location
 				population > 1
 
-				#If we can't find an appropiate location we don't spawn
+				spawn_disease = {
+					disease = scope:disease
+					value = 0.5
+
+					#save the outbreak created for later
+					save_scope_as = outbreak_scope
+				}
 			}
 		
 			spawn_disease = {

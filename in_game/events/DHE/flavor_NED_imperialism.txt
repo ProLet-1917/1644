@@ -1,0 +1,178 @@
+﻿# Anno 1644 - The Netherlands in the Age of Imperialism (1837-1918)
+
+namespace = flavor_ned_imperialism
+
+# 比利时独立后的重整
+flavor_ned_imperialism.1 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_ned_imperialism.1.title
+    desc = flavor_ned_imperialism.1.desc
+    outcome = neutral
+
+    historical_info = flavor_ned_imperialism.1.historical_info
+
+    dynamic_historical_event = {
+        tag = NED
+        from = 1839.1.1
+        to = 1880.1.1
+        monthly_chance = 4
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_6_revolutions }
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = regular
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        name = flavor_ned_imperialism.1.a
+        historical_option = yes
+        add_country_modifier = { modifier = dutch_trade_reorientation years = 25 }
+        add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+        change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_tiny_move_to_right }
+        add_prestige = prestige_mild_penalty
+    }
+
+    option = {
+        name = flavor_ned_imperialism.1.b
+        add_stability = stability_mild_bonus
+        add_country_modifier = { modifier = dutch_liberal_reform years = 20 }
+        change_societal_value = { type = absolutism_vs_liberalism value = societal_value_tiny_move_to_right }
+    }
+}
+
+# 文化系统与殖民地
+flavor_ned_imperialism.2 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_ned_imperialism.2.title
+    desc = flavor_ned_imperialism.2.desc
+    outcome = neutral
+
+    historical_info = flavor_ned_imperialism.2.historical_info
+
+    dynamic_historical_event = {
+        tag = NED
+        from = 1830.1.1
+        to = 1900.1.1
+        monthly_chance = 3
+    }
+
+    trigger = {
+        has_presence_in = region:indonesia_region
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = regular
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        # 文化系统（强制种植）
+        name = flavor_ned_imperialism.2.a
+        historical_option = yes
+        add_country_modifier = { modifier = cultivation_system years = 25 }
+        add_gold = 500
+        add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_penalty }
+    }
+
+    option = {
+        # 伦理政策
+        name = flavor_ned_imperialism.2.b
+        add_country_modifier = { modifier = ethical_policy years = 25 }
+        add_stability = stability_mild_bonus
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+    }
+}
+
+# 荷兰黄金时代的艺术遗产
+flavor_ned_imperialism.10 = {
+    hide_portraits = yes
+    type = country_event
+    fire_only_once = yes
+    title = flavor_ned_imperialism.10.title
+    desc = flavor_ned_imperialism.10.desc
+    outcome = neutral
+
+    historical_info = flavor_ned_imperialism.10.historical_info
+
+    dynamic_historical_event = {
+        tag = NED
+        from = 1850.1.1
+        to = 1910.1.1
+        monthly_chance = 2
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_6_revolutions }
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+        create_character = {
+            adm = { 20 80 }
+            dip = { 20 80 }
+            mil = { 10 50 }
+            artist = artist_type:painter
+            artist_skill = { 0.5 1.0 }
+            birth_date = 1853.3.30
+            female = no
+            culture = root.culture
+            religion = root.religion
+            estate = estate_type:burghers_estate
+            create_in_limbo = yes
+            save_scope_as = dutch_painter
+        }
+    }
+
+    option = {
+        name = flavor_ned_imperialism.10.a
+        historical_option = yes
+        scope:dutch_painter = {
+            move_country = root
+            add_character_modifier = {
+                modifier = dutch_master_painter
+                years = -1
+            }
+        }
+        culture ?= {
+            add_cultural_influence = cultural_influence_mild_bonus
+            add_cultural_tradition = cultural_tradition_mild_bonus
+        }
+        add_prestige = prestige_mild_bonus
+    }
+
+    option = {
+        name = flavor_ned_imperialism.10.b
+        hidden_effect = {
+            kill_character_silently = scope:dutch_painter
+        }
+        add_stability = stability_mild_bonus
+    }
+}

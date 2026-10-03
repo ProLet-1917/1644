@@ -1,0 +1,180 @@
+﻿# Anno 1644 - Spain in the Age of Imperialism (1837-1918)
+
+namespace = flavor_spa_imperialism
+
+# 卡洛斯战争
+flavor_spa_imperialism.1 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_spa_imperialism.1.title
+    desc = flavor_spa_imperialism.1.desc
+    outcome = negative
+
+    historical_info = flavor_spa_imperialism.1.historical_info
+
+    dynamic_historical_event = {
+        tag = SPA
+        tag = CAS
+        from = 1833.1.1
+        to = 1880.1.1
+        monthly_chance = 4
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_6_revolutions }
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:clergy_estate }
+    }
+
+    option = {
+        name = flavor_spa_imperialism.1.a
+        historical_option = yes
+        add_country_modifier = { modifier = carlist_wars years = 20 }
+        add_stability = stability_severe_penalty
+        add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_penalty }
+        change_societal_value = { type = absolutism_vs_liberalism value = societal_value_tiny_move_to_right }
+    }
+
+    option = {
+        name = flavor_spa_imperialism.1.b
+        add_stability = stability_mild_penalty
+        add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+        change_societal_value = { type = absolutism_vs_liberalism value = societal_value_tiny_move_to_left }
+    }
+}
+
+# 1898年灾难
+flavor_spa_imperialism.2 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_spa_imperialism.2.title
+    desc = flavor_spa_imperialism.2.desc
+    outcome = negative
+
+    historical_info = flavor_spa_imperialism.2.historical_info
+
+    dynamic_historical_event = {
+        tag = SPA
+        tag = CAS
+        from = 1890.1.1
+        to = 1910.1.1
+        monthly_chance = 3
+    }
+
+    trigger = {
+        current_age_or_later = { age = age_7_imperialism }
+        country_exists = c:USA
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+    }
+
+    option = {
+        name = flavor_spa_imperialism.2.a
+        historical_option = yes
+        add_country_modifier = { modifier = disaster_of_1898 years = -1 }
+        add_stability = stability_severe_penalty
+        add_prestige = prestige_severe_penalty
+        change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_right }
+    }
+
+    option = {
+        name = flavor_spa_imperialism.2.b
+        add_stability = stability_mild_penalty
+        add_prestige = prestige_mild_penalty
+        add_country_modifier = { modifier = spanish_restoration_compromise years = 20 }
+    }
+}
+
+# 西班牙艺术
+flavor_spa_imperialism.10 = {
+    hide_portraits = yes
+    type = country_event
+    fire_only_once = yes
+    title = flavor_spa_imperialism.10.title
+    desc = flavor_spa_imperialism.10.desc
+    outcome = neutral
+
+    historical_info = flavor_spa_imperialism.10.historical_info
+
+    dynamic_historical_event = {
+        tag = SPA
+        tag = CAS
+        from = 1870.1.1
+        to = 1910.1.1
+        monthly_chance = 2
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_6_revolutions }
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+        create_character = {
+            adm = { 30 90 }
+            dip = { 30 90 }
+            mil = { 10 50 }
+            artist = artist_type:architect
+            artist_skill = { 0.5 1.0 }
+            birth_date = 1852.6.25
+            female = no
+            culture = root.culture
+            religion = root.religion
+            estate = estate_type:burghers_estate
+            create_in_limbo = yes
+            save_scope_as = catalan_architect
+        }
+    }
+
+    option = {
+        name = flavor_spa_imperialism.10.a
+        historical_option = yes
+        scope:catalan_architect = {
+            move_country = root
+            add_character_modifier = {
+                modifier = catalan_modernisme_architect
+                years = -1
+            }
+        }
+        culture ?= {
+            add_cultural_influence = cultural_influence_mild_bonus
+            add_cultural_tradition = cultural_tradition_mild_bonus
+        }
+        add_prestige = prestige_mild_bonus
+    }
+
+    option = {
+        name = flavor_spa_imperialism.10.b
+        hidden_effect = {
+            kill_character_silently = scope:catalan_architect
+        }
+        add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+    }
+}

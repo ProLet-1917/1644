@@ -1,0 +1,291 @@
+# Anno 1644 - Xi (Daxi) dynasty DHE (1644-1662)
+# Trigger conditions are deliberately strict: tag-bound, date-bound and situation-bound.
+
+namespace = dhe_xi_1644
+
+# 成都称帝 - Proclaimed Emperor in Chengdu
+dhe_xi_1644.1 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_xi_1644.1.title
+	desc = dhe_xi_1644.1.desc
+	outcome = neutral
+
+	historical_info = dhe_xi_1644.1.historical_info
+
+	dynamic_historical_event = {
+		tag = CXI
+		from = 1644.11.1
+		to = 1652.1.1
+		monthly_chance = 7
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = CXI
+		is_subject = no
+		current_year < 1652
+		capital ?= { region = region:west_china_region }
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+	}
+
+	option = {
+		# 即皇帝位，国号大西
+		name = dhe_xi_1644.1.a
+		historical_option = yes
+		add_legitimacy = legitimacy_severe_bonus
+		add_prestige = prestige_mild_bonus
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+	}
+
+	option = {
+		# 称王而不称帝
+		name = dhe_xi_1644.1.b
+		add_stability = stability_mild_bonus
+		add_political_influence = political_influence_mild_bonus
+		add_legitimacy = legitimacy_mild_penalty
+	}
+}
+
+# 七杀碑 - The Seven Kill Stele
+dhe_xi_1644.2 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_xi_1644.2.title
+	desc = dhe_xi_1644.2.desc
+	outcome = neutral
+
+	historical_info = dhe_xi_1644.2.historical_info
+
+	dynamic_historical_event = {
+		tag = CXI
+		from = 1644.12.1
+		to = 1655.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = CXI
+		current_year < 1655
+		capital ?= { region = region:west_china_region }
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+	}
+
+	option = {
+		# 立碑示威，严刑立威
+		name = dhe_xi_1644.2.a
+		historical_option = yes
+		add_political_influence = political_influence_mild_bonus
+		add_army_tradition = army_tradition_mild_bonus
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_penalty }
+		add_stability = stability_mild_penalty
+	}
+
+	option = {
+		# 收揽人心，停止诛戮
+		name = dhe_xi_1644.2.b
+		add_stability = stability_mild_bonus
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_bonus }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+	}
+}
+
+# 江口沉银 - The Silver at Jiangkou
+dhe_xi_1644.3 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_xi_1644.3.title
+	desc = dhe_xi_1644.3.desc
+	outcome = positive
+
+	historical_info = dhe_xi_1644.3.historical_info
+
+	dynamic_historical_event = {
+		tag = CXI
+		from = 1646.1.1
+		to = 1665.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = CXI
+		current_year >= 1646
+		has_presence_in = region:west_china_region
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		# 打捞沉银
+		name = dhe_xi_1644.3.a
+		historical_option = yes
+		add_gold = 250
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+	}
+
+	option = {
+		# 封存江口，不动分毫
+		name = dhe_xi_1644.3.b
+		add_stability = stability_mild_bonus
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+# 大西军联明抗清 - The Daxi Army Joins the Ming
+dhe_xi_1644.4 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_xi_1644.4.title
+	desc = dhe_xi_1644.4.desc
+	outcome = neutral
+
+	historical_info = dhe_xi_1644.4.historical_info
+
+	dynamic_historical_event = {
+		tag = CXI
+		from = 1647.1.1
+		to = 1665.1.1
+		monthly_chance = 4
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = CXI
+		current_year >= 1647
+		country_exists = c:MNG
+		country_exists = c:QNG
+		is_at_war_with = c:QNG
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+	}
+
+	option = {
+		# 联明抗清，共扶社稷
+		name = dhe_xi_1644.4.a
+		historical_option = yes
+		add_opinion = { target = c:MNG modifier = opinion_alliance }
+		add_army_tradition = army_tradition_mild_bonus
+		add_manpower = { value = root.monthly_manpower multiply = 4 }
+		add_legitimacy = legitimacy_mild_bonus
+	}
+
+	option = {
+		# 独据巴蜀，坐观成败
+		name = dhe_xi_1644.4.b
+		add_political_influence = political_influence_mild_bonus
+		add_stability = stability_mild_bonus
+		add_gold = 100
+	}
+}
+
+# 张献忠之死 - The Death of Zhang Xianzhong
+dhe_xi_1644.5 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_xi_1644.5.title
+	desc = dhe_xi_1644.5.desc
+	outcome = negative
+
+	major = yes
+
+	historical_info = dhe_xi_1644.5.historical_info
+
+	dynamic_historical_event = {
+		tag = CXI
+		from = 1647.1.1
+		to = 1658.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = CXI
+		current_year >= 1647
+		has_ruler = yes
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:nobles_estate }
+		if = {
+			limit = { has_ruler = yes }
+			ruler ?= { save_scope_as = xi_leader }
+		}
+	}
+
+	option = {
+		# 秘不发丧，四将军分统其众
+		name = dhe_xi_1644.5.a
+		historical_option = yes
+		if = {
+			limit = { exists = scope:xi_leader }
+			kill_character_silently = scope:xi_leader
+		}
+		add_country_modifier = { modifier = xi_four_generals years = 20 }
+		add_manpower = { value = root.monthly_manpower multiply = 3 }
+		add_stability = stability_severe_penalty
+	}
+
+	option = {
+		# 立新主，退保云贵
+		name = dhe_xi_1644.5.b
+		if = {
+			limit = { exists = scope:xi_leader }
+			kill_character_silently = scope:xi_leader
+		}
+		add_stability = stability_mild_penalty
+		add_legitimacy = legitimacy_mild_penalty
+		add_army_tradition = army_tradition_mild_bonus
+	}
+}

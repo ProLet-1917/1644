@@ -93,8 +93,11 @@ Triple_crown = {
     }
 
     happened = {
-        is_chinese_dynasty_leader = yes
-        is_leader_of_international_organization = international_organization:hre
+        is_leader_of_international_organization_of_type = { type = chinese_dynasty }
+				OR = {
+					tag = HRE
+					is_leader_of_international_organization = international_organization:hre
+				}
     }
 }
 

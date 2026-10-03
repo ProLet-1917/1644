@@ -29,7 +29,7 @@
 # - modifier: <modifier> modifier applied to the location (multiplied by building level and goods access)
 # - raw_modifier: <modifier> modifier applied to the location (not scaled)
 # - market_center_modifier: <modifier> modifier applied to the location if built in a market center (multiplied by building level and goods access)
-# - pop_size_created: <float> creates a pop of this size for the new building, taking it from your capital (for foreign buildings only)
+# - pop_size_created: <float> creates a pop of this size for the new building, taking it from the largest available population center in your capital's area (for foreign buildings only)
 # - increase_per_level_cost: <per cent> each new level added increases the cost by this percentage. So 0.5 = 50% more expensive per extra level
 # - <location rank>: <yes/no> location ranks that the building can be built in
 # - on_built = { <effects> }

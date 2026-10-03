@@ -14,8 +14,11 @@
 		}
 	}
 	
-	can_end = {
+	outcome = {
+		name = "colonial_revolution_age_ends"
+		trigger = {
 		current_age = age_7_imperialism
+		}
 	}
 
 	visible = {
@@ -24,6 +27,11 @@
 	}
 
 	on_start = {
+		add_timeline_note = {
+			key = timeline_note_colonial_revolution
+			show_in_pop_graph = yes
+			unique = yes
+		}
 		every_colonial_country = {
 			trigger_event_non_silently = {
 				id = colonial_revolution.1
@@ -131,6 +139,11 @@
 	}
 
 	on_ended = {
+		add_timeline_note = {
+			key = timeline_note_colonial_revolution_end
+			show_in_pop_graph = yes
+			unique = yes
+		}
 		every_colonial_country = {
 			add_country_modifier = {
 				modifier = loyaled_colonial_subjects

@@ -1,4 +1,4 @@
-# Anno 1644 - England in the Age of Imperialism (1837-1918)
+﻿# Anno 1644 - England in the Age of Imperialism (1837-1918)
 # Flavor / Dynamic Historical Events for the United Kingdom
 # Covers the era, plus the people and artworks of the age.
 
@@ -62,7 +62,7 @@ flavor_eng_imperialism.2 = {
 
 	title = flavor_eng_imperialism.2.title
 	desc = flavor_eng_imperialism.2.desc
-	outcome = bad
+	outcome = negative
 
 	dynamic_historical_event = {
 		tag = ENG
@@ -227,6 +227,15 @@ flavor_eng_imperialism.5 = {
 		monthly_chance = 2
 	}
 
+	trigger = {
+	    OR = {
+	        always = yes
+	        has_dlc = "0_5_dawn_of_the_new_era"
+	    }
+	    current_age_or_later = { age = age_6_revolutions }
+	    stability < 40
+	}
+
 	illustration_tags = {
 		10 = interior
 		10 = happy
@@ -296,6 +305,14 @@ flavor_eng_imperialism.6 = {
 		from = 1837.1.1
 		to = 1870.1.1
 		monthly_chance = 3
+	}
+
+	trigger = {
+	    OR = {
+	        always = yes
+	        has_dlc = "0_5_dawn_of_the_new_era"
+	    }
+	    current_age_or_later = { age = age_7_imperialism }
 	}
 
 	illustration_tags = {
@@ -371,6 +388,14 @@ flavor_eng_imperialism.7 = {
 		monthly_chance = 2
 	}
 
+	trigger = {
+	    OR = {
+	        always = yes
+	        has_dlc = "0_5_dawn_of_the_new_era"
+	    }
+	    current_age_or_later = { age = age_6_revolutions }
+	}
+
 	illustration_tags = {
 		10 = exterior
 		10 = regular
@@ -443,6 +468,15 @@ flavor_eng_imperialism.8 = {
 		monthly_chance = 2
 	}
 
+	trigger = {
+	    OR = {
+	        always = yes
+	        has_dlc = "0_5_dawn_of_the_new_era"
+	    }
+	    current_age_or_later = { age = age_7_imperialism }
+	    country_exists = c:RUS
+	}
+
 	illustration_tags = {
 		10 = interior
 		10 = happy
@@ -505,6 +539,14 @@ flavor_eng_imperialism.9 = {
 		from = 1887.1.1
 		to = 1895.1.1
 		monthly_chance = 3
+	}
+
+	trigger = {
+	    OR = {
+	        always = yes
+	        has_dlc = "0_5_dawn_of_the_new_era"
+	    }
+	    current_age_or_later = { age = age_7_imperialism }
 	}
 
 	illustration_tags = {

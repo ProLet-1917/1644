@@ -11,7 +11,16 @@
 		in_civil_war = no
 		#at_war = no
 		has_embraced_institution = institution:enlightenment
-		average_country_literacy > 50
+		OR = {
+			average_country_literacy > 50
+			AND = {
+				is_great_power = yes
+				OR = {
+					"estate_power(estate_type:crown_estate)" >= 0.5
+					societal_value:absolutism_vs_liberalism < 0
+				}
+			}
+		}
 		OR = {
 			is_great_power = yes
 			custom_tooltip = {

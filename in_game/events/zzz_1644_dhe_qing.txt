@@ -1,0 +1,328 @@
+# Anno 1644 - Qing dynasty DHE (1644-1700)
+# Trigger conditions are deliberately strict: tag-bound, date-bound and situation-bound.
+
+namespace = dhe_qing_1644
+
+# 多尔衮摄政 - The Dorgon Regency
+dhe_qing_1644.1 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_qing_1644.1.title
+	desc = dhe_qing_1644.1.desc
+	outcome = neutral
+
+	historical_info = dhe_qing_1644.1.historical_info
+
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1643.1.1
+		to = 1652.1.1
+		monthly_chance = 6
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = QNG
+		is_subject = no
+		current_year < 1652
+		has_ruler = yes
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		# 委政于摄政王
+		name = dhe_qing_1644.1.a
+		historical_option = yes
+		add_country_modifier = { modifier = qing_dorgon_regency years = 20 }
+		add_stability = stability_mild_bonus
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		add_army_tradition = army_tradition_mild_bonus
+	}
+
+	option = {
+		# 加强皇权
+		name = dhe_qing_1644.1.b
+		change_societal_value = { type = centralization_vs_decentralization value = societal_value_tiny_move_to_left }
+		add_legitimacy = legitimacy_mild_bonus
+		add_political_influence = political_influence_mild_penalty
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+	}
+}
+
+# 圈地令 - The Land Enclosure Edict
+dhe_qing_1644.2 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_qing_1644.2.title
+	desc = dhe_qing_1644.2.desc
+	outcome = neutral
+
+	historical_info = dhe_qing_1644.2.historical_info
+
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1644.1.1
+		to = 1665.1.1
+		monthly_chance = 4
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = QNG
+		capital ?= { region = region:north_china_region }
+		current_year < 1665
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+	}
+
+	option = {
+		# 推行圈地
+		name = dhe_qing_1644.2.a
+		historical_option = yes
+		add_manpower = { value = root.monthly_manpower multiply = 4 }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_penalty }
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_tiny_move_to_left }
+	}
+
+	option = {
+		# 禁止圈地
+		name = dhe_qing_1644.2.b
+		add_stability = stability_mild_bonus
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_bonus }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_tiny_move_to_right }
+	}
+}
+
+# 剃发易服 - The Tonsure Order
+dhe_qing_1644.3 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_qing_1644.3.title
+	desc = dhe_qing_1644.3.desc
+	outcome = neutral
+
+	historical_info = dhe_qing_1644.3.historical_info
+
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1645.1.1
+		to = 1680.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = QNG
+		capital ?= { region = region:north_china_region }
+		current_year >= 1645
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		# 严行剃发
+		name = dhe_qing_1644.3.a
+		historical_option = yes
+		add_country_modifier = { modifier = qing_tonsure_order years = 25 }
+		add_political_influence = political_influence_mild_bonus
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_penalty }
+	}
+
+	option = {
+		# 三令五申，缓行
+		name = dhe_qing_1644.3.b
+		add_stability = stability_mild_bonus
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+		add_legitimacy = legitimacy_mild_penalty
+	}
+}
+
+# 顺治亲政 - The Emperor Assumes Personal Rule
+dhe_qing_1644.4 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_qing_1644.4.title
+	desc = dhe_qing_1644.4.desc
+	outcome = positive
+
+	historical_info = dhe_qing_1644.4.historical_info
+
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1650.1.1
+		to = 1660.1.1
+		monthly_chance = 5
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = QNG
+		has_ruler = yes
+		has_regent = no
+		current_year >= 1650
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		# 亲政
+		name = dhe_qing_1644.4.a
+		historical_option = yes
+		add_legitimacy = legitimacy_severe_bonus
+		add_stability = stability_mild_bonus
+		add_prestige = prestige_mild_bonus
+		add_political_influence = political_influence_mild_bonus
+	}
+}
+
+# 雅克萨之战与尼布楚条约 - Albazin and the Treaty of Nerchinsk
+dhe_qing_1644.5 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_qing_1644.5.title
+	desc = dhe_qing_1644.5.desc
+	outcome = neutral
+
+	historical_info = dhe_qing_1644.5.historical_info
+
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1680.1.1
+		to = 1710.1.1
+		monthly_chance = 4
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = QNG
+		current_year >= 1680
+		country_exists = c:RUS
+		has_presence_in = region:east_siberia_region
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		c:RUS = { save_scope_as = rus_rival }
+	}
+
+	option = {
+		# 以战促和
+		name = dhe_qing_1644.5.a
+		historical_option = yes
+		add_army_tradition = army_tradition_mild_bonus
+		add_prestige = prestige_mild_bonus
+		add_casus_belli = { target = c:RUS type = casus_belli:cb_conquer_province }
+	}
+
+	option = {
+		# 划定北界
+		name = dhe_qing_1644.5.b
+		add_stability = stability_mild_bonus
+		add_prestige = prestige_mild_penalty
+		add_opinion = { target = c:RUS modifier = opinion_positive_religious_tolerance }
+	}
+}
+
+# 多伦会盟 - The Dolon Nor Assembly
+dhe_qing_1644.6 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_qing_1644.6.title
+	desc = dhe_qing_1644.6.desc
+	outcome = neutral
+
+	historical_info = dhe_qing_1644.6.historical_info
+
+	dynamic_historical_event = {
+		tag = QNG
+		from = 1685.1.1
+		to = 1710.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = QNG
+		current_year >= 1685
+		has_presence_in = region:mongolia_region
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		# 会盟诸部
+		name = dhe_qing_1644.6.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		add_manpower = { value = root.monthly_manpower multiply = 3 }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+	}
+
+	option = {
+		# 分而治之
+		name = dhe_qing_1644.6.b
+		add_political_influence = political_influence_mild_bonus
+		add_stability = stability_mild_bonus
+	}
+}

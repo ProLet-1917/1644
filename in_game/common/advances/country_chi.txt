@@ -2,6 +2,7 @@
 
 baihua = {
 	age = age_1_traditions
+	icon = baihua
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -13,6 +14,7 @@ baihua = {
 
 zaju = {
 	age = age_1_traditions
+	icon = zaju
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -25,6 +27,7 @@ zaju = {
 
 successors_of_genghis_khan = {
 	age = age_1_traditions
+	icon = successors_of_genghis_khan
 	potential = {
 		culture = { has_culture_group = culture_group:mongolian_group }
 	}
@@ -36,6 +39,7 @@ successors_of_genghis_khan = {
 
 confucian_influences = {
 	age = age_1_traditions
+	icon = confucian_influences
 	potential = {
 		culture = { has_culture_group = culture_group:confucian_group }
 	}
@@ -44,6 +48,17 @@ confucian_influences = {
 	head_of_cabinet_promotion_cost_modifier = -0.33
 	
 	requires = legalism_advance
+}
+
+chi_bureaucracy_advance = {
+	content_priority = 500
+	potential = {
+		culture = { has_culture_group = culture_group:chinese_group }
+	}
+	age = age_1_traditions
+	icon = library_advance
+	global_max_bureaucracy_slots = 1
+	requires = efficient_bureaucracy
 }
 
 the_ancient_standing_army = {
@@ -61,6 +76,7 @@ the_ancient_standing_army = {
 
 extensive_canal_works = {
 	age = age_2_renaissance
+	icon = extensive_canal_works
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -71,6 +87,7 @@ extensive_canal_works = {
 
 tributary_system = {
 	age = age_2_renaissance
+	icon = tributary_system
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -82,11 +99,13 @@ tributary_system = {
 
 zhongshu_sheng = {
 	age = age_2_renaissance
+	icon = zhongshu_sheng
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
 
 	government_reform_slots = 1
+	pure_tooltip_entry = improves_central_secretariat_bureaucracy_tt
 
 	requires = tributary_system
 }
@@ -104,18 +123,20 @@ lijia_system = {
 
 yulin_tuce = {
 	age = age_2_renaissance
+	icon = lijia_system
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
 
 	tax_income_efficiency = medium_tax_income_efficiency_bonus
-	global_monthly_food_modifier = 0.05
+	global_monthly_food_modifier = monthly_food_productivity_weak_bonus
 
 	requires = trade_range_advance_age_2
 }
 
 weisuo_system = {
 	age = age_2_renaissance
+	icon = weisuo_system
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -128,6 +149,7 @@ weisuo_system = {
 
 grand_coordinators = {
 	age = age_2_renaissance
+	icon = grand_coordinators
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -141,6 +163,7 @@ grand_coordinators = {
 
 the_censorate = {
 	age = age_3_discovery
+	icon = the_censorate
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -152,6 +175,7 @@ the_censorate = {
 
 the_tea_trade = {
 	age = age_3_discovery
+	icon = the_tea_trade
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -163,6 +187,7 @@ the_tea_trade = {
 
 tu_bing = {
 	age = age_3_discovery
+	icon = tu_bing
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -175,6 +200,7 @@ tu_bing = {
 
 tusi_titles = {
 	age = age_3_discovery
+	icon = tusi_titles
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -186,6 +212,7 @@ tusi_titles = {
 
 salt_monopoly = {
 	age = age_3_discovery
+	icon = salt_monopoly
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -199,6 +226,7 @@ salt_monopoly = {
 
 reform_the_grand_secretariat = {
 	age = age_4_reformation
+	icon = reform_the_grand_secretariat
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -210,6 +238,7 @@ reform_the_grand_secretariat = {
 
 grand_military_parades = {
 	age = age_4_reformation
+	icon = grand_military_parades
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -221,6 +250,7 @@ grand_military_parades = {
 
 silver_standard = {
 	age = age_4_reformation
+	icon = silver_standard
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -232,6 +262,7 @@ silver_standard = {
 
 nine_garrisons_of_the_great_wall = {
 	age = age_4_reformation
+	icon = nine_garrisons_of_the_great_wall
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -255,6 +286,7 @@ the_red_cannon = {
 
 woodblock_printing = {
 	age = age_5_absolutism
+	icon = woodblock_printing
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -265,6 +297,7 @@ woodblock_printing = {
 
 green_standard_army = {
 	age = age_5_absolutism
+	icon = green_standard_army
 	potential = {
 		culture = { has_culture_group = culture_group:jurchen_group }
 	}
@@ -280,6 +313,7 @@ green_standard_army = {
 
 great_tax_reform = {
 	age = age_5_absolutism
+	icon = great_tax_reform
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -291,6 +325,7 @@ great_tax_reform = {
 
 junji_chu = {
 	age = age_5_absolutism
+	icon = junji_chu
 	potential = {
 		culture = { has_culture_group = culture_group:jurchen_group }
 	}
@@ -305,6 +340,7 @@ junji_chu = {
 
 jingdezhen_porcelain = {
 	age = age_5_absolutism
+	icon = jingdezhen_porcelain
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -330,6 +366,7 @@ sanxitang = {
 
 monuments_to_greatness = {
 	age = age_6_revolutions
+	icon = sanxitang
 	potential = {
 		culture = { has_culture_group = culture_group:chinese_group }
 	}
@@ -341,6 +378,7 @@ monuments_to_greatness = {
 
 ten_great_campaigns = {
 	age = age_6_revolutions
+	icon = ten_great_campaigns
 	potential = {
 		culture = { has_culture_group = culture_group:jurchen_group }
 	}

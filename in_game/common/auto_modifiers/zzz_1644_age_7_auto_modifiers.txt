@@ -1,0 +1,68 @@
+﻿# Anno 1644 - Age of Imperialism
+# Automatic modifiers: whenever a country has one of the new Age 7 parliaments,
+# laws can no longer be paid for with stability. They have to be pushed through
+# the chamber as parliament issues instead.
+
+republican_parliament_law_vote_required_auto = {
+    category = country
+    type = country
+
+    potential_trigger = {
+        OR = {
+            parliament_type = parliament_type:republican_parliament
+            parliament_type = parliament_type:presidential_parliament
+            parliament_type = parliament_type:imperial_parliament
+            parliament_type = parliament_type:mass_suffrage_parliament
+        }
+    }
+
+    allow_law_change_by_stability = no
+    change_policy_cost_modifier = 5.0
+    set_policy_cost_modifier = 5.0
+}
+
+# 议会占比：贵族席位 -> 贵族权力
+parliament_seat_nobles_power = {
+    category = country
+    type = country
+
+    potential_trigger = {
+        OR = {
+            parliament_type = parliament_type:imperial_parliament
+            parliament_type = parliament_type:estate_parliament
+        }
+    }
+
+    global_nobles_estate_power = 0.10
+    nobles_estate_agenda_impact = 0.10
+}
+
+# 议会占比：市民席位 -> 市民权力
+parliament_seat_burghers_power = {
+    category = country
+    type = country
+
+    potential_trigger = {
+        OR = {
+            parliament_type = parliament_type:republican_parliament
+            parliament_type = parliament_type:presidential_parliament
+            parliament_type = parliament_type:mass_suffrage_parliament
+        }
+    }
+
+    global_burghers_estate_power = 0.10
+    burghers_estate_agenda_impact = 0.10
+}
+
+# 议会占比：平民席位 -> 平民权力
+parliament_seat_peasants_power = {
+    category = country
+    type = country
+
+    potential_trigger = {
+        parliament_type = parliament_type:mass_suffrage_parliament
+    }
+
+    global_peasants_estate_power = 0.15
+    peasants_estate_agenda_impact = 0.15
+}

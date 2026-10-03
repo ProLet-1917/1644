@@ -117,6 +117,8 @@ wsg_1644_choice.2 = { #是否听令入关
 	option = { #不入关
 		name = wsg_1644_choice.2.b
 		custom_tooltip = wsg_1644_choice.2.tt2
+		add_prestige = prestige_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 	}
 }
 
@@ -345,6 +347,8 @@ wsg_1644_choice.4 = { #崇祯不南迁、李自成不进京、清朝入关后：
 	option = { #忠诚
 		name = wsg_1644_choice.4.c
 		ai_chance = { factor = 0.5 }
+		add_prestige = prestige_mild_bonus
+		add_stability = stability_mild_bonus
 	}
 }
 
@@ -355,6 +359,8 @@ wsg_1644_choice.5 = {#山海关之战
 	historical_info = wsg_1644_choice.5.historical_info
 	option = {
 		name = wsg_1644_choice.5.a
+		add_prestige = prestige_mild_bonus
+		add_army_tradition = army_tradition_mild_bonus
 	}
 }
 
@@ -374,5 +380,7 @@ wsg_1644_choice.100 = {
 
 	option = {
 		name = wsg_1644_choice.100.a
+		add_prestige = prestige_mild_bonus
+		add_legitimacy = legitimacy_mild_bonus
 	}
 }

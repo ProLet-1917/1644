@@ -8,15 +8,17 @@ types Frontend
 		blockoverride "header_button_text_layout" {}
 
 		blockoverride "icon_texture" {
-			texture = "gfx/interface/icons/dlc/dlc_shield.dds"
+			block "button_dlc_mods_texture" { texture = "gfx/interface/icons/dlc/dlc_shield.dds" }
 			# texture_density = 2
 		}
 
 		name = "mods_gui_button"
 
-		action_tooltip = {
-			title = "MAIN_MENU_MODS_AND_DLCS"
-			on_action = "[FrontEndMainView.ToggleOpenMods]"
+		block "button_dlc_mods_action" {
+			action_tooltip = {
+				title = "MAIN_MENU_MODS_AND_DLCS"
+				on_action = "[FrontEndMainView.ToggleOpenMods]"
+			}
 		}
 
 		tooltipwidget = { 
@@ -69,7 +71,14 @@ types Frontend
 		#}
 		
 		vbox = {
-			button_dlc_mods = {}
+			button_dlc_mods = {
+				blockoverride "button_dlc_mods_action" {
+					action_tooltip = {
+						title = "MAIN_MENU_MODS_AND_DLCS"
+						on_action = "[FrontEndMainView.ToggleOpenDLCs]"
+					}
+				}
+			}
 
 			fixedgridbox = {
 				using = layoutpolicy_expanding

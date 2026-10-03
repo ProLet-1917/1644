@@ -163,7 +163,7 @@ flavor_chi.2 = {
 
 	option = {
 		name = flavor_chi.2.e
-		add_government_power = government_power_ultimate_penalty
+		add_political_influence = political_influence_ultimate_penalty
 		if = {
 			limit = { modifier:allow_harmony = yes }
 			harmony_mild_towards_equilibrium = yes
@@ -344,7 +344,7 @@ flavor_chi.15 = {	#Administrative Purge
 	option = {
 		name = flavor_chi.15.c
 
-		add_government_power = government_power_mild_penalty
+		add_political_influence = political_influence_mild_penalty
 		if = {
 			limit = { modifier:allow_harmony = yes }
 			harmony_mild_towards_equilibrium = yes
@@ -403,7 +403,7 @@ flavor_chi.16 = {	#Mistrust in the Cabinet
 				mode = add_and_extend
 			}
 		}
-		add_government_power = government_power_weak_bonus
+		add_political_influence = political_influence_weak_bonus
 		if = {
 			limit = {
 				OR = {
@@ -430,7 +430,7 @@ flavor_chi.16 = {	#Mistrust in the Cabinet
 	option = {
 		name = flavor_chi.16.b
 
-		add_government_power = government_power_weak_penalty
+		add_political_influence = political_influence_weak_penalty
 		if = {
 			limit = {
 				OR = {
@@ -651,7 +651,7 @@ flavor_chi.18 = {	#Away from Home
 	option = {
 		name = flavor_chi.18.b
 
-		add_government_power = government_power_weak_bonus
+		add_political_influence = political_influence_weak_bonus
 		if = {
 			limit = { modifier:allow_righteousness = yes }
 			add_righteousness = righteousness_weak_penalty
@@ -2535,7 +2535,7 @@ flavor_chi.107 = {
 				type = work_of_art_type:palace
 			}
 		}
-		add_government_power = government_power_severe_bonus
+		add_political_influence = political_influence_severe_bonus
 	}
 
 	option = {
@@ -2728,7 +2728,7 @@ flavor_chi.110 = {
 			type = scope:target_estate.estate_type
 			value = estate_satisfaction_mild_penalty
 		}
-		add_government_power = government_power_severe_bonus
+		add_political_influence = political_influence_severe_bonus
 	}
 
 	option = {
@@ -2823,7 +2823,7 @@ flavor_chi.112 = {
 				trigger = {
 					manpower < {
 						value = yearly_manpower
-						multiply = 0.5
+						factor = 0.5
 					}
 				}
 			}
@@ -2832,7 +2832,7 @@ flavor_chi.112 = {
 				trigger = {
 					gold < {
 						value = monthly_income_trade_and_tax
-						multiply = 3
+						factor = 3
 					}
 				}
 			}
@@ -2998,7 +2998,7 @@ flavor_chi.114 = {
 				trigger = {
 					gold < {
 						value = monthly_income_trade_and_tax
-						multiply = 3
+						factor = 3
 					}
 				}
 			}
@@ -3221,7 +3221,3 @@ flavor_chi.127 = { #Xi'an
 		add_prestige = prestige_extreme_bonus
 	}
 }
-
-#######
-# flavor_chi.2000 - flavor_chi.2999 used for Treasure Voyage in flavor_chi_treasure_expedition.txt
-#######

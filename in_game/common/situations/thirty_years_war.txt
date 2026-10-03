@@ -19,7 +19,9 @@ thirty_years_war = {
             }
         }
     }
-    can_end = {
+    outcome = {
+    	name = "thirty_years_war_settlement"
+    	trigger = {
         OR = {
             current_year >= 1700
             custom_tooltip = {
@@ -41,6 +43,7 @@ thirty_years_war = {
             NOT = { exists = international_organization:catholic_league }
             NOT = { exists = international_organization:hre }
         }
+    	}
     }
 
     visible = {
@@ -48,6 +51,11 @@ thirty_years_war = {
     }
 
     on_start = {
+    	add_timeline_note = {
+    		key = timeline_note_thirty_years_war
+    		show_in_pop_graph = yes
+    		unique = yes
+    	}
         set_global_variable = {
             name = current_religion_war_length
             value = 312
@@ -71,6 +79,11 @@ thirty_years_war = {
     }
 
     on_ended = {
+    	add_timeline_note = {
+    		key = timeline_note_thirty_years_war_end
+    		show_in_pop_graph = yes
+    		unique = yes
+    	}
         if = {
             limit = {
                 has_game_rule = treaty_of_westphalia_historical

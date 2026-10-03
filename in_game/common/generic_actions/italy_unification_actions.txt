@@ -1,0 +1,365 @@
+﻿# Anno 1644 - Italian Unification actions
+
+# 宣布统一意大利
+declare_unification_of_italy_kingdom = {
+    type = situation
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        scope:actor = {
+            has_variable = italian_potential_unifier
+        }
+        situation:italy_unification = {
+            situation_is_active = yes
+        }
+    }
+
+    allow = {
+        custom_tooltip = {
+            text = only_1_italian_unifier_now
+            global_variable_list_size = {
+                name = italian_potential_unifier_list
+                value <= 1
+            }
+        }
+        scope:actor = {
+            has_variable = italian_potential_unifier
+        }
+    }
+
+    ai_tick = monthly
+    ai_tick_frequency = 3
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = "choose_situation"
+        column = {data = name}
+        visible = {
+            situation:italy_unification = this
+            situation_is_active = yes
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = international_organization
+        target_flag = target
+        name = "choose_international_organization"
+        column = {data = name}
+        visible = {
+            international_organization_type = international_organization_type:italy_unification_union
+            scope:actor = scope:target.leader_country
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            zzz_1644_proclaim_italian_kingdom_effect = yes
+        }
+        scope:target = {
+            every_international_organization_member = {
+                trigger_event_non_silently = italy_unification.1001
+            }
+        }
+        every_country = {
+            limit = {
+                culture = { has_culture_group = culture_group:italian_group }
+                NOT = {
+                    is_member_of_international_organization = scope:target
+                }
+            }
+            trigger_event_non_silently = italy_unification.1002
+        }
+        zzz_1644_destroy_italian_unification_unions_effect = yes
+        if = {
+            limit = {
+                country_exists = c:PAP
+                c:PAP = {
+                    owns = location:rome
+                    NOT = { is_subject_of = scope:actor }
+                }
+            }
+            c:PAP = {
+                trigger_event_non_silently = italy_unification.1101
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 1000
+    }
+}
+
+# 支持统一者
+support_the_italian_unifier = {
+    type = situation
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        scope:actor = {
+            has_variable = italian_country
+        }
+        situation:italy_unification = {
+            situation_is_active = yes
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            has_variable = italian_country
+            NOT = {
+                is_member_of_international_organization_of_type = {
+                    type = italy_unification_union
+                }
+            }
+        }
+    }
+
+    ai_tick = monthly
+    ai_tick_frequency = 3
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = "choose_situation"
+        column = {data = name}
+        visible = {
+            situation:italy_unification = this
+            situation_is_active = yes
+        }
+    }
+
+    select_trigger = {
+        looking_for_a = international_organization
+        target_flag = target
+        name = "choose_international_organization"
+        column = {data = name}
+        visible = {
+            international_organization_type = international_organization_type:italy_unification_union
+        }
+    }
+
+    effect = {
+        scope:target = {
+            add_country_to_international_organization = scope:actor
+        }
+    }
+
+    ai_will_do = {
+        base = -10
+        subtract = {
+            desc = "game_concept_tax_base"
+            value = {
+                value = country_tax_base
+                divide = 25
+            }
+        }
+        add = {
+            desc = "game_concept_opinion"
+            value = {
+                value = "root.opinion(scope:target.leader_country)"
+                divide = 4
+            }
+        }
+        if = {
+            limit = { at_war = yes }
+            subtract = {
+                desc = "IS_AT_WAR"
+                value = 1000
+            }
+        }
+        if = {
+            limit = {
+                is_subject = yes
+                NOT = { is_subject_of = scope:target.leader_country }
+            }
+            subtract = {
+                desc = "IS_SUBJECT_TRIGGER"
+                value = 1000
+            }
+        }
+    }
+}
+
+# 千人远征
+launch_expedition_of_the_thousand = {
+    type = situation
+    show_message = no
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        scope:actor = {
+            has_variable = italian_potential_unifier
+        }
+        situation:italy_unification = {
+            situation_is_active = yes
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            has_variable = italian_potential_unifier
+            is_subject = no
+            is_during_bankruptcy = no
+            gold >= {
+                value = monthly_income_trade_and_tax
+                multiply = 3
+            }
+        }
+        NOT = { has_cooldown = launch_expedition_of_the_thousand }
+    }
+
+    price = price:launch_expedition_of_the_thousand_prices
+
+    cooldown = {
+        type = launch_expedition_of_the_thousand
+        years = 20
+    }
+
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = "choose_situation"
+        column = {data = name}
+        visible = {
+            situation:italy_unification = this
+            situation_is_active = yes
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            trigger_event_non_silently = italy_unification.1400
+        }
+    }
+
+    ai_will_do = {
+        value = 0
+        add = {
+            desc = "CAN_EASILY_AFFORD"
+            if = {
+                limit = {
+                    scope:actor = {
+                        gold >= {
+                            value = scope:actor.monthly_income_trade_and_tax
+                            multiply = 5
+                        }
+                    }
+                }
+                value = 40
+            }
+        }
+        add = {
+            desc = "IS_BANKRUPT_TOOLTIP"
+            if = {
+                limit = {
+                    scope:actor = { is_during_bankruptcy = yes }
+                }
+                value = -1000
+            }
+        }
+    }
+}
+
+# 干预意大利事务（外围列强）
+intervene_in_italy = {
+    type = situation
+    show_message = no
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        scope:actor = {
+            NOT = { culture = { has_culture_group = culture_group:italian_group } }
+            capital ?= { continent = continent:europe }
+            is_great_power = yes
+        }
+        situation:italy_unification = {
+            situation_is_active = yes
+        }
+        country_exists = c:PAP
+        c:PAP = { owns = location:rome }
+    }
+
+    allow = {
+        scope:actor = {
+            is_great_power = yes
+            is_subject = no
+            is_during_bankruptcy = no
+        }
+        NOT = { has_cooldown = intervene_in_italy }
+    }
+
+    cooldown = {
+        type = intervene_in_italy
+        years = 15
+    }
+
+    ai_tick = monthly
+    ai_tick_frequency = 24
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = "choose_situation"
+        column = {data = name}
+        visible = {
+            situation:italy_unification = this
+            situation_is_active = yes
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            zzz_1644_italy_foreign_intervention_effect = yes
+            add_prestige = prestige_mild_bonus
+            if = {
+                limit = { country_exists = c:PAP }
+                c:PAP = {
+                    add_opinion = {
+                        target = scope:actor
+                        modifier = opinion_alliance
+                    }
+                }
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 0
+        add = {
+            desc = "game_concept_opinion"
+            if = {
+                limit = { country_exists = c:PAP }
+                value = "root.opinion(c:PAP)"
+                divide = 4
+            }
+        }
+    }
+}

@@ -191,7 +191,7 @@ flavor_brapru.5 = { #The Soldier-King of Prussia
 		change_societal_value = { type = centralization_vs_decentralization value = societal_value_move_to_left }
 		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_left }
 		unlock_policy_effect = { type = military_court_policy }
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 		scope:target_character = {
 			set_nickname_if_none_present = { nickname = nick_the_soldier_king }
 		}
@@ -676,7 +676,7 @@ flavor_brapru.14 = { #Königsberg Burghers rebell against us
 	}
 	option = {
 		name = flavor_brapru.14.b
-		add_government_power = government_power_mild_penalty
+		add_political_influence = political_influence_mild_penalty
 		location:konigsberg = {
 			every_pop = {
 				limit = {
@@ -2232,66 +2232,6 @@ flavor_brapru.43 = { #Andreas Schlüter
 	}
 }
 
-flavor_brapru.1200 = { #Samuel von Cocceji and the Legal Reforms of Prussia
-	type = country_event
-	title = flavor_brapru.1200.title
-	desc = flavor_brapru.1200.desc
-	outcome = neutral
-	image = "gfx/interface/illustrations/institutions/legalism.dds"
-
-	fire_only_once = yes
-	dynamic_historical_event = {
-		tag = BRA
-		from = 1720.1.1
-		to = 1740.1.1
-		monthly_chance = 4
-	}
-
-	illustration_tags = {
-		10 = regular
-		10 = interior
-	}
-
-	immediate = {
-		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
-		create_character = {
-			first_name = name_samuel
-			last_name = von_cocceji
-			birth_date = 1679.10.20
-			birth_location = location:heidelberg
-			adm = 94
-			dip = 65
-			mil = 32
-			estate = estate_type:nobles_estate
-			script = brapru_cocceji_script
-			save_scope_as = target_character
-		}
-	}
-
-	trigger = {
-		owns = location:berlin
-	}
-
-	option = {
-		name = flavor_brapru.1200.a
-		add_government_power = government_power_mild_penalty
-		add_country_modifier = { modifier = reform_of_law years = 5 mode = add_and_extend }
-		trigger_event_silently = {
-			id = flavor_brapru.1201
-			years = 5
-		 }
-	}
-
-	option = {
-		name = flavor_brapru.1200.b
-		add_government_power = government_power_severe_bonus
-		trigger_event_silently = {
-			id = flavor_brapru.1201
-			years = 20
-		 }
-	}
-}
-
 flavor_brapru.1201 = { #The Prussian Legal System
 	hide_portraits = yes
 	type = country_event
@@ -2447,8 +2387,8 @@ flavor_brapru.1400 = { #Construction of Sanssouci
 	fire_only_once = yes
 	dynamic_historical_event = {
 		tag = BRA
-		from = 1730.1.1
-		to = 1750.1.1
+		from = 1737.1.1
+		to = 1760.1.1
 		monthly_chance = 5
 	}
 

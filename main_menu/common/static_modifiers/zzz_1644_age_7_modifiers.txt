@@ -1,0 +1,435 @@
+﻿# Anno 1644 - Age of Imperialism
+# Static modifiers used by the Age 7 content (parliaments, elections, dynasty stability).
+
+#############################################
+# Parliament law modifiers
+#############################################
+
+# 军队法案
+passed_army_bill = {
+    game_data = {
+        category = country
+    }
+    global_manpower_modifier = 0.10
+    global_levy_size_modifier = 0.05
+    army_maintenance_efficiency = 0.05
+}
+
+# 义务教育法案
+passed_compulsory_education_bill = {
+    game_data = {
+        category = country
+    }
+    global_max_literacy = 5
+    global_monthly_literacy = 0.03
+    research_speed_modifier = 0.05
+}
+
+# 殖民地自治法案
+passed_colonial_autonomy_bill = {
+    game_data = {
+        category = country
+    }
+    colonial_maintenance_efficiency = 0.25
+    colonial_migration_size_modifier = 0.15
+    subject_opinions = 10
+}
+
+# 被授予殖民地自治
+granted_colonial_autonomy = {
+    game_data = {
+        category = country
+    }
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+    global_population_growth = 0.0010
+    global_migration_speed_modifier = 0.10
+}
+
+# 关税改革法案
+passed_tariff_reform_bill = {
+    game_data = {
+        category = country
+    }
+    trade_income = 0.10
+    import_efficiency = small_selling_efficiency_bonus
+    merchant_maintenance_efficiency = 0.10
+}
+
+# 选举权扩大法案
+passed_suffrage_extension_bill = {
+    game_data = {
+        category = country
+    }
+    parliament_base_support = 0.10
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+    global_peasants_estate_power = 0.10
+    monthly_towards_liberalism = societal_value_monthly_move
+}
+
+# 养老金法案
+passed_pension_bill = {
+    game_data = {
+        category = country
+    }
+    global_life_expectancy = 2
+    global_population_growth = 0.0010
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+}
+
+# 铁路国有化法案
+passed_railway_nationalization_bill = {
+    game_data = {
+        category = country
+    }
+    global_road_building_time = -0.10
+    trade_income = 0.05
+    global_distance_from_capital_speed_propagation = 0.05
+}
+
+# 反垄断法案
+passed_anti_trust_bill = {
+    game_data = {
+        category = country
+    }
+    global_production_efficiency = 0.05
+    building_upkeep_efficiency = 0.05
+    global_trades_per_burgher = 0.05
+}
+
+# 公共卫生法案
+passed_public_health_bill = {
+    game_data = {
+        category = country
+    }
+    global_disease_resistance = 0.05
+    global_life_expectancy = 2
+    global_monthly_prosperity = 0.001
+}
+
+# 殖民征兵法案
+passed_colonial_conscription_bill = {
+    game_data = {
+        category = country
+    }
+    global_levy_size_modifier = 0.10
+    global_manpower_modifier = 0.10
+}
+
+# 文官改革法案
+passed_civil_service_reform_bill = {
+    game_data = {
+        category = country
+    }
+    country_cabinet_efficiency = 0.05
+    legislative_efficiency = 0.05
+    global_max_bureaucracy_slots = 1
+}
+
+# 中央银行特许法案
+passed_central_bank_charter_bill = {
+    game_data = {
+        category = country
+    }
+    bank_interest = -0.01
+    max_bonds = 2
+    minting_inflation_threshold = 0.01
+}
+
+#############################################
+# Republican parliament: laws need a vote
+#############################################
+
+# Applied while a republican / presidential / imperial parliament is in session.
+# Laws can no longer simply be paid for with stability; parliament issues must be used.
+republican_parliament_law_vote_required = {
+    game_data = {
+        category = country
+    }
+    allow_law_change_by_stability = no
+    change_policy_cost_modifier = 5.0
+    set_policy_cost_modifier = 5.0
+    parliament_base_support = 0.10
+    legislative_efficiency = 0.05
+}
+
+#############################################
+# Dynasty stability (Age 7)
+#############################################
+
+# 新朝鼎革
+new_dynasty_enthroned = {
+    game_data = {
+        category = country
+    }
+    dynasty_stability_monthly_income = 0.10
+    monthly_legitimacy = 0.05
+    global_crown_estate_power = 0.10
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+}
+
+# 天命未改
+mandate_of_heaven_upheld = {
+    game_data = {
+        category = country
+    }
+    dynasty_stability_monthly_income = 0.05
+    monthly_prestige = 0.05
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+}
+
+# 天命将倾
+mandate_of_heaven_failing = {
+    game_data = {
+        category = country
+    }
+    dynasty_stability_monthly_income = -0.15
+    monthly_legitimacy = -0.05
+    monthly_rebel_growth = 0.001
+    global_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+}
+
+# 王朝倾覆
+dynastic_collapse = {
+    game_data = {
+        category = country
+    }
+    dynasty_stability_monthly_income = -0.30
+    monthly_legitimacy = -0.10
+    monthly_rebel_growth = 0.003
+    pop_join_rebel_threshold = 0.10
+    global_crown_estate_power = -0.25
+    global_estate_target_satisfaction = large_permanent_target_satisfaction_penalty
+}
+
+# 中兴之治
+dynastic_restoration = {
+    game_data = {
+        category = country
+    }
+    dynasty_stability_monthly_income = 0.15
+    monthly_prestige = 0.10
+    monthly_legitimacy = 0.10
+    global_crown_estate_power = 0.15
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    research_speed_modifier = 0.05
+}
+
+#############################################
+# Italian unification
+#############################################
+
+# 政教协定
+papal_concordat = {
+    game_data = {
+        category = country
+    }
+    clergy_estate_target_satisfaction = medium_permanent_target_satisfaction
+    monthly_prestige = 0.05
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+}
+
+# 罗马问题：谈判解决
+roman_question_settled_negotiated = {
+    game_data = {
+        category = country
+    }
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    monthly_legitimacy = 0.05
+    monthly_prestige = 0.05
+    clergy_estate_target_satisfaction = medium_permanent_target_satisfaction
+}
+
+# 罗马问题：武力解决
+roman_question_settled_by_force = {
+    game_data = {
+        category = country
+    }
+    monthly_legitimacy = -0.05
+    clergy_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+    global_crown_estate_power = 0.10
+}
+
+# 教皇被困梵蒂冈
+papal_imprisoned_in_the_vatican = {
+    game_data = {
+        category = country
+    }
+    monthly_prestige = -0.05
+    clergy_estate_target_satisfaction = large_permanent_target_satisfaction_penalty
+    global_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+    cannot_be_subjugated = yes
+}
+
+# 外国对意大利事务的施压
+italian_unification_foreign_pressure = {
+    game_data = {
+        category = country
+    }
+    global_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+    monthly_prestige = -0.05
+    aggressiveness_modifier = -0.20
+}
+
+# 复兴运动热潮
+italian_risorgimento_fever = {
+    game_data = {
+        category = country
+    }
+    cultural_influence = 0.20
+    cultural_tradition = 0.20
+    global_levy_size_modifier = 0.10
+    land_morale_modifier = 0.10
+    monthly_towards_belligerent = societal_value_monthly_move
+}
+
+# 罗马问题搁置
+roman_question_postponed = {
+    game_data = {
+        category = country
+    }
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction_penalty
+    clergy_estate_target_satisfaction = small_permanent_target_satisfaction
+}
+
+# 千人远征
+expedition_of_the_thousand = {
+    game_data = {
+        category = country
+    }
+    army_movement_speed = 0.15
+    morale_recovery_in_friendly = 0.10
+    army_disembark_speed = 0.25
+    monthly_prestige = 0.05
+}
+
+#############################################
+# New World nations
+#############################################
+
+# 新大陆国家成立
+new_world_nation_founded = {
+    game_data = {
+        category = country
+    }
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    monthly_legitimacy = 0.05
+    monthly_prestige = 0.05
+    cultural_influence = 0.10
+    global_migration_speed_modifier = 0.10
+    monthly_towards_outward = societal_value_monthly_move
+}
+
+#############################################
+# German unification
+#############################################
+
+# 普奥领导权之争
+german_dual_leadership_contest = {
+    game_data = {
+        category = country
+    }
+    discipline = 0.05
+    land_morale_modifier = 0.10
+    aggressiveness_modifier = 0.25
+    ai_months_between_wars = -12
+    antagonism_received_modifier = 0.25
+}
+
+# 普奥妥协
+german_dual_leadership_compromise = {
+    game_data = {
+        category = country
+    }
+    improve_relation_impact = 0.20
+    diplomatic_reputation = 0.05
+    subject_opinions = 10
+}
+
+# 北德意志联邦
+north_german_confederation = {
+    game_data = {
+        category = country
+    }
+    subject_loyalty = 10
+    country_cabinet_efficiency = 0.05
+    army_maintenance_efficiency = 0.10
+    monthly_towards_centralization = societal_value_monthly_move
+}
+
+# 铁与血
+blood_and_iron = {
+    game_data = {
+        category = country
+    }
+    discipline = 0.10
+    army_artillery_power = 0.10
+    army_heavy_infantry_power = 0.10
+    global_war_score_efficiency = 0.10
+    monthly_towards_belligerent = societal_value_monthly_move
+    monthly_towards_offensive = societal_value_monthly_move
+}
+
+#############################################
+# Age 7 national flavour modifiers
+#############################################
+
+# --- France ---
+second_french_empire = {
+    game_data = {
+        category = country
+    }
+    monthly_prestige = 0.10
+    global_crown_estate_power = 0.20
+    army_maintenance_efficiency = 0.10
+    global_construction_speed = 0.05
+    monthly_towards_absolutism = societal_value_monthly_move
+}
+
+revanchism_against_germany = {
+    game_data = {
+        category = country
+    }
+    land_morale_modifier = 0.10
+    war_declaration_stab_hit_tolerance = 0.5
+    aggressiveness_modifier = 0.25
+    antagonism_received_modifier = -0.10
+}
+
+paris_commune_crushed = {
+    game_data = {
+        category = country
+    }
+    monthly_rebel_growth = -0.002
+    global_crown_estate_power = 0.10
+    global_burghers_estate_power = -0.10
+    global_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+}
+
+french_colonial_party = {
+    game_data = {
+        category = country
+    }
+    colonial_migration_size_modifier = 0.25
+    colonial_maintenance_efficiency = 0.20
+    trade_income = 0.05
+    monthly_towards_outward = societal_value_monthly_move
+}
+
+french_master_painter = {
+    game_data = {
+        category = character
+    }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+french_man_of_letters = {
+    game_data = {
+        category = character
+    }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+
+

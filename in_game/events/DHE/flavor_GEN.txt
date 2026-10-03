@@ -187,7 +187,6 @@ flavor_gen.33 = {
 	trigger = {
 		owns_corsica = yes
 		any_owned_location = {
-			is_corsica = yes
 			num_pop_type:nobles > 0.5
 			any_pop = {
 				culture = culture:corsican
@@ -229,7 +228,6 @@ flavor_gen.33 = {
 			text = arrigo_della_rocca_support_nobles_joining
 			every_owned_location = {
 				limit = {
-					is_corsica = yes
 				}
 				every_pop = {
 					limit = {
@@ -251,7 +249,6 @@ flavor_gen.33 = {
 		name = flavor_gen.33.b
 		every_owned_location = {
 			limit = {
-				is_corsica = yes
 			}
 			add_core = c:COR
 			if = {
@@ -289,7 +286,6 @@ flavor_gen.34 = {
 		}
 		owns_corsica = yes
 		any_owned_location = {
-			is_corsica = yes
 			any_pop = {
 				culture = culture:corsican
 			}
@@ -328,7 +324,6 @@ flavor_gen.34 = {
 			text = flavor_gen.45.a.tt
 			every_owned_location = {
 				limit = {
-					is_corsica = yes
 				}
 				every_pop = {
 					limit = {
@@ -348,7 +343,6 @@ flavor_gen.34 = {
 		name = flavor_gen.34.b
 		every_owned_location = {
 			limit = {
-				is_corsica = yes
 			}
 			add_core = c:COR
 			if = {
@@ -396,7 +390,6 @@ flavor_gen.35 = {
 		}
 		owns_corsica = yes
 		any_owned_location = {
-			is_corsica = yes
 			any_pop = {
 				culture = culture:corsican
 			}
@@ -411,7 +404,6 @@ flavor_gen.35 = {
 		historical_option = yes
 		every_owned_location = {
 			limit = {
-				is_corsica = yes
 			}
 			add_core = c:COR
 			change_control = control_radical_penalty
@@ -422,12 +414,69 @@ flavor_gen.35 = {
 				add_pop_satisfaction = pop_satisfaction_radical_penalty
 			}
 		}
-		custom_tooltip = {
-			text = can_sell_corsica_via_diplo_action
-			set_variable = { name = yeet_corsica }
-			set_global_variable = {
-				name = saved_pumonte
-				value = location:ajaccio.province
+		if = {
+			limit = {
+				is_ai = yes
+			}
+			if = {
+				limit = {
+					country_exists = c:FRA
+					c:FRA = {
+						is_subject = no
+						NOT = { is_at_war_with = root }
+						num_of_ports >= 1
+					}
+				}
+				c:FRA = {
+					save_scope_as = corsica_buyer
+				}
+				every_owned_location = {
+					limit = {
+					}
+					if = {
+						limit = { is_core_of = root }
+						remove_core = root
+					}
+					if = {
+						limit = { NOT = { is_core_of = scope:corsica_buyer } }
+						add_core = scope:corsica_buyer
+					}
+					change_location_owner = scope:corsica_buyer
+				}
+				trigger_event_non_silently = {
+					id = flavor_gen.36
+				}
+			}
+			else = {
+				every_owned_location = {
+					limit = {
+					}
+					if = {
+						limit = { is_core_of = root }
+						remove_core = root
+					}
+					change_location_owner = c:COR
+				}
+				c:COR = {
+					if = {
+						limit = {
+							exists = character:pasquale_paoli
+							character:pasquale_paoli = { is_alive = yes }
+						}
+						set_new_ruler = character:pasquale_paoli
+					}
+					change_government_type = government_type:republic
+				}
+			}
+		}
+		else = {
+			custom_tooltip = {
+				text = can_sell_corsica_via_diplo_action
+				set_variable = { name = yeet_corsica }
+				set_global_variable = {
+					name = saved_pumonte
+					value = location:ajaccio.province
+				}
 			}
 		}
 	}
@@ -436,7 +485,6 @@ flavor_gen.35 = {
 		name = flavor_gen.35.b
 		every_owned_location = {
 			limit = {
-				is_corsica = yes
 			}
 			add_core = c:COR
 			if = {
@@ -777,7 +825,6 @@ flavor_gen.45 = {
 			text = flavor_gen.45.a.tt
 			every_owned_location = {
 				limit = {
-					is_corsica = yes
 				}
 				every_pop = {
 					limit = {

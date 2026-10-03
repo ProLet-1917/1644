@@ -1,57 +1,5 @@
 ﻿namespace = flavor_sco
 
-flavor_sco.6 = {
-	type = country_event
-	title = flavor_sco.6.title
-	desc = flavor_sco.6.desc
-	outcome = neutral
-
-	fire_only_once = yes
-
-	dynamic_historical_event = {
-		tag = SCO
-		from = 1650.1.1
-		to = 1776.1.1
-		monthly_chance = 8
-	}
-
-	trigger = {
-		num_of_ports > 1
-		discovered_route_to_india = yes
-		OR = {
-			any_owned_non_rural_location = {
-				sub_continent = sub_continent:south_asia
-			}
-			any_owned_foreign_building_location = {
-				sub_continent = sub_continent:south_asia
-			}
-		}
-
-	}
-
-	illustration_tags = {
-        10 = happy
-        10 = exterior
-    }
-
-	immediate = {
-		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
-	}
-	
-	option = {
-		name = flavor_sco.6.a
-		custom_tooltip = flavor_sco.6.a.tt
-		set_variable = { name = has_east_india_trading_company value = 1 }
-	}
-
-	option = {
-		name = flavor_sco.6.b
-		add_stability = stability_severe_bonus
-		add_legitimacy = legitimacy_severe_bonus
-		add_country_modifier = { modifier = sco_no_east_india years = 12 mode = add_and_extend }
-	}
-}
-
 flavor_sco.7 = {
 	type = country_event
 	title = flavor_sco.7.title
@@ -549,11 +497,10 @@ flavor_sco.20 = { # Wild Haggis
 	option = {
 		name = flavor_sco.20.b # breeding programme
 		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_left }
-		capital.market = {
-			add_goods_supply = {
-				goods = goods:fur
-				amount = market_goods_mild_gain
-			}
+		sell_goods_to_market = {
+			market = capital.market
+			goods = goods:fur
+			amount = market_goods_mild_gain
 		}
 	}
 }

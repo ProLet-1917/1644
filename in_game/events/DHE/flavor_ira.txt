@@ -379,11 +379,10 @@ flavor_ira.17  = {
 	}
 	option = {
 		name = flavor_ira.17.a
-		scope:root_market = {
-			add_goods_supply = {
-				goods = goods:porcelain
-				amount = market_goods_severe_gain
-			}
+		sell_goods_to_market = {
+			market = scope:root_market
+			goods = goods:porcelain
+			amount = market_goods_severe_gain
 		}
 		add_prestige = prestige_mild_bonus
 		scope:target_country = { add_prestige = prestige_mild_bonus }
@@ -518,7 +517,7 @@ flavor_ira.20 = {
 	trigger = {
 		has_ruler = yes
 		region:persia_region = {
-			any_location_in_region = {
+			any_ownable_location_in_region = {
 				has_owner = yes
 				owner = root
 				count = all
@@ -917,7 +916,7 @@ flavor_ira.38 = {
 			}
 		}
 
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 
 		change_gold_effect = { scale = -4 }
 	}
@@ -926,7 +925,7 @@ flavor_ira.38 = {
 		name = flavor_ira.38.b
 
 		add_prestige = prestige_extreme_penalty
-		add_government_power = government_power_mild_penalty
+		add_political_influence = political_influence_mild_penalty
 	}
 }
 
@@ -1169,7 +1168,7 @@ flavor_ira.42 = {
 	option = {
 		name = flavor_ira.42.b
 
-		add_government_power = government_power_mild_penalty
+		add_political_influence = political_influence_mild_penalty
 
 		kill_character_silently = {
 			target = scope:target_character
@@ -1246,7 +1245,7 @@ flavor_ira.45 = {
 	option = {
 		name = flavor_ira.45.a
 
-		add_government_power = government_power_mild_penalty
+		add_political_influence = political_influence_mild_penalty
 
 		custom_tooltip = {
 			text = ira_qajar_dynasty_may_claim_crown
@@ -1423,14 +1422,7 @@ flavor_ira.46 = {
 	option = {
 		name = flavor_ira.46.a
 
-		set_new_ruler = scope:rebellion_ruler
-
-		add_stability = stability_severe_penalty
-
-		scope:current_ruler = {
-			banish_character = yes
-		}
-
+		apply_rebel_demands = scope:target_rebel
 		destroy_rebel = scope:target_rebel
 	}
 

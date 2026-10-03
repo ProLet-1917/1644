@@ -483,7 +483,7 @@ flavor_eng.27 = {
 		name = flavor_eng.27.b
 
 
-		add_government_power = government_power_ultimate_penalty
+		add_political_influence = political_influence_ultimate_penalty
 		if = {
 			limit = { exists = scope:target_country }
 			scope:target_country = {
@@ -820,13 +820,13 @@ flavor_eng.31 = {
 
 	option = {
 		name = flavor_eng.31.a
-		add_government_power = government_power_weak_bonus
+		add_political_influence = political_influence_weak_bonus
 		add_casus_belli = {	target = scope:target_country	type = casus_belli:cb_insulted_us	}
 		scope:target_country = { add_opinion = { target = root modifier = eng_captain_jenkins_incident } }
 	}
 	option = {
 		name = flavor_eng.31.b
-		add_government_power = government_power_weak_penalty
+		add_political_influence = political_influence_weak_penalty
 	}
 }
 
@@ -2029,7 +2029,7 @@ flavor_eng.158 = {
 
 		ruler = { add_trait = trait:inspiring_leader }
 
-		add_government_power = government_power_weak_bonus
+		add_political_influence = political_influence_weak_bonus
 
 		add_prestige = prestige_weak_bonus
 
@@ -2048,7 +2048,7 @@ flavor_eng.158 = {
 	option = {
 		name = flavor_eng.158.b
 
-		add_government_power = government_power_severe_bonus
+		add_political_influence = political_influence_severe_bonus
 
 		add_prestige = prestige_severe_bonus
 
@@ -2575,7 +2575,7 @@ flavor_eng.172 = {
 			value = societal_value_move_to_left
 		}
 
-		add_government_power = government_power_weak_penalty
+		add_political_influence = political_influence_weak_penalty
 
 		custom_tooltip = flavor_eng.172.tt1
 
@@ -2593,7 +2593,7 @@ flavor_eng.172 = {
 			}
 		}
 
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 
 		custom_tooltip = flavor_eng.172.tt2
 
@@ -2923,7 +2923,7 @@ flavor_eng.176 = {
 			}
 		}
 		else = {
-			root = { add_government_power = government_power_mild_penalty }
+			root = { add_political_influence = political_influence_mild_penalty }
 					custom_tooltip = flavor_eng.176.tt1
 			location:london = {
 				change_development  = -20
@@ -3055,7 +3055,17 @@ flavor_eng.179 = {
 		}
 
 		scope:target_location = {
-			destroy_building = "building(building_type:printing_press_shop|owner)"
+			if = {
+				limit = { has_building_with_at_least_one_level = printing_mill }
+				destroy_building = "building(building_type:printing_mill|owner)"
+			}
+			else_if = {
+				limit = { has_building_with_at_least_one_level = printing_manufactory }
+				destroy_building = "building(building_type:printing_manufactory|owner)"
+			}
+			else = {
+				destroy_building = "building(building_type:printing_press_shop|owner)"
+			}
 			every_pop = {
 				limit = {
 					owner = root
@@ -4071,138 +4081,6 @@ flavor_eng.191 = {
 
 }
 
-# The Diligence of Samuel Pepys
-flavor_eng.192 = {
-	type = country_event
-
-	fire_only_once = yes
-
-	title = flavor_eng.192.title
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					has_reform = government_reform:navy_board_reform
-				}
-				desc = flavor_eng.192.desc_navy_board
-			}
-			triggered_desc = {
-				trigger = { always = yes }
-				desc = flavor_eng.192.desc
-			}
-		}
-	}
-	outcome = neutral
-
-	dynamic_historical_event = {
-		tag = ENG
-		from = 1653.1.1
-		to = 1693.1.1
-		monthly_chance = 1
-	}
-	image = "gfx/interface/illustrations/units/navy_light_ship_6.dds"
-	trigger = {
-
-		location:london = {
-			owner = root
-		}
-
-		OR = {
-			has_reform = government_reform:navy_board_reform
-			OR = {
-				capital = {
-					has_building_with_at_least_one_level = admiralty
-				}
-				has_policy = board_of_admirals_policy
-			}
-		}
-
-	}
-
-	immediate = {
-
-		create_character = {
-			first_name = name_samuel
-			last_name = Pepys
-			estate = estate_type:nobles_estate
-			adm = 80
-			dip = 55
-			mil = 60
-			birth_date = 1633
-			birth_location = location:london
-			script = eng_samuel_pepys
-			save_scope_as = samuel_pepys
-		}
-
-		set_variable = { name = samuel_pepys_diary_entries value = 0 }
-
-		location:london = { save_scope_as = target_location }
-
-	}
-
-	option = {
-		name = flavor_eng.192.a
-		historical_option = yes
-
-		custom_tooltip = {
-			text = enable_overhauled_admiralty_reform
-			set_variable = { name = overhauled_admiralty value = 1 }
-		}
-
-		scope:samuel_pepys = {
-			add_trait = trait:unsuited_for_naval_command
-			add_trait = trait:unsuited_for_army_command
-		}
-
-		custom_tooltip = flavor_eng.192.tt1
-
-
-	}
-
-	option = {
-		name = flavor_eng.192.b
-
-		add_country_modifier = {
-			modifier = samuel_pepys_diligence
-			months = -1
-			mode = add_and_extend
-		}
-
-		custom_tooltip = flavor_eng.192.tt2
-
-		if = {
-			limit = {
-				current_age = age_5_absolutism
-				has_reform = government_reform:navy_board_reform
-				NOT = { has_advance = naval_professionalism }
-			}
-			research_advance = advance_type:naval_professionalism
-			custom_tooltip = flavor_eng.192.tt3
-		}
-
-
-		custom_tooltip = flavor_eng.192.tt4
-
-	}
-
-	option = {
-		name = flavor_eng.192.c
-
-		scope:samuel_pepys = {
-			add_character_modifier = {
-				modifier = refuses_to_serve_in_cabinet
-				years = -1
-				mode = add_and_extend
-			}
-			add_random_trait_from_category = admiral
-		}
-
-		add_navy_tradition = navy_tradition_extreme_bonus
-
-	}
-
-}
-
 # The Principia
 flavor_eng.193 = {
 	type = country_event
@@ -4405,7 +4283,7 @@ flavor_eng.195 = {
 			add_policy = policy:heir_same_religion
 		}
 
-		add_government_power = government_power_severe_penalty
+		add_political_influence = political_influence_severe_penalty
 
 	}
 
@@ -4591,7 +4469,6 @@ flavor_eng.197 = {
 			add_estate_satisfaction = { type = estate_type:clergy_estate
 				value = estate_satisfaction_severe_penalty
 			}
-			custom_tooltip = flavor_eng.197.tt2
 		}
 
 	}
@@ -4608,124 +4485,16 @@ flavor_eng.197 = {
 			add_artist_skill = 0.1
 		}
 
-		custom_tooltip = flavor_eng.197.tt1
-		custom_tooltip = flavor_eng.197.tt3
-
 	}
 
 	option = {
 		name = flavor_eng.197.c
 
-		change_societal_value = {
-			type = traditionalist_vs_innovative
-			value = societal_value_move_to_left
-		}
-
-		hidden_effect = { kill_character_silently = scope:aphra_behn }
-
-	}
-
-	historical_info = flavor_eng.197.historical_info
-
-}
-
-# The Royal Society
-flavor_eng.198 = {
-	type = country_event
-
-	title = flavor_eng.198.title
-	desc = flavor_eng.198.desc
-	outcome = neutral
-
-	fire_only_once = yes
-
-	dynamic_historical_event = {
-		tag = ENG
-		from = 1660.1.1
-		to = 1750.1.1
-		monthly_chance = 1
-	}
-
-	trigger = {
-
-		capital = {
-			owner = root
-			controller = root
-			average_location_literacy > 50
-		}
-
-		OR = {
-			any_character = {
-				owner = root
-				artist_type = philosopher
-				artist_skill >= 0.75
-			}
-			character:eng_christopher_wren ?= { is_alive = yes }
-			character:eng_robert_boyle ?= { is_alive = yes }
-		}
-
-	}
-
-	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
-
-	immediate = {
-		root = { save_scope_as = target_root_country }
-
-		capital = { save_scope_as = target_location }
-
-	}
-
-	option = {
-		name = flavor_eng.198.a
-		historical_option = yes
-
-		set_variable = { name = royal_society value = 1 }
-
-		capital = {
-			construct_building = {
-				building_type = building_type:royal_society
-			}
-		}
-
-		custom_tooltip = flavor_eng.198.tt1
-
-	}
-
-	option = {
-		name = flavor_eng.198.b
-		trigger = {
-			region:great_britain_region = {
-				any_location_in_region = {
-					count >= 3
-					owner ?= root
-					has_building_with_at_least_one_level = university
-				}
-			}
-		}
-
-		while = {
-			count = 3
-			region:great_britain_region = {
-				random_location_in_region = {
-					limit = {
-						owner ?= root
-						has_building_with_at_least_one_level = university
-					}
-					change_prosperity = prosperity_weak_bonus
-				}
-			}
-		}
-
-	}
-
-	option = {
-		name = flavor_eng.198.c
-
 		add_prestige = prestige_mild_bonus
 
 	}
 
-	historical_info = flavor_eng.198.historical_info
+	historical_info = flavor_eng.197.historical_info
 
 }
 
@@ -4740,7 +4509,11 @@ flavor_eng.199 = {
 				trigger = {
 					NOT = {
 						location:london = {
-							has_building_with_at_least_one_level = printing_press_shop
+							OR = {
+								has_building_with_at_least_one_level = printing_press_shop
+								has_building_with_at_least_one_level = printing_manufactory
+								has_building_with_at_least_one_level = printing_mill
+							}
 						}
 					}
 				}
@@ -5696,7 +5469,7 @@ flavor_eng.215 = {
 			custom_tooltip = flavor_eng.215.tt2
 		}
 		else = {
-			add_government_power = government_power_mild_penalty
+			add_political_influence = political_influence_mild_penalty
 			add_country_modifier = {
 				modifier = south_sea_bubble
 				years = 5
@@ -5895,7 +5668,12 @@ flavor_eng.217 = {
 				any_location_in_region = {
 					count >= 3
 					owner ?= root
-					has_building_with_at_least_one_level = distillers_guild
+					OR = {
+						has_building_with_at_least_one_level = distillers_guild
+						has_building_with_at_least_one_level = distillers_workshop
+						has_building_with_at_least_one_level = distiller_manufactory
+						has_building_with_at_least_one_level = distiller_mill
+					}
 				}
 			}
 
@@ -6513,7 +6291,19 @@ flavor_eng.222 = {
 				OR = {
 					location_unemployed_population_for_building_type = {
 						building_type = building_type:cloth_guild
-						value >= 100
+						value >= 0.1
+					}
+					location_unemployed_population_for_building_type = {
+						building_type = building_type:cloth_workshop
+						value >= 0.1
+					}
+					location_unemployed_population_for_building_type = {
+						building_type = building_type:cloth_manufactory
+						value >= 0.16
+					}
+					location_unemployed_population_for_building_type = {
+						building_type = building_type:textile_mill
+						value >= 0.25
 					}
 					market = {
 						market_possible_goods_trade_surplus = {
@@ -6542,7 +6332,12 @@ flavor_eng.222 = {
 			every_location_in_region = {
 				limit = {
 					owner ?= root
-					has_building_with_at_least_one_level = cloth_guild
+					OR = {
+						has_building_with_at_least_one_level = cloth_guild
+						has_building_with_at_least_one_level = cloth_workshop
+						has_building_with_at_least_one_level = cloth_manufactory
+						has_building_with_at_least_one_level = textile_mill
+					}
 				}
 				add_location_modifier = {
 					modifier = jenny_spinner_riots
@@ -6804,7 +6599,7 @@ flavor_eng.224 = {
 			limit = {
 				government_type = government_type:monarchy
 			}
-			add_government_power = government_power_mild_penalty
+			add_political_influence = political_influence_mild_penalty
 			custom_tooltip = flavor_eng.224.tt1
 		}
 
@@ -6849,7 +6644,7 @@ flavor_eng.224 = {
 			limit = {
 				government_type = government_type:monarchy
 			}
-			add_government_power = government_power_severe_penalty
+			add_political_influence = political_influence_severe_penalty
 			custom_tooltip = flavor_eng.224.tt1
 		}
 
@@ -6918,7 +6713,7 @@ flavor_eng.225 = {
 			random_location_in_sub_continent = {
 				limit = {
 					has_owner = yes
-					NOT = { owner ?= root }
+					owner ?= { this != root }
 				}
 				owner = {
 					save_scope_as = target_country
@@ -6960,7 +6755,7 @@ flavor_eng.225 = {
 
 		add_stability = stability_weak_penalty
 
-		add_government_power = government_power_severe_penalty
+		add_political_influence = political_influence_severe_penalty
 
 	}
 
@@ -6970,7 +6765,7 @@ flavor_eng.225 = {
 		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
 		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_penalty }
 
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 
 		custom_tooltip = {
 			text = enable_representative_parliament_reform
@@ -7314,111 +7109,6 @@ flavor_eng.227 = {
 
 }
 
-# The Income Tax
-flavor_eng.228 = {
-	type = country_event
-
-	fire_only_once = yes
-
-	title = flavor_eng.228.title
-	desc = flavor_eng.228.desc
-	outcome = neutral
-
-	dynamic_historical_event = {
-		tag = ENG
-		from = 1795.1.1
-		to = 1820.1.1
-		monthly_chance = 5
-	}
-
-	trigger = {
-
-		var:eng_william_pitt_the_younger ?= { 
-			is_alive = yes 
-			in_cabinet = yes 
-		}
-
-		OR = {
-			monthly_balance < 0
-			num_loans > 1
-		}
-
-		at_war = yes
-
-	}
-
-	illustration_tags = {
-		10 = angry
-		10 = interior
-	}
-
-	immediate = {
-		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
-		save_scope_as = target_root_country
-
-		capital = { save_scope_as = target_location }
-
-		set_variable = taxation_law
-
-		var:eng_william_pitt_the_younger = {
-			save_scope_as = william_pitt_the_younger
-		}
-
-	}
-
-	option = {
-		name = flavor_eng.228.a
-		historical_option = yes
-
-		custom_tooltip = {
-			text = flavor_eng.228.custom
-		}
-
-		add_policy = policy:income_tax
-
-		hidden_effect = {
-			add_country_modifier = {
-				modifier = temporary_income_tax
-				years = 5
-				mode = add_and_extend
-			}
-		}
-
-		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
-		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_penalty }
-
-	}
-
-	option = {
-		name = flavor_eng.228.b
-
-		custom_tooltip = flavor_eng.228.custom
-
-		add_policy = policy:trade_tax
-
-		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_penalty }
-
-	}
-
-	option = {
-		name = flavor_eng.228.c
-
-		custom_tooltip = {
-			text = flavor_eng.228.custom
-		}
-
-		add_policy = policy:traditional_tax
-
-		add_government_power = government_power_severe_penalty
-
-		custom_tooltip = flavor_eng.228.tt
-
-	}
-
-	historical_info = flavor_eng.228.historical_info
-
-}
-
 # The Diary of Samuel Pepys
 flavor_eng.229 = {
 	type = country_event
@@ -7442,8 +7132,6 @@ flavor_eng.229 = {
 			text = variable_tt_samuel_pepys_diary_entries
 			has_variable = samuel_pepys_diary_entries
 		}
-
-		var:samuel_pepys_diary_entries > 0
 
 	}
 	image = "gfx/interface/illustrations/institutions/printing_press.dds"
@@ -7514,96 +7202,6 @@ flavor_eng.229 = {
 	}
 
 	historical_info = flavor_eng.229.historical_info
-
-}
-
-# The Factory Act
-flavor_eng.230 = {
-	type = country_event
-
-	fire_only_once = yes
-
-	title = flavor_eng.230.title
-	desc = flavor_eng.230.desc
-	outcome = neutral
-
-	dynamic_historical_event = {
-		tag = ENG
-		from = 1775.1.1
-		to = 1820.1.1
-		monthly_chance = 5
-	}
-
-	trigger = {
-
-		region:great_britain_region = {
-			any_location_in_region = {
-				count >= 5
-				owner ?= root
-				OR = {
-					has_building_with_at_least_one_level = fine_cloth_mill
-					has_building_with_at_least_one_level = textile_mill
-					has_building_with_at_least_one_level = steel_mill
-				}
-			}
-		}
-
-	}
-	illustration_tags = {
-		10 = angry
-		10 = interior
-	}
-	immediate = {
-		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
-		capital = { save_scope_as = target_location }
-
-		set_variable = { name = factory_working_conditions_law value = 1 }
-
-	}
-
-	option = {
-		name = flavor_eng.230.a
-		historical_option = yes
-
-		custom_tooltip = {
-			text = flavor_eng.230.custom
-		}
-
-		add_policy = policy:decent_conditions
-
-		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_penalty }
-		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_penalty }
-
-	}
-
-	option = {
-		name = flavor_eng.230.b
-
-		custom_tooltip = {
-			text = flavor_eng.230.custom
-		}
-
-		add_policy = policy:fair_conditions
-
-		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_penalty }
-		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
-
-	}
-
-	option = {
-		name = flavor_eng.230.c
-
-		custom_tooltip = {
-			text = flavor_eng.230.custom
-		}
-
-		add_policy = policy:unregulated_conditions
-
-		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_penalty }
-
-	}
-
-	historical_info = flavor_eng.230.historical_info
 
 }
 
@@ -7682,93 +7280,6 @@ flavor_eng.231 = {
 	}
 
 	historical_info = flavor_eng.231.historical_info
-
-}
-
-# Abraham Darby
-flavor_eng.232 = {
-	type = country_event
-
-	fire_only_once = yes
-
-	title = flavor_eng.232.title
-	desc = flavor_eng.232.desc
-	outcome = neutral
-
-	dynamic_historical_event = {
-		tag = ENG
-		from = 1709.1.1
-		to = 1738.1.1
-		monthly_chance = 5
-	}
-
-	trigger = {
-
-		region:great_britain_region = {
-			any_location_in_region = {
-				count >= 3
-				owner ?= root
-				has_building_with_at_least_one_level = iron_foundry
-			}
-		}
-
-		societal_value:traditionalist_vs_innovative >= 20
-
-	}
-	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_coal.dds"
-	immediate = {
-
-		create_character = {
-			first_name = name_abraham
-			last_name = Darby
-			adm = 28
-			dip = 25
-			mil = 25
-			birth_location = location:worcester
-			birth_date = 1678.1.1
-			estate = estate_type:peasants_estate
-			script = eng_abraham_darby
-			save_scope_as = abraham_darby
-			add_trait = trait:unsuited_for_naval_command
-			add_trait = trait:unsuited_for_army_command
-		}
-
-		capital = { save_scope_as = target_location }
-
-	}
-
-	option = {
-		name = flavor_eng.232.a
-		historical_option = yes
-
-		set_variable = { name = unlocked_advance_coke_smelting value = 1 }
-
-		set_variable = { name = the_iron_bridge value = 1 }
-
-		custom_tooltip = enable_coke_smelting_advance
-
-		location:shrewsbury.market = {
-			add_temporary_demand = {
-				type = demand:coke_smelting
-				months = -1
-			}
-		}
-
-		custom_tooltip = flavor_eng.232.tt1
-		custom_tooltip = flavor_eng.232.tt2
-
-	}
-
-	option = {
-		name = flavor_eng.232.b
-
-		add_prestige = prestige_mild_bonus
-
-		custom_tooltip = flavor_eng.232.tt1
-
-	}
-
-	historical_info = flavor_eng.232.historical_info
 
 }
 
@@ -8496,15 +8007,7 @@ flavor_eng.238 = {
 	option = {
 		name = flavor_eng.238.b
 
-		custom_tooltip = {
-			text = flavor_eng.238.custom
-		}
-
-		add_policy = policy:trade_unions_allowed
-
-		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_penalty }
-		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_penalty }
-
+		apply_rebel_demands = scope:disgruntled_factory_workers
 		destroy_rebel = scope:disgruntled_factory_workers
 
 	}
@@ -8545,7 +8048,7 @@ flavor_eng.239 = {
 	}
 	image = "gfx/interface/illustrations/institutions/scientific_revolution.dds"
 	immediate = {
-		
+
 		region:egypt_region = {
 			random_location_in_region = {
 				limit = {
@@ -8899,7 +8402,7 @@ flavor_eng.241 = {
 	option = {
 		name = flavor_eng.241.b
 
-		add_government_power = government_power_mild_penalty
+		add_political_influence = political_influence_mild_penalty
 
 		location:london = {
 			change_prosperity = prosperity_severe_penalty
@@ -9223,7 +8726,12 @@ flavor_eng.245 = {
 
 		location:london = {
 			owner = root
-			has_building_with_at_least_one_level = brewery
+			OR = {
+				has_building_with_at_least_one_level = brewery
+				has_building_with_at_least_one_level = beer_workshop
+				has_building_with_at_least_one_level = brewery_manufactory
+				has_building_with_at_least_one_level = brewery_mill
+			}
 		}
 
 	}

@@ -1,0 +1,226 @@
+﻿# Anno 1644 - Formable nations of the New World
+#
+# These allow the colonial nations created by the 1644 setup (NEN, NFR, NSP, VOP, VOB)
+# and any other colony or former colony in the same region to be founded as a nation
+# in their own right. Flags are defined in main_menu/common/flag_definitions/w_american_flags.txt.
+
+# 巴西
+VOB_f = { # Brazil
+    level = 3
+    required_locations_fraction = 0.5
+    rule = historical
+
+    capital_required = yes
+
+    potential = {
+        capital ?= { region = region:brazil_region }
+    }
+
+    allow = {
+        is_subject = no
+    }
+
+    name = VOB
+    flag = VOB
+    adjective = VOB_ADJ
+    tag = VOB
+    color = map_VOB
+
+    regions = {
+        brazil_region
+    }
+
+    form_effect = {
+        if = {
+            limit = { country_rank_level < 3 }
+            set_country_rank_effect = { rank = country_rank:rank_kingdom }
+        }
+        add_country_modifier = {
+            modifier = new_world_nation_founded
+            years = 25
+        }
+    }
+}
+
+# 拉普拉塔
+LPL_f = { # Rio de la Plata
+    level = 3
+    required_locations_fraction = 0.4
+    rule = historical
+
+    capital_required = yes
+
+    potential = {
+        capital ?= { region = region:la_plata_region }
+    }
+
+    allow = {
+        is_subject = no
+    }
+
+    name = LPL
+    flag = LPL
+    adjective = LPL_ADJ
+    tag = LPL
+    color = map_LPL
+
+    regions = {
+        la_plata_region
+        chaco_region
+    }
+
+    form_effect = {
+        if = {
+            limit = { country_rank_level < 3 }
+            set_country_rank_effect = { rank = country_rank:rank_kingdom }
+        }
+        add_country_modifier = {
+            modifier = new_world_nation_founded
+            years = 25
+        }
+    }
+}
+
+# 秘鲁
+VOP_f = { # Peru
+    level = 3
+    required_locations_fraction = 0.4
+    rule = historical
+
+    capital_required = yes
+
+    potential = {
+        capital ?= { region = region:andes_region }
+    }
+
+    allow = {
+        is_subject = no
+    }
+
+    name = VOP
+    flag = VOP
+    adjective = VOP_ADJ
+    tag = VOP
+    color = map_VOP
+
+    regions = {
+        andes_region
+    }
+
+    form_effect = {
+        if = {
+            limit = { country_rank_level < 3 }
+            set_country_rank_effect = { rank = country_rank:rank_kingdom }
+        }
+        add_country_modifier = {
+            modifier = new_world_nation_founded
+            years = 25
+        }
+    }
+}
+
+# 新西班牙
+NSP_f = { # New Spain
+    level = 3
+    required_locations_fraction = 0.4
+    rule = historical
+
+    capital_required = yes
+
+    potential = {
+        capital ?= { region = region:mesoamerica_region }
+    }
+
+    allow = {
+        is_subject = no
+    }
+
+    name = NSP
+    flag = NSP
+    adjective = NSP_ADJ
+    tag = NSP
+    color = map_NSP
+
+    regions = {
+        mesoamerica_region
+        central_america_region
+    }
+
+    form_effect = {
+        if = {
+            limit = { country_rank_level < 3 }
+            set_country_rank_effect = { rank = country_rank:rank_kingdom }
+        }
+        add_country_modifier = {
+            modifier = new_world_nation_founded
+            years = 25
+        }
+    }
+}
+
+# 新英格兰
+NEN_f = { # New England
+    level = 2
+    required_locations_fraction = 0.35
+    rule = historical
+
+    capital_required = yes
+
+    potential = {
+        capital ?= { region = region:east_coast_region }
+    }
+
+    allow = {
+    }
+
+    name = NEN
+    flag = NEN
+    adjective = NEN_ADJ
+    tag = NEN
+    color = map_NEN
+
+    regions = {
+        east_coast_region
+    }
+
+    form_effect = {
+        add_country_modifier = {
+            modifier = new_world_nation_founded
+            years = 25
+        }
+    }
+}
+
+# 新法兰西
+NFR_f = { # New France
+    level = 2
+    required_locations_fraction = 0.4
+    rule = historical
+
+    capital_required = yes
+
+    potential = {
+        capital ?= { region = region:canada_region }
+    }
+
+    allow = {
+    }
+
+    name = NFR
+    flag = NFR
+    adjective = NFR_ADJ
+    tag = NFR
+    color = map_NFR
+
+    regions = {
+        canada_region
+        great_lakes_region
+    }
+
+    form_effect = {
+        add_country_modifier = {
+            modifier = new_world_nation_founded
+            years = 25
+        }
+    }
+}

@@ -196,18 +196,37 @@
 
 				custom_tooltip = {
 					text = hre_has_eligible_ruler_tt
-					AND = {
-						has_regent = no
-						has_ruler = yes
-						OR = {
-							ruler ?= { is_female = no }
-							scope:recipient = { modifier:hre_allow_female_emperors = yes }
+					or = {
+						#current ruler check
+						AND = {
+							has_regent = no
+							has_ruler = yes
+							OR = {
+								ruler ?= { is_female = no }
+								scope:recipient = { modifier:hre_allow_female_emperors = yes }
+							}
+							ruler ?= {
+								modifier:blocked_from_ruling_the_hre = no
+								custom_tooltip = {
+									text = hre_character_fulfills_imperial_religion_requirement_tt
+									hre_country_fulfills_imperial_religion_requirement = { type = voting }
+								}
+							}
 						}
-						ruler ?= {
-							modifier:blocked_from_ruling_the_hre = no
-							custom_tooltip = {
-								text = hre_character_fulfills_imperial_religion_requirement_tt
-								hre_country_fulfills_imperial_religion_requirement = { type = voting }
+						#regency for heir check - can still vote for kids y'know
+						AND = {
+							has_regent = yes
+							has_heir = yes
+							OR = {
+								heir ?= { is_female = no }
+								scope:recipient = { modifier:hre_allow_female_emperors = yes }
+							}
+							heir ?= {
+								modifier:blocked_from_ruling_the_hre = no
+								custom_tooltip = {
+									text = hre_character_fulfills_imperial_religion_requirement_tt
+									hre_country_fulfills_imperial_religion_requirement = { type = voting }
+								}
 							}
 						}
 					}
@@ -216,14 +235,7 @@
 
 			# Already Emperor: heir must be eligible (successor check)
 			AND = {
-				OR = {
-					is_leader_of_international_organization = scope:recipient
-					scope:recipient = {
-						international_organization_has_leader = no
-						exists = last_leader_country
-						last_leader_country ?= root
-					}
-				}
+				is_leader_of_international_organization = scope:recipient
 
 				custom_tooltip = {
 					text = hre_has_eligible_heir_tt
@@ -375,7 +387,7 @@
 			}
 		}
 		trigger_else = {
-			scope:recipient = { international_organization_leader_reign >= LONG_IMPERIAL_REGENCY_YEARS }
+			scope:recipient = { international_organization_leader_reign >= define:NInternationalOrganization|LONG_IMPERIAL_REGENCY_YEARS }
 		}
 	}
 	
@@ -783,13 +795,13 @@
 						# Subtract IA if there is a long interregnum
 						if = {
 							limit = {
-								international_organization_leader_reign >= LONG_IMPERIAL_REGENCY_YEARS
+								international_organization_leader_reign >= define:NInternationalOrganization|LONG_IMPERIAL_REGENCY_YEARS
 							}
 							subtract = {
 								desc = "LONG_IMPERIAL_REGENCY"
 								value = {
 									value = international_organization_leader_reign
-									subtract = LONG_IMPERIAL_REGENCY_YEARS
+									subtract = define:NInternationalOrganization|LONG_IMPERIAL_REGENCY_YEARS
 									multiply = 0.25
 								}
 							}
@@ -824,8 +836,12 @@
 							format = "MULTIPLIER_CHANGE_FORMAT"
 							desc_sort_order = -99999 # Make sure we are last
 							value = {
-								value = leader_country.modifier:imperial_authority_modifier
-								add = 1
+								value = 1
+								add = {
+									desc = "IMPERIAL_AUTHORITY_MODIFIER_EFFECT"
+									format = "PERCENTAGE_CHANGE_FORMAT"
+									value = leader_country.modifier:imperial_authority_modifier
+								}
 							}
 						}
 					}

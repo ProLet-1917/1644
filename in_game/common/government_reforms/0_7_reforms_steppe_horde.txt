@@ -1,0 +1,60 @@
+﻿# Anno 1644 - Age of Imperialism (age_7_imperialism)
+# Steppe horde-only government reforms. Unlock automatically when the age begins.
+
+# 汗国现代化
+horde_modernization_reform = {
+    age = age_7_imperialism
+    major = yes
+    government = steppe_horde
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    allow = {
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    country_modifier = {
+        government_reform_slots = 1
+        government_size = 1
+        global_institution_growth_modifier = 0.10
+        global_max_literacy = 5
+        global_production_efficiency = 0.05
+        monthly_towards_centralization = societal_value_monthly_move
+        monthly_towards_innovative = societal_value_monthly_move
+    }
+
+    years = 3
+}
+
+# 旗制改革
+banner_modernization_reform = {
+    age = age_7_imperialism
+    government = steppe_horde
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    allow = {
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    country_modifier = {
+        global_manpower_modifier = 0.20
+        global_levy_size_modifier = 0.15
+        levy_combat_efficiency_modifier = 0.10
+        army_maintenance_efficiency = 0.10
+        monthly_towards_quantity = societal_value_monthly_move
+        monthly_towards_centralization = societal_value_monthly_move
+    }
+
+    years = 2
+}

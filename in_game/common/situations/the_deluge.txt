@@ -13,7 +13,9 @@ the_deluge = {
         has_global_variable = rise_of_chemielnicki
     }
 
-    can_end = {
+    outcome = {
+    	name = "the_deluge_deluge_recedes"
+    	trigger = {
         OR = {
             current_year > 1700
             OR = {
@@ -37,6 +39,7 @@ the_deluge = {
                 }
             }
         }
+    	}
     }
 
     visible = {
@@ -46,6 +49,11 @@ the_deluge = {
     }
 
     on_start = {
+    	add_timeline_note = {
+    		key = timeline_note_the_deluge
+    		show_in_pop_graph = yes
+    		unique = yes
+    	}
         c:PLC = {
             trigger_event_non_silently = the_deluge.5
         }
@@ -84,6 +92,11 @@ the_deluge = {
     }
 
     on_ended = {
+    	add_timeline_note = {
+    		key = timeline_note_the_deluge_end
+    		show_in_pop_graph = yes
+    		unique = yes
+    	}
         every_location_in_the_world = {
             limit = {
                 has_location_modifier = chaos_and_destruction

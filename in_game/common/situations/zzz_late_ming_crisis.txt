@@ -11,7 +11,9 @@
 	}
 
 	# 2. 结束条件
-	can_end = {
+	outcome = {
+		name = "late_ming_crisis_crisis_resolved"
+		trigger = {
 		OR = {
 			current_year >= 1685
 
@@ -27,6 +29,7 @@
 					}
 				}
 			}
+		}
 		}
 	}
 
@@ -45,6 +48,11 @@
 
 	# 4. 启动效果
 	on_start = {
+		add_timeline_note = {
+			key = timeline_note_late_ming_crisis
+			show_in_pop_graph = yes
+			unique = yes
+		}
 
 		# 王朝在危机中继续存在，不再解散
 
@@ -175,43 +183,43 @@
 					chance = 10
 					modifier = {
 						c:CSH.var:chi_domination < 70
-						multiply = 4
+						factor = 4
 					}
 					modifier = {
 						c:CSH.var:chi_domination < 60
-						multiply = 2
+						factor = 2
 					}
 					modifier = {
 						c:CSH.var:chi_domination < 50
-						multiply = 2
+						factor = 2
 					}
 					modifier = {
 						location:xuande.owner = c:QNG#宣府
-						multiply = 4
+						factor = 4
 					}
 					modifier = {
 						location:yangqu.owner = c:QNG#太原
-						multiply = 4
+						factor = 4
 					}
 					modifier = {
 						location:ninghua.owner = c:QNG#宁武
-						multiply = 2
+						factor = 2
 					}
 					modifier = {
 						location:daizhou.owner = c:QNG#代州
-						multiply = 2
+						factor = 2
 					}
 					modifier = {
 						location:dadu.owner = c:QNG#北京
-						multiply = 4
+						factor = 4
 					}
 					modifier = {
 						location:jingzhao.owner = c:QNG#西京
-						multiply = 4
+						factor = 4
 					}
 					modifier = {
 						c:CSH.var:chi_domination > 75
-						divide = 2
+						factor = 0.5
 					}
 					c:CJX = {
 						trigger_event_silently = {
@@ -239,30 +247,30 @@
 					chance = 10
 					modifier = {
 						c:CSH.var:chi_domination < 70
-						multiply = 4
+						factor = 4
 					}
 					modifier = {
 						c:CSH.var:chi_domination < 60
-						multiply = 2
+						factor = 2
 					}
 					modifier = {
 						c:CSH.var:chi_domination < 50
-						multiply = 2
+						factor = 2
 					}
 					modifier = {
 						OR = {
 							location:datong_datong.owner = c:QNG
 							c:CJX ?= { is_subject_of = c:QNG }
 						}
-						multiply = 2
+						factor = 2
 					}
 					modifier = {
 						location:dadu.owner = c:QNG#北京
-						multiply = 2
+						factor = 2
 					}
 					modifier = {
 						c:CSH.var:chi_domination > 75
-						divide = 2
+						factor = 0.5
 					}
 					c:CSH = {
 						trigger_event_silently = {
@@ -288,23 +296,23 @@
 					chance = 25
 					modifier = {
 						c:CSH.var:chi_mandate < 50
-						multiply = 2
+						factor = 2
 					}
 					modifier = {
 						c:CSH.var:chi_mandate < 40
-						multiply = 2
+						factor = 2
 					}
 					modifier = {
 						location:dadu.owner != c:CSH#北京
-						multiply = 2
+						factor = 2
 					}
 					modifier = {
 						c:QNG.var:chi_domination > c:CSH.var:chi_domination	
-						multiply = 2
+						factor = 2
 					}
 					modifier = {
 						c:CSH.var:chi_domination > 75
-						divide = 2
+						factor = 0.5
 					}
 					c:CSH = {
 						trigger_event_silently = {
@@ -336,34 +344,34 @@
 					chance = 5
 					modifier = {
 						c:CSH = { has_variable = csh_lost_xuanfu }
-						multiply = 4
+						factor = 4
 					}
 					modifier = {
 						OR = {
 							location:funing.owner = c:QNG
 							c:WSG ?= { is_subject_of = c:QNG }
 						}
-						multiply = 4
+						factor = 4
 					}
 					modifier = {
 						has_global_variable = csh_rebellion_of_hebe_shandong
-						multiply = 4
+						factor = 4
 					}
 					modifier = {
 						c:CJX ?= { is_subject_of = c:QNG }
-						multiply = 2
+						factor = 2
 					}
 					modifier = {
 						c:CSH.var:chi_domination < 60
-						multiply = 2
+						factor = 2
 					}
 					modifier = {
 						c:CSH.var:chi_domination > 75
-						divide = 2
+						factor = 0.5
 					}
 					modifier = {
 						c:CSH.var:chi_mandate < 25
-						multiply = 2
+						factor = 2
 					}
 					c:CSH = {
 						trigger_event_silently = {
@@ -391,17 +399,17 @@
 					chance = 10
 					modifier = {
 						location:dadu.owner = c:QNG
-						multiply = 2
+						factor = 2
 					}
 					modifier = {
 						c:QNG.var:chi_domination > 80
-						multiply = 2
+						factor = 2
 					}
 					modifier = {
 						c:CJI = {
 							is_at_war_with = c:QNG
 						}
-						multiply = 2
+						factor = 2
 					}
 					c:CJI = {
 						trigger_event_silently = {
@@ -416,6 +424,11 @@
 
 	# 6. 结束效果
 	on_ended = {
+		add_timeline_note = {
+			key = timeline_note_late_ming_crisis_end
+			show_in_pop_graph = yes
+			unique = yes
+		}
 		# 移除所有参与国的局势 modifier
 		every_country = {
 			limit = {

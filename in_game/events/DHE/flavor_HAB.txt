@@ -318,46 +318,6 @@ flavor_hab.17 = { #Expulsion of Lutherans in Salzburg
 	}
 }
 
-flavor_hab.18 = { #Geheime Kabinettskanzlei
-	type = country_event
-	title = flavor_hab.18.title
-	desc = flavor_hab.18.desc
-	outcome = neutral
-	historical_info = flavor_hab.18.historical_info
-
-	fire_only_once = yes
-
-	dynamic_historical_event = {
-		tag = HAB
-		from = 1690.1.1
-		to = 1740.1.1
-		monthly_chance = 3
-	}
-
-	illustration_tags = {
-		10 = happy
-		10 = interior
-	}
-
-	immediate = {
-		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
-	}
-
-	option = {
-		name = flavor_hab.18.a
-		historical_option = yes
-
-		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_left }
-		set_variable = hab_geheime_kabinettskanzlei
-	}
-
-	option = {
-		name = flavor_hab.18.b
-
-		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_right }
-	}
-}
-
 flavor_hab.19 = { #Prince Eugene of Savoy
 	type = country_event
 	title = flavor_hab.19.title
@@ -630,7 +590,7 @@ flavor_hab.23 = { #Klemens von Metternich
 	option = {
 		name = flavor_hab.23.a
 
-		add_government_power = government_power_weak_bonus
+		add_political_influence = political_influence_weak_bonus
 		add_prestige = prestige_mild_bonus
 	}
 }
@@ -749,7 +709,7 @@ flavor_hab.25 = { #Schönbrunn Palace
 		has_ruler = yes
 		location:vienna = {
 			is_capital = yes
-			num_civil_constructions < 1
+			num_civil_constructions < 10
 			OR = {
 				location_rank = location_rank:town
 				location_rank = location_rank:city
@@ -1820,7 +1780,7 @@ flavor_hab.78 = { #Disempowering the Tirolean Parliament
 
 	option = {
 		name = flavor_hab.78.b
-		add_government_power = government_power_severe_penalty
+		add_political_influence = political_influence_severe_penalty
 		change_societal_value = {
 			type = centralization_vs_decentralization
 			value = societal_value_move_to_right
@@ -2096,13 +2056,13 @@ flavor_hab.82 = { #Johann Anton von Pergen
         scope:target_character = {
             move_country = root
         }
-		add_government_power = government_power_severe_bonus
+		add_political_influence = political_influence_severe_bonus
 		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_right }
 	}
 
 	option = {
 		name = flavor_hab.82.b
-		add_government_power = government_power_severe_penalty
+		add_political_influence = political_influence_severe_penalty
 		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }
 		hidden_effect = {
    			kill_character_silently = scope:target_character
@@ -2226,16 +2186,7 @@ flavor_hab.86 = { #Rakoczis Uprising
 
 	option = {
 		name = flavor_hab.85.b
-		add_government_power = government_power_ultimate_penalty
-		custom_tooltip = {
-			text = flavor_hab.85.b.tt
-			every_owned_location = {
-				limit = {
-					area = area:slovakia_area
-				}
-				change_control = control_ultimate_penalty
-			}
-		}
+		apply_rebel_demands = scope:rakoczi_uprising_scope
 		destroy_rebel = scope:rakoczi_uprising_scope
 	}
 
@@ -2441,7 +2392,6 @@ flavor_hab.93 = { #Imperial Artillery
 	immediate = {
 		create_character = {
 			first_name = name_joseph.name_wenceslas
-			last_name = von_Liechtenstein
 			dynasty = dynasty:von_Liechtenstein_dynasty
 			birth_date = 1696.8.9
 			birth_location = location:prague
@@ -3564,7 +3514,7 @@ flavor_hab.1903 = { #The Court Bankers finance in wartime
 		}
 		owns = location:vienna
 		location:vienna = {
-			num_civil_constructions > 4
+			num_civil_constructions > 8
 		}
 	}
 
@@ -3635,7 +3585,7 @@ flavor_hab.2000 = { #Wenzel Anton Kaunitz - Diplomatic Revolution
 	option = {
 		name = flavor_hab.2000.a
 		scope:target_character = { move_country = root }
-		add_government_power = government_power_extreme_bonus
+		add_political_influence = political_influence_extreme_bonus
 		add_prestige = prestige_mild_bonus
 
 		every_rival = {
@@ -4287,6 +4237,6 @@ flavor_hab.2501 = { #Prussian Event about the rivalry
 # 		c:HUN = {
 # 			make_subject_of = { target = c:HAB type = subject_type:dominion }
 # 		}
-# 		add_government_power = government_power_weak_penalty
+# 		add_political_influence = political_influence_weak_penalty
 # 	}
 # }

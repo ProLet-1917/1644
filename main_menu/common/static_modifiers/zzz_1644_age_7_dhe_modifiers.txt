@@ -1,0 +1,658 @@
+﻿# Anno 1644 - Age of Imperialism
+# Static modifiers used by the Age 7 national flavour events (DHE).
+
+#############################################
+# Habsburg Monarchy
+#############################################
+
+habsburg_reform_era = {
+    game_data = { category = country }
+    global_max_literacy = 5
+    country_cabinet_efficiency = 0.05
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+    monthly_towards_liberalism = societal_value_monthly_move
+}
+
+habsburg_military_absolutism = {
+    game_data = { category = country }
+    global_crown_estate_power = 0.25
+    discipline = 0.05
+    monthly_rebel_growth = -0.002
+    global_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+    monthly_towards_absolutism = societal_value_monthly_move
+}
+
+austro_hungarian_compromise = {
+    game_data = { category = country }
+    subject_loyalty = 15
+    government_size = 1
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    monthly_towards_decentralization = societal_value_monthly_move
+    monthly_towards_conciliatory = societal_value_monthly_move
+}
+
+balkan_annexation_crisis = {
+    game_data = { category = country }
+    antagonism_received_modifier = 0.5
+    war_declaration_stab_hit_tolerance = 0.5
+    aggressiveness_modifier = 0.25
+    monthly_towards_belligerent = societal_value_monthly_move
+}
+
+viennese_master_composer = {
+    game_data = { category = character }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+viennese_secession_painter = {
+    game_data = { category = character }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+viennese_scientific_school = {
+    game_data = { category = character }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+#############################################
+# Russia
+#############################################
+
+crimean_war_humiliation = {
+    game_data = { category = country }
+    army_maintenance_efficiency = -0.10
+    monthly_prestige = -0.10
+    global_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+    monthly_towards_innovative = societal_value_monthly_move
+}
+
+emancipation_of_the_serfs = {
+    game_data = { category = country }
+    global_peasant_enfranchisment = 0.25
+    global_pop_promotion_speed_modifier = 0.10
+    global_raw_material_output = 0.10
+    peasants_estate_target_satisfaction = medium_permanent_target_satisfaction
+    nobles_estate_target_satisfaction = large_permanent_target_satisfaction_penalty
+    monthly_towards_free_subjects = societal_value_monthly_move
+}
+
+serfdom_upheld = {
+    game_data = { category = country }
+    global_raw_material_output = 0.05
+    nobles_estate_target_satisfaction = medium_permanent_target_satisfaction
+    peasants_estate_target_satisfaction = large_permanent_target_satisfaction_penalty
+    global_pop_promotion_speed_modifier = -0.10
+    monthly_towards_serfdom = societal_value_monthly_move
+}
+
+trans_siberian_railway = {
+    game_data = { category = country }
+    global_road_building_time = -0.20
+    trade_income = 0.05
+    army_movement_speed = 0.15
+    land_cost_on_distance_from_capital_speed_propagation = 0.10
+    global_distance_from_capital_speed_propagation = 0.05
+}
+
+october_manifest = {
+    game_data = { category = country }
+    government_reform_slots = 1
+    parliament_base_support = 0.15
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    monthly_towards_liberalism = societal_value_monthly_move
+}
+
+stolypin_reaction = {
+    game_data = { category = country }
+    monthly_rebel_growth = -0.003
+    global_crown_estate_power = 0.20
+    global_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+    monthly_towards_absolutism = societal_value_monthly_move
+}
+
+russian_man_of_letters = {
+    game_data = { category = character }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+russian_master_composer = {
+    game_data = { category = character }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+#############################################
+# Ottoman Empire
+#############################################
+
+tanzimat_reforms = {
+    game_data = { category = country }
+    country_cabinet_efficiency = 0.10
+    global_max_literacy = 5
+    tax_income_efficiency = small_tax_income_efficiency_bonus
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+    clergy_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+    monthly_towards_innovative = societal_value_monthly_move
+}
+
+ottoman_old_order = {
+    game_data = { category = country }
+    clergy_estate_target_satisfaction = medium_permanent_target_satisfaction
+    nobles_estate_target_satisfaction = medium_permanent_target_satisfaction
+    monthly_towards_traditionalist = societal_value_monthly_move
+    monthly_towards_decentralization = societal_value_monthly_move
+}
+
+ottoman_constitution = {
+    game_data = { category = country }
+    parliament_base_support = 0.15
+    government_reform_slots = 1
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    monthly_towards_liberalism = societal_value_monthly_move
+}
+
+ottoman_absolutism = {
+    game_data = { category = country }
+    global_crown_estate_power = 0.25
+    monthly_rebel_growth = -0.002
+    monthly_towards_absolutism = societal_value_monthly_move
+}
+
+balkan_retreat = {
+    game_data = { category = country }
+    monthly_prestige = -0.10
+    global_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+    army_maintenance_efficiency = 0.10
+    monthly_towards_defensive = societal_value_monthly_move
+}
+
+empty_treasury = {
+    game_data = { category = country }
+    tax_income_efficiency = large_tax_income_efficiency_penalty
+    global_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+}
+
+ottoman_imperial_architect = {
+    game_data = { category = character }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+#############################################
+# Japan
+#############################################
+
+meiji_restoration = {
+    game_data = { category = country }
+    global_institution_growth_modifier = 0.20
+    research_speed_modifier = 0.10
+    global_max_literacy = 7.5
+    global_production_efficiency = 0.05
+    government_reform_slots = 1
+    global_crown_estate_power = 0.20
+    monthly_towards_centralization = societal_value_monthly_move
+    monthly_towards_innovative = societal_value_monthly_move
+}
+
+bakufu_preserved = {
+    game_data = { category = country }
+    nobles_estate_target_satisfaction = medium_permanent_target_satisfaction
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+    monthly_towards_traditionalist = societal_value_monthly_move
+    monthly_towards_decentralization = societal_value_monthly_move
+}
+
+iwakura_mission = {
+    game_data = { category = country }
+    research_speed = 0.25
+    diplomatic_range_modifier = 0.25
+    improve_relation_impact = 0.20
+    monthly_diplomats = 0.10
+}
+
+leave_asia_join_europe = {
+    game_data = { category = country }
+    research_speed_modifier = 0.10
+    cultural_influence_modifier = 0.10
+    diplomatic_reputation = 0.10
+    antagonism_culture_influence = -0.10
+    monthly_towards_outward = societal_value_monthly_move
+}
+
+preserve_asian_traditions = {
+    game_data = { category = country }
+    cultural_tradition_modifier = 0.20
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    monthly_towards_spiritualist = societal_value_monthly_move
+    monthly_towards_traditionalist = societal_value_monthly_move
+}
+
+japanese_imperial_expansion = {
+    game_data = { category = country }
+    discipline = 0.10
+    land_morale_modifier = 0.10
+    naval_damage_done = 0.10
+    global_war_score_efficiency = 0.10
+    monthly_towards_belligerent = societal_value_monthly_move
+}
+
+ukiyo_e_master_modifier = {
+    game_data = { category = character }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+#############################################
+# United States
+#############################################
+
+westward_expansion = {
+    game_data = { category = country }
+    colonial_migration_size_modifier = 0.35
+    global_migration_speed_modifier = 0.15
+    global_monthly_food_modifier = 0.10
+    monthly_towards_outward = societal_value_monthly_move
+}
+
+civil_war_and_emancipation = {
+    game_data = { category = country }
+    global_peasant_enfranchisment = 0.25
+    global_pop_promotion_speed_modifier = 0.10
+    global_raw_material_output = 0.10
+    peasants_estate_target_satisfaction = medium_permanent_target_satisfaction
+    nobles_estate_target_satisfaction = large_permanent_target_satisfaction_penalty
+    monthly_towards_free_subjects = societal_value_monthly_move
+}
+
+compromise_of_the_sections = {
+    game_data = { category = country }
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    monthly_towards_traditionalist = societal_value_monthly_move
+    monthly_towards_conciliatory = societal_value_monthly_move
+}
+
+gilded_age = {
+    game_data = { category = country }
+    global_production_efficiency = 0.15
+    global_raw_material_output = 0.15
+    global_construction_speed = 0.10
+    burghers_estate_target_satisfaction = medium_permanent_target_satisfaction
+    peasants_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+    monthly_towards_plutocracy = societal_value_monthly_move
+}
+
+progressive_era = {
+    game_data = { category = country }
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    tax_income_efficiency = small_tax_income_efficiency_bonus
+    global_monthly_literacy = 0.03
+    monthly_towards_liberalism = societal_value_monthly_move
+}
+
+american_overseas_empire = {
+    game_data = { category = country }
+    navy_maintenance_efficiency = 0.10
+    naval_damage_done = 0.10
+    colonial_maintenance_efficiency = 0.20
+    diplomatic_range = 200
+    monthly_towards_naval = societal_value_monthly_move
+    monthly_towards_outward = societal_value_monthly_move
+}
+
+anti_imperialist_league = {
+    game_data = { category = country }
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    monthly_towards_inward = societal_value_monthly_move
+    monthly_towards_conciliatory = societal_value_monthly_move
+}
+
+american_man_of_letters = {
+    game_data = { category = character }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+american_inventor_modifier = {
+    game_data = { category = character }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+american_industrial_laboratories = {
+    game_data = { category = country }
+    research_speed_modifier = 0.10
+    global_production_efficiency = 0.10
+    global_raw_material_output = 0.10
+}
+
+#############################################
+# Spain
+#############################################
+
+carlist_wars = {
+    game_data = { category = country }
+    monthly_rebel_growth = 0.003
+    clergy_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+    global_crown_estate_power = -0.10
+    monthly_towards_liberalism = societal_value_monthly_move
+}
+
+disaster_of_1898 = {
+    game_data = { category = country }
+    monthly_prestige = -0.15
+    navy_maintenance_efficiency = -0.15
+    global_estate_target_satisfaction = large_permanent_target_satisfaction_penalty
+    monthly_towards_innovative = societal_value_monthly_move
+}
+
+spanish_restoration_compromise = {
+    game_data = { category = country }
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    parliament_base_support = 0.10
+    monthly_towards_conciliatory = societal_value_monthly_move
+}
+
+catalan_modernisme_architect = {
+    game_data = { category = character }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+#############################################
+# Portugal
+#############################################
+
+portuguese_constitutional_monarchy = {
+    game_data = { category = country }
+    parliament_base_support = 0.10
+    government_reform_slots = 1
+    burghers_estate_target_satisfaction = medium_permanent_target_satisfaction
+    monthly_towards_liberalism = societal_value_monthly_move
+}
+
+pink_map_plan = {
+    game_data = { category = country }
+    colonial_migration_size_modifier = 0.25
+    colonial_maintenance_efficiency = 0.20
+    trade_income = 0.05
+    monthly_towards_outward = societal_value_monthly_move
+}
+
+portuguese_man_of_letters = {
+    game_data = { category = character }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+#############################################
+# Netherlands
+#############################################
+
+dutch_trade_reorientation = {
+    game_data = { category = country }
+    trade_income = 0.15
+    merchant_maintenance_efficiency = 0.15
+    global_merchant_capacity_modifier = 0.15
+    monthly_towards_free_trade = societal_value_monthly_move
+}
+
+dutch_liberal_reform = {
+    game_data = { category = country }
+    parliament_base_support = 0.10
+    global_max_literacy = 5
+    monthly_towards_liberalism = societal_value_monthly_move
+}
+
+cultivation_system = {
+    game_data = { category = country }
+    global_raw_material_output = 0.20
+    tax_income_efficiency = medium_tax_income_efficiency_bonus
+    burghers_estate_target_satisfaction = medium_permanent_target_satisfaction
+    peasants_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+    monthly_towards_capital_economy = societal_value_monthly_move
+}
+
+ethical_policy = {
+    game_data = { category = country }
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    global_population_growth = 0.0010
+    global_max_literacy = 5
+    monthly_towards_humanist = societal_value_monthly_move
+}
+
+dutch_master_painter = {
+    game_data = { category = character }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+#############################################
+# Sweden
+#############################################
+
+swedish_era_of_liberty = {
+    game_data = { category = country }
+    parliament_base_support = 0.15
+    country_cabinet_efficiency = 0.05
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+    monthly_towards_liberalism = societal_value_monthly_move
+}
+
+swedish_scandinavian_union = {
+    game_data = { category = country }
+    diplomatic_capacity = 1
+    improve_relation_impact = 0.20
+    subject_opinions = 10
+    monthly_towards_conciliatory = societal_value_monthly_move
+}
+
+swedish_industrial_breakthrough = {
+    game_data = { category = country }
+    global_iron_output_modifier = 0.25
+    global_steel_output_modifier = 0.25
+    global_raw_material_output = 0.15
+    research_speed_modifier = 0.05
+    monthly_towards_capital_economy = societal_value_monthly_move
+}
+
+swedish_man_of_letters = {
+    game_data = { category = character }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+#############################################
+# Poland-Lithuania
+#############################################
+
+polish_national_rising = {
+    game_data = { category = country }
+    cultural_influence = 0.20
+    cultural_tradition = 0.20
+    global_levy_size_modifier = 0.10
+    monthly_rebel_growth = 0.002
+    monthly_towards_free_subjects = societal_value_monthly_move
+}
+
+organic_work = {
+    game_data = { category = country }
+    global_production_efficiency = 0.10
+    global_max_literacy = 5
+    global_institution_growth_modifier = 0.10
+    monthly_towards_innovative = societal_value_monthly_move
+}
+
+polish_master_composer = {
+    game_data = { category = character }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+#############################################
+# Italy
+#############################################
+
+risorgimento_legacy = {
+    game_data = { category = country }
+    cultural_influence = 0.20
+    cultural_tradition = 0.20
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    monthly_towards_liberalism = societal_value_monthly_move
+}
+
+italian_transformismo = {
+    game_data = { category = country }
+    parliament_base_support = 0.10
+    country_cabinet_efficiency = 0.05
+    global_crown_estate_power = 0.10
+    monthly_towards_conciliatory = societal_value_monthly_move
+}
+
+italian_southern_question = {
+    game_data = { category = country }
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+    global_institution_growth_modifier = 0.10
+    global_monthly_food_modifier = 0.05
+    monthly_towards_humanist = societal_value_monthly_move
+}
+
+italian_brigandage_suppressed = {
+    game_data = { category = country }
+    monthly_rebel_growth = -0.003
+    global_crown_estate_power = 0.15
+    global_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+}
+
+italian_master_composer = {
+    game_data = { category = character }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+#############################################
+# Germany
+#############################################
+
+german_empire_proclaimed = {
+    game_data = { category = country }
+    monthly_prestige = 0.15
+    monthly_legitimacy = 0.05
+    discipline = 0.05
+    government_reform_slots = 1
+    monthly_towards_belligerent = societal_value_monthly_move
+}
+
+german_liberal_empire = {
+    game_data = { category = country }
+    parliament_base_support = 0.15
+    global_max_literacy = 5
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    monthly_towards_liberalism = societal_value_monthly_move
+}
+
+land_of_poets_and_thinkers = {
+    game_data = { category = country }
+    research_speed_modifier = 0.15
+    research_speed = 0.50
+    global_max_literacy = 7.5
+    cultural_influence_modifier = 0.10
+    num_possible_artists = 1
+}
+
+german_militarism = {
+    game_data = { category = country }
+    discipline = 0.10
+    army_maintenance_efficiency = 0.10
+    global_manpower_modifier = 0.15
+    monthly_towards_offensive = societal_value_monthly_move
+}
+
+weltpolitik = {
+    game_data = { category = country }
+    navy_maintenance_efficiency = 0.10
+    naval_damage_done = 0.15
+    colonial_migration_size_modifier = 0.25
+    diplomatic_range = 200
+    antagonism_received_modifier = 0.25
+    monthly_towards_naval = societal_value_monthly_move
+    monthly_towards_outward = societal_value_monthly_move
+}
+
+german_continental_policy = {
+    game_data = { category = country }
+    army_maintenance_efficiency = 0.15
+    improve_relation_impact = 0.15
+    antagonism_received_modifier = -0.15
+    monthly_towards_conciliatory = societal_value_monthly_move
+}
+
+german_master_composer = {
+    game_data = { category = character }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}
+
+#############################################
+# Great Britain
+#############################################
+
+victorian_imperial_zenith = {
+    game_data = { category = country }
+    monthly_prestige = 0.15
+    trade_income = 0.10
+    colonial_maintenance_efficiency = 0.20
+    diplomatic_capacity = 1
+    naval_damage_done = 0.10
+    monthly_towards_outward = societal_value_monthly_move
+}
+
+little_england_policy = {
+    game_data = { category = country }
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    tax_income_efficiency = small_tax_income_efficiency_bonus
+    antagonism_received_modifier = -0.20
+    monthly_towards_inward = societal_value_monthly_move
+    monthly_towards_conciliatory = societal_value_monthly_move
+}
+
+british_raj = {
+    game_data = { category = country }
+    tax_income_efficiency = medium_tax_income_efficiency_bonus
+    global_raw_material_output = 0.15
+    subject_loyalty = -5
+    monthly_towards_outward = societal_value_monthly_move
+}
+
+company_rule_preserved = {
+    game_data = { category = country }
+    merchant_maintenance_efficiency = 0.20
+    global_merchant_power = 0.10
+    trade_income = 0.10
+    monthly_towards_capital_economy = societal_value_monthly_move
+}
+
+repeal_of_the_corn_laws = {
+    game_data = { category = country }
+    global_monthly_food_modifier = 0.15
+    trade_income = 0.05
+    peasants_estate_target_satisfaction = medium_permanent_target_satisfaction
+    nobles_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+    monthly_towards_free_trade = societal_value_monthly_move
+}
+
+protectionist_lobby = {
+    game_data = { category = country }
+    tax_income_efficiency = small_tax_income_efficiency_bonus
+    nobles_estate_target_satisfaction = medium_permanent_target_satisfaction
+    monthly_towards_mercantilism = societal_value_monthly_move
+}
+
+british_man_of_letters = {
+    game_data = { category = character }
+    artist_skill_level_gain = 0.25
+    monthly_prestige = 0.02
+}

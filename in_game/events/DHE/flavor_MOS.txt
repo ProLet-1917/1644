@@ -395,25 +395,21 @@ flavor_mos.78 = {
 	}
 
 	option = {
-		name = flavor_mos.78.a
+		name = flavor_mos.77.a
 		historical_option = yes
 
-		custom_tooltip = {
-			text = enable_aptekarsky_cabinet_action
-			set_variable = { name = aptekarsky_prikaz_established value = 1 }
+		add_country_modifier = {
+			modifier = fine_tuned_diplomacy
+			years = 10
 		}
 
-		capital = {
-			every_pop = {
-				limit = {
-					owner = root
-					pop_type = pop_type:nobles
-				}
-				add_pop_satisfaction = pop_satisfaction_ultimate_bonus
-			}
+		drop_antagonism_bomb = {
+			target = capital
+			modifier = antagonism_skilled_diplomat
+			value = -2
 		}
 
-		custom_tooltip = flavor_mos.78.tt1
+		custom_tooltip = flavor_mos.77.tt1
 
 		ai_chance = {
 			factor = 1
@@ -422,7 +418,7 @@ flavor_mos.78 = {
 	}
 
 	option = {
-	name = flavor_mos.78.b
+		name = flavor_mos.77.b
 
 		add_estate_satisfaction = { type = estate_type:clergy_estate
 			value = estate_satisfaction_severe_bonus
@@ -434,7 +430,7 @@ flavor_mos.78 = {
 
 	}
 
-	historical_info = flavor_mos.78.historical_info
+	historical_info = flavor_mos.77.historical_info
 
 }
 
@@ -1059,9 +1055,6 @@ flavor_mos.88 = {
 			custom_tooltip = flavor_mos.88.tt2
 		}
 
-		custom_tooltip = flavor_mos.88.tt1
-		custom_tooltip = flavor_mos.88.tt2
-
 		ai_chance = {
 			factor = 0.5
 		}
@@ -1069,30 +1062,23 @@ flavor_mos.88 = {
 	}
 
 	option = {
-		name = flavor_mos.88.c
-		trigger = {
-			ruler ?= {
-				any_child = {
-					is_female = no
-					is_alive = yes
-					count > 0
+	name = flavor_mos.87.b
+
+		location:kazan = {
+			create_art = {
+				quality = 85
+				type = work_of_art_type:icon
+				key = lady_of_kazan
+			}
+			market = {
+				add_temporary_demand = {
+					type = demand:mos_lady_of_kazan_copies
+					months = 12
 				}
 			}
 		}
 
-		ruler = {
-			every_child = {
-				limit = {
-					is_female = no
-					is_alive = yes
-				}
-				add_adm = 10
-				add_dip = 10
-				add_trait = trait:scholar
-			}
-		}
-
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 
 		custom_tooltip = flavor_mos.88.tt1
 
@@ -1103,23 +1089,19 @@ flavor_mos.88 = {
 	}
 
 	option = {
-		name = flavor_mos.88.d
-
-		hidden_effect = { kill_character_silently = scope:simon_sitnianowicz }
+		name = flavor_mos.87.c
 
 		add_estate_satisfaction = { type = estate_type:clergy_estate
 			value = estate_satisfaction_severe_bonus
 		}
 
-		custom_tooltip = flavor_mos.88.tt3
-
 		ai_chance = {
 			factor = 0.5
 		}
 
 	}
 
-	historical_info = flavor_mos.88.historical_info
+	historical_info = flavor_mos.87.historical_info
 
 }
 
@@ -1306,20 +1288,16 @@ flavor_mos.90 = {
 		name = flavor_mos.90.a
 		historical_option = yes
 
+		custom_tooltip = flavor_mos.90.tt5
+		set_variable = grand_embassy_setup
+
 		set_variable = {
 			name = grand_embassy
 			value  = 1
 		}
 
-		set_variable = {
-			name = incognito_travels_in_progress
-			value  = 1
-			days = 365
-		}
-
 		change_gold_effect = { scale = -3 }
 
-		custom_tooltip = flavor_mos.90.tt1
 		if = {
 			limit = { exists = scope:target_character }
 			scope:target_character = {
@@ -1332,7 +1310,6 @@ flavor_mos.90 = {
 					add_dip = 10
 					add_mil = 10
 				}
-				custom_tooltip = flavor_mos.90.tt2
 			}
 		}
 
@@ -1472,7 +1449,7 @@ flavor_mos.91 = {
 		}
 	}
 
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 
 		scope:francesco_rastrelli = { move_country = root }
 		custom_tooltip = flavor_mos.91.tt2
@@ -1852,7 +1829,7 @@ flavor_mos.94 = {
 			}
 			else = {
 				root = {
-					add_government_power = government_power_mild_penalty
+					add_political_influence = political_influence_mild_penalty
 				}
 			}
 		}
@@ -2273,7 +2250,11 @@ flavor_mos.97 = {
 
 		capital = {
 			controller = root
-			has_building_with_at_least_one_level = printing_press_shop
+			OR = {
+				has_building_with_at_least_one_level = printing_press_shop
+				has_building_with_at_least_one_level = printing_manufactory
+				has_building_with_at_least_one_level = printing_mill
+			}
 		}
 
 	}
@@ -2339,7 +2320,7 @@ flavor_mos.97 = {
 			add_trait = trait:bold_fighter
 		}
 
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 
 		custom_tooltip = flavor_mos.97.tt2
 
@@ -2363,7 +2344,7 @@ flavor_mos.97 = {
 			add_trait = trait:martial_educator
 		}
 
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 
 		custom_tooltip = flavor_mos.97.tt3
 
@@ -2749,7 +2730,7 @@ flavor_mos.101 = {
 
 		custom_tooltip = {
 			text = variable_incognito_travels_in_progress_tt
-			has_variable = incognito_travels_in_progress
+			ruler ?= { has_character_modifier = on_grand_embassy }
 		}
 
 		has_regent = no
@@ -2903,7 +2884,18 @@ flavor_mos.101 = {
 	option = {
 		name = flavor_mos.101.b
 
-		add_religious_influence = religious_influence_mild_bonus
+		location:moscow = {
+			random_work_of_art_in_location = {
+				limit = {
+					this = work_of_art:uspensky_sobor
+				}
+				change_art_quality = 5
+			}
+		}
+
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
 
 		ruler = {
 			add_adm = 10
@@ -3510,7 +3502,7 @@ flavor_mos.106 = {
 		name = flavor_mos.106.a
 		historical_option = yes
 
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 
 		set_variable = { name = unlocked_advance_preobrazhensky_semyonovsky_imperial_guard value = 1 }
 		custom_tooltip = enable_preobrazhensky_semyonovsky_imperial_guard_advance
@@ -3605,7 +3597,7 @@ flavor_mos.107 = {
 					age_in_years < 10
 				}
 			}
-			add_government_power = government_power_severe_penalty
+			add_political_influence = political_influence_severe_penalty
 			custom_tooltip = flavor_mos.107.tt2
 		}
 
@@ -3745,7 +3737,7 @@ flavor_mos.108 = {
 	option = {
 		name = flavor_mos.108.b
 
-		add_prestige = prestige_severe_penalty
+		add_political_influence = political_influence_severe_penalty
 
 		change_societal_value = {
 			type = traditionalist_vs_innovative
@@ -3798,7 +3790,7 @@ flavor_mos.108 = {
 			}
 		}
 
-		add_government_power = government_power_mild_penalty
+		add_political_influence = political_influence_mild_penalty
 		add_stability = stability_mild_penalty
 
 		ai_chance = {
@@ -4621,7 +4613,7 @@ flavor_mos.114 = {
 			save_scope_as = target_root_country
 		}
 		event_illustration_government_estate_effect = yes
-		#event_illustration_estate_background_effect = { background = estate_type:crown_estate }
+		#event_illustration_estate_background_effect = { background = estate_type:nobles_estate }
 
 	}
 

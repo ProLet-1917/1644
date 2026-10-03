@@ -1,0 +1,69 @@
+﻿# Anno 1644 - Colonial nation triggers (Age of Imperialism)
+
+# A colonial subject, a chartered company, or an independent state of the New World
+zzz_1644_is_colonial_or_former_colonial = {
+    OR = {
+        is_subject_type = colonial_nation
+        is_subject_type = charted_company
+        AND = {
+            NOT = { is_subject = yes }
+            capital ?= { continent = continent:america }
+        }
+    }
+}
+
+# The Thirteen Colonies / United States: British or American in North America
+zzz_1644_is_anglo_american = {
+    zzz_1644_is_colonial_or_former_colonial = yes
+    capital ?= {
+        OR = {
+            region = region:east_coast_region
+            region = region:great_plains_region
+            region = region:west_coast_region
+            region = region:aridoamerica_region
+            region = region:great_bassin_region
+        }
+    }
+    OR = {
+        culture = { has_culture_group = culture_group:british_group }
+        any_primary_or_accepted_or_tolerated_culture = {
+            has_culture_group = culture_group:british_group
+        }
+    }
+}
+
+# New Spain / Mexico
+zzz_1644_is_mesoamerican_state = {
+    zzz_1644_is_colonial_or_former_colonial = yes
+    capital ?= {
+        OR = {
+            region = region:mesoamerica_region
+            region = region:central_america_region
+            area = area:xalisco_area
+            area = area:zacatecas_area
+        }
+    }
+}
+
+# Brazil
+zzz_1644_is_brazilian_state = {
+    zzz_1644_is_colonial_or_former_colonial = yes
+    capital ?= { region = region:brazil_region }
+}
+
+# Canada
+zzz_1644_is_canadian_state = {
+    zzz_1644_is_colonial_or_former_colonial = yes
+    capital ?= { region = region:canada_region }
+}
+
+# Rio de la Plata
+zzz_1644_is_la_plata_state = {
+    zzz_1644_is_colonial_or_former_colonial = yes
+    capital ?= {
+        OR = {
+            region = region:la_plata_region
+            region = region:chaco_region
+        }
+    }
+}

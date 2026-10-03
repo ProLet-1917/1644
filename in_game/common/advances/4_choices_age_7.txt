@@ -1,13 +1,18 @@
-############################
+﻿############################
 # age_7_imperialism
+# Adm 10/10
 ############################
-
-# Adm 2/10
 
 manage_oversea_territories_advance = {
     age = age_7_imperialism
     icon = overseas_trade
     for = adm
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
 
     sea_cost_on_distance_from_capital = -5
 }
@@ -16,6 +21,12 @@ national_debt_advance = {
     age = age_7_imperialism
     icon = debt_and_loans
     for = adm
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
 
     requires = modern_bank_advance
 
@@ -23,30 +34,470 @@ national_debt_advance = {
     max_bonds = 2
 }
 
+# 公共卫生
+public_sanitation_advance = {
+    age = age_7_imperialism
+    icon = sanitation_advance
+    for = adm
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
 
-# Dip 1/10
+    global_life_expectancy = 3
+    global_disease_resistance = 0.05
+    global_population_growth = 0.0005
+}
+
+# 义务教育
+compulsory_education_advance = {
+    age = age_7_imperialism
+    icon = library_advance
+    for = adm
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_max_literacy = 5
+    global_monthly_literacy = 0.03
+}
+
+# 市政改革
+municipal_reform_advance = {
+    age = age_7_imperialism
+    icon = city_building_advance
+    for = adm
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_urban_build_buildings_efficiency = 0.10
+    global_monthly_development = 0.0005
+    global_monthly_prosperity = 0.001
+}
+
+# 统计行政
+statistical_administration_advance = {
+    age = age_7_imperialism
+    icon = court_accounting
+    for = adm
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    tax_income_efficiency = small_tax_income_efficiency_bonus
+    province_integration_speed = 0.05
+    global_max_control = 0.01
+}
+
+# 国营铁路
+state_railway_advance = {
+    age = age_7_imperialism
+    icon = railroad_advance
+    for = adm
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_road_building_time = -0.10
+    trade_income = 0.05
+    global_distance_from_capital_speed_propagation = 0.05
+}
+
+# 反托拉斯立法
+anti_trust_legislation_advance = {
+    age = age_7_imperialism
+    icon = salt_monopoly
+    for = adm
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_production_efficiency = 0.05
+    building_upkeep_efficiency = 0.05
+    global_trades_per_burgher = 0.05
+}
+
+# 文官考试
+civil_service_examination_advance = {
+    age = age_7_imperialism
+    icon = meritocracy
+    for = adm
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    country_cabinet_efficiency = 0.05
+    legislative_efficiency = 0.05
+    head_of_cabinet_promotion_cost_modifier = -0.15
+}
+
+# 帝国邮政
+imperial_postal_advance = {
+    age = age_7_imperialism
+    icon = diplomatic_range_age_1
+    for = adm
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_distance_from_capital_speed_propagation = 0.05
+    trade_income = 0.05
+    diplomatic_capacity = 1
+}
+
+
+############################
+# age_7_imperialism
+# Dip 10/10
+############################
+
 overseas_expantion_advance = {
     age = age_7_imperialism
     icon = colonial_ambition
     for = dip
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
 
     trade_range = 300
     trade_sea_efficiency = 0.1
 }
 
-# Mil 2/10
+# 均势外交
+balance_of_power_advance = {
+    age = age_7_imperialism
+    icon = diplomatic_influence
+    for = dip
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    diplomatic_capacity = 1
+    antagonism_received_modifier = -0.2
+}
+
+# 民族自决宣言
+national_self_determination_advance = {
+    age = age_7_imperialism
+    icon = cultural_acceptance_advance
+    for = dip
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    cultural_influence = 0.15
+    global_pop_assimilation_speed_modifier = 0.05
+    global_separatism = -0.05
+}
+
+# 殖民地会议
+colonial_conference_advance = {
+    age = age_7_imperialism
+    icon = colonial_assembly
+    for = dip
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    colonial_maintenance_efficiency = 0.25
+    colonial_migration_size_modifier = 0.25
+}
+
+# 条约体系
+treaty_system_advance = {
+    age = age_7_imperialism
+    icon = laws
+    for = dip
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    diplomatic_reputation = 0.05
+    improve_relation_impact = 0.20
+}
+
+# 情报学院
+intelligence_academy_advance = {
+    age = age_7_imperialism
+    icon = intelligence_agency_advance
+    for = dip
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    spy_network_construction = 0.25
+    counter_espionage = 0.20
+}
+
+# 中立主义
+neutrality_doctrine_advance = {
+    age = age_7_imperialism
+    icon = defensive_army
+    for = dip
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    antagonism_received_modifier = -0.25
+    global_defensive = 0.10
+}
+
+# 炮舰外交
+gunboat_diplomacy_advance = {
+    age = age_7_imperialism
+    icon = maritime_advance_age_2
+    for = dip
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    naval_damage_done = 0.10
+    blockade_efficiency = 0.25
+    global_war_score_efficiency = 0.05
+}
+
+# 国际仲裁
+international_arbitration_advance = {
+    age = age_7_imperialism
+    icon = diplomatic_training
+    for = dip
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    diplomatic_reputation = 0.05
+    monthly_diplomats = 0.05
+    improve_relation_impact = 0.15
+}
+
+# 文化输出
+cultural_exports_advance = {
+    age = age_7_imperialism
+    icon = patron_of_art
+    for = dip
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    cultural_influence_modifier = 0.10
+    cultural_tradition_modifier = 0.10
+    num_possible_artists = 1
+}
+
+
+############################
+# age_7_imperialism
+# Mil 10/10
+############################
+
 overseas_conscription_advance = {
     age = age_7_imperialism
     icon = dan_levy_recruitment
     for = mil
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
 
     global_levy_recruitment_speed_modifier = 0.1
 }
 
 enlistment_manual_advance = {
     age = age_7_imperialism
-    #icon =
+    icon = regimental_system
     for = mil
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
 
     global_manpower_modifier = 0.1
+}
+
+# 义务兵役法
+conscription_act_advance = {
+    age = age_7_imperialism
+    icon = levee_en_masse_advance
+    for = mil
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_manpower_modifier = 0.15
+    global_levy_size_modifier = 0.10
+}
+
+# 军事学院
+military_academy_advance = {
+    age = age_7_imperialism
+    icon = military_modernization
+    for = mil
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    monthly_army_tradition = 0.10
+    train_general_cost_modifier = -0.25
+    army_initiative = 0.10
+}
+
+# 后勤兵团
+logistical_corps_advance = {
+    age = age_7_imperialism
+    icon = expanded_supply_trains
+    for = mil
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_supply_limit_modifier = 0.15
+    army_logistics_distance_modifier = 0.20
+}
+
+# 战地医疗
+field_medicine_advance = {
+    age = age_7_imperialism
+    icon = hospital_advance
+    for = mil
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    local_army_attrition = -0.10
+    army_reinforce_efficiency = 0.10
+}
+
+# 铁路运兵
+railway_mobilization_advance = {
+    age = age_7_imperialism
+    icon = auftragstaktik
+    for = mil
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    army_movement_speed = 0.15
+    land_morale_recovery = 0.02
+}
+
+# 机枪战术
+machine_gun_tactics_advance = {
+    age = age_7_imperialism
+    icon = gunpowder_advance
+    for = mil
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    army_heavy_infantry_power = 0.10
+    discipline = 0.05
+}
+
+# 海军现代化
+naval_modernization_advance = {
+    age = age_7_imperialism
+    icon = royal_navy
+    for = mil
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    naval_damage_done = 0.10
+    navy_maintenance_efficiency = 0.05
+    naval_morale_modifier = 0.05
+}
+
+# 远征作战
+expeditionary_warfare_advance = {
+    age = age_7_imperialism
+    icon = imperial_ambitions
+    for = mil
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    global_war_score_efficiency = 0.10
+    army_disembark_speed = 0.20
 }

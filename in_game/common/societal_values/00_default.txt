@@ -44,7 +44,8 @@ traditionalist_vs_innovative = {
 		global_max_literacy = 10
 		cultural_influence_modifier = 1.0
 
-		stability_cost_efficiency = -0.2
+		stability_investment = -0.1
+		change_policy_cost_modifier = 0.15
 		embrace_institution_cost_modifier = -0.5
 
 		language_change_threshold_modifier = -1
@@ -107,7 +108,7 @@ aristocracy_vs_plutocracy = { #
 		bias_for_militarist_policies = 25
 	}
 	right_modifier = {
-		selling_efficiency = small_trade_efficiency_bonus
+		selling_efficiency = small_selling_efficiency_bonus
 		global_burghers_estate_power = 0.50
 		global_burghers_city_desired_pop_scaled = 0.01
 		market_building_levels = 0.5
@@ -145,7 +146,7 @@ serfdom_vs_free_subjects = {
 		burghers_estate_target_satisfaction = large_permanent_target_satisfaction
 		global_peasants_estate_power = 0.10
 
-		global_devastation_recovery = 0.01
+		global_pop_demand = 0.2
 		building_upkeep_efficiency = 0.2
 
 		#peasants_estate_levy_size = -0.25
@@ -179,9 +180,8 @@ mercantilism_vs_free_trade = {
 		global_merchant_power = 0.2
 		
 		global_trade_protection_factor = -0.25
-		selling_efficiency = small_trade_efficiency_bonus		
-		
-		
+		selling_efficiency = small_selling_efficiency_bonus
+		trade_income = 0.1
 
 		
 		trade_importance_modifier = 0.2
@@ -314,7 +314,7 @@ capital_economy_vs_traditional_economy = {
 		bank_interest = -0.03
 		global_building_establishment_speed = 0.2
 	
-		global_monthly_food_modifier = -0.2
+		global_monthly_food_modifier = monthly_food_productivity_extreme_penalty
 		global_build_buildings_efficiency = 0.2
 
 		court_language_is_market_language_importance_modifier = 1.5
@@ -326,7 +326,7 @@ capital_economy_vs_traditional_economy = {
 		global_building_establishment_speed = -0.25
 	
 		
-		global_monthly_food_modifier = 0.2
+		global_monthly_food_modifier = monthly_food_productivity_extreme_bonus
 		building_upkeep_efficiency = -0.1
 		court_language_is_market_language_importance_modifier = -1.5
 		bias_for_capitalist_policies = -100
@@ -491,7 +491,7 @@ latinization_vs_hellenization = {
 	
 	left_modifier = { #Latinitas
 		diplomatic_spending_cost = -0.2
-		selling_efficiency = small_trade_efficiency_bonus
+		selling_efficiency = small_selling_efficiency_bonus
 		allow_roman_movement = yes
 		monthly_towards_humanist = societal_value_monthly_move
 		monthly_towards_innovative = societal_value_monthly_move

@@ -3,7 +3,7 @@ widget = {
     datacontext = "[GetPlayer]"
 
     #visible = { #What a smart coder
-    #has_global_variable = show_decision_panel
+    #has_global_variable = show_diary_panel
     visible = "[GetVariableSystem.Exists('westphalia_panel')]"
     #}
     layer = top
@@ -233,7 +233,6 @@ widget = {
                         button_regular = {
                             name = "pay_war_reparations"
                             tooltip = "pay_war_reparations_TT"
-                            using = tooltip_ne
                             size = { 100% 30 }
                             visible = "[GetGlobalVariable('allow_war_reparations').IsSet]"
                             text = "pay_war_reparations"
@@ -246,7 +245,6 @@ widget = {
                         button_regular = {
                             name = "split_pomelamia"
                             tooltip = "split_pomelamia_TT"
-                            using = tooltip_ne
                             size = { 100% 30 }
                             visible = "[GetGlobalVariable('allow_split_pomelamia').IsSet]"
                             text = "split_pomelamia"

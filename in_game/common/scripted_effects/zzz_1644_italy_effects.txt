@@ -1,0 +1,127 @@
+﻿# Anno 1644 - Italian Unification
+# Scripted effects used by the Italy unification situation.
+
+# Clean up all variables used by the Italian situation
+zzz_1644_italy_cleanup_effect = {
+    every_country = {
+        limit = {
+            OR = {
+                has_variable = italian_potential_unifier
+                has_variable = italian_country
+            }
+        }
+        remove_variable = italian_potential_unifier
+        remove_variable = italian_country
+    }
+    if = {
+        limit = { has_global_variable = italian_roman_question_resolved }
+        remove_global_variable = italian_roman_question_resolved
+    }
+    if = {
+        limit = { has_global_variable = italian_foreign_intervention_used }
+        remove_global_variable = italian_foreign_intervention_used
+    }
+    clear_global_variable_list = italian_country_list
+    clear_global_variable_list = italian_potential_unifier_list
+}
+
+# Destroy every Italian unification alliance
+zzz_1644_destroy_italian_unification_unions_effect = {
+    every_international_organization = {
+        limit = {
+            international_organization_type = international_organization_type:italy_unification_union
+        }
+        destroy_international_organization = { target = this }
+    }
+}
+
+# Grant the Papal settlement: Rome becomes a protected subject of Italy
+zzz_1644_resolve_roman_question_concordat_effect = {
+    save_scope_as = italian_unifier
+    set_global_variable = italian_roman_question_resolved
+    if = {
+        limit = { country_exists = c:PAP }
+        c:PAP = {
+            if = {
+                limit = { is_subject = no }
+                make_subject_of = {
+                    target = scope:italian_unifier
+                    type = subject_type:vassal
+                }
+            }
+            add_opinion = {
+                target = scope:italian_unifier
+                modifier = opinion_positive_religious_tolerance
+            }
+            add_country_modifier = {
+                modifier = papal_concordat
+                years = -1
+            }
+        }
+    }
+    add_country_modifier = {
+        modifier = roman_question_settled_negotiated
+        years = -1
+    }
+}
+
+# Seize Rome by force: the Pope becomes an enemy of the new kingdom
+zzz_1644_resolve_roman_question_by_force_effect = {
+    save_scope_as = italian_unifier
+    set_global_variable = italian_roman_question_resolved
+    if = {
+        limit = { country_exists = c:PAP }
+        c:PAP = {
+            add_opinion = {
+                target = scope:italian_unifier
+                modifier = opinion_dishonored_alliance_defensive
+            }
+            add_country_modifier = {
+                modifier = papal_imprisoned_in_the_vatican
+                years = -1
+            }
+            if = {
+                limit = {
+                    NOT = { is_subject_of = scope:italian_unifier }
+                }
+                scope:italian_unifier = {
+                    add_casus_belli = {
+                        target = c:PAP
+                        type = casus_belli:cb_italian_unification
+                    }
+                }
+            }
+            trigger_event_non_silently = italy_unification.1201
+        }
+    }
+    add_country_modifier = {
+        modifier = roman_question_settled_by_force
+        years = -1
+    }
+}
+
+# Foreign guarantor puts the whole peninsula under pressure
+zzz_1644_italy_foreign_intervention_effect = {
+    set_global_variable = italian_foreign_intervention_used
+    every_in_global_list = {
+        variable = italian_potential_unifier_list
+        add_country_modifier = {
+            modifier = italian_unification_foreign_pressure
+            years = 10
+        }
+    }
+}
+
+# Punch-through: create the Kingdom of Italy
+zzz_1644_proclaim_italian_kingdom_effect = {
+    save_scope_as = italian_unifier
+    form_country = formable_country:ITA_f
+    if = {
+        limit = { country_rank_level < 4 }
+        set_country_rank_effect = { rank = country_rank:rank_empire }
+    }
+    add_country_modifier = {
+        modifier = italian_risorgimento_fever
+        years = 25
+    }
+}

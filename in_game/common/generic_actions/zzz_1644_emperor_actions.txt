@@ -1,0 +1,335 @@
+﻿# Anno 1644 - Imperial (own-country) actions for a Chinese dynasty leader
+# These give the emperor a direct hand on dynasty stability between parliament sessions.
+
+# 罪己诏
+issue_edict_of_self_blame = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:issue_edict_of_self_blame_prices
+
+    cooldown = {
+        type = issue_edict_of_self_blame
+        years = 5
+    }
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        scope:actor = {
+            is_chinese_dynasty_leader = yes
+            has_variable = dynasty_stability
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            var:dynasty_stability < 400
+            is_during_bankruptcy = no
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            change_dynasty_stability = { value = 150 }
+            add_country_modifier = { modifier = imperial_apology_edict years = 15 }
+            add_prestige = prestige_mild_penalty
+            add_estate_satisfaction = {
+                type = estate_type:peasants_estate
+                value = estate_satisfaction_mild_bonus
+            }
+            if = {
+                limit = { modifier:allow_righteousness = yes }
+                add_righteousness = righteousness_mild_bonus
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 0
+        add = {
+            desc = "celestial_authority_LOW"
+            if = {
+                limit = { scope:actor = { var:dynasty_stability < 0 } }
+                value = 60
+            }
+        }
+        add = {
+            desc = "celestial_authority_HIGH"
+            if = {
+                limit = { scope:actor = { var:dynasty_stability > 300 } }
+                value = -40
+            }
+        }
+    }
+}
+
+# 大赦天下
+proclaim_great_amnesty = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:proclaim_great_amnesty_prices
+
+    cooldown = {
+        type = proclaim_great_amnesty
+        years = 8
+    }
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        scope:actor = {
+            is_chinese_dynasty_leader = yes
+            has_variable = dynasty_stability
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            is_during_bankruptcy = no
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            add_country_modifier = { modifier = great_amnesty years = 20 }
+            change_dynasty_stability = { value = -50 }
+            add_legitimacy = legitimacy_mild_bonus
+            if = {
+                limit = { modifier:allow_harmony = yes }
+                harmony_mild_towards_equilibrium = yes
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 0
+        add = {
+            desc = "celestial_authority_LOW"
+            if = {
+                limit = { scope:actor = { var:dynasty_stability < 200 } }
+                value = 30
+            }
+        }
+    }
+}
+
+# 蠲免赈灾
+order_tax_remission = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:order_tax_remission_prices
+
+    cooldown = {
+        type = order_tax_remission
+        years = 5
+    }
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        scope:actor = {
+            is_chinese_dynasty_leader = yes
+            has_variable = dynasty_stability
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            is_during_bankruptcy = no
+            gold >= {
+                value = monthly_income_trade_and_tax
+                multiply = 2
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            change_dynasty_stability = { value = 100 }
+            add_country_modifier = { modifier = tax_remission_and_relief years = 20 }
+            add_estate_satisfaction = {
+                type = estate_type:peasants_estate
+                value = estate_satisfaction_mild_bonus
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 0
+        add = {
+            desc = "CAN_EASILY_AFFORD"
+            if = {
+                limit = {
+                    scope:actor = {
+                        gold >= {
+                            value = scope:actor.monthly_income_trade_and_tax
+                            multiply = 4
+                        }
+                    }
+                }
+                value = 30
+            }
+        }
+        add = {
+            desc = "celestial_authority_LOW"
+            if = {
+                limit = { scope:actor = { var:dynasty_stability < 300 } }
+                value = 30
+            }
+        }
+    }
+}
+
+# 京察大计
+conduct_imperial_audit = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:conduct_imperial_audit_prices
+
+    cooldown = {
+        type = conduct_imperial_audit
+        years = 6
+    }
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        scope:actor = {
+            is_chinese_dynasty_leader = yes
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            is_during_bankruptcy = no
+            any_cabinet_character = {
+                count >= 1
+            }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            add_country_modifier = { modifier = imperial_audit years = 20 }
+            change_dynasty_stability = { value = 75 }
+            add_estate_satisfaction = {
+                type = estate_type:nobles_estate
+                value = estate_satisfaction_mild_penalty
+            }
+            if = {
+                limit = { modifier:allow_righteousness = yes }
+                add_righteousness = righteousness_weak_bonus
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 0
+        add = {
+            desc = "CAN_EASILY_AFFORD"
+            if = {
+                limit = {
+                    scope:actor = {
+                        gold >= {
+                            value = scope:actor.monthly_income_trade_and_tax
+                            multiply = 3
+                        }
+                    }
+                }
+                value = 25
+            }
+        }
+    }
+}
+
+# 巡狩
+undertake_imperial_tour = {
+    type = owncountry
+    show_message = no
+    ai_tick = monthly
+    ai_tick_frequency = 24
+
+    automation_tick = never
+    automation_tick_frequency = 12
+
+    price = price:undertake_imperial_tour_prices
+
+    cooldown = {
+        type = undertake_imperial_tour
+        years = 10
+    }
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        scope:actor = {
+            is_chinese_dynasty_leader = yes
+            has_variable = dynasty_stability
+        }
+    }
+
+    allow = {
+        scope:actor = {
+            var:dynasty_stability > 0
+            at_war = no
+            is_during_bankruptcy = no
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            add_country_modifier = { modifier = imperial_tour years = 20 }
+            change_dynasty_stability = { value = 50 }
+            add_prestige = prestige_mild_bonus
+            if = {
+                limit = { modifier:allow_harmony = yes }
+                harmony_mild_towards_equilibrium = yes
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 0
+        add = {
+            desc = "celestial_authority_HIGH"
+            if = {
+                limit = { scope:actor = { var:dynasty_stability > 400 } }
+                value = 25
+            }
+        }
+    }
+}

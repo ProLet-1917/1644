@@ -3,8 +3,8 @@
 	price_stability = 0.1
 	max_price = 3
 	known_goods_demand_threshold = 100
-
 	burgher_max_trade_range = 600
+	bureaucracy_maintenance_multiplier = 0.6
 
 	modifier = {
 		expected_navy_size_modifier = -0.8	# expected navy size at 20% of its demographic value; ramps to 100% by Age of Revolutions
@@ -18,6 +18,8 @@
 		global_sugar_pop_demand     = -0.25	# luxury spice, very limited supply
 		global_tea_pop_demand       = -0.25	# confined to East Asia; negligible Old World demand
 	}
+
+	mercenary_starting_experience = 25
 
 	efficiency = 1.0
 	
@@ -56,6 +58,7 @@ age_2_renaissance = {
 	months_for_exploration_spread = 1800
 
 	burgher_max_trade_range = 700
+	bureaucracy_maintenance_multiplier = 0.7
 	
 	unique = {
 		diplomatic_capacity_modifier = 0.25
@@ -82,6 +85,7 @@ age_2_renaissance = {
 	}
 
 	mercenaries = 0.25
+	mercenary_starting_experience = 30
 	efficiency = 0.8
 	
 	victory_card = 1
@@ -115,9 +119,11 @@ age_3_discovery = {
 
 	months_for_exploration_spread = 1800
 	burgher_max_trade_range = 800
+	bureaucracy_maintenance_multiplier = 0.8
+
 	unique = {
 		exploration_mission_speed = 0.25
-		colonial_maintenance_cost = -0.25
+		colonial_maintenance_efficiency = 0.50
 	}
 
 	modifier = {
@@ -141,6 +147,7 @@ age_3_discovery = {
 	}
 
 	war_score_from_battles = -0.05
+	mercenary_starting_experience = 25
 	efficiency = 0.6
 	
 	victory_card = 2
@@ -173,6 +180,7 @@ age_4_reformation = {
 	known_goods_demand_threshold = 40
 	months_for_exploration_spread = 1200
 	burgher_max_trade_range = 900
+	bureaucracy_maintenance_multiplier = 0.9
 
 	unique = {
 		global_pop_conversion_speed_modifier = 0.33
@@ -205,6 +213,7 @@ age_4_reformation = {
 	}
 
 	war_score_from_battles = -0.1
+	mercenary_starting_experience = 15
 	efficiency = 0.4
 	victory_card = 3
 
@@ -239,6 +248,7 @@ age_5_absolutism = {
 	hegemons_allowed = yes
 	months_for_exploration_spread = 600
 	burgher_max_trade_range = 1000
+	bureaucracy_maintenance_multiplier = 1.0
 
 	unique = {
 		revoke_privilege_cost_modifier = -0.33
@@ -283,8 +293,9 @@ age_5_absolutism = {
 		global_firearms_pop_demand	= 0.25
 	}
 	
-	war_score_from_battles = -0.6
+	war_score_from_battles = -0.3
 	mercenaries = -0.6
+	mercenary_starting_experience = 5
 	efficiency = 0.2
 	victory_card = 4
 
@@ -316,9 +327,10 @@ age_6_revolutions = {
 	price_stability = 0.02
 	max_price = 8
 	hegemons_allowed = yes
-
+	known_goods_demand_threshold = 10
 	burgher_max_trade_range = 1200
 	months_for_exploration_spread = 300
+	bureaucracy_maintenance_multiplier = 1.1
 
 	unique = {
 		global_war_score_efficiency = 0.4
@@ -362,7 +374,8 @@ age_6_revolutions = {
 	}
 	
 	mercenaries = -0.98
-	war_score_from_battles = -0.8
+	mercenary_starting_experience = 0
+	war_score_from_battles = -0.35
 
 	
 	efficiency = 0.1
@@ -394,9 +407,10 @@ age_7_imperialism = {
 	price_stability = 0.01
 	max_price = 10
 	hegemons_allowed = yes
-
+	known_goods_demand_threshold = 15
 	burgher_max_trade_range = 2000
 	months_for_exploration_spread = 150
+	bureaucracy_maintenance_multiplier = 1.2
 
 	unique = {
 		global_war_score_efficiency = 0.6
@@ -447,7 +461,8 @@ age_7_imperialism = {
 	}
 	
 	mercenaries = -0.995
-	war_score_from_battles = -0.85
+	mercenary_starting_experience = 5
+	war_score_from_battles = -0.4
 
 	
 	efficiency = 0.05

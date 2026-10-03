@@ -1,0 +1,64 @@
+﻿# Anno 1644 - Age of Imperialism (age_7_imperialism)
+# Theocracy-only government reforms. Unlock automatically when the age begins.
+
+# 神权立宪
+theocratic_constitution_reform = {
+    age = age_7_imperialism
+    major = yes
+    government = theocracy
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    allow = {
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    on_activate = {
+        set_parliament_type = parliament_type:constitutional_parliament
+    }
+
+    country_modifier = {
+        government_reform_slots = 1
+        government_size = 1
+        parliament_base_support = 0.10
+        monthly_devotion = 0.10
+        global_clergy_estate_power = 0.10
+        global_estate_target_satisfaction = small_permanent_target_satisfaction
+        monthly_towards_liberalism = societal_value_monthly_move
+    }
+
+    years = 3
+}
+
+# 社会福音
+social_gospel_reform = {
+    age = age_7_imperialism
+    government = theocracy
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    allow = {
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    country_modifier = {
+        global_estate_target_satisfaction = medium_permanent_target_satisfaction
+        global_population_growth = 0.0010
+        global_life_expectancy = 2
+        clergy_estate_target_satisfaction = medium_permanent_target_satisfaction
+        monthly_towards_communalism = societal_value_monthly_move
+        monthly_towards_humanist = societal_value_monthly_move
+    }
+
+    years = 2
+}

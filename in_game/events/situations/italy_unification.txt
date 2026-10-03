@@ -1,0 +1,507 @@
+﻿namespace = italy_unification
+
+# 意大利问题
+italy_unification.1000 = {
+    type = country_event
+    title = italy_unification.1000.title
+    desc = italy_unification.1000.desc
+
+    illustration_tags = {
+        10 = interior
+        10 = happy
+    }
+
+	trigger = {
+		OR = {
+		    always = yes
+		    has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		capital ?= { continent = continent:europe }
+	}
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+    }
+
+    option = {
+        name = italy_unification.1000.a
+    }
+}
+
+# Alliance members: annex into Italy
+italy_unification.1001 = {
+    type = country_event
+    title = italy_unification.1001.title
+    desc = italy_unification.1001.desc
+
+    illustration_tags = {
+        10 = interior
+        10 = happy
+    }
+
+	trigger = {
+		OR = {
+		    always = yes
+		    has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		is_member_of_international_organization_of_type = { type = italy_unification_union }
+	}
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+        if = {
+            limit = { exists = c:ITA }
+            c:ITA = {
+                save_scope_as = target_country
+                ruler_or_regent ?= { save_scope_as = target_character }
+            }
+        }
+    }
+
+    option = {
+        name = italy_unification.1001.a
+        historical_option = yes
+        ai_will_select = {
+            value = 100
+            add = { value = "opinion(scope:target_country)" }
+        }
+        add_prestige = prestige_severe_bonus
+        add_stability = stability_mild_bonus
+        if = {
+            limit = {
+                exists = scope:target_country
+                scope:target_country = root
+            }
+            custom_tooltip = demand_vassalization_from_members_tt
+        }
+        else_if = {
+            limit = {
+                exists = scope:target_country
+                is_subject = no
+                NOT = { this = scope:target_country }
+            }
+            scope:target_country = {
+                annex_country = {
+                    country = root
+                }
+            }
+        }
+    }
+}
+
+# Other Italian countries: join or refuse
+italy_unification.1002 = {
+    type = country_event
+    title = italy_unification.1002.title
+    desc = italy_unification.1002.desc
+
+    illustration_tags = {
+        10 = interior
+        10 = happy
+    }
+
+	trigger = {
+		OR = {
+		    always = yes
+		    has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		culture = { has_culture_group = culture_group:italian_group }
+		NOT = { is_member_of_international_organization_of_type = { type = italy_unification_union } }
+	}
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+        if = {
+            limit = { exists = c:ITA }
+            c:ITA = {
+                save_scope_as = target_country
+                ruler_or_regent ?= { save_scope_as = target_character }
+            }
+        }
+    }
+
+    option = {
+        name = italy_unification.1002.a
+        ai_will_select = {
+            value = 25
+            add = { value = "opinion(scope:target_country)" }
+        }
+        if = {
+            limit = {
+                exists = scope:target_country
+                NOT = { this = scope:target_country }
+            }
+            scope:target_country = {
+                annex_country = {
+                    country = root
+                }
+            }
+        }
+    }
+
+    option = {
+        name = italy_unification.1002.b
+        ai_will_select = {
+            value = 25
+            if = {
+                limit = {
+                    exists = scope:target_country
+                    "opinion(scope:target_country)" < 0
+                }
+                add = 40
+            }
+        }
+    }
+}
+
+# The Papal States: join the new Kingdom of Italy or stand alone
+italy_unification.1101 = {
+    type = country_event
+    title = italy_unification.1101.title
+    desc = italy_unification.1101.desc
+
+    illustration_tags = {
+        10 = interior
+        10 = angry
+    }
+
+	trigger = {
+		OR = {
+		    always = yes
+		    has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = PAP
+	}
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:nobles_estate }
+        if = {
+            limit = { exists = c:ITA }
+            c:ITA = {
+                save_scope_as = target_country
+            }
+        }
+    }
+
+    option = {
+        name = italy_unification.1101.a
+        ai_will_select = {
+            value = 20
+            add = { value = "opinion(scope:target_country)" }
+        }
+        if = {
+            limit = {
+                exists = scope:target_country
+                NOT = { this = scope:target_country }
+            }
+            scope:target_country = {
+                annex_country = {
+                    country = root
+                }
+            }
+        }
+    }
+
+    option = {
+        name = italy_unification.1101.b
+        ai_will_select = {
+            value = 60
+            if = {
+                limit = {
+                    exists = scope:target_country
+                    "opinion(scope:target_country)" < 0
+                }
+                add = 40
+            }
+        }
+        add_stability = stability_mild_penalty
+        add_prestige = prestige_mild_bonus
+    }
+}
+
+# 罗马问题
+italy_unification.1200 = {
+    type = country_event
+    title = italy_unification.1200.title
+    desc = italy_unification.1200.desc
+
+    historical_info = italy_unification.1200.historical_info
+
+    major = yes
+
+    illustration_tags = {
+        10 = interior
+        10 = angry
+    }
+
+	trigger = {
+		OR = {
+		    always = yes
+		    has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		capital ?= { region = region:italy_region }
+	}
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:nobles_estate }
+        if = {
+            limit = { country_exists = c:PAP }
+            c:PAP = { save_scope_as = papacy }
+        }
+    }
+
+    option = {
+        # 政教协定：教皇保留梵蒂冈，成为王国的属邦
+        name = italy_unification.1200.a
+        historical_option = yes
+        ai_will_select = {
+            value = 100
+            add = {
+                value = "opinion(scope:papacy)"
+            }
+        }
+        zzz_1644_resolve_roman_question_concordat_effect = yes
+        add_stability = stability_mild_bonus
+        add_prestige = prestige_mild_penalty
+        add_legitimacy = legitimacy_mild_bonus
+    }
+
+    option = {
+        # 武力夺取罗马
+        name = italy_unification.1200.b
+        ai_will_select = {
+            value = 40
+        }
+        zzz_1644_resolve_roman_question_by_force_effect = yes
+        add_prestige = prestige_severe_bonus
+        add_stability = stability_severe_penalty
+        add_legitimacy = legitimacy_mild_penalty
+    }
+
+    option = {
+        # 暂缓处理罗马问题
+        name = italy_unification.1200.c
+        ai_will_select = {
+            value = 10
+        }
+        add_country_modifier = {
+            modifier = roman_question_postponed
+            years = 15
+        }
+    }
+}
+
+# 世俗化与教皇的抗议
+italy_unification.1201 = {
+    type = country_event
+    title = italy_unification.1201.title
+    desc = italy_unification.1201.desc
+
+    illustration_tags = {
+        10 = interior
+        10 = angry
+    }
+
+	trigger = {
+		OR = {
+		    always = yes
+		    has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		capital ?= { region = region:italy_region }
+	}
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+    }
+
+    option = {
+        name = italy_unification.1201.a
+        add_estate_satisfaction = {
+            type = estate_type:clergy_estate
+            value = estate_satisfaction_mild_penalty
+        }
+        change_societal_value = { type = spiritualist_vs_humanist value = societal_value_tiny_move_to_right }
+    }
+
+    option = {
+        name = italy_unification.1201.b
+        add_estate_satisfaction = {
+            type = estate_type:clergy_estate
+            value = estate_satisfaction_mild_bonus
+        }
+        add_prestige = prestige_mild_penalty
+        change_societal_value = { type = spiritualist_vs_humanist value = societal_value_tiny_move_to_left }
+    }
+}
+
+# 法国的干预
+italy_unification.1300 = {
+    type = country_event
+    title = italy_unification.1300.title
+    desc = italy_unification.1300.desc
+
+    major = yes
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+	trigger = {
+		OR = {
+		    always = yes
+		    has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = FRA
+	}
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        # 武装干预意大利事务
+        name = italy_unification.1300.a
+        ai_will_select = {
+            value = 30
+        }
+        zzz_1644_italy_foreign_intervention_effect = yes
+        add_prestige = prestige_mild_bonus
+        if = {
+            limit = { country_exists = c:PAP }
+            c:PAP = {
+                add_opinion = {
+                    target = root
+                    modifier = opinion_alliance
+                }
+            }
+        }
+    }
+
+    option = {
+        # 外交调停
+        name = italy_unification.1300.b
+        ai_will_select = {
+            value = 60
+        }
+        zzz_1644_italy_foreign_intervention_effect = yes
+        add_prestige = prestige_mild_penalty
+        add_opinion = { target = c:PAP modifier = opinion_alliance }
+    }
+
+    option = {
+        # 不干涉
+        name = italy_unification.1300.c
+        ai_will_select = {
+            value = 20
+        }
+        add_prestige = prestige_mild_penalty
+    }
+}
+
+# 西班牙的干预
+italy_unification.1301 = {
+    type = country_event
+    title = italy_unification.1301.title
+    desc = italy_unification.1301.desc
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+	trigger = {
+		OR = {
+		    always = yes
+		    has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		capital ?= { region = region:italy_region }
+	}
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        name = italy_unification.1301.a
+        ai_will_select = {
+            value = 40
+        }
+        zzz_1644_italy_foreign_intervention_effect = yes
+        add_prestige = prestige_mild_bonus
+    }
+
+    option = {
+        name = italy_unification.1301.b
+        ai_will_select = {
+            value = 40
+        }
+        add_prestige = prestige_mild_penalty
+    }
+}
+
+# 千人远征
+italy_unification.1400 = {
+    type = country_event
+    title = italy_unification.1400.title
+    desc = italy_unification.1400.desc
+
+    historical_info = italy_unification.1400.historical_info
+    major = yes
+
+    illustration_tags = {
+        10 = exterior
+        10 = happy
+    }
+
+	trigger = {
+		OR = {
+		    always = yes
+		    has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		capital ?= { region = region:italy_region }
+	}
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+        create_character = {
+            adm = { 30 70 }
+            dip = { 50 90 }
+            mil = { 70 100 }
+            birth_date = 1807.7.4
+            female = no
+            culture = culture:ligurian
+            religion = religion:catholic
+            estate = estate_type:nobles_estate
+            create_in_limbo = yes
+            save_scope_as = garibaldi
+        }
+    }
+
+    option = {
+        name = italy_unification.1400.a
+        historical_option = yes
+        ai_will_select = {
+            value = 100
+        }
+        scope:garibaldi = {
+            move_country = root
+        }
+        add_country_modifier = {
+            modifier = expedition_of_the_thousand
+            years = 10
+        }
+        add_prestige = prestige_mild_bonus
+    }
+
+    option = {
+        name = italy_unification.1400.b
+        ai_will_select = {
+            value = 20
+        }
+        hidden_effect = {
+            kill_character_silently = scope:garibaldi
+        }
+        add_stability = stability_mild_bonus
+    }
+}

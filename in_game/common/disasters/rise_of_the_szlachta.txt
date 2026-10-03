@@ -29,8 +29,42 @@
 	}
 	
 
-	can_end = {
-		rise_of_the_szlachta_end_trigger = yes
+	outcome = {
+		name = "rise_of_the_szlachta_crown_triumphant"
+		desc = "rise_of_the_szlachta_crown_triumphant_desc"
+		trigger = {
+			"estate_power(estate_type:crown_estate)" > var:target_crown_power_variable
+		}
+		effect = {
+			trigger_event_non_silently = rise_of_the_szlachta.8
+		}
+	}
+	outcome = {
+		name = "rise_of_the_szlachta_nobles_ascendant"
+		desc = "rise_of_the_szlachta_nobles_ascendant_desc"
+		trigger = {
+			OR = {
+				AND = {
+					"estate_power(estate_type:nobles_estate)" > var:target_nobles_power_variable
+					societal_value:aristocracy_vs_plutocracy <= -99
+				}
+				has_estate_privilege = estate_privilege:golden_liberty
+			}
+		}
+		effect = {
+			trigger_event_non_silently = rise_of_the_szlachta.6
+		}
+	}
+	outcome = {
+		name = "rise_of_the_szlachta_burghers_empowered"
+		desc = "rise_of_the_szlachta_burghers_empowered_desc"
+		trigger = {
+			"estate_power(estate_type:burghers_estate)" > var:target_burghers_power_variable
+			societal_value:aristocracy_vs_plutocracy > 50
+		}
+		effect = {
+			trigger_event_non_silently = rise_of_the_szlachta.7
+		}
 	}
 	modifier = {
 		global_estate_target_satisfaction = large_permanent_target_satisfaction_penalty

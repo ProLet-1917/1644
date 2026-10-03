@@ -1,0 +1,234 @@
+﻿# Anno 1644 - The Ottoman Empire in the Age of Imperialism (1837-1918)
+
+namespace = flavor_tur_imperialism
+
+# 坦志麦特改革
+flavor_tur_imperialism.1 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_tur_imperialism.1.title
+    desc = flavor_tur_imperialism.1.desc
+    outcome = neutral
+
+    historical_info = flavor_tur_imperialism.1.historical_info
+
+    dynamic_historical_event = {
+        tag = TUR
+        from = 1839.11.3
+        to = 1880.1.1
+        monthly_chance = 4
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_6_revolutions }
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = regular
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        # 推行改革
+        name = flavor_tur_imperialism.1.a
+        historical_option = yes
+        add_country_modifier = { modifier = tanzimat_reforms years = -1 }
+        add_prestige = prestige_mild_penalty
+        change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_right }
+        change_societal_value = { type = centralization_vs_decentralization value = societal_value_tiny_move_to_left }
+        add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_penalty }
+    }
+
+    option = {
+        # 维持旧制
+        name = flavor_tur_imperialism.1.b
+        add_country_modifier = { modifier = ottoman_old_order years = -1 }
+        add_stability = stability_mild_bonus
+        add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+    }
+}
+
+# 宪政运动
+flavor_tur_imperialism.2 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_tur_imperialism.2.title
+    desc = flavor_tur_imperialism.2.desc
+    outcome = neutral
+
+    historical_info = flavor_tur_imperialism.2.historical_info
+
+    dynamic_historical_event = {
+        tag = TUR
+        from = 1865.1.1
+        to = 1910.1.1
+        monthly_chance = 3
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_6_revolutions }
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:clergy_estate }
+    }
+
+    option = {
+        # 颁布宪法
+        name = flavor_tur_imperialism.2.a
+        historical_option = yes
+        add_country_modifier = { modifier = ottoman_constitution years = -1 }
+        change_societal_value = { type = absolutism_vs_liberalism value = societal_value_tiny_move_to_right }
+        add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+    }
+
+    option = {
+        # 解散议会
+        name = flavor_tur_imperialism.2.b
+        add_country_modifier = { modifier = ottoman_absolutism years = 20 }
+        add_stability = stability_mild_penalty
+        add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+        add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+    }
+}
+
+# 巴尔干战争
+flavor_tur_imperialism.3 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_tur_imperialism.3.title
+    desc = flavor_tur_imperialism.3.desc
+    outcome = negative
+
+    historical_info = flavor_tur_imperialism.3.historical_info
+
+    dynamic_historical_event = {
+        tag = TUR
+        from = 1875.1.1
+        to = 1915.1.1
+        monthly_chance = 3
+    }
+
+    trigger = {
+        has_presence_in = region:balkan_region
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        name = flavor_tur_imperialism.3.a
+        historical_option = yes
+        add_country_modifier = { modifier = balkan_retreat years = 20 }
+        add_stability = stability_severe_penalty
+        add_prestige = prestige_severe_penalty
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+    }
+
+    option = {
+        name = flavor_tur_imperialism.3.b
+        add_stability = stability_mild_penalty
+        add_prestige = prestige_mild_penalty
+        add_country_modifier = { modifier = empty_treasury years = 15 }
+    }
+}
+
+# 奥斯曼艺术与建筑
+flavor_tur_imperialism.10 = {
+    hide_portraits = yes
+    type = country_event
+    fire_only_once = yes
+    title = flavor_tur_imperialism.10.title
+    desc = flavor_tur_imperialism.10.desc
+    outcome = neutral
+
+    historical_info = flavor_tur_imperialism.10.historical_info
+
+    dynamic_historical_event = {
+        tag = TUR
+        from = 1840.1.1
+        to = 1910.1.1
+        monthly_chance = 2
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_6_revolutions }
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:clergy_estate }
+        create_character = {
+            adm = { 30 90 }
+            dip = { 30 90 }
+            mil = { 10 50 }
+            artist = artist_type:architect
+            artist_skill = { 0.5 1.0 }
+            birth_date = 1831.1.1
+            female = no
+            culture = root.culture
+            religion = root.religion
+            estate = estate_type:burghers_estate
+            create_in_limbo = yes
+            save_scope_as = ottoman_architect
+        }
+    }
+
+    option = {
+        name = flavor_tur_imperialism.10.a
+        historical_option = yes
+        scope:ottoman_architect = {
+            move_country = root
+            add_character_modifier = {
+                modifier = ottoman_imperial_architect
+                years = -1
+            }
+        }
+        culture ?= {
+            add_cultural_influence = cultural_influence_mild_bonus
+            add_cultural_tradition = cultural_tradition_mild_bonus
+        }
+        add_prestige = prestige_mild_bonus
+    }
+
+    option = {
+        name = flavor_tur_imperialism.10.b
+        hidden_effect = {
+            kill_character_silently = scope:ottoman_architect
+        }
+        add_stability = stability_mild_bonus
+        change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_left }
+    }
+}

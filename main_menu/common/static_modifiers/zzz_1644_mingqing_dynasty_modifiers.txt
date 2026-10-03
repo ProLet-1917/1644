@@ -1,0 +1,423 @@
+﻿# Anno 1644 - Ming-Qing transition and dynasty stability
+# Static modifiers used by mqt_1644_transition.txt and the dynasty stability content.
+
+#############################################
+# Ming-Qing transition
+#############################################
+
+# 剃发令
+qing_queue_decree = {
+    game_data = { category = country }
+    global_crown_estate_power = 0.15
+    global_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+    monthly_rebel_growth = 0.002
+    monthly_towards_centralization = societal_value_monthly_move
+}
+
+# 剃发暂缓
+qing_queue_deferred = {
+    game_data = { category = country }
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    monthly_towards_conciliatory = societal_value_monthly_move
+}
+
+# 扬州屠城
+yangzhou_massacre = {
+    game_data = { category = country }
+    global_estate_target_satisfaction = large_permanent_target_satisfaction_penalty
+    monthly_rebel_growth = 0.003
+    monthly_prestige = -0.05
+}
+
+# 扬州招抚
+yangzhou_pacified = {
+    game_data = { category = country }
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    subject_loyalty = 10
+    monthly_towards_conciliatory = societal_value_monthly_move
+}
+
+# 大顺群龙无首
+dashun_leaderless = {
+    game_data = { category = country }
+    global_estate_target_satisfaction = large_permanent_target_satisfaction_penalty
+    global_levy_size_modifier = -0.15
+    monthly_rebel_growth = 0.002
+}
+
+# 大顺转战
+dashun_guerrilla_warfare = {
+    game_data = { category = country }
+    army_movement_speed = 0.15
+    land_unit_attrition = -0.15
+    monthly_towards_defensive = societal_value_monthly_move
+}
+
+# 大西群龙无首
+daxi_leaderless = {
+    game_data = { category = country }
+    global_estate_target_satisfaction = large_permanent_target_satisfaction_penalty
+    global_levy_size_modifier = -0.15
+    monthly_rebel_growth = 0.002
+}
+
+# 大西余部联明
+daxi_remnants_alliance = {
+    game_data = { category = country }
+    global_levy_size_modifier = 0.10
+    land_morale_modifier = 0.10
+    monthly_towards_conciliatory = societal_value_monthly_move
+}
+
+# 两蹶名王
+two_princes_slain = {
+    game_data = { category = country }
+    land_morale_modifier = 0.15
+    discipline = 0.05
+    monthly_prestige = 0.10
+    monthly_towards_belligerent = societal_value_monthly_move
+}
+
+# 北伐
+northern_expedition = {
+    game_data = { category = country }
+    global_war_score_efficiency = 0.15
+    land_morale_modifier = 0.10
+    army_movement_speed = 0.10
+}
+
+# 固守海疆
+maritime_defence = {
+    game_data = { category = country }
+    navy_repair_efficiency = 0.20
+    naval_damage_taken = -0.15
+    monthly_towards_defensive = societal_value_monthly_move
+}
+
+# 行在缅甸
+court_in_exile = {
+    game_data = { category = country }
+    monthly_prestige = -0.10
+    monthly_legitimacy = -0.05
+    global_estate_target_satisfaction = large_permanent_target_satisfaction_penalty
+    global_crown_estate_power = -0.20
+}
+
+# 死守云南
+last_stand_in_yunnan = {
+    game_data = { category = country }
+    global_defensive = 0.20
+    global_hostile_attrition = 1
+    land_morale_modifier = 0.10
+    monthly_towards_defensive = societal_value_monthly_move
+}
+
+# 迁界禁海
+coastal_evacuation = {
+    game_data = { category = country }
+    trade_income = -0.15
+    global_merchant_capacity_modifier = -0.25
+    global_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+    monthly_towards_inward = societal_value_monthly_move
+}
+
+# 开海贸易
+maritime_trade_opened = {
+    game_data = { category = country }
+    trade_income = 0.15
+    global_merchant_capacity_modifier = 0.25
+    merchant_maintenance_efficiency = 0.15
+    monthly_towards_outward = societal_value_monthly_move
+}
+
+# 三藩之乱
+three_feudatories_rebellion = {
+    game_data = { category = country }
+    monthly_rebel_growth = 0.003
+    subject_loyalty = -20
+    global_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+    global_war_score_efficiency = -0.10
+    monthly_war_exhaustion = 0.05
+}
+
+# 三藩之首
+three_feudatories_leader = {
+    game_data = { category = country }
+    global_levy_size_modifier = 0.20
+    army_maintenance_efficiency = 0.20
+    land_morale_modifier = 0.15
+    monthly_towards_belligerent = societal_value_monthly_move
+}
+
+# 姑息藩镇
+feudatories_appeased = {
+    game_data = { category = country }
+    subject_loyalty = 10
+    nobles_estate_target_satisfaction = medium_permanent_target_satisfaction
+    monthly_towards_decentralization = societal_value_monthly_move
+}
+
+# 撤藩
+feudatories_abolished = {
+    game_data = { category = country }
+    global_crown_estate_power = 0.25
+    monthly_towards_centralization = societal_value_monthly_move
+    subject_loyalty = -5
+}
+
+# 削减藩镇
+feudatories_reduced = {
+    game_data = { category = country }
+    global_crown_estate_power = 0.15
+    subject_loyalty = 5
+    monthly_towards_centralization = societal_value_monthly_move
+}
+
+# 收复台湾
+conquest_of_taiwan = {
+    game_data = { category = country }
+    naval_range = 200
+    trade_sea_efficiency = 0.10
+    monthly_prestige = 0.05
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+}
+
+# 博学鸿儒科
+boxue_hongru_examination = {
+    game_data = { category = country }
+    global_max_literacy = 5
+    country_cabinet_efficiency = 0.10
+    dynasty_stability_from_examinations = 0.05
+    nobles_estate_target_satisfaction = medium_permanent_target_satisfaction
+    monthly_towards_sinicized = societal_value_monthly_move
+}
+
+# 文字狱
+literary_inquisition = {
+    game_data = { category = country }
+    global_crown_estate_power = 0.20
+    global_institution_growth_modifier = -0.10
+    research_speed_modifier = -0.05
+    nobles_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+    monthly_towards_traditionalist = societal_value_monthly_move
+}
+
+#############################################
+# Dynasty stability stages
+#############################################
+
+# 盛世
+dynasty_golden_age = {
+    game_data = { category = country }
+    dynasty_stability_monthly_income = 0.15
+    monthly_prestige = 0.10
+    monthly_legitimacy = 0.10
+    global_crown_estate_power = 0.20
+    global_estate_target_satisfaction = medium_permanent_target_satisfaction
+    research_speed_modifier = 0.05
+    monthly_rebel_growth = -0.002
+}
+
+# 承平
+dynasty_peace_and_prosperity = {
+    game_data = { category = country }
+    dynasty_stability_monthly_income = 0.05
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    global_monthly_prosperity = 0.001
+}
+
+# 隐忧
+dynasty_creeping_decline = {
+    game_data = { category = country }
+    dynasty_stability_monthly_income = -0.05
+    monthly_rebel_growth = 0.001
+    global_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+}
+
+# 天命动摇
+dynasty_mandate_shaken = {
+    game_data = { category = country }
+    dynasty_stability_monthly_income = -0.15
+    monthly_legitimacy = -0.05
+    monthly_rebel_growth = 0.002
+    global_crown_estate_power = -0.15
+    global_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+}
+
+# 亡国之兆
+dynasty_on_the_brink = {
+    game_data = { category = country }
+    dynasty_stability_monthly_income = -0.25
+    monthly_legitimacy = -0.10
+    monthly_rebel_growth = 0.004
+    pop_join_rebel_threshold = 0.10
+    global_crown_estate_power = -0.30
+    global_estate_target_satisfaction = large_permanent_target_satisfaction_penalty
+    global_war_score_efficiency = -0.15
+}
+
+# 罪己诏
+imperial_apology_edict = {
+    game_data = { category = country }
+    dynasty_stability_monthly_income = 0.10
+    monthly_legitimacy = 0.05
+    global_crown_estate_power = -0.10
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+}
+
+# 大赦天下
+great_amnesty = {
+    game_data = { category = country }
+    monthly_rebel_growth = -0.003
+    pop_join_rebel_threshold = -0.05
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+    global_crown_estate_power = -0.05
+}
+
+# 京察大计
+imperial_audit = {
+    game_data = { category = country }
+    country_cabinet_efficiency = 0.10
+    global_crown_estate_power = 0.10
+    global_max_bureaucracy_slots = 1
+    nobles_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+}
+
+# 加派
+war_levies_imposed = {
+    game_data = { category = country }
+    tax_income_efficiency = medium_tax_income_efficiency_bonus
+    dynasty_stability_monthly_income = -0.10
+    peasants_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+    monthly_rebel_growth = 0.002
+}
+
+# 蠲免赈灾
+tax_remission_and_relief = {
+    game_data = { category = country }
+    dynasty_stability_monthly_income = 0.10
+    peasants_estate_target_satisfaction = medium_permanent_target_satisfaction
+    tax_income_efficiency = small_tax_income_efficiency_penalty
+    global_population_growth = 0.0010
+}
+
+# 巡狩
+imperial_tour = {
+    game_data = { category = country }
+    dynasty_stability_monthly_income = 0.05
+    monthly_prestige = 0.05
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+    global_distance_from_capital_speed_propagation = 0.05
+}
+
+# 新朝雅政
+new_dynasty_consolidation = {
+    game_data = { category = country }
+    dynasty_stability_monthly_income = 0.10
+    monthly_legitimacy = 0.05
+    global_crown_estate_power = 0.10
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+    monthly_rebel_growth = -0.001
+}
+
+# 改元建号
+new_era_proclaimed = {
+    game_data = { category = country }
+    dynasty_stability_monthly_income = 0.05
+    monthly_prestige = 0.10
+    monthly_legitimacy = 0.05
+}
+
+# 前朝余孽
+loyalists_of_the_old_dynasty = {
+    game_data = { category = country }
+    dynasty_stability_monthly_income = -0.10
+    monthly_rebel_growth = 0.003
+    pop_join_rebel_threshold = 0.05
+    global_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+}
+
+# 天命所归
+mandate_of_heaven_bestowed = {
+    game_data = { category = country }
+    dynasty_stability_monthly_income = 0.20
+    monthly_legitimacy = 0.15
+    monthly_prestige = 0.10
+    global_crown_estate_power = 0.25
+    global_estate_target_satisfaction = medium_permanent_target_satisfaction
+    dynasty_stability_from_tribute = 0.10
+}
+
+# 天恩浩荡（朝贡国与藩属）
+imperial_favour = {
+    game_data = { category = country }
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+    monthly_prestige = 0.02
+    improve_relation_impact = 0.10
+    subject_loyalty = 5
+}
+
+# 册封藩国
+imperial_investiture = {
+    game_data = { category = country }
+    monthly_prestige = 0.05
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    improve_relation_impact = 0.15
+    global_crown_estate_power = 0.10
+    subject_loyalty = 10
+}
+
+# 削藩
+fanwang_reduced = {
+    game_data = { category = country }
+    global_levy_size_modifier = -0.15
+    army_maintenance_efficiency = -0.10
+    global_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+    nobles_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+}
+
+# 招安
+imperial_amnesty = {
+    game_data = { category = country }
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    monthly_rebel_growth = -0.003
+    pop_join_rebel_threshold = -0.05
+}
+
+# 赐姓
+imperial_surname_bestowed = {
+    game_data = { category = country }
+    monthly_prestige = 0.05
+    global_estate_target_satisfaction = small_permanent_target_satisfaction
+    improve_relation_impact = 0.20
+    subject_loyalty = 15
+}
+
+# 讨逆檄文
+imperial_call_to_arms = {
+    game_data = { category = country }
+    global_levy_size_modifier = 0.15
+    global_manpower_modifier = 0.15
+    land_morale_modifier = 0.10
+    monthly_towards_belligerent = societal_value_monthly_move
+}
+
+# 应诏勤王
+answered_the_call_to_arms = {
+    game_data = { category = country }
+    global_levy_size_modifier = 0.05
+    improve_relation_impact = 0.10
+    monthly_prestige = 0.02
+}
+
+# 献俘告庙
+captives_presented_at_the_temple = {
+    game_data = { category = country }
+    monthly_legitimacy = 0.10
+    monthly_prestige = 0.05
+    global_crown_estate_power = 0.10
+    global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+}
+
+
+

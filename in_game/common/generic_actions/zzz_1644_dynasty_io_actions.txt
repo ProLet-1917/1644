@@ -1,0 +1,200 @@
+﻿# Anno 1644 - Additional actions for the Chinese Dynasty international organization
+
+# 讨逆檄文
+proclaim_imperial_call_to_arms = {
+    type = internationalorganization
+
+    ai_tick = monthly
+    ai_tick_frequency = 6
+
+    automation_tick = monthly
+    automation_tick_frequency = 3
+    player_automated_category = diplomacy
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        exists_chinese_dynasty = yes
+        scope:actor = { is_chinese_dynasty_member = yes }
+    }
+
+    allow = {
+        scope:actor = {
+            var:dynasty_stability > 150
+        }
+        scope:actor = { is_chinese_dynasty_leader = yes }
+    }
+
+    price = price:proclaim_imperial_call_to_arms_prices
+
+    cooldown = {
+        type = proclaim_imperial_call_to_arms
+        years = 10
+    }
+
+    select_trigger = {
+        looking_for_a = international_organization
+        source = actor
+        target_flag = recipient
+        name = "choose_international_organization"
+        column = {
+            data = name
+        }
+        visible = {
+            international_organization_type = international_organization_type:chinese_dynasty
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            change_dynasty_stability = { value = -50 }
+            add_country_modifier = {
+                modifier = imperial_call_to_arms
+                years = 10
+            }
+            if = {
+                limit = { modifier:allow_righteousness = yes }
+                add_righteousness = righteousness_mild_bonus
+            }
+            custom_tooltip = proclaim_imperial_call_to_arms_tt
+            hidden_effect = {
+                every_international_organization_member = {
+                    limit = {
+                        NOT = { is_leader_of_international_organization = scope:recipient }
+                    }
+                    add_country_modifier = {
+                        modifier = answered_the_call_to_arms
+                        years = 5
+                    }
+                }
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 0
+        add = {
+            desc = "celestial_authority_HIGH"
+            if = {
+                limit = {
+                    scope:actor = { var:dynasty_stability > 400 }
+                }
+                value = 30
+            }
+        }
+        add = {
+            desc = "IS_AT_WAR"
+            if = {
+                limit = { scope:actor = { at_war = yes } }
+                value = 40
+            }
+        }
+        add = {
+            desc = "IS_BANKRUPT_TOOLTIP"
+            if = {
+                limit = { scope:actor = { is_during_bankruptcy = yes } }
+                value = -1000
+            }
+        }
+        add = {
+            desc = "CAN_NOT_AFFORD"
+            if = {
+                limit = {
+                    scope:actor = {
+                        gold <= {
+                            value = scope:actor.monthly_income_trade_and_tax
+                            multiply = 3
+                        }
+                    }
+                }
+                value = -60
+            }
+        }
+    }
+}
+
+# 献俘告庙
+present_captives_at_ancestral_temple = {
+    type = internationalorganization
+
+    ai_tick = monthly
+    ai_tick_frequency = 12
+
+    automation_tick = never
+    automation_tick_frequency = 12
+    player_automated_category = diplomacy
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        exists_chinese_dynasty = yes
+        scope:actor = { is_chinese_dynasty_member = yes }
+    }
+
+    allow = {
+        scope:actor = {
+            var:dynasty_stability > 50
+        }
+        scope:actor = { is_chinese_dynasty_leader = yes }
+    }
+
+    price = price:present_captives_at_ancestral_temple_prices
+
+    cooldown = {
+        type = present_captives_at_ancestral_temple
+        years = 5
+    }
+
+    select_trigger = {
+        looking_for_a = international_organization
+        source = actor
+        target_flag = recipient
+        name = "choose_international_organization"
+        column = {
+            data = name
+        }
+        visible = {
+            international_organization_type = international_organization_type:chinese_dynasty
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            change_dynasty_stability = { value = 75 }
+            add_prestige = prestige_mild_bonus
+            add_legitimacy = legitimacy_mild_bonus
+            add_country_modifier = {
+                modifier = captives_presented_at_the_temple
+                years = 15
+            }
+            if = {
+                limit = { modifier:allow_righteousness = yes }
+                add_righteousness = righteousness_mild_bonus
+            }
+        }
+    }
+
+    ai_will_do = {
+        value = 0
+        add = {
+            desc = "celestial_authority_HIGH"
+            if = {
+                limit = {
+                    scope:actor = { var:dynasty_stability > 300 }
+                }
+                value = 25
+            }
+        }
+        add = {
+            desc = "IS_BANKRUPT_TOOLTIP"
+            if = {
+                limit = { scope:actor = { is_during_bankruptcy = yes } }
+                value = -1000
+            }
+        }
+    }
+}

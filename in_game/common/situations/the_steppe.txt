@@ -9,8 +9,11 @@ the_steppe = { #The land from Ukraine to Mongolia
 		current_year < 1990
 	}
 
-	can_end = {
+	outcome = {
+		name = "the_steppe_era_closes"
+		trigger = {
 		current_year > 1930
+		}
 	}
 
 	visible = {
@@ -32,6 +35,11 @@ the_steppe = { #The land from Ukraine to Mongolia
 	}
 
 	on_start = {
+		add_timeline_note = {
+			key = timeline_note_the_steppe
+			show_in_pop_graph = yes
+			unique = yes
+		}
 		horde_nations_list_effect = yes
 		#start_herd_check_effect = yes
 		#strength_horde_start_effect = yes
@@ -46,6 +54,11 @@ the_steppe = { #The land from Ukraine to Mongolia
 	}
 
 	on_ended = {
+		add_timeline_note = {
+			key = timeline_note_the_steppe_end
+			show_in_pop_graph = yes
+			unique = yes
+		}
 
 	}
 

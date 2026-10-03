@@ -1,4 +1,4 @@
-# 原版天朝 IO 行动改挂到 chinese_dynasty。REPLACE 覆盖同名键。
+﻿# 原版天朝 IO 行动改挂到 chinese_dynasty。REPLACE 覆盖同名键。
 # 权威检查改为领袖 dynasty_stability；消耗改为 change_dynasty_stability。
 
 REPLACE:conduct_keju_examination = {
@@ -41,7 +41,6 @@ REPLACE:conduct_keju_examination = {
 		}
 		visible = {
 			international_organization_type = international_organization_type:chinese_dynasty
-			scope:actor = { is_leader_of_international_organization = this }
 		}
 	}
 
@@ -275,7 +274,6 @@ REPLACE:reshape_bureaucracy = {
 		}
 		visible = {
 			international_organization_type = international_organization_type:chinese_dynasty
-			scope:actor = { is_leader_of_international_organization = this }
 		}
 	}
 
@@ -400,7 +398,6 @@ REPLACE:strengthen_ministry = {
 		}
 		visible = {
 			international_organization_type = international_organization_type:chinese_dynasty
-			scope:actor = { is_leader_of_international_organization = this }
 		}
 	}
 
@@ -614,7 +611,6 @@ REPLACE:proclaim_decree = {
 		}
 		visible = {
 			international_organization_type = international_organization_type:chinese_dynasty
-			scope:actor = { is_leader_of_international_organization = this }
 		}
 	}
 
@@ -912,7 +908,6 @@ REPLACE:exempt_from_tribute = {
 		}
 		visible = {
 			international_organization_type = international_organization_type:chinese_dynasty
-			scope:actor = { is_leader_of_international_organization = this }
 		}
 	}
 

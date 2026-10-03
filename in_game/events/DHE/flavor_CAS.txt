@@ -2012,7 +2012,15 @@ flavor_cas.125 = { #Pirates of the Caribbean
 	}
 
 	trigger = {
-		has_presence_in = region:caribbean_region
+		OR = {
+			has_presence_in = region:caribbean_region
+			has_presence_in = region:mesoamerica_region
+		}
+		OR = {
+			has_discovered_area = area:tochtepec_area
+			has_discovered_area = area:tlaxcala_area
+			has_discovered_area = area:xilotepec_area
+		}
 		region:caribbean_region = {
 			any_location_in_region = {
 				owner ?= {
@@ -2780,16 +2788,17 @@ flavor_cas.2000 = { #Francisco de Goya La maja vestida
 flavor_cas.2001 = { #Francisco de Goya Los fusilamientos del tres de mayo
 	hide_portraits = yes
 	type = country_event
-	title = flavor_cas.2001.title
-	desc = flavor_cas.2001.desc
-	outcome = neutral
+	title = flavor_cas.1900.title
+	desc = flavor_cas.1900.desc
+	outcome = negative
+	historical_info = flavor_cas.1900.historical_info
 
 	fire_only_once = yes
 	dynamic_historical_event = {
 		tag = SPA
-		from = 1780.1.1
-		to = 1828.1.1
-		monthly_chance = 5
+		from = 1600.1.1
+		to = 1670.1.1
+		monthly_chance = 4
 	}
 
 	illustration_tags = {
@@ -2799,15 +2808,21 @@ flavor_cas.2001 = { #Francisco de Goya Los fusilamientos del tres de mayo
 
 	immediate = {
 		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
-
-		ruler = {
-			save_scope_as = target_ruler
-		}
-		character:spa_de_goya_script = {
-			save_scope_as = target_artist
-		}
-		random_neighbor_country = {
-			save_scope_as = exile_destination
+		ruler ?= { save_scope_as = target_ruler }
+		create_character = { #https://en.wikipedia.org/wiki/Pau_Claris
+			first_name = name_paul
+			last_name = Claris
+			birth_date = 1586.1.1
+			birth_location = location:barcelona
+			religion = religion:catholic
+			culture = culture:catalan
+			estate = estate_type:clergy_estate
+			script = cat_pau_claris
+			save_scope_as = target_character
+			adm = { 50 60 }
+			dip = { 55 65 }
+			mil = { 30 40 }
+			add_character_modifier = { modifier = rebel_leader_modifier years = -1 mode = add_and_extend }
 		}
 	}
 
@@ -2823,7 +2838,7 @@ flavor_cas.2001 = { #Francisco de Goya Los fusilamientos del tres de mayo
 	option = {
 		name = flavor_cas.2001.a
 
-		add_prestige = prestige_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 		capital = {
 			create_art = {
 				artist = scope:target_artist
@@ -2894,17 +2909,13 @@ flavor_cas.2100 = { #Diego Velázquez Las Meninas
 	}
 
 	option = {
-		name = flavor_cas.2100.a
-
-		change_gold_effect = { scale = -2 }
-		add_prestige = prestige_mild_bonus
-		capital = {
-			create_art = {
-				artist = scope:target_artist
-				quality = 91
-				type = work_of_art_type:painting
-				key =  las_meninas
-			}
+		name = flavor_cas.1900.a
+		historical_option = yes
+		create_rebel = {
+			category = nationalist
+			culture = culture:catalan
+			name = catalan_rebels
+			save_scope_as = catalan_rebels
 		}
 	}
 
@@ -2944,24 +2955,22 @@ flavor_cas.2101 = { #Diego Velázquez Las Lanzas
 	}
 
 	option = {
-		name = flavor_cas.2101.a
-
-		add_prestige = prestige_mild_bonus
-		change_gold_effect = { scale = -2 }
-		capital = {
-			create_art = {
-				artist = scope:target_artist
-				quality = 89
-				type = work_of_art_type:painting
-				key =  las_lanzas
+		name = flavor_cas.1900.c
+		add_accepted_culture = culture:catalan
+		custom_tooltip = {
+			text = flavor_cas.1900.c.tt
+			every_owned_location = {
+				limit = { dominant_culture = culture:catalan }
+				every_pop = {
+					limit = {
+						owner = root
+						culture = culture:catalan
+					}
+					add_pop_satisfaction = pop_satisfaction_severe_bonus
+				}
 			}
 		}
-	}
-
-	option = {
-		name = flavor_cas.2101.b
-
-		add_prestige = prestige_mild_penalty
+		change_societal_value = { type = centralization_vs_decentralization value = societal_value_move_to_right }
 	}
 }
 
@@ -3014,7 +3023,7 @@ flavor_cas.2600 = { #The Bourbon Reforms
 			add_adm = 5
 		}
 		add_stability = stability_severe_penalty
-		add_government_power = government_power_severe_bonus
+		add_political_influence = political_influence_severe_bonus
 		change_societal_value = { type = centralization_vs_decentralization value = societal_value_huge_move_to_left }
 		add_country_modifier = {
 			modifier = spa_reform_momentum
@@ -3028,7 +3037,7 @@ flavor_cas.2600 = { #The Bourbon Reforms
 	option = {
 		name = flavor_cas.2600.b
 		add_stability = stability_mild_bonus
-		add_government_power = government_power_mild_penalty
+		add_political_influence = political_influence_mild_penalty
 		change_societal_value = { type = centralization_vs_decentralization value = societal_value_move_to_right }
 	}
 }
@@ -3093,7 +3102,7 @@ flavor_cas.2601 = { #Removing Corrupt Advisors
 	option = {
 		name = flavor_cas.2601.a
 		historical_option = yes
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 		scope:target_advisor = {
 			banish_character = yes
 		}
@@ -3102,7 +3111,7 @@ flavor_cas.2601 = { #Removing Corrupt Advisors
 
 	option = {
 		name = flavor_cas.2601.b
-		add_government_power = government_power_severe_bonus
+		add_political_influence = political_influence_severe_bonus
 		kill_character = {
 			target = scope:target_advisor
 			reason = beheading
@@ -3113,7 +3122,7 @@ flavor_cas.2601 = { #Removing Corrupt Advisors
 
 	option = {
 		name = flavor_cas.2601.c
-		add_government_power = government_power_severe_penalty
+		add_political_influence = political_influence_severe_penalty
 		scope:corrupt_advisor_location = {
 			change_development  = development_severe_bonus
 			change_prosperity = prosperity_severe_bonus
@@ -3178,7 +3187,7 @@ flavor_cas.2602 = { #The Intendancy System
 
 	option = {
 		name = flavor_cas.2602.b
-		add_government_power = government_power_severe_penalty
+		add_political_influence = political_influence_severe_penalty
 		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
 		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
 	}
@@ -3247,7 +3256,7 @@ flavor_cas.2603 = { #Imposing the Intendancy System on the Colonies
 
 	option = {
 		name = flavor_cas.2603.b
-		add_government_power = government_power_severe_penalty
+		add_political_influence = political_influence_severe_penalty
 	}
 }
 
@@ -3289,7 +3298,7 @@ flavor_cas.2604 = { #Colonial Dissent
 	option = {
 		name = flavor_cas.2604.a
 		historical_option = yes
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 		custom_tooltip = {
 			text = flavor_cas.2604.a.tt
 			every_subject = {
@@ -3304,7 +3313,7 @@ flavor_cas.2604 = { #Colonial Dissent
 
 	option = {
 		name = flavor_cas.2604.b
-		add_government_power = government_power_severe_penalty
+		add_political_influence = political_influence_severe_penalty
 		custom_tooltip = {
 			text = flavor_cas.2604.a.tt
 			every_subject = {
@@ -3360,7 +3369,7 @@ flavor_cas.2605 = { #American Wars of Independence - Subject
 	option = {
 		name = flavor_cas.2605.a
 		historical_option = yes
-		add_government_power = government_power_severe_bonus
+		add_political_influence = political_influence_severe_bonus
 		leave_all_wars_with = scope:overlord_country
 		if = {
 			limit = {
@@ -3382,7 +3391,7 @@ flavor_cas.2605 = { #American Wars of Independence - Subject
 
 	option = {
 		name = flavor_cas.2605.b
-		add_government_power = government_power_extreme_penalty
+		add_political_influence = political_influence_extreme_penalty
 		add_liberty_desire = liberty_desire_extreme_minus
 		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_right }
 	}

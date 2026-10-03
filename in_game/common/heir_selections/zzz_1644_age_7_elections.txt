@@ -1,0 +1,354 @@
+﻿# Anno 1644 - Age of Imperialism
+# Age 7 elections (head of state / head of government).
+#
+# Usage:
+#  * constitutional_cabinet_election : parliamentary republics (cabinet formed by the chamber)
+#  * presidential_election           : presidential republics
+#  * mass_suffrage_election          : advanced democracies with universal (male/female) suffrage
+#  * imperial_diet_election          : constitutional monarchies whose chamber elects a chancellor
+#
+# Monarchies without a parliament keep their dynastic succession laws.
+
+# 议会内阁选举（议会制共和国）
+constitutional_cabinet_election = {
+    use_election = yes
+    term_duration = 60 # 5 years
+    max_possible_candidates = 4
+    show_candidates = yes
+
+    allowed_estates = { nobles_estate burghers_estate clergy_estate peasants_estate }
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        OR = {
+            has_reform = government_reform:parliamentary_government_reform
+            has_reform = government_reform:republican_constitution_reform
+            parliament_type = parliament_type:republican_parliament
+            parliament_type = parliament_type:mass_suffrage_parliament
+        }
+    }
+
+    heir_is_allowed = {
+        is_adult = yes
+    }
+
+    calc = {
+        if = {
+            limit = { exists = root }
+            add = {
+                desc = "HEIR_SELECTION_ADM_DESC"
+                value = root.adm
+            }
+            add = {
+                desc = "HEIR_SELECTION_DIP_DESC"
+                value = root.dip
+            }
+            add = {
+                desc = "HEIR_SELECTION_MIL_DESC"
+                value = root.mil
+            }
+            add = {
+                desc = "HEIR_SELECTION_OLDER_HEIR_DESC"
+                value = character_age
+            }
+            if = {
+                limit = { modifier:blocked_from_being_ruler = yes }
+                add = {
+                    desc = "HEIR_SELECTION_IS_UNSUITED_TO_RULE_DESC"
+                    value = -1000
+                }
+            }
+            if = {
+                limit = { has_character_modifier = banned_from_cabinet }
+                add = {
+                    desc = "HEIR_SELECTION_IS_UNSUITED_TO_RULE_DESC"
+                    value = -500
+                }
+            }
+        }
+
+        # General tooltip (no candidate scope)
+        if = {
+            limit = {
+                not = { exists = root }
+            }
+            add = {
+                desc = "HEIR_SELECTION_ADM_DESC"
+                value = 1
+            }
+            add = {
+                desc = "HEIR_SELECTION_DIP_DESC"
+                value = 1
+            }
+            add = {
+                desc = "HEIR_SELECTION_MIL_DESC"
+                value = 1
+            }
+            add = {
+                desc = "HEIR_SELECTION_OLDER_HEIR_DESC"
+                value = 1
+            }
+        }
+    }
+
+    modifier = {
+        care_about_producing_heirs = yes
+    }
+}
+
+# 总统选举（总统制共和国）
+presidential_election = {
+    use_election = yes
+    term_duration = 48 # 4 years
+    max_possible_candidates = 4
+    show_candidates = yes
+    allow_foreign_ruler = no
+
+    allowed_estates = { nobles_estate burghers_estate clergy_estate peasants_estate }
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        OR = {
+            has_reform = government_reform:presidential_republic_reform
+            parliament_type = parliament_type:presidential_parliament
+        }
+    }
+
+    heir_is_allowed = {
+        is_adult = yes
+    }
+
+    calc = {
+        if = {
+            limit = { exists = root }
+            add = {
+                desc = "HEIR_SELECTION_ADM_DESC"
+                value = root.adm
+            }
+            add = {
+                desc = "HEIR_SELECTION_DIP_DESC"
+                value = root.dip
+            }
+            add = {
+                desc = "HEIR_SELECTION_MIL_DESC"
+                value = root.mil
+            }
+            add = {
+                desc = "HEIR_SELECTION_OLDER_HEIR_DESC"
+                value = character_age
+            }
+            if = {
+                limit = { modifier:blocked_from_being_ruler = yes }
+                add = {
+                    desc = "HEIR_SELECTION_IS_UNSUITED_TO_RULE_DESC"
+                    value = -1000
+                }
+            }
+        }
+
+        if = {
+            limit = {
+                not = { exists = root }
+            }
+            add = {
+                desc = "HEIR_SELECTION_ADM_DESC"
+                value = 1
+            }
+            add = {
+                desc = "HEIR_SELECTION_DIP_DESC"
+                value = 1
+            }
+            add = {
+                desc = "HEIR_SELECTION_MIL_DESC"
+                value = 1
+            }
+            add = {
+                desc = "HEIR_SELECTION_OLDER_HEIR_DESC"
+                value = 1
+            }
+        }
+    }
+
+    modifier = {
+        care_about_producing_heirs = yes
+    }
+}
+
+# 普选
+mass_suffrage_election = {
+    use_election = yes
+    term_duration = 48 # 4 years
+    max_possible_candidates = 5
+    show_candidates = yes
+    allow_female = yes
+    allow_foreign_ruler = no
+
+    allowed_estates = { nobles_estate burghers_estate clergy_estate peasants_estate }
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        OR = {
+            has_reform = government_reform:republican_constitution_reform
+            parliament_type = parliament_type:mass_suffrage_parliament
+        }
+    }
+
+    heir_is_allowed = {
+        is_adult = yes
+    }
+
+    calc = {
+        if = {
+            limit = { exists = root }
+            add = {
+                desc = "HEIR_SELECTION_ADM_DESC"
+                value = root.adm
+            }
+            add = {
+                desc = "HEIR_SELECTION_DIP_DESC"
+                value = root.dip
+            }
+            add = {
+                desc = "HEIR_SELECTION_MIL_DESC"
+                value = root.mil
+            }
+            add = {
+                desc = "HEIR_SELECTION_OLDER_HEIR_DESC"
+                value = character_age
+            }
+            if = {
+                limit = { modifier:blocked_from_being_ruler = yes }
+                add = {
+                    desc = "HEIR_SELECTION_IS_UNSUITED_TO_RULE_DESC"
+                    value = -1000
+                }
+            }
+            if = {
+                limit = { estate = estate_type:peasants_estate }
+                add = {
+                    desc = "HEIR_SELECTION_ADM_DESC"
+                    value = 15
+                }
+            }
+        }
+
+        if = {
+            limit = {
+                not = { exists = root }
+            }
+            add = {
+                desc = "HEIR_SELECTION_ADM_DESC"
+                value = 1
+            }
+            add = {
+                desc = "HEIR_SELECTION_DIP_DESC"
+                value = 1
+            }
+            add = {
+                desc = "HEIR_SELECTION_MIL_DESC"
+                value = 1
+            }
+            add = {
+                desc = "HEIR_SELECTION_OLDER_HEIR_DESC"
+                value = 1
+            }
+        }
+    }
+
+    modifier = {
+        care_about_producing_heirs = yes
+    }
+
+    custom_eligibility_rules = { universal_suffrage_eligibility }
+}
+
+# 帝国议会选举（君主立宪下的首相/大臣）
+imperial_diet_election = {
+    use_election = yes
+    term_duration = 60 # 5 years
+    max_possible_candidates = 3
+    show_candidates = yes
+    allow_foreign_ruler = no
+
+    allowed_estates = { nobles_estate burghers_estate clergy_estate }
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        OR = {
+            has_reform = government_reform:constitutional_monarchy_reform
+            parliament_type = parliament_type:imperial_parliament
+        }
+    }
+
+    heir_is_allowed = {
+        is_adult = yes
+        NOT = { is_ruler = yes }
+    }
+
+    calc = {
+        if = {
+            limit = { exists = root }
+            add = {
+                desc = "HEIR_SELECTION_ADM_DESC"
+                value = root.adm
+            }
+            add = {
+                desc = "HEIR_SELECTION_DIP_DESC"
+                value = root.dip
+            }
+            add = {
+                desc = "HEIR_SELECTION_MIL_DESC"
+                value = root.mil
+            }
+            add = {
+                desc = "HEIR_SELECTION_OLDER_HEIR_DESC"
+                value = character_age
+            }
+            if = {
+                limit = { modifier:blocked_from_being_ruler = yes }
+                add = {
+                    desc = "HEIR_SELECTION_IS_UNSUITED_TO_RULE_DESC"
+                    value = -1000
+                }
+            }
+        }
+
+        if = {
+            limit = {
+                not = { exists = root }
+            }
+            add = {
+                desc = "HEIR_SELECTION_ADM_DESC"
+                value = 1
+            }
+            add = {
+                desc = "HEIR_SELECTION_DIP_DESC"
+                value = 1
+            }
+            add = {
+                desc = "HEIR_SELECTION_MIL_DESC"
+                value = 1
+            }
+            add = {
+                desc = "HEIR_SELECTION_OLDER_HEIR_DESC"
+                value = 1
+            }
+        }
+    }
+
+    modifier = {
+        care_about_producing_heirs = yes
+    }
+}

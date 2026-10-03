@@ -100,19 +100,6 @@ REPLACE:levy_a_matchlock_levy = {
     allowed_pop_type = laborers
 }
 
-levy_late_crusader_knights = {
-    size = levy_generic_noble_cavalry_size
-
-    allowed_pop_type = clergy
-
-    allow = {
-        location ?= { has_building_with_at_least_one_level = order_stronghold }
-        religion = religion:catholic
-    }
-
-    unit = a_late_crusader_knights_levy
-}
-
 levy_a_men_at_arms = {
     size = levy_generic_infantry_size
 

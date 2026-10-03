@@ -13,7 +13,9 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 		current_year < 1700
 	}
 
-	can_end = {
+	outcome = {
+		name = "netherland_independent_settlement"
+		trigger = {
 		OR = {
 			OR = {
 				current_year > 1700
@@ -43,6 +45,7 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 			c:NED = { is_subject_or_below_of = c:SPA }
 			c:SPA = { is_subject_or_below_of = c:NED }
 		}
+		}
 	}
 
 	visible = {
@@ -61,6 +64,11 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 	}
 
 	on_start = {
+		add_timeline_note = {
+			key = timeline_note_netherland_independent
+			show_in_pop_graph = yes
+			unique = yes
+		}
 		netherland_independent_netural_country_list_effect = yes
 		#netherland_side_country_list_effect = yes
 		netherland_independent_netherland_country_list_effect = yes
@@ -103,6 +111,11 @@ netherland_independent = { #Not support fo HOL exist but it shouldnt happen
 	}
 
 	on_ended = {	
+		add_timeline_note = {
+			key = timeline_note_netherland_independent_end
+			show_in_pop_graph = yes
+			unique = yes
+		}
 		if = {
 			limit = {
 				OR = {

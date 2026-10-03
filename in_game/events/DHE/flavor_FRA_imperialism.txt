@@ -1,0 +1,542 @@
+﻿# Anno 1644 - France in the Age of Imperialism (1837-1918)
+# Flavor / Dynamic Historical Events for France.
+
+namespace = flavor_fra_imperialism
+
+# 七月革命
+flavor_fra_imperialism.1 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_fra_imperialism.1.title
+    desc = flavor_fra_imperialism.1.desc
+    outcome = neutral
+
+    historical_info = flavor_fra_imperialism.1.historical_info
+
+    dynamic_historical_event = {
+        tag = FRA
+        from = 1830.7.1
+        to = 1840.1.1
+        monthly_chance = 6
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        government_type = government_type:monarchy
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        # 立宪君主制
+        name = flavor_fra_imperialism.1.a
+        historical_option = yes
+        change_societal_value = { type = absolutism_vs_liberalism value = societal_value_tiny_move_to_right }
+        change_societal_value = { type = aristocracy_vs_plutocracy value = societal_value_tiny_move_to_right }
+        add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+        add_stability = stability_mild_penalty
+    }
+
+    option = {
+        # 镇压
+        name = flavor_fra_imperialism.1.b
+        add_stability = stability_severe_penalty
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+        add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+        change_societal_value = { type = absolutism_vs_liberalism value = societal_value_tiny_move_to_left }
+    }
+}
+
+# 二月革命与共和国
+flavor_fra_imperialism.2 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_fra_imperialism.2.title
+    desc = flavor_fra_imperialism.2.desc
+    outcome = neutral
+
+    historical_info = flavor_fra_imperialism.2.historical_info
+
+    dynamic_historical_event = {
+        tag = FRA
+        from = 1848.1.1
+        to = 1855.1.1
+        monthly_chance = 5
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        government_type = government_type:monarchy
+        stability < 25
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:burghers_estate }
+    }
+
+    option = {
+        name = flavor_fra_imperialism.2.a
+        historical_option = yes
+        change_government_type = government_type:republic
+        add_reform = government_reform:republican_constitution_reform
+        change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_tiny_move_to_right }
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+        add_stability = stability_severe_penalty
+    }
+
+    option = {
+        name = flavor_fra_imperialism.2.b
+        add_stability = stability_extreme_penalty
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+    }
+}
+
+# 第二帝国
+flavor_fra_imperialism.3 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_fra_imperialism.3.title
+    desc = flavor_fra_imperialism.3.desc
+    outcome = neutral
+
+    historical_info = flavor_fra_imperialism.3.historical_info
+
+    dynamic_historical_event = {
+        tag = FRA
+        from = 1851.1.1
+        to = 1870.1.1
+        monthly_chance = 4
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        government_type = government_type:republic
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = regular
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+    }
+
+    option = {
+        name = flavor_fra_imperialism.3.a
+        historical_option = yes
+        change_government_type = government_type:monarchy
+        add_country_modifier = { modifier = second_french_empire years = -1 }
+        add_prestige = prestige_mild_bonus
+    }
+
+    option = {
+        name = flavor_fra_imperialism.3.b
+        add_stability = stability_mild_bonus
+        change_societal_value = { type = absolutism_vs_liberalism value = societal_value_tiny_move_to_right }
+    }
+}
+
+# 普法战争
+flavor_fra_imperialism.4 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_fra_imperialism.4.title
+    desc = flavor_fra_imperialism.4.desc
+    outcome = negative
+
+    historical_info = flavor_fra_imperialism.4.historical_info
+
+    dynamic_historical_event = {
+        tag = FRA
+        from = 1866.1.1
+        to = 1885.1.1
+        monthly_chance = 3
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        OR = {
+            country_exists = c:PRU
+            country_exists = c:GER
+        }
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+        if = {
+            limit = { country_exists = c:GER }
+            c:GER = { save_scope_as = german_rival }
+        }
+        else_if = {
+            limit = { country_exists = c:PRU }
+            c:PRU = { save_scope_as = german_rival }
+        }
+    }
+
+    option = {
+        # 迎战
+        name = flavor_fra_imperialism.4.a
+        historical_option = yes
+        ai_will_select = { base = 60 }
+        add_stability = stability_severe_penalty
+        add_prestige = prestige_severe_penalty
+        if = {
+            limit = { exists = scope:german_rival }
+            add_casus_belli = {
+                target = scope:german_rival
+                type = casus_belli:cb_conquer_province
+            }
+        }
+        add_country_modifier = { modifier = revanchism_against_germany years = -1 }
+    }
+
+    option = {
+        # 避战
+        name = flavor_fra_imperialism.4.b
+        ai_will_select = { base = 40 }
+        add_stability = stability_mild_penalty
+        add_prestige = prestige_mild_penalty
+    }
+}
+
+# 巴黎公社
+flavor_fra_imperialism.5 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_fra_imperialism.5.title
+    desc = flavor_fra_imperialism.5.desc
+    outcome = negative
+
+    historical_info = flavor_fra_imperialism.5.historical_info
+
+    dynamic_historical_event = {
+        tag = FRA
+        from = 1870.1.1
+        to = 1885.1.1
+        monthly_chance = 4
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        stability < 0
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        # 镇压公社
+        name = flavor_fra_imperialism.5.a
+        historical_option = yes
+        add_stability = stability_mild_bonus
+        add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_penalty }
+        add_country_modifier = { modifier = paris_commune_crushed years = 10 }
+        change_societal_value = { type = absolutism_vs_liberalism value = societal_value_tiny_move_to_left }
+    }
+
+    option = {
+        # 与公社妥协
+        name = flavor_fra_imperialism.5.b
+        add_stability = stability_mild_penalty
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+        change_societal_value = { type = absolutism_vs_liberalism value = societal_value_tiny_move_to_right }
+        change_societal_value = { type = individualism_vs_communalism value = societal_value_tiny_move_to_left }
+    }
+}
+
+# 德雷福斯事件
+flavor_fra_imperialism.6 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_fra_imperialism.6.title
+    desc = flavor_fra_imperialism.6.desc
+    outcome = neutral
+
+    historical_info = flavor_fra_imperialism.6.historical_info
+
+    dynamic_historical_event = {
+        tag = FRA
+        from = 1894.1.1
+        to = 1910.1.1
+        monthly_chance = 3
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+        government_type = government_type:republic
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        name = flavor_fra_imperialism.6.a
+        historical_option = yes
+        add_stability = stability_mild_penalty
+        add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_penalty }
+        change_societal_value = { type = spiritualist_vs_humanist value = societal_value_tiny_move_to_right }
+        add_prestige = prestige_mild_bonus
+    }
+
+    option = {
+        name = flavor_fra_imperialism.6.b
+        add_stability = stability_mild_penalty
+        add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+        change_societal_value = { type = spiritualist_vs_humanist value = societal_value_tiny_move_to_left }
+    }
+}
+
+# 印象派
+flavor_fra_imperialism.10 = {
+    hide_portraits = yes
+    type = country_event
+    fire_only_once = yes
+    title = flavor_fra_imperialism.10.title
+    desc = flavor_fra_imperialism.10.desc
+    outcome = neutral
+
+    historical_info = flavor_fra_imperialism.10.historical_info
+
+    dynamic_historical_event = {
+        tag = FRA
+        from = 1865.1.1
+        to = 1900.1.1
+        monthly_chance = 2
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+        create_character = {
+            adm = { 20 80 }
+            dip = { 20 80 }
+            mil = { 10 60 }
+            artist = artist_type:painter
+            artist_skill = { 0.4 0.95 }
+            birth_date = 1840.11.14
+            female = no
+            culture = culture:french
+            religion = religion:catholic
+            estate = estate_type:burghers_estate
+            create_in_limbo = yes
+            save_scope_as = impressionist
+        }
+    }
+
+    option = {
+        name = flavor_fra_imperialism.10.a
+        historical_option = yes
+        scope:impressionist = {
+            move_country = root
+            add_character_modifier = {
+                modifier = french_master_painter
+                years = -1
+            }
+        }
+        culture ?= {
+            add_cultural_influence = cultural_influence_mild_bonus
+            add_cultural_tradition = cultural_tradition_mild_bonus
+        }
+        change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_right }
+    }
+
+    option = {
+        name = flavor_fra_imperialism.10.b
+        hidden_effect = {
+            kill_character_silently = scope:impressionist
+        }
+        change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_left }
+    }
+}
+
+# 文豪与科学院
+flavor_fra_imperialism.11 = {
+    hide_portraits = yes
+    type = country_event
+    fire_only_once = yes
+    title = flavor_fra_imperialism.11.title
+    desc = flavor_fra_imperialism.11.desc
+    outcome = neutral
+
+    historical_info = flavor_fra_imperialism.11.historical_info
+
+    dynamic_historical_event = {
+        tag = FRA
+        from = 1830.1.1
+        to = 1900.1.1
+        monthly_chance = 2
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        OR = {
+            has_advance = modern_education_advance
+            current_age_or_later = { age = age_7_imperialism }
+        }
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:burghers_estate }
+        create_character = {
+            adm = { 30 90 }
+            dip = { 30 90 }
+            mil = { 10 50 }
+            artist = artist_type:writer
+            artist_skill = { 0.5 1.0 }
+            birth_date = 1802.2.26
+            female = no
+            culture = culture:french
+            religion = religion:catholic
+            estate = estate_type:burghers_estate
+            create_in_limbo = yes
+            save_scope_as = french_writer
+        }
+    }
+
+    option = {
+        name = flavor_fra_imperialism.11.a
+        historical_option = yes
+        scope:french_writer = {
+            move_country = root
+            add_character_modifier = {
+                modifier = french_man_of_letters
+                years = -1
+            }
+        }
+        culture ?= {
+            add_cultural_influence = cultural_influence_mild_bonus
+            add_cultural_tradition = cultural_tradition_mild_bonus
+        }
+        add_research_progress = research_progress_mild_bonus
+    }
+
+    option = {
+        name = flavor_fra_imperialism.11.b
+        add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+        change_societal_value = { type = spiritualist_vs_humanist value = societal_value_tiny_move_to_left }
+    }
+}
+
+# 殖民扩张
+flavor_fra_imperialism.12 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_fra_imperialism.12.title
+    desc = flavor_fra_imperialism.12.desc
+    outcome = neutral
+
+    historical_info = flavor_fra_imperialism.12.historical_info
+
+    dynamic_historical_event = {
+        tag = FRA
+        from = 1850.1.1
+        to = 1900.1.1
+        monthly_chance = 3
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+        OR = {
+            is_colonial_overlord = yes
+            any_subject = { is_subject_type = colonial_nation }
+            num_of_ports > 3
+        }
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = happy
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        name = flavor_fra_imperialism.12.a
+        historical_option = yes
+        add_country_modifier = { modifier = french_colonial_party years = 25 }
+        add_prestige = prestige_mild_bonus
+        add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+    }
+
+    option = {
+        name = flavor_fra_imperialism.12.b
+        add_stability = stability_mild_bonus
+        change_societal_value = { type = outward_vs_inward value = societal_value_tiny_move_to_left }
+    }
+}

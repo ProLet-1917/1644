@@ -16,6 +16,8 @@ flavor_all_chi.1 = {
         ai_chance = {
             value = 0
         }
+    	add_prestige = prestige_mild_bonus
+    	add_legitimacy = legitimacy_mild_bonus
     }
 
     option = {
@@ -29,10 +31,12 @@ flavor_all_chi.1 = {
                         capital.area = area:jiangnan_area
                     }
                 }
-                multiply = 5
+                factor = 5
             }
         }
         change_country_name = WUU
+    	add_prestige = prestige_mild_bonus
+    	add_stability = stability_mild_bonus
     }
 
     option = {
@@ -41,6 +45,8 @@ flavor_all_chi.1 = {
             value = 1
         }
         change_country_name = CHE
+    	add_prestige = prestige_mild_bonus
+    	add_political_influence = political_influence_mild_bonus
     }
 
     option = {
@@ -56,10 +62,12 @@ flavor_all_chi.1 = {
                 trigger = {
                     culture = culture:jurchen_culture
                 }
-                multiply = 20
+                factor = 20
             }
         }
         change_country_name = QNG
+    	add_prestige = prestige_mild_bonus
+    	add_army_tradition = army_tradition_mild_bonus
     }
 
     option = {
@@ -72,10 +80,12 @@ flavor_all_chi.1 = {
                         capital.area = area:shandong_area
                     }
                 }
-                multiply = 5
+                factor = 5
             }
         }
         change_country_name = CQI
+    	add_prestige = prestige_mild_bonus
+    	add_legitimacy = legitimacy_mild_bonus
     }
 
     option = {
@@ -96,6 +106,9 @@ flavor_all_chi.1 = {
             }
         }
         change_country_name = MNG
+    	add_prestige = prestige_mild_bonus
+    	add_legitimacy = legitimacy_mild_bonus
+    	add_stability = stability_mild_bonus
     }
 
     option = {
@@ -104,6 +117,8 @@ flavor_all_chi.1 = {
             value = 2
         }
         change_country_name = CSO
+    	add_prestige = prestige_mild_bonus
+    	add_political_influence = political_influence_mild_bonus
     }
 
     option = {
@@ -116,10 +131,12 @@ flavor_all_chi.1 = {
                         capital.area = area:shandong_area
                     }
                 }
-                multiply = 2
+                factor = 2
             }
         }
         change_country_name = CLU
+    	add_prestige = prestige_mild_bonus
+    	add_manpower = { value = root.monthly_manpower multiply = 3 }
     }
 
     option = {
@@ -134,10 +151,12 @@ flavor_all_chi.1 = {
                         capital.area = area:chuannan_area
                     }
                 }
-                multiply = 5
+                factor = 5
             }
         }
         change_country_name = SHU
+    	add_prestige = prestige_mild_bonus
+    	add_stability = stability_mild_bonus
     }
 
     option = {
@@ -146,5 +165,7 @@ flavor_all_chi.1 = {
             value = 2
         }
         change_country_name = CZH
+    	add_prestige = prestige_mild_bonus
+    	add_legitimacy = legitimacy_mild_bonus
     }
 }

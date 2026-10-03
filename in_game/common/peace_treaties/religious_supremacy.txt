@@ -21,6 +21,29 @@
 		scope:winner = {
 			is_war_leader_of = scope:war
 		}
+		international_organization:hre = {
+			trigger_if = {
+				limit = {
+					scope:winner = {
+						is_member_of_international_organization = international_organization:protestant_union
+					}
+				}
+				trigger_if = {
+					limit = { scope:winner.religion = religion:hussite }
+					hre_has_eligible_leader_candidate = { religion = religion:hussite }
+				}
+				trigger_else_if = {
+					limit = { scope:winner.religion = religion:calvinist }
+					hre_has_eligible_leader_candidate = { religion = religion:calvinist }
+				}
+				trigger_else = {
+					hre_has_eligible_leader_candidate = { religion = religion:lutheran }
+				}
+			}
+			trigger_else = {
+				hre_has_eligible_leader_candidate = { religion = religion:catholic }
+			}
+		}
 	}
 	effect = {
 		scope:loser = {

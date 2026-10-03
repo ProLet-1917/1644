@@ -63,6 +63,8 @@ mng_1644.1 = { #南迁之议
 			}
 			force_recalc_country_active_status = root
 		}
+		add_prestige = prestige_mild_bonus
+		add_legitimacy = legitimacy_mild_bonus
 	}
   	option = {
     	name = mng_1644.1.b  #南渡
@@ -157,6 +159,8 @@ mng_1644.2 = { #甲申之难（不南迁线）
 	option = {
 		name = mng_1644.2.a
     	custom_tooltip = mng_1644.2.tt1
+		add_prestige = prestige_mild_bonus
+		add_stability = stability_mild_bonus
 	}
 }
 
@@ -206,7 +210,7 @@ mng_1644.5 = { #立新君
 			}
 			set_new_ruler = character:chi_zhu_yousong
 		}
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 		add_prestige = prestige_mild_bonus
 		c:MNG = {
             if = {
@@ -238,7 +242,7 @@ mng_1644.5 = { #立新君
 			}
 			set_new_ruler = character:chi_zhu_changfang
 		}
-		add_government_power = government_power_weak_bonus
+		add_political_influence = political_influence_weak_bonus
 		c:MNG = {
             if = {
                 limit = {
@@ -277,7 +281,7 @@ mng_1644.5 = { #立新君
 	#		}
 	#		set_new_ruler = character:chi_zhu_yujian
 	#	}
-	#	add_government_power = government_power_extreme_penalty
+	#	add_political_influence = political_influence_extreme_penalty
 	#	add_prestige = prestige_mild_penalty
 	#}
 }
@@ -290,5 +294,7 @@ mng_1644.6 = { #山东河北反正
 	option = {
 		name = mng_1644.6.a
     	custom_tooltip = mng_1644.6.tt
+		add_prestige = prestige_mild_bonus
+		add_army_tradition = army_tradition_mild_bonus
 	}
 }

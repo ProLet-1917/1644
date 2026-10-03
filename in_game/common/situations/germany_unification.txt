@@ -1,9 +1,13 @@
-#============Made by Lvtoumao============
+﻿#============Made by Lvtoumao============
 germany_unification = {
 
     monthly_spawn_chance = monthly_spawn_chance_unique
 
     can_start = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
         region:north_german_region = {
             any_location_in_region = {
                 percent >= 0.75
@@ -26,7 +30,9 @@ germany_unification = {
         }
     }
 
-    can_end = {
+    outcome = {
+    	name = "germany_unification_nation_forged"
+    	trigger = {
         OR = {
             OR = {
                 country_exists = c:GER
@@ -51,6 +57,7 @@ germany_unification = {
                 }
             }
         }
+    	}
     }
 
     visible = {
@@ -58,6 +65,11 @@ germany_unification = {
     }
 
     on_start = {
+    	add_timeline_note = {
+    		key = timeline_note_germany_unification
+    		show_in_pop_graph = yes
+    		unique = yes
+    	}
         every_country = {
             limit = {
                 culture = { has_culture_group = culture_group:german_group }
@@ -151,9 +163,52 @@ germany_unification = {
             }
             add_to_global_variable_list = { name = potential_unifier_list target = this }
         }
+
+        # 普奥争雄：两名以上统一者，且其中之一为奥地利时
+        if = {
+            limit = {
+                NOT = { has_global_variable = german_brothers_war_fired }
+                global_variable_list_size = {
+                    name = potential_unifier_list
+                    value >= 2
+                }
+                OR = {
+                    AND = {
+                        country_exists = c:HAB
+                        c:HAB = { has_variable = potential_unifier }
+                    }
+                    AND = {
+                        country_exists = c:AUS
+                        c:AUS = { has_variable = potential_unifier }
+                    }
+                }
+            }
+            random = {
+                chance = 6
+                set_global_variable = german_brothers_war_fired
+                ordered_country = {
+                    limit = {
+                        has_variable = potential_unifier
+                        NOT = { tag = HAB }
+                        NOT = { tag = AUS }
+                    }
+                    order_by = total_population
+                    max = 1
+                    trigger_event_silently = {
+                        id = germany_unification.1200
+                        days = { 3 10 }
+                    }
+                }
+            }
+        }
     }
 
     on_ended = {
+    	add_timeline_note = {
+    		key = timeline_note_germany_unification_end
+    		show_in_pop_graph = yes
+    		unique = yes
+    	}
         every_country = {
             limit = {
                 OR = {
@@ -163,6 +218,10 @@ germany_unification = {
             }
             remove_variable = potential_unifier
             remove_variable = german_country
+        }
+        if = {
+            limit = { has_global_variable = german_brothers_war_fired }
+            remove_global_variable = german_brothers_war_fired
         }
     }
 

@@ -87,6 +87,27 @@ arid = {
 	debug_color = rgb { 167 117 58 } # for climate_screenshot mapmode
 }
 
+hot_semi_arid = {
+	winter = none
+	color = climate_hot_semi_arid
+
+	location_modifier = {
+		local_wheat_output_modifier = -0.13
+		local_life_expectancy = -3
+
+		free_capacity_attracts_pops = yes
+
+		local_supply_limit_modifier = -0.05
+	}
+	unit_modifier = {
+	}
+
+	audio_tags = {
+		masDataClimateZone = 0.7
+	}
+	debug_color = rgb { 167 117 58 } # for climate_screenshot mapmode
+}
+
 cold_arid = {
 	winter = mild
 	color = climate_cold_arid
@@ -109,6 +130,27 @@ cold_arid = {
 	}
 	debug_color = hsv360 { 49 35 71 } # for climate_screenshot mapmode
 }
+
+cold_semi_arid = {
+	winter = mild
+	color = climate_cold_semi_arid
+
+	location_modifier = {
+		local_wheat_output_modifier = -0.16
+
+		free_capacity_attracts_pops = yes
+
+		local_supply_limit_modifier = -0.03
+	}
+	unit_modifier = {
+	}
+
+	audio_tags = {
+		masDataClimateZone = 0.55
+	}
+	debug_color = hsv360 { 49 35 71 } # for climate_screenshot mapmode
+}
+
 
 mediterranean = {
 	winter = none
@@ -143,6 +185,26 @@ continental = {
 		masDataClimateZone = 0.2
 	}
 	debug_color = hsv360 {126 57 62}  # for climate_screenshot mapmode
+}
+
+subpolar = {
+	winter = severe
+
+	color = climate_subpolar
+
+	location_modifier = {
+		local_monthly_food_modifier = -0.28
+		local_monthly_development_modifier = -0.05
+		local_life_expectancy = -5
+		local_supply_limit_modifier = -0.10
+	}
+
+	colonial_migration_size_modifier = -0.2
+
+	audio_tags = {
+		masDataClimateZone = 0.1
+	}
+	debug_color = rgb { 153 206 203}  # for climate_screenshot mapmode
 }
 
 arctic = {

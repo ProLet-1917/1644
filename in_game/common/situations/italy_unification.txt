@@ -1,0 +1,272 @@
+﻿# Anno 1644 - The Italian Question
+# Risorgimento: Italian states bid for the role of unifier, the Papal States hold Rome,
+# and the great powers of Europe reserve the right to intervene.
+
+italy_unification = {
+
+    monthly_spawn_chance = monthly_spawn_chance_unique
+
+    can_start = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        region:italy_region = {
+            any_location_in_region = {
+                percent >= 0.6
+                owner = {
+                    culture = { has_culture_group = culture_group:italian_group }
+                    has_advance = nation_state_advance
+                }
+            }
+        }
+    }
+
+    outcome = {
+    	name = "italy_unification_nation_forged"
+    	trigger = {
+        OR = {
+            country_exists = c:ITA
+            AND = {
+                region:italy_region = {
+                    any_location_in_region = {
+                        percent <= 0.15
+                        owner = {
+                            culture = { has_culture_group = culture_group:italian_group }
+                        }
+                    }
+                }
+            }
+        }
+    	}
+    }
+
+    visible = {
+        capital.continent = continent:europe
+    }
+
+    on_start = {
+    	add_timeline_note = {
+    		key = timeline_note_italy_unification
+    		show_in_pop_graph = yes
+    		unique = yes
+    	}
+        # Everyone who can realistically lead the Risorgimento
+        every_country = {
+            limit = {
+                zzz_1644_is_italian_unifier_candidate = yes
+            }
+            save_scope_as = target
+            add_to_global_variable_list = { name = italian_potential_unifier_list target = this }
+            set_variable = italian_potential_unifier
+            create_international_organization = {
+                type = international_organization_type:italy_unification_union
+                add_country_to_international_organization = scope:target
+                set_leader_country = scope:target
+            }
+            if = {
+                limit = {
+                    has_variable = italian_country
+                }
+                remove_variable = italian_country
+            }
+        }
+
+        # Everyone else on the peninsula
+        every_country = {
+            limit = {
+                zzz_1644_is_italian_state = yes
+                NOT = { zzz_1644_is_italian_unifier_candidate = yes }
+                NOT = {
+                    has_variable = italian_country
+                }
+            }
+            add_to_global_variable_list = { name = italian_country_list target = this }
+            set_variable = italian_country
+        }
+
+        every_country = {
+            limit = {
+                capital.continent = continent:europe
+            }
+            trigger_event_non_silently = italy_unification.1000
+        }
+    }
+
+    on_monthly = {
+        clear_global_variable_list = italian_country_list
+        clear_global_variable_list = italian_potential_unifier_list
+
+        # Promote the next strongest Italian state to unifier if a slot opens up
+        ordered_country = {
+            limit = {
+                zzz_1644_is_italian_unifier_candidate = yes
+                NOT = {
+                    has_variable = remove_from_italian_unifier_list
+                }
+                has_variable = italian_country
+                NOT = { has_variable = italian_potential_unifier }
+                NOT = {
+                    is_leader_of_international_organization_of_type = { type = italy_unification_union }
+                }
+            }
+            order_by = total_population
+            max = 1
+            save_scope_as = target
+            remove_variable = italian_country
+            add_to_global_variable_list = { name = italian_potential_unifier_list target = this }
+            set_variable = italian_potential_unifier
+            create_international_organization = {
+                type = international_organization_type:italy_unification_union
+                add_country_to_international_organization = scope:target
+                set_leader_country = scope:target
+            }
+        }
+
+        every_country = {
+            limit = {
+                has_variable = italian_country
+            }
+            add_to_global_variable_list = { name = italian_country_list target = this }
+        }
+
+        every_country = {
+            limit = {
+                has_variable = italian_potential_unifier
+            }
+            add_to_global_variable_list = { name = italian_potential_unifier_list target = this }
+        }
+
+        # --- The Roman Question -------------------------------------------------
+        if = {
+            limit = {
+                zzz_1644_roman_question_open = yes
+                current_year >= 1700
+            }
+            ordered_country = {
+                limit = {
+                    has_variable = italian_potential_unifier
+                    zzz_1644_italy_unifier_is_strong = yes
+                }
+                order_by = total_population
+                max = 1
+                save_scope_as = roman_question_unifier
+            }
+            if = {
+                limit = { exists = scope:roman_question_unifier }
+                scope:roman_question_unifier = {
+                    trigger_event_silently = {
+                        id = italy_unification.1200
+                        days = { 5 20 }
+                    }
+                }
+            }
+        }
+
+        # --- Foreign intervention ----------------------------------------------
+        if = {
+            limit = {
+                NOT = { has_global_variable = italian_foreign_intervention_used }
+                current_year >= 1700
+                country_exists = c:PAP
+                c:PAP = { owns = location:rome }
+                zzz_1644_italy_foreign_guarantor_exists = yes
+            }
+            random = {
+                chance = 8
+                modifier = {
+                    country_exists = c:FRA
+                    c:FRA = { is_great_power = yes }
+                    multiply = 2
+                }
+                modifier = {
+                    country_exists = c:HAB
+                    c:HAB = { is_great_power = yes }
+                    multiply = 2
+                }
+                if = {
+                    limit = {
+                        country_exists = c:FRA
+                        c:FRA = { zzz_1644_has_italian_holding = yes }
+                    }
+                    c:FRA = {
+                        trigger_event_silently = {
+                            id = italy_unification.1300
+                            days = { 5 20 }
+                        }
+                    }
+                }
+                else_if = {
+                    limit = {
+                        country_exists = c:HAB
+                        c:HAB = { zzz_1644_has_italian_holding = yes }
+                    }
+                    c:HAB = {
+                        trigger_event_silently = {
+                            id = italy_unification.1300
+                            days = { 5 20 }
+                        }
+                    }
+                }
+                else_if = {
+                    limit = {
+                        country_exists = c:SPA
+                        c:SPA = { zzz_1644_has_italian_holding = yes }
+                    }
+                    c:SPA = {
+                        trigger_event_silently = {
+                            id = italy_unification.1301
+                            days = { 5 20 }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    on_ended = {
+    	add_timeline_note = {
+    		key = timeline_note_italy_unification_end
+    		show_in_pop_graph = yes
+    		unique = yes
+    	}
+        zzz_1644_italy_cleanup_effect = yes
+        zzz_1644_destroy_italian_unification_unions_effect = yes
+    }
+
+    map_color = {
+        if = {
+            limit = {
+                owner = {
+                    has_variable = italian_potential_unifier
+                }
+            }
+            value = rgb { 108 168 92 }
+        }
+    }
+
+    secondary_map_color = {
+        if = {
+            limit = {
+                owner.culture = { has_culture_group = culture_group:italian_group }
+            }
+            value = rgb { 196 78 62 }
+        }
+    }
+
+    legend_key = {
+        desc = "ITALIAN_UNIFIER"
+        color = rgb { 108 168 92 }
+        require_color_on_map = yes
+    }
+    legend_key = {
+        desc = "ITALIAN_COUNTRY"
+        color = rgb { 196 78 62 }
+        require_color_on_map = yes
+    }
+    legend_key = {
+        desc = "ITALIAN_PAPAL_STATES"
+        color = rgb { 228 210 160 }
+        require_color_on_map = yes
+    }
+}

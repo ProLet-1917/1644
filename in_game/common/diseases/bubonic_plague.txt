@@ -340,7 +340,7 @@
 	character_trait = bubonic_plague_trait
 
 	character_mortality_chance = {
-		value = 0.08
+		value = 0.16
 		if = {
 			limit = {
 				NOT = {
@@ -349,7 +349,6 @@
 					}
 				}
 			}
-			add = 0.08
 		}
 		multiply = "disease_presence(scope:disease)"
 	}

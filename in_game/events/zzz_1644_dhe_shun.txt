@@ -1,0 +1,297 @@
+# Anno 1644 - Shun dynasty DHE (1644-1664)
+# Trigger conditions are deliberately strict: tag-bound, date-bound and situation-bound.
+
+namespace = dhe_shun_1644
+
+# 均田免赋 - Land to the Tillers, Tax Remitted
+dhe_shun_1644.1 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_shun_1644.1.title
+	desc = dhe_shun_1644.1.desc
+	outcome = neutral
+
+	historical_info = dhe_shun_1644.1.historical_info
+
+	dynamic_historical_event = {
+		tag = CSH
+		from = 1644.1.1
+		to = 1652.1.1
+		monthly_chance = 7
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = CSH
+		is_subject = no
+		current_year < 1652
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+	}
+
+	option = {
+		# 履亩而税，三年免征
+		name = dhe_shun_1644.1.a
+		historical_option = yes
+		add_stability = stability_mild_bonus
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_bonus }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
+		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_tiny_move_to_right }
+	}
+
+	option = {
+		# 先安军食
+		name = dhe_shun_1644.1.b
+		add_gold = 150
+		add_manpower = { value = root.monthly_manpower multiply = 3 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_penalty }
+		add_stability = stability_mild_penalty
+	}
+}
+
+# 追赃助饷 - Extorting the Officials
+dhe_shun_1644.2 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_shun_1644.2.title
+	desc = dhe_shun_1644.2.desc
+	outcome = neutral
+
+	historical_info = dhe_shun_1644.2.historical_info
+
+	dynamic_historical_event = {
+		tag = CSH
+		from = 1644.4.1
+		to = 1650.1.1
+		monthly_chance = 6
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = CSH
+		current_year < 1650
+		capital ?= { region = region:north_china_region }
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		# 拷掠助饷
+		name = dhe_shun_1644.2.a
+		historical_option = yes
+		add_gold = 300
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_penalty }
+		add_political_influence = political_influence_mild_bonus
+	}
+
+	option = {
+		# 停止追赃，收揽士心
+		name = dhe_shun_1644.2.b
+		add_stability = stability_mild_bonus
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		add_legitimacy = legitimacy_mild_bonus
+		add_gold = -50
+	}
+}
+
+# 李自成之死 - The Death of Li Zicheng
+dhe_shun_1644.3 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_shun_1644.3.title
+	desc = dhe_shun_1644.3.desc
+	outcome = negative
+
+	major = yes
+
+	historical_info = dhe_shun_1644.3.historical_info
+
+	dynamic_historical_event = {
+		tag = CSH
+		from = 1645.1.1
+		to = 1655.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = CSH
+		current_year >= 1645
+		stability < 40
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:nobles_estate }
+		if = {
+			limit = { has_ruler = yes }
+			ruler ?= { save_scope_as = shun_leader }
+		}
+	}
+
+	option = {
+		# 秘不发丧
+		name = dhe_shun_1644.3.a
+		add_stability = stability_severe_penalty
+		add_legitimacy = legitimacy_severe_penalty
+		if = {
+			limit = { exists = scope:shun_leader }
+			kill_character_silently = scope:shun_leader
+		}
+		add_country_modifier = { modifier = shun_leadership_crisis years = 20 }
+	}
+
+	option = {
+		# 推举新主，联明抗清
+		name = dhe_shun_1644.3.b
+		add_stability = stability_mild_penalty
+		if = {
+			limit = { exists = scope:shun_leader }
+			kill_character_silently = scope:shun_leader
+		}
+		add_army_tradition = army_tradition_mild_bonus
+		if = {
+			limit = { country_exists = c:MNG }
+			add_opinion = { target = c:MNG modifier = opinion_alliance }
+		}
+	}
+}
+
+# 夔东十三家 - The Thirteen Families of Kuidong
+dhe_shun_1644.4 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_shun_1644.4.title
+	desc = dhe_shun_1644.4.desc
+	outcome = neutral
+
+	historical_info = dhe_shun_1644.4.historical_info
+
+	dynamic_historical_event = {
+		tag = CSH
+		from = 1646.1.1
+		to = 1670.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = CSH
+		current_year >= 1646
+		has_presence_in = region:west_china_region
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		# 据险而守，且耕且战
+		name = dhe_shun_1644.4.a
+		add_manpower = { value = root.monthly_manpower multiply = 4 }
+		add_army_tradition = army_tradition_mild_bonus
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+	}
+
+	option = {
+		# 出山就抚
+		name = dhe_shun_1644.4.b
+		add_stability = stability_mild_bonus
+		add_gold = 100
+		add_prestige = prestige_mild_penalty
+	}
+}
+
+# 忠贞营入楚 - The Zhongzhen Camp Enters Huguang
+dhe_shun_1644.5 = {
+	type = country_event
+	fire_only_once = yes
+	title = dhe_shun_1644.5.title
+	desc = dhe_shun_1644.5.desc
+	outcome = neutral
+
+	historical_info = dhe_shun_1644.5.historical_info
+
+	dynamic_historical_event = {
+		tag = CSH
+		from = 1647.1.1
+		to = 1665.1.1
+		monthly_chance = 3
+	}
+
+	trigger = {
+		OR = {
+			always = yes
+			has_dlc = "0_5_dawn_of_the_new_era"
+		}
+		tag = CSH
+		current_year >= 1647
+		country_exists = c:QNG
+		is_at_war_with = c:QNG
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+	}
+
+	option = {
+		# 与南明合力
+		name = dhe_shun_1644.5.a
+		historical_option = yes
+		add_army_tradition = army_tradition_mild_bonus
+		add_manpower = { value = root.monthly_manpower multiply = 3 }
+		if = {
+			limit = { country_exists = c:MNG }
+			add_opinion = { target = c:MNG modifier = opinion_alliance }
+		}
+	}
+
+	option = {
+		# 独立经营
+		name = dhe_shun_1644.5.b
+		add_political_influence = political_influence_mild_bonus
+		add_stability = stability_mild_bonus
+		add_manpower = { value = root.monthly_manpower multiply = 2 }
+	}
+}

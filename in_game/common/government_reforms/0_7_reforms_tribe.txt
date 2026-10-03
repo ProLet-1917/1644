@@ -1,0 +1,60 @@
+﻿# Anno 1644 - Age of Imperialism (age_7_imperialism)
+# Tribe-only government reforms. Unlock automatically when the age begins.
+
+# 部落联盟
+tribal_confederation_reform = {
+    age = age_7_imperialism
+    major = yes
+    government = tribe
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    allow = {
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    country_modifier = {
+        government_reform_slots = 1
+        government_size = 1
+        subject_loyalty = 10
+        global_estate_target_satisfaction = small_permanent_target_satisfaction
+        global_tribes_estate_power = 0.10
+        monthly_towards_centralization = societal_value_monthly_move
+        monthly_towards_conciliatory = societal_value_monthly_move
+    }
+
+    years = 3
+}
+
+# 部落现代化
+tribal_modernization_reform = {
+    age = age_7_imperialism
+    government = tribe
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    allow = {
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    country_modifier = {
+        global_institution_growth_modifier = 0.10
+        global_max_literacy = 5
+        global_production_efficiency = 0.05
+        global_build_buildings_efficiency = 0.10
+        monthly_towards_innovative = societal_value_monthly_move
+        monthly_towards_centralization = societal_value_monthly_move
+    }
+
+    years = 3
+}

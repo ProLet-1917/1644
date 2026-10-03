@@ -1,0 +1,464 @@
+# Anno 1644 - Formable nations created by colonial independence
+#
+# Companion to w_american_formables.txt. Every nation that historically won its
+# independence from a colonial power has a formable here, so that a released or
+# victorious colony can constitute itself as a sovereign state.
+# Flags are defined in main_menu/common/flag_definitions/w_colonial_flags.txt.
+
+#############################################
+# Spanish America
+#############################################
+
+GRN_f = { # New Granada
+    level = 3
+    required_locations_fraction = 0.3
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:colombia_region } }
+    allow = { is_subject = no }
+
+    name = GRN
+    flag = GRN
+    adjective = GRN_ADJ
+    tag = GRN
+    color = map_GRN
+
+    regions = { colombia_region }
+
+    form_effect = {
+        if = { limit = { country_rank_level < 3 } set_country_rank_effect = { rank = country_rank:rank_kingdom } }
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+VNZ_f = { # Venezuela
+    level = 3
+    required_locations_fraction = 0.3
+    rule = historical
+    capital_required = yes
+
+    potential = {
+        capital ?= {
+            region = region:colombia_region
+        }
+    }
+    allow = { is_subject = no }
+
+    name = VNZ
+    flag = VNZ
+    adjective = VNZ_ADJ
+    tag = VNZ
+    color = map_VNZ
+
+    regions = { colombia_region }
+
+    form_effect = {
+        if = { limit = { country_rank_level < 3 } set_country_rank_effect = { rank = country_rank:rank_kingdom } }
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+ECU_f = { # Ecuador
+    level = 3
+    required_locations_fraction = 0.3
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:andes_region } }
+    allow = { is_subject = no }
+
+    name = ECU
+    flag = ECU
+    adjective = ECU_ADJ
+    tag = ECU
+    color = map_ECU
+
+    regions = { andes_region }
+
+    form_effect = {
+        if = { limit = { country_rank_level < 3 } set_country_rank_effect = { rank = country_rank:rank_kingdom } }
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+BLV_f = { # Bolivia
+    level = 3
+    required_locations_fraction = 0.3
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:andes_region } }
+    allow = { is_subject = no }
+
+    name = BLV
+    flag = BLV
+    adjective = BLV_ADJ
+    tag = BLV
+    color = map_BLV
+
+    regions = {
+        andes_region
+        chaco_region
+    }
+
+    form_effect = {
+        if = { limit = { country_rank_level < 3 } set_country_rank_effect = { rank = country_rank:rank_kingdom } }
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+CLH_f = { # Chile
+    level = 3
+    required_locations_fraction = 0.3
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:andes_region } }
+    allow = { is_subject = no }
+
+    name = CLH
+    flag = CLH
+    adjective = CLH_ADJ
+    tag = CLH
+    color = map_CLH
+
+    regions = { andes_region }
+
+    form_effect = {
+        if = { limit = { country_rank_level < 3 } set_country_rank_effect = { rank = country_rank:rank_kingdom } }
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+URG_f = { # Uruguay
+    level = 2
+    required_locations_fraction = 0.25
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:la_plata_region } }
+    allow = { is_subject = no }
+
+    name = URG
+    flag = URG
+    adjective = URG_ADJ
+    tag = URG
+    color = map_URG
+
+    regions = { la_plata_region }
+
+    form_effect = {
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+PGY_f = { # Paraguay
+    level = 2
+    required_locations_fraction = 0.25
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:chaco_region } }
+    allow = { is_subject = no }
+
+    name = PGY
+    flag = PGY
+    adjective = PGY_ADJ
+    tag = PGY
+    color = map_PGY
+
+    regions = {
+        chaco_region
+        la_plata_region
+    }
+
+    form_effect = {
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+#############################################
+# Central America
+#############################################
+
+UCA_f = { # United Provinces of Central America
+    level = 3
+    required_locations_fraction = 0.4
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:central_america_region } }
+    allow = { is_subject = no }
+
+    name = UCA
+    flag = UCA
+    adjective = UCA_ADJ
+    tag = UCA
+    color = map_UCA
+
+    regions = { central_america_region }
+
+    form_effect = {
+        if = { limit = { country_rank_level < 3 } set_country_rank_effect = { rank = country_rank:rank_kingdom } }
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+GTM_f = { # Guatemala
+    level = 2
+    required_locations_fraction = 0.25
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:central_america_region } }
+    allow = { is_subject = no }
+
+    name = GTM
+    flag = GTM
+    adjective = GTM_ADJ
+    tag = GTM
+    color = map_GTM
+
+    regions = { central_america_region }
+
+    form_effect = {
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+COS_f = { # Costa Rica
+    level = 2
+    required_locations_fraction = 0.2
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:central_america_region } }
+    allow = { is_subject = no }
+
+    name = COS
+    flag = COS
+    adjective = COS_ADJ
+    tag = COS
+    color = map_COS
+
+    regions = { central_america_region }
+
+    form_effect = {
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+NIC_f = { # Nicaragua
+    level = 2
+    required_locations_fraction = 0.2
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:central_america_region } }
+    allow = { is_subject = no }
+
+    name = NIC
+    flag = NIC
+    adjective = NIC_ADJ
+    tag = NIC
+    color = map_NIC
+
+    regions = { central_america_region }
+
+    form_effect = {
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+#############################################
+# Caribbean
+#############################################
+
+CUB_f = { # Cuba
+    level = 2
+    required_locations_fraction = 0.4
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:caribbean_region } }
+    allow = { is_subject = no }
+
+    name = CUB
+    flag = CUB
+    adjective = CUB_ADJ
+    tag = CUB
+    color = map_CUB
+
+    regions = { caribbean_region }
+
+    form_effect = {
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+HTI_f = { # Haiti
+    level = 2
+    required_locations_fraction = 0.3
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:caribbean_region } }
+    allow = { is_subject = no }
+
+    name = HTI
+    flag = HTI
+    adjective = HTI_ADJ
+    tag = HTI
+    color = map_HTI
+
+    regions = { caribbean_region }
+
+    form_effect = {
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+SDM_f = { # Santo Domingo
+    level = 2
+    required_locations_fraction = 0.3
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:caribbean_region } }
+    allow = { is_subject = no }
+
+    name = SDM
+    flag = SDM
+    adjective = SDM_ADJ
+    tag = SDM
+    color = map_SDM
+
+    regions = { caribbean_region }
+
+    form_effect = {
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+#############################################
+# North America
+#############################################
+
+QUE_f = { # Quebec
+    level = 3
+    required_locations_fraction = 0.35
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:canada_region } }
+    allow = { is_subject = no }
+
+    name = QUE
+    flag = QUE
+    adjective = QUE_ADJ
+    tag = QUE
+    color = map_QUE
+
+    regions = { canada_region }
+
+    form_effect = {
+        if = { limit = { country_rank_level < 3 } set_country_rank_effect = { rank = country_rank:rank_kingdom } }
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+NNL_f = { # New Netherland
+    level = 2
+    required_locations_fraction = 0.25
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:east_coast_region } }
+    allow = { is_subject = no }
+
+    name = NNL
+    flag = NNL
+    adjective = NNL_ADJ
+    tag = NNL
+    color = map_NNL
+
+    regions = { east_coast_region }
+
+    form_effect = {
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+#############################################
+# Oceania and Africa
+#############################################
+
+AUS_f = { # Australia
+    level = 3
+    required_locations_fraction = 0.35
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:australia_region } }
+    allow = { is_subject = no }
+
+    name = AUS
+    flag = AUS
+    adjective = AUS_ADJ
+    tag = AUS
+    color = map_AUS
+
+    regions = { australia_region }
+
+    form_effect = {
+        if = { limit = { country_rank_level < 3 } set_country_rank_effect = { rank = country_rank:rank_kingdom } }
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+NZL_f = { # New Zealand
+    level = 3
+    required_locations_fraction = 0.35
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:new_zealand_region } }
+    allow = { is_subject = no }
+
+    name = NZL
+    flag = NZL
+    adjective = NZL_ADJ
+    tag = NZL
+    color = map_NZL
+
+    regions = { new_zealand_region }
+
+    form_effect = {
+        if = { limit = { country_rank_level < 3 } set_country_rank_effect = { rank = country_rank:rank_kingdom } }
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}
+
+SAF_f = { # South Africa
+    level = 3
+    required_locations_fraction = 0.35
+    rule = historical
+    capital_required = yes
+
+    potential = { capital ?= { region = region:southern_africa_region } }
+    allow = { is_subject = no }
+
+    name = SAF
+    flag = SAF
+    adjective = SAF_ADJ
+    tag = SAF
+    color = map_SAF
+
+    regions = { southern_africa_region }
+
+    form_effect = {
+        if = { limit = { country_rank_level < 3 } set_country_rank_effect = { rank = country_rank:rank_kingdom } }
+        add_country_modifier = { modifier = new_world_nation_founded years = 25 }
+    }
+}

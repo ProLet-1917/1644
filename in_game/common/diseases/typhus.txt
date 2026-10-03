@@ -25,26 +25,9 @@
 	spawn = {
 		random_ownable_location = {
 			limit = {
-				#Is there a location with all our triggers and being sieged?
-				trigger_if = {
-					limit = {
-						#Not empty location
-						population > 1
-						is_endemic_typhus_location = yes
-						has_siege = yes
-					}
-					#We search for it
-					#Not empty location
-					population > 1
-					is_endemic_typhus_location = yes
-					has_siege = yes
-				}
-				#If there was no location being sieged, we apply only the other triggers
-				trigger_else = {
-					#Not empty location
-					population > 1
-					is_endemic_typhus_location = yes
-				}
+				#Not empty location
+				population > 1
+				is_endemic_typhus_location = yes
 				#If we can't find an appropiate location we don't spawn
 			}
 			spawn_disease = {

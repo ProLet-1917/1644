@@ -1,0 +1,422 @@
+﻿# Anno 1644 - Age of Imperialism
+# Age 7 parliament issues. These are the law-making instrument of the new chambers:
+# with a republican / imperial / presidential parliament the country may no longer simply
+# pay stability for a policy change, so the issues below are how reform actually happens.
+#
+# Structure follows vanilla country parliament issues.
+
+# 军队法案
+army_bill = {
+    estate = nobles_estate
+
+    modifier_when_in_debate = {
+        global_manpower_modifier = 0.05
+    }
+
+    allow = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    on_debate_passed = {
+        add_country_modifier = {
+            modifier = passed_army_bill
+            years = 10
+        }
+        change_societal_value = { type = quality_vs_quantity value = societal_value_tiny_move_to_right }
+    }
+
+    on_debate_failed = {
+        add_estate_satisfaction = {
+            type = estate_type:nobles_estate
+            value = estate_satisfaction_mild_penalty
+        }
+        parliament_debate_failed_effect = yes
+    }
+
+    chance = 6
+}
+
+# 义务教育法案
+compulsory_education_bill = {
+    estate = clergy_estate
+
+    modifier_when_in_debate = {
+        global_monthly_literacy = 0.01
+    }
+
+    allow = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    on_debate_passed = {
+        add_country_modifier = {
+            modifier = passed_compulsory_education_bill
+            years = 10
+        }
+        change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_right }
+    }
+
+    on_debate_failed = {
+        parliament_debate_failed_effect = yes
+    }
+
+    chance = 6
+}
+
+# 殖民地自治法案
+colonial_autonomy_bill = {
+    estate = burghers_estate
+
+    modifier_when_in_debate = {
+        colonial_maintenance_efficiency = 0.10
+    }
+
+    allow = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+        OR = {
+            is_colonial_overlord = yes
+            any_subject = { is_subject_type = colonial_nation }
+        }
+    }
+
+    on_debate_passed = {
+        add_country_modifier = {
+            modifier = passed_colonial_autonomy_bill
+            years = 10
+        }
+        every_subject = {
+            limit = { is_subject_type = colonial_nation }
+            add_country_modifier = {
+                modifier = granted_colonial_autonomy
+                years = 10
+            }
+        }
+    }
+
+    on_debate_failed = {
+        every_subject = {
+            limit = { is_subject_type = colonial_nation }
+            add_liberty_desire = 5
+        }
+        parliament_debate_failed_effect = yes
+    }
+
+    chance = 5
+}
+
+# 关税改革法案
+tariff_reform_bill = {
+    estate = burghers_estate
+
+    modifier_when_in_debate = {
+        trade_income = 0.05
+    }
+
+    allow = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    on_debate_passed = {
+        add_country_modifier = {
+            modifier = passed_tariff_reform_bill
+            years = 10
+        }
+        change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_tiny_move_to_right }
+    }
+
+    on_debate_failed = {
+        add_estate_satisfaction = {
+            type = estate_type:burghers_estate
+            value = estate_satisfaction_mild_penalty
+        }
+        parliament_debate_failed_effect = yes
+    }
+
+    chance = 6
+}
+
+# 选举权扩大法案
+suffrage_extension_bill = {
+    estate = peasants_estate
+
+    modifier_when_in_debate = {
+        global_estate_target_satisfaction = tiny_permanent_target_satisfaction
+    }
+
+    allow = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+        has_a_parliamentary_system = yes
+    }
+
+    on_debate_passed = {
+        add_country_modifier = {
+            modifier = passed_suffrage_extension_bill
+            years = 10
+        }
+        change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_tiny_move_to_right }
+        change_societal_value = { type = absolutism_vs_liberalism value = societal_value_tiny_move_to_right }
+    }
+
+    on_debate_failed = {
+        add_estate_satisfaction = {
+            type = estate_type:peasants_estate
+            value = estate_satisfaction_mild_penalty
+        }
+        parliament_debate_failed_effect = yes
+    }
+
+    chance = 5
+}
+
+# 养老金法案
+pension_bill = {
+    estate = peasants_estate
+
+    modifier_when_in_debate = {
+        global_life_expectancy = 1
+    }
+
+    allow = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    on_debate_passed = {
+        add_country_modifier = {
+            modifier = passed_pension_bill
+            years = 10
+        }
+    }
+
+    on_debate_failed = {
+        parliament_debate_failed_effect = yes
+    }
+
+    chance = 5
+}
+
+# 铁路国有化法案
+railway_nationalization_bill = {
+    estate = burghers_estate
+
+    modifier_when_in_debate = {
+        global_road_building_time = -0.05
+    }
+
+    allow = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    on_debate_passed = {
+        add_country_modifier = {
+            modifier = passed_railway_nationalization_bill
+            years = 10
+        }
+        change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_tiny_move_to_left }
+    }
+
+    on_debate_failed = {
+        add_estate_satisfaction = {
+            type = estate_type:burghers_estate
+            value = estate_satisfaction_mild_penalty
+        }
+        parliament_debate_failed_effect = yes
+    }
+
+    chance = 6
+}
+
+# 反垄断法案
+anti_trust_bill = {
+    estate = peasants_estate
+
+    modifier_when_in_debate = {
+        global_production_efficiency = 0.02
+    }
+
+    allow = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    on_debate_passed = {
+        add_country_modifier = {
+            modifier = passed_anti_trust_bill
+            years = 10
+        }
+        change_societal_value = { type = aristocracy_vs_plutocracy value = societal_value_tiny_move_to_right }
+    }
+
+    on_debate_failed = {
+        add_estate_satisfaction = {
+            type = estate_type:burghers_estate
+            value = estate_satisfaction_mild_bonus
+        }
+        parliament_debate_failed_effect = yes
+    }
+
+    chance = 5
+}
+
+# 公共卫生法案
+public_health_bill = {
+    estate = clergy_estate
+
+    modifier_when_in_debate = {
+        global_disease_resistance = 0.02
+    }
+
+    allow = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    on_debate_passed = {
+        add_country_modifier = {
+            modifier = passed_public_health_bill
+            years = 10
+        }
+    }
+
+    on_debate_failed = {
+        parliament_debate_failed_effect = yes
+    }
+
+    chance = 6
+}
+
+# 殖民征兵法案
+colonial_conscription_bill = {
+    estate = nobles_estate
+
+    modifier_when_in_debate = {
+        global_levy_size_modifier = 0.03
+    }
+
+    allow = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+        OR = {
+            is_colonial_overlord = yes
+            any_subject = { is_subject_type = colonial_nation }
+        }
+    }
+
+    on_debate_passed = {
+        add_country_modifier = {
+            modifier = passed_colonial_conscription_bill
+            years = 10
+        }
+        every_subject = {
+            limit = { is_subject_type = colonial_nation }
+            add_liberty_desire = 8
+        }
+    }
+
+    on_debate_failed = {
+        parliament_debate_failed_effect = yes
+    }
+
+    chance = 5
+}
+
+# 文官改革法案
+civil_service_reform_bill = {
+    estate = burghers_estate
+
+    modifier_when_in_debate = {
+        country_cabinet_efficiency = 0.02
+    }
+
+    allow = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    on_debate_passed = {
+        add_country_modifier = {
+            modifier = passed_civil_service_reform_bill
+            years = 10
+        }
+        change_societal_value = { type = centralization_vs_decentralization value = societal_value_tiny_move_to_left }
+    }
+
+    on_debate_failed = {
+        parliament_debate_failed_effect = yes
+    }
+
+    chance = 6
+}
+
+# 中央银行特许法案
+central_bank_charter_bill = {
+    estate = burghers_estate
+
+    modifier_when_in_debate = {
+        bank_interest = -0.005
+    }
+
+    allow = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+        OR = {
+            has_advance = modern_national_bank_advance
+            has_advance = financial_center_advance
+        }
+    }
+
+    on_debate_passed = {
+        add_country_modifier = {
+            modifier = passed_central_bank_charter_bill
+            years = 10
+        }
+    }
+
+    on_debate_failed = {
+        parliament_debate_failed_effect = yes
+    }
+
+    chance = 5
+}

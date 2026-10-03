@@ -1,56 +1,77 @@
 ﻿REPLACE:black_death = {
 	can_start = { current_year < 1600 }
 
-	can_end = {
+	outcome = {
+		name = "black_death_plague_burns_out"
+		trigger = {
 		current_year >= 1600
+		}
 	}
 }
 
 REPLACE:sengoku = {
 	can_start = { current_year < 1600 }
 
-	can_end = {
+	outcome = {
+		name = "sengoku_clans_reined_in"
+		trigger = {
 		current_year >= 1600
+		}
 	}
 }
 
 REPLACE:hundred_years_war = {
 	can_start = { current_year < 1600 }
 
-	can_end = {
+	outcome = {
+		name = "HYW_STALEMATE"
+		trigger = {
 		current_year >= 1600
+		}
 	}
 }
 
 REPLACE:western_schism = {
 	can_start = { current_year < 1600 }
 
-	can_end = {
+	outcome = {
+		name = "western_schism_conclave_deadlocked"
+		trigger = {
 		current_year >= 1600
+		}
 	}
 }
 
 REPLACE:hussite_wars = {
 	can_start = { current_year < 1600 }
 
-	can_end = {
+	outcome = {
+		name = "hussite_wars_hussite_bohemia_endures"
+		trigger = {
 		current_year >= 1600
+		}
 	}
 }
 
 REPLACE:italian_wars = {
 	can_start = { current_year < 1600 }
 
-	can_end = {
+	outcome = {
+		name = "italian_wars_exhausted_peninsula"
+		trigger = {
 		current_year >= 1600
+		}
 	}
 }
 
 REPLACE:council_of_trent = {
 	can_start = { current_year < 1600 }
 
-	can_end = {
+	outcome = {
+		name = "council_of_trent_council_adjourned"
+		trigger = {
 		current_year >= 1600
+		}
 	}
 }
 
@@ -58,56 +79,77 @@ REPLACE:reformation = {
 	can_start = { always = no }
 	visible = { always = no }
 
-	can_end = {
+	outcome = {
+		name = "reformation_confessional_age_passes"
+		trigger = {
 		current_year >= 1600
+		}
 	}
 }
 
 REPLACE:nanbokuchou = {
 	can_start = { current_year < 1600 }
 
-	can_end = {
+	outcome = {
+		name = "nanbokuchou_imperial_line_broken"
+		trigger = {
 		current_year >= 1600
+		}
 	}
 }
 
 REPLACE:rise_of_timur = {
 	can_start = { current_year < 1600 }
 
-	can_end = {
+	outcome = {
+		name = "rise_of_timur_conquests_stall"
+		trigger = {
 		current_year >= 1600
+		}
 	}
 }
 
 REPLACE:rise_of_the_ottomans = {
 	can_start = { current_year < 1600 }
 
-	can_end = {
+	outcome = {
+		name = "rise_of_the_ottomans_era_closes"
+		trigger = {
 		current_year >= 1600
+		}
 	}
 }
 
 REPLACE:guelphs_and_ghibellines = {
 	can_start = { current_year < 1600 }
 
-	can_end = {
+	outcome = {
+		name = "guelphs_and_ghibellines_factional_deadlock"
+		trigger = {
 		current_year >= 1600
+		}
 	}
 }
 
 REPLACE:fall_of_delhi = {
 	can_start = { current_year < 1600 }
 
-	can_end = {
+	outcome = {
+		name = "fall_of_delhi_opposition_prevails"
+		trigger = {
 		current_year >= 1600
+		}
 	}
 }
 
 REPLACE:treaty_of_tordesillas = {
 	can_start = { current_year < 1600 }
 
-	can_end = {
+	outcome = {
+		name = "treaty_of_tordesillas_line_endures"
+		trigger = {
 		current_year >= 1600
+		}
 	}
 }
 
@@ -118,18 +160,23 @@ REPLACE:treaty_of_tordesillas = {
 REPLACE:great_pestilence = {
 	can_start = { current_year < 1600 }
 
-	can_end = {
+	outcome = {
+		name = "great_pestilence_disease_exhausted"
+		trigger = {
 		current_year >= 1600
+		}
 	}
 }
 
 REPLACE:war_of_religions = {
 	can_start = { current_year < 1600 }
 
-	can_end = {
+	outcome = {
+		name = "war_of_religions_peace_of_westphalia"
+		trigger = {
 		current_year >= 1600
+		}
 	}
 }
-
 
 

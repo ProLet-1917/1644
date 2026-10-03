@@ -1,0 +1,749 @@
+﻿# Anno 1644 - The Ming-Qing Transition (1644-1683)
+#
+# Continuation of the events already present in zzz_1644_mng.txt, zzz_1644_wsg_choice.txt,
+# qing_1644_unification.txt and late_ming_crisis.txt. Only major, well-attested episodes
+# are covered here; the 1644 opening is handled by the existing files.
+#
+# All events below are Dynamic Historical Events bound to a TAG. They fire on their own
+# once the country exists and the date window is open - no on_action is required.
+
+namespace = mqt_1644
+
+# 剃发易服
+mqt_1644.1 = {
+    type = country_event
+    fire_only_once = yes
+    title = mqt_1644.1.title
+    desc = mqt_1644.1.desc
+    outcome = negative
+
+    historical_info = mqt_1644.1.historical_info
+
+    dynamic_historical_event = {
+        tag = QNG
+        from = 1644.6.1
+        to = 1690.1.1
+        monthly_chance = 40
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        owns = location:dadu
+        any_owned_location = {
+            region = region:north_china_region
+        }
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        # 严令剃发
+        name = mqt_1644.1.a
+        historical_option = yes
+        ai_will_select = { base = 70 }
+        add_country_modifier = { modifier = qing_queue_decree years = -1 }
+        add_stability = stability_mild_penalty
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_penalty }
+        change_societal_value = { type = sinicized_vs_unsinicized value = societal_value_tiny_move_to_right }
+    }
+
+    option = {
+        # 暂缓剃发
+        name = mqt_1644.1.b
+        ai_will_select = { base = 30 }
+        add_country_modifier = { modifier = qing_queue_deferred years = 20 }
+        add_stability = stability_mild_bonus
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+        change_societal_value = { type = sinicized_vs_unsinicized value = societal_value_tiny_move_to_left }
+    }
+}
+
+# 扬州十日与史可法殉国
+mqt_1644.2 = {
+    type = country_event
+    fire_only_once = yes
+    title = mqt_1644.2.title
+    desc = mqt_1644.2.desc
+    outcome = negative
+
+    historical_info = mqt_1644.2.historical_info
+
+    dynamic_historical_event = {
+        tag = QNG
+        from = 1645.1.1
+        to = 1690.1.1
+        monthly_chance = 30
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        location:yangzhou = {
+            owner = c:QNG
+        }
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        # 屠城立威
+        name = mqt_1644.2.a
+        historical_option = yes
+        ai_will_select = { base = 40 }
+        add_country_modifier = { modifier = yangzhou_massacre years = 10 }
+        add_stability = stability_mild_penalty
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_penalty }
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+        change_societal_value = { type = sinicized_vs_unsinicized value = societal_value_tiny_move_to_right }
+    }
+
+    option = {
+        # 招抚史可法
+        name = mqt_1644.2.b
+        ai_will_select = { base = 60 }
+        add_country_modifier = { modifier = yangzhou_pacified years = 15 }
+        add_prestige = prestige_mild_penalty
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+        change_societal_value = { type = sinicized_vs_unsinicized value = societal_value_tiny_move_to_left }
+    }
+}
+
+# 李自成之死
+mqt_1644.3 = {
+    type = country_event
+    fire_only_once = yes
+    title = mqt_1644.3.title
+    desc = mqt_1644.3.desc
+    outcome = negative
+
+    historical_info = mqt_1644.3.historical_info
+
+    dynamic_historical_event = {
+        tag = CSH
+        from = 1645.1.1
+        to = 1675.1.1
+        monthly_chance = 25
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        NOT = { owns = location:dadu }
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:nobles_estate }
+        if = {
+            limit = { has_ruler = yes }
+            ruler ?= { save_scope_as = dashun_ruler }
+        }
+    }
+
+    option = {
+        # 领袖阵亡
+        name = mqt_1644.3.a
+        historical_option = yes
+        if = {
+            limit = { exists = scope:dashun_ruler }
+            hidden_effect = {
+                kill_character_silently = scope:dashun_ruler
+            }
+        }
+        add_country_modifier = { modifier = dashun_leaderless years = 20 }
+        add_stability = stability_severe_penalty
+        add_prestige = prestige_severe_penalty
+        change_societal_value = { type = centralization_vs_decentralization value = societal_value_tiny_move_to_right }
+    }
+
+    option = {
+        # 转战湖广
+        name = mqt_1644.3.b
+        add_country_modifier = { modifier = dashun_guerrilla_warfare years = 20 }
+        add_stability = stability_mild_penalty
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+    }
+}
+
+# 张献忠之死
+mqt_1644.4 = {
+    type = country_event
+    fire_only_once = yes
+    title = mqt_1644.4.title
+    desc = mqt_1644.4.desc
+    outcome = negative
+
+    historical_info = mqt_1644.4.historical_info
+
+    dynamic_historical_event = {
+        tag = CXI
+        from = 1646.1.1
+        to = 1675.1.1
+        monthly_chance = 25
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+        if = {
+            limit = { has_ruler = yes }
+            ruler ?= { save_scope_as = daxi_ruler }
+        }
+    }
+
+    option = {
+        name = mqt_1644.4.a
+        historical_option = yes
+        if = {
+            limit = { exists = scope:daxi_ruler }
+            hidden_effect = {
+                kill_character_silently = scope:daxi_ruler
+            }
+        }
+        add_country_modifier = { modifier = daxi_leaderless years = 20 }
+        add_stability = stability_severe_penalty
+        add_prestige = prestige_severe_penalty
+    }
+
+    option = {
+        # 余部联明抗清
+        name = mqt_1644.4.b
+        add_country_modifier = { modifier = daxi_remnants_alliance years = 25 }
+        add_stability = stability_mild_penalty
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+    }
+}
+
+# 两蹶名王
+mqt_1644.5 = {
+    type = country_event
+    fire_only_once = yes
+    title = mqt_1644.5.title
+    desc = mqt_1644.5.desc
+    outcome = neutral
+
+    historical_info = mqt_1644.5.historical_info
+
+    dynamic_historical_event = {
+        tag = MNG
+        from = 1650.1.1
+        to = 1685.1.1
+        monthly_chance = 20
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        is_subject = no
+        OR = {
+            owns = location:hengyang
+            owns = location:kunming
+            owns = location:yunnan
+        }
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = happy
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        name = mqt_1644.5.a
+        historical_option = yes
+        add_country_modifier = { modifier = two_princes_slain years = 20 }
+        add_prestige = prestige_severe_bonus
+        add_stability = stability_mild_bonus
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+        change_societal_value = { type = sinicized_vs_unsinicized value = societal_value_tiny_move_to_left }
+    }
+
+    option = {
+        name = mqt_1644.5.b
+        add_stability = stability_mild_bonus
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+    }
+}
+
+# 郑成功北伐
+mqt_1644.6 = {
+    type = country_event
+    fire_only_once = yes
+    title = mqt_1644.6.title
+    desc = mqt_1644.6.desc
+    outcome = neutral
+
+    historical_info = mqt_1644.6.historical_info
+
+    dynamic_historical_event = {
+        tag = MNG
+        from = 1655.1.1
+        to = 1690.1.1
+        monthly_chance = 20
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        is_subject = no
+        any_character = {
+            is_general = yes
+        }
+        OR = {
+            owns = location:anping
+            owns = location:fuzhou
+        }
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = happy
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+        random_character = {
+            limit = { is_general = yes }
+            save_scope_as = ming_general
+        }
+    }
+
+    option = {
+        # 大举北伐
+        name = mqt_1644.6.a
+        historical_option = yes
+        ai_will_select = { base = 60 }
+        add_country_modifier = { modifier = northern_expedition years = 15 }
+        add_prestige = prestige_mild_bonus
+        if = {
+            limit = {
+                exists = scope:ming_general
+                country_exists = c:QNG
+            }
+            scope:ming_general = {
+                move_country = root
+            }
+            add_casus_belli = {
+                target = c:QNG
+                type = casus_belli:cb_chinese_unification
+            }
+        }
+    }
+
+    option = {
+        # 固守海疆
+        name = mqt_1644.6.b
+        ai_will_select = { base = 40 }
+        add_country_modifier = { modifier = maritime_defence years = 20 }
+        add_stability = stability_mild_bonus
+    }
+}
+
+# 永历入缅
+mqt_1644.7 = {
+    type = country_event
+    fire_only_once = yes
+    title = mqt_1644.7.title
+    desc = mqt_1644.7.desc
+    outcome = negative
+
+    historical_info = mqt_1644.7.historical_info
+
+    dynamic_historical_event = {
+        tag = MNG
+        from = 1655.1.1
+        to = 1690.1.1
+        monthly_chance = 20
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        is_subject = no
+        NOT = { owns = location:kunming }
+        owns = location:yunnan
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        # 退入缅甸
+        name = mqt_1644.7.a
+        historical_option = yes
+        add_country_modifier = { modifier = court_in_exile years = 25 }
+        add_stability = stability_severe_penalty
+        add_prestige = prestige_severe_penalty
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
+    }
+
+    option = {
+        # 死守云南
+        name = mqt_1644.7.b
+        add_country_modifier = { modifier = last_stand_in_yunnan years = 20 }
+        add_stability = stability_mild_penalty
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+    }
+}
+
+# 迁界禁海
+mqt_1644.8 = {
+    type = country_event
+    fire_only_once = yes
+    title = mqt_1644.8.title
+    desc = mqt_1644.8.desc
+    outcome = neutral
+
+    historical_info = mqt_1644.8.historical_info
+
+    dynamic_historical_event = {
+        tag = QNG
+        from = 1655.1.1
+        to = 1695.1.1
+        monthly_chance = 20
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        any_owned_location = {
+            is_coastal = yes
+            region = region:south_china_region
+        }
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:burghers_estate }
+    }
+
+    option = {
+        # 迁界禁海
+        name = mqt_1644.8.a
+        historical_option = yes
+        ai_will_select = { base = 50 }
+        add_country_modifier = { modifier = coastal_evacuation years = 20 }
+        add_stability = stability_mild_penalty
+        add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_severe_penalty }
+        change_societal_value = { type = outward_vs_inward value = societal_value_tiny_move_to_left }
+    }
+
+    option = {
+        # 开海贸易
+        name = mqt_1644.8.b
+        ai_will_select = { base = 50 }
+        add_country_modifier = { modifier = maritime_trade_opened years = 25 }
+        add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+        change_societal_value = { type = outward_vs_inward value = societal_value_tiny_move_to_right }
+    }
+}
+
+# 三藩之乱
+mqt_1644.9 = {
+    type = country_event
+    fire_only_once = yes
+    title = mqt_1644.9.title
+    desc = mqt_1644.9.desc
+    outcome = negative
+
+    historical_info = mqt_1644.9.historical_info
+
+    major = yes
+
+    dynamic_historical_event = {
+        tag = QNG
+        from = 1665.1.1
+        to = 1700.1.1
+        monthly_chance = 15
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        owns = location:dadu
+        any_subject = {
+            subject_type = subject_type:cn_march_governor
+            count >= 1
+        }
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+        random_subject = {
+            limit = { subject_type = subject_type:cn_march_governor }
+            save_scope_as = rebellious_march
+        }
+    }
+
+    option = {
+        # 削藩
+        name = mqt_1644.9.a
+        historical_option = yes
+        ai_will_select = { base = 60 }
+        add_country_modifier = { modifier = three_feudatories_rebellion years = 20 }
+        add_stability = stability_severe_penalty
+        if = {
+            limit = { exists = scope:rebellious_march }
+            scope:rebellious_march = {
+                add_country_modifier = { modifier = three_feudatories_leader years = -1 }
+            }
+        }
+        change_societal_value = { type = centralization_vs_decentralization value = societal_value_tiny_move_to_left }
+    }
+
+    option = {
+        # 姑息
+        name = mqt_1644.9.b
+        ai_will_select = { base = 40 }
+        add_country_modifier = { modifier = feudatories_appeased years = 20 }
+        add_stability = stability_mild_bonus
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+        change_societal_value = { type = centralization_vs_decentralization value = societal_value_tiny_move_to_right }
+    }
+}
+
+# 三藩之乱平定
+mqt_1644.10 = {
+    type = country_event
+    fire_only_once = yes
+    title = mqt_1644.10.title
+    desc = mqt_1644.10.desc
+    outcome = neutral
+
+    historical_info = mqt_1644.10.historical_info
+
+    major = yes
+
+    dynamic_historical_event = {
+        tag = QNG
+        from = 1670.1.1
+        to = 1710.1.1
+        monthly_chance = 25
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        has_country_modifier = three_feudatories_rebellion
+        NOT = { has_country_modifier = three_feudatories_leader }
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = happy
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        name = mqt_1644.10.a
+        historical_option = yes
+        remove_country_modifier = three_feudatories_rebellion
+        add_country_modifier = { modifier = feudatories_abolished years = -1 }
+        add_prestige = prestige_severe_bonus
+        add_stability = stability_severe_bonus
+        change_societal_value = { type = centralization_vs_decentralization value = societal_value_tiny_move_to_left }
+        if = {
+            limit = { is_chinese_dynasty_leader = yes }
+            change_dynasty_stability = { value = 100 }
+        }
+    }
+
+    option = {
+        name = mqt_1644.10.b
+        remove_country_modifier = three_feudatories_rebellion
+        add_country_modifier = { modifier = feudatories_reduced years = 25 }
+        add_stability = stability_mild_bonus
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+    }
+}
+
+# 施琅攻台
+mqt_1644.11 = {
+    type = country_event
+    fire_only_once = yes
+    title = mqt_1644.11.title
+    desc = mqt_1644.11.desc
+    outcome = neutral
+
+    historical_info = mqt_1644.11.historical_info
+
+    dynamic_historical_event = {
+        tag = QNG
+        from = 1675.1.1
+        to = 1715.1.1
+        monthly_chance = 20
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        OR = {
+            owns = location:penghu
+            has_presence_in = area:taiwan_area
+        }
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = happy
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        name = mqt_1644.11.a
+        historical_option = yes
+        add_country_modifier = { modifier = conquest_of_taiwan years = -1 }
+        add_prestige = prestige_severe_bonus
+        if = {
+            limit = { is_chinese_dynasty_leader = yes }
+            change_dynasty_stability = { value = 75 }
+        }
+        every_owned_location = {
+            limit = {
+                OR = {
+                    area = area:taiwan_area
+                    location = location:penghu
+                }
+            }
+            change_control = control_severe_bonus
+        }
+    }
+
+    option = {
+        name = mqt_1644.11.b
+        add_stability = stability_mild_bonus
+        add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+    }
+}
+
+# 博学鸿儒科
+mqt_1644.12 = {
+    type = country_event
+    fire_only_once = yes
+    title = mqt_1644.12.title
+    desc = mqt_1644.12.desc
+    outcome = neutral
+
+    historical_info = mqt_1644.12.historical_info
+
+    dynamic_historical_event = {
+        tag = QNG
+        from = 1670.1.1
+        to = 1710.1.1
+        monthly_chance = 20
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        owns = location:dadu
+        is_chinese_dynasty_leader = yes
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = happy
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:clergy_estate }
+    }
+
+    option = {
+        # 特开博学鸿儒科
+        name = mqt_1644.12.a
+        historical_option = yes
+        add_country_modifier = { modifier = boxue_hongru_examination years = 25 }
+        change_dynasty_stability = { value = 100 }
+        add_prestige = prestige_mild_bonus
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+        change_societal_value = { type = sinicized_vs_unsinicized value = societal_value_tiny_move_to_left }
+    }
+
+    option = {
+        # 大兴文字狱
+        name = mqt_1644.12.b
+        add_country_modifier = { modifier = literary_inquisition years = 25 }
+        change_dynasty_stability = { value = -50 }
+        add_stability = stability_mild_bonus
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+        change_societal_value = { type = sinicized_vs_unsinicized value = societal_value_tiny_move_to_right }
+    }
+}

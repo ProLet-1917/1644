@@ -363,17 +363,12 @@ flavor_hun.480 = { #Austrian Noble Revolt
 				}
 			}
 		}
-		add_government_power = government_power_severe_bonus
+		add_political_influence = political_influence_severe_bonus
 	}
 	option = {
 		name = flavor_hun.480.b
-		change_societal_value = { type = centralization_vs_decentralization	value = societal_value_move_to_right }
+		apply_rebel_demands = scope:austrian_nobles
 		destroy_rebel = scope:austrian_nobles
-		create_country_from_cores_in_our_locations = c:HAB
-		c:HAB = {
-			make_subject_of = { target = root type = subject_type:vassal }
-		}
-		add_government_power = government_power_severe_penalty
 	}
 }
 
@@ -515,7 +510,7 @@ flavor_hun.570 = { #Adam František Kollár
 
 	option = {
 		name = flavor_hun.570.a
-		add_government_power = government_power_mild_bonus
+		add_political_influence = political_influence_mild_bonus
 		scope:target_character = {
 			move_country = root
 		}

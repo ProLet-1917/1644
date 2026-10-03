@@ -1,0 +1,167 @@
+﻿# Anno 1644 - Age of Imperialism (age_7_imperialism)
+# Generic government reforms available to (almost) every government type.
+# Vanilla-style: one file per government type. This file holds the cross-government reforms.
+#
+# These reforms unlock as soon as the Age of Imperialism begins; they do not require
+# a technology to be researched.
+
+# 现代文官制度
+modern_civil_service_reform = {
+    age = age_7_imperialism
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    allow = {
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    country_modifier = {
+        legislative_efficiency = 0.10
+        global_max_bureaucracy_slots = 1
+        country_cabinet_efficiency = 0.05
+        monthly_towards_centralization = societal_value_monthly_move
+        monthly_towards_innovative = societal_value_monthly_move
+    }
+
+    years = 2
+}
+
+# 总参谋部制
+general_staff_reform = {
+    age = age_7_imperialism
+    major = yes
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        NOT = { government_type = government_type:tribe }
+        NOT = { government_type = government_type:steppe_horde }
+        NOT = { tag = PAP }
+    }
+
+    allow = {
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    country_modifier = {
+        military_tactics = 0.25
+        army_initiative = 0.15
+        train_general_cost_modifier = -0.25
+        monthly_army_tradition = 0.1
+        monthly_towards_quality = societal_value_monthly_move
+        monthly_towards_offensive = societal_value_monthly_move
+    }
+
+    years = 2
+}
+
+# 公共福利法
+public_welfare_reform = {
+    age = age_7_imperialism
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    allow = {
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    country_modifier = {
+        global_estate_target_satisfaction = small_permanent_target_satisfaction
+        global_population_growth = 0.0010
+        global_life_expectancy = 2
+        global_disease_resistance = 0.05
+        monthly_towards_communalism = societal_value_monthly_move
+        monthly_towards_liberalism = societal_value_monthly_move
+    }
+
+    years = 2
+}
+
+# 国家教育法
+state_education_reform = {
+    age = age_7_imperialism
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    allow = {
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    country_modifier = {
+        global_max_literacy = 7.5
+        global_monthly_literacy = 0.05
+        research_speed_modifier = 0.05
+        monthly_towards_innovative = societal_value_monthly_move
+    }
+
+    years = 2
+}
+
+# 工业动员体制
+industrial_mobilization_reform = {
+    age = age_7_imperialism
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    allow = {
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    country_modifier = {
+        global_production_efficiency = 0.10
+        global_raw_material_output = 0.10
+        global_construction_speed = 0.05
+        building_upkeep_efficiency = 0.05
+        monthly_towards_capital_economy = societal_value_monthly_move
+    }
+
+    years = 2
+}
+
+# 中央银行制度
+central_banking_reform = {
+    age = age_7_imperialism
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    allow = {
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    country_modifier = {
+        tax_income_efficiency = 0.05
+        max_bonds = 2
+        minting_inflation_threshold = 0.02
+        bank_interest = -0.01
+        monthly_towards_plutocracy = societal_value_monthly_move
+    }
+
+    years = 2
+}

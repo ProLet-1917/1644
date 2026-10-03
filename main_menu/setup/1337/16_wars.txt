@@ -1,0 +1,988 @@
+war_manager = {
+	civil_war = {
+		war_name = {
+			name = "CIVIL_WAR_NAME"
+			ordinal = 1
+			first = {
+				name = "SCO"
+			}
+		}
+		
+		start_date = 1332.7.6
+		action = 1337.3.15
+		attacker = {
+			country = SBL
+			request = {
+				reason = Instigator
+			}
+		}
+		attacker = {
+			country = LOI
+			request = {
+				caller = SBL
+				reason = Subject
+			}
+		}
+		defender = {
+			country = SCO
+			request = {
+				reason = Target
+			}
+		}
+		defender = {
+			country = ROS
+			request = {
+				caller = SCO
+				reason = Subject
+			}
+		}
+		defender = {
+			country = MOY
+			request = {
+				caller = SCO
+				reason = Subject
+			}
+		}
+	}
+
+	war = {
+		war_name = {
+			name = "CRUSADE_WAR_NAME"
+			ordinal = 1
+			second = {
+				name = "LIT"
+			}
+		}
+		
+		take_province = {
+			type = crusade_conquest
+			casus_belli = cb_crusade
+			location = vilnius
+		}
+		
+		start_date = 1283.1.1
+		action = 1337.3.1
+		attacker = {
+			country = TEU #Teutonic Order
+			request = {
+				reason = Instigator
+			}
+		}
+		attacker = {
+			country = ERM #Ermland / Warmia
+			request = {
+				caller = TEU
+				reason = Subject
+			}
+		}
+		attacker = {
+			country = SMD #Samland / Samia
+			request = {
+				caller = TEU
+				reason = Subject
+			}
+		}
+		attacker = {
+			country = PMS #Pomesania
+			request = {
+				caller = TEU
+				reason = Subject
+			}
+		}
+		attacker = {
+			country = CHL #Kulm / Chełmno
+			request = {
+				caller = TEU
+				reason = Subject
+			}
+		}
+
+		attacker = {
+			country = LIV #Livonian Order
+			request = {
+				caller = TEU
+				reason = Scripted
+				which = alliance
+			}
+		}
+		attacker = {
+			country = RIG
+			request = {
+				caller = LIV
+				reason = Subject
+			}
+		}
+		attacker = {
+			country = ARR
+			request = {
+				caller = LIV
+				reason = Subject
+			}
+		}
+		attacker = {
+			country = KUR
+			request = {
+				caller = LIV
+				reason = Subject
+			}
+		}
+		attacker = {
+			country = BIO
+			request = {
+				caller = LIV
+				reason = Subject
+			}
+		}
+		attacker = {
+			country = BID
+			request = {
+				caller = LIV
+				reason = Subject
+			}
+		}
+
+		defender = {
+			country = LIT #Lithuania
+			request = {
+				reason = Target
+			}
+		}
+		defender = {
+			country = DRU
+			request = {
+				caller = LIT
+				reason = Subject
+			}
+		}
+		defender = {
+			country = NRK
+			request = {
+				caller = LIT
+				reason = Subject
+			}
+		}
+		defender = {
+			country = PNK
+			request = {
+				caller = LIT
+				reason = Subject
+			}
+		}
+		defender = {
+			country = POK
+			request = {
+				caller = LIT
+				reason = Subject
+			}
+		}
+		defender = {
+			country = SSK
+			request = {
+				caller = LIT
+				reason = Subject
+			}
+		}
+		defender = {
+			country = TPS
+			request = {
+				caller = LIT
+				reason = Subject
+			}
+		}
+		defender = {
+			country = TUV
+			request = {
+				caller = LIT
+				reason = Subject
+			}
+		}
+		defender = {
+			country = VBK
+			request = {
+				caller = LIT
+				reason = Subject
+			}
+		}
+		defender = {
+			country = RZH
+			request = {
+				caller = LIT
+				reason = Subject
+			}
+		}
+	}
+
+	war = {
+		war_name={
+			name="FATE_OF_TLEMCEN"
+			first = {
+				name="MOR"
+			}
+			SECOND = {
+				name="TLE"
+			}
+		}
+		
+		take_province = {
+			type = conquer_province
+			casus_belli = cb_conquer_province
+			location = tlemcen
+		}
+		
+		start_date = 1335.1.1
+		action = 1337.3.1
+		attacker = {
+			country = MOR #Morocco
+			request = {
+				reason = Instigator
+			}
+		}
+
+		attacker = {
+			country = TFL #Tafilalt
+			request = {
+				caller = MOR
+				reason = Subject
+			}
+		}
+
+		defender = {
+			country = TLE #Tlemcen
+			request = {
+				reason = Target
+			}
+		}
+	}
+	
+	war = {
+		war_name={
+			name="UNIFY_ILKHANATE_WAR_NAME"
+			ordinal=1
+			first = {
+				name="HLG"
+			}
+			SECOND = {
+				name="JAL"
+			}
+		}
+		
+		superiority = {
+			type = unify_ilkhanate_wargoal
+			casus_belli = cb_unify_ilkahante
+		}
+		
+		start_date = 1336.7.24
+		action = 1337.3.1
+		attacker = {
+			country = HLG #Huleguids
+			request = {
+				reason = Instigator
+			}
+		}
+
+		attacker = {
+			country = HLL #Hillah
+			request = {
+				caller = HLG
+				reason = Subject
+			}
+		}
+
+		attacker = {
+			country = GRG #Gurgan
+			request = {
+				caller = HLG
+				reason = Scripted
+				which = alliance
+			}
+		}
+
+		attacker = {
+			country = ASR #Astarad
+			request = {
+				caller = GRG
+				reason = Subject
+			}
+		}
+
+		attacker = {
+			country = HDN #Hamedan
+			request = {
+				caller = GRG
+				reason = Subject
+			}
+		}
+
+		attacker = {
+			country = JKR #Jauni Kurban
+			request = {
+				caller = GRG
+				reason = Subject
+			}
+		}
+
+		attacker = {
+			country = KHT #Kuhistan
+			request = {
+				caller = GRG
+				reason = Subject
+			}
+		}
+
+		attacker = {
+			country = KSA #Kashan
+			request = {
+				caller = GRG
+				reason = Subject
+			}
+		}
+
+		attacker = {
+			country = MZN #Tabaristan
+			request = {
+				caller = GRG
+				reason = Subject
+			}
+		}
+
+		attacker = {
+			country = QOM #Qom
+			request = {
+				caller = GRG
+				reason = Subject
+			}
+		}
+
+		attacker = {
+			country = SBZ #Sabzevar
+			request = {
+				caller = GRG
+				reason = Subject
+			}
+		}
+
+		attacker = {
+			country = SFR #Esfarayan
+			request = {
+				caller = GRG
+				reason = Subject
+			}
+		}
+
+		attacker = {
+			country = KRT #Kartids
+			request = {
+				caller = GRG
+				reason = Subject
+			}
+		}
+
+		attacker = {
+			country = KHF #Khaf
+			request = {
+				caller = KRT
+				reason = Subject
+			}
+		}
+
+		attacker = {
+			country = MRV #Merv
+			request = {
+				caller = KRT
+				reason = Subject
+			}
+		}
+
+		defender = {
+			country = JAL #Jalayirids
+			request = {
+				reason = Target
+			}
+		}
+		
+		defender = {
+			country = ARD #Ardalan
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = ATZ #Artaz
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = DML #Domboli
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = HBN #Hasbani
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = HDR #Hadhur
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = HNY #Hasnuya
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = IHB #Ispahad
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = KEL #Kelali
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = KKL #Khalkhal
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = KLR #Kalhor
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = KRI #Kurani
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = KTW #Kartawi
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = MKW #Merkewan
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = RKL #Rankali
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = SLI #Sabuli
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = SYY #Saqiyya
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = ZBR #Zebari
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = ERE #Eretnids
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = BFR #Bafra
+			request = {
+				caller = ERE
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = HCI #Haciemirids
+			request = {
+				caller = ERE
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = KBD #Kubadids
+			request = {
+				caller = ERE
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = TDJ #Tacettinids
+			request = {
+				caller = ERE
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = SUT #Sutayids
+			request = {
+				caller = JAL
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = BHT #Bohtan
+			request = {
+				caller = SUT
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = BIN #Çapakçur
+			request = {
+				caller = SUT
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = BIT #Bitlis
+			request = {
+				caller = SUT
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = CEM #Çemişgezek
+			request = {
+				caller = SUT
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = DIL #Dilmaçids
+			request = {
+				caller = SUT
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = DMB #Domboli-Bosht
+			request = {
+				caller = SUT
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = DSN #Dasni
+			request = {
+				caller = SUT
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = EGL #Egil
+			request = {
+				caller = SUT
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = HKK #Hakkari
+			request = {
+				caller = SUT
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = HZR #Hazro
+			request = {
+				caller = SUT
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = JLM #Jolemark
+			request = {
+				caller = SUT
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = MZJ #Mazenjani
+			request = {
+				caller = SUT
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = SOH #Sohri
+			request = {
+				caller = SUT
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = ZRQ #Zirqan
+			request = {
+				caller = SUT
+				reason = Subject
+			}
+		}
+		
+		defender = {
+			country = ZZR #Zerzari
+			request = {
+				caller = SUT
+				reason = Subject
+			}
+		}
+	}
+
+	truce = { #Polish-Teutonic War of 1326-1332
+		#Teutons and Vassals
+		attacker = TEU
+		attacker = ERM
+		attacker = SMD
+		attacker = PMS
+		attacker = CHL
+		#Livonia and Vassals
+		attacker = LIV
+		attacker = RIG
+		attacker = ARR
+		attacker = KUR
+		attacker = BIO
+		attacker = BID
+		#Poland and Vassals
+		defender = POL
+		defender = INO
+		defender = SDZ
+		defender = LCZ
+		defender = PLK
+		defender = RAW
+		defender = CZK
+		#either use end_date or start_date = <date> with months = <int>. Can skip months to use NDefines::NDiplomacy::TRUCE_YEARS instead
+		start_date = 1333.3.2
+		months = 120
+	}
+
+	truce = { #Polish-Teutonic War of 1326-1332
+		#Bohemia and Vassals
+		attacker = BOH
+		attacker = WRC
+		attacker = MVA
+		attacker = BRZ
+		attacker = BYM
+		attacker = GLO
+		attacker = LGC
+		attacker = NMD
+		attacker = NMS
+		attacker = OEL
+		attacker = OPL
+		attacker = OPV
+		attacker = OSW
+		attacker = PDK
+		attacker = RCB
+		attacker = SCI
+		attacker = SIZ
+		attacker = STZ
+		attacker = TES
+		attacker = ZAG
+		attacker = ZIE
+		attacker = NYS
+		#Hungary and Vassals
+		defender = HUN
+		defender = BOS
+		#either use end_date or start_date = <date> with months = <int>. Can skip months to use NDefines::NDiplomacy::TRUCE_YEARS instead
+		start_date = 1332.5.1
+		months = 60
+	}
+
+	truce = { #Polish-Teutonic War of 1326-1332
+		#Bohemia and Vassals
+		attacker = BOH
+		attacker = WRC
+		attacker = MVA
+		attacker = BRZ
+		attacker = BYM
+		attacker = GLO
+		attacker = LGC
+		attacker = NMD
+		attacker = NMS
+		attacker = OEL
+		attacker = OPL
+		attacker = OPV
+		attacker = OSW
+		attacker = PDK
+		attacker = RCB
+		attacker = SCI
+		attacker = SIZ
+		attacker = STZ
+		attacker = TES
+		attacker = ZAG
+		attacker = ZIE
+		attacker = NYS
+		#Poland and Vassals
+		defender = POL
+		defender = INO
+		defender = SDZ
+		defender = LCZ
+		defender = PLK
+		defender = RAW
+		defender = CZK
+		#either use end_date or start_date = <date> with months = <int>. Can skip months to use NDefines::NDiplomacy::TRUCE_YEARS instead
+		start_date = 1335.8.24
+		months = 60
+	}
+
+	truce = { #Bohemian-Austrian War of 1336
+		#Bohemia and Vassals
+		attacker = BOH
+		attacker = WRC
+		attacker = MVA
+		attacker = BRZ
+		attacker = BYM
+		attacker = GLO
+		attacker = LGC
+		attacker = NMD
+		attacker = NMS
+		attacker = OEL
+		attacker = OPL
+		attacker = OPV
+		attacker = OSW
+		attacker = PDK
+		attacker = RCB
+		attacker = SCI
+		attacker = SIZ
+		attacker = STZ
+		attacker = TES
+		attacker = ZAG
+		attacker = ZIE
+		attacker = NYS
+
+		defender = HAB
+		#either use end_date or start_date = <date> with months = <int>. Can skip months to use NDefines::NDiplomacy::TRUCE_YEARS instead
+		start_date = 1336.3.1
+		months = 60
+	}
+
+	truce = { #Hungarian-Austrian War of 1322-1337
+		#Hungary and Vassals
+		defender = HUN
+		defender = BOS
+
+		defender = HAB
+		#either use end_date or start_date = <date> with months = <int>. Can skip months to use NDefines::NDiplomacy::TRUCE_YEARS instead
+		start_date = 1337.9.11
+		months = 60
+	}
+	
+	truce = { # English Backing of Balliol
+		defender = SCO
+		defender = SBL # Balliol is here to prevent England from attacking them if they win the Civil war
+		attacker = ENG
+		start_date = 1337.1.1
+		months = 48
+	}
+
+	truce = { # French Backing of Robert Bruce
+		defender = SBL
+		attacker = FRA
+		start_date = 1337.1.1
+		months = 48
+	}
+
+	truce = { # Portuguese-Castilian War of 1336-1337 # Established a bit on advance from the historical date (December 1337) due to gameplay reasons
+		defender = CAS
+		attacker = POR
+		start_date = 1337.1.1
+		months = 60
+	}
+
+	truce = { # Yusuf I's four-year peace with Castile (Feb 1334 — Feb 1338), tail end at the bookmark
+		defender = GRA
+		attacker = CAS
+		start_date = 1337.1.1
+		months = 13
+	}
+
+	truce = { # Yusuf I's four-year peace with the Marinid Sultanate (Feb 1334 — Feb 1338), tail end at the bookmark
+		defender = GRA
+		attacker = MOR
+		start_date = 1337.1.1
+		months = 13
+	}
+	war = {
+		war_name={
+			name="SCALIGER_WAR_NAME"
+		}
+		
+		superiority = {
+			type = superiority_coalition_scaliger_war
+			casus_belli = cb_scaligeri_war
+		}
+		
+		start_date = 1336.6.22
+		action = 1337.3.1
+		attacker = {
+			country = VEN
+			request = {
+				reason = Instigator
+			}
+		}
+		attacker = {
+			country = TTE
+			request = {
+				caller = VEN
+				reason = Subject
+			}
+		}
+		attacker = {
+			country = CRT
+			request = {
+				caller = VEN
+				reason = Subject
+			}
+		}
+		attacker = {
+			country = RAG
+			request = {
+				caller = VEN
+				reason = Subject
+			}
+		}
+
+		attacker = {
+			country = FLO
+			request = {
+				caller = VEN
+				reason = Scripted
+				which = alliance
+			}
+		}
+
+		attacker = {
+			country = MLO
+			request = {
+				caller = VEN
+				reason = Scripted
+				which = alliance
+			}
+		}
+
+		attacker = {
+			country = FER
+			request = {
+				caller = VEN
+				reason = Scripted
+				which = alliance
+			}
+		}
+
+		attacker = {
+			country = MAN
+			request = {
+				caller = VEN
+				reason = Scripted
+				which = alliance
+			}
+		}
+
+		defender = {
+			country = VER
+			request = {
+				reason = Target
+			}
+		}
+
+		defender = {
+			country = PAD
+			request = {
+				caller = VER
+				reason = Subject
+			}
+		}
+
+		defender = {
+			country = PAR
+			request = {
+				caller = VER
+				reason = Subject
+			}
+		}
+
+		defender = {
+			country = LUC
+			request = {
+				caller = VER
+				reason = Subject
+			}
+		}
+	}
+}

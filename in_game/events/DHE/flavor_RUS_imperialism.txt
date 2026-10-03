@@ -1,0 +1,371 @@
+﻿# Anno 1644 - Russia in the Age of Imperialism (1837-1918)
+
+namespace = flavor_rus_imperialism
+
+# 克里米亚战争
+flavor_rus_imperialism.1 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_rus_imperialism.1.title
+    desc = flavor_rus_imperialism.1.desc
+    outcome = negative
+
+    historical_info = flavor_rus_imperialism.1.historical_info
+
+    dynamic_historical_event = {
+        tag = RUS
+        tag = MOS
+        from = 1850.1.1
+        to = 1870.1.1
+        monthly_chance = 4
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        has_presence_in = region:ruthenia_region
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        name = flavor_rus_imperialism.1.a
+        historical_option = yes
+        add_country_modifier = { modifier = crimean_war_humiliation years = 20 }
+        add_stability = stability_severe_penalty
+        add_prestige = prestige_severe_penalty
+        change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_right }
+    }
+
+    option = {
+        name = flavor_rus_imperialism.1.b
+        add_stability = stability_mild_penalty
+        add_prestige = prestige_mild_penalty
+        change_societal_value = { type = outward_vs_inward value = societal_value_tiny_move_to_left }
+    }
+}
+
+# 解放农奴
+flavor_rus_imperialism.2 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_rus_imperialism.2.title
+    desc = flavor_rus_imperialism.2.desc
+    outcome = neutral
+
+    historical_info = flavor_rus_imperialism.2.historical_info
+
+    dynamic_historical_event = {
+        tag = RUS
+        tag = MOS
+        from = 1855.1.1
+        to = 1880.1.1
+        monthly_chance = 4
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        societal_value:serfdom_vs_free_subjects > 25
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        # 自上而下解放
+        name = flavor_rus_imperialism.2.a
+        historical_option = yes
+        add_country_modifier = { modifier = emancipation_of_the_serfs years = -1 }
+        change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_tiny_move_to_right }
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_bonus }
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_penalty }
+        add_stability = stability_mild_penalty
+    }
+
+    option = {
+        # 维持农奴制
+        name = flavor_rus_imperialism.2.b
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_bonus }
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_severe_penalty }
+        add_country_modifier = { modifier = serfdom_upheld years = 25 }
+        change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_tiny_move_to_left }
+    }
+}
+
+# 西伯利亚大铁路
+flavor_rus_imperialism.3 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_rus_imperialism.3.title
+    desc = flavor_rus_imperialism.3.desc
+    outcome = neutral
+
+    historical_info = flavor_rus_imperialism.3.historical_info
+
+    dynamic_historical_event = {
+        tag = RUS
+        tag = MOS
+        from = 1880.1.1
+        to = 1910.1.1
+        monthly_chance = 4
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+        has_presence_in = region:east_siberia_region
+    }
+
+    illustration_tags = {
+        10 = interior
+        10 = happy
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+    }
+
+    option = {
+        name = flavor_rus_imperialism.3.a
+        historical_option = yes
+        add_country_modifier = { modifier = trans_siberian_railway years = -1 }
+        add_prestige = prestige_mild_bonus
+        change_societal_value = { type = outward_vs_inward value = societal_value_tiny_move_to_right }
+    }
+
+    option = {
+        name = flavor_rus_imperialism.3.b
+        add_stability = stability_mild_bonus
+        change_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_tiny_move_to_right }
+    }
+}
+
+# 1905年革命
+flavor_rus_imperialism.4 = {
+    type = country_event
+    fire_only_once = yes
+    title = flavor_rus_imperialism.4.title
+    desc = flavor_rus_imperialism.4.desc
+    outcome = negative
+
+    historical_info = flavor_rus_imperialism.4.historical_info
+
+    dynamic_historical_event = {
+        tag = RUS
+        tag = MOS
+        from = 1900.1.1
+        to = 1918.1.1
+        monthly_chance = 4
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+        stability < 0
+    }
+
+    illustration_tags = {
+        10 = exterior
+        10 = angry
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+    }
+
+    option = {
+        # 立宪让步
+        name = flavor_rus_imperialism.4.a
+        historical_option = yes
+        add_country_modifier = { modifier = october_manifest years = 20 }
+        add_stability = stability_mild_bonus
+        change_societal_value = { type = absolutism_vs_liberalism value = societal_value_tiny_move_to_right }
+        add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+    }
+
+    option = {
+        # 铁腕镇压
+        name = flavor_rus_imperialism.4.b
+        add_country_modifier = { modifier = stolypin_reaction years = 20 }
+        add_stability = stability_mild_penalty
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+        add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_penalty }
+    }
+}
+
+# 俄罗斯文学
+flavor_rus_imperialism.10 = {
+    hide_portraits = yes
+    type = country_event
+    fire_only_once = yes
+    title = flavor_rus_imperialism.10.title
+    desc = flavor_rus_imperialism.10.desc
+    outcome = neutral
+
+    historical_info = flavor_rus_imperialism.10.historical_info
+
+    dynamic_historical_event = {
+        tag = RUS
+        tag = MOS
+        from = 1850.1.1
+        to = 1900.1.1
+        monthly_chance = 2
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        OR = {
+            has_advance = modern_education_advance
+            current_age_or_later = { age = age_7_imperialism }
+        }
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+        create_character = {
+            adm = { 30 90 }
+            dip = { 30 90 }
+            mil = { 10 50 }
+            artist = artist_type:writer
+            artist_skill = { 0.5 1.0 }
+            birth_date = 1828.9.9
+            female = no
+            culture = root.culture
+            religion = root.religion
+            estate = estate_type:nobles_estate
+            create_in_limbo = yes
+            save_scope_as = russian_writer
+        }
+    }
+
+    option = {
+        name = flavor_rus_imperialism.10.a
+        historical_option = yes
+        scope:russian_writer = {
+            move_country = root
+            add_character_modifier = {
+                modifier = russian_man_of_letters
+                years = -1
+            }
+        }
+        culture ?= {
+            add_cultural_influence = cultural_influence_mild_bonus
+            add_cultural_tradition = cultural_tradition_mild_bonus
+        }
+        add_research_progress = research_progress_mild_bonus
+    }
+
+    option = {
+        name = flavor_rus_imperialism.10.b
+        add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+        change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_left }
+    }
+}
+
+# 俄罗斯音乐
+flavor_rus_imperialism.11 = {
+    hide_portraits = yes
+    type = country_event
+    fire_only_once = yes
+    title = flavor_rus_imperialism.11.title
+    desc = flavor_rus_imperialism.11.desc
+    outcome = neutral
+
+    historical_info = flavor_rus_imperialism.11.historical_info
+
+    dynamic_historical_event = {
+        tag = RUS
+        tag = MOS
+        from = 1860.1.1
+        to = 1900.1.1
+        monthly_chance = 2
+    }
+
+    trigger = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    illustration_tags = {
+        10 = happy
+        10 = interior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+        create_character = {
+            adm = { 20 80 }
+            dip = { 20 80 }
+            mil = { 10 50 }
+            artist = artist_type:composer
+            artist_skill = { 0.5 1.0 }
+            birth_date = 1840.5.7
+            female = no
+            culture = root.culture
+            religion = root.religion
+            estate = estate_type:burghers_estate
+            create_in_limbo = yes
+            save_scope_as = russian_composer
+        }
+    }
+
+    option = {
+        name = flavor_rus_imperialism.11.a
+        historical_option = yes
+        scope:russian_composer = {
+            move_country = root
+            add_character_modifier = {
+                modifier = russian_master_composer
+                years = -1
+            }
+        }
+        culture ?= {
+            add_cultural_influence = cultural_influence_mild_bonus
+            add_cultural_tradition = cultural_tradition_mild_bonus
+        }
+        add_prestige = prestige_mild_bonus
+    }
+
+    option = {
+        name = flavor_rus_imperialism.11.b
+        hidden_effect = {
+            kill_character_silently = scope:russian_composer
+        }
+        add_stability = stability_mild_bonus
+    }
+}

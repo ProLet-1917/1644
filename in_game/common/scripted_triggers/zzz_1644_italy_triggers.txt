@@ -1,0 +1,76 @@
+﻿# Anno 1644 - Italian Unification
+# Scripted triggers used by the Italy unification situation.
+
+# Country is an Italian state taking part in the unification
+zzz_1644_is_italian_state = {
+    exists = capital
+    culture = { has_culture_group = culture_group:italian_group }
+    is_rebel_country = no
+}
+
+# Country is a serious candidate for the role of unifier
+zzz_1644_is_italian_unifier_candidate = {
+    zzz_1644_is_italian_state = yes
+    is_subject = no
+    OR = {
+        is_regional_power = yes
+        is_great_power = yes
+        country_rank = country_rank:rank_kingdom
+        country_rank = country_rank:rank_empire
+    }
+}
+
+# A unifier that controls a decisive share of the peninsula
+zzz_1644_italy_unifier_is_strong = {
+    num_locations >= 25
+    region:italy_region = {
+        any_location_in_region = {
+            percent >= 0.35
+            owner = { culture = { has_culture_group = culture_group:italian_group } }
+        }
+    }
+}
+
+# Rome is still held by the Papal States and the question is unresolved
+zzz_1644_roman_question_open = {
+    country_exists = c:PAP
+    c:PAP = {
+        owns = location:rome
+    }
+    NOT = { has_global_variable = italian_roman_question_resolved }
+}
+
+# A foreign power still holds Italian land and may intervene
+zzz_1644_has_italian_holding = {
+    region:italy_region = {
+        any_location_in_region = {
+            owner ?= root
+            count > 0
+        }
+    }
+}
+
+zzz_1644_italy_foreign_guarantor_exists = {
+    OR = {
+        AND = {
+            country_exists = c:FRA
+            c:FRA = { zzz_1644_has_italian_holding = yes }
+        }
+        AND = {
+            country_exists = c:HAB
+            c:HAB = { zzz_1644_has_italian_holding = yes }
+        }
+        AND = {
+            country_exists = c:AUS
+            c:AUS = { zzz_1644_has_italian_holding = yes }
+        }
+        AND = {
+            country_exists = c:SPA
+            c:SPA = { zzz_1644_has_italian_holding = yes }
+        }
+        AND = {
+            country_exists = c:PAP
+            c:PAP = { owns = location:rome }
+        }
+    }
+}

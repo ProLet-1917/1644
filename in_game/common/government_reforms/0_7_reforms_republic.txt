@@ -1,0 +1,121 @@
+﻿# Anno 1644 - Age of Imperialism (age_7_imperialism)
+# Republic-only government reforms. Unlock automatically when the age begins.
+
+# 共和宪法
+republican_constitution_reform = {
+    age = age_7_imperialism
+    major = yes
+    government = republic
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    allow = {
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    on_activate = {
+        set_parliament_type = parliament_type:republican_parliament
+    }
+
+    country_modifier = {
+        government_reform_slots = 1
+        government_size = 1
+        monthly_republican_tradition = 0.10
+        global_estate_target_satisfaction = small_permanent_target_satisfaction
+        global_crown_estate_power = -0.15
+        allow_republican_parliament = yes
+        allow_mass_suffrage_parliament = yes
+        monthly_towards_liberalism = societal_value_large_monthly_move
+        monthly_towards_free_subjects = societal_value_monthly_move
+    }
+
+    years = 3
+}
+
+# 议会内阁制
+parliamentary_government_reform = {
+    age = age_7_imperialism
+    major = yes
+    government = republic
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        OR = {
+            parliament_type = parliament_type:constitutional_parliament
+            parliament_type = parliament_type:estate_parliament
+            parliament_type = parliament_type:republican_parliament
+            has_reform = government_reform:republican_constitution_reform
+        }
+    }
+
+    allow = {
+        current_age_or_later = { age = age_7_imperialism }
+        has_a_parliamentary_system = yes
+    }
+
+    on_activate = {
+        change_heir_selection = heir_selection:constitutional_cabinet_election
+    }
+
+    on_deactivate = {
+        set_to_default_heir_selection = yes
+    }
+
+    country_modifier = {
+        parliament_base_support = 0.20
+        parliament_request_issue_support_needed = -0.15
+        change_policy_cost_modifier = -0.15
+        legislative_efficiency = 0.10
+        global_burghers_estate_power = 0.15
+        allow_republican_parliament = yes
+        monthly_towards_liberalism = societal_value_monthly_move
+    }
+
+    years = 3
+}
+
+# 总统制
+presidential_republic_reform = {
+    age = age_7_imperialism
+    major = yes
+    government = republic
+
+    potential = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+    }
+
+    allow = {
+        current_age_or_later = { age = age_7_imperialism }
+    }
+
+    on_activate = {
+        change_heir_selection = heir_selection:presidential_election
+    }
+
+    on_deactivate = {
+        set_to_default_heir_selection = yes
+    }
+
+    country_modifier = {
+        government_reform_slots = 1
+        global_crown_estate_power = 0.25
+        legislative_efficiency = 0.05
+        monthly_republican_tradition = 0.05
+        allow_presidential_parliament = yes
+        monthly_towards_centralization = societal_value_monthly_move
+        monthly_towards_absolutism = societal_value_monthly_move
+    }
+
+    years = 3
+}

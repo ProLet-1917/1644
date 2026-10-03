@@ -20,9 +20,14 @@ REPLACE:country_base_values = {
 
     trade_income = 0.1
 
+	tariff_income = 0.1
+
+	max_tariff = 0.20
+	max_trade_subventions = 0.20
+
     monthly_rebel_growth = 0.001
 
-    country_child_education = 0.75
+    country_child_education = 0.375
 
     global_monthly_art_start_chance = 0.1
 
@@ -83,6 +88,8 @@ REPLACE:country_base_values = {
     trade_range = 300
 
     mercenary_range = 500
+	mercenary_cost_for_enemies = 0.25
+	mercenary_payment_to_owner = 0
 
     army_logistics_distance = 30
 
@@ -97,11 +104,13 @@ REPLACE:country_base_values = {
     global_food_decay = 0.005
 
     diplomatic_capacity = 2
-    max_diplomats = 1
+    max_diplomats = 2
     monthly_diplomats = 0.1
     casus_belli_creation_speed = 4.0
 
     diplomatic_spending_cost = 0.1
+
+	global_estate_target_satisfaction = base_default_estate_target_satisfaction
 
     nobles_estate_target_satisfaction = nobles_default_satisfaction
     clergy_estate_target_satisfaction = clergy_default_satisfaction
@@ -113,7 +122,7 @@ REPLACE:country_base_values = {
 
 
     global_estate_satisfaction_decay = 0.05
-    global_estate_satisfaction_recovery = 0.002
+    global_estate_satisfaction_recovery = 0.001
 
 
     global_estate_max_tax = 0.35
@@ -131,7 +140,8 @@ REPLACE:country_base_values = {
     sea_cost_on_distance_from_capital = 30
     road_cost_on_distance_from_capital = 20
     land_cost_on_distance_from_capital = 40
-    port_cost_distance_from_capital = 40
+    port_cost_distance_from_capital = 35
+	sea_land_transition_cost_distance_from_capital = 35
     land_cost_going_upstream	= 12
     land_cost_going_downstream	= 12
     land_cost_on_frozen_water = 20
@@ -161,6 +171,7 @@ REPLACE:country_base_values = {
     #tribes_estate_blocked_from_cabinet = yes	#Commented out as they are by default not available until tribes_estate_allowed_in_cabinet is active. Uncomment to have them permanently blocked from the cabinet.
     #peasants_estate_blocked_from_cabinet = yes	#Commented out as they are by default not available until peasants_estate_allowed_in_cabinet is active. Uncomment to have them permanently blocked from the cabinet.
 
+	nobles_estate_allowed_noble_marriage = yes
     crown_estate_allowed_leading_military = yes
     tribes_estate_allowed_leading_military = yes
     cossacks_estate_allowed_leading_military = yes
@@ -194,7 +205,7 @@ REPLACE:country_base_values = {
 
     diplomatic_reputation = 1
 
-    land_morale_movement_cost = 0.001
+    land_morale_movement_cost = 0.0055
     naval_morale_movement_cost = 0.0
 
     land_morale_attrition_cost = 0.01
@@ -221,6 +232,7 @@ REPLACE:country_base_values = {
     can_extract_pearls = yes
     can_extract_amber = yes
     can_extract_elephants = yes
+	can_extract_camels = yes
     can_extract_wool = yes
     can_extract_wild_game = yes
     can_extract_fish = yes

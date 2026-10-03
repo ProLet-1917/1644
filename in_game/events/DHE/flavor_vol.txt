@@ -25,7 +25,7 @@ flavor_vol.4 = { #Hypatian Codex
 	immediate = {
 		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
 
-		ruler = {
+		ruler ?= {
 			save_scope_as = target_ruler
 		}
 		create_character = {

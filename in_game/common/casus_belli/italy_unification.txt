@@ -1,0 +1,34 @@
+﻿# Anno 1644 - Casus belli used by the Italian unification content
+cb_italian_unification = {
+    years = 15
+    create_visible = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        is_leader_of_international_organization_of_type = {
+            type = italy_unification_union
+        }
+    }
+
+    create_enabled = {
+        OR = {
+            always = yes
+            has_dlc = "0_5_dawn_of_the_new_era"
+        }
+        is_leader_of_international_organization_of_type = {
+            type = italy_unification_union
+        }
+    }
+
+    custom_tags = { cannot_be_enforced_peace_on }
+
+    allow_separate_peace = no
+    allow_white_peace = no
+
+    war_goal_type = take_capital
+
+    required_peace_treaties = {
+        give_up_leader_of_italy_unification_union
+    }
+}

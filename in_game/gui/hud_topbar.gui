@@ -1,4 +1,11 @@
 
+# ===== Anno 1644: constants required by right_topbar_section_size_1644 (file-scoped) =====
+@topbar_height = 40
+@right_panel_width = 320
+@panel_x = 0
+@outliner_collapsed_width = 30
+
+
 
 # template gamespeed_color_paused {
 # 	using = color_red_texture
@@ -53,1485 +60,1584 @@ Types HUD_TopbarTypes
 	# }
 
 	type gamespeed_button_disabled = button {
-		texture = "gfx/interface/component_tiles/hud_corners/speed_bar/speed_disabled.dds"
-		texture_density = 2
-		size = { 21 40 }
-		tooltip_enabled = no
-		button = {
-			block "gamespeed_button_disabled_onclick" {
-				onclick = "[OnSetGameSpeed('(int32)1')]"
+	texture = "gfx/interface/component_tiles/hud_corners/speed_bar/speed_disabled.dds"
+	texture_density = 2
+	size = { 21 40 }
+	tooltip_enabled = no
+	name  = "speed_change_disabled" #name used as identifiyer for widget_churn_benchmark tests
+	button = {
+		name  = "speed_change_disabled" #name used as identifiyer for widget_churn_benchmark tests
+		block "gamespeed_button_disabled_onclick" {
+			action_tooltip = {
+				title = "[GetGameSpeedTooltip]"
+				on_action = "[OnSetGameSpeed('(int32)1')]"
 			}
-			tooltipwidget = {
-				LeftClickButtonTooltip = {
-					blockoverride "onclick_text" {
-						text = "[GetGameSpeedTooltip]"
-					}
-				}
-			}
-			enabled = "[CanChangeGameSpeed]"
-			# block "gamespeed_button_texture" {
-				texture = "[GetGraphicalCultureTexture('speed_button')]"
-			# }
-			texture_density = 2
-			# block "gamespeed_button_size" {
-				size = { 100% 100% }
-			# }
 		}
+		tooltipwidget = { BasicFunctionalTooltip = {} }
+		enabled = "[CanChangeGameSpeed]"
+		# block "gamespeed_button_texture" {
+		texture = "[GetGraphicalCultureTexture('speed_button')]"
+		# }
+		texture_density = 2
+		# block "gamespeed_button_size" {
+		size = { 100% 100% }
+		# }
 	}
+}
 
 	type gamespeed_play_button = button {
-		texture = "gfx/interface/component_tiles/hud_corners/speed_bar/speed_on.dds"
-		texture_density = 2
-		size = { 21 40 }
-		tooltip_enabled = no
-		button = {
-			block "gamespeed_play_button_onclick" {
-				onclick = "[OnSetGameSpeed('(int32)1')]"
+	texture = "gfx/interface/component_tiles/hud_corners/speed_bar/speed_on.dds"
+	texture_density = 2
+	size = { 21 40 }
+	tooltip_enabled = no
+	name  = "speed_change_play" #name used as identifiyer for widget_churn_benchmark tests
+	button = {
+		name  = "speed_change_play" #name used as identifiyer for widget_churn_benchmark tests
+		block "gamespeed_play_button_onclick" {
+			action_tooltip = {
+				title = "[GetGameSpeedTooltip]"
+				on_action = "[OnSetGameSpeed('(int32)1')]"
 			}
-			tooltipwidget = {
-				LeftClickButtonTooltip = {
-					blockoverride "onclick_text" {
-						text = "[GetGameSpeedTooltip]"
-					}
-				}
-			}
-			enabled = "[CanChangeGameSpeed]"
-			# block "gamespeed_button_texture" {
-				texture = "[GetGraphicalCultureTexture('speed_button')]"
-			# }
-			texture_density = 2
-			# block "gamespeed_button_size" {
-				size = { 100% 100% }
-			# }
 		}
+		tooltipwidget = { BasicFunctionalTooltip = {} }
+		enabled = "[CanChangeGameSpeed]"
+		# block "gamespeed_button_texture" {
+		texture = "[GetGraphicalCultureTexture('speed_button')]"
+		# }
+		texture_density = 2
+		# block "gamespeed_button_size" {
+		size = { 100% 100% }
+		# }
 	}
+}
 
 	type gamespeed_paused_button = button {
-		texture = "gfx/interface/component_tiles/hud_corners/speed_bar/speed_paused.dds"
-		texture_density = 2
-		size = { 21 40 }
-		tooltip_enabled = no
-		button = {
-			block "gamespeed_paused_button_onclick" {
-				onclick = "[OnSetGameSpeed('(int32)1')]"
+	texture = "gfx/interface/component_tiles/hud_corners/speed_bar/speed_paused.dds"
+	texture_density = 2
+	size = { 21 40 }
+	tooltip_enabled = no
+	name  = "speed_change_paused" #name used as identifiyer for widget_churn_benchmark tests
+	button = {
+		name  = "speed_change_paused" #name used as identifiyer for widget_churn_benchmark tests
+		block "gamespeed_paused_button_onclick" {
+			action_tooltip = {
+				title = "[GetGameSpeedTooltip]"
+				on_action = "[OnSetGameSpeed('(int32)1')]"
 			}
-			tooltipwidget = {
-				LeftClickButtonTooltip = {
-					blockoverride "onclick_text" {
-						text = "[GetGameSpeedTooltip]"
-					}
-				}
-			}
-			enabled = "[CanChangeGameSpeed]"
-			# block "gamespeed_button_texture" {
-				texture = "[GetGraphicalCultureTexture('speed_button')]"
-			# }
-			texture_density = 2
-			# block "gamespeed_button_size" {
-				size = { 100% 100% }
-			# }
 		}
+		tooltipwidget = { BasicFunctionalTooltip = {} }
+		enabled = "[CanChangeGameSpeed]"
+		# block "gamespeed_button_texture" {
+		texture = "[GetGraphicalCultureTexture('speed_button')]"
+		# }
+		texture_density = 2
+		# block "gamespeed_button_size" {
+		size = { 100% 100% }
+		# }
 	}
+}
 
 	type topbar = widget {
-		name = "HUD TopBar"
+	name = "HUD TopBar"
 
-		datacontext = "[InGameTopbar.GetPlayer]"
-		visible = "[And(Not(TutorialHasVar('intro_hide_ui_3')), Not(IsLobbyOpen))]"
+	datacontext = "[InGameTopbar.GetPlayer]"
+	visible = "[And(Not(TutorialHasVar('intro_hide_ui_3')), Not(IsLobbyOpen))]"
 
-		parentanchor = top
-		alwaystransparent = no
-		filter_mouse = all
+	parentanchor = top
+	alwaystransparent = no
+	filter_mouse = all
 
-		layer = bottom
+	layer = bottom
 
-		
-		# widget = { # Section Observer
-		# 	position = { 0 112 }
-		# 	size = { 100% 28 }
-		# 	name = "Top Bar Observer Section"
-		# 	using = left_topbar_section_size
-		# 	layoutpolicy_vertical = expanding
-		# 	using = top_bar_bg
-		# 	alpha = 0.3
-		# 	visible = "[And(IsObserving, Not(IsObservingWithoutSelectedCountry))]"
 
-		# 	hbox = {
-		# 		spacing = 10
-		# 		expand = {}
-		# 		icon = {
-		# 			size = { 32 32 }
-		# 			texture = "gfx/interface/icons/messages_settings/map.dds"
-		# 		}
+	# widget = { # Section Observer
+	# 	position = { 0 112 }
+	# 	size = { 100% 28 }
+	# 	name = "Top Bar Observer Section"
+	# 	using = left_topbar_section_size
+	# 	layoutpolicy_vertical = expanding
+	# 	using = top_bar_bg
+	# 	alpha = 0.3
+	# 	visible = "[And(IsObserving, Not(IsObservingWithoutSelectedCountry))]"
 
-		# 		text_single = {
-		# 			text = "OBSERVER_MODE"
-		# 			autoresize = yes
-		# 			using = Font_Size_Medium
-		# 			using = Font_Type_Headers
-		# 			default_format = "#color_white"
-		# 		}
-		# 		expand = {}
-		# 	}
-		# }
-		
-		hbox = {
-			widget = { # Section 1
-				name = "Top Bar Section 1"
-				using = left_topbar_section_size
-				layoutpolicy_vertical = expanding
-				using = top_bar_bg
+	# 	hbox = {
+	# 		spacing = 10
+	# 		expand = {}
+	# 		icon = {
+	# 			size = { 32 32 }
+	# 			texture = "gfx/interface/icons/messages_settings/map.dds"
+	# 		}
 
-				hbox = {
-					margin_left = 150
+	# 		text_single = {
+	# 			text = "OBSERVER_MODE"
+	# 			autoresize = yes
+	# 			using = Font_Size_Medium
+	# 			using = Font_Type_Headers
+	# 			default_format = "#color_white"
+	# 		}
+	# 		expand = {}
+	# 	}
+	# }
 
-					visible = "[Country.Exists]"
-					datamodel = "[DataModelFirst(InGameTopbar.GetEstates, '(int32)7')]"
-					item = {
-						stat_player = {
-							layoutpolicy_horizontal = expanding
-							margin = { 5 0 }
+	hbox = {
+		widget = { # Section 1
+			name = "Top Bar Section 1"
+			max_update_rate = 4
+			using = left_topbar_section_size
+			layoutpolicy_vertical = expanding
+			using = top_bar_bg
 
-							visible = "[Not(ObjectsEqual(Country.GetGovernment.GetEstateFromKey('crown_estate').GetType, EstatesItem.GetEstate.GetType))]"
-							datacontext = "[EstatesItem.GetEstate]"
+			hbox = {
+				margin_left = 150
 
-							blockoverride "stat_button" {
-								alpha = 0.4
-								upframe = 4
-								uphoverframe = 4
-								uppressedframe = 4
-								downframe = 4
-								downhoverframe = 4
-								downpressedframe = 4
-								disableframe = 4
+				visible = "[Country.Exists]"
+				datamodel = "[DataModelFirst(InGameTopbar.GetEstates, '(int32)7')]"
+				item = {
+					stat_player = {
+						layoutpolicy_horizontal = expanding
+						margin = { 5 0 }
 
-								color = "[EstatesItem.GetEstate.GetType.GetMapColor]"
+						visible = "[Not(ObjectsEqual(Country.GetGovernment.GetEstateFromKey('crown_estate').GetType, EstatesItem.GetEstate.GetType))]"
+						datacontext = "[EstatesItem.GetEstate]"
 
-								action_tooltip = {
-									click_type = left
-									click_mode = single
-									title = "ADD_NEW_PRIVILEGE"
-								}
+						blockoverride "stat_button" {
+							alpha = 0.4
+							upframe = 4
+							uphoverframe = 4
+							uppressedframe = 4
+							downframe = 4
+							downhoverframe = 4
+							downpressedframe = 4
+							disableframe = 4
 
-								action_tooltip = {
-									click_type = right
-									click_mode = single
-									title = "ESTATE_ACTIONS_MENU_T"
-									on_action = "[EstatesItem.OpenActionsWindow]"
-								}
+							color = "[EstatesItem.GetEstate.GetType.GetMapColor]"
 
-								tooltipwidget = {
-									using = Estate_tooltip
-									blockoverride "extra_estates_info" {
-										TooltipStringPairList = {
-											datacontext = "[StringToStringPairList(Estate.GetSatisfactionTooltip)]"
-										}
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "ADD_NEW_PRIVILEGE"
+								on_action = "[EstatesItem.AddNewPrivilege]"
+							}
+
+
+							action_tooltip = {
+								click_type = right
+								click_mode = single
+								title = "ESTATE_ACTIONS_MENU_T"
+								on_action = "[EstatesItem.OpenActionsWindow]"
+							}
+
+							tooltipwidget = {
+								using = Estate_tooltip
+								blockoverride "extra_estates_info" {
+									TooltipStringPairList = {
+										datacontext = "[StringToStringPairList(Estate.GetSatisfactionTooltip)]"
 									}
 								}
 							}
-
-							icon = {
-								visible = "[Not(GreaterThan_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)5'))]" 
-								size = { 32 32 }
-								texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
-							}
-
-							icon = {
-								visible = "[EqualTo_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)6')]" 
-								size = { 28 28 }
-								texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
-							}
-
-							
-							widget = {
-								visible = "[GreaterThan_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)6')]" 
-								size = { 12 12 }
-								icon = {
-									parentanchor = center
-									size = { 20 20 }
-									texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
-								}
-							}
-	
-							vbox = {
-								margin_left = 3
-								margin_right = 6
-	
-								hbox = {
-									using = layoutpolicy_expanding
-									using = text_single_positive_negative
-									text_single = { # WHITE IF BETWEEN 50 AND 60
-										maximumsize = { -1 18 }
-										autoresize = yes
-										align = left|nobaseline
-										using = Font_Size_Small
-										text = "[EstatesItem.GetEstate.GetSatisfaction|0%]"
-										visible = "[And(GreaterThanOrEqualTo_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.5'), LessThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.6'))]"
-									}
-	
-									blockoverride "text_setup" {
-										maximumsize = { -1 18 }
-										autoresize = yes
-										align = left|nobaseline
-										using = Font_Size_Small
-										text = "[EstatesItem.GetEstate.GetSatisfaction|0%]"
-									}
-	
-									blockoverride "visible_positive" {
-										visible = "[GreaterThanOrEqualTo_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.6')]"
-										default_format = "#color_green;bold"
-									}
-	
-									blockoverride "visible_negative" {
-										visible = "[LessThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.5')]"
-										default_format = "#color_red;bold"
-									}
-	
-									expand = {}
-								}
-	
-								hbox = {
-									using = layoutpolicy_expanding
-									using = text_single_positive_zero_negative
-	
-									blockoverride "text_setup" {
-										maximumsize = { -1 12 }
-										autoresize = yes
-										align = left|nobaseline
-										using = Font_Size_Very_Small
-										text = "[EstatesItem.GetEstate.GetMonthlySatisfactionChange|+=%2]"
-									}
-	
-									blockoverride "visible_positive" {
-										visible = "[GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
-									}
-	
-									blockoverride "visible_negative" {
-										visible = "[LessThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
-									}
-	
-									blockoverride "visible_zero" {
-										visible = "[EqualTo_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
-									}
-	
-									blockoverride "text_zero" {
-										raw_text = "0.00%"
-										fontsize = 12
-									}
-	
-									expand = {}
-								}
-							}
-
-							expand = {}
-
-							# vbox = {
-							# 	using = layoutpolicy_expanding
-							# 	margin = { 4 0 }
-							# 	margin_bottom = 2
-							# 	spacing = -3
-
-							# 	expand = {}
-
-							# 	hbox = {
-							# 		layoutpolicy_horizontal = expanding								
-
-							# 		# ESTATE ICON
-									
-							# 	}
-
-								
-							# 	expand = {}
-							# 	hbox = {
-							# 		layoutpolicy_horizontal = expanding
-							# 		margin = { 2 0 }
-
-							# 		progressbar = {
-							# 			visible = "[GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction, '(CFixedPoint)0.5')]"
-							# 			using = progress_bar_green_alt
-							# 			noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-							# 			block "progress_setup" {}
-							# 		}
-
-							# 		progressbar = {
-							# 			visible = "[Not(GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction, '(CFixedPoint)0.5'))]"
-							# 			using = progress_bar_red_alt
-							# 			noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-							# 			block "progress_setup" {}
-							# 		}
-
-							# 		blockoverride "progress_setup" {
-							# 			layoutpolicy_horizontal = expanding
-							# 			size = { -1 4 }
-
-							# 			min = 0
-							# 			max = 1
-							# 			value = "[FixedPointToFloat(EstatesItem.GetEstate.GetSatisfaction)]"
-							# 			direction = horizontal
-							# 		}
-							# 	}
-							# }
 						}
+
+						icon = {
+							visible = "[Not(GreaterThan_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)5'))]"
+							size = { 32 32 }
+							texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
+						}
+
+						icon = {
+							visible = "[EqualTo_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)6')]"
+							size = { 28 28 }
+							texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
+						}
+
+
+						widget = {
+							visible = "[GreaterThan_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)6')]"
+							size = { 12 12 }
+							icon = {
+								parentanchor = center
+								size = { 20 20 }
+								texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
+							}
+						}
+
+						vbox = {
+							margin_left = 3
+							margin_right = 6
+
+							hbox = {
+								using = layoutpolicy_expanding
+								using = text_single_positive_negative
+								text_single = { # WHITE IF BETWEEN 50 AND 60
+									maximumsize = { -1 18 }
+									autoresize = yes
+									align = left|nobaseline
+									using = Font_Size_Small
+									text = "[EstatesItem.GetEstate.GetSatisfaction|0%]"
+									visible = "[And(GreaterThanOrEqualTo_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.5'), LessThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.6'))]"
+								}
+
+								blockoverride "text_setup" {
+									maximumsize = { -1 18 }
+									autoresize = yes
+									align = left|nobaseline
+									using = Font_Size_Small
+									text = "[EstatesItem.GetEstate.GetSatisfaction|0%]"
+								}
+
+								blockoverride "visible_positive" {
+									visible = "[GreaterThanOrEqualTo_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.6')]"
+									default_format = "#color_green;bold"
+								}
+
+								blockoverride "visible_negative" {
+									visible = "[LessThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.5')]"
+									default_format = "#color_red;bold"
+								}
+
+								expand = {}
+							}
+
+							hbox = {
+								using = layoutpolicy_expanding
+								using = text_single_positive_zero_negative
+
+								blockoverride "text_setup" {
+									maximumsize = { -1 12 }
+									autoresize = yes
+									align = left|nobaseline
+									using = Font_Size_Very_Small
+									text = "[EstatesItem.GetEstate.GetMonthlySatisfactionChange|+=%2]"
+								}
+
+								blockoverride "visible_positive" {
+									visible = "[GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+								}
+
+								blockoverride "visible_negative" {
+									visible = "[LessThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+								}
+
+								blockoverride "visible_zero" {
+									visible = "[EqualTo_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+								}
+
+								blockoverride "text_zero" {
+									raw_text = "0.00%"
+									fontsize = 12
+								}
+
+								expand = {}
+							}
+						}
+
+						expand = {}
+
+						# vbox = {
+						# 	using = layoutpolicy_expanding
+						# 	margin = { 4 0 }
+						# 	margin_bottom = 2
+						# 	spacing = -3
+
+						# 	expand = {}
+
+						# 	hbox = {
+						# 		layoutpolicy_horizontal = expanding
+
+						# 		# ESTATE ICON
+
+						# 	}
+
+
+						# 	expand = {}
+						# 	hbox = {
+						# 		layoutpolicy_horizontal = expanding
+						# 		margin = { 2 2 }
+
+						# 		progressbar_framed = {
+						# 			visible = "[GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction, '(CFixedPoint)0.5')]"
+						# 			using = progress_bar_green_alt
+						# 			noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+						# 			block "progress_setup" {}
+						# 		}
+
+						# 		progressbar_framed = {
+						# 			visible = "[Not(GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction, '(CFixedPoint)0.5'))]"
+						# 			using = progress_bar_red_alt
+						# 			noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+						# 			block "progress_setup" {}
+						# 		}
+
+						# 		blockoverride "progress_setup" {
+						# 			layoutpolicy_horizontal = expanding
+						# 			size = { -1 4 }
+
+						# 			min = 0
+						# 			max = 1
+						# 			value = "[FixedPointToFloat(EstatesItem.GetEstate.GetSatisfaction)]"
+						# 			direction = horizontal
+						# 		}
+						# 	}
+						# }
 					}
 				}
 			}
+		}
 
-			scrollarea = { # Section 2
-				name = "Top Bar Section 2"
-				using = layoutpolicy_expanding
-				scrollbarpolicy_horizontal = as_needed
-				scrollbaralign_horizontal = bottom
-				scrollbarpolicy_vertical = always_off
-				using = top_bar_bg
+		scrollarea = { # Section 2
+			name = "Top Bar Section 2"
+			max_update_rate = 4
+			using = layoutpolicy_expanding
+			scrollbarpolicy_horizontal = as_needed
+			scrollbaralign_horizontal = bottom
+			scrollbarpolicy_vertical = always_off
+			using = top_bar_bg
 
-				scrollbar_horizontal = {
-					scrollbar = {
-						wheelstep = 60
-						direction = horizontal
+			scrollbar_horizontal = {
+				scrollbar = {
+					wheelstep = 60
+					direction = horizontal
 
-						track = { button = {} }
-						slider = { button = {} }
-						dec_button = { button = {} }
-						inc_button = { button = {} }
-					}
+					track = { button = {} }
+					slider = { button = {} }
+					dec_button = { button = {} }
+					inc_button = { button = {} }
 				}
+			}
 
-				scrollwidget = {
-					hbox = {
-						visible = "[IsPlayerValid]"
+			scrollwidget = {
+				hbox = {
+					visible = "[IsPlayerValid]"
 
-						### STAT PLAYER - ESTATES POWER
-						stat_player = {							
-							blockoverride "stat_button" {
-								action_tooltip = {
-									click_type = left
-									click_mode = single
-									title = "AUTOMATED_SYSTEM_ESTATES_CLICK"
-									on_action = "[OpenLateralViewWithParams('government', 'tabcontent = estates')]"
-								}
+					### STAT PLAYER - ESTATES POWER
+					stat_player = {
+						blockoverride "stat_button" {
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "AUTOMATED_SYSTEM_ESTATES_CLICK"
+								on_action = "[OpenLateralViewWithParams('government', 'tabcontent = estates')]"
+							}
 
-								action_tooltip = {
-									click_modifier = shift
-									click_type = left
-									title = "OPEN_HINT"
-									on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_estates')]"
-								}
+							action_tooltip = {
+								click_modifier = shift
+								click_type = left
+								title = "OPEN_HINT"
+								click_modifier_description = "OPEN_HINT_TEXT"
+								on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_estates')]"
+							}
 
-								tooltipwidget = {
-									blockoverride "shift_left_extra" {
-										replacement_shift_item = {}
-									}
-									using = CountryEstatesPowerTooltip
+							tooltipwidget = {
+								using = CountryEstatesPowerTooltip
+							}
+						}
+
+						icon_pie_left = {
+							blockoverride "PieSize" { size = { 40 40 } }
+							blockoverride "pie_datamodel" { datamodel = "[InGameTopbar.GetEstates]" }
+
+							blockoverride "pieslice_item" {
+								pieslice_no_highlight = {
+									texture = "gfx/interface/pie_charts/piechart_alpha.dds"
+									texture_density = 2
+									tooltip_enabled = no
+									value = "[EstatesItem.GetEstate.GetRelativePower]"
+									color = "[EstatesItem.GetEstate.GetType.GetMapColor]"
+									alpha = 0.99
+									alwaystransparent = yes
 								}
 							}
 
-							icon_pie_left = {
-								blockoverride "PieSize" { size = { 40 40 } }
-								blockoverride "pie_datamodel" { datamodel = "[InGameTopbar.GetEstates]" }
+							blockoverride "Icon_Size" { size = { 60% 60% } }
+							blockoverride "Icon" {
+								texture = "gfx/interface/icons/flat_icons/estates/estates.dds"
+								texture_density = 2
+								alwaystransparent = yes
+							}
 
-								blockoverride "pieslice_item" {
-									pieslice_no_highlight = {
-										texture = "gfx/interface/pie_charts/piechart_alpha.dds"
-										texture_density = 2
-										tooltip_enabled = no
-										value = "[EstatesItem.GetEstate.GetRelativePower]"
-										color = "[EstatesItem.GetEstate.GetType.GetMapColor]"
-										alpha = 0.99
-										alwaystransparent = yes
+							icon = {
+								size = { 40% 40% }
+								parentanchor = center
+								alwaystransparent = yes
+
+								texture = "gfx/interface/icons/foreign_country/power.dds"
+
+								glow = {
+									name = "drop_shadow"
+									glow_radius = 2
+									color = {0.0 0.0 0.0 1.0}
+								}
+							}
+
+							background = {
+								texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
+								texture_density = 2
+
+								modify_texture = {
+									using = color_gold_texture
+								}
+
+								using = overlay_gold
+							}
+						}
+					}
+
+					### STAT PLAYER - INCOME
+					stat_player = {
+						name = "stat_gold"
+						using = layoutpolicy_expanding
+						margin = { 5 0 }
+
+						blockoverride "context_value_gradient_visible" {
+							visible = "[IsLateralGroupOpened('economy_group')]"
+						}
+
+						blockoverride "stat_button" {
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "GOTO_BALANCE"
+								on_action = "[OpenLateralView('economy')]"
+							}
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								click_modifier = shift
+								title = "ALERT_HINT"
+								click_modifier_description = "OPEN_HINT_TEXT"
+								visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('gold'), '(CFixedPoint)0')]"
+								on_action = "[OpenLateralView('economy')]"
+								on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_in_deficit')]"
+								on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
+							}
+
+							action_tooltip = {
+								click_type = right
+								click_mode = single
+								title = "TAB_TOOLTIP_PRODUCTION_LEFT_CLICK"
+								on_action = "[SetUIFocusMarket(Player.GetCapital.GetMarket)]"
+								on_action = "[OpenLateralView('production')]"
+							}
+
+							tooltipwidget = {
+								using = GoldResourceTooltip
+
+								blockoverride "content_datacontext" { datacontext = "[GetEconomyView]" }
+								# blockoverride "show_hint" { visible = "[Country.HasHint('gold')]" }
+								# blockoverride "extra_title" { text = "GOLD_HINT" }
+								# blockoverride "extra_text" { text = "[Country.GetCurrencyTooltipHint('gold')]" }
+							}
+						}
+
+						icon = {
+							size = { 24 24 }
+							texture = "gfx/interface/icons/resources/gold.dds"
+							texture_density = 2
+						}
+
+						vbox = {
+							margin_left = 3
+							margin_right = 6
+
+							hbox = {
+								using = layoutpolicy_expanding
+								using = text_single_positive_negative
+
+								blockoverride "text_setup" {
+									maximumsize = { -1 18 }
+									autoresize = yes
+									align = left|nobaseline
+									using = Font_Size_Small
+									text = "[Country.GetCurrencyValue('gold')]"
+								}
+
+								blockoverride "visible_positive" {
+									visible = "[Not(LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('gold'), '(CFixedPoint)0'))]"
+								}
+
+								blockoverride "visible_negative" {
+									visible = "[LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('gold'), '(CFixedPoint)0')]"
+									default_format = "#color_red;bold"
+								}
+
+								expand = {}
+							}
+
+							hbox = {
+								using = layoutpolicy_expanding
+								using = text_single_positive_zero_negative
+
+								blockoverride "text_setup" {
+									maximumsize = { -1 12 }
+									autoresize = yes
+									align = left|nobaseline
+									using = Font_Size_Very_Small
+									text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('gold')]"
+								}
+
+								blockoverride "visible_positive" {
+									visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('gold'), '(CFixedPoint)0')]"
+								}
+
+								blockoverride "visible_negative" {
+									visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('gold'), '(CFixedPoint)0')]"
+								}
+
+								blockoverride "visible_zero" {
+									visible = "[EqualTo_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('gold'), '(CFixedPoint)0')]"
+								}
+
+								blockoverride "text_zero" {
+									raw_text = "="
+								}
+
+								expand = {}
+							}
+						}
+
+						expand = {}
+					}
+
+					### STAT PLAYER - STABILITY
+					stat_player = {
+						name = "stat_stability"
+						using = layoutpolicy_expanding
+						margin = { 5 0 }
+
+						blockoverride "context_value_gradient_visible" {
+							visible = "[IsLateralGroupOpened('government_group')]"
+						}
+
+						blockoverride "decreasing_value_gradient_visible" {
+							visible = "[Country.IsCurrencyValueEqualOrLessThanZero('stability')]"
+						}
+
+						blockoverride "stat_button" {
+							action_tooltip = {
+								click_type = right
+								click_mode = single
+								title = "AUTOMATED_SYSTEM_CABINETMEMBERS_CLICK"
+								on_action = "[OpenLateralViewWithParams('government', 'tabcontent = cabinet')]"
+							}
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "GOTO_BALANCE"
+								on_action = "[OpenLateralView('economy')]"
+							}
+
+							action_tooltip = {
+								visible = "[LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('stability'), '(CFixedPoint)0')]"
+								click_modifier = shift
+								click_type = left
+								title = "ALERT_HINT"
+								using = snd_UI_alert_openAndCycle
+								on_action = "[OpenLateralView('economy')]"
+								on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_stability')]"
+								on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
+							}
+
+							action_tooltip = {
+								visible = "[LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('stability'), '(CFixedPoint)-50')]"
+								click_modifier = shift
+								click_type = left
+								title = "ALERT_HINT"
+								click_modifier_description = "OPEN_HINT_TEXT"
+								using = snd_UI_alert_openAndCycle
+								on_action = "[OpenLateralView('economy')]"
+								on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_very_low_stability')]"
+								on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
+							}
+
+							tooltipwidget = {
+								using = StabilityResourceTooltip
+
+								blockoverride "content_datacontext" { datacontext = "[Country.GetEconomy]" }
+								# blockoverride "show_hint" { visible = "[Country.HasHint('stability')]" }
+								# blockoverride "extra_title" { text = "STABILITY_HINT" }
+								# blockoverride "extra_text" { text = "[Country.GetCurrencyTooltipHint('stability')]" }
+							}
+						}
+
+						icon = {
+							size = { 24 24 }
+							texture = "gfx/interface/icons/resources/stability.dds"
+							texture_density = 2
+						}
+
+						vbox = {
+							margin_left = 3
+							margin_right = 6
+
+							hbox = {
+								using = layoutpolicy_expanding
+								using = text_single_positive_negative
+
+								blockoverride "text_setup" {
+									maximumsize = { -1 18 }
+									autoresize = yes
+									align = left|nobaseline
+									using = Font_Size_Small
+									text = "[Country.GetCurrencyValue('stability')]"
+								}
+
+								blockoverride "visible_positive" {
+									visible = "[Not(LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('stability'), '(CFixedPoint)0'))]"
+								}
+
+								blockoverride "visible_negative" {
+									visible = "[LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('stability'), '(CFixedPoint)0')]"
+									default_format = "#color_red;bold"
+								}
+
+								expand = {}
+							}
+
+							hbox = {
+								using = layoutpolicy_expanding
+								using = text_single_positive_zero_negative
+
+								blockoverride "text_setup" {
+									maximumsize = { -1 12 }
+									autoresize = yes
+									align = left|nobaseline
+									using = Font_Size_Very_Small
+									text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('stability')]"
+								}
+
+								blockoverride "visible_positive" {
+									visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('stability'), '(CFixedPoint)0')]"
+								}
+
+								blockoverride "visible_negative" {
+									visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('stability'), '(CFixedPoint)0')]"
+								}
+
+								blockoverride "visible_zero" {
+									visible = "[EqualTo_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('stability'), '(CFixedPoint)0')]"
+								}
+
+								blockoverride "text_zero" {
+									raw_text = "="
+								}
+
+								expand = {}
+							}
+						}
+
+						expand = {}
+					}
+
+					### STAT PLAYER - Dynasty Stability
+					stat_player = {
+						name = "stat_dynasty_stability"
+						using = layoutpolicy_expanding
+						visible = "[GetPlayer.MakeScope.GetVariable('dynasty_stability').IsSet]"
+
+						tooltipmeta = {
+							texture = "gfx/interface/icons/modifier_types/_default.dds"
+						}
+
+						blockoverride "decreasing_value_gradient_visible" {
+							visible = no
+						}
+
+						blockoverride "stat_button" {
+
+							#action_tooltip = {
+							#	click_type = left
+							#	click_mode = single
+							#	title = "SHOW_HERDS_BUILDINGS"
+							#	on_action = "[OpenLateralViewWithFilter('production', 'herds_category')]"
+							#	on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
+							#}
+						}
+
+						tooltipwidget = {
+							ContextualTooltipType = {
+								blockoverride "title_text" {
+									datacontext = "[Country]"
+									text = "dynasty_stability_TOOLTIP_HEADER"
+								}
+
+								blockoverride "concept_link" {
+									text = "[dynasty_stability|e]"
+								}
+
+								blockoverride "title_icon" {
+									icon = {
+										using = tooltip_title_icon_size
+										texture = "gfx/interface/icons/modifier_types/_default.dds"
 									}
 								}
 
-								blockoverride "Icon_Size" { size = { 60% 60% } }
-								blockoverride "Icon" {
-									texture = "gfx/interface/icons/flat_icons/estates/estates.dds"
-									texture_density = 2
-									alwaystransparent = yes
+								blockoverride "tooltip_content" {
+
+									TooltipStringPairList = {
+										blockoverride "block_title" {
+											text = "dynasty_stability_CHANGE_TT"
+										}
+										textcontext = "[Country.GetDescriptionFor('dynasty_stability_monthly_income')]"
+									}
+
+									TooltipScrolledStringPairList = {
+										blockoverride "block_scrollarea" { maximumsize = { -1 300 } minimumsize = { -1 30 } }
+										block "content_datacontext" { }
+										blockoverride "block_title" {
+											text = "dynasty_stability_MODIFIER_DEC_TT"
+										}
+										textcontext = "[Localize(GetAutoModifier('dynasty_stability_modifier').GetDesc)]"
+									}
+
+									textbox = {
+										margin = { 10 0 }
+										using = text_single_template
+										minimumsize = { -1 30 }
+										text = "negative_dynasty_stability_MODIFIER_DEC_TT"
+									}
+
+									#TooltipScrolledStringPairList = {
+									#	blockoverride "block_scrollarea" { maximumsize = { -1 300 } minimumsize = { -1 30 } }
+									#	block "content_datacontext" { }
+									#	blockoverride "block_title" {
+									#		text = "N_CORRUPTION_MODIFIER_DEC_TT"
+									#	}
+									#	textcontext = "[Localize(GetAutoModifier('negative_corruption_modifier').GetDesc)]"
+									#}
 								}
+							}
+						}
+
+						# ESTATE ICON
+						icon = {
+							size = { 24 24 }
+							texture = "gfx/interface/icons/modifier_types/_default.dds"
+						}
+
+						vbox = {
+							margin_left = 3
+							margin_right = 6
+
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								spacing = 2
+								text_single = {
+									maximumsize = { -1 18 }
+									autoresize = yes
+									align = left|nobaseline
+									using = Font_Size_Small
+									text = "[Country.MakeScope.GetVariable('dynasty_stability').GetValue|0]"
+								}
+
+								expand = { }
+							}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								spacing = 2
+
+								text_single = {
+									maximumsize = { -1 12 }
+									autoresize = yes
+									align = left|nobaseline
+									using = Font_Size_Very_Small
+									text = "[Country.GetModifierValueNoFormat('dynasty_stability_monthly_income')]"
+								}
+
+								expand = { }
+							}
+
+
+							expand = { }
+						}
+					}
+
+					# STAT PLAYER - POPULATION
+					stat_player = {
+						name = "stat_population"
+						using = layoutpolicy_expanding
+						margin = { 5 0 }
+
+						blockoverride "context_value_gradient_visible" {
+							visible = "[IsLateralGroupOpened('society_group')]"
+						}
+
+						blockoverride "stat_button" {
+							onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('population')]"
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "GOTO_POPS"
+								on_action = "[OpenLateralView('country_people')]"
+							}
+
+							tooltip = "[Country.GetTotalPopulation]"
+							tagtooltip_enabled = yes
+						}
+
+						icon = {
+							size = { 24 24 }
+							texture = "gfx/interface/icons/location_icons/population.dds"
+							texture_density = 2
+						}
+
+						vbox = {
+							margin_left = 3
+							margin_right = 6
+
+							hbox = {
+								using = layoutpolicy_expanding
+
+								text_single = {
+									maximumsize = { -1 18 }
+									autoresize = yes
+									align = left|nobaseline
+									using = Font_Size_Small
+									text = "[Country.GetTotalPopulationNoLink]"
+								}
+
+								expand = {}
+							}
+
+							hbox = {
+								using = layoutpolicy_expanding
+								using = text_single_positive_zero_negative
+
+								blockoverride "text_setup" {
+									maximumsize = { -1 12 }
+									autoresize = yes
+									align = left|nobaseline
+									using = Font_Size_Very_Small
+									text = "[Country.GetLastMonthsPopulationText]"
+								}
+
+								blockoverride "visible_positive" {
+									visible = "[GreaterThan_CFixedPoint(Country.GetLastMonthsPopulationChange, '(CFixedPoint)0')]"
+								}
+
+								blockoverride "visible_negative" {
+									visible = "[LessThan_CFixedPoint(Country.GetLastMonthsPopulationChange, '(CFixedPoint)0')]"
+								}
+
+								blockoverride "visible_zero" {
+									visible = "[EqualTo_CFixedPoint(Country.GetLastMonthsPopulationChange, '(CFixedPoint)0')]"
+								}
+
+								blockoverride "text_zero" {
+									raw_text = "="
+								}
+
+								expand = {}
+							}
+						}
+
+						expand = {}
+					}
+
+					### STAT PLAYER - LEGITIMACY
+					stat_player = {
+						name = "stat_legitimacy"
+						using = layoutpolicy_expanding
+
+						blockoverride "decreasing_value_gradient_visible" {
+							visible = "[Country.IsCurrencyValueEqualOrLessThanZero('legitimacy')]"
+						}
+
+						blockoverride "context_value_gradient_visible" {
+							visible = "[IsLateralGroupOpened('government_group')]"
+						}
+
+						blockoverride "stat_button" {
+							action_tooltip = {
+								click_type = right
+								click_mode = single
+								title = "AUTOMATED_SYSTEM_CABINETMEMBERS_CLICK"
+								on_action = "[OpenLateralViewWithParams('government', 'tabcontent = cabinet')]"
+							}
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "GOTO_BALANCE"
+								on_action = "[OpenLateralView('economy')]"
+							}
+
+							tooltipwidget = {
+								using = LegitimacyResourceTooltip
+								blockoverride "content_datacontext" {
+									datacontext = "[Country.GetEconomy]"
+								}
+								# blockoverride "show_hint" { visible = "[Country.HasHint('legitimacy')]" }
+								# blockoverride "extra_title" { text = "LEGITIMACY_HINT" }
+								# blockoverride "extra_text" { text = "[Country.GetCurrencyTooltipHint('legitimacy')]" }
+							}
+						}
+
+						vbox = {
+							using = layoutpolicy_expanding
+							margin = { 4 0 }
+							margin_bottom = 2
+							spacing = -2
+
+							expand = {}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								spacing = 2
+
+								# ESTATE ICON
+								icon = {
+									size = { 24 24 }
+									texture = "[GetLegitimacyIcon(Country.GetGovernment.GetGovernmentType)]"
+								}
+
+								hbox = {
+									using = layoutpolicy_expanding
+									spacing = 2
+
+									text_single = {
+										maximumsize = { -1 18 }
+										autoresize = yes
+										align = left|nobaseline
+										using = Font_Size_Small
+										text = "[Country.GetCurrencyValue('legitimacy')]"
+									}
+
+									hbox = {
+										using = layoutpolicy_expanding
+										using = text_single_positive_zero_negative
+
+										blockoverride "text_setup" {
+											maximumsize = { -1 18 }
+											autoresize = yes
+											align = left|nobaseline
+											using = Font_Size_Very_Small
+										}
+
+										blockoverride "visible_positive" {
+											visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('legitimacy'), '(CFixedPoint)0')]"
+											raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('legitimacy')]"
+										}
+
+										blockoverride "visible_negative" {
+											visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('legitimacy'), '(CFixedPoint)0')]"
+											raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('legitimacy')]"
+										}
+
+										expand = {}
+									}
+								}
+							}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								margin = { 2 2 }
+
+								progressbar_framed = {
+									visible = "[GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('legitimacy'), '(CFixedPoint)50')]"
+									using = progress_bar_green_alt
+									noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+									block "progress_setup" {}
+								}
+
+								progressbar_framed = {
+									visible = "[And(Not(GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('legitimacy'), '(CFixedPoint)50')), Not(EqualTo_CFixedPoint(Country.GetFixedPointCurrencyValue('legitimacy'), '(CFixedPoint)0')))]"
+									using = progress_bar_red_alt
+									noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+									block "progress_setup" {}
+								}
+
+								blockoverride "progress_setup" {
+									layoutpolicy_horizontal = expanding
+									size = { -1 4 }
+
+									min = 0
+									max = "[FixedPointToFloat(Country.GetCurrencyMaxValue('legitimacy'))]"
+									value = "[FixedPointToFloat(Country.GetFixedPointCurrencyValue('legitimacy'))]"
+									direction = horizontal
+								}
+							}
+
+							expand = {}
+						}
+					}
+
+					### STAT PLAYER - CORRUPTION
+					stat_player = {
+						name = "stat_corruption"
+						using = layoutpolicy_expanding
+						visible = "[GetPlayer.MakeScope.GetVariable('corruption').IsSet]"
+
+						tooltipmeta = {
+							texture = "gfx/interface/icons/modifier_types/_default.dds"
+						}
+
+						blockoverride "decreasing_value_gradient_visible" {
+							visible = no
+						}
+
+						blockoverride "stat_button" {
+
+							#action_tooltip = {
+							#	click_type = left
+							#	click_mode = single
+							#	title = "SHOW_HERDS_BUILDINGS"
+							#	on_action = "[OpenLateralViewWithFilter('production', 'herds_category')]"
+							#	on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
+							#}
+						}
+
+						tooltipwidget = {
+							ContextualTooltipType = {
+								blockoverride "title_text" {
+									datacontext = "[Country]"
+									text = "CORRUPTION_TOOLTIP_HEADER"
+								}
+
+								blockoverride "concept_link" {
+									using = corruption_regular
+								}
+
+								blockoverride "title_icon" {
+									icon = {
+										using = tooltip_title_icon_size
+										texture = "gfx/interface/icons/modifier_types/_default.dds"
+									}
+								}
+
+								blockoverride "tooltip_content" {
+
+									TooltipStringPairList = {
+										blockoverride "block_title" {
+											text = "CORRUPTION_CHANGE_TT"
+										}
+										textcontext = "[Country.GetDescriptionFor('corruption_monthly_income')]"
+									}
+
+									TooltipScrolledStringPairList = {
+										blockoverride "block_scrollarea" { maximumsize = { -1 300 } minimumsize = { -1 30 } }
+										block "content_datacontext" { }
+										blockoverride "block_title" {
+											text = "CORRUPTION_MODIFIER_DEC_TT"
+										}
+										textcontext = "[Localize(GetAutoModifier('corruption_modifier').GetDesc)]"
+									}
+
+									#TooltipScrolledStringPairList = {
+									#	blockoverride "block_scrollarea" { maximumsize = { -1 300 } minimumsize = { -1 30 } }
+									#	block "content_datacontext" { }
+									#	blockoverride "block_title" {
+									#		text = "N_CORRUPTION_MODIFIER_DEC_TT"
+									#	}
+									#	textcontext = "[Localize(GetAutoModifier('negative_corruption_modifier').GetDesc)]"
+									#}
+								}
+							}
+						}
+
+						# ESTATE ICON
+						icon = {
+							size = { 24 24 }
+							texture = "gfx/interface/icons/modifier_types/_default.dds"
+						}
+
+						vbox = {
+							margin_left = 3
+							margin_right = 6
+
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								spacing = 2
+
+								text_single = {
+									maximumsize = { -1 18 }
+									autoresize = yes
+									align = left|nobaseline
+									using = Font_Size_Small
+									text = "[Country.MakeScope.GetVariable('corruption').GetValue|0]"
+								}
+
+								expand = { }
+							}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								spacing = 2
+
+								text_single = {
+									maximumsize = { -1 12 }
+									autoresize = yes
+									align = left|nobaseline
+									using = Font_Size_Very_Small
+									text = "[Country.GetModifierValueNoFormat('corruption_monthly_income')]"
+								}
+
+								expand = { }
+							}
+
+							expand = { }
+						}
+					}
+
+					### STAT PLAYER - PRESTIGE
+					stat_player = {
+						name = "stat_prestige"
+						using = layoutpolicy_expanding
+
+						blockoverride "decreasing_value_gradient_visible" {
+							visible = "[Country.IsCurrencyValueEqualOrLessThanZero('prestige')]"
+						}
+
+						blockoverride "context_value_gradient_visible" {
+							visible = "[Or(IsLateralGroupOpened('government_group'), Or(IsLateralGroupOpened('diplomacy_group'), IsLateralViewOpened('foreign_country')))]"
+						}
+
+						blockoverride "stat_button" {
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "GOTO_BALANCE"
+								on_action = "[OpenLateralView('economy')]"
+							}
+
+							action_tooltip = {
+								click_type = right
+								click_mode = single
+								title = "CULTURE_LATERAL_VIEW_WORKS_OF_ART"
+								on_action =  "[OpenLateralViewWithParams('country_culture', 'subtab = works_of_art')]"
+							}
+
+							tooltipwidget = {
+								using = PrestigeResourceTooltip
+								blockoverride "content_datacontext" {
+									datacontext = "[Country.GetEconomy]"
+								}
+								# blockoverride "show_hint" { visible = "[Country.HasHint('prestige')]" }
+								# blockoverride "extra_title" { text = "PRESTIGE_HINT" }
+								# blockoverride "extra_text" { text = "[Country.GetCurrencyTooltipHint('prestige')]" }
+							}
+						}
+
+						vbox = {
+							using = layoutpolicy_expanding
+							margin = { 4 0 }
+							margin_bottom = 2
+							spacing = -2
+
+							expand = {}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								spacing = 2
+
+								# ESTATE ICON
+								widget = {
+									size = { 24 24 }
+									icon = {
+										parentanchor = center
+										size = { 75% 75% }
+										texture = "gfx/interface/icons/resources/prestige.dds"
+									}
+								}
+
+
+								hbox = {
+									using = layoutpolicy_expanding
+									spacing = 2
+
+									text_single = {
+										maximumsize = { -1 18 }
+										autoresize = yes
+										align = left|nobaseline
+										using = Font_Size_Small
+										text = "[Country.GetCurrencyValue('prestige')]"
+									}
+
+									hbox = {
+										using = layoutpolicy_expanding
+										using = text_single_positive_zero_negative
+
+										blockoverride "text_setup" {
+											maximumsize = { -1 18 }
+											autoresize = yes
+											align = left|nobaseline
+											using = Font_Size_Very_Small
+											text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('prestige')]"
+										}
+
+										blockoverride "visible_positive" {
+											visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('prestige'), '(CFixedPoint)0')]"
+										}
+
+										blockoverride "visible_negative" {
+											visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('prestige'), '(CFixedPoint)0')]"
+										}
+
+										expand = {}
+									}
+								}
+							}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								margin = { 2 2 }
+
+								progressbar_framed = {
+									visible = "[GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('prestige'), '(CFixedPoint)50')]"
+									using = progress_bar_green_alt
+									noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+									block "progress_setup" {}
+								}
+
+								progressbar_framed = {
+									visible = "[And(Not(GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('prestige'), '(CFixedPoint)50')), Not(EqualTo_CFixedPoint(Country.GetFixedPointCurrencyValue('prestige'), '(CFixedPoint)0')))]"
+									using = progress_bar_red_alt
+									noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+									block "progress_setup" {}
+								}
+
+								blockoverride "progress_setup" {
+									layoutpolicy_horizontal = expanding
+									size = { -1 4 }
+
+									min = 0
+									max = "[FixedPointToFloat(Country.GetCurrencyMaxValue('prestige'))]"
+									value = "[FixedPointToFloat(Country.GetFixedPointCurrencyValue('prestige'))]"
+									direction = horizontal
+								}
+							}
+
+							expand = {}
+						}
+					}
+
+					### STAT PLAYER - POLITICAL INFLUENCE
+					stat_player = {
+						name = "stat_political_influence"
+						using = layoutpolicy_expanding
+
+						blockoverride "decreasing_value_gradient_visible" {
+							visible = "[Country.IsCurrencyValueEqualOrLessThanZero('political_influence')]"
+						}
+
+						blockoverride "context_value_gradient_visible" {
+							visible = "[IsLateralGroupOpened('government_group')]"
+						}
+
+						blockoverride "stat_button" {
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "GOTO_GOVERNMENT"
+								on_action = "[OpenLateralView('government')]"
+							}
+
+							tooltipwidget = {
+								using = PoliticalInfluenceResourceTooltip
+								blockoverride "content_datacontext" {
+									datacontext = "[Country.GetEconomy]"
+								}
+							}
+						}
+
+						vbox = {
+							using = layoutpolicy_expanding
+							margin = { 4 0 }
+							margin_bottom = 2
+							spacing = -2
+
+							expand = {}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								spacing = 2
 
 								icon = {
-									size = { 40% 40% }
-									parentanchor = center
-									alwaystransparent = yes
-
-									texture = "gfx/interface/icons/foreign_country/power.dds"
-
-									glow = {
-										name = "drop_shadow"
-										glow_radius = 2
-										color = {0.0 0.0 0.0 1.0}
-									}
-								}
-
-								background = {
-									texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
-									texture_density = 2
-
-									modify_texture = {
-										using = color_gold_texture
-									}
-
-									using = overlay_gold
-								}
-							}
-						}
-
-						### STAT PLAYER - INCOME
-						stat_player = {
-							name = "stat_gold"
-							using = layoutpolicy_expanding
-							margin = { 5 0 }
-
-							blockoverride "context_value_gradient_visible" {
-								visible = "[IsLateralGroupOpened('economy_group')]"
-							}
-
-							blockoverride "stat_button" {
-								action_tooltip = {
-									click_type = left
-									click_mode = single
-									title = "GOTO_BALANCE"
-									on_action = "[OpenLateralView('economy')]"
-								}
-
-								action_tooltip = {
-									click_type = left
-									click_mode = single
-									click_modifier = shift
-									title = "ALERT_HINT"
-									visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('gold'), '(CFixedPoint)0')]"
-									on_action = "[OpenLateralView('economy')]"
-									on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_in_deficit')]"
-									on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
-								}
-
-								action_tooltip = {
-									click_type = right
-									click_mode = single
-									title = "TAB_TOOLTIP_PRODUCTION_LEFT_CLICK"
-									on_action = "[OpenLateralView('production')]"
-								}
-
-								tooltipwidget = {
-									using = GoldResourceTooltip
-
-									blockoverride "content_datacontext" { datacontext = "[GetEconomyView]" }
-									# blockoverride "show_hint" { visible = "[Country.HasHint('gold')]" }
-									# blockoverride "extra_title" { text = "GOLD_HINT" }
-									# blockoverride "extra_text" { text = "[Country.GetCurrencyTooltipHint('gold')]" }
-									blockoverride "shift_left_extra" { replacement_shift_item = {} }
-								}
-							}
-
-							icon = {
-								size = { 24 24 }
-								texture = "gfx/interface/icons/resources/gold.dds"
-								texture_density = 2
-							}
-
-							vbox = {
-								margin_left = 3
-								margin_right = 6
-
-								hbox = {
-									using = layoutpolicy_expanding
-									using = text_single_positive_negative
-
-									blockoverride "text_setup" {
-										maximumsize = { -1 18 }
-										autoresize = yes
-										align = left|nobaseline
-										using = Font_Size_Small
-										text = "[Country.GetCurrencyValue('gold')]"
-									}
-
-									blockoverride "visible_positive" {
-										visible = "[Not(LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('gold'), '(CFixedPoint)0'))]"
-									}
-
-									blockoverride "visible_negative" {
-										visible = "[LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('gold'), '(CFixedPoint)0')]"
-										default_format = "#color_red;bold"
-									}
-
-									expand = {}
+									size = { 24 24 }
+									texture = "gfx/interface/icons/resources/political_influence.dds"
 								}
 
 								hbox = {
 									using = layoutpolicy_expanding
-									using = text_single_positive_zero_negative
-
-									blockoverride "text_setup" {
-										maximumsize = { -1 12 }
-										autoresize = yes
-										align = left|nobaseline
-										using = Font_Size_Very_Small
-										text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('gold')]"
-									}
-
-									blockoverride "visible_positive" {
-										visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('gold'), '(CFixedPoint)0')]"
-									}
-
-									blockoverride "visible_negative" {
-										visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('gold'), '(CFixedPoint)0')]"
-									}
-
-									blockoverride "visible_zero" {
-										visible = "[EqualTo_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('gold'), '(CFixedPoint)0')]"
-									}
-
-									blockoverride "text_zero" {
-										raw_text = "="
-									}
-
-									expand = {}
-								}
-							}
-
-							expand = {}
-						}
-
-						### STAT PLAYER - STABILITY
-						stat_player = {
-							name = "stat_stability"
-							using = layoutpolicy_expanding
-							margin = { 5 0 }
-
-							blockoverride "context_value_gradient_visible" {
-								visible = "[IsLateralGroupOpened('government_group')]"
-							}
-
-							blockoverride "decreasing_value_gradient_visible" {
-								visible = "[Country.IsCurrencyValueEqualOrLessThanZero('stability')]"
-							}
-
-							blockoverride "stat_button" {
-								action_tooltip = {
-									click_type = right
-									click_mode = single
-									title = "AUTOMATED_SYSTEM_CABINET_CLICK"
-									on_action = "[OpenLateralViewWithParams('government', 'tabcontent = cabinet')]"
-								}
-
-								action_tooltip = {
-									click_type = left
-									click_mode = single
-									title = "GOTO_BALANCE"
-									on_action = "[OpenLateralView('economy')]"
-								}
-
-								action_tooltip = {
-									visible = "[LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('stability'), '(CFixedPoint)0')]"
-									click_modifier = shift
-									click_type = left
-									title = "ALERT_HINT"
-									using = snd_UI_alert_openAndCycle
-									on_action = "[OpenLateralView('economy')]"
-									on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_stability')]"
-									on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
-								}
-
-								action_tooltip = {
-									visible = "[LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('stability'), '(CFixedPoint)-50')]"
-									click_modifier = shift
-									click_type = left
-									title = "ALERT_HINT"
-									using = snd_UI_alert_openAndCycle
-									on_action = "[OpenLateralView('economy')]"
-									on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_very_low_stability')]"
-									on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
-								}
-
-								tooltipwidget = {
-									blockoverride "shift_left_extra" {
-										replacement_shift_item = {}
-									}
-									using = StabilityResourceTooltip
-
-									blockoverride "content_datacontext" { datacontext = "[Country.GetEconomy]" }
-									# blockoverride "show_hint" { visible = "[Country.HasHint('stability')]" }
-									# blockoverride "extra_title" { text = "STABILITY_HINT" }
-									# blockoverride "extra_text" { text = "[Country.GetCurrencyTooltipHint('stability')]" }
-								}
-							}
-
-							icon = {
-								size = { 24 24 }
-								texture = "gfx/interface/icons/resources/stability.dds"
-								texture_density = 2
-							}
-
-							vbox = {
-								margin_left = 3
-								margin_right = 6
-
-								hbox = {
-									using = layoutpolicy_expanding
-									using = text_single_positive_negative
-
-									blockoverride "text_setup" {
-										maximumsize = { -1 18 }
-										autoresize = yes
-										align = left|nobaseline
-										using = Font_Size_Small
-										text = "[Country.GetCurrencyValue('stability')]"
-									}
-
-									blockoverride "visible_positive" {
-										visible = "[Not(LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('stability'), '(CFixedPoint)0'))]"
-									}
-
-									blockoverride "visible_negative" {
-										visible = "[LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('stability'), '(CFixedPoint)0')]"
-										default_format = "#color_red;bold"
-									}
-
-									expand = {}
-								}
-
-								hbox = {
-									using = layoutpolicy_expanding
-									using = text_single_positive_zero_negative
-
-									blockoverride "text_setup" {
-										maximumsize = { -1 12 }
-										autoresize = yes
-										align = left|nobaseline
-										using = Font_Size_Very_Small
-										text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('stability')]"
-									}
-
-									blockoverride "visible_positive" {
-										visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('stability'), '(CFixedPoint)0')]"
-									}
-
-									blockoverride "visible_negative" {
-										visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('stability'), '(CFixedPoint)0')]"
-									}
-
-									blockoverride "visible_zero" {
-										visible = "[EqualTo_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('stability'), '(CFixedPoint)0')]"
-									}
-
-									blockoverride "text_zero" {
-										raw_text = "="
-									}
-
-									expand = {}
-								}
-							}
-
-							expand = {}
-						}
-
-						### STAT PLAYER - Dynasty Stability
-						stat_player = {
-							name = "stat_dynasty_stability"
-							using = layoutpolicy_expanding
-							visible = "[GetPlayer.MakeScope.GetVariable('dynasty_stability').IsSet]"
-
-							tooltipmeta = {
-								texture = "gfx/interface/icons/modifier_types/_default.dds"
-							}
-
-							blockoverride "decreasing_value_gradient_visible" {
-								visible = no
-							}
-
-							blockoverride "stat_button" {
-
-								#action_tooltip = {
-								#	click_type = left
-								#	click_mode = single
-								#	title = "SHOW_HERDS_BUILDINGS"
-								#	on_action = "[OpenLateralViewWithFilter('production', 'herds_category')]"
-								#	on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
-								#}
-							}
-
-							tooltipwidget = {
-								ContextualTooltipType = {
-									blockoverride "title_text" {
-										datacontext = "[Country]"
-										text = "dynasty_stability_TOOLTIP_HEADER"
-									}
-
-									blockoverride "concept_link" {
-										text = "[dynasty_stability|e]"
-									}
-
-									blockoverride "title_icon" {
-										icon = {
-											using = tooltip_title_icon_size
-											texture = "gfx/interface/icons/modifier_types/_default.dds"
-										}
-									}
-
-									blockoverride "tooltip_content" {
-
-										TooltipStringPairList = {
-											blockoverride "block_title" {
-												text = "dynasty_stability_CHANGE_TT"
-											}
-											textcontext = "[Country.GetDescriptionFor('dynasty_stability_monthly_income')]"
-										}
-
-										TooltipScrolledStringPairList = {
-											blockoverride "block_scrollarea" { maximumsize = { -1 300 } minimumsize = { -1 30 } }
-											block "content_datacontext" { }
-											blockoverride "block_title" {
-												text = "dynasty_stability_MODIFIER_DEC_TT"
-											}
-											textcontext = "[Localize(GetAutoModifier('dynasty_stability_modifier').GetDesc)]"
-										}
-
-										textbox = {
-											margin = { 10 0 }
-											using = text_single_template
-											minimumsize = { -1 30 }
-											text = "negative_dynasty_stability_MODIFIER_DEC_TT"
-										}
-
-										#TooltipScrolledStringPairList = {
-										#	blockoverride "block_scrollarea" { maximumsize = { -1 300 } minimumsize = { -1 30 } }
-										#	block "content_datacontext" { }
-										#	blockoverride "block_title" {
-										#		text = "N_CORRUPTION_MODIFIER_DEC_TT"
-										#	}
-										#	textcontext = "[Localize(GetAutoModifier('negative_corruption_modifier').GetDesc)]"
-										#}
-									}
-								}
-							}
-
-							# ESTATE ICON
-							icon = {
-								size = { 24 24 }
-								texture = "gfx/interface/icons/modifier_types/_default.dds"
-							}
-
-							vbox = {
-								margin_left = 3
-								margin_right = 6
-
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									spacing = 2
-									text_single = {
-										maximumsize = { -1 18 }
-										autoresize = yes
-										align = left|nobaseline
-										using = Font_Size_Small
-										text = "[Country.MakeScope.GetVariable('dynasty_stability').GetValue|0]"
-									}
-
-									expand = { }
-								}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
 									spacing = 2
 
 									text_single = {
-										maximumsize = { -1 12 }
-										autoresize = yes
-										align = left|nobaseline
-										using = Font_Size_Very_Small
-										text = "[Country.GetModifierValueNoFormat('dynasty_stability_monthly_income')]"
-									}
-
-									expand = { }
-								}
-
-
-								expand = { }
-							}
-						}
-
-						# STAT PLAYER - POPULATION
-						stat_player = {
-							name = "stat_population"
-							using = layoutpolicy_expanding
-							margin = { 5 0 }
-
-							blockoverride "context_value_gradient_visible" {
-								visible = "[IsLateralGroupOpened('society_group')]"
-							}
-
-							blockoverride "stat_button" {
-								onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('population')]"
-
-								action_tooltip = {
-									click_type = left
-									click_mode = single
-									title = "GOTO_POPS"
-									on_action = "[OpenLateralView('country_people')]"
-								}
-
-								tooltip = "[Country.GetTotalPopulation]"
-								tagtooltip_enabled = yes
-							}
-
-							icon = {
-								size = { 24 24 }
-								texture = "gfx/interface/icons/location_icons/population.dds"
-								texture_density = 2
-							}
-
-							vbox = {
-								margin_left = 3
-								margin_right = 6
-
-								hbox = {
-									using = layoutpolicy_expanding
-
-									text_single = {
 										maximumsize = { -1 18 }
 										autoresize = yes
 										align = left|nobaseline
 										using = Font_Size_Small
-										text = "[Country.GetTotalPopulationNoLink]"
-									}
-
-									expand = {}
-								}
-
-								hbox = {
-									using = layoutpolicy_expanding
-									using = text_single_positive_zero_negative
-
-									blockoverride "text_setup" {
-										maximumsize = { -1 12 }
-										autoresize = yes
-										align = left|nobaseline
-										using = Font_Size_Very_Small
-										text = "[Country.GetLastMonthsPopulationText]"
-									}
-
-									blockoverride "visible_positive" {
-										visible = "[GreaterThan_CFixedPoint(Country.GetLastMonthsPopulationChange, '(CFixedPoint)0')]"
-									}
-
-									blockoverride "visible_negative" {
-										visible = "[LessThan_CFixedPoint(Country.GetLastMonthsPopulationChange, '(CFixedPoint)0')]"
-									}
-
-									blockoverride "visible_zero" {
-										visible = "[EqualTo_CFixedPoint(Country.GetLastMonthsPopulationChange, '(CFixedPoint)0')]"
-									}
-
-									blockoverride "text_zero" {
-										raw_text = "="
-									}
-
-									expand = {}
-								}
-							}
-
-							expand = {}
-						}
-
-						### STAT PLAYER - LEGITIMACY
-						stat_player = {
-							name = "stat_legitimacy"
-							using = layoutpolicy_expanding
-
-							blockoverride "decreasing_value_gradient_visible" {
-								visible = "[Country.IsCurrencyValueEqualOrLessThanZero('legitimacy')]"
-							}
-
-							blockoverride "context_value_gradient_visible" {
-								visible = "[IsLateralGroupOpened('government_group')]"
-							}
-
-							blockoverride "stat_button" {
-								action_tooltip = {
-									click_type = right
-									click_mode = single
-									title = "AUTOMATED_SYSTEM_CABINET_CLICK"
-									on_action = "[OpenLateralViewWithParams('government', 'tabcontent = cabinet')]"
-								}
-
-								action_tooltip = {
-									click_type = left
-									click_mode = single
-									title = "GOTO_BALANCE"
-									on_action = "[OpenLateralView('economy')]"
-								}
-
-								tooltipwidget = {
-									using = LegitimacyResourceTooltip
-									blockoverride "content_datacontext" {
-										datacontext = "[Country.GetEconomy]"
-									}
-									# blockoverride "show_hint" { visible = "[Country.HasHint('legitimacy')]" }
-									# blockoverride "extra_title" { text = "LEGITIMACY_HINT" }
-									# blockoverride "extra_text" { text = "[Country.GetCurrencyTooltipHint('legitimacy')]" }
-								}
-							}
-
-							vbox = {
-								using = layoutpolicy_expanding
-								margin = { 4 0 }
-								margin_bottom = 2
-								spacing = -2
-
-								expand = {}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									spacing = 2
-
-									# ESTATE ICON
-									icon = {
-										size = { 24 24 }
-										texture = "[GetLegitimacyIcon(Country.GetGovernment.GetGovernmentType)]"
+										text = "[Country.GetCurrencyValue('political_influence')]"
 									}
 
 									hbox = {
 										using = layoutpolicy_expanding
-										spacing = 2
+										using = text_single_positive_zero_negative
 
-										text_single = {
+										blockoverride "text_setup" {
 											maximumsize = { -1 18 }
 											autoresize = yes
 											align = left|nobaseline
-											using = Font_Size_Small
-											text = "[Country.GetCurrencyValue('legitimacy')]"
+											using = Font_Size_Very_Small
 										}
 
-										hbox = {
-											using = layoutpolicy_expanding
-											using = text_single_positive_zero_negative
-
-											blockoverride "text_setup" {
-												maximumsize = { -1 18 }
-												autoresize = yes
-												align = left|nobaseline
-												using = Font_Size_Very_Small
-											}
-
-											blockoverride "visible_positive" {
-												visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('legitimacy'), '(CFixedPoint)0')]"
-												raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('legitimacy')]"
-											}
-
-											blockoverride "visible_negative" {
-												visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('legitimacy'), '(CFixedPoint)0')]"
-												raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('legitimacy')]"
-											}
-
-											expand = {}
+										blockoverride "visible_positive" {
+											visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('political_influence'), '(CFixedPoint)0')]"
+											raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('political_influence')]"
 										}
+
+										blockoverride "visible_negative" {
+											visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('political_influence'), '(CFixedPoint)0')]"
+											raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('political_influence')]"
+										}
+
+										expand = {}
 									}
+								}
+							}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								margin = { 2 2 }
+
+								progressbar_framed = {
+									visible = "[GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('political_influence'), '(CFixedPoint)50')]"
+									using = progress_bar_green_alt
+									noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+									block "progress_setup" {}
+								}
+
+								progressbar_framed = {
+									visible = "[And(Not(GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('political_influence'), '(CFixedPoint)50')), Not(EqualTo_CFixedPoint(Country.GetFixedPointCurrencyValue('political_influence'), '(CFixedPoint)0')))]"
+									using = progress_bar_red_alt
+									noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+									block "progress_setup" {}
+								}
+
+								blockoverride "progress_setup" {
+									layoutpolicy_horizontal = expanding
+									size = { -1 4 }
+
+									min = 0
+									max = "[FixedPointToFloat(Country.GetCurrencyMaxValue('political_influence'))]"
+									value = "[FixedPointToFloat(Country.GetFixedPointCurrencyValue('political_influence'))]"
+									direction = horizontal
+								}
+							}
+
+							expand = {}
+						}
+					}
+
+					### STAT PLAYER - DIPLO ACTIONS
+					stat_player = {
+						name = "stat_diplo"
+						using = layoutpolicy_expanding
+
+						blockoverride "decreasing_value_gradient_visible" {
+							visible = "[Country.IsCurrencyValueEqualOrLessThanZero('diplomats')]"
+						}
+
+						blockoverride "context_value_gradient_visible" {
+							visible = "[Or(IsLateralGroupOpened('government_group'), Or(IsLateralGroupOpened('diplomacy_group'), IsLateralViewOpened('foreign_country')))]"
+						}
+
+						blockoverride "stat_button" {
+							# tooltipwidget = {
+							# 	using = DiplomatResourceTooltip
+							# }
+
+							action_tooltip = {
+								click_type = right
+								click_mode = single
+								title = "AUTOMATED_SYSTEM_DIPLOMACY_CLICK"
+								on_action =  "[OpenLateralView('diplomacy_macrobuilder')]"
+							}
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "GOTO_BALANCE"
+								on_action = "[OpenLateralView('economy')]"
+							}
+
+							action_tooltip = {
+								visible = "[LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('diplomats'), '(CFixedPoint)1')]"
+								click_modifier = shift
+								click_type = left
+								title = "ALERT_HINT"
+								click_modifier_description = "OPEN_HINT_TEXT"
+								using = snd_UI_alert_openAndCycle
+								on_action = "[OpenLateralView('economy')]"
+								on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_diplomats')]"
+								on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
+							}
+
+							tooltipwidget = {
+								using = DiplomatResourceTooltip
+
+								# blockoverride "content_datacontext" { datacontext = "[Country.GetEconomy]" }
+								# blockoverride "show_hint" { visible = "[Country.HasHint('stability')]" }
+								# blockoverride "extra_title" { text = "STABILITY_HINT" }
+								# blockoverride "extra_text" { text = "[Country.GetCurrencyTooltipHint('stability')]" }
+							}
+						}
+
+						vbox = {
+							using = layoutpolicy_expanding
+							margin = { 4 0 }
+							margin_bottom = 2
+							spacing = -2
+
+							expand = {}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								spacing = 2
+
+								# ESTATE ICON
+								icon = {
+									size = { 24 24 }
+									texture = "gfx/interface/icons/resources/diplo_actions.dds"
 								}
 
 								hbox = {
-									layoutpolicy_horizontal = expanding
-									margin = { 2 0 }
+									using = layoutpolicy_expanding
+									spacing = 2
 
-									progressbar = {
-										visible = "[GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('legitimacy'), '(CFixedPoint)50')]"
-										using = progress_bar_green_alt
-										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-										block "progress_setup" {}
+									text_single = {
+										maximumsize = { -1 18 }
+										autoresize = yes
+										align = left|nobaseline
+										using = Font_Size_Small
+										text = "[Player.GetDiplomacy.GetNumOfDiplomats|W2]"
 									}
 
-									progressbar = {
-										visible = "[And(Not(GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('legitimacy'), '(CFixedPoint)50')), Not(EqualTo_CFixedPoint(Country.GetFixedPointCurrencyValue('legitimacy'), '(CFixedPoint)0')))]"
-										using = progress_bar_red_alt
-										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-										block "progress_setup" {}
-									}
+									hbox = {
+										using = layoutpolicy_expanding
+										using = text_single_positive_zero_negative
 
-									blockoverride "progress_setup" {
+										blockoverride "text_setup" {
+											maximumsize = { -1 18 }
+											autoresize = yes
+											align = left|nobaseline
+											using = Font_Size_Very_Small
+										}
+
+										blockoverride "visible_positive" {
+											text = "[Country.GetModifierValueNoFormat('monthly_diplomats')]"
+										}
+
+										expand = {}
+									}
+								}
+							}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								margin = { 2 2 }
+
+								progressbar_framed = {
+									visible = "[And(GreaterThan_CFixedPoint(Player.GetDiplomacy.GetNumOfDiplomats, '(CFixedPoint)0'), Not(EqualTo_CFixedPoint(Player.GetDiplomacy.GetMaxNumOfDiplomats, '(CFixedPoint)0')))]"
+									using = progress_bar_green_alt
+									noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+									block "progress_setup" {
 										layoutpolicy_horizontal = expanding
 										size = { -1 4 }
 
 										min = 0
-										max = "[FixedPointToFloat(Country.GetCurrencyMaxValue('legitimacy'))]"
-										value = "[FixedPointToFloat(Country.GetFixedPointCurrencyValue('legitimacy'))]"
+										max = "[FixedPointToFloat(Player.GetDiplomacy.GetMaxNumOfDiplomats)]"
+										value = "[FixedPointToFloat(Player.GetDiplomacy.GetNumOfDiplomats)]"
 										direction = horizontal
 									}
 								}
 
-								expand = {}
-							}
-						}
-
-						### STAT PLAYER - CORRUPTION
-						stat_player = {
-							name = "stat_corruption"
-							using = layoutpolicy_expanding
-							visible = "[GetPlayer.MakeScope.GetVariable('corruption').IsSet]"
-
-							tooltipmeta = {
-								texture = "gfx/interface/icons/modifier_types/_default.dds"
-							}
-
-							blockoverride "decreasing_value_gradient_visible" {
-								visible = no
-							}
-
-							blockoverride "stat_button" {
-
-								#action_tooltip = {
-								#	click_type = left
-								#	click_mode = single
-								#	title = "SHOW_HERDS_BUILDINGS"
-								#	on_action = "[OpenLateralViewWithFilter('production', 'herds_category')]"
-								#	on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
-								#}
-							}
-
-							tooltipwidget = {
-								ContextualTooltipType = {
-									blockoverride "title_text" {
-										datacontext = "[Country]"
-										text = "CORRUPTION_TOOLTIP_HEADER"
-									}
-
-									blockoverride "concept_link" {
-										using = corruption_regular
-									}
-
-									blockoverride "title_icon" {
-										icon = {
-											using = tooltip_title_icon_size
-											texture = "gfx/interface/icons/modifier_types/_default.dds"
-										}
-									}
-
-									blockoverride "tooltip_content" {
-
-                                        TooltipStringPairList = {
-											blockoverride "block_title" {
-												text = "CORRUPTION_CHANGE_TT"
-											}
-                                            textcontext = "[Country.GetDescriptionFor('corruption_monthly_income')]"
-                                        }
-
-										TooltipScrolledStringPairList = {
-											blockoverride "block_scrollarea" { maximumsize = { -1 300 } minimumsize = { -1 30 } }
-											block "content_datacontext" { }
-											blockoverride "block_title" {
-												text = "CORRUPTION_MODIFIER_DEC_TT"
-											}
-											textcontext = "[Localize(GetAutoModifier('corruption_modifier').GetDesc)]"
-										}
-
-										#TooltipScrolledStringPairList = {
-										#	blockoverride "block_scrollarea" { maximumsize = { -1 300 } minimumsize = { -1 30 } }
-										#	block "content_datacontext" { }
-										#	blockoverride "block_title" {
-										#		text = "N_CORRUPTION_MODIFIER_DEC_TT"
-										#	}
-										#	textcontext = "[Localize(GetAutoModifier('negative_corruption_modifier').GetDesc)]"
-										#}
-									}
-								}
-							}
-
-							# ESTATE ICON
-							icon = {
-								size = { 24 24 }
-								texture = "gfx/interface/icons/modifier_types/_default.dds"
-							}
-
-							vbox = {
-								margin_left = 3
-								margin_right = 6
-
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									spacing = 2
-
-									text_single = {
-										maximumsize = { -1 18 }
-										autoresize = yes
-										align = left|nobaseline
-										using = Font_Size_Small
-										text = "[Country.MakeScope.GetVariable('corruption').GetValue|0]"
-									}
-
-									expand = { }
-								}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									spacing = 2
-
-									text_single = {
-										maximumsize = { -1 12 }
-										autoresize = yes
-										align = left|nobaseline
-										using = Font_Size_Very_Small
-										text = "[Country.GetModifierValueNoFormat('corruption_monthly_income')]"
-									}
-
-									expand = { }
-								}
-
-								expand = { }
-							}
-						}
-
-						### STAT PLAYER - PRESTIGE
-						stat_player = {
-							name = "stat_prestige"
-							using = layoutpolicy_expanding
-
-							blockoverride "decreasing_value_gradient_visible" {
-								visible = "[Country.IsCurrencyValueEqualOrLessThanZero('prestige')]"
-							}
-
-							blockoverride "context_value_gradient_visible" {
-								visible = "[Or(IsLateralGroupOpened('government_group'), Or(IsLateralGroupOpened('diplomacy_group'), IsLateralViewOpened('foreign_country')))]"
-							}
-
-							blockoverride "stat_button" {
-								action_tooltip = {
-									click_type = left
-									click_mode = single
-									title = "GOTO_BALANCE"
-									on_action = "[OpenLateralView('economy')]"
-								}
-
-								action_tooltip = {
-									click_type = right
-									click_mode = single
-									title = "CULTURE_LATERAL_VIEW_WORKS_OF_ART"
-									on_action =  "[OpenLateralViewWithParams('country_culture', 'subtab = works_of_art')]"
-								}
-
-								tooltipwidget = {
-									using = PrestigeResourceTooltip
-									blockoverride "content_datacontext" {
-										datacontext = "[Country.GetEconomy]"
-									}
-									# blockoverride "show_hint" { visible = "[Country.HasHint('prestige')]" }
-									# blockoverride "extra_title" { text = "PRESTIGE_HINT" }
-									# blockoverride "extra_text" { text = "[Country.GetCurrencyTooltipHint('prestige')]" }
-								}
-							}
-
-							vbox = {
-								using = layoutpolicy_expanding
-								margin = { 4 0 }
-								margin_bottom = 2
-								spacing = -2
-
-								expand = {}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									spacing = 2
-
-									# ESTATE ICON
-									widget = {
-										size = { 24 24 }
-										icon = {
-											parentanchor = center
-											size = { 75% 75% }
-											texture = "gfx/interface/icons/resources/prestige.dds"
-										}
-									}
-
-
-									hbox = {
-										using = layoutpolicy_expanding
-										spacing = 2
-
-										text_single = {
-											maximumsize = { -1 18 }
-											autoresize = yes
-											align = left|nobaseline
-											using = Font_Size_Small
-											text = "[Country.GetCurrencyValue('prestige')]"
-										}
-
-										hbox = {
-											using = layoutpolicy_expanding
-											using = text_single_positive_zero_negative
-
-											blockoverride "text_setup" {
-												maximumsize = { -1 18 }
-												autoresize = yes
-												align = left|nobaseline
-												using = Font_Size_Very_Small
-												text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('prestige')]"
-											}
-
-											blockoverride "visible_positive" {
-												visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('prestige'), '(CFixedPoint)0')]"
-											}
-
-											blockoverride "visible_negative" {
-												visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('prestige'), '(CFixedPoint)0')]"
-											}
-
-											expand = {}
-										}
-									}
-								}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									margin = { 2 0 }
-
-									progressbar = {
-										visible = "[GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('prestige'), '(CFixedPoint)50')]"
-										using = progress_bar_green_alt
-										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-										block "progress_setup" {}
-									}
-
-									progressbar = {
-										visible = "[And(Not(GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('prestige'), '(CFixedPoint)50')), Not(EqualTo_CFixedPoint(Country.GetFixedPointCurrencyValue('prestige'), '(CFixedPoint)0')))]"
-										using = progress_bar_red_alt
-										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-										block "progress_setup" {}
-									}
-
-									blockoverride "progress_setup" {
-										layoutpolicy_horizontal = expanding
+								progressbar_framed = {
+									visible = "[And(GreaterThan_CFixedPoint(Player.GetDiplomacy.GetNumOfDiplomats, '(CFixedPoint)0'), EqualTo_CFixedPoint(Player.GetDiplomacy.GetMaxNumOfDiplomats, '(CFixedPoint)0'))]"
+									using = progress_bar_goldish
+									noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+									block "progress_setup" {
 										size = { -1 4 }
 
 										min = 0
-										max = "[FixedPointToFloat(Country.GetCurrencyMaxValue('prestige'))]"
-										value = "[FixedPointToFloat(Country.GetFixedPointCurrencyValue('prestige'))]"
+										max = 100
+										value = 100
 										direction = horizontal
+										layoutpolicy_horizontal = expanding
 									}
 								}
+							}
 
-								expand = {}
+							expand = {}
+						}
+					}
+
+					#### WAR STATS ##############################################
+
+					### STAT PLAYER - WAR EXHAUSTION
+					stat_player = {
+						name = "stat_exhaustion"
+						using = layoutpolicy_expanding
+						margin = { 5 0 }
+
+						blockoverride "decreasing_value_gradient_visible" {
+							visible = "[Not(Country.IsCurrencyValueEqualOrLessThanZero('war_exhaustion'))]"
+						}
+
+						blockoverride "context_value_gradient_visible" {
+							visible = "[IsLateralGroupOpened('government_group')]"
+						}
+
+						blockoverride "stat_button" {
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "AUTOMATED_SYSTEM_CABINETMEMBERS_CLICK"
+								on_action = "[OpenLateralViewWithParams('government', 'tabcontent = cabinet')]"
+							}
+
+							action_tooltip = {
+								click_modifier = shift
+								click_type = left
+								title = "ALERT_HINT"
+								click_modifier_description = "OPEN_HINT_TEXT"
+								using = snd_UI_alert_openAndCycle
+								on_action = "[OpenLateralViewWithParams('government', 'tabcontent = cabinet')]"
+								on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_war_exhaustion')]"
+								on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
+							}
+
+							tooltipwidget = {
+								using = WarExhaustionTooltip
+								# blockoverride "show_hint" { visible = "[Country.HasHint('war_exhaustion')]" }
+								# blockoverride "extra_title" { text = "WAR_EXHAUSTION_HINT" }
+								# blockoverride "extra_text" { text = "[Country.GetCurrencyTooltipHint('war_exhaustion')]" }
 							}
 						}
 
-						### STAT PLAYER - DIPLO ACTIONS
-						stat_player = {
-							name = "stat_diplo"
-							using = layoutpolicy_expanding
-
-							blockoverride "decreasing_value_gradient_visible" {
-								visible = "[Country.IsCurrencyValueEqualOrLessThanZero('diplomats')]"
-							}
-
-							blockoverride "context_value_gradient_visible" {
-								visible = "[Or(IsLateralGroupOpened('government_group'), Or(IsLateralGroupOpened('diplomacy_group'), IsLateralViewOpened('foreign_country')))]"
-							}
-
-							blockoverride "stat_button" {
-								# tooltipwidget = {
-								# 	using = DiplomatResourceTooltip
-								# }
-
-								action_tooltip = {
-									click_type = right
-									click_mode = single
-									title = "AUTOMATED_SYSTEM_DIPLOMACY_CLICK"
-									on_action =  "[OpenLateralView('diplomacy_macrobuilder')]"
-								}
-
-								action_tooltip = {
-									click_type = left
-									click_mode = single
-									title = "GOTO_BALANCE"
-									on_action = "[OpenLateralView('economy')]"
-								}
-
-								action_tooltip = {
-									visible = "[LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('diplomats'), '(CFixedPoint)1')]"
-									click_modifier = shift
-									click_type = left
-									title = "ALERT_HINT"
-									using = snd_UI_alert_openAndCycle
-									on_action = "[OpenLateralView('economy')]"
-									on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_diplomats')]"
-									on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
-								}
-
-								tooltipwidget = {
-									blockoverride "shift_left_extra" {
-										replacement_shift_item = {}
-									}
-									using = DiplomatResourceTooltip
-
-									# blockoverride "content_datacontext" { datacontext = "[Country.GetEconomy]" }
-									# blockoverride "show_hint" { visible = "[Country.HasHint('stability')]" }
-									# blockoverride "extra_title" { text = "STABILITY_HINT" }
-									# blockoverride "extra_text" { text = "[Country.GetCurrencyTooltipHint('stability')]" }
-								}
-							}
-
-							vbox = {
-								using = layoutpolicy_expanding
-								margin = { 4 0 }
-								margin_bottom = 2
-								spacing = -2
-
-								expand = {}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									spacing = 2
-
-									# ESTATE ICON
-									icon = {
-										size = { 24 24 }
-										texture = "gfx/interface/icons/resources/diplo_actions.dds"
-									}
-
-									hbox = {
-										using = layoutpolicy_expanding
-										spacing = 2
-
-										text_single = {
-											maximumsize = { -1 18 }
-											autoresize = yes
-											align = left|nobaseline
-											using = Font_Size_Small
-											text = "[Player.GetDiplomacy.GetNumOfDiplomats|W2]"
-										}
-
-										hbox = {
-											using = layoutpolicy_expanding
-											using = text_single_positive_zero_negative
-
-											blockoverride "text_setup" {
-												maximumsize = { -1 18 }
-												autoresize = yes
-												align = left|nobaseline
-												using = Font_Size_Very_Small
-											}
-
-											blockoverride "visible_positive" {
-												text = "[Country.GetModifierValueNoFormat('monthly_diplomats')]"
-											}
-
-											expand = {}
-										}
-									}
-								}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									margin = { 2 0 }
-
-									progressbar = {
-										visible = "[And(GreaterThan_CFixedPoint(Player.GetDiplomacy.GetNumOfDiplomats, '(CFixedPoint)0'), Not(EqualTo_CFixedPoint(Player.GetDiplomacy.GetMaxNumOfDiplomats, '(CFixedPoint)0')))]"
-										using = progress_bar_green_alt
-										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-										block "progress_setup" {
-											layoutpolicy_horizontal = expanding
-											size = { -1 4 }
-
-											min = 0
-											max = "[FixedPointToFloat(Player.GetDiplomacy.GetMaxNumOfDiplomats)]"
-											value = "[FixedPointToFloat(Player.GetDiplomacy.GetNumOfDiplomats)]"
-											direction = horizontal
-										}
-									}
-
-									progressbar = {
-										visible = "[And(GreaterThan_CFixedPoint(Player.GetDiplomacy.GetNumOfDiplomats, '(CFixedPoint)0'), EqualTo_CFixedPoint(Player.GetDiplomacy.GetMaxNumOfDiplomats, '(CFixedPoint)0'))]"
-										using = progress_bar_goldish
-										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-										block "progress_setup" {
-											size = { -1 4 }
-
-											min = 0
-											max = 100
-											value = 100
-											direction = horizontal
-											layoutpolicy_horizontal = expanding
-										}
-									}
-								}
-
-								expand = {}
-							}
+						icon = {
+							size = { 24 24 }
+							texture = "gfx/interface/icons/resources/war_exhaustion.dds"
+							texture_density = 2
 						}
 
-						#### WAR STATS ##############################################
+						vbox = {
+							margin_left = 3
+							margin_right = 6
 
-						### STAT PLAYER - WAR EXHAUSTION
-						stat_player = {
-							name = "stat_exhaustion"
-							using = layoutpolicy_expanding
-							margin = { 5 0 }
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								spacing = 2
 
-							blockoverride "decreasing_value_gradient_visible" {
-								visible = "[Not(Country.IsCurrencyValueEqualOrLessThanZero('war_exhaustion'))]"
-							}
-
-							blockoverride "context_value_gradient_visible" {
-								visible = "[IsLateralGroupOpened('government_group')]"
-							}
-
-							blockoverride "stat_button" {
-								action_tooltip = {
-									click_type = left
-									click_mode = single
-									title = "AUTOMATED_SYSTEM_CABINET_CLICK"
-									on_action = "[OpenLateralViewWithParams('government', 'tabcontent = cabinet')]"
-								}
-
-								action_tooltip = {
-									click_modifier = shift
-									click_type = left
-									title = "ALERT_HINT"
-									using = snd_UI_alert_openAndCycle
-									on_action = "[OpenLateralViewWithParams('government', 'tabcontent = cabinet')]"
-									on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_war_exhaustion')]"
-									on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
-								}
-
-								tooltipwidget = {
-									using = WarExhaustionTooltip
-									blockoverride "shift_left_extra" {
-										replacement_shift_item = {}
-									}
-									# blockoverride "show_hint" { visible = "[Country.HasHint('war_exhaustion')]" }
-									# blockoverride "extra_title" { text = "WAR_EXHAUSTION_HINT" }
-									# blockoverride "extra_text" { text = "[Country.GetCurrencyTooltipHint('war_exhaustion')]" }
-								}
-							}
-
-							icon = {
-								size = { 24 24 }
-								texture = "gfx/interface/icons/resources/war_exhaustion.dds"
-								texture_density = 2
-							}
-
-							vbox = {
-								margin_left = 3
-								margin_right = 6
-
-								hbox = {
-									using = layoutpolicy_expanding
-									using = text_single_positive_negative
-
-									blockoverride "text_setup" {
-										maximumsize = { -1 18 }
-										autoresize = yes
-										align = left|nobaseline
-										using = Font_Size_Small
-										text = "[Country.GetFixedPointCurrencyValue('war_exhaustion')|V]"
-									}
-
-									blockoverride "visible_positive" {
-										visible = "[Not(LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('war_exhaustion'), '(CFixedPoint)0'))]"
-									}
-
-									blockoverride "visible_negative" {
-										visible = "[LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('war_exhaustion'), '(CFixedPoint)0')]"
-										default_format = "#color_red;bold"
-									}
-
-									expand = {}
+								text_single = {
+									maximumsize = { -1 18 }
+									autoresize = yes
+									align = left|nobaseline
+									using = Font_Size_Small
+									text = "[Country.GetFixedPointCurrencyValue('war_exhaustion')|V]"
 								}
 
 								hbox = {
@@ -1539,7 +1645,7 @@ Types HUD_TopbarTypes
 									using = text_single_positive_zero_negative
 
 									blockoverride "text_setup" {
-										maximumsize = { -1 12 }
+										maximumsize = { -1 18 }
 										autoresize = yes
 										align = left|nobaseline
 										using = Font_Size_Very_Small
@@ -1554,675 +1660,683 @@ Types HUD_TopbarTypes
 										visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('war_exhaustion'), '(CFixedPoint)0')]"
 									}
 
-									blockoverride "visible_zero" {
-										visible = "[EqualTo_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('war_exhaustion'), '(CFixedPoint)0')]"
-									}
-
-									blockoverride "text_zero" {
-										raw_text = "="
-									}
-
 									expand = {}
+								}
+							}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								margin = { 2 2 }
+
+								progressbar_framed = {
+									using = progress_bar_red_alt
+									noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+									layoutpolicy_horizontal = expanding
+									size = { -1 4 }
+
+									min = 0
+									max = "[FixedPointToFloat(Country.GetCurrencyMaxValue('war_exhaustion'))]"
+									value = "[FixedPointToFloat(Country.GetFixedPointCurrencyValue('war_exhaustion'))]"
+									direction = horizontal
+								}
+							}
+						}
+
+						expand = {}
+					}
+
+					### STAT PLAYER - MANPOWER
+					stat_player = {
+						name = "stat_manpower"
+						using = layoutpolicy_expanding
+
+						blockoverride "decreasing_value_gradient_visible" {
+							visible = no
+						}
+
+						blockoverride "context_value_gradient_visible" {
+							visible = "[And(IsLateralViewOpened('unit_overview'), Not(IsLateralViewOpenedWithParams('unit_overview', 'subtab = navy')))]"
+						}
+
+						tooltipmeta = {
+							texture = "gfx/interface/icons/resources/manpower.dds"
+						}
+						blockoverride "stat_button" {
+							action_tooltip = {
+								click_type = right
+								click_mode = single
+								title = "RECRUIT_ARMIES"
+								on_action = "[OpenLateralViewWithParams('army_builder', 'subtab = recruiting | unit_type = army')]"
+							}
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "SHOW_RECRUITMENT_BUILDINGS"
+								on_action = "[OpenLateralViewWithFilter('production', 'local_manpower')]"
+								on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
+							}
+
+							action_tooltip = {
+								click_modifier = shift
+								click_type = left
+								title = "ALERT_HINT"
+								click_modifier_description = "OPEN_HINT_TEXT"
+								using = snd_UI_alert_openAndCycle
+								on_action = "[OpenLateralViewWithFilter('production', 'local_manpower')]"
+								on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
+								on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_manpower')]"
+								on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
+							}
+
+							tooltipwidget = {
+								using = ManpowerResourceTooltip
+								# blockoverride "show_hint" { visible = "[Country.HasHint('manpower')]" }
+								# blockoverride "extra_title" { text = "MANPOWER_HINT" }
+								# blockoverride "extra_text" { text = "[Country.GetCurrencyTooltipHint('manpower')]" }
+							}
+						}
+
+						vbox = {
+							using = layoutpolicy_expanding
+							margin = { 4 0 }
+							margin_bottom = 2
+							spacing = -2
+
+							expand = {}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								spacing = 2
+
+								# ESTATE ICON
+								widget = {
+									size = { 24 24 }
+									icon = {
+										parentanchor = center
+										size = { 100% 100% }
+										texture = "gfx/interface/icons/resources/manpower.dds"
+									}
+								}
+
+
+								hbox = {
+									using = layoutpolicy_expanding
+									spacing = 2
+
+									text_single = {
+										maximumsize = { -1 18 }
+										autoresize = yes
+										align = left|nobaseline
+										using = Font_Size_Small
+										text = "[Country.GetCurrencyValue('manpower')]"
+									}
+
+									hbox = {
+										using = layoutpolicy_expanding
+										using = text_single_positive_zero_negative
+
+										blockoverride "text_setup" {
+											maximumsize = { -1 18 }
+											autoresize = yes
+											align = left|nobaseline
+											using = Font_Size_Very_Small
+										}
+
+										blockoverride "visible_positive" {
+											visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('manpower'), '(CFixedPoint)0')]"
+											raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('manpower')]"
+										}
+
+										blockoverride "visible_negative" {
+											visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('manpower'), '(CFixedPoint)0')]"
+											raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('manpower')]"
+										}
+
+										expand = {}
+									}
+								}
+							}
+
+							hbox = {
+								visible = "[GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('manpower'), '(CFixedPoint)0')]"
+								layoutpolicy_horizontal = expanding
+								margin = { 2 2 }
+
+								widget = {
+									layoutpolicy_horizontal = expanding
+									size = { -1 4 }
+
+									progressbar_framed = {
+										visible = "[Not(EqualTo_CFixedPoint(Country.GetCurrencyMaxValue('manpower'), '(CFixedPoint)0'))]"
+										using = progress_bar_green_alt
+										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+										size = { 100% 100% }
+
+										min = 0
+										max = "[FixedPointToFloat(Country.GetCurrencyMaxValue('manpower'))]"
+										value = "[FixedPointToFloat(Country.GetFixedPointCurrencyValue('manpower'))]"
+										direction = horizontal
+									}
+
+									progressbar_framed = {
+										visible = "[EqualTo_CFixedPoint(Country.GetCurrencyMaxValue('manpower'), '(CFixedPoint)0')]"
+										using = progress_bar_green_alt
+										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+										size = { 100% 100% }
+
+										min = 0
+										max = 100
+										value = 100
+										direction = horizontal
+									}
 								}
 							}
 
 							expand = {}
 						}
+					}
 
-						### STAT PLAYER - MANPOWER
-						stat_player = {
-							name = "stat_manpower"
-							using = layoutpolicy_expanding
+					### STAT PLAYER - SAILORS
+					stat_player = {
+						name = "stat_sailors"
+						using = layoutpolicy_expanding
+						visible = "[GreaterThan_CFixedPoint(Player.GetTotalCoastalPopulation, '(CFixedPoint)0')]"
 
-							blockoverride "decreasing_value_gradient_visible" {
-								visible = no
-							}
-
-							blockoverride "context_value_gradient_visible" {
-								visible = "[And(IsLateralViewOpened('unit_overview'), Not(IsLateralViewOpenedWithParams('unit_overview', 'subtab = navy')))]"
-							}
-
-							tooltipmeta = {
-								texture = "gfx/interface/icons/resources/manpower.dds"								
-							}
-							blockoverride "stat_button" {
-								action_tooltip = {
-									click_type = right
-									click_mode = single
-									title = "RECRUIT_ARMIES"
-									on_action = "[OpenLateralViewWithParams('army_builder', 'subtab = recruiting | unit_type = army')]"
-								}
-
-								action_tooltip = {
-									click_type = left
-									click_mode = single
-									title = "SHOW_RECRUITMENT_BUILDINGS"
-									on_action = "[OpenLateralViewWithFilter('production', 'local_manpower')]"
-									on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
-								}
-
-								action_tooltip = {
-									click_modifier = shift
-									click_type = left
-									title = "ALERT_HINT"
-									using = snd_UI_alert_openAndCycle
-									on_action = "[OpenLateralViewWithFilter('production', 'local_manpower')]"
-									on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
-									on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_manpower')]"
-									on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
-								}
-
-								tooltipwidget = {
-									using = ManpowerResourceTooltip
-									blockoverride "shift_left_extra" {
-										replacement_shift_item = {}
-									}
-									# blockoverride "show_hint" { visible = "[Country.HasHint('manpower')]" }
-									# blockoverride "extra_title" { text = "MANPOWER_HINT" }
-									# blockoverride "extra_text" { text = "[Country.GetCurrencyTooltipHint('manpower')]" }
-								}
-							}
-
-							vbox = {
-								using = layoutpolicy_expanding
-								margin = { 4 0 }
-								margin_bottom = 2
-								spacing = -2
-
-								expand = {}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									spacing = 2
-
-									# ESTATE ICON
-									widget = {
-										size = { 24 24 }
-										icon = {
-											parentanchor = center
-											size = { 100% 100% }
-											texture = "gfx/interface/icons/resources/manpower.dds"
-										}
-									}
-
-
-									hbox = {
-										using = layoutpolicy_expanding
-										spacing = 2
-
-										text_single = {
-											maximumsize = { -1 18 }
-											autoresize = yes
-											align = left|nobaseline
-											using = Font_Size_Small
-											text = "[Country.GetCurrencyValue('manpower')]"
-										}
-
-										hbox = {
-											using = layoutpolicy_expanding
-											using = text_single_positive_zero_negative
-
-											blockoverride "text_setup" {
-												maximumsize = { -1 18 }
-												autoresize = yes
-												align = left|nobaseline
-												using = Font_Size_Very_Small
-											}
-
-											blockoverride "visible_positive" {
-												visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('manpower'), '(CFixedPoint)0')]"
-												raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('manpower')]"
-											}
-
-											blockoverride "visible_negative" {
-												visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('manpower'), '(CFixedPoint)0')]"
-												raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('manpower')]"
-											}
-
-											expand = {}
-										}
-									}
-								}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									margin = { 2 0 }
-
-									widget = {
-										layoutpolicy_horizontal = expanding
-										size = { -1 4 }
-
-										progressbar = {
-											visible = "[And(GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('manpower'), '(CFixedPoint)0'), Not(EqualTo_CFixedPoint(Country.GetCurrencyMaxValue('manpower'), '(CFixedPoint)0')))]"
-											using = progress_bar_green_alt
-											noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-											size = { 100% 100% }
-
-											min = 0
-											max = "[FixedPointToFloat(Country.GetCurrencyMaxValue('manpower'))]"
-											value = "[FixedPointToFloat(Country.GetFixedPointCurrencyValue('manpower'))]"
-											direction = horizontal
-										}
-
-										progressbar = {
-											visible = "[And(GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('manpower'), '(CFixedPoint)0'), EqualTo_CFixedPoint(Country.GetCurrencyMaxValue('manpower'), '(CFixedPoint)0'))]"
-											using = progress_bar_green_alt
-											noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-											size = { 100% 100% }
-
-											min = 0
-											max = 100
-											value = 100
-											direction = horizontal
-										}
-									}
-								}
-
-								expand = {}
-							}
+						tooltipmeta = {
+							texture = "gfx/interface/icons/resources/sailors.dds"
+						}
+						blockoverride "decreasing_value_gradient_visible" {
+							visible = no
 						}
 
-						### STAT PLAYER - SAILORS
-						stat_player = {
-							name = "stat_sailors"
-							using = layoutpolicy_expanding
-							visible = "[GreaterThan_CFixedPoint(Player.GetTotalCoastalPopulation, '(CFixedPoint)0')]"
-							
-							tooltipmeta = {
-								texture = "gfx/interface/icons/resources/sailors.dds"								
-							}
-							blockoverride "decreasing_value_gradient_visible" {
-								visible = no
-							}
-
-							blockoverride "context_value_gradient_visible" {
-								visible = "[IsLateralViewOpenedWithParams('unit_overview', 'subtab = navy')]"
-							}
-
-							blockoverride "stat_button" {
-								action_tooltip = {
-									click_type = right
-									click_mode = single
-									title = "RECRUIT_NAVIES"
-									on_action = "[OpenLateralViewWithParams('army_builder', 'subtab = recruiting | unit_type = navy')]"
-								}
-
-								action_tooltip = {
-									click_type = left
-									click_mode = single
-									title = "SHOW_RECRUITMENT_BUILDINGS"
-									on_action = "[OpenLateralViewWithFilter('production', 'local_sailors')]"
-									on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
-								}
-
-								action_tooltip = {
-									click_modifier = shift
-									click_type = left
-									title = "ALERT_HINT"
-									using = snd_UI_alert_openAndCycle
-									on_action = "[OpenLateralViewWithFilter('production', 'local_sailors')]"
-									on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
-									on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_sailors')]"
-									on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
-								}
-
-								tooltipwidget = {
-									using = SailorsResourceTooltip
-									blockoverride "shift_left_extra" {
-										replacement_shift_item = {}
-									}
-									# blockoverride "show_hint" { visible = "[Country.HasHint('sailors')]" }
-									# blockoverride "extra_title" { text = "SAILORS_HINT" }
-									# blockoverride "extra_text" { text = "[Country.GetCurrencyTooltipHint('sailors')]" }
-								}
-							}
-
-							vbox = {
-								using = layoutpolicy_expanding
-								margin = { 4 0 }
-								margin_bottom = 2
-								spacing = -2
-
-								expand = {}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									spacing = 2
-
-									# ESTATE ICON
-									icon = {
-										size = { 24 24 }
-										texture = "gfx/interface/icons/resources/sailors.dds"
-									}
-
-									hbox = {
-										using = layoutpolicy_expanding
-										spacing = 2
-
-										text_single = {
-											maximumsize = { -1 18 }
-											autoresize = yes
-											align = left|nobaseline
-											using = Font_Size_Small
-											text = "[Country.GetCurrencyValue('sailors')]"
-										}
-
-										hbox = {
-											using = layoutpolicy_expanding
-											using = text_single_positive_zero_negative
-
-											blockoverride "text_setup" {
-												maximumsize = { -1 18 }
-												autoresize = yes
-												align = left|nobaseline
-												using = Font_Size_Very_Small
-											}
-
-											blockoverride "visible_positive" {
-												visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('sailors'), '(CFixedPoint)0')]"
-												raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('sailors')]"
-											}
-
-											blockoverride "visible_negative" {
-												visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('sailors'), '(CFixedPoint)0')]"
-												raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('sailors')]"
-											}
-
-											expand = {}
-										}
-									}
-								}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									margin = { 2 0 }
-
-									widget = {
-										layoutpolicy_horizontal = expanding
-										size = { -1 4 }
-
-										progressbar = {
-											visible = "[And(GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('sailors'), '(CFixedPoint)0'), Not(EqualTo_CFixedPoint(Country.GetCurrencyMaxValue('sailors'), '(CFixedPoint)0')))]"
-											using = progress_bar_green_alt
-											noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-											size = { 100% 100% }
-
-											min = 0
-											max = "[FixedPointToFloat(Country.GetCurrencyMaxValue('sailors'))]"
-											value = "[FixedPointToFloat(Country.GetFixedPointCurrencyValue('sailors'))]"
-											direction = horizontal
-										}
-
-										progressbar = {
-											visible = "[And(GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('sailors'), '(CFixedPoint)0'), EqualTo_CFixedPoint(Country.GetCurrencyMaxValue('sailors'), '(CFixedPoint)0'))]"
-											using = progress_bar_green_alt
-											noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-											size = { 100% 100% }
-
-											min = 0
-											max = 100
-											value = 100
-											direction = horizontal
-										}
-									}
-								}
-
-								expand = {}
-							}
+						blockoverride "context_value_gradient_visible" {
+							visible = "[IsLateralViewOpenedWithParams('unit_overview', 'subtab = navy')]"
 						}
 
-						### STAT PLAYER - HERDS
-						stat_player = {
-							name = "stat_herds"
-							using = layoutpolicy_expanding
-							visible = "[GetPlayer.MakeScope.GetVariable('current_herd').IsSet]"
-
-							tooltipmeta = {
-								texture = "gfx/interface/icons/flat_icons/tabicons/herds_flat_icon.dds"
+						blockoverride "stat_button" {
+							action_tooltip = {
+								click_type = right
+								click_mode = single
+								title = "RECRUIT_NAVIES"
+								on_action = "[OpenLateralViewWithParams('army_builder', 'subtab = recruiting | unit_type = navy')]"
 							}
 
-							blockoverride "decreasing_value_gradient_visible" {
-								visible = no
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "SHOW_RECRUITMENT_BUILDINGS"
+								on_action = "[OpenLateralViewWithFilter('production', 'local_sailors')]"
+								on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
 							}
 
-							blockoverride "stat_button" {
-
-								action_tooltip = {
-									click_type = left
-									click_mode = single
-									title = "SHOW_HERDS_BUILDINGS"
-									on_action = "[OpenLateralViewWithFilter('production', 'herds_category')]"
-									on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
-								}
+							action_tooltip = {
+								click_modifier = shift
+								click_type = left
+								title = "ALERT_HINT"
+								click_modifier_description = "OPEN_HINT_TEXT"
+								using = snd_UI_alert_openAndCycle
+								on_action = "[OpenLateralViewWithFilter('production', 'local_sailors')]"
+								on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
+								on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_sailors')]"
+								on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
 							}
 
 							tooltipwidget = {
-								ContextualTooltipType = {
-									blockoverride "title_text" {
-										datacontext = "[Country]"
-										text = "HERDS_TOOLTIP_HEADER"
+								using = SailorsResourceTooltip
+								# blockoverride "show_hint" { visible = "[Country.HasHint('sailors')]" }
+								# blockoverride "extra_title" { text = "SAILORS_HINT" }
+								# blockoverride "extra_text" { text = "[Country.GetCurrencyTooltipHint('sailors')]" }
+							}
+						}
+
+						vbox = {
+							using = layoutpolicy_expanding
+							margin = { 4 0 }
+							margin_bottom = 2
+							spacing = -2
+
+							expand = {}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								spacing = 2
+
+								# ESTATE ICON
+								icon = {
+									size = { 24 24 }
+									texture = "gfx/interface/icons/resources/sailors.dds"
+								}
+
+								hbox = {
+									using = layoutpolicy_expanding
+									spacing = 2
+
+									text_single = {
+										maximumsize = { -1 18 }
+										autoresize = yes
+										align = left|nobaseline
+										using = Font_Size_Small
+										text = "[Country.GetCurrencyValue('sailors')]"
 									}
 
-									blockoverride "concept_link" {
-										using = herds_regular
-									}
+									hbox = {
+										using = layoutpolicy_expanding
+										using = text_single_positive_zero_negative
 
-									blockoverride "title_icon" {
-										icon = {
-											using = tooltip_title_icon_size
-											texture = "gfx/interface/icons/flat_icons/tabicons/herds_flat_icon.dds"
+										blockoverride "text_setup" {
+											maximumsize = { -1 18 }
+											autoresize = yes
+											align = left|nobaseline
+											using = Font_Size_Very_Small
 										}
-									}
 
-									blockoverride "tooltip_content" {
-										TooltipScrolledStringPairList = {
-											blockoverride "block_scrollarea" { maximumsize = { -1 250 } minimumsize = { -1 30 } }
-											block "content_datacontext" { }
-											blockoverride "block_title" {
-												text = "HERDS_MODIFIER_DEC_TT"
-											}
-											textcontext = "[Localize(ShowAutoModifierEffect('the_herd_benifit_modifier'))]"
+										blockoverride "visible_positive" {
+											visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('sailors'), '(CFixedPoint)0')]"
+											raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('sailors')]"
 										}
 
-										ConceptTooltipType = {
-											blockoverride "tooltip_title" {
+										blockoverride "visible_negative" {
+											visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('sailors'), '(CFixedPoint)0')]"
+											raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('sailors')]"
+										}
 
-											}
-											blockoverride "tooltip_content" {
-												TooltipTextBlock = {
-													blockoverride "text" {
-														text = "HERD_INCOME_TT"
-													}
+										expand = {}
+									}
+								}
+							}
+
+							hbox = {
+								visible = "[GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('sailors'), '(CFixedPoint)0')]"
+								layoutpolicy_horizontal = expanding
+								margin = { 2 2 }
+
+								widget = {
+									layoutpolicy_horizontal = expanding
+									size = { -1 4 }
+
+									progressbar_framed = {
+										visible = "[Not(EqualTo_CFixedPoint(Country.GetCurrencyMaxValue('sailors'), '(CFixedPoint)0'))]"
+										using = progress_bar_green_alt
+										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+										size = { 100% 100% }
+
+										min = 0
+										max = "[FixedPointToFloat(Country.GetCurrencyMaxValue('sailors'))]"
+										value = "[FixedPointToFloat(Country.GetFixedPointCurrencyValue('sailors'))]"
+										direction = horizontal
+									}
+
+									progressbar_framed = {
+										visible = "[EqualTo_CFixedPoint(Country.GetCurrencyMaxValue('sailors'), '(CFixedPoint)0')]"
+										using = progress_bar_green_alt
+										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+										size = { 100% 100% }
+
+										min = 0
+										max = 100
+										value = 100
+										direction = horizontal
+									}
+								}
+							}
+
+							expand = {}
+						}
+					}
+
+					### STAT PLAYER - HERDS
+					stat_player = {
+						name = "stat_herds"
+						using = layoutpolicy_expanding
+						visible = "[GetPlayer.MakeScope.GetVariable('current_herd').IsSet]"
+
+						tooltipmeta = {
+							texture = "gfx/interface/icons/flat_icons/tabicons/herds_flat_icon.dds"
+						}
+
+						blockoverride "decreasing_value_gradient_visible" {
+							visible = no
+						}
+
+						blockoverride "stat_button" {
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "SHOW_HERDS_BUILDINGS"
+								on_action = "[OpenLateralViewWithFilter('production', 'herds_category')]"
+								on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
+							}
+						}
+
+						tooltipwidget = {
+							ContextualTooltipType = {
+								blockoverride "title_text" {
+									datacontext = "[Country]"
+									text = "HERDS_TOOLTIP_HEADER"
+								}
+
+								blockoverride "concept_link" {
+									using = herds_regular
+								}
+
+								blockoverride "title_icon" {
+									icon = {
+										using = tooltip_title_icon_size
+										texture = "gfx/interface/icons/flat_icons/tabicons/herds_flat_icon.dds"
+									}
+								}
+
+								blockoverride "tooltip_content" {
+									TooltipScrolledStringPairList = {
+										blockoverride "block_scrollarea" { maximumsize = { -1 250 } minimumsize = { -1 30 } }
+										block "content_datacontext" { }
+										blockoverride "block_title" {
+											text = "HERDS_MODIFIER_DEC_TT"
+										}
+										textcontext = "[Localize(ShowAutoModifierEffect('the_herd_benifit_modifier'))]"
+									}
+
+									ConceptTooltipType = {
+										blockoverride "tooltip_title" {
+
+										}
+										blockoverride "tooltip_content" {
+											TooltipTextBlock = {
+												blockoverride "text" {
+													text = "HERD_INCOME_TT"
 												}
 											}
 										}
 									}
 								}
 							}
+						}
 
-							vbox = {
-								margin_left = 3
-								margin_right = 6
+						vbox = {
+							margin_left = 3
+							margin_right = 6
 
-								hbox = {
-									using = layoutpolicy_expanding
-									using = text_single_positive_negative
+							hbox = {
+								using = layoutpolicy_expanding
+								using = text_single_positive_negative
 
-									# ESTATE ICON
-									icon = {
-										size = { 24 24 }
-										texture = "gfx/interface/icons/flat_icons/tabicons/herds_flat_icon.dds"
+								# ESTATE ICON
+								icon = {
+									size = { 24 24 }
+									texture = "gfx/interface/icons/flat_icons/tabicons/herds_flat_icon.dds"
+								}
+
+								vbox = {
+									layoutpolicy_horizontal = expanding
+									spacing = 2
+
+									text_single = {
+										maximumsize = { -1 18 }
+										autoresize = yes
+										align = left|nobaseline
+										using = Font_Size_Small
+										text = "[Country.MakeScope.GetVariable('current_herd').GetValue|2]"
 									}
 
-									vbox = {
-										layoutpolicy_horizontal = expanding
-										spacing = 2
+									hbox = {
+										using = layoutpolicy_expanding
+										using = text_single_positive_zero_negative
 
-										text_single = {
-											maximumsize = { -1 18 }
+										blockoverride "text_setup" {
+											maximumsize = { -1 12 }
 											autoresize = yes
 											align = left|nobaseline
-											using = Font_Size_Small
-											text = "[Country.MakeScope.GetVariable('current_herd').GetValue|2]"
+											using = Font_Size_Very_Small
+											text = "[Country.MakeScope.GetVariable('herd_monthly_change').GetValue|2]"
 										}
 
-										hbox = {
-											using = layoutpolicy_expanding
-											using = text_single_positive_zero_negative
+										blockoverride "visible_positive" {
+											visible = "[GreaterThan_CFixedPoint(Country.MakeScope.GetVariable('herd_monthly_change').GetValue, '(CFixedPoint)0')]"
+											raw_text = "+[Country.MakeScope.GetVariable('herd_monthly_change').GetValue|2]"
+											default_format = "#G"
+										}
 
-											blockoverride "text_setup" {
-												maximumsize = { -1 12 }
-												autoresize = yes
-												align = left|nobaseline
-												using = Font_Size_Very_Small
-												text = "[Country.MakeScope.GetVariable('herd_monthly_change').GetValue|2]"
-											}
+										blockoverride "visible_negative" {
+											visible = "[LessThan_CFixedPoint(Country.MakeScope.GetVariable('herd_monthly_change').GetValue, '(CFixedPoint)0')]"
+											raw_text = "-[Country.MakeScope.GetVariable('herd_monthly_change').GetValue|2]"
+											default_format = "#R"
+										}
 
-											blockoverride "visible_positive" {
-												visible = "[GreaterThan_CFixedPoint(Country.MakeScope.GetVariable('herd_monthly_change').GetValue, '(CFixedPoint)0')]"
-												raw_text = "+[Country.MakeScope.GetVariable('herd_monthly_change').GetValue|2]"
-												default_format = "#G"
-											}
+										blockoverride "visible_zero" {
+											visible = "[EqualTo_CFixedPoint(Country.MakeScope.GetVariable('herd_monthly_change').GetValue, '(CFixedPoint)0')]"
+										}
 
-											blockoverride "visible_negative" {
-												visible = "[LessThan_CFixedPoint(Country.MakeScope.GetVariable('herd_monthly_change').GetValue, '(CFixedPoint)0')]"
-												raw_text = "-[Country.MakeScope.GetVariable('herd_monthly_change').GetValue|2]"
-												default_format = "#R"
-											}
-
-											blockoverride "visible_zero" {
-												visible = "[EqualTo_CFixedPoint(Country.MakeScope.GetVariable('herd_monthly_change').GetValue, '(CFixedPoint)0')]"
-											}
-
-											blockoverride "text_zero" {
-												raw_text = "="
-											}
-
-											expand = { }
+										blockoverride "text_zero" {
+											raw_text = "="
 										}
 
 										expand = { }
 									}
-								}
 
-								expand = { }
+									expand = { }
+								}
 							}
+
+							expand = { }
 						}
+					}
 
-						### TECHNOLOGY BUTTON
-						stat_player = {
+					### TECHNOLOGY BUTTON
+					stat_player = {
+						widget = {
+							visible = "[IsPlayerValid]"
+							size = { 40 40 }
+							allow_outside = yes
+
+							using = bg_circle_hud_dark_blue
+
+							background = {
+								texture = "gfx/interface/component_tiles/hud_corners/circle_progress_bg.dds"
+								texture_density = 2
+							}
+
+							piechart = {
+								parentanchor = center
+								size = { 89% 89% }
+								using = piechart_angles
+
+								pieslice = {
+									texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
+									value = "[Player.GetCurrentResearch.GetProgress]"
+									color = { 1 1 1 1 }
+								}
+
+								pieslice = {
+									texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
+									value = "[Subtract_float('(float)1.0', Player.GetCurrentResearch.GetProgress)]"
+									color = { 1 1 1 0 }
+								}
+							}
+
+							button = {
+								visible = "[And(Not(Player.GetCurrentResearch.IsActive), IsPlayerValid)]"
+								parentanchor = center
+								size = { 89% 89% }
+
+								datacontext = "[InGameTopbar.GetCurrentAdvanceUIAction]"
+
+								action_tooltip = {
+									click_modifier = shift
+									click_type = left
+									title = "ALERT_ADVANCES_HINT"
+									click_modifier_description = "OPEN_HINT_TEXT"
+									using = snd_UI_alert_openAndCycle
+									on_action =  "[OpenLateralViewWithParams('advances', 'subtab = research')]"
+									on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_can_do_more_research')]"
+									on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
+								}
+
+								using = button_action_provider_base
+								tooltipwidget = {
+									using = current_research_tooltip
+									# blockoverride "show_hint" { visible = "[Country.HasHint('empty_research')]" }
+									# blockoverride "extra_title" { text = "EMPTY_RESEARCH_HINT" }
+									# blockoverride "extra_text" { text = "empty_research_topbar_hint" }
+								}
+
+								# gfx\interface\icons\advance
+								texture = "gfx/interface/advance/_no_research.dds"
+
+								modify_texture = {
+									texture = "gfx/interface/colors/clergy.dds"
+									alpha = "[GetHighlightAnim('5.0, 0.0, 0.2')]"
+								}
+							}
+
 							widget = {
-								visible = "[IsPlayerValid]"
-								size = { 40 40 }
-								allow_outside = yes
-
-								background = {
-									texture = "gfx/interface/component_tiles/hud_corners/circle_background.dds"
-									texture_density = 2
-
-									modify_texture = {
-										using = color_dark_blue_texture
-									}
-								}
-
-								background = {
-									texture = "gfx/interface/component_tiles/hud_corners/circle_progress_bg.dds"
-									texture_density = 2
-								}
-
-								piechart = {
-									parentanchor = center
-									size = { 89% 89% }
-									using = piechart_angles
-
-									pieslice = {
-										texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
-										value = "[Player.GetCurrentResearch.GetProgress]"
-										color = { 1 1 1 1 }
-									}
-
-									pieslice = {
-										texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
-										value = "[Subtract_float('(float)1.0', Player.GetCurrentResearch.GetProgress)]"
-										color = { 1 1 1 0 }
-									}
-								}
-
-								button = {
-									visible = "[And(Not(Player.GetCurrentResearch.IsActive), IsPlayerValid)]"
-									parentanchor = center
-									size = { 89% 89% }
-
-									datacontext = "[InGameTopbar.GetCurrentAdvanceUIAction]"
-
-									action_tooltip = {
-										click_modifier = shift
-										click_type = left
-										title = "ALERT_ADVANCES_HINT"
-										using = snd_UI_alert_openAndCycle
-										on_action =  "[OpenLateralViewWithParams('advances', 'subtab = research')]"
-										on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_can_do_more_research')]"
-										on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
-									}
-
-									using = button_action_provider_base
-									tooltipwidget = {
-										using = current_research_tooltip
-										blockoverride "shift_left_extra" {
-											replacement_shift_item = {}
-										}
-										# blockoverride "show_hint" { visible = "[Country.HasHint('empty_research')]" }
-										# blockoverride "extra_title" { text = "EMPTY_RESEARCH_HINT" }
-										# blockoverride "extra_text" { text = "empty_research_topbar_hint" }
-									}
-
-									# gfx\interface\icons\advance
-									texture = "gfx/interface/advance/_no_research.dds"
-
-									modify_texture = {
-										texture = "gfx/interface/colors/clergy.dds"
-										alpha = "[GetHighlightAnim('5.0, 0.0, 0.2')]"
-									}
-								}
-
+								visible = "[Player.GetCurrentResearch.IsActive]"
+								size = { 70% 70% }
+								parentanchor = center
 								widget = {
-									visible = "[Player.GetCurrentResearch.IsActive]"
-									size = { 70% 70% }
-									parentanchor = center
-									widget = {
-										size = {100% 100%}
-										datacontext = "[Player.GetCurrentResearch.GetAdvance.GetDefinition]"
-										using = background_advance
-									}
-								}
-
-								button = {
-									visible = "[And(Player.GetCurrentResearch.IsActive, Not(Advance.GetDefinition.HasSubunitUnlocks))]"
-									datacontext = "[InGameTopbar.GetCurrentAdvanceUIAction]"
-									datacontext = "[Player.GetCurrentResearch.GetAdvance]"
-									datacontext = "[Advance.GetDefinition]"
-									parentanchor = center
-									size = { 65% 65% }
-									using = button_action_provider_base
-									tooltipwidget = {
-										using = current_research_tooltip
-									}
-
-									# gfx\interface\icons\advance
-									texture = "[GetAdvanceIcon(Player.GetCurrentResearch.GetAdvance.GetDefinition)]"
-								}
-
-								button = {
-									visible = "[And3(Player.GetCurrentResearch.IsActive, Advance.GetDefinition.HasSubunitUnlocks, Not(Advance.GetDefinition.HasNavyUnlocks))]"
-									datacontext = "[InGameTopbar.GetCurrentAdvanceUIAction]"
-									datacontext = "[Player.GetCurrentResearch.GetAdvance]"
-									datacontext = "[Advance.GetDefinition]"
-									parentanchor = center
-									size = { 80% 65% }
-									position = { 3 0 }
-									using = button_action_provider_base
-									tooltipwidget = {
-										using = current_research_tooltip
-									}
-
-									texture = "[GetSubunitTypeIllustration(Advance.GetDefinition.GetFirstSubunitUnlock, Player.GetCulture)]"
-									texture_density = 2
-									spriteborder = { 0 0 }
-									frame_grid = {2 1}
-									frame = 1
-									modify_texture = {
-										texture = "gfx/interface/component_masks/advance_unit_unlock_mask.dds"
-										texture_density = 2
-										blend_mode = alphamultiply
-									}
-								}
-
-								button = {
-									visible = "[And3(Player.GetCurrentResearch.IsActive, Advance.GetDefinition.HasSubunitUnlocks, Advance.GetDefinition.HasNavyUnlocks)]"
-									datacontext = "[InGameTopbar.GetCurrentAdvanceUIAction]"
-									datacontext = "[Player.GetCurrentResearch.GetAdvance]"
-									datacontext = "[Advance.GetDefinition]"
-									parentanchor = center
-									size = { 65% 80% }
-									position = { 0 -2 }
-									using = button_action_provider_base
-									tooltipwidget = {
-										using = current_research_tooltip
-									}
-
-									texture = "[GetSubunitTypeIllustration(Advance.GetDefinition.GetFirstSubunitUnlock, Player.GetCulture)]"
-									texture_density = 2
-									spriteborder = { 0 0 }
-									frame_grid = {3 1}
-									frame = 2
-									modify_texture = {
-										texture = "gfx/interface/component_masks/advance_unit_unlock_navy_mask.dds"
-										texture_density = 2
-										blend_mode = alphamultiply
-									}
-								}
-
-								icon = {
-									texture = "[GetGraphicalCultureTexture('circle_frame')]"
-									texture_density = 2
 									size = {100% 100%}
+									datacontext = "[Player.GetCurrentResearch.GetAdvance.GetDefinition]"
+									using = background_advance
 								}
+							}
+
+							button = {
+								visible = "[And(Player.GetCurrentResearch.IsActive, Not(Advance.GetDefinition.HasSubunitUnlocks))]"
+								datacontext = "[InGameTopbar.GetCurrentAdvanceUIAction]"
+								datacontext = "[Player.GetCurrentResearch.GetAdvance]"
+								datacontext = "[Advance.GetDefinition]"
+								parentanchor = center
+								size = { 65% 65% }
+								using = button_action_provider_base
+								tooltipwidget = {
+									using = current_research_tooltip
+								}
+
+								# gfx\interface\icons\advance
+								texture = "[GetAdvanceIcon(Player.GetCurrentResearch.GetAdvance.GetDefinition)]"
+							}
+
+							button = {
+								visible = "[And3(Player.GetCurrentResearch.IsActive, Advance.GetDefinition.HasSubunitUnlocks, Not(Advance.GetDefinition.HasNavyUnlocks))]"
+								datacontext = "[InGameTopbar.GetCurrentAdvanceUIAction]"
+								datacontext = "[Player.GetCurrentResearch.GetAdvance]"
+								datacontext = "[Advance.GetDefinition]"
+								parentanchor = center
+								size = { 80% 65% }
+								position = { 3 0 }
+								using = button_action_provider_base
+								tooltipwidget = {
+									using = current_research_tooltip
+								}
+
+								texture = "[GetSubunitTypeIllustration(Advance.GetDefinition.GetFirstSubunitUnlock, Player.GetCulture)]"
+								texture_density = 2
+								spriteborder = { 0 0 }
+								frame_grid = {2 1}
+								frame = 1
+								modify_texture = {
+									texture = "gfx/interface/component_masks/advance_unit_unlock_mask.dds"
+									texture_density = 2
+									blend_mode = alphamultiply
+								}
+							}
+
+							button = {
+								visible = "[And3(Player.GetCurrentResearch.IsActive, Advance.GetDefinition.HasSubunitUnlocks, Advance.GetDefinition.HasNavyUnlocks)]"
+								datacontext = "[InGameTopbar.GetCurrentAdvanceUIAction]"
+								datacontext = "[Player.GetCurrentResearch.GetAdvance]"
+								datacontext = "[Advance.GetDefinition]"
+								parentanchor = center
+								size = { 65% 80% }
+								position = { 0 -2 }
+								using = button_action_provider_base
+								tooltipwidget = {
+									using = current_research_tooltip
+								}
+
+								texture = "[GetSubunitTypeIllustration(Advance.GetDefinition.GetFirstSubunitUnlock, Player.GetCulture)]"
+								texture_density = 2
+								spriteborder = { 0 0 }
+								frame_grid = {3 1}
+								frame = 2
+								modify_texture = {
+									texture = "gfx/interface/component_masks/advance_unit_unlock_navy_mask.dds"
+									texture_density = 2
+									blend_mode = alphamultiply
+								}
+							}
+
+							icon = {
+								texture = "[GetGraphicalCultureTexture('circle_frame')]"
+								texture_density = 2
+								size = {100% 100%}
 							}
 						}
 					}
 				}
-			}
-
-			widget = { # Right Section
-				name = "Top Bar Section 3"
-				layoutpolicy_vertical = expanding
-				using = right_topbar_section_size
-				using = speed_bar
 			}
 		}
 
-		hbox = {
-			visible = "[IsObservingWithoutSelectedCountry]"
-			spacing = 10
-
-			expand = {}
-
-			text_single = {
-				autoresize = yes
-				text = "CURRENT_DATE"
-				using = Font_Type_Flavor
-				using = Font_Size_Medium
-				align = center|nobaseline
-				default_format = "#color_white"
-				tooltipwidget = {
-					ContextualTooltipType = {
-						blockoverride "title_icon" {
-							icon = {
-								using = tooltip_title_icon_size
-								texture = "gfx/interface/icons/players.dds"
-							}
-						}
-
-						blockoverride "title_text" {
-							text = "PLAYERS_SYNC_TT_TITLE"
-						}
-
-						blockoverride "tooltip_content" {
-							TooltipTextBlock = {
-								blockoverride "text" {
-									text = "[GetMultiplayerSyncInfo]"
-								}
-							}
-						}
-					}
-				}
-				tooltip_enabled = "[GameIsMultiplayer]"
-			}
-
-			expand = {}
+		widget = { # Right Section
+			name = "Top Bar Section 3"
+			layoutpolicy_vertical = expanding
+			using = right_topbar_section_size_1644
+			using = speed_bar
 		}
 	}
+
+	hbox = {
+		visible = "[IsObservingWithoutSelectedCountry]"
+		spacing = 10
+
+		expand = {}
+
+		text_single = {
+			autoresize = yes
+			text = "CURRENT_DATE"
+			using = Font_Type_Flavor
+			using = Font_Size_Medium
+			align = center|nobaseline
+			default_format = "#color_white"
+			tooltipwidget = {
+				ContextualTooltipType = {
+					blockoverride "title_icon" {
+						icon = {
+							using = tooltip_title_icon_size
+							texture = "gfx/interface/icons/players.dds"
+						}
+					}
+
+					blockoverride "title_text" {
+						text = "PLAYERS_SYNC_TT_TITLE"
+					}
+
+					blockoverride "tooltip_content" {
+						TooltipTextBlock = {
+							blockoverride "text" {
+								text = "[GetMultiplayerSyncInfo]"
+							}
+						}
+						TooltipTextBlock = {
+							visible = "[IsAnyPlayerLaggingBehind]"
+							blockoverride "text" {
+								text = "MULTIPLAYER_LAGGING_BEHIND"
+							}
+						}
+					}
+				}
+			}
+			tooltip_enabled = "[GameIsMultiplayer]"
+		}
+
+		expand = {}
+	}
 }
+}
+
+# Anno 1644 - slightly narrower right top-bar section so the value scrollarea can show more figures.
+template right_topbar_section_size_1644 { size = { @[right_panel_width + outliner_collapsed_width + panel_x - topbar_height * 0.5 - 60] -1 } }
 
 template speed_bar {
 	hbox = {
@@ -2238,8 +2352,8 @@ template speed_bar {
 
 			# SPEED BUTTONS
 			widget = {
-				size = { 147 40 }
-				
+				size = { 105 40 }
+
 				hbox = {
 					# SPEED 1
 					gamespeed_button_disabled = {
@@ -2340,63 +2454,6 @@ template speed_bar {
 						# 	texture = "[GetGraphicalCultureTexture('speed_end_button')]"
 						# }
 					}
-					# SPEED 6
-					gamespeed_button_disabled = {
-						visible = "[Not(IsGameSpeedEqualOrGreaterThan('(int32)6'))]"
-						blockoverride "gamespeed_button_disabled_onclick"{
-							onclick = "[OnSetGameSpeed('(int32)6')]"
-						}
-						# blockoverride "gamespeed_button_texture" {
-						# 	texture = "[GetGraphicalCultureTexture('speed_end_button')]"
-						# }
-					}
-					gamespeed_play_button = {
-						visible = "[And(Not(IsGamePaused), IsGameSpeedEqualOrGreaterThan('(int32)6'))]"
-						blockoverride "gamespeed_play_button_onclick"{
-							onclick = "[OnSetGameSpeed('(int32)6')]"
-						}
-						# blockoverride "gamespeed_button_texture" {
-						# 	texture = "[GetGraphicalCultureTexture('speed_end_button')]"
-						# }
-					}
-					gamespeed_paused_button = {
-						visible = "[And(IsGamePaused, IsGameSpeedEqualOrGreaterThan('(int32)6'))]"
-						blockoverride "gamespeed_paused_button_onclick"{
-							onclick = "[OnSetGameSpeed('(int32)6')]"
-						}
-						# blockoverride "gamespeed_button_texture" {
-						# 	texture = "[GetGraphicalCultureTexture('speed_end_button')]"
-						# }
-					}
-					
-					# SPEED 7
-					gamespeed_button_disabled = {
-						visible = "[Not(IsGameSpeedEqualOrGreaterThan('(int32)7'))]"
-						blockoverride "gamespeed_button_disabled_onclick"{
-							onclick = "[OnSetGameSpeed('(int32)7')]"
-						}
-						# blockoverride "gamespeed_button_texture" {
-						# 	texture = "[GetGraphicalCultureTexture('speed_end_button')]"
-						# }
-					}
-					gamespeed_play_button = {
-						visible = "[And(Not(IsGamePaused), IsGameSpeedEqualOrGreaterThan('(int32)7'))]"
-						blockoverride "gamespeed_play_button_onclick"{
-							onclick = "[OnSetGameSpeed('(int32)7')]"
-						}
-						# blockoverride "gamespeed_button_texture" {
-						# 	texture = "[GetGraphicalCultureTexture('speed_end_button')]"
-						# }
-					}
-					gamespeed_paused_button = {
-						visible = "[And(IsGamePaused, IsGameSpeedEqualOrGreaterThan('(int32)7'))]"
-						blockoverride "gamespeed_paused_button_onclick"{
-							onclick = "[OnSetGameSpeed('(int32)7')]"
-						}
-						# blockoverride "gamespeed_button_texture" {
-						# 	texture = "[GetGraphicalCultureTexture('speed_end_button')]"
-						# }
-					}
 				}
 
 				# FAKE PLAY PAUSE BUTTON
@@ -2417,14 +2474,14 @@ template speed_bar {
 						icon = {
 							size = { 30 30 }
 							parentanchor = center
-							
+
 							texture = "gfx/interface/buttons/flats/square_button_play.dds"
 							using = pausebutton_texture_overlay
 						}
 					}
-				}	
+				}
 			}
-			
+
 			# PLAY PAUSE BUTTONS
 			widget = {
 				size = { 36 40 }
@@ -2438,16 +2495,15 @@ template speed_bar {
 					button = {
 						size = { 30 30 }
 						parentanchor = center
-
-						onpressed = "[OnPause]"
-						visible = "[IsGamePaused]"
+						name = "play_game" #name used as identifiyer for widget_churn_benchmark tests
+						action_tooltip = {
+							title = "[GetResumeTooltip]"
+							on_action = "[OnPause]"
+						}
+						visible = "[IsGameUserPaused]"
 						enabled = "[CanUnpause]"
 
-						tooltipwidget = {
-							LeftClickButtonTooltip = {
-								blockoverride "onclick_text" { text = "[GetResumeTooltip]" }
-							}
-						}
+						tooltipwidget = { BasicFunctionalTooltip = {} }
 
 						texture = "gfx/interface/buttons/flats/square_button_play.dds"
 						using = pausebutton_texture_overlay
@@ -2456,17 +2512,34 @@ template speed_bar {
 					button = {
 						size = { 30 30 }
 						parentanchor = center
+						name = "semipause_game" #name used as identifiyer for widget_churn_benchmark tests
 
-						onpressed = "[OnPause]"
-						visible = "[Not(IsGamePaused)]"
+						action_tooltip = {
+							title = "[GetKeepGamePausedTooltip]"
+							on_action = "[OnPause]"
+						}
+						visible = "[And(Not(IsGameUserPaused), IsGameSystemPaused)]"
 						enabled = "[CanPause]"
 
-						tooltipwidget = {
-							LeftClickButtonTooltip = {
-								blockoverride "onclick_text" { text = "[GetPauseTooltip]" }
-							}
+						tooltipwidget = { BasicFunctionalTooltip = {} }
+
+						texture = "gfx/interface/buttons/flats/square_button_semipause.dds"
+						using = pausebutton_texture_overlay
+					}
+
+					button = {
+						size = { 30 30 }
+						parentanchor = center
+						name = "pause_game" #name used as identifiyer for widget_churn_benchmark tests
+						action_tooltip = {
+							title = "[GetPauseTooltip]"
+							on_action = "[OnPause]"
 						}
-						
+						visible = "[And(Not(IsGameUserPaused), Not(IsGameSystemPaused))]"
+						enabled = "[CanPause]"
+
+						tooltipwidget = { BasicFunctionalTooltip = {} }
+
 						texture = "gfx/interface/buttons/flats/square_button_pause.dds"
 						using = pausebutton_texture_overlay
 					}
@@ -2498,7 +2571,7 @@ template speed_bar {
 				text_single = {
 					visible = "[Not(IsObservingWithoutSelectedCountry)]"
 					parentanchor = center
-					size = { 90% 100% }
+					size = { 100% 100% }
 					autoresize = no
 					name = "date_text"
 					text = "CURRENT_DATE"
@@ -2524,6 +2597,12 @@ template speed_bar {
 									blockoverride "block_scrollarea" { maximumsize = { -1 700 }}
 									textcontext = "[GetMultiplayerSyncInfo]"
 								}
+								TooltipTextBlock = {
+									visible = "[IsAnyPlayerLaggingBehind]"
+									blockoverride "text" {
+										text = "MULTIPLAYER_LAGGING_BEHIND"
+									}
+								}
 							}
 						}
 					}
@@ -2533,14 +2612,12 @@ template speed_bar {
 		}
 
 		button = {
-			use_global_input_instance = yes
 			on_input_action_shortcut = "[OnIncreaseGameSpeed]"
 			input_action = "increase_speed"
 			tooltip_enabled = no
 		}
 
 		button = {
-			use_global_input_instance = yes
 			on_input_action_shortcut = "[OnDecreaseGameSpeed]"
 			input_action = "decrease_speed"
 			tooltip_enabled = no

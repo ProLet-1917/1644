@@ -278,13 +278,13 @@ flavor_hol.16 = {
 	option = {
 		name = flavor_hol.16.a
 		historical_option = yes
-		add_government_power = government_power_weak_penalty
+		add_political_influence = political_influence_weak_penalty
 		change_gold_effect = { scale = -2 }
 		scope:target_character = { move_country = root }
 	}
 	option = {
 		name = flavor_hol.16.b
-		add_government_power = government_power_extreme_bonus
+		add_political_influence = political_influence_extreme_bonus
 		hidden_effect = {
    			kill_character_silently = scope:target_character
   		}
@@ -447,7 +447,7 @@ flavor_hol.21 = {
 	option = {
 		name = flavor_hol.21.a
 		historical_option = yes
-		add_government_power = government_power_extreme_bonus
+		add_political_influence = political_influence_extreme_bonus
 		scope:target_character = {
 			add_character_modifier = {
 				modifier = hol_brilliant_minister
